@@ -34,3 +34,22 @@
     unzip -o -d /home/admin/h5 dist.zip
     ```
 
+--------------
+
+编译zepto(有的又顺序，建议这个顺序即可):
+MODULES="zepto event ajax form ie detect fx fx_methods assets data deferred callbacks selector touch gesture stack ios3" npm run-script dist
+
+在
+
+    ```
+    window.Zepto = Zepto
+    '$' in window || (window.$ = Zepto)
+    ```
+
+后增加如下代码
+
+    ```
+    if ( typeof define === "function" && define.amd ) {
+        define( "zepto", [], function () { return Zepto; } );
+    }
+    ```
