@@ -35,21 +35,49 @@
     ```
 
 --------------
+zepto的各种坑：
 
-编译zepto(有的又顺序，建议这个顺序即可):
+1、编译zepto(有的有顺序，建议这个顺序即可):
 MODULES="zepto event ajax form ie detect fx fx_methods assets data deferred callbacks selector touch gesture stack ios3" npm run-script dist
 
-在
+2、在
 
     ```
     window.Zepto = Zepto
     '$' in window || (window.$ = Zepto)
     ```
 
-后增加如下代码
+后增加如下代码，以便支持requirejs
 
     ```
     if ( typeof define === "function" && define.amd ) {
         define( "zepto", [], function () { return Zepto; } );
     }
+    ```
+
+3、加入如下代码，以支持微信的滑动
+
+    ```
+    if (touch.x2 && Math.abs(touch.x1 - touch.x2) > 10){
+          e.preventDefault()
+        }
+    ```
+在如下方法中增加
+
+    ```
+    .on('touchmove MSPointerMove pointermove', function(e){
+        if((_isPointerType = isPointerEventType(e, 'move')) &&
+          !isPrimaryTouch(e)) return
+        firstTouch = _isPointerType ? e : e.touches[0]
+        cancelLongTap()
+        touch.x2 = firstTouch.pageX
+        touch.y2 = firstTouch.pageY
+
+        deltaX += Math.abs(touch.x1 - touch.x2)
+        deltaY += Math.abs(touch.y1 - touch.y2)
+
+        if (touch.x2 && Math.abs(touch.x1 - touch.x2) > 10){
+          e.preventDefault()
+        }
+      })
     ```
