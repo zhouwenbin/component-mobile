@@ -73,23 +73,30 @@ button{
   overflow: hidden;
   text-overflow:    ellipsis;
 }
-.ellipsis2{
+.ellipsis2,.ellipsis3{
   overflow : hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+.ellipsis2{
+  -webkit-line-clamp: 2;
+}
+.ellipsis3{
+  -webkit-line-clamp: 3;
 }
 /*icon*/
 .icon{
   display: inline-block;
   vertical-align: middle;
   background: url(../img/icon.png) no-repeat;
-  -webkit-box-sizing: 500px 500px;
-  box-sizing: 500px 500px;
+  -webkit-background-size: 300px 300px;
+  background-size: 300px 300px;
 }
-.icon{
+.icon1{
   background-position: ;
+  width: 25px;
+  height: 16px;
 }
 /*btn*/
 .btn{
@@ -120,6 +127,7 @@ button{
   border:1px dashed #cfcfcf;
   color: #c6c6c6;
 }
+/*input*/
 .input{
   display: inline-block;
   vertical-align: middle;
