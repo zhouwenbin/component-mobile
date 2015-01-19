@@ -298,3 +298,34 @@ button{
 .standard li{
   margin-bottom: 26px;
 }
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+.swipe-dot{
+  text-align: center;
+  position: relative;;
+  top: -32px;
+}
+.swipe-dot span{
+  display: inline-block;
+  width: 7px;
+  height:7px;
+  border-radius: 7px;
+  background:#b4b4b6;
+  margin:0 7px;
+}
+.swipe-dot span.active{
+  background: #dc3334;
+}
