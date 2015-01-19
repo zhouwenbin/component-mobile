@@ -1,4 +1,5 @@
-<!--商品-->
+  {{#if showFirstStep}}
+  <!--商品-->
   <section class="goods">
     <div class="goods-r1">
       <img src="{{sf.img itemInfo.currentImage}}" alt="">
@@ -70,12 +71,15 @@
   <!--立即购买-->
   <section class="buy">
     <div class="buy-r1">
-      <button class="btn btn-danger btn-big">立即购买</button>
+      <button class="btn btn-danger btn-big" id="gotobuy">立即购买</button>
     </div>
 
   </section>
   <!--立即购买-->
+  {{/if}}
 
+  {{#if showSecondStep}}
+  <div class="test"></div>
   <!--推荐商品-->
   <section class="recommend">
     <ul>
@@ -92,7 +96,6 @@
         </div>
         </a>
       </li>
-
     </ul>
   </section>
   <!--推荐商品-->
@@ -101,10 +104,10 @@
     <ul class="standard-r1">
       {{#each itemInfo.specGroups}}
       <li class="clearfix">
-        <div class="standard-c1 fl" data-specidorder="{{specIdOrder}}">{{specName}}：</div>
-        <div class="standard-c2">
+        <div class="standard-c1 fl">{{specName}}：</div>
+        <div class="standard-c2" data-specidorder="{{specIdOrder}}">
           {{#each specs}}
-          <button data-specid="{{specId}}" id="1" data-specIndex="{{specIndex}}" data-compose="{{compose}}" class="btn {{selected}} {{canShowDottedLine}} {{disabled}}">{{specValue}}</button>
+          <button data-specid="{{specId}}" id="1" data-specIndex="{{specIndex}}" data-compose="{{compose}}" class="btn specbuttons {{selected}} {{canShowDottedLine}} {{disabled}}">{{specValue}}</button>
           {{/each}}
         </div>
       </li>
@@ -114,9 +117,11 @@
       <div class="standard-c1 fl">数量：</div>
       <div class="standard-c2">
         <div class="input-num">
-          <button class="btn">-</button>
-          <input type="text" value="1">
-          <button class="btn">+</button>
+          <button class="btn" id="reduceNum">-</button>
+          <input type="text" value="{{input.buyNum}}" id="inputNum">
+          <button class="btn" id="addNum">+</button>
+          {{#sf-showCurrentStock priceInfo.currentStock}}<span class="icon26" style="visibility:visible">商品库存{{priceInfo.currentStock}}件</span>{{/sf-showCurrentStock}}
+          {{#if input.showRestrictionTips}}<span class="icon icon26" style="visibility:visible" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>{{/if}}
         </div>
 
       </div>
@@ -126,8 +131,9 @@
   <!--立即购买-->
   <section class="buy">
     <div class="buy-r1">
-      <button class="btn btn-danger btn-big">确定</button>
+      <button class="btn btn-danger btn-big" id="buyEnter">确定</button>
     </div>
 
   </section>
   <!--立即购买-->
+  {{/if}}
