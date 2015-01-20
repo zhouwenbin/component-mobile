@@ -125,7 +125,11 @@ button{
 .btn-dashed{
   background: none;
   border:1px dashed #cfcfcf;
-  color: #c6c6c6;
+}
+.btn-disable{
+  color: #888888;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
 }
 /*input*/
 .input{
