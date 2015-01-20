@@ -113,20 +113,24 @@ button{
 .btn-big{
   width: 100%;
 }
-.btn-danger{
+.btn-danger,
+.btn.active{
   color:#fff;
   background:#dc3334;
   border: 1px solid #dc3334;
 }
-.btn-normal{
+.btn-normal,
+.btn.normal{
   background: none;
   border:1px solid #c6c6c6;
 }
-.btn-dashed{
+.btn-dashed,
+.btn.dashed{
   background: none;
   border:1px dashed #cfcfcf;
 }
-.btn-disable{
+.btn-disable,
+.btn.disable{
   color: #888888;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
