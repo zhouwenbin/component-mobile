@@ -66,7 +66,7 @@
 
       {{#each recommendProducts}}
       <li class="clearfix">
-        <a href="">
+        <a href="{{linkUrl}}">
         <div class="recommend-c1 fl vertical-middle">
           <img src="{{sf.img imageName}}" alt="">
         </div>
@@ -98,7 +98,7 @@
   <section class="recommend">
     <ul>
       <li class="clearfix">
-        <a href="">
+        <a href="{{itemInfo.linkUrl}}">
         <div class="recommend-c1 fl vertical-middle">
           <img src="{{sf.img itemInfo.step2Image}}" alt="">
         </div>
@@ -134,12 +134,19 @@
           <button class="btn" id="reduceNum">-</button>
           <input type="text" value="{{input.buyNum}}" id="inputNum">
           <button class="btn" id="addNum">+</button>
-          {{#sf-showCurrentStock priceInfo.currentStock}}<span class="icon26" style="visibility:visible">商品库存{{priceInfo.currentStock}}件</span>{{/sf-showCurrentStock}}
-          {{#if input.showRestrictionTips}}<span class="icon icon26" style="visibility:visible" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>{{/if}}
+
+          {{#if input.showRestrictionTips}}
+            <span class="alert-error">商品限购{{priceInfo.limitBuy}}件</span>
+          {{/if}}
+
         </div>
 
       </div>
     </div>
+    <div class="alert-error">{{input.error}}</div>
+    {{#sf-showCurrentStock priceInfo.currentStock}}
+      <div class="alert-error">商品剩余{{priceInfo.currentStock}}件，请修改购买数量</div>
+    {{/sf-showCurrentStock}}
   </section>
   <!--规格-->
   <!--立即购买-->

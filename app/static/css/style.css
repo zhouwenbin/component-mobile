@@ -113,25 +113,37 @@ button{
 .btn-big{
   width: 100%;
 }
-.btn-danger{
+.btn-danger,
+.btn.active{
   color:#fff;
   background:#dc3334;
   border: 1px solid #dc3334;
 }
-.btn-normal{
+.btn-normal,
+.btn.normal{
   background: none;
   border:1px solid #c6c6c6;
 }
-.btn-dashed{
+.btn-dashed,
+.btn.dashed{
   background: none;
   border:1px dashed #cfcfcf;
-  color: #c6c6c6;
+}
+.btn-disable,
+.btn.disable{
+  color: #888888;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+}
+/*alert*/
+.alert-error{
+  color:#dc3334;
 }
 /*input*/
 .input{
   display: inline-block;
-  vertical-align: middle;
 }
+
 .input-num .btn{
   width: 36px;
   height: 32px;
@@ -226,6 +238,7 @@ button{
 .detail-b{
   margin-bottom: 17px;
   padding: 0 17px;
+  line-height: 1.5;
 }
 .detail-b ul{
   border-bottom: 1px dashed #bebec4;
@@ -297,6 +310,12 @@ button{
 }
 .standard li{
   margin-bottom: 26px;
+}
+.standard .input-num{
+  margin-right:11px;
+  }
+.standard-r2{
+  margin-bottom: 36px;
 }
 
 .swipe {
