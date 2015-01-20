@@ -238,6 +238,7 @@ button{
 .detail-b{
   margin-bottom: 17px;
   padding: 0 17px;
+  line-height: 1.5;
 }
 .detail-b ul{
   border-bottom: 1px dashed #bebec4;
