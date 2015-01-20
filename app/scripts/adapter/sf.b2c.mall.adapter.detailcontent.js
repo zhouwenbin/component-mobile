@@ -32,7 +32,10 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       detailContentInfo.itemInfo.basicInfo.productShape = itemInfoData.saleInfo.productShape;
 
       //设置item的大图
-      detailContentInfo.itemInfo.currentImage = itemInfoData.skuInfo.images[0].bigImgUrl + "@375h_375w_80Q_1x.jpg";
+      _.each(itemInfoData.skuInfo.images, function(item){
+        item.bigImgUrl += "@375h_375w_80Q_1x.jpg";
+      })
+
       detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].bigImgUrl + "@102h_102w_80Q_1x.jpg";
 
       //设置颜色/尺寸等信息

@@ -3,6 +3,7 @@
 define('sf.b2c.mall.product.detailcontent', [
     'can',
     'zepto',
+    'swipe',
     'sf.b2c.mall.adapter.detailcontent',
     'sf.b2c.mall.api.b2cmall.getItemInfo',
     'sf.b2c.mall.api.b2cmall.getProductHotData',
@@ -12,7 +13,7 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config'
   ],
-  function(can, $, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, helpers, SFComm, SFConfig, SFMessage) {
+  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, helpers, SFComm, SFConfig, SFMessage) {
     return can.Control.extend({
 
       helpers: {
@@ -77,15 +78,89 @@ define('sf.b2c.mall.product.detailcontent', [
             var html = can.view('templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
             that.element.html(html);
 
+            //滚动效果
+            new Swipe($('#slider')[0], {
+              startSlide: 1,
+              speed: 400,
+              auto: 0,
+              continuous: true,
+              disableScroll: false,
+              stopPropagation: false,
+              callback: function(index, elem) {
+                $('.swipe-dot span').eq(index).addClass('active').siblings().removeClass('active');
+              },
+              transitionEnd: function(index, elem) {}
+            });
+
             $('#gotobuy').tap(function() {
               that.gotobuyClick($(this));
               that.bindSelectSpecButton();
+            })
+
+            $('#detailTab').tap(function() {
+              that.switchTab('detailTab');
+            })
+
+            $('#itemInfoTab').tap(function() {
+              that.switchTab('itemInfoTab');
             })
 
           })
           .fail(function(error) {
             console.error(error);
           })
+      },
+
+      /**
+       * [switchTab 切换tab]
+       * @param  {[type]} tab [description]
+       * @return {[type]}     [description]
+       */
+      switchTab: function(tab) {
+        //tab
+        $("#detailTab").toggleClass("active");
+        $('#itemInfoTab').toggleClass("active");
+
+        var that = this;
+
+        var map = {
+          'detailTab': function() {
+            $('#specAndBrandInfo').hide();
+            $('#recommendProducts').hide();
+            $('#detail').show();
+
+            //确保只渲染一次
+            if (!that.isRendered) {
+              that.isRendered = that.renderDetail();
+            }
+          },
+
+          'itemInfoTab': function() {
+            $('#specAndBrandInfo').show();
+            $('#recommendProducts').show();
+            $('#detail').hide();
+          }
+        }
+
+        map[tab].apply(this);
+      },
+
+      /**
+       * [renderDetail 渲染详情]
+       * @return {[type]} [description]
+       */
+      renderDetail: function() {
+        var template = can.view.mustache(this.detailTemplate());
+        $('#detail').html(template(this.options.detailContentInfo));
+        return true;
+      },
+
+      /**
+       * [detailTemplate 详情模板]
+       * @return {[type]} [description]
+       */
+      detailTemplate: function() {
+        return '{{&itemInfo.basicInfo.description}}';
       },
 
       /**
@@ -126,7 +201,7 @@ define('sf.b2c.mall.product.detailcontent', [
        */
       buyEnter: function(element) {
         var amount = this.options.detailContentInfo.input.buyNum;
-        if (amount < 1 || isNaN(amount)){
+        if (amount < 1 || isNaN(amount)) {
           this.options.detailContentInfo.input.attr("buyNum", 1);
           // var message = new SFMessage(null, {
           //   'tip': '请输入正确的购买数量！',
