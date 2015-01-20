@@ -204,30 +204,7 @@ module.exports = function (grunt) {
       },
       html: [
         '<%= config.app %>/index.html',
-        '<%= config.app %>/preheat.html',
-        '<%= config.app %>/agreement.html',
-        '<%= config.app %>/detail.html',
-        '<%= config.app %>/login.html',
-        '<%= config.app %>/register.html',
-        '<%= config.app %>/process.html',
-        '<%= config.app %>/activated.html',
-        '<%= config.app %>/nullactivated.html',
-        '<%= config.app %>/retrieve.html',
-        '<%= config.app %>/order.html',
-        '<%= config.app %>/orderlist.html',
-        '<%= config.app %>/orderdetail.html',
-        '<%= config.app %>/center.html',
-        '<%= config.app %>/gotopay.html',
-        '<%= config.app %>/404.html',
-        '<%= config.app %>/p404.html',
-        '<%= config.app %>/password-change.html',
-        '<%= config.app %>/proxy.html',
-        '<%= config.app %>/i.login.html',
-        '<%= config.app %>/i.register.html',
-        '<%= config.app %>/helpcenter-*.html',
-        '<%= config.app %>/aboutus-*.html',
-        '<%= config.app %>/federatedLogin.html',
-        '<%= config.app %>/error.html'
+        '<%= config.app %>/detail.html'
       ]
     },
 
@@ -343,6 +320,7 @@ module.exports = function (grunt) {
             // '{,*/}*.html',
             // 'index.html',
             'index.html',
+            'detail.html',
 
             'json/*.json',
 
@@ -407,6 +385,25 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.main'
           ],
           insertRequire: ['sf.b2c.mall.page.main']
+        }
+      },
+      detail: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.detail.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment':'../bower_components/momentjs/min/moment.min',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
+          },
+          include: [
+            'sf.b2c.mall.product.detailcontent',
+            'sf.b2c.mall.adapter.detailcontent',
+            'sf.helpers',
+            'sf.b2c.mall.page.detail'
+          ],
+          insertRequire: ['sf.b2c.mall.page.detail']
         }
       }
     }
@@ -488,6 +485,7 @@ module.exports = function (grunt) {
           'uglify',
           'copy:dist',
           'requirejs:main',
+          'requirejs:detail',
 
           'usemin',
           // 'htmlmin',

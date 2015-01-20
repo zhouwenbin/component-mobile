@@ -2305,7 +2305,7 @@ if ( typeof define === "function" && define.amd ) {
       gesture = new MSGesture()
       gesture.target = document.body
     }
-debugger;
+
     $(document)
       .bind('MSGestureEnd', function(e){
         var swipeDirectionFromVelocity =

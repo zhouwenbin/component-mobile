@@ -94,8 +94,12 @@ requirejs.config({
     'fastclick': 'bower_components/fastclick/lib/fastclick',
 
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
-    'zepto': 'scripts/vendor/zepto'
+    'zepto': 'scripts/vendor/zepto',
+    'sf.helpers':'scripts/util/sf.helpers',
 
+    'sf.b2c.mall.page.detail': 'scripts/page/sf.b2c.mall.page.detail',
+    'sf.b2c.mall.product.detailcontent':'scripts/product/sf.b2c.mall.product.detailcontent',
+    'sf.b2c.mall.adapter.detailcontent': 'scripts/adapter/sf.b2c.mall.adapter.detailcontent'
 
 
   }
