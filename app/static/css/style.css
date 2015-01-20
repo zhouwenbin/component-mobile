@@ -131,11 +131,15 @@ button{
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
 }
+/*alert*/
+.alert-error{
+  color:#dc3334;
+}
 /*input*/
 .input{
   display: inline-block;
-  vertical-align: middle;
 }
+
 .input-num .btn{
   width: 36px;
   height: 32px;
@@ -301,6 +305,12 @@ button{
 }
 .standard li{
   margin-bottom: 26px;
+}
+.standard .input-num{
+  margin-right:11px;
+  }
+.standard-r2{
+  margin-bottom: 36px;
 }
 
 .swipe {
