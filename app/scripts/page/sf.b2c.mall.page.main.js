@@ -13,7 +13,6 @@ define(
     var home = can.Control.extend({
 
       init: function(element, options) {
-        debugger;
 
         var html = can.view('templates/sf.b2c.mall.test.mustache', {});
         this.element.html(html);

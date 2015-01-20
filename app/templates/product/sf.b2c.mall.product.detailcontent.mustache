@@ -1,0 +1,139 @@
+  {{#if showFirstStep}}
+  <!--商品-->
+  <section class="goods">
+    <div class="goods-r1">
+      <img src="{{sf.img itemInfo.currentImage}}" alt="">
+    </div>
+    <div class="goods-b">
+      <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
+      <div class="goods-r2 clearfix">
+        <div class="goods-r2c1 fl">
+          <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>（含税）<del>¥{{sf.price priceInfo.originPrice}}</del>
+        </div>
+        <div class="goods-r2c2 fr">
+          <span class="icon icon1"></span>运费：0元
+        </div>
+      </div>
+      <p class="goods-r3">{{itemInfo.saleInfo.seller}}：{{itemInfo.saleInfo.shippingPoint}} 发货,预计{{itemInfo.saleInfo.sendTime}}天内到货</p>
+    </div>
+  </section>
+  <!--商品-->
+
+  <!--商品详情-->
+  <section class="detail">
+    <div class="detail-h">
+      <ul class="clearfix">
+        <li class="active">商品详情</li>
+        <li>图文详情</li>
+      </ul>
+    </div>
+    <div class="detail-b">
+      <ul>
+        {{#each itemInfo.saleInfo.specGroups}}
+        <li>{{specName}}： {{#each specs}} {{specValue}} {{/each}}</li>
+        {{/each}}
+      </ul>
+      <ul>
+        <li>品牌： {{itemInfo.basicInfo.brand}}</li>
+      </ul>
+      <ul>
+        <li>商品属性：</li>
+        {{#each itemInfo.basicInfo.attributes}}
+        <li>{{key}}： {{value}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+  <!--商品详情-->
+  <!--推荐商品-->
+  <section class="recommend">
+    <h2>推荐商品</h2>
+    <ul>
+
+      {{#each recommendProducts}}
+      <li class="clearfix">
+        <a href="">
+        <div class="recommend-c1 fl vertical-middle">
+          <img src="{{sf.img imageName}}" alt="">
+        </div>
+        <div class="recommend-c2">
+          <h3 class="ellipsis2">{{productName}}</h3>
+          <div class="recommend-c2r1">
+            <strong>¥{{sf.price sellingPrice}}</strong>
+          </div>
+        </div>
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+  </section>
+  <!--推荐商品-->
+  <!--立即购买-->
+  <section class="buy">
+    <div class="buy-r1">
+      <button class="btn btn-danger btn-big" id="gotobuy">立即购买</button>
+    </div>
+
+  </section>
+  <!--立即购买-->
+  {{/if}}
+
+  {{#if showSecondStep}}
+  <div class="test"></div>
+  <!--推荐商品-->
+  <section class="recommend">
+    <ul>
+      <li class="clearfix">
+        <a href="">
+        <div class="recommend-c1 fl vertical-middle">
+          <img src="{{sf.img itemInfo.step2Image}}" alt="">
+        </div>
+        <div class="recommend-c2">
+          <h3 class="ellipsis2">{{itemInfo.basicInfo.title}}</h3>
+          <div class="recommend-c2r1">
+            <strong>¥{{sf.price priceInfo.sellingPrice}}</strong>
+          </div>
+        </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!--推荐商品-->
+  <!--规格-->
+  <section class="standard">
+    <ul class="standard-r1">
+      {{#each itemInfo.specGroups}}
+      <li class="clearfix">
+        <div class="standard-c1 fl">{{specName}}：</div>
+        <div class="standard-c2" data-specidorder="{{specIdOrder}}">
+          {{#each specs}}
+          <button data-specid="{{specId}}" id="1" data-specIndex="{{specIndex}}" data-compose="{{compose}}" class="btn specbuttons {{selected}} {{canShowDottedLine}} {{disabled}}">{{specValue}}</button>
+          {{/each}}
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+    <div class="standard-r2">
+      <div class="standard-c1 fl">数量：</div>
+      <div class="standard-c2">
+        <div class="input-num">
+          <button class="btn" id="reduceNum">-</button>
+          <input type="text" value="{{input.buyNum}}" id="inputNum">
+          <button class="btn" id="addNum">+</button>
+          {{#sf-showCurrentStock priceInfo.currentStock}}<span class="icon26" style="visibility:visible">商品库存{{priceInfo.currentStock}}件</span>{{/sf-showCurrentStock}}
+          {{#if input.showRestrictionTips}}<span class="icon icon26" style="visibility:visible" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>{{/if}}
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!--规格-->
+  <!--立即购买-->
+  <section class="buy">
+    <div class="buy-r1">
+      <button class="btn btn-danger btn-big" id="buyEnter">确定</button>
+    </div>
+
+  </section>
+  <!--立即购买-->
+  {{/if}}
