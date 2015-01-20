@@ -16,9 +16,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
     formatPrice: function(detailContentInfo, priceData) {
       var that = this;
 
-      detailContentInfo.priceInfo = {};
-      detailContentInfo.priceInfo.sellingPrice = priceData.sellingPrice;
-      detailContentInfo.priceInfo.originPrice = priceData.originPrice;
+      detailContentInfo.priceInfo = priceData;
       detailContentInfo.priceInfo.discount = priceData.sellingPrice * 10 / priceData.originPrice
       detailContentInfo.priceInfo.lessspend = priceData.originPrice - priceData.sellingPrice;
     },
