@@ -38,7 +38,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var pathname = window.location.pathname;
         var pathArr = /\d+/g.exec(pathname);
 
-        if (typeof pathArr != 'undefined' && null != pathArr && pathArr.length > 0){
+        if (typeof pathArr != 'undefined' && null != pathArr && pathArr.length > 0) {
           this.itemid = pathArr[0];
         } else {
           alert("path error");
@@ -162,8 +162,21 @@ define('sf.b2c.mall.product.detailcontent', [
        */
       renderDetail: function() {
         var template = can.view.mustache(this.detailTemplate());
+        this.addCDN4img();
         $('#detail').html(template(this.options.detailContentInfo));
         return true;
+      },
+
+      addCDN4img: function(detail) {
+        // var detail = "<img src='2.jpg'><img src='1.bmp'><img src='2.jpg'><img src='1.BMP'>";
+        var description = this.options.detailContentInfo.itemInfo.basicInfo.description;
+        description = String(description).replace(/.jpg/g, '.jpg@375h_375w_80Q_1x.jpg')
+          .replace(/.bmp/gi, '.bmp@375h_375w_80Q_1x.bmp')
+          .replace(/.jpeg/gi, '.jpeg@375h_375w_80Q_1x.jpeg')
+          .replace(/.gif/gi, '.gif@375h_375w_80Q_1x.gif')
+          .replace(/.png/gi, '.png@375h_375w_80Q_1x.png');
+
+        this.options.detailContentInfo.itemInfo.basicInfo.attr("description", description);
       },
 
       /**
@@ -369,7 +382,7 @@ define('sf.b2c.mall.product.detailcontent', [
                 spec.attr("canSelected", "");
               } else {
                 if (spec.selected) {
-                  spec.attr("canSelected", "");
+                  spec.attr("canSelected", "active");
                   spec.attr("selected", "");
                 }
               }
@@ -391,24 +404,28 @@ define('sf.b2c.mall.product.detailcontent', [
         //获得选中的表示列表
         var gotoItemSpec = new String(element.eq(0).attr('data-compose')).split(",");
 
-        var skuId = this.getSKUIdBySpecs(this.options.detailContentInfo.itemInfo.saleSkuSpecTupleList, gotoItemSpec.join(","), element, type);
+        var saleSkuSpecTuple = this.getSKUBySpecs(this.options.detailContentInfo.itemInfo.saleSkuSpecTupleList, gotoItemSpec.join(","), element, type);
+        var skuId = saleSkuSpecTuple.skuSpecTuple.skuId;
+        var newItemid = saleSkuSpecTuple.itemId;
 
         var that = this;
         var getSKUInfo = new SFGetSKUInfo({
           'skuId': skuId
         });
-        getSKUInfo
-          .sendRequest()
-          .fail(function(error) {
-            console.error(error);
-          })
-          .done(function(skuInfoData) {
+
+        var getProductHotData = new SFGetProductHotData({
+          'itemId': newItemid
+        });
+
+        can.when(getSKUInfo.sendRequest(),
+            getProductHotData.sendRequest())
+          .done(function(skuInfoData, priceData) {
             that.options.detailContentInfo.itemInfo.attr("basicInfo", new can.Map(skuInfoData));
-            that.adapter.reSetSelectedAndCanSelectedSpec(that.detailUrl, that.options.detailContentInfo, gotoItemSpec);
+            that.adapter.reSetSelectedAndCanSelectedSpec(newItemid, priceData, that.detailUrl, that.options.detailContentInfo, gotoItemSpec);
           })
       },
 
-      getSKUIdBySpecs: function(saleSkuSpecTupleList, gotoItemSpec, element, type) {
+      getSKUBySpecs: function(saleSkuSpecTupleList, gotoItemSpec, element, type) {
         var saleSkuSpecTuple;
         if (type == 'dashed') {
           saleSkuSpecTuple = _.find(saleSkuSpecTupleList, function(saleSkuSpecTuple) {
@@ -420,7 +437,7 @@ define('sf.b2c.mall.product.detailcontent', [
           });
         }
 
-        return saleSkuSpecTuple.skuSpecTuple.skuId;
+        return saleSkuSpecTuple;
       }
 
     });
