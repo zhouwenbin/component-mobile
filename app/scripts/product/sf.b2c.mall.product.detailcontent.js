@@ -32,7 +32,18 @@ define('sf.b2c.mall.product.detailcontent', [
        * @param  {Object} options 传递的参数
        */
       init: function(element, options) {
-        // this.detailUrl = SFConfig.setting.api.detailurl;
+
+        //解析路由，取出itemid
+        //example: /detail/1.html
+        var pathname = window.location.pathname;
+        var pathArr = /\d+/g.exec(pathname);
+
+        if (null != pathArr && pathArr.length > 0){
+          this.itemid = pathArr[0];
+        } else {
+          alert("path error");
+          return;
+        }
 
         // @todo 需要在配置文件中修改
         this.detailUrl = 'http://m.sfht.com';
@@ -49,15 +60,15 @@ define('sf.b2c.mall.product.detailcontent', [
         var that = this;
 
         var getItemInfo = new SFGetItemInfo({
-          'itemId': 1
+          'itemId': that.itemid
         });
 
         var getProductHotData = new SFGetProductHotData({
-          'itemId': 1
+          'itemId': that.itemid
         });
 
         var findRecommendProducts = new SFFindRecommendProducts({
-          'itemId': 1,
+          'itemId': that.itemid,
           'size': 4
         });
 
