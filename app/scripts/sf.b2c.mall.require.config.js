@@ -95,6 +95,7 @@ requirejs.config({
 
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
     'zepto': 'scripts/vendor/zepto',
+    'swipe': 'scripts/vendor/swipe',
     'sf.helpers':'scripts/util/sf.helpers',
 
     'sf.b2c.mall.page.detail': 'scripts/page/sf.b2c.mall.page.detail',

@@ -21,7 +21,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       detailContentInfo.priceInfo.lessspend = priceData.originPrice - priceData.sellingPrice;
     },
 
-    formatItemInfo: function(detailContentInfo, itemInfoData) {
+    formatItemInfo: function(detailUrl, detailContentInfo, itemInfoData) {
       var that = this;
 
       //设置商品详细信息，包括标题、副标题、描述等信息
@@ -32,8 +32,12 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       detailContentInfo.itemInfo.basicInfo.productShape = itemInfoData.saleInfo.productShape;
 
       //设置item的大图
-      detailContentInfo.itemInfo.currentImage = itemInfoData.skuInfo.images[0].bigImgUrl + "@375h_375w_80Q_1x.jpg";
-      detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].bigImgUrl + "@102h_102w_80Q_1x.jpg";
+      _.each(itemInfoData.skuInfo.images, function(item){
+        item.bigImgUrl += "@375h_375w_80Q_1x.jpg";
+      })
+
+      detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].thumbImgUrl + "@102h_102w_80Q_1x.jpg";
+      detailContentInfo.itemInfo.linkUrl = detailUrl + "/detail/" + itemInfoData.itemId + ".html";
 
       //设置颜色/尺寸等信息
       detailContentInfo.itemInfo.specGroups = itemInfoData.saleInfo.specGroups;
@@ -69,9 +73,12 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       detailContentInfo.input.buyNum = 1;
     },
 
-    reSetSelectedAndCanSelectedSpec: function(detailContentInfo, specId) {
+    reSetSelectedAndCanSelectedSpec: function(detailUrl, detailContentInfo, specId) {
       //设置选中和可选状态
       var that = this;
+
+      detailContentInfo.itemInfo.attr("step2Image", detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl + "@102h_102w_80Q_1x.jpg");
+      detailContentInfo.itemInfo.attr("linkUrl", detailUrl + "/detail/" + detailContentInfo.itemInfo.basicInfo.skuId + ".html");
 
       var index = 0;
 
@@ -101,13 +108,13 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
         return spec.specId == specId[index];
       })
       if (typeof selectedSpec.attr != 'undefined') {
-        selectedSpec.attr("selected", "btn-danger");
+        selectedSpec.attr("selected", "active");
         selectedSpec.attr("canSelected", "");
         selectedSpec.attr("canShowDottedLine", "");
       } else {
         // selectedSpec.canSelected = false;
         // selectedSpec.canShowDottedLine = false;
-        selectedSpec.selected = "btn-danger";
+        selectedSpec.selected = "active";
         selectedSpec.canSelected = "";
         selectedSpec.canShowDottedLine = "";
       }
@@ -123,7 +130,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
      * @param {[type]} group
      * @param {[type]} detailContentInfo
      */
-    setCanSelectedSpec: function(index, specId, group, saleSkuSpecTupleList) {
+    setCanSelectedSpec: function(index, specId, group, saleSkuSpecTupleList) {debugger;
       //组合各种情况,看是否存在
       _.each(group.specs, function(spec) {
         spec.canSelected = false;
@@ -164,10 +171,10 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
           //显示虚线框
           if (typeof showDottedLine != 'undefined') {
             if (typeof spec.attr != 'undefined') {
-              spec.attr("canShowDottedLine", "btn-dashed");
+              spec.attr("canShowDottedLine", "dashed");
               spec.attr("compose", showDottedLine.skuSpecTuple.specIds.join(","));
             } else {
-              spec.canShowDottedLine = "btn-dashed";
+              spec.canShowDottedLine = "dashed";
               spec.compose = showDottedLine.skuSpecTuple.specIds.join(",");
             }
           } else {
@@ -187,10 +194,10 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
      * @param  {[type]} recommendProducts
      * @return {[type]}
      */
-    formatRecommendProducts: function(detailContentInfo, recommendProducts) {
+    formatRecommendProducts: function(detailUrl, detailContentInfo, recommendProducts) {
       detailContentInfo.recommendProducts = recommendProducts.value;
       _.each(detailContentInfo.recommendProducts, function(item) {
-        //item.linkUrl = that.detailUrl + "/" + item.itemId + ".html";
+        item.linkUrl = detailUrl + "/detail/" + item.itemId + ".html";
         item.imageName = item.imageName + "@102h_102w_80Q_1x.jpg";
       })
     }
