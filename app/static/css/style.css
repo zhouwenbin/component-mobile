@@ -113,12 +113,7 @@ button{
 .btn-big{
   width: 100%;
 }
-.btn-danger,
-.btn.active{
-  color:#fff;
-  background:#dc3334;
-  border: 1px solid #dc3334;
-}
+
 .btn-normal,
 .btn.normal{
   background: none;
@@ -129,12 +124,19 @@ button{
   background: none;
   border:1px dashed #cfcfcf;
 }
+.btn-danger,
+.btn.active{
+  color:#fff;
+  background:#dc3334;
+  border: 1px solid #dc3334;
+}
 .btn-disable,
 .btn.disable{
   color: #888888;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
 }
+
 /*alert*/
 .alert-error{
   color:#dc3334;
