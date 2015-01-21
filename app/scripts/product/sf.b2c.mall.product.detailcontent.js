@@ -38,7 +38,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var pathname = window.location.pathname;
         var pathArr = /\d+/g.exec(pathname);
 
-        if (null != pathArr && pathArr.length > 0){
+        if (typeof pathArr != 'undefined' && null != pathArr && pathArr.length > 0){
           this.itemid = pathArr[0];
         } else {
           alert("path error");
@@ -214,7 +214,7 @@ define('sf.b2c.mall.product.detailcontent', [
        * [buyEnter 构面确认按钮事件]
        * @return {[type]} [description]
        */
-      buyEnter: function(element) {debugger;
+      buyEnter: function(element) {
         var amount = this.options.detailContentInfo.input.buyNum;
         if (amount < 1 || isNaN(amount)) {
           this.options.detailContentInfo.input.attr("buyNum", 1);

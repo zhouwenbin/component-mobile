@@ -130,7 +130,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
      * @param {[type]} group
      * @param {[type]} detailContentInfo
      */
-    setCanSelectedSpec: function(index, specId, group, saleSkuSpecTupleList) {debugger;
+    setCanSelectedSpec: function(index, specId, group, saleSkuSpecTupleList) {
       //组合各种情况,看是否存在
       _.each(group.specs, function(spec) {
         spec.canSelected = false;
