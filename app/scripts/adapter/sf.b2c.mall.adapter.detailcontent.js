@@ -36,7 +36,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
         item.bigImgUrl += "@375h_375w_80Q_1x.jpg";
       })
 
-      detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].thumbImgUrl + "@102h_102w_80Q_1x.jpg";
+      detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].thumbImgUrl;
       detailContentInfo.itemInfo.linkUrl = detailUrl + "/detail/" + itemInfoData.itemId + ".html";
 
       //设置颜色/尺寸等信息
@@ -78,7 +78,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       var that = this;
 
       var step2Image = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
-      detailContentInfo.itemInfo.attr("step2Image", step2Image + "@102h_102w_80Q_1x.jpg");
+      detailContentInfo.itemInfo.attr("step2Image", step2Image);
       detailContentInfo.itemInfo.attr("linkUrl", detailUrl + "/detail/" + itemid + ".html");
       detailContentInfo.priceInfo.attr("sellingPrice", priceData.sellingPrice);
 
