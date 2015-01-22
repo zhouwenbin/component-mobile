@@ -1,0 +1,18 @@
+<h2>商品信息</h2>
+<div class="table box">
+  <h3 class="table-r1">{{itemName}}</h3>
+  <ul class="clearfix table-r2">
+    {{{spec}}}
+  </ul>
+  <ul class="clearfix table-r2">
+    <li>数量：{{amount}}</li>
+    <li>单价：¥{{sf.price singlePrice}}</li>
+    <li>优惠：¥0 </li>
+    <li>小计：{{sf.price totalPrice}}</li>
+  </ul>
+  <div class="table-r3">运费：0元</div>
+</div>
+<div class="order-r3 clearfix box">
+  <div class="order-r3c1 fl">实际应付款:<span>¥{{sf.price allTotalPrice}}</span></div>
+  <div class="order-r3c2 fr"><button class="btn btn-normal active">提交订单</button></div>
+</div>

@@ -94,15 +94,28 @@ requirejs.config({
         'moment-zh-cn': 'bower_components/momentjs/locale/zh-cn',
         'fastclick': 'bower_components/fastclick/lib/fastclick',
 
-        'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
+        // 公共组件
         'zepto': 'scripts/vendor/zepto',
         'swipe': 'scripts/vendor/swipe',
         'sf.helpers': 'scripts/util/sf.helpers',
 
+        // 首页
+        'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
+
+        // 商品详情
         'sf.b2c.mall.page.detail': 'scripts/page/sf.b2c.mall.page.detail',
         'sf.b2c.mall.product.detailcontent': 'scripts/product/sf.b2c.mall.product.detailcontent',
-        'sf.b2c.mall.adapter.detailcontent': 'scripts/adapter/sf.b2c.mall.adapter.detailcontent'
+        'sf.b2c.mall.adapter.detailcontent': 'scripts/adapter/sf.b2c.mall.adapter.detailcontent',
 
+        // 订单
+        'sf.b2c.mall.page.order': 'scripts/page/sf.b2c.mall.page.order',
+        'sf.b2c.mall.order.fn': 'scripts/order/sf.b2c.mall.order.fn',
+        'sf.b2c.mall.order.iteminfo': 'scripts/order/sf.b2c.mall.order.iteminfo',
+        'sf.b2c.mall.order.selectreceiveaddr': 'scripts/order/sf.b2c.mall.order.selectreceiveaddr',
+        'sf.b2c.mall.component.addreditor':'scripts/component/sf.b2c.mall.component.addreditor',
+        'sf.b2c.mall.adapter.address.list':'scripts/adapter/sf.b2c.mall.adapter.address.list',
+        'sf.b2c.mall.adapter.regions':'scripts/adapter/sf.b2c.mall.adapter.regions',
+        'sf.b2c.mall.adapter.order':'scripts/adapter/sf.b2c.mall.adapter.order'
 
     }
 });
