@@ -512,6 +512,7 @@ module.exports = function (grunt) {
           'copy:dist',
           'requirejs:main',
           'requirejs:detail',
+          'requirejs:order',
 
           'usemin',
           // 'htmlmin',

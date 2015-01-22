@@ -2,15 +2,17 @@
 
 define('sf.b2c.mall.component.addreditor', [
   'can',
+  'zepto',
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.api.user.createRecAddress',
   'sf.b2c.mall.api.user.updateRecAddress'
 
-], function(can, RegionsAdapter, SFCreateRecAddress, SFUpdateRecAddress) {
+], function(can, $, RegionsAdapter, SFCreateRecAddress, SFUpdateRecAddress) {
 
   return can.Control.extend({
 
     init: function() {
+      debugger;
       this.adapter = {};
       this.request();
       this.onSuccess = this.options.onSuccess;
@@ -24,11 +26,6 @@ define('sf.b2c.mall.component.addreditor', [
             cityList: cities
           });
         }, this))
-        //   function(cities) {
-        //   that.adapter.regions = new RegionsAdapter({
-        //     cityList: cities
-        //   });
-        // })
         .fail(function() {
 
         });
@@ -39,12 +36,10 @@ define('sf.b2c.mall.component.addreditor', [
      * @param  {Map} data 渲染页面的数据
      */
     render: function(data, tag, element) {
-      this.setup(element)
+      debugger;
+      this.setup(element);
       var html = can.view('templates/component/sf.b2c.mall.component.addreditor.mustache', data);
       element.html(html);
-      // this.switchView('list', {
-      //   recId: data.addr.input.recId
-      // });
 
       this.supplement(tag);
     },
@@ -57,6 +52,11 @@ define('sf.b2c.mall.component.addreditor', [
         this.changeCity();
         this.changeRegion();
       }
+
+      var that = this;
+      $('#addressSave').tap(function() {debugger;
+        that.addressSaveClick();
+      })
     },
 
     show: function(tag, data, element) {
@@ -187,7 +187,7 @@ define('sf.b2c.mall.component.addreditor', [
       this.adapter.addr.input.attr('regionName', regions[0].id);
     },
 
-    '#s2 change': function(element, event) {
+    '#s2 change': function(element, event) {debugger;
       this.changeCity();
       this.changeRegion();
     },
@@ -197,7 +197,7 @@ define('sf.b2c.mall.component.addreditor', [
      * @param  {Dom}    element
      * @param  {Event}  event
      */
-    '#s3 change': function(element, event) {
+    '#s3 change': function(element, event) {debugger;
       this.changeRegion();
     },
 
@@ -286,7 +286,7 @@ define('sf.b2c.mall.component.addreditor', [
       event && event.preventDefault();
       $('#zipcodeerror').hide();
     },
-    '#addressSave click': function(element, event) {
+    addressSaveClick: function(element, event) {
       event && event.preventDefault();
 
       $('.tel-hide').hide();
