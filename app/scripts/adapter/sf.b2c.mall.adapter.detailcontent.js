@@ -77,7 +77,8 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       //设置选中和可选状态
       var that = this;
 
-      detailContentInfo.itemInfo.attr("step2Image", detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl + "@102h_102w_80Q_1x.jpg");
+      var step2Image = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
+      detailContentInfo.itemInfo.attr("step2Image", step2Image + "@102h_102w_80Q_1x.jpg");
       detailContentInfo.itemInfo.attr("linkUrl", detailUrl + "/detail/" + itemid + ".html");
       detailContentInfo.priceInfo.attr("sellingPrice", priceData.sellingPrice);
 
