@@ -36,7 +36,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
         item.bigImgUrl += "@375h_375w_80Q_1x.jpg";
       })
 
-      detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].thumbImgUrl + "@102h_102w_80Q_1x.jpg";
+      detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].thumbImgUrl;
       detailContentInfo.itemInfo.linkUrl = detailUrl + "/detail/" + itemInfoData.itemId + ".html";
 
       //设置颜色/尺寸等信息
@@ -73,12 +73,14 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       detailContentInfo.input.buyNum = 1;
     },
 
-    reSetSelectedAndCanSelectedSpec: function(detailUrl, detailContentInfo, specId) {
+    reSetSelectedAndCanSelectedSpec: function(itemid, priceData, detailUrl, detailContentInfo, specId) {
       //设置选中和可选状态
       var that = this;
 
-      detailContentInfo.itemInfo.attr("step2Image", detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl + "@102h_102w_80Q_1x.jpg");
-      detailContentInfo.itemInfo.attr("linkUrl", detailUrl + "/detail/" + detailContentInfo.itemInfo.basicInfo.skuId + ".html");
+      var step2Image = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
+      detailContentInfo.itemInfo.attr("step2Image", step2Image);
+      detailContentInfo.itemInfo.attr("linkUrl", detailUrl + "/detail/" + itemid + ".html");
+      detailContentInfo.priceInfo.attr("sellingPrice", priceData.sellingPrice);
 
       var index = 0;
 
@@ -130,7 +132,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
      * @param {[type]} group
      * @param {[type]} detailContentInfo
      */
-    setCanSelectedSpec: function(index, specId, group, saleSkuSpecTupleList) {debugger;
+    setCanSelectedSpec: function(index, specId, group, saleSkuSpecTupleList) {
       //组合各种情况,看是否存在
       _.each(group.specs, function(spec) {
         spec.canSelected = false;
@@ -153,19 +155,21 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
           if (!spec.selected) {
             //因初次渲染时候还未放入到Map中去，所以要做下判断
             if (typeof spec.attr != 'undefined') {
-              spec.attr("canSelected", "");
+              //spec.attr("canSelected", "");
+              spec.attr("canShowDottedLine", "");
               spec.attr("compose", result.skuSpecTuple.specIds.join(","));
             } else {
-              spec.canSelected = "";
+              //spec.canSelected = "";
+              spec.canShowDottedLine = "";
               spec.compose = result.skuSpecTuple.specIds.join(",");
             }
           }
         } else {
 
           if (typeof spec.attr != 'undefined') {
-            spec.attr("canSelected", "");
+            //spec.attr("canSelected", "");
           } else {
-            spec.canSelected = "";
+            //spec.canSelected = "";
           }
 
           //显示虚线框

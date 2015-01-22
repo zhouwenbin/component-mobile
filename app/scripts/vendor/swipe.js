@@ -6,7 +6,7 @@
  *
 */
 
-function Swipe(container, options) {
+var swipe = function Swipe(container, options) {
 
   "use strict";
 
@@ -559,14 +559,14 @@ function Swipe(container, options) {
 }
 
 
-if ( window.jQuery || window.Zepto ) {
-  (function($) {
-    $.fn.Swipe = function(element, params) {
-      return new Swipe(element, params)
-    }
-  })( window.jQuery || window.Zepto )
-}
+// if ( window.jQuery || window.Zepto ) {
+//   (function($) {
+//     $.fn.Swipe = function(element, params) {
+//       return new Swipe(element, params)
+//     }
+//   })( window.jQuery || window.Zepto )
+// }
 
 if ( typeof define === "function" && define.amd ) {
-  define( "swipe", [], function () { return $.fn.Swipe; } );
+  define( "swipe", [], function () { return swipe; } );
 }
