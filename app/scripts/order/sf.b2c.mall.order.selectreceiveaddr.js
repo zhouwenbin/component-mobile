@@ -28,6 +28,10 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
     },
 
     paint: function(data) {
+      $(".sf-b2c-mall-order-selectReceiveAddress").show();
+      $(".sf-b2c-mall-order-itemInfo").show();
+      $(".sf-b2c-mall-order-addAdrArea").hide();
+
       var that = this;
 
       var getRecAddressList = new SFGetRecAddressList();
@@ -63,7 +67,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           that.render(that.adapter4List.addrs);
 
           that.component.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-addAdrArea', {
-            // onSuccess: _.bind(that.paint, that)
+             onSuccess: _.bind(that.paint, that)
           });
 
           $('.addrecaddr').tap(function() {
@@ -89,6 +93,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
     addRecaddrClick: function(element) {debugger;
       $(".sf-b2c-mall-order-selectReceiveAddress").hide();
       $(".sf-b2c-mall-order-itemInfo").hide();
+      $(".sf-b2c-mall-order-addAdrArea").show();
       this.component.addressEditor.show("create", null, $(".sf-b2c-mall-order-addAdrArea"));
 
       return false;

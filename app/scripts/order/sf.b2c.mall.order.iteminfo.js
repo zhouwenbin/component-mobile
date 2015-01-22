@@ -64,6 +64,10 @@ define('sf.b2c.mall.order.iteminfo', [
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', itemObj);
           that.element.html(html);
 
+          $('.submitOrder').tap(function() {
+            that.submitOrderClick($(this));
+          })
+
         })
         .fail(function(error) {
           console.error(error);
@@ -95,7 +99,7 @@ define('sf.b2c.mall.order.iteminfo', [
       }
     },
 
-    '#submitOrder click': function(element, event) {
+    submitOrderClick: function(element, event) {debugger;
       var that = this;
 
       //防止重复提交
