@@ -1,0 +1,22 @@
+<h2>收货地址</h2>
+<ul>
+{{#each addressList}}
+<li class="clearfix {{active}}" name="addrEach" data-addressid="{{addrId}}" data-index="{{@index}}">
+  <div class="order-r1 clearfix">
+    <div class="order-r1c1 fl">
+      <span class="icon icon29 fl"></span>
+      <span class="order-r1c1c1 fl">{{nationName}} {{provinceName}} {{cityName}} {{regionName}}</span>
+      <span class="order-r1c1c2 fl">{{detail}}</span>
+      <span class="order-r1c1c3 fl">{{cellphone}}</span>
+      <span class="order-r1c1c4 fl">{{zipCode}}</span>
+    </div>
+    <div class="order-r1c2 fr">
+      <a class="order-edit" href="" data-index="{{@index}}">修改</a>
+    </div>
+  </div>
+  <div class="order-r2" id="editAdrArea">
+  </div>
+</li>
+{{/each}}
+</ul>
+<div class="order-r1 box"><a href="">+添加收货信息</a></div>

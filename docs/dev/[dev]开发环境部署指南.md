@@ -27,7 +27,7 @@
     sudo cp dist.zip /home/admin/h5
     ```
 
-5、文件解压。切换到admin用户下，进入statics目录后，确认有dist文件，使用admin用户执行解压
+5、文件解压。切换到admin用户下，进入h5目录后，确认有dist文件，使用admin用户执行解压
 
     ```
     sudo su admin

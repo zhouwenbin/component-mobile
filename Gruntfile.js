@@ -204,7 +204,8 @@ module.exports = function (grunt) {
       },
       html: [
         '<%= config.app %>/index.html',
-        '<%= config.app %>/detail.html'
+        '<%= config.app %>/detail.html',
+        '<%= config.app %>/order.html'
       ]
     },
 
@@ -321,6 +322,7 @@ module.exports = function (grunt) {
             // 'index.html',
             'index.html',
             'detail.html',
+            'order.html',
 
             'json/*.json',
 
@@ -404,6 +406,30 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.detail'
           ],
           insertRequire: ['sf.b2c.mall.page.detail']
+        }
+      },
+      order: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment':'../bower_components/momentjs/min/moment.min',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
+          },
+          include: [
+            'sf.b2c.mall.order.selectreceiveaddr',
+            'sf.b2c.mall.order.iteminfo',
+            'sf.helpers',
+            'sf.b2c.mall.adapter.address.list',
+            'sf.b2c.mall.component.addreditor',
+            'sf.b2c.mall.adapter.order',
+            'sf.b2c.mall.adapter.regions',
+            'sf.b2c.mall.order.fn',
+            'sf.b2c.mall.page.order'
+          ],
+          insertRequire: ['sf.b2c.mall.page.order']
         }
       }
     }
