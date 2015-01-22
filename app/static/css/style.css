@@ -447,8 +447,9 @@ img{
 }
 .swipe-dot{
   text-align: center;
-  position: relative;;
-  top: -32px;
+  position: absolute;;
+  margin-top: -32px;
+  width: 100%;
 }
 .swipe-dot span{
   display: inline-block;
@@ -516,14 +517,16 @@ img{
 /*list*/
 .list{
   padding: 14px;
-  margin-left: -7px;
+  margin-left: -3px;
 }
 .list li{
-  display: inline-block;
+  float: left;
   width: 48.8%;
-  text-align: justify;
   border: 1px solid #ccc;
   margin-bottom: 7px;
+}
+.list li:nth-child(odd){
+  float: right;
 }
 .list h2{
   font-size: 14px;
@@ -537,7 +540,6 @@ img{
 }
 .list-r1{
   position: relative;
-  height: 141px;
   margin-bottom: 6px;
 }
 .list-r1 .mask{
@@ -550,4 +552,13 @@ img{
 }
 .list-b{
   padding: 10px 8px;
+}
+.list-r2{
+  position: relative;
+  height: 30px;
+}
+.list-r2 .label-danger{
+  position: absolute;
+  right: -8px;
+  top: 0;
 }
