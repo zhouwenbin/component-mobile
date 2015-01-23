@@ -227,7 +227,7 @@ define('sf.b2c.mall.product.detailcontent', [
        * [buyEnter 构面确认按钮事件]
        * @return {[type]} [description]
        */
-      buyEnter: function(element) {
+      buyEnter: function(element) {debugger;
         var amount = this.options.detailContentInfo.input.buyNum;
         if (amount < 1 || isNaN(amount)) {
           this.options.detailContentInfo.input.attr("buyNum", 1);
@@ -238,14 +238,14 @@ define('sf.b2c.mall.product.detailcontent', [
         }
 
         var gotoUrl = 'http://m.sfht.com/order.html' + '?' + $.param({
-          "itemid": $('.sf-b2c-mall-detail-content').eq(0).attr('data-itemid'),
+          "itemid": this.itemid,
           "amount": this.options.detailContentInfo.input.buyNum
         });
 
-        // if (!SFComm.prototype.checkUserLogin.call(this)) {
-        //   this.header.showLogin(gotoUrl);
-        //   return false;
-        // }
+        if (!SFComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = 'http://m.sfht.com/login.html?from=' + escape(gotoUrl);
+          return false;
+        }
 
         window.location.href = gotoUrl;
       },

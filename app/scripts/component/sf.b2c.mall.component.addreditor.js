@@ -5,9 +5,10 @@ define('sf.b2c.mall.component.addreditor', [
   'zepto',
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.api.user.createRecAddress',
+  'sf.b2c.mall.api.user.createReceiverInfo',
   'sf.b2c.mall.api.user.updateRecAddress'
 
-], function(can, $, RegionsAdapter, SFCreateRecAddress, SFUpdateRecAddress) {
+], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress) {
 
   return can.Control.extend({
 
@@ -205,29 +206,41 @@ define('sf.b2c.mall.component.addreditor', [
 
     add: function(addr) {
       var that = this;
-      delete addr.recId;
 
-      var createRecAddress = new SFCreateRecAddress(addr);
-      createRecAddress
+      var person = {
+        recName: addr.recName,
+        type: "ID",
+        credtNum: addr.credtNum
+      };
+
+      var recId = null;
+      var createReceiverInfo = new SFCreateReceiverInfo(person);
+
+      createReceiverInfo
         .sendRequest()
         .done(function(data) {
+          recId = data.value;
+        })
+        .fail(function(error) {
 
-          // var message = new SFMessage(null, {
-          //   'tip': '新增收货地址成功！',
-          //   'type': 'success'
-          // });
-
+          def.reject(error);
+        })
+        .then(function(){
+          addr.recId = recId;
+          var createRecAddress = new SFCreateRecAddress(addr);
+          return createRecAddress.sendRequest()
+        })
+        .done(function(data) {
           that.onSuccess(data);
-
           return true;
         })
         .fail(function(error) {
           if (error === 1000310) {
-            // new SFMessage(null, {
-            //   "title": '顺丰海淘',
-            //   'tip': '您已添加20条收货地址信息，请返回修改！',
-            //   'type': 'error'
-            // });
+            new SFMessage(null, {
+              "title": '顺丰海淘',
+              'tip': '您已添加20条收货地址信息，请返回修改！',
+              'type': 'error'
+            });
           }
           return false;
         });

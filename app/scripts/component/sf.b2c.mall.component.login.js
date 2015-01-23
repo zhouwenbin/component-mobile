@@ -296,7 +296,7 @@ define(
         $('#code-error-tips').hide();
       },
 
-      sendRequest:function(){
+      sendRequest:function(){debugger;
         var that =this;
         // @todo 发起登录请求
 
@@ -308,9 +308,9 @@ define(
 
               // deparam过程 -- 从url中获取需要请求的sku参数
               var params = can.deparam(window.location.search.substr(1));
-              // setTimeout(function () {
-              //   window.location.href = params.from || 'index.html';
-              // }, 2000);
+              setTimeout(function () {
+                window.location.href = params.from;
+              }, 2000);
             }
           })
           .fail(function (error) {

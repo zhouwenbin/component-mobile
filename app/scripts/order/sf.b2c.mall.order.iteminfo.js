@@ -2,14 +2,17 @@
 
 define('sf.b2c.mall.order.iteminfo', [
   'can',
+  'zepto',
   'sf.b2c.mall.api.b2cmall.getProductHotData',
   'sf.b2c.mall.api.b2cmall.getItemSummary',
   'sf.b2c.mall.api.order.submitOrderForAllSys',
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.api.user.getIDCardUrlList',
+  'sf.b2c.mall.api.user.setDefaultAddr',
+  'sf.b2c.mall.api.user.setDefaultRecv',
   'sf.helpers'
 
-], function(can, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, helpers) {
+], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers) {
   return can.Control.extend({
 
     /**
@@ -64,7 +67,7 @@ define('sf.b2c.mall.order.iteminfo', [
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', itemObj);
           that.element.html(html);
 
-          $('.submitOrder').tap(function() {
+          $('#submitOrder').tap(function() {
             that.submitOrderClick($(this));
           })
 
@@ -111,7 +114,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
       //实例化接口
       var setDefaultRecv = new SFSetDefaultRecv({
-        "recId": selectPer.recId
+        "recId": selectAddr.recId
       });
 
       var setDefaultAddr = new SFSetDefaultAddr({
@@ -131,11 +134,11 @@ define('sf.b2c.mall.order.iteminfo', [
               "cityName": selectAddr.cityName,
               "regionName": selectAddr.regionName,
               "detail": selectAddr.detail,
-              "recName": selectPer.recName,
+              "recName": selectAddr.recName,
               "mobile": selectAddr.cellphone,
               "telephone": selectAddr.cellphone,
               "zipCode": selectAddr.zipCode,
-              "recId": selectPer.recId
+              "recId": selectAddr.recId
             }),
             "userMsg": "",
             "items": JSON.stringify([{
@@ -143,10 +146,8 @@ define('sf.b2c.mall.order.iteminfo', [
               "num": that.options.amount,
               "price": that.options.sellingPrice
             }]),
-            "sysType": null,
-            "sysInfo": null
+            "sysType": 'b2c'
           }
-
         })
         .fail(function(error) {
           element.removeClass("disable");
@@ -155,11 +156,11 @@ define('sf.b2c.mall.order.iteminfo', [
           var submitOrderForAllSys = new SFSubmitOrderForAllSys(params);
           return submitOrderForAllSys.sendRequest();
         })
-        .done(function(message) {
+        .done(function(message) {debugger;
           window.location.href = 'gotopay.html?' +
             $.param({
               "orderid": message.value,
-              "recid": selectPer.recId
+              "recid": selectAddr.recId
             });
         })
         .fail(function(error) {
