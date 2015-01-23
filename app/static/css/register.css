@@ -1,12 +1,12 @@
 ﻿/*注册*/
 .register{
-	width: 562px;
+	width: 100%;
 	background: #fff;
 	position: fixed;
-	left: 50%;
-	top: 50%;
-	margin-left: -256px;
-	margin-top: -265px;
+	left: 0;
+	top: 0;
+	margin-left: 10px;
+	margin-top: 10px;
 	border-radius: 3px;
 	z-index: 3;
 }
@@ -78,7 +78,7 @@
 	color: #fff;
 }
 .register-b{
-	padding:40px 130px 22px;
+	padding:40px 10px 22px;
 	margin: 0 16px;
 	border-bottom: 1px solid  #EEE;
 	display: none;
