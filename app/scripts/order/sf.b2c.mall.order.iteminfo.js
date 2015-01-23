@@ -145,7 +145,8 @@ define('sf.b2c.mall.order.iteminfo', [
               "itemId": that.options.itemid,
               "num": that.options.amount,
               "price": that.options.sellingPrice
-            }])
+            }]),
+            "sysType": 'b2c'
           }
         })
         .fail(function(error) {
@@ -155,7 +156,7 @@ define('sf.b2c.mall.order.iteminfo', [
           var submitOrderForAllSys = new SFSubmitOrderForAllSys(params);
           return submitOrderForAllSys.sendRequest();
         })
-        .done(function(message) {
+        .done(function(message) {debugger;
           window.location.href = 'gotopay.html?' +
             $.param({
               "orderid": message.value,

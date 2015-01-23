@@ -12,7 +12,7 @@ define(
   function(can, $, SFFrameworkComm, SFRequestPayV2, SFOrderFn) {
     SFFrameworkComm.register(1);
 
-    var order = can.Control.extend({
+    var gotopay = can.Control.extend({
 
       init: function(element, options) {
         var params = can.deparam(window.location.search.substr(1));
@@ -39,7 +39,7 @@ define(
         '3000007': '用户订单不正确'
       },
 
-      gotopayBtnClick: function() {debu
+      gotopayBtnClick: function() {debugger;
         var that = this;
         var callback = {
           error: function(errorText) {
@@ -61,5 +61,5 @@ define(
       }
     });
 
-    new order('#order');
+    new gotopay('.sf-b2c-mall-gotopay');
   });
