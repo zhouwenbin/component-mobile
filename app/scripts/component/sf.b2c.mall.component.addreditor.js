@@ -12,7 +12,6 @@ define('sf.b2c.mall.component.addreditor', [
   return can.Control.extend({
 
     init: function() {
-      debugger;
       this.adapter = {};
       this.request();
       this.onSuccess = this.options.onSuccess;
@@ -36,7 +35,6 @@ define('sf.b2c.mall.component.addreditor', [
      * @param  {Map} data 渲染页面的数据
      */
     render: function(data, tag, element) {
-      debugger;
       this.setup(element);
       var html = can.view('templates/component/sf.b2c.mall.component.addreditor.mustache', data);
       element.html(html);
@@ -54,7 +52,7 @@ define('sf.b2c.mall.component.addreditor', [
       }
 
       var that = this;
-      $('#addressSave').tap(function() {debugger;
+      $('#addressSave').tap(function() {
         that.addressSaveClick();
       })
     },
@@ -181,7 +179,7 @@ define('sf.b2c.mall.component.addreditor', [
       this.adapter.addr.input.attr('regionName', regions[0].id);
     },
 
-    '#s2 change': function(element, event) {debugger;
+    '#s2 change': function(element, event) {
       this.changeCity();
       this.changeRegion();
     },
@@ -191,7 +189,7 @@ define('sf.b2c.mall.component.addreditor', [
      * @param  {Dom}    element
      * @param  {Event}  event
      */
-    '#s3 change': function(element, event) {debugger;
+    '#s3 change': function(element, event) {
       this.changeRegion();
     },
 
@@ -205,7 +203,7 @@ define('sf.b2c.mall.component.addreditor', [
       this.element.empty();
     },
 
-    add: function(addr) {debugger;
+    add: function(addr) {
       var that = this;
       delete addr.recId;
 
@@ -274,7 +272,7 @@ define('sf.b2c.mall.component.addreditor', [
       event && event.preventDefault();
       $('#zipcodeerror').hide();
     },
-    addressSaveClick: function(element, event) {debugger;
+    addressSaveClick: function(element, event) {
       event && event.preventDefault();
 
       $('.tel-hide').hide();
@@ -397,7 +395,7 @@ define('sf.b2c.mall.component.addreditor', [
         var result = this.add(addr);
         if (result) {
 
-          debugger;
+
         }
       }
     }
