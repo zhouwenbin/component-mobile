@@ -59,17 +59,8 @@ img{
   position: absolute;
   width: 1px;
 }
-/*图片垂直居中*/
-.vertical-middle:after{
-  content: '';
-  display: inline-block;
-  width: 0;
-  height: 100%;
-  vertical-align: middle;
-}
-.vertical-middle img{
-  vertical-align: middle;
-}
+/*文字截断*/
+
 .ellipsis{
   white-space: nowrap;
   width: 100%;
@@ -94,6 +85,12 @@ img{
   left: 50%;
   top: 50%;
   -webkit-transform:translate(-50%,-50%);
+}
+/*垂直居中*/
+.center-vertical{
+  position: absolute;
+  top: 50%;
+  -webkit-transform:translate(0,-50%);
 }
 /*蒙版*/
 .mask{
@@ -152,6 +149,28 @@ img{
   width: 77px;
   height: 23px;
   background-position: 0 -219px;
+}
+.icon7{
+  width: 19px;
+  height: 19px;
+  background-position: -29px 0;
+}
+.icon8{
+  width: 27px;
+  height: 27px;
+  background-position: -73px 6px;
+  border-color: #dc3334;
+  background-color: #dc3334;
+}
+.icon9{
+  width: 9px;
+  height: 5px;
+  background-position: -102px 0;
+}
+.icon10{
+  width: 7px;
+  height: 13px;
+  background-position: -113px 0;
 }
 /*btn*/
 .btn{
@@ -230,7 +249,6 @@ img{
   height: 30px;
   line-height: 30px;
   padding-left: 10px;
-  width: 100%;
   font-size: 15px;
 }
 /*textarea*/
@@ -244,8 +262,50 @@ img{
 /*box*/
 .box{
   padding: 16px 14px;
-  border: 1px solid #EEEEEE;
+  border-top: 1px solid #EEEEEE;
+  border-bottom: 1px solid #EEEEEE;
   background: #fff;
+  position: relative;
+  margin-top: -1px;
+}
+.box .icon8{
+  display: none;
+}
+.box.active{
+  border: 2px solid #dc3334;
+}
+.box.active .icon8{
+  display: inline-block;
+  position: absolute;
+  right: -2px;
+  bottom:-2px;
+  margin-right: 0;
+}
+/*box-address*/
+.box-address{
+  font-size: 15px;
+  line-height: 1.5;
+}
+.box-address h3{
+  margin-bottom: 8px;
+}
+.box-address span{
+  margin-right: 10px;
+}
+.box-address-c1{
+  width: 46px;
+  height: 100%;
+  position: absolute;
+  border: 1px solid #ececec;
+  right: 0;
+  margin-top: -16px;
+}
+.box-address-c1:active{
+  background:#b1b1b1;
+}
+.box-address-c2{
+  overflow: hidden;
+  margin-right: 31px;
 }
 /*table*/
 .table{
@@ -469,13 +529,16 @@ img{
   padding-bottom: 15px;
 }
 .order h2{
-  padding: 25px 0 8px 15px;
+  padding: 25px 0 9px 15px;
   color: #7f7f7f;
   font-weight: normal;
 }
 
 .order-r1{
   font-size: 15px;
+}
+.order-r2 .icon{
+  right:14px;
 }
 .order-r3c1{
   font-size: 15px;
@@ -485,6 +548,13 @@ img{
   font-size: 16px;
   color: #dc3434;
   margin-left: 18px;
+}
+.order-r2 a{
+  color: #a3a3a3;
+  font-size: 15px;
+}
+.order-r2 .icon{
+  margin-left: 9px;
 }
 /*添加收货人*/
 .order-add{
@@ -503,6 +573,26 @@ img{
 }
 .order-add .btn{
   margin-top: 38px;
+}
+
+.order-manage{
+  font-size: 15px;
+  text-decoration: underline;
+  position: absolute;
+  right: 15px;
+  margin-top: -22px;
+}
+.order-back{
+  display: inline-block;
+  font-size: 15px;
+  text-decoration: underline;
+  margin-left: 15px;
+  margin-top: 24px;
+  margin-bottom: -10px;
+}
+.order-back .icon10{
+  margin-right: 8px;
+  vertical-align: -1px;
 }
 /*header*/
 .header{
@@ -525,7 +615,7 @@ img{
   border: 1px solid #ccc;
   margin-bottom: 7px;
 }
-.list li:nth-child(odd){
+.list li:nth-child(even){
   float: right;
 }
 .list h2{
