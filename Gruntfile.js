@@ -205,7 +205,9 @@ module.exports = function (grunt) {
       html: [
         '<%= config.app %>/index.html',
         '<%= config.app %>/detail.html',
-        '<%= config.app %>/order.html'
+        '<%= config.app %>/order.html',
+        '<%= config.app %>/login.html',
+        '<%= config.app %>/register.html'
       ]
     },
 
@@ -323,6 +325,8 @@ module.exports = function (grunt) {
             'index.html',
             'detail.html',
             'order.html',
+            'login.html',
+            'register.html',
 
             'json/*.json',
 
@@ -431,7 +435,34 @@ module.exports = function (grunt) {
           ],
           insertRequire: ['sf.b2c.mall.page.order']
         }
+      },
+      login: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.login.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          include: [
+            'sf.b2c.mall.component.login',
+            'sf.b2c.mall.page.login'
+          ],
+          insertRequire: ['sf.b2c.mall.page.login']
+        }
+      },
+      register: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.register.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          include: [
+            'sf.b2c.mall.component.register',
+            'sf.b2c.mall.page.register'
+          ],
+          insertRequire: ['sf.b2c.mall.page.register']
+        }
       }
+
     }
   });
 
@@ -513,6 +544,8 @@ module.exports = function (grunt) {
           'requirejs:main',
           'requirejs:detail',
           'requirejs:order',
+          'requirejs:login',
+          'requirejs:register',
 
           'usemin',
           // 'htmlmin',

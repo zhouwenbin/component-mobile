@@ -64,6 +64,10 @@ define('sf.b2c.mall.order.iteminfo', [
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', itemObj);
           that.element.html(html);
 
+          $('.submitOrder').tap(function() {
+            that.submitOrderClick($(this));
+          })
+
         })
         .fail(function(error) {
           console.error(error);
@@ -81,21 +85,7 @@ define('sf.b2c.mall.order.iteminfo', [
       "4000700": "订单商品金额改变"
     },
 
-    getSysType: function (saleid) {
-      var defaultKey = 'b2c';
-      var mapKey = {
-        'heike_online': 'HEIKE_ONLINE'
-      }
-      return mapKey[saleid] || defaultKey;
-    },
-
-    getSysInfo: function () {
-      var mapKey = {
-        'heike_online': this.options.vendorinfo.get
-      }
-    },
-
-    '#submitOrder click': function(element, event) {
+    submitOrderClick: function(element, event) {debugger;
       var that = this;
 
       //防止重复提交
@@ -105,21 +95,9 @@ define('sf.b2c.mall.order.iteminfo', [
 
       element.addClass("disable");
 
-      var selectPer = that.options.selectReceivePerson.getSelectedIDCard();
       var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
 
       //进行校验，不通过则把提交订单点亮
-      if (typeof selectPer == 'undefined' || selectPer === false) {
-
-        new SFMessage(null, {
-          'tip': '请选择收货人！',
-          'type': 'error'
-        });
-
-        element.removeClass("disable");
-        return false;
-      }
-
       if (typeof selectAddr == 'undefined' || selectAddr == false) {
 
         new SFMessage(null, {
@@ -165,8 +143,8 @@ define('sf.b2c.mall.order.iteminfo', [
               "num": that.options.amount,
               "price": that.options.sellingPrice
             }]),
-            "sysType": that.getSysType(that.options.saleid),
-            "sysInfo": that.options.vendorinfo.getVendorInfo(that.options.saleid)
+            "sysType": null,
+            "sysInfo": null
           }
 
         })
