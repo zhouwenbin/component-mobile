@@ -124,6 +124,9 @@ requirejs.config({
 
         // 注册
         'sf.b2c.mall.page.register': 'scripts/page/sf.b2c.mall.page.register',
-        'sf.b2c.mall.component.register': 'scripts/component/sf.b2c.mall.component.register'
+        'sf.b2c.mall.component.register': 'scripts/component/sf.b2c.mall.component.register',
+
+        // 去支付
+        'sf.b2c.mall.page.gotopay': 'scripts/page/sf.b2c.mall.page.gotopay'
     }
 });

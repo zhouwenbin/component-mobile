@@ -40,44 +40,57 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
       var getRecAddressList = new SFGetRecAddressList();
       var getIDCardUrlList = new SFGetIDCardUrlList();
 
-      var user4Login = {
-        accountId: 'jiyanliang@sf-express.com',
-        type: 'MAIL',
-        password: md5('123456' + 'www.sfht.com')
-      };
+      can.when(getRecAddressList.sendRequest(), getIDCardUrlList.sendRequest())
+        .done(function(recAddrs, recPersons) {
 
-      var webLogin = new SFUserWebLogin(user4Login);
-      webLogin
-        .sendRequest()
-        .done(function() {
+          var result = [];
 
-          can.when(getRecAddressList.sendRequest(), getIDCardUrlList.sendRequest())
-            .done(function(reAddrs, recPersons) {
-              debugger;
-              //获得地址列表
-              that.adapter4List.addrs = new AddressAdapter({
-                addressList: reAddrs.items || [],
-                personList: recPersons.items || [],
-              });
-
-              //进行渲染
-              that.render(that.adapter4List.addrs);
-
-              //初始化进行回调绑定
-              that.component.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-addAdrArea', {
-                onSuccess: _.bind(that.paint, that)
-              });
-
-              //绑定事件
-              $('.addrecaddr').tap(function() {
-                that.addRecaddrClick($(this));
-              })
-
+          //取得默认的收货人和收货地址
+          _.each(recAddrs.items, function(recAddrItem) {
+            _.each(recPersons.items, function(presonItem) {
+              if (recAddrItem.isDefault != 0 && presonItem.isDefault != 0) {
+                recAddrItem.recName = presonItem.recName;
+                recAddrItem.credtNum = presonItem.credtNum;
+                result.push(recAddrItem);
+              }
             })
-            .fail(function(error) {
-              console.error(error);
-            })
+          })
 
+          //取得关联的收货人和收货地址（为啥要遍历两次：因为要确保默认收货人和收货地址放在第一条）
+          _.each(recAddrs.items, function(recAddrItem) {
+            _.each(recPersons.items, function(presonItem) {
+              if (recAddrItem.recId == presonItem.recId && recAddrItem.isDefault == 0 && presonItem.isDefault == 0) {
+                recAddrItem.recName = presonItem.recName;
+                recAddrItem.credtNum = presonItem.credtNum;
+                result.push(recAddrItem);
+              }
+            })
+          })
+
+          debugger;
+          //获得地址列表
+          that.adapter4List.addrs = new AddressAdapter({
+            addressList: result || []
+          });
+
+          that.adapter4List.addrs.showMore = (result.length > 3);
+
+          //进行渲染
+          that.render(that.adapter4List.addrs);
+
+          //初始化进行回调绑定
+          that.component.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-addAdrArea', {
+            onSuccess: _.bind(that.paint, that)
+          });
+
+          //绑定事件
+          $('.sf-b2c-mall-order-addAdrArea').tap(function() {
+            that.addRecaddrClick($(this));
+          })
+
+        })
+        .fail(function(error) {
+          console.error(error);
         })
     },
 
@@ -85,7 +98,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
      * [getSelectedAddr 获得选中的收货地址]
      * @return {[type]} [description]
      */
-    getSelectedAddr: function() {
+    getSelectedAddr: function() {debugger;
       var index = $("#addrList").find("li.active").eq(0).attr('data-index');
       if (typeof index == 'undefined') {
         return false;
