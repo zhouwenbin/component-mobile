@@ -103,6 +103,7 @@ requirejs.config({
 
         // 首页
         'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
+        'sf.b2c.mall.component.price':'scripts/component/sf.b2c.mall.component.price',
 
         // 商品详情
         'sf.b2c.mall.page.detail': 'scripts/page/sf.b2c.mall.page.detail',

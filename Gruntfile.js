@@ -390,6 +390,7 @@ module.exports = function (grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.main.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
+            'sf.b2c.mall.component.price',
             'sf.b2c.mall.page.main'
           ],
           insertRequire: ['sf.b2c.mall.page.main']
