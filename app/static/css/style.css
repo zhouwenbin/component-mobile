@@ -729,7 +729,7 @@ img{
 .loading i{
   width: 24px;
   height: 24px;
-  background: #00aacf;
+  background: #dd3e3f;
   position: absolute;
 }
 .loading i:nth-child(1){
