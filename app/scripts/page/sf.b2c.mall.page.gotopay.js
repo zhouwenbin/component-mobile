@@ -11,7 +11,7 @@ define(
   ],
 
   function(can, $, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn) {
-    SFFrameworkComm.register(1);
+    SFFrameworkComm.register(3);
 
     var gotopay = can.Control.extend({
 
