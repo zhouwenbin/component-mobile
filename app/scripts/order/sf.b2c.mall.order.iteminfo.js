@@ -71,12 +71,13 @@ define('sf.b2c.mall.order.iteminfo', [
             that.submitOrderClick($(this));
           })
 
+          $('.loadingDIV').hide();
+
         })
         .fail(function(error) {
           console.error(error);
+          $('.loadingDIV').hide();
         })
-
-
     },
 
     errorMap: {
@@ -88,7 +89,9 @@ define('sf.b2c.mall.order.iteminfo', [
       "4000700": "订单商品金额改变"
     },
 
-    submitOrderClick: function(element, event) {debugger;
+    submitOrderClick: function(element, event) {
+      // $('.loadingDIV').show();
+
       var that = this;
 
       //防止重复提交
@@ -150,13 +153,14 @@ define('sf.b2c.mall.order.iteminfo', [
           }
         })
         .fail(function(error) {
+          // $('.loadingDIV').hide();
           element.removeClass("disable");
         })
         .then(function() {
           var submitOrderForAllSys = new SFSubmitOrderForAllSys(params);
           return submitOrderForAllSys.sendRequest();
         })
-        .done(function(message) {debugger;
+        .done(function(message) {
           window.location.href = 'gotopay.html?' +
             $.param({
               "orderid": message.value,
@@ -164,6 +168,7 @@ define('sf.b2c.mall.order.iteminfo', [
             });
         })
         .fail(function(error) {
+          // $('.loadingDIV').hide();
           element.removeClass("disable");
           new SFMessage(null, {
             'tip': that.errorMap[error] || '下单失败',

@@ -1,6 +1,6 @@
 <div class="register {{^ismobile platform}}register-top{{/ismobile}}">
   <div class="register-b register-b3 register-main active">
-    <form action="">
+
      <ol>
         <li>
           <input id="user-name" type="text" class="input-username" placeholder="手机号／邮箱" can-value="username" />
@@ -21,7 +21,7 @@
         {{/isNeedVerifiedCode}}
      </ol>
      <div class="register-br1">
-       <button type="submit" class="btn btn-register btn-send">登录</button>
+       <button class="btn btn-register btn-send">登录</button>
      </div>
      <div class="register-br2 clearfix">
       <!--<div class="register-br2c1 fl">-->
@@ -29,10 +29,9 @@
       <!--</div>-->
       <div class="register-br2c2 fr"><a target="_blank" href="retrieve.html">忘记密码</a></div>
      </div>
-     </form>
   </div>
   <!--登录顺丰海淘-->
   <div class="register-f">
-    <div class="register-fr2">不是会员？<a target="_self" class="btn btn-send" href="register.html">注册</a></div>
+    <div class="register-fr2">不是会员？<a target="_self" class="btn btn-send" id="toRegist" href="javascript:void(0)">注册</a></div>
   </div>
 </div>
