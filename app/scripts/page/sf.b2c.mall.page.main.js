@@ -5,29 +5,25 @@ define(
     'can',
     'zepto',
     'underscore',
-    'sf.b2c.mall.framework.comm'
+    'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.component.price'
   ],
 
-  function(can, $, _, SFFrameworkComm) {
-
+  function(can, $, _, SFFrameworkComm, ItemPrice) {
+    SFFrameworkComm.register(3);
     var home = can.Control.extend({
 
       init: function(element, options) {
+        this.render();
+      },
 
-        var html = can.view('templates/sf.b2c.mall.test.mustache', {});
-        this.element.html(html);
-
-        $('#items li').swipe(function() {
-          $('.delete').hide()
-          $('.delete', this).show()
-        })
-
-        $('.delete').tap(function() {
-          $(this).parent('li').remove()
-        })
-
-      }
+      render: function() {
+        new ItemPrice('.sf-b2c-mall-itemList');
+        // new Header('.sf-b2c-mall-header', {
+        //   onLogin: _.bind(this.onLogin, this)
+        // });
+        // new Footer('.sf-b2c-mall-footer');
+        }
     });
-
-    new home('.sf-b2c-mall-test');
+    new home();
   });

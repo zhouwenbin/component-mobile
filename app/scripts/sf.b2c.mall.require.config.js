@@ -99,10 +99,12 @@ requirejs.config({
         'swipe': 'scripts/vendor/swipe',
         'sf.helpers': 'scripts/util/sf.helpers',
         'sf.util':'scripts/util/sf.util.fn',
-        'sf.b2c.mall.widget.loading':'scripts/widget/sf.b2c.mall.widget.loading',
+        'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
+        'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
 
         // 首页
         'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
+        'sf.b2c.mall.component.price':'scripts/component/sf.b2c.mall.component.price',
 
         // 商品详情
         'sf.b2c.mall.page.detail': 'scripts/page/sf.b2c.mall.page.detail',

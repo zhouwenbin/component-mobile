@@ -7,10 +7,11 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.order.fn'
+    'sf.b2c.mall.order.fn',
+    'sf.b2c.mall.widget.message'
   ],
 
-  function(can, $, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn) {
+  function(can, $, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage) {
     SFFrameworkComm.register(3);
 
     var gotopay = can.Control.extend({
@@ -58,8 +59,8 @@ define(
               'type': 'error'
             });
 
-            var template = can.view.mustache(that.payerrorTemplate());
-            $('#gotopayDIV').html(template());
+            // var template = can.view.mustache(that.payerrorTemplate());
+            // $('#gotopayDIV').html(template());
           }
         }
 
