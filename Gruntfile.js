@@ -545,14 +545,14 @@ module.exports = function (grunt) {
     grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
       var arr = filename.split('.')
       if (arr[2] == 'com') {
-        config.com = 'scripts/base/'+filename
+        config.com = '/scripts/base/'+filename
       }
 
       if (filename.indexOf(target) > -1 && arr[2] == target) {
         config.target = target;
         config.base = {
-          dest: 'scripts/base/'+filename,
-          src: 'scripts/base/'+filename
+          dest: '/scripts/base/'+filename,
+          src: '/scripts/base/'+filename
         }
 
         grunt.task.run([
