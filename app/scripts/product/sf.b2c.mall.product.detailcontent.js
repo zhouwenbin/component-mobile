@@ -142,13 +142,14 @@ define('sf.b2c.mall.product.detailcontent', [
       fixedTab: function() {
         var top = $('#tabHeader').offset().top;
         $(window).on('touchmove scroll', function() {
+          //$('#detailTab')[0].innerHTML = ($(window).scrollTop() + ":" + top);
           if ($(window).scrollTop() > top) {
-            //$('#tabHeader').addClass('fixed');
-            $('#tabHeader').css('position', 'fixed').css('top', 0).css('width', '100%');
+            $('#tabHeader').addClass('fixed');
+            //$('#tabHeader').css('position', 'fixed').css('top', 0).css('width', '100%');
           }
           if ($(window).scrollTop() < top) {
-            $("#tabHeader").removeAttr("style");
-            //$("#tabHeader").removeClass('fixed');
+            //$("#tabHeader").removeAttr("style");
+            $("#tabHeader").removeClass('fixed');
           }
         })
       },

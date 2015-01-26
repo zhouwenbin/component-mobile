@@ -8295,8 +8295,8 @@
       },
       r = window.location.hostname,
       i = {
-        url: "http://www.sfht.com/m.api",
-        fileurl: "http://www.sfht.com/file.api",
+        url: "http://m.sfht.com/m.api",
+        fileurl: "http://m.sfht.com/file.api",
         detailurl: "http://item.sfht.com",
         topicurl: "http://topic.sfht.com",
         mainurl: "http://www.sfht.com"
