@@ -37,10 +37,10 @@ define('sf.b2c.mall.component.price', [
                                 var sellingPrice = value.originPrice / 100;
                                 var originPrice = value.sellingPrice / 100;
                                 var discount = (value.sellingPrice * 10 / value.originPrice).toFixed(1);
-                                $el.find('.product-origin-price').text(CONST_CN_CURRENCY_CHAR + sellingPrice);
+                                $el.find('.product-selling-price').text(CONST_CN_CURRENCY_CHAR + sellingPrice);
                                 if (originPrice != 0 && sellingPrice < originPrice) {
-                                    $el.find('.product-selling-price').text(CONST_CN_CURRENCY_CHAR + originPrice);
-                                    $el.find('.product-discount').text(discount + '折');
+                                    $el.find('.product-origin-price').text(CONST_CN_CURRENCY_CHAR + originPrice);
+                                    $el.find('.product-discount').text('<span class="label-danger">' + discount + '折</span>');
                                 }
                                 if (value.status == 3) {//在售状态商品
                                     if (value.soldOut) {

@@ -10,7 +10,7 @@ define(
   ],
 
   function(can, $, _, SFFrameworkComm, ItemPrice) {
-
+    SFFrameworkComm.register(3);
     var home = can.Control.extend({
 
       init: function(element, options) {
@@ -25,4 +25,5 @@ define(
         // new Footer('.sf-b2c-mall-footer');
         }
     });
+    new home();
   });
