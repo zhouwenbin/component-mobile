@@ -552,8 +552,8 @@ module.exports = function (grunt) {
       if (filename.indexOf(target) > -1 && arr[2] == target) {
         config.target = target;
         config.base = {
-          dest: '/scripts/base/'+filename,
-          src: '/scripts/base/'+filename
+          dest: 'scripts/base/'+filename,
+          src: 'scripts/base/'+filename
         }
 
         grunt.task.run([
