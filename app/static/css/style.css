@@ -79,6 +79,17 @@ img{
 .ellipsis3{
   -webkit-line-clamp: 3;
 }
+/*图片垂直居中*/
+.vertical-middle:after{
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.vertical-middle img{
+  vertical-align: middle;
+}
 /*水平垂直居中*/
 .center{
   position: absolute;
@@ -503,11 +514,12 @@ img{
 .standard-r2{
   margin-bottom: 36px;
 }
-
+/*滑动*/
 .swipe {
   overflow: hidden;
   visibility: hidden;
   position: relative;
+  height: 320px;
 }
 .swipe-wrap {
   overflow: hidden;
@@ -534,6 +546,10 @@ img{
 }
 .swipe-dot span.active{
   background: #dc3334;
+}
+.swipe img{
+  max-width: 320px;
+  max-height: 320px;
 }
 
 /*订单*/
