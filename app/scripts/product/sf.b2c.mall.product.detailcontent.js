@@ -121,11 +121,32 @@ define('sf.b2c.mall.product.detailcontent', [
             })
 
             $('.loadingDIV').hide();
+
+            $(document).ready(function() {
+              that.fixedTab();
+            });
+
           })
           .fail(function(error) {
             console.error(error);
             $('.loadingDIV').hide();
           })
+      },
+
+      /**
+       * [fixedTab 粘性布局]
+       * @return {[type]} [description]
+       */
+      fixedTab: function() {
+        var top = $('#tabHeader').offset().top;
+        $(window).on('touchmove scroll', function() {
+          if ($(window).scrollTop() > top) {
+            $('#tabHeader').css('position', 'fixed').css('top', 0).css('width', '100%');
+          }
+          if ($(window).scrollTop() < top) {
+            $("#tabHeader").removeAttr("style")
+          }
+        })
       },
 
       /**
