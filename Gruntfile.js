@@ -409,6 +409,7 @@ module.exports = function (grunt) {
             'sf.b2c.mall.product.detailcontent',
             'sf.b2c.mall.adapter.detailcontent',
             'sf.helpers',
+            'sf.b2c.mall.widget.loading',
             'sf.b2c.mall.page.detail'
           ],
           insertRequire: ['sf.b2c.mall.page.detail']
@@ -433,6 +434,7 @@ module.exports = function (grunt) {
             'sf.b2c.mall.adapter.order',
             'sf.b2c.mall.adapter.regions',
             'sf.b2c.mall.order.fn',
+            'sf.b2c.mall.widget.loading',
             'sf.b2c.mall.page.order'
           ],
           insertRequire: ['sf.b2c.mall.page.order']
@@ -477,6 +479,7 @@ module.exports = function (grunt) {
             'sf.helpers',
             'moment',
             'sf.b2c.mall.order.fn',
+            'sf.b2c.mall.widget.loading',
             'sf.b2c.mall.page.gotopay'
           ],
           insertRequire: ['sf.b2c.mall.page.gotopay']

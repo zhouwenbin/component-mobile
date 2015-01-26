@@ -43,37 +43,20 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
       can.when(getRecAddressList.sendRequest(), getIDCardUrlList.sendRequest())
         .done(function(recAddrs, recPersons) {
 
-          var result = [];
+          that.result = that.queryAddress(recAddrs, recPersons);
 
-          //取得默认的收货人和收货地址
-          _.each(recAddrs.items, function(recAddrItem) {
-            _.each(recPersons.items, function(presonItem) {
-              if (recAddrItem.isDefault != 0 && presonItem.isDefault != 0) {
-                recAddrItem.recName = presonItem.recName;
-                recAddrItem.credtNum = presonItem.credtNum;
-                result.push(recAddrItem);
-              }
-            })
-          })
+          //第一个默认为选中
+          if (that.result.length > 0) {
+            that.result[0].active = "active";
+          }
 
-          //取得关联的收货人和收货地址（为啥要遍历两次：因为要确保默认收货人和收货地址放在第一条）
-          _.each(recAddrs.items, function(recAddrItem) {
-            _.each(recPersons.items, function(presonItem) {
-              if (recAddrItem.recId == presonItem.recId && recAddrItem.isDefault == 0 && presonItem.isDefault == 0) {
-                recAddrItem.recName = presonItem.recName;
-                recAddrItem.credtNum = presonItem.credtNum;
-                result.push(recAddrItem);
-              }
-            })
-          })
-
-          debugger;
           //获得地址列表
           that.adapter4List.addrs = new AddressAdapter({
-            addressList: result || []
+            addressList: that.result.slice(0, 1) || []
           });
 
-          that.adapter4List.addrs.showMore = (result.length > 3);
+          //超过一条记录显示更多
+          that.adapter4List.addrs.attr("showMore", that.result.length > 1);
 
           //进行渲染
           that.render(that.adapter4List.addrs);
@@ -84,8 +67,22 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           });
 
           //绑定事件
-          $('.sf-b2c-mall-order-addAdrArea').tap(function() {
+          $('.addrecaddr').tap(function() {
             that.addRecaddrClick($(this));
+          })
+
+          $('li.box-address').tap(function() {
+            that.selectaddr($(this));
+          })
+
+          //点击查看更多
+          $('#viewmore').tap(function() {
+            that.adapter4List.addrs.attr("addressList", that.result || []);
+            that.adapter4List.addrs.attr("showMore", false);
+
+            $('li.box-address').tap(function() {
+              that.selectaddr($(this));
+            })
           })
 
         })
@@ -94,11 +91,45 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
         })
     },
 
+    /** 获得收获人和收获地址 */
+    queryAddress: function(recAddrs, recPersons) {
+      var result = new Array();
+
+      //取得默认的收货人和收货地址
+      _.each(recAddrs.items, function(recAddrItem) {
+        _.each(recPersons.items, function(presonItem) {
+          if (recAddrItem.isDefault != 0 && presonItem.isDefault != 0) {
+            recAddrItem.recName = presonItem.recName;
+            recAddrItem.credtNum = presonItem.credtNum;
+            result.push(recAddrItem);
+          }
+        })
+      })
+
+      //取得关联的收货人和收货地址（为啥要遍历两次：因为要确保默认收货人和收货地址放在第一条）
+      _.each(recAddrs.items, function(recAddrItem) {
+        _.each(recPersons.items, function(presonItem) {
+          if (recAddrItem.recId == presonItem.recId && recAddrItem.isDefault == 0 && presonItem.isDefault == 0) {
+            recAddrItem.recName = presonItem.recName;
+            recAddrItem.credtNum = presonItem.credtNum;
+            result.push(recAddrItem);
+          }
+        })
+      })
+
+      return result;
+    },
+
+    selectaddr: function(element) {
+      $('li.box-address').removeClass("active");
+      element.addClass("active");
+    },
+
     /**
      * [getSelectedAddr 获得选中的收货地址]
      * @return {[type]} [description]
      */
-    getSelectedAddr: function() {debugger;
+    getSelectedAddr: function() {
       var index = $("#addrList").find("li.active").eq(0).attr('data-index');
       if (typeof index == 'undefined') {
         return false;

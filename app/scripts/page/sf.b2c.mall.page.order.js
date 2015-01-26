@@ -15,6 +15,12 @@ define(
     var order = can.Control.extend({
 
       init: function(element, options) {
+
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = 'http://m.sfht.com/login.html';
+          return false;
+        }
+
         this.component = {};
         this.render();
       },

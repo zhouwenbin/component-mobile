@@ -56,6 +56,12 @@ define('sf.b2c.mall.component.addreditor', [
       $('#addressSave').tap(function() {
         that.addressSaveClick();
       })
+
+      $('#backToOrder').tap(function() {
+        $(".sf-b2c-mall-order-selectReceiveAddress").show();
+        $(".sf-b2c-mall-order-itemInfo").show();
+        $(".sf-b2c-mall-order-addAdrArea").hide();
+      })
     },
 
     show: function(tag, data, element) {

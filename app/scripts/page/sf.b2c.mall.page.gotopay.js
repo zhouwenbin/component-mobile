@@ -6,15 +6,22 @@ define(
     'zepto',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.order.requestPayV2',
+    'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.order.fn'
   ],
 
-  function(can, $, SFFrameworkComm, SFRequestPayV2, SFOrderFn) {
+  function(can, $, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn) {
     SFFrameworkComm.register(1);
 
     var gotopay = can.Control.extend({
 
       init: function(element, options) {
+
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = 'http://m.sfht.com/login.html';
+          return false;
+        }
+
         var params = can.deparam(window.location.search.substr(1));
 
         this.options.orderid = params.orderid;
@@ -26,6 +33,8 @@ define(
         $('#gotopayBtn').tap(function() {
           that.gotopayBtnClick($(this));
         })
+
+        $('.loadingDIV').hide();
       },
 
       render: function() {
@@ -39,7 +48,7 @@ define(
         '3000007': '用户订单不正确'
       },
 
-      gotopayBtnClick: function() {debugger;
+      gotopayBtnClick: function() {
         var that = this;
         var callback = {
           error: function(errorText) {
