@@ -95,7 +95,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
             //滚动效果
             new Swipe($('#slider')[0], {
-              startSlide: 1,
+              startSlide: 0,
               speed: 400,
               auto: 0,
               continuous: true,
@@ -106,6 +106,8 @@ define('sf.b2c.mall.product.detailcontent', [
               },
               transitionEnd: function(index, elem) {}
             });
+            //第一个选中
+            $('.swipe-dot span').eq(0).addClass('active');
 
             $('#gotobuy').tap(function() {
               that.gotobuyClick($(this));
@@ -141,10 +143,12 @@ define('sf.b2c.mall.product.detailcontent', [
         var top = $('#tabHeader').offset().top;
         $(window).on('touchmove scroll', function() {
           if ($(window).scrollTop() > top) {
+            //$('#tabHeader').addClass('fixed');
             $('#tabHeader').css('position', 'fixed').css('top', 0).css('width', '100%');
           }
           if ($(window).scrollTop() < top) {
-            $("#tabHeader").removeAttr("style")
+            $("#tabHeader").removeAttr("style");
+            //$("#tabHeader").removeClass('fixed');
           }
         })
       },
