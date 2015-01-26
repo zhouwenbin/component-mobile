@@ -4,7 +4,7 @@ define(
   'sf.b2c.mall.widget.message',
 
   [
-    'jquery',
+    'zepto',
     'can'
   ],
 
