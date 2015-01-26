@@ -10,7 +10,7 @@ define(
   ],
 
   function(can, $, SFFrameworkComm, SelectReceiveAddr, ItemInfo) {
-    SFFrameworkComm.register(1);
+    SFFrameworkComm.register(3);
 
     var order = can.Control.extend({
 

@@ -11,7 +11,7 @@ define(
   ],
 
   function ($, can, SFFrameworkComm, SFLogin) {
-    SFFrameworkComm.register(1)
+    SFFrameworkComm.register(3)
 
     var login = can.Control.extend({
 

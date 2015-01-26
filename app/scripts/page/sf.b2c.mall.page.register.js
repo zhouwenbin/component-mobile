@@ -9,7 +9,7 @@ define(
     'sf.b2c.mall.framework.comm'
   ],
   function ($, can, SFRegister, SFFrameworkComm) {
-    SFFrameworkComm.register(1);
+    SFFrameworkComm.register(3);
 
     var login = new SFRegister('body');
   });
