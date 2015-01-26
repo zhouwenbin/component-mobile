@@ -520,6 +520,7 @@ img{
   visibility: hidden;
   position: relative;
   height: 320px;
+  text-align: center;
 }
 .swipe-wrap {
   overflow: hidden;
