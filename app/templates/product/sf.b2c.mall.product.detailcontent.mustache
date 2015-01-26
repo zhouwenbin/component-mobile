@@ -2,7 +2,18 @@
   <!--商品-->
   <section class="goods">
     <div class="goods-r1">
-      <img src="{{sf.img itemInfo.currentImage}}" alt="">
+      <div id='slider' class='swipe'>
+        <div class='swipe-wrap'>
+          {{#each itemInfo.basicInfo.images}}
+            <div><img src="{{sf.img bigImgUrl}}" alt=""></div>
+          {{/each}}
+        </div>
+        <div class="swipe-dot">
+          {{#each itemInfo.basicInfo.images}}
+            <span></span>
+          {{/each}}
+        </div>
+      </div>
     </div>
     <div class="goods-b">
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
@@ -21,13 +32,13 @@
 
   <!--商品详情-->
   <section class="detail">
-    <div class="detail-h">
-      <ul class="clearfix">
-        <li class="active">商品详情</li>
-        <li>图文详情</li>
+    <div class="detail-h" >
+      <ul class="clearfix" id="tabHeader">
+        <li class="active" id="itemInfoTab">商品详情</li>
+        <li id="detailTab">图文详情</li>
       </ul>
     </div>
-    <div class="detail-b">
+    <div class="detail-b" id="specAndBrandInfo">
       <ul>
         {{#each itemInfo.saleInfo.specGroups}}
         <li>{{specName}}： {{#each specs}} {{specValue}} {{/each}}</li>
@@ -43,16 +54,19 @@
         {{/each}}
       </ul>
     </div>
+    <div class="detail-b" id="detail">
+
+    </div>
   </section>
   <!--商品详情-->
   <!--推荐商品-->
-  <section class="recommend">
+  <section class="recommend" id="recommendProducts">
     <h2>推荐商品</h2>
     <ul>
 
       {{#each recommendProducts}}
       <li class="clearfix">
-        <a href="">
+        <a href="{{linkUrl}}">
         <div class="recommend-c1 fl vertical-middle">
           <img src="{{sf.img imageName}}" alt="">
         </div>
@@ -84,7 +98,7 @@
   <section class="recommend">
     <ul>
       <li class="clearfix">
-        <a href="">
+        <a href="{{itemInfo.linkUrl}}">
         <div class="recommend-c1 fl vertical-middle">
           <img src="{{sf.img itemInfo.step2Image}}" alt="">
         </div>
@@ -107,7 +121,7 @@
         <div class="standard-c1 fl">{{specName}}：</div>
         <div class="standard-c2" data-specidorder="{{specIdOrder}}">
           {{#each specs}}
-          <button data-specid="{{specId}}" id="1" data-specIndex="{{specIndex}}" data-compose="{{compose}}" class="btn specbuttons {{selected}} {{canShowDottedLine}} {{disabled}}">{{specValue}}</button>
+          <button data-specid="{{specId}}" id="1" data-specIndex="{{specIndex}}" data-compose="{{compose}}" class="btn specbuttons normal {{selected}} {{canShowDottedLine}} {{disabled}}">{{specValue}}</button>
           {{/each}}
         </div>
       </li>
@@ -120,12 +134,19 @@
           <button class="btn" id="reduceNum">-</button>
           <input type="text" value="{{input.buyNum}}" id="inputNum">
           <button class="btn" id="addNum">+</button>
-          {{#sf-showCurrentStock priceInfo.currentStock}}<span class="icon26" style="visibility:visible">商品库存{{priceInfo.currentStock}}件</span>{{/sf-showCurrentStock}}
-          {{#if input.showRestrictionTips}}<span class="icon icon26" style="visibility:visible" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>{{/if}}
+
+          {{#if input.showRestrictionTips}}
+            <span class="alert-error">商品限购{{priceInfo.limitBuy}}件</span>
+          {{/if}}
+
         </div>
 
       </div>
     </div>
+    <div class="alert-error">{{input.error}}</div>
+    {{#sf-showCurrentStock priceInfo.currentStock}}
+      <div class="alert-error">商品剩余{{priceInfo.currentStock}}件，请修改购买数量</div>
+    {{/sf-showCurrentStock}}
   </section>
   <!--规格-->
   <!--立即购买-->

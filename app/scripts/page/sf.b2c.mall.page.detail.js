@@ -9,7 +9,7 @@ define(
   ],
 
   function(can, $, SFFrameworkComm, DetailContent) {
-    SFFrameworkComm.register(1);
+    SFFrameworkComm.register(3);
 
     var content = can.Control.extend({
 

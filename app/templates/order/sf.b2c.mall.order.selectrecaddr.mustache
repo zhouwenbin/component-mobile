@@ -1,0 +1,19 @@
+<h2>收货地址</h2>
+<a class="order-manage" href="order-manage.html">清理</a>
+<ul id="addrList">
+{{#each addressList}}
+
+<li class="box {{active}} box-address" name="addrEach" data-addressid="{{addrId}}" data-index="{{@index}}">
+  <h3><span>{{recName}}</span><span>{{credtNum}}</span><span>{{cellphone}}</span></h3>
+  <p><span>{{nationName}}</span><span>{{provinceName}}</span><span>{{cityName}}</span><span>{{regionName}}</span><span>{{detail}}</span><span>{{zipCode}}</span></p>
+  <span class="icon icon8"></span>
+</li>
+
+{{/each}}
+</ul>
+
+{{#if showMore}}
+<div class="order-r2 box"><a href="javascript:void(0)" id="viewmore">展开更多收获信息<span class="icon icon9"></span></a></div>
+{{/if}}
+
+<div class="order-r1 box"><a href="javascript:void(0)" class="addrecaddr">+添加收货信息</a></div>

@@ -1,0 +1,46 @@
+<div class="register register-top" style="display:none;">
+  <div class="register-h">
+    <ul>
+      <li data-tag="mobile" class="{{#mobile}}active{{/mobile}}">
+        <a href="#">手机注册</a>
+        <span class="icon icon16-2"></span>
+        <a target="_self" class="btn btn-send" href="login.html">登录</a>
+      </li>
+    </ul>
+  </div>
+
+  <!--手机注册-->
+  <div class="register-b register-b-main {{#mobile}}active{{/mobile}}">
+     <ol>
+      <li>
+         <input type="text" placeholder="仅限中国大陆手机号" id="input-mobile" />
+         <span class="icon icon26" id="input-mobile-error">手机号输入错误</span>
+       </li>
+       <li>
+          <div class="clearfix">
+            <div class="fl">
+              <input type="text" class="input1" placeholder="点击按钮获取验证码" id="input-mobile-code" />
+            </div>
+
+            <a href="#" class="btn btn-send fr" id="mobile-code-btn">发送短信验证码</a>
+          </div>
+         <span class="icon icon26" id="mobile-code-error">手机验证码错误</span>
+
+       </li>
+
+       <li>
+         <label for="input-password" id="pwd-default-text">设置6-18位字母、数字或标点符号的密码</label>
+         <input type="password" class="password" id="input-password" />
+         <span class="icon icon26" id="password-error">密码设置错误</span>
+       </li>
+     </ol>
+     <div class="register-br1">
+       <button class="btn btn-send btn-register" id="mobile-register-btn">同意协议并注册</button>
+       <span class="icon icon26" id="mobile-register-error">注册失败</span>
+     </div>
+     <div class="register-br2">
+       <a href="agreement.html" target="_blank">《顺丰海淘服务协议》</a>
+     </div>
+  </div>
+  <!--手机注册-->
+</div>
