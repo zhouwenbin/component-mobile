@@ -816,3 +816,10 @@ img{
 .attention .icon{
   top: -9px;
 }
+
+/*fixed*/
+.fixed{
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
