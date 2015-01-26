@@ -11,9 +11,10 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.api.product.findRecommendProducts',
     'sf.helpers',
     'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config'
   ],
-  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, helpers, SFComm, SFConfig, SFMessage) {
+  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, helpers, SFComm, SFLoading, SFConfig) {
     return can.Control.extend({
 
       helpers: {
@@ -32,6 +33,9 @@ define('sf.b2c.mall.product.detailcontent', [
        * @param  {Object} options 传递的参数
        */
       init: function(element, options) {
+
+        // this.loading = new SFLoading();
+        // this.loading.show();
 
         //解析路由，取出itemid
         //example: /detail/1.html
@@ -109,16 +113,18 @@ define('sf.b2c.mall.product.detailcontent', [
             })
 
             $('#detailTab').tap(function() {
-              that.switchTab('detailTab');
+              that.switchTab($(this), 'detailTab');
             })
 
             $('#itemInfoTab').tap(function() {
-              that.switchTab('itemInfoTab');
+              that.switchTab($(this), 'itemInfoTab');
             })
 
+            $('.loadingDIV').hide();
           })
           .fail(function(error) {
             console.error(error);
+            $('.loadingDIV').hide();
           })
       },
 
@@ -127,7 +133,10 @@ define('sf.b2c.mall.product.detailcontent', [
        * @param  {[type]} tab [description]
        * @return {[type]}     [description]
        */
-      switchTab: function(tab) {
+      switchTab: function(element, tab) {
+        if (element.hasClass('active')) {
+          return false;
+        }
         //tab
         $("#detailTab").toggleClass("active");
         $('#itemInfoTab').toggleClass("active");
@@ -238,14 +247,14 @@ define('sf.b2c.mall.product.detailcontent', [
         }
 
         var gotoUrl = 'http://m.sfht.com/order.html' + '?' + $.param({
-          "itemid": $('.sf-b2c-mall-detail-content').eq(0).attr('data-itemid'),
+          "itemid": this.itemid,
           "amount": this.options.detailContentInfo.input.buyNum
         });
 
-        // if (!SFComm.prototype.checkUserLogin.call(this)) {
-        //   this.header.showLogin(gotoUrl);
-        //   return false;
-        // }
+        if (!SFComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = 'http://m.sfht.com/login.html?from=' + escape(gotoUrl);
+          return false;
+        }
 
         window.location.href = gotoUrl;
       },

@@ -205,7 +205,10 @@ module.exports = function (grunt) {
       html: [
         '<%= config.app %>/index.html',
         '<%= config.app %>/detail.html',
-        '<%= config.app %>/order.html'
+        '<%= config.app %>/order.html',
+        '<%= config.app %>/login.html',
+        '<%= config.app %>/register.html',
+        '<%= config.app %>/gotopay.html'
       ]
     },
 
@@ -323,6 +326,9 @@ module.exports = function (grunt) {
             'index.html',
             'detail.html',
             'order.html',
+            'login.html',
+            'register.html',
+            'gotopay.html',
 
             'json/*.json',
 
@@ -403,6 +409,7 @@ module.exports = function (grunt) {
             'sf.b2c.mall.product.detailcontent',
             'sf.b2c.mall.adapter.detailcontent',
             'sf.helpers',
+            'sf.b2c.mall.widget.loading',
             'sf.b2c.mall.page.detail'
           ],
           insertRequire: ['sf.b2c.mall.page.detail']
@@ -427,11 +434,58 @@ module.exports = function (grunt) {
             'sf.b2c.mall.adapter.order',
             'sf.b2c.mall.adapter.regions',
             'sf.b2c.mall.order.fn',
+            'sf.b2c.mall.widget.loading',
             'sf.b2c.mall.page.order'
           ],
           insertRequire: ['sf.b2c.mall.page.order']
         }
+      },
+      login: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.login.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          include: [
+            'sf.b2c.mall.component.login',
+            'sf.b2c.mall.page.login'
+          ],
+          insertRequire: ['sf.b2c.mall.page.login']
+        }
+      },
+      register: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.register.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          include: [
+            'sf.b2c.mall.component.register',
+            'sf.b2c.mall.page.register'
+          ],
+          insertRequire: ['sf.b2c.mall.page.register']
+        }
+      },
+      gotopay: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.gotopay.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment':'../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            'sf.helpers',
+            'moment',
+            'sf.b2c.mall.order.fn',
+            'sf.b2c.mall.widget.loading',
+            'sf.b2c.mall.page.gotopay'
+          ],
+          insertRequire: ['sf.b2c.mall.page.gotopay']
+        }
       }
+
     }
   });
 
@@ -513,6 +567,9 @@ module.exports = function (grunt) {
           'requirejs:main',
           'requirejs:detail',
           'requirejs:order',
+          'requirejs:login',
+          'requirejs:register',
+          'requirejs:gotopay',
 
           'usemin',
           // 'htmlmin',

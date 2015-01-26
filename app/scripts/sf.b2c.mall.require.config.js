@@ -98,6 +98,8 @@ requirejs.config({
         'zepto': 'scripts/vendor/zepto',
         'swipe': 'scripts/vendor/swipe',
         'sf.helpers': 'scripts/util/sf.helpers',
+        'sf.util':'scripts/util/sf.util.fn',
+        'sf.b2c.mall.widget.loading':'scripts/widget/sf.b2c.mall.widget.loading',
 
         // 首页
         'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
@@ -115,7 +117,17 @@ requirejs.config({
         'sf.b2c.mall.component.addreditor':'scripts/component/sf.b2c.mall.component.addreditor',
         'sf.b2c.mall.adapter.address.list':'scripts/adapter/sf.b2c.mall.adapter.address.list',
         'sf.b2c.mall.adapter.regions':'scripts/adapter/sf.b2c.mall.adapter.regions',
-        'sf.b2c.mall.adapter.order':'scripts/adapter/sf.b2c.mall.adapter.order'
+        'sf.b2c.mall.adapter.order':'scripts/adapter/sf.b2c.mall.adapter.order',
 
+        // 登录
+        'sf.b2c.mall.page.login': 'scripts/page/sf.b2c.mall.page.login',
+        'sf.b2c.mall.component.login': 'scripts/component/sf.b2c.mall.component.login',
+
+        // 注册
+        'sf.b2c.mall.page.register': 'scripts/page/sf.b2c.mall.page.register',
+        'sf.b2c.mall.component.register': 'scripts/component/sf.b2c.mall.component.register',
+
+        // 去支付
+        'sf.b2c.mall.page.gotopay': 'scripts/page/sf.b2c.mall.page.gotopay'
     }
 });

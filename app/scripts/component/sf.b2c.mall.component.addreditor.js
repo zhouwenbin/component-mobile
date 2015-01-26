@@ -5,14 +5,14 @@ define('sf.b2c.mall.component.addreditor', [
   'zepto',
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.api.user.createRecAddress',
+  'sf.b2c.mall.api.user.createReceiverInfo',
   'sf.b2c.mall.api.user.updateRecAddress'
 
-], function(can, $, RegionsAdapter, SFCreateRecAddress, SFUpdateRecAddress) {
+], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress) {
 
   return can.Control.extend({
 
     init: function() {
-      debugger;
       this.adapter = {};
       this.request();
       this.onSuccess = this.options.onSuccess;
@@ -36,7 +36,6 @@ define('sf.b2c.mall.component.addreditor', [
      * @param  {Map} data 渲染页面的数据
      */
     render: function(data, tag, element) {
-      debugger;
       this.setup(element);
       var html = can.view('templates/component/sf.b2c.mall.component.addreditor.mustache', data);
       element.html(html);
@@ -54,8 +53,14 @@ define('sf.b2c.mall.component.addreditor', [
       }
 
       var that = this;
-      $('#addressSave').tap(function() {debugger;
+      $('#addressSave').tap(function() {
         that.addressSaveClick();
+      })
+
+      $('#backToOrder').tap(function() {
+        $(".sf-b2c-mall-order-selectReceiveAddress").show();
+        $(".sf-b2c-mall-order-itemInfo").show();
+        $(".sf-b2c-mall-order-addAdrArea").hide();
       })
     },
 
@@ -181,7 +186,7 @@ define('sf.b2c.mall.component.addreditor', [
       this.adapter.addr.input.attr('regionName', regions[0].id);
     },
 
-    '#s2 change': function(element, event) {debugger;
+    '#s2 change': function(element, event) {
       this.changeCity();
       this.changeRegion();
     },
@@ -191,7 +196,7 @@ define('sf.b2c.mall.component.addreditor', [
      * @param  {Dom}    element
      * @param  {Event}  event
      */
-    '#s3 change': function(element, event) {debugger;
+    '#s3 change': function(element, event) {
       this.changeRegion();
     },
 
@@ -205,31 +210,43 @@ define('sf.b2c.mall.component.addreditor', [
       this.element.empty();
     },
 
-    add: function(addr) {debugger;
+    add: function(addr) {
       var that = this;
-      delete addr.recId;
 
-      var createRecAddress = new SFCreateRecAddress(addr);
-      createRecAddress
+      var person = {
+        recName: addr.recName,
+        type: "ID",
+        credtNum: addr.credtNum
+      };
+
+      var recId = null;
+      var createReceiverInfo = new SFCreateReceiverInfo(person);
+
+      createReceiverInfo
         .sendRequest()
         .done(function(data) {
+          recId = data.value;
+        })
+        .fail(function(error) {
 
-          // var message = new SFMessage(null, {
-          //   'tip': '新增收货地址成功！',
-          //   'type': 'success'
-          // });
-
+          def.reject(error);
+        })
+        .then(function(){
+          addr.recId = recId;
+          var createRecAddress = new SFCreateRecAddress(addr);
+          return createRecAddress.sendRequest()
+        })
+        .done(function(data) {
           that.onSuccess(data);
-
           return true;
         })
         .fail(function(error) {
           if (error === 1000310) {
-            // new SFMessage(null, {
-            //   "title": '顺丰海淘',
-            //   'tip': '您已添加20条收货地址信息，请返回修改！',
-            //   'type': 'error'
-            // });
+            new SFMessage(null, {
+              "title": '顺丰海淘',
+              'tip': '您已添加20条收货地址信息，请返回修改！',
+              'type': 'error'
+            });
           }
           return false;
         });
@@ -274,7 +291,7 @@ define('sf.b2c.mall.component.addreditor', [
       event && event.preventDefault();
       $('#zipcodeerror').hide();
     },
-    addressSaveClick: function(element, event) {debugger;
+    addressSaveClick: function(element, event) {
       event && event.preventDefault();
 
       $('.tel-hide').hide();
@@ -397,7 +414,7 @@ define('sf.b2c.mall.component.addreditor', [
         var result = this.add(addr);
         if (result) {
 
-          debugger;
+
         }
       }
     }
