@@ -1072,10 +1072,12 @@ button{
   font-size: 14px;
   line-height: 24px;
 }
-.orderdetail-r4c2 span{
+.orderdetail-r4c2 strong{
   font-size: 24px;
   vertical-align: top;
+  font-weight: normal;
 }
+
 .orderdetail-r4c1{
   width: 127px;
 }
@@ -1127,7 +1129,6 @@ button{
   text-align: center;
   padding-top: 39px;
   padding-bottom: 13px;
-  position: relative;
   border-radius: 2px;
 }
 .dialog-phone h2{
