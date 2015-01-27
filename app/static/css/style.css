@@ -196,6 +196,17 @@ button{
   height: 10px;
   background-position: -121px 0;
 }
+.icon14{
+  width: 43px;
+  height: 43px;
+  background-position: -84px -71px;
+}
+.icon15{
+  width: 13px;
+  height: 13px;
+  background-position: -132px 0;
+  text-indent: -999em;
+}
 /*btn*/
 .btn{
   display:inline-block;
@@ -1096,3 +1107,29 @@ button{
 .logistics a{
   color:#003cff;
   }
+/*弹窗*/
+.dialog-phone .center{
+  width: 292px;
+  background: #fff;
+  text-align: center;
+  padding-top: 39px;
+  padding-bottom: 13px;
+  position: relative;
+  border-radius: 2px;
+}
+.dialog-phone h2{
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+.dialog-phone p{
+  margin-bottom: 13px;
+}
+.dialog-phone-r1{
+  margin-top:4px 
+}
+.dialog-phone .icon15{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
