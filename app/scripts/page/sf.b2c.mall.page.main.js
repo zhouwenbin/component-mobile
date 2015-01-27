@@ -4,12 +4,13 @@ define(
   [
     'can',
     'zepto',
+    'swipe',
     'underscore',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.component.price'
   ],
 
-  function(can, $, _, SFFrameworkComm, ItemPrice) {
+  function(can, $, Swipe, _, SFFrameworkComm, ItemPrice) {
     SFFrameworkComm.register(3);
     var home = can.Control.extend({
 
