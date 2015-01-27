@@ -38,13 +38,6 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       init: function(element, options) {
         this.component = {};
         this.render();
-
-        //模板外要绑定事件。 todo：针对弹出层 要做一个公用组件出来
-        $('#closeExample')[0].onclick = function() {
-          $(".orderdetail-upload").hide();
-          $(".mask2").hide();
-          return false;
-        }
       },
 
       /**
@@ -77,42 +70,16 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.recId = data.orderItem.rcvrId;
 
             //data.orderItem.orderStatus = "SUBMITED";
-            //data.orderItem.rcvrState = 0
+            data.orderItem.rcvrState = 0
             that.options.status = that.statsMap[data.orderItem.orderStatus];
             that.options.operationHTML = that.optionHTML[that.nextStepMap[data.orderItem.orderStatus]];
 
             if (data.orderItem.rcvrState == 0 || data.orderItem.rcvrState == 1 || data.orderItem.rcvrState == 3) {
-              that.options.uploadIDCardTips = '该笔订单需要上传收货人身份信息，请<a href="">联系客服</a>';
+              that.options.uploadIDCardTips = '该笔订单需要上传收货人身份信息，请<a href="javascript:void(0)" id="contactMe">联系客服</a>';
             }
 
-            that.options.traceList = data.orderActionTraceItemList;
-
-            //加入订单状态
-            _.each(that.options.traceList, function(trace) {
-              if (trace.status != 'COMPLETED' && trace.status != 'AUTO_COMPLETED') {
-                that.options.userRoutes.push(trace);
-              }
-            })
-
-            //合并路由
-            if (routesList && routesList.value) {
-              _.each(routesList.value, function(route) {
-                if (typeof route.carrierCode != 'undefined' && route.carrierCode == 'SF') {
-                  that.options.userRoutes.push({
-                    "gmtHappened": moment(route.eventTime).format('YYYY/MM/DD HH:mm:ss'),
-                    "description": (typeof route.position != 'undefined' ? route.position : "") + " " + route.remark,
-                    "operator": "系统"
-                  });
-                }
-              })
-            }
-
-            //增加剩下的
-            _.each(that.options.traceList, function(trace) {
-              if (trace.status == 'COMPLETED' || trace.status == 'AUTO_COMPLETED') {
-                that.options.userRoutes.push(trace);
-              }
-            })
+            //构建路由数据
+            that.buildUserRoutes(data, routesList);
 
             that.options.receiveInfo = data.orderItem.orderAddressItem;
             that.options.receiveInfo.certNo = idcard.credtNum;
@@ -124,55 +91,142 @@ define('sf.b2c.mall.order.orderdetailcontent', [
                 item.spec = that.options.productList[0].spec.split(',').join("</li><li>");
               }
               if (item.imageUrl == "" || item.imageUrl == null) {
-                item.imageUrl = "http://www.sfht.com/img/no.png";
+                item.imageUrl = "http://m.sfht.com/img/no.png";
               } else {
                 item.imageUrl = JSON.parse(item.imageUrl)[0];
               }
             });
 
             that.options.allTotalPrice = that.options.productList[0].totalPrice;
+            that.options.showShouldPayPrice = that.canShowShouldPayPrice(data);
 
-            var cancelArr = new Array();
-            cancelArr.push('AUTO_CANCEL');
-            cancelArr.push('USER_CANCEL');
-            cancelArr.push('OPERATION_CANCEL');
-            //判断浏览器是否支持indexOf方法，如果不支持执行下面方法
-            if (!Array.prototype.indexOf) {
-              Array.prototype.indexOf = function(obj, start) {
-                for (var i = (start || 0), j = this.length; i < j; i++) {
-                  if (this[i] === obj) {
-                    return i;
-                  }
-                }
-                return -1;
-              }
-            }
-            that.options.showShouldPayPrice = (cancelArr.indexOf(data.orderItem.orderStatus) === -1);
             //是否是宁波保税，是得话才展示税额
             that.options.showTax = that.options.productList[0].bonded;
             that.options.shouldPayPrice = that.options.allTotalPrice;
 
-            if (data.orderItem.orderStatus == 'SUBMITED'){
+            if (data.orderItem.orderStatus == 'SUBMITED') {
               that.options.showPayButton = true;
             }
+
+            that.options.firstRoute = that.options.userRoutes[that.options.userRoutes.length - 1]
 
             var html = can.view('templates/order/sf.b2c.mall.order.orderdetail.mustache', that.options);
             that.element.html(html);
 
-            $('#gotopay').tap(function(){
-              that.payclick($(this));
-            })
-
-            $('#cancelorder').tap(function(){debugger;
-              that.cancelOrderClick($(this));
-            })
-
+            //页面初始化布局
+            $('#orderdetail').show();
+            $('#buy').show();
+            $('#userRoutes').hide();
             $('.loadingDIV').hide();
+
+            //绑定各种事件
+            that.bindEvents();
           })
           .fail(function(error) {
             console.error(error);
             $('.loadingDIV').hide();
           })
+      },
+
+      bindEvents: function() {
+        var that = this;
+        $('#gotopay').tap(function() {
+          that.payclick($(this));
+        })
+
+        $('#cancelorder').tap(function() {
+          that.cancelOrderClick($(this));
+        })
+
+        $('#viewUserRoutes').tap(function() {
+          that.viewUserRoutes();
+        })
+
+        $('#contactMe').tap(function() {
+          that.contactMeClick();
+        })
+      },
+
+      canShowShouldPayPrice: function(data) {
+        var cancelArr = new Array();
+        cancelArr.push('AUTO_CANCEL');
+        cancelArr.push('USER_CANCEL');
+        cancelArr.push('OPERATION_CANCEL');
+        //判断浏览器是否支持indexOf方法，如果不支持执行下面方法
+        if (!Array.prototype.indexOf) {
+          Array.prototype.indexOf = function(obj, start) {
+            for (var i = (start || 0), j = this.length; i < j; i++) {
+              if (this[i] === obj) {
+                return i;
+              }
+            }
+            return -1;
+          }
+        }
+
+        return (cancelArr.indexOf(data.orderItem.orderStatus) === -1);
+      },
+
+      /**
+       * [buildUserRoutes 构建路由]
+       * @param  {[type]} data       [description]
+       * @param  {[type]} routesList [description]
+       * @return {[type]}            [description]
+       */
+      buildUserRoutes: function(data, routesList) {
+        var that = this;
+        that.options.traceList = data.orderActionTraceItemList;
+
+        //加入订单状态
+        _.each(that.options.traceList, function(trace) {
+          trace.operator = that.operatorMap[trace.operator] || '系统';
+          trace.description = that.statusDescription[trace.status];
+
+          if (trace.status != 'COMPLETED' && trace.status != 'AUTO_COMPLETED') {
+            that.options.userRoutes.push(trace);
+          }
+        })
+
+        //合并路由
+        if (routesList && routesList.value) {
+          _.each(routesList.value, function(route) {
+            if (typeof route.carrierCode != 'undefined' && route.carrierCode == 'SF') {
+              that.options.userRoutes.push({
+                "gmtHappened": moment(route.eventTime).format('YYYY/MM/DD HH:mm:ss'),
+                "description": (typeof route.position != 'undefined' ? route.position : "") + " " + route.remark,
+                "operator": "系统"
+              });
+            }
+          })
+        }
+
+        //增加剩下的
+        _.each(that.options.traceList, function(trace) {
+          if (trace.status == 'COMPLETED' || trace.status == 'AUTO_COMPLETED') {
+            that.options.userRoutes.push(trace);
+          }
+        })
+      },
+
+      /**
+       * [viewUserRoutes 查看路由]
+       * @return {[type]} [description]
+       */
+      viewUserRoutes: function() {
+        $('#orderdetail').hide();
+        $('#buy').hide();
+        $('#userRoutes').show();
+      },
+
+      /**
+       * [contactMeClick 联系客服]
+       * @return {[type]} [description]
+       */
+      contactMeClick: function() {
+        $('.dialog-phone').show();
+        $('#closeContactMe').tap(function() {
+          $('.dialog-phone').hide();
+        })
       },
 
       cardStatusMap: {
