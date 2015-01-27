@@ -207,6 +207,11 @@ button{
   background-position: -132px 0;
   text-indent: -999em;
 }
+.icon16{
+  width: 79px;
+  height: 95px;
+  background-position: -82px -120px;
+}
 /*btn*/
 .btn{
   display:inline-block;
@@ -987,6 +992,14 @@ button{
 }
 .orderlist-r3c2 .btn{
   color: #000;
+}
+.orderlist .orderlist-none{
+  padding-top: 80px;
+  text-align: center;
+}
+.orderlist-none p{
+  font-size: 14px;
+  margin-top: 27px;
 }
 /*tab*/
 .tab-h{
