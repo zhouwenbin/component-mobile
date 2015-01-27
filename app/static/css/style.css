@@ -1023,6 +1023,12 @@ button{
   color: #7f7f7f;
   padding: 0 3px;
 }
+.orderdetail-r2 a{
+  color: #7f7f7f;
+  text-decoration: underline;
+  float: right;
+}
+
 .orderdetail-r2 li:nth-child(3){
   color: #000;
 }
@@ -1073,3 +1079,20 @@ button{
 .info-r1c2 span{
   margin-right: 5px;
 }
+/*物流*/
+.logistics{
+  background: #fff;
+}
+
+.logistics li{
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+.logistics ul{
+  background: #f6f8f9;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+.logistics a{
+  color:#003cff;
+  }
