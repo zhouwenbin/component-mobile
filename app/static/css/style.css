@@ -432,6 +432,7 @@ img{
   background: #fff;
   border-top:2px solid #dc3334;
 }
+
 .detail-b{
   margin-bottom: 17px;
   padding: 0 17px;
@@ -520,7 +521,7 @@ img{
   overflow: hidden;
   visibility: hidden;
   position: relative;
-  height: 320px;
+  max-height: 320px;
   text-align: center;
 }
 .swipe-wrap {
@@ -886,4 +887,87 @@ img{
   background: #fff;
   font-size: 14px;
   color: #999;
+}
+/*orderlist*/
+.orderlist{
+  background: #f6f8f9;
+}
+.orderlist li{
+  padding: 14px;
+  margin-bottom: 6px;
+}
+.orderlist-r1{
+  padding-bottom: 7px;
+  border-bottom: 1px dashed #ccc;
+  margin-bottom: 2px;
+}
+.orderlist-r1c1{
+  color: #585858;
+}
+.orderlist-r1c2{
+  color: #dc3334;
+}
+.orderlist-r2{
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #ccc;
+  margin-bottom: 17px;
+}
+.orderlist-r2c1{
+  width: 94px;
+  height: 94px;
+  margin-right: 8px;
+}
+.orderlist-r2c1 img{
+  max-width: 94px;
+  max-height: 94px;
+}
+.orderlist-r2c2{
+  overflow: hidden;
+}
+.orderlist h2{
+  font-size: 15px;
+  border-left: 2px solid #dc3334;
+  padding-left: 4px;
+  margin-bottom: 6px;
+}
+.orderlist h3{
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 18px;
+}
+.orderlist strong{
+  color:#dc3334;
+  font-size: 18px;
+}
+.orderlist-r3c1{
+  color: #585858;
+  line-height: 43px;
+}
+.orderlist-r3c2 .btn{
+  color: #000;
+}
+/*tab*/
+.tab-h{
+  height: 43px;
+}
+.tab-h li{
+  float: left;
+  width: 50%;
+  font-size: 15px;
+  background: #f6f8f9;
+  border-bottom: 1px solid #f2f2f3;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+}
+
+.tab-h li.active{
+  background: #fff;
+  border-top:2px solid #dc3334;
+}
+.tab-b{
+  display: none;
+}
+.tab-b.active{
+  display: block;
 }
