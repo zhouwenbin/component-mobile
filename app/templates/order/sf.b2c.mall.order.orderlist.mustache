@@ -1,9 +1,9 @@
 <!--订单列表-->
 <section class="tab">
-  <div class="tab-h">
+  <div class="tab-h fixed" style="z-index:999">
     <ul class="clearfix">
-      <li class="active" id="notCompleteOrderList">未完成({{notCompletedLength}})</li>
-      <li id="completeOrderList">完成</li>
+      <li class="active" id="notCompleteOrderListTabhead">未完成({{notCompletedLength}})</li>
+      <li id="completeOrderListTabhead">完成</li>
     </ul>
   </div>
   <ul class="tab-b active orderlist" id="notCompletedTab">
@@ -13,7 +13,7 @@
           <div class="orderlist-r1c1 fl">{{sf.time gmtCreate}}</div>
           <div class="orderlist-r1c2 fr">{{orderStatus}}</div>
         </div>
-        <div class="orderlist-r2 clearfix">
+        <div class="orderlist-r2 clearfix viewOrder" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
           <div class="orderlist-r2c1 fl vertical-middle">
             <img src="{{sf.img imageUrl}}" alt="">
           </div>
@@ -38,7 +38,7 @@
           <div class="orderlist-r1c1 fl">{{sf.time gmtCreate}}</div>
           <div class="orderlist-r1c2 fr">{{orderStatus}}</div>
         </div>
-        <div class="orderlist-r2 clearfix">
+        <div class="orderlist-r2 clearfix viewOrder" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
           <div class="orderlist-r2c1 fl vertical-middle">
             <img src="{{sf.img imageUrl}}" alt="">
           </div>
