@@ -208,7 +208,9 @@ module.exports = function (grunt) {
         '<%= config.app %>/order.html',
         '<%= config.app %>/login.html',
         '<%= config.app %>/register.html',
-        '<%= config.app %>/gotopay.html'
+        '<%= config.app %>/gotopay.html',
+        '<%= config.app %>/orderlist.html',
+        '<%= config.app %>/orderdetail.html'
       ]
     },
 
@@ -329,6 +331,8 @@ module.exports = function (grunt) {
             'login.html',
             'register.html',
             'gotopay.html',
+            'orderlist.html',
+            'orderdetail.html',
 
             'json/*.json',
 
@@ -485,6 +489,44 @@ module.exports = function (grunt) {
           ],
           insertRequire: ['sf.b2c.mall.page.gotopay']
         }
+      },
+      orderlist: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.list.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment':'../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            'sf.b2c.mall.order.orderlistcontent',
+            'moment',
+            'sf.b2c.mall.order.fn',
+            'sf.b2c.mall.widget.message',
+            'sf.b2c.mall.page.orderlist'
+          ],
+          insertRequire: ['sf.b2c.mall.page.orderlist']
+        }
+      },
+      orderdetail: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.detail.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment':'../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            'sf.b2c.mall.order.orderdetailcontent',
+            'sf.helpers',
+            'moment',
+            'sf.b2c.mall.order.fn',
+            'sf.b2c.mall.page.orderdetail'
+          ],
+          insertRequire: ['sf.b2c.mall.page.orderdetail']
+        }
       }
 
     }
@@ -571,6 +613,8 @@ module.exports = function (grunt) {
           'requirejs:login',
           'requirejs:register',
           'requirejs:gotopay',
+          'requirejs:orderlist',
+          'requirejs:orderdetail',
 
           'usemin',
           // 'htmlmin',

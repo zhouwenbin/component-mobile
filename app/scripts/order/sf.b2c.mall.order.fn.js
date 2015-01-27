@@ -2,7 +2,7 @@ define(
   'sf.b2c.mall.order.fn',
 
   [
-    'jquery',
+    'zepto',
     'can',
     'underscore',
     'sf.b2c.mall.api.order.requestPayV2'

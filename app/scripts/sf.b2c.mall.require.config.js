@@ -98,13 +98,13 @@ requirejs.config({
         'zepto': 'scripts/vendor/zepto',
         'swipe': 'scripts/vendor/swipe',
         'sf.helpers': 'scripts/util/sf.helpers',
-        'sf.util':'scripts/util/sf.util.fn',
+        'sf.util': 'scripts/util/sf.util.fn',
         'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
         'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
 
         // 首页
         'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
-        'sf.b2c.mall.component.price':'scripts/component/sf.b2c.mall.component.price',
+        'sf.b2c.mall.component.price': 'scripts/component/sf.b2c.mall.component.price',
 
         // 商品详情
         'sf.b2c.mall.page.detail': 'scripts/page/sf.b2c.mall.page.detail',
@@ -116,10 +116,10 @@ requirejs.config({
         'sf.b2c.mall.order.fn': 'scripts/order/sf.b2c.mall.order.fn',
         'sf.b2c.mall.order.iteminfo': 'scripts/order/sf.b2c.mall.order.iteminfo',
         'sf.b2c.mall.order.selectreceiveaddr': 'scripts/order/sf.b2c.mall.order.selectreceiveaddr',
-        'sf.b2c.mall.component.addreditor':'scripts/component/sf.b2c.mall.component.addreditor',
-        'sf.b2c.mall.adapter.address.list':'scripts/adapter/sf.b2c.mall.adapter.address.list',
-        'sf.b2c.mall.adapter.regions':'scripts/adapter/sf.b2c.mall.adapter.regions',
-        'sf.b2c.mall.adapter.order':'scripts/adapter/sf.b2c.mall.adapter.order',
+        'sf.b2c.mall.component.addreditor': 'scripts/component/sf.b2c.mall.component.addreditor',
+        'sf.b2c.mall.adapter.address.list': 'scripts/adapter/sf.b2c.mall.adapter.address.list',
+        'sf.b2c.mall.adapter.regions': 'scripts/adapter/sf.b2c.mall.adapter.regions',
+        'sf.b2c.mall.adapter.order': 'scripts/adapter/sf.b2c.mall.adapter.order',
 
         // 登录
         'sf.b2c.mall.page.login': 'scripts/page/sf.b2c.mall.page.login',
@@ -130,6 +130,14 @@ requirejs.config({
         'sf.b2c.mall.component.register': 'scripts/component/sf.b2c.mall.component.register',
 
         // 去支付
-        'sf.b2c.mall.page.gotopay': 'scripts/page/sf.b2c.mall.page.gotopay'
+        'sf.b2c.mall.page.gotopay': 'scripts/page/sf.b2c.mall.page.gotopay',
+
+        // 订单列表
+        'sf.b2c.mall.page.orderlist': 'scripts/page/sf.b2c.mall.page.orderlist',
+        'sf.b2c.mall.order.orderlistcontent': 'scripts/order/sf.b2c.mall.order.orderlistcontent',
+
+        // 订单详情
+        'sf.b2c.mall.page.orderdetail': 'scripts/page/sf.b2c.mall.page.orderdetail',
+        'sf.b2c.mall.order.orderdetailcontent': 'scripts/order/sf.b2c.mall.order.orderdetailcontent'
     }
 });
