@@ -715,12 +715,19 @@ button{
 }
 .list-r2{
   position: relative;
-  height: 30px;
+  height: 24px;
 }
 .list-r2 .label-danger{
   position: absolute;
   right: -8px;
-  top: 0;
+  top: -3px;
+}
+.list-r1 img{
+  width: 100%;
+}
+.list-r2 img{
+  width: 19px;
+  vertical-align: middle;
 }
 /*支付成功*/
 .pay{
