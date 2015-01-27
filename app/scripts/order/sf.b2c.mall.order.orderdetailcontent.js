@@ -91,7 +91,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
                 item.spec = that.options.productList[0].spec.split(',').join("</li><li>");
               }
               if (item.imageUrl == "" || item.imageUrl == null) {
-                item.imageUrl = "http://m.sfht.com/img/no.png";
+                item.imageUrl = "http://m.sfht.com/static/img/no.png";
               } else {
                 item.imageUrl = JSON.parse(item.imageUrl)[0];
               }
