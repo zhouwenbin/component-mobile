@@ -44,12 +44,11 @@ define('sf.b2c.mall.order.orderlistcontent', [
           .sendRequest()
           .done(function(data) {
             if (data.orders) {
-              that.options.orderlist = data.orders;
 
               that.options.notCompletedOrderList = [];
               that.options.completedOrderList = [];
 
-              _.each(that.options.orderlist, function(order) {
+              _.each(data.orders, function(order) {
 
                 //“待审核”“采购中”“待发货”“正在出库”“已发货”
                 if (order.orderStatus == 'AUDITING' || order.orderStatus == 'BUYING' || order.orderStatus == 'WAIT_SHIPPING' || order.orderStatus == 'SHIPPING' || order.orderStatus == 'SHIPPED') {
@@ -78,6 +77,14 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
               var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
               that.element.html(html);
+
+              $('.gotoPay').tap(function() {
+                that.gotoPayClick($(this));
+              })
+
+              $('.viewOrder').tap(function() {
+                that.viewOrderClick($(this));
+              })
             } else {
               var noDataTemplate = can.view.mustache(that.noDataTemplate());
               that.element.html(noDataTemplate());
@@ -85,16 +92,20 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
             $('.loadingDIV').hide();
 
-            $('#notCompleteOrderList').tap(function() {
+            $('#notCompleteOrderListTabhead').tap(function() {
               that.switchTab($(this), 'notCompletedTab');
             })
 
-            $('#completeOrderList').tap(function() {
+            $('#completeOrderListTabhead').tap(function() {
               that.switchTab($(this), 'completedTab');
             })
 
-            $('#completedTab').hide();
-            $('#notCompletedTab').show();
+            if (that.options.notCompletedOrderList.length == 0) {
+              that.switchTab($('#completeOrderListTabhead'), 'completedTab');
+            } else {
+              $('#completedTab').hide();
+              $('#notCompletedTab').show();
+            }
 
           })
           .fail(function(error) {
@@ -113,8 +124,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
           return false;
         }
         //tab
-        $("#notCompleteOrderList").toggleClass("active");
-        $('#completeOrderList').toggleClass("active");
+        $("#notCompleteOrderListTabhead").toggleClass("active");
+        $('#completeOrderListTabhead').toggleClass("active");
 
         var that = this;
 
@@ -221,7 +232,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         "RECEIVED": '<a href="#" class="btn btn-disable received">确认签收</a>'
       },
 
-      '.gotoPay click': function(element, event) {
+      gotoPayClick: function(element, event) {
         event && event.preventDefault();
 
         var that = this;
@@ -246,17 +257,12 @@ define('sf.b2c.mall.order.orderlistcontent', [
         return false;
       },
 
-      ".viewOrder click": function(element, event) {
-        var orderid = element.parent('div#operationarea').eq(0).attr('data-orderid');
-        var suborderid = element.parent('div#operationarea').eq(0).attr('data-suborderid');
-        var recid = element.parent('div#operationarea').eq(0).attr('data-recid');
+      viewOrderClick: function(element, event) {
+        var orderid = element.eq(0).attr('data-orderid');
+        var suborderid = element.eq(0).attr('data-suborderid');
+        var recid = element.eq(0).attr('data-recid');
 
-        var params = can.deparam(window.location.search.substr(1));
-        if (params.app == 'pad') {
-          window.location.href = "/orderdetail.html?orderid=" + orderid + "&suborderid=" + suborderid + "&recid=" + recid;
-        } else {
-          window.open("/orderdetail.html?orderid=" + orderid + "&suborderid=" + suborderid + "&recid=" + recid, "_blank");
-        }
+        window.location.href = "/orderdetail.html?orderid=" + orderid + "&suborderid=" + suborderid + "&recid=" + recid;
       },
 
       errorMap: {
