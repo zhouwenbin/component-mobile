@@ -1,5 +1,5 @@
 /* html5doctor.com Reset v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/) - http://cssreset.com */
-html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:12px;vertical-align:baseline;background:transparent}
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:inherit;vertical-align:baseline;background:transparent}
 body{line-height:1}
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
 nav ul,li{list-style:none}
@@ -20,6 +20,7 @@ input,select{vertical-align:middle}
 }
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  font-size: 12px;
 }
 a, img {
   -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
@@ -35,9 +36,6 @@ html, body {
 
 button{
   border: none;
-}
-img{
-  width: 100%;
 }
 /*浮动*/
 .fl{float:left;}
@@ -127,7 +125,7 @@ img{
 .icon{
   display: inline-block;
   vertical-align: middle;
-  background: url(/static/img/icon.png) no-repeat;
+  background: url(../img/icon.png) no-repeat;
   -webkit-background-size: 450px 450px;
   background-size: 450px 450px;
   text-indent: -999em;
@@ -193,6 +191,11 @@ img{
   height: 45px;
   background-position: -81px -22px;
 }
+.icon13{
+  width: 6px;
+  height: 10px;
+  background-position: -121px 0;
+}
 /*btn*/
 .btn{
   display:inline-block;
@@ -240,7 +243,8 @@ img{
 }
 
 /*alert*/
-.alert-error{
+.alert-error,
+.text-important{
   color:#dc3334;
 }
 /*input*/
@@ -332,9 +336,6 @@ img{
   margin-right: 31px;
 }
 /*table*/
-.table{
-  margin-bottom: 55px;
-}
 .table-r1{
   font-size: 15px;
   line-height: 24px;
@@ -343,13 +344,34 @@ img{
   border-bottom: 1px dashed #ccc;
   margin-bottom: 15px;
 }
+.table-r1c2{
+  overflow: hidden;
+}
+.table-r1c1{
+  margin-right: 11px;
+  width: 63px;
+  height: 63px;
+}
+.table-r1c1 img{
+  max-width: 63px;
+  max-height: 63px;
+}
+.table-r1c2 h3{
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+.table-r1c2 .text-important{
+  font-size: 18px;
+}
+
 .table-r2{
   border-bottom: 1px dashed #ccc;
   margin-bottom: 15px;
 }
 .table-r2 li{
   float: left;
-  width: 33.3%;
+  width: 50%;
   margin-bottom: 15px;
   font-size: 14px;
 }
@@ -431,6 +453,7 @@ img{
 .detail-h li.active{
   background: #fff;
   border-top:2px solid #dc3334;
+  color: #dc3334;
 }
 
 .detail-b{
@@ -453,7 +476,7 @@ img{
 .recommend-c1{
   width: 110px;
   height: 110px;
-  margin-right: 33px;
+  margin-right: 10px;
 }
 .recommend-c1 img{
   max-width: 110px;
@@ -933,7 +956,8 @@ img{
 .orderlist h3{
   font-size: 15px;
   line-height: 24px;
-  margin-bottom: 18px;
+  margin-bottom: 15px;
+  padding-top: 13px;
 }
 .orderlist strong{
   color:#dc3334;
@@ -964,10 +988,81 @@ img{
 .tab-h li.active{
   background: #fff;
   border-top:2px solid #dc3334;
+  color: #dc3334;
 }
 .tab-b{
   display: none;
 }
 .tab-b.active{
   display: block;
+}
+/*orderdetail*/
+.orderdetail{
+  background: #f6f8f9;
+}
+.orderdetail-r1{
+  color: #dc3334;
+  text-align: center;
+  padding: 14px 0;
+}
+.orderdetail-r1 a{
+  color:#1301ff;
+}
+.orderdetail-r2 li{
+  float: left;
+  width: 50%;
+  font-size: 14px;
+  line-height: 24px;
+  color: #7f7f7f;
+  padding: 0 3px;
+}
+.orderdetail-r2 li:nth-child(3){
+  color: #000;
+}
+.orderdetail-r2 li:nth-child(4){
+  color: #dc3334;
+}
+.orderdetail-r3 a{
+  display: block;
+  line-height: 18px;
+  padding: 22px 14px;
+  position: relative;
+}
+.orderdetail-r3 .icon{
+  right: 14px;
+}
+.orderdetail-r4{
+  font-size: 14px;
+  line-height: 24px;
+}
+.orderdetail-r4c2 span{
+  font-size: 24px;
+  vertical-align: top;
+}
+.orderdetail-r4c1{
+  width: 127px;
+}
+.orderdetail-r4c2{
+  overflow: hidden;
+}
+/*info*/
+.info{
+  font-size: 14px;
+  line-height: 24px;
+}
+.info-r1{
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px dashed #ccc;
+}
+.info-r1c1{
+  color: #7f7f7f;
+  width: 4em;
+  text-align: justify;
+}
+.info-r1c2{
+  overflow: hidden;
+}
+.info-r1c2 span{
+  margin-right: 5px;
 }
