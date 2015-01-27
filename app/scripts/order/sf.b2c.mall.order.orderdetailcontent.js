@@ -70,7 +70,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.recId = data.orderItem.rcvrId;
 
             //data.orderItem.orderStatus = "SUBMITED";
-            data.orderItem.rcvrState = 0
+            //data.orderItem.rcvrState = 0
             that.options.status = that.statsMap[data.orderItem.orderStatus];
             that.options.operationHTML = that.optionHTML[that.nextStepMap[data.orderItem.orderStatus]];
 
