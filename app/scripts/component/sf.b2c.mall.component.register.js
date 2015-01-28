@@ -283,7 +283,8 @@ define('sf.b2c.mall.component.register', [
           this.component.mobileRegister.sendRequest()
             .done(function(data) {
               if (data.csrfToken) {
-                // store.set('csrfToken', data.csrfToken);
+                store.set('type', 'MOBILE');
+                store.set('nickname', mobile);
                 can.route.attr({
                   'tag': 'success',
                   'csrfToken': data.csrfToken

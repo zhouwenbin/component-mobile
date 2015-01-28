@@ -210,7 +210,8 @@ module.exports = function (grunt) {
         '<%= config.app %>/register.html',
         '<%= config.app %>/gotopay.html',
         '<%= config.app %>/orderlist.html',
-        '<%= config.app %>/orderdetail.html'
+        '<%= config.app %>/orderdetail.html',
+        '<%= config.app %>/center.html'
       ]
     },
 
@@ -333,6 +334,7 @@ module.exports = function (grunt) {
             'gotopay.html',
             'orderlist.html',
             'orderdetail.html',
+            'center.html',
 
             'json/*.json',
 
@@ -527,6 +529,18 @@ module.exports = function (grunt) {
           ],
           insertRequire: ['sf.b2c.mall.page.orderdetail']
         }
+      },
+      center: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.center.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          include: [
+            'sf.b2c.mall.page.center'
+          ],
+          insertRequire: ['sf.b2c.mall.page.center']
+        }
       }
 
     }
@@ -615,6 +629,7 @@ module.exports = function (grunt) {
           'requirejs:gotopay',
           'requirejs:orderlist',
           'requirejs:orderdetail',
+          'requirejs:center',
 
           'usemin',
           // 'htmlmin',
