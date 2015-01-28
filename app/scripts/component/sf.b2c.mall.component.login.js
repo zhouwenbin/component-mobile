@@ -65,7 +65,7 @@ define('sf.b2c.mall.component.login', [
         this.getVerifiedCode();
 
         var that = this;
-        $('.btn-register').tap(function() {
+        $('#gotoLogin').tap(function() {
           that.loginButtonClick();
         })
 

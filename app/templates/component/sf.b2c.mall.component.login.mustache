@@ -1,37 +1,35 @@
-<div class="register {{^ismobile platform}}register-top{{/ismobile}}">
-  <div class="register-b register-b3 register-main active">
+<section class="login">
+    <ol>
+      <li>
+        <input type="text" class="input" id="user-name" placeholder="手机号／邮箱" can-value="username"/>
+        <span class="label label-error" id="username-error-tips" style="display:none"></span>
+      </li>
+      <li>
+        <input type="password" id="user-pwd" class="input" placeholder="密码" can-value="password"/>
+        <span class="label label-error" id="pwd-error-tips"  style="display:none"></span>
+      </li>
+      {{#isNeedVerifiedCode}}
+      <li class="login-r3">
+        <div class="clearfix">
 
-     <ol>
-        <li>
-          <input id="user-name" type="text" class="input-username" placeholder="手机号／邮箱" can-value="username" />
-          <span id="username-error-tips" class="icon icon26"></span>
-        </li>
-        <li>
-          {{^isPlaceholderSupport}}<label id="pwd-default-text" class="pwd-default-text" for="password">密码</label>{{/isPlaceholderSupport}}
-          <input id="user-pwd" type="password" class="input-password" can-value="password" {{#isPlaceholderSupport}}placeholder="密码"{{/isPlaceholderSupport}} />
-          <span id="pwd-error-tips" class="icon icon26"></span>
-        </li>
-        {{#isNeedVerifiedCode}}
-        <li>
-          <input id="verified-code" type="text" class="input2" placeholder="验证码" can-value="verifiedCode" />
-          <img src="{{verifiedCodeUrl}}" width="80" alt="验证码" />
-          <a class="a1" href="" id="verified-code-btn">换一个</a>
-          <span id="code-error-tips" class="icon icon26"></span>
-        </li>
-        {{/isNeedVerifiedCode}}
-     </ol>
-     <div class="register-br1">
-       <button class="btn btn-register btn-send">登录</button>
-     </div>
-     <div class="register-br2 clearfix">
-      <!--<div class="register-br2c1 fl">-->
-        <!--<label><input type="checkbox" checked />记住我</label>-->
-      <!--</div>-->
-      <div class="register-br2c2 fr"><a target="_blank" href="retrieve.html">忘记密码</a></div>
-     </div>
-  </div>
-  <!--登录顺丰海淘-->
-  <div class="register-f">
-    <div class="register-fr2">不是会员？<a target="_self" class="btn btn-send" id="toRegist" href="javascript:void(0)">注册</a></div>
-  </div>
-</div>
+          <div class="login-r3c1 fr">
+            <img src="img/code.png" width="86" alt="验证码">
+            <a href="javascript:">换一个</a>
+          </div>
+          <div class="login-r3c2">
+            <input id="verified-code" type="text" class="input" placeholder="输入验证码" can-value="verifiedCode"/>
+          </div>
+
+        </div>
+
+        <span class="label label-error" id="code-error-tips"  style="display:none"></span>
+      </li>
+      {{/isNeedVerifiedCode}}
+
+      <li><button class="btn btn-success btn-big" id="gotoLogin">登陆</button></li>
+    </ol>
+    <div class="login-r1 clearfix">
+      <a href="/register.html">新用户注册</a>
+    </div>
+    <div class="login-r2"><a href=""><span class="icon icon18"></span><br>微信登录</a></div>
+  </section>
