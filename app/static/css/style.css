@@ -1304,6 +1304,7 @@ button{
 .login-r1{
   border-bottom: 1px solid #ccc;
   padding: 0 13px 40px;
+  text-align: center;
 }
 .login-r1 a{
   color: #888888;
@@ -1326,6 +1327,14 @@ button{
 .login-r3 .btn{
   margin-left: 5px;
   font-size: 14px;
+}
+.login-r3c1{
+  width: 130px;
+  margin-left: 7px;
+}
+.login-r3c1 a{
+  color: #a3a2a3;
+  margin-left: 5px;
 }
 .login-r3c2{
   overflow: hidden;

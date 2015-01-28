@@ -14,28 +14,30 @@
 				<input type="text" class="input" placeholder="仅限中国大陆手机号"/>
 				<span class="label label-error">账户不存在</span>
 			</li>
+			<li>
+				<input type="password" class="input" placeholder="请设置登录密码"/>
+				<span class="label label-error">账户名或登录密码错误，请重新输入</span>
+			</li>
 			<li class="login-r3">
 				<div class="clearfix">
 					
-					<button class="btn btn-normal disable success fr">10s发送验证码</button>
+					<div class="login-r3c1 fr">
+						<img src="img/code.png" width="86" alt="验证码">
+						<a href="javascript:">换一个</a>
+					</div>
 					<div class="login-r3c2">
 						<input type="text" class="input" placeholder="输入验证码"/>
 					</div>
 					
 				</div>
 					
-				<span class="label label-error">短信验证码输入有误，请重新输入</span>
+				<span class="label label-error">验证码输入有误，请重新输入</span>
 			</li>
-			<li>
-				<input type="password" class="input" placeholder="请设置登录密码"/>
-				<span class="label label-error">密码请设置6-18位字母、数字或标点符号</span>
-				<span class="icon icon19 active"></span>
-			</li>
-			<li><button class="btn btn-success btn-big">同意协议并注册</button></li>
+
+			<li><button class="btn btn-success btn-big">登陆</button></li>
 		</ol>
 		<div class="login-r1 clearfix">
-			<a href="" class="fl">顺丰海淘服务协议</a>
-			<a href="login.html" class="fr">已有账户</a>
+			<a href="register.html">新用户注册</a>
 		</div>	
 		<div class="login-r2"><a href=""><span class="icon icon18"></span><br>微信登录</a></div>
 	</section>
