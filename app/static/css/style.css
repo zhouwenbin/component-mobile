@@ -217,6 +217,19 @@ button{
   height: 62px;
   background-position: 0 -378px;
 }
+.icon18{
+  width: 51px;
+  height: 41px;
+  background-position: -67px -393px;
+}
+.icon19{
+  width: 19px;
+  height: 16px;
+  background-position: -171px 0;
+}
+.icon19.active{
+  background-position: -147px 0;
+}
 /*btn*/
 .btn{
   display:inline-block;
@@ -255,12 +268,18 @@ button{
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
 }
-.btn-warnning{
+.btn-warnning,
+.btn.warnning{
   background: #1376ce;
   color: #fff;
 }
 .btn-radius{
   border-radius: 22px;
+}
+.btn-success,
+.btn.success{
+  background: #67b222;
+  color: #fff;
 }
 
 /*alert*/
@@ -1245,6 +1264,9 @@ button{
   }
 }
 /*person*/
+.person{
+  background: #fafafa;
+}
 .person-r1{
   font-size: 17px;
   color: #fff;
@@ -1271,3 +1293,68 @@ button{
   color: #888888;
   font-size: 14px;
 }
+/*login*/
+.login ol{
+  padding: 33px 13px 14px;
+}
+.login li{
+  margin-bottom: 11px;
+  position: relative;
+}
+.login-r1{
+  border-bottom: 1px solid #ccc;
+  padding: 0 13px 40px;
+}
+.login-r1 a{
+  color: #888888;
+  text-decoration: underline;
+}
+.login-r2{
+  text-align: center;
+  padding: 31px 0;
+  background: #f7f7f7;
+  color: #a3a2a3;
+}
+.login-r2 .icon18{
+  margin-bottom: 9px;
+}
+.login .input{
+  height: 43px;
+  line-height: 43px;
+  margin-bottom: 3px;
+}
+.login-r3 .btn{
+  margin-left: 5px;
+  font-size: 14px;
+}
+.login-r3c2{
+  overflow: hidden;
+}
+.login .icon19{
+  position: absolute;
+  top: 14px;
+  right: 9px
+}
+ /*label*/
+ .label {
+  height: 21px;
+  line-height: 21px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0 15px;
+  display: inline-block;
+  vertical-align: middle;
+ }
+ .label-error{
+  background: #eb6877;
+ }
+ .label-success{
+  background: #67b222;
+ }
+ .label-waining{
+  background: #a1d0ed;
+ }
+ .label-disabled{
+  background: #ccc;
+ }
