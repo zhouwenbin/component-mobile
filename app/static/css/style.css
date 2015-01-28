@@ -242,9 +242,7 @@ button{
   padding: 0 15px;
 
 }
-.btn-big{
-  width: 100%;
-}
+
 
 .btn-normal,
 .btn.normal{
@@ -273,19 +271,33 @@ button{
   background: #1376ce;
   color: #fff;
 }
-.btn-radius{
-  border-radius: 22px;
-}
+
 .btn-success,
 .btn.success{
   background: #67b222;
   color: #fff;
 }
+.btn-radius{
+  border-radius: 22px;
+}
+.btn-big{
+  width: 100%;
+}
 
 /*alert*/
 .alert-error,
+.text-error,
 .text-important{
   color:#dc3334;
+}
+.text-success{
+  color: #67b222;
+}
+.text-warnning{
+  color: #1376ce;
+}
+.text-disable{
+  color: #888888;
 }
 /*input*/
 .input{
@@ -355,6 +367,12 @@ button{
 }
 .box-arrow{
   right: 14px;
+}
+.box1{
+  padding: 0;
+}
+.box1 .box-link{
+  padding: 16px 14px;
 }
 /*box-address*/
 .box-address{
