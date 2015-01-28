@@ -138,6 +138,9 @@ requirejs.config({
 
         // 订单详情
         'sf.b2c.mall.page.orderdetail': 'scripts/page/sf.b2c.mall.page.orderdetail',
-        'sf.b2c.mall.order.orderdetailcontent': 'scripts/order/sf.b2c.mall.order.orderdetailcontent'
+        'sf.b2c.mall.order.orderdetailcontent': 'scripts/order/sf.b2c.mall.order.orderdetailcontent',
+
+        // 个人中心
+        'sf.b2c.mall.page.center': 'scripts/page/sf.b2c.mall.page.center'
     }
 });
