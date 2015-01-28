@@ -95,6 +95,15 @@ define('sf.b2c.mall.component.register', [
           var html = can.view('templates/component/sf.b2c.mall.component.register.fillinfo.mustache', data, this.helpers);
           this.element.html(html)
           this.element.find('.register').fadeIn('slow');
+          $("#changePwdType").tap(function(){
+            $(this).toggleClass("active");
+
+            if ($(this).hasClass('active')){
+              $("#input-password")[0].type = 'password';
+            } else {
+              $("#input-password")[0].type = 'text';
+            }
+          })
         },
 
         'success': function(data) {
