@@ -138,6 +138,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           that.cancelOrderClick($(this));
         })
 
+        $('.received').tap(function(){
+          that.receiveClick($(this));
+        })
+
         $('#viewUserRoutes').tap(function() {
           that.viewUserRoutes();
         })
@@ -362,7 +366,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           })
       },
 
-      '.received click': function(element, event) {
+      receiveClick: function(element, event) {
         var that = this;
 
         var message = new SFMessage(null, {
