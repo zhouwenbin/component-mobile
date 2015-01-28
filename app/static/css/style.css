@@ -1121,7 +1121,7 @@ button{
 }
 .logistics a{
   color:#003cff;
-  }
+}
 /*弹窗*/
 .dialog-phone .center{
   width: 292px;
@@ -1146,4 +1146,9 @@ button{
   position: absolute;
   right: 15px;
   top: 15px;
+}
+/*banner*/
+.banner{
+  width: 100%;
+  margin: 10px 0;
 }
