@@ -14,6 +14,12 @@ define(
     var content = can.Control.extend({
 
       init: function(element, options) {
+
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = 'http://m.sfht.com/login.html?from=' + escape(window.location.pathname);
+          return false;
+        }
+
         this.render();
         this.supplement();
       },

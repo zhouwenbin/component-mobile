@@ -212,7 +212,7 @@ module.exports = function(grunt) {
         '<%= config.app %>/orderlist.html',
         '<%= config.app %>/orderdetail.html',
         '<%= config.app %>/center.html',
-        '<%= config.app %>/recaddrmanage'
+        '<%= config.app %>/recaddrmanage.html'
       ]
     },
 
@@ -548,7 +548,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.center.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.recaddrmanage.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
             'sf.b2c.mall.component.recaddrmanage',
