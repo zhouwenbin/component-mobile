@@ -3,7 +3,7 @@
     <div class="orderdetail-r1">{{{uploadIDCardTips}}}</div>
     <ul class="box orderdetail-r2 clearfix">
       <li>订单号：{{orderId}}</li>
-      <li>2014/12/20 13:50创建</li>
+      <li>{{sf.time gmtCreate}}创建</li>
       <li>订单总额：￥{{sf.price allTotalPrice}}</li>
       <li>{{status}} {{{operationHTML}}}</li>
     </ul>

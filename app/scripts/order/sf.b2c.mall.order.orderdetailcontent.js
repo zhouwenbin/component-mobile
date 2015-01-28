@@ -68,6 +68,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             that.options.orderId = data.orderId;
             that.options.recId = data.orderItem.rcvrId;
+            that.options.gmtCreate = data.orderItem.gmtCreate;
 
             //data.orderItem.orderStatus = "SUBMITED";
             //data.orderItem.rcvrState = 0
