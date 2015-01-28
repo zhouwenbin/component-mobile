@@ -43,7 +43,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
 
           var html = can.view('templates/component/sf.b2c.mall.component.recaddrmanage.mustache', that.adapter4List.addrs);
           that.element.html(html);
-          debugger;
+
           //绑定事件
           $('#delete').tap(function() {
             that.deleteRecAddrClick($(this));
