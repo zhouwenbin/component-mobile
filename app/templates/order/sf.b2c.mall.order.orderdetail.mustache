@@ -1,0 +1,122 @@
+  <!--订单详情-->
+  <section class="orderdetail" id="orderdetail">
+    <div class="orderdetail-r1">{{{uploadIDCardTips}}}</div>
+    <ul class="box orderdetail-r2 clearfix">
+      <li>订单号：{{orderId}}</li>
+      <li>2014/12/20 13:50创建</li>
+      <li>订单总额：￥{{sf.price allTotalPrice}}</li>
+      <li>{{status}} {{{operationHTML}}}</li>
+    </ul>
+    <div class="orderdetail-r3">
+      <a href="javascript:void(0)" id="viewUserRoutes">
+        {{firstRoute.gmtHappened}} {{firstRoute.description}} {{firstRoute.operator}}
+        {{#if firstRoute}}
+          <span class="icon icon13 center-vertical"></span>
+        {{else}}
+          暂无物流信息
+        {{/if}}
+      </a>
+    </div>
+    <div class="box info">
+      <ul class="info-r1">
+        <li>
+          <div class="fl info-r1c1">收货人：</div>
+          <div class="info-r1c2">{{receiveInfo.receiveName}}</div>
+        </li>
+        <li>
+          <div class="fl info-r1c1">身份证：</div>
+          <div class="info-r1c2">{{receiveInfo.certNo}} </div>
+        </li>
+        <li>
+          <div class="fl info-r1c1">手　机：</div>
+          <div class="info-r1c2">{{receiveInfo.mobile}}</div>
+        </li>
+        <li>
+          <div class="fl info-r1c1">地　址：</div>
+          <div class="info-r1c2">
+          <span>{{receiveInfo.country}}</span><span>{{receiveInfo.province}}</span><span>{{receiveInfo.city}}</span><span>{{receiveInfo.region}}</span><span>{{receiveInfo.detailAddress}}</span></div>
+        </li>
+        <li>
+          <div class="fl info-r1c1">邮　编：</div>
+          <div class="info-r1c2">{{receiveInfo.zipCode}}</div>
+        </li>
+      </ul>
+      <ul class="info-r2">
+        <li>支付方式：在线支付</li>
+        <li>配送方式：顺丰配送</li>
+      </ul>
+    </div>
+    <div class="table box">
+      {{#each productList}}
+      <div class="table-r1 clearfix">
+        <div class="table-r1c1 fl vertical-middle"><img src="{{sf.img imageUrl}}"></div>
+        <div class="table-r1c2">
+          <h3 class="ellipsis2">{{goodsName}}</h3>
+          <div class="text-important">x{{quantity}}</div>
+        </div>
+
+      </div>
+      <ul class="clearfix table-r2">
+        <li>{{{spec}}}</li>
+      </ul>
+      <ul class="clearfix table-r2">
+        <li>单价：￥{{sf.price price}}</li>
+        <li>优惠：￥0</li>
+      </ul>
+      <div class="table-r3">小计：<span class="text-important">￥{{sf.price totalPrice}}</span></div>
+      {{/each}}
+    </div>
+
+    <div class="orderdetail-r4 box">
+      <div class="clearfix">
+        <div class="orderdetail-r4c1 fl">
+          商品总额：<span class="text-important">¥{{sf.price allTotalPrice}}</span>
+        </div>
+        <div class="orderdetail-r4c2">
+          {{#if showTax}}
+            税额：<span class="text-important">¥0</span>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="clearfix">
+        <div class="orderdetail-r4c1 fl">
+          运费：<span class="text-important">＋¥0</span>
+        </div>
+        <div class="orderdetail-r4c2">
+          {{#if showShouldPayPrice}}<div class="table-fr3">实际应付款：<strong>￥{{sf.price shouldPayPrice}}</strong></div>{{/if}}
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!--订单详情-->
+  {{#if showPayButton}}
+  <section class="buy" id="buy">
+    <div class="buy-r1">
+      <a href="javascript:void(0)" class="btn btn-danger btn-big" id="gotopay">去支付</a>
+    </div>
+  </section>
+  {{/if}}
+
+  <section class="orderdetail" id="userRoutes">
+    <div class="orderdetail-r3">
+      <a href="">
+          {{#each userRoutes}}
+            {{gmtHappened}} {{description}} {{operator}}<br>
+          {{/each}}
+      </a>
+    </div>
+  </section>
+
+
+  <section class="mask dialog-phone" style="display:none">
+    <div class=" center">
+      <h2>客服电话：400-123-456123</h2>
+      <p>工作时间：周一至周日 8:00 - 18:00</p>
+      <a class="icon icon14" href="tel:400-123-456123"></a>
+      <div class="dialog-phone-r1">拨打</div>
+      <a href="javascript:" class="icon icon15" id="closeContactMe">关闭</a>
+    </div>
+
+  </section>

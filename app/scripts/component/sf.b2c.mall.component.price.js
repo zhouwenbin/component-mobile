@@ -34,13 +34,13 @@ define('sf.b2c.mall.component.price', [
                         .done(function (data) {
                             _.each(data.value, function (value, key, list) {
                                 var $el = that.element.find('[data-itemId=' + value.itemId + ']');
-                                var sellingPrice = value.originPrice / 100;
-                                var originPrice = value.sellingPrice / 100;
+                                var sellingPrice = value.sellingPrice / 100;
+                                var originPrice = value.originPrice / 100;
                                 var discount = (value.sellingPrice * 10 / value.originPrice).toFixed(1);
                                 $el.find('.product-selling-price').text(CONST_CN_CURRENCY_CHAR + sellingPrice);
                                 if (originPrice != 0 && sellingPrice < originPrice) {
                                     $el.find('.product-origin-price').text(CONST_CN_CURRENCY_CHAR + originPrice);
-                                    $el.find('.product-discount').text('<span class="label-danger">' + discount + '折</span>');
+                                    $el.find('.product-discount').append('<span class="label-danger">' + discount + '折</span>');
                                 }
                                 if (value.status == 3) {//在售状态商品
                                     if (value.soldOut) {

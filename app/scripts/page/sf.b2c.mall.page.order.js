@@ -3,7 +3,7 @@
 define(
   [
     'can',
-    'jquery',
+    'zepto',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.order.selectreceiveaddr',
     'sf.b2c.mall.order.iteminfo'

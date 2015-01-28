@@ -2,7 +2,7 @@ define(
   'sf.b2c.mall.order.fn',
 
   [
-    'jquery',
+    'zepto',
     'can',
     'underscore',
     'sf.b2c.mall.api.order.requestPayV2'
@@ -16,7 +16,7 @@ define(
       payV2: function (data, callback) {
         requestPayV2.setData({
           "orderId": data.orderid,
-          'payType': 'alipay'
+          'payType': 'alipay_forex_wap'
         });
 
         requestPayV2

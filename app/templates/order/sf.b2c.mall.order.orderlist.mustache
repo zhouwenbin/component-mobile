@@ -1,0 +1,62 @@
+<!--订单列表-->
+<section class="tab">
+  <div class="tab-h fixed" style="z-index:999">
+    <ul class="clearfix">
+      <li class="active" id="notCompleteOrderListTabhead">未完成({{notCompletedLength}})</li>
+      <li id="completeOrderListTabhead">完成</li>
+    </ul>
+  </div>
+  <ul class="tab-b active orderlist" id="notCompletedTab">
+    {{#each notCompletedOrderList}}
+      <li class="box">
+        <div class="orderlist-r1 clearfix">
+          <div class="orderlist-r1c1 fl">{{sf.time gmtCreate}}</div>
+          <div class="orderlist-r1c2 fr">{{orderStatus}}</div>
+        </div>
+        <div class="orderlist-r2 clearfix viewOrder" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
+          <div class="orderlist-r2c1 fl vertical-middle">
+            <img src="{{sf.img imageUrl}}" alt="">
+          </div>
+          <div class="orderlist-r2c2">
+            <h3 class="ellipsis2">{{goodsName}}</h3>
+            <strong>¥{{sf.price totalPrice - discount}}</strong>
+          </div>
+        </div>
+        <div class="orderlist-r3 clearfix">
+          <div class="orderlist-r3c1 fl">订单号：{{orderId}}</div>
+          <div class="orderlist-r3c2 fr" id="operationarea" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
+          {{{optionHMTL}}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+
+  <ul class="tab-b active orderlist" id="completedTab">
+    {{#each completedOrderList}}
+      <li class="box">
+        <div class="orderlist-r1 clearfix">
+          <div class="orderlist-r1c1 fl">{{sf.time gmtCreate}}</div>
+          <div class="orderlist-r1c2 fr">{{orderStatus}}</div>
+        </div>
+        <div class="orderlist-r2 clearfix viewOrder" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
+          <div class="orderlist-r2c1 fl vertical-middle">
+            <img src="{{sf.img imageUrl}}" alt="">
+          </div>
+          <div class="orderlist-r2c2">
+            <h3 class="ellipsis2">{{goodsName}}</h3>
+            <strong>¥{{sf.price totalPrice - discount}}</strong>
+          </div>
+        </div>
+        <div class="orderlist-r3 clearfix">
+          <div class="orderlist-r3c1 fl">订单号：{{orderId}}</div>
+          <div class="orderlist-r3c2 fr" id="operationarea" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
+          {{{optionHMTL}}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+  <ul class="tab-b">
+
+  </ul>
+</section>
+<!--订单列表-->
