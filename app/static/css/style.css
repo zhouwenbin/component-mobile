@@ -236,6 +236,22 @@ button{
   height: 156px;
   background-position: -294px 0;
 }
+.icon21{
+  width: 28px;
+  height: 31px;
+  background-position: -124px -21px;
+}
+.icon22{
+  width: 39px;
+  height: 28px;
+  background-position: -157px -23px;
+}
+.icon23{
+  width: 36px;
+  height: 30px;
+  background-position: -201px -24px;
+}
+
 /*btn*/
 .btn{
   display:inline-block;
@@ -1212,6 +1228,24 @@ button{
   position: absolute;
   right: 15px;
   top: 15px;
+}
+.dialog1 .center{
+  padding-top: 22px;
+  padding-bottom: 29px;
+}
+.dialog1 h2{
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+  
+}
+.dialog1 p{
+  margin-bottom: 6px;
+}
+.dialog1 .btn{
+  margin-top: 11px;
+  padding: 0 45px;
 }
 /*banner*/
 .banner{
