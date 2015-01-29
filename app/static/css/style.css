@@ -507,6 +507,7 @@ button{
   position: -webkit-sticky;
   position: sticky;
   height: 43px;
+  z-index: 1;
 }
 .detail-h li{
   float: left;
@@ -922,6 +923,7 @@ button{
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: 1;
 }
  /*dialog*/
  .dialog-center{
@@ -988,9 +990,7 @@ button{
   color: #999;
 }
 /*orderlist*/
-.orderlist{
-  background: #f6f8f9;
-}
+
 .orderlist li{
   padding: 14px;
   margin-bottom: 6px;
