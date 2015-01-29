@@ -196,6 +196,40 @@ button{
   height: 10px;
   background-position: -121px 0;
 }
+.icon14{
+  width: 43px;
+  height: 43px;
+  background-position: -84px -71px;
+}
+.icon15{
+  width: 13px;
+  height: 13px;
+  background-position: -132px 0;
+  text-indent: -999em;
+}
+.icon16{
+  width: 79px;
+  height: 95px;
+  background-position: -82px -120px;
+}
+.icon17{
+  width: 62px;
+  height: 62px;
+  background-position: 0 -378px;
+}
+.icon18{
+  width: 51px;
+  height: 41px;
+  background-position: -67px -393px;
+}
+.icon19{
+  width: 19px;
+  height: 16px;
+  background-position: -171px 0;
+}
+.icon19.active{
+  background-position: -147px 0;
+}
 /*btn*/
 .btn{
   display:inline-block;
@@ -208,9 +242,11 @@ button{
   padding: 0 15px;
 
 }
-.btn-big{
-  width: 100%;
+.btn:active{
+   -webkit-filter:brightness(0.9);
+  box-shadow:inset 0 3px 5px rgba(0,0,0,.125);
 }
+
 
 .btn-normal,
 .btn.normal{
@@ -234,18 +270,38 @@ button{
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
 }
-.btn-warnning{
+.btn-warnning,
+.btn.warnning{
   background: #1376ce;
+  color: #fff;
+}
+
+.btn-success,
+.btn.success{
+  background: #67b222;
   color: #fff;
 }
 .btn-radius{
   border-radius: 22px;
 }
+.btn-big{
+  width: 100%;
+}
 
 /*alert*/
 .alert-error,
+.text-error,
 .text-important{
   color:#dc3334;
+}
+.text-success{
+  color: #67b222;
+}
+.text-warnning{
+  color: #1376ce;
+}
+.text-disable{
+  color: #888888;
 }
 /*input*/
 .input{
@@ -308,6 +364,19 @@ button{
   right: -2px;
   bottom:-2px;
   margin-right: 0;
+}
+.box-link{
+  display: block;
+  position: relative;
+}
+.box-arrow{
+  right: 14px;
+}
+.box1{
+  padding: 0;
+}
+.box1 .box-link{
+  padding: 16px 14px;
 }
 /*box-address*/
 .box-address{
@@ -977,6 +1046,14 @@ button{
 .orderlist-r3c2 .btn{
   color: #000;
 }
+.orderlist .orderlist-none{
+  padding-top: 80px;
+  text-align: center;
+}
+.orderlist-none p{
+  font-size: 14px;
+  margin-top: 27px;
+}
 /*tab*/
 .tab-h{
   height: 43px;
@@ -1023,6 +1100,12 @@ button{
   color: #7f7f7f;
   padding: 0 3px;
 }
+.orderdetail-r2 a{
+  color: #7f7f7f;
+  text-decoration: underline;
+  float: right;
+}
+
 .orderdetail-r2 li:nth-child(3){
   color: #000;
 }
@@ -1042,10 +1125,12 @@ button{
   font-size: 14px;
   line-height: 24px;
 }
-.orderdetail-r4c2 span{
+.orderdetail-r4c2 strong{
   font-size: 24px;
   vertical-align: top;
+  font-weight: normal;
 }
+
 .orderdetail-r4c1{
   width: 127px;
 }
@@ -1073,3 +1158,234 @@ button{
 .info-r1c2 span{
   margin-right: 5px;
 }
+/*物流*/
+.logistics{
+  background: #fff;
+}
+
+.logistics li{
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+.logistics ul{
+  background: #f6f8f9;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+.logistics a{
+  color:#003cff;
+}
+/*弹窗*/
+.dialog-phone .center{
+  width: 292px;
+  background: #fff;
+  text-align: center;
+  padding-top: 39px;
+  padding-bottom: 21px;
+  border-radius: 2px;
+}
+.dialog-phone h2{
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+.dialog-phone p{
+  margin-bottom: 13px;
+}
+.dialog-phone-r1{
+  margin-top:4px 
+}
+.dialog-phone .icon15{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+/*banner*/
+.banner{
+  width: 100%;
+  margin: 10px 0;
+}
+/*404*/
+.pagenone{
+  text-align: center;
+  padding-top: 100px;
+}
+.pagenone p{
+  margin-top: 20px;
+}
+.pagenone p a{
+  margin: 0 10px;
+  text-decoration: underline;
+}
+.pagenone .body{
+  stroke: #000;
+  fill: #fff;
+  stroke-width:1.5;
+  stroke-dasharray: 530;
+  stroke-dashoffset: 530;
+  animation:body 1s linear forwards,
+            body-fill 1s linear 2.5s forwards
+}
+@keyframes body{
+  100%{
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes body-fill{
+  100%{
+    fill:#D2525E;
+    stroke-width:0;
+  }
+}
+.pagenone .eye-left{
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation:line1 0.5s linear 1s forwards,
+    shake 0.5s linear 3.5s forwards;
+}
+.pagenone .eye-right{
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation:line1 0.5s linear 1.5s forwards,
+    shake 0.5s linear 3.5s forwards;
+}
+@keyframes line1{
+  100%{
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes shake{
+  10%,30%,50%{
+    transform: translatey(-6px);
+  }
+  20%,40%,60%{
+    transform: translatey(-3px);
+  }
+  100%{
+    transform: translatey(0);
+  }
+}
+.pagenone .mouse{
+  stroke-width:1.5;
+  stroke: #000;
+  fill: #fff;
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation:mouse 0.5s linear 2s forwards,
+            mouse-fill 1s linear 2.5s forwards;
+}
+@keyframes mouse{
+  100%{
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes mouse-fill{
+  100%{
+    fill:#fff;
+    stroke-width:0;
+  }
+}
+/*person*/
+.person{
+  background: #fafafa;
+}
+.person-r1{
+  font-size: 17px;
+  color: #fff;
+  text-align: center;
+  height: 200px;
+  line-height: 200px;
+  background: url(../img/person.jpg) no-repeat;
+  background-size: cover;
+}
+.person-r2{
+  padding-top: 48px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.person-r3{
+  text-align: center;
+  margin-bottom: 58px;
+  font-size: 14px;
+}
+.person-r4{
+  margin-bottom: 8px;
+}
+.person .box-link{
+  color: #888888;
+  font-size: 14px;
+}
+/*login*/
+.login ol{
+  padding: 33px 13px 3px;
+}
+.login li{
+  margin-bottom: 11px;
+  position: relative;
+}
+.login-r1{
+  border-bottom: 1px solid #ccc;
+  padding: 0 13px 40px;
+  text-align: center;
+}
+.login-r1 a{
+  color: #888888;
+  text-decoration: underline;
+}
+.login-r2{
+  text-align: center;
+  padding: 31px 0;
+  background: #f7f7f7;
+  color: #a3a2a3;
+}
+.login-r2 .icon18{
+  margin-bottom: 9px;
+}
+.login .input{
+  height: 43px;
+  line-height: 43px;
+  margin-bottom: 3px;
+}
+.login-r3 .btn{
+  margin-left: 5px;
+  font-size: 14px;
+}
+.login-r3c1{
+  width: 130px;
+  margin-left: 7px;
+}
+.login-r3c1 a{
+  color: #a3a2a3;
+  margin-left: 5px;
+}
+.login-r3c2{
+  overflow: hidden;
+}
+.login .icon19{
+  position: absolute;
+  top: 14px;
+  right: 9px
+}
+ /*label*/
+ .label {
+  height: 21px;
+  line-height: 21px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 0 15px;
+  display: inline-block;
+  vertical-align: middle;
+ }
+ .label-error{
+  background: #eb6877;
+ }
+ .label-success{
+  background: #67b222;
+ }
+ .label-waining{
+  background: #a1d0ed;
+ }
+ .label-disabled{
+  background: #ccc;
+ }

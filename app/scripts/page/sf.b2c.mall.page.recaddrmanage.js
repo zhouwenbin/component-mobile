@@ -5,13 +5,13 @@ define(
     'can',
     'zepto',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.order.orderdetailcontent'
+    'sf.b2c.mall.component.recaddrmanage'
   ],
 
-  function(can, $, SFFrameworkComm, SFOrderDetailContent) {
+  function(can, $, SFFrameworkComm, SFRecaddrmanage) {
     SFFrameworkComm.register(3);
 
-    var order = can.Control.extend({
+    var content = can.Control.extend({
 
       init: function(element, options) {
 
@@ -21,10 +21,11 @@ define(
         }
 
         this.render();
+        this.supplement();
       },
 
       render: function() {
-        new SFOrderDetailContent('.sf-b2c-mall-orderdetail');
+        new SFRecaddrmanage('.sf-b2c-mall-center-recaddrmanage');
       },
 
       supplement: function() {
@@ -32,5 +33,5 @@ define(
       }
     });
 
-    new order('#order');
+    new content('#content');
   });
