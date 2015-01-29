@@ -64,9 +64,9 @@ define('sf.b2c.mall.order.orderlistcontent', [
                   } else {
                     order.imageUrl = JSON.parse(order.orderGoodsItemList[0].imageUrl)[0];
                   }
-                  if (typeof order.orderGoodsItemList[0].spec !== 'undefined') {
-                    order.spec = order.orderGoodsItemList[0].spec.split(',').join("&nbsp;/&nbsp;");
-                  }
+                  // if (typeof order.orderGoodsItemList[0].spec !== 'undefined') {
+                  //   order.spec = order.orderGoodsItemList[0].spec.split(',').join("&nbsp;/&nbsp;");
+                  // }
                   order.optionHMTL = that.getOptionHTML(that.optionMap[order.orderStatus]);
                   order.orderStatus = that.statsMap[order.orderStatus];
                 }
