@@ -95,6 +95,15 @@ define('sf.b2c.mall.component.register', [
           var html = can.view('templates/component/sf.b2c.mall.component.register.fillinfo.mustache', data, this.helpers);
           this.element.html(html)
           this.element.find('.register').fadeIn('slow');
+          $("#changePwdType").tap(function(){
+            $(this).toggleClass("active");
+
+            if ($(this).hasClass('active')){
+              $("#input-password")[0].type = 'password';
+            } else {
+              $("#input-password")[0].type = 'text';
+            }
+          })
         },
 
         'success': function(data) {
@@ -283,7 +292,8 @@ define('sf.b2c.mall.component.register', [
           this.component.mobileRegister.sendRequest()
             .done(function(data) {
               if (data.csrfToken) {
-                // store.set('csrfToken', data.csrfToken);
+                store.set('type', 'MOBILE');
+                store.set('nickname', mobile);
                 can.route.attr({
                   'tag': 'success',
                   'csrfToken': data.csrfToken

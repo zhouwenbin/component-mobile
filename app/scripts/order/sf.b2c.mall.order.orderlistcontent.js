@@ -43,11 +43,11 @@ define('sf.b2c.mall.order.orderlistcontent', [
         getOrderList
           .sendRequest()
           .done(function(data) {
+
+            that.options.notCompletedOrderList = [];
+            that.options.completedOrderList = [];
+
             if (data.orders) {
-
-              that.options.notCompletedOrderList = [];
-              that.options.completedOrderList = [];
-
               _.each(data.orders, function(order) {
 
                 //“待审核”“采购中”“待发货”“正在出库”“已发货”
@@ -64,16 +64,18 @@ define('sf.b2c.mall.order.orderlistcontent', [
                   } else {
                     order.imageUrl = JSON.parse(order.orderGoodsItemList[0].imageUrl)[0];
                   }
-                  if (typeof order.orderGoodsItemList[0].spec !== 'undefined') {
-                    order.spec = order.orderGoodsItemList[0].spec.split(',').join("&nbsp;/&nbsp;");
-                  }
+                  // if (typeof order.orderGoodsItemList[0].spec !== 'undefined') {
+                  //   order.spec = order.orderGoodsItemList[0].spec.split(',').join("&nbsp;/&nbsp;");
+                  // }
                   order.optionHMTL = that.getOptionHTML(that.optionMap[order.orderStatus]);
-                  order.showRouter = that.routeMap[order.orderStatus];
                   order.orderStatus = that.statsMap[order.orderStatus];
                 }
               })
 
               that.options.notCompletedLength = that.options.notCompletedOrderList.length;
+
+              that.options.notCompletedOrderListIsNotEmpty = (that.options.notCompletedOrderList.length > 0);
+              that.options.completedOrderListIsNotEmpty = (that.options.completedOrderList.length > 0);
 
               var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
               that.element.html(html);
@@ -86,11 +88,13 @@ define('sf.b2c.mall.order.orderlistcontent', [
                 that.viewOrderClick($(this));
               })
             } else {
-              var noDataTemplate = can.view.mustache(that.noDataTemplate());
-              that.element.html(noDataTemplate());
-            }
+              that.options.notCompletedLength = 0;
+              that.options.notCompletedOrderListIsNotEmpty = false;
+              that.options.completedOrderListIsNotEmpty = false;
 
-            $('.loadingDIV').hide();
+              var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
+              that.element.html(html);
+            }
 
             $('#notCompleteOrderListTabhead').tap(function() {
               that.switchTab($(this), 'notCompletedTab');
@@ -100,12 +104,14 @@ define('sf.b2c.mall.order.orderlistcontent', [
               that.switchTab($(this), 'completedTab');
             })
 
-            if (that.options.notCompletedOrderList.length == 0) {
+            if (that.options.notCompletedOrderList.length == 0 && that.options.completedOrderList.length > 0) {
               that.switchTab($('#completeOrderListTabhead'), 'completedTab');
             } else {
               $('#completedTab').hide();
               $('#notCompletedTab').show();
             }
+
+            $('.loadingDIV').hide();
 
           })
           .fail(function(error) {
@@ -144,29 +150,6 @@ define('sf.b2c.mall.order.orderlistcontent', [
         map[tab].apply(this);
       },
 
-      noDataTemplate: function() {
-        return '<div class="table table-1">' +
-          '<div class="table-h clearfix">' +
-          '<div class="table-c1 fl">' +
-          '订单信息' +
-          '</div>' +
-          '<div class="table-c2 fl">' +
-          '收货人' +
-          '</div>' +
-          '<div class="table-c3 fl">' +
-          '订单金额' +
-          '</div>' +
-          '<div class="table-c4 fl">' +
-          '订单状态' +
-          '</div>' +
-          '<div class="table-c5 fl">' +
-          '操作' +
-          '</div>' +
-          '</div>' +
-          '<p class="table-none">您暂时没有订单哦~赶快去逛逛吧~~<a href="http://www.sfht.com/index.html">去首页</a></p>' +
-          '</div>'
-      },
-
       /**
        * [getOptionHTML 获得操作Html拼接]
        * @param  {[type]} operationsArr 操作数组
@@ -182,25 +165,6 @@ define('sf.b2c.mall.order.orderlistcontent', [
         })
 
         return result.join("");
-      },
-
-      /**
-       * [routeMap 查看物流状态标示 哪些状态可以查看物流]
-       */
-      routeMap: {
-        'SUBMITED': false,
-        'AUTO_CANCEL': false,
-        'USER_CANCEL': false,
-        'AUDITING': false,
-        'OPERATION_CANCEL': false,
-        'BUYING': false,
-        'BUYING_EXCEPTION': false,
-        'WAIT_SHIPPING': false,
-        'SHIPPING': false,
-        'LOGISTICS_EXCEPTION': false,
-        'SHIPPED': true,
-        'COMPLETED': true,
-        'AUTO_COMPLETED': true
       },
 
       /**

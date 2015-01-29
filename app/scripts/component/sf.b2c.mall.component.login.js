@@ -65,7 +65,7 @@ define('sf.b2c.mall.component.login', [
         this.getVerifiedCode();
 
         var that = this;
-        $('.btn-register').tap(function() {
+        $('#gotoLogin').tap(function() {
           that.loginButtonClick();
         })
 
@@ -320,6 +320,8 @@ define('sf.b2c.mall.component.login', [
           .done(function(data) {
             if (data.userId) {
               that.data.attr('autologin')
+              store.set('type', that.checkTypeOfAccount(that.data.attr('username')));
+              store.set('nickname', that.data.attr('username'));
 
               // deparam过程 -- 从url中获取需要请求的sku参数
               var params = can.deparam(window.location.search.substr(1));
