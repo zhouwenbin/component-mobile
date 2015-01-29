@@ -43,11 +43,11 @@ define('sf.b2c.mall.order.orderlistcontent', [
         getOrderList
           .sendRequest()
           .done(function(data) {
+
+            that.options.notCompletedOrderList = [];
+            that.options.completedOrderList = [];
+
             if (data.orders) {
-
-              that.options.notCompletedOrderList = [];
-              that.options.completedOrderList = [];
-
               _.each(data.orders, function(order) {
 
                 //“待审核”“采购中”“待发货”“正在出库”“已发货”
@@ -75,6 +75,9 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
               that.options.notCompletedLength = that.options.notCompletedOrderList.length;
 
+              that.options.notCompletedOrderListIsNotEmpty = (that.options.notCompletedOrderList.length > 0);
+              that.options.completedOrderListIsNotEmpty = (that.options.completedOrderList.length > 0);
+
               var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
               that.element.html(html);
 
@@ -86,11 +89,13 @@ define('sf.b2c.mall.order.orderlistcontent', [
                 that.viewOrderClick($(this));
               })
             } else {
-              var noDataTemplate = can.view.mustache(that.noDataTemplate());
-              that.element.html(noDataTemplate());
-            }
+              that.options.notCompletedLength = 0;
+              that.options.notCompletedOrderListIsNotEmpty = false;
+              that.options.completedOrderListIsNotEmpty = false;
 
-            $('.loadingDIV').hide();
+              var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
+              that.element.html(html);
+            }
 
             $('#notCompleteOrderListTabhead').tap(function() {
               that.switchTab($(this), 'notCompletedTab');
@@ -100,12 +105,14 @@ define('sf.b2c.mall.order.orderlistcontent', [
               that.switchTab($(this), 'completedTab');
             })
 
-            if (that.options.notCompletedOrderList.length == 0) {
+            if (that.options.notCompletedOrderList.length == 0 && that.options.completedOrderList.length > 0) {
               that.switchTab($('#completeOrderListTabhead'), 'completedTab');
             } else {
               $('#completedTab').hide();
               $('#notCompletedTab').show();
             }
+
+            $('.loadingDIV').hide();
 
           })
           .fail(function(error) {
