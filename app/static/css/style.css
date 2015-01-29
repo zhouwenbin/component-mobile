@@ -1270,15 +1270,15 @@ button{
   stroke-width:1.5;
   stroke-dasharray: 530;
   stroke-dashoffset: 530;
-  animation:body 1s linear forwards,
+  -webkit-animation:body 1s linear forwards,
             body-fill 1s linear 2.5s forwards
 }
-@keyframes body{
+@-webkit-keyframes body{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes body-fill{
+@-webkit-keyframes body-fill{
   100%{
     fill:#D2525E;
     stroke-width:0;
@@ -1287,21 +1287,21 @@ button{
 .pagenone .eye-left{
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  animation:line1 0.5s linear 1s forwards,
+  -webkit-animation:line1 0.5s linear 1s forwards,
     shake 0.5s linear 3.5s forwards;
 }
 .pagenone .eye-right{
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  animation:line1 0.5s linear 1.5s forwards,
+  -webkit-animation:line1 0.5s linear 1.5s forwards,
     shake 0.5s linear 3.5s forwards;
 }
-@keyframes line1{
+@-webkit-keyframes line1{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes shake{
+@-webkit-keyframes shake{
   10%,30%,50%{
     transform: translatey(-6px);
   }
@@ -1318,15 +1318,15 @@ button{
   fill: #fff;
   stroke-dasharray: 80;
   stroke-dashoffset: 80;
-  animation:mouse 0.5s linear 2s forwards,
+  -webkit-animation:mouse 0.5s linear 2s forwards,
             mouse-fill 1s linear 2.5s forwards;
 }
-@keyframes mouse{
+@-webkit-keyframes mouse{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes mouse-fill{
+@-webkit-keyframes mouse-fill{
   100%{
     fill:#fff;
     stroke-width:0;
