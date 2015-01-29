@@ -21,13 +21,14 @@ input,select{vertical-align:middle}
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   font-size: 12px;
+  color: #000;
 }
 a, img {
   -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
 }
 a{
   text-decoration: none;
-  color:#333;
+  color:#000;
 }
 html, body {
   -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
@@ -230,6 +231,27 @@ button{
 .icon19.active{
   background-position: -147px 0;
 }
+.icon20{
+  width: 156px;
+  height: 156px;
+  background-position: -294px 0;
+}
+.icon21{
+  width: 28px;
+  height: 31px;
+  background-position: -124px -21px;
+}
+.icon22{
+  width: 39px;
+  height: 28px;
+  background-position: -157px -23px;
+}
+.icon23{
+  width: 36px;
+  height: 30px;
+  background-position: -201px -24px;
+}
+
 /*btn*/
 .btn{
   display:inline-block;
@@ -450,6 +472,7 @@ button{
 /*goods*/
 .goods-r1{
   margin-bottom: 20px;
+  position: relative;
 }
 
 .goods-b{
@@ -490,6 +513,10 @@ button{
   line-height: 24px;
   font-weight: bold;
   margin-bottom: 17px;
+}
+.goods .mask{
+  position: absolute;
+  background-color: rgba(255,255,255,0.5);
 }
 /*立即购买*/
 .buy{
@@ -614,7 +641,6 @@ button{
   overflow: hidden;
   visibility: hidden;
   position: relative;
-  max-height: 320px;
   text-align: center;
 }
 .swipe-wrap {
@@ -644,8 +670,7 @@ button{
   background: #dc3334;
 }
 .swipe img{
-  max-width: 320px;
-  max-height: 320px;
+  width: 100%;
 }
 
 /*订单*/
@@ -749,6 +774,10 @@ button{
   padding: 14px;
   margin-left: -3px;
 }
+.list .mask{
+  position: absolute;
+  background-color: rgba(255,255,255,0.5);
+}
 .list li{
   float: left;
   width: 48.8%;
@@ -771,9 +800,6 @@ button{
 .list-r1{
   position: relative;
   margin-bottom: 6px;
-}
-.list-r1 .mask{
-  position: absolute;
 }
 .list-price{
   font-size: 15px;
@@ -798,6 +824,9 @@ button{
 .list-r2 img{
   width: 19px;
   vertical-align: middle;
+}
+.list a:visited{
+  color:#000;
 }
 /*支付成功*/
 .pay{
@@ -1200,6 +1229,24 @@ button{
   right: 15px;
   top: 15px;
 }
+.dialog1 .center{
+  padding-top: 22px;
+  padding-bottom: 29px;
+}
+.dialog1 h2{
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+  
+}
+.dialog1 p{
+  margin-bottom: 6px;
+}
+.dialog1 .btn{
+  margin-top: 11px;
+  padding: 0 45px;
+}
 /*banner*/
 .banner{
   width: 100%;
@@ -1223,15 +1270,15 @@ button{
   stroke-width:1.5;
   stroke-dasharray: 530;
   stroke-dashoffset: 530;
-  animation:body 1s linear forwards,
+  -webkit-animation:body 1s linear forwards,
             body-fill 1s linear 2.5s forwards
 }
-@keyframes body{
+@-webkit-keyframes body{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes body-fill{
+@-webkit-keyframes body-fill{
   100%{
     fill:#D2525E;
     stroke-width:0;
@@ -1240,21 +1287,21 @@ button{
 .pagenone .eye-left{
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  animation:line1 0.5s linear 1s forwards,
+  -webkit-animation:line1 0.5s linear 1s forwards,
     shake 0.5s linear 3.5s forwards;
 }
 .pagenone .eye-right{
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  animation:line1 0.5s linear 1.5s forwards,
+  -webkit-animation:line1 0.5s linear 1.5s forwards,
     shake 0.5s linear 3.5s forwards;
 }
-@keyframes line1{
+@-webkit-keyframes line1{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes shake{
+@-webkit-keyframes shake{
   10%,30%,50%{
     transform: translatey(-6px);
   }
@@ -1271,15 +1318,15 @@ button{
   fill: #fff;
   stroke-dasharray: 80;
   stroke-dashoffset: 80;
-  animation:mouse 0.5s linear 2s forwards,
+  -webkit-animation:mouse 0.5s linear 2s forwards,
             mouse-fill 1s linear 2.5s forwards;
 }
-@keyframes mouse{
+@-webkit-keyframes mouse{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes mouse-fill{
+@-webkit-keyframes mouse-fill{
   100%{
     fill:#fff;
     stroke-width:0;
@@ -1388,4 +1435,11 @@ button{
  }
  .label-disabled{
   background: #ccc;
+ }
+ .footer{
+  color:rgba(0,0,0,0.3);
+  font-size: 9px;
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 17px;
  }
