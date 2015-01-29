@@ -323,7 +323,7 @@ module.exports = function(grunt) {
           dest: '<%= config.dist %>',
           src: [
             '*.{ico,png,txt}',
-            'static/img/{,*/}*',
+            // 'static/img/{,*/}*',
 
             // '{,*/}*.html',
             // 'index.html',
@@ -354,6 +354,12 @@ module.exports = function(grunt) {
         }, {
           src: '<%= config.app %>/css/browser.css',
           dest: '<%= config.dist %>/css/browser.css'
+        }, {
+          expand: true,
+          dot: true,
+          cwd: '<%= config.app %>/static/',
+          src: 'img/{,*}/*',
+          dest: '<%= config.dist %>'
         }]
       },
       styles: {
