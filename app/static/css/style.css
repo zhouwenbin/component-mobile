@@ -21,6 +21,7 @@ input,select{vertical-align:middle}
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   font-size: 12px;
+  color: #000;
 }
 a, img {
   -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
@@ -229,6 +230,11 @@ button{
 }
 .icon19.active{
   background-position: -147px 0;
+}
+.icon20{
+  width: 156px;
+  height: 156px;
+  background-position: -294px 0;
 }
 /*btn*/
 .btn{
@@ -491,6 +497,9 @@ button{
   font-weight: bold;
   margin-bottom: 17px;
 }
+.goods .mask{
+  background-color: rgba(255,255,255,0.5);
+}
 /*立即购买*/
 .buy{
   height: 45px;
@@ -747,6 +756,9 @@ button{
   padding: 14px;
   margin-left: -3px;
 }
+.list .mask{
+  background-color: rgba(255,255,255,0.5);
+}
 .list li{
   float: left;
   width: 48.8%;
@@ -796,6 +808,9 @@ button{
 .list-r2 img{
   width: 19px;
   vertical-align: middle;
+}
+.list a:visited{
+  color:#000;
 }
 /*支付成功*/
 .pay{
