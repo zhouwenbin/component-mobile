@@ -456,6 +456,7 @@ button{
 /*goods*/
 .goods-r1{
   margin-bottom: 20px;
+  position: relative;
 }
 
 .goods-b{
@@ -498,6 +499,7 @@ button{
   margin-bottom: 17px;
 }
 .goods .mask{
+  position: absolute;
   background-color: rgba(255,255,255,0.5);
 }
 /*立即购买*/
@@ -757,6 +759,7 @@ button{
   margin-left: -3px;
 }
 .list .mask{
+  position: absolute;
   background-color: rgba(255,255,255,0.5);
 }
 .list li{
@@ -781,9 +784,6 @@ button{
 .list-r1{
   position: relative;
   margin-bottom: 6px;
-}
-.list-r1 .mask{
-  position: absolute;
 }
 .list-price{
   font-size: 15px;
