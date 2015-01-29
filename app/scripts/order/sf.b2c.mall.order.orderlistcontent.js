@@ -68,7 +68,6 @@ define('sf.b2c.mall.order.orderlistcontent', [
                     order.spec = order.orderGoodsItemList[0].spec.split(',').join("&nbsp;/&nbsp;");
                   }
                   order.optionHMTL = that.getOptionHTML(that.optionMap[order.orderStatus]);
-                  order.showRouter = that.routeMap[order.orderStatus];
                   order.orderStatus = that.statsMap[order.orderStatus];
                 }
               })
@@ -151,29 +150,6 @@ define('sf.b2c.mall.order.orderlistcontent', [
         map[tab].apply(this);
       },
 
-      noDataTemplate: function() {
-        return '<div class="table table-1">' +
-          '<div class="table-h clearfix">' +
-          '<div class="table-c1 fl">' +
-          '订单信息' +
-          '</div>' +
-          '<div class="table-c2 fl">' +
-          '收货人' +
-          '</div>' +
-          '<div class="table-c3 fl">' +
-          '订单金额' +
-          '</div>' +
-          '<div class="table-c4 fl">' +
-          '订单状态' +
-          '</div>' +
-          '<div class="table-c5 fl">' +
-          '操作' +
-          '</div>' +
-          '</div>' +
-          '<p class="table-none">您暂时没有订单哦~赶快去逛逛吧~~<a href="http://www.sfht.com/index.html">去首页</a></p>' +
-          '</div>'
-      },
-
       /**
        * [getOptionHTML 获得操作Html拼接]
        * @param  {[type]} operationsArr 操作数组
@@ -189,25 +165,6 @@ define('sf.b2c.mall.order.orderlistcontent', [
         })
 
         return result.join("");
-      },
-
-      /**
-       * [routeMap 查看物流状态标示 哪些状态可以查看物流]
-       */
-      routeMap: {
-        'SUBMITED': false,
-        'AUTO_CANCEL': false,
-        'USER_CANCEL': false,
-        'AUDITING': false,
-        'OPERATION_CANCEL': false,
-        'BUYING': false,
-        'BUYING_EXCEPTION': false,
-        'WAIT_SHIPPING': false,
-        'SHIPPING': false,
-        'LOGISTICS_EXCEPTION': false,
-        'SHIPPED': true,
-        'COMPLETED': true,
-        'AUTO_COMPLETED': true
       },
 
       /**
