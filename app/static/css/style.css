@@ -27,7 +27,7 @@ a, img {
 }
 a{
   text-decoration: none;
-  color:#333;
+  color:#000;
 }
 html, body {
   -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
@@ -614,7 +614,6 @@ button{
   overflow: hidden;
   visibility: hidden;
   position: relative;
-  max-height: 320px;
   text-align: center;
 }
 .swipe-wrap {
@@ -644,8 +643,7 @@ button{
   background: #dc3334;
 }
 .swipe img{
-  max-width: 320px;
-  max-height: 320px;
+  width: 100%;
 }
 
 /*订单*/
