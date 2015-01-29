@@ -8,7 +8,7 @@
 // If you want to recursively match all subfolders, use:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -121,7 +121,7 @@ module.exports = function (grunt) {
         }]
       },
       extra: {
-        files:[{
+        files: [{
           dot: true,
           src: [
             '<%= config.dist %>/base',
@@ -211,7 +211,8 @@ module.exports = function (grunt) {
         '<%= config.app %>/gotopay.html',
         '<%= config.app %>/orderlist.html',
         '<%= config.app %>/orderdetail.html',
-        '<%= config.app %>/center.html'
+        '<%= config.app %>/center.html',
+        '<%= config.app %>/recaddrmanage.html'
       ]
     },
 
@@ -224,16 +225,16 @@ module.exports = function (grunt) {
           '<%= config.dist %>/styles'
         ],
         blockReplacements: {
-          js: function (block) {
-            if(block.dest === 'base'){
+          js: function(block) {
+            if (block.dest === 'base') {
               block.dest = config.base.dest;
               block.src = config.base.src
-            }else if (block.dest === 'com') {
+            } else if (block.dest === 'com') {
               block.dest = config.com;
               block.src = config.com
             }
 
-            return '<script src="'+block.dest+'"></script>';
+            return '<script src="' + block.dest + '"></script>';
           }
         }
       },
@@ -335,6 +336,7 @@ module.exports = function (grunt) {
             'orderlist.html',
             'orderdetail.html',
             'center.html',
+            'recaddrmanage.html',
 
             'json/*.json',
 
@@ -378,7 +380,7 @@ module.exports = function (grunt) {
       ]
     },
 
-    strip:{
+    strip: {
       main: {
         src: '<%= config.dist %>/scripts/**/*.js',
         options: {
@@ -409,7 +411,7 @@ module.exports = function (grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.detail.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'moment':'../bower_components/momentjs/min/moment.min',
+            'moment': '../bower_components/momentjs/min/moment.min',
             'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
           include: [
@@ -429,7 +431,7 @@ module.exports = function (grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'moment':'../bower_components/momentjs/min/moment.min',
+            'moment': '../bower_components/momentjs/min/moment.min',
             'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
           include: [
@@ -480,7 +482,7 @@ module.exports = function (grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.gotopay.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'moment':'../bower_components/momentjs/min/moment.min'
+            'moment': '../bower_components/momentjs/min/moment.min'
           },
           include: [
             'sf.helpers',
@@ -499,7 +501,7 @@ module.exports = function (grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.list.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'moment':'../bower_components/momentjs/min/moment.min'
+            'moment': '../bower_components/momentjs/min/moment.min'
           },
           include: [
             'sf.b2c.mall.order.orderlistcontent',
@@ -518,7 +520,7 @@ module.exports = function (grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.detail.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'moment':'../bower_components/momentjs/min/moment.min'
+            'moment': '../bower_components/momentjs/min/moment.min'
           },
           include: [
             'sf.b2c.mall.order.orderdetailcontent',
@@ -541,13 +543,28 @@ module.exports = function (grunt) {
           ],
           insertRequire: ['sf.b2c.mall.page.center']
         }
+      },
+      recaddrmanage: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.recaddrmanage.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          include: [
+            'sf.b2c.mall.component.recaddrmanage',
+            'sf.b2c.mall.page.recaddrmanage',
+            'sf.b2c.mall.adapter.regions',
+            'sf.b2c.mall.adapter.address.list'
+          ],
+          insertRequire: ['sf.b2c.mall.page.recaddrmanage']
+        }
       }
 
     }
   });
 
 
-  grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function (target) {
+  grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function(target) {
     if (grunt.option('allow-remote')) {
       grunt.config.set('connect.options.hostname', '0.0.0.0');
     }
@@ -565,12 +582,12 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function (target) {
+  grunt.registerTask('server', function(target) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run([target ? ('serve:' + target) : 'serve']);
   });
 
-  grunt.registerTask('test', function (target) {
+  grunt.registerTask('test', function(target) {
     if (target !== 'watch') {
       grunt.task.run([
         'clean:server',
@@ -585,7 +602,7 @@ module.exports = function (grunt) {
         'connect:test',
         'watch'
       ]);
-    }else{
+    } else {
       grunt.task.run([
         'connect:test',
         'mocha'
@@ -598,18 +615,18 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('build', function(target){
+  grunt.registerTask('build', function(target) {
     grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
       var arr = filename.split('.')
       if (arr[2] == 'com') {
-        config.com = '/scripts/base/'+filename
+        config.com = '/scripts/base/' + filename
       }
 
       if (filename.indexOf(target) > -1 && arr[2] == target) {
         config.target = target;
         config.base = {
-          dest: 'scripts/base/'+filename,
-          src: 'scripts/base/'+filename
+          dest: 'scripts/base/' + filename,
+          src: 'scripts/base/' + filename
         }
 
         grunt.task.run([
@@ -630,6 +647,7 @@ module.exports = function (grunt) {
           'requirejs:orderlist',
           'requirejs:orderdetail',
           'requirejs:center',
+          'requirejs:recaddrmanage',
 
           'usemin',
           // 'htmlmin',
