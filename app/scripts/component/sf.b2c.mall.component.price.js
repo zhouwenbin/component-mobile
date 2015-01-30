@@ -47,7 +47,7 @@ define('sf.b2c.mall.component.price', [
                                         $el.find('.product-status').append('<div class="mask"><span class="icon icon5 center">售完</span></div>');
                                     }
                                 } else {//不可售商品
-                                    $el.find('.product-status').append('<div class="mask"><span class="icon icon4 center">下架</span></div>');
+                                    $el.find('.product-status').append('<div class="mask"><span class="icon icon5 center">售完</span></div>');
                                 }
                             });
 
