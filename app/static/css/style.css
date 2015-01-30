@@ -254,6 +254,11 @@ button{
   height: 30px;
   background-position: -201px -24px;
 }
+.icon24{
+  width: 16px;
+  height: 20px;
+  background-position: -198px 0;
+}
 
 /*btn*/
 .btn{
@@ -1383,6 +1388,7 @@ button{
  .label-disabled{
   background: #ccc;
  }
+  /*尾部*/
  .footer{
   color:rgba(0,0,0,0.3);
   font-size: 9px;
@@ -1393,4 +1399,13 @@ button{
  
  .body1{
 	 background:#F6F8F9;
+ }
+ /*回到顶部*/
+ .top{
+  padding: 6px 8px;
+  background:rgba(0,0,0,0.1);
+  border-radius: 4px;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
  }
