@@ -4,13 +4,20 @@ define(
   [
     'can',
     'zepto',
+    'jweixin',
+    'sf.weixin',
+    'sf.util',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.order.orderlistcontent'
+    'sf.b2c.mall.order.orderlistcontent',
+    'sf.b2c.mall.widget.message',
+    'sf.weixin'
   ],
 
-  function(can, $, SFFrameworkComm, SFOrderListContent) {
+  function(can, $, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage) {
 
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
 
     var orderList = can.Control.extend({
 

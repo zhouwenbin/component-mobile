@@ -7,11 +7,16 @@ define(
     'swipe',
     'underscore',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.component.price'
+    'sf.b2c.mall.component.price',
+    'sf.weixin'
   ],
 
-  function(can, $, Swipe, _, SFFrameworkComm, ItemPrice) {
+  function(can, $, Swipe, _, SFFrameworkComm, ItemPrice, SFWeixin) {
+
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
+
     var home = can.Control.extend({
 
       init: function(element, options) {
