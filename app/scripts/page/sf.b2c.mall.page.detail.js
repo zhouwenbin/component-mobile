@@ -5,11 +5,10 @@ define(
     'can',
     'zepto',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.product.detailcontent',
-    'sf.weixin'
+    'sf.b2c.mall.product.detailcontent'
   ],
 
-  function(can, $, SFFrameworkComm, DetailContent, SFWeixin) {
+  function(can, $, SFFrameworkComm, DetailContent) {
     SFFrameworkComm.register(3);
 
     var content = can.Control.extend({
