@@ -7,10 +7,14 @@ define(
     'store',
     'sf.b2c.mall.api.user.getUserInfo',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.widget.message'
+    'sf.b2c.mall.widget.message',
+    'sf.weixin'
   ],
-  function(can, $, store, SFGetUserInfo, SFFrameworkComm, SFMessage) {
+  function(can, $, store, SFGetUserInfo, SFFrameworkComm, SFMessage, SFWeixin) {
+
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
 
     var center = can.Control.extend({
 

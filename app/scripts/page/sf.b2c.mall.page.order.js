@@ -6,11 +6,15 @@ define(
     'zepto',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.order.selectreceiveaddr',
-    'sf.b2c.mall.order.iteminfo'
+    'sf.b2c.mall.order.iteminfo',
+    'sf.weixin'
   ],
 
-  function(can, $, SFFrameworkComm, SelectReceiveAddr, ItemInfo) {
+  function(can, $, SFFrameworkComm, SelectReceiveAddr, ItemInfo, SFWeixin) {
+
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
 
     var order = can.Control.extend({
 

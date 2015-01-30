@@ -5,11 +5,15 @@ define(
     'can',
     'zepto',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.order.orderdetailcontent'
+    'sf.b2c.mall.order.orderdetailcontent',
+    'sf.weixin'
   ],
 
-  function(can, $, SFFrameworkComm, SFOrderDetailContent) {
+  function(can, $, SFFrameworkComm, SFOrderDetailContent, SFWeixin) {
+
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
 
     var order = can.Control.extend({
 

@@ -97,6 +97,8 @@ requirejs.config({
         // 公共组件
         'zepto': 'scripts/vendor/zepto',
         'swipe': 'scripts/vendor/swipe',
+        'jweixin': 'scripts/vendor/jweixin-1.0.0',
+        'sf.weixin': 'scripts/util/sf.weixin',
         'sf.helpers': 'scripts/util/sf.helpers',
         'sf.util': 'scripts/util/sf.util.fn',
         'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
