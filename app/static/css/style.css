@@ -855,84 +855,26 @@ button{
 }
 /*loading*/
 .loading{
-  width: 47px;
-  height:47px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-left: -24px;
-  margin-top: -24px;
-  -webkit-transform:rotate(45deg);
+position:absolute;
+top:50%;
+left:50%;
+width:24px;
+height:24px;
+-webkit-transform:translate(-50%,-50%);
+border-width: 3px;
+border-style:solid;
+border-color:#fff #fff rgba(255,255,255,.5) rgba(255,255,255,.5);
+border-radius:20px;
+-webkit-animation:rotate 1s linear infinite;
+-ms-animation:rotate 1s linear infinite;
 }
-.loading i{
-  width: 24px;
-  height: 24px;
-  background: #dd3e3f;
-  position: absolute;
+@-webkit-keyframes rotate{
+0%{-webkit-transform:rotate(0deg)}
+100%{-webkit-transform:rotate(360deg)}
 }
-.loading i:nth-child(1){
-  left:0;
-  top: 0;
-  -webkit-animation:loading-ani1 1.2s ease-in-out infinite;
-}
-.loading i:nth-child(2){
-  right: 0;
-  top: 0;
-  -webkit-animation:loading-ani2 1.2s ease-in-out infinite;
-}
-.loading i:nth-child(3){
-  right: 0;
-  bottom:0;
-  -webkit-animation:loading-ani3 1.2s ease-in-out infinite;
-}
-.loading i:nth-child(4){
-  left: 0;
-  bottom:0;
-  -webkit-animation:loading-ani4 1.2s ease-in-out infinite;
-}
-@-webkit-keyframes loading-ani1{
-  33%{
-    -webkit-transform:translate(-10px,-10px);
-  }
-  66%{
-    -webkit-transform:translate(-10px,-10px) rotate(90deg);
-  }
-  100%{
-    -webkit-transform:translate(0,0) rotate(90deg);
-  }
-}
-@-webkit-keyframes loading-ani2{
-  33%{
-    -webkit-transform:translate(10px,-10px);
-  }
-  66%{
-    -webkit-transform:translate(10px,-10px) rotate(90deg);
-  }
-  100%{
-    -webkit-transform:translate(0,0) rotate(90deg);
-  }
-}
-@-webkit-keyframes loading-ani3{
-  33%{
-    -webkit-transform:translate(10px,10px);
-  }
-  66%{
-    -webkit-transform:translate(10px,10px) rotate(90deg);
-  }
-  100%{
-    -webkit-transform:translate(0,0) rotate(90deg);
-  }
-}
-@-webkit-keyframes loading-ani4{
-  33%{
-    -webkit-transform:translate(-10px,10px);
-  }
-  66%{
-    -webkit-transform:translate(-10px,10px) rotate(90deg);
-  }
-  100%{
-    -webkit-transform:translate(0,0) rotate(90deg);
-  }
+@-ms-keyframes rotate{
+0%{-ms-transform:rotate(0deg)}
+100%{-ms-transform:rotate(360deg)}
 }
 /*关注*/
 .attention{
@@ -1409,3 +1351,18 @@ button{
   right: 15px;
   bottom: 15px;
  }
+
+/*logout*/
+.logout{
+  position: fixed;
+  background: rgba(0,0,0,0.3);
+  padding: 13px 20px;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+.logout .loading{
+  position: static;
+  display: inline-block;
+  margin-bottom: 10px;
+}
