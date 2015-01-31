@@ -8,12 +8,11 @@ define('sf.b2c.mall.component.register', [
     'store',
     'sf.b2c.mall.api.user.downSmsCode',
     'sf.b2c.mall.api.user.mobileRegister',
-    'sf.b2c.mall.api.user.sendActivateMail',
     'sf.b2c.mall.business.config',
     'sf.util'
   ],
 
-  function($, can, md5, _, store, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFApiUserSendActivateMail, SFBizConf, SFFn) {
+  function($, can, md5, _, store, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFBizConf, SFFn) {
 
     var DEFAULT_FILLINFO_TAG = 'fillinfo';
 
@@ -62,7 +61,6 @@ define('sf.b2c.mall.component.register', [
         this.component = {};
         this.component.sms = new SFApiUserDownSmsCode();
         this.component.mobileRegister = new SFApiUserMobileRegister();
-        this.component.activateMail = new SFApiUserSendActivateMail();
 
         this.data = new can.Map({
           mobile: true,
@@ -203,10 +201,12 @@ define('sf.b2c.mall.component.register', [
         setTimeout(function() {
           if (time > 0) {
             time--;
-            that.element.find('#mobile-code-btn').text(time + '秒后可重新发送').addClass('disable');
+            that.element.find('#mobile-code-btn').text(time + '秒后可重新发送').removeClass('success');
+            that.element.find('#mobile-code-btn').addClass('disable');
             that.countdown.call(that, time);
           } else {
             that.element.find('#mobile-code-btn').text('发送短信验证码').removeClass('disable');
+            that.element.find('#mobile-code-btn').addClass('success');
           }
         }, 1000);
       },
