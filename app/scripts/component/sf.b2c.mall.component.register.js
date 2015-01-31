@@ -8,11 +8,12 @@ define('sf.b2c.mall.component.register', [
     'store',
     'sf.b2c.mall.api.user.downSmsCode',
     'sf.b2c.mall.api.user.mobileRegister',
+    'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.business.config',
     'sf.util'
   ],
 
-  function($, can, md5, _, store, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFBizConf, SFFn) {
+  function($, can, md5, _, store, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn) {
 
     var DEFAULT_FILLINFO_TAG = 'fillinfo';
 
@@ -80,6 +81,29 @@ define('sf.b2c.mall.component.register', [
         $('#mobile-register-btn').tap(function() {
           that.mobileRegisterClick();
         })
+
+        $('.weixinlogin').tap(function() {
+          that.weixinLoginAuth();
+        })
+      },
+
+      /**
+       * [weixinLogin 微信登陆]
+       * @return {[type]} [description]
+       */
+      weixinLoginAuth: function() {
+        var reqLoginAuth = new SFReqLoginAuth({
+          "partnerId": "wechat_open"
+        });
+
+        reqLoginAuth
+          .sendRequest()
+          .done(function(data) {
+            window.location.href = data.loginAuthLink;
+          })
+          .fail(function(error) {
+            console.error(error);
+          })
       },
 
       '{can.route} change': function() {

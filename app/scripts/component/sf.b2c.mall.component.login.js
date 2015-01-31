@@ -8,10 +8,11 @@ define('sf.b2c.mall.component.login', [
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.webLogin',
     'sf.b2c.mall.api.user.needVfCode',
+    'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.util'
   ],
 
-  function($, can, md5, store, SFConfig, SFLogin, SFNeedVfCode, SFFn) {
+  function($, can, md5, store, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFn) {
 
     var DEFAULT_CAPTCHA_LINK = 'http://checkcode.sfht.com/captcha/';
     var DEFAULT_CAPTCHA_ID = 'haitaob2c';
@@ -57,8 +58,7 @@ define('sf.b2c.mall.component.login', [
           verifiedCodeUrl: null,
           autologin: false,
           sessionId: null,
-          platform: params.platform || (SFFn.isMobile.any() ? 'mobile' : null),
-          isPlaceholderSupport: this.isPlaceholderSupport()
+          platform: params.platform || (SFFn.isMobile.any() ? 'mobile' : null)
         })
 
         this.render(this.data);
@@ -69,16 +69,34 @@ define('sf.b2c.mall.component.login', [
           that.loginButtonClick();
         })
 
-        $("#toRegist").tap(function() {
+        $('.weixinlogin').tap(function() {
+          that.weixinLoginAuth();
+        })
 
+        $("#toRegist").tap(function() {
           var params = can.deparam(window.location.search.substr(1));
           var gotoUrl = params.from;
           window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
         })
       },
 
-      isPlaceholderSupport: function() {
-        return 'placeholder' in document.createElement('input');
+      /**
+       * [weixinLogin 微信登陆]
+       * @return {[type]} [description]
+       */
+      weixinLoginAuth: function() {
+        var reqLoginAuth = new SFReqLoginAuth({
+          "partnerId": "wechat_open"
+        });
+
+        reqLoginAuth
+          .sendRequest()
+          .done(function(data) {
+            window.location.href = data.loginAuthLink;
+          })
+          .fail(function(error) {
+            console.error(error);
+          })
       },
 
       /**

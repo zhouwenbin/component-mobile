@@ -3,8 +3,10 @@
 define('sf.weixin', [
   'zepto',
   'can',
-  'jweixin'
-], function($, can, jweixin) {
+  'jweixin',
+  'sf.b2c.mall.api.user.getWeChatJsApiSig'
+
+], function($, can, jweixin, SFGetWeChatJsApiSig) {
 
   var createNonceStr = function() {
     return Math.random().toString(36).substr(2, 15);
@@ -23,24 +25,39 @@ define('sf.weixin', [
     var timestamp = createTimestamp();
 
     var ret = {
-      "noncestr": noncestr,
-      "timestamp": timestamp,
-      "url": gethHostUrl()
+      "keyValuePairs": JSON.stringify([{
+        "value": noncestr,
+        "key": "noncestr"
+      }, {
+        "value": timestamp,
+        "key": "timestamp"
+      }, {
+        "value": gethHostUrl(),
+        "key": "url"
+      }])
     };
 
-    //调用后台接口
-    var signature = ret;
+    var getWeChatJsApiSig = new SFGetWeChatJsApiSig(ret);
 
-    jweixin.config({
-      "debug": true,
-      "appId": 'wx16bba2e4d6560791',
-      "timestamp": timestamp,
-      "nonceStr": noncestr,
-      "signature": signature,
-      "jsApiList": [
-        'onMenuShareTimeline'
-      ]
-    });
+    getWeChatJsApiSig
+      .sendRequest()
+      .done(function(data) {
+
+        jweixin.config({
+          "debug": false,
+          "appId": 'wx16bba2e4d6560791',
+          "timestamp": timestamp,
+          "nonceStr": noncestr,
+          "signature": data.value,
+          "jsApiList": [
+            'onMenuShareTimeline'
+          ]
+        });
+      })
+      .fail(function(error) {
+        console.error(error);
+      })
+
   };
 
   return {
