@@ -235,7 +235,7 @@ module.exports = function(grunt) {
               block.src = config.com
             }
 
-            return '<script src="' + block.dest + '"></script>';
+            return '<script src="/' + block.dest + '"></script>';
           }
         }
       },
@@ -646,7 +646,7 @@ module.exports = function(grunt) {
         config.target = target;
         config.base = {
           dest: 'scripts/base/' + filename,
-          src: 'scripts/base/' + filename
+          src: '/scripts/base/' + filename
         }
 
         grunt.task.run([
