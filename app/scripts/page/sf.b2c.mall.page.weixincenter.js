@@ -22,7 +22,8 @@ define(
       init: function() {
         var params = can.deparam(window.location.search.substr(1))
         var code = params.code;
-        var from = params.from;
+
+        var to = store.get('weixinto');
 
         var partnerLogin = new SFPartnerLogin({
           "partnerId": "wechat_open",
@@ -41,7 +42,7 @@ define(
                 'csrfToken': loginData.csrfToken
               });
 
-              window.location.href = from || "http://m.sfht.com/index.html";
+              window.location.href = to || "http://m.sfht.com/index.html";
             } else {
               window.location.href = "http://m.sfht.com/index.html";
             }

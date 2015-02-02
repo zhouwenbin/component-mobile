@@ -73,6 +73,10 @@ define('sf.b2c.mall.component.login', [
           that.weixinLoginAuth();
         })
 
+        $('#verified-code-btn').tap(function(){
+          that.getVerifiedCode();
+        })
+
         $("#toRegist").tap(function() {
           var params = can.deparam(window.location.search.substr(1));
           var gotoUrl = params.from;
@@ -86,12 +90,17 @@ define('sf.b2c.mall.component.login', [
        */
       weixinLoginAuth: function() {
         var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_open"
+          "partnerId": "wechat_open",
+          "redirectUrl": "http://www.sfht.com/weixincenter.html?appid=3&from=m.sfht.com/weixincenter.html"
         });
 
         reqLoginAuth
           .sendRequest()
           .done(function(data) {
+
+            store.set('weixinto', 'order.html');
+
+>>>>>>> dev
             window.location.href = data.loginAuthLink;
           })
           .fail(function(error) {
@@ -129,15 +138,7 @@ define('sf.b2c.mall.component.login', [
 
         this.data.attr('verifiedCodeUrl', verifiedCodeUrl);
       },
-      /**
-       * @description 换一张验证码错误提示
-       * @param  {String}
-       * @return {String}
-       */
-      '#verified-code-btn click': function(element, event) {
-        event && event.preventDefault();
-        this.getVerifiedCode()
-      },
+
       /**
        * @description 用户名验证
        * @param  {String}
