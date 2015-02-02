@@ -5,11 +5,15 @@ define(
     'can',
     'zepto',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.component.recaddrmanage'
+    'sf.b2c.mall.component.recaddrmanage',
+    'sf.weixin'
   ],
 
-  function(can, $, SFFrameworkComm, SFRecaddrmanage) {
+  function(can, $, SFFrameworkComm, SFRecaddrmanage, SFWeixin) {
+
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
 
     var content = can.Control.extend({
 

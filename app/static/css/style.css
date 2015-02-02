@@ -21,13 +21,17 @@ input,select{vertical-align:middle}
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   font-size: 12px;
+  color: #000;
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
 }
 a, img {
   -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
 }
 a{
   text-decoration: none;
-  color:#333;
+  color:#000;
 }
 html, body {
   -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
@@ -43,7 +47,7 @@ button{
 .clearfix:before,
 .clearfix:after{content:'';display:table;}
 .clearfix:after{
-	clear: both;
+  clear: both;
 }
 /*视觉隐藏*/
 .visuallyhidden {
@@ -230,6 +234,32 @@ button{
 .icon19.active{
   background-position: -147px 0;
 }
+.icon20{
+  width: 156px;
+  height: 156px;
+  background-position: -294px 0;
+}
+.icon21{
+  width: 28px;
+  height: 31px;
+  background-position: -124px -21px;
+}
+.icon22{
+  width: 39px;
+  height: 28px;
+  background-position: -157px -23px;
+}
+.icon23{
+  width: 36px;
+  height: 30px;
+  background-position: -201px -24px;
+}
+.icon24{
+  width: 16px;
+  height: 20px;
+  background-position: -198px 0;
+}
+
 /*btn*/
 .btn{
   display:inline-block;
@@ -450,6 +480,7 @@ button{
 /*goods*/
 .goods-r1{
   margin-bottom: 20px;
+  position: relative;
 }
 
 .goods-b{
@@ -490,6 +521,10 @@ button{
   line-height: 24px;
   font-weight: bold;
   margin-bottom: 17px;
+}
+.goods .mask{
+  position: absolute;
+  background-color: rgba(255,255,255,0.5);
 }
 /*立即购买*/
 .buy{
@@ -614,7 +649,6 @@ button{
   overflow: hidden;
   visibility: hidden;
   position: relative;
-  max-height: 320px;
   text-align: center;
 }
 .swipe-wrap {
@@ -644,8 +678,7 @@ button{
   background: #dc3334;
 }
 .swipe img{
-  max-width: 320px;
-  max-height: 320px;
+  width: 100%;
 }
 
 /*订单*/
@@ -737,6 +770,7 @@ button{
 /*header*/
 .header{
   padding: 0 14px 11px;
+  background: #fff;
 }
 .header-c1{
   padding-top: 13px;
@@ -748,6 +782,10 @@ button{
 .list{
   padding: 14px;
   margin-left: -3px;
+}
+.list .mask{
+  position: absolute;
+  background-color: rgba(255,255,255,0.5);
 }
 .list li{
   float: left;
@@ -771,9 +809,6 @@ button{
 .list-r1{
   position: relative;
   margin-bottom: 6px;
-}
-.list-r1 .mask{
-  position: absolute;
 }
 .list-price{
   font-size: 15px;
@@ -799,6 +834,9 @@ button{
   width: 19px;
   vertical-align: middle;
 }
+.list a:visited{
+  color:#000;
+}
 /*支付成功*/
 .pay{
   padding: 73px 14px 63px;
@@ -818,84 +856,26 @@ button{
 }
 /*loading*/
 .loading{
-  width: 47px;
-  height:47px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-left: -24px;
-  margin-top: -24px;
-  -webkit-transform:rotate(45deg);
+position:absolute;
+top:50%;
+left:50%;
+width:24px;
+height:24px;
+-webkit-transform:translate(-50%,-50%);
+border-width: 3px;
+border-style:solid;
+border-color:#fff #fff rgba(255,255,255,.5) rgba(255,255,255,.5);
+border-radius:20px;
+-webkit-animation:rotate 1s linear infinite;
+-ms-animation:rotate 1s linear infinite;
 }
-.loading i{
-  width: 24px;
-  height: 24px;
-  background: #dd3e3f;
-  position: absolute;
+@-webkit-keyframes rotate{
+0%{-webkit-transform:rotate(0deg)}
+100%{-webkit-transform:rotate(360deg)}
 }
-.loading i:nth-child(1){
-  left:0;
-  top: 0;
-  -webkit-animation:loading-ani1 1.2s ease-in-out infinite;
-}
-.loading i:nth-child(2){
-  right: 0;
-  top: 0;
-  -webkit-animation:loading-ani2 1.2s ease-in-out infinite;
-}
-.loading i:nth-child(3){
-  right: 0;
-  bottom:0;
-  -webkit-animation:loading-ani3 1.2s ease-in-out infinite;
-}
-.loading i:nth-child(4){
-  left: 0;
-  bottom:0;
-  -webkit-animation:loading-ani4 1.2s ease-in-out infinite;
-}
-@-webkit-keyframes loading-ani1{
-  33%{
-    -webkit-transform:translate(-10px,-10px);
-  }
-  66%{
-    -webkit-transform:translate(-10px,-10px) rotate(90deg);
-  }
-  100%{
-    -webkit-transform:translate(0,0) rotate(90deg);
-  }
-}
-@-webkit-keyframes loading-ani2{
-  33%{
-    -webkit-transform:translate(10px,-10px);
-  }
-  66%{
-    -webkit-transform:translate(10px,-10px) rotate(90deg);
-  }
-  100%{
-    -webkit-transform:translate(0,0) rotate(90deg);
-  }
-}
-@-webkit-keyframes loading-ani3{
-  33%{
-    -webkit-transform:translate(10px,10px);
-  }
-  66%{
-    -webkit-transform:translate(10px,10px) rotate(90deg);
-  }
-  100%{
-    -webkit-transform:translate(0,0) rotate(90deg);
-  }
-}
-@-webkit-keyframes loading-ani4{
-  33%{
-    -webkit-transform:translate(-10px,10px);
-  }
-  66%{
-    -webkit-transform:translate(-10px,10px) rotate(90deg);
-  }
-  100%{
-    -webkit-transform:translate(0,0) rotate(90deg);
-  }
+@-ms-keyframes rotate{
+0%{-ms-transform:rotate(0deg)}
+100%{-ms-transform:rotate(360deg)}
 }
 /*关注*/
 .attention{
@@ -925,70 +905,7 @@ button{
   top: 0;
   z-index: 1;
 }
- /*dialog*/
- .dialog-center{
-  width: 100%;
-  height: 211px;
-  left: 50%;
-  top: 50%;
-  -webkit-transform:translate(-50%,-50%);
-  position: fixed;
-  background: #fff;
-  border-radius: 4px;
-  z-index: 3;
-  text-align: center;
-}
-.dialog-center .btn-close{
-  position: absolute;
-  right: 26px;
-  top: 26px;
-}
-.dialog-center p{
-  padding-top: 53px;
-  margin-bottom: 37px;
-  font-size: 14px;
-}
-.dialog-r1 .btn{
-  margin: 0 9px;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 56px;
-}
-.btn-close{
-  width: 16px;
-  height: 16;
-  overflow: hidden;
-  position: relative;
-}
-.btn-send{
-  padding:0 15px;
-  height: 40px;
-  line-height: 40px;
-  color: #fff;
-  background: #67b222;
-  border-radius: 2px;
-  box-shadow: 0 2px 1px rgba(4,0,0,0.1);
-  border:1px solid #448509;
-}
 
-.btn-send:hover{
-  color: #fff;
-  background: #6ec125;
-}
-.btn-send:active{
-  background: #5fa620;
-}
-.btn-add,
-.btn-cancel{
-  height: 34px;
-  line-height: 34px;
-  padding: 0 25px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #fff;
-  font-size: 14px;
-  color: #999;
-}
 /*orderlist*/
 
 .orderlist li{
@@ -1176,7 +1093,7 @@ button{
   color:#003cff;
 }
 /*弹窗*/
-.dialog-phone .center{
+.dialog .center{
   width: 292px;
   background: #fff;
   text-align: center;
@@ -1184,21 +1101,46 @@ button{
   padding-bottom: 21px;
   border-radius: 2px;
 }
-.dialog-phone h2{
+.dialog h2{
   font-size: 16px;
   font-weight: normal;
   margin-bottom: 12px;
 }
-.dialog-phone p{
+.dialog p{
   margin-bottom: 13px;
 }
-.dialog-phone-r1{
-  margin-top:4px 
+.dialog-r1{
+  margin-top:4px
 }
-.dialog-phone .icon15{
+.dialog .icon15{
   position: absolute;
   right: 15px;
   top: 15px;
+}
+.dialog1 .center{
+  padding-top: 22px;
+  padding-bottom: 29px;
+}
+.dialog1 h2{
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+
+}
+.dialog1 p{
+  margin-bottom: 6px;
+}
+.dialog1 .btn{
+  margin-top: 11px;
+  padding: 0 45px;
+}
+.dialog1-r1{
+  margin-top: 22px;
+}
+.dialog1-r1 .btn{
+  padding: 0 27px;
+  margin: 0 8px;
 }
 /*banner*/
 .banner{
@@ -1223,15 +1165,15 @@ button{
   stroke-width:1.5;
   stroke-dasharray: 530;
   stroke-dashoffset: 530;
-  animation:body 1s linear forwards,
+  -webkit-animation:body 1s linear forwards,
             body-fill 1s linear 2.5s forwards
 }
-@keyframes body{
+@-webkit-keyframes body{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes body-fill{
+@-webkit-keyframes body-fill{
   100%{
     fill:#D2525E;
     stroke-width:0;
@@ -1240,21 +1182,21 @@ button{
 .pagenone .eye-left{
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  animation:line1 0.5s linear 1s forwards,
+  -webkit-animation:line1 0.5s linear 1s forwards,
     shake 0.5s linear 3.5s forwards;
 }
 .pagenone .eye-right{
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  animation:line1 0.5s linear 1.5s forwards,
+  -webkit-animation:line1 0.5s linear 1.5s forwards,
     shake 0.5s linear 3.5s forwards;
 }
-@keyframes line1{
+@-webkit-keyframes line1{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes shake{
+@-webkit-keyframes shake{
   10%,30%,50%{
     transform: translatey(-6px);
   }
@@ -1271,15 +1213,15 @@ button{
   fill: #fff;
   stroke-dasharray: 80;
   stroke-dashoffset: 80;
-  animation:mouse 0.5s linear 2s forwards,
+  -webkit-animation:mouse 0.5s linear 2s forwards,
             mouse-fill 1s linear 2.5s forwards;
 }
-@keyframes mouse{
+@-webkit-keyframes mouse{
   100%{
     stroke-dashoffset: 0;
   }
 }
-@keyframes mouse-fill{
+@-webkit-keyframes mouse-fill{
   100%{
     fill:#fff;
     stroke-width:0;
@@ -1389,3 +1331,39 @@ button{
  .label-disabled{
   background: #ccc;
  }
+  /*尾部*/
+ .footer{
+  color:rgba(0,0,0,0.3);
+  font-size: 9px;
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 17px;
+ }
+
+ .body1{
+   background:#F6F8F9;
+ }
+ /*回到顶部*/
+ .top{
+  padding: 6px 8px;
+  background:rgba(0,0,0,0.1);
+  border-radius: 4px;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+ }
+
+/*logout*/
+.logout{
+  position: fixed;
+  background: rgba(0,0,0,0.3);
+  padding: 13px 20px;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+.logout .loading{
+  position: static;
+  display: inline-block;
+  margin-bottom: 10px;
+}

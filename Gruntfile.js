@@ -212,6 +212,10 @@ module.exports = function(grunt) {
         '<%= config.app %>/orderlist.html',
         '<%= config.app %>/orderdetail.html',
         '<%= config.app %>/center.html',
+<<<<<<< HEAD
+=======
+        '<%= config.app %>/weixincenter.html',
+>>>>>>> dev
         '<%= config.app %>/recaddrmanage.html'
       ]
     },
@@ -323,7 +327,7 @@ module.exports = function(grunt) {
           dest: '<%= config.dist %>',
           src: [
             '*.{ico,png,txt}',
-            'static/img/{,*/}*',
+            // 'static/img/{,*/}*',
 
             // '{,*/}*.html',
             // 'index.html',
@@ -336,6 +340,10 @@ module.exports = function(grunt) {
             'orderlist.html',
             'orderdetail.html',
             'center.html',
+<<<<<<< HEAD
+=======
+            'weixincenter.html',
+>>>>>>> dev
             'recaddrmanage.html',
 
             'json/*.json',
@@ -354,6 +362,12 @@ module.exports = function(grunt) {
         }, {
           src: '<%= config.app %>/css/browser.css',
           dest: '<%= config.dist %>/css/browser.css'
+        }, {
+          expand: true,
+          dot: true,
+          cwd: '<%= config.app %>/static/',
+          src: 'img/{,*}/*',
+          dest: '<%= config.dist %>'
         }]
       },
       styles: {
@@ -544,6 +558,21 @@ module.exports = function(grunt) {
           insertRequire: ['sf.b2c.mall.page.center']
         }
       },
+<<<<<<< HEAD
+=======
+      weixincenter: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.weixincenter.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          include: [
+            'sf.b2c.mall.page.weixincenter'
+          ],
+          insertRequire: ['sf.b2c.mall.page.weixincenter']
+        }
+      },
+>>>>>>> dev
       recaddrmanage: {
         options: {
           preserveLicenseComments: false,
@@ -647,6 +676,10 @@ module.exports = function(grunt) {
           'requirejs:orderlist',
           'requirejs:orderdetail',
           'requirejs:center',
+<<<<<<< HEAD
+=======
+          'requirejs:weixincenter',
+>>>>>>> dev
           'requirejs:recaddrmanage',
 
           'usemin',

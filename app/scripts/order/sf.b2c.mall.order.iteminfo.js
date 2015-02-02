@@ -10,9 +10,10 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.setDefaultAddr',
   'sf.b2c.mall.api.user.setDefaultRecv',
-  'sf.helpers'
+  'sf.helpers',
+  'sf.b2c.mall.widget.message'
 
-], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers) {
+], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers,SFMessage) {
   return can.Control.extend({
 
     /**

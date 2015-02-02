@@ -9,12 +9,14 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.api.b2cmall.getProductHotData',
     'sf.b2c.mall.api.b2cmall.getSkuInfo',
     'sf.b2c.mall.api.product.findRecommendProducts',
+    'sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.helpers',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'sf.weixin'
   ],
-  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, helpers, SFComm, SFLoading, SFConfig) {
+  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFWeixin) {
     return can.Control.extend({
 
       helpers: {
@@ -122,6 +124,9 @@ define('sf.b2c.mall.product.detailcontent', [
               that.switchTab($(this), 'itemInfoTab');
             })
 
+            //微信分享
+            that.weixinShare(that.itemid, that.options.detailContentInfo);
+
             $('.loadingDIV').hide();
 
             $(document).ready(function() {
@@ -133,6 +138,25 @@ define('sf.b2c.mall.product.detailcontent', [
             console.error(error);
             $('.loadingDIV').hide();
           })
+      },
+
+      /**
+       * [weixinShare 微信分享]
+       * @param  {[type]} detailContentInfo [description]
+       * @return {[type]}                   [description]
+       */
+      weixinShare: function(itemid, detailContentInfo) {
+        var title = "别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！";
+        var desc = "[" + detailContentInfo.itemInfo.basicInfo.brand + "]" + detailContentInfo.itemInfo.basicInfo.title;
+        var link = "http://m.sfht.com/detail/" + itemid + ".html";
+        var imgUrl = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
+
+        var hasURL = _.str.include(imgUrl, 'http://')
+        if (!hasURL) {
+          imgUrl = 'http://img0.sfht.com/' + imgUrl;
+        }
+
+        SFWeixin.shareDetail(title, desc, link, imgUrl)
       },
 
       /**

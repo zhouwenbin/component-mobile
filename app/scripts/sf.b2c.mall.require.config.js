@@ -68,6 +68,9 @@ requirejs.config({
         'sf.b2c.mall.api.user.getBirthInfo': 'http://www.google.com/app/scripts/api/user/sf.b2c.mall.api.user.delRecvInfo',
         'sf.b2c.mall.api.user.setDefaultRecv': 'http://www.google.com/app/scripts/api/user/sf.b2c.mall.api.user.setDefaultRecv',
         'sf.b2c.mall.api.user.getRecvInfo': 'http://www.google.com/app/scripts/api/user/sf.b2c.mall.api.user.getRecvInfo',
+        'sf.b2c.mall.api.user.partnerLogin': 'http://www.google.com/app/scripts/api/user/sf.b2c.mall.api.user.partnerLogin',
+        'sf.b2c.mall.api.user.reqLoginAuth': 'http://www.google.com/app/scripts/api/user/sf.b2c.mall.api.user.reqLoginAuth',
+        'sf.b2c.mall.api.user.getWeChatJsApiSig': 'http://www.google.com/app/scripts/api/user/sf.b2c.mall.api.user.getWeChatJsApiSig',
 
         'sf.b2c.mall.api.b2cmall.getBanner': 'http://www.google.com/app/scripts/api/b2cmall/sf.b2c.mall.api.b2cmall.getBanner',
         'sf.b2c.mall.api.b2cmall.getFastSaleInfoList': 'http://www.google.com/app/scripts/api/b2cmall/sf.b2c.mall.api.b2cmall.getFastSaleInfoList',
@@ -97,6 +100,8 @@ requirejs.config({
         // 公共组件
         'zepto': 'scripts/vendor/zepto',
         'swipe': 'scripts/vendor/swipe',
+        'jweixin': 'scripts/vendor/jweixin-1.0.0',
+        'sf.weixin': 'scripts/util/sf.weixin',
         'sf.helpers': 'scripts/util/sf.helpers',
         'sf.util': 'scripts/util/sf.util.fn',
         'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
@@ -142,6 +147,9 @@ requirejs.config({
 
         // 个人中心
         'sf.b2c.mall.page.center': 'scripts/page/sf.b2c.mall.page.center',
+
+        // 微信转跳中心
+        'sf.b2c.mall.page.weixincenter': 'scripts/page/sf.b2c.mall.page.weixincenter',
 
         // 收货地址管理
         'sf.b2c.mall.page.recaddrmanage': 'scripts/page/sf.b2c.mall.page.recaddrmanage',

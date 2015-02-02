@@ -7,10 +7,14 @@ define(
     'store',
     'sf.b2c.mall.api.user.getUserInfo',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.widget.message'
+    'sf.b2c.mall.widget.message',
+    'sf.weixin'
   ],
-  function(can, $, store, SFGetUserInfo, SFFrameworkComm, SFMessage) {
+  function(can, $, store, SFGetUserInfo, SFFrameworkComm, SFMessage, SFWeixin) {
+
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
 
     var center = can.Control.extend({
 
@@ -41,6 +45,8 @@ define(
               that.options.welcomeName = that.maskMobile(data.mobile);
             } else if (store.get('type') == 'MAIL') {
               that.options.welcomeName = data.mailId;
+            } else if (store.get('type') == 'WEIXIN') {
+              that.options.welcomeName = store.get('nickname');
             }
 
             if (typeof data.nick != 'undefined') {

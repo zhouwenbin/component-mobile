@@ -8,11 +8,15 @@ define(
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.order.fn',
-    'sf.b2c.mall.widget.message'
+    'sf.b2c.mall.widget.message',
+    'sf.weixin'
   ],
 
-  function(can, $, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage) {
+  function(can, $, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage, SFWeixin) {
+
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
 
     var gotopay = can.Control.extend({
 
