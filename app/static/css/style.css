@@ -47,7 +47,7 @@ button{
 .clearfix:before,
 .clearfix:after{content:'';display:table;}
 .clearfix:after{
-  clear: both;
+	clear: both;
 }
 /*视觉隐藏*/
 .visuallyhidden {
@@ -905,7 +905,7 @@ border-radius:20px;
   top: 0;
   z-index: 1;
 }
-
+ 
 /*orderlist*/
 
 .orderlist li{
@@ -1110,7 +1110,7 @@ border-radius:20px;
   margin-bottom: 13px;
 }
 .dialog-r1{
-  margin-top:4px
+  margin-top:4px 
 }
 .dialog .icon15{
   position: absolute;
@@ -1126,7 +1126,7 @@ border-radius:20px;
   line-height: 24px;
   margin-top: 5px;
   margin-bottom: 7px;
-
+  
 }
 .dialog1 p{
   margin-bottom: 6px;
@@ -1339,9 +1339,9 @@ border-radius:20px;
   padding-top: 4px;
   padding-bottom: 17px;
  }
-
+ 
  .body1{
-   background:#F6F8F9;
+	 background:#F6F8F9;
  }
  /*回到顶部*/
  .top{
