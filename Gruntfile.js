@@ -212,10 +212,7 @@ module.exports = function(grunt) {
         '<%= config.app %>/orderlist.html',
         '<%= config.app %>/orderdetail.html',
         '<%= config.app %>/center.html',
-<<<<<<< HEAD
-=======
         '<%= config.app %>/weixincenter.html',
->>>>>>> dev
         '<%= config.app %>/recaddrmanage.html'
       ]
     },
@@ -340,10 +337,7 @@ module.exports = function(grunt) {
             'orderlist.html',
             'orderdetail.html',
             'center.html',
-<<<<<<< HEAD
-=======
             'weixincenter.html',
->>>>>>> dev
             'recaddrmanage.html',
 
             'json/*.json',
@@ -558,8 +552,6 @@ module.exports = function(grunt) {
           insertRequire: ['sf.b2c.mall.page.center']
         }
       },
-<<<<<<< HEAD
-=======
       weixincenter: {
         options: {
           preserveLicenseComments: false,
@@ -572,7 +564,6 @@ module.exports = function(grunt) {
           insertRequire: ['sf.b2c.mall.page.weixincenter']
         }
       },
->>>>>>> dev
       recaddrmanage: {
         options: {
           preserveLicenseComments: false,
@@ -676,10 +667,7 @@ module.exports = function(grunt) {
           'requirejs:orderlist',
           'requirejs:orderdetail',
           'requirejs:center',
-<<<<<<< HEAD
-=======
           'requirejs:weixincenter',
->>>>>>> dev
           'requirejs:recaddrmanage',
 
           'usemin',
