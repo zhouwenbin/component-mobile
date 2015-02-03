@@ -14,6 +14,12 @@
           {{/each}}
         </div>
       </div>
+
+      {{#if priceInfo.soldOut}}
+      <div class="mask"></div>
+      <span class="icon icon20 center">售完</span>
+      {{/if}}
+
     </div>
     <div class="goods-b">
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
@@ -85,11 +91,18 @@
   <!--立即购买-->
   <section class="buy">
     <div class="buy-r1">
-      <button class="btn btn-danger btn-big" id="gotobuy">立即购买</button>
-    </div>
+      {{#sf-canBuy priceInfo.soldOut}}
+        <button class="btn btn-danger btn-big" id="gotobuy">立即购买</button>
+      {{else}}
+        <button class="btn btn-disable btn-big">立即购买</button>
+      {{/sf-canBuy}}
 
+
+
+    </div>
   </section>
   <!--立即购买-->
+
   {{/if}}
 
   {{#if showSecondStep}}

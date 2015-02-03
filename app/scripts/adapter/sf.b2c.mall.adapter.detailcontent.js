@@ -32,7 +32,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       detailContentInfo.itemInfo.basicInfo.productShape = itemInfoData.saleInfo.productShape;
 
       //设置item的大图
-      _.each(itemInfoData.skuInfo.images, function(item){
+      _.each(itemInfoData.skuInfo.images, function(item) {
         item.bigImgUrl += "@375h_375w_80Q_1x.jpg";
       })
 
@@ -44,19 +44,21 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
 
       detailContentInfo.itemInfo.saleSkuSpecTupleList = itemInfoData.saleInfo.saleSkuSpecTupleList;
 
-      //设置选中和可选状态
-      var specId = itemInfoData.skuInfo.skuSpecTuple.specIds;
+      if (itemInfoData.skuInfo.skuSpecTuple){
+        //设置选中和可选状态
+        var specId = itemInfoData.skuInfo.skuSpecTuple.specIds;
 
-      var index = 0;
+        var index = 0;
 
-      _.each(detailContentInfo.itemInfo.specGroups, function(group) {
-        //设置选中
-        that.setSelectedSpec(index, specId, group);
-        //设置可选
-        that.setCanSelectedSpec(index, specId, group, detailContentInfo.itemInfo.saleSkuSpecTupleList);
+        _.each(detailContentInfo.itemInfo.specGroups, function(group) {
+          //设置选中
+          that.setSelectedSpec(index, specId, group);
+          //设置可选
+          that.setCanSelectedSpec(index, specId, group, detailContentInfo.itemInfo.saleSkuSpecTupleList);
 
-        ++index;
-      })
+          ++index;
+        })
+      }
 
       //卖家信息
       detailContentInfo.itemInfo.saleInfo = itemInfoData.saleInfo;

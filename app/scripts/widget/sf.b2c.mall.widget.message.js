@@ -30,9 +30,9 @@ define(
       },
 
       buttonsMap: {
-        'confirm': '<a href="javascript:void(0)" class="btn btn-send" id="ok">确定</a><a href="javascript:void(0)" class="btn btn-cancel" id="cancel">取消</a>',
-        'error': '<a href="javascript:void(0)" class="btn btn-send" id="ok">确定</a>',
-        'success': '<a href="javascript:void(0)" class="btn btn-send" id="ok">确定</a>'
+        'confirm': '<a href="javascript:void(0)" class="btn btn-normal warnning" id="ok">确定</a><a href="javascript:void(0)" class="btn btn-normal" id="cancel">取消</a>',
+        'error': '<a href="javascript:void(0)" class="btn btn-normal warnning" id="ok">确定</a>',
+        'success': '<a href="javascript:void(0)" class="btn btn-normal warnning" id="ok">确定</a>'
       },
 
       '#close click': function() {

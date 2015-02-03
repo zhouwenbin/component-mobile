@@ -9,18 +9,28 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.api.b2cmall.getProductHotData',
     'sf.b2c.mall.api.b2cmall.getSkuInfo',
     'sf.b2c.mall.api.product.findRecommendProducts',
+    'sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.helpers',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
+    'sf.b2c.mall.widget.message',
     'sf.weixin'
   ],
-  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, helpers, SFComm, SFLoading, SFConfig, SFWeixin) {
+  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin) {
     return can.Control.extend({
 
       helpers: {
         'sf-showCurrentStock': function(currentStock, options) {
           if (currentStock() != 0 && currentStock() != -1 && currentStock() != -2) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
+        'sf-canBuy': function(isSoldOut, options) {
+          if (!isSoldOut()) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -90,6 +100,8 @@ define('sf.b2c.mall.product.detailcontent', [
             that.adapter.formatRecommendProducts(that.detailUrl, that.options.detailContentInfo, recommendProducts);
 
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
+
+            //that.options.detailContentInfo.priceInfo.attr("soldOut", true);
 
             var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
             that.element.html(html);
@@ -286,6 +298,17 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]} [description]
        */
       buyEnter: function(element) {
+
+        var priceInfo = this.options.detailContentInfo.priceInfo;
+
+        if (priceInfo.soldOut) {
+          var message = new SFMessage(null, {
+            'tip': '商品已经售空！',
+            'type': 'error'
+          });
+          return false;
+        }
+
         var amount = this.options.detailContentInfo.input.buyNum;
         if (amount < 1 || isNaN(amount)) {
           this.options.detailContentInfo.input.attr("buyNum", 1);

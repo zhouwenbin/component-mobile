@@ -3,8 +3,10 @@
 define('sf.weixin', [
   'zepto',
   'can',
-  'jweixin'
-], function($, can, jweixin) {
+  'jweixin',
+  'sf.b2c.mall.api.user.getWeChatJsApiSig'
+
+], function($, can, jweixin, SFGetWeChatJsApiSig) {
 
   var createNonceStr = function() {
     return Math.random().toString(36).substr(2, 15);
@@ -23,24 +25,39 @@ define('sf.weixin', [
     var timestamp = createTimestamp();
 
     var ret = {
-      "noncestr": noncestr,
-      "timestamp": timestamp,
-      "url": gethHostUrl()
+      "keyValuePairs": JSON.stringify([{
+        "value": noncestr,
+        "key": "noncestr"
+      }, {
+        "value": timestamp,
+        "key": "timestamp"
+      }, {
+        "value": gethHostUrl(),
+        "key": "url"
+      }])
     };
 
-    //调用后台接口
-    var signature = ret;
+    var getWeChatJsApiSig = new SFGetWeChatJsApiSig(ret);
 
-    jweixin.config({
-      "debug": true,
-      "appId": 'wx16bba2e4d6560791',
-      "timestamp": timestamp,
-      "nonceStr": noncestr,
-      "signature": signature,
-      "jsApiList": [
-        'onMenuShareTimeline'
-      ]
-    });
+    getWeChatJsApiSig
+      .sendRequest()
+      .done(function(data) {
+
+        jweixin.config({
+          "debug": false,
+          "appId": 'wx16bba2e4d6560791',
+          "timestamp": timestamp,
+          "nonceStr": noncestr,
+          "signature": data.value,
+          "jsApiList": [
+            'onMenuShareTimeline'
+          ]
+        });
+      })
+      .fail(function(error) {
+        console.error(error);
+      })
+
   };
 
   return {
@@ -56,7 +73,7 @@ define('sf.weixin', [
           title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
           desc: '别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
           link: 'http://m.sfht.com/index.html',
-          imgUrl: 'http://m.sfht.com/static/img/sharelog.png',
+          imgUrl: 'http://m.sfht.com/img/sharelog.png',
           trigger: function(res) {
             // alert('用户点击发送给朋友');
           },
@@ -64,7 +81,7 @@ define('sf.weixin', [
             alert('已分享');
           },
           cancel: function(res) {
-            alert('已取消');
+            // alert('已取消');
           },
           fail: function(res) {
             alert(JSON.stringify(res));
@@ -93,10 +110,10 @@ define('sf.weixin', [
       // 定义微信分享的数据
       jweixin.ready(function() {
         jweixin.onMenuShareTimeline({
-          title: that.title,
-          desc: that.desc,
-          link: that.link,
-          imgUrl: that.imgUrl,
+          title: title,
+          desc: desc,
+          link: link,
+          imgUrl: imgUrl,
           trigger: function(res) {
             // alert('用户点击发送给朋友');
           },
@@ -104,7 +121,7 @@ define('sf.weixin', [
             alert('已分享');
           },
           cancel: function(res) {
-            alert('已取消');
+            // alert('已取消');
           },
           fail: function(res) {
             alert(JSON.stringify(res));

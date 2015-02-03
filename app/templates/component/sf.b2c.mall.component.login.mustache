@@ -13,8 +13,8 @@
         <div class="clearfix">
 
           <div class="login-r3c1 fr">
-            <img src="img/code.png" width="86" alt="验证码">
-            <a href="javascript:">换一个</a>
+            <img src="{{verifiedCodeUrl}}" width="86" alt="验证码">
+            <a href="javascript:" id="verified-code-btn">换一个</a>
           </div>
           <div class="login-r3c2">
             <input id="verified-code" type="text" class="input" placeholder="输入验证码" can-value="verifiedCode"/>
@@ -31,5 +31,5 @@
     <div class="login-r1 clearfix">
       <a href="/register.html">新用户注册</a>
     </div>
-    <div class="login-r2"><a href=""><span class="icon icon18"></span><br>微信登录</a></div>
+    <div class="login-r2"><a href="javascript:" class="weixinlogin"><span class="icon icon18"></span><br>微信登录</a></div>
   </section>

@@ -51,7 +51,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
               _.each(data.orders, function(order) {
 
                 //“待审核”“采购中”“待发货”“正在出库”“已发货”
-                if (order.orderStatus == 'AUDITING' || order.orderStatus == 'BUYING' || order.orderStatus == 'WAIT_SHIPPING' || order.orderStatus == 'SHIPPING' || order.orderStatus == 'SHIPPED') {
+                if (order.orderStatus == 'SUBMITED' && order.orderStatus == 'AUDITING' || order.orderStatus == 'BUYING' || order.orderStatus == 'WAIT_SHIPPING' || order.orderStatus == 'SHIPPING' || order.orderStatus == 'SHIPPED') {
                   that.options.notCompletedOrderList.push(order);
                 } else {
                   that.options.completedOrderList.push(order);
@@ -190,7 +190,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
        * [optionHTML 操作对应的html]
        */
       optionHTML: {
-        "NEEDPAY": '<a href="#" class="btn btn-disable gotoPay">立即支付</a>',
+        "NEEDPAY": '<a href="#" class="btn btn-danger gotoPay">立即支付</a>',
         "INFO": '<a href="#" class="btn btn-disable viewOrder">查看订单</a>',
         "CANCEL": '<a href="#" class="link btn-disable cancelOrder">取消订单</a>',
         "RECEIVED": '<a href="#" class="btn btn-disable received">确认签收</a>'

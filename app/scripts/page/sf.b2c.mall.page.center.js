@@ -45,6 +45,8 @@ define(
               that.options.welcomeName = that.maskMobile(data.mobile);
             } else if (store.get('type') == 'MAIL') {
               that.options.welcomeName = data.mailId;
+            } else if (store.get('type') == 'WEIXIN') {
+              that.options.welcomeName = store.get('nickname');
             }
 
             if (typeof data.nick != 'undefined') {
