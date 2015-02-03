@@ -112,6 +112,10 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
         return spec.specId == specId[index];
       })
 
+      if (!selectedSpec){
+        window.location.href = "index.html";
+      }
+
       if (typeof selectedSpec.attr != 'undefined') {
         selectedSpec.attr("selected", "active");
         selectedSpec.attr("canSelected", "");
