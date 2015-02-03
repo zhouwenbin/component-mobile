@@ -488,6 +488,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var saleSkuSpecTuple = this.getSKUBySpecs(this.options.detailContentInfo.itemInfo.saleSkuSpecTupleList, gotoItemSpec.join(","), element, type);
         var skuId = saleSkuSpecTuple.skuSpecTuple.skuId;
         var newItemid = saleSkuSpecTuple.itemId;
+        this.itemid = newItemid;
 
         var that = this;
         var getSKUInfo = new SFGetSKUInfo({
