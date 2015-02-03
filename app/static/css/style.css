@@ -82,6 +82,9 @@ button{
   -webkit-line-clamp: 3;
 }
 /*图片垂直居中*/
+.vertical-middle{
+  font-size: 0;
+}
 .vertical-middle:after{
   content: '';
   display: inline-block;
@@ -797,6 +800,7 @@ button{
   width: 48.8%;
   border: 1px solid #ccc;
   margin-bottom: 7px;
+  background: #fff;
 }
 .list li:nth-child(even){
   float: right;
