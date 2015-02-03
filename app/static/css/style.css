@@ -82,6 +82,9 @@ button{
   -webkit-line-clamp: 3;
 }
 /*图片垂直居中*/
+.vertical-middle{
+  font-size: 0;
+}
 .vertical-middle:after{
   content: '';
   display: inline-block;
@@ -323,6 +326,7 @@ button{
 .text-error,
 .text-important{
   color:#dc3334;
+  font-size: 12px;
 }
 .text-success{
   color: #67b222;
@@ -344,6 +348,10 @@ button{
   width: 100%;
 }
 
+.input-num{
+  display: inline-block;
+  font-size: 0;
+}
 .input-num .btn{
   display: inline-block;
   width: 36px;
@@ -792,6 +800,7 @@ button{
   width: 48.8%;
   border: 1px solid #ccc;
   margin-bottom: 7px;
+  background: #fff;
 }
 .list li:nth-child(even){
   float: right;

@@ -213,7 +213,9 @@ module.exports = function(grunt) {
         '<%= config.app %>/orderdetail.html',
         '<%= config.app %>/center.html',
         '<%= config.app %>/weixincenter.html',
+        '<%= config.app %>/alipayframe.html',
         '<%= config.app %>/agreement.html',
+        '<%= config.app %>/pay-success.html',
         '<%= config.app %>/recaddrmanage.html'
       ]
     },
@@ -339,8 +341,10 @@ module.exports = function(grunt) {
             'orderdetail.html',
             'center.html',
             'weixincenter.html',
+            'alipayframe.html',
             'agreement.html',
             'recaddrmanage.html',
+            'pay-success.html',
 
             'json/*.json',
 
@@ -566,14 +570,34 @@ module.exports = function(grunt) {
           insertRequire: ['sf.b2c.mall.page.weixincenter']
         }
       },
-      agreement: {
+      alipayframe: {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.weixincenter.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.alipayframe.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          include: [
+            'sf.b2c.mall.page.alipayframe'
+          ],
+          insertRequire: ['sf.b2c.mall.page.alipayframe']
         }
       },
+      // paysuccess: {
+      //   options: {
+      //     preserveLicenseComments: false,
+      //     baseUrl: './app/',
+      //     out: './<%= config.dist %>/scripts/sf.b2c.mall.page.alipayframe.min.js',
+      //     mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js"
+      //   }
+      // },
+      // agreement: {
+      //   options: {
+      //     preserveLicenseComments: false,
+      //     baseUrl: './app/',
+      //     out: './<%= config.dist %>/scripts/sf.b2c.mall.page.agreement.min.js',
+      //     mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js"
+      //   }
+      // },
       recaddrmanage: {
         options: {
           preserveLicenseComments: false,
@@ -678,6 +702,7 @@ module.exports = function(grunt) {
           'requirejs:orderdetail',
           'requirejs:center',
           'requirejs:weixincenter',
+          'requirejs:alipayframe',
           'requirejs:recaddrmanage',
 
           'usemin',
