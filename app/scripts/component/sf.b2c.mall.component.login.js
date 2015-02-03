@@ -100,7 +100,6 @@ define('sf.b2c.mall.component.login', [
 
             store.set('weixinto', 'order.html');
 
->>>>>>> dev
             window.location.href = data.loginAuthLink;
           })
           .fail(function(error) {
