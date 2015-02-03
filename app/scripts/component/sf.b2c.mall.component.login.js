@@ -73,7 +73,7 @@ define('sf.b2c.mall.component.login', [
           that.weixinLoginAuth();
         })
 
-        $('#verified-code-btn').tap(function(){
+        $('#verified-code-btn').tap(function() {
           that.getVerifiedCode();
         })
 
@@ -114,9 +114,13 @@ define('sf.b2c.mall.component.login', [
       render: function(data) {
         var html = can.view('templates/component/sf.b2c.mall.component.login.mustache', data, this.helpers);
         this.element.append(html);
-
+        var that = this;
         if (COUNT >= 3) {
           this.data.attr('isNeedVerifiedCode', true);
+
+          $('#verified-code-btn').tap(function() {
+            that.getVerifiedCode();
+          })
         }
 
         this.funPlaceholder(document.getElementById('user-name'));
@@ -211,6 +215,9 @@ define('sf.b2c.mall.component.login', [
           .done(function(data) {
             if (data.value) {
               that.data.attr('isNeedVerifiedCode', true);
+              $('#verified-code-btn').tap(function() {
+                that.getVerifiedCode();
+              })
             } else {
               that.data.attr('isNeedVerifiedCode', false);
             }
@@ -290,7 +297,7 @@ define('sf.b2c.mall.component.login', [
        * @param  {dom} element jquery dom对象
        * @param  {event} event event对象
        */
-      '.input-username blur': function(element, event) {
+      '#user-name blur': function(element, event) {
         event && event.preventDefault();
 
         var username = this.data.attr('username');
@@ -304,7 +311,7 @@ define('sf.b2c.mall.component.login', [
        * @param  {dom} element jquery dom对象
        * @param  {event} event event对象
        */
-      '.input-password blur': function(element, event) {
+      '#user-pwd blur': function(element, event) {
         event && event.preventDefault();
         var password = $(element).val();
         if (password) {
@@ -364,6 +371,9 @@ define('sf.b2c.mall.component.login', [
               $('#code-error-tips').text(errorText).show();
             } else if (error === 1000300) {
               that.data.attr('isNeedVerifiedCode', true);
+              $('#verified-code-btn').tap(function() {
+                that.getVerifiedCode();
+              })
               $('#username-error-tips').text('账户名或登录密码错误，请重新输入').show();
             } else {
               $('#username-error-tips').text(errorText).show();

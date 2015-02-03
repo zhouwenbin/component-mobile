@@ -20,6 +20,7 @@ define(
        * [init 初始化]
        */
       init: function() {
+
         var params = can.deparam(window.location.search.substr(1))
         var code = params.code;
 

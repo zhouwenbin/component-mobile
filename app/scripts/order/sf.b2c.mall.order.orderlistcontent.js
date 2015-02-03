@@ -51,7 +51,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
               _.each(data.orders, function(order) {
 
                 //“待审核”“采购中”“待发货”“正在出库”“已发货”
-                if (order.orderStatus == 'SUBMITED' && order.orderStatus == 'AUDITING' || order.orderStatus == 'BUYING' || order.orderStatus == 'WAIT_SHIPPING' || order.orderStatus == 'SHIPPING' || order.orderStatus == 'SHIPPED') {
+                if (order.orderStatus == 'SUBMITED' || order.orderStatus == 'AUDITING' || order.orderStatus == 'BUYING' || order.orderStatus == 'WAIT_SHIPPING' || order.orderStatus == 'SHIPPING' || order.orderStatus == 'SHIPPED') {
                   that.options.notCompletedOrderList.push(order);
                 } else {
                   that.options.completedOrderList.push(order);

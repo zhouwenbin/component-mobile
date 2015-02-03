@@ -151,6 +151,9 @@ requirejs.config({
         // 微信转跳中心
         'sf.b2c.mall.page.weixincenter': 'scripts/page/sf.b2c.mall.page.weixincenter',
 
+        // alipay支付
+        'sf.b2c.mall.page.alipayframe': 'scripts/page/sf.b2c.mall.page.alipayframe',
+
         // 收货地址管理
         'sf.b2c.mall.page.recaddrmanage': 'scripts/page/sf.b2c.mall.page.recaddrmanage',
         'sf.b2c.mall.component.recaddrmanage': 'scripts/component/sf.b2c.mall.component.recaddrmanage'
