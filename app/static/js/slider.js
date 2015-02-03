@@ -10,7 +10,7 @@ $(function(){
 window.mySwipe = new Swipe(document.getElementById('slider'), {
   startSlide: 0,
   speed: 400,
-  auto: 0,
+  auto: 5000,
   continuous: true,
   disableScroll: false,
   stopPropagation: false,
