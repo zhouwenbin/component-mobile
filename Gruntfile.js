@@ -213,6 +213,7 @@ module.exports = function(grunt) {
         '<%= config.app %>/orderdetail.html',
         '<%= config.app %>/center.html',
         '<%= config.app %>/weixincenter.html',
+        '<%= config.app %>/agreement.html',
         '<%= config.app %>/recaddrmanage.html'
       ]
     },
@@ -338,6 +339,7 @@ module.exports = function(grunt) {
             'orderdetail.html',
             'center.html',
             'weixincenter.html',
+            'agreement.html',
             'recaddrmanage.html',
 
             'json/*.json',
@@ -562,6 +564,14 @@ module.exports = function(grunt) {
             'sf.b2c.mall.page.weixincenter'
           ],
           insertRequire: ['sf.b2c.mall.page.weixincenter']
+        }
+      },
+      agreement: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.weixincenter.min.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
         }
       },
       recaddrmanage: {
