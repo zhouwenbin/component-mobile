@@ -53,12 +53,14 @@
       <ul>
         <li>品牌： {{itemInfo.basicInfo.brand}}</li>
       </ul>
+      {{#if itemInfo.basicInfo.showAttribues}}
       <ul>
         <li>商品属性：</li>
         {{#each itemInfo.basicInfo.attributes}}
         <li>{{key}}： {{value}}</li>
         {{/each}}
       </ul>
+      {{/if}}
     </div>
     <div class="detail-b" id="detail">
 

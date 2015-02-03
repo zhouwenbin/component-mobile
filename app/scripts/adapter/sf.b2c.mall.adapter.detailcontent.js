@@ -23,10 +23,10 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
 
     formatItemInfo: function(detailUrl, detailContentInfo, itemInfoData) {
       var that = this;
-
       //设置商品详细信息，包括标题、副标题、描述等信息
       detailContentInfo.itemInfo = {};
       detailContentInfo.itemInfo.basicInfo = itemInfoData.skuInfo;
+      detailContentInfo.itemInfo.basicInfo.showAttribues = (detailContentInfo.itemInfo.basicInfo.attributes && detailContentInfo.itemInfo.basicInfo.attributes.length > 0 ? true : false)
       detailContentInfo.itemInfo.basicInfo.shippingPoint = itemInfoData.saleInfo.shippingPoint;
       detailContentInfo.itemInfo.basicInfo.orderToDelivery = itemInfoData.saleInfo.orderToDelivery;
       detailContentInfo.itemInfo.basicInfo.productShape = itemInfoData.saleInfo.productShape;
@@ -44,7 +44,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
 
       detailContentInfo.itemInfo.saleSkuSpecTupleList = itemInfoData.saleInfo.saleSkuSpecTupleList;
 
-      if (itemInfoData.skuInfo.skuSpecTuple){
+      if (itemInfoData.skuInfo.skuSpecTuple) {
         //设置选中和可选状态
         var specId = itemInfoData.skuInfo.skuSpecTuple.specIds;
 
@@ -111,6 +111,7 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
         //一位一位去匹配
         return spec.specId == specId[index];
       })
+
       if (typeof selectedSpec.attr != 'undefined') {
         selectedSpec.attr("selected", "active");
         selectedSpec.attr("canSelected", "");
