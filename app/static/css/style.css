@@ -6,8 +6,8 @@ nav ul,li{list-style:none}
 blockquote,q{quotes:none}
 blockquote:before,blockquote:after,q:before,q:after{content:none}
 a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
-ins{background-color:#ff9;color:#000;text-decoration:none}
-mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+ins{background-color:#ff9;color:#333;text-decoration:none}
+mark{background-color:#ff9;color:#333;font-style:italic;font-weight:bold}
 del{text-decoration:line-through}
 abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
 table{border-collapse:collapse;border-spacing:0}
@@ -21,7 +21,7 @@ input,select{vertical-align:middle}
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   font-size: 12px;
-  color: #000;
+  color: #333;
   max-width: 640px;
   min-width: 320px;
   margin: 0 auto;
@@ -31,7 +31,7 @@ a, img {
 }
 a{
   text-decoration: none;
-  color:#000;
+  color:#333;
 }
 html, body {
   -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
@@ -82,6 +82,9 @@ button{
   -webkit-line-clamp: 3;
 }
 /*图片垂直居中*/
+.vertical-middle{
+  font-size: 0;
+}
 .vertical-middle:after{
   content: '';
   display: inline-block;
@@ -323,6 +326,7 @@ button{
 .text-error,
 .text-important{
   color:#dc3334;
+  font-size: 12px;
 }
 .text-success{
   color: #67b222;
@@ -344,6 +348,10 @@ button{
   width: 100%;
 }
 
+.input-num{
+  display: inline-block;
+  font-size: 0;
+}
 .input-num .btn{
   display: inline-block;
   width: 36px;
@@ -792,6 +800,7 @@ button{
   width: 48.8%;
   border: 1px solid #ccc;
   margin-bottom: 7px;
+  background: #fff;
 }
 .list li:nth-child(even){
   float: right;
@@ -835,7 +844,7 @@ button{
   vertical-align: middle;
 }
 .list a:visited{
-  color:#000;
+  color:#333;
 }
 /*支付成功*/
 .pay{
@@ -1366,4 +1375,23 @@ border-radius:20px;
   position: static;
   display: inline-block;
   margin-bottom: 10px;
+}
+/*agreement*/
+.agreement{
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+}
+.agreement h1{
+  margin-bottom: 73px;
+  font-size: 24px;
+  text-align: center;
+}
+.agreement p,
+.agreement h2{
+  margin-bottom: 15px;
+  color: #585858;
+  font-weight: normal;
+  line-height: 18px;
 }

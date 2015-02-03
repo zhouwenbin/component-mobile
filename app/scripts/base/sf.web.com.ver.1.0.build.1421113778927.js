@@ -9264,7 +9264,8 @@
         METHOD_NAME: "user.reqLoginAuth",
         SECURITY_TYPE: i.None.name,
         REQUIRED: {
-          partnerId: "string"
+          partnerId: "string",
+          redirectUrl: "string"
         },
         OPTIONAL: {},
         VERIFY: {},

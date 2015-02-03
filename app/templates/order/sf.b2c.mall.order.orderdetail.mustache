@@ -1,6 +1,6 @@
   <!--订单详情-->
   <section class="orderdetail" id="orderdetail">
-    <div class="orderdetail-r1">{{{uploadIDCardTips}}}</div>
+    {{#if needShowTips}}<div class="orderdetail-r1">{{{uploadIDCardTips}}}</div>{{/if}}
     <ul class="box orderdetail-r2 clearfix">
       <li>订单号：{{orderId}}</li>
       <li>{{sf.time gmtCreate}}创建</li>
