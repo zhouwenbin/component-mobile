@@ -98,9 +98,6 @@
       {{else}}
         <button class="btn btn-disable btn-big">立即购买</button>
       {{/sf-canBuy}}
-
-
-
     </div>
   </section>
   <!--立即购买-->
@@ -151,14 +148,14 @@
           <button class="btn" id="addNum">+</button>
 
           {{#if input.showRestrictionTips}}
-            <span class="alert-error">商品限购{{priceInfo.limitBuy}}件</span>
+            <span class="alert-error" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>
           {{/if}}
 
         </div>
 
       </div>
     </div>
-    <div class="alert-error">{{input.error}}</div>
+    <div id="allerrortip" class="alert-error">{{input.error}}</div>
     {{#sf-showCurrentStock priceInfo.currentStock}}
       <div class="alert-error">商品剩余{{priceInfo.currentStock}}件，请修改购买数量</div>
     {{/sf-showCurrentStock}}
@@ -167,7 +164,13 @@
   <!--立即购买-->
   <section class="buy">
     <div class="buy-r1">
-      <button class="btn btn-danger btn-big" id="buyEnter">确定</button>
+
+
+      {{#sf-canBuy priceInfo.soldOut}}
+        <button class="btn btn-danger btn-big" id="buyEnter">确定</button>
+      {{else}}
+        <button class="btn btn-disable btn-big">确定</button>
+      {{/sf-canBuy}}
     </div>
 
   </section>

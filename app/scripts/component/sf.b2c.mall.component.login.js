@@ -69,11 +69,11 @@ define('sf.b2c.mall.component.login', [
           that.loginButtonClick();
         })
 
-        $('.weixinlogin').tap(function() {
-          that.weixinLoginAuth();
-        })
+        // $('.weixinlogin').tap(function() {
+        //   that.weixinLoginAuth();
+        // })
 
-        $('#verified-code-btn').tap(function(){
+        $('#verified-code-btn').tap(function() {
           that.getVerifiedCode();
         })
 
@@ -88,24 +88,32 @@ define('sf.b2c.mall.component.login', [
        * [weixinLogin 微信登陆]
        * @return {[type]} [description]
        */
-      weixinLoginAuth: function() {
-        var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_open",
-          "redirectUrl": "http://www.sfht.com/weixincenter.html?appid=3&from=m.sfht.com/weixincenter.html"
-        });
+      // weixinLoginAuth: function() {
+      //   var reqLoginAuth = new SFReqLoginAuth({
+      //     "partnerId": "wechat_mp",
+      //     "redirectUrl": "http://www.sfht.com/weixincenter.html?from=m.sfht.com/weixincenter.html"
+      //   });
 
-        reqLoginAuth
-          .sendRequest()
-          .done(function(data) {
+      //   alert("begin6");
+      //   // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+      //   window.open("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&response_type=code&scope=snsapi_userinfo&redirect_uri=http%3A%2F%2Fwww.sfht.com&state=STATE#wechat_redirect");
 
-            store.set('weixinto', 'order.html');
+      //   // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&redirect_uri=http%3A%2F%2Fwww.sfht.com%2Findex.html%3Ffrom%3Dhttp%3A%2F%2Fm.sfht.com%2Fweixincenter.html%7Corder.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
-            window.location.href = data.loginAuthLink;
-          })
-          .fail(function(error) {
-            console.error(error);
-          })
-      },
+      //   reqLoginAuth
+      //     .sendRequest()
+      //     .done(function(data) {
+
+      //       store.set('weixinto', 'order.html');
+      //       alert("open loginauth:" + data.loginAuthLink);
+      //       // window.location.href = "" + data.loginAuthLink + "";
+      //       // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&redirect_uri=http%3A%2F%2Fwww.sfht.com%2Findex.html%3Ffrom%3Dhttp%3A%2F%2Fm.sfht.com%2Fweixincenter.html%7Corder.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+      //       return false;
+      //     })
+      //     .fail(function(error) {
+      //       console.error(error);
+      //     })
+      // },
 
       /**
        * @description 渲染页面
@@ -114,9 +122,13 @@ define('sf.b2c.mall.component.login', [
       render: function(data) {
         var html = can.view('templates/component/sf.b2c.mall.component.login.mustache', data, this.helpers);
         this.element.append(html);
-
+        var that = this;
         if (COUNT >= 3) {
           this.data.attr('isNeedVerifiedCode', true);
+
+          $('#verified-code-btn').tap(function() {
+            that.getVerifiedCode();
+          })
         }
 
         this.funPlaceholder(document.getElementById('user-name'));
@@ -211,6 +223,9 @@ define('sf.b2c.mall.component.login', [
           .done(function(data) {
             if (data.value) {
               that.data.attr('isNeedVerifiedCode', true);
+              $('#verified-code-btn').tap(function() {
+                that.getVerifiedCode();
+              })
             } else {
               that.data.attr('isNeedVerifiedCode', false);
             }
@@ -290,7 +305,7 @@ define('sf.b2c.mall.component.login', [
        * @param  {dom} element jquery dom对象
        * @param  {event} event event对象
        */
-      '.input-username blur': function(element, event) {
+      '#user-name blur': function(element, event) {
         event && event.preventDefault();
 
         var username = this.data.attr('username');
@@ -304,7 +319,7 @@ define('sf.b2c.mall.component.login', [
        * @param  {dom} element jquery dom对象
        * @param  {event} event event对象
        */
-      '.input-password blur': function(element, event) {
+      '#user-pwd blur': function(element, event) {
         event && event.preventDefault();
         var password = $(element).val();
         if (password) {
@@ -364,6 +379,9 @@ define('sf.b2c.mall.component.login', [
               $('#code-error-tips').text(errorText).show();
             } else if (error === 1000300) {
               that.data.attr('isNeedVerifiedCode', true);
+              $('#verified-code-btn').tap(function() {
+                that.getVerifiedCode();
+              })
               $('#username-error-tips').text('账户名或登录密码错误，请重新输入').show();
             } else {
               $('#username-error-tips').text(errorText).show();
@@ -379,6 +397,10 @@ define('sf.b2c.mall.component.login', [
         event && event.preventDefault();
 
         var that = this;
+
+        $('#user-name').blur();
+        $('#user-pwd').blur();
+        $('#verified-code').blur();
 
         var username = $('#user-name').val();
         var password = $('#user-pwd').val();

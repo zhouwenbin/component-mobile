@@ -5,10 +5,11 @@ define(
     'zepto',
     'can',
     'underscore',
+    'store',
     'sf.b2c.mall.api.order.requestPayV2'
   ],
 
-  function ($, can, _, SFApiRequestPayV2) {
+  function ($, can, _, store, SFApiRequestPayV2) {
 
     var requestPayV2 = new SFApiRequestPayV2();
 
@@ -22,10 +23,13 @@ define(
         requestPayV2
           .sendRequest()
           .done(function(data) {
-            window.location.href = data.url + '?' + data.postBody;
+            //window.location.href = data.url + '?' + data.postBody;
             if (callback && _.isFunction(callback.success)) {
               callback.success();
             }
+
+            store.set("alipayurl", data.url + '?' + data.postBody);
+            window.location.href = "alipayframe.html";
           })
           .fail(function(error) {
             //var errorText = that.payErrorMap[error.toString()] || '支付失败';
