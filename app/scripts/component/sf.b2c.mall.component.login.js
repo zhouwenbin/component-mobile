@@ -90,8 +90,8 @@ define('sf.b2c.mall.component.login', [
        */
       weixinLoginAuth: function() {
         var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_open",
-          "redirectUrl": "http://www.sfht.com/weixincenter.html?appid=3&from=m.sfht.com/weixincenter.html"
+          "partnerId": "wechat_mp",
+          "redirectUrl": "http://www.sfht.com/weixincenter.html?from=m.sfht.com/weixincenter.html"
         });
 
         reqLoginAuth
@@ -99,7 +99,7 @@ define('sf.b2c.mall.component.login', [
           .done(function(data) {
 
             store.set('weixinto', 'order.html');
-
+            alert("loginauth:" + data.loginAuthLink);
             window.location.href = data.loginAuthLink;
           })
           .fail(function(error) {
@@ -389,6 +389,10 @@ define('sf.b2c.mall.component.login', [
         event && event.preventDefault();
 
         var that = this;
+
+        $('#user-name').blur();
+        $('#user-pwd').blur();
+        $('#verified-code').blur();
 
         var username = $('#user-name').val();
         var password = $('#user-pwd').val();
