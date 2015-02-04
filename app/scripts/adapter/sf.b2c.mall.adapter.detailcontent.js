@@ -36,6 +36,11 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
         item.bigImgUrl += "@375h_375w_80Q_1x.jpg";
       })
 
+      if (!itemInfoData.skuInfo.images) {
+        window.location.href = "http://m.sfht.com/index.html";
+        return false;
+      }
+
       detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].thumbImgUrl;
       detailContentInfo.itemInfo.linkUrl = detailUrl + "/detail/" + itemInfoData.itemId + ".html";
 
