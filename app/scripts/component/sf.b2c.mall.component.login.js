@@ -69,9 +69,9 @@ define('sf.b2c.mall.component.login', [
           that.loginButtonClick();
         })
 
-        $('.weixinlogin').tap(function() {
-          that.weixinLoginAuth();
-        })
+        // $('.weixinlogin').tap(function() {
+        //   that.weixinLoginAuth();
+        // })
 
         $('#verified-code-btn').tap(function() {
           that.getVerifiedCode();
@@ -88,24 +88,32 @@ define('sf.b2c.mall.component.login', [
        * [weixinLogin 微信登陆]
        * @return {[type]} [description]
        */
-      weixinLoginAuth: function() {
-        var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_mp",
-          "redirectUrl": "http://www.sfht.com/weixincenter.html?from=m.sfht.com/weixincenter.html"
-        });
+      // weixinLoginAuth: function() {
+      //   var reqLoginAuth = new SFReqLoginAuth({
+      //     "partnerId": "wechat_mp",
+      //     "redirectUrl": "http://www.sfht.com/weixincenter.html?from=m.sfht.com/weixincenter.html"
+      //   });
 
-        reqLoginAuth
-          .sendRequest()
-          .done(function(data) {
+      //   alert("begin6");
+      //   // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+      //   window.open("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&response_type=code&scope=snsapi_userinfo&redirect_uri=http%3A%2F%2Fwww.sfht.com&state=STATE#wechat_redirect");
 
-            store.set('weixinto', 'order.html');
-            alert("loginauth:" + data.loginAuthLink);
-            window.location.href = data.loginAuthLink;
-          })
-          .fail(function(error) {
-            console.error(error);
-          })
-      },
+      //   // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&redirect_uri=http%3A%2F%2Fwww.sfht.com%2Findex.html%3Ffrom%3Dhttp%3A%2F%2Fm.sfht.com%2Fweixincenter.html%7Corder.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+
+      //   reqLoginAuth
+      //     .sendRequest()
+      //     .done(function(data) {
+
+      //       store.set('weixinto', 'order.html');
+      //       alert("open loginauth:" + data.loginAuthLink);
+      //       // window.location.href = "" + data.loginAuthLink + "";
+      //       // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&redirect_uri=http%3A%2F%2Fwww.sfht.com%2Findex.html%3Ffrom%3Dhttp%3A%2F%2Fm.sfht.com%2Fweixincenter.html%7Corder.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+      //       return false;
+      //     })
+      //     .fail(function(error) {
+      //       console.error(error);
+      //     })
+      // },
 
       /**
        * @description 渲染页面
