@@ -24,16 +24,19 @@ define(
         var params = can.deparam(window.location.search.substr(1))
         var code = params.code;
 
-        var to = store.get('weixinto');
+        alert("h5:" + code);
+
+        var to = 'http://m.shft.com/order.html';//store.get('weixinto');
 
         var partnerLogin = new SFPartnerLogin({
-          "partnerId": "wechat_open",
+          "partnerId": "wechat_mp",
           "authResp": "code=" + code
         });
 
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
+            alert("loginData.csrfToken:" + loginData.csrfToken);
 
             if (loginData.csrfToken) {
               store.set('type', 'WEIXIN');
@@ -50,6 +53,7 @@ define(
           })
           .fail(function(error) {
             console.error(error);
+            alert(error);
             window.location.href = "http://m.sfht.com/index.html";
           })
       }

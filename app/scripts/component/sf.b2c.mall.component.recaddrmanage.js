@@ -45,7 +45,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
           that.element.html(html);
 
           //绑定事件
-          $('#delete').tap(function() {
+          $('.delete').tap(function() {
             that.deleteRecAddrClick($(this));
           })
 
@@ -89,7 +89,10 @@ define('sf.b2c.mall.component.recaddrmanage', [
             that.render();
           }
         })
-        .fail(function(error) {})
+        .fail(function(error, resulterror) {
+          console.error(error);
+          that.render();
+        })
     },
 
     /** 获得收获人和收获地址 */
