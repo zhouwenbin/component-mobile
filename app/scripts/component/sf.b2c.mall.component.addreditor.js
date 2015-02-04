@@ -295,6 +295,10 @@ define('sf.b2c.mall.component.addreditor', [
       event && event.preventDefault();
 
       $('.tel-hide').hide();
+
+      $('.textarea').blur();
+      $('.input').blur();
+
       var addr = this.adapter.addr.input.attr();
 
       var key;

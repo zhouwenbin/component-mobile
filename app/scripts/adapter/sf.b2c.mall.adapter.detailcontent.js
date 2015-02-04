@@ -113,7 +113,8 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
       })
 
       if (!selectedSpec){
-        window.location.href = "index.html";
+        window.location.href = "http://m.sfht.com/index.html";
+        return false;
       }
 
       if (typeof selectedSpec.attr != 'undefined') {

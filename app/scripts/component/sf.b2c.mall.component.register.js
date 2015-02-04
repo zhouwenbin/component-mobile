@@ -121,9 +121,9 @@ define('sf.b2c.mall.component.register', [
             $(this).toggleClass("active");
 
             if ($(this).hasClass('active')){
-              $("#input-password")[0].type = 'password';
-            } else {
               $("#input-password")[0].type = 'text';
+            } else {
+              $("#input-password")[0].type = 'password';
             }
           })
         },
