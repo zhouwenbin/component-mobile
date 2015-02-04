@@ -17,7 +17,8 @@ define('sf.weixin', [
   };
 
   var gethHostUrl = function() {
-    return window.location.origin + window.location.pathname;
+    // return window.location.origin + window.location.pathname;
+    return window.location.href;
   };
 
   var configWeixin = function() {
