@@ -121,7 +121,12 @@ define('sf.b2c.mall.product.detailcontent', [
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
 
             //that.options.detailContentInfo.priceInfo.attr("soldOut", true);
+            var sellingPrice = that.options.detailContentInfo.priceInfo.attr('sellingPrice');
+            var originPrice = that.options.detailContentInfo.priceInfo.attr('originPrice');
 
+            if(sellingPrice == originPrice){
+              $('.originPrice').hide();
+            }
             var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
             that.element.html(html);
 
