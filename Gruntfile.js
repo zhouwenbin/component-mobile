@@ -449,8 +449,12 @@ module.exports = function(grunt) {
           baseUrl: './app/',
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.main.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
           include: [
             'sf.b2c.mall.component.price',
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.page.main'
           ],
           insertRequire: ['sf.b2c.mall.page.main']
@@ -464,11 +468,13 @@ module.exports = function(grunt) {
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
             'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
           include: [
             'sf.b2c.mall.product.detailcontent',
             'sf.b2c.mall.adapter.detailcontent',
+            "sf.b2c.mall.business.config",
             'sf.helpers',
             'sf.b2c.mall.widget.loading',
             'sf.b2c.mall.page.detail'
@@ -484,11 +490,13 @@ module.exports = function(grunt) {
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
             'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
           include: [
             'sf.b2c.mall.order.selectreceiveaddr',
             'sf.b2c.mall.order.iteminfo',
+            "sf.b2c.mall.business.config",
             'sf.helpers',
             'sf.b2c.mall.adapter.address.list',
             'sf.b2c.mall.component.addreditor',
@@ -507,8 +515,12 @@ module.exports = function(grunt) {
           baseUrl: './app/',
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.login.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
           include: [
             'sf.b2c.mall.component.login',
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.page.login'
           ],
           insertRequire: ['sf.b2c.mall.page.login']
@@ -520,8 +532,12 @@ module.exports = function(grunt) {
           baseUrl: './app/',
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.register.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
           include: [
             'sf.b2c.mall.component.register',
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.page.register'
           ],
           insertRequire: ['sf.b2c.mall.page.register']
@@ -534,11 +550,13 @@ module.exports = function(grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.gotopay.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
             'moment': '../bower_components/momentjs/min/moment.min'
           },
           include: [
             'sf.helpers',
             'moment',
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.order.fn',
             'sf.b2c.mall.widget.loading',
             'sf.b2c.mall.page.gotopay'
@@ -553,11 +571,13 @@ module.exports = function(grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.list.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
             'moment': '../bower_components/momentjs/min/moment.min'
           },
           include: [
             'sf.b2c.mall.order.orderlistcontent',
             'moment',
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.order.fn',
             'sf.b2c.mall.widget.message',
             'sf.b2c.mall.page.orderlist'
@@ -572,12 +592,14 @@ module.exports = function(grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.detail.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
             'moment': '../bower_components/momentjs/min/moment.min'
           },
           include: [
             'sf.b2c.mall.order.orderdetailcontent',
             'sf.helpers',
             'moment',
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.order.fn',
             'sf.b2c.mall.page.orderdetail'
           ],
@@ -590,7 +612,11 @@ module.exports = function(grunt) {
           baseUrl: './app/',
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.center.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
           include: [
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.page.center'
           ],
           insertRequire: ['sf.b2c.mall.page.center']
@@ -602,7 +628,11 @@ module.exports = function(grunt) {
           baseUrl: './app/',
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.weixincenter.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
           include: [
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.page.weixincenter'
           ],
           insertRequire: ['sf.b2c.mall.page.weixincenter']
@@ -614,7 +644,11 @@ module.exports = function(grunt) {
           baseUrl: './app/',
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.alipayframe.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
           include: [
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.page.alipayframe'
           ],
           insertRequire: ['sf.b2c.mall.page.alipayframe']
@@ -642,7 +676,11 @@ module.exports = function(grunt) {
           baseUrl: './app/',
           out: './<%= config.dist %>/scripts/sf.b2c.mall.page.recaddrmanage.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
           include: [
+            "sf.b2c.mall.business.config",
             'sf.b2c.mall.component.recaddrmanage',
             'sf.b2c.mall.page.recaddrmanage',
             'sf.b2c.mall.adapter.regions',
