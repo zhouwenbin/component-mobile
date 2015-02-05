@@ -64,7 +64,7 @@ define('sf.b2c.mall.component.login', [
 
         var that = this;
         $('#gotoLogin').tap(function() {
-          that.loginButtonClick();
+          that.loginButtonClick($(this));
         })
 
         // $('.weixinlogin').tap(function() {
@@ -300,7 +300,7 @@ define('sf.b2c.mall.component.login', [
         $('#code-error-tips').hide();
       },
 
-      sendRequest: function() {
+      sendRequest: function(element) {
 
         var that = this;
         // @todo 发起登录请求
@@ -321,6 +321,9 @@ define('sf.b2c.mall.component.login', [
             }
           })
           .fail(function(error) {
+
+            element.text("登录");
+
             var map = {
               '-140': '账户名或登录密码错误，请重新输入',
               '1000010': '账户未注册，立即注册',
@@ -368,6 +371,8 @@ define('sf.b2c.mall.component.login', [
         $('#code-error-tips').hide();
         // @todo 检查用户名和密码是否符合规范
 
+        element.text("登录中");
+
         // 设置登录请求信息
         if (this.data.attr('isNeedVerifiedCode')) {
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password) && this.checkVerCode.call(this, verCode)) {
@@ -384,8 +389,10 @@ define('sf.b2c.mall.component.login', [
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key),
               vfCode: vfCode
             });
-            that.sendRequest();
+            that.sendRequest(element);
             that.getVerifiedCode();
+          } else {
+            element.text("登录");
           }
         } else {
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password)) {
@@ -394,8 +401,10 @@ define('sf.b2c.mall.component.login', [
               type: 'MOBILE',
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key)
             });
-            that.sendRequest();
+            that.sendRequest(element);
 
+          } else {
+            element.text("登录");
           }
         }
       }
