@@ -255,12 +255,16 @@ module.exports = function(grunt) {
         ],
         blockReplacements: {
           js: function(block) {
+            console.log(block.dest)
             if (block.dest === 'base') {
               block.dest = config.base.dest;
               block.src = config.base.src
             } else if (block.dest === 'com') {
               block.dest = config.com;
               block.src = config.com
+            }else if (block.dest == 'require'){
+              console.log('enter')
+              return '<script src="scripts/require.min.js"></script>';
             }
 
             return '<script src="/' + block.dest + '.' + config.version + '.' + config.build + '.min.js"></script>';
@@ -390,6 +394,9 @@ module.exports = function(grunt) {
         }, {
           src: '<%= config.app %>/css/browser.css',
           dest: '<%= config.dist %>/css/browser.css'
+        },{
+          src: 'bower_components/requirejs/require.js',
+          dest: '<%= config.dist %>/scripts/require.min.js'
         }, {
           expand: true,
           dot: true,
@@ -747,7 +754,7 @@ module.exports = function(grunt) {
           'htmlmin',
           'strip:main',
           'clean:extra',
-          // 'createJSON'
+          'createJSON'
         ]);
       };
     })
