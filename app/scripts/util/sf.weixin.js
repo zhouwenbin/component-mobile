@@ -79,7 +79,7 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
-            alert('已分享');
+            // alert('已分享');
           },
           cancel: function(res) {
             // alert('已取消');
@@ -119,7 +119,7 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
-            alert('已分享');
+            // alert('已分享');
           },
           cancel: function(res) {
             // alert('已取消');
