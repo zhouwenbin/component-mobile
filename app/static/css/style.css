@@ -37,6 +37,7 @@ a{
 html, body {
   -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
   user-select: none;
+  height: 100%;
 }
 
 button{
@@ -152,8 +153,8 @@ button{
   text-indent: -999em;
 }
 .icon1{
-  width: 25px;
-  height: 16px;
+  width: 18px;
+  height: 12px;
 }
 .icon2{
   width: 27px;
@@ -510,7 +511,7 @@ button{
   line-height: 24px;
   font-weight: normal;
   padding-bottom: 12px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
   margin-bottom: 15px;
 }
 .table-r1c2{
@@ -584,7 +585,7 @@ button{
 .goods-r2{
   padding-bottom: 11px;
   margin-bottom: 15px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
 }
 .goods-r2c2{
   font-size: 14px;
@@ -596,7 +597,6 @@ button{
 }
 .goods-r3{
   font-size: 14px;
-  font-weight: bold;
   margin-bottom: 9px;
   color:#666;
   padding-bottom: 18px;
@@ -644,6 +644,7 @@ button{
 /*商品详情*/
 .detail{
   background: #fff;
+  margin-bottom: 10px;
 }
 .detail-h{
   position: -webkit-sticky;
@@ -671,12 +672,12 @@ button{
 }
 
 .detail-b{
-  margin-bottom: 17px;
+  
   padding: 0 17px;
   line-height: 1.5;
 }
 .detail-b ul{
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
   padding: 11px 17px;
 }
 .detail-b ul:last-child{
@@ -728,12 +729,12 @@ button{
 }
 .recommend ul{
   padding: 0 15px;
-  border-top:1px solid #ccc;
+  border-top:1px solid #eee;
 }
 .recommend li{
   position: relative;
   padding: 10px 0;
-  border-bottom:1px solid #ccc;
+  border-bottom:1px solid #eee;
 }
 .recommend li:last-child{
   border-bottom: none;
@@ -1013,6 +1014,8 @@ button{
 }
 /*支付成功*/
 .pay{
+  width: 100%;
+  height: 100%;
   padding-top: 66px;
   padding-bottom: 164px;
   text-align: center;
@@ -1093,7 +1096,7 @@ border-radius:20px;
 }
 .orderlist-r1{
   padding-bottom: 8px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
   margin-bottom: 10px;
 }
 .orderlist-r1c1{
@@ -1129,9 +1132,10 @@ border-radius:20px;
 .orderlist strong{
   color:#dc3334;
   font-size: 14px;
+  font-weight: normal;
 }
 .orderlist-r3{
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #eee;
   padding-top: 10px;
 }
 .orderlist-r3c1{
@@ -1240,7 +1244,7 @@ border-radius:20px;
   width: 1px;
   height: 100%;
   position: absolute;
-  background: #ccc;
+  background: #eee;
   left: 22px;
   top: 32px;
 }
@@ -1261,6 +1265,7 @@ border-radius:20px;
 }
 .orderdetail-r4 .text-disable{
   margin-left: 12px;
+  font-size: 12px;
 }
 
 /*info*/
@@ -1272,7 +1277,7 @@ border-radius:20px;
 .info-r1{
   padding-bottom: 14px;
   margin-bottom: 14px;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px solid #eee;
 }
 .info-r1c1{
   color: #7f7f7f;
@@ -1328,7 +1333,7 @@ border-radius:20px;
   line-height: 18px;
   position: relative;
   padding: 13px 0 10px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
   margin-right:14px;
   margin-left: 40px;
 }
@@ -1357,7 +1362,7 @@ border-radius:20px;
   width: 1px;
   height: 100%;
   position: absolute;
-  background: #ccc;
+  background: #eee;
   left: -21px;
   top: 23px;
 }
