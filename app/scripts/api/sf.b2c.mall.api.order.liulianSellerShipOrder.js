@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.createRecAddress
+  * @class sf.b2c.mall.api.order.liulianSellerShipOrder
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.createRecAddress',
+'sf.b2c.mall.api.order.liulianSellerShipOrder',
 [
   'jquery',
   'can',
@@ -22,27 +22,17 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.createRecAddress',
+      METHOD_NAME: 'order.liulianSellerShipOrder',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'nationName': 'string',
-        'provinceName': 'string',
-        'cityName': 'string',
-        'regionName': 'string',
-        'detail': 'string',
-        'cellphone': 'string',
+        'request': 'json'
       },
       OPTIONAL: {
-        'zipCode': 'string',
-        'recName': 'string',
-        'recId': 'long',
-        'partnerId': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000230': '手机号错误，请输入正确的手机号',
-        '1000310': '已达到最大允许数目'
+        '4000100': 'order unkown error'
       }
     }
   });

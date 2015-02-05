@@ -697,6 +697,27 @@ module.exports = function(grunt) {
     ]);
   });
 
+  grunt.registerTask('createJSON', function () {
+    var map = {
+      'base'                        :'scripts/base/sf.h5.base.ver.1.0.build.1421502116857.js',
+      'alipayframe'                 :'scripts/sf.b2c.mall.page.alipayframe.'            + config.version +'.'+ config.build +'.min.js',
+      'center'                      :'scripts/sf.b2c.mall.page.center.'                 + config.version +'.'+ config.build +'.min.js',
+      'detail'                      :'scripts/sf.b2c.mall.page.detail.'                 + config.version +'.'+ config.build +'.min.js',
+      'gotopay'                     :'scripts/sf.b2c.mall.page.gotopay.'                + config.version +'.'+ config.build +'.min.js',
+      'login'                       :'scripts/sf.b2c.mall.page.login.'                  + config.version +'.'+ config.build +'.min.js',
+      'main'                        :'scripts/sf.b2c.mall.page.main.'                   + config.version +'.'+ config.build +'.min.js',
+      'orderdetail'                 :'scripts/sf.b2c.mall.page.order.detail.'           + config.version +'.'+ config.build +'.min.js',
+      'orderlist'                   :'scripts/sf.b2c.mall.page.order.list.'             + config.version +'.'+ config.build +'.min.js',
+      'order'                       :'scripts/sf.b2c.mall.page.order.'                  + config.version +'.'+ config.build +'.min.js',
+      'recaddrmanage'               :'scripts/sf.b2c.mall.page.recaddrmanage.'          + config.version +'.'+ config.build +'.min.js',
+      'register'                    :'scripts/sf.b2c.mall.page.register.'               + config.version +'.'+ config.build +'.min.js',
+      'weixincenter'                :'scripts/sf.b2c.mall.page.weixincenter.'           + config.version +'.'+ config.build +'.min.js'
+    }
+
+    grunt.file.write(config.dist+'/scripts/sf.b2c.mall.file.json', JSON.stringify(map), {encoding: 'utf8'});
+
+  });
+
   grunt.registerTask('build', function(target){
     grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
       if (filename.indexOf('sf.h5.base')> -1) {
