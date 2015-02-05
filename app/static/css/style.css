@@ -39,7 +39,9 @@ html, body {
   user-select: none;
   height: 100%;
 }
-
+h2,h3{
+  font-weight: normal;
+}
 button{
   border: none;
 }
@@ -976,6 +978,7 @@ button{
   line-height: 20px;
   height: 40px;
   margin-bottom: 10px;
+  font-weight: normal;
 }
 .list del{
   color: #444a58;
@@ -991,7 +994,7 @@ button{
   margin-right: 8px;
 }
 .list-b{
-  padding: 10px 8px;
+  padding: 10px 8px 12px;
 }
 .list-r2{
   position: relative;
