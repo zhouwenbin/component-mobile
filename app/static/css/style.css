@@ -188,10 +188,13 @@ button{
 .icon8{
   width: 27px;
   height: 27px;
-  background-position: -73px 6px;
+  background-position: -77px 0;
+  border-width:6px 3px;
   border-color: #dc3334;
+  border-style: solid;
   background-color: #dc3334;
 }
+
 .icon9{
   width: 9px;
   height: 5px;
@@ -291,6 +294,11 @@ button{
   height: 13px;
   background-position: -255px 0;
 }
+.icon28{
+  width: 6px;
+  height: 11px;
+  background-position: -270px 0;
+}
 
 /*btn*/
 .btn{
@@ -299,7 +307,9 @@ button{
   font-size: 12px;
   text-align: center;
   border-radius: 2px;
-  padding: 7px 12px;
+  padding: 0px 12px;
+  height: 30px;
+  line-height: 30px;
 
 }
 .btn:active{
@@ -450,14 +460,21 @@ button{
 }
 /*box-address*/
 .box-address{
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
 }
 .box-address h3{
+  font-size: 18px;
   margin-bottom: 8px;
 }
 .box-address span{
-  margin-right: 10px;
+  margin-right: 5px;
+}
+.box-address p{
+  color: #666;
+}
+.box-address-r1 span{
+  margin-right: 33px;
 }
 .box-address-c1{
   width: 46px;
@@ -474,13 +491,16 @@ button{
   overflow: hidden;
   margin-right: 31px;
 }
+.box-address-r2{
+  text-align: right;
+}
 /*table*/
 .table-r1{
   font-size: 15px;
   line-height: 24px;
   font-weight: normal;
   padding-bottom: 12px;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px solid #ccc;
   margin-bottom: 15px;
 }
 .table-r1c2{
@@ -503,10 +523,8 @@ button{
 .table-r1c2 .text-important{
   font-size: 18px;
 }
-
-.table-r2{
-  border-bottom: 1px dashed #ccc;
-  margin-bottom: 15px;
+.table-r1c3{
+  text-align: right;
 }
 .table-r2 li{
   float: left;
@@ -801,36 +819,64 @@ button{
 /*订单*/
 .order{
   background: #F6F8F9;
-  padding-bottom: 15px;
+
+}
+.order-h{
+  background: #fff;
+
+}
+.order-hc2{
+  padding-right: 11px;
+  padding-top: 10px;
 }
 .order h2{
-  padding: 25px 0 9px 15px;
-  color: #7f7f7f;
+  font-size: 14px;
+  padding: 23px 0 10px 14px;
+  background: #fff;
+  
   font-weight: normal;
 }
-
+.order h2:before{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 2px;
+  height: 14px;
+  background: #dc3334;
+  margin-right: 4px;
+}
 .order-r1{
   font-size: 15px;
+}
+.order-r2{
+  text-align: center;
+  background: #fff;
+  margin-bottom: 10px;
+  font-size: 12px;
 }
 .order-r2 .icon{
   right:14px;
 }
-.order-r3c1{
-  font-size: 15px;
-  line-height: 43px;
-}
-.order-r3c1 span{
-  font-size: 16px;
-  color: #dc3434;
-  margin-left: 18px;
-}
 .order-r2 a{
-  color: #a3a3a3;
-  font-size: 15px;
+  color: #999;
 }
 .order-r2 .icon{
   margin-left: 9px;
 }
+.order-r3{
+  padding: 7px 14px;
+}
+
+.order-r3c1{
+  font-size: 15px;
+  padding-top: 8px;
+}
+.order-r3c1 span{
+  font-size: 18px;
+  color: #dc3434;
+  margin-left: 5px;
+}
+
 /*添加收货人*/
 .order-add{
   background: #f6f8f9;
@@ -1136,31 +1182,54 @@ border-radius:20px;
   color:#dc3334;
   text-decoration: underline;
 }
+.orderdetail-r2{
+  margin-bottom: 11px;
+}
 .orderdetail-r2 li{
-  float: left;
-  width: 50%;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 24px;
-  color: #7f7f7f;
   padding: 0 3px;
 }
-.orderdetail-r2 a{
-  color: #7f7f7f;
-  text-decoration: underline;
+.orderdetail-r2 li:nth-child(odd){
+  float: left;
+}
+.orderdetail-r2 li:nth-child(even){
   float: right;
 }
-
-.orderdetail-r2 li:nth-child(3){
-  color: #000;
+.orderdetail-r2 time{
+  color: #999;
 }
-.orderdetail-r2 li:nth-child(4){
-  color: #dc3334;
+.orderdetail-r2 .btn{
+  margin-left: 10px;
+}
+.orderdetail-r3{
+  background: #fff;
 }
 .orderdetail-r3 a{
   display: block;
+  font-size: 14px;
   line-height: 18px;
-  padding: 22px 14px;
+  padding: 22px 47px 22px 42px;
   position: relative;
+}
+.orderdetail-r3 a:before{
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 2px solid #dc3334;
+  position: absolute;
+  margin-left: -25px;
+
+}
+.orderdetail-r3 a:after{
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background: #ccc;
+  left: 22px;
+  top: 32px;
 }
 .orderdetail-r3 .icon{
   right: 14px;
@@ -1169,22 +1238,23 @@ border-radius:20px;
   font-size: 14px;
   line-height: 24px;
 }
-.orderdetail-r4c2 strong{
+.orderdetail-r4 .text-important{
+  font-size: 14px;
+}
+.orderdetail-r4c2 strong.text-important{
   font-size: 24px;
   vertical-align: top;
   font-weight: normal;
 }
+.orderdetail-r4 .text-disable{
+  margin-left: 12px;
+}
 
-.orderdetail-r4c1{
-  width: 127px;
-}
-.orderdetail-r4c2{
-  overflow: hidden;
-}
 /*info*/
 .info{
   font-size: 14px;
   line-height: 24px;
+  margin-bottom: 10px;
 }
 .info-r1{
   padding-bottom: 14px;
@@ -1195,6 +1265,7 @@ border-radius:20px;
   color: #7f7f7f;
   width: 4em;
   text-align: justify;
+  height: 24px;
 }
 .info-r1c2{
   overflow: hidden;
@@ -1202,23 +1273,88 @@ border-radius:20px;
 .info-r1c2 span{
   margin-right: 5px;
 }
-/*物流*/
-.logistics{
-  background: #fff;
+/*商品信息*/
+.goodsinfo{
+  margin-bottom: 10px;
+  padding-bottom: 0;
 }
 
-.logistics li{
+.goodsinfo h2{
+  margin-bottom: 15px;
+  font-size: 14px;
+  padding-left: 5px;
+  border-left: 2px solid #dc3334;
+}
+.goodsinfo img{
+  border: 1px solid #ccc;
+}
+.goodsinfo-title{
+  margin-left: 75px;
+  margin-right: 71px;
   line-height: 18px;
-  margin-bottom: 20px;
+}
+.goodsinfo-price{
+  margin-bottom: 8px;
+}
+.goodsinfo .table-r1{
+  line-height: 1;
+}
+/*物流*/
+
+.logistics h2{
+  margin-bottom: 10px;
 }
 .logistics ul{
-  background: #f6f8f9;
-  padding-top: 50px;
-  padding-bottom: 30px;
+  background: #fff;
 }
-.logistics a{
-  color:#003cff;
+.logistics time{
+  display: block;
+  margin-bottom: 5px;
 }
+.logistics li{
+  line-height: 18px;
+  position: relative;
+  padding: 13px 0 10px;
+  border-bottom: 1px solid #ccc;
+  margin-right:14px;
+  margin-left: 40px;
+}
+
+
+.logistics li:before{
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 2px solid #ccc;
+  position: absolute;
+  margin-left: -25px;
+  
+}
+.logistics li:first-child{
+  color: #dc3334;
+}
+.logistics li:first-child:before{
+  background: #fff;
+  border-color:#dc3334;
+}
+.logistics li:after{
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background: #ccc;
+  left: -21px;
+  top: 23px;
+}
+.logistics li:last-child{
+  border-bottom: none;
+}
+.logistics li:last-child:after{
+  display: none;
+}
+
 /*弹窗*/
 .dialog .center{
   width: 292px;
@@ -1512,4 +1648,15 @@ border-radius:20px;
   color: #585858;
   font-weight: normal;
   line-height: 18px;
+}
+.order-manager h2{
+  font-size: 15px;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 10px;
+  background: #fff;
+  text-align: center;
+}
+.order-manager .box-address-c2{
+  margin-right: 0;
 }
