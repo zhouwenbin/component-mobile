@@ -16,6 +16,8 @@ module.exports = function(grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  var generator = require('./apigen');
+
   // Configurable paths
   var config = {
     app: 'app',
@@ -220,6 +222,27 @@ module.exports = function(grunt) {
       ]
     },
 
+    rename: {
+      main: {
+        files: [
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.index', dest: '<%= config.dist %>/styles/sf.b2c.mall.index.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.detail', dest: '<%= config.dist %>/styles/sf.b2c.mall.detail.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.order', dest: '<%= config.dist %>/styles/sf.b2c.mall.order.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.login', dest: '<%= config.dist %>/styles/sf.b2c.mall.login.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.register', dest: '<%= config.dist %>/styles/sf.b2c.mall.register.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.gotopay', dest: '<%= config.dist %>/styles/sf.b2c.mall.gotopay.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderlist', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderlist.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.center', dest: '<%= config.dist %>/styles/sf.b2c.mall.center.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter', dest: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe', dest: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.agreement', dest: '<%= config.dist %>/styles/sf.b2c.mall.agreement.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.paysuccess', dest: '<%= config.dist %>/styles/sf.b2c.mall.paysuccess.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanage', dest: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanage.<%= config.version %>.<%= config.build %>.min.css' }
+        ]
+      }
+    },
+
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
       options: {
@@ -349,8 +372,8 @@ module.exports = function(grunt) {
             'json/*.json',
 
             'styles/fonts/{,*/}*.*',
-            '<%= config.base.dest %>',
-            '<%= config.com %>',
+            // '<%= config.base.dest %>',
+            // '<%= config.com %>',
             'templates/**/*.mustache'
           ]
         }, {
@@ -617,6 +640,11 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('create', function () {
+    var done = this.async();
+    generator.autogen(grunt, done);
+  });
+
 
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function(target) {
     if (grunt.option('allow-remote')) {
@@ -669,14 +697,30 @@ module.exports = function(grunt) {
     ]);
   });
 
-  grunt.registerTask('build', function(target) {
-    grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
-      var arr = filename.split('.')
-      if (arr[2] == 'com') {
-        config.com = '/scripts/base/' + filename
-      }
+  grunt.registerTask('createJSON', function () {
+    var map = {
+      'base'                        :'scripts/base/sf.h5.base.ver.1.0.build.1421502116857.js',
+      'alipayframe'                 :'scripts/sf.b2c.mall.page.alipayframe.'            + config.version +'.'+ config.build +'.min.js',
+      'center'                      :'scripts/sf.b2c.mall.page.center.'                 + config.version +'.'+ config.build +'.min.js',
+      'detail'                      :'scripts/sf.b2c.mall.page.detail.'                 + config.version +'.'+ config.build +'.min.js',
+      'gotopay'                     :'scripts/sf.b2c.mall.page.gotopay.'                + config.version +'.'+ config.build +'.min.js',
+      'login'                       :'scripts/sf.b2c.mall.page.login.'                  + config.version +'.'+ config.build +'.min.js',
+      'main'                        :'scripts/sf.b2c.mall.page.main.'                   + config.version +'.'+ config.build +'.min.js',
+      'orderdetail'                 :'scripts/sf.b2c.mall.page.order.detail.'           + config.version +'.'+ config.build +'.min.js',
+      'orderlist'                   :'scripts/sf.b2c.mall.page.order.list.'             + config.version +'.'+ config.build +'.min.js',
+      'order'                       :'scripts/sf.b2c.mall.page.order.'                  + config.version +'.'+ config.build +'.min.js',
+      'recaddrmanage'               :'scripts/sf.b2c.mall.page.recaddrmanage.'          + config.version +'.'+ config.build +'.min.js',
+      'register'                    :'scripts/sf.b2c.mall.page.register.'               + config.version +'.'+ config.build +'.min.js',
+      'weixincenter'                :'scripts/sf.b2c.mall.page.weixincenter.'           + config.version +'.'+ config.build +'.min.js'
+    }
 
-      if (filename.indexOf(target) > -1 && arr[2] == target) {
+    grunt.file.write(config.dist+'/scripts/sf.b2c.mall.file.json', JSON.stringify(map), {encoding: 'utf8'});
+
+  });
+
+  grunt.registerTask('build', function(target){
+    grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
+      if (filename.indexOf('sf.h5.base')> -1) {
         config.target = target;
         config.base = {
           dest: 'scripts/base/' + filename,
@@ -692,43 +736,60 @@ module.exports = function(grunt) {
           'cssmin',
           'uglify',
           'copy:dist',
-          'requirejs:main',
-          'requirejs:detail',
-          'requirejs:order',
-          'requirejs:login',
-          'requirejs:register',
-          'requirejs:gotopay',
-          'requirejs:orderlist',
-          'requirejs:orderdetail',
-          'requirejs:center',
-          'requirejs:weixincenter',
-          'requirejs:alipayframe',
-          'requirejs:recaddrmanage',
-
+          'requirejs',
+          'rename',
           'usemin',
-          // 'htmlmin',
+          'htmlmin',
           'strip:main',
-          'clean:extra'
+          'clean:extra',
+          // 'createJSON'
         ]);
-      }
+      };
     })
-  })
+  });
 
-  // grunt.registerTask('build', [
-  //   'clean:dist',
-  //   'wiredep',
-  //   'useminPrepare',
-  //   'concurrent:dist',
-  //   'autoprefixer',
-  //   'concat',
-  //   'cssmin',
-  //   'uglify',
-  //   'copy:dist',
-  //   'requirejs:preheat',
-  //   'rev',
-  //   'usemin',
-  //   'htmlmin'
-  // ]);
+  // grunt.registerTask('build', function(target) {
+  //   grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
+  //     var arr = filename.split('.')
+  //     if (arr[2] == 'com') {
+  //       config.com = '/scripts/base/' + filename
+  //     }
+
+  //     if (filename.indexOf(target) > -1 && arr[2] == target) {
+  //       config.target = target;
+  //       config.base = {
+  //         dest: 'scripts/base/' + filename,
+  //         src: 'scripts/base/' + filename
+  //       }
+
+  //       grunt.task.run([
+  //         'clean:dist',
+  //         'useminPrepare',
+  //         'concurrent:dist',
+  //         'autoprefixer',
+  //         'concat',
+  //         'cssmin',
+  //         'uglify',
+  //         'copy:dist',
+  //         'requirejs:main',
+  //         'requirejs:detail',
+  //         'requirejs:order',
+  //         'requirejs:login',
+  //         'requirejs:register',
+  //         'requirejs:gotopay',
+  //         'requirejs:orderlist',
+  //         'requirejs:orderdetail',
+  //         'requirejs:center',
+  //         'requirejs:recaddrmanage',
+
+  //         'usemin',
+  //         // 'htmlmin',
+  //         'strip:main',
+  //         'clean:extra'
+  //       ]);
+  //     }
+  //   })
+  // });
 
   grunt.registerTask('default', [
     'newer:jshint',
