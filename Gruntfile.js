@@ -23,7 +23,9 @@ module.exports = function(grunt) {
     app: 'app',
     dist: 'dist',
     target: 'dev',
-    base: null
+    base: null,
+    version: 'ver.1.0',
+    build: Date.now()
   };
 
   // Define the configuration for all the tasks
@@ -225,20 +227,20 @@ module.exports = function(grunt) {
     rename: {
       main: {
         files: [
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.index', dest: '<%= config.dist %>/styles/sf.b2c.mall.index.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.detail', dest: '<%= config.dist %>/styles/sf.b2c.mall.detail.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.order', dest: '<%= config.dist %>/styles/sf.b2c.mall.order.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.login', dest: '<%= config.dist %>/styles/sf.b2c.mall.login.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.register', dest: '<%= config.dist %>/styles/sf.b2c.mall.register.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.gotopay', dest: '<%= config.dist %>/styles/sf.b2c.mall.gotopay.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderlist', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderlist.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.center', dest: '<%= config.dist %>/styles/sf.b2c.mall.center.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter', dest: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe', dest: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe.<%= config.version %>.<%= config.build %>.min.css' },
           { src: '<%= config.dist %>/styles/sf.b2c.mall.agreement', dest: '<%= config.dist %>/styles/sf.b2c.mall.agreement.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe', dest: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.center', dest: '<%= config.dist %>/styles/sf.b2c.mall.center.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.detail', dest: '<%= config.dist %>/styles/sf.b2c.mall.detail.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.gotopay', dest: '<%= config.dist %>/styles/sf.b2c.mall.gotopay.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.index', dest: '<%= config.dist %>/styles/sf.b2c.mall.index.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.login', dest: '<%= config.dist %>/styles/sf.b2c.mall.login.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.order', dest: '<%= config.dist %>/styles/sf.b2c.mall.order.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderlist', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderlist.<%= config.version %>.<%= config.build %>.min.css' },
           { src: '<%= config.dist %>/styles/sf.b2c.mall.paysuccess', dest: '<%= config.dist %>/styles/sf.b2c.mall.paysuccess.<%= config.version %>.<%= config.build %>.min.css' },
-          { src: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanage', dest: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanage.<%= config.version %>.<%= config.build %>.min.css' }
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanager', dest: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanager.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.register', dest: '<%= config.dist %>/styles/sf.b2c.mall.register.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter', dest: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter.<%= config.version %>.<%= config.build %>.min.css' }
         ]
       }
     },
@@ -253,15 +255,22 @@ module.exports = function(grunt) {
         ],
         blockReplacements: {
           js: function(block) {
+            console.log(block.dest)
             if (block.dest === 'base') {
               block.dest = config.base.dest;
               block.src = config.base.src
             } else if (block.dest === 'com') {
               block.dest = config.com;
               block.src = config.com
+            }else if (block.dest == 'require'){
+              console.log('enter')
+              return '<script src="scripts/require.min.js"></script>';
             }
 
-            return '<script src="/' + block.dest + '"></script>';
+            return '<script src="/' + block.dest + '.' + config.version + '.' + config.build + '.min.js"></script>';
+          },
+          css: function (block) {
+            return '<link rel="stylesheet" href="/' + block.dest + '.' + config.version + '.' + config.build + '.min.css">'
           }
         }
       },
@@ -385,6 +394,9 @@ module.exports = function(grunt) {
         }, {
           src: '<%= config.app %>/css/browser.css',
           dest: '<%= config.dist %>/css/browser.css'
+        },{
+          src: 'bower_components/requirejs/require.js',
+          dest: '<%= config.dist %>/scripts/require.min.js'
         }, {
           expand: true,
           dot: true,
@@ -432,7 +444,7 @@ module.exports = function(grunt) {
           optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.main.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.main.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
             'sf.b2c.mall.component.price',
@@ -445,7 +457,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.detail.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.detail.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
@@ -465,7 +477,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
@@ -490,7 +502,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.login.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.login.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
             'sf.b2c.mall.component.login',
@@ -503,7 +515,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.register.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.register.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
             'sf.b2c.mall.component.register',
@@ -516,7 +528,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.gotopay.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.gotopay.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min'
@@ -535,7 +547,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.list.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.list.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min'
@@ -554,7 +566,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.detail.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.order.detail.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min'
@@ -573,7 +585,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.center.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.center.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
             'sf.b2c.mall.page.center'
@@ -585,7 +597,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.weixincenter.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.weixincenter.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
             'sf.b2c.mall.page.weixincenter'
@@ -597,7 +609,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.alipayframe.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.alipayframe.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
             'sf.b2c.mall.page.alipayframe'
@@ -625,7 +637,7 @@ module.exports = function(grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.recaddrmanage.min.js',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.page.recaddrmanage.<%= config.version %>.<%= config.build %>.min.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           include: [
             'sf.b2c.mall.component.recaddrmanage',
@@ -742,7 +754,7 @@ module.exports = function(grunt) {
           'htmlmin',
           'strip:main',
           'clean:extra',
-          // 'createJSON'
+          'createJSON'
         ]);
       };
     })
