@@ -299,6 +299,16 @@ button{
   height: 11px;
   background-position: -270px 0;
 }
+.icon29{
+  width: 16px;
+  height: 17px;
+  background-position: 0 -22px;
+}
+.icon30{
+  width: 77px;
+  height: 93px;
+  background-position: -166px -123px;
+}
 
 /*btn*/
 .btn{
@@ -1003,15 +1013,37 @@ button{
 }
 /*支付成功*/
 .pay{
-  padding: 73px 14px 63px;
-  background: #fff;
+  padding-top: 66px;
+  padding-bottom: 164px;
   text-align: center;
+  background: url(../img/pay.png) no-repeat center bottom,url(../img/pay2.png) no-repeat center 43px;
+  background-size: 320px,225px;
 }
-.pay h1{
-  margin-top: 23px;
-  margin-bottom: 30px;
-  font-weight: normal;
+.pay h2{
+  font-size: 18px;
+  color: #dc3334;
+  margin-bottom: 12px;
 }
+.pay p{
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 15px;
+}
+.pay-r1{
+  margin-bottom: 8px;
+}
+.pay-r2{
+  margin-bottom: 16px;
+}
+.pay-r3{
+  margin-bottom: 15px;
+}
+.pay-r4 a{
+  font-size: 15px;
+  color: #666;
+  text-decoration: underline;
+}
+/*mask*/
 .mask{
   position: fixed;
   width: 100%;
@@ -1041,26 +1073,7 @@ border-radius:20px;
 0%{-ms-transform:rotate(0deg)}
 100%{-ms-transform:rotate(360deg)}
 }
-/*关注*/
-.attention{
-  padding: 19px 0 27px;
-  border: 1px solid #ccc;
-  position: relative;
-}
-.attention p{
-  font-size: 13px;
-  line-height: 24px;
-  color: #878989;
-  text-align: center;
-}
-.attention .btn{
-  color: #999;
-  top: 100%;
-  font-size: 9px;
-}
-.attention .icon{
-  top: -9px;
-}
+
 
 /*fixed*/
 .fixed{
@@ -1498,10 +1511,10 @@ border-radius:20px;
   font-size: 17px;
   color: #fff;
   text-align: center;
-  height: 200px;
-  line-height: 200px;
-  background: url(../img/person.jpg) no-repeat;
-  background-size: cover;
+  height: 110px;
+  background: #da494f url(../img/person.jpg) no-repeat center bottom;
+  background-size: 320px;
+  padding-top: 24px;
 }
 .person-r2{
   padding-top: 48px;
