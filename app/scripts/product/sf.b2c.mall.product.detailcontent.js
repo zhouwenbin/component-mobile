@@ -35,6 +35,18 @@ define('sf.b2c.mall.product.detailcontent', [
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+
+        'sf-showXSTM': function(productShape, options) {
+          if (productShape() == "XSTM") {
+            return options.fn(options.contexts || this);
+          }
+        },
+
+        'sf-showJSHT': function(productShape, options) {
+          if (productShape() == "JSHT") {
+            return options.fn(options.contexts || this);
+          }
         }
       },
 

@@ -14,6 +14,13 @@
           {{/each}}
         </div>
       </div>
+      {{#sf-showXSTM itemInfo.basicInfo.productShape}}
+          <span class="label label-error"><span class="icon icon27"></span>{{sf.timeMDH priceInfo.endTime}}结束</span>
+      {{/sf-showXSTM}}
+
+      {{#sf-showJSHT itemInfo.basicInfo.productShape}}
+          <span class="label label-error"><span class="icon icon27"></span>{{itemInfo.saleInfo.sendTime}}天到</span>
+      {{/sf-showJSHT}}
 
       {{#if priceInfo.soldOut}}
       <div class="mask"></div>
