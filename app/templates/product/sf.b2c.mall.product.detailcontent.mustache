@@ -14,6 +14,13 @@
           {{/each}}
         </div>
       </div>
+      {{#sf-showXSTM itemInfo.basicInfo.productShape}}
+          <span class="label label-error"><span class="icon icon27"></span>{{sf.timeMDH priceInfo.endTime}}结束</span>
+      {{/sf-showXSTM}}
+
+      {{#sf-showJSHT itemInfo.basicInfo.productShape}}
+          <span class="label label-error"><span class="icon icon27"></span>{{itemInfo.saleInfo.sendTime}}天到</span>
+      {{/sf-showJSHT}}
 
       {{#if priceInfo.soldOut}}
       <div class="mask"></div>
@@ -25,7 +32,11 @@
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
       <div class="goods-r2 clearfix">
         <div class="goods-r2c1 fl">
+
           <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>（含税）<del class="originPrice">¥{{sf.price priceInfo.originPrice}}</del>
+
+      <!-- <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>（含税）{{#sf-showOriginPrice priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>{{/sf-showOriginPrice}} -->
+
         </div>
         <div class="goods-r2c2 fr">
           <span class="icon icon1"></span>运费：0元
@@ -117,7 +128,7 @@
         <div class="recommend-c2">
           <h3 class="ellipsis2">{{itemInfo.basicInfo.title}}</h3>
           <div class="recommend-c2r1">
-            <strong>¥{{sf.price priceInfo.sellingPrice}}</strong>
+            <strong>¥{{sf.price priceInfo.sellingPrice}}</strong>（含税）
           </div>
         </div>
         </a>
