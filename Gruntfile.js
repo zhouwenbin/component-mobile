@@ -243,6 +243,27 @@ module.exports = function(grunt) {
       ]
     },
 
+    rename: {
+      main: {
+        files: [
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.index', dest: '<%= config.dist %>/styles/sf.b2c.mall.index.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.detail', dest: '<%= config.dist %>/styles/sf.b2c.mall.detail.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.order', dest: '<%= config.dist %>/styles/sf.b2c.mall.order.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.login', dest: '<%= config.dist %>/styles/sf.b2c.mall.login.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.register', dest: '<%= config.dist %>/styles/sf.b2c.mall.register.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.gotopay', dest: '<%= config.dist %>/styles/sf.b2c.mall.gotopay.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderlist', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderlist.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.center', dest: '<%= config.dist %>/styles/sf.b2c.mall.center.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter', dest: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe', dest: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.agreement', dest: '<%= config.dist %>/styles/sf.b2c.mall.agreement.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.paysuccess', dest: '<%= config.dist %>/styles/sf.b2c.mall.paysuccess.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanage', dest: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanage.<%= config.version %>.<%= config.build %>.min.css' }
+        ]
+      }
+    },
+
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
       options: {
@@ -372,8 +393,8 @@ module.exports = function(grunt) {
             'json/*.json',
 
             'styles/fonts/{,*/}*.*',
-            '<%= config.base.dest %>',
-            '<%= config.com %>',
+            // '<%= config.base.dest %>',
+            // '<%= config.com %>',
             'templates/**/*.mustache'
           ]
         }, {
@@ -742,7 +763,7 @@ module.exports = function(grunt) {
           'htmlmin',
           'strip:main',
           'clean:extra',
-          'createJSON'
+          // 'createJSON'
         ]);
       };
     })
