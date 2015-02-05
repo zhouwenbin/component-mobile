@@ -697,17 +697,9 @@ module.exports = function(grunt) {
     ]);
   });
 
-
-  //         'requirejs:register',
-  //         'requirejs:gotopay',
-  //         'requirejs:orderlist',
-  //         'requirejs:orderdetail',
-  //         'requirejs:center',
-  //         'requirejs:recaddrmanage',
-  //
   grunt.registerTask('createJSON', function () {
     var map = {
-      'base'                        :'scripts/base/sf.web.base.ver.1.0.build.1421502116857.js',
+      'base'                        :'scripts/base/sf.h5.base.ver.1.0.build.1421502116857.js',
       'alipayframe'                 :'scripts/sf.b2c.mall.page.alipayframe.'            + config.version +'.'+ config.build +'.min.js',
       'center'                      :'scripts/sf.b2c.mall.page.center.'                 + config.version +'.'+ config.build +'.min.js',
       'detail'                      :'scripts/sf.b2c.mall.page.detail.'                 + config.version +'.'+ config.build +'.min.js',
