@@ -28,6 +28,10 @@ define(
        */
       init: function(element, options) {
 
+        setInterval(function() {
+          window.parent.postMessage("orderlist.html", '*');
+        }, 500)
+
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           window.location.href = 'http://m.sfht.com/login.html?from=' + escape(window.location.pathname);
           return false;

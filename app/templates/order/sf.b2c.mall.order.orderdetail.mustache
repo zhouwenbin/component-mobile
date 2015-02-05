@@ -1,6 +1,6 @@
   <!--订单详情-->
   <section class="orderdetail" id="orderdetail">
-    <div class="orderdetail-r1">{{{uploadIDCardTips}}}</div>
+    {{#if needShowTips}}<div class="orderdetail-r1">{{{uploadIDCardTips}}}</div>{{/if}}
     <ul class="box orderdetail-r2 clearfix">
       <li>订单号：{{orderId}}</li>
       <li>{{sf.time gmtCreate}}创建</li>
@@ -99,14 +99,14 @@
   </section>
   {{/if}}
 
-  <section class="orderdetail" id="userRoutes">
-    <div class="orderdetail-r3">
-      <a href="">
-          {{#each userRoutes}}
-            {{gmtHappened}} {{description}} {{operator}}<br>
-          {{/each}}
-      </a>
-    </div>
+  <section class="order logistics" id="userRoutes">
+      <h2>物流跟踪</h2>
+      <ul>
+      {{#each userRoutes}}
+        <li>{{gmtHappened}} {{description}} {{operator}}</li>
+      {{/each}}
+      </ul>
+      <a class="order-back" id="viewOrderDetail" href="javascript:void(0)">< 返回</a>
   </section>
 
   <section class="mask dialog-phone" style="display:none">

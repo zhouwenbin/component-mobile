@@ -75,7 +75,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.status = that.statsMap[data.orderItem.orderStatus];
             that.options.operationHTML = that.optionHTML[that.nextStepMap[data.orderItem.orderStatus]];
 
+            that.options.needShowTips = false;
+
             if (data.orderItem.rcvrState == 0 || data.orderItem.rcvrState == 1 || data.orderItem.rcvrState == 3) {
+              that.options.needShowTips = true;
               that.options.uploadIDCardTips = '该笔订单需要上传收货人身份信息，请<a href="javascript:void(0)" id="contactMe">联系客服</a>';
             }
 
@@ -145,6 +148,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
         $('#viewUserRoutes').tap(function() {
           that.viewUserRoutes();
+        })
+
+        $('#viewOrderDetail').tap(function() {
+          that.viewOrderDetail();
         })
 
         $('#contactMe').tap(function() {
@@ -221,6 +228,15 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         $('#orderdetail').hide();
         $('#buy').hide();
         $('#userRoutes').show();
+      },
+      /**
+       * [viewOrderDetail 查看订单详情]
+       * @return {[type]} [description]
+       */
+      viewOrderDetail: function() {
+        $('#orderdetail').show();
+        $('#buy').show();
+        $('#userRoutes').hide();
       },
 
       /**

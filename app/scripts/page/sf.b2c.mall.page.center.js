@@ -45,11 +45,15 @@ define(
               that.options.welcomeName = that.maskMobile(data.mobile);
             } else if (store.get('type') == 'MAIL') {
               that.options.welcomeName = data.mailId;
+            } else if (store.get('type') == 'WEIXIN') {
+              that.options.welcomeName = store.get('nickname');
             }
 
+            /* 20150204 nick字段影响了上面逻辑判断出来的welcomeName
             if (typeof data.nick != 'undefined') {
               that.options.welcomeName = data.nick;
             }
+            */
 
             var html = can.view('/templates/center/sf.b2c.mall.center.content.mustache', that.options);
             that.element.html(html);

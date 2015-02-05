@@ -9244,7 +9244,48 @@
         ERROR_CODE: {}
       }
     })
-  }), define("sf.b2c.mall.api.user.renewToken", ["jquery", "can", "underscore", "sf.b2c.mall.framework.comm", "sf.b2c.mall.api.security.type"], function(e, t, n, r, i) {
+  }), define("sf.b2c.mall.api.user.partnerLogin", ["jquery", "can", "underscore", "sf.b2c.mall.framework.comm", "sf.b2c.mall.api.security.type"], function(e, t, n, r, i) {
+    return r.extend({
+      api: {
+        METHOD_NAME: "user.partnerLogin",
+        SECURITY_TYPE: i.None.name,
+        REQUIRED: {
+          partnerId: "string",
+          authResp: "string"
+        },
+        OPTIONAL: {},
+        VERIFY: {},
+        ERROR_CODE: {}
+      }
+    })
+  }), define("sf.b2c.mall.api.user.reqLoginAuth", ["jquery", "can", "underscore", "sf.b2c.mall.framework.comm", "sf.b2c.mall.api.security.type"], function(e, t, n, r, i) {
+    return r.extend({
+      api: {
+        METHOD_NAME: "user.reqLoginAuth",
+        SECURITY_TYPE: i.None.name,
+        REQUIRED: {
+          partnerId: "string",
+          redirectUrl: "string"
+        },
+        OPTIONAL: {},
+        VERIFY: {},
+        ERROR_CODE: {}
+      }
+    })
+  }),define("sf.b2c.mall.api.user.getWeChatJsApiSig", ["jquery", "can", "underscore", "sf.b2c.mall.framework.comm", "sf.b2c.mall.api.security.type"], function(e, t, n, r, i) {
+    return r.extend({
+      api: {
+        METHOD_NAME: "user.getWeChatJsApiSig",
+        SECURITY_TYPE: i.None.name,
+        REQUIRED: {
+          keyValuePairs: "string"
+        },
+        OPTIONAL: {},
+        VERIFY: {},
+        ERROR_CODE: {}
+      }
+    })
+  }),define("sf.b2c.mall.api.user.renewToken", ["jquery", "can", "underscore", "sf.b2c.mall.framework.comm", "sf.b2c.mall.api.security.type"], function(e, t, n, r, i) {
     return r.extend({
       api: {
         METHOD_NAME: "user.renewToken",

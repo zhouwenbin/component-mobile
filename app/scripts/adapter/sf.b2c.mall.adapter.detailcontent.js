@@ -23,18 +23,23 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
 
     formatItemInfo: function(detailUrl, detailContentInfo, itemInfoData) {
       var that = this;
-
       //设置商品详细信息，包括标题、副标题、描述等信息
       detailContentInfo.itemInfo = {};
       detailContentInfo.itemInfo.basicInfo = itemInfoData.skuInfo;
+      detailContentInfo.itemInfo.basicInfo.showAttribues = (detailContentInfo.itemInfo.basicInfo.attributes && detailContentInfo.itemInfo.basicInfo.attributes.length > 0 ? true : false)
       detailContentInfo.itemInfo.basicInfo.shippingPoint = itemInfoData.saleInfo.shippingPoint;
       detailContentInfo.itemInfo.basicInfo.orderToDelivery = itemInfoData.saleInfo.orderToDelivery;
       detailContentInfo.itemInfo.basicInfo.productShape = itemInfoData.saleInfo.productShape;
 
       //设置item的大图
-      _.each(itemInfoData.skuInfo.images, function(item){
+      _.each(itemInfoData.skuInfo.images, function(item) {
         item.bigImgUrl += "@375h_375w_80Q_1x.jpg";
       })
+
+      if (!itemInfoData.skuInfo.images) {
+        window.location.href = "http://m.sfht.com/index.html";
+        return false;
+      }
 
       detailContentInfo.itemInfo.step2Image = itemInfoData.skuInfo.images[0].thumbImgUrl;
       detailContentInfo.itemInfo.linkUrl = detailUrl + "/detail/" + itemInfoData.itemId + ".html";
@@ -44,19 +49,21 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
 
       detailContentInfo.itemInfo.saleSkuSpecTupleList = itemInfoData.saleInfo.saleSkuSpecTupleList;
 
-      //设置选中和可选状态
-      var specId = itemInfoData.skuInfo.skuSpecTuple.specIds;
+      if (itemInfoData.skuInfo.skuSpecTuple) {
+        //设置选中和可选状态
+        var specId = itemInfoData.skuInfo.skuSpecTuple.specIds;
 
-      var index = 0;
+        var index = 0;
 
-      _.each(detailContentInfo.itemInfo.specGroups, function(group) {
-        //设置选中
-        that.setSelectedSpec(index, specId, group);
-        //设置可选
-        that.setCanSelectedSpec(index, specId, group, detailContentInfo.itemInfo.saleSkuSpecTupleList);
+        _.each(detailContentInfo.itemInfo.specGroups, function(group) {
+          //设置选中
+          that.setSelectedSpec(index, specId, group);
+          //设置可选
+          that.setCanSelectedSpec(index, specId, group, detailContentInfo.itemInfo.saleSkuSpecTupleList);
 
-        ++index;
-      })
+          ++index;
+        })
+      }
 
       //卖家信息
       detailContentInfo.itemInfo.saleInfo = itemInfoData.saleInfo;
@@ -109,6 +116,12 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
         //一位一位去匹配
         return spec.specId == specId[index];
       })
+
+      if (!selectedSpec){
+        window.location.href = "http://m.sfht.com/index.html";
+        return false;
+      }
+
       if (typeof selectedSpec.attr != 'undefined') {
         selectedSpec.attr("selected", "active");
         selectedSpec.attr("canSelected", "");

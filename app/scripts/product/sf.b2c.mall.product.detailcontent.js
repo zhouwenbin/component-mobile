@@ -9,18 +9,28 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.api.b2cmall.getProductHotData',
     'sf.b2c.mall.api.b2cmall.getSkuInfo',
     'sf.b2c.mall.api.product.findRecommendProducts',
+    'sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.helpers',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
+    'sf.b2c.mall.widget.message',
     'sf.weixin'
   ],
-  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, helpers, SFComm, SFLoading, SFConfig, SFWeixin) {
+  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin) {
     return can.Control.extend({
 
       helpers: {
         'sf-showCurrentStock': function(currentStock, options) {
           if (currentStock() != 0 && currentStock() != -1 && currentStock() != -2) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
+        'sf-canBuy': function(isSoldOut, options) {
+          if (!isSoldOut()) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -90,6 +100,8 @@ define('sf.b2c.mall.product.detailcontent', [
             that.adapter.formatRecommendProducts(that.detailUrl, that.options.detailContentInfo, recommendProducts);
 
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
+
+            //that.options.detailContentInfo.priceInfo.attr("soldOut", true);
 
             var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
             that.element.html(html);
@@ -221,7 +233,7 @@ define('sf.b2c.mall.product.detailcontent', [
       renderDetail: function() {
         var template = can.view.mustache(this.detailTemplate());
         this.addCDN4img();
-        $('#detail').html(template(this.options.detailContentInfo));
+        $('#detail').css("height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
         return true;
       },
 
@@ -286,6 +298,30 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]} [description]
        */
       buyEnter: function(element) {
+
+        var priceInfo = this.options.detailContentInfo.priceInfo;
+
+        var input = this.options.detailContentInfo.input;
+
+        //校验是否售空
+        if (priceInfo.soldOut) {
+          var message = new SFMessage(null, {
+            'tip': '商品已经售空！',
+            'type': 'error'
+          });
+          return false;
+        }
+
+        // 校验个数是否超过限购
+        var amount = parseInt(input.attr("buyNum"));
+        if (priceInfo.limitBuy > 0 && amount > priceInfo.limitBuy) {
+          var message = new SFMessage(null, {
+            'tip': '商品限购' + priceInfo.limitBuy + '！',
+            'type': 'error'
+          });
+          return false;
+        }
+
         var amount = this.options.detailContentInfo.input.buyNum;
         if (amount < 1 || isNaN(amount)) {
           this.options.detailContentInfo.input.attr("buyNum", 1);
@@ -335,15 +371,18 @@ define('sf.b2c.mall.product.detailcontent', [
         var amount = element[0].value;
         if (amount < 1 || isNaN(amount)) {
           element.val(1);
+          input.attr('buyNum', 1);
         }
         if (priceInfo.limitBuy > 0 && amount > priceInfo.limitBuy) {
+          priceInfo.attr("limitBuy", priceInfo.limitBuy);
           input.attr("showRestrictionTips", true);
           $('#showrestrictiontipsspan').show();
           element.val(priceInfo.limitBuy);
+          input.attr('buyNum', priceInfo.limitBuy);
           return false;
         }
 
-        input.attr('buyNum', amount);
+        //input.attr('buyNum', amount);
         input.attr("showRestrictionTips", false);
         $('#showrestrictiontipsspan').hide();
       },
@@ -365,8 +404,10 @@ define('sf.b2c.mall.product.detailcontent', [
 
         var amount = parseInt(input.attr("buyNum"));
         if (priceInfo.limitBuy > 0 && amount > priceInfo.limitBuy - 1) {
+          priceInfo.attr("limitBuy", priceInfo.limitBuy);
           input.attr("showRestrictionTips", true);
           $('#showrestrictiontipsspan').show();
+          input.attr('buyNum', priceInfo.limitBuy);
           input.attr("addDisable", "disable");
           return false;
         }
@@ -407,11 +448,11 @@ define('sf.b2c.mall.product.detailcontent', [
        */
       specbuttonsClick: function(element) {
         var type = "";
-        if (element.hasClass("disable") || element.hasClass("btn-danger")) {
+        if (element.hasClass("disable") || element.hasClass("active")) {
           return false;
         }
 
-        if (element.hasClass("btn-dashed")) {
+        if (element.hasClass("dashed")) {
           type = "dashed";
         }
 
@@ -465,6 +506,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var saleSkuSpecTuple = this.getSKUBySpecs(this.options.detailContentInfo.itemInfo.saleSkuSpecTupleList, gotoItemSpec.join(","), element, type);
         var skuId = saleSkuSpecTuple.skuSpecTuple.skuId;
         var newItemid = saleSkuSpecTuple.itemId;
+        this.itemid = newItemid;
 
         var that = this;
         var getSKUInfo = new SFGetSKUInfo({
@@ -478,7 +520,15 @@ define('sf.b2c.mall.product.detailcontent', [
         can.when(getSKUInfo.sendRequest(),
             getProductHotData.sendRequest())
           .done(function(skuInfoData, priceData) {
+
+            $('#showrestrictiontipsspan').hide();
+
+            $('#buyEnter').tap(function() {
+              that.buyEnter($(this));
+            })
+
             that.options.detailContentInfo.itemInfo.attr("basicInfo", new can.Map(skuInfoData));
+            that.options.detailContentInfo.attr("priceInfo", priceData);
             that.adapter.reSetSelectedAndCanSelectedSpec(newItemid, priceData, that.detailUrl, that.options.detailContentInfo, gotoItemSpec);
           })
       },
