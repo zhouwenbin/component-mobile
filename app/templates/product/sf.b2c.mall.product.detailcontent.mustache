@@ -157,20 +157,14 @@
     </div>
     <div id="allerrortip" class="alert-error">{{input.error}}</div>
     {{#sf-showCurrentStock priceInfo.currentStock}}
-      <div class="alert-error">商品剩余{{priceInfo.currentStock}}件，请修改购买数量</div>
+      <div class="alert-error">商品剩余{{priceInfo.currentStock}}件!</div>
     {{/sf-showCurrentStock}}
   </section>
   <!--规格-->
   <!--立即购买-->
   <section class="buy">
     <div class="buy-r1">
-
-
-      {{#sf-canBuy priceInfo.soldOut}}
-        <button class="btn btn-danger btn-big" id="buyEnter">确定</button>
-      {{else}}
-        <button class="btn btn-disable btn-big">确定</button>
-      {{/sf-canBuy}}
+      <button class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}} btn-big" id="buyEnter">确定</button>
     </div>
 
   </section>
