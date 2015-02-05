@@ -44,16 +44,15 @@ define(
             if (store.get('type') == 'MOBILE') {
               that.options.welcomeName = that.maskMobile(data.mobile);
             } else if (store.get('type') == 'MAIL') {
-              that.options.welcomeName = data.mailId;
+              that.options.welcomeName = that.maskMail(data.mailId);
             } else if (store.get('type') == 'WEIXIN') {
               that.options.welcomeName = store.get('nickname');
             }
 
-            /* 20150204 nick字段影响了上面逻辑判断出来的welcomeName
-            if (typeof data.nick != 'undefined') {
+            if (data.nick != '海淘用户') {
               that.options.welcomeName = data.nick;
             }
-            */
+
 
             var html = can.view('/templates/center/sf.b2c.mall.center.content.mustache', that.options);
             that.element.html(html);
@@ -82,6 +81,10 @@ define(
 
       maskMobile: function(str) {
         return str.substring(0, 3) + '****' + str.substring(7, 10)
+      },
+
+      maskMail: function(str) {
+        return str.replace(/([^@]{3})[^@]*?(@[\s\S]*)/, "$1...$2")
       },
 
       exitClick: function() {
