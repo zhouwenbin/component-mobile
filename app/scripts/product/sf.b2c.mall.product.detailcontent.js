@@ -47,6 +47,13 @@ define('sf.b2c.mall.product.detailcontent', [
           if (productShape() == "JSHT") {
             return options.fn(options.contexts || this);
           }
+        },
+
+        'sf-showOriginPrice': function(sellingPrice, originPrice,options) {
+          var oPrice = originPrice();
+          if (sellingPrice() < oPrice || oPrice == 0) {
+            return options.fn(options.contexts || this);
+          }
         }
       },
 
