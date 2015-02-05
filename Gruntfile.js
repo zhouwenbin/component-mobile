@@ -16,6 +16,8 @@ module.exports = function(grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  var generator = require('./apigen');
+
   // Configurable paths
   var config = {
     app: 'app',
@@ -617,6 +619,11 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.registerTask('create', function () {
+    var done = this.async();
+    generator.autogen(grunt, done);
+  });
+
 
   grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', function(target) {
     if (grunt.option('allow-remote')) {
@@ -669,14 +676,9 @@ module.exports = function(grunt) {
     ]);
   });
 
-  grunt.registerTask('build', function(target) {
+  grunt.registerTask('build', function(target){
     grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
-      var arr = filename.split('.')
-      if (arr[2] == 'com') {
-        config.com = '/scripts/base/' + filename
-      }
-
-      if (filename.indexOf(target) > -1 && arr[2] == target) {
+      if (filename.indexOf('sf.h5.base')> -1) {
         config.target = target;
         config.base = {
           dest: 'scripts/base/' + filename,
@@ -692,43 +694,60 @@ module.exports = function(grunt) {
           'cssmin',
           'uglify',
           'copy:dist',
-          'requirejs:main',
-          'requirejs:detail',
-          'requirejs:order',
-          'requirejs:login',
-          'requirejs:register',
-          'requirejs:gotopay',
-          'requirejs:orderlist',
-          'requirejs:orderdetail',
-          'requirejs:center',
-          'requirejs:weixincenter',
-          'requirejs:alipayframe',
-          'requirejs:recaddrmanage',
-
+          'requirejs',
+          'rename',
           'usemin',
-          // 'htmlmin',
+          'htmlmin',
           'strip:main',
-          'clean:extra'
+          'clean:extra',
+          'createJSON'
         ]);
-      }
+      };
     })
-  })
+  });
 
-  // grunt.registerTask('build', [
-  //   'clean:dist',
-  //   'wiredep',
-  //   'useminPrepare',
-  //   'concurrent:dist',
-  //   'autoprefixer',
-  //   'concat',
-  //   'cssmin',
-  //   'uglify',
-  //   'copy:dist',
-  //   'requirejs:preheat',
-  //   'rev',
-  //   'usemin',
-  //   'htmlmin'
-  // ]);
+  // grunt.registerTask('build', function(target) {
+  //   grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
+  //     var arr = filename.split('.')
+  //     if (arr[2] == 'com') {
+  //       config.com = '/scripts/base/' + filename
+  //     }
+
+  //     if (filename.indexOf(target) > -1 && arr[2] == target) {
+  //       config.target = target;
+  //       config.base = {
+  //         dest: 'scripts/base/' + filename,
+  //         src: 'scripts/base/' + filename
+  //       }
+
+  //       grunt.task.run([
+  //         'clean:dist',
+  //         'useminPrepare',
+  //         'concurrent:dist',
+  //         'autoprefixer',
+  //         'concat',
+  //         'cssmin',
+  //         'uglify',
+  //         'copy:dist',
+  //         'requirejs:main',
+  //         'requirejs:detail',
+  //         'requirejs:order',
+  //         'requirejs:login',
+  //         'requirejs:register',
+  //         'requirejs:gotopay',
+  //         'requirejs:orderlist',
+  //         'requirejs:orderdetail',
+  //         'requirejs:center',
+  //         'requirejs:recaddrmanage',
+
+  //         'usemin',
+  //         // 'htmlmin',
+  //         'strip:main',
+  //         'clean:extra'
+  //       ]);
+  //     }
+  //   })
+  // });
 
   grunt.registerTask('default', [
     'newer:jshint',

@@ -233,7 +233,7 @@ define('sf.b2c.mall.product.detailcontent', [
       renderDetail: function() {
         var template = can.view.mustache(this.detailTemplate());
         this.addCDN4img();
-        $('#detail').html(template(this.options.detailContentInfo));
+        $('#detail').css("height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
         return true;
       },
 
@@ -299,26 +299,24 @@ define('sf.b2c.mall.product.detailcontent', [
        */
       buyEnter: function(element) {
 
+        if (element.hasClass('btn-disable')){
+          return false;
+        }
+
         var priceInfo = this.options.detailContentInfo.priceInfo;
 
         var input = this.options.detailContentInfo.input;
 
         //校验是否售空
         if (priceInfo.soldOut) {
-          var message = new SFMessage(null, {
-            'tip': '商品已经售空！',
-            'type': 'error'
-          });
+          this.options.detailContentInfo.input.attr("error", '商品已经售空！');
           return false;
         }
 
         // 校验个数是否超过限购
         var amount = parseInt(input.attr("buyNum"));
         if (priceInfo.limitBuy > 0 && amount > priceInfo.limitBuy) {
-          var message = new SFMessage(null, {
-            'tip': '商品限购' + priceInfo.limitBuy + '！',
-            'type': 'error'
-          });
+          this.options.detailContentInfo.input.attr("error", '商品限购' + priceInfo.limitBuy + '件！');
           return false;
         }
 
@@ -523,9 +521,9 @@ define('sf.b2c.mall.product.detailcontent', [
 
             $('#showrestrictiontipsspan').hide();
 
-            $('#buyEnter').tap(function() {
-              that.buyEnter($(this));
-            })
+            if (priceData.currentStock >= 0 && priceData.limitBuy > 0) {
+              priceData.limitBuy = _.min([priceData.limitBuy, priceData.currentStock]);
+            }
 
             that.options.detailContentInfo.itemInfo.attr("basicInfo", new can.Map(skuInfoData));
             that.options.detailContentInfo.attr("priceInfo", priceData);
