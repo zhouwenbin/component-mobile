@@ -16,7 +16,8 @@ define("zepto", (function (global) {
  * Includes: can/component,can/construct,can/map,can/list,can/observe,can/compute,can/model,can/view,can/control,can/route,can/control/route,can/view/mustache,can/view/bindings,can/view/live,can/view/scope,can/util/string,can/util/attr
  * Download from: http://canjs.com
  */
-(function(undefined) {
+// (function(undefined) {
+define('can', ['zepto'], function (zepto) {
 
     // ## util/can.js
     var __m3 = (function() {
@@ -264,7 +265,7 @@ define("zepto", (function (global) {
 
         // ## can.event.listenTo
         // Listens to an event without know how bind is implemented.
-        // The primary use for this is to listen to another's objects event while 
+        // The primary use for this is to listen to another's objects event while
         // tracking events on the local object (similar to namespacing).
         // The API was heavily influenced by BackboneJS: http://backbonejs.org/
 
@@ -366,7 +367,7 @@ define("zepto", (function (global) {
             while (i < events.length) {
                 ev = events[i];
                 // Determine whether this event handler is "equivalent" to the one requested
-                // Generally this requires the same event/function, but a validation function 
+                // Generally this requires the same event/function, but a validation function
                 // can be included for extra conditions. This is used in some plugins like `can/event/namespace`.
                 if (__validate ? __validate(ev, event, fn) : isFunction && ev.handler === fn || !isFunction && (ev.cid === fn || !fn)) {
                     events.splice(i, 1);
@@ -629,8 +630,8 @@ define("zepto", (function (global) {
             } else {
                 var df = Deferred(),
                     done = 0,
-                    // Resolve params -- params of each resolve, we need to track them down 
-                    // to be able to pass them in the correct order if the master 
+                    // Resolve params -- params of each resolve, we need to track them down
+                    // to be able to pass them in the correct order if the master
                     // needs to be resolved.
                     rp = [];
                 can.each(args, function(arg, j) {
@@ -655,7 +656,7 @@ define("zepto", (function (global) {
         }, doneFunc = function doneFunc(type, _status) {
                 return function() {
                     var self = this;
-                    // In Safari, the properties of the `arguments` object are not enumerable, 
+                    // In Safari, the properties of the `arguments` object are not enumerable,
                     // so we have to convert arguments to an `Array` that allows `can.each` to loop over them.
                     can.each(Array.prototype.slice.call(arguments), function(v, i, args) {
                         if (!v) {
@@ -1683,7 +1684,7 @@ define("zepto", (function (global) {
                         // Return the deferred...
                         return deferred;
                     } else {
-                        // get is called async but in 
+                        // get is called async but in
                         // ff will be async so we need to temporarily reset
                         reading = can.__clearReading();
 
@@ -1859,7 +1860,7 @@ define("zepto", (function (global) {
     // ## util/string/string.js
     var __m16 = (function(can) {
         // ##string.js
-        // _Miscellaneous string utility functions._  
+        // _Miscellaneous string utility functions._
         // Several of the methods in this plugin use code adapated from Prototype
         // Prototype JavaScript framework, version 1.6.0.1.
         // © 2005-2007 Sam Stephenson
@@ -1994,9 +1995,9 @@ define("zepto", (function (global) {
     // ## construct/construct.js
     var __m15 = (function(can) {
         // ## construct.js
-        // `can.Construct`  
+        // `can.Construct`
         // _This is a modified version of
-        // [John Resig's class](http://ejohn.org/blog/simple-javascript-inheritance/).  
+        // [John Resig's class](http://ejohn.org/blog/simple-javascript-inheritance/).
         // It provides class level inheritance and callbacks._
         // A private flag used to initialize a new class instance without
         // initializing it's bindings.
@@ -2020,7 +2021,7 @@ define("zepto", (function (global) {
                     if (inst.setup) {
                         args = inst.setup.apply(inst, arguments);
                     }
-                    // Call `init` if there is an `init`  
+                    // Call `init` if there is an `init`
                     // If `setup` returned `args`, use those as the arguments
                     if (inst.init) {
                         inst.init.apply(inst, args || arguments);
@@ -2174,7 +2175,7 @@ define("zepto", (function (global) {
             special = can.getObject("$.event.special", [can]) || {},
 
             // ### delegate
-            // this helper binds to elements based on a selector and returns a 
+            // this helper binds to elements based on a selector and returns a
             // function that unbinds.
             delegate = function(el, selector, ev, callback) {
                 can.delegate.call(el, selector, ev, callback);
@@ -2219,7 +2220,7 @@ define("zepto", (function (global) {
                     }
                 },
                 // ## can.Control._shifter
-                // Moves `this` to the first argument, wraps it with `jQuery` if it's 
+                // Moves `this` to the first argument, wraps it with `jQuery` if it's
                 // an element.
                 _shifter: function(context, name) {
 
@@ -2247,9 +2248,9 @@ define("zepto", (function (global) {
                     (type === "function" || (type === "string" && isFunction(this.prototype[val]))) && !! (special[methodName] || processors[methodName] || /[^\w]/.test(methodName));
                 },
                 // ## can.Control._action
-                // Takes a method name and the options passed to a control and tries to return the data 
+                // Takes a method name and the options passed to a control and tries to return the data
                 // necessary to pass to a processor (something that binds things).
-                // For performance reasons, `_action` is called twice: 
+                // For performance reasons, `_action` is called twice:
                 // * It's called when the Control class is created. for templated method names (e.g., `{window} foo`), it returns null. For non-templated method names it returns the event binding data. That data is added to `this.actions`.
                 // * It is called wehn a control instance is created, but only for templated actions.
                 _action: function(methodName, options) {
@@ -2281,7 +2282,7 @@ define("zepto", (function (global) {
                     return [options, window];
                 },
                 // ## can.Control.processors
-                // An object of `{eventName : function}` pairs that Control uses to 
+                // An object of `{eventName : function}` pairs that Control uses to
                 // hook up events automatically.
                 processors: {},
                 // ## can.Control.defaults
@@ -2322,7 +2323,7 @@ define("zepto", (function (global) {
 
                     // The `this.options` property is an Object that contains configuration data
                     // passed to a control when it is created (`new can.Control(element, options)`)
-                    // The `options` argument passed when creating the control is merged with `can.Control.defaults` 
+                    // The `options` argument passed when creating the control is merged with `can.Control.defaults`
                     // in [can.Control.prototype.setup setup].
                     // If no `options` value is used during creation, the value in `defaults` is used instead
                     this.options = extend({}, cls.defaults, options);
@@ -2410,7 +2411,7 @@ define("zepto", (function (global) {
                 },
                 // ## destroy
                 // Prepares a `control` for garbage collection.
-                // First checks if it has already been removed. Then, removes all the bindings, data, and 
+                // First checks if it has already been removed. Then, removes all the bindings, data, and
                 // the element from the Control instance.
                 destroy: function() {
                     if (this.element === null) {
@@ -2437,7 +2438,7 @@ define("zepto", (function (global) {
             });
 
         // ## Processors
-        // Processors do the binding. This basic processor binds events. Each returns a function that unbinds 
+        // Processors do the binding. This basic processor binds events. Each returns a function that unbinds
         // when called.
         var processors = can.Control.processors;
         basicProcessor = function(el, event, selector, methodName, control) {
@@ -2830,7 +2831,7 @@ define("zepto", (function (global) {
                             firstSerialize = false;
                         if (!serializeMap) {
                             firstSerialize = true;
-                            // Serialize might call .attr() so we need to keep different map 
+                            // Serialize might call .attr() so we need to keep different map
                             serializeMap = {
                                 attr: {},
                                 serialize: {}
@@ -2952,7 +2953,7 @@ define("zepto", (function (global) {
                 },
                 // Trigger a change event.
                 _triggerChange: function(attr, how, newVal, oldVal) {
-                    // so this change can bubble ... a bubbling change triggers the 
+                    // so this change can bubble ... a bubbling change triggers the
                     // _changes trigger
                     if (bubble.isBubbling(this, "change")) {
                         can.batch.trigger(this, {
@@ -3638,7 +3639,7 @@ define("zepto", (function (global) {
 
         // ## Reading Helpers
         // The following methods are used to call a function that relies on
-        // observable data and to track the observable events which should 
+        // observable data and to track the observable events which should
         // be listened to when changes occur.
         // To do this, [`can.__reading(observable, event)`](#can-__reading) is called to
         // "broadcast" the corresponding event on each read.
@@ -3647,7 +3648,7 @@ define("zepto", (function (global) {
         // a function relies on. These objects and events must be listened to
         // in order to determine when to check a function for updates.
         // This looks like the following:
-        //     { 
+        //     {
         //       "map1|first": {obj: map, event: "first"},
         //       "map1|last" : {obj: map, event: "last"}
         //     }
@@ -3680,7 +3681,7 @@ define("zepto", (function (global) {
         };
 
         // ### can.__reading
-        // When an observable value is read, it must call `can.__reading` to 
+        // When an observable value is read, it must call `can.__reading` to
         // broadcast which object and event should be listened to.
         can.__reading = function(obj, event) {
             // Add the observable object and the event
@@ -3697,7 +3698,7 @@ define("zepto", (function (global) {
 
         // ### can.__clearReading
         // Clears and returns the current observables.
-        // This can be used to access a value without 
+        // This can be used to access a value without
         // it being handled as a regular `read`.
         can.__clearReading = function() {
             if (stack.length) {
@@ -3990,7 +3991,7 @@ define("zepto", (function (global) {
                 off = handlers.off;
 
                 // ###Observing a property of an object
-                // If `can.compute` is called with an 
+                // If `can.compute` is called with an
                 // [object, property name, and optional event name](http://canjs.com/docs/can.compute.html#sig_can_compute_object_propertyName__eventName__),
                 // create a compute from a property of an object. This allows the
                 // creation of a compute on objects that can be listened to with [`can.bind`](http://canjs.com/docs/can.bind.html)
@@ -4080,7 +4081,7 @@ define("zepto", (function (global) {
                             get = function() {
                                 return fn.call(context, value);
                             };
-                            // Check the number of arguments the 
+                            // Check the number of arguments the
                             // async function takes.
                             if (fn.length === 0) {
 
@@ -4238,7 +4239,7 @@ define("zepto", (function (global) {
                 }
                 type = typeof cur;
                 // If it's a compute, get the compute's value
-                // unless we are at the end of the 
+                // unless we are at the end of the
                 if (cur && cur.isComputed && (!options.isArgument && i < readLength - 1)) {
                     if (!foundObs && options.foundObservable) {
                         options.foundObservable(prev, i + 1);
@@ -4975,7 +4976,7 @@ define("zepto", (function (global) {
                                         content = "/>";
                                         popTagHookup();
                                     }
-                                    // if it's an empty tag	 
+                                    // if it's an empty tag
                                     else if (tokens[i] === "<" && tokens[i + 1] === "/" + tagName) {
                                         buff.push("}));");
                                         content = token;
@@ -5130,7 +5131,7 @@ define("zepto", (function (global) {
 
                                         // We are ending a block.
                                         if (bracketCount === 1) {
-                                            // We are starting on. 
+                                            // We are starting on.
                                             buff.push(insert_cmd, 'can.view.txt(0,\'' + getTag(tagName, tokens, i) + '\',' + status() + ',this,function(){', startTxt, content);
                                             endStack.push({
                                                     before: "",
@@ -5330,10 +5331,10 @@ define("zepto", (function (global) {
         // A mapping of element ids to nodeList id allowing us to quickly find an element
         // that needs to be replaced when updated.
         var nodeMap = {},
-            // A mapping of ids to text nodes, this map will be used in the 
+            // A mapping of ids to text nodes, this map will be used in the
             // case of the browser not supporting expando properties.
             textNodeMap = {},
-            // The name of the expando property; the value returned 
+            // The name of the expando property; the value returned
             // given a nodeMap key.
             expando = 'ejs_' + Math.random(),
             // The id used as the key in our nodeMap, this integer
@@ -5379,7 +5380,7 @@ define("zepto", (function (global) {
                 if (canExpando || node.nodeType !== 3) {
                     return node[expando];
                 } else {
-                    // The nodeList has a specific collection for HTMLTextNodes for 
+                    // The nodeList has a specific collection for HTMLTextNodes for
                     // (older) browsers that do not support expando properties.
                     for (var textNodeID in textNodeMap) {
                         if (textNodeMap[textNodeID] === node) {
@@ -5539,7 +5540,7 @@ define("zepto", (function (global) {
             first: function(nodeList) {
                 var first = nodeList[0];
                 // If the first node in the list is not an HTMLElement
-                // it is a nodeList so call `first` again. 
+                // it is a nodeList so call `first` again.
                 if (first.nodeType) {
                     return first;
                 } else {
@@ -5571,7 +5572,7 @@ define("zepto", (function (global) {
             },
 
             // ## nodeLists.unregisterChildren
-            // Unregister all childen within the provided list and return the 
+            // Unregister all childen within the provided list and return the
             // unregistred nodes.
             // @param {Array.<HTMLElement>} nodeList The child list to unregister.
             unregisterChildren: function(nodeList) {
@@ -5588,7 +5589,7 @@ define("zepto", (function (global) {
 
                         nodes.push(node);
                     } else {
-                        // Recursively unregister each of the child lists in 
+                        // Recursively unregister each of the child lists in
                         // the nodeList.
                         push.apply(nodes, nodeLists.unregister(node));
                     }
@@ -5597,8 +5598,8 @@ define("zepto", (function (global) {
             },
 
             // ## nodeLists.unregister
-            // Unregister's a nodeList and returns the unregistered nodes.  
-            // Call if the nodeList is no longer being updated. This will 
+            // Unregister's a nodeList and returns the unregistered nodes.
+            // Call if the nodeList is no longer being updated. This will
             // also unregister all child nodeLists.
             unregister: function(nodeList) {
                 var nodes = nodeLists.unregisterChildren(nodeList);
@@ -6392,7 +6393,7 @@ define("zepto", (function (global) {
 
         can.extend(can.view, {
                 live: live,
-                // called in text to make a temporary 
+                // called in text to make a temporary
                 // can.view.lists function that can be called with
                 // the list to iterate over and the template
                 // used to produce the content within the list
@@ -6450,15 +6451,15 @@ define("zepto", (function (global) {
                             withinTemplatedSectionWithinAnElement = true;
                         }
 
-                        // Sets up a listener so we know any can.view.lists called 
+                        // Sets up a listener so we know any can.view.lists called
                         // when func is called
                         var listTeardown = can.view.setupLists();
                         unbind = function() {
                             compute.unbind("change", emptyHandler);
                         };
                         // Create a compute that calls func and looks for dependencies.
-                        // By passing `false`, this compute can not be a dependency of other 
-                        // computes.  This is because live-bits are nested, but 
+                        // By passing `false`, this compute can not be a dependency of other
+                        // computes.  This is because live-bits are nested, but
                         // handle their own updating. For example:
                         //     {{#if items.length}}{{#items}}{{.}}{{/items}}{{/if}}
                         // We do not want `{{#if items.length}}` changing the DOM if
@@ -6506,7 +6507,7 @@ define("zepto", (function (global) {
                         return "<" + tag + can.view.hook(
                             // if value is an object, it's likely something returned by .safeString
                             escape && typeof value !== "object" ?
-                            // If we are escaping, replace the parentNode with 
+                            // If we are escaping, replace the parentNode with
                             // a text node who's value is `func`'s return value.
 
                             function(el, parentNode) {
@@ -6562,8 +6563,8 @@ define("zepto", (function (global) {
 
         // # mustache.js
         // `can.Mustache`: The Mustache templating engine.
-        // See the [Transformation](#section-29) section within *Scanning Helpers* for a detailed explanation 
-        // of the runtime render code design. The majority of the Mustache engine implementation 
+        // See the [Transformation](#section-29) section within *Scanning Helpers* for a detailed explanation
+        // of the runtime render code design. The majority of the Mustache engine implementation
         // occurs within the *Transformation* scanning helper.
 
         // ## Initialization
@@ -6674,7 +6675,7 @@ define("zepto", (function (global) {
                 scanner: new can.view.Scanner({
                         // A hash of strings for the scanner to inject at certain points.
                         text: {
-                            // This is the logic to inject at the beginning of a rendered template. 
+                            // This is the logic to inject at the beginning of a rendered template.
                             // This includes initializing the `context` stack.
                             start: "", //"var "+SCOPE+"= this instanceof can.view.Scope? this : new can.view.Scope(this);\n",
                             scope: SCOPE,
@@ -6690,13 +6691,13 @@ define("zepto", (function (global) {
                         //			"tokenMapName",
                         //			// A simple token to match, like "{{".
                         //			"token",
-                        //			// Optional. A complex (regexp) token to match that 
+                        //			// Optional. A complex (regexp) token to match that
                         //			// overrides the simple token.
                         //			"[\\s\\t]*{{",
-                        //			// Optional. A function that executes advanced 
-                        //			// manipulation of the matched content. This is 
+                        //			// Optional. A function that executes advanced
+                        //			// manipulation of the matched content. This is
                         //			// rarely used.
-                        //			function(content){   
+                        //			function(content){
                         //				return content;
                         //			}
                         //		]
@@ -6743,14 +6744,14 @@ define("zepto", (function (global) {
                         //			//                             status: 0
                         //			//                           }
                         //			fn: function(content, cmd) {
-                        //				return 'for text injection' || 
+                        //				return 'for text injection' ||
                         //					{ raw: 'to bypass text injection' };
                         //			}
                         //		}
                         helpers: [
                             // ### Partials
                             // Partials begin with a greater than sign, like {{> box}}.
-                            // Partials are rendered at runtime (as opposed to compile time), 
+                            // Partials are rendered at runtime (as opposed to compile time),
                             // so recursive partials are possible. Just avoid infinite loops.
                             // For example, this template and partial:
                             // 		base.mustache:
@@ -6797,37 +6798,37 @@ define("zepto", (function (global) {
                                     var quickFunc = /\s*\(([\$\w]+)\)\s*->([^\n]*)/,
                                         parts = content.match(quickFunc);
 
-                                    //find 
+                                    //find
                                     return "can.proxy(function(__){var " + parts[1] + "=can.$(__);with(" + SCOPE + ".attr('.')){" + parts[2] + "}}, this);";
                                 }
                             },
                             // ### Transformation (default)
                             // This transforms all content to its interpolated equivalent,
-                            // including calls to the corresponding helpers as applicable. 
+                            // including calls to the corresponding helpers as applicable.
                             // This outputs the render code for almost all cases.
                             // #### Definitions
-                            // * `context` - This is the object that the current rendering context operates within. 
+                            // * `context` - This is the object that the current rendering context operates within.
                             //		Each nested template adds a new `context` to the context stack.
-                            // * `stack` - Mustache supports nested sections, 
+                            // * `stack` - Mustache supports nested sections,
                             //		each of which add their own context to a stack of contexts.
-                            //		Whenever a token gets interpolated, it will check for a match against the 
+                            //		Whenever a token gets interpolated, it will check for a match against the
                             //		last context in the stack, then iterate through the rest of the stack checking for matches.
                             //		The first match is the one that gets returned.
                             // * `Mustache.txt` - This serializes a collection of logic, optionally contained within a section.
                             //		If this is a simple interpolation, only the interpolation lookup will be passed.
-                            //		If this is a section, then an `options` object populated by the truthy (`options.fn`) and 
-                            //		falsey (`options.inverse`) encapsulated functions will also be passed. This section handling 
+                            //		If this is a section, then an `options` object populated by the truthy (`options.fn`) and
+                            //		falsey (`options.inverse`) encapsulated functions will also be passed. This section handling
                             //		exists to support the runtime context nesting that Mustache supports.
                             // * `Mustache.get` - This resolves an interpolation reference given a stack of contexts.
-                            // * `options` - An object containing methods for executing the inner contents of sections or helpers.  
-                            //		`options.fn` - Contains the inner template logic for a truthy section.  
-                            //		`options.inverse` - Contains the inner template logic for a falsey section.  
+                            // * `options` - An object containing methods for executing the inner contents of sections or helpers.
+                            //		`options.fn` - Contains the inner template logic for a truthy section.
+                            //		`options.inverse` - Contains the inner template logic for a falsey section.
                             //		`options.hash` - Contains the merged hash object argument for custom helpers.
                             // #### Design
                             // This covers the design of the render code that the transformation helper generates.
                             // ##### Pseudocode
                             // A detailed explanation is provided in the following sections, but here is some brief pseudocode
-                            // that gives a high level overview of what the generated render code does (with a template similar to  
+                            // that gives a high level overview of what the generated render code does (with a template similar to
                             // `"{{#a}}{{b.c.d.e.name}}{{/a}}" == "Phil"`).
                             // *Initialize the render code.*
                             // 		view = []
@@ -6837,15 +6838,15 @@ define("zepto", (function (global) {
                             // 		view.push( "string" )
                             // 		view.push( can.view.txt(
                             // *Render the nested section with `can.Mustache.txt`.*
-                            // 			txt( 
+                            // 			txt(
                             // *Add the current context to the stack.*
-                            // 				stack(), 
+                            // 				stack(),
                             // *Flag this for truthy section mode.*
                             // 				"#",
                             // *Interpolate and check the `a` variable for truthyness using the stack with `can.Mustache.get`.*
                             // 				get( "a", stack() ),
                             // *Include the nested section's inner logic.
-                            // The stack argument is usually the parent section's copy of the stack, 
+                            // The stack argument is usually the parent section's copy of the stack,
                             // but it can be an override context that was passed by a custom helper.
                             // Sections can nest `0..n` times -- **NESTCEPTION**.*
                             // 				{ fn: fn(stack) {
@@ -6879,8 +6880,8 @@ define("zepto", (function (global) {
                             // 			if (arguments.length == 1 && context) {
                             // 				s = !context.__sc0pe ? [context] : context;
                             // 			} else {
-                            // 				s = context && context.__sc0pe 
-                            //					? context.concat([self]) 
+                            // 				s = context && context.__sc0pe
+                            //					? context.concat([self])
                             //					: __sc0pe(context).concat([self]);
                             // 			}
                             // 			return (s.__sc0pe = true) && s;
@@ -6888,42 +6889,42 @@ define("zepto", (function (global) {
                             // The `___v1ew` is the the array used to serialize the view.
                             // The `___c0nt3xt` is a stacking array of contexts that slices and expands with each nested section.
                             // The `__sc0pe` function is used to more easily update the context stack in certain situations.
-                            // Usually, the stack function simply adds a new context (`self`/`this`) to a context stack. 
+                            // Usually, the stack function simply adds a new context (`self`/`this`) to a context stack.
                             // However, custom helpers will occasionally pass override contexts that need their own context stack.
                             // ##### Sections
-                            // Each section, `{{#section}} content {{/section}}`, within a Mustache template generates a section 
-                            // context in the resulting render code. The template itself is treated like a root section, with the 
+                            // Each section, `{{#section}} content {{/section}}`, within a Mustache template generates a section
+                            // context in the resulting render code. The template itself is treated like a root section, with the
                             // same execution logic as any others. Each section can have `0..n` nested sections within it.
-                            // Here's an example of a template without any descendent sections.  
-                            // Given the template: `"{{a.b.c.d.e.name}}" == "Phil"`  
+                            // Here's an example of a template without any descendent sections.
+                            // Given the template: `"{{a.b.c.d.e.name}}" == "Phil"`
                             // Would output the following render code:
                             //		___v1ew.push("\"");
                             //		___v1ew.push(can.view.txt(1, '', 0, this, function() {
-                            // 			return can.Mustache.txt(__sc0pe(___c0nt3xt, this), null, 
-                            //				can.Mustache.get("a.b.c.d.e.name", 
+                            // 			return can.Mustache.txt(__sc0pe(___c0nt3xt, this), null,
+                            //				can.Mustache.get("a.b.c.d.e.name",
                             //					__sc0pe(___c0nt3xt, this))
                             //			);
                             //		}));
                             //		___v1ew.push("\" == \"Phil\"");
-                            // The simple strings will get appended to the view. Any interpolated references (like `{{a.b.c.d.e.name}}`) 
+                            // The simple strings will get appended to the view. Any interpolated references (like `{{a.b.c.d.e.name}}`)
                             // will be pushed onto the view via `can.view.txt` in order to support live binding.
-                            // The function passed to `can.view.txt` will call `can.Mustache.txt`, which serializes the object data by doing 
+                            // The function passed to `can.view.txt` will call `can.Mustache.txt`, which serializes the object data by doing
                             // a context lookup with `can.Mustache.get`.
                             // `can.Mustache.txt`'s first argument is a copy of the context stack with the local context `this` added to it.
                             // This stack will grow larger as sections nest.
-                            // The second argument is for the section type. This will be `"#"` for truthy sections, `"^"` for falsey, 
+                            // The second argument is for the section type. This will be `"#"` for truthy sections, `"^"` for falsey,
                             // or `null` if it is an interpolation instead of a section.
-                            // The third argument is the interpolated value retrieved with `can.Mustache.get`, which will perform the 
+                            // The third argument is the interpolated value retrieved with `can.Mustache.get`, which will perform the
                             // context lookup and return the approriate string or object.
                             // Any additional arguments, if they exist, are used for passing arguments to custom helpers.
                             // For nested sections, the last argument is an `options` object that contains the nested section's logic.
-                            // Here's an example of a template with a single nested section.  
-                            // Given the template: `"{{#a}}{{b.c.d.e.name}}{{/a}}" == "Phil"`  
+                            // Here's an example of a template with a single nested section.
+                            // Given the template: `"{{#a}}{{b.c.d.e.name}}{{/a}}" == "Phil"`
                             // Would output the following render code:
                             //		___v1ew.push("\"");
                             // 		___v1ew.push(can.view.txt(0, '', 0, this, function() {
-                            // 			return can.Mustache.txt(__sc0pe(___c0nt3xt, this), "#", 
-                            //				can.Mustache.get("a", __sc0pe(___c0nt3xt, this)), 
+                            // 			return can.Mustache.txt(__sc0pe(___c0nt3xt, this), "#",
+                            //				can.Mustache.get("a", __sc0pe(___c0nt3xt, this)),
                             //					[{
                             // 					_: function() {
                             // 						return ___v1ew.join("");
@@ -6931,12 +6932,12 @@ define("zepto", (function (global) {
                             // 				}, {
                             // 					fn: function(___c0nt3xt) {
                             // 						var ___v1ew = [];
-                            // 						___v1ew.push(can.view.txt(1, '', 0, this, 
+                            // 						___v1ew.push(can.view.txt(1, '', 0, this,
                             //								function() {
                             //                                  return can.Mustache.txt(
-                            // 									__sc0pe(___c0nt3xt, this), 
-                            // 									null, 
-                            // 									can.Mustache.get("b.c.d.e.name", 
+                            // 									__sc0pe(___c0nt3xt, this),
+                            // 									null,
+                            // 									can.Mustache.get("b.c.d.e.name",
                             // 										__sc0pe(___c0nt3xt, this))
                             // 								);
                             // 							}
@@ -6954,7 +6955,7 @@ define("zepto", (function (global) {
                             // Within the `fn` function is the section's render context, which in this case will render anything between the `{{#a}}` and `{{/a}}` tokens.
                             // This function has `___c0nt3xt` as an argument because custom helpers can pass their own override contexts. For any case where custom helpers
                             // aren't used, `___c0nt3xt` will be equivalent to the `__sc0pe(___c0nt3xt, this)` stack created by its parent section. The `inverse` function
-                            // works similarly, except that it is added when `{{^a}}` and `{{else}}` are used. `var ___v1ew = []` is specified in `fn` and `inverse` to 
+                            // works similarly, except that it is added when `{{^a}}` and `{{else}}` are used. `var ___v1ew = []` is specified in `fn` and `inverse` to
                             // ensure that live binding in nested sections works properly.
                             // All of these nested sections will combine to return a compiled string that functions similar to EJS in its uses of `can.view.txt`.
                             // #### Implementation
@@ -7007,7 +7008,7 @@ define("zepto", (function (global) {
                                         content = content.substring(1);
                                     }
 
-                                    // `else` helpers are special and should be skipped since they don't 
+                                    // `else` helpers are special and should be skipped since they don't
                                     // have any logic aside from kicking off an `inverse` function.
                                     if (mode !== 'else') {
                                         var args = [],
@@ -7021,7 +7022,7 @@ define("zepto", (function (global) {
                                             ',\n' + (mode ? '"' + mode + '"' : 'null') + ',';
 
                                         // Parse the helper arguments.
-                                        // This needs uses this method instead of a split(/\s/) so that 
+                                        // This needs uses this method instead of a split(/\s/) so that
                                         // strings with spaces can be correctly parsed.
                                         (can.trim(content) + ' ')
                                             .replace(argumentsRegExp, function(whole, arg) {
@@ -7318,11 +7319,11 @@ define("zepto", (function (global) {
         // at runtime instead of during compilation.
         // Custom helpers can be added via `can.Mustache.registerHelper`,
         // but there are also some built-in helpers included by default.
-        // Most of the built-in helpers are little more than aliases to actions 
-        // that the base version of Mustache simply implies based on the 
+        // Most of the built-in helpers are little more than aliases to actions
+        // that the base version of Mustache simply implies based on the
         // passed in object.
         // Built-in helpers:
-        // * `data` - `data` is a special helper that is implemented via scanning helpers. 
+        // * `data` - `data` is a special helper that is implemented via scanning helpers.
         //		It hooks up the active element to the active data object: `<div {{data "key"}} />`
         // * `if` - Renders a truthy section: `{{#if var}} render {{/if}}`
         // * `unless` - Renders a falsey section: `{{#unless var}} render {{/unless}}`
@@ -7349,7 +7350,7 @@ define("zepto", (function (global) {
         Mustache.render = function(partial, scope, options) {
             // TOOD: clean up the following
             // If there is a "partial" property and there is not
-            // an already-cached partial, we use the value of the 
+            // an already-cached partial, we use the value of the
             // property to look up the partial
 
             // if this partial is not cached ...
@@ -7418,7 +7419,7 @@ define("zepto", (function (global) {
 
                 'each': function(expr, options) {
                     // Check if this is a list or a compute that resolves to a list, and setup
-                    // the incremental live-binding 
+                    // the incremental live-binding
 
                     // First, see what we are dealing with.  It's ok to read the compute
                     // because can.view.text is only temporarily binding to what is going on here.
@@ -7579,13 +7580,13 @@ define("zepto", (function (global) {
         // Implement the `can-value` special attribute
         // ### Usage
         // 		<input can-value="name" />
-        // When a view engine finds this attribute, it will call this callback. The value of the attribute 
+        // When a view engine finds this attribute, it will call this callback. The value of the attribute
         // should be a string representing some value in the current scope to cross-bind to.
         can.view.attr("can-value", function(el, data) {
 
             var attr = removeCurly(el.getAttribute("can-value")),
-                // Turn the attribute passed in into a compute.  If the user passed in can-value="name" and the current 
-                // scope of the template is some object called data, the compute representing this can-value will be the 
+                // Turn the attribute passed in into a compute.  If the user passed in can-value="name" and the current
+                // scope of the template is some object called data, the compute representing this can-value will be the
                 // data.attr('name') property.
                 value = data.scope.computeData(attr, {
                         args: []
@@ -7594,13 +7595,13 @@ define("zepto", (function (global) {
                 trueValue,
                 falseValue;
 
-            // Depending on the type of element, this attribute has different behavior. can.Controls are defined (further below 
-            // in this file) for each type of input. This block of code collects arguments and instantiates each can.Control. There 
+            // Depending on the type of element, this attribute has different behavior. can.Controls are defined (further below
+            // in this file) for each type of input. This block of code collects arguments and instantiates each can.Control. There
             // is one for checkboxes/radios, another for multiselect inputs, and another for everything else.
             if (el.nodeName.toLowerCase() === "input") {
                 if (el.type === "checkbox") {
-                    // If the element is a checkbox and has an attribute called "can-true-value", 
-                    // set up a compute that toggles the value of the checkbox to "true" based on another attribute. 
+                    // If the element is a checkbox and has an attribute called "can-true-value",
+                    // set up a compute that toggles the value of the checkbox to "true" based on another attribute.
                     // 		<input type='checkbox' can-value='sex' can-true-value='male' can-false-value='female' />
                     if (can.attr.has(el, "can-true-value")) {
                         trueValue = el.getAttribute("can-true-value");
@@ -7615,8 +7616,8 @@ define("zepto", (function (global) {
                 }
 
                 if (el.type === "checkbox" || el.type === "radio") {
-                    // For checkboxes and radio buttons, create a Checked can.Control around the input.  Pass in 
-                    // the compute representing the can-value and can-true-value and can-false-value properties (if 
+                    // For checkboxes and radio buttons, create a Checked can.Control around the input.  Pass in
+                    // the compute representing the can-value and can-true-value and can-false-value properties (if
                     // they were used).
                     new Checked(el, {
                             value: value,
@@ -7627,7 +7628,7 @@ define("zepto", (function (global) {
                 }
             }
             if (el.nodeName.toLowerCase() === "select" && el.multiple) {
-                // For multiselect enabled select inputs, we instantiate a special control around that select element 
+                // For multiselect enabled select inputs, we instantiate a special control around that select element
                 // called Multiselect
                 new Multiselect(el, {
                         value: value
@@ -7641,7 +7642,7 @@ define("zepto", (function (global) {
                     });
                 return;
             }
-            // The default case. Instantiate the Value control around the element. Pass it the compute representing 
+            // The default case. Instantiate the Value control around the element. Pass it the compute representing
             // the observable attribute property that was set.
             new Value(el, {
                     value: value
@@ -7650,11 +7651,11 @@ define("zepto", (function (global) {
 
         // ## Special Event Types (can-SPECIAL)
 
-        // A special object, similar to [$.event.special](http://benalman.com/news/2010/03/jquery-special-events/), 
-        // for adding hooks for special can-SPECIAL types (not native DOM events). Right now, only can-enter is 
+        // A special object, similar to [$.event.special](http://benalman.com/news/2010/03/jquery-special-events/),
+        // for adding hooks for special can-SPECIAL types (not native DOM events). Right now, only can-enter is
         // supported, but this object might be exported so that it can be added to easily.
-        // To implement a can-SPECIAL event type, add a property to the special object, whose value is a function 
-        // that returns the following: 
+        // To implement a can-SPECIAL event type, add a property to the special object, whose value is a function
+        // that returns the following:
         //		// the real event name to bind to
         //		event: "event-name",
         //		handler: function (ev) {
@@ -7675,9 +7676,9 @@ define("zepto", (function (global) {
         };
 
         // ## can-EVENT
-        // The following section contains code for implementing the can-EVENT attribute. 
-        // This binds on a wildcard attribute name. Whenever a view is being processed 
-        // and can-xxx (anything starting with can-), this callback will be run.  Inside, its setting up an event handler 
+        // The following section contains code for implementing the can-EVENT attribute.
+        // This binds on a wildcard attribute name. Whenever a view is being processed
+        // and can-xxx (anything starting with can-), this callback will be run.  Inside, its setting up an event handler
         // that calls a method identified by the value of this attribute.
         can.view.attr(/can-[\w\.]+/, function(el, data) {
 
@@ -7686,10 +7687,10 @@ define("zepto", (function (global) {
                 // The event type to bind on is deteremined by whatever is after can-
                 // For example, can-submit binds on the submit event.
                 event = attributeName.substr("can-".length),
-                // This is the method that the event will initially trigger. It will look up the method by the string name 
+                // This is the method that the event will initially trigger. It will look up the method by the string name
                 // passed in the attribute and call it.
                 handler = function(ev) {
-                    // The attribute value, representing the name of the method to call (i.e. can-submit="foo" foo is the 
+                    // The attribute value, representing the name of the method to call (i.e. can-submit="foo" foo is the
                     // name of the method)
                     var attr = removeCurly(el.getAttribute(attributeName)),
                         scopeData = data.scope.read(attr, {
@@ -7699,29 +7700,29 @@ define("zepto", (function (global) {
                     return scopeData.value.call(scopeData.parent, data.scope._context, can.$(this), ev);
                 };
 
-            // This code adds support for special event types, like can-enter="foo". special.enter (or any special[event]) is 
-            // a function that returns an object containing an event and a handler. These are to be used for binding. For example, 
-            // when a user adds a can-enter attribute, we'll bind on the keyup event, and the handler performs special logic to 
+            // This code adds support for special event types, like can-enter="foo". special.enter (or any special[event]) is
+            // a function that returns an object containing an event and a handler. These are to be used for binding. For example,
+            // when a user adds a can-enter attribute, we'll bind on the keyup event, and the handler performs special logic to
             // determine on keyup if the enter key was pressed.
             if (special[event]) {
                 var specialData = special[event](data, el, handler);
                 handler = specialData.handler;
                 event = specialData.event;
             }
-            // Bind the handler defined above to the element we're currently processing and the event name provided in this 
+            // Bind the handler defined above to the element we're currently processing and the event name provided in this
             // attribute name (can-click="foo")
             can.bind.call(el, event, handler);
         });
 
         // ## Two way binding can.Controls
-        // Each type of input that is supported by view/bindings is wrapped with a special can.Control.  The control serves 
-        // two functions: 
+        // Each type of input that is supported by view/bindings is wrapped with a special can.Control.  The control serves
+        // two functions:
         // 1. Bind on the property changing (the compute we're two-way binding to) and change the input value.
         // 2. Bind on the input changing and change the property (compute) we're two-way binding to.
         // There is one control per input type. There could easily be more for more advanced input types, like the HTML5 type="date" input type.
 
-        // ### Value 
-        // A can.Control that manages the two-way bindings on most inputs.  When can-value is found as an attribute 
+        // ### Value
+        // A can.Control that manages the two-way bindings on most inputs.  When can-value is found as an attribute
         // on an input, the callback above instantiates this Value control on the input element.
         var Value = can.Control.extend({
                 init: function() {
@@ -7754,8 +7755,8 @@ define("zepto", (function (global) {
                     this.options.value(this.element[0].value);
                 }
             }),
-            // ### Checked 
-            // A can.Control that manages the two-way bindings on a checkbox element.  When can-value is found as an attribute 
+            // ### Checked
+            // A can.Control that manages the two-way bindings on a checkbox element.  When can-value is found as an attribute
             // on a checkbox, the callback above instantiates this Checked control on the checkbox element.
             Checked = can.Control.extend({
                     init: function() {
@@ -7763,7 +7764,7 @@ define("zepto", (function (global) {
                         this.isCheckbox = (this.element[0].type.toLowerCase() === "checkbox");
                         this.check();
                     },
-                    // `value` is the compute representing the can-value for this element.  For example can-value="foo" and current 
+                    // `value` is the compute representing the can-value for this element.  For example can-value="foo" and current
                     // scope is someObj, value is the compute representing someObj.attr('foo')
                     "{value} change": "check",
                     check: function() {
@@ -7771,7 +7772,7 @@ define("zepto", (function (global) {
                         if (this.isCheckbox) {
                             var value = this.options.value(),
                                 trueValue = this.options.trueValue || true;
-                            // If `can-true-value` attribute was set, check if the value is equal to that string value, and set 
+                            // If `can-true-value` attribute was set, check if the value is equal to that string value, and set
                             // the checked property based on their equality.
                             this.element[0].checked = (value === trueValue);
                         }
@@ -7789,7 +7790,7 @@ define("zepto", (function (global) {
                     "change": function() {
 
                         if (this.isCheckbox) {
-                            // If the checkbox is checked and can-true-value was used, set value to the string value of can-true-value.  If 
+                            // If the checkbox is checked and can-true-value was used, set value to the string value of can-true-value.  If
                             // can-false-value was used and checked is false, set value to the string value of can-false-value.
                             this.options.value(this.element[0].checked ? this.options.trueValue : this.options.falseValue);
                         }
@@ -7803,7 +7804,7 @@ define("zepto", (function (global) {
                     }
                 }),
             // ### Multiselect
-            // A can.Control that handles select input with the "multiple" attribute (meaning more than one can be selected at once). 
+            // A can.Control that handles select input with the "multiple" attribute (meaning more than one can be selected at once).
             Multiselect = Value.extend({
                     init: function() {
                         this.delimiter = ";";
@@ -7830,7 +7831,7 @@ define("zepto", (function (global) {
                             isSelected[val] = true;
                         });
 
-                        // Go through each &lt;option/&gt; element, if it has a value property (its a valid option), then 
+                        // Go through each &lt;option/&gt; element, if it has a value property (its a valid option), then
                         // set its selected property if it was in the list of vals that were just set.
                         can.each(this.element[0].childNodes, function(option) {
                             if (option.value) {
@@ -7840,7 +7841,7 @@ define("zepto", (function (global) {
                         });
 
                     },
-                    // A helper function used by the 'change' handler below. Its purpose is to return an array of selected 
+                    // A helper function used by the 'change' handler below. Its purpose is to return an array of selected
                     // values, like ["foo", "bar"]
                     get: function() {
                         var values = [],
@@ -7913,8 +7914,8 @@ define("zepto", (function (global) {
                 setup: function() {
                     can.Construct.setup.apply(this, arguments);
 
-                    // When `can.Component.setup` function is ran for the first time, `can.Component` doesn't exist yet 
-                    // which ensures that the following code is ran only in constructors that extend `can.Component`. 
+                    // When `can.Component.setup` function is ran for the first time, `can.Component` doesn't exist yet
+                    // which ensures that the following code is ran only in constructors that extend `can.Component`.
                     if (can.Component) {
                         var self = this,
                             scope = this.prototype.scope;
@@ -7924,7 +7925,7 @@ define("zepto", (function (global) {
 
                         // Look to convert `scope` to a Map constructor function.
                         if (!scope || (typeof scope === "object" && !(scope instanceof can.Map))) {
-                            // If scope is an object, use that object as the prototype of an extended 
+                            // If scope is an object, use that object as the prototype of an extended
                             // Map constructor function.
                             // A new instance of that Map constructor function will be created and
                             // set a the constructor instance's scope.
@@ -8011,7 +8012,7 @@ define("zepto", (function (global) {
                                 return;
                             }
                         }
-                        // Cross-bind the value in the scope to this 
+                        // Cross-bind the value in the scope to this
                         // component's scope
                         var computeData = hookupOptions.scope.computeData(value, {
                                 args: []
@@ -8051,7 +8052,7 @@ define("zepto", (function (global) {
                         // If `this.scope` is instance of `can.Map` assign it to the `componentScope`
                         componentScope = this.scope;
                     } else if (can.isFunction(this.scope)) {
-                        // If `this.scope` is a function, call the function and 
+                        // If `this.scope` is a function, call the function and
                         var scopeResult = this.scope(initalScopeData, hookupOptions.scope, el);
 
                         if (scopeResult instanceof can.Map) {
@@ -8150,7 +8151,7 @@ define("zepto", (function (global) {
 
                                 // `rendererOptions.options` is a scope of helpers where `<content>` was found, so
                                 // the right helpers should already be available.
-                                // However, `_tags.content` is going to point to this current content callback.  We need to 
+                                // However, `_tags.content` is going to point to this current content callback.  We need to
                                 // remove that so it will walk up the chain
 
                                 delete options.tags.content;
@@ -8169,7 +8170,7 @@ define("zepto", (function (global) {
                         // Render the component's template
                         frag = this.constructor.renderer(renderedScope, hookupOptions.options.add(options));
                     } else {
-                        // Otherwise render the contents between the 
+                        // Otherwise render the contents between the
                         if (hookupOptions.templateType === "legacy") {
                             frag = can.view.frag(hookupOptions.subtemplate ? hookupOptions.subtemplate(renderedScope, hookupOptions.options.add(options)) : "");
                         } else {
@@ -8194,7 +8195,7 @@ define("zepto", (function (global) {
 
                     hasObjectLookup = paramReplacer.test(methodName);
 
-                    // If we don't have options (a `control` instance), we'll run this 
+                    // If we don't have options (a `control` instance), we'll run this
                     // later.
                     if (!controlInstance && hasObjectLookup) {
                         return;
@@ -8294,7 +8295,7 @@ define("zepto", (function (global) {
         // the scope object
         if (window.$ && $.fn) {
             $.fn.scope = function(attr) {
-                // If `attr` is passed to the `scope` plugin return the value of that 
+                // If `attr` is passed to the `scope` plugin return the value of that
                 // attribute on the `scope` object, otherwise return the whole scope
                 if (attr) {
                     return this.data("scope")
@@ -8645,7 +8646,7 @@ define("zepto", (function (global) {
                 };
             },
             // ## createURLFromResource
-            // For each of the names (create, update, destroy, findOne, and findAll) use the 
+            // For each of the names (create, update, destroy, findOne, and findAll) use the
             // URL provided by the `resource` property. For example:
             // 		ToDo = can.Model.extend({
             // 			resource: "/todos"
@@ -9006,8 +9007,8 @@ define("zepto", (function (global) {
 
     // ## util/string/deparam/deparam.js
     var __m35 = (function(can) {
-        // ## deparam.js  
-        // `can.deparam`  
+        // ## deparam.js
+        // `can.deparam`
         // _Takes a string of name value pairs and returns a Object literal that represents those params._
         var digitTest = /^\d+$/,
             keyBreaker = /([^\[\]]+)|(\[\])/g,
@@ -9564,9 +9565,10 @@ define("zepto", (function (global) {
     })(__m2, __m34, __m14);
 
     window['can'] = __m3;
-})();
-define("can", function(){});
 
+    return __m3;
+// })();
+});
 /**
  * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
  *

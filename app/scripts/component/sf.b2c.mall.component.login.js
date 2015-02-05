@@ -130,7 +130,7 @@ define('sf.b2c.mall.component.login', [
       getVerifiedCode: function() {
         var sessionId = md5(Date().valueOf() + window.parseInt(Math.random() * 10000));
         this.data.attr('sessionId', sessionId);
-        var verifiedCodeUrl = DEFAULT_CAPTCHA_LINK + '?' + $.param({
+        var verifiedCodeUrl = DEFAULT_CAPTCHA_LINK + '?' + can.param({
           id: DEFAULT_CAPTCHA_ID,
           hash: DEFAULT_CAPTCHA_HASH,
           sessionID: sessionId
