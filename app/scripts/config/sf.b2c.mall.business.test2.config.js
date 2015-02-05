@@ -12,11 +12,8 @@ define([], function () {
 
   var host = window.location.hostname;
   var DEV_API_URL = {
-    url: 'http://test2.www.sfht.net/m.api',
-    fileurl: 'http://test2.www.sfht.net/file.api',
-    detailurl: 'http://test2-item.sfht.com',
-    topicurl: 'http://test2-topic.sfht.com',
-    mainurl: 'http://test2.www.sfht.net'
+    url: 'http://m.sfht.com/m.api',
+    fileurl: 'http://m.sfht.com/file.api'
   };
 
   var DEV_FILE_LINK = {
