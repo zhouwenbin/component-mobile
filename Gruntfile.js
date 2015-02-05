@@ -255,15 +255,15 @@ module.exports = function(grunt) {
         ],
         blockReplacements: {
           js: function(block) {
-            console.log(block.dest)
             if (block.dest === 'base') {
               block.dest = config.base.dest;
               block.src = config.base.src
+
+              return '<script src="'+ config.base.dest +'"></script>';
             } else if (block.dest === 'com') {
               block.dest = config.com;
               block.src = config.com
             }else if (block.dest == 'require'){
-              console.log('enter')
               return '<script src="scripts/require.min.js"></script>';
             }
 
@@ -398,6 +398,9 @@ module.exports = function(grunt) {
           src: 'bower_components/requirejs/require.js',
           dest: '<%= config.dist %>/scripts/require.min.js'
         }, {
+          src: '<%= config.app %>/scripts/base/sf.web.base.ver.1.0.build.1423125275839.js',
+          dest: '<%= config.dist %>/scripts/base/sf.web.base.ver.1.0.build.1423125275839.js'
+        },{
           expand: true,
           dot: true,
           cwd: '<%= config.app %>/static/',
