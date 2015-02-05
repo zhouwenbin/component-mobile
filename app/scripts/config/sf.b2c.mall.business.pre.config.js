@@ -6,7 +6,7 @@ define([], function () {
   var NONE_APPEND_WORD = 'sfhaitao.xyz!';
 
   var DEFAULT_REQUEST_HEADER = {
-    _aid: 1,
+    _aid: 3,
     _sm: 'md5'
   };
 

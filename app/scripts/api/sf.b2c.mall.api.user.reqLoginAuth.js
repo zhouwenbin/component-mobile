@@ -25,7 +25,8 @@ function($, can, _, Comm, SecurityType) {
       METHOD_NAME: 'user.reqLoginAuth',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'partnerId': 'string'
+        'partnerId': 'string',
+        'redirectUrl': 'string'
       },
       OPTIONAL: {
       },

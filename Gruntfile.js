@@ -197,6 +197,27 @@ module.exports = function(grunt) {
       }
     },
 
+    rename: {
+      main: {
+        files: [
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.index', dest: '<%= config.dist %>/styles/sf.b2c.mall.index.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.detail', dest: '<%= config.dist %>/styles/sf.b2c.mall.detail.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.order', dest: '<%= config.dist %>/styles/sf.b2c.mall.order.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.login', dest: '<%= config.dist %>/styles/sf.b2c.mall.login.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.register', dest: '<%= config.dist %>/styles/sf.b2c.mall.register.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.gotopay', dest: '<%= config.dist %>/styles/sf.b2c.mall.gotopay.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderlist', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderlist.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail', dest: '<%= config.dist %>/styles/sf.b2c.mall.orderdetail.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.center', dest: '<%= config.dist %>/styles/sf.b2c.mall.center.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter', dest: '<%= config.dist %>/styles/sf.b2c.mall.weixincenter.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe', dest: '<%= config.dist %>/styles/sf.b2c.mall.alipayframe.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.agreement', dest: '<%= config.dist %>/styles/sf.b2c.mall.agreement.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.paysuccess', dest: '<%= config.dist %>/styles/sf.b2c.mall.paysuccess.<%= config.version %>.<%= config.build %>.min.css' },
+          { src: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanage', dest: '<%= config.dist %>/styles/sf.b2c.mall.recaddrmanage.<%= config.version %>.<%= config.build %>.min.css' }
+        ]
+      }
+    },
+
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -674,6 +695,35 @@ module.exports = function(grunt) {
       'connect:test',
       'mocha'
     ]);
+  });
+
+
+  //         'requirejs:register',
+  //         'requirejs:gotopay',
+  //         'requirejs:orderlist',
+  //         'requirejs:orderdetail',
+  //         'requirejs:center',
+  //         'requirejs:recaddrmanage',
+  //
+  grunt.registerTask('createJSON', function () {
+    var map = {
+      'base'                        :'scripts/base/sf.web.base.ver.1.0.build.1421502116857.js',
+      'alipayframe'                 :'scripts/sf.b2c.mall.page.alipayframe.'            + config.version +'.'+ config.build +'.min.js',
+      'center'                      :'scripts/sf.b2c.mall.page.center.'                 + config.version +'.'+ config.build +'.min.js',
+      'detail'                      :'scripts/sf.b2c.mall.page.detail.'                 + config.version +'.'+ config.build +'.min.js',
+      'gotopay'                     :'scripts/sf.b2c.mall.page.gotopay.'                + config.version +'.'+ config.build +'.min.js',
+      'login'                       :'scripts/sf.b2c.mall.page.login.'                  + config.version +'.'+ config.build +'.min.js',
+      'main'                        :'scripts/sf.b2c.mall.page.main.'                   + config.version +'.'+ config.build +'.min.js',
+      'orderdetail'                 :'scripts/sf.b2c.mall.page.order.detail.'           + config.version +'.'+ config.build +'.min.js',
+      'orderlist'                   :'scripts/sf.b2c.mall.page.order.list.'             + config.version +'.'+ config.build +'.min.js',
+      'order'                       :'scripts/sf.b2c.mall.page.order.'                  + config.version +'.'+ config.build +'.min.js',
+      'recaddrmanage'               :'scripts/sf.b2c.mall.page.recaddrmanage.'          + config.version +'.'+ config.build +'.min.js',
+      'register'                    :'scripts/sf.b2c.mall.page.register.'               + config.version +'.'+ config.build +'.min.js',
+      'weixincenter'                :'scripts/sf.b2c.mall.page.weixincenter.'           + config.version +'.'+ config.build +'.min.js'
+    }
+
+    grunt.file.write(config.dist+'/scripts/sf.b2c.mall.file.json', JSON.stringify(map), {encoding: 'utf8'});
+
   });
 
   grunt.registerTask('build', function(target){
