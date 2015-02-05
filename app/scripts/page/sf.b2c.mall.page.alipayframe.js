@@ -5,11 +5,14 @@ define(
     'can',
     'zepto',
     'store',
-    'sf.b2c.mall.framework.comm'
+    'sf.b2c.mall.framework.comm',
+    'sf.weixin'
   ],
-  function(can, $, store, SFFrameworkComm) {
+  function(can, $, store, SFFrameworkComm, SFWeixin) {
 
     SFFrameworkComm.register(3);
+
+    SFWeixin.shareIndex();
 
     var center = can.Control.extend({
 
