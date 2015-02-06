@@ -343,9 +343,9 @@ module.exports = function (grunt) {
     },
 
     compress: {
-      main: {
+      oss: {
         options: {
-          archive: '<%=config.publish%>/source.<%=config.version%>.tar'
+          archive: '<%=config.publish%>/oss.<%=config.version%>.tar'
         },
         files: [
           {
@@ -353,6 +353,19 @@ module.exports = function (grunt) {
             cwd: '<%=config.dist%>',
             src: ['scripts/**', 'styles/**'],
             dest: '<%=config.version%>'
+          }
+        ]
+      },
+      static: {
+        ptions: {
+          archive: '<%=config.publish%>/static.<%=config.version%>.tar'
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%=config.dist%>',
+            src: ['templates/**', '*.html'],
+            dest: '/'
           }
         ]
       }
