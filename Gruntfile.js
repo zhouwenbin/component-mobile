@@ -20,7 +20,8 @@ module.exports = function (grunt) {
   var config = {
     app: 'app',
     dist: 'dist',
-    tmp: '.tmp'
+    tmp: '.tmp',
+    publish: 'publish'
   };
 
   // Define the configuration for all the tasks
@@ -344,14 +345,14 @@ module.exports = function (grunt) {
     compress: {
       main: {
         options: {
-          archive: 'archive.tar'
+          archive: '<%=config.publish%>/source.<%=config.version%>.tar'
         },
         files: [
           {
             expand: true,
             cwd: '<%=config.dist%>',
             src: ['scripts/**', 'styles/**'],
-            dest: '.'
+            dest: '<%=config.version%>'
           }
         ]
       }
@@ -648,24 +649,41 @@ module.exports = function (grunt) {
   grunt.registerTask('build', function (target) {
     config.target = target;
 
-    grunt.task.run([
-      'clean:dist',
-      'wiredep',
-      'useminPrepare',
-      'concurrent:dist',
-      'autoprefixer',
-      'concat',
-      'requirejs',
-      'cssmin',
-      'uglify',
-      'copy:dist',
-      'rev',
-      'usemin',
-      'htmlmin',
-      'rename',
-      'clean:extra'
-    ]);
+    if (config.target) {
+      grunt.task.run([
+        'clean:dist',
+        'wiredep',
+        'useminPrepare',
+        'concurrent:dist',
+        'autoprefixer',
+        'concat',
+        'requirejs',
+        'cssmin',
+        'uglify',
+        'copy:dist',
+        'rev',
+        'usemin',
+        'htmlmin',
+        'rename',
+        'clean:extra'
+      ]);
+    }else{
+      grunt.fail.fatal('缺少环境参数!');
+    }
   });
+
+  grunt.registerTask('release', function (version) {
+    config.version = version;
+
+    if (config.version) {
+      grunt.task.run([
+        'build:prd',
+        'compress'
+      ]);
+    }else{
+      grunt.fail.fatal('缺少版本号!');
+    }
+  })
 
   grunt.registerTask('default', [
     'newer:jshint',
