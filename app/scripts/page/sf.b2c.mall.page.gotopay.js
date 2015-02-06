@@ -4,6 +4,7 @@ define(
   [
     'can',
     'zepto',
+    'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.widget.loading',
@@ -12,8 +13,8 @@ define(
     'sf.weixin'
   ],
 
-  function(can, $, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage, SFWeixin) {
-
+  function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage, SFWeixin) {
+    Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
     SFWeixin.shareIndex();
@@ -35,7 +36,7 @@ define(
         this.render();
 
         var that = this;
-        $('#gotopayBtn').tap(function() {
+        $('#gotopayBtn').click(function() {
           that.gotopayBtnClick($(this));
         })
 

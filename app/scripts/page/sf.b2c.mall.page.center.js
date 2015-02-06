@@ -5,12 +5,16 @@ define(
     'can',
     'zepto',
     'store',
+    'fastclick',
     'sf.b2c.mall.api.user.getUserInfo',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.widget.message',
+    'sf.b2c.mall.api.user.logout',
     'sf.weixin'
   ],
-  function(can, $, store, SFGetUserInfo, SFFrameworkComm, SFMessage, SFWeixin) {
+  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin) {
+
+    Fastclick.attach(document.body);
 
     SFFrameworkComm.register(3);
 
@@ -40,7 +44,6 @@ define(
         getUserInfo
           .sendRequest()
           .done(function(data) {
-
             if (store.get('type') == 'MOBILE') {
               that.options.welcomeName = that.maskMobile(data.mobile);
             } else if (store.get('type') == 'MAIL') {
@@ -49,34 +52,18 @@ define(
               that.options.welcomeName = store.get('nickname');
             }
 
-            if (data.nick != '海淘用户') {
-              that.options.welcomeName = data.nick;
-            }
-
-
             var html = can.view('/templates/center/sf.b2c.mall.center.content.mustache', that.options);
             that.element.html(html);
 
-            $('.myorder').tap(function() {
-              window.location.href = "/orderlist.html";
-            })
-
-            $('.exit').tap(function() {
-              that.exitClick();
-            })
-
-            $('.contactMe').tap(function(){
-              $('.dialog-phone').show();
-              $('#closeContactMe').tap(function(){
-                $('.dialog-phone').hide();
-              })
-            })
-
             $('.loadingDIV').hide();
           })
-          .fail(function() {
+          .fail(function(error) {
             $('.loadingDIV').hide();
           })
+      },
+
+      '.myorder click': function(element, event) {
+        window.location.href = "/orderlist.html";
       },
 
       maskMobile: function(str) {
@@ -87,13 +74,35 @@ define(
         return str.replace(/([^@]{3})[^@]*?(@[\s\S]*)/, "$1...$2")
       },
 
-      exitClick: function() {
+      '.contactMe click': function(element, event) {
+        can.$('.dialog-phone').show();
+        can.$('#closeContactMe').click(function() {
+          can.$('.dialog-phone').hide();
+        })
+      },
+
+      '.exit click': function(element, event) {
         var message = new SFMessage(null, {
           'tip': '确认要退出账户吗？',
           'type': 'confirm',
           'okFunction': function() {
-            store.clear();
-            window.location.href = "/index.html";
+            var that = this;
+
+            if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+              var logout = new SFLogout({});
+
+              logout
+                .sendRequest()
+                .done(function(data) {
+                  store.clear();
+
+                  setTimeout(function() {
+                    window.location.href = "/index.html";
+                  }, 2000);
+
+                })
+                .fail(function() {})
+            }
           }
         });
       }

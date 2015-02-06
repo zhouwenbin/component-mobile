@@ -3,6 +3,7 @@
 define('sf.b2c.mall.component.recaddrmanage', [
   'can',
   'zepto',
+  'fastclick',
   'sf.b2c.mall.api.user.delRecAddress',
   'sf.b2c.mall.api.user.delRecvInfo',
   'sf.b2c.mall.api.user.getIDCardUrlList',
@@ -12,7 +13,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.widget.message'
 
 
-], function(can, $, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage) {
+], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage) {
 
   return can.Control.extend({
 
@@ -45,7 +46,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
           that.element.html(html);
 
           //绑定事件
-          $('.delete').tap(function() {
+          $('.delete').click(function() {
             that.deleteRecAddrClick($(this));
           })
 

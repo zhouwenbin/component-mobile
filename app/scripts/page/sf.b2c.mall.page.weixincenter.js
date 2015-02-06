@@ -27,14 +27,13 @@ define(
         var to = store.get('weixinto');
 
         var partnerLogin = new SFPartnerLogin({
-          "partnerId": "wechat_mp",
+          "partnerId": "wechat_svm",
           "authResp": "code=" + code
         });
 
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            alert("loginData.csrfToken:" + loginData.csrfToken);
 
             if (loginData.csrfToken) {
               store.set('type', 'WEIXIN');
@@ -51,7 +50,6 @@ define(
           })
           .fail(function(error) {
             console.error(error);
-            alert(error);
             window.location.href = "http://m.sfht.com/index.html";
           })
       }

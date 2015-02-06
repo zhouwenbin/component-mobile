@@ -2,7 +2,7 @@
 define('sf.b2c.mall.component.price', [
         'can',
         'underscore',
-        'jquery',
+        'zepto',
         'sf.b2c.mall.api.b2cmall.getProductHotDataList'
     ],
     function (can, _, $, SFGetProductHotDataList) {

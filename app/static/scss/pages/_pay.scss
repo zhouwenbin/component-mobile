@@ -1,0 +1,34 @@
+/*支付成功*/
+.pay{
+  width: 100%;
+  height: 100%;
+  padding-top: 66px;
+  padding-bottom: 164px;
+  text-align: center;
+  background: url(../img/pay.png) no-repeat center bottom,url(../img/pay2.png) no-repeat center 43px;
+  background-size: 320px,225px;
+}
+.pay h2{
+  font-size: 18px;
+  color: #dc3334;
+  margin-bottom: 12px;
+}
+.pay p{
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 15px;
+}
+.pay-r1{
+  margin-bottom: 8px;
+}
+.pay-r2{
+  margin-bottom: 16px;
+}
+.pay-r3{
+  margin-bottom: 15px;
+}
+.pay-r4 a{
+  font-size: 15px;
+  color: #666;
+  text-decoration: underline;
+}

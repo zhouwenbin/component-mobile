@@ -1,0 +1,36 @@
+/*立即购买*/
+.nav{
+  height: 45px;
+}
+.nav-r1{
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+  border-top: 1px solid #ccc;
+}
+.nav-c1{
+  min-width: 65px;
+  padding-top: 9px;
+  text-align: center; 
+  border-left: 1px solid #ccc;
+  margin-left: -1px;
+  height: 45px;
+}
+.nav-c1 a{
+  color: #dc3334;
+}
+.nav-c1 .icon{
+  margin-bottom: 4px;
+}
+.nav-c2{
+  overflow: hidden;
+  
+}
+.nav .btn{
+  border-radius: 0;
+  height: 45px;
+  font-size: 18px;
+  font-weight: bold;
+}

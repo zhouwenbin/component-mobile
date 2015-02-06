@@ -3,13 +3,14 @@
 define('sf.b2c.mall.component.addreditor', [
   'can',
   'zepto',
+  'fastclick',
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.api.user.createRecAddress',
   'sf.b2c.mall.api.user.createReceiverInfo',
   'sf.b2c.mall.api.user.updateRecAddress'
 
 ], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress) {
-
+  Fastclick.attach(document.body);
   return can.Control.extend({
 
     init: function() {
@@ -53,11 +54,11 @@ define('sf.b2c.mall.component.addreditor', [
       }
 
       var that = this;
-      $('#addressSave').tap(function() {
+      $('#addressSave').click(function() {
         that.addressSaveClick();
       })
 
-      $('#backToOrder').tap(function() {
+      $('#backToOrder').click(function() {
         $(".sf-b2c-mall-order-selectReceiveAddress").show();
         $(".sf-b2c-mall-order-itemInfo").show();
         $(".sf-b2c-mall-order-addAdrArea").hide();
