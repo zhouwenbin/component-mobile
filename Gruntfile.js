@@ -259,12 +259,12 @@ module.exports = function(grunt) {
               block.dest = config.base.dest;
               block.src = config.base.src
 
-              return '<script src="'+ config.base.dest +'"></script>';
+              return '<script src="/'+ config.base.dest +'"></script>';
             } else if (block.dest === 'com') {
               block.dest = config.com;
               block.src = config.com
             }else if (block.dest == 'require'){
-              return '<script src="scripts/require.min.js"></script>';
+              return '<script src="/scripts/require.min.js"></script>';
             }
 
             return '<script src="/' + block.dest + '.' + config.version + '.' + config.build + '.min.js"></script>';
