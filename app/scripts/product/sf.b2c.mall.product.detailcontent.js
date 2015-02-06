@@ -4,6 +4,7 @@ define('sf.b2c.mall.product.detailcontent', [
     'can',
     'zepto',
     'swipe',
+    'fastclick',
     'sf.b2c.mall.adapter.detailcontent',
     'sf.b2c.mall.api.b2cmall.getItemInfo',
     'sf.b2c.mall.api.b2cmall.getProductHotData',
@@ -17,7 +18,8 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.widget.message',
     'sf.weixin'
   ],
-  function(can, $, Swipe, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin) {
+  function(can, $, Swipe, Fastclick, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin) {
+    Fastclick.attach(document.body);
     return can.Control.extend({
 
       helpers: {
@@ -146,16 +148,16 @@ define('sf.b2c.mall.product.detailcontent', [
             //第一个选中
             $('.swipe-dot span').eq(0).addClass('active');
 
-            $('#gotobuy').tap(function() {
+            $('#gotobuy').click(function() {
               that.gotobuyClick($(this));
               that.bindSelectSpecButton();
             })
 
-            $('#detailTab').tap(function() {
+            $('#detailTab').click(function() {
               that.switchTab($(this), 'detailTab');
             })
 
-            $('#itemInfoTab').tap(function() {
+            $('#itemInfoTab').click(function() {
               that.switchTab($(this), 'itemInfoTab');
             })
 
@@ -288,15 +290,15 @@ define('sf.b2c.mall.product.detailcontent', [
       bindSelectSpecButton: function() {
         var that = this;
 
-        $('.specbuttons').tap(function() {
+        $('.specbuttons').click(function() {
           that.specbuttonsClick($(this));
         })
 
-        $('#reduceNum').tap(function() {
+        $('#reduceNum').click(function() {
           that.reduceNumClick($(this));
         })
 
-        $('#addNum').tap(function() {
+        $('#addNum').click(function() {
           that.addNumClick($(this));
         })
 
@@ -312,7 +314,7 @@ define('sf.b2c.mall.product.detailcontent', [
           that.options.detailContentInfo.input.attr("error", "");
         })
 
-        $('#buyEnter').tap(function() {
+        $('#buyEnter').click(function() {
           that.buyEnter($(this));
         })
       },

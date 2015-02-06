@@ -1,0 +1,81 @@
+/*orderdetail*/
+.orderdetail{
+  background: #f6f8f9;
+}
+.orderdetail-r1{
+  color: #666;
+  padding: 14px 0 14px 17px;
+  background: #fffddd;
+}
+.orderdetail-r1 a{
+  color:#dc3334;
+  text-decoration: underline;
+}
+.orderdetail-r2{
+  margin-bottom: 11px;
+}
+.orderdetail-r2 li{
+  font-size: 12px;
+  line-height: 24px;
+  padding: 0 3px;
+}
+.orderdetail-r2 li:nth-child(odd){
+  float: left;
+}
+.orderdetail-r2 li:nth-child(even){
+  float: right;
+}
+.orderdetail-r2 time{
+  color: #999;
+}
+.orderdetail-r2 .btn{
+  margin-left: 10px;
+}
+.orderdetail-r3{
+  background: #fff;
+}
+.orderdetail-r3 a{
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 22px 47px 22px 42px;
+  position: relative;
+}
+.orderdetail-r3 a:before{
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 2px solid #dc3334;
+  position: absolute;
+  margin-left: -25px;
+
+}
+.orderdetail-r3 a:after{
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background: #eee;
+  left: 22px;
+  top: 32px;
+}
+.orderdetail-r3 .icon{
+  right: 14px;
+}
+.orderdetail-r4{
+  font-size: 14px;
+  line-height: 24px;
+}
+.orderdetail-r4 .text-important{
+  font-size: 14px;
+}
+.orderdetail-r4c2 strong.text-important{
+  font-size: 24px;
+  vertical-align: top;
+  font-weight: normal;
+}
+.orderdetail-r4 .text-disable{
+  margin-left: 12px;
+  font-size: 12px;
+}

@@ -220,7 +220,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
        */
       "#contactMe click": function() {
         $('.dialog-phone').show();
-        $('#closeContactMe').tap(function() {
+        $('#closeContactMe').click(function() {
           $('.dialog-phone').hide();
         })
       },

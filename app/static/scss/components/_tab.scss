@@ -1,0 +1,30 @@
+/*tab*/
+.tab-h{
+  height: 43px;
+  background: #fff;
+}
+.tab-h li{
+  float: left;
+  width: 50%;
+  font-size: 15px;
+  border-bottom: 1px solid #f2f2f3;
+  
+  text-align: center;
+}
+
+.tab-h li a{
+  display: inline-block;
+  padding: 0 20px;
+  height: 43px;
+  line-height: 43px;
+}
+.tab-h li.active a{
+  color: #dc3334;
+  border-bottom:2px solid #dc3334;
+}
+.tab-b{
+  display: none;
+}
+.tab-b.active{
+  display: block;
+}
