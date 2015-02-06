@@ -10,10 +10,13 @@ define('sf.b2c.mall.component.login', [
     'sf.b2c.mall.api.user.webLogin',
     'sf.b2c.mall.api.user.needVfCode',
     'sf.b2c.mall.api.user.reqLoginAuth',
+    'sf.b2c.mall.framework.comm',
     'sf.util'
   ],
 
-  function($, can, md5, store, Fastclick, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFn) {
+  function($, can, md5, store, Fastclick, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFrameworkComm, SFFn) {
+
+    SFFrameworkComm.register(3);
 
     Fastclick.attach(document.body);
 
@@ -318,7 +321,7 @@ define('sf.b2c.mall.component.login', [
         this.component.login.sendRequest()
           .done(function(data) {
             if (data.userId) {
-              that.data.attr('autologin')
+              that.data.attr('autologin');
               store.set('type', that.checkTypeOfAccount(that.data.attr('username')));
               store.set('nickname', that.data.attr('username'));
 

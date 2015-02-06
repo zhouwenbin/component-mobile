@@ -34,7 +34,6 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            alert("loginData.csrfToken:" + loginData.csrfToken);
 
             if (loginData.csrfToken) {
               store.set('type', 'WEIXIN');
@@ -51,7 +50,6 @@ define(
           })
           .fail(function(error) {
             console.error(error);
-            alert(error);
             window.location.href = "http://m.sfht.com/index.html";
           })
       }

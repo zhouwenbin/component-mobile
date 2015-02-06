@@ -752,7 +752,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('createJSON', function () {
     var map = {
-      'base'                        :'scripts/base/sf.h5.base.ver.1.0.build.1421502116857.js',
+      'base'                        :'scripts/base/sf.h5.base.ver.1.0.build.1423192818450.js',
       'alipayframe'                 :'scripts/sf.b2c.mall.page.alipayframe.'            + config.version +'.'+ config.build +'.min.js',
       'center'                      :'scripts/sf.b2c.mall.page.center.'                 + config.version +'.'+ config.build +'.min.js',
       'detail'                      :'scripts/sf.b2c.mall.page.detail.'                 + config.version +'.'+ config.build +'.min.js',
