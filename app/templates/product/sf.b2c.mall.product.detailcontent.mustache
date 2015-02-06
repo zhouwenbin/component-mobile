@@ -32,11 +32,7 @@
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
       <div class="goods-r2 clearfix">
         <div class="goods-r2c1 fl">
-
-          <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>（含税）<del class="originPrice">¥{{sf.price priceInfo.originPrice}}</del>
-
-      <!-- <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>（含税）{{#sf-showOriginPrice priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>{{/sf-showOriginPrice}} -->
-
+          <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>（含税）{{#sf-showOriginPrice priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>{{/sf-showOriginPrice}}
         </div>
         <div class="goods-r2c2 fr">
           <span class="icon icon1"></span>运费：0元

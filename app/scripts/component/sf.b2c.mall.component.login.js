@@ -5,6 +5,7 @@ define('sf.b2c.mall.component.login', [
     'can',
     'md5',
     'store',
+    'fastclick',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.webLogin',
     'sf.b2c.mall.api.user.needVfCode',
@@ -12,7 +13,9 @@ define('sf.b2c.mall.component.login', [
     'sf.util'
   ],
 
-  function($, can, md5, store, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFn) {
+  function($, can, md5, store, Fastclick, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFn) {
+
+    Fastclick.attach(document.body);
 
     var DEFAULT_CAPTCHA_LINK = 'http://checkcode.sfht.com/captcha/';
     var DEFAULT_CAPTCHA_ID = 'haitaob2c';
@@ -63,49 +66,50 @@ define('sf.b2c.mall.component.login', [
         this.getVerifiedCode();
 
         var that = this;
-        $('#gotoLogin').tap(function() {
-          that.loginButtonClick($(this));
-        })
 
-        $('.weixinlogin').tap(function() {
-          that.weixinLoginAuth();
-        })
+        // $('#gotoLogin').tap(function() {
+        //   that.loginButtonClick($(this));
+        // })
 
-        $('#verified-code-btn').tap(function() {
-          that.getVerifiedCode();
-        })
+        // $('.weixinlogin').tap(function() {
+        //   that.weixinLoginAuth();
+        // })
 
-        $("#toRegist").tap(function() {
-          var params = can.deparam(window.location.search.substr(1));
-          var gotoUrl = params.from;
-          window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
-        })
+        // $('#verified-code-btn').tap(function() {
+        //   that.getVerifiedCode();
+        // })
+
+        // $("#toRegist").tap(function() {
+        //   var params = can.deparam(window.location.search.substr(1));
+        //   var gotoUrl = params.from;
+        //   window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
+        // })
+      },
+
+      '#toRegist click': function (element, event) {
+        var params = can.deparam(window.location.search.substr(1));
+        var gotoUrl = params.from;
+        window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
       },
 
       /**
        * [weixinLogin 微信登陆]
        * @return {[type]} [description]
        */
-      weixinLoginAuth: function() {
+      '.weixinlogin click': function(element, event) {
         var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_mp",
-          "redirectUrl": "http://www.sfht.com/weixincenter.html?from=m.sfht.com/weixincenter.html"
+          "partnerId": "wechat_svm",
+          "redirectUrl": "http://m.sfht.com/weixincenter.html"
         });
-
-        alert("begin7");
-        // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
-        window.open("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&response_type=code&scope=snsapi_userinfo&redirect_uri=http%3A%2F%2Fwww.sfht.com&state=STATE#wechat_svm");
-
-        // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&redirect_uri=http%3A%2F%2Fwww.sfht.com%2Findex.html%3Ffrom%3Dhttp%3A%2F%2Fm.sfht.com%2Fweixincenter.html%7Corder.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
 
         reqLoginAuth
           .sendRequest()
           .done(function(data) {
+            var params = can.deparam(window.location.search.substr(1));
+            var gotoUrl = params.from || "index.html";
 
-            store.set('weixinto', 'order.html');
-            alert("open loginauth:" + data.loginAuthLink);
-            // window.location.href = "" + data.loginAuthLink + "";
-            // window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5fc1c50423d1d764&redirect_uri=http%3A%2F%2Fwww.sfht.com%2Findex.html%3Ffrom%3Dhttp%3A%2F%2Fm.sfht.com%2Fweixincenter.html%7Corder.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
+            store.set('weixinto', gotoUrl);
+            window.location.href = data.loginAuthLink;
             return false;
           })
           .fail(function(error) {
@@ -122,6 +126,11 @@ define('sf.b2c.mall.component.login', [
         this.element.append(html);
 
       },
+
+      '#verified-code-btn click': function () {
+        this.getVerifiedCode();
+      },
+
       /**
        * @description 验证码更换
        * @param  {String}
@@ -130,7 +139,7 @@ define('sf.b2c.mall.component.login', [
       getVerifiedCode: function() {
         var sessionId = md5(Date().valueOf() + window.parseInt(Math.random() * 10000));
         this.data.attr('sessionId', sessionId);
-        var verifiedCodeUrl = DEFAULT_CAPTCHA_LINK + '?' + $.param({
+        var verifiedCodeUrl = DEFAULT_CAPTCHA_LINK + '?' + can.param({
           id: DEFAULT_CAPTCHA_ID,
           hash: DEFAULT_CAPTCHA_HASH,
           sessionID: sessionId
@@ -145,7 +154,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkUserName: function(username) {
-        var username = $.trim(username);
+        var username = can.$.trim(username);
         var isTelNum = /^1\d{10}$/.test(username);
         var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);
         if (!username) {
@@ -167,7 +176,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkPwd: function(password) {
-        var password = $.trim(password);
+        var password = can.$.trim(password);
         var isPwd = /^[0-9a-zA-Z~!@#\$%\^&\*\(\)_+=-\|~`,./<>\[\]\{\}]{6,18}$/.test(password)
         if (!password) {
           this.element.find('#pwd-error-tips').text(ERROR_NO_INPUT_PWD).show();
@@ -185,7 +194,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkVerCode: function(code) {
-        var code = $.trim(code);
+        var code = can.$.trim(code);
         var isCode = /^\d{6}$/.test(code);
         if (!code) {
           this.element.find('#code-error-tips').text(ERROR_NO_INPUT_VERCODE).show();
@@ -230,7 +239,11 @@ define('sf.b2c.mall.component.login', [
        */
       checkTypeOfAccount: function(account) {
 
+<<<<<<< HEAD
         var account = $.trim(account);
+=======
+        var account = can.$.trim(account);
+>>>>>>> 14fcf3c34e0f05bbc944726d68fff7e942e8fa55
 
         // 检查账号的类型返回MOBILE或者MAIL
         var isTelNum = /^1\d{10}$/.test(account);
@@ -289,15 +302,15 @@ define('sf.b2c.mall.component.login', [
       },
 
       '#user-name focus': function(element, event) {
-        $('#username-error-tips').hide();
+        can.$('#username-error-tips').hide();
       },
 
       '#user-pwd focus': function(element, event) {
-        $('#pwd-error-tips').hide();
+        can.$('#pwd-error-tips').hide();
       },
 
       '#verified-code focus': function(element, event) {
-        $('#code-error-tips').hide();
+        can.$('#code-error-tips').hide();
       },
 
       sendRequest: function(element) {
@@ -353,22 +366,22 @@ define('sf.b2c.mall.component.login', [
        * @param  {dom} element jquery dom对象
        * @param  {event} event event对象
        */
-      loginButtonClick: function(element, event) {
+      '#gotoLogin click': function(element, event) {
         event && event.preventDefault();
 
         var that = this;
 
-        $('#user-name').blur();
-        $('#user-pwd').blur();
-        $('#verified-code').blur();
+        can.$('#user-name').blur();
+        can.$('#user-pwd').blur();
+        can.$('#verified-code').blur();
 
-        var username = $('#user-name').val();
-        var password = $('#user-pwd').val();
-        var verCode = $('#verified-code').val();
+        var username = can.$('#user-name').val();
+        var password = can.$('#user-pwd').val();
+        var verCode = can.$('#verified-code').val();
 
-        $('#username-error-tips').hide();
-        $('#pwd-error-tips').hide();
-        $('#code-error-tips').hide();
+        can.$('#username-error-tips').hide();
+        can.$('#pwd-error-tips').hide();
+        can.$('#code-error-tips').hide();
         // @todo 检查用户名和密码是否符合规范
 
         element.text("登录中");
@@ -376,7 +389,7 @@ define('sf.b2c.mall.component.login', [
         // 设置登录请求信息
         if (this.data.attr('isNeedVerifiedCode')) {
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password) && this.checkVerCode.call(this, verCode)) {
-            var vfCode = $.param({
+            var vfCode = can.param({
               id: DEFAULT_CAPTCHA_ID,
               hash: DEFAULT_CAPTCHA_HASH,
               sessionID: this.data.sessionId,
@@ -384,7 +397,11 @@ define('sf.b2c.mall.component.login', [
             });
 
             this.component.login.setData({
+<<<<<<< HEAD
               accountId: $.trim(this.data.attr('username')),
+=======
+              accountId: can.$.trim(this.data.attr('username')),
+>>>>>>> 14fcf3c34e0f05bbc944726d68fff7e942e8fa55
               type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key),
               vfCode: vfCode
@@ -397,7 +414,11 @@ define('sf.b2c.mall.component.login', [
         } else {
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password)) {
             this.component.login.setData({
+<<<<<<< HEAD
               accountId: $.trim(this.data.attr('username')),
+=======
+              accountId: can.$.trim(this.data.attr('username')),
+>>>>>>> 14fcf3c34e0f05bbc944726d68fff7e942e8fa55
               type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key)
             });

@@ -1,17 +1,20 @@
-<h2>商品信息</h2>
-<div class="table box">
-  <h3 class="table-r1">{{itemName}}</h3>
+<div class="table box goodsinfo">
+  <h2>商品信息</h2>
+  <div class="table-r1 clearfix">
+      <div class="table-r1c1 fl vertical-middle"><img src="img/recommend.jpg"></div>
+      <div class="table-r1c3 fr">
+          <div class="goodsinfo-price">¥{{sf.price singlePrice}}</div>
+          <div class="goodsinfo-num">x{{amount}}</div>
+      </div>
+      <div class="table-r1c2 goodsinfo-title">
+          <h3 class="ellipsis3">{{itemName}}</h3>
+      </div>
+  </div>
   <ul class="clearfix table-r2">
-    {{{spec}}} <li>数量：{{amount}}</li>
+    {{{spec}}}
   </ul>
-  <ul class="clearfix table-r2">
-    <li>单价：¥{{sf.price singlePrice}}</li>
-    <li>优惠：¥0 </li>
-    <li>小计：{{sf.price totalPrice}}</li>
-  </ul>
-  <div class="table-r3">运费：0元</div>
 </div>
 <div class="order-r3 clearfix box">
-  <div class="order-r3c1 fl">实际应付款:<span>¥{{sf.price allTotalPrice}}</span></div>
-  <div class="order-r3c2 fr"><button class="btn btn-normal active" id="submitOrder">提交订单</button></div>
+    <div class="order-r3c1 fl">实际应付款:<span>¥{{sf.price allTotalPrice}}</span></div>
+    <div class="order-r3c2 fr"><button class="btn btn-danger" id="submitOrder">确认支付</button></div>
 </div>

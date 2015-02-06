@@ -24,12 +24,10 @@ define(
         var params = can.deparam(window.location.search.substr(1))
         var code = params.code;
 
-        alert("h5:" + code);
-
-        var to = 'http://m.shft.com/order.html';//store.get('weixinto');
+        var to = store.get('weixinto');
 
         var partnerLogin = new SFPartnerLogin({
-          "partnerId": "wechat_mp",
+          "partnerId": "wechat_svm",
           "authResp": "code=" + code
         });
 

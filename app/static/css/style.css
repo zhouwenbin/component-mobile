@@ -44,6 +44,7 @@ h2,h3{
 }
 button{
   border: none;
+  outline: none;
 }
 /*浮动*/
 .fl{float:left;}
@@ -795,6 +796,10 @@ button{
 .standard .input-num{
   margin-right:11px;
 }
+.standard .alert-error{
+  display: inline-block;
+}
+
 /*滑动*/
 .swipe {
   overflow: hidden;
