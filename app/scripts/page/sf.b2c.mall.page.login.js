@@ -4,7 +4,7 @@ define(
   'sf.b2c.mall.page.login',
 
   [
-    'jquery',
+    'zepto',
     'can',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.component.login',

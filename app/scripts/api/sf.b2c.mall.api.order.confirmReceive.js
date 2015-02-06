@@ -11,7 +11,7 @@
 define(
 'sf.b2c.mall.api.order.confirmReceive',
 [
-  'jquery',
+  'zepto',
   'can',
   'underscore',
   'sf.b2c.mall.framework.comm',
@@ -33,7 +33,7 @@ function($, can, _, Comm, SecurityType) {
       },
       ERROR_CODE: {
         '4000100': 'order unkown error',
-        '4000900': '子订单状态不符合确认操作'
+        '4100600': '请求参数有误'
       }
     }
   });

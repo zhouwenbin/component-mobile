@@ -3,7 +3,7 @@
 define(
   'sf.b2c.mall.page.register',
   [
-    'jquery',
+    'zepto',
     'can',
     'sf.b2c.mall.component.register',
     'sf.b2c.mall.framework.comm',

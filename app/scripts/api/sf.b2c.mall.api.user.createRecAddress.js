@@ -11,7 +11,7 @@
 define(
 'sf.b2c.mall.api.user.createRecAddress',
 [
-  'jquery',
+  'zepto',
   'can',
   'underscore',
   'sf.b2c.mall.framework.comm',
@@ -41,7 +41,7 @@ function($, can, _, Comm, SecurityType) {
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000070': '参数错误',
+        '1000230': '手机号错误，请输入正确的手机号',
         '1000310': '已达到最大允许数目'
       }
     }

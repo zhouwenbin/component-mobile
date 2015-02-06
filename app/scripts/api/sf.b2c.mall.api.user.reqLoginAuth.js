@@ -11,7 +11,7 @@
 define(
 'sf.b2c.mall.api.user.reqLoginAuth',
 [
-  'jquery',
+  'zepto',
   'can',
   'underscore',
   'sf.b2c.mall.framework.comm',
@@ -25,7 +25,8 @@ function($, can, _, Comm, SecurityType) {
       METHOD_NAME: 'user.reqLoginAuth',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'partnerId': 'string'
+        'partnerId': 'string',
+        'redirectUrl': 'string'
       },
       OPTIONAL: {
       },

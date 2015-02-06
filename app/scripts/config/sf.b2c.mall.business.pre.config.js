@@ -6,17 +6,14 @@ define([], function () {
   var NONE_APPEND_WORD = 'sfhaitao.xyz!';
 
   var DEFAULT_REQUEST_HEADER = {
-    _aid: 1,
+    _aid: 3,
     _sm: 'md5'
   };
 
   var host = window.location.hostname;
   var DEV_API_URL = {
-    url: 'http://pre.sfht.com/m.api',
-    fileurl: 'http://pre.sfht.com/file.api',
-    detailurl: 'http://pre-item.sfht.com',
-    topicurl: 'http://pre-topic.sfht.com',
-    mainurl: 'http://pre.sfht.com'
+    url: 'http://m.sfht.com/m.api',
+    fileurl: 'http://m.sfht.com/file.api'
   };
 
   var DEV_FILE_LINK = {
