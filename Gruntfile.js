@@ -773,7 +773,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', function(target){
     grunt.file.recurse('app/scripts/base', function callback(abspath, rootdir, subdir, filename) {
-      if (filename.indexOf('sf.web.base')> -1) {
+      if (filename.indexOf('sf.h5.base')> -1) {
         config.target = target;
         config.base = {
           dest: 'scripts/base/' + filename,
