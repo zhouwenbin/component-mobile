@@ -11,7 +11,7 @@
 define(
 'sf.b2c.mall.api.order.liulianSellerGetSellerWaitOperatorOrder',
 [
-  'jquery',
+  'zepto',
   'can',
   'underscore',
   'sf.b2c.mall.framework.comm',
