@@ -98,7 +98,7 @@ define('sf.b2c.mall.component.login', [
        */
       '.weixinlogin click': function(element, event) {
         var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_mp",
+          "partnerId": "wechat_svm",
           "redirectUrl": "http://m.sfht.com/weixincenter.html"
         });
 

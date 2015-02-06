@@ -27,7 +27,7 @@ define(
         var to = store.get('weixinto');
 
         var partnerLogin = new SFPartnerLogin({
-          "partnerId": "wechat_mp",
+          "partnerId": "wechat_svm",
           "authResp": "code=" + code
         });
 
