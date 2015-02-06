@@ -3,6 +3,7 @@
 define('sf.b2c.mall.order.orderdetailcontent', [
     'can',
     'zepto',
+    'fastclick',
     'sf.b2c.mall.api.order.getOrder',
     'sf.b2c.mall.api.order.cancelOrder',
     'sf.b2c.mall.api.user.updateReceiverInfo',
@@ -19,7 +20,9 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     'sf.b2c.mall.widget.message',
     'moment'
   ],
-  function(can, $, SFGetOrder, SFCancelOrder, SFUpdateReceiverInfo, SFGetIDCardUrlList, SFGetUserRoutes, SFGetRecvInfo, SFConfirmReceive, loading, FrameworkComm, SFConfig, Utils, helpers, SFOrderFn, SFMessage, moment) {
+  function(can, $, Fastclick, SFGetOrder, SFCancelOrder, SFUpdateReceiverInfo, SFGetIDCardUrlList, SFGetUserRoutes, SFGetRecvInfo, SFConfirmReceive, loading, FrameworkComm, SFConfig, Utils, helpers, SFOrderFn, SFMessage, moment) {
+
+    Fastclick.attach(document.body);
 
     return can.Control.extend({
 
@@ -122,41 +125,11 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             $('#buy').show();
             $('#userRoutes').hide();
             $('.loadingDIV').hide();
-
-            //绑定各种事件
-            that.bindEvents();
           })
           .fail(function(error) {
             console.error(error);
             $('.loadingDIV').hide();
           })
-      },
-
-      bindEvents: function() {
-        var that = this;
-        $('#gotopay').tap(function() {
-          that.payclick($(this));
-        })
-
-        $('#cancelorder').tap(function() {
-          that.cancelOrderClick($(this));
-        })
-
-        $('.received').tap(function(){
-          that.receiveClick($(this));
-        })
-
-        $('#viewUserRoutes').tap(function() {
-          that.viewUserRoutes();
-        })
-
-        $('#viewOrderDetail').tap(function() {
-          that.viewOrderDetail();
-        })
-
-        $('#contactMe').tap(function() {
-          that.contactMeClick();
-        })
       },
 
       canShowShouldPayPrice: function(data) {
@@ -218,22 +191,25 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.userRoutes.push(trace);
           }
         })
+
+        that.options.userRoutes.reverse();
       },
 
       /**
        * [viewUserRoutes 查看路由]
        * @return {[type]} [description]
        */
-      viewUserRoutes: function() {
+      "#viewUserRoutes click": function() {
         $('#orderdetail').hide();
         $('#buy').hide();
         $('#userRoutes').show();
       },
+
       /**
        * [viewOrderDetail 查看订单详情]
        * @return {[type]} [description]
        */
-      viewOrderDetail: function() {
+      "#viewOrderDetail click": function() {
         $('#orderdetail').show();
         $('#buy').show();
         $('#userRoutes').hide();
@@ -243,7 +219,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
        * [contactMeClick 联系客服]
        * @return {[type]} [description]
        */
-      contactMeClick: function() {
+      "#contactMe click": function() {
         $('.dialog-phone').show();
         $('#closeContactMe').tap(function() {
           $('.dialog-phone').hide();
@@ -347,7 +323,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         'AUTO_COMPLETED': '尊敬的用户，您的订单已经签收超过7天，已自动完成。期待您再次使用顺丰海淘'
       },
 
-      cancelOrderClick: function(element, event) {
+      "#cancelorder click": function(element, event) {
         var that = this;
 
         var message = new SFMessage(null, {
@@ -383,7 +359,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           })
       },
 
-      receiveClick: function(element, event) {
+      ".received click": function(element, event) {
         var that = this;
 
         var message = new SFMessage(null, {
@@ -422,7 +398,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           })
       },
 
-      payclick: function(element, event) {
+      '#gotopay click': function(element, event) {
         event && event.preventDefault();
         var that = this;
         var callback = {
