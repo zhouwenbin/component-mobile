@@ -3,13 +3,15 @@
 define('sf.b2c.mall.order.selectreceiveaddr', [
   'can',
   'zepto',
+  'fastclick',
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.adapter.address.list',
   'sf.b2c.mall.component.addreditor',
   'sf.b2c.mall.api.user.webLogin',
   'md5'
-], function(can, $, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5) {
+], function(can, $, Fastclick, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5) {
+  Fastclick.attach(document.body);
   return can.Control.extend({
 
     /**
@@ -67,20 +69,20 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           });
 
           //绑定事件
-          $('.addrecaddr').tap(function() {
+          $('.addrecaddr').click(function() {
             that.addRecaddrClick($(this));
           })
 
-          $('li.box-address').tap(function() {
+          $('li.box-address').click(function() {
             that.selectaddr($(this));
           })
 
           //点击查看更多
-          $('#viewmore').tap(function() {
+          $('#viewmore').click(function() {
             that.adapter4List.addrs.attr("addressList", that.result || []);
             that.adapter4List.addrs.attr("showMore", false);
 
-            $('li.box-address').tap(function() {
+            $('li.box-address').click(function() {
               that.selectaddr($(this));
             })
           })

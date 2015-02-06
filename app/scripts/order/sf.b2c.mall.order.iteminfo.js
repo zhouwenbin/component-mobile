@@ -3,6 +3,7 @@
 define('sf.b2c.mall.order.iteminfo', [
   'can',
   'zepto',
+  'fastclick',
   'sf.b2c.mall.api.b2cmall.getProductHotData',
   'sf.b2c.mall.api.b2cmall.getItemSummary',
   'sf.b2c.mall.api.order.submitOrderForAllSys',
@@ -13,7 +14,8 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.helpers',
   'sf.b2c.mall.widget.message'
 
-], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers,SFMessage) {
+], function(can, $, Fastclick, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers,SFMessage) {
+  Fastclick.attach(document.body);
   return can.Control.extend({
 
     /**
@@ -68,7 +70,7 @@ define('sf.b2c.mall.order.iteminfo', [
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', itemObj);
           that.element.html(html);
 
-          $('#submitOrder').tap(function() {
+          $('#submitOrder').click(function() {
             that.submitOrderClick($(this));
           })
 
