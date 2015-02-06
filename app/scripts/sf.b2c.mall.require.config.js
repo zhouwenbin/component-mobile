@@ -4,9 +4,11 @@ requirejs.config({
         // ----------------------------------------
         // Pre Define
         'can': 'http://www.google.com/bower_components/canjs/amd/can',
+        'zepto': 'http://www.google.com/zepto',
         // 'jquery': 'http://www.google.com/bower_components/jquery/dist/jquery',
         'underscore': 'http://www.google.com/bower_components/underscore/underscore-min',
         // 'jquery.cookie': 'http://www.google.com/bower_components/jquery.cookie/jquery.cookie',
+        'fastclick': 'http://www.google.com/fastclick',
         'md5': 'http://www.google.com/bower_components/blueimp-md5/js/md5.min',
         'underscore.string': 'http://www.google.com/bower_components/underscore.string/dist/underscore.string.min',
         'store': 'http://www.google.com/bower_components/store/dist/store',
@@ -97,7 +99,7 @@ requirejs.config({
         // 'vendor.jquery.imagezoom': 'scripts/vendor/vendor.jquery.imagezoom.min',
         'moment': 'bower_components/momentjs/min/moment.min',
         'moment-zh-cn': 'bower_components/momentjs/locale/zh-cn',
-        'fastclick': 'bower_components/fastclick/lib/fastclick',
+        // 'fastclick': 'bower_components/fastclick/lib/fastclick',
 
         // 公共组件
         // 'zepto': 'scripts/vendor/zepto',

@@ -3,7 +3,7 @@ var Zepto=function(){function L(t){return null==t?String(t):j[S.call(t)]||"objec
 define("zepto", (function (global) {
     return function () {
         var ret, fn;
-        return ret || global.zepto;
+        return ret || global.$;
     };
 }(this)));
 
