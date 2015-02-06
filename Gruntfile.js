@@ -21,7 +21,8 @@ module.exports = function (grunt) {
     app: 'app',
     dist: 'dist',
     tmp: '.tmp',
-    publish: 'publish'
+    publish: 'publish',
+    timestamp: Date.now()
   };
 
   // Define the configuration for all the tasks
@@ -121,6 +122,14 @@ module.exports = function (grunt) {
         }]
       },
       server: '.tmp',
+      publish:{
+        files: [{
+          dot: true,
+          src: [
+            '<%= config.publish %>/*'
+          ]
+        }]
+      },
       extra: {
         files: [{
           dot: true,
@@ -326,18 +335,18 @@ module.exports = function (grunt) {
     rename: {
       main: {
         files: [
-          { src: '<%=config.dist%>/agreement.html', dest: '<%=config.dist%>/agreement.html?t='+Date.now()},
-          { src: '<%=config.dist%>/alipayframe.html', dest: '<%=config.dist%>/alipayframe.html?t='+Date.now()},
-          { src: '<%=config.dist%>/center.html', dest: '<%=config.dist%>/center.html?t='+Date.now()},
-          { src: '<%=config.dist%>/gotopay.html', dest: '<%=config.dist%>/gotopay.html?t='+Date.now()},
-          { src: '<%=config.dist%>/login.html', dest: '<%=config.dist%>/login.html?t='+Date.now()},
-          { src: '<%=config.dist%>/order.html', dest: '<%=config.dist%>/order.html?t='+Date.now()},
-          { src: '<%=config.dist%>/orderdetail.html', dest: '<%=config.dist%>/orderdetail.html?t='+Date.now()},
-          { src: '<%=config.dist%>/orderlist.html', dest: '<%=config.dist%>/orderlist.html?t='+Date.now()},
-          { src: '<%=config.dist%>/pay-success.html', dest: '<%=config.dist%>/pay-success.html?t='+Date.now()},
-          { src: '<%=config.dist%>/recaddrmanage.html', dest: '<%=config.dist%>/recaddrmanage.html?t='+Date.now()},
-          { src: '<%=config.dist%>/register.html', dest: '<%=config.dist%>/register.html?t='+Date.now()},
-          { src: '<%=config.dist%>/weixincenter.html', dest: '<%=config.dist%>/weixincenter.html?t='+Date.now()}
+          { src: '<%=config.dist%>/agreement.html', dest: '<%=config.dist%>/agreement.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/alipayframe.html', dest: '<%=config.dist%>/alipayframe.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/center.html', dest: '<%=config.dist%>/center.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/gotopay.html', dest: '<%=config.dist%>/gotopay.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/login.html', dest: '<%=config.dist%>/login.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/order.html', dest: '<%=config.dist%>/order.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/orderdetail.html', dest: '<%=config.dist%>/orderdetail.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/orderlist.html', dest: '<%=config.dist%>/orderlist.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/pay-success.html', dest: '<%=config.dist%>/pay-success.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/recaddrmanage.html', dest: '<%=config.dist%>/recaddrmanage.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/register.html', dest: '<%=config.dist%>/register.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/weixincenter.html', dest: '<%=config.dist%>/weixincenter.html?t=<%=config.timestamp%>'}
         ]
       }
     },
@@ -345,7 +354,7 @@ module.exports = function (grunt) {
     compress: {
       oss: {
         options: {
-          archive: '<%=config.publish%>/oss.<%=config.version%>.tar'
+          archive: '<%=config.publish%>/oss.release.<%=config.version%>.tar'
         },
         files: [
           {
@@ -356,16 +365,29 @@ module.exports = function (grunt) {
           }
         ]
       },
-      static: {
-        ptions: {
-          archive: '<%=config.publish%>/static.<%=config.version%>.tar'
+      statics: {
+        options: {
+          archive: '<%=config.publish%>/statics.release.<%=config.version%>.tar'
         },
         files: [
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html'],
-            dest: '/'
+            src: ['templates/**', '*.html?t=<%=config.timestamp%>'],
+            dest: '<%=config.version%>'
+          }
+        ]
+      },
+      test: {
+        options: {
+          archive: '<%=config.publish%>/statics.<%=config.target%>.<%=config.timestamp%>.tar'
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%=config.dist%>',
+            src: ['templates/**', '*.html?t=<%=config.timestamp%>, scripts/**', 'styles/**'],
+            dest: '<%=config.version%>'
           }
         ]
       }
@@ -678,7 +700,9 @@ module.exports = function (grunt) {
         'usemin',
         'htmlmin',
         'rename',
-        'clean:extra'
+        'clean:extra',
+        'clean:publish',
+        'compress:test'
       ]);
     }else{
       grunt.fail.fatal('缺少环境参数!');
@@ -689,9 +713,27 @@ module.exports = function (grunt) {
     config.version = version;
 
     if (config.version) {
+      config.target = 'prd';
+
       grunt.task.run([
-        'build:prd',
-        'compress'
+        'clean:dist',
+        'wiredep',
+        'useminPrepare',
+        'concurrent:dist',
+        'autoprefixer',
+        'concat',
+        'requirejs',
+        'cssmin',
+        'uglify',
+        'copy:dist',
+        'rev',
+        'usemin',
+        'htmlmin',
+        'rename',
+        'clean:extra',
+        'clean:publish',
+        'compress:oss',
+        'compress:statics'
       ]);
     }else{
       grunt.fail.fatal('缺少版本号!');
