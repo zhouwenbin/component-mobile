@@ -139,16 +139,16 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkUserName: function(username) {
-        var username = $.trim(username);
+        var username = can.$.trim(username);
         var isTelNum = /^1\d{10}$/.test(username);
-        //var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);
+        var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);
         if (!username) {
           this.element.find('#username-error-tips').text(ERROR_NO_INPUT_USERNAME).show();
           return false;
         } else if (username.length > 11) {
           this.element.find('#username-error-tips').text(ERROR_INPUT_USERNAME).show();
           return false;
-        } else if (!isTelNum) {
+        } else if (!isTelNum && !isEmail) {
           this.element.find('#username-error-tips').text(ERROR_INPUT_USERNAME).show();
           return false;
         } else {
