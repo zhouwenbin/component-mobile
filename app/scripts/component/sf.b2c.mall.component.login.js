@@ -238,12 +238,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String} 返回MAIL或者MOBILE
        */
       checkTypeOfAccount: function(account) {
-
-<<<<<<< HEAD
-        var account = $.trim(account);
-=======
         var account = can.$.trim(account);
->>>>>>> 14fcf3c34e0f05bbc944726d68fff7e942e8fa55
 
         // 检查账号的类型返回MOBILE或者MAIL
         var isTelNum = /^1\d{10}$/.test(account);
@@ -397,11 +392,7 @@ define('sf.b2c.mall.component.login', [
             });
 
             this.component.login.setData({
-<<<<<<< HEAD
-              accountId: $.trim(this.data.attr('username')),
-=======
               accountId: can.$.trim(this.data.attr('username')),
->>>>>>> 14fcf3c34e0f05bbc944726d68fff7e942e8fa55
               type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key),
               vfCode: vfCode
@@ -414,11 +405,7 @@ define('sf.b2c.mall.component.login', [
         } else {
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password)) {
             this.component.login.setData({
-<<<<<<< HEAD
-              accountId: $.trim(this.data.attr('username')),
-=======
               accountId: can.$.trim(this.data.attr('username')),
->>>>>>> 14fcf3c34e0f05bbc944726d68fff7e942e8fa55
               type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key)
             });
