@@ -654,6 +654,7 @@ button{
 .detail-h{
   position: -webkit-sticky;
   position: sticky;
+  background: #fff;
   height: 43px;
   z-index: 1;
 }
