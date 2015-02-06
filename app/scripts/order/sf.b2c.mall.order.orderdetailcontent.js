@@ -218,6 +218,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.userRoutes.push(trace);
           }
         })
+
+        that.options.userRoutes.reverse();
       },
 
       /**
@@ -228,15 +230,6 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         $('#orderdetail').hide();
         $('#buy').hide();
         $('#userRoutes').show();
-      },
-      /**
-       * [viewOrderDetail 查看订单详情]
-       * @return {[type]} [description]
-       */
-      viewOrderDetail: function() {
-        $('#orderdetail').show();
-        $('#buy').show();
-        $('#userRoutes').hide();
       },
 
       /**
