@@ -44,6 +44,7 @@ h2,h3{
 }
 button{
   border: none;
+  outline: none;
 }
 /*浮动*/
 .fl{float:left;}

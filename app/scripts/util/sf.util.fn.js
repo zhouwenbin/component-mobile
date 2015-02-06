@@ -3,12 +3,11 @@
 define('sf.util',
 [
   'zepto',
-  'zepto.cookie',
   'can',
   'underscore',
   'md5',
   'store'
-], function($, cookie, can, _, md5, store) {
+], function($, can, _, md5, store) {
 
   //$(window).hashchange();
   can.route.ready();
@@ -39,14 +38,6 @@ define('sf.util',
       },
       any: function() {
           return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows()) || this.Firefox();
-      }
-    },
-
-    isLogin: function() {
-      if ($.cookie('ct') == 1) {
-        return true;
-      } else {
-        return false;
       }
     },
 
