@@ -154,16 +154,16 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkUserName: function(username) {
-        var username = $.trim(username);
+        var username = can.$.trim(username);
         var isTelNum = /^1\d{10}$/.test(username);
-        //var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);
+        var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);
         if (!username) {
           this.element.find('#username-error-tips').text(ERROR_NO_INPUT_USERNAME).show();
           return false;
         } else if (username.length > 11) {
           this.element.find('#username-error-tips').text(ERROR_INPUT_USERNAME).show();
           return false;
-        } else if (!isTelNum) {
+        } else if (!isTelNum && !isEmail) {
           this.element.find('#username-error-tips').text(ERROR_INPUT_USERNAME).show();
           return false;
         } else {
@@ -176,7 +176,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkPwd: function(password) {
-        var password = $.trim(password);
+        var password = can.$.trim(password);
         var isPwd = /^[0-9a-zA-Z~!@#\$%\^&\*\(\)_+=-\|~`,./<>\[\]\{\}]{6,18}$/.test(password)
         if (!password) {
           this.element.find('#pwd-error-tips').text(ERROR_NO_INPUT_PWD).show();
@@ -194,7 +194,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkVerCode: function(code) {
-        var code = $.trim(code);
+        var code = can.$.trim(code);
         var isCode = /^\d{6}$/.test(code);
         if (!code) {
           this.element.find('#code-error-tips').text(ERROR_NO_INPUT_VERCODE).show();
@@ -239,7 +239,7 @@ define('sf.b2c.mall.component.login', [
        */
       // checkTypeOfAccount: function(account) {
 
-      //   var account = $.trim(account);
+      //   var account = can.$.trim(account);
 
       //   // 检查账号的类型返回MOBILE或者MAIL
       //   var isTelNum = /^1\d{10}$/.test(account);
@@ -298,15 +298,15 @@ define('sf.b2c.mall.component.login', [
       },
 
       '#user-name focus': function(element, event) {
-        $('#username-error-tips').hide();
+        can.$('#username-error-tips').hide();
       },
 
       '#user-pwd focus': function(element, event) {
-        $('#pwd-error-tips').hide();
+        can.$('#pwd-error-tips').hide();
       },
 
       '#verified-code focus': function(element, event) {
-        $('#code-error-tips').hide();
+        can.$('#code-error-tips').hide();
       },
 
       sendRequest: function(element) {
@@ -367,17 +367,17 @@ define('sf.b2c.mall.component.login', [
 
         var that = this;
 
-        $('#user-name').blur();
-        $('#user-pwd').blur();
-        $('#verified-code').blur();
+        can.$('#user-name').blur();
+        can.$('#user-pwd').blur();
+        can.$('#verified-code').blur();
 
-        var username = $('#user-name').val();
-        var password = $('#user-pwd').val();
-        var verCode = $('#verified-code').val();
+        var username = can.$('#user-name').val();
+        var password = can.$('#user-pwd').val();
+        var verCode = can.$('#verified-code').val();
 
-        $('#username-error-tips').hide();
-        $('#pwd-error-tips').hide();
-        $('#code-error-tips').hide();
+        can.$('#username-error-tips').hide();
+        can.$('#pwd-error-tips').hide();
+        can.$('#code-error-tips').hide();
         // @todo 检查用户名和密码是否符合规范
 
         element.text("登录中");
@@ -385,7 +385,7 @@ define('sf.b2c.mall.component.login', [
         // 设置登录请求信息
         if (this.data.attr('isNeedVerifiedCode')) {
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password) && this.checkVerCode.call(this, verCode)) {
-            var vfCode = $.param({
+            var vfCode = can.param({
               id: DEFAULT_CAPTCHA_ID,
               hash: DEFAULT_CAPTCHA_HASH,
               sessionID: this.data.sessionId,
@@ -393,7 +393,7 @@ define('sf.b2c.mall.component.login', [
             });
 
             this.component.login.setData({
-              accountId: $.trim(this.data.attr('username')),
+              accountId: can.$.trim(this.data.attr('username')),
               type: 'MOBILE',
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key),
               vfCode: vfCode
@@ -406,7 +406,7 @@ define('sf.b2c.mall.component.login', [
         } else {
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password)) {
             this.component.login.setData({
-              accountId: $.trim(this.data.attr('username')),
+              accountId: can.$.trim(this.data.attr('username')),
               type: 'MOBILE',
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key)
             });
