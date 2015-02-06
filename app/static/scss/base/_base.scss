@@ -1,0 +1,38 @@
+/* 默认 */
+*{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  font-size: 12px;
+  color: #333;
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+a, img {
+  -webkit-touch-callout: none; /* 禁止长按链接与图片弹出菜单 */
+}
+a{
+  text-decoration: none;
+  color:#333;
+  outline: none;
+}
+html, body {
+  -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
+  user-select: none;
+  height: 100%;
+}
+h2,h3{
+  font-weight: normal;
+}
+button{
+  border: none;
+  outline: none;
+}
+
+.body1{
+   background:#eee;
+ }
