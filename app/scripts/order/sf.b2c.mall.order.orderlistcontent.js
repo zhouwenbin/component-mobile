@@ -3,13 +3,16 @@
 define('sf.b2c.mall.order.orderlistcontent', [
     'can',
     'zepto',
+    'fastclick',
     'sf.b2c.mall.api.order.getOrderList',
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.order.fn',
     'sf.helpers',
     'sf.b2c.mall.widget.message'
   ],
-  function(can, $, SFGetOrderList, SFRequestPayV2, SFOrderFn, helpers, SFMessage) {
+  function(can, $, Fastclick, SFGetOrderList, SFRequestPayV2, SFOrderFn, helpers, SFMessage) {
+
+    Fastclick.attach(document.body);
 
     return can.Control.extend({
 
@@ -80,13 +83,13 @@ define('sf.b2c.mall.order.orderlistcontent', [
               var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
               that.element.html(html);
 
-              $('.gotoPay').tap(function() {
-                that.gotoPayClick($(this));
-              })
+              // $('.gotoPay').tap(function() {
+              //   that.gotoPayClick($(this));
+              // })
 
-              $('.viewOrder').tap(function() {
-                that.viewOrderClick($(this));
-              })
+              // $('.viewOrder').tap(function() {
+              //   that.viewOrderClick($(this));
+              // })
             } else {
               that.options.notCompletedLength = 0;
               that.options.notCompletedOrderListIsNotEmpty = false;
@@ -96,28 +99,36 @@ define('sf.b2c.mall.order.orderlistcontent', [
               that.element.html(html);
             }
 
-            $('#notCompleteOrderListTabhead').tap(function() {
-              that.switchTab($(this), 'notCompletedTab');
-            })
+            // $('#notCompleteOrderListTabhead').tap(function() {
+            //   that.switchTab($(this), 'notCompletedTab');
+            // })
 
-            $('#completeOrderListTabhead').tap(function() {
-              that.switchTab($(this), 'completedTab');
-            })
+            // $('#completeOrderListTabhead').tap(function() {
+            //   that.switchTab($(this), 'completedTab');
+            // })
 
             if (that.options.notCompletedOrderList.length == 0 && that.options.completedOrderList.length > 0) {
-              that.switchTab($('#completeOrderListTabhead'), 'completedTab');
+              that.switchTab(can.$('#completeOrderListTabhead'), 'completedTab');
             } else {
-              $('#completedTab').hide();
-              $('#notCompletedTab').show();
+              can.$('#completedTab').hide();
+              can.$('#notCompletedTab').show();
             }
 
-            $('.loadingDIV').hide();
+            can.$('.loadingDIV').hide();
 
           })
           .fail(function(error) {
             console.error(error);
-            $('.loadingDIV').hide();
+            can.$('.loadingDIV').hide();
           })
+      },
+
+      '#notCompleteOrderListTabhead click': function (element, event) {
+        this.switchTab(element, 'notCompletedTab');
+      },
+
+      '#completeOrderListTabhead click': function (element, event) {
+        this.switchTab(element, 'completedTab');
       },
 
       /**
@@ -130,8 +141,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
           return false;
         }
         //tab
-        $("#notCompleteOrderListTabhead").toggleClass("active");
-        $('#completeOrderListTabhead').toggleClass("active");
+        can.$("#notCompleteOrderListTabhead").toggleClass("active");
+        can.$('#completeOrderListTabhead').toggleClass("active");
 
         var that = this;
 
@@ -196,7 +207,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         "RECEIVED": '<a href="#" class="btn btn-normal received">确认签收</a>'
       },
 
-      gotoPayClick: function(element, event) {
+      '.gotoPay click': function(element, event) {
         event && event.preventDefault();
 
         var that = this;
@@ -221,7 +232,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         return false;
       },
 
-      viewOrderClick: function(element, event) {
+      '.viewOrder click': function(element, event) {
         var orderid = element.eq(0).attr('data-orderid');
         var suborderid = element.eq(0).attr('data-suborderid');
         var recid = element.eq(0).attr('data-recid');
