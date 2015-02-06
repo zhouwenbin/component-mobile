@@ -398,8 +398,8 @@ module.exports = function(grunt) {
           src: 'bower_components/requirejs/require.js',
           dest: '<%= config.dist %>/scripts/require.min.js'
         }, {
-          src: '<%= config.app %>/scripts/base/sf.h5.base.ver.1.0.build.1423192818450.js',
-          dest: '<%= config.dist %>/scripts/base/sf.h5.base.ver.1.0.build.1423192818450.js'
+          src: '<%= config.app %>/scripts/base/sf.web.base.ver.1.0.build.1423125275839.js',
+          dest: '<%= config.dist %>/scripts/base/sf.web.base.ver.1.0.build.1423125275839.js'
         },{
           expand: true,
           dot: true,

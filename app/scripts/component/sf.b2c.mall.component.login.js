@@ -98,7 +98,7 @@ define('sf.b2c.mall.component.login', [
        */
       '.weixinlogin click': function(element, event) {
         var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_mp",
+          "partnerId": "wechat_svm",
           "redirectUrl": "http://m.sfht.com/weixincenter.html"
         });
 
@@ -160,7 +160,7 @@ define('sf.b2c.mall.component.login', [
         if (!username) {
           this.element.find('#username-error-tips').text(ERROR_NO_INPUT_USERNAME).show();
           return false;
-        } else if (username.length > 11) {
+        } else if (username.length > 30) {
           this.element.find('#username-error-tips').text(ERROR_INPUT_USERNAME).show();
           return false;
         } else if (!isTelNum && !isEmail) {
@@ -221,7 +221,7 @@ define('sf.b2c.mall.component.login', [
           .done(function(data) {
             if (data.value == true) {
               that.data.attr('isNeedVerifiedCode', true);
-              $('#verified-code-btn').tap(function() {
+              $('#verified-code-btn').click(function() {
                 that.getVerifiedCode();
               })
             } else {
@@ -237,20 +237,19 @@ define('sf.b2c.mall.component.login', [
        * @param  {String} account 账号
        * @return {String} 返回MAIL或者MOBILE
        */
-      // checkTypeOfAccount: function(account) {
+      checkTypeOfAccount: function(account) {
+        var account = can.$.trim(account);
 
-      //   var account = can.$.trim(account);
-
-      //   // 检查账号的类型返回MOBILE或者MAIL
-      //   var isTelNum = /^1\d{10}$/.test(account);
-      //   //var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(account);
-      //   if (isTelNum) {
-      //     return 'MOBILE';
-      //   }
-      //   if (isEmail) {
-      //     return 'MAIL';
-      //   }
-      // },
+        // 检查账号的类型返回MOBILE或者MAIL
+        var isTelNum = /^1\d{10}$/.test(account);
+        var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(account);
+        if (isTelNum) {
+          return 'MOBILE';
+        }
+        if (isEmail) {
+          return 'MAIL';
+        }
+      },
 
       /**
        * @description 获得焦点之后对账号输入内容做检查
@@ -319,7 +318,7 @@ define('sf.b2c.mall.component.login', [
           .done(function(data) {
             if (data.userId) {
               that.data.attr('autologin')
-              store.set('type', 'MOBILE');
+              store.set('type', that.checkTypeOfAccount(that.data.attr('username')));
               store.set('nickname', that.data.attr('username'));
 
               // deparam过程 -- 从url中获取需要请求的sku参数
@@ -348,7 +347,7 @@ define('sf.b2c.mall.component.login', [
               $('#code-error-tips').text(errorText).show();
             } else if (error === 1000300) {
               that.data.attr('isNeedVerifiedCode', true);
-              $('#verified-code-btn').tap(function() {
+              $('#verified-code-btn').click(function() {
                 that.getVerifiedCode();
               })
               $('#username-error-tips').text('账户名或登录密码错误，请重新输入').show();
@@ -394,7 +393,7 @@ define('sf.b2c.mall.component.login', [
 
             this.component.login.setData({
               accountId: can.$.trim(this.data.attr('username')),
-              type: 'MOBILE',
+              type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key),
               vfCode: vfCode
             });
@@ -407,7 +406,7 @@ define('sf.b2c.mall.component.login', [
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password)) {
             this.component.login.setData({
               accountId: can.$.trim(this.data.attr('username')),
-              type: 'MOBILE',
+              type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key)
             });
             that.sendRequest(element);
