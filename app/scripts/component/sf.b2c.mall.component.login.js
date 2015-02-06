@@ -5,6 +5,7 @@ define('sf.b2c.mall.component.login', [
     'can',
     'md5',
     'store',
+    'fastclick',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.webLogin',
     'sf.b2c.mall.api.user.needVfCode',
@@ -12,7 +13,9 @@ define('sf.b2c.mall.component.login', [
     'sf.util'
   ],
 
-  function($, can, md5, store, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFn) {
+  function($, can, md5, store, Fastclick, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFn) {
+
+    Fastclick.attach(document.body);
 
     var DEFAULT_CAPTCHA_LINK = 'http://checkcode.sfht.com/captcha/';
     var DEFAULT_CAPTCHA_ID = 'haitaob2c';
@@ -63,30 +66,37 @@ define('sf.b2c.mall.component.login', [
         this.getVerifiedCode();
 
         var that = this;
-        $('#gotoLogin').tap(function() {
-          that.loginButtonClick($(this));
-        })
 
-        $('.weixinlogin').tap(function() {
-          that.weixinLoginAuth();
-        })
+        // $('#gotoLogin').tap(function() {
+        //   that.loginButtonClick($(this));
+        // })
 
-        $('#verified-code-btn').tap(function() {
-          that.getVerifiedCode();
-        })
+        // $('.weixinlogin').tap(function() {
+        //   that.weixinLoginAuth();
+        // })
 
-        $("#toRegist").tap(function() {
-          var params = can.deparam(window.location.search.substr(1));
-          var gotoUrl = params.from;
-          window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
-        })
+        // $('#verified-code-btn').tap(function() {
+        //   that.getVerifiedCode();
+        // })
+
+        // $("#toRegist").tap(function() {
+        //   var params = can.deparam(window.location.search.substr(1));
+        //   var gotoUrl = params.from;
+        //   window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
+        // })
+      },
+
+      '#toRegist click': function (element, event) {
+        var params = can.deparam(window.location.search.substr(1));
+        var gotoUrl = params.from;
+        window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
       },
 
       /**
        * [weixinLogin 微信登陆]
        * @return {[type]} [description]
        */
-      weixinLoginAuth: function() {
+      '.weixinlogin click': function(element, event) {
         var reqLoginAuth = new SFReqLoginAuth({
           "partnerId": "wechat_mp",
           "redirectUrl": "http://m.sfht.com/weixincenter.html"
@@ -116,6 +126,11 @@ define('sf.b2c.mall.component.login', [
         this.element.append(html);
 
       },
+
+      '#verified-code-btn click': function () {
+        this.getVerifiedCode();
+      },
+
       /**
        * @description 验证码更换
        * @param  {String}
@@ -124,7 +139,7 @@ define('sf.b2c.mall.component.login', [
       getVerifiedCode: function() {
         var sessionId = md5(Date().valueOf() + window.parseInt(Math.random() * 10000));
         this.data.attr('sessionId', sessionId);
-        var verifiedCodeUrl = DEFAULT_CAPTCHA_LINK + '?' + $.param({
+        var verifiedCodeUrl = DEFAULT_CAPTCHA_LINK + '?' + can.param({
           id: DEFAULT_CAPTCHA_ID,
           hash: DEFAULT_CAPTCHA_HASH,
           sessionID: sessionId
@@ -347,7 +362,7 @@ define('sf.b2c.mall.component.login', [
        * @param  {dom} element jquery dom对象
        * @param  {event} event event对象
        */
-      loginButtonClick: function(element, event) {
+      '#gotoLogin click': function(element, event) {
         event && event.preventDefault();
 
         var that = this;

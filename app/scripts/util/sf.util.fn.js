@@ -1,7 +1,9 @@
 'use strict';
 
-define('sf.util', ['jquery',
-  'jquery.cookie',
+define('sf.util',
+[
+  'zepto',
+  'zepto.cookie',
   'can',
   'underscore',
   'md5',

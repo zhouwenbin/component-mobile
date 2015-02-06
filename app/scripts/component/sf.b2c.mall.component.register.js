@@ -6,6 +6,7 @@ define('sf.b2c.mall.component.register', [
     'md5',
     'underscore',
     'store',
+    'fastclick',
     'sf.b2c.mall.api.user.downSmsCode',
     'sf.b2c.mall.api.user.mobileRegister',
     'sf.b2c.mall.api.user.reqLoginAuth',
@@ -13,7 +14,9 @@ define('sf.b2c.mall.component.register', [
     'sf.util'
   ],
 
-  function($, can, md5, _, store, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn) {
+  function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn) {
+
+    Fastclick.attach(document.body);
 
     var DEFAULT_FILLINFO_TAG = 'fillinfo';
 
@@ -73,14 +76,14 @@ define('sf.b2c.mall.component.register', [
 
         this.render(tag, this.data);
 
-        var that = this;
-        $('#mobile-code-btn').tap(function() {
-          that.mobileCodeSendClick();
-        })
+        // var that = this;
+        // $('#mobile-code-btn').tap(function() {
+        //   that.mobileCodeSendClick();
+        // })
 
-        $('#mobile-register-btn').tap(function() {
-          that.mobileRegisterClick();
-        })
+        // $('#mobile-register-btn').tap(function() {
+        //   that.mobileRegisterClick();
+        // })
 
         // $('.weixinlogin').tap(function() {
         //   that.weixinLoginAuth();
@@ -108,7 +111,6 @@ define('sf.b2c.mall.component.register', [
 
       '{can.route} change': function() {
         var tag = can.route.attr('tag') || DEFAULT_FILLINFO_TAG;
-
         this.render.call(this, tag, this.data);
       },
 
@@ -116,16 +118,17 @@ define('sf.b2c.mall.component.register', [
         'fillinfo': function(data) {
           var html = can.view('templates/component/sf.b2c.mall.component.register.fillinfo.mustache', data, this.helpers);
           this.element.html(html)
-          this.element.find('.register').fadeIn('slow');
-          $("#changePwdType").tap(function(){
-            $(this).toggleClass("active");
+          console.log(this.element.find('.register'))
+          this.element.find('.register').show('slow');
+          // $("#changePwdType").tap(function(){
+          //   $(this).toggleClass("active");
 
-            if ($(this).hasClass('active')){
-              $("#input-password")[0].type = 'text';
-            } else {
-              $("#input-password")[0].type = 'password';
-            }
-          })
+          //   if ($(this).hasClass('active')){
+          //     $("#input-password")[0].type = 'text';
+          //   } else {
+          //     $("#input-password")[0].type = 'password';
+          //   }
+          // })
         },
 
         'success': function(data) {
@@ -211,15 +214,6 @@ define('sf.b2c.mall.component.register', [
         }
       },
 
-      '#input-mobile blur': function($element, event) {
-        var mobile = $element.val();
-        this.checkMobile.call(this, mobile);
-      },
-
-      '#input-mobile focus': function($element, event) {
-        this.element.find('#input-mobile-error').hide()
-      },
-
       countdown: function(time) {
         var that = this;
         setTimeout(function() {
@@ -235,7 +229,26 @@ define('sf.b2c.mall.component.register', [
         }, 1000);
       },
 
-      'mobileCodeSendClick': function($element, event) {
+      '#changePwdType click': function ($element, event) {
+        $element.toggleClass("active");
+
+        if ($element.hasClass('active')){
+          $("#input-password")[0].type = 'text';
+        } else {
+          $("#input-password")[0].type = 'password';
+        }
+      },
+
+      '#input-mobile blur': function($element, event) {
+        var mobile = $element.val();
+        this.checkMobile.call(this, mobile);
+      },
+
+      '#input-mobile focus': function($element, event) {
+        this.element.find('#input-mobile-error').hide()
+      },
+
+      '#mobile-code-btn click': function($element, event) {
         event && event.preventDefault();
 
         var mobile = this.element.find('#input-mobile').val();
@@ -296,7 +309,7 @@ define('sf.b2c.mall.component.register', [
         this.element.find('#password-error').hide();
       },
 
-      'mobileRegisterClick': function($element, event) {
+      '#mobile-register-btn click': function($element, event) {
         event && event.preventDefault();
 
         // 发起请求注册
