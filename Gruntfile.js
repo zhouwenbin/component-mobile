@@ -374,7 +374,7 @@ module.exports = function (grunt) {
             expand: true,
             cwd: '<%=config.dist%>',
             src: ['templates/**', '*.html?t=<%=config.timestamp%>'],
-            dest: '<%=config.version%>'
+            dest: 'statics.<%=config.version%>'
           }
         ]
       },
