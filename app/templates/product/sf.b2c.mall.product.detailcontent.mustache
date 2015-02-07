@@ -155,16 +155,16 @@
           <button class="btn" id="addNum">+</button>
 
           {{#if input.showRestrictionTips}}
-            <span class="alert-error" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>
+            <span class="text-error" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>
           {{/if}}
 
         </div>
 
       </div>
     </div>
-    <div id="allerrortip" class="alert-error">{{input.error}}</div>
+    <div id="allerrortip" class="text-error">{{input.error}}</div>
     {{#sf-showCurrentStock priceInfo.currentStock}}
-      <div class="alert-error">商品剩余{{priceInfo.currentStock}}件!</div>
+      <div class="text-error">商品剩余{{priceInfo.currentStock}}件!</div>
     {{/sf-showCurrentStock}}
   </section>
   <!--规格-->

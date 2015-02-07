@@ -4,18 +4,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 <title>登录顺丰海淘</title>
-<!-- build:css({app, .tmp}) styles/sf.b2c.mall.login -->
+
+<!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
 <link rel="stylesheet" href="static/css/style.css">
 <!-- endbuild -->
+
 </head>
 <body class="sub">
-  <!-- build:js(.) require -->
+
+  <!-- build:js(.) scripts/require.min.js -->
   <script src="bower_components/requirejs/require.js"></script>
   <!-- endbuild -->
-  <!-- build:js(.) base-->
-  <script src="scripts/base/sf.h5.base.ver.1.0.build.1423192818450.js"></script>
+
+  <!-- build:js({app, tmp}) scripts/sf.h5.base.js-->
+  <script src="scripts/base/sf.h5.base.ver.1.0.build.1423276920664.js"></script>
   <!-- endbuild -->
-  <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.page.login -->
+
+  <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.page.login.js -->
   <script src="scripts/sf.b2c.mall.require.config.js"></script>
   <script type="text/javascript">
   require(['sf.b2c.mall.page.login']);

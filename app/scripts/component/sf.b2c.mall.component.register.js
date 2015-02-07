@@ -22,7 +22,7 @@ define('sf.b2c.mall.component.register', [
 
     var DEFAULT_DOWN_SMS_ERROR_MAP = {
       '1000010': '未找到手机用户',
-      '1000020': '手机号已存在，<a href="login.html">立即登录</a>',
+      '1000020': '手机号已存在，<a href="'+SFBizConf.setting.link.login+'">立即登录</a>',
       '1000070': '参数错误',
       '1000230': '手机号错误，请输入正确的手机号',
       '1000270': '短信请求太过频繁,请稍后重试',
@@ -30,7 +30,7 @@ define('sf.b2c.mall.component.register', [
     }
 
     var DEFAULT_MOBILE_ACTIVATE_ERROR_MAP = {
-      '1000020': '手机号已存在，<a href="login.html">立即登录</a>',
+      '1000020': '手机号已存在，<a href="'+SFBizConf.setting.link.login+'">立即登录</a>',
       '1000230': '手机号错误，请输入正确的手机号',
       '1000240': '手机验证码错误',
       '1000250': '验证码输入有误，请重新输入'
@@ -298,7 +298,7 @@ define('sf.b2c.mall.component.register', [
         if (password) {
           $element.val(password);
         } else {
-          $('#pwd-default-text').show();
+          //$('#pwd-default-text').show();
         }
         this.checkPassword.call(this, password, '#password-error');
       },
@@ -343,6 +343,8 @@ define('sf.b2c.mall.component.register', [
                 var errorText = DEFAULT_MOBILE_ACTIVATE_ERROR_MAP[errorCode.toString()] || defaultText;
                 if (errorCode == 1000020) {
                   that.element.find('#input-mobile-error').html(errorText).show();
+                } else if (errorCode == 1000250) {
+                  that.element.find('#mobile-code-error').html(errorText).show();
                 } else {
                   that.element.find('#mobile-register-error').html(errorText).show();
                 }

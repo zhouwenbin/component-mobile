@@ -4,16 +4,18 @@ define(
   [
     'can',
     'zepto',
+    'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.order.fn',
     'sf.b2c.mall.widget.message',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage, SFWeixin) {
-
+  function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage, SFWeixin, SFConfig) {
+    Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
     SFWeixin.shareIndex();
@@ -23,7 +25,7 @@ define(
       init: function(element, options) {
 
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          window.location.href = 'http://m.sfht.com/login.html';
+          window.location.href = SFConfig.setting.link.login;
           return false;
         }
 
@@ -35,7 +37,7 @@ define(
         this.render();
 
         var that = this;
-        $('#gotopayBtn').tap(function() {
+        $('#gotopayBtn').click(function() {
           that.gotopayBtnClick($(this));
         })
 

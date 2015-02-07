@@ -1,0 +1,29 @@
+/*添加收货人*/
+.order-add{
+  padding: 0 14px;
+}
+.order-add p{
+  text-align: center;
+  font-size: 11px;
+}
+.order-add h2{
+  padding: 25px 0 8px;
+  color: #7f7f7f;
+  font-weight: normal;
+  font-size: 14px;
+}
+.order-add .btn{
+  margin-top: 38px;
+}
+.order-add .justify{
+	width:100%;
+	font-size:0;
+}
+.order-add .select{
+	width:48%;
+	margin-bottom:8px
+}
+.order-add .select:nth-last-child(1),
+.order-add .select:nth-last-child(2){
+	margin-bottom:0;
+}

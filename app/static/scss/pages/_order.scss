@@ -1,0 +1,60 @@
+/*订单*/
+.order{
+  background: #F6F8F9;
+  margin-bottom: 10px;
+}
+.order-h{
+  background: #fff;
+
+}
+.order-hc2{
+  padding-right: 11px;
+  padding-top: 10px;
+}
+.order h2{
+  font-size: 14px;
+  padding: 23px 0 10px 14px;
+  background: #fff;
+  
+  font-weight: normal;
+}
+.order h2:before{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 2px;
+  height: 14px;
+  background: #dc3334;
+  margin-right: 4px;
+}
+.order-r1{
+  font-size: 15px;
+}
+.order-r2{
+  text-align: center;
+  background: #fff;
+  
+  font-size: 12px;
+}
+.order-r2 .icon{
+  right:14px;
+}
+.order-r2 a{
+  color: #999;
+}
+.order-r2 .icon{
+  margin-left: 9px;
+}
+.order-r3{
+  padding: 7px 14px;
+}
+
+.order-r3c1{
+  font-size: 15px;
+  padding-top: 8px;
+}
+.order-r3c1 span{
+  font-size: 18px;
+  color: #dc3434;
+  margin-left: 5px;
+}

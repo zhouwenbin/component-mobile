@@ -8,9 +8,10 @@ define(
     'zepto',
     'store',
     'sf.b2c.mall.api.user.partnerLogin',
-    'sf.b2c.mall.framework.comm'
+    'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.business.config'
   ],
-  function(can, $, store, SFPartnerLogin, SFFrameworkComm) {
+  function(can, $, store, SFPartnerLogin, SFFrameworkComm, SFConfig) {
 
     SFFrameworkComm.register(3);
 
@@ -34,7 +35,6 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            alert("loginData.csrfToken:" + loginData.csrfToken);
 
             if (loginData.csrfToken) {
               store.set('type', 'WEIXIN');
@@ -44,15 +44,14 @@ define(
                 'csrfToken': loginData.csrfToken
               });
 
-              window.location.href = to || "http://m.sfht.com/index.html";
+              window.location.href = to || SFConfig.setting.link.index;
             } else {
-              window.location.href = "http://m.sfht.com/index.html";
+              window.location.href = SFConfig.setting.link.index;
             }
           })
           .fail(function(error) {
             console.error(error);
-            alert(error);
-            window.location.href = "http://m.sfht.com/index.html";
+            window.location.href = SFConfig.setting.link.index;
           })
       }
     });

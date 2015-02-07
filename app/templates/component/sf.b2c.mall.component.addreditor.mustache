@@ -1,7 +1,7 @@
 <!--订单-->
   <section class="order-add">
     <a href="javascript:void(0)" class="order-back" id="backToOrder"><span class="icon icon10"></span>返回</a>
-    <p class="alert-error">政策规定，商品进口需提供收货人的实名认证信息。</p>
+    <p class="text-error">政策规定，商品进口需提供收货人的实名认证信息。</p>
     <h2>收货人</h2>
     <input type="text" can-value="addr.input.recName" class="input" placeholder="需要填写收货人的真实姓名">
     <h2>身份证</h2>
@@ -39,7 +39,7 @@
     <h2>邮编</h2>
     <input type="text" can-value="addr.input.zipCode" class="input" placeholder="填写邮政编码">
 
-    <p class="alert-error">{{addr.error}}</p>
+    <div class="text-error">{{addr.error}}</div>
     <button class="btn btn-warnning btn-big" id="addressSave">确认收货人地址</button>
   </section>
   <!--订单-->
