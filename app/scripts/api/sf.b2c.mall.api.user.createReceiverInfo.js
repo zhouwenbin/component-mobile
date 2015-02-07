@@ -27,7 +27,7 @@ function($, can, _, Comm, SecurityType) {
       REQUIRED: {
         'recName': 'string',
         'type': 'string',
-        'credtNum': 'string'
+        'credtNum': 'string',
       },
       OPTIONAL: {
         'credtImgUrl1': 'string',
