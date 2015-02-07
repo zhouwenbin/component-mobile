@@ -1,0 +1,29 @@
+/*alert*/
+.alert{
+	padding: 14px 0 14px 17px;
+}
+.alert-warning {
+	@extend .alert;
+	color: #666;	
+	background: #fffddd;
+}
+.alert-error{
+	@extend .alert;
+	color: #fff;
+	background: #eb6877;
+}
+.alert-success{
+	@extend .alert;
+	color: #fff;
+	background: #67b222;
+}
+.alert-disabled{
+	@extend .alert;
+	color: #fff;
+	background:#ccc;
+}
+.alert-info{
+	@extend .alert;
+	color: #fff;
+	background: #a1d0ed
+}
