@@ -16,6 +16,8 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  var generator = require('./apigen');
+
   // Configurable paths
   var config = {
     app: 'app',
@@ -654,6 +656,11 @@ module.exports = function (grunt) {
       'connect:livereload',
       'watch'
     ]);
+  });
+
+  grunt.registerTask('create', function () {
+    var done = this.async();
+    generator.autogen(grunt, done);
   });
 
   grunt.registerTask('server', function (target) {
