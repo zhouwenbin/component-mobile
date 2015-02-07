@@ -1,7 +1,7 @@
 <!--订单列表-->
 <section class="tab">
-  <div class="tab-h fixed">
-    <ul class="clearfix">
+  <div class="tab-h">
+    <ul class="clearfix fixed">
       <li class="active" id="notCompleteOrderListTabhead"><a href="#">未完成({{notCompletedLength}})</a></li>
       <li id="completeOrderListTabhead"><a href="#">完成</a></li>
     </ul>
@@ -44,7 +44,7 @@
       {{#each completedOrderList}}
         <li class="box">
           <div class="orderlist-r1 clearfix">
-            <div class="orderlist-r1c1 fl">{{sf.time gmtCreate}}</div>
+            <div class="orderlist-r1c1 fl">订单号：{{orderId}}</div>           
             <div class="orderlist-r1c2 fr">{{orderStatus}}</div>
           </div>
           <div class="orderlist-r2 clearfix viewOrder" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
@@ -54,10 +54,10 @@
             <div class="orderlist-r2c2">
               <h3 class="ellipsis2">{{goodsName}}</h3>
               <strong>¥{{sf.price totalPrice - discount}}</strong>
+              <time>{{sf.time gmtCreate}}</time>
             </div>
           </div>
           <div class="orderlist-r3 clearfix">
-            <div class="orderlist-r3c1 fl">订单号：{{orderId}}</div>
             <div class="orderlist-r3c2 fr" id="operationarea" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
             {{{optionHMTL}}}
           </div>

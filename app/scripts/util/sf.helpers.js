@@ -30,6 +30,18 @@ define('sf.helpers', ['zepto',
     return moment(time).format('M月D日H点');
   });
 
+  can.Mustache.registerHelper('sf.split', function(str) {
+    if (_.isFunction(str)) {
+      str = str();
+    }
+
+    if (str.length > 3){
+      return str;
+    }
+
+    return str.split("").join(" ");
+  });
+
   /**
    * @description sf.price
    * @param  {int} price Price
