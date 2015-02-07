@@ -316,6 +316,7 @@ module.exports = function (grunt) {
             // 不需要static中的html
             // '{,*/}*.html',
 
+            'json/{,*/}*.json',
             'templates/{,*/}*.mustache',
             '*.html',
             'styles/fonts/{,*/}*.*'
@@ -373,7 +374,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html?t=<%=config.timestamp%>'],
+            src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'json/**'],
             dest: 'statics.<%=config.version%>'
           }
         ]
@@ -386,7 +387,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html?t=<%=config.timestamp%>, scripts/**', 'styles/**'],
+            src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'json/**', 'scripts/**', 'styles/**'],
             dest: '<%=config.version%>'
           }
         ]
