@@ -153,7 +153,7 @@ define('sf.b2c.mall.order.iteminfo', [
               "num": that.options.amount,
               "price": that.options.sellingPrice
             }]),
-            "sysType": 'b2c'
+            "sysType": 'B2C_H5'
           }
         })
         .fail(function(error) {
