@@ -323,32 +323,25 @@ module.exports = function (grunt) {
         }]
       },
 
+      image: {
+        files: [{
+          expand: true,
+          dot: true,
+          timestamp: true,
+          cwd: '<%= config.app %>/static',
+          dest: '<%= config.dist %>',
+          src: [
+            'img/{,*/}*.*',
+          ]
+        }]
+      },
+
       styles: {
         expand: true,
         dot: true,
         cwd: '<%= config.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
-      }
-    },
-
-    rename: {
-      main: {
-        files: [
-          { src: '<%=config.dist%>/agreement.html', dest: '<%=config.dist%>/agreement.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/alipayframe.html', dest: '<%=config.dist%>/alipayframe.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/center.html', dest: '<%=config.dist%>/center.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/detail.html', dest: '<%=config.dist%>/detail.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/gotopay.html', dest: '<%=config.dist%>/gotopay.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/login.html', dest: '<%=config.dist%>/login.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/order.html', dest: '<%=config.dist%>/order.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/orderdetail.html', dest: '<%=config.dist%>/orderdetail.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/orderlist.html', dest: '<%=config.dist%>/orderlist.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/pay-success.html', dest: '<%=config.dist%>/pay-success.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/recaddrmanage.html', dest: '<%=config.dist%>/recaddrmanage.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/register.html', dest: '<%=config.dist%>/register.html?t=<%=config.timestamp%>'},
-          { src: '<%=config.dist%>/weixincenter.html', dest: '<%=config.dist%>/weixincenter.html?t=<%=config.timestamp%>'}
-        ]
       }
     },
 
@@ -699,10 +692,9 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
-        'rev',
+        'copy:image',
         'usemin',
         'htmlmin',
-        // 'rename',
         'clean:extra',
         'clean:publish',
         'compress:test'
@@ -729,10 +721,9 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
-        'rev',
+        'copy:image',
         'usemin',
         'htmlmin',
-        // 'rename',
         'clean:extra',
         'clean:publish',
         'compress:oss',

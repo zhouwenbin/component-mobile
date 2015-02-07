@@ -10,10 +10,11 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.order.orderlistcontent',
     'sf.b2c.mall.widget.message',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage) {
+  function(can, $, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage, SFConfig) {
 
     SFFrameworkComm.register(3);
 
@@ -33,7 +34,7 @@ define(
         }, 500)
 
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          window.location.href = 'http://m.sfht.com/login.html?from=' + escape(window.location.pathname);
+          window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
           return false;
         }
 

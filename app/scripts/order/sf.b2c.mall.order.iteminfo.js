@@ -12,9 +12,9 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.b2c.mall.api.user.setDefaultAddr',
   'sf.b2c.mall.api.user.setDefaultRecv',
   'sf.helpers',
-  'sf.b2c.mall.widget.message'
-
-], function(can, $, Fastclick, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers,SFMessage) {
+  'sf.b2c.mall.widget.message',
+  'sf.b2c.mall.business.config'
+], function(can, $, Fastclick, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFMessage, SFConfig) {
   Fastclick.attach(document.body);
   return can.Control.extend({
 
@@ -165,7 +165,7 @@ define('sf.b2c.mall.order.iteminfo', [
           return submitOrderForAllSys.sendRequest();
         })
         .done(function(message) {
-          window.location.href = 'gotopay.html?' +
+          window.location.href = SFConfig.setting.link.gotopay + '&' +
             $.param({
               "orderid": message.value,
               "recid": selectAddr.recId

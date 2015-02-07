@@ -8,9 +8,10 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.order.fn',
     'sf.helpers',
-    'sf.b2c.mall.widget.message'
+    'sf.b2c.mall.widget.message',
+    'sf.b2c.mall.business.config'
   ],
-  function(can, $, Fastclick, SFGetOrderList, SFRequestPayV2, SFOrderFn, helpers, SFMessage) {
+  function(can, $, Fastclick, SFGetOrderList, SFRequestPayV2, SFOrderFn, helpers, SFMessage, SFConfig) {
 
     Fastclick.attach(document.body);
 
@@ -237,7 +238,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var suborderid = element.eq(0).attr('data-suborderid');
         var recid = element.eq(0).attr('data-recid');
 
-        window.location.href = "/orderdetail.html?orderid=" + orderid + "&suborderid=" + suborderid + "&recid=" + recid;
+        window.location.href = SFConfig.setting.link.orderdetail + "&orderid=" + orderid + "&suborderid=" + suborderid + "&recid=" + recid;
       },
 
       errorMap: {

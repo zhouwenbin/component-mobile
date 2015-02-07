@@ -1,4 +1,4 @@
-define([], function () {
+define(['md5'], function (md5) {
   'use strict';
 
   var MD5_KEY = 'www.sfht.com';
