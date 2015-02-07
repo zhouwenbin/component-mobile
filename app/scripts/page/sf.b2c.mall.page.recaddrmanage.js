@@ -6,10 +6,11 @@ define(
     'zepto',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.component.recaddrmanage',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, SFFrameworkComm, SFRecaddrmanage, SFWeixin) {
+  function(can, $, SFFrameworkComm, SFRecaddrmanage, SFWeixin, SFConfig) {
 
     SFFrameworkComm.register(3);
 
@@ -20,7 +21,7 @@ define(
       init: function(element, options) {
 
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          window.location.href = 'http://m.sfht.com/login.html?from=' + escape(window.location.pathname);
+          window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
           return false;
         }
 

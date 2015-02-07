@@ -10,9 +10,10 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.api.user.logout',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config'
   ],
-  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin) {
+  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin, SFConfig) {
 
     Fastclick.attach(document.body);
 
@@ -28,7 +29,7 @@ define(
       init: function() {
 
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          window.location.href = 'http://m.sfht.com/login.html?from=' + escape(window.location.pathname);
+          window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
           return false;
         }
 
@@ -63,7 +64,7 @@ define(
       },
 
       '.myorder click': function(element, event) {
-        window.location.href = "/orderlist.html";
+        window.location.href = SFConfig.setting.link.orderlist;
       },
 
       maskMobile: function(str) {
@@ -97,7 +98,7 @@ define(
                   store.clear();
 
                   setTimeout(function() {
-                    window.location.href = "/index.html";
+                    window.location.href =  SFConfig.setting.link.index;
                   }, 2000);
 
                 })
