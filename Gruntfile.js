@@ -134,8 +134,7 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
-            '<%= config.dist %>/index.html',
-            '<%= config.dist %>/detail.html',
+            '<%= config.dist %>/index.html'
           ]
         }]
       }
@@ -339,6 +338,7 @@ module.exports = function (grunt) {
           { src: '<%=config.dist%>/agreement.html', dest: '<%=config.dist%>/agreement.html?t=<%=config.timestamp%>'},
           { src: '<%=config.dist%>/alipayframe.html', dest: '<%=config.dist%>/alipayframe.html?t=<%=config.timestamp%>'},
           { src: '<%=config.dist%>/center.html', dest: '<%=config.dist%>/center.html?t=<%=config.timestamp%>'},
+          { src: '<%=config.dist%>/detail.html', dest: '<%=config.dist%>/detail.html?t=<%=config.timestamp%>'},
           { src: '<%=config.dist%>/gotopay.html', dest: '<%=config.dist%>/gotopay.html?t=<%=config.timestamp%>'},
           { src: '<%=config.dist%>/login.html', dest: '<%=config.dist%>/login.html?t=<%=config.timestamp%>'},
           { src: '<%=config.dist%>/order.html', dest: '<%=config.dist%>/order.html?t=<%=config.timestamp%>'},
@@ -374,7 +374,8 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'json/**'],
+            // src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'json/**'],
+            src: ['templates/**', '*.html', 'json/**'],
             dest: 'statics.<%=config.version%>'
           }
         ]
@@ -701,7 +702,7 @@ module.exports = function (grunt) {
         'rev',
         'usemin',
         'htmlmin',
-        'rename',
+        // 'rename',
         'clean:extra',
         'clean:publish',
         'compress:test'
@@ -731,7 +732,7 @@ module.exports = function (grunt) {
         'rev',
         'usemin',
         'htmlmin',
-        'rename',
+        // 'rename',
         'clean:extra',
         'clean:publish',
         'compress:oss',
