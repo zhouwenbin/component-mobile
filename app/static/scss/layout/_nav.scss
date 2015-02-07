@@ -7,30 +7,37 @@
   bottom:0;
   width: 100%;
   background: #fff;
-  overflow: hidden;
-  border-top: 1px solid #ccc;
 }
 .nav-c1{
-  min-width: 65px;
-  padding-top: 9px;
-  text-align: center; 
-  border-left: 1px solid #ccc;
-  margin-left: -1px;
-  height: 45px;
+  position: absolute;
+  right: 7px;
+  -webkit-transform: translate(0,-100%);
+  border-radius:50%;
+  border:1px solid #ccc;
+  text-align: center;
+  background:rgba(255,255,255,0.9);
+  width: 40px;
+  height: 40px;
+  padding-top: 5px;
+}
+.nav-c1:nth-child(1){
+  margin-top: -5px;
+  -webkit-transform: translate(0,-200%);
 }
 .nav-c1 a{
-  color: #dc3334;
+  color: #999;
 }
 .nav-c1 .icon{
   margin-bottom: 4px;
 }
 .nav-c2{
-  overflow: hidden;
+  padding:5px;
   
 }
 .nav .btn{
   border-radius: 0;
-  height: 45px;
+  height: 44px;
+  line-height: 44px;
   font-size: 18px;
   font-weight: bold;
 }
