@@ -1,4 +1,4 @@
-  {{#if showFirstStep}}
+{{#if showFirstStep}}
   <!--商品-->
   <section class="goods">
     <div class="goods-r1">
@@ -47,24 +47,24 @@
   <section class="detail">
     <div class="detail-h" >
       <ul class="clearfix" id="tabHeader">
-        <li class="active" id="itemInfoTab">商品详情</li>
-        <li id="detailTab">图文详情</li>
+        <li class="active" id="itemInfoTab"><a href="javascript:void(0)">商品详情</a></li>
+        <li id="detailTab"><a href="javascript:void(0)">图文详情</a></li>
       </ul>
     </div>
     <div class="detail-b" id="specAndBrandInfo">
       <ul>
         {{#each itemInfo.saleInfo.specGroups}}
-        <li>{{specName}}： {{#each specs}} {{specValue}} {{/each}}</li>
+        <li><span class="justify">{{sf.split specName}}</span>： {{#each specs}} {{specValue}} {{/each}}</li>
         {{/each}}
       </ul>
       <ul>
-        <li>品牌： {{itemInfo.basicInfo.brand}}</li>
+        <li><span class="justify">品 牌</span>： {{itemInfo.basicInfo.brand}}</li>
       </ul>
       {{#if itemInfo.basicInfo.showAttribues}}
       <ul>
         <li>商品属性：</li>
         {{#each itemInfo.basicInfo.attributes}}
-        <li>{{key}}： {{value}}</li>
+        <li><span class="justify">{{sf.split key}}</span>： {{value}}</li>
         {{/each}}
       </ul>
       {{/if}}
