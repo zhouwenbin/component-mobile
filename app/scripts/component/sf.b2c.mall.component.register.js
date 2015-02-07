@@ -343,6 +343,8 @@ define('sf.b2c.mall.component.register', [
                 var errorText = DEFAULT_MOBILE_ACTIVATE_ERROR_MAP[errorCode.toString()] || defaultText;
                 if (errorCode == 1000020) {
                   that.element.find('#input-mobile-error').html(errorText).show();
+                } else if (errorCode == 1000250) {
+                  that.element.find('#mobile-code-error').html(errorText).show();
                 } else {
                   that.element.find('#mobile-register-error').html(errorText).show();
                 }
