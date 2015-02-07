@@ -37,6 +37,7 @@ define([], function () {
 
   return {
     setting:{
+      'ver': VER,
       'none_append_word': NONE_APPEND_WORD,
       'default_header': DEFAULT_REQUEST_HEADER,
       'md5_key': MD5_KEY,

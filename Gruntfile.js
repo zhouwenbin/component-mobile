@@ -27,6 +27,8 @@ module.exports = function (grunt) {
     timestamp: Date.now()
   };
 
+  var OSS_HOST = 'http://img.sfht.com/sfhth5';
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -222,9 +224,42 @@ module.exports = function (grunt) {
       options: {
         assetsDirs: [
           '<%= config.dist %>',
-          '<%= config.dist %>/images',
+          '<%= config.dist %>/img',
+          '<%= config.dist %>/scripts',
           '<%= config.dist %>/styles'
-        ]
+        ],
+        blockReplacements: {
+          js: function (block) {
+            if (config.version) {
+              if (block.dest[0] != '/') {
+                return '<script src="'+ OSS_HOST + '/' + block.dest +'"></script>';
+              }else{
+                return '<script src="'+ OSS_HOST + block.dest +'"></script>';
+              }
+            }else{
+              if (block.dest[0] != '/') {
+                return '<script src="' + '/' + block.dest +'"></script>';
+              }else{
+                return '<script src="' + block.dest +'"></script>';
+              }
+            }
+          },
+          css: function (block) {
+            if (config.version) {
+              if (block.dest[0] !='/') {
+                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + block.dest +'">';
+              }else{
+                return '<link rel="stylesheet" href="'+ OSS_HOST + block.dest +'">';
+              }
+            }else{
+              if (block.dest[0] != '/') {
+                return '<link rel="stylesheet" href="'+ '/' + block.dest +'">';
+              }else{
+                return '<link rel="stylesheet" href="'+ block.dest +'">';
+              }
+            }
+          }
+        }
       },
       html: ['<%= config.dist %>/{,*/}*.html'],
       css: ['<%= config.dist %>/styles/{,*/}*.css']
@@ -318,7 +353,7 @@ module.exports = function (grunt) {
             // '{,*/}*.html',
 
             'json/{,*/}*.json',
-            'templates/{,*/}*.mustache',
+            // 'templates/{,*/}*.mustache',
             '*.html',
             'styles/fonts/{,*/}*.*'
           ]
@@ -326,16 +361,33 @@ module.exports = function (grunt) {
       },
 
       image: {
-        files: [{
-          expand: true,
-          dot: true,
-          timestamp: true,
-          cwd: '<%= config.app %>/static',
-          dest: '<%= config.dist %>',
-          src: [
-            'img/{,*/}*.*',
-          ]
-        }]
+        expand: true,
+        dot: true,
+        timestamp: true,
+        cwd: '<%= config.app %>/static',
+        dest: '<%= config.dist %>',
+        src: [
+          'img/{,*/}*.*',
+        ]
+      },
+
+      // @todo需要修改，自动笔变化图片
+      templates: {
+        expand: true,
+        dot: true,
+        timestamp: true,
+        cwd: '<%= config.app %>',
+        dest: '<%= config.dist %>',
+        src: [
+          'templates/{,*/}*.mustache'
+        ],
+        options:{
+          process: function (content, srcpath) {
+            if (config.version) {
+              return content.replace(/img\/recommend.jpg/g, OSS_HOST+'/img/recommend.jpg')
+            }
+          }
+        }
       },
 
       styles: {
@@ -369,8 +421,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            // src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'json/**'],
-            src: ['templates/**', '*.html', 'json/**', 'img/**'],
+            src: ['templates/**', '*.html', 'json/**'],
             dest: 'statics.<%=config.version%>'
           }
         ]
@@ -383,7 +434,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'json/**', 'scripts/**', 'styles/**'],
+            src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'img/**', 'json/**', 'scripts/**', 'styles/**'],
             dest: '<%=config.version%>'
           }
         ]
@@ -405,6 +456,7 @@ module.exports = function (grunt) {
       ]
     },
 
+    // @todo 需要修改，自动找到并配置requirejs
     requirejs: {
       detail: {
         options: {
@@ -700,6 +752,7 @@ module.exports = function (grunt) {
         'uglify',
         'copy:dist',
         'copy:image',
+        'copy:templates',
         'usemin',
         'htmlmin',
         'clean:extra',
@@ -729,6 +782,7 @@ module.exports = function (grunt) {
         'uglify',
         'copy:dist',
         'copy:image',
+        'copy:templates',
         'usemin',
         'htmlmin',
         'clean:extra',
