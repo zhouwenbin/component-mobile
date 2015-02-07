@@ -374,7 +374,8 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'json/**'],
+            // src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'json/**'],
+            src: ['templates/**', '*.html', 'json/**'],
             dest: 'statics.<%=config.version%>'
           }
         ]
@@ -701,7 +702,7 @@ module.exports = function (grunt) {
         'rev',
         'usemin',
         'htmlmin',
-        'rename',
+        // 'rename',
         'clean:extra',
         'clean:publish',
         'compress:test'
@@ -731,7 +732,7 @@ module.exports = function (grunt) {
         'rev',
         'usemin',
         'htmlmin',
-        'rename',
+        // 'rename',
         'clean:extra',
         'clean:publish',
         'compress:oss',
