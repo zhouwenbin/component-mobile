@@ -298,7 +298,7 @@ define('sf.b2c.mall.component.register', [
         if (password) {
           $element.val(password);
         } else {
-          $('#pwd-default-text').show();
+          //$('#pwd-default-text').show();
         }
         this.checkPassword.call(this, password, '#password-error');
       },
