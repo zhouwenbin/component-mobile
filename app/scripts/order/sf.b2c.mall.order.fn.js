@@ -6,10 +6,11 @@ define(
     'can',
     'underscore',
     'store',
-    'sf.b2c.mall.api.order.requestPayV2'
+    'sf.b2c.mall.api.order.requestPayV2',
+    'sf.b2c.mall.business.config'
   ],
 
-  function ($, can, _, store, SFApiRequestPayV2) {
+  function ($, can, _, store, SFApiRequestPayV2, SFConfig) {
 
     var requestPayV2 = new SFApiRequestPayV2();
 
@@ -29,7 +30,7 @@ define(
             }
 
             store.set("alipayurl", data.url + '?' + data.postBody);
-            window.location.href = "alipayframe.html";
+            window.location.href =  SFConfig.setting.link.alipayframe;
           })
           .fail(function(error) {
             //var errorText = that.payErrorMap[error.toString()] || '支付失败';

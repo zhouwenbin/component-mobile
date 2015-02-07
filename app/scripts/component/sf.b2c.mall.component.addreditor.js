@@ -21,13 +21,13 @@ define('sf.b2c.mall.component.addreditor', [
 
     request: function() {
       var that = this;
-      return can.ajax('json/sf.b2c.mall.regions.json')
+      return can.ajax({url: '/json/sf.b2c.mall.regions.json'})
         .done(_.bind(function(cities) {
           this.adapter.regions = new RegionsAdapter({
             cityList: cities
           });
         }, this))
-        .fail(function() {
+        .fail(function(error) {
 
         });
     },

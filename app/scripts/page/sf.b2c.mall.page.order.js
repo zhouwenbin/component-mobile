@@ -7,10 +7,11 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.order.selectreceiveaddr',
     'sf.b2c.mall.order.iteminfo',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, SFFrameworkComm, SelectReceiveAddr, ItemInfo, SFWeixin) {
+  function(can, $, SFFrameworkComm, SelectReceiveAddr, ItemInfo, SFWeixin, SFConfig) {
 
     SFFrameworkComm.register(3);
 
@@ -21,7 +22,7 @@ define(
       init: function(element, options) {
 
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          window.location.href = 'http://m.sfht.com/login.html';
+          window.location.href = SFConfig.setting.link.login;
           return false;
         }
 

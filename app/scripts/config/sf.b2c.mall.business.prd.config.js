@@ -4,6 +4,8 @@ define([], function () {
   var MD5_KEY = 'www.sfht.com';
 
   var NONE_APPEND_WORD = 'sfhaitao.xyz!';
+  var M_HOST = 'http://m.sfht.com/';
+  var VER = '{version}'
 
   var DEFAULT_REQUEST_HEADER = {
     _aid: 3,
@@ -17,24 +19,20 @@ define([], function () {
   };
 
   var DEV_FILE_LINK = {
-    '404': 'http://www.sfht.com/404.html',
-    'activated': 'http://www.sfht.com/activated.html',
-    'agreement': 'http://www.sfht.com/agreement.html',
-    'center': 'http://www.sfht.com/center.html',
-    'gotopay': 'http://www.sfht.com/gotopay.html',
-    'index': 'http://www.sfht.com/index.html',
-    'login': 'http://www.sfht.com/login.html',
-    'nullactivated':'http://www.sfht.com/nullactivated.html',
-    'order': 'http://www.sfht.com/order.html',
-    'orderdetail': 'http://www.sfht.com/orderdetail.html',
-    'orderlist': 'http://www.sfht.com/orderlist.html',
-    'passwordchange': 'http://www.sfht.com/password-change.html',
-    'preheat': 'http://www.sfht.com/preheat.html',
-    'process': 'http://www.sfht.com/process.html',
-    'register': 'http://www.sfht.com/register.html',
-    'retrieve': 'http://www.sfht.com/retrieve.html',
-    'ilogin': 'http://www.sfht.com/i.login.html',
-    'iregister': 'http://www.sfht.com/i.register.html'
+    'agreement'         : M_HOST + 'agreement.html?t='+VER,
+    'alipayframe'       : M_HOST + 'alipayframe.html?t='+VER,
+    'center'            : M_HOST + 'center.html?t='+VER,
+    'detail'            : M_HOST + 'detail/',
+    'gotopay'           : M_HOST + 'gotopay.html?t='+VER,
+    'index'             : M_HOST + 'index.html',
+    'login'             : M_HOST + 'login.html?t='+VER,
+    'order'             : M_HOST + 'order.html?t='+VER,
+    'orderdetail'       : M_HOST + 'orderdetail.html?t='+VER,
+    'orderlist'         : M_HOST + 'orderlist.html?t='+VER,
+    'pay-success'       : M_HOST + 'pay-success.html?t='+VER,
+    'recaddrmanage'     : M_HOST + 'recaddrmanage.html?t='+VER,
+    'register'          : M_HOST + 'register.html?t='+VER,
+    'weixincenter'      : M_HOST + 'weixincenter.html?t='+VER
   }
 
   return {
