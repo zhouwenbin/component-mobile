@@ -35,6 +35,10 @@ define('sf.helpers', ['zepto',
       str = str();
     }
 
+    if (str.length > 3){
+      return str;
+    }
+
     return str.split("").join(" ");
   });
 
