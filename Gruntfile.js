@@ -450,7 +450,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html?t=<%=config.timestamp%>', 'img/**', 'json/**', 'scripts/**', 'styles/**'],
+            src: ['templates/**', '*.html', 'img/**', 'json/**', 'scripts/**', 'styles/**'],
             dest: '<%=config.version%>'
           }
         ]
