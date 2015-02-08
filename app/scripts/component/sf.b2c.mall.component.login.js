@@ -321,6 +321,7 @@ define('sf.b2c.mall.component.login', [
           .done(function(data) {
             if (data.userId) {
               that.data.attr('autologin');
+
               store.set('type', that.checkTypeOfAccount(that.data.attr('username')));
               store.set('nickname', that.data.attr('username'));
 
