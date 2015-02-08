@@ -53,7 +53,7 @@ define(
               that.options.welcomeName = store.get('nickname');
             }
 
-            var html = can.view('/templates/center/sf.b2c.mall.center.content.mustache', that.options);
+            var html = can.view('/templates/center/sf.b2c.mall.center.content.mustache'+'?v='+SFConfig.setting.ver, that.options);
             that.element.html(html);
 
             $('.loadingDIV').hide();

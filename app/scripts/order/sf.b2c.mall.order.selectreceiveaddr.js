@@ -9,8 +9,9 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
   'sf.b2c.mall.adapter.address.list',
   'sf.b2c.mall.component.addreditor',
   'sf.b2c.mall.api.user.webLogin',
-  'md5'
-], function(can, $, Fastclick, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5) {
+  'md5',
+  'sf.b2c.mall.business.config'
+], function(can, $, Fastclick, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5, SFConfig) {
   Fastclick.attach(document.body);
   return can.Control.extend({
 
@@ -26,7 +27,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
     },
 
     render: function(data) {
-      var html = can.view('templates/order/sf.b2c.mall.order.selectrecaddr.mustache', data);
+      var html = can.view('templates/order/sf.b2c.mall.order.selectrecaddr.mustache'+'?v='+SFConfig.setting.ver, data);
       this.element.html(html);
     },
 

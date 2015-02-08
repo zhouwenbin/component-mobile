@@ -67,7 +67,7 @@ define('sf.b2c.mall.order.iteminfo', [
           that.options.allTotalPrice = itemObj.allTotalPrice;
           that.options.sellingPrice = priceinfo.sellingPrice;
 
-          var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', itemObj);
+          var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache'+'?v='+SFConfig.setting.ver, itemObj);
           that.element.html(html);
 
           $('#submitOrder').click(function() {

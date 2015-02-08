@@ -6,9 +6,10 @@ define(
     'zepto',
     'store',
     'sf.b2c.mall.framework.comm',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config'
   ],
-  function(can, $, store, SFFrameworkComm, SFWeixin) {
+  function(can, $, store, SFFrameworkComm, SFWeixin, SFConfig) {
 
     SFFrameworkComm.register(3);
 
@@ -43,7 +44,7 @@ define(
         if (!this.options.src) {
           alert("alipayurl error");
         }
-        var html = can.view('/templates/order/sf.b2c.mall.order.alipayframe.mustache', this.options);
+        var html = can.view('/templates/order/sf.b2c.mall.order.alipayframe.mustache'+'?v='+SFConfig.setting.ver, this.options);
         this.element.html(html);
       }
     });

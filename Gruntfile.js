@@ -354,10 +354,26 @@ module.exports = function (grunt) {
 
             'json/{,*/}*.json',
             // 'templates/{,*/}*.mustache',
-            '*.html',
+            // '*.html',
             'styles/fonts/{,*/}*.*'
           ]
         }]
+      },
+
+      html: {
+        expand: true,
+        dot: true,
+        timestamp: true,
+        cwd: '<%= config.app %>',
+        dest: '<%= config.dist %>',
+        src: [
+          '*.html'
+        ],
+        options:{
+          process: function (content, srcpath) {
+            return content.replace(/\{version\}/g, config.timestamp);
+          }
+        }
       },
 
       image: {
@@ -458,11 +474,28 @@ module.exports = function (grunt) {
 
     // @todo 需要修改，自动找到并配置requirejs
     requirejs: {
+      main: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.dist %>/scripts/sf.b2c.mall.h5.page.main.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            'sf.b2c.mall.component.price',
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.main'
+          ],
+          insertRequire: ['sf.b2c.mall.page.main']
+        }
+      },
       detail: {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.detail.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.detail.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
@@ -484,7 +517,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.order.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.order.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
@@ -511,7 +544,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.login.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.login.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
@@ -528,7 +561,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.register.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.register.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
@@ -545,7 +578,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.gotopay.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.gotopay.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
@@ -566,7 +599,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.order.list.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.order.list.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
@@ -587,7 +620,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.order.detail.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.order.detail.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
@@ -608,7 +641,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.center.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.center.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
@@ -624,7 +657,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.weixincenter.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.weixincenter.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
@@ -640,7 +673,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.alipayframe.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.alipayframe.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
@@ -672,7 +705,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.recaddrmanage.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.recaddrmanage.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
@@ -751,6 +784,7 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
+        'copy:html',
         'copy:image',
         'copy:templates',
         'usemin',
@@ -781,6 +815,7 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy:dist',
+        'copy:html',
         'copy:image',
         'copy:templates',
         'usemin',

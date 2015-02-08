@@ -5,10 +5,11 @@ define(
 
   [
     'zepto',
-    'can'
+    'can',
+    'sf.b2c.mall.business.config'
   ],
 
-  function($, can) {
+  function($, can, SFConfig) {
     return can.Control.extend({
 
       init: function() {
@@ -16,7 +17,7 @@ define(
 
       render: function() {
         this.setup($('body'));
-        var html = can.view('templates/widget/sf.b2c.mall.widget.loading.mustache', {});
+        var html = can.view('templates/widget/sf.b2c.mall.widget.loading.mustache'+'?v='+SFConfig.setting.ver, {});
         $('body').append(html);
       },
 

@@ -93,7 +93,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             //构建路由数据
             that.buildUserRoutes(orderData, routesList);
 
-            
+
             that.options.productList = orderData.orderItem.orderGoodsItemList;
 
             _.each(that.options.productList, function(item) {
@@ -121,7 +121,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             that.options.firstRoute = that.options.userRoutes[that.options.userRoutes.length - 1]
 
-            var html = can.view('templates/order/sf.b2c.mall.order.orderdetail.mustache', that.options);
+            var html = can.view('templates/order/sf.b2c.mall.order.orderdetail.mustache'+'?v='+SFConfig.setting.ver, that.options);
             that.element.html(html);
 
             //页面初始化布局
@@ -129,14 +129,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             $('#buy').show();
             $('#userRoutes').hide();
             $('.loadingDIV').hide();
-            
+
           })
           .fail(function(error){
             console.error(error);
             $('.loadingDIV').hide();
           })
 
-        
+
       },
 
       canShowShouldPayPrice: function(data) {
