@@ -146,7 +146,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
      * @return {[type]}
      */
     addRecaddrClick: function(element) {
-      $(".sf-b2c-mall-order-selectReceiveAddress").hide();
+      $(".order").hide();
       $(".sf-b2c-mall-order-itemInfo").hide();
       $(".sf-b2c-mall-order-addAdrArea").show();
       this.component.addressEditor.show("create", null, $(".sf-b2c-mall-order-addAdrArea"));

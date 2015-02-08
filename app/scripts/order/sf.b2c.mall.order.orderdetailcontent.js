@@ -23,6 +23,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   function(can, $, Fastclick, SFGetOrder, SFCancelOrder, SFUpdateReceiverInfo, SFGetIDCardUrlList, SFGetUserRoutes, SFGetRecvInfo, SFConfirmReceive, loading, FrameworkComm, SFConfig, Utils, helpers, SFOrderFn, SFMessage, moment) {
     Fastclick.attach(document.body);
 
+
     return can.Control.extend({
 
       /**
@@ -64,32 +65,36 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         });
 
         this.options.userRoutes = new Array();
-
-        can.when(getOrder.sendRequest(), getRecvInfo.sendRequest(), getUserRoutes.sendRequest())
-          .done(function(data, idcard, routesList) {
+        var orderData;
+        can.when(getOrder.sendRequest(),getRecvInfo.sendRequest())
+          .done(function(data,idcard){
 
             that.options.orderId = data.orderId;
             that.options.recId = data.orderItem.rcvrId;
             that.options.gmtCreate = data.orderItem.gmtCreate;
 
-            //data.orderItem.orderStatus = "SUBMITED";
-            //data.orderItem.rcvrState = 0
             that.options.status = that.statsMap[data.orderItem.orderStatus];
             that.options.operationHTML = that.optionHTML[that.nextStepMap[data.orderItem.orderStatus]];
 
             that.options.needShowTips = false;
-
             if (data.orderItem.rcvrState == 0 || data.orderItem.rcvrState == 1 || data.orderItem.rcvrState == 3) {
               that.options.needShowTips = true;
               that.options.uploadIDCardTips = '该笔订单需要上传收货人身份信息，请<a href="javascript:void(0)" id="contactMe">联系客服</a>';
             }
 
-            //构建路由数据
-            that.buildUserRoutes(data, routesList);
-
             that.options.receiveInfo = data.orderItem.orderAddressItem;
             that.options.receiveInfo.certNo = idcard.credtNum;
-            that.options.productList = data.orderItem.orderGoodsItemList;
+
+            orderData = data ;
+            return getUserRoutes.sendRequest();
+          })
+          .then(function(routesList){
+
+            //构建路由数据
+            that.buildUserRoutes(orderData, routesList);
+
+            
+            that.options.productList = orderData.orderItem.orderGoodsItemList;
 
             _.each(that.options.productList, function(item) {
               item.totalPrice = item.price * item.quantity;
@@ -104,13 +109,13 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             });
 
             that.options.allTotalPrice = that.options.productList[0].totalPrice;
-            that.options.showShouldPayPrice = that.canShowShouldPayPrice(data);
+            that.options.showShouldPayPrice = that.canShowShouldPayPrice(orderData);
 
             //是否是宁波保税，是得话才展示税额
             that.options.showTax = that.options.productList[0].bonded;
             that.options.shouldPayPrice = that.options.allTotalPrice;
 
-            if (data.orderItem.orderStatus == 'SUBMITED') {
+            if (orderData.orderItem.orderStatus == 'SUBMITED') {
               that.options.showPayButton = true;
             }
 
@@ -124,11 +129,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             $('#buy').show();
             $('#userRoutes').hide();
             $('.loadingDIV').hide();
+            
           })
-          .fail(function(error) {
+          .fail(function(error){
             console.error(error);
             $('.loadingDIV').hide();
           })
+
+        
       },
 
       canShowShouldPayPrice: function(data) {
@@ -271,7 +279,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       optionHTML: {
         "CANCELORDER": '<a href="javascript:void(0)" id="cancelorder">取消订单</a>',
-        "RECEIVED": '<a href="#" class="btn btn-send received">确认签收</a>'
+        "RECEIVED": '<a href="#" class="btn btn-normal received">确认签收</a>'
       },
 
       statsMap: {
