@@ -44,7 +44,7 @@ define(
         if (!this.options.src) {
           alert("alipayurl error");
         }
-        var html = can.view('/templates/order/sf.b2c.mall.order.alipayframe.mustache'+'?v='+SFConfig.setting.ver, this.options);
+        var html = can.view('/templates/order/sf.b2c.mall.order.alipayframe.mustache', this.options);
         this.element.html(html);
       }
     });

@@ -45,7 +45,7 @@ define(
       },
 
       render: function() {
-        var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache'+'?v='+SFConfig.setting.ver);
+        var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache');
         this.element.html(html);
       },
 

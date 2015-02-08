@@ -27,7 +27,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
     },
 
     render: function(data) {
-      var html = can.view('templates/order/sf.b2c.mall.order.selectrecaddr.mustache'+'?v='+SFConfig.setting.ver, data);
+      var html = can.view('templates/order/sf.b2c.mall.order.selectrecaddr.mustache', data);
       this.element.html(html);
     },
 

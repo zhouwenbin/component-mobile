@@ -26,7 +26,7 @@ define(
 
       render: function() {
         this.setup($('body'));
-        this.options.html = can.view('/templates/widget/sf.b2c.mall.widget.message.mustache'+'?v='+SFConfig.setting.ver, this.data);
+        this.options.html = can.view('/templates/widget/sf.b2c.mall.widget.message.mustache', this.data);
         $('body').append(this.options.html);
       },
 

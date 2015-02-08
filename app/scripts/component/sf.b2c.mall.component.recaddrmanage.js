@@ -43,7 +43,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
             addressList: that.result || []
           });
 
-          var html = can.view('templates/component/sf.b2c.mall.component.recaddrmanage.mustache'+'?v='+SFConfig.setting.ver, that.adapter4List.addrs);
+          var html = can.view('templates/component/sf.b2c.mall.component.recaddrmanage.mustache', that.adapter4List.addrs);
           that.element.html(html);
 
           //绑定事件

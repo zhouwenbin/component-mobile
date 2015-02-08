@@ -81,7 +81,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
               that.options.notCompletedOrderListIsNotEmpty = (that.options.notCompletedOrderList.length > 0);
               that.options.completedOrderListIsNotEmpty = (that.options.completedOrderList.length > 0);
 
-              var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache'+'?v='+SFConfig.setting.ver, that.options);
+              var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
               that.element.html(html);
 
               // $('.gotoPay').tap(function() {
@@ -96,7 +96,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
               that.options.notCompletedOrderListIsNotEmpty = false;
               that.options.completedOrderListIsNotEmpty = false;
 
-              var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache'+'?v='+SFConfig.setting.ver, that.options);
+              var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
               that.element.html(html);
             }
 

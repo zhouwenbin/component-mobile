@@ -39,7 +39,7 @@ define('sf.b2c.mall.component.addreditor', [
      */
     render: function(data, tag, element) {
       this.setup(element);
-      var html = can.view('templates/component/sf.b2c.mall.component.addreditor.mustache'+'?v='+SFConfig.setting.ver, data);
+      var html = can.view('templates/component/sf.b2c.mall.component.addreditor.mustache', data);
       element.html(html);
 
       this.supplement(tag);

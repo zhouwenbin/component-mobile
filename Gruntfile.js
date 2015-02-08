@@ -401,6 +401,8 @@ module.exports = function (grunt) {
           process: function (content, srcpath) {
             if (config.version) {
               return content.replace(/img\/recommend.jpg/g, OSS_HOST+'/img/recommend.jpg')
+            }else{
+              return content;
             }
           }
         }

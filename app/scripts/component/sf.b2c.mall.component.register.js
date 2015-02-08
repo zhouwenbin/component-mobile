@@ -116,7 +116,7 @@ define('sf.b2c.mall.component.register', [
 
       renderMap: {
         'fillinfo': function(data) {
-          var html = can.view('templates/component/sf.b2c.mall.component.register.fillinfo.mustache'+'?v='+SFBizConf.setting.ver, data, this.helpers);
+          var html = can.view('templates/component/sf.b2c.mall.component.register.fillinfo.mustache', data, this.helpers);
           this.element.html(html)
           console.log(this.element.find('.register'))
           this.element.find('.register').show('slow');
@@ -133,7 +133,7 @@ define('sf.b2c.mall.component.register', [
 
         'success': function(data) {
           var that = this;
-          var html = can.view('templates/component/sf.b2c.mall.component.register.success.mustache'+'?v='+SFBizConf.setting.ver, data, this.helpers);
+          var html = can.view('templates/component/sf.b2c.mall.component.register.success.mustache', data, this.helpers);
           this.element.html(html);
           this.element.find('.register').fadeIn('slow', function() {
             that.timmer.call(that)

@@ -17,7 +17,7 @@ define(
 
       render: function() {
         this.setup($('body'));
-        var html = can.view('templates/widget/sf.b2c.mall.widget.loading.mustache'+'?v='+SFConfig.setting.ver, {});
+        var html = can.view('templates/widget/sf.b2c.mall.widget.loading.mustache', {});
         $('body').append(html);
       },
 
