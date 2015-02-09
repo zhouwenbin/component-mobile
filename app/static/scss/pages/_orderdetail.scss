@@ -51,6 +51,7 @@
   border: 2px solid #dc3334;
   position: absolute;
   margin-left: -25px;
+  margin-top: 3px;
 
 }
 .orderdetail-r3 a:after{
@@ -60,10 +61,14 @@
   position: absolute;
   background: #eee;
   left: 22px;
-  top: 32px;
+  top: 35px;
 }
 .orderdetail-r3 .icon{
   right: 14px;
+}
+.orderdetail-r3 time{
+  display: block;
+  margin-bottom: 5px;
 }
 .orderdetail-r4{
   font-size: 14px;
