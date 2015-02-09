@@ -147,9 +147,7 @@ define('sf.b2c.mall.component.register', [
         //注册成功后转跳到对应页面
         var params = can.deparam(window.location.search.substr(1));
         var gotoUrl = params.from;
-        if (gotoUrl) {
-          window.location.href = gotoUrl || "index.html";
-        }
+        window.location.href = gotoUrl || "index.html";
       },
 
       checkMobile: function(mobile) {
