@@ -6,9 +6,10 @@ define(
     'zepto',
     'store',
     'sf.b2c.mall.framework.comm',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config'
   ],
-  function(can, $, store, SFFrameworkComm, SFWeixin) {
+  function(can, $, store, SFFrameworkComm, SFWeixin, SFConfig) {
 
     SFFrameworkComm.register(3);
 
