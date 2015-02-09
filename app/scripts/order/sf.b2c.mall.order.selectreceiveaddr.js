@@ -34,6 +34,8 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
     paint: function(data) {
 
       //针对单页应用进行控制
+      $(".order").show();
+      $(".nav-c1").show();
       $(".sf-b2c-mall-order-selectReceiveAddress").show();
       $(".sf-b2c-mall-order-itemInfo").show();
       $(".sf-b2c-mall-order-addAdrArea").hide();
