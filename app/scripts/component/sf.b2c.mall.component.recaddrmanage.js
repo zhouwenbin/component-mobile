@@ -84,10 +84,9 @@ define('sf.b2c.mall.component.recaddrmanage', [
         "recId": address.recId
       });
 
-      can.when(delRecAddress.sendRequest(),
-        delRecvInfo.sendRequest())
-        .done(function(data, result) {
-          if (data.value || result.value) {
+      can.when(delRecAddress.sendRequest())
+        .done(function(data) {
+          if (data.value) {
             that.render();
           }
         })
