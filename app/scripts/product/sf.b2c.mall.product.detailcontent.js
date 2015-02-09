@@ -339,8 +339,17 @@ define('sf.b2c.mall.product.detailcontent', [
           return false;
         }
 
-        // 校验个数是否超过限购
+
+
         var amount = parseInt(input.attr("buyNum"));
+
+        //检验库存
+        if (priceInfo.currentStock >=0 && amount > priceInfo.currentStock) {
+          this.options.detailContentInfo.input.attr("error", '商品库存' + priceInfo.currentStock + '件！');
+          return false;
+        }
+
+        // 校验个数是否超过限购
         if (priceInfo.limitBuy > 0 && amount > priceInfo.limitBuy) {
           this.options.detailContentInfo.input.attr("error", '商品限购' + priceInfo.limitBuy + '件！');
           return false;
