@@ -36,6 +36,9 @@ define('sf.util',
       Firefox: function () {
           return (navigator.userAgent.indexOf("Firefox") > -1)
       },
+      WeChat: function() {
+        return navigator.userAgent.match(/MicroMessenger/i);
+      },
       any: function() {
           return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows()) || this.Firefox();
       }

@@ -32,5 +32,7 @@
     <div class="login-r1 clearfix">
       <a href="/register.html">新用户注册</a>
     </div>
-    <div class="login-r2"><a href="javascript:void(0)" class="weixinlogin"><span class="icon icon18"></span><br>微信登录</a></div>
+    {{#SFFn.isMobile.WeChat}}
+        <div class="login-r2" id="weChatLoginBox"><a href="javascript:void(0)" class="weixinlogin"><span class="icon icon18"></span><br>微信登录</a></div>
+    {{/SFFn.isMobile.WeChat}}
   </section>
