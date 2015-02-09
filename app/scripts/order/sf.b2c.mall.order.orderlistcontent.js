@@ -202,7 +202,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
        * [optionHTML 操作对应的html]
        */
       optionHTML: {
-        "NEEDPAY": '<a href="#" class="btn btn-normal active gotoPay">去支付</a>',
+        "NEEDPAY": '<a href="#" class="btn btn-normal active gotoPay">立即支付</a>',
         "INFO": '<a href="#" class="btn btn-normal viewOrder">查看订单</a>',
         "CANCEL": '<a href="#" class="link btn-normal cancelOrder">取消订单</a>',
         "RECEIVED": '<a href="#" class="btn btn-normal received">确认签收</a>'
