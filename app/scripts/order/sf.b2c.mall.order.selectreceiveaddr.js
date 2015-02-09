@@ -9,8 +9,9 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
   'sf.b2c.mall.adapter.address.list',
   'sf.b2c.mall.component.addreditor',
   'sf.b2c.mall.api.user.webLogin',
-  'md5'
-], function(can, $, Fastclick, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5) {
+  'md5',
+  'sf.b2c.mall.business.config'
+], function(can, $, Fastclick, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5, SFConfig) {
   Fastclick.attach(document.body);
   return can.Control.extend({
 
@@ -146,7 +147,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
      * @return {[type]}
      */
     addRecaddrClick: function(element) {
-      $(".sf-b2c-mall-order-selectReceiveAddress").hide();
+      $(".order").hide();
       $(".sf-b2c-mall-order-itemInfo").hide();
       $(".sf-b2c-mall-order-addAdrArea").show();
       this.component.addressEditor.show("create", null, $(".sf-b2c-mall-order-addAdrArea"));

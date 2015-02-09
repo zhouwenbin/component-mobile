@@ -93,7 +93,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             //构建路由数据
             that.buildUserRoutes(orderData, routesList);
 
-            
+
             that.options.productList = orderData.orderItem.orderGoodsItemList;
 
             _.each(that.options.productList, function(item) {
@@ -129,14 +129,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             $('#buy').show();
             $('#userRoutes').hide();
             $('.loadingDIV').hide();
-            
+
           })
           .fail(function(error){
             console.error(error);
             $('.loadingDIV').hide();
           })
 
-        
+
       },
 
       canShowShouldPayPrice: function(data) {

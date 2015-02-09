@@ -1,11 +1,11 @@
-define([], function () {
+define(['zepto'], function ($) {
   'use strict';
 
   var MD5_KEY = 'www.sfht.com';
 
   var NONE_APPEND_WORD = 'sfhaitao.xyz!';
   var M_HOST = 'http://m.sfht.com/';
-  var VER = '{version}'
+  var VER = $('#version').attr('data-version') || Date.now();
 
   var DEFAULT_REQUEST_HEADER = {
     _aid: 3,
@@ -37,6 +37,7 @@ define([], function () {
 
   return {
     setting:{
+      'ver': VER,
       'none_append_word': NONE_APPEND_WORD,
       'default_header': DEFAULT_REQUEST_HEADER,
       'md5_key': MD5_KEY,

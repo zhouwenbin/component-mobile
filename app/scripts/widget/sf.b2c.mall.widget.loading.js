@@ -5,10 +5,11 @@ define(
 
   [
     'zepto',
-    'can'
+    'can',
+    'sf.b2c.mall.business.config'
   ],
 
-  function($, can) {
+  function($, can, SFConfig) {
     return can.Control.extend({
 
       init: function() {

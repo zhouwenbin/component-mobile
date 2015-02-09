@@ -10,10 +10,11 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.adapter.address.list',
-  'sf.b2c.mall.widget.message'
+  'sf.b2c.mall.widget.message',
+  'sf.b2c.mall.business.config'
 
 
-], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage) {
+], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage, SFConfig) {
 
   return can.Control.extend({
 

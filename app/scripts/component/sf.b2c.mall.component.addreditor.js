@@ -7,9 +7,10 @@ define('sf.b2c.mall.component.addreditor', [
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.api.user.createRecAddress',
   'sf.b2c.mall.api.user.createReceiverInfo',
-  'sf.b2c.mall.api.user.updateRecAddress'
+  'sf.b2c.mall.api.user.updateRecAddress',
+  'sf.b2c.mall.business.config'
 
-], function(can, $, Fastclick, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress) {
+], function(can, $, Fastclick, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig) {
   Fastclick.attach(document.body);
   return can.Control.extend({
 
