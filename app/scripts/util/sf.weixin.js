@@ -51,7 +51,7 @@ define('sf.weixin', [
           "nonceStr": noncestr,
           "signature": data.value,
           "jsApiList": [
-            'onMenuShareTimeline'
+            'onMenuShareTimeline','onMenuShareAppMessage'
           ]
         });
       })

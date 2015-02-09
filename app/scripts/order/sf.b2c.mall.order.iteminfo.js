@@ -59,7 +59,7 @@ define('sf.b2c.mall.order.iteminfo', [
           if(typeof iteminfo.specs != "undefined"){
             var result = new Array();
             _.each(iteminfo.specs,function(item){
-              result.push(item.specName + ":" +item.spec.specValue);
+              result.push(item.specName + "：" +item.spec.specValue);
             });
             itemObj.spec ="<li>" + result.join('</li><li>') + "</li>";
           }
