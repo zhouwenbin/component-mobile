@@ -61,6 +61,7 @@ define('sf.b2c.mall.component.addreditor', [
 
       $('#backToOrder').click(function() {
         $(".order").show();
+        $(".nav-c1").show();
         $(".sf-b2c-mall-order-selectReceiveAddress").show();
         $(".sf-b2c-mall-order-itemInfo").show();
         $(".sf-b2c-mall-order-addAdrArea").hide();
