@@ -278,7 +278,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       },
 
       optionHTML: {
-        "CANCELORDER": '<a href="javascript:void(0)" id="cancelorder">取消订单</a>',
+        "CANCELORDER": '<a href="javascript:void(0)" class="btn btn-normal" id="cancelorder">取消订单</a>',
         "RECEIVED": '<a href="#" class="btn btn-normal received">确认签收</a>'
       },
 
