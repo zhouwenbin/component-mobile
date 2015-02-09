@@ -12,7 +12,10 @@
 }
 .btn:active{
    -webkit-filter:brightness(0.9);
-  box-shadow:inset 0 3px 5px rgba(0,0,0,.125);
+}
+.btn-disable:active,
+.btn.disable:active{
+  -webkit-filter: none;
 }
 
 
@@ -45,12 +48,14 @@
 .btn.warnning{
   background: #1376ce;
   color: #fff;
+  border: 1px solid #1376ce;
 }
 
 .btn-success,
 .btn.success{
   background: #67b222;
   color: #fff;
+  border: 1px solid #67b222;
 }
 .btn-radius{
   border-radius: 22px;
