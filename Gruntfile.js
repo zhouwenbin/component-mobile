@@ -440,7 +440,7 @@ module.exports = function (grunt) {
             expand: true,
             cwd: '<%=config.dist%>',
             src: ['templates/**', '*.html', 'json/**'],
-            dest: 'statics.<%=config.version%>'
+            dest: 'statics.h5.<%=config.version%>'
           }
         ]
       },
