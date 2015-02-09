@@ -22,7 +22,7 @@ define('sf.b2c.mall.component.register', [
 
     var DEFAULT_DOWN_SMS_ERROR_MAP = {
       '1000010': '未找到手机用户',
-      '1000020': '手机号已存在，<a href="'+SFBizConf.setting.link.login+'">立即登录</a>',
+      '1000020': '手机号已存在，<a href="' + SFBizConf.setting.link.login + '">立即登录</a>',
       '1000070': '参数错误',
       '1000230': '手机号错误，请输入正确的手机号',
       '1000270': '短信请求太过频繁,请稍后重试',
@@ -30,7 +30,7 @@ define('sf.b2c.mall.component.register', [
     }
 
     var DEFAULT_MOBILE_ACTIVATE_ERROR_MAP = {
-      '1000020': '手机号已存在，<a href="'+SFBizConf.setting.link.login+'">立即登录</a>',
+      '1000020': '手机号已存在，<a href="' + SFBizConf.setting.link.login + '">立即登录</a>',
       '1000230': '手机号错误，请输入正确的手机号',
       '1000240': '手机验证码错误',
       '1000250': '验证码输入有误，请重新输入'
@@ -120,24 +120,6 @@ define('sf.b2c.mall.component.register', [
           this.element.html(html)
           console.log(this.element.find('.register'))
           this.element.find('.register').show('slow');
-          // $("#changePwdType").tap(function(){
-          //   $(this).toggleClass("active");
-
-          //   if ($(this).hasClass('active')){
-          //     $("#input-password")[0].type = 'text';
-          //   } else {
-          //     $("#input-password")[0].type = 'password';
-          //   }
-          // })
-        },
-
-        'success': function(data) {
-          var that = this;
-          var html = can.view('templates/component/sf.b2c.mall.component.register.success.mustache', data, this.helpers);
-          this.element.html(html);
-          this.element.find('.register').fadeIn('slow', function() {
-            that.timmer.call(that)
-          });
         }
       },
 
@@ -152,30 +134,22 @@ define('sf.b2c.mall.component.register', [
         }
       },
 
-      timmer: function() {
+      gotoFromPage: function(){
         var that = this;
-        setTimeout(function() {
-          var timmer = that.data.attr('timmer');
-          if (timmer > 1) {
-            that.data.attr('timmer', timmer - 1);
-            that.timmer.call(that);
-          } else {
-            var csrfToken = can.route.attr('csrfToken');
-            store.set('csrfToken', csrfToken);
+        var csrfToken = can.route.attr('csrfToken');
+        store.set('csrfToken', csrfToken);
 
-            // @todo调用onRegistered 回调
-            if (_.isFunction(that.options.onRegistered)) {
-              that.options.onRegistered();
-            }
+        // @todo调用onRegistered 回调
+        if (_.isFunction(that.options.onRegistered)) {
+          that.options.onRegistered();
+        }
 
-            //注册成功后转跳到对应页面
-            var params = can.deparam(window.location.search.substr(1));
-            var gotoUrl = params.from;
-            if (gotoUrl) {
-              window.location.href = gotoUrl || "index.html";
-            }
-          }
-        }, 1000);
+        //注册成功后转跳到对应页面
+        var params = can.deparam(window.location.search.substr(1));
+        var gotoUrl = params.from;
+        if (gotoUrl) {
+          window.location.href = gotoUrl || "index.html";
+        }
       },
 
       checkMobile: function(mobile) {
@@ -229,10 +203,10 @@ define('sf.b2c.mall.component.register', [
         }, 1000);
       },
 
-      '#changePwdType click': function ($element, event) {
+      '#changePwdType click': function($element, event) {
         $element.toggleClass("active");
 
-        if ($element.hasClass('active')){
+        if ($element.hasClass('active')) {
           $("#input-password")[0].type = 'text';
         } else {
           $("#input-password")[0].type = 'password';
@@ -331,10 +305,8 @@ define('sf.b2c.mall.component.register', [
               if (data.csrfToken) {
                 store.set('type', 'MOBILE');
                 store.set('nickname', mobile);
-                can.route.attr({
-                  'tag': 'success',
-                  'csrfToken': data.csrfToken
-                });
+
+                that.gotoFromPage();
               }
             })
             .fail(function(errorCode) {
