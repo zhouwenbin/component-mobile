@@ -76,9 +76,9 @@ define(
       },
 
       '.contactMe click': function(element, event) {
-        can.$('.dialog-phone').show();
+        can.$('.dialog').show();
         can.$('#closeContactMe').click(function() {
-          can.$('.dialog-phone').hide();
+          can.$('.dialog').hide();
         })
       },
 
