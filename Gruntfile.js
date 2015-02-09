@@ -232,9 +232,9 @@ module.exports = function (grunt) {
           js: function (block) {
             if (config.version) {
               if (block.dest[0] != '/') {
-                return '<script src="'+ OSS_HOST + '/' + block.dest +'"></script>';
+                return '<script src="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'"></script>';
               }else{
-                return '<script src="'+ OSS_HOST + block.dest +'"></script>';
+                return '<script src="'+ OSS_HOST + config.version + '/' + block.dest +'"></script>';
               }
             }else{
               if (block.dest[0] != '/') {
@@ -247,9 +247,9 @@ module.exports = function (grunt) {
           css: function (block) {
             if (config.version) {
               if (block.dest[0] !='/') {
-                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + block.dest +'">';
+                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'">';
               }else{
-                return '<link rel="stylesheet" href="'+ OSS_HOST + block.dest +'">';
+                return '<link rel="stylesheet" href="'+ OSS_HOST + config.version + '/' + block.dest +'">';
               }
             }else{
               if (block.dest[0] != '/') {
