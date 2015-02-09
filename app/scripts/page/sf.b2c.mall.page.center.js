@@ -53,6 +53,11 @@ define(
               that.options.welcomeName = store.get('nickname');
             }
 
+            if (typeof data.nick != '海淘用户') {
+              that.options.welcomeName = data.nick;
+            }
+
+
             var html = can.view('/templates/center/sf.b2c.mall.center.content.mustache', that.options);
             that.element.html(html);
 
