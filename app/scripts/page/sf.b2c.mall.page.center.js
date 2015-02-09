@@ -68,7 +68,7 @@ define(
       },
 
       maskMobile: function(str) {
-        return str.substring(0, 3) + '****' + str.substring(7, 10)
+        return str.substring(0, 3) + '****' + str.substring(7, 11)
       },
 
       maskMail: function(str) {
