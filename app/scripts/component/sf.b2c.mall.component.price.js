@@ -33,7 +33,7 @@ define('sf.b2c.mall.component.price', [
                     can.when(this.requestItemList(itemIds))
                         .done(function (data) {
                             _.each(data.value, function (value, key, list) {
-                                var $el = that.element.find('[data-itemId=' + value.itemId + ']');
+                                var $el = that.element.find('[data-itemId="' + value.itemId + '"]');
                                 var sellingPrice = value.sellingPrice / 100;
                                 var originPrice = value.originPrice / 100;
                                 var discount = (value.sellingPrice * 10 / value.originPrice).toFixed(1);
