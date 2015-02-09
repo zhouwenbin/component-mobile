@@ -1,30 +1,27 @@
 /*alert*/
 .alert{
 	padding: 14px 0 14px 17px;
+	color: #fff;
 }
 .alert-warning {
 	@extend .alert;
-	color: #666;	
-	background: #fffddd;
+	background: #1376ce;
 	margin-bottom:5px;
 }
 .alert-error{
 	@extend .alert;
-	color: #fff;
-	background: #eb6877;
+	background: #dc3334;
 }
 .alert-success{
 	@extend .alert;
-	color: #fff;
 	background: #67b222;
 }
 .alert-disabled{
 	@extend .alert;
-	color: #fff;
 	background:#ccc;
 }
 .alert-info{
 	@extend .alert;
-	color: #fff;
-	background: #a1d0ed
+	background: #fffddd;
+	color:#666;
 }
