@@ -19,9 +19,10 @@
   width: 40px;
   height: 40px;
   padding-top: 5px;
+  margin-top: -5px;
 }
 .nav-c1:nth-child(1){
-  margin-top: -5px;
+  margin-top: -10px;
   -webkit-transform: translate(0,-200%);
 }
 .nav-c1 a{
@@ -35,7 +36,6 @@
   
 }
 .nav .btn{
-  border-radius: 0;
   height: 44px;
   line-height: 44px;
   font-size: 18px;

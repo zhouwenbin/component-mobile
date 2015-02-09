@@ -10,9 +10,15 @@
 .list li{
   float: left;
   width: 48.8%;
-  border: 1px solid #ccc;
+  border-width: 1px 0 1px 0;
+  border-image:url(../img/border.png) 2 0 round;
   margin-bottom: 7px;
   background: #fff;
+}
+.list li a{
+  display: block;
+  border-width: 0 1px 0 1px;
+  border-image:url(../img/border.png) 0 2 round;
 }
 .list li:nth-child(even){
   float: right;
