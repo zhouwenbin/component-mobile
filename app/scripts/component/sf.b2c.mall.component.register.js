@@ -58,11 +58,6 @@ define('sf.b2c.mall.component.register', [
           } else {
             return options.inverse(options.contexts || this);
           }
-        },
-        isWeChat: function(options) {
-          if (SFFn.isMobile.WeChat()) {
-            return options.fn(options.contexts || this);
-          }
         }
       },
 
