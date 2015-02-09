@@ -90,7 +90,7 @@ define('sf.weixin', [
         });
 
         jweixin.showMenuItems({
-          menuList: ['menuItem:share:timeline']
+          menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage']
         });
       })
     },
@@ -130,7 +130,7 @@ define('sf.weixin', [
         });
 
         jweixin.showMenuItems({
-          menuList: ['menuItem:share:timeline']
+          menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage']
         });
       })
     }
