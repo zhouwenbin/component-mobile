@@ -227,9 +227,9 @@ define('sf.b2c.mall.order.orderdetailcontent', [
        * @return {[type]} [description]
        */
       "#contactMe click": function() {
-        $('.dialog-phone').show();
+        $('.dialog').show();
         $('#closeContactMe').click(function() {
-          $('.dialog-phone').hide();
+          $('.dialog').hide();
         })
       },
 
