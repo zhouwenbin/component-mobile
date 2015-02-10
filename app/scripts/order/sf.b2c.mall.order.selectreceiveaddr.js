@@ -101,12 +101,17 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
       var result = new Array();
 
       //取得默认的收货人和收货地址
+      var defaultRecAddrID = null;
+      var defaultRecID = null;
       _.each(recAddrs.items, function(recAddrItem) {
         _.each(recPersons.items, function(presonItem) {
           if (recAddrItem.isDefault != 0 && presonItem.isDefault != 0 && recAddrItem.recId != 0 && presonItem.recId != 0) {
             recAddrItem.recName = presonItem.recName;
             recAddrItem.credtNum = presonItem.credtNum;
             result.push(recAddrItem);
+
+            defaultRecAddrID = recAddrItem.addrId;
+            defaultRecID = recAddrItem.recId;
           }
         })
       })
@@ -114,10 +119,12 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
       //取得关联的收货人和收货地址（为啥要遍历两次：因为要确保默认收货人和收货地址放在第一条）
       _.each(recAddrs.items, function(recAddrItem) {
         _.each(recPersons.items, function(presonItem) {
-          if (recAddrItem.recId == presonItem.recId && recAddrItem.isDefault == 0 && presonItem.isDefault == 0 && recAddrItem.recId != 0 && presonItem.recId != 0) {
-            recAddrItem.recName = presonItem.recName;
-            recAddrItem.credtNum = presonItem.credtNum;
-            result.push(recAddrItem);
+          if (recAddrItem.recId == presonItem.recId && (recAddrItem.isDefault == 0 || presonItem.isDefault == 0) && recAddrItem.recId != 0 && presonItem.recId != 0) {
+            if (recAddrItem.addrId != defaultRecAddrID && recAddrItem.recId != defaultRecID) {
+              recAddrItem.recName = presonItem.recName;
+              recAddrItem.credtNum = presonItem.credtNum;
+              result.push(recAddrItem);
+            }
           }
         })
       })

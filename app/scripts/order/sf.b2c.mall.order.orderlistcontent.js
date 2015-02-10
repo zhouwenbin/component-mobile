@@ -17,6 +17,16 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
     return can.Control.extend({
 
+      helpers: {
+        'sf-showOperationArea': function(optionHTML, options) {debugger;
+          if (optionHTML().length > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        }
+      },
+
       /**
        * 初始化
        * @param  {DOM} element 容器element
@@ -72,6 +82,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
                   //   order.spec = order.orderGoodsItemList[0].spec.split(',').join("&nbsp;/&nbsp;");
                   // }
                   order.optionHMTL = that.getOptionHTML(that.optionMap[order.orderStatus]);
+                  order.showOperationArea = (order.optionHMTL.length > 0 ? true : false);
+
                   order.orderStatus = that.statsMap[order.orderStatus];
                 }
               })
@@ -81,7 +93,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
               that.options.notCompletedOrderListIsNotEmpty = (that.options.notCompletedOrderList.length > 0);
               that.options.completedOrderListIsNotEmpty = (that.options.completedOrderList.length > 0);
 
-              var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
+              var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options, that.helpers);
               that.element.html(html);
 
               // $('.gotoPay').tap(function() {

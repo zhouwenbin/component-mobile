@@ -119,7 +119,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
               that.options.showPayButton = true;
             }
 
-            that.options.firstRoute = that.options.userRoutes[that.options.userRoutes.length - 1]
+            that.options.firstRoute = that.options.userRoutes[0];
 
             var html = can.view('templates/order/sf.b2c.mall.order.orderdetail.mustache', that.options);
             that.element.html(html);
@@ -344,9 +344,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       cancelOrder: function(element) {
         var that = this;
-        var orderid = element.parent('div#operationarea').eq(0).attr('data-orderid');
+        var params = can.deparam(window.location.search.substr(1));
+
         var cancelOrder = new SFCancelOrder({
-          "orderId": orderid
+          "orderId": params.orderid
         });
 
         cancelOrder

@@ -16,9 +16,10 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.message',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.util'
   ],
-  function(can, $, Swipe, Fastclick, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin) {
+  function(can, $, Swipe, Fastclick, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
     Fastclick.attach(document.body);
     return can.Control.extend({
 
@@ -167,7 +168,9 @@ define('sf.b2c.mall.product.detailcontent', [
             $('.loadingDIV').hide();
 
             $(document).ready(function() {
-              that.fixedTab();
+              if (SFFn.isMobile.Android()) {
+                that.fixedTab();
+              }
             });
 
           })
@@ -201,18 +204,20 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]} [description]
        */
       fixedTab: function() {
-        var top = $('#tabHeader').offset().top;
-        $(window).on('touchmove scroll', function() {
-          //$('#detailTab')[0].innerHTML = ($(window).scrollTop() + ":" + top);
-          if ($(window).scrollTop() > top) {
-            $('#tabHeader').addClass('fixed');
-            //$('#tabHeader').css('position', 'fixed').css('top', 0).css('width', '100%');
+        var top = 0;
+        $(window).on('touchmove scroll', _.throttle(function(event) {
+          if ($('#tabHeader').hasClass('fixed')) {
+            if ($(window).scrollTop() <= top) {
+              $("#tabHeader").removeClass('fixed');
+            }
+          } else {
+            var tmpTop = $('#tabHeader').offset().top;
+            if ($(window).scrollTop() >= tmpTop) {
+              top = tmpTop;
+              $('#tabHeader').addClass('fixed');
+            }
           }
-          if ($(window).scrollTop() < top) {
-            //$("#tabHeader").removeAttr("style");
-            $("#tabHeader").removeClass('fixed');
-          }
-        })
+        }, 100))
       },
 
       /**
@@ -484,6 +489,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
         var type = "";
         if (element.hasClass("disable") || element.hasClass("active")) {
+          $('.loadingDIV').hide();
           return false;
         }
 
