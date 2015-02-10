@@ -16,9 +16,10 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.message',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.util'
   ],
-  function(can, $, Swipe, Fastclick, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin) {
+  function(can, $, Swipe, Fastclick, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
     Fastclick.attach(document.body);
     return can.Control.extend({
 
@@ -167,7 +168,9 @@ define('sf.b2c.mall.product.detailcontent', [
             $('.loadingDIV').hide();
 
             $(document).ready(function() {
-              that.fixedTab();
+              if (SFFn.isMobile.Android()) {
+                that.fixedTab();
+              }
             });
 
           })
@@ -201,16 +204,18 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]} [description]
        */
       fixedTab: function() {
-        var top = $('#tabHeader').offset().top;
-        $(window).on('touchmove scroll', _.throttle(function() {
-          //$('#detailTab')[0].innerHTML = ($(window).scrollTop() + ":" + top);
-          if ($(window).scrollTop() > top) {
-            $('#tabHeader').addClass('fixed');
-            //$('#tabHeader').css('position', 'fixed').css('top', 0).css('width', '100%');
-          }
-          if ($(window).scrollTop() < top) {
-            //$("#tabHeader").removeAttr("style");
-            $("#tabHeader").removeClass('fixed');
+        var top = 0;
+        $(window).on('touchmove scroll', _.throttle(function(event) {
+          if ($('#tabHeader').hasClass('fixed')) {
+            if ($(window).scrollTop() <= top) {
+              $("#tabHeader").removeClass('fixed');
+            }
+          } else {
+            var tmpTop = $('#tabHeader').offset().top;
+            if ($(window).scrollTop() >= tmpTop) {
+              top = tmpTop;
+              $('#tabHeader').addClass('fixed');
+            }
           }
         }, 100))
       },
@@ -266,11 +271,11 @@ define('sf.b2c.mall.product.detailcontent', [
       addCDN4img: function(detail) {
         // var detail = "<img src='2.jpg'><img src='1.bmp'><img src='2.jpg'><img src='1.BMP'>";
         var description = this.options.detailContentInfo.itemInfo.basicInfo.description;
-        description = String(description).replace(/.jpg/g, '.jpg@375h_375w_80Q_1x.jpg')
-          .replace(/.bmp/gi, '.bmp@375h_375w_80Q_1x.bmp')
-          .replace(/.jpeg/gi, '.jpeg@375h_375w_80Q_1x.jpeg')
-          .replace(/.gif/gi, '.gif@375h_375w_80Q_1x.gif')
-          .replace(/.png/gi, '.png@375h_375w_80Q_1x.png');
+        description = String(description).replace(/.jpg/g, '.jpg@640w_80Q_1x.jpg')
+          .replace(/.bmp/gi, '.bmp@640w_80Q_1x.bmp')
+          .replace(/.jpeg/gi, '.jpeg@640w_80Q_1x.jpeg')
+          .replace(/.gif/gi, '.gif@640w_80Q_1x.gif')
+          .replace(/.png/gi, '.png@640w_80Q_1x.png');
 
         this.options.detailContentInfo.itemInfo.basicInfo.attr("description", description);
       },
@@ -480,11 +485,11 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]}         [description]
        */
       specbuttonsClick: function(element) {
-        $('.loadingDIV').show();
+        // $('.loadingDIV').show();
 
         var type = "";
         if (element.hasClass("disable") || element.hasClass("active")) {
-          $('.loadingDIV').hide();
+          // $('.loadingDIV').hide();
           return false;
         }
 
@@ -566,10 +571,10 @@ define('sf.b2c.mall.product.detailcontent', [
             that.options.detailContentInfo.itemInfo.attr("basicInfo", new can.Map(skuInfoData));
             that.options.detailContentInfo.attr("priceInfo", priceData);
             that.adapter.reSetSelectedAndCanSelectedSpec(newItemid, priceData, that.detailUrl, that.options.detailContentInfo, gotoItemSpec);
-            $('.loadingDIV').hide();
+            // $('.loadingDIV').hide();
           })
           .fail(function(error){
-            $('.loadingDIV').hide();
+            // $('.loadingDIV').hide();
           })
       },
 

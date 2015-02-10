@@ -2,11 +2,11 @@
     <ol>
       <li>
         <input type="text" class="input" id="user-name" placeholder="手机号／邮箱" can-value="username"/>
-        <span class="label label-error" id="username-error-tips" style="display:none"></span>
+        <span class="text-error" id="username-error-tips" style="display:none"></span>
       </li>
       <li>
         <input type="password" id="user-pwd" class="input" placeholder="密码" can-value="password"/>
-        <span class="label label-error" id="pwd-error-tips"  style="display:none"></span>
+        <span class="text-error" id="pwd-error-tips"  style="display:none"></span>
       </li>
       {{#isNeedVerifiedCode}}
       <li class="login-r3">
@@ -23,7 +23,7 @@
 
         </div>
 
-        <span class="label label-error" id="code-error-tips"  style="display:none"></span>
+        <span class="text-error" id="code-error-tips"  style="display:none"></span>
       </li>
       {{/isNeedVerifiedCode}}
 
