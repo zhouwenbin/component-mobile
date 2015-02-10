@@ -10,8 +10,9 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
   'sf.b2c.mall.component.addreditor',
   'sf.b2c.mall.api.user.webLogin',
   'md5',
-  'sf.b2c.mall.business.config'
-], function(can, $, Fastclick, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5, SFConfig) {
+  'sf.b2c.mall.business.config',
+  'sf.b2c.mall.widget.message'
+], function(can, $, Fastclick, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5, SFConfig,SFMessage) {
   Fastclick.attach(document.body);
   return can.Control.extend({
 
@@ -54,7 +55,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           if (that.result.length > 0) {
             that.result[0].active = "active";
           }
-
+          
           //获得地址列表
           that.adapter4List.addrs = new AddressAdapter({
             addressList: that.result.slice(0, 1) || []
@@ -73,7 +74,15 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
 
           //绑定事件
           $('.addrecaddr').click(function() {
-            that.addRecaddrClick($(this));
+            if (that.result.length >= 20) {
+              new SFMessage(null, {
+                'tip': '收货地址数量已达上限20条',
+                'type': 'error'
+              });
+            }else{
+              that.addRecaddrClick($(this));
+            }
+            
           })
 
           $('li.box-address').click(function() {

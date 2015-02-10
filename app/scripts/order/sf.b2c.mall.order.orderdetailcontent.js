@@ -86,6 +86,9 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.receiveInfo.certNo = idcard.credtNum;
 
             orderData = data;
+            // @todo 年后做渲染物流模块组件
+            var html = can.view('templates/order/sf.b2c.mall.order.orderdetail.mustache', that.options);
+            that.element.html(html);
           })
           .then(function() {
             return getUserRoutes.sendRequest();
@@ -332,14 +335,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       },
 
       "#cancelorder click": function(element, event) {
+        event && event.preventDefault();
         var that = this;
-
         var message = new SFMessage(null, {
           'tip': '确认要取消该订单？',
           'type': 'confirm',
           'okFunction': _.bind(that.cancelOrder, that, element)
         });
-
+        that.render();
         return false;
       },
 
