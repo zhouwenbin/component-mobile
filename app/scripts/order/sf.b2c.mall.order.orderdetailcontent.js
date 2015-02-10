@@ -66,8 +66,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
         this.options.userRoutes = new Array();
         var orderData;
-        can.when(getOrder.sendRequest(),getRecvInfo.sendRequest())
-          .done(function(data,idcard){
+        can.when(getOrder.sendRequest(), getRecvInfo.sendRequest())
+          .done(function(data, idcard) {
 
             that.options.orderId = data.orderId;
             that.options.recId = data.orderItem.rcvrId;
@@ -85,14 +85,15 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.receiveInfo = data.orderItem.orderAddressItem;
             that.options.receiveInfo.certNo = idcard.credtNum;
 
-            orderData = data ;
+            orderData = data;
+          })
+          .then(function() {
             return getUserRoutes.sendRequest();
           })
-          .then(function(routesList){
+          .then(function(routesList) {
 
             //构建路由数据
             that.buildUserRoutes(orderData, routesList);
-
 
             that.options.productList = orderData.orderItem.orderGoodsItemList;
 
@@ -131,7 +132,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             $('.loadingDIV').hide();
 
           })
-          .fail(function(error){
+          .fail(function(error) {
             console.error(error);
             $('.loadingDIV').hide();
           })
@@ -166,6 +167,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
        * @return {[type]}            [description]
        */
       buildUserRoutes: function(data, routesList) {
+        debugger;
         var that = this;
         that.options.traceList = data.orderActionTraceItemList;
 
