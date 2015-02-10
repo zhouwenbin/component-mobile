@@ -25,10 +25,13 @@
               <time>{{sf.time gmtCreate}}</time>
             </div>
           </div>
-          <div class="orderlist-r3 clearfix">
-            <div class="orderlist-r3c2 fr" id="operationarea" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
-            {{{optionHMTL}}}
-          </div>
+          {{#if showOperationArea}}
+            <div class="orderlist-r3 clearfix">
+              <div class="orderlist-r3c2 fr" id="operationarea" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
+              {{{optionHMTL}}}
+              </div>
+            </div>
+          {{/if}}
         </li>
       {{/each}}
     {{else}}
@@ -44,7 +47,7 @@
       {{#each completedOrderList}}
         <li class="box">
           <div class="orderlist-r1 clearfix">
-            <div class="orderlist-r1c1 fl">订单号：{{orderId}}</div>           
+            <div class="orderlist-r1c1 fl">订单号：{{orderId}}</div>
             <div class="orderlist-r1c2 fr">{{orderStatus}}</div>
           </div>
           <div class="orderlist-r2 clearfix viewOrder" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
@@ -57,10 +60,13 @@
               <time>{{sf.time gmtCreate}}</time>
             </div>
           </div>
-          <div class="orderlist-r3 clearfix">
-            <div class="orderlist-r3c2 fr" id="operationarea" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
-            {{{optionHMTL}}}
-          </div>
+          {{#if showOperationArea}}
+            <div class="orderlist-r3 clearfix">
+              <div class="orderlist-r3c2 fr" id="operationarea" data-orderid='{{orderId}}' data-recid='{{rcvrId}}' data-suborderid="{{subOrderId}}">
+              {{{optionHMTL}}}
+              </div>
+            </div>
+          {{/if}}
         </li>
       {{/each}}
     {{else}}
