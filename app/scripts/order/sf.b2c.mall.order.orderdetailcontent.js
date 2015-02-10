@@ -90,7 +90,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           .then(function() {
             return getUserRoutes.sendRequest();
           })
-          .then(function(routesList) {
+          .done(function(routesList) {
 
             //构建路由数据
             that.buildUserRoutes(orderData, routesList);
@@ -167,7 +167,6 @@ define('sf.b2c.mall.order.orderdetailcontent', [
        * @return {[type]}            [description]
        */
       buildUserRoutes: function(data, routesList) {
-        debugger;
         var that = this;
         that.options.traceList = data.orderActionTraceItemList;
 
