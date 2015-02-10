@@ -120,7 +120,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
       _.each(recAddrs.items, function(recAddrItem) {
         _.each(recPersons.items, function(presonItem) {
           if (recAddrItem.recId == presonItem.recId && (recAddrItem.isDefault == 0 || presonItem.isDefault == 0) && recAddrItem.recId != 0 && presonItem.recId != 0) {
-            if (recAddrItem.addrId != defaultRecAddrID && recAddrItem.recId != defaultRecID) {
+            if (recAddrItem.addrId != defaultRecAddrID) {
               recAddrItem.recName = presonItem.recName;
               recAddrItem.credtNum = presonItem.credtNum;
               result.push(recAddrItem);
