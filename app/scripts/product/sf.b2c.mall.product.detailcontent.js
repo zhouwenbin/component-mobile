@@ -484,6 +484,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
         var type = "";
         if (element.hasClass("disable") || element.hasClass("active")) {
+          $('.loadingDIV').hide();
           return false;
         }
 
