@@ -202,7 +202,7 @@ define('sf.b2c.mall.product.detailcontent', [
        */
       fixedTab: function() {
         var top = $('#tabHeader').offset().top;
-        $(window).on('touchmove scroll', function() {
+        $(window).on('touchmove scroll', _.throttle(function() {
           //$('#detailTab')[0].innerHTML = ($(window).scrollTop() + ":" + top);
           if ($(window).scrollTop() > top) {
             $('#tabHeader').addClass('fixed');
@@ -212,7 +212,7 @@ define('sf.b2c.mall.product.detailcontent', [
             //$("#tabHeader").removeAttr("style");
             $("#tabHeader").removeClass('fixed');
           }
-        })
+        }, 100))
       },
 
       /**
@@ -484,6 +484,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
         var type = "";
         if (element.hasClass("disable") || element.hasClass("active")) {
+          $('.loadingDIV').hide();
           return false;
         }
 
