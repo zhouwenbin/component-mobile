@@ -10,6 +10,7 @@ body {
   color: #333;
   min-width: 320px;
   margin: 0 auto;
+  background:#eee;
 }
 
 a, img {
@@ -29,10 +30,6 @@ button{
   border: none;
   outline: none;
 }
-
-.body1{
-   background:#eee;
- }
  a[title="站长统计"]{
   display: none;
 }
