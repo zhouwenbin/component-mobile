@@ -114,7 +114,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
       //取得关联的收货人和收货地址（为啥要遍历两次：因为要确保默认收货人和收货地址放在第一条）
       _.each(recAddrs.items, function(recAddrItem) {
         _.each(recPersons.items, function(presonItem) {
-          if (recAddrItem.recId == presonItem.recId && recAddrItem.isDefault == 0 && presonItem.isDefault == 0 && recAddrItem.recId != 0 && presonItem.recId != 0) {
+          if (recAddrItem.recId == presonItem.recId && (recAddrItem.isDefault == 0 || presonItem.isDefault == 0) && recAddrItem.recId != 0 && presonItem.recId != 0) {
             recAddrItem.recName = presonItem.recName;
             recAddrItem.credtNum = presonItem.credtNum;
             result.push(recAddrItem);
