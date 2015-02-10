@@ -271,11 +271,11 @@ define('sf.b2c.mall.product.detailcontent', [
       addCDN4img: function(detail) {
         // var detail = "<img src='2.jpg'><img src='1.bmp'><img src='2.jpg'><img src='1.BMP'>";
         var description = this.options.detailContentInfo.itemInfo.basicInfo.description;
-        description = String(description).replace(/.jpg/g, '.jpg@375h_375w_80Q_1x.jpg')
-          .replace(/.bmp/gi, '.bmp@375h_375w_80Q_1x.bmp')
-          .replace(/.jpeg/gi, '.jpeg@375h_375w_80Q_1x.jpeg')
-          .replace(/.gif/gi, '.gif@375h_375w_80Q_1x.gif')
-          .replace(/.png/gi, '.png@375h_375w_80Q_1x.png');
+        description = String(description).replace(/.jpg/g, '.jpg@640w_80Q_1x.jpg')
+          .replace(/.bmp/gi, '.bmp@640w_80Q_1x.bmp')
+          .replace(/.jpeg/gi, '.jpeg@640w_80Q_1x.jpeg')
+          .replace(/.gif/gi, '.gif@640w_80Q_1x.gif')
+          .replace(/.png/gi, '.png@640w_80Q_1x.png');
 
         this.options.detailContentInfo.itemInfo.basicInfo.attr("description", description);
       },
