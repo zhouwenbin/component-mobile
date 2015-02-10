@@ -122,7 +122,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
         _.each(recPersons.items, function(presonItemTemp) {
           if (recAddrItemTemp.recId == presonItemTemp.recId && (recAddrItemTemp.isDefault == 0 || presonItemTemp.isDefault == 0) && recAddrItemTemp.recId != 0 && presonItemTemp.recId != 0) {
 
-            if (recAddrItemTemp.addrId != defaultRecAddrID && recAddrItemTemp.recId != defaultRecID) {
+            if (recAddrItemTemp.addrId != defaultRecAddrID) {
               tempObje = recAddrItemTemp;
               tempObje.recName = presonItemTemp.recName;
               tempObje.credtNum = presonItemTemp.credtNum;
