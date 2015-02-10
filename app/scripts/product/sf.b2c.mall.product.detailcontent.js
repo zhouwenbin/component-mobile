@@ -485,11 +485,11 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]}         [description]
        */
       specbuttonsClick: function(element) {
-        $('.loadingDIV').show();
+        // $('.loadingDIV').show();
 
         var type = "";
         if (element.hasClass("disable") || element.hasClass("active")) {
-          $('.loadingDIV').hide();
+          // $('.loadingDIV').hide();
           return false;
         }
 
@@ -571,10 +571,10 @@ define('sf.b2c.mall.product.detailcontent', [
             that.options.detailContentInfo.itemInfo.attr("basicInfo", new can.Map(skuInfoData));
             that.options.detailContentInfo.attr("priceInfo", priceData);
             that.adapter.reSetSelectedAndCanSelectedSpec(newItemid, priceData, that.detailUrl, that.options.detailContentInfo, gotoItemSpec);
-            $('.loadingDIV').hide();
+            // $('.loadingDIV').hide();
           })
           .fail(function(error){
-            $('.loadingDIV').hide();
+            // $('.loadingDIV').hide();
           })
       },
 
