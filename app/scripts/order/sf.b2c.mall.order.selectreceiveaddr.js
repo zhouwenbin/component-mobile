@@ -36,7 +36,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
 
       //针对单页应用进行控制
       $(".order").show();
-      $(".nav-c1").show();
+      $(".nav-c1, .nav-c2").show();
       $(".sf-b2c-mall-order-selectReceiveAddress").show();
       $(".sf-b2c-mall-order-itemInfo").show();
       $(".sf-b2c-mall-order-addAdrArea").hide();
@@ -166,7 +166,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
      */
     addRecaddrClick: function(element) {
       $(".order").hide();
-      $(".nav-c1").hide();
+      $(".nav-c1, .nav-c2").hide();
       $(".sf-b2c-mall-order-itemInfo").hide();
       $(".sf-b2c-mall-order-addAdrArea").show();
       this.component.addressEditor.show("create", null, $(".sf-b2c-mall-order-addAdrArea"));
