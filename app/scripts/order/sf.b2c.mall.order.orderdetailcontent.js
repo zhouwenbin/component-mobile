@@ -119,9 +119,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.showTax = that.options.productList[0].bonded;
             that.options.shouldPayPrice = that.options.allTotalPrice;
 
-            if (orderData.orderItem.orderStatus == 'SUBMITED') {
-              that.options.showPayButton = true;
-            }
+            that.options.showPayButton = orderData.orderItem.orderStatus == 'SUBMITED' ? true : false;
 
             that.options.firstRoute = that.options.userRoutes[0];
 
@@ -342,7 +340,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           'type': 'confirm',
           'okFunction': _.bind(that.cancelOrder, that, element)
         });
-        that.render();
+        // that.render();
         return false;
       },
 
