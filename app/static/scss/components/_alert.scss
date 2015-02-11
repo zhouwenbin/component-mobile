@@ -2,6 +2,14 @@
 .alert{
 	padding: 14px 0 14px 17px;
 	color: #fff;
+	position: relative;
+}
+.alert a{
+	display:block;
+}
+.alert .icon{
+	position:absolute;
+	right:13px;
 }
 .alert-warning {
 	@extend .alert;
