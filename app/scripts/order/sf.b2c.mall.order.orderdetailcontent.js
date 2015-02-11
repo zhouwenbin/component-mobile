@@ -361,7 +361,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
               'tip': '订单取消成功！',
               'type': 'success'
             });
-            that.render();
+            $('#gotopay').hide();
+            that.render(); 
           })
           .fail(function(error) {
             new SFMessage(null, {
