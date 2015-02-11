@@ -285,7 +285,13 @@ define('sf.b2c.mall.order.orderlistcontent', [
         'SHIPPED': '已发货',
         'COMPLETED': '已完成',
         'AUTO_COMPLETED': '自动完成'
+      },
+      //春节提示
+      '#springTip click': function (element, event) {
+        $("#dialog-spring").show();
+      },
+      "#dialog-spring .icon15 click": function(element, event) {
+        $("#dialog-spring").hide();
       }
-
     });
   })

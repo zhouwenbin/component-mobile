@@ -1,6 +1,6 @@
 /*tab*/
 .tab-h{
-  height: 43px;
+  height: 84px;
   background: #fff;
 }
 .tab-h ul{
@@ -9,6 +9,7 @@
   background: #fff;
   left: 0;
   top: 0;
+  z-index: 1;
 }
 .tab-h li{
   float: left;
