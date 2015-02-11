@@ -19,7 +19,7 @@
   background:rgba(255,255,255,0.9);
   width: 40px;
   height: 40px;
-  padding-top: 5px;
+  
   margin-top: -5px;
 }
 .nav-c1:nth-child(1){
@@ -28,6 +28,8 @@
 }
 .nav-c1 a{
   color: #999;
+  display: block;
+  padding-top: 5px;
 }
 .nav-c1 .icon{
   margin-bottom: 4px;
