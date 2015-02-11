@@ -237,14 +237,14 @@ define('sf.b2c.mall.product.detailcontent', [
 
         var map = {
           'detailTab': function() {
-            $('#specAndBrandInfo').hide();
-            $('#recommendProducts').hide();
-            $('#detail').show();
-
             //确保只渲染一次
             if (!that.isRendered) {
               that.isRendered = that.renderDetail();
             }
+            
+            $('#specAndBrandInfo').hide();
+            $('#recommendProducts').hide();
+            $('#detail').show();
           },
 
           'itemInfoTab': function() {
