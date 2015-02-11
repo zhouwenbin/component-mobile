@@ -76,7 +76,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           $('.addrecaddr').click(function() {
             if (that.result.length >= 20) {
               new SFMessage(null, {
-                'tip': '收货地址数量已达上限20条',
+                'tip': '很抱歉，每个账户最多可添加20条收货地址',
                 'type': 'error'
               });
             }else{
