@@ -1,7 +1,17 @@
 <!--订单列表-->
+
+<section id="dialog-spring" class="mask dialog dialog-spring" style="display: none;">
+    <div class="center">
+        <h2>春节订单配送时效调整说明</h2>
+        <p>因春节海关休假、快递繁忙，2月9日前支付订单，可正常发货（生鲜专场延至2月11日）。</p>
+        <p>2月9日零点之后的订单，将于26日发货。给您带来的不便，敬请谅解！</p>
+        <a href="javascript:" class="icon icon15">关闭</a>
+    </div>
+</section>
 <section class="tab">
   <div class="tab-h">
     <ul class="clearfix fixed">
+      <div class="alert-info" id="springTip"><a href="javascript:void(0);">公告：春节订单配送时效调整说明 </a><span class="icon icon13 center-vertical"></span></div>
       <li class="active" id="notCompleteOrderListTabhead"><a href="#">未完成({{notCompletedLength}})</a></li>
       <li id="completeOrderListTabhead"><a href="#">完成</a></li>
     </ul>
