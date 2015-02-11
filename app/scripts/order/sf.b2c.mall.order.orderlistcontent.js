@@ -76,7 +76,10 @@ define('sf.b2c.mall.order.orderlistcontent', [
                   if (order.orderGoodsItemList[0].imageUrl == "" || null == order.orderGoodsItemList[0].imageUrl) {
                     order.imageUrl = "http://m.sfht.com/static/img/no.png";
                   } else {
-                    order.imageUrl = JSON.parse(order.orderGoodsItemList[0].imageUrl)[0];
+                    var orderListImgUrl = JSON.parse(order.orderGoodsItemList[0].imageUrl)[0];
+                    orderListImgUrl = orderListImgUrl.replace(/.jpg/g, '.jpg@63h_63w.jpg');
+                    order.imageUrl = orderListImgUrl;
+
                   }
                   // if (typeof order.orderGoodsItemList[0].spec !== 'undefined') {
                   //   order.spec = order.orderGoodsItemList[0].spec.split(',').join("&nbsp;/&nbsp;");
@@ -143,6 +146,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
       '#completeOrderListTabhead click': function (element, event) {
         this.switchTab(element, 'completedTab');
       },
+
 
       /**
        * [switchTab 切换tab]
