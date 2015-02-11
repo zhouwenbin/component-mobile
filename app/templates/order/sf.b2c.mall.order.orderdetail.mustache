@@ -91,13 +91,26 @@
 
   </section>
   <!--订单详情-->
-  {{#if showPayButton}}
+
   <section class="nav" id="buy">
     <div class="nav-r1">
-      <div class="nav-c2"><button class="btn btn-danger btn-big" id="gotopay">立即支付</button></div>
+      <div class="nav-c1 fl">
+        <a href="/index.html">
+          <span class="icon icon25"></span>
+          <div>首页</div>
+        </a>
+      </div>
+      <div class="nav-c1 fl">
+        <a href="/center.html">
+          <span class="icon icon26"></span>
+          <div>我的</div>
+        </a>
+      </div>
+      {{#if showPayButton}}
+        <div class="nav-c2"><button class="btn btn-danger btn-big" id="gotopay">立即支付</button></div>
+      {{/if}}
     </div>
   </section>
-  {{/if}}
 
   <section class="order logistics" id="userRoutes">
       <h2>物流跟踪</h2>
