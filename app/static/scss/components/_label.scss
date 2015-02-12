@@ -8,10 +8,12 @@
   padding: 0 15px;
   display: inline-block;
   vertical-align: middle;
+  font-size: 12px;
  }
  .label-error,
  .label-danger{
   background: #dc3334;
+  @extend .label;
  }
  .label-success{
   background: #67b222;
