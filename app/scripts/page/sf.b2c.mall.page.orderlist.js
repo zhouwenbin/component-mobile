@@ -10,7 +10,6 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.order.orderlistcontent',
     'sf.b2c.mall.widget.message',
-    'sf.weixin',
     'sf.b2c.mall.business.config'
   ],
 
