@@ -15,7 +15,7 @@
   margin-bottom: 11px;
 }
 .orderdetail-r2 li{
-  font-size: 12px;
+  font-size: 14px;
   line-height: 24px;
   padding: 0 3px;
   width: 50%;
@@ -26,6 +26,9 @@
 .orderdetail-r2 li:nth-child(even){
   float: right;
   text-align: right;
+}
+.orderdetail-r2 .text-error{
+  font-size: 14px;
 }
 .orderdetail-r2 time{
   color: #999;
