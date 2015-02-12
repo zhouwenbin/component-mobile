@@ -19,7 +19,7 @@
   background: #fff;
   position: relative;
 }
-.list li:after{
+.list li a:after{
   content: '';
   position: absolute;
   width: 200%;
