@@ -241,7 +241,7 @@ define('sf.b2c.mall.product.detailcontent', [
             if (!that.isRendered) {
               that.isRendered = that.renderDetail();
             }
-            
+
             $('#specAndBrandInfo').hide();
             $('#recommendProducts').hide();
             $('#detail').show();
@@ -264,7 +264,7 @@ define('sf.b2c.mall.product.detailcontent', [
       renderDetail: function() {
         var template = can.view.mustache(this.detailTemplate());
         this.addCDN4img();
-        $('#detail').css("height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
+        $('#detail').css("min-height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
         return true;
       },
 
