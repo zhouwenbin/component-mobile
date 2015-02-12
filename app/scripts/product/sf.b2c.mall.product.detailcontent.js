@@ -350,7 +350,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
         //检验库存
         if (priceInfo.currentStock >=0 && amount > priceInfo.currentStock) {
-          this.options.detailContentInfo.input.attr("error", '商品库存' + priceInfo.currentStock + '件！');
+          // this.options.detailContentInfo.input.attr("error", '商品库存' + priceInfo.currentStock + '件！');
           return false;
         }
 
