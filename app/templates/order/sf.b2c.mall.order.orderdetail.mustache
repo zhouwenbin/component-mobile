@@ -3,7 +3,7 @@
     {{#if needShowTips}}<div class="orderdetail-r1">{{{uploadIDCardTips}}}</div>{{/if}}
     <ul class="box orderdetail-r2 clearfix">
       <li>订单号：{{orderId}}</li>
-      <li>{{sf.time gmtCreate}}创建</li>
+      <li><time>{{sf.time gmtCreate "YYYY-MM-DD HH:mm"}}</time></li>
       <li>订单总额：<span class="text-error">￥{{sf.price allTotalPrice}}</span></li>
       <li><span class="text-error">{{status}}</span> {{{operationHTML}}}</li>
     </ul>
@@ -46,31 +46,30 @@
         <li>配送方式：顺丰配送</li>
       </ul>
     </div>
-    <div class="table box">
+    <div class="table box goodsinfo">
+      <h2>商品信息</h2>
       {{#each productList}}
       <div class="table-r1 clearfix">
         <div class="table-r1c1 fl vertical-middle"><img src="{{sf.img imageUrl}}@63h_63w_100Q_1x.jpg"></div>
-        <div class="table-r1c2">
-          <h3 class="ellipsis2">{{goodsName}}</h3>
-          <div class="text-important">x{{quantity}}</div>
-        </div>
 
+        <div class="table-r1c3 fr">
+            <div class="goodsinfo-price">¥{{sf.price price}}</div>
+            <div class="goodsinfo-num">x{{quantity}}</div>
+        </div>
+        <div class="table-r1c2 goodsinfo-title">
+            <h3 class="ellipsis3">{{goodsName}}</h3>
+        </div>
       </div>
       <ul class="clearfix table-r2">
         <li>{{{spec}}}</li>
       </ul>
-      <ul class="clearfix table-r2">
-        <li>单价：￥{{sf.price price}}</li>
-        <li>优惠：￥0</li>
-      </ul>
-      <div class="table-r3">小计：<span class="text-important">￥{{sf.price totalPrice}}</span></div>
       {{/each}}
     </div>
 
     <div class="orderdetail-r4 box">
       <div class="clearfix">
         <div class="orderdetail-r4c1 fl">
-          商品总额：<span class="text-important">¥{{sf.price allTotalPrice}}</span>
+          商品总额：<span class="text-important">¥{{sf.price allTotalPrice}}</span><span class="text-disable">优惠：0元</span>
         </div>
         <div class="orderdetail-r4c2">
           {{#if showTax}}
@@ -81,7 +80,7 @@
 
       <div class="clearfix">
         <div class="orderdetail-r4c1 fl">
-          运费：<span class="text-important">＋¥0</span>
+          运费：<span class="text-important">¥0</span>
         </div>
         <div class="orderdetail-r4c2 fr">
           {{#if showShouldPayPrice}}<div class="table-fr3">实际应付款：<strong class="text-important">￥{{sf.price shouldPayPrice}}</strong></div>{{/if}}
@@ -91,13 +90,26 @@
 
   </section>
   <!--订单详情-->
-  {{#if showPayButton}}
+
   <section class="nav" id="buy">
     <div class="nav-r1">
-      <div class="nav-c2"><button class="btn btn-danger btn-big" id="gotopay">立即支付</button></div>
+      <div class="nav-c1 fl">
+        <a href="/index.html">
+          <span class="icon icon25"></span>
+          <div>首页</div>
+        </a>
+      </div>
+      <div class="nav-c1 fl">
+        <a href="/center.html">
+          <span class="icon icon26"></span>
+          <div>我的</div>
+        </a>
+      </div>
+      {{#if showPayButton}}
+        <div class="nav-c2"><button class="btn btn-danger btn-big" id="gotopay">立即支付</button></div>
+      {{/if}}
     </div>
   </section>
-  {{/if}}
 
   <section class="order logistics" id="userRoutes">
       <h2>物流跟踪</h2>

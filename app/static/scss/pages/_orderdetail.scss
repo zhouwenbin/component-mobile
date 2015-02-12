@@ -13,12 +13,12 @@
 }
 .orderdetail-r2{
   margin-bottom: 11px;
+  padding:13px 14px;
 }
 .orderdetail-r2 li{
-  font-size: 12px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 30px;
   padding: 0 3px;
-  width: 50%;
 }
 .orderdetail-r2 li:nth-child(odd){
   float: left;
@@ -27,8 +27,12 @@
   float: right;
   text-align: right;
 }
+.orderdetail-r2 .text-error{
+  font-size: 14px;
+}
 .orderdetail-r2 time{
   color: #999;
+  font-size: 12px;
 }
 .orderdetail-r2 .btn{
   margin-left: 10px;

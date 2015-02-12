@@ -371,7 +371,9 @@ module.exports = function (grunt) {
         ],
         options:{
           process: function (content, srcpath) {
-            return content.replace(/\{version\}/g, config.timestamp);
+            content = content.replace(/\{version\}/g, config.timestamp);
+            content = content.replace(/img\/qrcode.png/g, OSS_HOST+ '/'+ config.version +'/img/qrcode.png')
+            return content;
           }
         }
       },
@@ -400,7 +402,7 @@ module.exports = function (grunt) {
         options:{
           process: function (content, srcpath) {
             if (config.version) {
-              return content.replace(/img\/recommend.jpg/g, OSS_HOST+'/img/recommend.jpg')
+              return content.replace(/img\/recommend.jpg/g, OSS_HOST+ '/'+ config.version +'/img/recommend.jpg')
             }else{
               return content;
             }

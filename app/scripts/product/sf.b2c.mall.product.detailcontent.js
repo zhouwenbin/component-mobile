@@ -121,6 +121,7 @@ define('sf.b2c.mall.product.detailcontent', [
             that.adapter.formatPrice(that.options.detailContentInfo, priceData);
             that.adapter.formatRecommendProducts(that.detailUrl, that.options.detailContentInfo, recommendProducts);
 
+            document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
 
             //that.options.detailContentInfo.priceInfo.attr("soldOut", true);
@@ -241,7 +242,7 @@ define('sf.b2c.mall.product.detailcontent', [
             if (!that.isRendered) {
               that.isRendered = that.renderDetail();
             }
-            
+
             $('#specAndBrandInfo').hide();
             $('#recommendProducts').hide();
             $('#detail').show();
@@ -264,7 +265,7 @@ define('sf.b2c.mall.product.detailcontent', [
       renderDetail: function() {
         var template = can.view.mustache(this.detailTemplate());
         this.addCDN4img();
-        $('#detail').css("height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
+        $('#detail').css("min-height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
         return true;
       },
 
@@ -350,7 +351,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
         //检验库存
         if (priceInfo.currentStock >=0 && amount > priceInfo.currentStock) {
-          this.options.detailContentInfo.input.attr("error", '商品库存' + priceInfo.currentStock + '件！');
+          // this.options.detailContentInfo.input.attr("error", '商品库存' + priceInfo.currentStock + '件！');
           return false;
         }
 
@@ -591,15 +592,6 @@ define('sf.b2c.mall.product.detailcontent', [
         }
 
         return saleSkuSpecTuple;
-      },
-
-
-      //春节提示
-        '#springTip click': function (element, event) {
-          $("#dialog-spring").show();
-        },
-        "#dialog-spring .icon15 click": function(element, event) {
-          $("#dialog-spring").hide();
-        }
+      }
     });
   })
