@@ -121,6 +121,7 @@ define('sf.b2c.mall.product.detailcontent', [
             that.adapter.formatPrice(that.options.detailContentInfo, priceData);
             that.adapter.formatRecommendProducts(that.detailUrl, that.options.detailContentInfo, recommendProducts);
 
+            document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
 
             //that.options.detailContentInfo.priceInfo.attr("soldOut", true);
@@ -264,7 +265,7 @@ define('sf.b2c.mall.product.detailcontent', [
       renderDetail: function() {
         var template = can.view.mustache(this.detailTemplate());
         this.addCDN4img();
-        $('#detail').css("height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
+        $('#detail').css("min-height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
         return true;
       },
 
