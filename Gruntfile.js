@@ -371,8 +371,10 @@ module.exports = function (grunt) {
         ],
         options:{
           process: function (content, srcpath) {
-            content = content.replace(/\{version\}/g, config.timestamp);
-            content = content.replace(/img\/qrcode.png/g, OSS_HOST+ '/'+ config.version +'/img/qrcode.png')
+            if (config.version) {
+              content = content.replace(/\{version\}/g, config.timestamp);
+              content = content.replace(/img\/qrcode.png/g, OSS_HOST+ '/'+ config.version +'/img/qrcode.png');
+            }
             return content;
           }
         }
