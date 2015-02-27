@@ -487,13 +487,11 @@ module.exports = function (grunt) {
           out: './<%= config.dist %>/scripts/sf.b2c.mall.h5.page.main.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            'sf.b2c.mall.component.price',
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.main'
-          ],
+          include: ['sf.b2c.mall.page.main'],
           insertRequire: ['sf.b2c.mall.page.main']
         }
       },
@@ -508,14 +506,7 @@ module.exports = function (grunt) {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
             'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            'sf.b2c.mall.product.detailcontent',
-            'sf.b2c.mall.adapter.detailcontent',
-            "sf.b2c.mall.business.config",
-            'sf.helpers',
-            'sf.b2c.mall.widget.loading',
-            'sf.b2c.mall.page.detail'
-          ],
+          include: ['sf.b2c.mall.page.detail'],
           insertRequire: ['sf.b2c.mall.page.detail']
         }
       },
@@ -530,19 +521,7 @@ module.exports = function (grunt) {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
             'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            'sf.b2c.mall.order.selectreceiveaddr',
-            'sf.b2c.mall.order.iteminfo',
-            "sf.b2c.mall.business.config",
-            'sf.helpers',
-            'sf.b2c.mall.adapter.address.list',
-            'sf.b2c.mall.component.addreditor',
-            'sf.b2c.mall.adapter.order',
-            'sf.b2c.mall.adapter.regions',
-            'sf.b2c.mall.order.fn',
-            'sf.b2c.mall.widget.loading',
-            'sf.b2c.mall.page.order'
-          ],
+          include: ['sf.b2c.mall.page.order'],
           insertRequire: ['sf.b2c.mall.page.order']
         }
       },
@@ -553,13 +532,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.login.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            'sf.b2c.mall.component.login',
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.login'
-          ],
+          include: ['sf.b2c.mall.page.login'],
           insertRequire: ['sf.b2c.mall.page.login']
         }
       },
@@ -570,13 +547,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.register.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            'sf.b2c.mall.component.register',
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.register'
-          ],
+          include: ['sf.b2c.mall.page.register'],
           insertRequire: ['sf.b2c.mall.page.register']
         }
       },
@@ -587,17 +562,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.gotopay.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
-            'moment': '../bower_components/momentjs/min/moment.min'
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            'sf.helpers',
-            'moment',
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.order.fn',
-            'sf.b2c.mall.widget.loading',
-            'sf.b2c.mall.page.gotopay'
-          ],
+          include: ['sf.b2c.mall.page.gotopay'],
           insertRequire: ['sf.b2c.mall.page.gotopay']
         }
       },
@@ -608,17 +577,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.order.list.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
-            'moment': '../bower_components/momentjs/min/moment.min'
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            'sf.b2c.mall.order.orderlistcontent',
-            'moment',
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.order.fn',
-            'sf.b2c.mall.widget.message',
-            'sf.b2c.mall.page.orderlist'
-          ],
+          include: ['sf.b2c.mall.page.orderlist'],
           insertRequire: ['sf.b2c.mall.page.orderlist']
         }
       },
@@ -629,17 +592,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.order.detail.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
-            'moment': '../bower_components/momentjs/min/moment.min'
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            'sf.b2c.mall.order.orderdetailcontent',
-            'sf.helpers',
-            'moment',
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.order.fn',
-            'sf.b2c.mall.page.orderdetail'
-          ],
+          include: ['sf.b2c.mall.page.orderdetail'],
           insertRequire: ['sf.b2c.mall.page.orderdetail']
         }
       },
@@ -650,12 +607,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.center.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.center'
-          ],
+          include: ['sf.b2c.mall.page.center'],
           insertRequire: ['sf.b2c.mall.page.center']
         }
       },
@@ -666,12 +622,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.weixincenter.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.weixincenter'
-          ],
+          include: ['sf.b2c.mall.page.weixincenter'],
           insertRequire: ['sf.b2c.mall.page.weixincenter']
         }
       },
@@ -682,12 +637,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.alipayframe.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.alipayframe'
-          ],
+          include: ['sf.b2c.mall.page.alipayframe'],
           insertRequire: ['sf.b2c.mall.page.alipayframe']
         }
       },
@@ -714,15 +668,11 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.recaddrmanage.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'fastclick': '../bower_components/fastclick/lib/fastclick'
           },
-          include: [
-            "sf.b2c.mall.business.config",
-            'sf.b2c.mall.component.recaddrmanage',
-            'sf.b2c.mall.page.recaddrmanage',
-            'sf.b2c.mall.adapter.regions',
-            'sf.b2c.mall.adapter.address.list'
-          ],
+          include: ['sf.b2c.mall.page.recaddrmanage'],
           insertRequire: ['sf.b2c.mall.page.recaddrmanage']
         }
       }
