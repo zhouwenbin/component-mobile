@@ -8,10 +8,11 @@ define(
     'underscore',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.component.price',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, Swipe, _, SFFrameworkComm, ItemPrice, SFWeixin) {
+  function(can, $, Swipe, _, SFFrameworkComm, ItemPrice, SFWeixin, SFConfig) {
 
     SFFrameworkComm.register(3);
 
