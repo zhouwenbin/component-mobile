@@ -131,7 +131,7 @@ define('sf.b2c.mall.product.detailcontent', [
             if(sellingPrice == originPrice){
               $('.originPrice').hide();
             }
-            var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
+            var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent2.mustache', that.options.detailContentInfo, that.helpers);
             that.element.html(html);
 
             //滚动效果
