@@ -14,10 +14,10 @@
   position: relative;
 }
 .list li:nth-child(even){
-  float: left;
+  float: right;
 }
 .list li:nth-child(odd){
-  float: right;
+  float: left;
 }
 .list li a:after{
   content: '';
