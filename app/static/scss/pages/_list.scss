@@ -7,17 +7,17 @@
   position: absolute;
   background-color: rgba(255,255,255,0.5);
 }
-.list{
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
-  flex-wrap:wrap;
-}
 .list li{
   width: 48.8%;
   margin-bottom: 7px;
   background: #fff;
   position: relative;
+}
+.list li:nth-child(even){
+  float: left;
+}
+.list li:nth-child(odd){
+  float: right;
 }
 .list li a:after{
   content: '';
