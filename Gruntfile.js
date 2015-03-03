@@ -695,7 +695,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.paysuccess.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.paysuccess.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
