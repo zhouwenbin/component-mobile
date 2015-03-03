@@ -8,7 +8,11 @@
   color: #fff;
   text-align: center;
   height: 230px;
-  background: #da494f url(../img/person.png) no-repeat center bottom;
+  background-color:#da494f;
+  background-image:url(../img/person.png);
+  background-position:center bottom;
+  background-repeat: no-repeat;
+  -webkit-background-size: 250px;
   background-size: 250px;
   padding-top: 24px;
   margin-bottom: 10px;
