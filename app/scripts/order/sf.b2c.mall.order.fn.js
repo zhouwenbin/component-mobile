@@ -7,15 +7,16 @@ define(
     'underscore',
     'store',
     'sf.b2c.mall.api.order.requestPayV2',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'sf.util'
   ],
 
-  function ($, can, _, store, SFApiRequestPayV2, SFConfig) {
+  function($, can, _, store, SFApiRequestPayV2, SFConfig, SFUtil) {
 
     var requestPayV2 = new SFApiRequestPayV2();
 
     return {
-      payV2: function (data, callback) {
+      payV2: function(data, callback) {
         requestPayV2.setData({
           "orderId": data.orderid,
           'payType': 'alipay_forex_wap'
@@ -29,8 +30,13 @@ define(
               callback.success();
             }
 
-            store.set("alipayurl", data.url + '?' + data.postBody);
-            window.location.href =  SFConfig.setting.link.alipayframe;
+            if (SFUtil.isMobile.WeChat()) {
+              store.set("alipayurl", data.url + '?' + data.postBody);
+              window.location.href = SFConfig.setting.link.alipayframe;
+            } else {
+              window.location.href = data.url + '?' + data.postBody;
+            }
+
           })
           .fail(function(error) {
             //var errorText = that.payErrorMap[error.toString()] || '支付失败';
