@@ -691,14 +691,22 @@ module.exports = function (grunt) {
           insertRequire: ['sf.b2c.mall.page.alipayframe']
         }
       },
-      // paysuccess: {
-      //   options: {
-      //     preserveLicenseComments: false,
-      //     baseUrl: './app/',
-      //     out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.alipayframe.min.js',
-      //     mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js"
-      //   }
-      // },
+      paysuccess: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.page.paysuccess.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.paysuccess'
+          ],
+          insertRequire: ['sf.b2c.mall.page.paysuccess']
+        }
+      },
       // agreement: {
       //   options: {
       //     preserveLicenseComments: false,
