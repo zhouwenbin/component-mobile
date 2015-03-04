@@ -21,6 +21,9 @@ define('sf.b2c.mall.product.detailcontent', [
   ],
   function(can, $, Swipe, Fastclick, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
     Fastclick.attach(document.body);
+
+    var DEFAULT_INIT_TAG = 'init';
+
     return can.Control.extend({
 
       helpers: {
@@ -52,7 +55,7 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
 
-        'sf-showOriginPrice': function(sellingPrice, originPrice,options) {
+        'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
           var oPrice = originPrice();
           if (sellingPrice() < oPrice || oPrice == 0) {
             return options.fn(options.contexts || this);
@@ -87,7 +90,38 @@ define('sf.b2c.mall.product.detailcontent', [
         this.mainUrl = SFConfig.setting.api.mainurl;
         this.adapter = new SFDetailcontentAdapter({});
 
-        this.render();
+        //如果tag为init，则要进行单独处理，防止刷新
+        var tag = can.route.attr('tag');
+        if (tag === DEFAULT_INIT_TAG) {
+          this.initRender(DEFAULT_INIT_TAG);
+        } else {
+          can.route.attr('tag', DEFAULT_INIT_TAG);
+        }
+      },
+
+      '{can.route} change': function() {
+        var tag = can.route.attr('tag') || DEFAULT_INIT_TAG;
+
+        this.initRender.call(this, tag, this.data);
+      },
+
+      renderMap: {
+        'init': function(data) {
+          this.render();
+        },
+
+        'gotobuy': function(data) {
+          $('#firststep').hide();
+          $('#secondstep').show();
+        }
+      },
+
+      initRender: function(tag, data) {
+        var params = can.deparam(window.location.search.substr(1));
+        var fn = this.renderMap[tag];
+        if (_.isFunction(fn)) {
+          fn.call(this, data);
+        }
       },
 
       /**
@@ -128,10 +162,10 @@ define('sf.b2c.mall.product.detailcontent', [
             var sellingPrice = that.options.detailContentInfo.priceInfo.attr('sellingPrice');
             var originPrice = that.options.detailContentInfo.priceInfo.attr('originPrice');
 
-            if(sellingPrice == originPrice){
+            if (sellingPrice == originPrice) {
               $('.originPrice').hide();
             }
-            var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent2.mustache', that.options.detailContentInfo, that.helpers);
+            var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
             that.element.html(html);
 
             //滚动效果
@@ -331,7 +365,7 @@ define('sf.b2c.mall.product.detailcontent', [
        */
       buyEnter: function(element) {
 
-        if (element.hasClass('btn-disable')){
+        if (element.hasClass('btn-disable')) {
           return false;
         }
 
@@ -350,7 +384,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var amount = parseInt(input.attr("buyNum"));
 
         //检验库存
-        if (priceInfo.currentStock >=0 && amount > priceInfo.currentStock) {
+        if (priceInfo.currentStock >= 0 && amount > priceInfo.currentStock) {
           // this.options.detailContentInfo.input.attr("error", '商品库存' + priceInfo.currentStock + '件！');
           return false;
         }
@@ -389,9 +423,8 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]}         [description]
        */
       gotobuyClick: function(element) {
+        can.route.attr('tag', 'gotobuy');
         element.hide();
-        this.options.detailContentInfo.attr("showFirstStep", false);
-        this.options.detailContentInfo.attr("showSecondStep", true);
       },
 
       /**
@@ -574,7 +607,7 @@ define('sf.b2c.mall.product.detailcontent', [
             that.adapter.reSetSelectedAndCanSelectedSpec(newItemid, priceData, that.detailUrl, that.options.detailContentInfo, gotoItemSpec);
             // $('.loadingDIV').hide();
           })
-          .fail(function(error){
+          .fail(function(error) {
             // $('.loadingDIV').hide();
           })
       },

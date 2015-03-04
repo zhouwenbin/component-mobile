@@ -1,4 +1,5 @@
-{{#if showFirstStep}}
+<div id = "firststep">
+{{! {{#if showFirstStep}}
   <!--商品-->
   {{! <div class="alert-info" id="springTip">春节期间订单，节后（26日）陆续发货</div> }}
   <section class="goods">
@@ -126,9 +127,12 @@
   </section>
   <!--立即购买-->
 
-  {{/if}}
+  {{! {{/if}}
+  </div>
 
-  {{#if showSecondStep}}
+  <div id="secondstep" style="display:none">
+
+  {{! {{#if showSecondStep}}
   <div class="test"></div>
   <!--推荐商品-->
   <section class="recommend">
@@ -208,4 +212,5 @@
   </section>
   <!--立即购买-->
 
-  {{/if}}
+  {{! {{/if}}
+  </div>
