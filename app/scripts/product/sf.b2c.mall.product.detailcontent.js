@@ -20,6 +20,7 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.util'
   ],
   function(can, $, Swipe, Fastclick, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
+
     Fastclick.attach(document.body);
 
     var DEFAULT_INIT_TAG = 'init';

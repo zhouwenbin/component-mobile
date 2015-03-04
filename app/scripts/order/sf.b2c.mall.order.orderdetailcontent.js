@@ -21,8 +21,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     'moment'
   ],
   function(can, $, Fastclick, SFGetOrder, SFCancelOrder, SFUpdateReceiverInfo, SFGetIDCardUrlList, SFGetUserRoutes, SFGetRecvInfo, SFConfirmReceive, loading, FrameworkComm, SFConfig, Utils, helpers, SFOrderFn, SFMessage, moment) {
+
     Fastclick.attach(document.body);
 
+    var DEFAULT_INIT_TAG = 'init';
 
     return can.Control.extend({
 
@@ -40,7 +42,40 @@ define('sf.b2c.mall.order.orderdetailcontent', [
        */
       init: function(element, options) {
         this.component = {};
-        this.render();
+
+        //如果tag为init，则要进行单独处理，防止刷新
+        var tag = can.route.attr('tag');
+        if (tag === DEFAULT_INIT_TAG) {
+          this.initRender(DEFAULT_INIT_TAG);
+        } else {
+          can.route.attr('tag', DEFAULT_INIT_TAG);
+        }
+      },
+
+      '{can.route} change': function() {
+        var tag = can.route.attr('tag') || DEFAULT_INIT_TAG;
+
+        this.initRender.call(this, tag);
+      },
+
+      renderMap: {
+        'init': function() {
+          this.render();
+        },
+
+        'viewroute': function() {
+          $('#orderdetail').hide();
+          $('#buy').hide();
+          $('#userRoutes').show();
+        }
+      },
+
+      initRender: function(tag) {
+        var params = can.deparam(window.location.search.substr(1));
+        var fn = this.renderMap[tag];
+        if (_.isFunction(fn)) {
+          fn.call(this);
+        }
       },
 
       /**
@@ -129,7 +164,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             //页面初始化布局
             $('#orderdetail').show();
             $('#buy').show();
-            $('#userRoutes').hide();
+            // $('#userRoutes').hide();
             $('.loadingDIV').hide();
 
           })
@@ -209,20 +244,23 @@ define('sf.b2c.mall.order.orderdetailcontent', [
        * @return {[type]} [description]
        */
       "#viewUserRoutes click": function() {
-        $('#orderdetail').hide();
-        $('#buy').hide();
-        $('#userRoutes').show();
+
+        can.route.attr('tag', 'viewroute');
+
+        // $('#orderdetail').hide();
+        // $('#buy').hide();
+        // $('#userRoutes').show();
       },
 
-      /**
-       * [viewOrderDetail 查看订单详情]
-       * @return {[type]} [description]
-       */
-      "#viewOrderDetail click": function() {
-        $('#orderdetail').show();
-        $('#buy').show();
-        $('#userRoutes').hide();
-      },
+      // /**
+      //  * [viewOrderDetail 查看订单详情]
+      //  * @return {[type]} [description]
+      //  */
+      // "#viewOrderDetail click": function() {
+      //   $('#orderdetail').show();
+      //   $('#buy').show();
+      //   $('#userRoutes').hide();
+      // },
 
       /**
        * [contactMeClick 联系客服]
@@ -360,7 +398,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
               'type': 'success'
             });
             $('#gotopay').hide();
-            that.render(); 
+            that.render();
           })
           .fail(function(error) {
             new SFMessage(null, {
