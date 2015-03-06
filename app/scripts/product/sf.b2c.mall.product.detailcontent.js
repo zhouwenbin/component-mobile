@@ -222,7 +222,7 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]}                   [description]
        */
       weixinShare: function(itemid, detailContentInfo) {
-        var title = "别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！";
+        var title = detailContentInfo.itemInfo.basicInfo.title;
         var desc = "[" + detailContentInfo.itemInfo.basicInfo.brand + "]" + detailContentInfo.itemInfo.basicInfo.title;
         var link = "http://m.sfht.com/detail/" + itemid + ".html";
         var imgUrl = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
