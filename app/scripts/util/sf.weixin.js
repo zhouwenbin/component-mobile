@@ -74,7 +74,7 @@ define('sf.weixin', [
           title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
           desc: '别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
           link: 'http://m.sfht.com/index.html',
-          imgUrl: 'http://m.sfht.com/img/sharelog.png',
+          imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
           trigger: function(res) {
             // alert('用户点击发送给朋友');
           },
@@ -93,7 +93,7 @@ define('sf.weixin', [
           title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
           desc: '别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
           link: 'http://m.sfht.com/index.html',
-          imgUrl: 'http://m.sfht.com/img/sharelog.png',
+          imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
           trigger: function(res) {
             // alert('用户点击发送给朋友');
           },
