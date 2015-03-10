@@ -141,8 +141,6 @@ define('sf.b2c.mall.component.register', [
 
       gotoFromPage: function(){
         var that = this;
-        var csrfToken = can.route.attr('csrfToken');
-        store.set('csrfToken', csrfToken);
 
         // @todo调用onRegistered 回调
         if (_.isFunction(that.options.onRegistered)) {
