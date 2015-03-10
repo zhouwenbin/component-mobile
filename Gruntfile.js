@@ -415,8 +415,8 @@ module.exports = function (grunt) {
       styles: {
         expand: true,
         dot: true,
-        cwd: '<%= config.app %>/styles',
-        dest: '.tmp/styles/',
+        cwd: '.tmp/concat/styles',
+        dest: '<%= config.dist %>/styles/',
         src: '{,*/}*.css'
       }
     },
@@ -803,6 +803,7 @@ module.exports = function (grunt) {
         'copy:templates',
         'usemin',
         'htmlmin',
+        'copy:styles',
         'clean:extra',
         'clean:publish',
         'compress:test'
@@ -834,6 +835,7 @@ module.exports = function (grunt) {
         'copy:templates',
         'usemin',
         'htmlmin',
+        'copy:styles',
         'clean:extra',
         'clean:publish',
         'compress:oss',
