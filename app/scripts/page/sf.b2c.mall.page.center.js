@@ -73,6 +73,10 @@ define(
       },
 
       maskMobile: function(str) {
+        if (typeof str == 'undefined') {
+          return "";
+        }
+
         return str.substring(0, 3) + '****' + str.substring(7, 11)
       },
 
