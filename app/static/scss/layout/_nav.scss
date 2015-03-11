@@ -4,6 +4,7 @@
 }
 .nav-r1{
   position: fixed;
+  left: 0;
   bottom:0;
   width: 100%;
   background: #fff;
@@ -11,6 +12,7 @@
 }
 .nav-c1{
   position: absolute;
+  top: 0;
   right: 7px;
   -webkit-transform: translate(0,-100%);
   border-radius:50%;
