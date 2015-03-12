@@ -65,7 +65,9 @@
 }
 
 .detail-b:last-child .btn{
-  margin: 10px;
+  display: block;
+  margin: 10px auto;
+  width: 90%;
   height: 40px;
   line-height: 40px;
   font-size: 16px;   
