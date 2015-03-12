@@ -51,7 +51,7 @@ define('sf.weixin', [
           "nonceStr": noncestr,
           "signature": data.value,
           "jsApiList": [
-            'onMenuShareTimeline','onMenuShareAppMessage'
+            'onMenuShareTimeline','onMenuShareAppMessage','imagePreview'
           ]
         });
       })
@@ -109,7 +109,7 @@ define('sf.weixin', [
         });
 
         jweixin.showMenuItems({
-          menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage']
+          menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage', 'imagePreview']
         });
       })
     },

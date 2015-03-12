@@ -305,7 +305,7 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       addCDN4img: function(detail) {
-        // var detail = "<img src='2.jpg'><img src='1.bmp'><img src='2.jpg'><img src='1.BMP'>";
+
         var description = this.options.detailContentInfo.itemInfo.basicInfo.description;
         description = String(description).replace(/.jpg/g, '.jpg@640w_80Q_1x.jpg')
           .replace(/.bmp/gi, '.bmp@640w_80Q_1x.bmp')
@@ -313,7 +313,60 @@ define('sf.b2c.mall.product.detailcontent', [
           .replace(/.gif/gi, '.gif@640w_80Q_1x.gif')
           .replace(/.png/gi, '.png@640w_80Q_1x.png');
 
+        // 非微信环境
+        // if (!window.WeixinJSBridge) {
+        //   var reg = /<img\s+.*?src=(?:'(.+?)'|"(.+?)")\s*.*?(?:>|\/>)/igm;
+
+        //   var match;
+
+        //   while (match = reg.exec(description)) {
+        //     var newImgHref = "<a target='_blank' href=" + match[2].split("@640w_80Q_1x.")[0] + ">" + match[0] + "</a>";
+        //     description = description.replace(match[0], newImgHref);
+        //   }
+        // }
+
         this.options.detailContentInfo.itemInfo.basicInfo.attr("description", description);
+      },
+
+      "#detail click": function(element) {
+        debugger;
+        var target = event.srcElement || event.target;
+
+        // 微信环境
+        if (target.nodeName == 'IMG') {
+
+          var src = target.src.replace(/\s+/g, '').split("@640w_80Q_1x.")[0];
+
+          if (window.WeixinJSBridge) {
+
+            var imgs = [src];
+            WeixinJSBridge.invoke('imagePreview', {
+              'current': src,
+              'urls': imgs
+            });
+
+          }
+        }
+      },
+
+      "#slider click": function(element) {
+
+        var target = event.srcElement || event.target;
+
+        // 微信环境
+        if (target.nodeName == 'IMG') {
+
+          var src = target.src.replace(/\s+/g, '').split("@375h_375w_80Q_1x.")[0];
+
+          if (window.WeixinJSBridge) {
+
+            var imgs = [src];
+            WeixinJSBridge.invoke('imagePreview', {
+              'current': src,
+              'urls': imgs
+            });
+          }
+        }
       },
 
       /**
@@ -321,7 +374,24 @@ define('sf.b2c.mall.product.detailcontent', [
        * @return {[type]} [description]
        */
       detailTemplate: function() {
-        return '{{&itemInfo.basicInfo.description}}';
+        return '{{&itemInfo.basicInfo.description}}' + '<div id="viewPCDetailArea"><button class="btn btn-normal btn-big" id="viewPCDetail">查看电脑版商品详情</button>' + '<h3 class="table-r1">（ 查看电脑版商品详情，可能会消耗较多流量 ）</h3></div>';
+      },
+
+      "#viewPCDetail click": function() {
+        var template = can.view.mustache(this.detailTemplate());
+
+        var description = this.options.detailContentInfo.itemInfo.basicInfo.description;
+        description = String(description).replace(/.jpg@640w_80Q_1x/gi, '')
+          .replace(/.bmp@640w_80Q_1x/gi, '')
+          .replace(/.jpeg@640w_80Q_1x/gi, '')
+          .replace(/.gif@640w_80Q_1x/gi, '')
+          .replace(/.png@640w_80Q_1x/gi, '');
+
+        this.options.detailContentInfo.itemInfo.basicInfo.attr("description", description);
+
+        $('#detail').css("min-height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
+
+        $('#viewPCDetailArea').hide();
       },
 
       /**
