@@ -63,3 +63,13 @@
 .detail-b img{
   width: 100%;
 }
+
+.detail-b:last-child .btn{
+  margin: 10px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;   
+}
+.detail-b:last-child h3{
+  text-align: center;
+}
