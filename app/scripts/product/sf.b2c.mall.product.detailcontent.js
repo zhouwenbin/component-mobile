@@ -157,7 +157,14 @@ define('sf.b2c.mall.product.detailcontent', [
             that.adapter.formatRecommendProducts(that.detailUrl, that.options.detailContentInfo, recommendProducts);
 
             document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
+
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
+
+            //存放起来用于微信的图片浏览和放大效果
+            that.options.sliderImgs = [];
+            _.each(that.options.detailContentInfo.itemInfo.basicInfo.images, function(item){
+              that.options.sliderImgs.push(item.bigImgUrl);
+            });
 
             //that.options.detailContentInfo.priceInfo.attr("soldOut", true);
             var sellingPrice = that.options.detailContentInfo.priceInfo.attr('sellingPrice');
@@ -305,7 +312,7 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       addCDN4img: function(detail) {
-
+        //进行缩放
         var description = this.options.detailContentInfo.itemInfo.basicInfo.description;
         description = String(description).replace(/.jpg/g, '.jpg@640w_80Q_1x.jpg')
           .replace(/.bmp/gi, '.bmp@640w_80Q_1x.bmp')
@@ -313,23 +320,19 @@ define('sf.b2c.mall.product.detailcontent', [
           .replace(/.gif/gi, '.gif@640w_80Q_1x.gif')
           .replace(/.png/gi, '.png@640w_80Q_1x.png');
 
-        // 非微信环境
-        // if (!window.WeixinJSBridge) {
-        //   var reg = /<img\s+.*?src=(?:'(.+?)'|"(.+?)")\s*.*?(?:>|\/>)/igm;
+        // 提取详情页图片用于微信图片浏览和放大
+        this.options.descImgs = [];
+        var reg = /<img\s+.*?src=(?:'(.+?)'|"(.+?)")\s*.*?(?:>|\/>)/igm;
 
-        //   var match;
-
-        //   while (match = reg.exec(description)) {
-        //     var newImgHref = "<a target='_blank' href=" + match[2].split("@640w_80Q_1x.")[0] + ">" + match[0] + "</a>";
-        //     description = description.replace(match[0], newImgHref);
-        //   }
-        // }
+        var match;
+        while (match = reg.exec(description)) {
+          this.options.descImgs.push(match[2].split("@640w_80Q_1x.")[0]);
+        }
 
         this.options.detailContentInfo.itemInfo.basicInfo.attr("description", description);
       },
 
       "#detail click": function(element) {
-        debugger;
         var target = event.srcElement || event.target;
 
         // 微信环境
@@ -339,7 +342,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
           if (window.WeixinJSBridge) {
 
-            var imgs = [src];
+            var imgs = this.options.descImgs;
             WeixinJSBridge.invoke('imagePreview', {
               'current': src,
               'urls': imgs
@@ -360,7 +363,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
           if (window.WeixinJSBridge) {
 
-            var imgs = [src];
+            var imgs = this.options.sliderImgs;
             WeixinJSBridge.invoke('imagePreview', {
               'current': src,
               'urls': imgs
