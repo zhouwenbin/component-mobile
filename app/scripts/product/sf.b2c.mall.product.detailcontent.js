@@ -321,13 +321,13 @@ define('sf.b2c.mall.product.detailcontent', [
           .replace(/.png/gi, '.png@640w_80Q_1x.png');
 
         // 提取详情页图片用于微信图片浏览和放大
-        this.options.descImgs = [];
-        var reg = /<img\s+.*?src=(?:'(.+?)'|"(.+?)")\s*.*?(?:>|\/>)/igm;
+        // this.options.descImgs = [];
+        // var reg = /<img\s+.*?src=(?:'(.+?)'|"(.+?)")\s*.*?(?:>|\/>)/igm;
 
-        var match;
-        while (match = reg.exec(description)) {
-          this.options.descImgs.push(match[2].split("@640w_80Q_1x.")[0]);
-        }
+        // var match;
+        // while (match = reg.exec(description)) {
+        //   this.options.descImgs.push(match[2].split("@640w_80Q_1x.")[0]);
+        // }
 
         this.options.detailContentInfo.itemInfo.basicInfo.attr("description", description);
       },
@@ -342,7 +342,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
           if (window.WeixinJSBridge) {
 
-            var imgs = this.options.descImgs;
+            var imgs = [src];
             WeixinJSBridge.invoke('imagePreview', {
               'current': src,
               'urls': imgs
