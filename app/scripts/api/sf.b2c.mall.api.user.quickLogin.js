@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.webLogin
+  * @class sf.b2c.mall.api.user.quickLogin
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.webLogin',
+'sf.b2c.mall.api.user.quickLogin',
 [
   'zepto',
   'can',
@@ -22,25 +22,17 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.webLogin',
+      METHOD_NAME: 'user.quickLogin',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'accountId': 'string',
-        'type': 'string',
-        'password': 'string',
+        'cftoken': 'string'
       },
       OPTIONAL: {
-        'vfCode': 'string',
-        'rembFlag': 'int'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000010': '未找到用户',
-        '1000030': '用户名or密码错误',
-        '1000100': '验证码错误',
-        '1000110': '账户尚未激活',
-        '1000300': '用户名或密码错误已达3次，需要输入验证码'
+        '1000010': '未找到用户'
       }
     }
   });

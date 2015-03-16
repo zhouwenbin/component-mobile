@@ -32,7 +32,8 @@ function($, can, _, Comm, SecurityType) {
       VERIFY:{
       },
       ERROR_CODE: {
-        '4000100': 'order unkown error'
+        '4000100': 'order unkown error',
+        '4001601': '该物流单已经成功发货，不要重复发货！'
       }
     }
   });

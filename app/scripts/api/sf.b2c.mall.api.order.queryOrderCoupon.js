@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.updateRecAddress
+  * @class sf.b2c.mall.api.order.queryOrderCoupon
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.updateRecAddress',
+'sf.b2c.mall.api.order.queryOrderCoupon',
 [
   'zepto',
   'can',
@@ -22,27 +22,18 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.updateRecAddress',
+      METHOD_NAME: 'order.queryOrderCoupon',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'addrId': 'long',
+        'items': 'json',
+        'system': 'string'
       },
       OPTIONAL: {
-        'nationName': 'string',
-        'provinceName': 'string',
-        'cityName': 'string',
-        'regionName': 'string',
-        'detail': 'string',
-        'zipCode': 'string',
-        'cellphone': 'string',
-        'recName': 'string',
-        'recId': 'long'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000230': '手机号错误，请输入正确的手机号',
-        '1000332': '输入的邮编错误'
+        '4000100': 'order unkown error'
       }
     }
   });

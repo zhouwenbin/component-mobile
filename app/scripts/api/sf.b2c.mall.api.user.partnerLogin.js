@@ -26,9 +26,10 @@ function($, can, _, Comm, SecurityType) {
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
         'partnerId': 'string',
-        'authResp': 'string'
+        'authResp': 'string',
       },
       OPTIONAL: {
+        'rembFlag': 'int'
       },
       VERIFY:{
       },
