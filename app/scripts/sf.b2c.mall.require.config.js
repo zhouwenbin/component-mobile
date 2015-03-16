@@ -156,6 +156,9 @@ requirejs.config({
         // 个人中心
         'sf.b2c.mall.page.center': 'scripts/page/sf.b2c.mall.page.center',
 
+        //优惠券
+        'sf.b2c.mall.page.coupon': 'scripts/page/sf.b2c.mall.page.coupon',
+
         // 微信转跳中心
         'sf.b2c.mall.page.weixincenter': 'scripts/page/sf.b2c.mall.page.weixincenter',
 
