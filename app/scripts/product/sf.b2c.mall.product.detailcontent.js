@@ -197,7 +197,7 @@ define('sf.b2c.mall.product.detailcontent', [
               that.bindSelectSpecButton();
             })
 
-            $('#detailTab').click(function() {debugger;
+            $('#detailTab').click(function() {
               that.switchTab($(this), 'detailTab');
             })
 
@@ -279,7 +279,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var that = this;
 
         var map = {
-          'detailTab': function() {debugger;
+          'detailTab': function() {
             //确保只渲染一次
             if ($.trim($('#detail')[0].innerHTML) == "") {
               that.isRendered = that.renderDetail();
