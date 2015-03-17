@@ -77,7 +77,10 @@ define('sf.b2c.mall.order.orderlistcontent', [
                     order.imageUrl = "http://m.sfht.com/static/img/no.png";
                   } else {
                     var orderListImgUrl = JSON.parse(order.orderGoodsItemList[0].imageUrl)[0];
-                    orderListImgUrl = orderListImgUrl.replace(/.jpg/g, '.jpg@63h_63w.jpg');
+                    if (typeof orderListImgUrl != 'undefined') {
+                      orderListImgUrl = orderListImgUrl.replace(/.jpg/g, '.jpg@63h_63w.jpg');
+                    }
+
                     order.imageUrl = orderListImgUrl;
 
                   }
@@ -88,6 +91,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
                   order.showOperationArea = (order.optionHMTL.length > 0 ? true : false);
 
                   order.orderStatus = that.statsMap[order.orderStatus];
+                  order.paymentAmount = order.totalPrice - order.discount;
                 }
               })
 
@@ -114,14 +118,6 @@ define('sf.b2c.mall.order.orderlistcontent', [
               var html = can.view('templates/order/sf.b2c.mall.order.orderlist.mustache', that.options);
               that.element.html(html);
             }
-
-            // $('#notCompleteOrderListTabhead').tap(function() {
-            //   that.switchTab($(this), 'notCompletedTab');
-            // })
-
-            // $('#completeOrderListTabhead').tap(function() {
-            //   that.switchTab($(this), 'completedTab');
-            // })
 
             if (that.options.notCompletedOrderList.length == 0 && that.options.completedOrderList.length > 0) {
               that.switchTab(can.$('#completeOrderListTabhead'), 'completedTab');

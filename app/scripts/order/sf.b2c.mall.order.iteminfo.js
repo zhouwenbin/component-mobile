@@ -134,7 +134,7 @@ define('sf.b2c.mall.order.iteminfo', [
         .done(function(addrDefault, personDefault) {
 
           params = {
-            "addressId": JSON.stringify({
+            "address": JSON.stringify({
               "addrId": selectAddr.addrId,
               "nationName": selectAddr.nationName,
               "provinceName": selectAddr.provinceName,
@@ -153,7 +153,8 @@ define('sf.b2c.mall.order.iteminfo', [
               "num": that.options.amount,
               "price": that.options.sellingPrice
             }]),
-            "sysType": 'B2C_H5'
+            "sysType": 'B2C_H5',
+            "couponCodes": "[]"
           }
         })
         .fail(function(error) {

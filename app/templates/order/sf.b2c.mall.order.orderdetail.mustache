@@ -4,7 +4,7 @@
     <ul class="box orderdetail-r2 clearfix">
       <li>订单号：{{orderId}}</li>
       <li><time>{{sf.time gmtCreate "YYYY-MM-DD HH:mm"}}</time></li>
-      <li>订单总额：<span class="text-error">￥{{sf.price allTotalPrice}}</span></li>
+      <li>订单总额：<span class="text-error">￥{{sf.price shouldPayPrice}}</span></li>
       <li><span class="text-error">{{status}}</span> {{{operationHTML}}}</li>
     </ul>
     <div class="orderdetail-r3">
