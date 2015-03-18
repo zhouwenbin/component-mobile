@@ -281,7 +281,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var map = {
           'detailTab': function() {
             //确保只渲染一次
-            if (!that.isRendered) {
+            if ($.trim($('#detail')[0].innerHTML) == "") {
               that.isRendered = that.renderDetail();
             }
 
@@ -392,7 +392,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
         this.options.detailContentInfo.itemInfo.basicInfo.attr("description", description);
 
-        $('#detail').css("min-height", window.screen.height - $("#tabHeader").height() - $(".buy").height()).html(template(this.options.detailContentInfo));
+        $('#detail').html(template(this.options.detailContentInfo));
 
         $('#viewPCDetailArea').hide();
       },
