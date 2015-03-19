@@ -1,0 +1,28 @@
+.coupon{
+  text-align: center;
+  padding-top: 22px;
+
+}
+.coupon p{
+  margin-bottom: 15px;
+  color: #666;
+}
+.coupon-b{
+  background: url(../img/coupon.png) no-repeat;
+  background-size:100%;
+  width: 169px;
+  padding-left:36px;
+  height: 69px;
+  color:#fff;
+  display: inline-block;
+}
+.coupon-r1{
+  font-size: 24px;
+}
+.coupon-r1 strong{
+  font-size: 38px;
+}
+.coupon-r2{
+  padding:0 10px;
+  line-height: 1.2;
+}
