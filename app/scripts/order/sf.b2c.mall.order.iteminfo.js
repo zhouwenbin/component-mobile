@@ -3,10 +3,10 @@
 define('sf.b2c.mall.order.iteminfo', [
   'can',
   'zepto',
-  'fastclick',
   'sf.b2c.mall.api.b2cmall.getProductHotData',
   'sf.b2c.mall.api.b2cmall.getItemSummary',
   'sf.b2c.mall.api.order.submitOrderForAllSys',
+  'sf.b2c.mall.api.order.queryOrderCoupon',
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.setDefaultAddr',
@@ -14,22 +14,21 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.helpers',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config'
-], function(can, $, Fastclick, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFMessage, SFConfig) {
-  Fastclick.attach(document.body);
+], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFMessage, SFConfig) {
   return can.Control.extend({
-
+    itemObj: {},
     /**
      * 初始化
      * @param  {DOM} element 容器element
      * @param  {Object} options 传递的参数
      */
     init: function(element, options) {
-      var that = this;
-
       var params = can.deparam(window.location.search.substr(1));
-      that.options.itemid = params.itemid;
-      that.options.amount = params.amount;
+      this.options.itemid = params.itemid;
+      this.options.amount = params.amount;
 
+      var that = this;
+      var itemObj = this.itemObj;
       var getItemSummary = new SFGetItemSummary({
         "itemId":this.options.itemid
       });
@@ -39,8 +38,6 @@ define('sf.b2c.mall.order.iteminfo', [
 
       can.when(getItemSummary.sendRequest(), prceInfo.sendRequest())
         .done(function(iteminfo, priceinfo) {
-          var itemObj = {};
-
           itemObj.singlePrice = priceinfo.sellingPrice;
           itemObj.amount = that.options.amount;
 
@@ -52,7 +49,7 @@ define('sf.b2c.mall.order.iteminfo', [
           itemObj.showTax = iteminfo.bonded;
           itemObj.itemName = iteminfo.title;
 
-		      if(typeof iteminfo.image !== 'undefined'){
+          if(typeof iteminfo.image !== 'undefined'){
             itemObj.picUrl = iteminfo.image.thumbImgUrl;
           }
 
@@ -66,21 +63,65 @@ define('sf.b2c.mall.order.iteminfo', [
 
           that.options.allTotalPrice = itemObj.allTotalPrice;
           that.options.sellingPrice = priceinfo.sellingPrice;
-
-          var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', itemObj);
-          that.element.html(html);
-
-          $('#submitOrder').click(function() {
-            that.submitOrderClick($(this));
-          })
-
-          $('.loadingDIV').hide();
-
         })
         .fail(function(error) {
           console.error(error);
-          $('.loadingDIV').hide();
         })
+        .then(function(){
+          var queryOrderCoupon = new SFQueryOrderCoupon({
+            "items": JSON.stringify([{
+              "itemId": that.options.itemid,
+              "num": that.options.amount,
+              "price": that.itemObj.singlePrice
+            }]),
+            'system': "B2C_H5"
+          });
+          return queryOrderCoupon.sendRequest();
+        })
+        .done(function(orderCoupon) {
+          itemObj.isShowCouponArea = true;
+          itemObj.orderCoupon = orderCoupon;
+          itemObj.orderCoupon.isHaveAvaliable = orderCoupon.avaliableAmount != 0;
+          itemObj.orderCoupon.isHaveDisable = orderCoupon.disableAmount != 0;
+          itemObj.orderCoupon.useQuantity = 0;
+          itemObj.orderCoupon.discountPrice = 0;
+          itemObj.orderCoupon.selectCoupons = [];
+        })
+        .fail(function (error) {
+          console.error(error);
+        })
+        .always(function() {
+          that.itemObj = new can.Map(itemObj);
+          that.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
+            that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
+          });
+          var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
+          that.element.html(html);
+
+          var tmpCouponHtmls;
+          for(var i = 0, tmpAc; tmpAc = that.itemObj.orderCoupon.avaliableCoupons[i]; i++) {
+            tmpCouponHtmls += "<option value=" + tmpAc.couponCode + " data-price=" + tmpAc.price + ">" + tmpAc.couponDescription + "</option>";
+          }
+          $("#selectCoupon").append(tmpCouponHtmls);
+
+          $('.loadingDIV').hide();
+          $("#submitOrder").click(function() {
+            that.submitOrderClick($(this));
+          });
+        });
+    },
+
+    '#selectCoupon change': function(targetElement){
+      var selectedEle = $(targetElement[0][$(targetElement).get(0).selectedIndex]);
+      var price = selectedEle.data("price");
+      if (price != 0) {
+        this.itemObj.attr("orderCoupon.useQuantity", 1);
+        this.itemObj.orderCoupon.selectCoupons = [$(targetElement).val()];
+      } else {
+        this.itemObj.attr("orderCoupon.useQuantity", 0);
+        this.itemObj.orderCoupon.selectCoupons = [];
+      }
+      this.itemObj.attr("orderCoupon.discountPrice", price);
     },
 
     errorMap: {
@@ -94,8 +135,6 @@ define('sf.b2c.mall.order.iteminfo', [
     },
 
     submitOrderClick: function(element, event) {
-      // $('.loadingDIV').show();
-
       var that = this;
 
       //防止重复提交
@@ -154,11 +193,10 @@ define('sf.b2c.mall.order.iteminfo', [
               "price": that.options.sellingPrice
             }]),
             "sysType": 'B2C_H5',
-            "couponCodes": "[]"
+            "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
           }
         })
         .fail(function(error) {
-          // $('.loadingDIV').hide();
           element.removeClass("disable");
         })
         .then(function() {
@@ -173,7 +211,6 @@ define('sf.b2c.mall.order.iteminfo', [
             });
         })
         .fail(function(error) {
-          // $('.loadingDIV').hide();
           element.removeClass("disable");
           new SFMessage(null, {
             'tip': that.errorMap[error] || '下单失败',
