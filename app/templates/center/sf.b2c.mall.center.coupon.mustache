@@ -7,53 +7,53 @@
       <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
     </div>
     <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
-        <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
+      <h2 class="ellipsis">{{title}}</h2>
+      <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
     </div>
   </li>
 {{/each}}
 {{#each used.items}}
-    <li class="coupons-disabled">
-        <div class="coupons-c2 fr">
-            <div class="coupons-c2r1">
-                ￥<span>{{sf.price reduceCost}}</span>
-            </div>
-            <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
-            <div class="coupons-c2r3">已使用</div>
-        </div>
-        <div class="coupons-c1">
-            <h2 class="ellipsis">{{title}}</h2>
-            <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
-        </div>
-    </li>
+  <li class="coupons-disabled">
+    <div class="coupons-c2 fr">
+      <div class="coupons-c2r1">
+        ￥<span>{{sf.price reduceCost}}</span>
+      </div>
+      <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
+      <div class="coupons-c2r3">已使用</div>
+    </div>
+    <div class="coupons-c1">
+      <h2 class="ellipsis">{{title}}</h2>
+      <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
+    </div>
+  </li>
 {{/each}}
 {{#each expired.items}}
-    <li class="coupons-disabled">
-        <div class="coupons-c2 fr">
-            <div class="coupons-c2r1">
-                ￥<span>{{sf.price reduceCost}}</span>
-            </div>
-            <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
-            <div class="coupons-c2r3">已过期</div>
-        </div>
-        <div class="coupons-c1">
-            <h2 class="ellipsis">{{title}}</h2>
-            <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
-        </div>
-    </li>
+  <li class="coupons-disabled">
+    <div class="coupons-c2 fr">
+      <div class="coupons-c2r1">
+        ￥<span>{{sf.price reduceCost}}</span>
+      </div>
+      <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
+      <div class="coupons-c2r3">已过期</div>
+    </div>
+    <div class="coupons-c1">
+      <h2 class="ellipsis">{{title}}</h2>
+      <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
+    </div>
+  </li>
 {{/each}}
 {{#each cancel.items}}
-    <li class="coupons-disabled">
-        <div class="coupons-c2 fr">
-            <div class="coupons-c2r1">
-                ￥<span>{{sf.price reduceCost}}</span>
-            </div>
-            <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
-            <div class="coupons-c2r3">已作废</div>
-        </div>
-        <div class="coupons-c1">
-            <h2 class="ellipsis">{{title}}</h2>
-            <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
-        </div>
-    </li>
+  <li class="coupons-disabled">
+    <div class="coupons-c2 fr">
+      <div class="coupons-c2r1">
+        ￥<span>{{sf.price reduceCost}}</span>
+      </div>
+      <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
+      <div class="coupons-c2r3">已作废</div>
+    </div>
+      <div class="coupons-c1">
+        <h2 class="ellipsis">{{title}}</h2>
+        <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
+    </div>
+  </li>
 {{/each}}
