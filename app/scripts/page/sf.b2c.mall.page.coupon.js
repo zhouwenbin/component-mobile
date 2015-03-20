@@ -24,11 +24,7 @@ define(
 
       render:function(){
         var that = this;
-        var params = {
-          "query": JSON.stringify({
-          })
-        }
-      	var getUserCouponList = new SFGetUserCouponList(params);
+      	var getUserCouponList = new SFGetUserCouponList("");
       	getUserCouponList.sendRequest()
       	  .done(function(data){
             var options = {
@@ -47,7 +43,8 @@ define(
               cancel : {
                 count: 0,
                 items: []
-              }
+              },
+              totalCount: data.totalCount
             };
 
             var couponStatusMap = {
