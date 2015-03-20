@@ -11,16 +11,14 @@ define(
     'sf.weixin',
     'sf.b2c.mall.business.config'
   ],
-
   function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, ItemInfo, SFWeixin, SFConfig) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
-    SFWeixin.shareIndex();
+    //SFWeixin.shareIndex();
 
     var order = can.Control.extend({
 
       init: function(element, options) {
-
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           window.location.href = SFConfig.setting.link.login;
           return false;
@@ -39,7 +37,6 @@ define(
       },
 
       supplement: function() {
-
       }
     });
 

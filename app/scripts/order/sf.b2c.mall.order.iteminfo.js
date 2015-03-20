@@ -16,7 +16,7 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.b2c.mall.business.config'
 ], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFMessage, SFConfig) {
   return can.Control.extend({
-    itemObj: {},
+    itemObj: new can.Map({}),
     /**
      * 初始化
      * @param  {DOM} element 容器element
@@ -24,77 +24,16 @@ define('sf.b2c.mall.order.iteminfo', [
      */
     init: function(element, options) {
       var params = can.deparam(window.location.search.substr(1));
-      this.options.itemid = params.itemid;
-      this.options.amount = params.amount;
+      options.itemid = params.itemid;
+      options.amount = params.amount;
 
       var that = this;
-      var itemObj = this.itemObj;
-      var getItemSummary = new SFGetItemSummary({
-        "itemId":this.options.itemid
-      });
-      var prceInfo = new SFGetProductHotData({
-        'itemId': this.options.itemid
-      });
 
-      can.when(getItemSummary.sendRequest(), prceInfo.sendRequest())
-        .done(function(iteminfo, priceinfo) {
-          itemObj.singlePrice = priceinfo.sellingPrice;
-          itemObj.amount = that.options.amount;
-
-          itemObj.totalPrice = priceinfo.sellingPrice * that.options.amount;
-          itemObj.allTotalPrice = itemObj.totalPrice;
-          itemObj.shouldPay = itemObj.totalPrice;
-
-          //是否是宁波保税，是得话才展示税额
-          itemObj.showTax = iteminfo.bonded;
-          itemObj.itemName = iteminfo.title;
-
-          if(typeof iteminfo.image !== 'undefined'){
-            itemObj.picUrl = iteminfo.image.thumbImgUrl;
-          }
-
-          if(typeof iteminfo.specs != "undefined"){
-            var result = new Array();
-            _.each(iteminfo.specs,function(item){
-              result.push(item.specName + "：" +item.spec.specValue);
-            });
-            itemObj.spec ="<li>" + result.join('</li><li>') + "</li>";
-          }
-
-          that.options.allTotalPrice = itemObj.allTotalPrice;
-          that.options.sellingPrice = priceinfo.sellingPrice;
-        })
-        .fail(function(error) {
-          console.error(error);
-        })
+      can.when(this.initItemSummary(options), this.initProductHotData(options))
         .then(function(){
-          var queryOrderCoupon = new SFQueryOrderCoupon({
-            "items": JSON.stringify([{
-              "itemId": that.options.itemid,
-              "num": that.options.amount,
-              "price": that.itemObj.singlePrice
-            }]),
-            'system': "B2C_H5"
-          });
-          return queryOrderCoupon.sendRequest();
-        })
-        .done(function(orderCoupon) {
-          itemObj.isShowCouponArea = true;
-          itemObj.orderCoupon = orderCoupon;
-          itemObj.orderCoupon.isHaveAvaliable = orderCoupon.avaliableAmount != 0;
-          itemObj.orderCoupon.isHaveDisable = orderCoupon.disableAmount != 0;
-          itemObj.orderCoupon.useQuantity = 0;
-          itemObj.orderCoupon.discountPrice = 0;
-          itemObj.orderCoupon.selectCoupons = [];
-        })
-        .fail(function (error) {
-          console.error(error);
+          return that.initCoupons(options);
         })
         .always(function() {
-          that.itemObj = new can.Map(itemObj);
-          that.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
-            that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
-          });
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
           that.element.html(html);
 
@@ -217,6 +156,92 @@ define('sf.b2c.mall.order.iteminfo', [
             'type': 'error'
           });
         });
+    },
+
+    initProductHotData: function(options) {
+      var that = this;
+      var getProductHotData = new SFGetProductHotData({
+        'itemId': options.itemid
+      });
+      var getProductHotDataDefer = getProductHotData.sendRequest();
+      getProductHotDataDefer.done(function(priceinfo) {
+        that.itemObj.attr({
+          "singlePrice": priceinfo.sellingPrice,
+          "amount": options.amount,
+          "totalPrice": priceinfo.sellingPrice * options.amount,
+          "allTotalPrice": priceinfo.sellingPrice * options.amount,
+          "shouldPay": priceinfo.sellingPrice * options.amount,
+        });
+
+        options.allTotalPrice = that.itemObj.allTotalPrice;
+        options.sellingPrice = priceinfo.sellingPrice;
+      })
+      .fail(function(error) {
+        console.error(error);
+      })
+      return getProductHotDataDefer;
+    },
+
+    initItemSummary: function(options) {
+      var that = this;
+      var getItemSummary = new SFGetItemSummary({
+        "itemId":options.itemid
+      });
+
+      var getItemSummaryDefer = getItemSummary.sendRequest();
+      getItemSummaryDefer.done(function(iteminfo){
+        var result = new Array();
+        if(typeof iteminfo.specs != "undefined"){
+          _.each(iteminfo.specs,function(item){
+            result.push(item.specName + "：" +item.spec.specValue);
+          });
+        }
+        //是否是宁波保税，是得话才展示税额
+        that.itemObj.attr({
+          "showTax": iteminfo.bonded,
+          "itemName": iteminfo.title,
+          "picUrl": iteminfo.image && iteminfo.image.thumbImgUrl,
+          "spec": result.length > 0 && ("<li>" + result.join('</li><li>') + "</li>")
+        });
+      })
+      .fail(function(error) {
+        console.error(error);
+      })
+
+      return getItemSummaryDefer;
+    },
+
+    /*
+     * author:zhangke
+     */
+    initCoupons: function(options) {
+      var that = this;
+      var queryOrderCoupon = new SFQueryOrderCoupon({
+        "items": JSON.stringify([{
+          "itemId": options.itemid,
+          "num": options.amount,
+          "price": this.itemObj.singlePrice
+        }]),
+        'system': "B2C_H5"
+      });
+      var queryOrderCouponDefer = queryOrderCoupon.sendRequest();
+      queryOrderCouponDefer.done(function(orderCoupon) {
+        that.itemObj.attr("isShowCouponArea", true);
+        orderCoupon.isHaveAvaliable = orderCoupon.avaliableAmount != 0;
+        orderCoupon.isHaveDisable = orderCoupon.disableAmount != 0;
+        orderCoupon.useQuantity = 0;
+        orderCoupon.discountPrice = 0;
+        orderCoupon.selectCoupons = [];
+
+        that.itemObj.attr("orderCoupon", orderCoupon);
+        that.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
+          that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
+        });
+      })
+      .fail(function (error) {
+        console.error(error);
+      })
+      return queryOrderCouponDefer;
     }
   });
 })
