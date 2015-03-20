@@ -230,7 +230,7 @@ define('sf.b2c.mall.order.iteminfo', [
         orderCoupon.isHaveDisable = orderCoupon.disableAmount != 0;
         orderCoupon.useQuantity = 0;
         orderCoupon.discountPrice = 0;
-        
+
         that.itemObj.attr("orderCoupon", orderCoupon);
         that.itemObj.orderCoupon.selectCoupons = [];
 

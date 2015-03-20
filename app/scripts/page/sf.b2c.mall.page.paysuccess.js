@@ -22,32 +22,42 @@ define(
       },
       render: function() {
         var that = this;
+        var itemObj = {
+          isCostCoupon: false,
+          isPresentCoupon: false,
+          links: SFConfig.setting.link,
+          isPaySuccess: true
+        };
 
         var params = can.deparam(window.location.search.substr(1));
+
+        if (!params.orderid) {
+          itemObj.isPaySuccess = false;
+          that.renderHtml(that.element, itemObj);
+        }
 
         var getOrder = new SFGetOrder({
           "orderId": params.orderid
         });
 
-        that.options.isCostCoupon = false;
-        that.options.isPresentCoupon = false;
-        that.options.links = SFConfig.setting.link;
 
         can.when(getOrder.sendRequest())
-          .done(function(data, idcard) {
+          .done(function(data) {
+            itemObj.isPaySuccess = data.orderItem.paymentStatus === "PAYED";
+            
             //处理卡券信息
             if (data.orderItem.orderCouponItemList && data.orderItem.orderCouponItemList.length > 0) {
               for(var i = 0, tmpOrderCouponItem; tmpOrderCouponItem = data.orderItem.orderCouponItemList[i]; i++) {
                 switch (tmpOrderCouponItem.orderAction)
                 {
                   case "COST": {
-                    that.options.isCostCoupon = true;
-                    that.options.costCoupon = tmpOrderCouponItem;
+                    itemObj.isCostCoupon = true;
+                    itemObj.costCoupon = tmpOrderCouponItem;
                     break;
                   }
                   case "PRESENT": {
-                    that.options.isPresentCoupon = true;
-                    that.options.presentCoupon = tmpOrderCouponItem;
+                    itemObj.isPresentCoupon = true;
+                    itemObj.presentCoupon = tmpOrderCouponItem;
                     break;
                   }
                 }
@@ -58,9 +68,12 @@ define(
             console.error(error);
           })
           .always(function(){
-            var html = can.view('templates/order/sf.b2c.mall.order.paysuccess.mustache', that.options);
-            that.element.html(html);
+            that.renderHtml(that.element, itemObj);
           })
+      },
+      renderHtml: function(element, itemObj) {
+        var html = can.view('templates/order/sf.b2c.mall.order.paysuccess.mustache', itemObj);
+        element.html(html);
       }
     });
     new paysuccess('.sf-b2c-mall-order-paysuccess');
