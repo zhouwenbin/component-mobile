@@ -172,13 +172,12 @@ define('sf.b2c.mall.order.iteminfo', [
           "allTotalPrice": priceinfo.sellingPrice * options.amount,
           "shouldPay": priceinfo.sellingPrice * options.amount,
         });
-
         options.allTotalPrice = that.itemObj.allTotalPrice;
         options.sellingPrice = priceinfo.sellingPrice;
       })
       .fail(function(error) {
         console.error(error);
-      })
+      });
       return getProductHotDataDefer;
     },
 
@@ -206,7 +205,7 @@ define('sf.b2c.mall.order.iteminfo', [
       })
       .fail(function(error) {
         console.error(error);
-      })
+      });
 
       return getItemSummaryDefer;
     },
@@ -231,16 +230,17 @@ define('sf.b2c.mall.order.iteminfo', [
         orderCoupon.isHaveDisable = orderCoupon.disableAmount != 0;
         orderCoupon.useQuantity = 0;
         orderCoupon.discountPrice = 0;
-        orderCoupon.selectCoupons = [];
-
+        
         that.itemObj.attr("orderCoupon", orderCoupon);
+        that.itemObj.orderCoupon.selectCoupons = [];
+
         that.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
           that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
         });
       })
       .fail(function (error) {
         console.error(error);
-      })
+      });
       return queryOrderCouponDefer;
     }
   });

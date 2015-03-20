@@ -14,7 +14,7 @@ define(
   function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, ItemInfo, SFWeixin, SFConfig) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
-    //SFWeixin.shareIndex();
+    SFWeixin.shareIndex();
 
     var order = can.Control.extend({
 
