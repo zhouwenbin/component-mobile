@@ -40,36 +40,36 @@ define(
           "orderId": params.orderid
         });
 
-
-        can.when(getOrder.sendRequest())
+        can.when(getOrder.sendRequest()
           .done(function(data) {
-            itemObj.isPaySuccess = data.orderItem.paymentStatus === "PAYED";
-            
-            //处理卡券信息
-            if (data.orderItem.orderCouponItemList && data.orderItem.orderCouponItemList.length > 0) {
-              for(var i = 0, tmpOrderCouponItem; tmpOrderCouponItem = data.orderItem.orderCouponItemList[i]; i++) {
-                switch (tmpOrderCouponItem.orderAction)
-                {
-                  case "COST": {
-                    itemObj.isCostCoupon = true;
-                    itemObj.costCoupon = tmpOrderCouponItem;
-                    break;
-                  }
-                  case "PRESENT": {
-                    itemObj.isPresentCoupon = true;
-                    itemObj.presentCoupon = tmpOrderCouponItem;
-                    break;
-                  }
+          itemObj.isPaySuccess = data.orderItem.paymentStatus === "PAYED";
+
+          //处理卡券信息
+          if (data.orderItem.orderCouponItemList && data.orderItem.orderCouponItemList.length > 0) {
+            for(var i = 0, tmpOrderCouponItem; tmpOrderCouponItem = data.orderItem.orderCouponItemList[i]; i++) {
+              switch (tmpOrderCouponItem.orderAction)
+              {
+                case "COST": {
+                  itemObj.isCostCoupon = true;
+                  itemObj.costCoupon = tmpOrderCouponItem;
+                  break;
+                }
+                case "PRESENT": {
+                  itemObj.isPresentCoupon = true;
+                  itemObj.presentCoupon = tmpOrderCouponItem;
+                  break;
                 }
               }
             }
-          })
+          }
+            })
           .fail(function(error) {
             console.error(error);
           })
-          .always(function(){
-            that.renderHtml(that.element, itemObj);
-          })
+        )
+        .always(function(){
+          that.renderHtml(that.element, itemObj);
+        })
       },
       renderHtml: function(element, itemObj) {
         var html = can.view('templates/order/sf.b2c.mall.order.paysuccess.mustache', itemObj);

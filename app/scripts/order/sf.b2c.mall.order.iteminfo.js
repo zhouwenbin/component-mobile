@@ -37,11 +37,13 @@ define('sf.b2c.mall.order.iteminfo', [
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
           that.element.html(html);
 
-          var tmpCouponHtmls;
-          for(var i = 0, tmpAc; tmpAc = that.itemObj.orderCoupon.avaliableCoupons[i]; i++) {
-            tmpCouponHtmls += "<option value=" + tmpAc.couponCode + " data-price=" + tmpAc.price + ">" + tmpAc.couponDescription + "</option>";
+          if (that.itemObj.orderCoupon.avaliableAmount > 0) {
+            var tmpCouponHtmls;
+            for(var i = 0, tmpAc; tmpAc = that.itemObj.orderCoupon.avaliableCoupons[i]; i++) {
+              tmpCouponHtmls += "<option value=" + tmpAc.couponCode + " data-price=" + tmpAc.price + ">" + tmpAc.couponDescription + "</option>";
+            }
+            $("#selectCoupon").append(tmpCouponHtmls);
           }
-          $("#selectCoupon").append(tmpCouponHtmls);
 
           $('.loadingDIV').hide();
           $("#submitOrder").click(function() {
@@ -226,11 +228,12 @@ define('sf.b2c.mall.order.iteminfo', [
       var queryOrderCouponDefer = queryOrderCoupon.sendRequest();
       queryOrderCouponDefer.done(function(orderCoupon) {
         that.itemObj.attr("isShowCouponArea", true);
-        orderCoupon.isHaveAvaliable = orderCoupon.avaliableAmount != 0;
-        orderCoupon.isHaveDisable = orderCoupon.disableAmount != 0;
-        orderCoupon.useQuantity = 0;
-        orderCoupon.discountPrice = 0;
-
+        can.extend(orderCoupon, {
+          isHaveAvaliable: orderCoupon.avaliableAmount != 0,
+          isHaveDisable: orderCoupon.disableAmount != 0,
+          useQuantity: 0,
+          discountPrice: 0
+        });
         that.itemObj.attr("orderCoupon", orderCoupon);
         that.itemObj.orderCoupon.selectCoupons = [];
 
