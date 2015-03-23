@@ -1,0 +1,28 @@
+<!--支付成功-->
+<section class="pay">
+  {{#isPaySuccess}}
+  <h2><span class="icon icon38"></span>订单支付成功！</h2>
+  <div class="pay-r1">
+    <a href="{{links.orderlist}}" title="查看我的订单" class="btn btn-normal btn-radius">查看我的订单</a>
+  </div>
+  {{/isPaySuccess}}
+  <div class="pay-r2 clearfix">
+    <img src="img/qrcode.jpg" width="70" height="70" class="fl">
+    <p class="pay-r2c1">长按此图【识别图中二维码】或搜【顺丰海淘】关注微信公众号</p>
+  </div>
+</section>
+<!--支付成功-->
+
+<!--优惠券-->
+{{#isPresentCoupon}}
+<div class="coupon">
+  <p>恭喜你,获得了一张{{sf.price presentCoupon.price}}元优惠券</p>
+  <div class="coupon-b">
+    <div class="coupon-r1">
+      <strong>{{sf.price presentCoupon.price}}</strong>元
+    </div>
+    <div class="coupon-r2 ellipsis">{{presentCoupon.couponDescription}}</div>
+  </div>
+</div>
+{{/isPresentCoupon}}
+<!--优惠券-->

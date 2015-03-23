@@ -107,6 +107,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.orderId = data.orderId;
             that.options.recId = data.orderItem.rcvrId;
             that.options.gmtCreate = data.orderItem.gmtCreate;
+            that.options.discount = data.orderItem.discount || 0;
 
             that.options.status = that.statsMap[data.orderItem.orderStatus];
             that.options.operationHTML = that.optionHTML[that.nextStepMap[data.orderItem.orderStatus]];
@@ -152,7 +153,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             //是否是宁波保税，是得话才展示税额
             that.options.showTax = that.options.productList[0].bonded;
-            that.options.shouldPayPrice = that.options.allTotalPrice;
+            that.options.shouldPayPrice = that.options.allTotalPrice -  that.options.discount;
 
             that.options.showPayButton = orderData.orderItem.orderStatus == 'SUBMITED' ? true : false;
 
