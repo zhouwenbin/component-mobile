@@ -95,7 +95,7 @@ requirejs.config({
         'sf.b2c.mall.api.product.findRecommendProducts': 'scripts/api/sf.b2c.mall.api.product.findRecommendProducts',
         'sf.b2c.mall.api.b2cmall.getItemSummary': 'scripts/api/sf.b2c.mall.api.b2cmall.getItemSummary',
 
-        'sf.b2c.mall.api.coupon.getCpCode': 'scripts/api/sf.b2c.mall.api.coupon.getCpCode',
+        'sf.b2c.mall.api.coupon.receiveCpCode': 'scripts/api/sf.b2c.mall.api.coupon.receiveCpCode',
         'sf.b2c.mall.api.coupon.getUserCouponList': 'scripts/api/sf.b2c.mall.api.coupon.getUserCouponList',
 
         // --------------------------------------------
@@ -158,6 +158,7 @@ requirejs.config({
 
         //优惠券
         'sf.b2c.mall.page.coupon': 'scripts/page/sf.b2c.mall.page.coupon',
+        'sf.b2c.mall.component.getcoupon': 'scripts/component/sf.b2c.mall.component.getcoupon',
 
         // 微信转跳中心
         'sf.b2c.mall.page.weixincenter': 'scripts/page/sf.b2c.mall.page.weixincenter',

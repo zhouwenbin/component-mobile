@@ -19,6 +19,11 @@ define(
   	var coupon = can.Control.extend({
 
       init:function(){
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
+          return false;
+        }
+
       	this.render();
       },
 
