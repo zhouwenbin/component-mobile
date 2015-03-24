@@ -49,7 +49,7 @@ define(
                 count: 0,
                 items: []
               },
-              totalCount: data.totalCount
+              totalCount: data.totalCount || 0
             };
 
             var couponStatusMap = {

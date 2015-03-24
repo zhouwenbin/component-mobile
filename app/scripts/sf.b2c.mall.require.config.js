@@ -158,7 +158,7 @@ requirejs.config({
 
         //优惠券
         'sf.b2c.mall.page.coupon': 'scripts/page/sf.b2c.mall.page.coupon',
-        'sf.b2c.mall.component.getcoupon': 'scripts/component/sf.b2c.mall.component.getcoupon',
+        'sf.b2c.mall.module.getcoupon': 'scripts/module/sf.b2c.mall.module.getcoupon',
 
         // 微信转跳中心
         'sf.b2c.mall.page.weixincenter': 'scripts/page/sf.b2c.mall.page.weixincenter',
