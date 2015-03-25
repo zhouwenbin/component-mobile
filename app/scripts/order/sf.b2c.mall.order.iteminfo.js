@@ -37,7 +37,7 @@ define('sf.b2c.mall.order.iteminfo', [
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
           that.element.html(html);
 
-          if (that.itemObj.orderCoupon.avaliableAmount > 0) {
+          if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {
             var tmpCouponHtmls;
             for(var i = 0, tmpAc; tmpAc = that.itemObj.orderCoupon.avaliableCoupons[i]; i++) {
               tmpCouponHtmls += "<option value=" + tmpAc.couponCode + " data-price=" + tmpAc.price + ">" + tmpAc.couponDescription + "</option>";
