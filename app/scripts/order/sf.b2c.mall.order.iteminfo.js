@@ -203,12 +203,12 @@ define('sf.b2c.mall.order.iteminfo', [
             result.push(item.specName + "：" +item.spec.specValue);
           });
         }
-        //是否是宁波保税，是得话才展示税额
+
         that.itemObj.attr({
-          "showTax": iteminfo.bonded,
+          "showTax": iteminfo.bonded,    //是否是宁波保税，是得话才展示税额
           "itemName": iteminfo.title,
           "picUrl": iteminfo.image && iteminfo.image.thumbImgUrl,
-          "spec": result.length > 0 && ("<li>" + result.join('</li><li>') + "</li>")
+          "spec": result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : ""
         });
       })
       .fail(function(error) {
