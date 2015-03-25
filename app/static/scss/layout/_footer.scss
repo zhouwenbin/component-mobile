@@ -1,23 +1,63 @@
 /*尾部*/
- .footer-r1,
- .footer-r2{
- 	height: 31px;
- 	line-height: 31px;
- 	border-bottom:1px solid #d9d9d9;
- 	text-align: center;
- 	background: #fff;
+
+ %footer-icon{
+ 	background:url(../img/footer-icon.png) no-repeat;
+ 	background-size:270px;
+ 	display: inline-block;
+ 	width: 27px;
+ 	height: 26px;
+ }
+ .footer-icon1{
+ 	@extend %footer-icon;
+ }
+ .footer-icon2{
+ 	@extend %footer-icon;
+ 	background-position: -87px 0;
+ }
+ .footer-icon3{
+ 	@extend %footer-icon;
+ 	background-position: -176px 0;
+ }
+ .footer-icon4{
+ 	@extend %footer-icon;
+ 	background-position: -243px 0;
  }
  .footer-r1{
  	border-top:1px solid #d9d9d9;
+ 	margin-left: -17px;
+ 	padding:12px 0 12px 14px;
+ 	background:#fff;
+ 	border-bottom:1px solid #d9d9d9;
  }
- .footer-r1 .icon{
- 	margin-right: 5px;
- 	
- }
- .footer-r1 .icon:last-child{
-	margin-left: 23px;
- }
- .footer-r2{
+.footer-r1 li {
+    float: left;
+    margin-left: 17px;
+    font-size: 12px
+}
+
+.footer-r1 h2{
+    margin-left: 30px
+}
+
+.footer-r1 h2 {
+    font-weight: normal
+}
+
+.footer-r1 .li2 span {
+    letter-spacing: 2em
+}
+
+.footer-r1 .li3 {
+    margin-left: 0px
+}
+
+.footer-r1 .li3,.footer-r1 .li4 {
+    font-size: 12px
+}
+.footer-r2{
+ 	height: 31px;
+ 	line-height: 31px;
+ 	text-align: center;
  	color: #666;
  }
  .footer-r2 a{

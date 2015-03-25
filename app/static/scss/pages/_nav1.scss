@@ -1,17 +1,34 @@
 .nav1{
-  padding: 5px 0;
+  padding: 10px 0;
   border-bottom:1px solid #dfdfdf;
   background: #fff;
 }
 .nav1 li{
   float: left;
   width: 25%;
-  border-left:1px solid #dfdfdf;
-  margin-left: -1px;
   
   text-align: center;
 }
-.nav1 .icon{
+%nav1-icon{
+  background:url(../img/nav1.png) no-repeat;
+  background-size:290px 40px;
   display: block;
   margin:0 auto 7px;
+  width:40px;
+  height: 40px;
+}
+.nav1-icon1{
+  @extend %nav1-icon;
+}
+.nav1-icon2{
+  @extend %nav1-icon;
+  background-position: -83px 0;
+}
+.nav1-icon3{
+  @extend %nav1-icon;
+  background-position: -166px 0;
+}
+.nav1-icon4{
+  @extend %nav1-icon;
+  background-position: -250px 0;
 }
