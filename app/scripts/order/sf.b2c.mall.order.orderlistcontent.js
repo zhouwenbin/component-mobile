@@ -46,7 +46,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
             "receiverName": that.options.searchValue,
             "orderId": that.options.searchValue,
             "pageNum": 1,
-            "pageSize": 80
+            "pageSize": 50
           })
         }
 
