@@ -1,21 +1,21 @@
 define(
   'sf.b2c.mall.module.price', [
     'can',
+    'zepto',
     'underscore',
+    'fastclick',
     'sf.b2c.mall.api.b2cmall.getProductHotDataList',
     'sf.b2c.mall.business.config',
-    'imglazyload',
     'sf.b2c.mall.framework.comm'
   ],
 
-  function(can, _, SFGetProductHotDataList, SFConfig, SFImglazyload, SFFrameworkComm) {
-
-    SFFrameworkComm.register(1);
+  function(can,$, _, Fastclick,SFGetProductHotDataList, SFConfig, SFFrameworkComm) {
+    Fastclick.attach(document.body);
+    SFFrameworkComm.register(3);
 
     var price = can.Control.extend({
 
       init: function(element, options) {
-        $(".img-lazyload").imglazyload();
         this.render(element);
       },
 

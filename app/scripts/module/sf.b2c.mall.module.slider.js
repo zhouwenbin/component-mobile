@@ -4,10 +4,14 @@
 define(
   'sf.b2c.mall.module.slider', [
     'can',
-    'jquery',
-    'sf.b2c.mall.widget.slide',
+    'zepto',
+    'fastclick',
+    'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.business.config'
   ],
-  function(can, $, SFSlide) {
+  function(can, $, Fastclick,SFFrameworkComm, SFConfig) {
+    Fastclick.attach(document.body);
+    SFFrameworkComm.register(3);
 
     var main = can.Control.extend({
 
@@ -44,7 +48,7 @@ define(
       // },
 
       render: function() {
-        new SFSlide('.cms-module-slider');
+        //new SFSlide('.cms-module-slider');
       }
     })
 

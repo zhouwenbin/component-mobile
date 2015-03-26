@@ -1,21 +1,19 @@
 define(
   'sf.b2c.mall.module.time', [
     'can',
-    'jquery',
+    'zepto',
+    'fastclick',
     'sf.b2c.mall.api.b2cmall.getProductHotDataList',
-    'sf.b2c.mall.widget.slide',
-    'imglazyload',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.framework.comm'
   ],
-  function(can, $, SFGetProductHotDataList, SFSlide, SFImglazyload, SFConfig, SFFrameworkComm) {
-
-    SFFrameworkComm.register(1);
+  function(can, $, Fastclick,SFGetProductHotDataList, SFConfig, SFFrameworkComm) {
+    Fastclick.attach(document.body);
+    SFFrameworkComm.register(3);
 
     var time = can.Control.extend({
 
       init: function(element, options) {
-        $(".img-lazyload").imglazyload();
         this.render(element);
       },
 
