@@ -64,12 +64,14 @@ define(
 
             var endTime = $(timeNode).attr('data-cms-endtime');
 
-            var time = that.setCountDown(element.find(".cms-fill-timeinfo")[0], distance, endTime);
+            var startTime = $(timeNode).attr('data-cms-starttime');
+
+            var time = that.setCountDown(element.find(".cms-fill-timeinfo")[0], distance,startTime, endTime);
           })
         }, '1000');
       },
 
-      /**
+      /**startTime,
        * [showCountDown 参考倒计时]
        * @param  {[type]} currentTime
        * @param  {[type]} destTime
