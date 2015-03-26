@@ -72,6 +72,10 @@ define(
         window.location.href = SFConfig.setting.link.orderlist;
       },
 
+      '.mycoupon click': function(element, event) {
+        window.location.href = SFConfig.setting.link.coupon;
+      },
+
       maskMobile: function(str) {
         if (typeof str == 'undefined') {
           return "";

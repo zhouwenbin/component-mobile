@@ -698,11 +698,13 @@ module.exports = function (grunt) {
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.paysuccess.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
           },
           include: [
             "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.paysuccess'
+            'sf.b2c.mall.page.paysuccess',
+            'sf.helpers'
           ],
           insertRequire: ['sf.b2c.mall.page.paysuccess']
         }
@@ -732,6 +734,38 @@ module.exports = function (grunt) {
             'sf.b2c.mall.adapter.address.list'
           ],
           insertRequire: ['sf.b2c.mall.page.recaddrmanage']
+        }
+      },
+
+      coupon: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.coupon.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.coupon'
+          ],
+          insertRequire: ['sf.b2c.mall.page.coupon']
+        }
+      },
+
+      getcoupon: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.module.getcoupon.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config':  'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.getcoupon"],
+          insertRequire:  ['sf.b2c.mall.module.getcoupon']
         }
       }
 
