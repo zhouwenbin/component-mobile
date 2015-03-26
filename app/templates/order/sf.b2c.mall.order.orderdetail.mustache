@@ -67,27 +67,18 @@
     </div>
 
     <div class="orderdetail-r4 box">
-      <div class="clearfix">
-        <div class="orderdetail-r4c1 fl">
-          商品总额：<span class="text-important">¥{{sf.price allTotalPrice}}</span><span class="text-disable">优惠：0元</span>
-        </div>
-        <div class="orderdetail-r4c2">
-          {{#if showTax}}
-            税额：<span class="text-important">¥0</span>
-          {{/if}}
-        </div>
-      </div>
-
-      <div class="clearfix">
-        <div class="orderdetail-r4c1 fl">
-          运费：<span class="text-important">¥0</span>
-        </div>
-        <div class="orderdetail-r4c2 fr">
-          {{#if showShouldPayPrice}}<div class="table-fr3">实际应付款：<strong class="text-important">￥{{sf.price shouldPayPrice}}</strong></div>{{/if}}
-        </div>
+      <ul>
+        <li>商品总额：<span class="text-important">¥{{sf.price allTotalPrice}}</span></li>
+        <li>运费：<span class="text-important">¥0</span></li>
+        {{#if showTax}}
+          <li>税额：<span class="text-important">¥0</span></li>
+        {{/if}}
+        <li>优惠券抵扣：<span class="text-important">¥{{sf.price discount}}</span></li>
+      </ul>
+      <div class="center-vertical orderdetail-r4c2">
+        {{#showShouldPayPrice}}实际应付款：<span class="text-important">¥{{sf.price shouldPayPrice}}</span>{{/showShouldPayPrice}}
       </div>
     </div>
-
   </section>
   <!--订单详情-->
 

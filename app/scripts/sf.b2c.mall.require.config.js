@@ -95,7 +95,7 @@ requirejs.config({
         'sf.b2c.mall.api.product.findRecommendProducts': 'scripts/api/sf.b2c.mall.api.product.findRecommendProducts',
         'sf.b2c.mall.api.b2cmall.getItemSummary': 'scripts/api/sf.b2c.mall.api.b2cmall.getItemSummary',
 
-        'sf.b2c.mall.api.coupon.getCpCode': 'scripts/api/sf.b2c.mall.api.coupon.getCpCode',
+        'sf.b2c.mall.api.coupon.receiveCpCode': 'scripts/api/sf.b2c.mall.api.coupon.receiveCpCode',
         'sf.b2c.mall.api.coupon.getUserCouponList': 'scripts/api/sf.b2c.mall.api.coupon.getUserCouponList',
 
         // --------------------------------------------
@@ -161,6 +161,10 @@ requirejs.config({
         // 个人中心
         'sf.b2c.mall.page.center': 'scripts/page/sf.b2c.mall.page.center',
 
+        //优惠券
+        'sf.b2c.mall.page.coupon': 'scripts/page/sf.b2c.mall.page.coupon',
+        'sf.b2c.mall.module.getcoupon': 'scripts/module/sf.b2c.mall.module.getcoupon',
+
         // 微信转跳中心
         'sf.b2c.mall.page.weixincenter': 'scripts/page/sf.b2c.mall.page.weixincenter',
 
@@ -172,6 +176,10 @@ requirejs.config({
 
         // 收货地址管理
         'sf.b2c.mall.page.recaddrmanage': 'scripts/page/sf.b2c.mall.page.recaddrmanage',
-        'sf.b2c.mall.component.recaddrmanage': 'scripts/component/sf.b2c.mall.component.recaddrmanage'
+        'sf.b2c.mall.component.recaddrmanage': 'scripts/component/sf.b2c.mall.component.recaddrmanage',
+
+        // 红包
+        'sf.b2c.mall.page.luckymoneyshare': 'scripts/page/sf.b2c.mall.page.luckymoneyshare',
+        'sf.b2c.mall.page.luckymoneyaccept': 'scripts/page/sf.b2c.mall.page.luckymoneyaccept'
     }
 });
