@@ -35,7 +35,9 @@ define([], function () {
     'retrieve': 'http://test1.www.sfht.net/retrieve.html',
     'ilogin': 'http://test1.www.sfht.net/i.login.html',
     'coupon': 'http://test1.www.sfht.net/coupon.html',
-    'iregister': 'http://test1.www.sfht.net/i.register.html'
+    'iregister': 'http://test1.www.sfht.net/i.register.html',
+    'luckymoneyshare': 'http://dev.sfht.com/luckymoneyshare.html',
+    'luckymoneyaccept': 'http://dev.sfht.com/luckymoneyaccept.html'
   }
 
   return {

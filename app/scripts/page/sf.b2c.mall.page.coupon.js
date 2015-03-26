@@ -6,7 +6,6 @@ define(
 	'store',
 	'fastclick',
 	'sf.b2c.mall.framework.comm',
-	'sf.weixin',
     'sf.helpers',
 	'sf.b2c.mall.business.config',
 	'sf.b2c.mall.api.coupon.getUserCouponList'
@@ -14,7 +13,6 @@ define(
   function(can, $, store, Fastclick, SFFrameworkComm, SFWeixin, helpers, SFConfig, SFGetUserCouponList){
   	Fastclick.attach(document.body);
   	SFFrameworkComm.register(3);
-  	SFWeixin.shareIndex();
 
   	var coupon = can.Control.extend({
 

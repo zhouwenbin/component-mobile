@@ -755,17 +755,39 @@ module.exports = function (grunt) {
         }
       },
 
-      getcoupon: {
+      luckymoneyshare: {
         options: {
           preserveLicenseComments: false,
-          baseUrl:        './app/',
-          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.module.getcoupon.js',
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.luckymoneyshare.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
-            'sf.b2c.mall.business.config':  'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
           },
-          include:        ["sf.b2c.mall.module.getcoupon"],
-          insertRequire:  ['sf.b2c.mall.module.getcoupon']
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.luckymoneyshare'
+          ],
+          insertRequire: ['sf.b2c.mall.page.luckymoneyshare']
+        }
+      },
+
+      luckymoneyaccept: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.luckymoneyaccept.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.luckymoneyaccept'
+          ],
+          insertRequire: ['sf.b2c.mall.page.luckymoneyaccept']
         }
       }
 
