@@ -5,11 +5,12 @@ define(
   'sf.b2c.mall.module.slider', [
     'can',
     'zepto',
+    'swipe',
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config'
   ],
-  function(can, $, Fastclick,SFFrameworkComm, SFConfig) {
+  function(can, $, Swipe, Fastclick, SFFrameworkComm, SFConfig) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -18,37 +19,25 @@ define(
       init: function() {
         this.render();
 
-
       },
-      // renderMap: {
-      //   'slide': function () {
-      //     var $el = this.element.find('.sf-b2c-mall-main-slider.serverRendered');
 
-      //     var that = this;
-      //     if ($el.length === 0) {
-      //       var request = new SFApiGetBanner();
-      //       can.when(request.sendRequest())
-      //         .done(function (data) {
-      //           var arr = [];
-      //           _.each(data.value, function(value, key, list){
-      //             arr.push({
-      //               imgUrl: value.imgUrl,
-      //               url: value.link
-      //             });
-      //           });
-      //           that.component.slide = new SFSlide('.sf-b2c-mall-main-slider', {imgs: arr});
-      //         })
-      //         .fail(function () {
-
-      //         })
-      //     }else{
-      //       that.component.slide = new SFSlide('.sf-b2c-mall-main-slider');
-      //     }
-      //   }
-      // },
 
       render: function() {
-        //new SFSlide('.cms-module-slider');
+        //滚动效果
+        new Swipe($('.cms-module-slider')[0], {
+          startSlide: 0,
+          speed: 400,
+          auto: 5000,
+          continuous: true,
+          disableScroll: false,
+          stopPropagation: false,
+          callback: function(index, elem) {
+            $('.swipe-dot span').eq(index).addClass('active').siblings().removeClass('active');
+          },
+          transitionEnd: function(index, elem) {}
+        });
+        //第一个选中
+        $('.swipe-dot span').eq(0).addClass('active');
       }
     })
 
