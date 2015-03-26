@@ -35,7 +35,8 @@ define(['md5'], function (md5) {
     'retrieve': 'http://dev.sfht.com/retrieve.html',
     'ilogin': 'http://dev.sfht.com/i.login.html',
     'coupon':'http://dev.sfht.com/coupon.html',
-    'iregister': 'http://dev.sfht.com/i.register.html'
+    'luckymoneyshare': 'http://dev.sfht.com/luckymoneyshare.html',
+    'luckymoneyaccept': 'http://dev.sfht.com/luckymoneyaccept.html'
   }
 
   return {

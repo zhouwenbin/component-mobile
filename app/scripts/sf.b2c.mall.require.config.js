@@ -171,6 +171,10 @@ requirejs.config({
 
         // 收货地址管理
         'sf.b2c.mall.page.recaddrmanage': 'scripts/page/sf.b2c.mall.page.recaddrmanage',
-        'sf.b2c.mall.component.recaddrmanage': 'scripts/component/sf.b2c.mall.component.recaddrmanage'
+        'sf.b2c.mall.component.recaddrmanage': 'scripts/component/sf.b2c.mall.component.recaddrmanage',
+
+        // 红包
+        'sf.b2c.mall.page.luckymoneyshare': 'scripts/page/sf.b2c.mall.page.luckymoneyshare',
+        'sf.b2c.mall.page.luckymoneyaccept': 'scripts/page/sf.b2c.mall.page.luckymoneyaccept'
     }
 });

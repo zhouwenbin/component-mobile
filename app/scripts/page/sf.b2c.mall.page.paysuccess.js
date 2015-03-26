@@ -5,16 +5,14 @@ define(
     'can',
     'zepto',
     'fastclick',
-    'sf.weixin',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.helpers',
     'sf.b2c.mall.api.order.getOrder'
   ],
-  function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFConfig, helpers, SFGetOrder) {
+  function(can, $, Fastclick, SFFrameworkComm, SFConfig, helpers, SFGetOrder) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
-    SFWeixin.shareIndex();
 
     var paysuccess = can.Control.extend({
       init: function() {
