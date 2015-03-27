@@ -66,7 +66,7 @@ define(
 
             var startTime = $(timeNode).attr('data-cms-starttime');
 
-            var time = that.setCountDown(element.find(".cms-fill-timeinfo"), distance,startTime, endTime);
+            var time = that.setCountDown($(timeNode).find(".cms-fill-timeinfo")[0], distance,startTime, endTime);
           })
         }, '1000');
       },
