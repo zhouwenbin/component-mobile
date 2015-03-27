@@ -1,11 +1,12 @@
 .coupon{
   text-align: center;
-  padding-top: 22px;
-
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
 }
 .coupon p{
   margin-bottom: 15px;
   color: #666;
+  line-height: 18px;
 }
 .coupon-b{
   background: url(../img/coupon.png) no-repeat;
