@@ -82,8 +82,11 @@ define(
         var leftTime = endDate - new Date().getTime() - distance;
         var startLeftTime = startTime - new Date().getTime() - distance;
 
+
+
         // 3天内显示倒计时，3天外显示即将开始 其他显示活动结束
         if (startLeftTime > 259200000) {
+          $('.cms-fill-gotobuy').html('即将开始');
           timeNode.innerHTML = '<span class="icon icon56"></span>活动即将开始';
         } else if (startLeftTime > 0 && startLeftTime < 259200000) {
           var leftsecond = parseInt(leftTime / 1000);
