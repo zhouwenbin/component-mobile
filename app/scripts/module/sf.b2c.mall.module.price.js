@@ -9,7 +9,7 @@ define(
     'sf.b2c.mall.framework.comm'
   ],
 
-  function(can,$, _, Fastclick,SFGetProductHotDataList, SFConfig, SFFrameworkComm) {
+  function(can, $, _, Fastclick, SFGetProductHotDataList, SFConfig, SFFrameworkComm) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -56,7 +56,7 @@ define(
 
           // 填充价格
           //var $el = element.find('[data-cms-itemid=' + value.itemId + ']');
-          var $el = element.find('.cms-src-item').attr('cms-src-item',value.itemId);
+          var $el = element.find('.cms-src-item').attr('cms-src-item', value.itemId);
           // 如果有重复的itemid，则进行容错
           if ($el.length && $el.length > 1) {
             _.each($el, function(item) {
@@ -85,7 +85,7 @@ define(
           element.find('.cms-fill-originpriceparent')[0].style.display = "none";
         } else {
           element.find('.cms-fill-originprice').text(value.originPrice / 100);
-          element.find('.cms-fill-discount').text(parseInt(value.sellingPrice, 10) * 10 / parseInt(value.originPrice, 10));
+          element.find('.cms-fill-discount').text((parseInt(value.sellingPrice, 10) * 10 / parseInt(value.originPrice, 10)).toFixed(1));
         }
 
         // 做售空处理
