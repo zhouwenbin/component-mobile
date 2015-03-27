@@ -171,6 +171,73 @@ define('sf.weixin', [
           menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage']
         });
       })
+    },
+
+    /**
+     * [shareDetail 分享红包]
+     * @param  {[type]} title  [标题]
+     * @param  {[type]} desc   [描述]
+     * @param  {[type]} id   [红包ID]
+     */
+    shareLuckyMoney: function(title, desc, id) {
+      //进行微信设置
+      configWeixin();
+
+      var that = this;
+      var params = {
+        appid: "wx90f1dcb866f3df60",
+        redirect_uri: "http://m.sfht.com/luckymoneyaccept.html",
+        response_type: "code",
+        scope: "snsapi_base",
+        state: id
+      };
+      var shareUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?"
+        + $.param(params) + "#wechat_redirect"
+
+      // 定义微信分享的数据
+      jweixin.ready(function() {
+        jweixin.onMenuShareTimeline({
+          title: title,
+          desc: desc,
+          link: shareUrl,
+          imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
+          trigger: function(res) {
+             alert('用户点击发送给朋友圈');
+          },
+          success: function(res) {
+             alert('已分享');
+          },
+          cancel: function(res) {
+             alert('已取消');
+          },
+          fail: function(res) {
+            alert(JSON.stringify(res));
+          }
+        });
+
+        jweixin.onMenuShareAppMessage({
+          title: title,
+          desc: desc,
+          link: shareUrl,
+          imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
+          trigger: function(res) {
+             alert('用户点击发送给朋友');
+          },
+          success: function(res) {
+             alert('已分享');
+          },
+          cancel: function(res) {
+            alert('已取消');
+          },
+          fail: function(res) {
+            alert(JSON.stringify(res));
+          }
+        });
+
+        jweixin.showMenuItems({
+          menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage']
+        });
+      })
     }
 
   };

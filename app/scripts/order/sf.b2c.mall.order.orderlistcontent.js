@@ -3,7 +3,6 @@
 define('sf.b2c.mall.order.orderlistcontent', [
     'can',
     'zepto',
-    'fastclick',
     'sf.b2c.mall.api.order.getOrderList',
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.order.fn',
@@ -11,9 +10,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config'
   ],
-  function(can, $, Fastclick, SFGetOrderList, SFRequestPayV2, SFOrderFn, helpers, SFMessage, SFConfig) {
-
-    Fastclick.attach(document.body);
+  function(can, $, SFGetOrderList, SFRequestPayV2, SFOrderFn, helpers, SFMessage, SFConfig) {
 
     return can.Control.extend({
 
@@ -49,7 +46,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
             "receiverName": that.options.searchValue,
             "orderId": that.options.searchValue,
             "pageNum": 1,
-            "pageSize": 100
+            "pageSize": 50
           })
         }
 

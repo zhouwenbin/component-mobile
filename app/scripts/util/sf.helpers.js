@@ -1,6 +1,7 @@
 'use strict';
 
-define('sf.helpers', ['zepto',
+define('sf.helpers', [
+  'zepto',
   'can',
   'underscore',
   'moment'

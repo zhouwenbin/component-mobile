@@ -13,7 +13,18 @@
   <ul class="clearfix table-r2">
     {{{spec}}}
   </ul>
+  <div class="goodsinfo-r1">运费：0元</div>
+  {{#orderCoupon.isHaveAvaliable}}
+  <div class="goodsinfo-r2">
+  <select id="selectCoupon" class="select">
+    <option value="" data-price="0" selected="selected">不使用优惠券</option>
+  </select>
+  </div>
+  {{/orderCoupon.isHaveAvaliable}}
 </div>
 <div class="order-r3 clearfix box">
-    <div class="order-r3c1 fl">实际应付款:<span>¥{{sf.price allTotalPrice}}</span></div>
+  {{#isShowCouponArea}}
+    <div class="order-r3r1">优惠券抵扣：¥{{sf.price orderCoupon.discountPrice}}</div>
+  {{/isShowCouponArea}}
+  <div class="order-r3r2">实际应付款:<span>¥{{sf.price shouldPay}}</span></div>
 </div>

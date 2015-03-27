@@ -4,6 +4,7 @@ define(
   [
     'can',
     'zepto',
+    'fastclick',
     'jweixin',
     'sf.weixin',
     'sf.util',
@@ -13,10 +14,9 @@ define(
     'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage, SFConfig) {
-
+  function(can, $, Fastclick, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage, SFConfig) {
     SFFrameworkComm.register(3);
-
+    Fastclick.attach(document.body);
     SFWeixin.shareIndex();
 
     var orderList = can.Control.extend({
