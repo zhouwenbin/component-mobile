@@ -186,7 +186,7 @@ define('sf.weixin', [
       var that = this;
       var params = {
         appid: "wx90f1dcb866f3df60",
-        redirect_uri: "http://m.sfht.com/luckymoneyaccept",
+        redirect_uri: "http://m.sfht.com/luckymoneyaccept.html",
         response_type: "code",
         scope: "snsapi_base",
         state: id
@@ -202,13 +202,13 @@ define('sf.weixin', [
           link: shareUrl,
           imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
           trigger: function(res) {
-            // alert('用户点击发送给朋友');
+             alert('用户点击发送给朋友圈');
           },
           success: function(res) {
-            // alert('已分享');
+             alert('已分享');
           },
           cancel: function(res) {
-            // alert('已取消');
+             alert('已取消');
           },
           fail: function(res) {
             alert(JSON.stringify(res));
@@ -218,16 +218,16 @@ define('sf.weixin', [
         jweixin.onMenuShareAppMessage({
           title: title,
           desc: desc,
-          link: link,
-          imgUrl: imgUrl,
+          link: shareUrl,
+          imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
           trigger: function(res) {
-            // alert('用户点击发送给朋友');
+             alert('用户点击发送给朋友');
           },
           success: function(res) {
-            // alert('已分享');
+             alert('已分享');
           },
           cancel: function(res) {
-            // alert('已取消');
+            alert('已取消');
           },
           fail: function(res) {
             alert(JSON.stringify(res));
