@@ -7,7 +7,7 @@ define(
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.framework.comm'
   ],
-  function(can, $, Fastclick,SFGetProductHotDataList, SFConfig, SFFrameworkComm) {
+  function(can, $, Fastclick, SFGetProductHotDataList, SFConfig, SFFrameworkComm) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -66,7 +66,7 @@ define(
 
             var startTime = $(timeNode).attr('data-cms-starttime');
 
-            var time = that.setCountDown($(timeNode).find(".cms-fill-timeinfo")[0], distance,startTime, endTime);
+            var time = that.setCountDown($(timeNode).find(".cms-fill-timeinfo")[0], distance, startTime, endTime);
           })
         }, '1000');
       },
@@ -86,9 +86,10 @@ define(
 
         // 3天内显示倒计时，3天外显示即将开始 其他显示活动结束
         if (startLeftTime > 259200000) {
-          $('.cms-fill-gotobuy').text('即将开始');
+          $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').text('即将开始');
           timeNode.innerHTML = '<span class="icon icon56"></span>活动即将开始';
         } else if (startLeftTime > 0 && startLeftTime < 259200000) {
+          $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').text('立即购买');
           var leftsecond = parseInt(leftTime / 1000);
           var day1 = Math.floor(leftsecond / (60 * 60 * 24));
           var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);
