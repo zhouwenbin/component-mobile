@@ -1,7 +1,7 @@
 /*支付成功*/
 .pay{
   background: #fff;
-  padding:48px 20px;
+  padding:48px 20px 34px;
 }
 .pay h2{
   font-size: 18px;
@@ -11,21 +11,16 @@
 .pay h2 .icon{
   margin-right: 5px;
 }
+.pay p{
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 14px;
+}
 .pay-r1{
   text-align: center;
-  padding-bottom:38px;
-  border-bottom: 1px solid #ccc;
+  padding-bottom:25px;
+  
 }
-.pay-r2{
-  padding-top:33px;
-}
-.pay-r2 img{
-  margin-right: 8px;
-}
-.pay-r2c1{
-  overflow: hidden;
-  font-size: 13px;
-  line-height: 18px;
-  color: #666;
-  padding:17px 0;
+.pay-r1 .btn{
+  margin: 0 14px;
 }
