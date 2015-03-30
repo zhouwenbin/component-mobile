@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="body1">
+	<!--头部-->
+	== Slim::Template.new('module/header.slim').render
+	<!--头部-->
+	<!--幻灯-->
+	== Slim::Template.new('module/swipe.slim').render
+	<!--幻灯-->
+	<!--导航-->
+	== Slim::Template.new('module/nav1.slim').render
+	<!--导航-->
+	<!--限时抢购-->
+	== Slim::Template.new('module/flashsale.slim').render
+	<!--限时抢购-->
+	<!--狂欢专场-->
+	== Slim::Template.new('module/carnival.slim').render
+	<!--狂欢专场-->
+	<!--大家都在买-->
+	== Slim::Template.new('module/buying.slim').render
+	<!--大家都在买-->
+	== Slim::Template.new('module/footer.slim').render
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/swipe.js"></script>
+	<script src="../js/slider.js"></script>
+</body>
+</html>

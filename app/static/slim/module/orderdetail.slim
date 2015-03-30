@@ -1,0 +1,37 @@
+<section class="orderdetail">
+	<div class="orderdetail-r1">该笔订单需要上传收货人身份信息，请<a href="">联系客服</a></div>
+	<ul class="box orderdetail-r2 clearfix">
+		<li>订单号：1000002470</li>
+		<li><time>2014/12/20 13:50</time></li>
+		<li>订单总额：<strong class="text-error">¥125</strong></li>
+		<li><span class="text-error">已发货</span><a href="" class="btn btn-normal">确认收货</a></li>
+	</ul>
+	<div class="orderdetail-r3">
+		<a href="">
+			<time>2014-12-17 06:52:28</time> 上海市黄浦区老黄浦公司 已收入<span class="icon icon28 center-vertical"></span>
+		</a>
+	</div>
+	<!--收货人信息-->
+	== Slim::Template.new('module/info.slim').render
+	<!--收货人信息-->
+	<!--商品信息-->
+	== Slim::Template.new('module/goodsinfo.slim').render
+	<!--商品信息-->
+	<div class="orderdetail-r4 box">
+		<div class="clearfix">
+			<div class="orderdetail-r4c1 fl">
+				
+				商品总额：<span class="text-important">¥127</span><span class="text-disable">优惠：0元</span>
+			</div>
+		</div>		
+		<div class="clearfix">
+			<div class="orderdetail-r4c1 fl">
+				
+				运费：<span class="text-important">¥0</span>
+			</div>
+			<div class="orderdetail-r4c2 fr">
+				实际应付款：<strong class="text-important">¥127</strong>
+			</div>
+		</div>
+	</div>		
+</section>

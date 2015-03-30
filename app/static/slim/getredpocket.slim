@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>支付成功</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="body1">
+	<!--领红包-->
+	== Slim::Template.new('module/getpocket.slim').render
+	<!--看看朋友们手气如何-->
+	== Slim::Template.new('module/luck.slim').render
+	<!--活动规则-->
+	== Slim::Template.new('module/activerule.slim').render
+	
+</body>
+	
+</html>

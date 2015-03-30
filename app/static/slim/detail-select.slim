@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="body1">
+	
+	<!--推荐商品-->
+	== Slim::Template.new('module/recommend1.slim').render
+	<!--推荐商品-->
+	<!--规格-->
+	== Slim::Template.new('module/standard.slim').render
+	<!--规格-->
+	<!--立即购买-->
+	== Slim::Template.new('module/nav-buy.slim').render
+	<!--立即购买-->
+</body>
+</html>
