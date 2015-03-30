@@ -15,7 +15,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     return can.Control.extend({
 
       helpers: {
-        'sf-showOperationArea': function(optionHTML, options) {debugger;
+        'sf-showOperationArea': function(optionHTML, options) {
           if (optionHTML().length > 0) {
             return options.fn(options.contexts || this);
           } else {
@@ -85,10 +85,27 @@ define('sf.b2c.mall.order.orderlistcontent', [
                   //   order.spec = order.orderGoodsItemList[0].spec.split(',').join("&nbsp;/&nbsp;");
                   // }
                   order.optionHMTL = that.getOptionHTML(that.optionMap[order.orderStatus]);
-                  order.showOperationArea = (order.optionHMTL.length > 0 ? true : false);
 
                   order.orderStatus = that.statsMap[order.orderStatus];
                   order.paymentAmount = order.totalPrice - order.discount;
+
+                  if (order.orderCouponItemList && order.orderCouponItemList.length > 0) {
+                    _.each(order.orderCouponItemList, function(coupon){
+                      if (coupon.couponType == "SHAREBAG") {
+                        order.isShareBag = true;
+                        order.shareBag = coupon;
+                      }
+                    });
+                  } else {
+                    order.isShareBag = false;
+                    /*
+                     order.isShareBag = true;
+                     order.shareBag = {
+                     activityId: 33
+                     };
+                    */
+                  }
+                  order.showOperationArea = order.optionHMTL.length || order.isShareBag;
                 }
               })
 
@@ -214,7 +231,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         "NEEDPAY": '<a href="#" class="btn btn-normal active gotoPay">立即支付</a>',
         "INFO": '<a href="#" class="btn btn-normal viewOrder">查看订单</a>',
         "CANCEL": '<a href="#" class="link btn-normal cancelOrder">取消订单</a>',
-        "RECEIVED": '<a href="#" class="btn btn-normal received">确认签收</a>'
+        "RECEIVED": '<a href="#" class="btn btn-normal received">确认签收</a>',
       },
 
       '.gotoPay click': function(element, event) {

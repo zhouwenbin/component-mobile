@@ -4,37 +4,51 @@ define(
   [
     'can',
     'zepto',
+    'store',
     'fastclick',
     'sf.weixin',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.helpers',
-    'sf.b2c.mall.api.order.getOrder'
+    'sf.b2c.mall.api.coupon.getShareBagInfo',
+    'sf.b2c.mall.luckymoney.users',
+    'sf.b2c.mall.api.user.reqLoginAuth',
+    'sf.b2c.mall.api.user.partnerLogin',
+    'sf.b2c.mall.api.coupon.receiveShareCoupon'
   ],
-  function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFConfig, helpers, SFGetOrder) {
+  function(can, $, store, Fastclick, SFWeixin, SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo, SFLuckyMoneyUsers, SFReqLoginAuth, SFPartnerLogin, SFReceiveShareCoupon) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
     var luckymoneyaccept = can.Control.extend({
-      itemObj:  new can.Map({}),
+      itemObj:  new can.Map({
+        isShowMask: false,
+        isReceive: false,
+        isEnable: true,
+        isNull: false,
+        telephone: "111",
+        receiveCoupon: {}
+      }),
 
       init: function() {
         this.render();
       },
       render: function() {
         var that = this;
-
         var params = can.deparam(window.location.search.substr(1));
-
-        var id = params.state;
+        var id = params.id;
         var code = params.code;
 
-        can.when(that.initOrderShareBagInfo(id), that.initShareBagCpList(id))
-          .always(function(cardBagInfo) {
-            that.renderHtml(that.element, that.itemObj);
-            $('.loadingDIV').hide();
-          });
-
+        //微信登录
+        if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          if (!code) {
+            that.getWeChatCode(id);
+          } else {
+            that.otherLogin(id, code);
+          }
+        } else {
+          that.initOrderShareBagInfo(id);
+        }
       },
       initOrderShareBagInfo: function(shareBagId) {
         var that = this;
@@ -44,36 +58,106 @@ define(
 
         return getOrderShareBagInfo.sendRequest()
           .done(function(cardBagInfo) {
-            SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagId);
+            SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagCodeId);
             that.itemObj.attr({
               cardBagInfo: cardBagInfo
-            })
+            });
+            that.itemObj.bind("telephone", function(ev, newVal, oldVal) {
+              //验证手机号
+            });
+            that.renderHtml(that.element, that.itemObj);
+            new SFLuckyMoneyUsers(".users", {shareBagId: shareBagId});
           })
           .fail(function(error) {
             console.error(error);
-          });
-      },
-      initShareBagCpList: function(shareBagId) {
-        var that = this;
-        var getShareBagCpList = new SFGetShareBagCpList({
-          "shareBagId": shareBagId
-        });
-
-        return getShareBagCpList.sendRequest()
-          .done(function(userCouponInfo) {
-            that.itemObj.attr({
-              userCouponInfo: userCouponInfo
-            })
           })
-          .fail(function(error) {
-            console.error(error);
+          .always(function() {
+            $('.loadingDIV').hide();
           });
       },
       renderHtml: function(element, itemObj) {
         var html = can.view('templates/luckymoney/sf.b2c.mall.luckymoney.accept.mustache', itemObj);
         element.html(html);
+      },
+      getWeChatCode: function(id) {
+        var reqLoginAuth = new SFReqLoginAuth({
+          "partnerId": "wechat_svm",
+          "redirectUrl": "http://m.sfht.com/luckymoneyaccept.html?id=" + id
+        });
+
+        reqLoginAuth
+          .sendRequest()
+          .done(function(data) {
+            //alert(data.loginAuthLink);
+            window.location.href = data.loginAuthLink;
+          })
+          .fail(function(error) {
+            console.error(error);
+          });
+      },
+      otherLogin: function(id, code) {
+        var that = this;
+
+        var partnerLogin = new SFPartnerLogin({
+          "partnerId": "wechat_svm",
+          "authResp": "code=" + code
+        });
+
+        partnerLogin
+          .sendRequest()
+          .done(function(loginData) {
+            //alert(loginData.csrfToken);
+            if (loginData.csrfToken) {
+              store.set('type', 'WEIXIN');
+              store.set('nickname', '海淘会员');
+              can.route.attr({
+                'tag': 'success',
+                'csrfToken': loginData.csrfToken
+              });
+
+              that.initOrderShareBagInfo(id);
+            } else {
+              //window.location.href = "http://m.sfht.com";
+            }
+          })
+          .fail(function(error) {
+            console.error(error);
+            window.location.href = "http://m.sfht.com";
+          });
+      },
+
+      "#acceptShareBagBtn click": function() {
+        var that = this;
+
+        var receiveShareCoupon = new SFReceiveShareCoupon({
+          'mobile': this.itemObj.telephone,
+          'receiveChannel': 'B2C',
+          'receiveWay': 'HBLQ',
+          'shareBagId': this.itemObj.cardBagInfo.bagCodeId
+        });
+
+        can.when(receiveShareCoupon.sendRequest())
+          .done(function(userCouponInfo) {
+            if (!userCouponInfo) {
+              that.itemObj.attr("isNull", true);
+              return;
+            }
+            that.itemObj.attr({
+              isReceive: true,
+              receiveCoupon: userCouponInfo
+            });
+          })
+          .fail(function(error) {
+            that.itemObj.attr("isNull", true);
+          });
+      },
+      "#shareBtn click": function() {
+        this.itemObj.attr("isShowMask", true);
+      },
+      ".mask click": function() {
+        this.itemObj.attr("isShowMask", false);
       }
     });
-    new luckymoneyaccept('.sf-b2c-mall-order-luckymoneyaccept');
 
+    new luckymoneyaccept('.sf-b2c-mall-luckymoney-accept');
   })
