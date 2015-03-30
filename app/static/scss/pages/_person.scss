@@ -9,7 +9,7 @@
   text-align: center;
   height: 230px;
   background-color:#da494f;
-  background-image:url(../img/person.png);
+  background-image:url(#{$bg-url}person.png);
   background-position:center bottom;
   background-repeat: no-repeat;
   -webkit-background-size: 250px;

@@ -9,7 +9,7 @@
   line-height: 18px;
 }
 .coupon-b{
-  background: url(../img/coupon.png) no-repeat;
+  background: url(#{$bg-url}coupon.png) no-repeat;
   background-size:100%;
   width: 169px;
   padding-left:36px;
@@ -29,7 +29,7 @@
   line-height: 1.2;
 }
 .coupon-gift .coupon-b{
-  background-image: url("../img/gift.png");
+  background-image: url("#{$bg-url}gift.png");
   background-size:165px 85px;
   width: 165px;
   height: 85px;

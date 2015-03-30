@@ -6,7 +6,7 @@
   margin:0 auto 10px;
 }
 .coupons-c1{
-  background: url(../img/coupons-c1.png) no-repeat;
+  background: url(#{$bg-url}coupons-c1.png) no-repeat;
   background-size:295px 70px;
   height: 70px;
   padding-left: 15px;
@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 .coupons-c2{
-  background: url(../img/coupons.png) no-repeat;
+  background: url(#{$bg-url}coupons.png) no-repeat;
   background-size:90px 70px;
   height: 70px;
   width: 90px;
@@ -23,7 +23,7 @@
   position:relative;
 }
 .coupons-disabled .coupons-c2{
-  background-image: url(../img/coupons2.png);
+  background-image: url(#{$bg-url}coupons2.png);
 }
 .coupons-c2r1 span{
   font-size: 24px;
