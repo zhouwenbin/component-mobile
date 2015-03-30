@@ -23,6 +23,9 @@ define(
         var itemObj = {
           isCostCoupon: false,
           isPresentCoupon: false,
+          isGiftBag: false,
+          isShareBag: false,
+          isShareBagAndCoupon: false,
           links: SFConfig.setting.link,
           isPaySuccess: true
         };
@@ -38,36 +41,55 @@ define(
           "orderId": params.orderid
         });
 
-        can.when(getOrder.sendRequest()
+        getOrder.sendRequest()
           .done(function(data) {
-          itemObj.isPaySuccess = data.orderItem.paymentStatus === "PAYED";
+            itemObj.isPaySuccess = data.orderItem.paymentStatus === "PAYED";
 
-          //处理卡券信息
-          if (data.orderItem.orderCouponItemList && data.orderItem.orderCouponItemList.length > 0) {
-            for(var i = 0, tmpOrderCouponItem; tmpOrderCouponItem = data.orderItem.orderCouponItemList[i]; i++) {
-              switch (tmpOrderCouponItem.orderAction)
-              {
-                case "COST": {
-                  itemObj.isCostCoupon = true;
-                  itemObj.costCoupon = tmpOrderCouponItem;
-                  break;
+            var couponTypeMap = {
+              "CASH" : function() {
+                switch (tmpOrderCouponItem.orderAction)
+                {
+                  case "COST": {
+                    itemObj.isCostCoupon = true;
+                    itemObj.costCoupon = tmpOrderCouponItem;
+                    break;
+                  }
+                  case "PRESENT": {
+                    itemObj.isPresentCoupon = true;
+                    itemObj.presentCoupon = tmpOrderCouponItem;
+                    break;
+                  }
                 }
-                case "PRESENT": {
-                  itemObj.isPresentCoupon = true;
-                  itemObj.presentCoupon = tmpOrderCouponItem;
-                  break;
-                }
+              },
+              "GIFTBAG" : function() {
+                itemObj.isGiftBag = true;
+                itemObj.giftBag = tmpOrderCouponItem;
+              },
+              "SHAREBAG" : function() {
+                itemObj.isShareBag = true;
+                itemObj.shareBag = tmpOrderCouponItem;
               }
             }
-          }
-            })
+            var couponTypeHandle = function(tag) {
+              var fn = couponTypeMap[tag];
+              if (_.isFunction(fn)) {
+                return fn.call(this)
+              }
+            }
+            //处理卡券信息
+            if (data.orderItem.orderCouponItemList && data.orderItem.orderCouponItemList.length > 0) {
+              for(var i = 0, tmpOrderCouponItem; tmpOrderCouponItem = data.orderItem.orderCouponItemList[i]; i++) {
+                couponTypeHandle(tmpOrderCouponItem.couponType);
+              }
+            }
+          })
           .fail(function(error) {
             console.error(error);
           })
-        )
-        .always(function(){
-          that.renderHtml(that.element, itemObj);
-        })
+          .always(function(){
+            itemObj.isShareBagAndCoupon = itemObj.isShareBag && (itemObj.isPresentCoupon || itemObj.isGiftBag);
+            that.renderHtml(that.element, itemObj);
+          })
       },
       renderHtml: function(element, itemObj) {
         var html = can.view('templates/order/sf.b2c.mall.order.paysuccess.mustache', itemObj);
@@ -75,5 +97,4 @@ define(
       }
     });
     new paysuccess('.sf-b2c-mall-order-paysuccess');
-
   })

@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.coupon.receiveShareCoupon
+  * @class sf.b2c.mall.api.b2cmall.getHeaderConfig
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.coupon.receiveShareCoupon',
+'sf.b2c.mall.api.b2cmall.getHeaderConfig',
 [
   'zepto',
   'can',
@@ -22,13 +22,9 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'coupon.receiveShareCoupon',
-      SECURITY_TYPE: SecurityType.UserLogin.name,
+      METHOD_NAME: 'b2cmall.getHeaderConfig',
+      SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'shareBagId': 'long',
-        'receiveChannel': 'string',
-        'receiveWay': 'string',
-        'mobile': 'string'
       },
       OPTIONAL: {
       },

@@ -87,7 +87,7 @@ define(
         // 3天内显示倒计时，3天外显示即将开始 其他显示活动结束
         if (startLeftTime > 259200000) {
           $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').text('即将开始');
-          timeNode.innerHTML = '<span class="icon icon56"></span>活动即将开始';
+          timeNode.innerHTML = '<span class="icon icon36"></span>活动即将开始';
         } else if (startLeftTime > 0 && startLeftTime < 259200000) {
           $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').text('立即购买');
           var leftsecond = parseInt(leftTime / 1000);
@@ -95,16 +95,16 @@ define(
           var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);
           var minute = Math.floor((leftsecond - day1 * 24 * 60 * 60 - hour * 3600) / 60);
           var second = Math.floor(leftsecond - day1 * 24 * 60 * 60 - hour * 3600 - minute * 60);
-          timeNode.innerHTML = '<span class="icon icon56"></span><span class="text-error">' + day1 + "天" + hour + "小时" + minute + "分" + second + "秒</span>后开始";
+          timeNode.innerHTML = '<span class="icon icon36"></span><span class="text-error">' + day1 + "天" + hour + "小时" + minute + "分" + second + "秒</span>后开始";
         } else if (leftTime > 0 && startLeftTime < 0) {
           var leftsecond = parseInt(leftTime / 1000);
           var day1 = Math.floor(leftsecond / (60 * 60 * 24));
           var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);
           var minute = Math.floor((leftsecond - day1 * 24 * 60 * 60 - hour * 3600) / 60);
           var second = Math.floor(leftsecond - day1 * 24 * 60 * 60 - hour * 3600 - minute * 60);
-          timeNode.innerHTML = '<span class="icon icon56"></span>仅剩:<span class="text-error">' + day1 + "天" + hour + "小时" + minute + "分" + second + "秒</span>";
+          timeNode.innerHTML = '<span class="icon icon36"></span>仅剩:<span class="text-error">' + day1 + "天" + hour + "小时" + minute + "分" + second + "秒</span>";
         } else if (leftTime < 0) {
-          timeNode.innerHTML = '<span class="icon icon56"></span>抢购结束';
+          timeNode.innerHTML = '<span class="icon icon36"></span>抢购结束';
         }
 
         return leftTime;
