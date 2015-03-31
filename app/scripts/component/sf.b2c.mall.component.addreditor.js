@@ -3,18 +3,14 @@
 define('sf.b2c.mall.component.addreditor', [
   'can',
   'zepto',
-  'fastclick',
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.api.user.createRecAddress',
   'sf.b2c.mall.api.user.createReceiverInfo',
   'sf.b2c.mall.api.user.updateRecAddress',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.widget.message'
-
-], function(can, $, Fastclick, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig,SFMessage) {
-  Fastclick.attach(document.body);
+], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig, SFMessage) {
   return can.Control.extend({
-
     init: function() {
       this.adapter = {};
       this.request();
@@ -54,19 +50,16 @@ define('sf.b2c.mall.component.addreditor', [
         this.changeCity();
         this.changeRegion();
       }
-
-      var that = this;
-      $('#addressSave').click(function() {
-        that.addressSaveClick();
-      })
-
-      $('#backToOrder').click(function() {
-        $(".order").show();
-        $(".nav-c1, .nav-c2").show();
-        $(".sf-b2c-mall-order-selectReceiveAddress").show();
-        $(".sf-b2c-mall-order-itemInfo").show();
-        $(".sf-b2c-mall-order-addAdrArea").hide();
-      })
+    },
+    "#addressSave click": function() {
+      this.addressSaveClick();
+    },
+    "#backToOrder click": function() {
+      $(".order").show();
+      $(".nav-c1, .nav-c2").show();
+      $(".sf-b2c-mall-order-selectReceiveAddress").show();
+      $(".sf-b2c-mall-order-itemInfo").show();
+      $(".sf-b2c-mall-order-addAdrArea").hide();
     },
 
     show: function(tag, data, element) {
@@ -388,6 +381,11 @@ define('sf.b2c.mall.component.addreditor', [
         return false;
       }
 
+      if (!addr.cellphone) {
+        this.adapter.addr.attr("error", '请填写收货人手机号码！');
+        return false;
+      }
+
       //验证详细地址
       if (!addr.detail) {
         this.adapter.addr.attr("error", '请填写详细地址信息！');
@@ -397,11 +395,6 @@ define('sf.b2c.mall.component.addreditor', [
       // 5~120字符之间
       if (addr.detail.length > 120 || addr.detail.length < 5) {
         this.adapter.addr.attr("error", '请输入正确地址信息!');
-        return false;
-      }
-
-      if (!addr.cellphone) {
-        this.adapter.addr.attr("error", '请填写收货人手机号码！');
         return false;
       }
 

@@ -1,6 +1,5 @@
-<!--支付成功-->
+{{#isPaySuccess}}
 <section class="pay">
-	{{#isPaySuccess}}
     <h2><span class="icon icon38"></span>订单支付成功！</h2>
 		{{#isShareBag}}
       <p>恭喜你获得<span class="text-important">{{sf.price shareBag.price}}元红包</span>，您可给小伙伴散红包啦！<br>立即分享给你的小伙伴吧！</p>
@@ -11,7 +10,6 @@
         <a href="{{links.luckymoneyshare}}&id={{shareBag.code}}" class="btn btn-normal btn-radius">分享红包</a>
 			{{/isShareBag}}
     </div>
-	{{/isPaySuccess}}
 	{{#isPresentCoupon}}
     <div class="coupon">
       <p>恭喜你,获得了一张<span class="text-important">{{sf.price presentCoupon.price}}元优惠券</span><br>已自动存入“我的优惠券”</p>
@@ -24,7 +22,7 @@
     </div>
 	{{/isPresentCoupon}}
 </section>
-<!--支付成功-->
+{{/isPaySuccess}}
 
 <div class="qrcode clearfix">
     <img src="img/qrcode.png" width="70" height="70" class="fl">
