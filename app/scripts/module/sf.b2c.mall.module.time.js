@@ -23,7 +23,7 @@ define(
 
         // 调用后台接口 仅为获得服务器时间
         var itemIds = [];
-        itemIds.push(1);
+        itemIds.push(-1);
 
         var getProductHotDataList = new SFGetProductHotDataList({
           itemIds: JSON.stringify(itemIds)
@@ -90,7 +90,7 @@ define(
           timeNode.innerHTML = '<span class="icon icon36"></span>活动即将开始';
         } else if (startLeftTime > 0 && startLeftTime < 259200000) {
           $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').text('立即购买');
-          var leftsecond = parseInt(leftTime / 1000);
+          var leftsecond = parseInt(startLeftTime / 1000);
           var day1 = Math.floor(leftsecond / (60 * 60 * 24));
           var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);
           var minute = Math.floor((leftsecond - day1 * 24 * 60 * 60 - hour * 3600) / 60);
