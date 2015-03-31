@@ -208,7 +208,8 @@ define('sf.b2c.mall.order.iteminfo', [
           "showTax": iteminfo.bonded,    //是否是宁波保税，是得话才展示税额
           "itemName": iteminfo.title,
           "picUrl": iteminfo.image && iteminfo.image.thumbImgUrl,
-          "spec": result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : ""
+          "spec": result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : "",
+          "skuId": iteminfo.skuId
         });
       })
       .fail(function(error) {
@@ -227,7 +228,8 @@ define('sf.b2c.mall.order.iteminfo', [
         "items": JSON.stringify([{
           "itemId": options.itemid,
           "num": options.amount,
-          "price": this.itemObj.singlePrice
+          "price": this.itemObj.singlePrice,
+          skuId: this.itemObj.skuId
         }]),
         'system': "B2C_H5"
       });
