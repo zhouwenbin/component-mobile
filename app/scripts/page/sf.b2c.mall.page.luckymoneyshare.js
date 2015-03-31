@@ -44,7 +44,7 @@ define(
 
         return getOrderShareBagInfo.sendRequest()
           .done(function(cardBagInfo) {
-            SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagId);
+            SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagCodeId);
             that.itemObj.attr({
               cardBagInfo: cardBagInfo
             })

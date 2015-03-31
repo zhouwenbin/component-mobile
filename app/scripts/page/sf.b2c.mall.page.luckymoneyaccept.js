@@ -24,9 +24,10 @@ define(
       itemObj:  new can.Map({
         isShowMask: false,
         isReceive: false,
-        isEnable: true,
+        isEnable: false,
         isNull: false,
-        telephone: "111",
+        errorMessage: "请输入手机号即可领取",
+        telephone: "",
         receiveCoupon: {}
       }),
 
@@ -63,7 +64,12 @@ define(
               cardBagInfo: cardBagInfo
             });
             that.itemObj.bind("telephone", function(ev, newVal, oldVal) {
-              //验证手机号
+              that.itemObj.attr("errorMessage", "手机号格式错误");
+              if(!/^1\d{10}$/.test(newVal)) {
+                that.itemObj.attr("isEnable", false);
+              } else {
+                that.itemObj.attr("isEnable", true);
+              }
             });
             that.renderHtml(that.element, that.itemObj);
             new SFLuckyMoneyUsers(".users", {shareBagId: shareBagId});
@@ -126,7 +132,10 @@ define(
           });
       },
 
-      "#acceptShareBagBtn click": function() {
+      "#acceptShareBagBtn click": function(ele, event) {
+        if (!this.itemObj.isEnable) {
+          return;
+        }
         var that = this;
 
         var receiveShareCoupon = new SFReceiveShareCoupon({
@@ -135,8 +144,7 @@ define(
           'receiveWay': 'HBLQ',
           'shareBagId': this.itemObj.cardBagInfo.bagCodeId
         });
-
-        can.when(receiveShareCoupon.sendRequest())
+        receiveShareCoupon.sendRequest()
           .done(function(userCouponInfo) {
             if (!userCouponInfo) {
               that.itemObj.attr("isNull", true);
@@ -150,6 +158,9 @@ define(
           .fail(function(error) {
             that.itemObj.attr("isNull", true);
           });
+      },
+      "#telephone focus": function() {
+        //this.itemObj.attr("isEnable", true);
       },
       "#shareBtn click": function() {
         this.itemObj.attr("isShowMask", true);

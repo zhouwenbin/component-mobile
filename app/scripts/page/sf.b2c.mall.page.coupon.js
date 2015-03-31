@@ -10,7 +10,7 @@ define(
 	'sf.b2c.mall.business.config',
 	'sf.b2c.mall.api.coupon.getUserCouponList'
   ],
-  function(can, $, store, Fastclick, SFFrameworkComm, SFWeixin, helpers, SFConfig, SFGetUserCouponList){
+  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList){
   	Fastclick.attach(document.body);
   	SFFrameworkComm.register(3);
 

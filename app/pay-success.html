@@ -44,11 +44,9 @@
   <div id="version" data-version="{version}"></div>
 
 	<script type="text/javascript">
-
-		setInterval(function () {
-      window.parent.postMessage("pay-success.html", '*');
-    }, 500)
-
+      setInterval(function () {
+        window.parent.postMessage(window.location.href, '*');
+      }, 500)
 	</script>
 
   <!-- build:js(.) scripts/require.min.js -->

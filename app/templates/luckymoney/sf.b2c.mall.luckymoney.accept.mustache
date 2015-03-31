@@ -15,8 +15,12 @@
 	{{^isNull}}
 		{{^isReceive}}
 			<div><img src="img/getpocket-logo.png" alt="" class="getpocket-logo" width="47" height="53"></div>
-			<div><input can-value="telephone" value="{{telephone}}" id="telephone" type="text" class="getpocket-tel input" placeholder="输入手机号" /></div>
-			<button class="getpocket-btn{{^isEnable}} disable{{/isEnable}}" id="acceptShareBagBtn">领红包</button>
+
+			<div>
+				<div class="getpocket-error">{{^isEnable}}{{errorMessage}}{{/isEnable}}</div>
+				<input can-value="telephone" value="{{telephone}}" id="telephone" type="text" class="getpocket-tel input" placeholder="输入手机号" />
+			</div>
+			<button class="getpocket-btn" id="acceptShareBagBtn">领红包</button>
 		{{/isReceive}}
 		{{#isReceive}}
 	    <div class="getpocket-money"><span>{{sf.price receiveCoupon.reduceCost}}</span>元</div>
