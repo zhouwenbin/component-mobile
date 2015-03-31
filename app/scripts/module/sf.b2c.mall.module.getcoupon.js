@@ -13,10 +13,10 @@ define('sf.b2c.mall.module.getcoupon', [
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.coupon.receiveCpCode'
+    'sf.b2c.mall.api.coupon.receiveCoupon'
   ],
 
-  function(can, $, store, Fastclick, SFFrameworkComm, SFConfig, SFMessage, SFReceiveCpCode) {
+  function(can, $, store, Fastclick, SFFrameworkComm, SFConfig, SFMessage, SFReceiveCoupon) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -30,13 +30,20 @@ define('sf.b2c.mall.module.getcoupon', [
         var that = this;
 
         $("[role=getCoupon]").click(function(targetElement) {
-          var cardId = $(targetElement.target).data('cardId');
-          var cardboxId = $(targetElement.target).data('cardboxId');
-          if (cardId) {
-            can.when(that.receiveCpCodeData(cardId));
-          } else {
-
+          var params = {
+            bagId: $(targetElement.target).data('bagId'),
+            type: $(targetElement.target).data('type')
           }
+          var needSms = $(targetElement.target).data('needSms');
+          var smsCon = $(targetElement.target).data('smsCon');
+          if (needSms) {
+            params.needSms = needSms;
+          }
+          if (smsCon) {
+            params.smsCon = smsCon;
+          }
+
+          that.receiveCpCodeData(params);
         });
 
         return false;
@@ -45,20 +52,19 @@ define('sf.b2c.mall.module.getcoupon', [
       errorMap: {
         "11000020": "卡券不存在",
         "11000030": "卡券已作废",
-        "11000040": "目前不再卡券发放有效期内",
         "11000050": "卡券已领完",
-        "11000100": "您已领过该券"
+        "11000100": "您已领过该券",
+        "11000130": "卡包不存在",
+        "11000140": "卡包已作废"
       },
 
-      receiveCpCodeData: function(cardId) {
+      receiveCpCodeData: function(params) {
+        params.receiveChannel = 'B2C';
+        params.receiceWay = 'ZTLQ';
         var that = this;
-        var receiveCpCodeData = new SFReceiveCpCode({
-          'receiveChannel': 'B2C',
-          'receiceWay': 'ZTLQ',
-          'cardId': cardId
-        });
-        var receiveCpCodeData = receiveCpCodeData.sendRequest();
-        receiveCpCodeData.done(function(userCouponInfo) {
+        var receiveCouponData = new SFReceiveCoupon(params);
+        return receiveCouponData.sendRequest()
+          .done(function(userCouponInfo) {
           new SFMessage(null, {
             'tip': '领取成功！',
             'type': 'success'
@@ -70,7 +76,6 @@ define('sf.b2c.mall.module.getcoupon', [
               'type': 'error'
             });
           });
-        return receiveCpCodeData;
       }
     });
 
