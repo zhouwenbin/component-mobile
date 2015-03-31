@@ -1,0 +1,156 @@
+#目录结构
+
+可使用[Prepros](https://prepros.io/)自动化编译，修改图片线上地址在`utils/_variables.scss`配置。
+
+##sass
+###base 基础样式
+	_reset.scss                样式表重置
+	_base.scss                 基础样式
+	_help.scss                 辅助样式
+###components 组件
+	_activerule.scss           活动规则
+	_alert.scss                提示信息
+	_banner.scss               广告
+	_box.scss                  边框样式
+	_btn.scss                  按钮
+	_dialog.scss               弹出窗
+	_dot.scss                  点
+	_form.scss                 表单
+	_getpocket.scss            抢红包
+	_icon.scss                 图标
+	_label.scss                文字标签
+	_loading.scss              加载效果
+	_luck.scss                 查看其他人手气
+	_qrcode.scss               二维码
+	_share.scss                分享到微信
+	_sharepocket.scss          散红包
+	_swipe.scss                幻灯
+	_tab.scss                  标签
+	_table.scss                表格
+	_text.scss                 文字
+	_top.scss                  回到顶部
+
+###layout 布局
+	_footer.scss               尾部
+	_header.scss               头部
+	_nav.scss                  导航
+###page 页面
+	_404.scss                  页面无法访问
+	_agreement.scss            用户协议
+	_carnival.scss             狂欢专场
+	_coupon.scss               优惠券
+	_coupons.scss              优惠券列表
+	_coupons-none.scss         优惠券列表为空
+	_detail.scss               详情
+	_flashsale.scss            限时特卖
+	_goodsinfo.scss            商品信息
+	_goods.scss                商品
+	_info.scss                 信息
+	_list.scss                 大家都在买
+	_login.scss                登陆
+	_logistics.scss            物流
+	_logout.scss               登出
+	_nav1.scss                 首页导航
+	_order.scss                订单
+	_order-add.scss            添加地址
+	_order-back.scss           返回
+	_orderdetail.scss          订单详情
+	_orderlist.scss            订单列表
+	_order-manager.scss        订单管理
+	_order-success.scss        订单提交成功
+	_pay.scss                  支付
+	_person.scss               个人中心
+	_recommend.scss            推荐商品
+	_standard.scss             规格
+	
+###utils 变量
+	_function.scss             函数
+	_mixin.scss                混合
+	_placeholders.scss         占位符
+	_variables.scss            变量(可以修改图片地址)
+###vendors 插件
+	
+##slim
+###base 基础
+	helper.slim                辅助类
+
+###components 组件
+	alert.slim                 文字提示
+	box.slim                   边框盒子
+	btn.slim                   按钮
+	form.slim                  表单
+	icon.slim                  图标
+	label.slim                 文字标签
+	tab.slim                   选项卡
+	table.slim                 表格
+	text.slim                  文字效果
+###module 模块
+	404.slim                   页面无法访问
+	activerule.slim            活动规则
+	agreement.slim             用户协议
+	buying.slim                大家都在买
+	carnival.slim              狂欢专场
+	coupon.slim                优惠券
+	coupon-gift.slim           礼包
+	coupons.slim               我的优惠券
+	detail.slim                详情
+	dialog1.slim               弹出框
+	falshsale.slim             限时特卖
+	footer.slim                尾部
+	footer1.slim               尾部1
+	getpocket.slim             抢红包
+	goods.slim                 商品图及介绍
+	goodsinfo.slim             商品信息
+	header.slim                头部
+	info.slim                  收货人信息
+	login.slim                 登陆
+	luck.slim                  查看其他人手气
+	nav.slim                   导航
+	nav1.slim                  首页导航
+	nav-buy.slim               导航带按钮
+	order.slim                 订单
+	order-add.slim             添加地址
+	orderdetail.slim           订单详情
+	orderlist.slim             订单列表
+	order-logistics.slim       物流信息
+	order-manager.slim         订单管理
+	pay.slim                   支付
+	person.slim                个人中心
+	qrcode.slim                二维码
+	recommend.slim             推荐商品
+	recommend2.slim            小编推荐
+	register.slim              注册
+	sharepocket.slim           分享红包
+	standard.slim              规格
+	swipe.slim                 幻灯
+###page 页面
+	404.slim                   页面无法访问
+	agreement.slim             用户协议
+	center.slim                用户中心
+	common.slim                公用组件
+	coupons.slim               优惠券列表
+	detail.slim                详情
+	detail-select.slim         选择规格
+	dialog.slim                弹出框
+	dialog-change.slim         商品信息发生变化
+	dialog-phone.slim          客服电话
+	dialog-spring.slim         春节提示
+	dialog-update.slim         订单状态已更新
+	getredpocket.slim          获得红包
+	index.slim                 首页
+	loading.slim               加载
+	login.slim                 登陆
+	logout.slim                登出
+	order.slim                 订单
+	order-add.slim             添加地址
+	orderdetail.slim           订单详情
+	orderlist.slim             订单列表
+	orderlist-none.slim        订单列表为空
+	order-logistics.slim       物流信息
+	order-manager.slim         订单管理
+	order-success.slim         订单提交成功
+	order-success2.slim        订单提交成功2
+	pay-success.slim           支付成功
+	register.slim              注册
+	share.slim                 分享到微信
+	sharepocket.slim           分享红包
