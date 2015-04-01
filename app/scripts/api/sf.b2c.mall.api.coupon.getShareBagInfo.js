@@ -32,6 +32,7 @@ function($, can, _, Comm, SecurityType) {
       VERIFY:{
       },
       ERROR_CODE: {
+        '11000130': '卡包不存在'
       }
     }
   });

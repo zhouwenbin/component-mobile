@@ -20,7 +20,6 @@ define('sf.b2c.mall.module.getcoupon', [
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
-
     var getCoupon =can.Control.extend({
       /**
        * @override
@@ -29,10 +28,21 @@ define('sf.b2c.mall.module.getcoupon', [
       init: function() {
         var that = this;
 
-        $("[role=getCoupon]").click(function(targetElement) {
+        $(".cms-fill-coupon").click(function(targetElement) {
+          if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+            new SFMessage(null, {
+              'tip': '抱歉！需要登录后才可以领取优惠券！',
+              'type': 'success',
+              'okFunction': function(){
+                window.location.href = "http://m.sfht.com/login.html"
+              }
+            });
+            return false;
+          }
+
           var params = {
-            bagId: $(targetElement.target).data('bagId'),
-            type: $(targetElement.target).data('type')
+            bagId: $(targetElement.target).data('cmsCouponbagid'),
+            type: $(targetElement.target).data('cmsCoupontype')
           }
           var needSms = $(targetElement.target).data('needSms');
           var smsCon = $(targetElement.target).data('smsCon');
@@ -60,16 +70,16 @@ define('sf.b2c.mall.module.getcoupon', [
 
       receiveCpCodeData: function(params) {
         params.receiveChannel = 'B2C';
-        params.receiceWay = 'ZTLQ';
+        params.receiveWay = 'ZTLQ';
         var that = this;
         var receiveCouponData = new SFReceiveCoupon(params);
-        return receiveCouponData.sendRequest()
+        return can.when(receiveCouponData.sendRequest())
           .done(function(userCouponInfo) {
-          new SFMessage(null, {
-            'tip': '领取成功！',
-            'type': 'success'
-          });
-        })
+            new SFMessage(null, {
+              'tip': '领取成功！',
+              'type': 'success'
+            });
+          })
           .fail(function(error) {
             new SFMessage(null, {
               'tip': that.errorMap[error] || '领取失败',
