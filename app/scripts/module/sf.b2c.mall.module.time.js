@@ -86,10 +86,10 @@ define(
 
         // 3天内显示倒计时，3天外显示即将开始 其他显示活动结束
         if (startLeftTime > 259200000) {
-          $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').text('即将开始');
+          $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').removeClass('btn-danger').addClass('soon').text('即将开始');
           timeNode.innerHTML = '<span class="icon icon36"></span>活动即将开始';
         } else if (startLeftTime > 0 && startLeftTime < 259200000) {
-          $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').text('即将开始');
+          $(timeNode).closest('.cms-src-timeinfo').find('.cms-fill-gotobuy').removeClass('btn-danger').addClass('soon').text('即将开始');
           var leftsecond = parseInt(startLeftTime / 1000);
           var day1 = Math.floor(leftsecond / (60 * 60 * 24));
           var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);
