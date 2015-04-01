@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.coupon.receiveShareCoupon
+  * @class sf.b2c.mall.api.coupon.receiveExCode
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.coupon.receiveShareCoupon',
+'sf.b2c.mall.api.coupon.receiveExCode',
 [
   'zepto',
   'can',
@@ -22,23 +22,19 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'coupon.receiveShareCoupon',
+      METHOD_NAME: 'coupon.receiveExCode',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'shareBagId': 'long',
-        'receiveChannel': 'string',
-        'receiveWay': 'string',
-        'mobile': 'string'
+        'exCode': 'string'
       },
       OPTIONAL: {
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '11000020': '卡券id不存在',
-        '11000050': '卡券已领完',
-        '11000100': '用户已领过该券',
-        '11000130': '卡包不存在'
+        '11000160': '优惠码不存在',
+        '11000170': '优惠码已使用',
+        '11000200': '优惠码已过期'
       }
     }
   });
