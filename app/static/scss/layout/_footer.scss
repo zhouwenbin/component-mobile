@@ -24,15 +24,20 @@
  }
  .footer-r1{
  	border-top:1px solid #d9d9d9;
- 	padding:12px 0;
+ 	margin-left: -17px;
+ 	padding:12px 0 12px 14px;
  	background:#fff;
  	border-bottom:1px solid #d9d9d9;
+  text-align: center;
  }
-.footer-r1 li {
-    float: left;
-    width: 25%;
+.footer ul{
+  display: inline-block;
+ }
+.footer-r1 li {  
+    margin-left: 10px;
     font-size: 12px;
-    overflow: hidden;
+    float:left;
+    text-align: left;
 }
 
 .footer-r1 h2{
@@ -44,8 +49,11 @@
 }
 
 .footer-r1 .li2 span {
-    letter-spacing: 2em;
-    white-space: nowrap;
+    letter-spacing: 2em
+}
+
+.footer-r1 .li3 {
+    margin-left: -10px
 }
 
 .footer-r1 .li3,.footer-r1 .li4 {
