@@ -28,7 +28,8 @@ define(
         isNull: false,
         errorMessage: "请输入手机号即可领取",
         telephone: "",
-        receiveCoupon: {}
+        receiveCoupon: {},
+        whyNull: "已领完"
       }),
 
       init: function() {
@@ -131,6 +132,12 @@ define(
             window.location.href = "http://m.sfht.com";
           });
       },
+      errorMap: {
+        11000020: "已领完", //不存在
+        11000050: "已领完",
+        11000100: "已领过",
+        11000130: "已领完" //不存在
+      },
 
       "#acceptShareBagBtn click": function(ele, event) {
         if (!this.itemObj.isEnable) {
@@ -156,7 +163,10 @@ define(
             });
           })
           .fail(function(error) {
-            that.itemObj.attr("isNull", true);
+            that.itemObj.attr({
+              "isNull": true,
+              "whyNull": that.errorMap[error]
+            });
           });
       },
       "#telephone focus": function() {
