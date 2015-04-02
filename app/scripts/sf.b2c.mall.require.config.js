@@ -102,6 +102,7 @@ requirejs.config({
         'sf.b2c.mall.api.coupon.getUserCouponList': 'scripts/api/sf.b2c.mall.api.coupon.getUserCouponList',
         'sf.b2c.mall.api.coupon.getShareBagCpList': 'scripts/api/sf.b2c.mall.api.coupon.getShareBagCpList',
         'sf.b2c.mall.api.coupon.getShareBagInfo': 'scripts/api/sf.b2c.mall.api.coupon.getShareBagInfo',
+        'sf.b2c.mall.api.coupon.hasReceived': 'scripts/api/sf.b2c.mall.api.coupon.hasReceived',
 
         // --------------------------------------------
         'placeholders': 'bower_components/Placeholders/build/placeholders',
@@ -122,9 +123,6 @@ requirejs.config({
 
         //公共模块
         'sf.b2c.mall.module.getcoupon': 'scripts/module/sf.b2c.mall.module.getcoupon',
-        'sf.b2c.mall.module.slider': 'scripts/module/sf.b2c.mall.module.slider',
-        'sf.b2c.mall.module.price': 'scripts/module/sf.b2c.mall.module.price',
-        'sf.b2c.mall.module.time': 'scripts/module/sf.b2c.mall.module.time',
 
         // 首页
         'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
