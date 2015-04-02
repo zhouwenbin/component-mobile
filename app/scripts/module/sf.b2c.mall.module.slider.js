@@ -8,9 +8,10 @@ define(
     'swipe',
     'fastclick',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'sf.b2c.mall.module.getcoupon'
   ],
-  function(can, $, Swipe, Fastclick, SFFrameworkComm, SFConfig) {
+  function(can, $, Swipe, Fastclick, SFFrameworkComm, SFConfig, getCoupon) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
