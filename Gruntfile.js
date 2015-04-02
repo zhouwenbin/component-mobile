@@ -746,7 +746,7 @@ module.exports = function (grunt) {
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
           },
-          include:        ["sf.b2c.mall.module.slider"],
+          include:        ["sf.b2c.mall.module.slider", "sf.b2c.mall.module.getcoupon"],
           insertRequire:  ['sf.b2c.mall.module.slider']
         }
       },
