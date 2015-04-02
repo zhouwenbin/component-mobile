@@ -60,6 +60,13 @@ define(
 
         return getOrderShareBagInfo.sendRequest()
           .done(function(cardBagInfo) {
+            if (cardBagInfo.cardSurplusNum == 0) {
+              that.itemObj.attr({
+                "isNull": true
+              });
+            }
+
+
             SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagCodeId);
             that.itemObj.attr({
               cardBagInfo: cardBagInfo
