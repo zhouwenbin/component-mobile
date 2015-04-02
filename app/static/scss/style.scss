@@ -1,3 +1,5 @@
+@import 'utils/variables';
+
 @import 'base/reset';
 @import 'base/base';
 @import 'base/helper';
@@ -19,6 +21,11 @@
 @import 'components/dialog';
 @import 'components/banner';
 @import 'components/alert';
+@import 'components/getpocket';
+@import 'components/sharepocket';
+@import 'components/luck';
+@import 'components/activerule';
+@import 'components/qrcode';
 
 @import 'pages/goods';
 @import 'pages/detail';
@@ -43,5 +50,4 @@
 @import 'pages/agreement';
 @import 'pages/coupons';
 @import 'pages/coupons-none';
-@import 'pages/coupon';
 @import 'pages/coupon';

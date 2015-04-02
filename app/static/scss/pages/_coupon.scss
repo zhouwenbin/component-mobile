@@ -1,14 +1,15 @@
 .coupon{
   text-align: center;
-  padding-top: 22px;
-
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
 }
 .coupon p{
   margin-bottom: 15px;
   color: #666;
+  line-height: 18px;
 }
 .coupon-b{
-  background: url(../img/coupon.png) no-repeat;
+  background: url(#{$bg-url}coupon.png) no-repeat;
   background-size:100%;
   width: 169px;
   padding-left:36px;
@@ -26,4 +27,13 @@
 .coupon-r2{
   padding-left:10px;
   line-height: 1.2;
+}
+.coupon-gift .coupon-b{
+  background-image: url("#{$bg-url}gift.png");
+  background-size:165px 85px;
+  width: 165px;
+  height: 85px;
+}
+.coupon-gift .coupon-r1{
+  padding-top:23px;
 }
