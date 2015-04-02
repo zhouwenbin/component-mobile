@@ -1,0 +1,12 @@
+.share{
+	background: url(#{$bg-url}share.png) no-repeat;
+	background-size:235px;
+	width:235px;
+	height:154px;
+	position: absolute;
+	right:45px;
+	top:21px;
+}
+.share .mask{
+	background:rgba(0,0,0,0.5);
+}
