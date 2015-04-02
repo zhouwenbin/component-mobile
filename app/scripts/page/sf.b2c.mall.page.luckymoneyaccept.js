@@ -14,9 +14,13 @@ define(
     'sf.b2c.mall.luckymoney.users',
     'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.api.user.partnerLogin',
-    'sf.b2c.mall.api.coupon.receiveShareCoupon'
+    'sf.b2c.mall.api.coupon.receiveShareCoupon',
+    'sf.b2c.mall.api.coupon.hasReceived'
   ],
-  function(can, $, store, Fastclick, SFWeixin, SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo, SFLuckyMoneyUsers, SFReqLoginAuth, SFPartnerLogin, SFReceiveShareCoupon) {
+  function(can, $, store, Fastclick, SFWeixin,
+           SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo,
+           SFLuckyMoneyUsers, SFReqLoginAuth, SFPartnerLogin, SFReceiveShareCoupon,
+           SFHasReceived) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -50,6 +54,7 @@ define(
           }
         } else {
           that.initOrderShareBagInfo(id);
+          that.initHasReceivedInfo(id);
         }
       },
       initOrderShareBagInfo: function(shareBagId) {
@@ -65,8 +70,6 @@ define(
                 "isNull": true
               });
             }
-
-
             SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagCodeId);
             that.itemObj.attr({
               cardBagInfo: cardBagInfo
@@ -89,6 +92,27 @@ define(
             $('.loadingDIV').hide();
           });
       },
+
+      initHasReceivedInfo: function(shareBagId) {
+        var that = this;
+        var hasReceivedInfo = new SFHasReceived({
+          "shareId": shareBagId
+        });
+
+        return hasReceivedInfo.sendRequest()
+          .done(function(boolResp) {
+            if (boolResp.value) {
+              that.itemObj.attr({
+                "isNull": true,
+                "whyNull": "已领过"
+              });
+            }
+          })
+          .fail(function(error) {
+            console.error(error);
+          })
+      },
+
       renderHtml: function(element, itemObj) {
         var html = can.view('templates/luckymoney/sf.b2c.mall.luckymoney.accept.mustache', itemObj);
         element.html(html);
@@ -140,6 +164,7 @@ define(
           });
       },
       errorMap: {
+        "-100": "已领完",
         11000020: "已领完", //不存在
         11000050: "已领完",
         11000100: "已领过",
