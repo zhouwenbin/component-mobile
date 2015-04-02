@@ -55,9 +55,10 @@ define(
         _.each(data.value, function(value, key, list) {
 
           // 填充价格
-          //var $el = $('[data-cms-itemid=' + value.itemId + ']');
-          var $el = $('.cms-src-item').data('cms-itemid', value.itemId);
-          //var $el = element.find('.cms-src-item').attr('cms-src-item', value.itemId);
+          //Zepto("[data-cms-itemid='" + a +"']").text('hah');
+          var $el = $("[data-cms-itemid='" + value.itemId +"']")
+          //var $el = $('.cms-src-item').data('cms-itemid', value.itemId);
+          
           // 如果有重复的itemid，则进行容错
           if ($el.length && $el.length > 1) {
             _.each($el, function(item) {
