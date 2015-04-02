@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.coupon.receiveCpCode
+  * @class sf.b2c.mall.api.coupon.receiveCoupon
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.coupon.receiveCpCode',
+'sf.b2c.mall.api.coupon.receiveCoupon',
 [
   'zepto',
   'can',
@@ -22,12 +22,13 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'coupon.receiveCpCode',
+      METHOD_NAME: 'coupon.receiveCoupon',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
+        'type': 'string',
+        'bagId': 'long',
         'receiveChannel': 'string',
-        'receiceWay': 'string',
-        'cardId': 'long',
+        'receiveWay': 'string',
       },
       OPTIONAL: {
         'needSms': 'int',
@@ -38,9 +39,10 @@ function($, can, _, Comm, SecurityType) {
       ERROR_CODE: {
         '11000020': '卡券id不存在',
         '11000030': '卡券已作废',
-        '11000040': '目前不再卡券发放有效期内',
         '11000050': '卡券已领完',
-        '11000100': '用户已领过该券'
+        '11000100': '用户已领过该券',
+        '11000130': '卡包不存在',
+        '11000140': '卡包已作废'
       }
     }
   });

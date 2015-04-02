@@ -1,0 +1,46 @@
+
+<div class="getpocket">
+		<!--
+    <div><img src="img/luck.png" alt="" class="getpocket-user" width="28" height="28"></div>
+    <p class="getpocket-p">恭喜你抢到张小娴的顺丰海淘红包！</p>
+    <div class="getpocket-money"><span>25</span>元</div>
+    <p class="getpocket-p2">恭喜你获得25元现金券</p>
+    <button class="getpocket-btn">立即使用</button>
+    <p class="getpocket-p3">点击右上角分享邀请红包</p>
+    -->
+
+	<div><img src="img/luck.png" alt="" class="getpocket-user" width="28" height="28"></div>
+	<p class="getpocket-p">{{cardBagInfo.title}}</p>
+
+	{{^isNull}}
+		{{^isReceive}}
+			<div><img src="img/getpocket-logo.png" alt="" class="getpocket-logo" width="47" height="53"></div>
+			<div><input can-value="telephone" value="{{telephone}}" id="telephone" type="text" class="getpocket-tel input" placeholder="输入手机号" /></div>
+			<button class="getpocket-btn{{^isEnable}} disable{{/isEnable}}" id="acceptShareBagBtn">领红包</button>
+		{{/isReceive}}
+		{{#isReceive}}
+	    <div class="getpocket-money"><span>{{sf.price receiveCoupon.reduceCost}}</span>元</div>
+	    <p class="getpocket-p2">恭喜你获得{{sf.price receiveCoupon.reduceCost}}元现金券</p>
+	    <a class="getpocket-btn" href="http://m.sfht.com">立即使用</a>
+	    <p class="getpocket-p3" id="shareBtn">点击右上角分享邀请红包</p>
+		{{/isReceive}}
+	{{/isNull}}
+	{{#isNull}}
+    <div><img src="img/getpocket-logo.png" alt="" class="getpocket-logo" width="47" height="53"></div>
+    <div class="getpocket-over">{{whyNull}}</div>
+	{{/isNull}}
+</div>
+
+<div class="users"></div>
+
+<div class="activerule">
+    <h2>活动规则</h2>
+    <ul>
+        <li>{{cardBagInfo.useInstruction}}</li>
+    </ul>
+</div>
+
+{{#isShowMask}}
+    <div class="mask"></div>
+    <div class="share"></div>
+{{/isShowMask}}

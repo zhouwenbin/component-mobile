@@ -1,0 +1,20 @@
+<div class="luck">
+  <h2>看看朋友们手气如何</h2>
+    <ul>
+			{{#each userCouponInfo.items}}
+        <li class="clearfix">
+	        {{#headUrl}}
+              <img src="{{headUrl}}" alt="" class="fl" width="40" height="40">
+	        {{/headUrl}}
+	        {{^headUrl}}
+              <img src="img/luck.png" alt="" class="fl" width="40" height="40">
+	        {{/headUrl}}
+          <div class="luck-c1 fl">
+              <h3>{{nickname}}</h3>
+              <time>{{sf.time receiveTime "YYYY-MM-DD"}}</time>
+          </div>
+          <p class="fr">{{title}}</p>
+        </li>
+			{{/each}}
+    </ul>
+</div>

@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.checkLink
+  * @class sf.b2c.mall.api.b2cmall.getHeaderConfig
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.checkLink',
+'sf.b2c.mall.api.b2cmall.getHeaderConfig',
 [
   'zepto',
   'can',
@@ -22,21 +22,15 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.checkLink',
+      METHOD_NAME: 'b2cmall.getHeaderConfig',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'linkContent': 'string'
       },
       OPTIONAL: {
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000010': '未找到用户',
-        '1000020': '账户已注册',
-        '1000120': '链接已过期',
-        '1000130': '签名验证失败',
-        '1000140': '密码修改间隔太短'
       }
     }
   });

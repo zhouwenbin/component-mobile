@@ -1,28 +1,30 @@
-<!--支付成功-->
+{{#isPaySuccess}}
 <section class="pay">
-  {{#isPaySuccess}}
-  <h2><span class="icon icon38"></span>订单支付成功！</h2>
-  <div class="pay-r1">
-    <a href="{{links.orderlist}}" title="查看我的订单" class="btn btn-normal btn-radius">查看我的订单</a>
-  </div>
-  {{/isPaySuccess}}
-  <div class="pay-r2 clearfix">
-    <img src="http://img.sfht.com/sfhth5/1.0.13/img/qrcode.png" width="70" height="70" class="fl">
-    <p class="pay-r2c1">长按此图【识别图中二维码】或搜【顺丰海淘】关注微信公众号</p>
-  </div>
-</section>
-<!--支付成功-->
-
-<!--优惠券-->
-{{#isPresentCoupon}}
-<div class="coupon">
-  <p>恭喜你,获得了一张{{sf.price presentCoupon.price}}元优惠券</p>
-  <div class="coupon-b">
-    <div class="coupon-r1">
-      <strong>{{sf.price presentCoupon.price}}</strong>元
+    <h2><span class="icon icon38"></span>订单支付成功！</h2>
+		{{#isShareBag}}
+      <p>恭喜你获得<span class="text-important">{{sf.price shareBag.price}}元红包</span>，您可给小伙伴散红包啦！<br>立即分享给你的小伙伴吧！</p>
+		{{/isShareBag}}
+    <div class="pay-r1">
+      <a href="{{links.orderlist}}" class="btn btn-normal btn-radius">查看订单</a>
+			{{#isShareBag}}
+        <a href="{{links.luckymoneyshare}}&id={{shareBag.activityId}}" class="btn btn-normal btn-radius">分享红包</a>
+			{{/isShareBag}}
     </div>
-    <div class="coupon-r2 ellipsis">{{presentCoupon.couponDescription}}</div>
-  </div>
+	{{#isPresentCoupon}}
+    <div class="coupon">
+      <p>恭喜你,获得了一张<span class="text-important">{{sf.price presentCoupon.price}}元优惠券</span><br>已自动存入“我的优惠券”</p>
+      <div class="coupon-b">
+        <div class="coupon-r1">
+          <strong>{{sf.price presentCoupon.price}}</strong>元
+        </div>
+        <div class="coupon-r2 ellipsis">{{presentCoupon.couponDescription}}</div>
+      </div>
+    </div>
+	{{/isPresentCoupon}}
+</section>
+{{/isPaySuccess}}
+
+<div class="qrcode">
+    <img src="img/qrcode.png" width="120" height="120">
+    <p class="qrcode-c1">长按此图【识别图中二维码】或搜【顺丰海淘】关注微信公众号</p>
 </div>
-{{/isPresentCoupon}}
-<!--优惠券-->

@@ -737,6 +737,20 @@ module.exports = function (grunt) {
         }
       },
 
+      getcoupon: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.getcoupon.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.getcoupon"],
+          insertRequire:  ['sf.b2c.mall.module.getcoupon']
+        }
+      },
+
       coupon: {
         options: {
           preserveLicenseComments: false,

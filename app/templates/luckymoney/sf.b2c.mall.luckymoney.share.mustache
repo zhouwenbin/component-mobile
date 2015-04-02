@@ -1,0 +1,21 @@
+<div class="sharepocket">
+    <p>恭喜您下单支付成功，可以给小伙伴散红包了</p>
+    <div class="sharepocket-r1">
+        <span>{{sf.price cardBagInfo.cardTotalAmount}}</span>元
+    </div>
+    <a href="javascript:void(0);" class="sharepocket-btn" id="shareBtn">立即分享红包</a>
+</div>
+
+<div class="users"></div>
+
+<div class="activerule">
+  <h2>活动规则</h2>
+  <ul>
+    <li>{{cardBagInfo.useInstruction}}</li>
+  </ul>
+</div>
+
+{{#isShowMask}}
+  <div class="mask"></div>
+  <div class="share"></div>
+{{/isShowMask}}
