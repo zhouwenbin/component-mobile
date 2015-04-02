@@ -22,7 +22,6 @@ define(
       render: function(element) {
 
         var that = this;
-        debugger;
         var itemIds = this.getItemList();
 
         // 如果不存在itemid 直接返回
