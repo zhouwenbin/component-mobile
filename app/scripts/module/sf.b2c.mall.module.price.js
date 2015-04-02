@@ -22,7 +22,6 @@ define(
       render: function(element) {
 
         var that = this;
-
         var itemIds = this.getItemList();
 
         // 如果不存在itemid 直接返回
@@ -55,8 +54,10 @@ define(
         _.each(data.value, function(value, key, list) {
 
           // 填充价格
-          var $el = element.find('[data-cms-itemid=' + value.itemId + ']');
-          //var $el = element.find('.cms-src-item').attr('cms-src-item', value.itemId);
+          //Zepto("[data-cms-itemid='" + a +"']").text('hah');
+          var $el = $("[data-cms-itemid='" + value.itemId +"']")
+          //var $el = $('.cms-src-item').data('cms-itemid', value.itemId);
+          
           // 如果有重复的itemid，则进行容错
           if ($el.length && $el.length > 1) {
             _.each($el, function(item) {
@@ -97,8 +98,8 @@ define(
       },
 
       getItemList: function() {
-        var $el = this.element.find('[data-cms-itemid]');
-        //var $el = this.element.find('.cms-src-item');
+        //var $el = this.element.find('[data-cms-itemid]');
+        var $el = this.element.find('.cms-src-item');
         var ids = [];
 
         _.each($el, function(el) {
