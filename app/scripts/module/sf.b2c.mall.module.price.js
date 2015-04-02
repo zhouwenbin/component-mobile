@@ -22,7 +22,7 @@ define(
       render: function(element) {
 
         var that = this;
-
+        debugger;
         var itemIds = this.getItemList();
 
         // 如果不存在itemid 直接返回
@@ -97,8 +97,8 @@ define(
       },
 
       getItemList: function() {
-        var $el = this.element.find('[data-cms-itemid]');
-        //var $el = this.element.find('.cms-src-item');
+        //var $el = this.element.find('[data-cms-itemid]');
+        var $el = this.element.find('.cms-src-item');
         var ids = [];
 
         _.each($el, function(el) {
