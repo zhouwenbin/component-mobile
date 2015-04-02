@@ -1,0 +1,72 @@
+.getpocket{
+	text-align:center;
+	padding-top:14px;
+	height:388px;
+	background:#fff url(#{$bg-url}getpocket.jpg) no-repeat center top;
+	background-size:320px;
+}
+.getpocket-btn{
+	font-size:15px;
+	color:#dc3334;
+	background:#feef86;
+	border-radius:5px;
+	height:40px;
+	line-height:40px;
+	padding:0 20px;
+	width:192px;
+	display: inline-block;
+	margin-top:13px;
+}
+.getpocket-btn.disable{
+	background:#ccc;
+	color:#fff;
+}
+.getpocket-user{
+	margin-bottom:9px;
+	border-radius:50%;
+}
+.getpocket-p{
+	margin-bottom:14px;
+	font-size:14px;
+	color:#666;
+}
+.getpocket-logo{
+	margin-top:27px;
+	
+}
+.getpocket-tel{
+	margin-top:12px;
+	
+	width:192px;
+	font-size:18px;
+	text-align:center;
+	border-radius:5px;
+}
+.getpocket-over{
+	font-size:24px;
+	color:#ffe823;
+	margin-top:82px;
+}
+.getpocket-money{
+	font-size:30px;
+	color:#fff18d;
+	margin-top:36px;
+}
+.getpocket-money span{
+	font-size:50px;
+}
+.getpocket-p2{
+	font-size:15px;
+	color:#fff;
+	margin-top:75px;
+}
+.getpocket-p3{
+	margin-top:13px;
+	color:#ffed6f;
+}
+.getpocket-error{
+	color:#fff;
+	height:20px;
+	line-height:20px;
+	margin-top:30px;
+}
