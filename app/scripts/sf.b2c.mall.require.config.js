@@ -170,6 +170,7 @@ requirejs.config({
 
         // 微信转跳中心
         'sf.b2c.mall.page.weixincenter': 'scripts/page/sf.b2c.mall.page.weixincenter',
+        'sf.b2c.mall.page.weixinlogintest': 'scripts/page/sf.b2c.mall.page.weixinlogintest',
 
         // alipay支付
         'sf.b2c.mall.page.alipayframe': 'scripts/page/sf.b2c.mall.page.alipayframe',
