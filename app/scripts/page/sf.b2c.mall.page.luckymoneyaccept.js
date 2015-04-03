@@ -70,6 +70,10 @@ define(
                 "isNull": true
               });
             }
+
+            //处理卡券规则
+            cardBagInfo.useInstructions = cardBagInfo.useInstruction.split("\n");
+
             SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagCodeId);
             that.itemObj.attr({
               cardBagInfo: cardBagInfo
