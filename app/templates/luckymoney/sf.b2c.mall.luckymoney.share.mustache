@@ -11,7 +11,9 @@
 <div class="activerule">
   <h2>活动规则</h2>
   <ul>
-    <li>{{cardBagInfo.useInstruction}}</li>
+	  {{#cardBagInfo.useInstructions}}
+        <li>{{.}}</li>
+	  {{/cardBagInfo.useInstructions}}
   </ul>
 </div>
 
