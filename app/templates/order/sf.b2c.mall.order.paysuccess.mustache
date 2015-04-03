@@ -7,7 +7,7 @@
     <div class="pay-r1">
       <a href="{{links.orderlist}}" class="btn btn-normal btn-radius">查看订单</a>
 			{{#isShareBag}}
-        <a href="{{links.luckymoneyshare}}&id={{shareBag.activityId}}" class="btn btn-normal btn-radius">分享红包</a>
+        <a href="{{links.luckymoneyshare}}&id={{shareBag.code}}" class="btn btn-normal btn-radius">分享红包</a>
 			{{/isShareBag}}
     </div>
 	{{#isPresentCoupon}}
@@ -21,6 +21,15 @@
       </div>
     </div>
 	{{/isPresentCoupon}}
+	{{#isGiftBag}}
+    <div class="coupon coupon-gift">
+      <p>恭喜你,获得了<span class="text-important">{{sf.price giftBag.price}}元礼包</span><br>已自动存入“我的优惠券”</p>
+      <div class="coupon-b">
+        <div class="coupon-r1"><strong>{{sf.price giftBag.price}}</strong>元</div>
+        <div class="coupon-r2 ellipsis">{{sf.price giftBag.price}}</div>
+      </div>
+    </div>
+	{{/isGiftBag}}
 </section>
 {{/isPaySuccess}}
 
