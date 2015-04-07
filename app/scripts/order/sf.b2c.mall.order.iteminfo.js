@@ -24,14 +24,16 @@ define('sf.b2c.mall.order.iteminfo', [
      */
     init: function(element, options) {
       var params = can.deparam(window.location.search.substr(1));
-      options.itemid = params.itemid;
-      options.amount = params.amount;
+      this.itemObj.attr({
+        itemid: params.itemid,
+        amount: params.amount
+      });
 
       var that = this;
 
-      can.when(this.initItemSummary(options), this.initProductHotData(options))
-        .then(function() {
-          return that.initCoupons(options);
+      can.when(this.initItemSummary(), this.initProductHotData())
+        .then(function(){
+          return that.initCoupons();
         })
         .always(function() {
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
@@ -152,9 +154,9 @@ define('sf.b2c.mall.order.iteminfo', [
             }),
             "userMsg": "",
             "items": JSON.stringify([{
-              "itemId": that.options.itemid,
-              "num": that.options.amount,
-              "price": that.options.sellingPrice
+              "itemId": that.itemObj.itemid,
+              "num": that.itemObj.amount,
+              "price": that.itemObj.sellingPrice
             }]),
             "sysType": 'B2C_H5',
             "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
@@ -183,33 +185,32 @@ define('sf.b2c.mall.order.iteminfo', [
         });
     },
 
-    initProductHotData: function(options) {
+    initProductHotData: function() {
       var that = this;
       var getProductHotData = new SFGetProductHotData({
-        'itemId': options.itemid
+        'itemId': that.itemObj.itemid
       });
       var getProductHotDataDefer = getProductHotData.sendRequest();
       getProductHotDataDefer.done(function(priceinfo) {
-          that.itemObj.attr({
-            "singlePrice": priceinfo.sellingPrice,
-            "amount": options.amount,
-            "totalPrice": priceinfo.sellingPrice * options.amount,
-            "allTotalPrice": priceinfo.sellingPrice * options.amount,
-            "shouldPay": priceinfo.sellingPrice * options.amount,
-          });
-          options.allTotalPrice = that.itemObj.allTotalPrice;
-          options.sellingPrice = priceinfo.sellingPrice;
-        })
-        .fail(function(error) {
-          console.error(error);
+        that.itemObj.attr({
+          "singlePrice": priceinfo.sellingPrice,
+          "amount": that.itemObj.amount,
+          "totalPrice": priceinfo.sellingPrice * that.itemObj.amount,
+          "allTotalPrice": priceinfo.sellingPrice * that.itemObj.amount,
+          "shouldPay": priceinfo.sellingPrice * that.itemObj.amount,
+          "sellingPrice": priceinfo.sellingPrice
         });
+      })
+      .fail(function(error) {
+        console.error(error);
+      });
       return getProductHotDataDefer;
     },
 
-    initItemSummary: function(options) {
+    initItemSummary: function() {
       var that = this;
       var getItemSummary = new SFGetItemSummary({
-        "itemId": options.itemid
+        "itemId":that.itemObj.itemid
       });
 
       var getItemSummaryDefer = getItemSummary.sendRequest();
@@ -239,14 +240,14 @@ define('sf.b2c.mall.order.iteminfo', [
     /*
      * author:zhangke
      */
-    initCoupons: function(options) {
+    initCoupons: function() {
       var that = this;
       var queryOrderCoupon = new SFQueryOrderCoupon({
         "items": JSON.stringify([{
-          "itemId": options.itemid,
-          "num": options.amount,
-          "price": this.itemObj.singlePrice,
-          skuId: this.itemObj.skuId
+          "itemId": that.itemObj.itemid,
+          "num": that.itemObj.amount,
+          "price": that.itemObj.singlePrice,
+          "skuId": that.itemObj.skuId
         }]),
         'system': "B2C_H5"
       });
