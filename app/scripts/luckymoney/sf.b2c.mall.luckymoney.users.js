@@ -4,14 +4,13 @@ define("sf.b2c.mall.luckymoney.users",
   [
     'can',
     'zepto',
-    'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.business.config',
-    'sf.helpers',
     'sf.b2c.mall.api.coupon.getShareBagCpList'
   ],
-  function(can, $, SFFrameworkComm, SFConfig, helpers, SFGetShareBagCpList) {
+  function(can, $, SFGetShareBagCpList) {
     return can.Control.extend({
-      itemObj:  new can.Map({}),
+      itemObj:  new can.Map({
+        userCouponInfo: {}
+      }),
       init: function(element, options) {
         this.render();
       },
@@ -20,7 +19,7 @@ define("sf.b2c.mall.luckymoney.users",
 
         can.when(that.initShareBagCpList(that.options.shareBagId))
           .always(function() {
-            that.renderHtml(that.element, that.itemObj);
+            //that.renderHtml(that.element, that.itemObj);
           });
       },
       initShareBagCpList: function(shareBagId) {

@@ -32,7 +32,8 @@ define(
         can.when(that.initOrderShareBagInfo(id))
           .always(function() {
             that.renderHtml(that.element, that.itemObj);
-            new SFLuckyMoneyUsers(".users", {shareBagId: id});
+            var sfLuckyMoneyUsers = new SFLuckyMoneyUsers(".users", {shareBagId: id});
+            that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo);
             $('.loadingDIV').hide();
           });
       },

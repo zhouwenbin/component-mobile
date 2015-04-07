@@ -82,7 +82,8 @@ define(
               //验证手机号
             });
             that.renderHtml(that.element, that.itemObj);
-            new SFLuckyMoneyUsers(".users", {shareBagId: shareBagId});
+            var sfLuckyMoneyUsers = new SFLuckyMoneyUsers(".users", {shareBagId: shareBagId});
+            that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo)
           })
           .fail(function(error) {
             console.error(error);
