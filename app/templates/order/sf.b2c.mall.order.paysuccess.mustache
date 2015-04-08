@@ -2,7 +2,7 @@
 <section class="pay">
     <h2><span class="icon icon38"></span>订单支付成功！</h2>
 		{{#isShareBag}}
-      <p>恭喜你获得<span class="text-important">{{sf.price shareBag.price}}元红包</span>，您可给小伙伴散红包啦！<br>立即分享给你的小伙伴吧！</p>
+      <p>恭喜您获得<span class="text-important">{{sf.price shareBag.price}}元红包</span>，您可给小伙伴散红包啦！<br>立即分享给你的小伙伴吧！</p>
 		{{/isShareBag}}
     <div class="pay-r1">
       <a href="{{links.orderlist}}" class="btn btn-normal btn-radius">查看订单</a>
@@ -22,18 +22,18 @@
     </div>
 	{{/isPresentCoupon}}
 	{{#isGiftBag}}
-		<div class="coupon coupon-gift">
-			<p>恭喜你,获得了一张<span class="text-important">{{sf.price giftBag.price}}元优惠券</span><br>已自动存入“我的优惠券”</p>
-			<div class="coupon-b">
-				<div class="coupon-r1"><strong>{{sf.price giftBag.price}}</strong>元</div>
-				<div class="coupon-r2 ellipsis">{{sf.price giftBag.price}}</div>
-			</div>
-		</div>
+    <div class="coupon coupon-gift">
+      <p>恭喜你,获得了<span class="text-important">{{sf.price giftBag.price}}元礼包</span><br>已自动存入“我的优惠券”</p>
+      <div class="coupon-b">
+        <div class="coupon-r1"><strong>{{sf.price giftBag.price}}</strong>元</div>
+        <div class="coupon-r2 ellipsis">{{giftBag.couponDescription}}</div>
+      </div>
+    </div>
 	{{/isGiftBag}}
 </section>
 {{/isPaySuccess}}
 
 <div class="qrcode">
-    <img src="img/qrcode.png" width="120" height="120">
+    <img src="http://img.sfht.com/sfhth5/1.1.3/img/qrcode.png" width="120" height="120">
     <p class="qrcode-c1">长按此图【识别图中二维码】或搜【顺丰海淘】关注微信公众号</p>
 </div>
