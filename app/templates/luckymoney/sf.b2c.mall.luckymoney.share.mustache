@@ -1,9 +1,9 @@
 <div class="sharepocket">
-    <p>恭喜您下单支付成功，可以给小伙伴散红包了</p>
-    <div class="sharepocket-r1">
-        <span>{{sf.price cardBagInfo.cardTotalAmount}}</span>元
-    </div>
-    <a href="javascript:void(0);" class="sharepocket-btn" id="shareBtn">立即分享红包</a>
+  <p>恭喜您下单支付成功，可以给小伙伴散红包了</p>
+  <div class="sharepocket-r1">
+    <span>{{sf.price cardBagInfo.cardTotalAmount}}</span>元
+  </div>
+  <a href="javascript:void(0);" class="sharepocket-btn" id="shareBtn">立即分享红包</a>
 </div>
 
 <div class="users">{{>templates/luckymoney/sf.b2c.mall.luckymoney.users.mustache}}</div>
@@ -12,7 +12,7 @@
   <h2>活动规则</h2>
   <ul>
 	  {{#cardBagInfo.useInstructions}}
-        <li>{{.}}</li>
+      <li>{{.}}</li>
 	  {{/cardBagInfo.useInstructions}}
   </ul>
 </div>
