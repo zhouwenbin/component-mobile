@@ -70,6 +70,10 @@ define(
                 "isNull": true
               });
             }
+
+            //处理卡券规则
+            cardBagInfo.useInstructions = cardBagInfo.useInstruction.split("\n");
+
             SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagCodeId);
             that.itemObj.attr({
               cardBagInfo: cardBagInfo
@@ -83,7 +87,8 @@ define(
               }
             });
             that.renderHtml(that.element, that.itemObj);
-            new SFLuckyMoneyUsers(".users", {shareBagId: shareBagId});
+            var sfLuckyMoneyUsers = new SFLuckyMoneyUsers(".users", {shareBagId: shareBagId});
+            that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo)
           })
           .fail(function(error) {
             console.error(error);

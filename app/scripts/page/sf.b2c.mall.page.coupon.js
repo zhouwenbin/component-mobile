@@ -27,7 +27,7 @@ define(
 
       render:function(){
         var that = this;
-      	var getUserCouponList = new SFGetUserCouponList("");
+      	var getUserCouponList = new SFGetUserCouponList({});
       	getUserCouponList.sendRequest()
       	  .done(function(data){
             var options = {

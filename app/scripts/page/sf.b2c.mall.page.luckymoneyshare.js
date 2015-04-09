@@ -32,7 +32,8 @@ define(
         can.when(that.initOrderShareBagInfo(id))
           .always(function() {
             that.renderHtml(that.element, that.itemObj);
-            new SFLuckyMoneyUsers(".users", {shareBagId: id});
+            var sfLuckyMoneyUsers = new SFLuckyMoneyUsers(".users", {shareBagId: id});
+            that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo);
             $('.loadingDIV').hide();
           });
       },
@@ -42,9 +43,13 @@ define(
           "shareBagId": shareBagId
         });
 
+
         return getOrderShareBagInfo.sendRequest()
           .done(function(cardBagInfo) {
             SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagCodeId);
+
+            //处理卡券规则
+            cardBagInfo.useInstructions = cardBagInfo.useInstruction.split("\n");
             that.itemObj.attr({
               cardBagInfo: cardBagInfo
             })
