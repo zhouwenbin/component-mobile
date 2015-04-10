@@ -193,6 +193,7 @@ requirejs.config({
     'sf.b2c.mall.luckymoney.users': 'scripts/luckymoney/sf.b2c.mall.luckymoney.users',
 
     //寻找海淘勇士
-    'sf.b2c.mall.page.searchwarrior': 'scripts/page/sf.b2c.mall.page.searchwarrior'
+    'sf.b2c.mall.page.searchwarrior': 'scripts/page/sf.b2c.mall.page.searchwarrior',
+    'sf.b2c.mall.page.searchwarriorshare': 'scripts/page/sf.b2c.mall.page.searchwarriorshare'
   }
 });

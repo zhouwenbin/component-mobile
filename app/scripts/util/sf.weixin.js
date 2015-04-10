@@ -174,7 +174,7 @@ define('sf.weixin', [
     },
 
     /**
-     * [shareDetail 分享红包]
+     * [shareLuckyMoney 分享红包]
      * @param  {[type]} title  [标题]
      * @param  {[type]} desc   [描述]
      * @param  {[type]} id   [红包ID]

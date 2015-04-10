@@ -162,6 +162,17 @@ define(
       },
       ".mask click": function() {
         this.itemObj.attr("isShowMask", false);
+      },
+
+      "#telephone keyup":function(targetElement, event) {
+        var that = this;
+        var newVal = targetElement.val();
+        that.itemObj.attr("errorMessage", "手机号格式错误");
+        if(!/^1\d{10}$/.test(newVal)) {
+          that.itemObj.attr("isEnable", false);
+        } else {
+          that.itemObj.attr("isEnable", true);
+        }
       }
     });
 
