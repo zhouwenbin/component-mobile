@@ -33,7 +33,7 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            alert(loginData.csrfToken);
+            //alert(loginData.csrfToken);
             if (loginData.csrfToken) {
               store.set('type', 'WEIXIN');
               store.set('nickname', '海淘会员');
@@ -48,8 +48,8 @@ define(
             }
           })
           .fail(function(error) {
-            alert(error);
-            //window.location.href = SFConfig.setting.link.index;
+            //alert(error);
+            window.location.href = SFConfig.setting.link.index;
           })
       }
     });
