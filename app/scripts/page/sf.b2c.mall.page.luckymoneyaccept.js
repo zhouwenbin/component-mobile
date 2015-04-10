@@ -10,17 +10,14 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.helpers',
-    'sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.luckymoney.users',
-    'sf.b2c.mall.api.user.reqLoginAuth',
-    'sf.b2c.mall.api.user.partnerLogin',
+    'sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.hasReceived'
   ],
   function(can, $, store, Fastclick, SFWeixin,
-           SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo,
-           SFLuckyMoneyUsers, SFReqLoginAuth, SFPartnerLogin, SFReceiveShareCoupon,
-           SFHasReceived) {
+           SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
+           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -47,11 +44,8 @@ define(
 
         //微信登录
         if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          if (!code) {
-            that.getWeChatCode(id);
-          } else {
-            that.otherLogin(id, code);
-          }
+          var wechatLogin = new SFWeChatLogin();
+          wechatLogin.checkoutWeChatLogin();
         } else {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);
@@ -121,52 +115,6 @@ define(
       renderHtml: function(element, itemObj) {
         var html = can.view('templates/luckymoney/sf.b2c.mall.luckymoney.accept.mustache', itemObj);
         element.html(html);
-      },
-      getWeChatCode: function(id) {
-        var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/luckymoneyaccept.html?id=" + id
-        });
-
-        reqLoginAuth
-          .sendRequest()
-          .done(function(data) {
-            //alert(data.loginAuthLink);
-            window.location.href = data.loginAuthLink;
-          })
-          .fail(function(error) {
-            console.error(error);
-          });
-      },
-      otherLogin: function(id, code) {
-        var that = this;
-
-        var partnerLogin = new SFPartnerLogin({
-          "partnerId": "wechat_svm",
-          "authResp": "code=" + code
-        });
-
-        partnerLogin
-          .sendRequest()
-          .done(function(loginData) {
-            //alert(loginData.csrfToken);
-            if (loginData.csrfToken) {
-              store.set('type', 'WEIXIN');
-              store.set('nickname', '海淘会员');
-              can.route.attr({
-                'tag': 'success',
-                'csrfToken': loginData.csrfToken
-              });
-
-              that.initOrderShareBagInfo(id);
-            } else {
-              //window.location.href = "http://m.sfht.com";
-            }
-          })
-          .fail(function(error) {
-            console.error(error);
-            window.location.href = "http://m.sfht.com";
-          });
       },
       errorMap: {
         "-100": "已领完",
