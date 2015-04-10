@@ -45,7 +45,7 @@ define(
         //微信登录
         if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           var wechatLogin = new SFWeChatLogin();
-          wechatLogin.checkoutWeChatLogin();
+          wechatLogin.login();
         } else {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);

@@ -77,24 +77,6 @@ define('sf.b2c.mall.component.login', [
         this.getVerifiedCode();
 
         var that = this;
-
-        // $('#gotoLogin').tap(function() {
-        //   that.loginButtonClick($(this));
-        // })
-
-        // $('.weixinlogin').tap(function() {
-        //   that.weixinLoginAuth();
-        // })
-
-        // $('#verified-code-btn').tap(function() {
-        //   that.getVerifiedCode();
-        // })
-
-        // $("#toRegist").tap(function() {
-        //   var params = can.deparam(window.location.search.substr(1));
-        //   var gotoUrl = params.from;
-        //   window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
-        // })
       },
 
       '#toRegist click': function (element, event) {
@@ -113,7 +95,7 @@ define('sf.b2c.mall.component.login', [
         var gotoUrl = params.from || "index.html";
 
         var wechatLogin = new SFWeChatLogin();
-        wechatLogin.checkoutWeChatLogin(gotoUrl);
+        wechatLogin.login(gotoUrl);
       },
 
       /**
