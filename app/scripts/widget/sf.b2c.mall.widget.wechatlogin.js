@@ -4,12 +4,13 @@ define(
   'sf.b2c.mall.widget.wechatlogin', [
     'zepto',
     'can',
+    'store'
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.reqLoginAuth'
   ],
 
-  function($, can, SFFrameworkComm, SFConfig,
+  function($, can,store, SFFrameworkComm, SFConfig,
     SFReqLoginAuth) {
     return can.Control.extend({
       link: SFConfig.setting.link,
