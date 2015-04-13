@@ -1,18 +1,18 @@
-'use strict';
-
 define(
-  'sf.b2c.mall.widget.isbind',
-
-  [
-    'zepto',
+  'sf.b2c.mall.module.price', [
     'can',
-    'store',
-    'sf.b2c.mall.api.user.partnerLogin', //传参判断第三方账号是否绑定手机号码
-    'sf.b2c.mall.business.config'
+    'zepto',
+    'underscore',
+    'fastclick',
+    'sf.b2c.mall.business.config',
+    'sf.b2c.mall.framework.comm'
   ],
 
-  function($, can,store, SFPartnerLogin, SFConfig) {
-    return can.Control.extend({
+  function(can, $, _, Fastclick, SFConfig, SFFrameworkComm,SFPartnerLogin) {
+    Fastclick.attach(document.body);
+    SFFrameworkComm.register(3);
+
+    var header = can.Control.extend({
 
       init: function() {
         this.render();
@@ -43,4 +43,7 @@ define(
       }
 
     });
-  })
+
+    new header();
+
+  });

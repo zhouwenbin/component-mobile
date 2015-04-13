@@ -6,7 +6,8 @@ define(
     'fastclick',
     'sf.b2c.mall.api.b2cmall.getProductHotDataList',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.framework.comm'
+    'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.api.user.partnerLogin' //传参判断第三方账号是否绑定手机号码
   ],
 
   function(can, $, _, Fastclick, SFGetProductHotDataList, SFConfig, SFFrameworkComm) {

@@ -126,7 +126,6 @@ requirejs.config({
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.wechatlogin': 'scripts/widget/sf.b2c.mall.widget.wechatlogin',
-    'sf.b2c.mall.widget.isbind': 'scripts/widget/sf.b2c.mall.widget.isbind',
 
 
     //公共模块
@@ -134,6 +133,7 @@ requirejs.config({
     'sf.b2c.mall.module.slider': 'scripts/module/sf.b2c.mall.module.slider',
     'sf.b2c.mall.module.price': 'scripts/module/sf.b2c.mall.module.price',
     'sf.b2c.mall.module.time': 'scripts/module/sf.b2c.mall.module.time',
+    'sf.b2c.mall.module.header': 'scripts/module/sf.b2c.mall.module.header',
 
     // 首页
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
