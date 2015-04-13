@@ -12,12 +12,13 @@ define('sf.b2c.mall.component.login', [
     'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.framework.comm',
     'sf.util',
-    'sf.b2c.mall.widget.wechatlogin'
+    'sf.b2c.mall.widget.wechatlogin',
+    'sf.b2c.mall.api.user.checkUserExist' //@noto 检查第三方账号绑定的手机号是否有登录密码
   ],
 
   function($, can, md5, store, Fastclick,
            SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFrameworkComm,
-           SFFn, SFWeChatLogin) {
+           SFFn, SFWeChatLogin,SFCheckUserExist) {
 
     SFFrameworkComm.register(3);
 
@@ -33,6 +34,7 @@ define('sf.b2c.mall.component.login', [
     var ERROR_INPUT_PWD = '密码有误，请重新输入';
     var ERROR_NO_INPUT_VERCODE = '请输入验证码';
     var ERROR_INPUT_VERCODE = '您的验证码输入有误，请重新输入';
+    var ERROR_NO_PASSWORD = '账户未设置密码，点此<a href="setpassword.html">设置密码</a>';
 
     return can.Control.extend({
 
@@ -97,7 +99,24 @@ define('sf.b2c.mall.component.login', [
         var wechatLogin = new SFWeChatLogin();
         wechatLogin.login(gotoUrl);
       },
+      //@note 支付宝登录
+      '#alipaylogin click':function(element, event){
+        var reqLoginAuth = new SFReqLoginAuth({
+          "partnerId": "alipay_qklg",
+          "redirectUrl": "http://www.sfht.com/weixincenter.html"
+        });
 
+        reqLoginAuth
+          .sendRequest()
+          .done(function(data) {
+            store.set('alipay-or-weixin','alipay_qklg');
+            window.location.href = data.loginAuthLink;           
+            return false;
+          })
+          .fail(function(error) {
+            console.error(error);
+          })
+      },
       /**
        * @description 渲染页面
        * @param  {can.Map} data 输入的观察者对象
@@ -137,6 +156,20 @@ define('sf.b2c.mall.component.login', [
         var username = can.$.trim(username);
         var isTelNum = /^1\d{10}$/.test(username);
         var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);
+        //@note 手机号码输完11位时，验证该账号是否有密码
+        if (isTelNum) {
+          var checkUserExist = new SFCheckUserExist({
+            'accountId':username,
+            'type':'MOBILE'
+          });
+          checkUserExist.sendRequest()
+            .fail(function(errorCode){
+              if (errorCode == 1000340) {
+                that.element.find('#username-error-tips').html(ERROR_NO_PASSWORD).show();
+                return false;
+              };
+            })
+        };
         if (!username) {
           this.element.find('#username-error-tips').text(ERROR_NO_INPUT_USERNAME).show();
           return false;

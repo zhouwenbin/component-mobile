@@ -11,10 +11,12 @@ define('sf.b2c.mall.component.register', [
     'sf.b2c.mall.api.user.mobileRegister',
     'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.business.config',
-    'sf.util'
+    'sf.util',
+    'sf.b2c.mall.api.user.checkUserExist' //@noto 检查第三方账号绑定的手机号是否有登录密码
+  ],
   ],
 
-  function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn) {
+  function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn,SFCheckUserExist) {
 
     Fastclick.attach(document.body);
 
@@ -46,6 +48,7 @@ define('sf.b2c.mall.component.register', [
     var ERROR_NO_EMAIL = '请输入您的常用邮箱地址';
     var ERROR_NO_EMAIL_CODE = '请输入右侧图片中信息';
     var ERROR_EMAIL_CODE = '验证码输入有误，请重新输入';
+    var ERROR_NO_SET_PWD = '账户未设置密码，点此<a href="setpassword.html">设置密码</a>';
 
     can.route.ready();
 
@@ -154,6 +157,22 @@ define('sf.b2c.mall.component.register', [
       },
 
       checkMobile: function(mobile) {
+        var that = this;
+        var isTelNum = /^1\d{10}$/.test(mobile);
+        //@note 手机号码输完11位时，验证该账号是否有密码
+        if (isTelNum) {
+          var checkUserExist = new SFCheckUserExist({
+            'accountId':mobile,
+            'type':'MOBILE'
+          });
+          checkUserExist.sendRequest()
+            .fail(function(errorCode){
+              if (errorCode == 1000340) {
+                that.element.find('#input-mobile-error').html(ERROR_NO_SET_PWD).show();
+                return false;
+              };
+            })
+        };
         if (!mobile) {
           this.element.find('#input-mobile-error').text(ERROR_NO_INPUT_MOBILE).show();
           return false;
