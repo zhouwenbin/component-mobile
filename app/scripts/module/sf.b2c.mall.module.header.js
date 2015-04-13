@@ -1,14 +1,15 @@
 define(
-  'sf.b2c.mall.module.price', [
+  'sf.b2c.mall.module.header', [
     'can',
     'zepto',
+    'store'
     'underscore',
     'fastclick',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.framework.comm'
   ],
 
-  function(can, $, _, Fastclick, SFConfig, SFFrameworkComm,SFPartnerLogin) {
+  function(can, $,store, _, Fastclick, SFConfig, SFFrameworkComm,SFPartnerLogin) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
