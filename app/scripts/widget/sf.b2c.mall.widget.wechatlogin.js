@@ -4,7 +4,7 @@ define(
   'sf.b2c.mall.widget.wechatlogin', [
     'zepto',
     'can',
-    'store'
+    'store',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.reqLoginAuth'
