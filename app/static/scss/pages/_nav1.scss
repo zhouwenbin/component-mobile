@@ -2,11 +2,12 @@
   padding: 10px 0;
   border-bottom:1px solid #dfdfdf;
   background: #fff;
+} 
+.nav1 ul{
+  display:flex;
 }
 .nav1 li{
-  float: left;
-  width: 25%;
-  
+  flex:1;
   text-align: center;
 }
 %nav1-icon{
