@@ -2,7 +2,7 @@ define(
   'sf.b2c.mall.module.header', [
     'can',
     'zepto',
-    'store'
+    'store',
     'underscore',
     'fastclick',
     'sf.b2c.mall.business.config',
