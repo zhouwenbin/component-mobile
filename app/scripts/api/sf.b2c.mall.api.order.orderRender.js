@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.partnerLogin
+  * @class sf.b2c.mall.api.order.orderRender
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.partnerLogin',
+'sf.b2c.mall.api.order.orderRender',
 [
   'zepto',
   'can',
@@ -22,20 +22,21 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.partnerLogin',
-      SECURITY_TYPE: SecurityType.None.name,
+      METHOD_NAME: 'order.orderRender',
+      SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'partnerId': 'string',
-        'authResp': 'string',
+        'address': 'json',
+        'items': 'json',
+        'sysType': 'string',
       },
       OPTIONAL: {
-        'rembFlag': 'int'
+        'userMsg': 'string',
+        'sysInfo': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000320': '用户未授权',
-        '1000370': '第三方账户已绑定海淘账户'
+        '4000100': 'order unkown error'
       }
     }
   });

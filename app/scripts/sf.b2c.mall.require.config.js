@@ -104,6 +104,8 @@ requirejs.config({
         'sf.b2c.mall.api.coupon.getShareBagInfo': 'scripts/api/sf.b2c.mall.api.coupon.getShareBagInfo',
         'sf.b2c.mall.api.coupon.hasReceived': 'scripts/api/sf.b2c.mall.api.coupon.hasReceived',
 
+        'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM': 'scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM',
+
         // --------------------------------------------
         'placeholders': 'bower_components/Placeholders/build/placeholders',
         // 'vendor.jquery.imagezoom': 'scripts/vendor/vendor.jquery.imagezoom.min',
@@ -185,6 +187,9 @@ requirejs.config({
         // 红包
         'sf.b2c.mall.page.luckymoneyshare': 'scripts/page/sf.b2c.mall.page.luckymoneyshare',
         'sf.b2c.mall.page.luckymoneyaccept': 'scripts/page/sf.b2c.mall.page.luckymoneyaccept',
-        'sf.b2c.mall.luckymoney.users': 'scripts/luckymoney/sf.b2c.mall.luckymoney.users'
+        'sf.b2c.mall.luckymoney.users': 'scripts/luckymoney/sf.b2c.mall.luckymoney.users',
+
+        //优惠券分润
+        'sf.b2c.mall.page.receivedividents': 'scripts/page/sf.b2c.mall.page.receivedividents'
     }
 });
