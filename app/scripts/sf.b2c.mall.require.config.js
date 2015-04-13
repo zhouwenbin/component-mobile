@@ -126,6 +126,8 @@ requirejs.config({
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.wechatlogin': 'scripts/widget/sf.b2c.mall.widget.wechatlogin',
+    'sf.b2c.mall.widget.isbind': 'scripts/widget/sf.b2c.mall.widget.isbind',
+
 
     //公共模块
     'sf.b2c.mall.module.getcoupon': 'scripts/module/sf.b2c.mall.module.getcoupon',

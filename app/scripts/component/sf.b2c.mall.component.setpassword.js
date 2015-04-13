@@ -6,16 +6,17 @@ define(
     'zepto',
     'can',
     'store',
+    'md5',
     'fastclick',
     'sf.b2c.mall.business.config',
     'sf.util',
     'sf.b2c.mall.api.user.setPswdAndLogin',
     'sf.b2c.mall.api.user.downSmsCode'
   ],
-  function($, can, store,Fastclick, SFBizConf, SFFn, SFSetPswdAndLogin,SFDownSmsCode) {
+  function($, can, store, md5, Fastclick, SFBizConf, SFFn, SFSetPswdAndLogin, SFDownSmsCode) {
 
     Fastclick.attach(document.body);
-    
+
     var DEFAULT_DOWN_SMS_ERROR_MAP = {
       '1000010': '未找到手机用户',
       '1000020': '手机号已存在，<a href="i.login.html">立即登录</a>',
@@ -183,7 +184,7 @@ define(
         if (this.checkMobile.call(this, mobile) && this.checkCode(code) && this.checkPassword(password, '#password-error')) {
 
           var setPswdAndLogin = new SFSetPswdAndLogin({
-            type:'MOBILE',
+            type: 'MOBILE',
             accountId: mobile,
             smsCode: code,
             password: md5(password + SFBizConf.setting.md5_key)
@@ -191,9 +192,12 @@ define(
 
           setPswdAndLogin.sendRequest()
             .done(function(data) {
-              console.log(1);
               if (data.csrfToken) {
                 store.set('csrfToken', data.csrfToken);
+                var params = can.deparam(window.location.search.substr(1));
+                setTimeout(function() {
+                  window.location.href = params.from || "index.html";
+                }, 2000);
                 //can.route.attr({'tag':'success', 'csrfToken': data.csrfToken});
               }
             })

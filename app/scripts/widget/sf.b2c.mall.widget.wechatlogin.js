@@ -1,8 +1,7 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.widget.wechatlogin',
-  [
+  'sf.b2c.mall.widget.wechatlogin', [
     'zepto',
     'can',
     'sf.b2c.mall.framework.comm',
@@ -11,11 +10,10 @@ define(
   ],
 
   function($, can, SFFrameworkComm, SFConfig,
-           SFReqLoginAuth) {
+    SFReqLoginAuth) {
     return can.Control.extend({
       link: SFConfig.setting.link,
-      init: function() {
-      },
+      init: function() {},
 
       login: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
@@ -25,7 +23,7 @@ define(
       getWeChatCode: function(redirectUrl) {
         var reqLoginAuth = new SFReqLoginAuth({
           "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/weixincenter.html?redirectUrl=" +  redirectUrl
+          "redirectUrl": "http://m.sfht.com/weixincenter.html?redirectUrl=" + redirectUrl
         });
 
         reqLoginAuth

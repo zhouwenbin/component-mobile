@@ -49,6 +49,8 @@ define('sf.b2c.mall.component.login', [
         isWeChat: function(options) {
           if (SFFn.isMobile.WeChat()) {
             return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
           }
         }
       },
@@ -100,10 +102,10 @@ define('sf.b2c.mall.component.login', [
         wechatLogin.login(gotoUrl);
       },
       //@note 支付宝登录
-      '#alipaylogin click':function(element, event){
+      '.alipaylogin click':function(element, event){
         var reqLoginAuth = new SFReqLoginAuth({
           "partnerId": "alipay_qklg",
-          "redirectUrl": "http://www.sfht.com/weixincenter.html"
+          "redirectUrl": "http://m.sfht.com/index.html"
         });
 
         reqLoginAuth
@@ -153,6 +155,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkUserName: function(username) {
+        var that = this;
         var username = can.$.trim(username);
         var isTelNum = /^1\d{10}$/.test(username);
         var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);

@@ -9,10 +9,11 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.component.price',
     'sf.weixin',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'sf.b2c.mall.widget.isbind'
   ],
 
-  function(can, $, Swipe, _, SFFrameworkComm, ItemPrice, SFWeixin, SFConfig) {
+  function(can, $, Swipe, _, SFFrameworkComm, ItemPrice, SFWeixin, SFConfig, SFIsbind) {
 
     SFFrameworkComm.register(3);
 
@@ -45,7 +46,9 @@ define(
         });
         //第一个选中
         $('.swipe-dot span').eq(0).addClass('active');
-        }
+
+        var isbind = new SFIsbind();
+      }
     });
     new home();
   });

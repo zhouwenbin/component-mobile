@@ -14,7 +14,6 @@ define('sf.b2c.mall.component.register', [
     'sf.util',
     'sf.b2c.mall.api.user.checkUserExist' //@noto 检查第三方账号绑定的手机号是否有登录密码
   ],
-  ],
 
   function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn,SFCheckUserExist) {
 
