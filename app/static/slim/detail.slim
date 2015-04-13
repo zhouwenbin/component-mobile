@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="body1">	
+	<!--商品-->
+	== Slim::Template.new('module/goods.slim').render	
+	<!--商品-->
+	
+	<!--商品详情-->
+	== Slim::Template.new('module/detail.slim').render
+	<!--商品详情-->
+	<!--推荐商品-->
+	== Slim::Template.new('module/recommend.slim').render
+	<!--推荐商品-->
+	<!--立即购买-->
+	== Slim::Template.new('module/nav-buy.slim').render
+	<!--立即购买-->
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/swipe.js"></script>
+	<script src="../js/slider.js"></script>
+</body>
+</html>

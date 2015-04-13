@@ -47,6 +47,10 @@ define(
         return getOrderShareBagInfo.sendRequest()
           .done(function(cardBagInfo) {
             SFWeixin.shareLuckyMoney(cardBagInfo.title, cardBagInfo.useInstruction, cardBagInfo.bagCodeId);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
             //处理卡券规则
             cardBagInfo.useInstructions = cardBagInfo.useInstruction.split("\n");
             that.itemObj.attr({

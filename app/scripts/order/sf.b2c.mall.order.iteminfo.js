@@ -37,14 +37,10 @@ define('sf.b2c.mall.order.iteminfo', [
         })
         .always(function() {
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
-          that.element.html(html);
+          that.element.html(html);;
 
           if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {
-            var tmpCouponHtmls;
-            for(var i = 0, tmpAc; tmpAc = that.itemObj.orderCoupon.avaliableCoupons[i]; i++) {
-              tmpCouponHtmls += "<option value=" + tmpAc.couponCode + " data-price=" + tmpAc.price + ">" + tmpAc.couponDescription + "</option>";
-            }
-            $("#selectCoupon").append(tmpCouponHtmls);
+            $("#selectCoupon option").first().attr('selected', 'true');
           }
 
           $('.loadingDIV').hide();
@@ -54,7 +50,7 @@ define('sf.b2c.mall.order.iteminfo', [
         });
     },
 
-    '#selectCoupon change': function(targetElement){
+    '#selectCoupon change': function(targetElement) {
       var selectedEle = $(targetElement[0][$(targetElement).get(0).selectedIndex]);
       var price = selectedEle.data("price");
       if (price != 0) {
@@ -88,14 +84,15 @@ define('sf.b2c.mall.order.iteminfo', [
       var that = this;
 
       //防止重复提交
-      if (element.hasClass("disable")){
+      if (element.hasClass("disable")) {
         return false;
       }
 
       element.addClass("disable");
 
       var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
-
+      var isDetail = /^[\u4e00-\u9fa5\d\w#。，-]+$/.test($.trim(selectAddr.detail));
+      var isReceiverName = /先生|女士|小姐/.test($.trim(selectAddr.recName));
       //进行校验，不通过则把提交订单点亮
       if (typeof selectAddr == 'undefined' || selectAddr == false) {
 
@@ -106,8 +103,23 @@ define('sf.b2c.mall.order.iteminfo', [
 
         element.removeClass("disable");
         return false;
-      }
+      } else if (isReceiverName) {
+        new SFMessage(null, {
+          'tip': '请您输入真实姓名。感谢您的配合!',
+          'type': 'error'
+        });
 
+        element.removeClass("disable");
+        return false;
+      } else if (!isDetail) {
+        new SFMessage(null, {
+          'tip': '请您输入正确的收货地址!',
+          'type': 'error'
+        });
+
+        element.removeClass("disable");
+        return false;
+      }
       //实例化接口
       var setDefaultRecv = new SFSetDefaultRecv({
         "recId": selectAddr.recId
@@ -198,24 +210,25 @@ define('sf.b2c.mall.order.iteminfo', [
       });
 
       var getItemSummaryDefer = getItemSummary.sendRequest();
-      getItemSummaryDefer.done(function(iteminfo){
-        var result = new Array();
-        if(typeof iteminfo.specs != "undefined"){
-          _.each(iteminfo.specs,function(item){
-            result.push(item.specName + "：" +item.spec.specValue);
-          });
-        }
+      getItemSummaryDefer.done(function(iteminfo) {
+          var result = new Array();
+          if (typeof iteminfo.specs != "undefined") {
+            _.each(iteminfo.specs, function(item) {
+              result.push(item.specName + "：" + item.spec.specValue);
+            });
+          }
 
-        that.itemObj.attr({
-          "showTax": iteminfo.bonded,    //是否是宁波保税，是得话才展示税额
-          "itemName": iteminfo.title,
-          "picUrl": iteminfo.image && iteminfo.image.thumbImgUrl,
-          "spec": result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : ""
+          that.itemObj.attr({
+            "showTax": iteminfo.bonded, //是否是宁波保税，是得话才展示税额
+            "itemName": iteminfo.title,
+            "picUrl": iteminfo.image && iteminfo.image.thumbImgUrl,
+            "spec": result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : "",
+            "skuId": iteminfo.skuId
+          });
+        })
+        .fail(function(error) {
+          console.error(error);
         });
-      })
-      .fail(function(error) {
-        console.error(error);
-      });
 
       return getItemSummaryDefer;
     },
@@ -229,29 +242,30 @@ define('sf.b2c.mall.order.iteminfo', [
         "items": JSON.stringify([{
           "itemId": that.itemObj.itemid,
           "num": that.itemObj.amount,
-          "price": this.itemObj.singlePrice
+          "price": that.itemObj.singlePrice,
+          "skuId": that.itemObj.skuId
         }]),
         'system': "B2C_H5"
       });
       var queryOrderCouponDefer = queryOrderCoupon.sendRequest();
       queryOrderCouponDefer.done(function(orderCoupon) {
-        that.itemObj.attr("isShowCouponArea", true);
-        can.extend(orderCoupon, {
-          isHaveAvaliable: orderCoupon.avaliableAmount != 0,
-          isHaveDisable: orderCoupon.disableAmount != 0,
-          useQuantity: 0,
-          discountPrice: 0
-        });
-        that.itemObj.attr("orderCoupon", orderCoupon);
-        that.itemObj.orderCoupon.selectCoupons = [];
+          that.itemObj.attr("isShowCouponArea", true);
+          can.extend(orderCoupon, {
+            isHaveAvaliable: orderCoupon.avaliableAmount != 0,
+            isHaveDisable: orderCoupon.disableAmount != 0,
+            useQuantity: 0,
+            discountPrice: 0
+          });
+          that.itemObj.attr("orderCoupon", orderCoupon);
+          that.itemObj.orderCoupon.selectCoupons = [];
 
-        that.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
-          that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
+          that.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
+            that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
+          });
+        })
+        .fail(function(error) {
+          console.error(error);
         });
-      })
-      .fail(function (error) {
-        console.error(error);
-      });
       return queryOrderCouponDefer;
     }
   });

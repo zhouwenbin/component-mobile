@@ -21,11 +21,12 @@
 @import 'components/dialog';
 @import 'components/banner';
 @import 'components/alert';
-@import 'components/getpocket';
-@import 'components/sharepocket';
+@import 'components/dot';
+@import 'components/qrcode';
 @import 'components/luck';
 @import 'components/activerule';
-@import 'components/qrcode';
+@import 'components/sharepocket';
+@import 'components/getpocket';
 @import 'components/share';
 
 @import 'pages/goods';
@@ -52,3 +53,6 @@
 @import 'pages/coupons';
 @import 'pages/coupons-none';
 @import 'pages/coupon';
+@import 'pages/nav1';
+@import 'pages/flashsale';
+@import 'pages/carnival';

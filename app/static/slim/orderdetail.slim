@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="body1">
+	<!--订单详情-->
+	== Slim::Template.new('module/orderdetail.slim').render
+	<!--立即购买-->
+	<section class="nav">
+		<div class="nav-r1">
+			<div class="nav-c1 fl">
+				<a href="">
+					<span class="icon icon25"></span>
+					<div>首页</div>
+				</a>			
+			</div>
+			<div class="nav-c1 fl">
+				<a href="">
+					<span class="icon icon26"></span>
+					<div>我的</div>
+				</a>				
+			</div>
+			<div class="nav-c2">
+				<button class="btn btn-danger btn-big">去支付</button>
+			</div>
+			
+		</div>		
+	</section>
+	<!--立即购买-->
+</body>
+</html>

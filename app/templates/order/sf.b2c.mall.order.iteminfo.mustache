@@ -1,14 +1,14 @@
 <div class="table box goodsinfo">
   <h2>商品信息</h2>
   <div class="table-r1 clearfix">
-      <div class="table-r1c1 fl vertical-middle"><img src="{{sf.img picUrl}}"></div>
-      <div class="table-r1c3 fr">
-          <div class="goodsinfo-price">¥{{sf.price singlePrice}}</div>
-          <div class="goodsinfo-num">x{{amount}}</div>
-      </div>
-      <div class="table-r1c2 goodsinfo-title">
-          <h3 class="ellipsis3">{{itemName}}</h3>
-      </div>
+    <div class="table-r1c1 fl vertical-middle"><img src="{{sf.img picUrl}}"></div>
+    <div class="table-r1c3 fr">
+      <div class="goodsinfo-price">¥{{sf.price singlePrice}}</div>
+      <div class="goodsinfo-num">x{{amount}}</div>
+    </div>
+    <div class="table-r1c2 goodsinfo-title">
+      <h3 class="ellipsis3">{{itemName}}</h3>
+    </div>
   </div>
   <ul class="clearfix table-r2">
     {{{spec}}}
@@ -18,6 +18,9 @@
   <div class="goodsinfo-r2">
   <select id="selectCoupon" class="select">
     <option value="" data-price="0" selected="selected">不使用优惠券</option>
+	  {{#each orderCoupon.avaliableCoupons}}
+        <option value="{{couponCode}}" data-price="{{price}}">{{couponDescription}}</option>;
+	  {{/each}}
   </select>
   </div>
   {{/orderCoupon.isHaveAvaliable}}

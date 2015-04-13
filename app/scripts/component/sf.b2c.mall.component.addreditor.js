@@ -320,8 +320,9 @@ define('sf.b2c.mall.component.addreditor', [
         return false;
       }
       var testRecName = /^[\u4e00-\u9fa5]{0,10}$/.test($.trim(addr.recName));
-      if (testRecName) {} else {
-        this.adapter.addr.attr("error", '请填写身份证上真实姓名');
+      var isReceiverName =  /先生|女士|小姐/.test($.trim(addr.receiverName));
+      if (testRecName && !isReceiverName) {} else {
+        this.adapter.addr.attr("error", '由于海关发货需要实名制的信息，请您输入真实姓名。感谢您的配合!');
         return false;
       }
 
@@ -393,7 +394,9 @@ define('sf.b2c.mall.component.addreditor', [
       }
 
       // 5~120字符之间
-      if (addr.detail.length > 120 || addr.detail.length < 5) {
+      // 详细收货地址5~120字符之间(中文，数字，英文字符和# - ，。)
+      var isDetail = /^[\u4e00-\u9fa5\d\w#。，-]+$/.test($.trim(addr.detail));
+      if (addr.detail.length > 120 || addr.detail.length < 5 || !isDetail) {
         this.adapter.addr.attr("error", '请输入正确地址信息!');
         return false;
       }

@@ -21,11 +21,9 @@ define(
        * [init 初始化]
        */
       init: function() {
-
-        var params = can.deparam(window.location.search.substr(1))
+        var params = can.deparam(window.location.search.substr(1));
         var code = params.code;
-
-        var to = store.get('weixinto');
+        var redirectUrl = params.redirectUrl;
 
         var partnerLogin = new SFPartnerLogin({
           "partnerId": "wechat_svm",
@@ -35,7 +33,7 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-
+            //alert(loginData.csrfToken);
             if (loginData.csrfToken) {
               store.set('type', 'WEIXIN');
               store.set('nickname', '海淘会员');
@@ -44,17 +42,17 @@ define(
                 'csrfToken': loginData.csrfToken
               });
 
-              window.location.href = to || SFConfig.setting.link.index;
+              window.location.href = redirectUrl || SFConfig.setting.link.index;
             } else {
               window.location.href = SFConfig.setting.link.index;
             }
           })
           .fail(function(error) {
-            console.error(error);
+            //alert(error);
             window.location.href = SFConfig.setting.link.index;
           })
       }
     });
 
     new center('.sf-b2c-mall-weixincenter');
-  })
+  });

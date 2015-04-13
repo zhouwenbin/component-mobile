@@ -1,5 +1,74 @@
 /*尾部*/
- .footer{
+
+ %footer-icon{
+ 	background:url(#{$bg-url}footer-icon.png) no-repeat;
+ 	background-size:270px;
+ 	display: inline-block;
+ 	width: 27px;
+ 	height: 26px;
+ }
+ .footer-icon1{
+ 	@extend %footer-icon;
+ }
+ .footer-icon2{
+ 	@extend %footer-icon;
+ 	background-position: -87px 0;
+ }
+ .footer-icon3{
+ 	@extend %footer-icon;
+ 	background-position: -176px 0;
+ }
+ .footer-icon4{
+ 	@extend %footer-icon;
+ 	background-position: -243px 0;
+ }
+ .footer-r1{
+ 	border-top:1px solid #d9d9d9;
+ 	margin-left: -17px;
+ 	padding:12px 0 12px 14px;
+ 	background:#fff;
+ 	border-bottom:1px solid #d9d9d9;
+  text-align: center;
+ }
+.footer ul{
+  display: inline-block;
+ }
+.footer-r1 li {  
+    margin-left: 10px;
+    font-size: 12px;
+    float:left;
+    text-align: left;
+}
+
+.footer-r1 h2{
+    margin-left: 30px
+}
+
+.footer-r1 h2 {
+    font-weight: normal
+}
+
+.footer-r1 .li2 span {
+    letter-spacing: 2em
+}
+
+.footer-r1 .li3 {
+    margin-left: -10px
+}
+
+.footer-r1 .li3,.footer-r1 .li4 {
+    font-size: 12px
+}
+.footer-r2{
+ 	height: 31px;
+ 	line-height: 31px;
+ 	text-align: center;
+ 	color: #666;
+ }
+ .footer-r2 a{
+	margin:0 12px;
+ }
+ .footer-r3{
   color:rgba(0,0,0,0.3);
   font-size: 9px;
   text-align: center;
@@ -8,7 +77,8 @@
  }
  .footer1{
  	position: fixed;
- 	bottom:0;
+ 	bottom:10px;
  	left: 0;
  	width: 100%;
+ 	text-align: center;
  }

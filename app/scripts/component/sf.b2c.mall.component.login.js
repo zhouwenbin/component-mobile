@@ -11,10 +11,13 @@ define('sf.b2c.mall.component.login', [
     'sf.b2c.mall.api.user.needVfCode',
     'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.framework.comm',
-    'sf.util'
+    'sf.util',
+    'sf.b2c.mall.widget.wechatlogin'
   ],
 
-  function($, can, md5, store, Fastclick, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFrameworkComm, SFFn) {
+  function($, can, md5, store, Fastclick,
+           SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFrameworkComm,
+           SFFn, SFWeChatLogin) {
 
     SFFrameworkComm.register(3);
 
@@ -74,24 +77,6 @@ define('sf.b2c.mall.component.login', [
         this.getVerifiedCode();
 
         var that = this;
-
-        // $('#gotoLogin').tap(function() {
-        //   that.loginButtonClick($(this));
-        // })
-
-        // $('.weixinlogin').tap(function() {
-        //   that.weixinLoginAuth();
-        // })
-
-        // $('#verified-code-btn').tap(function() {
-        //   that.getVerifiedCode();
-        // })
-
-        // $("#toRegist").tap(function() {
-        //   var params = can.deparam(window.location.search.substr(1));
-        //   var gotoUrl = params.from;
-        //   window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
-        // })
       },
 
       '#toRegist click': function (element, event) {
@@ -105,24 +90,12 @@ define('sf.b2c.mall.component.login', [
        * @return {[type]} [description]
        */
       '.weixinlogin click': function(element, event) {
-        var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/weixincenter.html"
-        });
+        var that = this;
+        var params = can.deparam(window.location.search.substr(1));
+        var gotoUrl = params.from || "index.html";
 
-        reqLoginAuth
-          .sendRequest()
-          .done(function(data) {
-            var params = can.deparam(window.location.search.substr(1));
-            var gotoUrl = params.from || "index.html";
-
-            store.set('weixinto', gotoUrl);
-            window.location.href = data.loginAuthLink;
-            return false;
-          })
-          .fail(function(error) {
-            console.error(error);
-          })
+        var wechatLogin = new SFWeChatLogin();
+        wechatLogin.login(gotoUrl);
       },
 
       /**
@@ -132,7 +105,6 @@ define('sf.b2c.mall.component.login', [
       render: function(data) {
         var html = can.view('templates/component/sf.b2c.mall.component.login.mustache', data, this.helpers);
         this.element.append(html);
-
       },
 
       '#verified-code-btn click': function () {

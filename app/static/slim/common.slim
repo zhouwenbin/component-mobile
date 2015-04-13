@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+	== Slim::Template.new('components/tab.slim').render
+	== Slim::Template.new('base/helper.slim').render
+	<h2 class="text-h2">icon</h2>
+	== Slim::Template.new('components/icon.slim').render
+
+
+	<h2 class="text-h2">btn</h2>
+	== Slim::Template.new('components/btn.slim').render
+
+	== Slim::Template.new('components/form.slim').render
+	<h2 class="text-h2">text</h2>
+	== Slim::Template.new('components/text.slim').render
+	<h2 class="text-h2">box</h2>
+	== Slim::Template.new('components/box.slim').render
+	<h2 class="text-h2">table</h2>
+	== Slim::Template.new('components/table.slim').render
+	
+	<h2 class="text-h2">label</h2>
+	== Slim::Template.new('components/label.slim').render
+	<h2 class="text-h2">alert</h2>
+	== Slim::Template.new('components/alert.slim').render
+
+
+
+</body>
+</html>

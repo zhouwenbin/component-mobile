@@ -2,7 +2,7 @@
 .icon{
   display: inline-block;
   vertical-align: middle;
-  background: url(../img/icon.png) no-repeat;
+  background: url(#{$bg-url}icon.png) no-repeat;
   background-size: 450px 450px;
   text-indent: -999em;
 }
@@ -168,4 +168,29 @@
   width: 18px;
   height: 18px;
   background-position: -237px -24px;
+}
+.icon32{
+  width: 15px;
+  height: 25px;
+  background-position: -138px -90px;
+}
+.icon33{
+  width: 15px;
+  height: 25px;
+  background-position: -160px -90px;
+}
+.icon34{
+  width: 15px;
+  height: 25px;
+  background-position: -180px -90px;
+}
+.icon35{
+  width: 15px;
+  height: 25px;
+  background-position: -200px -90px;
+}
+.icon36{
+  width: 13px;
+  height: 13px;
+  background-position: -219px -92px;
 }
