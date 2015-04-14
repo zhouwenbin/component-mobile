@@ -91,7 +91,7 @@ define('sf.b2c.mall.order.iteminfo', [
       element.addClass("disable");
 
       var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
-      var isDetail = /^[\u4e00-\u9fa5\d\w#。，-]+$/.test($.trim(selectAddr.detail));
+      var isDetailInvalid = /[<>'"]/.test($.trim(selectAddr.detail));
       var isReceiverName = /先生|女士|小姐/.test($.trim(selectAddr.recName));
       //进行校验，不通过则把提交订单点亮
       if (typeof selectAddr == 'undefined' || selectAddr == false) {
@@ -111,9 +111,9 @@ define('sf.b2c.mall.order.iteminfo', [
 
         element.removeClass("disable");
         return false;
-      } else if (!isDetail) {
+      } else if (isDetailInvalid) {
         new SFMessage(null, {
-          'tip': '请您输入正确的收货地址!',
+          'tip': '亲，您的收货地址输入有误，不能含有< > \' \" 等特殊字符！',
           'type': 'error'
         });
 

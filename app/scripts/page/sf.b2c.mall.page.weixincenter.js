@@ -21,7 +21,7 @@ define(
        * [init 初始化]
        */
       init: function() {
-        var params = can.deparam(window.location.search.substr(1))
+        var params = can.deparam(window.location.search.substr(1));
         var code = params.code;
         var redirectUrl = params.redirectUrl;
 
@@ -33,6 +33,7 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
+            //alert(loginData.csrfToken);
             if (loginData.csrfToken) {
               store.set('type', 'WEIXIN');
               store.set('nickname', '海淘会员');
@@ -47,11 +48,11 @@ define(
             }
           })
           .fail(function(error) {
-            console.error(error);
+            //alert(error);
             window.location.href = SFConfig.setting.link.index;
           })
       }
     });
 
     new center('.sf-b2c-mall-weixincenter');
-  })
+  });

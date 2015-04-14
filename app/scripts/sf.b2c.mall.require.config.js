@@ -1,28 +1,28 @@
 requirejs.config({
-  baseUrl: ' /',
-  paths: {
-    // ----------------------------------------
-    // Pre Define
-    'can': 'http://www.google.com/bower_components/canjs/amd/can',
-    'zepto': 'http://www.google.com/zepto',
-    // 'jquery': 'http://www.google.com/bower_components/jquery/dist/jquery',
-    'underscore': 'http://www.google.com/bower_components/underscore/underscore-min',
-    // 'jquery.cookie': 'http://www.google.com/bower_components/jquery.cookie/jquery.cookie',
-    'fastclick': 'http://www.google.com/fastclick',
-    'md5': 'http://www.google.com/bower_components/blueimp-md5/js/md5.min',
-    'underscore.string': 'http://www.google.com/bower_components/underscore.string/dist/underscore.string.min',
-    'store': 'http://www.google.com/bower_components/store/dist/store',
+    baseUrl: ' /',
+    paths: {
+        // ----------------------------------------
+        // Pre Define
+        'can': 'http://www.google.com/bower_components/canjs/amd/can',
+        'zepto': 'http://www.google.com/zepto',
+        // 'jquery': 'http://www.google.com/bower_components/jquery/dist/jquery',
+        'underscore': 'http://www.google.com/bower_components/underscore/underscore-min',
+        // 'jquery.cookie': 'http://www.google.com/bower_components/jquery.cookie/jquery.cookie',
+        'fastclick': 'http://www.google.com/fastclick',
+        'md5': 'http://www.google.com/bower_components/blueimp-md5/js/md5.min',
+        'underscore.string': 'http://www.google.com/bower_components/underscore.string/dist/underscore.string.min',
+        'store': 'http://www.google.com/bower_components/store/dist/store',
 
-    'sf.b2c.mall.api.security.type': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.api.security.type',
-    'sf.b2c.mall.framework.adapter': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.adapter',
-    'sf.b2c.mall.framework.comm': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.framework.multiple.comm': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.multiple.comm',
-    'sf.b2c.mall.framework.view.controller': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.view.controller',
-    'sf.b2c.mall.util.utils': 'http://www.google.com/app/scripts/util/sf.b2c.mall.util.utils',
+        'sf.b2c.mall.api.security.type': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.api.security.type',
+        'sf.b2c.mall.framework.adapter': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.adapter',
+        'sf.b2c.mall.framework.comm': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.comm',
+        'sf.b2c.mall.framework.multiple.comm': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.multiple.comm',
+        'sf.b2c.mall.framework.view.controller': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.view.controller',
+        'sf.b2c.mall.util.utils': 'http://www.google.com/app/scripts/util/sf.b2c.mall.util.utils',
 
-    'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.prd.config',
+        'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.prd.config',
 
-    'sf.b2c.mall.api.sc.getUserRoutes': 'scripts/api/sf.b2c.mall.api.sc.getUserRoutes',
+        'sf.b2c.mall.api.sc.getUserRoutes': 'scripts/api/sf.b2c.mall.api.sc.getUserRoutes',
 
     'sf.b2c.mall.api.order.submitOrder': 'scripts/api/sf.b2c.mall.api.order.submitOrder',
     'sf.b2c.mall.api.order.submitOrderV2': 'scripts/api/sf.b2c.mall.api.order.submitOrderV2',

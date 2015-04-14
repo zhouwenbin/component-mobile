@@ -17,7 +17,7 @@ define(
       init: function() {
       },
 
-      checkoutWeChatLogin: function(redirectUrl) {
+      login: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
         this.getWeChatCode(redirectUrl);
       },
