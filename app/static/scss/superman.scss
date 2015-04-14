@@ -3,6 +3,7 @@
 @import 'base/reset';
 @import 'base/base';
 @import 'base/helper';
+@import 'components/text';
 .superman{
   background: url(#{$bg-url}superman.jpg) no-repeat center top;
   height: 604px;
@@ -94,6 +95,10 @@
 	margin-bottom: 7px;
 	font-size: 15px;
 }
+.superman3 h2 strong{
+	font-size:15px;
+}
+
 .superman3 p{
 	text-align: center;
 	margin-bottom: 31px;
