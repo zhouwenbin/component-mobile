@@ -52,6 +52,13 @@ define('sf.b2c.mall.component.login', [
           }else{
             return options.inverse(options.contexts || this);
           }
+        },
+        isNotWeChat: function(options) {
+          if (!SFFn.isMobile.WeChat()) {
+            return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
+          }
         }
       },
 
@@ -112,7 +119,7 @@ define('sf.b2c.mall.component.login', [
           .sendRequest()
           .done(function(data) {
             store.set('alipay-or-weixin','alipay_qklg');
-            window.location.href = data.loginAuthLink;           
+            window.location.href = data.loginAuthLink;
             return false;
           })
           .fail(function(error) {
