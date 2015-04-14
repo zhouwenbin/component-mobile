@@ -1,3 +1,8 @@
+@import 'utils/variables';
+
+@import 'base/reset';
+@import 'base/base';
+@import 'base/helper';
 .superman{
   background: url(#{$bg-url}superman.jpg) no-repeat center top;
   height: 604px;
