@@ -10,27 +10,14 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.helpers',
-<<<<<<< HEAD
-    'sf.b2c.mall.api.coupon.getShareBagInfo',
-    'sf.b2c.mall.luckymoney.users',
-    'sf.b2c.mall.api.user.reqLoginAuth',
-    'sf.b2c.mall.api.user.partnerLogin',
-=======
     'sf.b2c.mall.luckymoney.users',
     'sf.b2c.mall.api.coupon.getShareBagInfo',
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.hasReceived'
   ],
   function(can, $, store, Fastclick, SFWeixin,
-<<<<<<< HEAD
-           SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo,
-           SFLuckyMoneyUsers, SFReqLoginAuth, SFPartnerLogin, SFReceiveShareCoupon,
-           SFHasReceived) {
-=======
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
            SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived) {
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -38,11 +25,7 @@ define(
       itemObj:  new can.Map({
         isShowMask: false,
         isReceive: false,
-<<<<<<< HEAD
-        isEnable: true,
-=======
         isEnable: false,
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
         isNull: false,
         errorMessage: "请输入手机号即可领取",
         telephone: "",
@@ -61,16 +44,8 @@ define(
 
         //微信登录
         if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-<<<<<<< HEAD
-          if (!code) {
-            that.getWeChatCode(id);
-          } else {
-            that.otherLogin(id, code);
-          }
-=======
           var wechatLogin = new SFWeChatLogin();
           wechatLogin.login();
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
         } else {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);
@@ -98,16 +73,12 @@ define(
               cardBagInfo: cardBagInfo
             });
             that.itemObj.bind("telephone", function(ev, newVal, oldVal) {
-<<<<<<< HEAD
-              //验证手机号
-=======
               that.itemObj.attr("errorMessage", "手机号格式错误");
               if(!/^1\d{10}$/.test(newVal)) {
                 that.itemObj.attr("isEnable", false);
               } else {
                 that.itemObj.attr("isEnable", true);
               }
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
             });
             that.renderHtml(that.element, that.itemObj);
             var sfLuckyMoneyUsers = new SFLuckyMoneyUsers(".users", {shareBagId: shareBagId});
@@ -145,55 +116,6 @@ define(
         var html = can.view('templates/luckymoney/sf.b2c.mall.luckymoney.accept.mustache', itemObj);
         element.html(html);
       },
-<<<<<<< HEAD
-      getWeChatCode: function(id) {
-        var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/luckymoneyaccept.html?id=" + id
-        });
-
-        reqLoginAuth
-          .sendRequest()
-          .done(function(data) {
-            //alert(data.loginAuthLink);
-            window.location.href = data.loginAuthLink;
-          })
-          .fail(function(error) {
-            console.error(error);
-          });
-      },
-      otherLogin: function(id, code) {
-        var that = this;
-
-        var partnerLogin = new SFPartnerLogin({
-          "partnerId": "wechat_svm",
-          "authResp": "code=" + code
-        });
-
-        partnerLogin
-          .sendRequest()
-          .done(function(loginData) {
-            //alert(loginData.csrfToken);
-            if (loginData.csrfToken) {
-              store.set('type', 'WEIXIN');
-              store.set('nickname', '海淘会员');
-              can.route.attr({
-                'tag': 'success',
-                'csrfToken': loginData.csrfToken
-              });
-
-              that.initOrderShareBagInfo(id);
-            } else {
-              //window.location.href = "http://m.sfht.com";
-            }
-          })
-          .fail(function(error) {
-            console.error(error);
-            window.location.href = "http://m.sfht.com";
-          });
-      },
-=======
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
       errorMap: {
         "-100": "已领完",
         11000020: "已领完", //不存在
@@ -201,15 +123,10 @@ define(
         11000100: "已领过",
         11000130: "已领完" //不存在
       },
-
-<<<<<<< HEAD
-      "#acceptShareBagBtn click": function() {
-=======
       "#acceptShareBagBtn click": function(ele, event) {
         if (!this.itemObj.isEnable) {
           return;
         }
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
         var that = this;
 
         var receiveShareCoupon = new SFReceiveShareCoupon({
@@ -218,12 +135,7 @@ define(
           'receiveWay': 'HBLQ',
           'shareBagId': this.itemObj.cardBagInfo.bagCodeId
         });
-<<<<<<< HEAD
-
-        can.when(receiveShareCoupon.sendRequest())
-=======
         receiveShareCoupon.sendRequest()
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
           .done(function(userCouponInfo) {
             if (!userCouponInfo) {
               that.itemObj.attr("isNull", true);
@@ -241,12 +153,6 @@ define(
             });
           });
       },
-<<<<<<< HEAD
-=======
-      "#telephone focus": function() {
-        //this.itemObj.attr("isEnable", true);
-      },
->>>>>>> 6544889a84edabbf818c24d64d22efa1a14e70c7
       "#shareBtn click": function() {
         this.itemObj.attr("isShowMask", true);
       },

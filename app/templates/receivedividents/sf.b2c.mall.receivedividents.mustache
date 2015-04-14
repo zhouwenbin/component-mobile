@@ -1,4 +1,15 @@
-<div class="getpocket-error">{{^isEnable}}{{errorMessage}}{{/isEnable}}</div>
-<input can-value="telephone" value="{{telephone}}" id="telephone" type="text" class="input" placeholder="输入手机号" />
+<section class="share-topic">
+	<h1>顺丰海淘 - 分享者绑定</h1>
+	<h2>{{title}}</h2>
+	<div class="share-topic-b">
+		<label for="phone">您的手机号：</label>
+		<input type="tel" can-value="telephone" value="{{telephone}}" id="telephone" class="input" />
+		<button class="btn btn-soon btn-big{{^isEnable}} btn-disable{{/isEnable}}"  href="{{topicHref}}" id="topicLink">获得我的分享专题</button>
+	</div>
+  <div class="text-error">{{^isEnable}}{{errorMessage}}{{/isEnable}}</div>
+</section>
 
-<a href="{{topicHref}}" id="topicLink">专题页</a>
+{{#isShowMask}}
+    <div class="mask"></div>
+    <div class="share"></div>
+{{/isShowMask}}

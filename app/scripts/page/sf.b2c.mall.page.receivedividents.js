@@ -20,16 +20,32 @@ define(
         topicHref: null,
         telephone: "",
         isEnable: false,
-        errorMessage: "请输入手机号即可领取"
+        errorMessage: "",
+        isShowMask: false,
+        scm: null,
+        note:null
+      }),
+      shareObj: new can.Map({
+        title:null,
+        desc: null,
+        link:null,
+        imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png'
       }),
       loading: new SFLoading(),
       init: function(element, options) {
         var params = can.deparam(window.location.search.substr(1));
-        var parentSCM = params.parentSCM || "123";
-        var topicHref = params.topicHref || "m.sfht.com";
+        var parentSCM = params.scm;
+        var topicHref = params.subjectURL;
+        var title = params.title;
+        var desc = params.note;
         this.itemObj.attr({
           parentSCM: parentSCM,
-          topicHref: topicHref
+          topicHref: topicHref,
+          title: title
+        });
+        this.shareObj.attr({
+          title: title,
+          desc: desc
         });
         this.render();
         this.supplement();
@@ -49,16 +65,14 @@ define(
       },
 
       generateSubjectUrl: function() {
+        var that = this;
         var generateSubjectUrlWithSCM = new SFGenerateSubjectUrlWidthSCM({
           parentSCM: this.itemObj.parentSCM,
           phone: this.itemObj.telephone
         });
         return generateSubjectUrlWithSCM.sendRequest()
           .done(function(stringResp) {
-
-          })
-          .fail(function() {
-
+            that.itemObj.attr("scm", stringResp);
           });
       },
 
@@ -75,7 +89,29 @@ define(
       },
 
       "#topicLink click": function(targetElement, event) {
-        return false;
+        if (!this.itemObj.attr("isEnable")) {
+          return;
+        }
+        var that = this;
+        can.when(this.generateSubjectUrl())
+          .done(function() {
+            var scm = that.itemObj.attr("scm");
+            var href = that.itemObj.attr("topicHref");
+            href += /\?/.test(href) ? "&" : "?";
+            href += scm.value;
+            that.shareObj.attr("link", href);
+
+            SFWeixin.shareDetail(
+              that.shareObj.title,
+              that.shareObj.desc,
+              that.shareObj.link,
+              that.shareObj.imgUrl
+            );
+            that.itemObj.attr("isShowMask", true);
+          });
+      },
+      ".mask click": function() {
+        this.itemObj.attr("isShowMask", false);
       }
 
     });
