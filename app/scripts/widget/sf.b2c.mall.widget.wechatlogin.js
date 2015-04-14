@@ -19,13 +19,18 @@ define(
 
       login: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
-        this.getWeChatCode(redirectUrl);
+        this.getWeChatCode("redirectUrl=" + redirectUrl);
+      },
+
+      tmplLogin: function(redirectUrl) {
+        redirectUrl = redirectUrl || window.location.href;
+        this.getWeChatCode("tmpl=true&redirectUrl=" + redirectUrl);
       },
 
       getWeChatCode: function(redirectUrl) {
         var reqLoginAuth = new SFReqLoginAuth({
           "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/weixincenter.html?redirectUrl=" +  redirectUrl
+          "redirectUrl": "http://m.sfht.com/weixincenter.html?" + redirectUrl
         });
 
         reqLoginAuth

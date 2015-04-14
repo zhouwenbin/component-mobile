@@ -23,6 +23,7 @@ define(
       init: function() {
         var params = can.deparam(window.location.search.substr(1));
         var code = params.code;
+        var tmpl = params.tmpl;
         var redirectUrl = params.redirectUrl;
 
         var partnerLogin = new SFPartnerLogin({
@@ -41,6 +42,12 @@ define(
                 'tag': 'success',
                 'csrfToken': loginData.csrfToken
               });
+
+              window.location.href = redirectUrl || SFConfig.setting.link.index;
+            } else if (tmpl && loginData.tempToken){
+              store.set('type', 'WEIXIN');
+              store.set('nickname', '海淘会员');
+              store.set('tempToken', loginData.tempToken);
 
               window.location.href = redirectUrl || SFConfig.setting.link.index;
             } else {

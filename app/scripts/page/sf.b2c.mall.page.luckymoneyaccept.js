@@ -13,11 +13,12 @@ define(
     'sf.b2c.mall.luckymoney.users',
     'sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
-    'sf.b2c.mall.api.coupon.hasReceived'
+    'sf.b2c.mall.api.coupon.hasReceived',
+    'sf.b2c.mall.widget.wechatlogin'
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
-           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived) {
+           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFWeChatLogin) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -43,9 +44,9 @@ define(
         var code = params.code;
 
         //微信登录
-        if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken')) {
           var wechatLogin = new SFWeChatLogin();
-          wechatLogin.login();
+          wechatLogin.tmplLogin();
         } else {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);
@@ -134,7 +135,8 @@ define(
           'mobile': this.itemObj.telephone,
           'receiveChannel': 'B2C',
           'receiveWay': 'HBLQ',
-          'shareBagId': this.itemObj.cardBagInfo.bagCodeId
+          'shareBagId': this.itemObj.cardBagInfo.bagCodeId,
+          tempToken: store.get('tempToken')
         });
         receiveShareCoupon.sendRequest()
           .done(function(userCouponInfo) {
@@ -154,16 +156,12 @@ define(
             });
           });
       },
-      "#telephone focus": function() {
-        //this.itemObj.attr("isEnable", true);
-      },
       "#shareBtn click": function() {
         this.itemObj.attr("isShowMask", true);
       },
       ".mask click": function() {
         this.itemObj.attr("isShowMask", false);
       },
-
       "#telephone keyup":function(targetElement, event) {
         var that = this;
         var newVal = targetElement.val();
