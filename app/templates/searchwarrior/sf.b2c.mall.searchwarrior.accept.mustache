@@ -1,0 +1,31 @@
+{{#fightingCapacity}}
+    战斗力：{{fightingCapacity}}
+{{/fightingCapacity}}
+
+<div class="getpocket-error">{{^isEnable}}{{errorMessage}}{{/isEnable}}</div>
+<input can-value="telephone" value="{{telephone}}" id="telephone" type="text" class="input" placeholder="输入手机号" />
+<button type="button" id="submitBtn" class="getpocket-btn{{^isEnable}} disable{{/isEnable}}">查看战斗力</button>
+
+
+{{#userCouponInfo}}
+    <div class="luck">
+        <h2>看看朋友们手气如何</h2>
+        <ul>
+					{{#each userCouponInfo.items}}
+              <li class="clearfix">
+								{{#headUrl}}
+                    <img src="{{headUrl}}" alt="" class="fl" width="40" height="40">
+								{{/headUrl}}
+								{{^headUrl}}
+                    <img src="http://img.sfht.com/sfhth5/1.1.4/img/luck.png" alt="" class="fl" width="40" height="40">
+								{{/headUrl}}
+                  <div class="luck-c1 fl">
+                      <h3>{{nickname}}</h3>
+                      <time>{{sf.time receiveTime "YYYY-MM-DD"}}</time>
+                  </div>
+                  <p class="fr">战斗力{{fightingCapacity}}    {{sf.price reduceCost}}元</p>
+              </li>
+					{{/each}}
+        </ul>
+    </div>
+{{/userCouponInfo}}

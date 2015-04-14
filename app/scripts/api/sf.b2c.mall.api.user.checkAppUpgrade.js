@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.partnerLogin
+  * @class sf.b2c.mall.api.user.checkAppUpgrade
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.partnerLogin',
+'sf.b2c.mall.api.user.checkAppUpgrade',
 [
   'zepto',
   'can',
@@ -22,20 +22,17 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.partnerLogin',
-      SECURITY_TYPE: SecurityType.None.name,
+      METHOD_NAME: 'user.checkAppUpgrade',
+      SECURITY_TYPE: SecurityType.RegisteredDevice.name,
       REQUIRED: {
-        'partnerId': 'string',
-        'authResp': 'string',
+        'appVersion': 'string',
+        'moduleVersion': 'string'
       },
       OPTIONAL: {
-        'rembFlag': 'int'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000320': '用户未授权',
-        '1000370': '第三方账户已绑定海淘账户'
       }
     }
   });

@@ -50,21 +50,22 @@ define(
         if (bagId) {
           this.itemObj.attr("bagId", bagId);
         }
-        //如果红包code存在，这渲染领取情况
+        //如果红包code存在，就渲染领取情况
         var bagCodeId = params.bagCodeId;
         var cardId = params.cardId;
         if (bagCodeId && cardId) {
           this.itemObj.attr({
             "bagCodeId": bagCodeId,
             "cardId": cardId,
-            "fightingCapacity": this.calculateFightingCapacity(cardId)
+            "fightingCapacity": this.calculateFightingCapacity(cardId),
+            "template": "templates/searchwarrior/sf.b2c.mall.searchwarrior.accept.mustache"
           });
           this.getShareBagCpList();
         }
         //强制登录
         if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           var wechatLogin = new SFWeChatLogin();
-          wechatLogin.checkoutWeChatLogin();
+          wechatLogin.login();
         } else {
           that.renderHtml();
           that.loading.hide();
@@ -89,7 +90,7 @@ define(
       initSubmitBtnEvent: function() {
         var that = this;
         $("#submitBtn").click(function() {
-          if (!this.itemObj.isEnable) {
+          if (!that.itemObj.isEnable) {
             return;
           }
 
