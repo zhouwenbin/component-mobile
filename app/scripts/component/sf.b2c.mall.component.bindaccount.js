@@ -62,11 +62,14 @@ define(
       },
 
       bindAccountTemplate: function() {
-        return '<section class="login">' +
+        return '<section class="login">' +         
           '<form action="">' +
           '<ol>' +
           '<li>' +
-          '<input type="text" class="input" id="user-name" placeholder="手机号／邮箱" can-value="username"/>' +
+          '<h2 class="text-h2">还差一步，完善信息以便与您联系。</h2>'+
+          '</li>' +
+          '<li>' +
+          '<input type="text" class="input" id="user-name" placeholder="手机号" can-value="username"/>' +
           '<span class="text-error" id="username-error-tips" style="display:none"></span>' +
           '</li>' +
           '{{#isBindMobile}}' +

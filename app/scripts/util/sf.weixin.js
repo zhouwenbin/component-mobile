@@ -85,7 +85,7 @@ define('sf.weixin', [
             // alert('已取消');
           },
           fail: function(res) {
-            alert(JSON.stringify(res));
+            //alert(JSON.stringify(res));
           }
         });
 
@@ -104,7 +104,7 @@ define('sf.weixin', [
             // alert('已取消');
           },
           fail: function(res) {
-            alert(JSON.stringify(res));
+            //alert(JSON.stringify(res));
           }
         });
 
@@ -144,7 +144,7 @@ define('sf.weixin', [
             // alert('已取消');
           },
           fail: function(res) {
-            alert(JSON.stringify(res));
+            //alert(JSON.stringify(res));
           }
         });
 
@@ -163,7 +163,7 @@ define('sf.weixin', [
             // alert('已取消');
           },
           fail: function(res) {
-            alert(JSON.stringify(res));
+            //alert(JSON.stringify(res));
           }
         });
 
