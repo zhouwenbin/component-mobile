@@ -3,6 +3,7 @@
  * [description 微信登录转发中心， 实现代码解耦]
  */
 define(
+	'sf.b2c.mall.page.logincenter',
   [
     'can',
     'zepto',
@@ -26,21 +27,18 @@ define(
         var tag = params.tag;
         var redirectUrl = params.redirectUrl;
 
-
+        var tmpl;
         var authResp;
         var type;
         if (tag == "wechat_svm") {
-          var code = params.code;
-          var tmpl = params.tmpl;
-
+          tmpl = params.tmpl;
           type =  'WEIXIN';
-          authResp = "code=" + code;
-
+          authResp = "code=" + params.code;
         } else if (tag == "alipay_qklg"){
           type =  'ALIPAY';
 
-          // delete params.tag;
-          // delete params.redirectUrl;
+          delete params.tag;
+          delete params.redirectUrl;
 
           authResp = window.decodeURIComponent($.param(params));
 
@@ -54,7 +52,9 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            //alert(loginData.csrfToken);
+            alert(loginData.csrfToken);
+            alert(loginData.tempToken);
+            alert(tmpl);
 
             if (loginData.csrfToken) {
               store.set('type', type);
@@ -68,18 +68,17 @@ define(
 
               window.location.href = redirectUrl || SFConfig.setting.link.index;
             } else if (tmpl && loginData.tempToken){  //tmpl 为true时,tempToken存在但不进行账号绑定
-              var nowData = new Date();
-              nowData.setDate(myDate.getDate()+1);
-              store.set('tempTokenExpire', nowData);
+              var nowDate = new Date();
+              nowDate.setDate(nowDate.getDate()+1);
+              store.set('tempTokenExpire', nowDate.getTime());
               store.set('type', type);
               store.set('nickname', '海淘会员');
               store.set('tempToken', loginData.tempToken);
-
               window.location.href = redirectUrl || SFConfig.setting.link.index;
             } else if(loginData.tempToken) {   // 处理账号绑定
               store.set('tempToken', loginData.tempToken);
               //处理微信账号绑定
-              var header = new SFHeader();
+              var header = new SFHeader();             
             } else {
               window.location.href = SFConfig.setting.link.index;
             }

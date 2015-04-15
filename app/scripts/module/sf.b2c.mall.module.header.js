@@ -20,13 +20,15 @@ define(
         var params = can.deparam(window.location.search.substr(1));
         var redirectUrl = params.redirectUrl;
         if (store.get('tempToken')) {
-          window.location.href = 'bindaccount.html';
+          window.location.href = 'bindaccount.html?redirectUrl='+redirectUrl;
         }else{
           window.location.href = redirectUrl || SFConfig.setting.link.index;
         } 
       }
     });
 
-    new header();
+    return header;
+
+    // new header();
 
   });

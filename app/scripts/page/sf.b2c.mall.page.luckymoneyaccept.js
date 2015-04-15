@@ -42,14 +42,13 @@ define(
         var params = can.deparam(window.location.search.substr(1));
         var id = params.id;
         var code = params.code;
-
         //微信登录
-        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken') && this.checkTempTokenExpire()) {
-          var login = new SFLogin();
-          login.tmplLogin();
-        } else {
+        if(SFFrameworkComm.prototype.checkUserLogin.call(this) || (store.get('tempToken') && store.get('tempTokenExpire') && !this.checkTempTokenExpire())) {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);
+        } else {
+          var login = new SFLogin();
+          login.tmplLogin();
         }
       },
       checkTempTokenExpire: function() {
@@ -104,9 +103,13 @@ define(
 
       initHasReceivedInfo: function(shareBagId) {
         var that = this;
-        var hasReceivedInfo = new SFHasReceived({
+        var params = {
           "shareId": shareBagId
-        });
+        };
+        if (store.get('tempToken')) {
+          params.tempToken = store.get('tempToken');
+        }
+        var hasReceivedInfo = new SFHasReceived(params);
 
         return hasReceivedInfo.sendRequest()
           .done(function(boolResp) {
