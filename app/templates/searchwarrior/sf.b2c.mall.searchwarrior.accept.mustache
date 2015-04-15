@@ -1,31 +1,44 @@
-{{#fightingCapacity}}
-    战斗力：{{fightingCapacity}}
-{{/fightingCapacity}}
+<section class="superman2">
+	<h1>您的战斗力为：<strong class="text-important">{{fightingCapacity}}</strong></h1>
+	<h2>您获得称号：<span class="text-important">萌神大白</span></h2>
+	<div class="superman2-r1">
+		<img src="../img/superman2.png" />
+		<div class="superman2-r1c1">
+			<h3>你好，我叫大白，你的私人健康助理。●—●</h3>
+			<ul>
+				<li>卖萌指数：<span class="superman2-icon"></span><span class="superman2-icon"></span><span class="superman2-icon"></span></li>
+				<li>治愈指数：<span class="superman2-icon"></span><span class="superman2-icon"></span><span class="superman2-icon"></span><span class="superman2-icon"></span><span class="superman2-icon"></span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="superman2-r2">英雄属性：</div>
+	<div class="superman2-r3 text-important">自我修复只需透明胶带~</div>
+</section>
 
-<div class="getpocket-error">{{^isEnable}}{{errorMessage}}{{/isEnable}}</div>
-<input can-value="telephone" value="{{telephone}}" id="telephone" type="text" class="input" placeholder="输入手机号" />
-<button type="button" id="submitBtn" class="getpocket-btn{{^isEnable}} disable{{/isEnable}}">查看战斗力</button>
+<section class="superman4">
+	<div class="superman4-r1">
+		<span class="icon icon12"></span>
+		<h2>顺丰海淘支持你拯救世界输入您的手机号测试战斗力</h2>
+	</div>
+  <input can-value="telephone" value="{{telephone}}" id="telephone" type="text" />
+  <button type="button" id="submitBtn" class="{{^isEnable}} disable{{/isEnable}}">确认，查看我的战斗力！</button>
 
+	{{#userCouponInfo}}
+	<table>
+		<caption>战斗力排行</caption>
+    <tr>
+        <th>好友</th>
+        <th>战斗力</th>
+    </tr>
+		{{#each userCouponInfo.items}}
+    <tr>
+        <td>{{nickname}}</td>
+        <td>战斗力{{fightingCapacity}}<br>{{title}}  {{sf.price reduceCost}}元</td>
+    </tr>
+		{{/each}}
+	</table>
+  <a href="" class="superman4-more" style="display: none;">查看更多……</a>
+	{{/userCouponInfo}}
+</section>
 
-{{#userCouponInfo}}
-    <div class="luck">
-        <h2>看看朋友们手气如何</h2>
-        <ul>
-					{{#each userCouponInfo.items}}
-              <li class="clearfix">
-								{{#headUrl}}
-                    <img src="{{headUrl}}" alt="" class="fl" width="40" height="40">
-								{{/headUrl}}
-								{{^headUrl}}
-                    <img src="http://img.sfht.com/sfhth5/1.1.4/img/luck.png" alt="" class="fl" width="40" height="40">
-								{{/headUrl}}
-                  <div class="luck-c1 fl">
-                      <h3>{{nickname}}</h3>
-                      <time>{{sf.time receiveTime "YYYY-MM-DD"}}</time>
-                  </div>
-                  <p class="fr">战斗力{{fightingCapacity}}    {{sf.price reduceCost}}元</p>
-              </li>
-					{{/each}}
-        </ul>
-    </div>
-{{/userCouponInfo}}
+<error style="display: none;">{{^isEnable}}{{errorMessage}}{{/isEnable}}</error>

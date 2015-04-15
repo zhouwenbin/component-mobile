@@ -27,26 +27,60 @@ define(
 
     var searchwarriorshare = can.Control.extend({
       itemObj:  new can.Map({
-        bagId: 83,
-        bagCodeId: null,
-        cardId: null,
-        telephone: "",
-        isEnable: false,
-        errorMessage: "请输入手机号即可领取",
-        userCouponInfo: null,
-        fightingCapacity: 0,
-        template: "templates/searchwarrior/sf.b2c.mall.searchwarrior.mustache"
+        warrior: {},
+        price: 0
       }),
       loading: new SFLoading(),
+      warriors: [],
+      cardMap: {
+        "260": 1
+      },
 
       init: function() {
-        this.render();
+        var that = this;
+        var params = can.deparam(window.location.search.substr(1));
+        var bagId = params.bagId;
+        var bagCodeId = params.bagCodeId;
+        var couponId = params.couponId;
+        var cardId = params.cardId;
+        this.itemObj.attr("price", params.price);
+
+        var link = 'http://m.sfht.com/searchwarrior.html?' + window.location.search.substr(1);
+        SFWeixin.shareDetail(
+          '',
+          '',
+          link,
+          'http://img.sfht.com/sfht/img/sharelog.png');
+        that.itemObj.attr("isShowMask", true);
+
+        can.when(this.initWarriors())
+          .done(function() {
+            that.calculateFightingCapacity(cardId);
+            that.render();
+          });
       },
       render: function() {
         var that = this;
-        var params = can.deparam(window.location.search.substr(1));
-        //手动修改bagId
-        var bagId = params.bagId;
+        this.element.html(can.view("templates/searchwarrior/sf.b2c.mall.searchwarrior.share.mustache", this.itemObj));
+        this.loading.hide();
+      },
+
+      calculateFightingCapacity: function(cardId) {
+        this.itemObj.attr("warrior", this.warriors[this.cardMap[cardId]]);
+      },
+
+      initWarriors: function() {
+        var that = this;
+        return can.ajax({url: '/json/sf.b2c.mall.warriors.json'})
+          .done(function(data){
+            that.warriors = data;
+          })
+      },
+      ".mask click": function() {
+        this.itemObj.attr("isShowMask", false);
+      },
+      "#shareBtn click": function() {
+        this.itemObj.attr("isShowMask", true);
       }
 
     });

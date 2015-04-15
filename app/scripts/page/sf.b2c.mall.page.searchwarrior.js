@@ -63,9 +63,9 @@ define(
           this.getShareBagCpList();
         }
         //强制登录
-        if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken')) {
           var wechatLogin = new SFWeChatLogin();
-          wechatLogin.login();
+          wechatLogin.tmplLogin();
         } else {
           that.renderHtml();
           that.loading.hide();
@@ -91,6 +91,10 @@ define(
         var that = this;
         $("#submitBtn").click(function() {
           if (!that.itemObj.isEnable) {
+            new SFMessage(null, {
+              'tip': that.itemObj.errorMessage,
+              'type': 'error'
+            });
             return;
           }
 
@@ -219,10 +223,20 @@ define(
           "http://m.sfht.com/searchwarriorshare.html?bagId=" + this.itemObj.bagId +
           "&bagCodeId=" + this.itemObj.bagCodeId +
           "&couponId=" + this.itemObj.couponId +
-          "&reduceCost=" + this.itemObj.reduceCost;
+          "&cardId=" + this.itemObj.cardId +
+          "&price=" + this.itemObj.price;
       },
       calculateFightingCapacity: function(referenceSubstance) {
         return referenceSubstance * 100;
+      },
+
+      request: function() {
+        var that = this;
+        return can.ajax({url: '/json/sf.b2c.mall.warriors.json'})
+          .done()
+          .fail(function(error) {
+
+          });
       },
 
       "#telephone keyup":function(targetElement, event) {
