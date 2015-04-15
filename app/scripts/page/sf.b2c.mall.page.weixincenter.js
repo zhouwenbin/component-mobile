@@ -35,6 +35,7 @@ define(
           .sendRequest()
           .done(function(loginData) {
             //alert(loginData.csrfToken);
+
             if (loginData.csrfToken) {
               store.set('type', 'WEIXIN');
               store.set('nickname', '海淘会员');
@@ -50,6 +51,10 @@ define(
               store.set('tempToken', loginData.tempToken);
 
               window.location.href = redirectUrl || SFConfig.setting.link.index;
+            } else if(loginData.tempToken) {
+              store.set('tempToken', loginData.tempToken);
+              //处理微信账号绑定
+
             } else {
               window.location.href = SFConfig.setting.link.index;
             }
