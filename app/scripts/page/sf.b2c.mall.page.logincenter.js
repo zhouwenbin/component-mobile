@@ -52,9 +52,7 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            alert(loginData.csrfToken);
-            alert(loginData.tempToken);
-            alert(tmpl);
+            //alert(loginData.csrfToken);
 
             if (loginData.csrfToken) {
               store.set('type', type);
