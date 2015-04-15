@@ -36,9 +36,8 @@ define('sf.b2c.mall.order.iteminfo', [
           return that.initCoupons();
         })
         .always(function() {
-          alert(JSON.stringify(that.itemObj));
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
-          that.element.html(html);
+          that.element.html(html);;
 
           if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {
             $("#selectCoupon option").first().attr('selected', 'true');
