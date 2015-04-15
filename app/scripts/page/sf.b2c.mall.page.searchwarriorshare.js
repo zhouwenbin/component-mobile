@@ -11,29 +11,24 @@ define(
     'sf.helpers',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.wechatlogin',
-    'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.coupon.receiveCoupon',
-    'sf.b2c.mall.api.coupon.receiveShareCoupon',
-    'sf.b2c.mall.api.coupon.getShareBagCpList',
-    'sf.b2c.mall.api.coupon.getShareBagInfo',
-    'sf.b2c.mall.api.coupon.hasReceived'
+    'sf.b2c.mall.widget.message'
   ],
   function(can, $, Fastclick,
            SFWeixin, SFFrameworkComm, SFConfig, helpers,
-           SFLoading, SFWeChatLogin, SFMessage,
-           SFReceiveCoupon, SFReceiveShareCoupon, SFGetShareBagCpList, SFGetOrderShareBagInfo, SFHasReceived) {
+           SFLoading, SFWeChatLogin, SFMessage) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
     var searchwarriorshare = can.Control.extend({
       itemObj:  new can.Map({
         warrior: {},
-        price: 0
+        price: 0,
+        isShowMask: false
       }),
       loading: new SFLoading(),
       warriors: [],
       cardMap: {
-        "260": 1
+        "260": 4
       },
 
       init: function() {
@@ -43,19 +38,24 @@ define(
         var bagCodeId = params.bagCodeId;
         var couponId = params.couponId;
         var cardId = params.cardId;
+        var cardIds = params.cardIds;
+        if (cardIds) {
+          var tmpArr = cardIds.split(",");
+          for(var i = 0, tmpItem; tmpItem = tmpArr[i]; i++) {
+            this.cardMap[tmpItem] = i;
+          }
+        }
         this.itemObj.attr("price", params.price);
 
-        var link = 'http://m.sfht.com/searchwarrior.html?' + window.location.search.substr(1);
         SFWeixin.shareDetail(
-          '',
-          '',
-          link,
+          '就是你！顺丰海淘的超级英雄！',
+          '变身超级英雄，拿顺丰海淘优惠券，是酷炫的他，柔美的她，还是软萌鸡肋的他？点击测试~优惠券等你来拿',
+          'http://m.sfht.com/searchwarrior.html?' + window.location.search.substr(1),
           'http://img.sfht.com/sfht/img/sharelog.png');
-        that.itemObj.attr("isShowMask", true);
 
         can.when(this.initWarriors())
           .done(function() {
-            that.calculateFightingCapacity(cardId);
+            that.itemObj.attr("warrior", that.calculateFightingCapacity(cardId));
             that.render();
           });
       },
@@ -66,7 +66,11 @@ define(
       },
 
       calculateFightingCapacity: function(cardId) {
-        this.itemObj.attr("warrior", this.warriors[this.cardMap[cardId]]);
+        var warrior = this.warriors[this.cardMap[cardId]];
+        var tempnum = "11111";
+        warrior.fightArray = tempnum.split("1", warrior.fight);
+        warrior.faceArray = tempnum.split("1", warrior.face);
+        return warrior;
       },
 
       initWarriors: function() {

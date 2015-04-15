@@ -37,31 +37,55 @@ define(
         fightingCapacity: 0,
         template: "templates/searchwarrior/sf.b2c.mall.searchwarrior.mustache"
       }),
+      isNull: false,
       loading: new SFLoading(),
+      warriors: [],
+      cardMap: {
+        "260": 4
+      },
 
       init: function() {
-        this.render();
-      },
-      render: function() {
         var that = this;
         var params = can.deparam(window.location.search.substr(1));
-        //手动修改bagId
+
         var bagId = params.bagId;
+        var bagCodeId = params.bagCodeId;
+        var couponId = params.couponId;
+        var cardId = params.cardId;
+        var cardIds = params.cardIds;
+        if (cardIds) {
+          var tmpArr = cardIds.split(",");
+          for(var i = 0, tmpItem; tmpItem = tmpArr[i]; i++) {
+            this.cardMap[tmpItem] = i;
+          }
+        }
+        this.itemObj.attr("price", params.price);
+
+        //手动修改bagId
         if (bagId) {
           this.itemObj.attr("bagId", bagId);
         }
-        //如果红包code存在，就渲染领取情况
-        var bagCodeId = params.bagCodeId;
-        var cardId = params.cardId;
-        if (bagCodeId && cardId) {
-          this.itemObj.attr({
-            "bagCodeId": bagCodeId,
-            "cardId": cardId,
-            "fightingCapacity": this.calculateFightingCapacity(cardId),
-            "template": "templates/searchwarrior/sf.b2c.mall.searchwarrior.accept.mustache"
+
+        can.when(this.initWarriors())
+          .done(function() {
+
+            //如果红包code存在，就渲染领取情况
+            if (bagCodeId && cardId) {
+              that.itemObj.attr({
+                "bagCodeId": bagCodeId,
+                "cardId": cardId,
+                "warrior": that.calculateFightingCapacity(cardId),
+                "template": "templates/searchwarrior/sf.b2c.mall.searchwarrior.accept.mustache"
+              });
+              that.getShareBagCpList();
+            }
+
+            that.render();
           });
-          this.getShareBagCpList();
-        }
+      },
+      render: function() {
+        var that = this;
+
         //强制登录
         if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken')) {
           var wechatLogin = new SFWeChatLogin();
@@ -99,13 +123,17 @@ define(
           }
 
           that.loading.show();
-          if (that.itemObj.cardId) {
+          if (that.itemObj.cardId && !that.isNull) {
             that.receiveShareCoupon();
           } else {
             that.receiveCpCodeData();
           }
         });
       },
+      /**
+       * 领红包
+       * @returns {*}
+       */
       receiveCpCodeData: function() {
         var that = this;
         var receiveCouponData = new SFReceiveCoupon({
@@ -129,6 +157,9 @@ define(
             that.loading.hide();
           });
       },
+      /**
+       * 领红包里的优惠券
+       */
       receiveShareCoupon: function() {
         var that = this;
         var receiveShareCoupon = new SFReceiveShareCoupon({
@@ -154,6 +185,10 @@ define(
             });
           });
       },
+      /**
+       * 获取红包的领用情况
+       * @returns {*}
+       */
       getShareBagCpList: function() {
         var that = this;
         var getShareBagCpList = new SFGetShareBagCpList({
@@ -163,7 +198,7 @@ define(
         return getShareBagCpList.sendRequest()
           .done(function(userCouponInfo) {
             for(var i = 0, item; item = userCouponInfo.items[i]; i++) {
-              item.fightingCapacity = that.calculateFightingCapacity(item.cardId);
+              item.warrior = that.calculateFightingCapacity(item.cardId);
             }
 
             that.itemObj.attr({
@@ -174,7 +209,10 @@ define(
             console.error(error);
           });
       },
-
+      /**
+       * 获取红包的信息
+       * @returns {*}
+       */
       initOrderShareBagInfo: function() {
         var that = this;
         var getOrderShareBagInfo = new SFGetOrderShareBagInfo({
@@ -184,7 +222,7 @@ define(
         return getOrderShareBagInfo.sendRequest()
           .done(function(cardBagInfo) {
             if (cardBagInfo.cardSurplusNum == 0) {
-              //红包已领完
+              that.isNull = true;
             }
 
             that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo)
@@ -226,17 +264,20 @@ define(
           "&cardId=" + this.itemObj.cardId +
           "&price=" + this.itemObj.price;
       },
-      calculateFightingCapacity: function(referenceSubstance) {
-        return referenceSubstance * 100;
+      calculateFightingCapacity: function(cardId) {
+        var warrior = this.warriors[this.cardMap[cardId]];
+        var tempnum = "11111";
+        warrior.fightArray = tempnum.split("1", warrior.fight);
+        warrior.faceArray = tempnum.split("1", warrior.face);
+        return warrior;
       },
 
-      request: function() {
+      initWarriors: function() {
         var that = this;
         return can.ajax({url: '/json/sf.b2c.mall.warriors.json'})
-          .done()
-          .fail(function(error) {
-
-          });
+          .done(function(data){
+            that.warriors = data;
+          })
       },
 
       "#telephone keyup":function(targetElement, event) {
