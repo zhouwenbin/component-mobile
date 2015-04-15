@@ -105,7 +105,7 @@ define('sf.b2c.mall.component.login', [
         var gotoUrl = params.from || "index.html";
 
         var wechatLogin = new SFWeChatLogin();
-        wechatLogin.login(gotoUrl);
+        wechatLogin.login(escape(gotoUrl));
       },
       //@note 支付宝登录
       '.alipaylogin click':function(element, event){
@@ -114,7 +114,7 @@ define('sf.b2c.mall.component.login', [
         var gotoUrl = params.from || "index.html";
 
         var wechatLogin = new SFWeChatLogin();
-        wechatLogin.alipayLogin(gotoUrl);
+        wechatLogin.alipayLogin(escape(gotoUrl));
       },
       /**
        * @description 渲染页面
