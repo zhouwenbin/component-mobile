@@ -25,13 +25,11 @@ define(
         var params = can.deparam(window.location.search.substr(1));
         var tag = params.tag;
         var redirectUrl = params.redirectUrl;
-
-
+        var code = params.code;
+        var tmpl = params.tmpl;
         var authResp;
         var type;
         if (tag == "wechat_svm") {
-          var code = params.code;
-          var tmpl = params.tmpl;
           type =  'WEIXIN';
           authResp = "code=" + code;
         } else if (tag == "alipay_qklg"){
@@ -43,17 +41,16 @@ define(
           "partnerId": tag,
           "authResp": authResp
         });
-
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            //alert(loginData.csrfToken);
 
             if (loginData.csrfToken) {
               store.set('type', type);
               store.set('nickname', '海淘会员');
               store.remove('tempToken');
               store.remove('tempTokenExpire');
+
               can.route.attr({
                 'tag': 'success',
                 'csrfToken': loginData.csrfToken
@@ -61,13 +58,12 @@ define(
 
               window.location.href = redirectUrl || SFConfig.setting.link.index;
             } else if (tmpl && loginData.tempToken){  //tmpl 为true时,tempToken存在但不进行账号绑定
-              var nowData = new Date();
-              nowData.setDate(myDate.getDate()+1);
-              store.set('tempTokenExpire', nowData);
+              var nowDate = new Date();
+              nowDate.setDate(nowDate.getDate()+1);
+              store.set('tempTokenExpire', nowDate.getTime());
               store.set('type', type);
               store.set('nickname', '海淘会员');
               store.set('tempToken', loginData.tempToken);
-
               window.location.href = redirectUrl || SFConfig.setting.link.index;
             } else if(loginData.tempToken) {   // 处理账号绑定
               store.set('tempToken', loginData.tempToken);

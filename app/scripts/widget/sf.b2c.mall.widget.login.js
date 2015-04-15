@@ -1,7 +1,7 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.widget.logincenter', [
+  'sf.b2c.mall.widget.login', [
     'zepto',
     'can',
     'store',
@@ -38,11 +38,9 @@ define(
           "partnerId": partnerId,
           "redirectUrl": "http://m.sfht.com/logincenter.html?" + redirectUrl
         });
-
         reqLoginAuth
           .sendRequest()
           .done(function(data) {
-            //alert(data.loginAuthLink);
             window.location.href = data.loginAuthLink;
           })
           .fail(function(error) {

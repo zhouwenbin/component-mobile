@@ -14,7 +14,7 @@ define(
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
-    var header = can.Control.extend({
+    return can.Control.extend({
 
       init: function() {
         var params = can.deparam(window.location.search.substr(1));
@@ -26,7 +26,4 @@ define(
         } 
       }
     });
-
-    new header();
-
   });
