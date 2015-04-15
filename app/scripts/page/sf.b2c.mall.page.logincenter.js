@@ -59,13 +59,20 @@ define(
               store.set('nickname', '海淘会员');
               store.remove('tempToken');
               store.remove('tempTokenExpire');
+
+              // 登录之后需要将csrfToken记录在localStorage中作为登录态度进行保存
+              store.set('csrfToken', loginData.csrfToken);
+
+              // ?不懂
               can.route.attr({
                 'tag': 'success',
                 'csrfToken': loginData.csrfToken
               });
 
               window.location.href = redirectUrl || SFConfig.setting.link.index;
+
             } else if (tmpl && loginData.tempToken){  //tmpl 为true时,tempToken存在但不进行账号绑定
+
               var nowDate = new Date();
               nowDate.setDate(nowDate.getDate()+1);
               store.set('tempTokenExpire', nowDate.getTime());
@@ -73,12 +80,17 @@ define(
               store.set('nickname', '海淘会员');
               store.set('tempToken', loginData.tempToken);
               window.location.href = redirectUrl || SFConfig.setting.link.index;
+
             } else if(loginData.tempToken) {   // 处理账号绑定
+
               store.set('tempToken', loginData.tempToken);
               //处理微信账号绑定
-              var header = new SFHeader();             
+              var header = new SFHeader();
+
             } else {
+
               window.location.href = SFConfig.setting.link.index;
+
             }
           })
           .fail(function(error) {
