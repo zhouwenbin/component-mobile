@@ -3,6 +3,7 @@
  * [description 微信登录转发中心， 实现代码解耦]
  */
 define(
+	'sf.b2c.mall.page.logincenter',
   [
     'can',
     'zepto',
@@ -39,8 +40,8 @@ define(
         } else if (tag == "alipay_qklg"){
           type =  'ALIPAY';
 
-          // delete params.tag;
-          // delete params.redirectUrl;
+          delete params.tag;
+          delete params.redirectUrl;
 
           authResp = window.decodeURIComponent($.param(params));
 

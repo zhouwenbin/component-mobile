@@ -27,6 +27,8 @@ define(
       }
     });
 
-    new header();
+    return header;
+
+    // new header();
 
   });
