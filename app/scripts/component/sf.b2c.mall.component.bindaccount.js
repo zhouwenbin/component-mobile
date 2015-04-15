@@ -193,7 +193,8 @@ define(
               if (errorCode == 1000340) {
                 that.data.attr('isBindMobile', true);
               } else if (errorCode == 1000380) {
-                $('#username-error-tips').html('手机号已绑定' + errorValueMap[store.get('alipay-or-weixin')] + '账号，请先解绑。').show();
+                var params = can.deparam(window.location.search.substr(1));
+                $('#username-error-tips').html('手机号已绑定' + errorValueMap[params.tag] + '账号，换个手机号试试。').show();
               }
             })
         }

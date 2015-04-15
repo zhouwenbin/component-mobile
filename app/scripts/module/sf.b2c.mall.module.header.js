@@ -20,7 +20,7 @@ define(
         var params = can.deparam(window.location.search.substr(1));
         var redirectUrl = params.redirectUrl;
         if (store.get('tempToken')) {
-          window.location.href = 'bindaccount.html?redirectUrl='+redirectUrl;
+          window.location.href = 'bindaccount.html?tag='+params.tag+'&redirectUrl='+redirectUrl;
         }else{
           window.location.href = redirectUrl || SFConfig.setting.link.index;
         } 
