@@ -9,7 +9,7 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.weixin',
-    'sf.b2c.mall.widget.wechatlogin'
+    'sf.b2c.mall.widget.login'
   ],
 
   function ($, can, store, SFFrameworkComm, SFReqLoginAuth, SFWeixin, SFWeChatLogin) {
@@ -26,7 +26,7 @@ define(
 
         var reqLoginAuth = new SFReqLoginAuth({
           "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/weixincenter.html"
+          "redirectUrl": "http://m.sfht.com/logincenter.html"
         });
       }
 

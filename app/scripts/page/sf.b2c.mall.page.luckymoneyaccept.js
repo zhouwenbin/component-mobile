@@ -13,11 +13,12 @@ define(
     'sf.b2c.mall.luckymoney.users',
     'sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
-    'sf.b2c.mall.api.coupon.hasReceived'
+    'sf.b2c.mall.api.coupon.hasReceived',
+    'sf.b2c.mall.widget.login'
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
-           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived) {
+           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -43,12 +44,21 @@ define(
         var code = params.code;
 
         //微信登录
-        if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          var wechatLogin = new SFWeChatLogin();
-          wechatLogin.login();
+        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken') && this.checkTempTokenExpire()) {
+          var login = new SFLogin();
+          login.tmplLogin();
         } else {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);
+        }
+      },
+      checkTempTokenExpire: function() {
+        var expire = store.get('tempTokenExpire');
+        var nowDate = new Date();
+        if (nowDate.getTime() > expire) {
+          return true;
+        } else {
+          return false;
         }
       },
       initOrderShareBagInfo: function(shareBagId) {
@@ -134,7 +144,8 @@ define(
           'mobile': this.itemObj.telephone,
           'receiveChannel': 'B2C',
           'receiveWay': 'HBLQ',
-          'shareBagId': this.itemObj.cardBagInfo.bagCodeId
+          'shareBagId': this.itemObj.cardBagInfo.bagCodeId,
+          tempToken: store.get('tempToken')
         });
         receiveShareCoupon.sendRequest()
           .done(function(userCouponInfo) {
@@ -154,14 +165,21 @@ define(
             });
           });
       },
-      "#telephone focus": function() {
-        //this.itemObj.attr("isEnable", true);
-      },
       "#shareBtn click": function() {
         this.itemObj.attr("isShowMask", true);
       },
       ".mask click": function() {
         this.itemObj.attr("isShowMask", false);
+      },
+      "#telephone keyup":function(targetElement, event) {
+        var that = this;
+        var newVal = targetElement.val();
+        that.itemObj.attr("errorMessage", "手机号格式错误");
+        if(!/^1\d{10}$/.test(newVal)) {
+          that.itemObj.attr("isEnable", false);
+        } else {
+          that.itemObj.attr("isEnable", true);
+        }
       }
     });
 

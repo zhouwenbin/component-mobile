@@ -103,6 +103,10 @@ requirejs.config({
     'sf.b2c.mall.api.coupon.getShareBagCpList': 'scripts/api/sf.b2c.mall.api.coupon.getShareBagCpList',
     'sf.b2c.mall.api.coupon.getShareBagInfo': 'scripts/api/sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.hasReceived': 'scripts/api/sf.b2c.mall.api.coupon.hasReceived',
+    //账号绑定
+    'sf.b2c.mall.api.user.partnerBind': 'scripts/api/sf.b2c.mall.api.user.partnerBind',
+    //设置密码并登陆
+    'sf.b2c.mall.api.user.setPswdAndLogin': 'scripts/api/sf.b2c.mall.api.user.setPswdAndLogin',
 
 
     // --------------------------------------------
@@ -121,13 +125,15 @@ requirejs.config({
     'sf.util': 'scripts/util/sf.util.fn',
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.widget.wechatlogin': 'scripts/widget/sf.b2c.mall.widget.wechatlogin',
+    'sf.b2c.mall.widget.login': 'scripts/widget/sf.b2c.mall.widget.login',
+
 
     //公共模块
     'sf.b2c.mall.module.getcoupon': 'scripts/module/sf.b2c.mall.module.getcoupon',
     'sf.b2c.mall.module.slider': 'scripts/module/sf.b2c.mall.module.slider',
     'sf.b2c.mall.module.price': 'scripts/module/sf.b2c.mall.module.price',
     'sf.b2c.mall.module.time': 'scripts/module/sf.b2c.mall.module.time',
+    'sf.b2c.mall.module.header': 'scripts/module/sf.b2c.mall.module.header',
 
     // 首页
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
@@ -174,7 +180,7 @@ requirejs.config({
     'sf.b2c.mall.page.coupon': 'scripts/page/sf.b2c.mall.page.coupon',
 
     // 微信转跳中心
-    'sf.b2c.mall.page.weixincenter': 'scripts/page/sf.b2c.mall.page.weixincenter',
+    'sf.b2c.mall.page.logincenter': 'scripts/page/sf.b2c.mall.page.logincenter',
     'sf.b2c.mall.page.weixinlogintest': 'scripts/page/sf.b2c.mall.page.weixinlogintest',
 
     // alipay支付
@@ -193,6 +199,14 @@ requirejs.config({
     'sf.b2c.mall.luckymoney.users': 'scripts/luckymoney/sf.b2c.mall.luckymoney.users',
 
     //寻找海淘勇士
-    'sf.b2c.mall.page.searchwarrior': 'scripts/page/sf.b2c.mall.page.searchwarrior'
+    'sf.b2c.mall.page.searchwarrior': 'scripts/page/sf.b2c.mall.page.searchwarrior',
+
+    //绑定账号
+    'sf.b2c.mall.page.bindaccount': 'scripts/page/sf.b2c.mall.page.bindaccount',
+    'sf.b2c.mall.component.bindaccount': 'scripts/component/sf.b2c.mall.component.bindaccount',
+    //设置密码并登陆
+    'sf.b2c.mall.page.setpassword': 'scripts/page/sf.b2c.mall.page.setpassword',
+    'sf.b2c.mall.component.setpassword': 'scripts/component/sf.b2c.mall.component.setpassword'
+
   }
 });

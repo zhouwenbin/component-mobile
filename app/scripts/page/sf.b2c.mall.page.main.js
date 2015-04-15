@@ -45,7 +45,8 @@ define(
         });
         //第一个选中
         $('.swipe-dot span').eq(0).addClass('active');
-        }
+
+      }
     });
     new home();
   });
