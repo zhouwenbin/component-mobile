@@ -39,8 +39,8 @@ define(
         } else if (tag == "alipay_qklg"){
           type =  'ALIPAY';
 
-          delete params.tag;
-          delete params.redirectUrl;
+          // delete params.tag;
+          // delete params.redirectUrl;
 
           authResp = window.decodeURIComponent($.param(params));
 
