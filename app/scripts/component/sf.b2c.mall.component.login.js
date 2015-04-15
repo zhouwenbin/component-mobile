@@ -110,21 +110,12 @@ define('sf.b2c.mall.component.login', [
       },
       //@note 支付宝登录
       '.alipaylogin click':function(element, event){
-        var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "alipay_qklg",
-          "redirectUrl": "http://m.sfht.com/index.html"
-        });
+        var that = this;
+        var params = can.deparam(window.location.search.substr(1));
+        var gotoUrl = params.from || "index.html";
 
-        reqLoginAuth
-          .sendRequest()
-          .done(function(data) {
-            store.set('alipay-or-weixin','alipay_qklg');
-            window.location.href = data.loginAuthLink;
-            return false;
-          })
-          .fail(function(error) {
-            console.error(error);
-          })
+        var wechatLogin = new SFWeChatLogin();
+        wechatLogin.alipayLogin(gotoUrl);
       },
       /**
        * @description 渲染页面

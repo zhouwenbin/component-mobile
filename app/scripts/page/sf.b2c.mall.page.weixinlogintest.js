@@ -26,7 +26,7 @@ define(
 
         var reqLoginAuth = new SFReqLoginAuth({
           "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/weixincenter.html"
+          "redirectUrl": "http://m.sfht.com/logincenter.html"
         });
       }
 

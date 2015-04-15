@@ -14,11 +14,11 @@ define(
     'sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.hasReceived',
-    'sf.b2c.mall.widget.wechatlogin'
+    'sf.b2c.mall.widget.login'
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
-           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFWeChatLogin) {
+           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -45,8 +45,8 @@ define(
 
         //微信登录
         if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken')) {
-          var wechatLogin = new SFWeChatLogin();
-          wechatLogin.tmplLogin();
+          var login = new SFLogin();
+          login.tmplLogin();
         } else {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);

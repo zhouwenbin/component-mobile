@@ -1,7 +1,7 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.widget.wechatlogin', [
+  'sf.b2c.mall.widget.logincenter', [
     'zepto',
     'can',
     'store',
@@ -16,27 +16,34 @@ define(
       link: SFConfig.setting.link,
       init: function() {},
 
+      //微信登录
       login: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
-        this.getWeChatCode("redirectUrl=" + redirectUrl);
+        this.processReqLoginAuth("tag=wechat_svm&redirectUrl=" + redirectUrl, "wechat_svm");
       },
 
+      //微信登陆
       tmplLogin: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
-        this.getWeChatCode("tmpl=true&redirectUrl=" + redirectUrl);
+        this.processReqLoginAuth("tag=wechat_svm&tmpl=true&redirectUrl=" + redirectUrl, "wechat_svm");
       },
 
-      getWeChatCode: function(redirectUrl) {
+      alipayLogin: function(redirectUrl) {
+        redirectUrl = redirectUrl || window.location.href;
+        this.processReqLoginAuth("tag=alipay_qklg&redirectUrl=" + redirectUrl, "alipay_qklg");
+      },
+
+      processReqLoginAuth: function(redirectUrl, partnerId) {
         var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/weixincenter.html?" + redirectUrl
+          "partnerId": partnerId,
+          "redirectUrl": "http://m.sfht.com/logincenter.html?" + redirectUrl
         });
 
         reqLoginAuth
           .sendRequest()
           .done(function(data) {
             //alert(data.loginAuthLink);
-            store.set('alipay-or-weixin','wechat_svm');
+            //store.set('alipay-or-weixin',partnerId);
             window.location.href = data.loginAuthLink;
           })
           .fail(function(error) {
