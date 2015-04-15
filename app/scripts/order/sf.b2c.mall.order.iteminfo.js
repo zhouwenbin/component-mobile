@@ -167,6 +167,7 @@ define('sf.b2c.mall.order.iteminfo', [
           return submitOrderForAllSys.sendRequest();
         })
         .done(function(message) {
+          alert(JSON.stringify(message));
           window.location.href = SFConfig.setting.link.gotopay + '&' +
             $.param({
               "orderid": message.value,
@@ -174,6 +175,7 @@ define('sf.b2c.mall.order.iteminfo', [
             });
         })
         .fail(function(error) {
+          alert(JSON.stringify(error));
           element.removeClass("disable");
           new SFMessage(null, {
             'tip': that.errorMap[error] || '下单失败',
