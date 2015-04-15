@@ -44,12 +44,21 @@ define(
         var code = params.code;
 
         //微信登录
-        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken')) {
+        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken') && this.checkTempTokenExpire()) {
           var login = new SFLogin();
           login.tmplLogin();
         } else {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);
+        }
+      },
+      checkTempTokenExpire: function() {
+        var expire = store.get('tempTokenExpire');
+        var nowDate = new Date();
+        if (nowDate.getTime() > expire) {
+          return true;
+        } else {
+          return false;
         }
       },
       initOrderShareBagInfo: function(shareBagId) {

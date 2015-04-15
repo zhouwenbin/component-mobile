@@ -125,7 +125,7 @@ requirejs.config({
     'sf.util': 'scripts/util/sf.util.fn',
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.widget.wechatlogin': 'scripts/widget/sf.b2c.mall.widget.wechatlogin',
+    'sf.b2c.mall.widget.login': 'scripts/widget/sf.b2c.mall.widget.login',
 
 
     //公共模块
