@@ -34,6 +34,7 @@ define(
         });
         partnerLogin.sendRequest()
           .done(function(data) {
+            alert(JSON.stringify(data));
             if (data.tempToken) {
               store.set('tempToken', data.tempToken);
               window.location.href = 'bindaccount.html';
