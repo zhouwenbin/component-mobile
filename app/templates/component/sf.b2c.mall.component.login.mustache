@@ -32,9 +32,11 @@
     <div class="login-r1 clearfix">
       <a href="/register.html">新用户注册</a>
     </div>
-    {{#if isWeChat}}
+    {{#isWeChat}}
         <div class="login-r2" id="weChatLoginBox"><a href="javascript:void(0)" class="weixinlogin"><span class="icon icon18"></span></a></div>
-    {{else}}
-      <div class="login-r2" id="weChatLoginBox"><a href="javascript:void(0)" class="alipaylogin"><span class="icon icon37"></span>支付宝</a></div>
     {{/isWeChat}}
+
+    {{#isAlipay}}
+      <div class="login-r2" id="weChatLoginBox"><a href="javascript:void(0)" class="alipaylogin"><span class="icon icon37"></span>支付宝</a></div>
+    {{/isAlipay}}
   </section>

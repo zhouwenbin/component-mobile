@@ -53,6 +53,13 @@ define('sf.b2c.mall.component.login', [
             return options.inverse(options.contexts || this);
           }
         }
+        // isAlipay: function(options) {
+        //   if (SFFn.isMobile.WeChat()) {
+        //     return options.fn(options.contexts || this);
+        //   }else{
+        //     return options.inverse(options.contexts || this);
+        //   }
+        // }
       },
 
       /**
@@ -60,6 +67,8 @@ define('sf.b2c.mall.component.login', [
        * @description 初始化方法
        */
       init: function() {
+        console.log(navigator.userAgent);
+        alert(navigator.userAgent);
         this.component = {};
         this.component.login = new SFLogin();
         this.component.needVfCode = new SFNeedVfCode();
