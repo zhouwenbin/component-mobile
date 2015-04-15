@@ -1,7 +1,7 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.widget.logincenter', [
+  'sf.b2c.mall.widget.login', [
     'zepto',
     'can',
     'store',
