@@ -9,12 +9,15 @@ define('sf.b2c.mall.component.login', [
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.webLogin',
     'sf.b2c.mall.api.user.needVfCode',
-    'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.framework.comm',
-    'sf.util'
+    'sf.util',
+    'sf.b2c.mall.widget.login',
+    'sf.b2c.mall.api.user.checkUserExist' //@noto 检查第三方账号绑定的手机号是否有登录密码
   ],
 
-  function($, can, md5, store, Fastclick, SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFrameworkComm, SFFn) {
+  function($, can, md5, store, Fastclick,
+           SFConfig, SFLogin, SFNeedVfCode, SFFrameworkComm,
+           SFFn, SFWeChatLogin,SFCheckUserExist) {
 
     SFFrameworkComm.register(3);
 
@@ -30,6 +33,7 @@ define('sf.b2c.mall.component.login', [
     var ERROR_INPUT_PWD = '密码有误，请重新输入';
     var ERROR_NO_INPUT_VERCODE = '请输入验证码';
     var ERROR_INPUT_VERCODE = '您的验证码输入有误，请重新输入';
+    var ERROR_NO_PASSWORD = '账户未设置密码，点此<a href="setpassword.html">设置密码</a>';
 
     return can.Control.extend({
 
@@ -44,6 +48,15 @@ define('sf.b2c.mall.component.login', [
         isWeChat: function(options) {
           if (SFFn.isMobile.WeChat()) {
             return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
+          }
+        },
+        isAlipay: function(options) {
+          if (SFFn.isMobile.AlipayChat()) {
+            return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
           }
         }
       },
@@ -74,24 +87,6 @@ define('sf.b2c.mall.component.login', [
         this.getVerifiedCode();
 
         var that = this;
-
-        // $('#gotoLogin').tap(function() {
-        //   that.loginButtonClick($(this));
-        // })
-
-        // $('.weixinlogin').tap(function() {
-        //   that.weixinLoginAuth();
-        // })
-
-        // $('#verified-code-btn').tap(function() {
-        //   that.getVerifiedCode();
-        // })
-
-        // $("#toRegist").tap(function() {
-        //   var params = can.deparam(window.location.search.substr(1));
-        //   var gotoUrl = params.from;
-        //   window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
-        // })
       },
 
       '#toRegist click': function (element, event) {
@@ -105,26 +100,22 @@ define('sf.b2c.mall.component.login', [
        * @return {[type]} [description]
        */
       '.weixinlogin click': function(element, event) {
-        var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/weixincenter.html"
-        });
+        var that = this;
+        var params = can.deparam(window.location.search.substr(1));
+        var gotoUrl = params.from || "index.html";
 
-        reqLoginAuth
-          .sendRequest()
-          .done(function(data) {
-            var params = can.deparam(window.location.search.substr(1));
-            var gotoUrl = params.from || "index.html";
-
-            store.set('weixinto', gotoUrl);
-            window.location.href = data.loginAuthLink;
-            return false;
-          })
-          .fail(function(error) {
-            console.error(error);
-          })
+        var wechatLogin = new SFWeChatLogin();
+        wechatLogin.login(gotoUrl);
       },
+      //@note 支付宝登录
+      '.alipaylogin click':function(element, event){
+        var that = this;
+        var params = can.deparam(window.location.search.substr(1));
+        var gotoUrl = params.from || "index.html";
 
+        var wechatLogin = new SFWeChatLogin();
+        wechatLogin.alipayLogin(gotoUrl);
+      },
       /**
        * @description 渲染页面
        * @param  {can.Map} data 输入的观察者对象
@@ -132,7 +123,6 @@ define('sf.b2c.mall.component.login', [
       render: function(data) {
         var html = can.view('templates/component/sf.b2c.mall.component.login.mustache', data, this.helpers);
         this.element.append(html);
-
       },
 
       '#verified-code-btn click': function () {
@@ -162,9 +152,24 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkUserName: function(username) {
+        var that = this;
         var username = can.$.trim(username);
         var isTelNum = /^1\d{10}$/.test(username);
         var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);
+        //@note 手机号码输完11位时，验证该账号是否有密码
+        if (isTelNum) {
+          var checkUserExist = new SFCheckUserExist({
+            'accountId':username,
+            'type':'MOBILE'
+          });
+          checkUserExist.sendRequest()
+            .fail(function(errorCode){
+              if (errorCode == 1000340) {
+                that.element.find('#username-error-tips').html(ERROR_NO_PASSWORD).show();
+                return false;
+              };
+            })
+        };
         if (!username) {
           this.element.find('#username-error-tips').text(ERROR_NO_INPUT_USERNAME).show();
           return false;

@@ -10,17 +10,15 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.helpers',
-    'sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.luckymoney.users',
-    'sf.b2c.mall.api.user.reqLoginAuth',
-    'sf.b2c.mall.api.user.partnerLogin',
+    'sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
-    'sf.b2c.mall.api.coupon.hasReceived'
+    'sf.b2c.mall.api.coupon.hasReceived',
+    'sf.b2c.mall.widget.login'
   ],
   function(can, $, store, Fastclick, SFWeixin,
-           SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo,
-           SFLuckyMoneyUsers, SFReqLoginAuth, SFPartnerLogin, SFReceiveShareCoupon,
-           SFHasReceived) {
+           SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
+           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -46,15 +44,21 @@ define(
         var code = params.code;
 
         //微信登录
-        if(!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          if (!code) {
-            that.getWeChatCode(id);
-          } else {
-            that.otherLogin(id, code);
-          }
+        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken') && this.checkTempTokenExpire()) {
+          var login = new SFLogin();
+          login.tmplLogin();
         } else {
           that.initOrderShareBagInfo(id);
           that.initHasReceivedInfo(id);
+        }
+      },
+      checkTempTokenExpire: function() {
+        var expire = store.get('tempTokenExpire');
+        var nowDate = new Date();
+        if (nowDate.getTime() > expire) {
+          return true;
+        } else {
+          return false;
         }
       },
       initOrderShareBagInfo: function(shareBagId) {
@@ -122,52 +126,6 @@ define(
         var html = can.view('templates/luckymoney/sf.b2c.mall.luckymoney.accept.mustache', itemObj);
         element.html(html);
       },
-      getWeChatCode: function(id) {
-        var reqLoginAuth = new SFReqLoginAuth({
-          "partnerId": "wechat_svm",
-          "redirectUrl": "http://m.sfht.com/luckymoneyaccept.html?id=" + id
-        });
-
-        reqLoginAuth
-          .sendRequest()
-          .done(function(data) {
-            //alert(data.loginAuthLink);
-            window.location.href = data.loginAuthLink;
-          })
-          .fail(function(error) {
-            console.error(error);
-          });
-      },
-      otherLogin: function(id, code) {
-        var that = this;
-
-        var partnerLogin = new SFPartnerLogin({
-          "partnerId": "wechat_svm",
-          "authResp": "code=" + code
-        });
-
-        partnerLogin
-          .sendRequest()
-          .done(function(loginData) {
-            //alert(loginData.csrfToken);
-            if (loginData.csrfToken) {
-              store.set('type', 'WEIXIN');
-              store.set('nickname', '海淘会员');
-              can.route.attr({
-                'tag': 'success',
-                'csrfToken': loginData.csrfToken
-              });
-
-              that.initOrderShareBagInfo(id);
-            } else {
-              //window.location.href = "http://m.sfht.com";
-            }
-          })
-          .fail(function(error) {
-            console.error(error);
-            window.location.href = "http://m.sfht.com";
-          });
-      },
       errorMap: {
         "-100": "已领完",
         11000020: "已领完", //不存在
@@ -186,7 +144,8 @@ define(
           'mobile': this.itemObj.telephone,
           'receiveChannel': 'B2C',
           'receiveWay': 'HBLQ',
-          'shareBagId': this.itemObj.cardBagInfo.bagCodeId
+          'shareBagId': this.itemObj.cardBagInfo.bagCodeId,
+          tempToken: store.get('tempToken')
         });
         receiveShareCoupon.sendRequest()
           .done(function(userCouponInfo) {
@@ -206,14 +165,21 @@ define(
             });
           });
       },
-      "#telephone focus": function() {
-        //this.itemObj.attr("isEnable", true);
-      },
       "#shareBtn click": function() {
         this.itemObj.attr("isShowMask", true);
       },
       ".mask click": function() {
         this.itemObj.attr("isShowMask", false);
+      },
+      "#telephone keyup":function(targetElement, event) {
+        var that = this;
+        var newVal = targetElement.val();
+        that.itemObj.attr("errorMessage", "手机号格式错误");
+        if(!/^1\d{10}$/.test(newVal)) {
+          that.itemObj.attr("isEnable", false);
+        } else {
+          that.itemObj.attr("isEnable", true);
+        }
       }
     });
 

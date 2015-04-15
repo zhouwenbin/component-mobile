@@ -1,0 +1,32 @@
+.share-topic{
+	background: #fff;
+}
+.share-topic h1{
+	font-size:14px;
+	color: #f88234;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+.share-topic h2{
+	font-size: 24px;
+	color:#fff;
+	background: url(#{$bg-url}share-topic.jpg) no-repeat center;
+	height: 120px;
+	background-size: 320px 120px;
+	padding-top: 59px;
+	text-align: center;
+}
+.share-topic-b{
+	padding: 44px 40px;
+}
+.share-topic .input{
+	margin: 8px 0;
+}
+.share-topic .btn{
+	height: 45px;
+	line-height: 45px;
+}
+.share-topic .text-error{
+	margin-top:10px;
+}

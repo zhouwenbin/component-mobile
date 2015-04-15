@@ -37,14 +37,10 @@ define('sf.b2c.mall.order.iteminfo', [
         })
         .always(function() {
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
-          that.element.html(html);
+          that.element.html(html);;
 
           if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {
-            var tmpCouponHtmls;
-            for (var i = 0, tmpAc; tmpAc = that.itemObj.orderCoupon.avaliableCoupons[i]; i++) {
-              tmpCouponHtmls += "<option value=" + tmpAc.couponCode + " data-price=" + tmpAc.price + ">" + tmpAc.couponDescription + "</option>";
-            }
-            $("#selectCoupon").append(tmpCouponHtmls);
+            $("#selectCoupon option").first().attr('selected', 'true');
           }
 
           $('.loadingDIV').hide();
@@ -95,7 +91,7 @@ define('sf.b2c.mall.order.iteminfo', [
       element.addClass("disable");
 
       var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
-      var isDetail = /^[\u4e00-\u9fa5\d\w#。，-]+$/.test($.trim(selectAddr.detail));
+      var isDetailInvalid = /[<>'"]/.test($.trim(selectAddr.detail));
       var isReceiverName = /先生|女士|小姐/.test($.trim(selectAddr.recName));
       //进行校验，不通过则把提交订单点亮
       if (typeof selectAddr == 'undefined' || selectAddr == false) {
@@ -115,9 +111,9 @@ define('sf.b2c.mall.order.iteminfo', [
 
         element.removeClass("disable");
         return false;
-      } else if (!isDetail) {
+      } else if (isDetailInvalid) {
         new SFMessage(null, {
-          'tip': '请您输入正确的收货地址!',
+          'tip': '亲，您的收货地址输入有误，不能含有< > \' \" 等特殊字符！',
           'type': 'error'
         });
 
@@ -158,7 +154,7 @@ define('sf.b2c.mall.order.iteminfo', [
               "num": that.itemObj.amount,
               "price": that.itemObj.sellingPrice
             }]),
-            "sysType": 'B2C_H5',
+            "sysType": that.getSysType(),
             "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
           }
         })
@@ -183,6 +179,16 @@ define('sf.b2c.mall.order.iteminfo', [
             'type': 'error'
           });
         });
+    },
+
+    getSysType: function() {
+      // alert(window.AlipayJSBridge);
+      //如果是支付宝服务窗 则是FWC_H5
+      if (typeof window.AlipayJSBridge != "undefined"){
+        return "FWC_H5"
+      } else {
+        return 'B2C_H5'
+      }
     },
 
     initProductHotData: function() {
