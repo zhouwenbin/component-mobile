@@ -3,6 +3,7 @@
  * [description 微信登录转发中心， 实现代码解耦]
  */
 define(
+	'sf.b2c.mall.page.logincenter',
   [
     'can',
     'zepto',
@@ -25,32 +26,39 @@ define(
         var params = can.deparam(window.location.search.substr(1));
         var tag = params.tag;
         var redirectUrl = params.redirectUrl;
-        var code = params.code;
-        var tmpl = params.tmpl;
+
+        var tmpl;
         var authResp;
         var type;
         if (tag == "wechat_svm") {
+          tmpl = params.tmpl;
           type =  'WEIXIN';
-          authResp = "code=" + code;
+          authResp = "code=" + params.code;
         } else if (tag == "alipay_qklg"){
           type =  'ALIPAY';
-          authResp = "code=" + code;
+
+          delete params.tag;
+          delete params.redirectUrl;
+
+          authResp = window.decodeURIComponent($.param(params));
+
         }
 
         var partnerLogin = new SFPartnerLogin({
           "partnerId": tag,
           "authResp": authResp
         });
+
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
+            //alert(loginData.csrfToken);
 
             if (loginData.csrfToken) {
               store.set('type', type);
               store.set('nickname', '海淘会员');
               store.remove('tempToken');
               store.remove('tempTokenExpire');
-
               can.route.attr({
                 'tag': 'success',
                 'csrfToken': loginData.csrfToken
