@@ -47,7 +47,7 @@ define('sf.b2c.mall.component.register', [
     var ERROR_NO_EMAIL = '请输入您的常用邮箱地址';
     var ERROR_NO_EMAIL_CODE = '请输入右侧图片中信息';
     var ERROR_EMAIL_CODE = '验证码输入有误，请重新输入';
-    var ERROR_NO_SET_PWD = '账户未设置密码，点此<a href="setpassword.html">设置密码</a>';
+    var ERROR_NO_SET_PWD = '账户未设置密码，点此<a href="setpassword.html?tel={{tel}}">设置密码</a>';
 
     can.route.ready();
 
@@ -167,7 +167,8 @@ define('sf.b2c.mall.component.register', [
           checkUserExist.sendRequest()
             .fail(function(errorCode){
               if (errorCode == 1000340) {
-                that.element.find('#input-mobile-error').html(ERROR_NO_SET_PWD).show();
+                var fn = can.view.mustache(ERROR_NO_SET_PWD);
+                $('#input-mobile-error').html(fn({tel:mobile})).show();
                 return false;
               };
             })
