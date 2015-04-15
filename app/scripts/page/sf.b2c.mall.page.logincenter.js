@@ -76,7 +76,7 @@ define(
             } else if(loginData.tempToken) {   // 处理账号绑定
               store.set('tempToken', loginData.tempToken);
               //处理微信账号绑定
-              var header = new SFHeader();
+              var header = new SFHeader();             
             } else {
               window.location.href = SFConfig.setting.link.index;
             }
