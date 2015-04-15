@@ -43,7 +43,6 @@ define(
           .sendRequest()
           .done(function(data) {
             //alert(data.loginAuthLink);
-            //store.set('alipay-or-weixin',partnerId);
             window.location.href = data.loginAuthLink;
           })
           .fail(function(error) {

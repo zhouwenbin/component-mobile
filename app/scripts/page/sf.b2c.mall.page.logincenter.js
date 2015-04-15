@@ -9,9 +9,10 @@ define(
     'store',
     'sf.b2c.mall.api.user.partnerLogin',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'sf.b2c.mall.module.header'
   ],
-  function(can, $, store, SFPartnerLogin, SFFrameworkComm, SFConfig) {
+  function(can, $, store, SFPartnerLogin, SFFrameworkComm, SFConfig,SFHeader) {
 
     SFFrameworkComm.register(3);
 
@@ -70,8 +71,8 @@ define(
               window.location.href = redirectUrl || SFConfig.setting.link.index;
             } else if(loginData.tempToken) {   // 处理账号绑定
               store.set('tempToken', loginData.tempToken);
-              //处理账号绑定
-
+              //处理微信账号绑定
+              var header = new SFHeader();
             } else {
               window.location.href = SFConfig.setting.link.index;
             }

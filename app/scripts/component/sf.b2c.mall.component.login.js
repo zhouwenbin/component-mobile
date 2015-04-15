@@ -9,7 +9,6 @@ define('sf.b2c.mall.component.login', [
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.webLogin',
     'sf.b2c.mall.api.user.needVfCode',
-    'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.framework.comm',
     'sf.util',
     'sf.b2c.mall.widget.login',
@@ -17,7 +16,7 @@ define('sf.b2c.mall.component.login', [
   ],
 
   function($, can, md5, store, Fastclick,
-           SFConfig, SFLogin, SFNeedVfCode, SFReqLoginAuth, SFFrameworkComm,
+           SFConfig, SFLogin, SFNeedVfCode, SFFrameworkComm,
            SFFn, SFWeChatLogin,SFCheckUserExist) {
 
     SFFrameworkComm.register(3);

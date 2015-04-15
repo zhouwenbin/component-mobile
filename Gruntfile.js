@@ -680,20 +680,20 @@ module.exports = function (grunt) {
           insertRequire: ['sf.b2c.mall.page.center']
         }
       },
-      weixincenter: {
+      logincenter: {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.weixincenter.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.logincenter.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
           },
           include: [
             "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.weixincenter'
+            'sf.b2c.mall.page.logincenter'
           ],
-          insertRequire: ['sf.b2c.mall.page.weixincenter']
+          insertRequire: ['sf.b2c.mall.page.logincenter']
         }
       },
       weixinlogintest: {
