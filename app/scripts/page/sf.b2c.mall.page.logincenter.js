@@ -25,7 +25,7 @@ define(
       init: function() {
         var params = can.deparam(window.location.search.substr(1));
         var tag = params.tag;
-        var redirectUrl = params.redirectUrl;
+        var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
         var tmpl = params.tmpl;
         var authResp;
