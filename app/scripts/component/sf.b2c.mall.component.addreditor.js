@@ -87,8 +87,7 @@ define('sf.b2c.mall.component.addreditor', [
               recId: null,
               cellphone: null,
               recName: null,
-              credtNum: null,
-              zipCode: null
+              credtNum: null
             },
             place: {
               countries: [{
@@ -123,7 +122,6 @@ define('sf.b2c.mall.component.addreditor', [
               regionName: this.adapter.regions.getIdBySuperreginIdAndName(cityId, data.regionName),
               detail: data.detail,
               cellphone: data.cellphone,
-              zipCode: data.zipCode,
               recId: data.recId
             },
             place: {
@@ -291,10 +289,7 @@ define('sf.b2c.mall.component.addreditor', [
       event && event.preventDefault();
       $('#cellphoneerror').hide();
     },
-    '#zipcode focus': function(element, event) {
-      event && event.preventDefault();
-      $('#zipcodeerror').hide();
-    },
+
     addressSaveClick: function(element, event) {
       event && event.preventDefault();
 
@@ -409,18 +404,6 @@ define('sf.b2c.mall.component.addreditor', [
       //电话号码正则验证（以1开始，11位验证）)
       if (!/^1\d{10}$/.test(addr.cellphone)) {
         this.adapter.addr.attr("error", '收货人手机号码填写有误！');
-        return false;
-      }
-
-      //验证邮编，如果用户没输，跳过；反之进行验证
-      if (!addr.zipCode) {
-        this.adapter.addr.attr("error", '请填写邮编！');
-        return false;
-      }
-
-      var zipCodeRegex = /[0-9]\d{5}(?!\d)$/.test($.trim(addr.zipCode));
-      if (!zipCodeRegex || addr.zipCode.length > 6) {
-        this.adapter.addr.attr("error", '邮编填写有误！');
         return false;
       }
 
