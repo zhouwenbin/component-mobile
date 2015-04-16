@@ -103,6 +103,7 @@ requirejs.config({
     'sf.b2c.mall.api.coupon.getShareBagCpList': 'scripts/api/sf.b2c.mall.api.coupon.getShareBagCpList',
     'sf.b2c.mall.api.coupon.getShareBagInfo': 'scripts/api/sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.hasReceived': 'scripts/api/sf.b2c.mall.api.coupon.hasReceived',
+    'sf.b2c.mall.api.coupon.rcvCouponByMobile': 'scripts/api/sf.b2c.mall.api.coupon.rcvCouponByMobile',
     //账号绑定
     'sf.b2c.mall.api.user.partnerBind': 'scripts/api/sf.b2c.mall.api.user.partnerBind',
     //设置密码并登陆
@@ -200,6 +201,8 @@ requirejs.config({
 
     //寻找海淘勇士
     'sf.b2c.mall.page.searchwarrior': 'scripts/page/sf.b2c.mall.page.searchwarrior',
+    'sf.b2c.mall.page.searchwarriorali': 'scripts/page/sf.b2c.mall.page.searchwarriorali',
+    'sf.b2c.mall.page.searchwarriorshare': 'scripts/page/sf.b2c.mall.page.searchwarriorshare',
 
     //绑定账号
     'sf.b2c.mall.page.bindaccount': 'scripts/page/sf.b2c.mall.page.bindaccount',

@@ -27,11 +27,10 @@ define(
         var tag = params.tag;
         var redirectUrl = params.redirectUrl;
 
-        var tmpl;
+        var tmpl = params.tmpl;
         var authResp;
         var type;
         if (tag == "wechat_svm") {
-          tmpl = params.tmpl;
           type =  'WEIXIN';
           authResp = "code=" + params.code;
         } else if (tag == "alipay_qklg"){
@@ -39,9 +38,19 @@ define(
 
           delete params.tag;
           delete params.redirectUrl;
+          delete params.tmpl;
 
           authResp = window.decodeURIComponent($.param(params));
-
+          /*
+          authResp = authResp + "email=" + params.email;
+          authResp = authResp + "&is_success=" + params.is_success;
+          authResp = authResp + "&notify_id=" + params.notify_id;
+          authResp = authResp + "&real_name=" + params.real_name;
+          authResp = authResp + "&token=" + params.token;
+          authResp = authResp + "&user_id=" + params.user_id;
+          authResp = authResp + "&sign=" + params.sign;
+          authResp = authResp + "&sign_type=" + params.sign_type;
+          */
         }
 
         var partnerLogin = new SFPartnerLogin({
@@ -52,7 +61,6 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            //alert(loginData.csrfToken);
 
             if (loginData.csrfToken) {
               store.set('type', type);
