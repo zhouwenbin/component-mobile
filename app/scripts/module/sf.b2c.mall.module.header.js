@@ -26,8 +26,7 @@ define(
         if (tempToken) {
           window.location.href = 'bindaccount.html?tag='+params.tag+'&redirectUrl='+escape(redirectUrl);
         }else if (csrfToken) {
-          window.location.href = 'bindaccount.html?tag='+params.tag+'&redirectUrl='+escape(redirectUrl);
-          //window.location.href = redirectUrl || SFConfig.setting.link.index;
+          window.location.href = redirectUrl || SFConfig.setting.link.index;
         }else{
           window.location.href = SFConfig.setting.link.index;
         }
