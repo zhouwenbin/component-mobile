@@ -1,0 +1,29 @@
+<section class="superman2">
+    <h1>您的战斗力为：<strong class="text-important">{{warrior.value}}</strong></h1>
+    <h2>您获得称号：<span class="text-important">{{warrior.name}}</span></h2>
+    <div class="superman2-r1">
+        <img src="{{warrior.img}}">
+        <div class="superman2-r1c1">
+            <h3>{{warrior.say}}</h3>
+            <ul>
+		            <li>卖萌指数：{{#warrior.fightArray}}<span class="superman2-icon"></span>{{/warrior.fightArray}}</li>
+		            <li>治愈指数：{{#warrior.faceArray}}<span class="superman2-icon"></span>{{/warrior.faceArray}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="superman2-r2">英雄属性：</div>
+    <div class="superman2-r3 text-important">{{warrior.prop}}</div>
+</section>
+<section class="superman3">
+    <h2>英雄！顺丰海淘赠送了您一份<strong class="text-important">{{sf.price price}}元礼包</strong>！</h2>
+    <p>登录顺丰海淘商城即可使用</p>
+		{{#isWeChat}}
+      <a href="javascript:void(0);" class="a1" id="shareBtn">邀请好友一起拯救世界！</a>
+		{{/isWeChat}}
+    <a href="http://m.sfht.com" class="a2">拯救世界之前，先逛逛顺丰海淘！</a>
+</section>
+
+{{#isShowMask}}
+    <div class="mask"></div>
+    <div class="share"></div>
+{{/isShowMask}}

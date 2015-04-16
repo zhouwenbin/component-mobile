@@ -42,6 +42,7 @@ define(
         var params = can.deparam(window.location.search.substr(1));
         var id = params.id;
         var code = params.code;
+
         //微信登录
         if(SFFrameworkComm.prototype.checkUserLogin.call(this) || (store.get('tempToken') && store.get('tempTokenExpire') && !this.checkTempTokenExpire())) {
           that.initOrderShareBagInfo(id);

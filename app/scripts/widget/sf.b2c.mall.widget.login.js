@@ -33,6 +33,11 @@ define(
         this.processReqLoginAuth("tag=alipay_qklg&redirectUrl=" + redirectUrl, "alipay_qklg");
       },
 
+      alipayTmplLogin: function(redirectUrl) {
+        redirectUrl = redirectUrl || window.location.href;
+        this.processReqLoginAuth("tag=alipay_qklg&tmpl=true&redirectUrl=" + redirectUrl, "alipay_qklg");
+      },
+
       processReqLoginAuth: function(redirectUrl, partnerId) {
         var reqLoginAuth = new SFReqLoginAuth({
           "partnerId": partnerId,

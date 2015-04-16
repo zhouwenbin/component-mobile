@@ -1,0 +1,44 @@
+<section class="superman2">
+	<h1>您的战斗力为：<strong class="text-important">{{warrior.value}}</strong></h1>
+	<h2>您获得称号：<span class="text-important">{{warrior.name}}</span></h2>
+	<div class="superman2-r1">
+		<img src="{{warrior.img}}" />
+		<div class="superman2-r1c1">
+			<h3>{{warrior.say}}</h3>
+			<ul>
+				<li>卖萌指数：{{#warrior.fightArray}}<span class="superman2-icon"></span>{{/warrior.fightArray}}</li>
+				<li>治愈指数：{{#warrior.faceArray}}<span class="superman2-icon"></span>{{/warrior.faceArray}}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="superman2-r2">英雄属性：</div>
+	<div class="superman2-r3 text-important">{{warrior.prop}}</div>
+</section>
+
+<section class="superman4">
+	<div class="superman4-r1">
+		<span class="icon icon12"></span>
+		<h2>顺丰海淘支持你拯救世界输入您的手机号测试战斗力</h2>
+	</div>
+  <input can-value="telephone" value="{{telephone}}" id="telephone" type="text" />
+  <button type="button" id="submitBtn" class="{{^isEnable}} disable{{/isEnable}}">确认，查看我的战斗力！</button>
+
+	{{#userCouponInfo}}
+	<table>
+		<caption>战斗力排行</caption>
+    <tr>
+        <th>好友</th>
+        <th>战斗力</th>
+    </tr>
+		{{#each userCouponInfo.items}}
+    <tr>
+        <td>{{nickname}}</td>
+        <td>战斗力{{warrior.value}}<br>{{title}}元</td>
+    </tr>
+		{{/each}}
+	</table>
+  <a href="" class="superman4-more" style="display: none;">查看更多……</a>
+	{{/userCouponInfo}}
+</section>
+
+<error style="display: none;">{{^isEnable}}{{errorMessage}}{{/isEnable}}</error>

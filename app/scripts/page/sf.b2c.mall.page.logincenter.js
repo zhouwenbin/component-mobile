@@ -27,11 +27,10 @@ define(
         var tag = params.tag;
         var redirectUrl = params.redirectUrl;
 
-        var tmpl;
+        var tmpl = params.tmpl;;
         var authResp;
         var type;
         if (tag == "wechat_svm") {
-          tmpl = params.tmpl;
           type =  'WEIXIN';
           authResp = "code=" + params.code;
         } else if (tag == "alipay_qklg"){
@@ -41,7 +40,6 @@ define(
           delete params.redirectUrl;
 
           authResp = window.decodeURIComponent($.param(params));
-
         }
 
         var partnerLogin = new SFPartnerLogin({
