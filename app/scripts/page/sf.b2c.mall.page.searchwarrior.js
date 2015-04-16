@@ -14,7 +14,7 @@ define(
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.login',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.coupon.receiveCoupon',
+    'sf.b2c.mall.api.coupon.rcvCouponByMobile',
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.getShareBagCpList',
     'sf.b2c.mall.api.coupon.getShareBagInfo',
@@ -224,6 +224,7 @@ define(
         var that = this;
         var receiveCouponData = new SFReceiveCoupon({
           bagId: this.itemObj.bagId,
+          mobile: this.itemObj.telephone,
           type: "SHAREBAG",
           receiveChannel: 'B2C',
           receiveWay: 'ZTLQ'

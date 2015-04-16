@@ -135,7 +135,7 @@ define('sf.weixin', [
           link: link,
           imgUrl: imgUrl,
           trigger: function(res) {
-            // alert('用户点击发送给朋友');
+            alert('用户点击发送给朋友');
           },
           success: function(res) {
             // alert('已分享');
@@ -154,7 +154,7 @@ define('sf.weixin', [
           link: link,
           imgUrl: imgUrl,
           trigger: function(res) {
-            // alert('用户点击发送给朋友');
+            alert('用户点击发送给朋友');
           },
           success: function(res) {
             // alert('已分享');

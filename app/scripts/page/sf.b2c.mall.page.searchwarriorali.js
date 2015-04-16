@@ -14,7 +14,7 @@ define(
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.login',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.coupon.receiveCoupon',
+    'sf.b2c.mall.api.coupon.rcvCouponByMobile',
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.getShareBagCpList',
     'sf.b2c.mall.api.coupon.getShareBagInfo',
@@ -158,11 +158,34 @@ define(
           that.loading.hide();
           that.initSubmitBtnEvent();
         }
+
+        if(SFFrameworkComm.prototype.checkUserLogin.call(this) || (store.get('tempToken') && store.get('tempTokenExpire') && !this.checkTempTokenExpire())) {
+          that.renderHtml();
+          that.loading.hide();
+          that.initSubmitBtnEvent();
+        } else {
+          var login = new SFLogin();
+
+          if (SFFn.isMobile.AlipayChat()) {
+            wechatLogin.alipayTmplLogin();
+          }else{
+            login.tmplLogin();
+          }
+        }
+      },
+      checkTempTokenExpire: function() {
+        var expire = store.get('tempTokenExpire');
+        var nowDate = new Date();
+        if (nowDate.getTime() > expire) {
+          return true;
+        } else {
+          return false;
+        }
       },
       renderHtml: function() {
         var that = this;
 
-        var html = can.view(this.itemObj.template, this.itemObj);
+        var html = can.view(this.itemObj.template, this.itemObj, this.helpers);
         this.element.html(html);
 
         this.itemObj.bind("telephone", function(ev, newVal, oldVal) {
@@ -201,6 +224,7 @@ define(
         var that = this;
         var receiveCouponData = new SFReceiveCoupon({
           bagId: this.itemObj.bagId,
+          mobile: this.itemObj.telephone,
           type: "SHAREBAG",
           receiveChannel: 'B2C',
           receiveWay: 'ZTLQ'
@@ -226,6 +250,7 @@ define(
        */
       receiveShareCoupon: function() {
         var that = this;
+        alert(store.get('tempToken'));
         var receiveShareCoupon = new SFReceiveShareCoupon({
           'mobile': this.itemObj.telephone,
           'receiveChannel': 'B2C',
