@@ -25,17 +25,17 @@ define(
       //微信登陆
       tmplLogin: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
-        this.processReqLoginAuth("tag=wechat_svm&tmpl=true&redirectUrl=" + redirectUrl, "wechat_svm");
+        this.processReqLoginAuth("tag=wechat_svm&tmpl=true&redirectUrl=" + escape(redirectUrl), "wechat_svm");
       },
 
       alipayLogin: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
-        this.processReqLoginAuth("tag=alipay_qklg&redirectUrl=" + redirectUrl, "alipay_qklg");
+        this.processReqLoginAuth("tag=alipay_qklg&redirectUrl=" + escape(redirectUrl), "alipay_qklg");
       },
 
       alipayTmplLogin: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
-        this.processReqLoginAuth("tag=alipay_qklg&tmpl=true&redirectUrl=" + redirectUrl, "alipay_qklg");
+        this.processReqLoginAuth("tag=alipay_qklg&tmpl=true&redirectUrl=" + escape(redirectUrl), "alipay_qklg");
       },
 
       processReqLoginAuth: function(redirectUrl, partnerId) {

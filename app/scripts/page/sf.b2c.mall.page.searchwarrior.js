@@ -237,7 +237,6 @@ define(
        */
       receiveShareCoupon: function() {
         var that = this;
-        alert(store.get('tempToken'));
         var receiveShareCoupon = new SFReceiveShareCoupon({
           'mobile': this.itemObj.telephone,
           'receiveChannel': 'B2C',

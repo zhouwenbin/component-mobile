@@ -23,7 +23,6 @@ define(
        * [init 初始化]
        */
       init: function() {
-        alert("center");
         var params = can.deparam(window.location.search.substr(1));
         var tag = params.tag;
         var redirectUrl = params.redirectUrl;
@@ -59,9 +58,6 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
-            alert(loginData.csrfToken);
-            alert(loginData.tempToken);
-            alert(tmpl);
 
             if (loginData.csrfToken) {
               store.set('type', type);
