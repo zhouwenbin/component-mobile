@@ -200,6 +200,8 @@ requirejs.config({
 
     //寻找海淘勇士
     'sf.b2c.mall.page.searchwarrior': 'scripts/page/sf.b2c.mall.page.searchwarrior',
+    'sf.b2c.mall.page.searchwarriorali': 'scripts/page/sf.b2c.mall.page.searchwarriorali',
+    'sf.b2c.mall.page.searchwarriorshare': 'scripts/page/sf.b2c.mall.page.searchwarriorshare',
 
     //绑定账号
     'sf.b2c.mall.page.bindaccount': 'scripts/page/sf.b2c.mall.page.bindaccount',

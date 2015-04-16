@@ -1,0 +1,263 @@
+[
+  {
+    "name": "萌神大白",
+    "prop": "自我修复只需透明胶带~",
+    "say": "你好，我叫大白，你的私人健康助理。●—●",
+    "fight": 3,
+    "face": 5,
+    "value": 711,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/mengshendabai.png"
+  },
+  {
+    "name": "闪电侠",
+    "prop": "拥有超级速度的一族；这些飞毛腿能超越光速，逆转时空，也能够穿透物体，甚至穿越平行世界之间的屏障",
+    "say": "闪电一样的我，穿透整个世界",
+    "fight": 4,
+    "face": 3,
+    "value": 533,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/shandianxia.png"
+  },
+  {
+    "name": "神奇蜘蛛侠",
+    "prop": "超强的力量与敏捷性、能黏附在大部分表面上的能力、可以对危险快速做出反应的蜘蛛感应以及使用自己发明并命名为“蛛网发射器”的装置射出蜘蛛丝",
+    "say": "能力越大，责任越大",
+    "fight": 5,
+    "face": 4,
+    "value": 934,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/shenqizhizhuxia.png"
+  },
+  {
+    "name": "钢铁侠",
+    "prop": "集多种身份于一身拥有酷炫外形的土豪英雄",
+    "say": "最任性的土豪，就是我",
+    "fight": 5,
+    "face": 4,
+    "value": 877,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/gangtiexia.png"
+  },
+  {
+    "name": "无敌光头强",
+    "prop": "他聪明无比，但经常聪明反被聪明误。多才多艺，会跳舞、游泳、钓鱼、唱歌等。表面上诡计多端其实心底善良，同时，强哥的最大优点是孝敬父母。这点在过年和年货里都深有体现。",
+    "say": "惹我光头强，熊熊变绵羊！",
+    "fight": 1,
+    "face": 1,
+    "value": 99,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/wudiguangtouqiang.png"
+  },
+  {
+    "name": "忍者神龟",
+    "prop": "哼哼哈嘿，快使用双节棍！",
+    "say": "忍术可不是游戏！",
+    "fight": 4,
+    "face": 2,
+    "value": 399,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/renzheshengui.png"
+  },
+  {
+    "name": "哈里·加拉哈德",
+    "prop": "金士曼特工组织这个特工组织的核心人物，绅士有风度的老帅哥",
+    "say": "不知礼，无以立也！",
+    "fight": 5,
+    "face": 5,
+    "value": 1200,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/halijialahade.png"
+  },
+  {
+    "name": "超人",
+    "prop": "他的速度比飞行的子弹还要快，力量比火车头还要大。纵身一跃便能越过高楼，他的胸前有着盾形的S标记，将一辆汽车高高举过头顶。",
+    "say": "不管你成为何种人，正义或邪恶，都将改变这个世界。",
+    "fight": 4,
+    "face": 4,
+    "value": 635,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/chaoren.png"
+  },
+  {
+    "name": "蝙蝠侠",
+    "prop": "各种高科技装备、各种格斗术，孤独的救世主",
+    "say": "罪犯都是懦弱之人,所以我要把恐惧灌输到他们的心中",
+    "fight": 4,
+    "face": 3,
+    "value": 542,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/bianfuxia.png"
+  },
+  {
+    "name": "美国队长",
+    "prop": "使用吸震金属合金制成的盾牌，在实验室被改造的“超级士兵”",
+    "say": "那美好的仗我已经打过了，所信的道我已经守住了。",
+    "fight": 3,
+    "face": 4,
+    "value": 443,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/meiguoduizhang.png"
+  },
+  {
+    "name": "金刚狼",
+    "prop": "知识渊博，脾气有点暴躁，拥有锋利钢爪的英雄",
+    "say": "I'm the best there is at what I do, but what I do isn't very nice.",
+    "fight": 5,
+    "face": 4,
+    "value": 976,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/jinganglang.png"
+  },
+  {
+    "name": "精灵王",
+    "prop": "拥有俊美外形的林地国王",
+    "say": "离那个谁远一点吧",
+    "fight": 3,
+    "face": 5,
+    "value": 628,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/jinglingwang.png"
+  },
+  {
+    "name": "孙悟空（超级赛亚人）",
+    "prop": "被逼到绝境的他，爆发了潜力，此时他的瞳孔消失，短暂失去意识，头发倒竖变红，全身燃烧着金黄色的气，战力是常态的四十倍。",
+    "say": "燃烧的正义之心",
+    "fight": 5,
+    "face": 3,
+    "value": 659,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/sunwukong.png"
+  },
+  {
+    "name": "神力女孩",
+    "prop": "超强的力量，速度和耐力，超能的热视力，刀枪不入",
+    "say": "嘿，请看我的脸，不是我的胸",
+    "fight": 3,
+    "face": 5,
+    "value": 539,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/shenlinvhai.png"
+  },
+  {
+    "name": "海绵宝宝",
+    "prop": "最爱酸黄瓜，拥有海绵般柔软身体的可爱宝宝",
+    "say": "派大星，我们一起去抓水母吧！",
+    "fight": 2,
+    "face": 5,
+    "value": 434,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/haimianbaobao.png"
+  },
+  {
+    "name": "飞天小女警",
+    "prop": "遗传工程学家尤教授将蜜糖和香料及各种甜美的材料混在一起，不小心将神秘的化学元素[X]也给加了进去，结果就创造了三位模样可爱、拥有神奇力量的飞天小女警。",
+    "say": "智慧美丽，我必胜！单纯可爱，我最棒！勇敢独立，我第一！",
+    "fight": 3,
+    "face": 3,
+    "value": 321,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/feitianxiaonvjing.png"
+  },
+  {
+    "name": "犹达大师",
+    "prop": "绝地武士，捍卫和平绝地大师的老师",
+    "say": "恐惧生痛苦，痛苦生憎恨，憎恨~会把人带入原力的黑暗面",
+    "fight": 5,
+    "face": 1,
+    "value": 355,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/youdadashi.png"
+  },
+  {
+    "name": "马里奥",
+    "prop": "靠吃蘑菇长大的水管工",
+    "say": "It's-a me, Mario!",
+    "fight": 3,
+    "face": 3,
+    "value": 337,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/maliao.png"
+  },
+  {
+    "name": "怪盗基德",
+    "prop": "一个充满传奇色彩的怪盗，拥有过人才智，精通易容、变声、逃脱术，以珠宝等各类贵重艺术品为目标，使用魔术手法进行犯案的超级盗窃犯。",
+    "say": "Lady and gentleman! It is show time!",
+    "fight": 5,
+    "face": 5,
+    "value": 1100,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/guaidaojide.png"
+  },
+  {
+    "name": "诚惠",
+    "prop": "实际年龄23岁，现实世界中是工学系的大学生。後来以公会长身份亲自创立〈记录的地平线〉",
+    "say": "这里是游戏的世界吗？抑或是——异世界？",
+    "fight": 5,
+    "face": 4,
+    "value": 812,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/chenghui.png"
+  },
+  {
+    "name": "健次郎",
+    "prop": "北斗神拳门的继承人，门下排行老四，本作主人公，一生为爱而战，极富感情的男人。战神和正义的化身。",
+    "say": "3秒之后你就死了",
+    "fight": 4,
+    "face": 4,
+    "value": 527,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/jiancilang.png"
+  },
+  {
+    "name": "葫芦小金刚",
+    "prop": "丰神俊貌、飘逸若仙的七彩葫芦妖，让人过目难忘。虽然已有家室，但追求者仍络绎不绝。",
+    "say": "早知道是妖怪,就不该救他们",
+    "fight": 4,
+    "face": 5,
+    "value": 798,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/hulouxiaojinggang.png"
+  },
+  {
+    "name": "路飞",
+    "prop": "拥有无数橡胶技能的乐天路飞，简直弹无虚发",
+    "say": "我是要成为海贼王的男人!",
+    "fight": 5,
+    "face": 3,
+    "value": 518,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/lufei.png"
+  },
+  {
+    "name": "王大锤",
+    "prop": "职场界、名医界、相亲界、神话界的著名屌丝，每天的生活都多姿多彩而又变幻莫测。",
+    "say": "相信用不了多久，我就会升职加薪，当上总经理，出任CEO，迎娶白富美，走向人生巅峰，想想还有点小激动",
+    "fight": 2,
+    "face": 4,
+    "value": 306,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/wangdachui.png"
+  },
+  {
+    "name": "奥特曼",
+    "prop": "担负着保卫地球的使命而来到了地球超能斗士",
+    "say": "直到最后都不会放弃",
+    "fight": 4,
+    "face": 3,
+    "value": 466,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/aoteman.png"
+  },
+  {
+    "name": "大头儿子",
+    "prop": "拥有巨大脑袋的5岁儿童",
+    "say": "大头大头下雨不愁,人家有伞,我有大头",
+    "fight": 2,
+    "face": 3,
+    "value": 239,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/datouerzi.png"
+  },
+  {
+    "name": "哪咤",
+    "prop": "萝莉脸，肌肉身，战斗力超强的…新兴生物！",
+    "say": "我嘞个乖乖…",
+    "fight": 4,
+    "face": 3,
+    "value": 407,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/nezha.png"
+  },
+  {
+    "name": "时光鸡",
+    "prop": "在草原渴了喝露水，饿了吃蚂蚱，总之自称是散养的走地鸡",
+    "say": "少年郎，我跟你港啊！",
+    "fight": 3,
+    "face": 3,
+    "value": 318,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/shiguangji.png"
+  },
+  {
+    "name": "水冰月",
+    "prop": "月亮王国的公主倩尼迪的转生，与邪恶和黑暗力量战斗",
+    "say": "代表月亮消灭你！",
+    "fight": 4,
+    "face": 5,
+    "value": 797,
+    "img": "http://img.sfht.com/sfhth5/1.2.0/img/shuibingyue.png"
+  }
+]

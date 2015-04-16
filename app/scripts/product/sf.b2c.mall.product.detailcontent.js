@@ -82,7 +82,7 @@ define('sf.b2c.mall.product.detailcontent', [
         if (typeof pathArr != 'undefined' && null != pathArr && pathArr.length > 0) {
           this.itemid = pathArr[0];
         } else {
-          alert("path error");
+          //alert("path error");
           return;
         }
 

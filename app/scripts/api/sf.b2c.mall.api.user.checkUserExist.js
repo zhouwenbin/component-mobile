@@ -26,14 +26,16 @@ function($, can, _, Comm, SecurityType) {
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
         'accountId': 'string',
-        'type': 'string'
+        'type': 'string',
       },
       OPTIONAL: {
+        'tempToken': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000340': '用户账户还没有密码'
+        '1000340': '用户账户还没有密码',
+        '1000380': '已经绑定了同类的第三方账户'
       }
     }
   });

@@ -42,7 +42,7 @@ define(
     return can.Control.extend({
 
       init: function() {
-        var params = can.deparam(window.location.search.substr(1));
+
         this.component = {};
         this.component.sms = new SFApiUserDownSmsCode();
         this.component.partnerBind = new SFPartnerBind();
@@ -62,11 +62,14 @@ define(
       },
 
       bindAccountTemplate: function() {
-        return '<section class="login">' +
+        return '<section class="login">' +         
           '<form action="">' +
           '<ol>' +
           '<li>' +
-          '<input type="text" class="input" id="user-name" placeholder="手机号／邮箱" can-value="username"/>' +
+          '<h2 class="text-h2">还差一步，完善信息以便与您联系。</h2>'+
+          '</li>' +
+          '<li>' +
+          '<input type="text" class="input" id="user-name" placeholder="手机号" can-value="username"/>' +
           '<span class="text-error" id="username-error-tips" style="display:none"></span>' +
           '</li>' +
           '{{#isBindMobile}}' +
@@ -77,7 +80,7 @@ define(
           '</div></div>' +
           '<span class="text-error" id="mobile-code-error" style="display:none">短信验证码输入有误，请重新输入</span>' +
           '</li>' +
-          '{{/isBindMobile}}' +       
+          '{{/isBindMobile}}' +
           '<li><button class="btn btn-success btn-big" id="bindaccount">确定</button></li>' +
           '</ol>' +
           '</form>' +
@@ -168,15 +171,15 @@ define(
         var that = this;
         var mobile = $('#user-name').val();
         var errorValueMap = {
-          "wechat_open":"微信",
-          "alipay_qklg":"支付宝"
+          "wechat_open": "微信",
+          "alipay_qklg": "支付宝"
         };
-        
+
         if (mobile.length == 11) {
           var checkUserExist = new SFCheckUserExist({
             accountId: mobile,
             type: 'MOBILE',
-            tempToken:store.get('tempToken')
+            tempToken: store.get('tempToken')
           });
           checkUserExist.sendRequest()
             .done(function(data) {
@@ -189,8 +192,9 @@ define(
             .fail(function(errorCode) {
               if (errorCode == 1000340) {
                 that.data.attr('isBindMobile', true);
-              }else if(errorCode == 1000380){
-                $('#username-error-tips').html('手机号已绑定'+errorValueMap[store.get('alipay-or-weixin')] +'账号，请先解绑。').show();
+              } else if (errorCode == 1000380) {
+                var params = can.deparam(window.location.search.substr(1));
+                $('#username-error-tips').html('手机号已绑定' + errorValueMap[params.tag] + '账号，换个手机号试试。').show();
               }
             })
         }
@@ -210,6 +214,8 @@ define(
           .done(function(data) {
             store.set('csrfToken', data.csrfToken);
             store.remove('tempToken');
+            var params = can.deparam(window.location.search.substr(1));
+            window.location.href = params.redirectUrl || SFConfig.setting.link.index
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
               var defaultText = '绑定失败';

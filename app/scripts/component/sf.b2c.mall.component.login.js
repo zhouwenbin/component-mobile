@@ -33,7 +33,7 @@ define('sf.b2c.mall.component.login', [
     var ERROR_INPUT_PWD = '密码有误，请重新输入';
     var ERROR_NO_INPUT_VERCODE = '请输入验证码';
     var ERROR_INPUT_VERCODE = '您的验证码输入有误，请重新输入';
-    var ERROR_NO_PASSWORD = '账户未设置密码，点此<a href="setpassword.html">设置密码</a>';
+    var ERROR_NO_PASSWORD = '账户未设置密码，点此<a href="setpassword.html?tel={{tel}}">设置密码</a>';
 
     return can.Control.extend({
 
@@ -105,7 +105,7 @@ define('sf.b2c.mall.component.login', [
         var gotoUrl = params.from || "index.html";
 
         var wechatLogin = new SFWeChatLogin();
-        wechatLogin.login(gotoUrl);
+        wechatLogin.login(escape(gotoUrl));
       },
       //@note 支付宝登录
       '.alipaylogin click':function(element, event){
@@ -114,7 +114,7 @@ define('sf.b2c.mall.component.login', [
         var gotoUrl = params.from || "index.html";
 
         var wechatLogin = new SFWeChatLogin();
-        wechatLogin.alipayLogin(gotoUrl);
+        wechatLogin.alipayLogin(escape(gotoUrl));
       },
       /**
        * @description 渲染页面
@@ -165,7 +165,8 @@ define('sf.b2c.mall.component.login', [
           checkUserExist.sendRequest()
             .fail(function(errorCode){
               if (errorCode == 1000340) {
-                that.element.find('#username-error-tips').html(ERROR_NO_PASSWORD).show();
+                var fn = can.view.mustache(ERROR_NO_PASSWORD);
+                $('#username-error-tips').html(fn({tel:username})).show();
                 return false;
               };
             })

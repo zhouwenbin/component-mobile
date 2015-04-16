@@ -51,6 +51,10 @@ define(
       render: function(data) {
         var html = can.view('templates/component/sf.b2c.mall.component.setpassword.mustache', data);
         this.element.append(html);
+        var params = can.deparam(window.location.search.substr(1));
+        if (params.tel) {
+          $('#input-mobile').val(params.tel);
+        };
       },
 
       checkMobile: function(mobile) {
@@ -102,10 +106,12 @@ define(
         setTimeout(function() {
           if (time > 0) {
             time--;
-            that.element.find('#mobile-code-btn').text(time + '秒后可重新发送').addClass('disable');
+            that.element.find('#mobile-code-btn').text(time + '秒后可重新发送').removeClass('success');
+            that.element.find('#mobile-code-btn').addClass('disable');
             that.countdown.call(that, time);
           } else {
             that.element.find('#mobile-code-btn').text('发送短信验证码').removeClass('disable');
+            that.element.find('#mobile-code-btn').addClass('success');
           }
         }, 1000);
       },

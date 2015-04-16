@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.coupon.hasReceived
+  * @class sf.b2c.mall.api.b2cmall.getActivityInfo
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.coupon.hasReceived',
+'sf.b2c.mall.api.b2cmall.getActivityInfo',
 [
   'zepto',
   'can',
@@ -22,13 +22,12 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'coupon.hasReceived',
+      METHOD_NAME: 'b2cmall.getActivityInfo',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'shareId': 'long',
+        'itemId': 'long'
       },
       OPTIONAL: {
-        'tempToken': 'string'
       },
       VERIFY:{
       },

@@ -154,7 +154,7 @@ define('sf.b2c.mall.order.iteminfo', [
               "num": that.itemObj.amount,
               "price": that.itemObj.sellingPrice
             }]),
-            "sysType": 'B2C_H5',
+            "sysType": that.getSysType(),
             "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
           }
         })
@@ -179,6 +179,16 @@ define('sf.b2c.mall.order.iteminfo', [
             'type': 'error'
           });
         });
+    },
+
+    getSysType: function() {
+      // alert(window.AlipayJSBridge);
+      //如果是支付宝服务窗 则是FWC_H5
+      if (typeof window.AlipayJSBridge != "undefined"){
+        return "FWC_H5"
+      } else {
+        return 'B2C_H5'
+      }
     },
 
     initProductHotData: function() {

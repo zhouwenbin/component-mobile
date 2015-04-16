@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.coupon.hasReceived
+  * @class sf.b2c.mall.api.user.uploadPushToken
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.coupon.hasReceived',
+'sf.b2c.mall.api.user.uploadPushToken',
 [
   'zepto',
   'can',
@@ -22,13 +22,14 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'coupon.hasReceived',
-      SECURITY_TYPE: SecurityType.None.name,
+      METHOD_NAME: 'user.uploadPushToken',
+      SECURITY_TYPE: SecurityType.RegisteredDevice.name,
       REQUIRED: {
-        'shareId': 'long',
+        'pushToken': 'string',
+        'pushType': 'string',
       },
       OPTIONAL: {
-        'tempToken': 'string'
+        'state': 'string'
       },
       VERIFY:{
       },
