@@ -42,7 +42,7 @@ define(
       render: function() {
         this.options.src = store.get("alipayurl");
         if (!this.options.src) {
-          alert("alipayurl error");
+          //alert("alipayurl error");
         }
         var html = can.view('/templates/order/sf.b2c.mall.order.alipayframe.mustache', this.options);
         this.element.html(html);

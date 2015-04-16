@@ -37,14 +37,10 @@ define('sf.b2c.mall.order.iteminfo', [
         })
         .always(function() {
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
-          that.element.html(html);
+          that.element.html(html);;
 
           if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {
-            var tmpCouponHtmls;
-            for (var i = 0, tmpAc; tmpAc = that.itemObj.orderCoupon.avaliableCoupons[i]; i++) {
-              tmpCouponHtmls += "<option value=" + tmpAc.couponCode + " data-price=" + tmpAc.price + ">" + tmpAc.couponDescription + "</option>";
-            }
-            $("#selectCoupon").append(tmpCouponHtmls);
+            $("#selectCoupon option").first().attr('selected', 'true');
           }
 
           $('.loadingDIV').hide();
@@ -158,7 +154,7 @@ define('sf.b2c.mall.order.iteminfo', [
               "num": that.itemObj.amount,
               "price": that.itemObj.sellingPrice
             }]),
-            "sysType": 'B2C_H5',
+            "sysType": that.getSysType(),
             "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
           }
         })
@@ -183,6 +179,16 @@ define('sf.b2c.mall.order.iteminfo', [
             'type': 'error'
           });
         });
+    },
+
+    getSysType: function() {
+      // alert(window.AlipayJSBridge);
+      //如果是支付宝服务窗 则是FWC_H5
+      if (typeof window.AlipayJSBridge != "undefined"){
+        return "FWC_H5"
+      } else {
+        return 'B2C_H5'
+      }
     },
 
     initProductHotData: function() {

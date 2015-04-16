@@ -15,12 +15,12 @@ var SECURITY_TYPE = {
 var API_MUSTACHE = ROOT_PATH + '/mustache/api.mustache';
 
 var SOURCE = [
-  {
-    name: 'liulian',
-    src: 'http://115.28.11.229/info.api?json',
-    filename: 'liulian.json',
-    filterGroup: []
-  },
+  // {
+  //   name: 'liulian',
+  //   src: 'http://115.28.11.229/info.api?json',
+  //   filename: 'liulian.json',
+  //   filterGroup: []
+  // },
   {
     name: 'haitao',
     src: 'http://115.28.145.123/info.api?json',

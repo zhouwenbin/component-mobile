@@ -24,6 +24,8 @@ module.exports = function (grunt) {
     dist: 'dist',
     tmp: '.tmp',
     publish: 'publish',
+    oss: 'h5-oss',
+    statics: 'h5-static',
     timestamp: Date.now()
   };
 
@@ -131,6 +133,22 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '<%= config.publish %>/*'
+          ]
+        }]
+      },
+      oss: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= config.oss %>/*'
+          ]
+        }]
+      },
+      statics: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= config.statics %>/*'
           ]
         }]
       },
@@ -424,7 +442,8 @@ module.exports = function (grunt) {
     compress: {
       oss: {
         options: {
-          archive: '<%=config.publish%>/oss.release.<%=config.version%>.tar'
+          // archive: '<%=config.publish%>/oss.release.<%=config.version%>.tar'
+          archive: '<%=config.oss%>/target/<%=config.oss%>.zip',
         },
         files: [
           {
@@ -437,14 +456,16 @@ module.exports = function (grunt) {
       },
       statics: {
         options: {
-          archive: '<%=config.publish%>/statics.release.<%=config.version%>.tar'
+          // archive: '<%=config.publish%>/statics.release.<%=config.version%>.tar'
+          archive: '<%=config.statics%>/target/<%=config.statics%>.zip',
         },
         files: [
           {
             expand: true,
             cwd: '<%=config.dist%>',
             src: ['templates/**', '*.html', 'json/**'],
-            dest: 'statics.h5.<%=config.version%>'
+            dest: 'ROOT'
+            // dest: 'statics.h5.<%=config.version%>'
           }
         ]
       },
@@ -659,20 +680,20 @@ module.exports = function (grunt) {
           insertRequire: ['sf.b2c.mall.page.center']
         }
       },
-      weixincenter: {
+      logincenter: {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.weixincenter.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.logincenter.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
           },
           include: [
             "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.weixincenter'
+            'sf.b2c.mall.page.logincenter'
           ],
-          insertRequire: ['sf.b2c.mall.page.weixincenter']
+          insertRequire: ['sf.b2c.mall.page.logincenter']
         }
       },
       weixinlogintest: {
@@ -808,7 +829,19 @@ module.exports = function (grunt) {
           insertRequire:  ['sf.b2c.mall.module.time']
         }
       },
-
+      header: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.header.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.header"],
+          insertRequire:  ['sf.b2c.mall.module.header']
+        }
+      },
       coupon: {
         options: {
           preserveLicenseComments: false,
@@ -861,8 +894,43 @@ module.exports = function (grunt) {
           ],
           insertRequire: ['sf.b2c.mall.page.luckymoneyaccept']
         }
-      }
+      },
 
+      setpassword: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.setpassword.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.setpassword'
+          ],
+          insertRequire: ['sf.b2c.mall.page.setpassword']
+        }
+      },
+
+      bindaccount: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.bindaccount.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.bindaccount'
+          ],
+          insertRequire: ['sf.b2c.mall.page.bindaccount']
+        }
+      }
     }
   });
 
@@ -966,6 +1034,8 @@ module.exports = function (grunt) {
         'copy:styles',
         'clean:extra',
         'clean:publish',
+        'clean:oss',
+        'clean:statics',
         'compress:oss',
         'compress:statics'
       ]);
