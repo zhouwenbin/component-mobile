@@ -29,11 +29,12 @@ define(
 
     var searchwarrior = can.Control.extend({
       itemObj:  new can.Map({
-        bagId: 83,
+        bagId: 9,
         bagCodeId: null,
         cardId: null,
         telephone: "",
         isEnable: false,
+        cardIds: null,
         errorMessage: "请输入手机号即可领取",
         userCouponInfo: null,
         fightingCapacity: 0,
@@ -110,6 +111,7 @@ define(
         var cardId = params.cardId;
         var cardIds = params.cardIds;
         if (cardIds) {
+          this.itemObj.attr("cardIds", params.cardIds);
           var tmpArr = cardIds.split(",");
           for(var i = 0, tmpItem; tmpItem = tmpArr[i]; i++) {
             this.cardMap[tmpItem] = i;
@@ -147,7 +149,7 @@ define(
           var wechatLogin = new SFWeChatLogin();
 
           if (SFFn.isMobile.AlipayChat()) {
-            wechatLogin.alipayTmplLogin();
+            //wechatLogin.alipayTmplLogin();
           }else{
             wechatLogin.tmplLogin();
           }
@@ -323,7 +325,9 @@ define(
           "&bagCodeId=" + this.itemObj.bagCodeId +
           "&couponId=" + this.itemObj.couponId +
           "&cardId=" + this.itemObj.cardId +
-          "&price=" + this.itemObj.reduceCost;
+          "&price=" + this.itemObj.reduceCost +
+          (this.itemObj.cardIds ? "&cardIds=" + this.itemObj.cardIds : "");
+
       },
       calculateFightingCapacity: function(cardId) {
         var warrior = this.warriors[this.cardMap[cardId]];
