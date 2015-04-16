@@ -36,10 +36,12 @@ define(
         } else if (tag == "alipay_qklg"){
           type =  'ALIPAY';
 
-          //delete params.tag;
-          //delete params.redirectUrl;
+          delete params.tag;
+          delete params.redirectUrl;
+          delete params.tmpl;
 
-          //authResp = window.decodeURIComponent($.param(params));
+          authResp = window.decodeURIComponent($.param(params));
+          /*
           authResp = authResp + "email=" + params.email;
           authResp = authResp + "&is_success=" + params.is_success;
           authResp = authResp + "&notify_id=" + params.notify_id;
@@ -48,6 +50,7 @@ define(
           authResp = authResp + "&user_id=" + params.user_id;
           authResp = authResp + "&sign=" + params.sign;
           authResp = authResp + "&sign_type=" + params.sign_type;
+          */
         }
 
         var partnerLogin = new SFPartnerLogin({
