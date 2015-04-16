@@ -18,7 +18,7 @@ define(
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.getShareBagCpList',
     'sf.b2c.mall.api.coupon.getShareBagInfo',
-    'sf.b2c.mall.api.coupon.hasReceived'q
+    'sf.b2c.mall.api.coupon.hasReceived'
   ],
   function(can, $, Fastclick, store, SFFn,
            SFWeixin, SFFrameworkComm, SFConfig, helpers,
