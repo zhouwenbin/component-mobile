@@ -115,7 +115,7 @@ define(
       },
       render: function() {
         var that = this;
-        this.element.html(can.view("templates/searchwarrior/sf.b2c.mall.searchwarrior.share.mustache", this.itemObj));
+        this.element.html(can.view("templates/searchwarrior/sf.b2c.mall.searchwarrior.share.mustache", this.itemObj, this.helpers));
         this.loading.hide();
       },
 

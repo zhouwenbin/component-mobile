@@ -167,7 +167,7 @@ define(
           var login = new SFLogin();
 
           if (SFFn.isMobile.AlipayChat()) {
-            //wechatLogin.alipayTmplLogin();
+            wechatLogin.alipayTmplLogin();
           }else{
             login.tmplLogin();
           }
@@ -185,7 +185,7 @@ define(
       renderHtml: function() {
         var that = this;
 
-        var html = can.view(this.itemObj.template, this.itemObj);
+        var html = can.view(this.itemObj.template, this.itemObj, this.helpers);
         this.element.html(html);
 
         this.itemObj.bind("telephone", function(ev, newVal, oldVal) {
