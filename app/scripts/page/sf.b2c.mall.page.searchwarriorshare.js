@@ -5,6 +5,7 @@ define(
     'can',
     'zepto',
     'fastclick',
+    'sf.util',
     'sf.weixin',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
@@ -13,7 +14,7 @@ define(
     'sf.b2c.mall.widget.login',
     'sf.b2c.mall.widget.message'
   ],
-  function(can, $, Fastclick,
+  function(can, $, Fastclick, SFFn,
            SFWeixin, SFFrameworkComm, SFConfig, helpers,
            SFLoading, SFLogin, SFMessage) {
       Fastclick.attach(document.body);
