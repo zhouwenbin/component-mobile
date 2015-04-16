@@ -18,7 +18,7 @@ define(
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.getShareBagCpList',
     'sf.b2c.mall.api.coupon.getShareBagInfo',
-    'sf.b2c.mall.api.coupon.hasReceived'
+    'sf.b2c.mall.api.coupon.hasReceived'q
   ],
   function(can, $, Fastclick, store, SFFn,
            SFWeixin, SFFrameworkComm, SFConfig, helpers,
@@ -171,6 +171,15 @@ define(
           }else{
             login.tmplLogin();
           }
+        }
+      },
+      checkTempTokenExpire: function() {
+        var expire = store.get('tempTokenExpire');
+        var nowDate = new Date();
+        if (nowDate.getTime() > expire) {
+          return true;
+        } else {
+          return false;
         }
       },
       renderHtml: function() {
