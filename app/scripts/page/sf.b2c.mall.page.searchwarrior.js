@@ -158,6 +158,20 @@ define(
           that.loading.hide();
           that.initSubmitBtnEvent();
         }
+
+        if(SFFrameworkComm.prototype.checkUserLogin.call(this) || (store.get('tempToken') && store.get('tempTokenExpire') && !this.checkTempTokenExpire())) {
+          that.renderHtml();
+          that.loading.hide();
+          that.initSubmitBtnEvent();
+        } else {
+          var login = new SFLogin();
+
+          if (SFFn.isMobile.AlipayChat()) {
+            //wechatLogin.alipayTmplLogin();
+          }else{
+            login.tmplLogin();
+          }
+        }
       },
       renderHtml: function() {
         var that = this;
@@ -211,6 +225,7 @@ define(
             that.receiveShareCoupon();
           })
           .fail(function(error) {
+            that.loading.hide();
             new SFMessage(null, {
               'tip': that.errorMap[error] || '查看战斗力失败！',
               'type': 'error'
@@ -225,6 +240,7 @@ define(
        */
       receiveShareCoupon: function() {
         var that = this;
+        alert(store.get('tempToken'));
         var receiveShareCoupon = new SFReceiveShareCoupon({
           'mobile': this.itemObj.telephone,
           'receiveChannel': 'B2C',

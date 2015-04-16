@@ -211,6 +211,7 @@ define(
             that.receiveShareCoupon();
           })
           .fail(function(error) {
+            that.loading.hide();
             new SFMessage(null, {
               'tip': that.errorMap[error] || '查看战斗力失败！',
               'type': 'error'
