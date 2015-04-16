@@ -101,18 +101,21 @@ define(
           }
         }
         this.itemObj.attr("price", params.price);
-
-        SFWeixin.shareDetail(
-          '来看看你是哪个超级英雄，领券人品大测试',
-          '变身超级英雄，拿顺丰海淘优惠券，是酷炫的他，柔美的她，还是软萌鸡肋的他？点击测试~优惠券等你来拿',
-          'http://m.sfht.com/searchwarrior.html?' + window.location.search.substr(1),
-          'http://img.sfht.com/sfht/img/sharelog.png');
-
         can.when(this.initWarriors())
           .done(function() {
             that.itemObj.attr("warrior", that.calculateFightingCapacity(cardId));
             that.render();
+
+            SFWeixin.shareDetail(
+              '来看看你是哪个超级英雄，领券人品大测试',
+              '变身超级英雄，拿顺丰海淘优惠券，是酷炫的他，柔美的她，还是软萌鸡肋的他？点击测试~优惠券等你来拿',
+              'http://m.sfht.com/searchwarrior.html?' + window.location.search.substr(1),
+              that.itemObj.warrior.img || 'http://img.sfht.com/sfht/img/sharelog.png');
           });
+
+
+
+
       },
       render: function() {
         var that = this;

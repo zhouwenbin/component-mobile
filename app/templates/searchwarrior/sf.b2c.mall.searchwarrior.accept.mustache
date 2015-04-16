@@ -1,13 +1,13 @@
 <section class="superman2">
-	<h1>您的战斗力为：<strong class="text-important">{{warrior.value}}</strong></h1>
-	<h2>您获得称号：<span class="text-important">{{warrior.name}}</span></h2>
+	<h1>{{herName}}的战斗力为：<strong class="text-important">{{warrior.value}}</strong></h1>
+	<h2>{{herName}}获得称号：<span class="text-important">{{warrior.name}}</span></h2>
 	<div class="superman2-r1">
 		<img src="{{warrior.img}}" />
 		<div class="superman2-r1c1">
 			<h3>{{warrior.say}}</h3>
 			<ul>
-				<li>卖萌指数：{{#warrior.fightArray}}<span class="superman2-icon"></span>{{/warrior.fightArray}}</li>
-				<li>治愈指数：{{#warrior.faceArray}}<span class="superman2-icon"></span>{{/warrior.faceArray}}</li>
+				<li>战斗指数：{{#warrior.fightArray}}<span class="superman2-icon"></span>{{/warrior.fightArray}}</li>
+				<li>卖萌指数：{{#warrior.faceArray}}<span class="superman2-icon"></span>{{/warrior.faceArray}}</li>
 			</ul>
 		</div>
 	</div>
@@ -33,7 +33,7 @@
 		{{#each userCouponInfo.items}}
     <tr>
         <td>{{nickname}}</td>
-        <td>战斗力{{warrior.value}}<br>{{title}}元</td>
+        <td>战斗力{{warrior.value}}<br>{{title}}</td>
     </tr>
 		{{/each}}
 	</table>

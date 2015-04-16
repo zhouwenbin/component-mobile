@@ -38,6 +38,7 @@ define(
         errorMessage: "请输入手机号即可领取",
         userCouponInfo: null,
         fightingCapacity: 0,
+        herName: "",
         template: "templates/searchwarrior/sf.b2c.mall.searchwarrior.mustache"
       }),
       isNull: false,
@@ -136,10 +137,10 @@ define(
                 "template": "templates/searchwarrior/sf.b2c.mall.searchwarrior.accept.mustache"
               });
               that.getShareBagCpList();
+              that.initOrderShareBagInfo();
             }
 
             that.render();
-            that.initOrderShareBagInfo();
           });
       },
       render: function() {
@@ -227,6 +228,7 @@ define(
               'tip': that.errorMap[error] || '查看战斗力失败！',
               'type': 'error'
             });
+            that.loading.hide();
           })
           .always(function() {
             that.loading.hide();
@@ -274,6 +276,9 @@ define(
         return getShareBagCpList.sendRequest()
           .done(function(userCouponInfo) {
             for(var i = 0, item; item = userCouponInfo.items[i]; i++) {
+              if (item.cardId == that.itemObj.cardId) {
+                that.itemObj.attr("herName", item.nickname.substr(0, 4));
+              }
               item.warrior = that.calculateFightingCapacity(item.cardId);
             }
 
