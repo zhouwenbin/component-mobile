@@ -41,13 +41,13 @@ define(
 
           //authResp = window.decodeURIComponent($.param(params));
           authResp = authResp + "email=" + params.email;
-          authResp = authResp + "is_success=" + params.is_success;
-          authResp = authResp + "notify_id=" + params.notify_id;
-          authResp = authResp + "real_name=" + params.real_name;
-          authResp = authResp + "token=" + params.token;
-          authResp = authResp + "user_id=" + params.user_id;
-          authResp = authResp + "sign=" + params.sign;
-          authResp = authResp + "sign_type=" + params.sign_type;
+          authResp = authResp + "&is_success=" + params.is_success;
+          authResp = authResp + "&notify_id=" + params.notify_id;
+          authResp = authResp + "&real_name=" + params.real_name;
+          authResp = authResp + "&token=" + params.token;
+          authResp = authResp + "&user_id=" + params.user_id;
+          authResp = authResp + "&sign=" + params.sign;
+          authResp = authResp + "&sign_type=" + params.sign_type;
         }
 
         var partnerLogin = new SFPartnerLogin({
