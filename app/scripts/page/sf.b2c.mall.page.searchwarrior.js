@@ -224,11 +224,16 @@ define(
           })
           .fail(function(error) {
             that.loading.hide();
-            new SFMessage(null, {
-              'tip': that.errorMap[error] || '查看战斗力失败！',
-              'type': 'error'
-            });
-            that.loading.hide();
+            if (error == "11000210") {
+              store.remove("tempToken");
+              store.remove("tempTokenExpire");
+              window.location.reload();
+            } else {
+              new SFMessage(null, {
+                'tip': that.errorMap[error] || '查看战斗力失败！',
+                'type': 'error'
+              });
+            }
           })
           .always(function() {
             that.loading.hide();
@@ -257,10 +262,17 @@ define(
             that.gotoSharePage();
           })
           .fail(function(error) {
-            new SFMessage(null, {
-              'tip': that.errorMap[error] || '查看战斗力失败！',
-              'type': 'error'
-            });
+            if (error == "11000210") {
+              store.remove("tempToken");
+              store.remove("tempTokenExpire");
+              window.location.reload();
+            } else {
+              new SFMessage(null, {
+                'tip': that.errorMap[error] || '查看战斗力失败！',
+                'type': 'error'
+              });
+            }
+
             this.loading.hide();
           });
       },
