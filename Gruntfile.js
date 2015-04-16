@@ -980,7 +980,7 @@ module.exports = function (grunt) {
             "sf.b2c.mall.business.config",
             'sf.b2c.mall.page.searchwarriorshare'
           ],
-          insertRequire: ['sf.b2c.mall.page.searchwarrior']
+          insertRequire: ['sf.b2c.mall.page.searchwarriorshare']
         }
       }
     }
