@@ -196,7 +196,7 @@ define(
             return;
           }
 
-          that.loading.show();
+          //that.loading.show();
           if (that.itemObj.cardId && !that.isNull) {
             that.receiveShareCoupon();
           } else {
@@ -261,6 +261,7 @@ define(
               'tip': that.errorMap[error] || '查看战斗力失败！',
               'type': 'error'
             });
+            this.loading.hide();
           });
       },
       /**
