@@ -229,7 +229,8 @@ define(
           'mobile': this.itemObj.telephone,
           'receiveChannel': 'B2C',
           'receiveWay': 'HBLQ',
-          'shareBagId': this.itemObj.bagCodeId
+          'shareBagId': this.itemObj.bagCodeId,
+          tempToken: store.get('tempToken')
         });
         receiveShareCoupon.sendRequest()
           .done(function(userCouponInfo) {
@@ -300,6 +301,9 @@ define(
         var hasReceivedInfo = new SFHasReceived({
           "shareId": this.itemObj.bagCodeId
         });
+        if (store.get('tempToken')) {
+          params.tempToken = store.get('tempToken');
+        }
 
         return hasReceivedInfo.sendRequest()
           .done(function(boolResp) {
