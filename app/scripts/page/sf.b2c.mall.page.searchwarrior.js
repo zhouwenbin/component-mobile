@@ -139,6 +139,7 @@ define(
             }
 
             that.render();
+            that.initOrderShareBagInfo();
           });
       },
       render: function() {
@@ -153,9 +154,9 @@ define(
           var wechatLogin = new SFWeChatLogin();
 
           if (SFFn.isMobile.AlipayChat()) {
-            wechatLogin.alipayTmplLogin();
+            wechatLogin.alipayTmplLogin(window.location.href);
           }else{
-            wechatLogin.tmplLogin();
+            wechatLogin.tmplLogin(window.location.href);
           }
         }
       },
@@ -301,7 +302,6 @@ define(
               that.isNull = true;
             }
 
-            that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo)
           })
           .fail(function(error) {
             console.error(error);
