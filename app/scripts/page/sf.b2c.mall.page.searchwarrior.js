@@ -145,31 +145,17 @@ define(
         var that = this;
 
         //强制登录
-        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken')) {
-          var wechatLogin = new SFWeChatLogin();
-
-          if (SFFn.isMobile.AlipayChat()) {
-            //wechatLogin.alipayTmplLogin();
-          }else{
-            wechatLogin.tmplLogin();
-          }
-        } else {
-          that.renderHtml();
-          that.loading.hide();
-          that.initSubmitBtnEvent();
-        }
-
         if(SFFrameworkComm.prototype.checkUserLogin.call(this) || (store.get('tempToken') && store.get('tempTokenExpire') && !this.checkTempTokenExpire())) {
           that.renderHtml();
           that.loading.hide();
           that.initSubmitBtnEvent();
         } else {
-          var login = new SFLogin();
+          var wechatLogin = new SFWeChatLogin();
 
           if (SFFn.isMobile.AlipayChat()) {
             wechatLogin.alipayTmplLogin();
           }else{
-            login.tmplLogin();
+            wechatLogin.tmplLogin();
           }
         }
       },
