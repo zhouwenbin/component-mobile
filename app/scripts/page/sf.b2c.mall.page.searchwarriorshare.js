@@ -16,8 +16,8 @@ define(
   function(can, $, Fastclick,
            SFWeixin, SFFrameworkComm, SFConfig, helpers,
            SFLoading, SFWeChatLogin, SFMessage) {
-    Fastclick.attach(document.body);
-    SFFrameworkComm.register(3);
+      Fastclick.attach(document.body);
+      SFFrameworkComm.register(3);
 
     var searchwarriorshare = can.Control.extend({
       itemObj:  new can.Map({
@@ -28,8 +28,37 @@ define(
       loading: new SFLoading(),
       warriors: [],
       cardMap: {
-        "260": 4
-      },
+          "49": 0,
+          "50": 1,
+          "51": 2,
+          "52": 3,
+          "53": 4,
+          "54": 5,
+          "55": 6,
+          "56": 7,
+          "57": 8,
+          "58": 9,
+          "59": 10,
+          "60": 11,
+          "61": 12,
+          "62": 13,
+          "63": 14,
+          "64": 15,
+          "65": 16,
+          "66": 17,
+          "67": 18,
+          "68": 19,
+          "69": 20,
+          "70": 21,
+          "71": 22,
+          "72": 23,
+          "73": 24,
+          "74": 25,
+          "75": 26,
+          "76": 27,
+          "77": 28,
+          "78": 29
+        },
 
       init: function() {
         var that = this;
@@ -86,7 +115,6 @@ define(
       "#shareBtn click": function() {
         this.itemObj.attr("isShowMask", true);
       }
-
     });
     new searchwarriorshare('.sf-b2c-mall-searchwarriorshare');
   });
