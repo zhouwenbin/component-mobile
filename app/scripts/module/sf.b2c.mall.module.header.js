@@ -24,9 +24,10 @@ define(
         var csrfToken = store.get('csrfToken');
 
         if (tempToken) {
-          window.location.href = 'bindaccount.html?tag='+params.tag+'&redirectUrl='+redirectUrl;
+          window.location.href = 'bindaccount.html?tag='+params.tag+'&redirectUrl='+escape(redirectUrl);
         }else if (csrfToken) {
-          window.location.href = redirectUrl || SFConfig.setting.link.index;
+          window.location.href = 'bindaccount.html?tag='+params.tag+'&redirectUrl='+escape(redirectUrl);
+          //window.location.href = redirectUrl || SFConfig.setting.link.index;
         }else{
           window.location.href = SFConfig.setting.link.index;
         }
