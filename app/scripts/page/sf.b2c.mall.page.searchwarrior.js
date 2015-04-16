@@ -173,6 +173,15 @@ define(
           }
         }
       },
+      checkTempTokenExpire: function() {
+        var expire = store.get('tempTokenExpire');
+        var nowDate = new Date();
+        if (nowDate.getTime() > expire) {
+          return true;
+        } else {
+          return false;
+        }
+      },
       renderHtml: function() {
         var that = this;
 
