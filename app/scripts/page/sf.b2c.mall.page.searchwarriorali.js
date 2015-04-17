@@ -147,8 +147,12 @@ define(
         } else {
           var wechatLogin = new SFWeChatLogin();
 
-          if (SFFn.isMobile.AlipayChat()) {
+          if (SFFn.isMobile.WeChat()) {
+            wechatLogin.tmplLogin(window.location.href);
+          }else if (SFFn.isMobile.AlipayChat()){
             wechatLogin.alipayTmplLogin(window.location.href);
+          } else {
+            $(body).html('请在支付宝服务窗口打开链接');
           }
         }
       },
