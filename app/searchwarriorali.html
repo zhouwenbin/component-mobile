@@ -123,13 +123,6 @@ define(
             return options.inverse(options.contexts || this);
           }
         },
-        isWeChat: function(options) {
-          if (SFFn.isMobile.WeChat()) {
-            return options.fn(options.contexts || this);
-          }else{
-            return options.inverse(options.contexts || this);
-          }
-        },
         isAlipay: function(options) {
           if (SFFn.isMobile.AlipayChat()) {
             return options.fn(options.contexts || this);
@@ -176,13 +169,13 @@ define(
               that.getShareBagCpList();
               that.initOrderShareBagInfo();
             }
-
+            debugger;
             that.render();
           });
       },
       render: function() {
         var that = this;
-
+        debugger;
         //强制登录
         if(SFFrameworkComm.prototype.checkUserLogin.call(this) || (store.get('tempToken') && store.get('tempTokenExpire') && !this.checkTempTokenExpire())) {
           that.renderHtml();
