@@ -152,7 +152,7 @@ define(
           }else if (SFFn.isMobile.AlipayChat()){
             wechatLogin.alipayTmplLogin(window.location.href);
           } else {
-            $(body).html('请在支付宝服务窗口打开链接');
+            $('body').html('请在支付宝服务窗口打开链接');
           }
         }
       },
