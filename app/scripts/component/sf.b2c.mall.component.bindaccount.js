@@ -62,7 +62,7 @@ define(
       },
 
       bindAccountTemplate: function() {
-        return '<section class="login">' +         
+        return '<section class="login">' +
           '<form action="">' +
           '<ol>' +
           '<li>' +
@@ -215,7 +215,9 @@ define(
             store.set('csrfToken', data.csrfToken);
             store.remove('tempToken');
             var params = can.deparam(window.location.search.substr(1));
-            window.location.href = params.redirectUrl || SFConfig.setting.link.index
+            var redirectUrl = window.decodeURIComponent(params.redirectUrl);
+
+            window.location.href = redirectUrl || SFConfig.setting.link.index
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
               var defaultText = '绑定失败';
