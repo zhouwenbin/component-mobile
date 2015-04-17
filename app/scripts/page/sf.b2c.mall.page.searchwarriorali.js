@@ -156,6 +156,8 @@ define(
 
           if (SFFn.isMobile.AlipayChat()) {
             wechatLogin.alipayTmplLogin(window.location.href);
+          }else{
+            wechatLogin.tmplLogin(window.location.href);
           }
         }
       },
