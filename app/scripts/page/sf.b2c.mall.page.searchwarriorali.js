@@ -38,6 +38,7 @@ define(
         errorMessage: "请输入手机号即可领取",
         userCouponInfo: null,
         fightingCapacity: 0,
+        herName: "",
         template: "templates/searchwarrior/sf.b2c.mall.searchwarrior.mustache"
       }),
       isNull: false,
@@ -136,6 +137,7 @@ define(
                 "template": "templates/searchwarrior/sf.b2c.mall.searchwarrior.accept.mustache"
               });
               that.getShareBagCpList();
+              that.initOrderShareBagInfo();
             }
 
             that.render();
@@ -145,31 +147,15 @@ define(
         var that = this;
 
         //强制登录
-        if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !store.get('tempToken')) {
-          var wechatLogin = new SFWeChatLogin();
-
-          if (SFFn.isMobile.AlipayChat()) {
-            //wechatLogin.alipayTmplLogin();
-          }else{
-            wechatLogin.tmplLogin();
-          }
-        } else {
-          that.renderHtml();
-          that.loading.hide();
-          that.initSubmitBtnEvent();
-        }
-
         if(SFFrameworkComm.prototype.checkUserLogin.call(this) || (store.get('tempToken') && store.get('tempTokenExpire') && !this.checkTempTokenExpire())) {
           that.renderHtml();
           that.loading.hide();
           that.initSubmitBtnEvent();
         } else {
-          var login = new SFLogin();
+          var wechatLogin = new SFWeChatLogin();
 
           if (SFFn.isMobile.AlipayChat()) {
-            wechatLogin.alipayTmplLogin();
-          }else{
-            login.tmplLogin();
+            wechatLogin.alipayTmplLogin(window.location.href);
           }
         }
       },
@@ -208,7 +194,7 @@ define(
             return;
           }
 
-          that.loading.show();
+          //that.loading.show();
           if (that.itemObj.cardId && !that.isNull) {
             that.receiveShareCoupon();
           } else {
@@ -236,10 +222,16 @@ define(
           })
           .fail(function(error) {
             that.loading.hide();
-            new SFMessage(null, {
-              'tip': that.errorMap[error] || '查看战斗力失败！',
-              'type': 'error'
-            });
+            if (error == "11000210") {
+              store.remove("tempToken");
+              store.remove("tempTokenExpire");
+              window.location.reload();
+            } else {
+              new SFMessage(null, {
+                'tip': that.errorMap[error] || '查看战斗力失败！',
+                'type': 'error'
+              });
+            }
           })
           .always(function() {
             that.loading.hide();
@@ -250,7 +242,6 @@ define(
        */
       receiveShareCoupon: function() {
         var that = this;
-        alert(store.get('tempToken'));
         var receiveShareCoupon = new SFReceiveShareCoupon({
           'mobile': this.itemObj.telephone,
           'receiveChannel': 'B2C',
@@ -269,10 +260,18 @@ define(
             that.gotoSharePage();
           })
           .fail(function(error) {
-            new SFMessage(null, {
-              'tip': that.errorMap[error] || '查看战斗力失败！',
-              'type': 'error'
-            });
+            if (error == "11000210") {
+              store.remove("tempToken");
+              store.remove("tempTokenExpire");
+              window.location.reload();
+            } else {
+              new SFMessage(null, {
+                'tip': that.errorMap[error] || '查看战斗力失败！',
+                'type': 'error'
+              });
+            }
+
+            this.loading.hide();
           });
       },
       /**
@@ -288,6 +287,9 @@ define(
         return getShareBagCpList.sendRequest()
           .done(function(userCouponInfo) {
             for(var i = 0, item; item = userCouponInfo.items[i]; i++) {
+              if (item.cardId == that.itemObj.cardId) {
+                that.itemObj.attr("herName", item.nickname.substr(0, 4));
+              }
               item.warrior = that.calculateFightingCapacity(item.cardId);
             }
 
@@ -315,7 +317,6 @@ define(
               that.isNull = true;
             }
 
-            that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo)
           })
           .fail(function(error) {
             console.error(error);
