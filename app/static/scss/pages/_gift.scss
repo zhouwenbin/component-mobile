@@ -1,0 +1,63 @@
+.gift-h{
+  background: #fff;
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e1e1e1;
+  margin-bottom: 12px;
+}
+.gift-h h1{
+  font-size: 18px;
+  color:#dc3f44;
+  margin-bottom: 12px;
+}
+.gift-h p{
+  font-size: 13px;
+  color:#666;
+}
+.gift-b{
+  margin-bottom: 10px;
+}
+.gift-b .btn{
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+}
+.gift-r1{
+  margin-bottom: 19px;
+}
+.gift-c1{
+  width:82px;
+  height: 115px;
+  background: url(#{$bg-url}gift-c1.png) no-repeat;
+  background-size: 82px;
+  margin-right: 16px;
+  color: #fff;
+  text-align: center;
+  padding-top: 33px;
+}
+.gift-c1r1{
+  margin-bottom: 5px;
+}
+.gift-c1r1 span{
+  font-size: 32px;
+}
+.gift-c2 p{
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.gift-c2 .text-important{
+  font-size: 16px;
+}
+.gift-c2 li{
+  font-size: 13px;
+  line-height: 21px;
+  color:#999;
+  list-style:inside;
+} 
+.gift-f li{
+  margin-bottom: 10px;
+}
+.gift-r1{
+  display: flex;
+}

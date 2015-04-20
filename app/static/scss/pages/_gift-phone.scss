@@ -1,0 +1,39 @@
+.gift-phone-b{
+  width: 277px;
+  height: 216px;
+  background: #fff;
+  border-radius: 5px;
+  padding:23px 30px;
+  margin: 86px auto 0;
+}
+.gift-phone-icon{
+  width: 39px;
+  height: 47px;
+  float: left;
+  background:url(#{$bg-url}gift-icon.png) no-repeat;
+  background-size: 39px;
+  margin-left: -51px;
+}
+.gift-phone h2{
+  margin-bottom: 24px;
+  font-size: 15px;
+  line-height: 21px;
+  padding-left: 51px;
+}
+.gift-phone input{
+  border-radius:5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.gift-phone img{
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left:0;
+}
+.gift-phone button{
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+}
