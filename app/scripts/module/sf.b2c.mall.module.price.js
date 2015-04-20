@@ -6,7 +6,8 @@ define(
     'fastclick',
     'sf.b2c.mall.api.b2cmall.getProductHotDataList',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.framework.comm'
+    'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.api.user.partnerLogin' //传参判断第三方账号是否绑定手机号码
   ],
 
   function(can, $, _, Fastclick, SFGetProductHotDataList, SFConfig, SFFrameworkComm) {
@@ -57,7 +58,7 @@ define(
           //Zepto("[data-cms-itemid='" + a +"']").text('hah');
           var $el = $("[data-cms-itemid='" + value.itemId +"']")
           //var $el = $('.cms-src-item').data('cms-itemid', value.itemId);
-          
+
           // 如果有重复的itemid，则进行容错
           if ($el.length && $el.length > 1) {
             _.each($el, function(item) {
@@ -81,12 +82,12 @@ define(
         element.find('.cms-fill-price').text(value.sellingPrice / 100);
 
         // 如果原价低于卖价，则不展示折扣和原价
-        if (value.sellingPrice >= value.originPrice) {
+        if (value.sellingPrice >= value.referencePrice) {
           element.find('.cms-fill-discountparent')[0].style.display = "none";
-          element.find('.cms-fill-originpriceparent')[0].style.display = "none";
+          element.find('.cms-fill-referencepriceparent')[0].style.display = "none";
         } else {
-          element.find('.cms-fill-originprice').text(value.originPrice / 100);
-          element.find('.cms-fill-discount').text((parseInt(value.sellingPrice, 10) * 10 / parseInt(value.originPrice, 10)).toFixed(1));
+          element.find('.cms-fill-referenceprice').text(value.referencePrice / 100);
+          element.find('.cms-fill-discount').text((parseInt(value.sellingPrice, 10) * 10 / parseInt(value.referencePrice, 10)).toFixed(1));
         }
 
         // 做售空处理

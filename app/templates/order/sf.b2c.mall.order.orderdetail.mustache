@@ -36,10 +36,7 @@
           <div class="info-r1c2">
           <span>{{receiveInfo.country}}</span><span>{{receiveInfo.province}}</span><span>{{receiveInfo.city}}</span><span>{{receiveInfo.region}}</span><span>{{receiveInfo.detailAddress}}</span></div>
         </li>
-        <li>
-          <div class="fl info-r1c1">邮　编：</div>
-          <div class="info-r1c2">{{receiveInfo.zipCode}}</div>
-        </li>
+
       </ul>
       <ul class="info-r2">
         <li>支付方式：在线支付</li>
@@ -69,7 +66,7 @@
     <div class="orderdetail-r4 box">
       <ul>
         <li>商品总额：<span class="text-important">¥{{sf.price allTotalPrice}}</span></li>
-        <li>运费：<span class="text-important">¥0</span></li>
+        <li><span class="text-important">免运费</span></li>
         {{#if showTax}}
           <li>税额：<span class="text-important">¥0</span></li>
         {{/if}}

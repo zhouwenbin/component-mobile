@@ -17,9 +17,11 @@ define(
 
     return {
       payV2: function(data, callback) {
+        var that = this;
+
         requestPayV2.setData({
           "orderId": data.orderid,
-          'payType': 'alipay_forex_wap'
+          'payType': that.getPayType()
         });
 
         requestPayV2
@@ -44,6 +46,16 @@ define(
               callback.error();
             }
           });
+      },
+
+      getPayType: function() {
+
+        //如果是支付宝服务窗 则是alipay_intl_wap
+        if (typeof window.AlipayJSBridge != "undefined"){
+          return "alipay_intl_wap";
+        }
+
+        return 'alipay_forex_wap';
       }
     }
 

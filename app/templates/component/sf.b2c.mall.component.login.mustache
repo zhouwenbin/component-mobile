@@ -33,6 +33,10 @@
       <a href="/register.html">新用户注册</a>
     </div>
     {{#isWeChat}}
-        <div class="login-r2" id="weChatLoginBox"><a href="javascript:void(0)" class="weixinlogin"><span class="icon icon18"></span><br>微信登录</a></div>
+        <div class="login-r2" id="weChatLoginBox"><div>微信快捷登录</div><br /><a href="javascript:void(0)" class="weixinlogin"><span class="icon icon18"></span></a></div>
     {{/isWeChat}}
+
+    {{#isAlipay}}
+      <div class="login-r2" id="weChatLoginBox"><div>支付宝快捷登录</div><br /><a href="javascript:void(0)" class="alipaylogin"><span class="icon icon37"></span></a></div>
+    {{/isAlipay}}
   </section>

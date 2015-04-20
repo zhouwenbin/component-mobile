@@ -36,6 +36,8 @@ define([], function () {
     'ilogin': 'http://pre.sfht.com/i.login.html',
     'coupon': 'http://pre.sfht.com/coupon.html',
     'iregister': 'http://pre.sfht.com/i.register.html',
+    'setpassword':'http://pre.sfht.com/setpassword.html',
+    'bindaccount':'http://pre.sfht.com/bindaccount.html',
     'luckymoneyshare': 'http://dev.sfht.com/luckymoneyshare.html',
     'luckymoneyaccept': 'http://dev.sfht.com/luckymoneyaccept.html'
   }

@@ -10,7 +10,7 @@ body {
   color: #333;
   min-width: 320px;
   margin: 0 auto;
-  background:#eee;
+  background:#f0eff5;
 }
 
 a{
@@ -19,7 +19,7 @@ a{
   outline: none;
 }
 a:visited{
-  color: inherit;
+  color: #333;
 }
 html, body {
   -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */

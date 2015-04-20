@@ -24,11 +24,6 @@
           <span class="label label-error"><span class="icon icon31"></span>{{itemInfo.saleInfo.sendTime}}天到</span>
       {{/sf-showJSHT}}
 
-      {{! {{#if priceInfo.soldOut}}
-      {{! <div class="mask"></div> }}
-      {{! <span class="icon icon20 center">售完</span> }}
-      {{! {{/if}}
-
     </div>
     <div class="goods-b">
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
@@ -37,7 +32,7 @@
           <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>（含税）{{#sf-showOriginPrice priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>{{/sf-showOriginPrice}}
         </div>
         <div class="goods-r2c2 fr">
-          <span class="icon icon1"></span>运费：0元
+          <span class="icon icon1"></span>免运费
         </div>
       </div>
       <p class="goods-r3">{{itemInfo.saleInfo.seller}}：{{itemInfo.saleInfo.shippingPoint}} 发货,预计{{itemInfo.saleInfo.sendTime}}天内到货</p>
@@ -54,11 +49,6 @@
       </ul>
     </div>
     <div class="detail-b" id="specAndBrandInfo">
-      <ul>
-        {{#each itemInfo.saleInfo.specGroups}}
-        <li><span class="justify">{{sf.split specName}}</span>： {{#each specs}} {{specValue}} {{/each}}</li>
-        {{/each}}
-      </ul>
       <ul>
         <li><span class="justify">品 牌</span>： {{itemInfo.basicInfo.brand}}</li>
       </ul>

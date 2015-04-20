@@ -39,6 +39,9 @@ define('sf.util',
       WeChat: function() {
         return navigator.userAgent.match(/MicroMessenger/i);
       },
+      AlipayChat:function(){
+        return navigator.userAgent.match(/AlipayClient/i);
+      },
       any: function() {
           return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows()) || this.Firefox();
       }

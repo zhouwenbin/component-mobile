@@ -1,0 +1,31 @@
+.nataral-list{
+  margin: 10px;
+}
+.nataral-list ul{
+  overflow: hidden;
+}
+.nataral-list li{
+  width: 48%;
+  border: 1px solid #f4f4f4;
+  background:#fff;
+}
+.nataral-list li:nth-child(odd){
+  float:left;
+}
+.nataral-list li:nth-child(even){
+  float:right;
+}
+.nataral-list img{
+  width: 100%;
+}
+.nataral-list-b{
+  padding:10px;
+}
+.nataral-list h2{
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 10px;
+}
+.nataral-list .text-important{
+  font-size: 15px;
+}
