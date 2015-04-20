@@ -519,6 +519,24 @@ a[title="站长统计"] {
   background-position: -256px -60px;
 }
 
+.icon40 {
+  width: 18px;
+  height: 13px;
+  background-position: -255px -92px;
+}
+
+.icon41 {
+  width: 12px;
+  height: 14px;
+  background-position: -255px -113px;
+}
+
+.icon42 {
+  width: 14px;
+  height: 14px;
+  background-position: -255px -135px;
+}
+
 .superman {
   background: url(../img/superman.jpg) no-repeat center top;
   height: 604px;
