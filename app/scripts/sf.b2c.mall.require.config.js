@@ -211,7 +211,7 @@ requirejs.config({
     'sf.b2c.mall.page.setpassword': 'scripts/page/sf.b2c.mall.page.setpassword',
     'sf.b2c.mall.component.setpassword': 'scripts/component/sf.b2c.mall.component.setpassword',
     //领取优惠券
-    'sf.b2c.mall.page.getcoupon': 'scripts/page/sf.b2c.mall.page.getcoupon'
+    'sf.b2c.mall.page.getalipaycoupon': 'scripts/page/sf.b2c.mall.page.getalipaycoupon'
 
   }
 });
