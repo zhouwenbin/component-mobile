@@ -6,11 +6,12 @@ define(
     'zepto',
     'sf.b2c.mall.framework.comm',
     'sf.weixin',
+    'sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM'
   ],
-  function(can, $, SFFrameworkComm, SFWeixin, SFLoading, SFConfig, SFGenerateSubjectUrlWidthSCM) {
+  function(can, $, SFFrameworkComm, SFWeixin, SFMessage, SFLoading, SFConfig, SFGenerateSubjectUrlWidthSCM) {
     SFFrameworkComm.register(3);
     SFWeixin.shareIndex();
 
@@ -107,7 +108,14 @@ define(
               that.shareObj.link,
               that.shareObj.imgUrl
             );
-            that.itemObj.attr("isShowMask", true);
+            window.location.href = href;
+            //that.itemObj.attr("isShowMask", true);
+          })
+          .fail(function() {
+            new SFMessage(null, {
+              'tip': '抱歉，获取失败！',
+              'type': 'error'
+            });
           });
       },
       ".mask click": function() {

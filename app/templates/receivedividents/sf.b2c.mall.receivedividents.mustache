@@ -5,8 +5,8 @@
 		<label for="phone">您的手机号：</label>
 		<input type="tel" can-value="telephone" value="{{telephone}}" id="telephone" class="input" />
 		<button class="btn btn-soon btn-big{{^isEnable}} btn-disable{{/isEnable}}"  href="{{topicHref}}" id="topicLink">获得我的分享专题</button>
+      <div class="text-error">{{^isEnable}}{{errorMessage}}{{/isEnable}}</div>
 	</div>
-  <div class="text-error">{{^isEnable}}{{errorMessage}}{{/isEnable}}</div>
 </section>
 
 {{#isShowMask}}
