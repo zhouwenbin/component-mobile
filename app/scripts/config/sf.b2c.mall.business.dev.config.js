@@ -39,7 +39,7 @@ define(['md5'], function (md5) {
     'bindaccount':'http://dev.sfht.com/bindaccount.html',
     'luckymoneyshare': 'http://dev.sfht.com/luckymoneyshare.html',
     'luckymoneyaccept': 'http://dev.sfht.com/luckymoneyaccept.html',
-    'getcoupon': 'http://dev.sfht.com/getcoupons.html'
+    'getalipaycoupon': 'http://dev.sfht.com/getalipaycoupon.html'
 
   }
 
