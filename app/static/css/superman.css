@@ -323,9 +323,10 @@ a[title="站长统计"] {
   height: 27px;
   background-position: -77px 0;
   border-width: 6px 3px;
-  border-color: #dc3334;
+  border-color: #666;
   border-style: solid;
-  background-color: #dc3334;
+  background-color: #666;
+  border-radius: 50%;
 }
 
 .icon9 {
