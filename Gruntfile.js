@@ -385,7 +385,9 @@ module.exports = function (grunt) {
         cwd: '<%= config.app %>',
         dest: '<%= config.dist %>',
         src: [
-          '*.html'
+          '*.html',
+          'header/*.html',
+          'footer/*.html'
         ],
         options:{
           process: function (content, srcpath) {
@@ -982,7 +984,27 @@ module.exports = function (grunt) {
           ],
           insertRequire: ['sf.b2c.mall.page.searchwarriorshare']
         }
+      },
+
+      getalipaycoupon: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.getalipaycoupon.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.getalipaycoupon'
+          ],
+          insertRequire: ['sf.b2c.mall.page.getalipaycoupon']
+        }
       }
+
+
     }
   });
 

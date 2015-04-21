@@ -209,7 +209,9 @@ requirejs.config({
     'sf.b2c.mall.component.bindaccount': 'scripts/component/sf.b2c.mall.component.bindaccount',
     //设置密码并登陆
     'sf.b2c.mall.page.setpassword': 'scripts/page/sf.b2c.mall.page.setpassword',
-    'sf.b2c.mall.component.setpassword': 'scripts/component/sf.b2c.mall.component.setpassword'
+    'sf.b2c.mall.component.setpassword': 'scripts/component/sf.b2c.mall.component.setpassword',
+    //领取优惠券
+    'sf.b2c.mall.page.getalipaycoupon': 'scripts/page/sf.b2c.mall.page.getalipaycoupon'
 
   }
 });

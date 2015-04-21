@@ -12,6 +12,26 @@
   background-size:320px;
   text-align: center;
 }
+@media screen and (max-width: 375px) {
+  .superman {
+    background-size:375px;
+    height: 706px;
+ 	padding-top: 417px;
+  }
+  .superman input{
+  	margin-bottom: 75px;
+  }
+}
+@media screen and (max-width: 414px) {
+  .superman {
+    background-size:414px;
+    height: 780px;
+ 	padding-top: 462px;
+  }
+  .superman input{
+  	margin-bottom: 84px;
+  }
+}
 .superman input{
 	display:block;
 	margin:0 auto 60px;

@@ -38,8 +38,9 @@ define([], function () {
     'setpassword':'http://test1.sfht.com/setpassword.html',
     'bindaccount':'http://test1.sfht.com/bindaccount.html',
     'iregister': 'http://test1.www.sfht.net/i.register.html',
-    'luckymoneyshare': 'http://dev.sfht.com/luckymoneyshare.html',
-    'luckymoneyaccept': 'http://dev.sfht.com/luckymoneyaccept.html'
+    'luckymoneyshare': 'http://test1.sfht.com/luckymoneyshare.html',
+    'luckymoneyaccept': 'http://test1.sfht.com/luckymoneyaccept.html',
+    'getalipaycoupon': 'http://test1.sfht.com/getalipaycoupon.html'
   }
 
   return {
