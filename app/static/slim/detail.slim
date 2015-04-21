@@ -11,7 +11,10 @@
 	<!--商品-->
 	== Slim::Template.new('module/goods.slim').render	
 	<!--商品-->
-	
+	<ul class="box coupon-discount">
+		<li><button class="label-soon">满就减</button>满200元立减30</li>
+		<li><button class="label-soon">满件折</button>满2件立减10元</li>
+	</ul>
 	<!--商品详情-->
 	== Slim::Template.new('module/detail.slim').render
 	<!--商品详情-->
@@ -21,6 +24,19 @@
 	<!--立即购买-->
 	== Slim::Template.new('module/nav-buy.slim').render
 	<!--立即购买-->
+	<section class="mask dialog dialog-active">
+		<div class=" center">
+			<a href="javascript:" class="icon icon15">关闭</a>
+			<h2>活动详情</h2>
+			<div class="dialog-active-b">
+				<ul>
+					<li>1、该商品超低价格促销，数量有限，抢完为止，不参与其它优惠活动</li>
+					<li>2、该商品超低价格促销，数量有限，抢完为止，不参与其它优惠活动该商品超低价格促销，数量有限，抢完为止，不参与其它优惠活动</li>
+					<li>3、该商品超低价格促销，数量有限，抢完为止，不参与其它优惠活动</li>
+				</ul>
+			</div>	
+		</div>
+	</section>
 	<script src="../js/zepto.min.js"></script>
 	<script src="../js/swipe.js"></script>
 	<script src="../js/slider.js"></script>
