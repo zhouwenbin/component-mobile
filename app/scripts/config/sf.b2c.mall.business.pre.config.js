@@ -40,7 +40,7 @@ define([], function () {
     'bindaccount':'http://pre.sfht.com/bindaccount.html',
     'luckymoneyshare': 'http://pre.sfht.com/luckymoneyshare.html',
     'luckymoneyaccept': 'http://pre.sfht.com/luckymoneyaccept.html',
-    'getcoupon': 'http://pre.sfht.com/getcoupons.html'
+    'getalipaycoupon': 'http://pre.sfht.com/getalipaycoupon.html'
   }
 
   return {

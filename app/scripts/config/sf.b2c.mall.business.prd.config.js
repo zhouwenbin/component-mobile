@@ -38,7 +38,7 @@ define(['zepto'], function ($) {
     'weixincenter'      : M_HOST + 'weixincenter.html?t='+VER,
     'luckymoneyshare'      : M_HOST + 'luckymoneyshare.html?t='+VER,
     'luckymoneyaccept'      : M_HOST + 'luckymoneyaccept.html?t='+VER,
-    'getcoupon'      : M_HOST + 'getcoupons.html?t='+VER
+    'getalipaycoupon'      : M_HOST + 'getcoupons.html?t='+VER
   }
 
   return {
