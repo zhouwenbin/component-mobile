@@ -385,7 +385,9 @@ module.exports = function (grunt) {
         cwd: '<%= config.app %>',
         dest: '<%= config.dist %>',
         src: [
-          '*.html'
+          '*.html',
+          'header/*.html',
+          'footer/*.html'
         ],
         options:{
           process: function (content, srcpath) {
@@ -983,6 +985,7 @@ module.exports = function (grunt) {
           insertRequire: ['sf.b2c.mall.page.searchwarriorshare']
         }
       },
+
       getalipaycoupon: {
         options: {
           preserveLicenseComments: false,
@@ -1000,8 +1003,6 @@ module.exports = function (grunt) {
           insertRequire: ['sf.b2c.mall.page.getalipaycoupon']
         }
       }
-
-
 
 
     }
