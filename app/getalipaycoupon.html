@@ -43,8 +43,13 @@
         width: 222px;
         height: 32px;
     }
-
-    @media only screen and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) {
+    @media only screen and (min-device-width : 320px) and (max-device-width : 568px){
+        .getcoupon,.getcoupon-succeed {
+        background-size:320px;
+        height: 340px;
+      }
+    }
+   @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
     .getcoupon,.getcoupon-succeed {
         background-size:375px;
         height: 400px;
@@ -71,7 +76,7 @@
         height: 40px;
     }
     }
-   @media screen and (min-device-width : 414px) and (-webkit-device-pixel-ratio: 3){
+   @media only screen and (min-device-width : 414px) and (max-device-width : 736px){
     .getcoupon,.getcoupon-succeed {
         background-size:414px;
         height: 440px;
@@ -289,7 +294,7 @@
 <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.getalipaycoupon.js -->
 <script src="scripts/sf.b2c.mall.require.config.js"></script>
 <script type="text/javascript">
-    require(['sf.b2c.mall.page.getalipaycoupon']);
+    define("sf.b2c.mall.business.config",["zepto"],function(a){var b="www.sfht.com",c="sfhaitao.xyz!",d="http://m.sfht.com/",e=a("#version").attr("data-version")||Date.now(),f={_aid:3,_sm:"md5"},g=(window.location.hostname,{url:"http://m.sfht.com/m.api",fileurl:"http://m.sfht.com/file.api"}),h={agreement:d+"agreement.html?t="+e,alipayframe:d+"alipayframe.html?t="+e,center:d+"center.html?t="+e,detail:d+"detail/",gotopay:d+"gotopay.html?t="+e,index:d+"index.html",login:d+"login.html?t="+e,order:d+"order.html?t="+e,orderdetail:d+"orderdetail.html?t="+e,orderlist:d+"orderlist.html?t="+e,"pay-success":d+"pay-success.html?t="+e,recaddrmanage:d+"recaddrmanage.html?t="+e,register:d+"register.html?t="+e,coupon:d+"coupon.html?t="+e,setpassword:d+"setpassword.html?t="+e,bindaccount:d+"bindaccount.html?t="+e,weixincenter:d+"weixincenter.html?t="+e,luckymoneyshare:d+"luckymoneyshare.html?t="+e,luckymoneyaccept:d+"luckymoneyaccept.html?t="+e,getalipaycoupon:d+"getcoupons.html?t="+e};return{setting:{ver:e,none_append_word:c,default_header:f,md5_key:b,api:g,link:h}}}),define("sf.b2c.mall.widget.message",["zepto","can","sf.b2c.mall.business.config"],function(a,b){return b.Control.extend({init:function(){this.data={},this.data.type=this.options.type,this.data.tip=this.options.tip,this.data.okFunction="undefined"!=typeof this.options.okFunction?this.options.okFunction:null,this.data.closeFunction="undefined"!=typeof this.options.closeFunction?this.options.closeFunction:null,this.data.buttons=this.buttonsMap[this.data.type],this.render()},render:function(){this.setup(a("body")),this.options.html=b.view("/templates/widget/sf.b2c.mall.widget.message.mustache",this.data),a("body").append(this.options.html)},buttonsMap:{confirm:'<a href="javascript:void(0)" class="btn btn-normal warnning" id="ok">确定</a><a href="javascript:void(0)" class="btn btn-normal" id="cancel">取消</a>',error:'<a href="javascript:void(0)" class="btn btn-normal warnning" id="ok">确定</a>',success:'<a href="javascript:void(0)" class="btn btn-normal warnning" id="ok">确定</a>'},"#close click":function(){return this.close(),!1},"#ok click":function(){return"undefined"!=typeof this.data.okFunction&&null!=this.data.okFunction&&this.data.okFunction.apply(this),this.close(),!1},"#cancel click":function(){return"undefined"!=typeof this.data.closeFunction&&null!=this.data.closeFunction&&this.data.closeFunction.apply(this),this.close(),!1},close:function(){a("#messagedialog").remove(),this.destroy()}})}),define("sf.b2c.mall.api.coupon.rcvCouponByMobile",["zepto","can","underscore","sf.b2c.mall.framework.comm","sf.b2c.mall.api.security.type"],function(a,b,c,d,e){return d.extend({api:{METHOD_NAME:"coupon.rcvCouponByMobile",SECURITY_TYPE:e.None.name,REQUIRED:{type:"string",bagId:"long",mobile:"string",receiveChannel:"string",receiveWay:"string"},OPTIONAL:{},VERIFY:{},ERROR_CODE:{11000020:"卡券id不存在",11000030:"卡券已作废",11000050:"卡券已领完",11000100:"用户已领过该券",11000130:"卡包不存在",11000140:"卡包已作废"}}})}),define("sf.b2c.mall.page.getalipaycoupon",["can","zepto","fastclick","sf.b2c.mall.widget.message","sf.b2c.mall.framework.comm","sf.b2c.mall.api.coupon.rcvCouponByMobile"],function(a,b,c,d,e,f){c.attach(document.body),e.register(3);var g=a.Control.extend({init:function(){this.data=new a.Map({mobile:null}),this.render(this.data)},render:function(b){var c=a.view.mustache(this.getCouponTemplates());this.element.append(c(b))},getCouponTemplates:function(){return'<section class="getcoupon"><form action=""><div><input type="text" class="getcoupon-tel input" can-value="mobile"></div><div><button class="btn-getcoupons"></button></div></form></section>'},getSucceedTemplates:function(a){return'<section class="getcoupon-succeed"><p>'+a+'</p><div><a href="index.html"></a></div></section>'},".btn-getcoupons click":function(a,c){c&&c.preventDefault();var e=this.data.attr("mobile");if(!/^1[0-9]{10}$/.test(e))return!1;var g=this,h=new f({bagId:86,mobile:e,type:"CARD",receiveChannel:"B2C",receiveWay:"ZTLQ"});h.sendRequest().done(function(){b(".sf-b2c-mall-getcoupon").html(g.getSucceedTemplates(e))}).fail(function(a){if(_.isNumber(a)){var b={11000020:"卡券id不存在",11000030:"卡券已作废",11000050:"卡券已领完",11000100:"用户已领过该券",11000130:"卡包不存在",11000140:"卡包已作废"},c="领取失败",e=b[a.toString()]||c;return void new d(null,{tip:e,type:"error"})}})}});new g(".sf-b2c-mall-getcoupon")}),require(["sf.b2c.mall.page.getalipaycoupon"]);
 </script>
 <!-- endbuild -->
 
