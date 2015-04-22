@@ -109,6 +109,7 @@ requirejs.config({
     //设置密码并登陆
     'sf.b2c.mall.api.user.setPswdAndLogin': 'scripts/api/sf.b2c.mall.api.user.setPswdAndLogin',
 
+    'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM': 'scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM',
 
     // --------------------------------------------
     'placeholders': 'bower_components/Placeholders/build/placeholders',
@@ -211,7 +212,9 @@ requirejs.config({
     'sf.b2c.mall.page.setpassword': 'scripts/page/sf.b2c.mall.page.setpassword',
     'sf.b2c.mall.component.setpassword': 'scripts/component/sf.b2c.mall.component.setpassword',
     //领取优惠券
-    'sf.b2c.mall.page.getalipaycoupon': 'scripts/page/sf.b2c.mall.page.getalipaycoupon'
+    'sf.b2c.mall.page.getalipaycoupon': 'scripts/page/sf.b2c.mall.page.getalipaycoupon',
 
+    //优惠券分润
+    'sf.b2c.mall.page.receivedividents': 'scripts/page/sf.b2c.mall.page.receivedividents'
   }
 });
