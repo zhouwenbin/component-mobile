@@ -4,10 +4,9 @@ define("sf.b2c.mall.taiwantraveller.getgift", [
     'can',
     'zepto',
     'sf.b2c.mall.api.coupon.hasReceived',
-    'sf.b2c.mall.api.user.getUserCode',
     'sf.b2c.mall.api.coupon.receiveCoupon'
   ],
-  function(can, $, SFHasReceived, SFGetUserCode, SFReceiveCoupon) {
+  function(can, $, SFHasReceived, SFReceiveCoupon) {
 
     return can.Control.extend({
 
@@ -29,23 +28,32 @@ define("sf.b2c.mall.taiwantraveller.getgift", [
           .sendRequest()
           .done(function(data) {
             debugger;
-            var html = can.view('templates/taiwantraveller/sf.b2c.mall.taiwantraveller.getgift.mustache', data);
-            element.html(html);
+            that.renderHtml(element, {});
           })
           .fail(function(error) {
-            console.error(error);
+            // 已经领过了
+            if (error === 11000100) {
+              that.renderHtml(element, {});
+            } else {
+              console.error(error);
+            }
           })
       },
 
-      ".simcard click": function(){
-        var SFGetUserCode = new SFGetUserCode({"codeType": ""});
+      renderHtml: function(element, data) {
+        var html = can.view('templates/taiwantraveller/sf.b2c.mall.taiwantraveller.getgift.mustache', data);
+        element.html(html);
       },
 
-      ".foodeat click": function(){
-
+      "#simcard click": function() {
+        window.location.href = "http://m.sfht.com/taiwantravellercard.html";
       },
 
-      ".share click": function(){
+      "#foodeat click": function() {
+        window.location.href = "http://m.sfht.com/taiwantravellerfoodeat.html";
+      },
+
+      "#share click": function() {
 
       }
     });

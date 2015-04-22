@@ -5,6 +5,7 @@ define(
     'zepto',
     'can',
     'store',
+    'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.weixin',
@@ -12,11 +13,13 @@ define(
     'sf.b2c.mall.widget.login'
   ],
 
-  function($, can, store, SFFrameworkComm, SFReqLoginAuth, SFWeixin, SFTaiwantravellerGetGift, SFWeChatLogin) {
+  function($, can, store, Fastclick, SFFrameworkComm, SFReqLoginAuth, SFWeixin, SFTaiwantravellerGetGift, SFWeChatLogin) {
 
     SFFrameworkComm.register(3);
 
     SFWeixin.shareIndex();
+
+    Fastclick.attach(document.body);
 
     var gift = can.Control.extend({
       init: function(element) {
