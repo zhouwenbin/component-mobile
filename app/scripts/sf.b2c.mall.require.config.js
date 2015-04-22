@@ -83,6 +83,7 @@ requirejs.config({
     'sf.b2c.mall.api.user.partnerLogin': 'scripts/api/sf.b2c.mall.api.user.partnerLogin',
     'sf.b2c.mall.api.user.reqLoginAuth': 'scripts/api/sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.api.user.getWeChatJsApiSig': 'scripts/api/sf.b2c.mall.api.user.getWeChatJsApiSig',
+    'sf.b2c.mall.api.user.getUserCode': 'scripts/api/sf.b2c.mall.api.user.getUserCode',
 
     'sf.b2c.mall.api.b2cmall.getBanner': 'scripts/api/sf.b2c.mall.api.b2cmall.getBanner',
     'sf.b2c.mall.api.b2cmall.getFastSaleInfoList': 'scripts/api/sf.b2c.mall.api.b2cmall.getFastSaleInfoList',
@@ -215,6 +216,12 @@ requirejs.config({
     'sf.b2c.mall.page.getalipaycoupon': 'scripts/page/sf.b2c.mall.page.getalipaycoupon',
 
     //优惠券分润
-    'sf.b2c.mall.page.receivedividents': 'scripts/page/sf.b2c.mall.page.receivedividents'
+    'sf.b2c.mall.page.receivedividents': 'scripts/page/sf.b2c.mall.page.receivedividents',
+
+    // 台湾旅行者
+    'sf.b2c.mall.page.taiwantravellergift': 'scripts/page/sf.b2c.mall.page.taiwantravellergift',
+    'sf.b2c.mall.taiwantraveller.getgift': 'scripts/taiwantraveller/sf.b2c.mall.taiwantraveller.getgift',
+    'sf.b2c.mall.page.taiwantravellercard': 'scripts/page/sf.b2c.mall.page.taiwantravellercard',
+    'sf.b2c.mall.page.taiwantravellerfoodeat': 'scripts/page/sf.b2c.mall.page.taiwantravellerfoodeat'
   }
 });
