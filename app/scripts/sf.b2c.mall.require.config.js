@@ -222,6 +222,9 @@ requirejs.config({
     'sf.b2c.mall.page.taiwantravellergift': 'scripts/page/sf.b2c.mall.page.taiwantravellergift',
     'sf.b2c.mall.taiwantraveller.getgift': 'scripts/taiwantraveller/sf.b2c.mall.taiwantraveller.getgift',
     'sf.b2c.mall.page.taiwantravellercard': 'scripts/page/sf.b2c.mall.page.taiwantravellercard',
-    'sf.b2c.mall.page.taiwantravellerfoodeat': 'scripts/page/sf.b2c.mall.page.taiwantravellerfoodeat'
+    'sf.b2c.mall.page.taiwantravellerfoodeat': 'scripts/page/sf.b2c.mall.page.taiwantravellerfoodeat',
+
+    // 原滋原味
+    'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon'
   }
 });
