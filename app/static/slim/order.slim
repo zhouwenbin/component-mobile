@@ -14,29 +14,37 @@
 	<!--商品信息-->
 	== Slim::Template.new('module/goodsinfo.slim').render
 	<!--商品信息-->
-
-	<div class="order-r3 clearfix box">
-		<div class="order-r3r1">优惠券抵扣：¥5</div>
-		<div class="order-r3r2">实际应付款:<span>¥127</span></div>
+	<div class="coupon-use">
+		<div class="coupon-use-h">
+			<h2>使用优惠券</h2>
+			<a href="javascript:">输入兑换码</a>
+		</div>
+		<div class="coupon-use-b">
+			<select name="" id="" class="select">
+				<option value="会员优惠券10元">会员优惠券10元</option>
+			</select>
+		</div>	
 	</div>
-	<section class="nav">
-		<div class="nav-r1">
-			<div class="nav-c1">
-				<a href="">
-					<span class="icon icon25"></span>
-					<div>首页</div>
-				</a>			
-			</div>
-			<div class="nav-c1">
-				<a href="">
-					<span class="icon icon26"></span>
-					<div>我的</div>
-				</a>				
-			</div>
-			<div class="nav-c2">
-				<a class="btn btn-danger btn-big" href="pay-success.html">确认支付</a>
-			</div>
-		</div>		
-	</section>	
+	<ul class="order-r3 box">
+		<li>商品总金额￥1800 + 税额￥0 + 运费￥0</li>
+		<li>-优惠金额￥10 -促销活动立减￥50 - 优惠券￥10</li>
+	</ul>
+	<div class="order-submit box">
+		<p class="order-submit-c1">实际应付款: <span class="text-important">¥1730.00</span></p>		
+		<a class="btn btn-danger" href="pay-success.html">提交订单</a>
+	</div>
+	<section class="mask dialog dialog-code">
+		<div class=" center">
+			<a href="javascript:" class="icon icon15">关闭</a>
+			<h2>输入兑换码</h2>
+			<div class="dialog-code-b">
+				<input class="input" placeholder="输入您的兑换码">
+				<button class="btn btn-big btn-disable">使用</button>
+				<!--输入后
+				<button class="btn btn-big btn-danger">使用</button>
+				<-->
+			</div>	
+		</div>
+	</section>
 </body>
 </html>
