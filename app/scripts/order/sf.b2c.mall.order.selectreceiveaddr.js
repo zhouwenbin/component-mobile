@@ -3,17 +3,17 @@
 define('sf.b2c.mall.order.selectreceiveaddr', [
   'can',
   'zepto',
-  'fastclick',
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.getRecAddressList',
+  'sf.b2c.mall.api.user.webLogin',
   'sf.b2c.mall.adapter.address.list',
   'sf.b2c.mall.component.addreditor',
-  'sf.b2c.mall.api.user.webLogin',
-  'md5',
   'sf.b2c.mall.business.config',
+  'sf.b2c.mall.order.iteminfo',
   'sf.b2c.mall.widget.message'
-], function(can, $, Fastclick, SFGetIDCardUrlList, SFGetRecAddressList, AddressAdapter, SFAddressEditor, SFUserWebLogin, md5, SFConfig,SFMessage) {
-  Fastclick.attach(document.body);
+], function(can, $, SFGetIDCardUrlList, SFGetRecAddressList, SFUserWebLogin,
+            AddressAdapter, SFAddressEditor, SFConfig, SFItemInfo, SFMessage) {
+
   return can.Control.extend({
 
     /**
@@ -72,7 +72,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
             onSuccess: _.bind(that.paint, that)
           });
 
-          //绑定事件
+          //绑定事件 添加地址
           $('.addrecaddr').click(function() {
             if (that.result.length >= 20) {
               new SFMessage(null, {
@@ -83,26 +83,27 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
               that.addRecaddrClick($(this));
             }
             
-          })
-
-          $('li.box-address').click(function() {
-            that.selectaddr($(this));
-          })
+          });
 
           //点击查看更多
           $('#viewmore').click(function() {
             that.adapter4List.addrs.attr("addressList", that.result || []);
             that.adapter4List.addrs.attr("showMore", false);
+          });
 
-            $('li.box-address').click(function() {
-              that.selectaddr($(this));
-            })
-          })
+          that.initItemInfo();
 
         })
         .fail(function(error) {
           console.error(error);
         })
+    },
+
+    //初始化 itemInfo
+    initItemInfo: function() {
+      this.component.itemInfo = new SFItemInfo('.sf-b2c-mall-order-itemInfo', {
+        addr: this.getSelectedAddr()
+      });
     },
 
     /** 获得收获人和收获地址 */
@@ -141,6 +142,12 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
       return result;
     },
 
+
+    //选择收货地址
+    "li.box-address click": function() {
+      this.selectaddr(arguments[0]);
+      this.initItemInfo();
+    },
     selectaddr: function(element) {
       $('li.box-address').removeClass("active");
       element.addClass("active");

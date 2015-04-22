@@ -7,6 +7,7 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.b2c.mall.api.b2cmall.getItemSummary',
   'sf.b2c.mall.api.order.submitOrderForAllSys',
   'sf.b2c.mall.api.order.queryOrderCoupon',
+  'sf.b2c.mall.api.order.orderRender',
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.setDefaultAddr',
@@ -14,7 +15,7 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.helpers',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config'
-], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFMessage, SFConfig) {
+], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFMessage, SFConfig) {
   return can.Control.extend({
     itemObj: new can.Map({}),
     /**
@@ -31,11 +32,8 @@ define('sf.b2c.mall.order.iteminfo', [
 
       var that = this;
 
-      can.when(this.initItemSummary(), this.initProductHotData())
-        .then(function(){
-          return that.initCoupons();
-        })
-        .always(function() {
+      can.when(that.initOrderRender())
+        .done(function() {
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
           that.element.html(html);
 
@@ -66,6 +64,106 @@ define('sf.b2c.mall.order.iteminfo', [
       this.itemObj.attr("orderCoupon.discountPrice", price);
     },
 
+
+    /**
+     * 初始化 OrderRender
+     */
+    initOrderRender: function() {
+      var that = this;
+      var selectAddr = that.options.addr;
+      var orderRender = new SFOrderRender({
+        address: JSON.stringify({
+          "addrId": selectAddr.addrId,
+          "nationName": selectAddr.nationName,
+          "provinceName": selectAddr.provinceName,
+          "cityName": selectAddr.cityName,
+          "regionName": selectAddr.regionName,
+          "detail": selectAddr.detail,
+          "recName": selectAddr.recName,
+          "mobile": selectAddr.cellphone,
+          "telephone": selectAddr.cellphone,
+          "zipCode": selectAddr.zipCode,
+          "recId": selectAddr.recId,
+          certType: "ID",
+          certNo: selectAddr.credtNum2
+        }),
+        items: JSON.stringify([{
+          "itemId": that.itemObj.itemid,
+          "num": that.itemObj.amount
+        }]),
+        sysType: that.getSysType(that.itemObj.saleid)
+      });
+      return orderRender.sendRequest()
+        .done(function(orderRenderItem){
+          that.processFoundation(orderRenderItem);
+          that.processProducts(orderRenderItem.orderGoodsItemList);
+          that.processCoupons(orderRenderItem.orderCouponItem);
+        })
+        .fail();
+    },
+
+    /**
+     * 加工基础信息
+     * @param 数据
+     */
+    processFoundation: function(orderRenderItem) {
+      this.itemObj.attr({
+        submitKey: orderRenderItem.submitKey,
+        flag: orderRenderItem.flag,
+        errorDes: orderRenderItem.errorDes,
+        orderFeeItem: can.extend(orderRenderItem.orderFeeItem, {
+          shouldPay: orderRenderItem.orderFeeItem.actualTotalFee
+        })
+      });
+    },
+
+    /**
+     * 加工商品信息
+     * @param 商品列表
+     */
+    processProducts: function(orderGoodsItemList) {
+      //@note 如果channels(渠道编号) = 'heike',
+      //cookie中1_uinfo中没有heike，则该用户不能购买
+      this.options.productChannels = orderGoodsItemList[0].channels[0];
+      //是否是宁波保税，是得话才展示税额
+      this.itemObj.attr("showTax", orderGoodsItemList[0].bonded);
+
+      _.each(orderGoodsItemList, function(goodItem){
+        if (goodItem.specItemList) {
+          var result = new Array();
+          _.each(goodItem.specItemList, function(item) {
+            result.push(item.specName + ":" + item.spec.specValue);
+          });
+          goodItem.spec = result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : "";
+          goodItem.totalPrice = goodItem.price * goodItem.quantity;
+        }
+      });
+      this.itemObj.attr("orderGoodsItemList", orderGoodsItemList);
+    },
+    /**
+     * 加工优惠券信息
+     * @param 优惠券
+     */
+    processCoupons: function(orderCoupon) {
+      this.itemObj.attr("isShowCouponArea", true);
+      can.extend(orderCoupon, {
+        isHaveAvaliable: orderCoupon.avaliableAmount != 0,
+        isHaveDisable: orderCoupon.disableAmount != 0,
+        useQuantity: 0,
+        discountPrice: 0,
+        couponExCode: ""
+      });
+      this.itemObj.attr("orderCoupon", orderCoupon);
+      this.itemObj.orderCoupon.selectCoupons = [];
+
+
+      this.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
+        this.attr("orderFeeItem.shouldPay", this.attr("orderFeeItem.shouldPay") + oldVal - newVal);
+        //this.attr("orderFeeItem.discount", this.attr("orderFeeItem.discount") - oldVal + newVal);
+      });
+
+    },
+
     errorMap: {
       //"4000100": "order unkown error",
       "4000200": "订单地址不存在",
@@ -93,7 +191,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
       element.addClass("disable");
 
-      var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
+      var selectAddr = that.options.addr;
       var isDetailInvalid = /[<>'"]/.test($.trim(selectAddr.detail));
       var isReceiverName = /先生|女士|小姐/.test($.trim(selectAddr.recName));
       //进行校验，不通过则把提交订单点亮
@@ -159,6 +257,9 @@ define('sf.b2c.mall.order.iteminfo', [
             }]),
             "sysType": that.getSysType(),
             "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
+          }
+          if (that.itemObj.orderCoupon.selectCoupons && that.itemObj.orderCoupon.selectCoupons.length > 0) {
+            params.couponCodes = JSON.stringify(that.itemObj.orderCoupon.selectCoupons);
           }
         })
         .fail(function(error) {
