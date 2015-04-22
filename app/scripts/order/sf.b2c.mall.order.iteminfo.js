@@ -70,7 +70,7 @@ define('sf.b2c.mall.order.iteminfo', [
      */
     initOrderRender: function() {
       var that = this;
-      var selectAddr = that.options.addr;
+      var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
       var orderRender = new SFOrderRender({
         address: JSON.stringify({
           "addrId": selectAddr.addrId,
@@ -191,7 +191,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
       element.addClass("disable");
 
-      var selectAddr = that.options.addr;
+      var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
       var isDetailInvalid = /[<>'"]/.test($.trim(selectAddr.detail));
       var isReceiverName = /先生|女士|小姐/.test($.trim(selectAddr.recName));
       //进行校验，不通过则把提交订单点亮

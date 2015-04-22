@@ -102,7 +102,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
     //初始化 itemInfo
     initItemInfo: function() {
       this.component.itemInfo = new SFItemInfo('.sf-b2c-mall-order-itemInfo', {
-        addr: this.getSelectedAddr()
+        selectReceiveAddr: this
       });
     },
 

@@ -40,6 +40,14 @@
   </section>
   <!--商品-->
 
+  <!--促销信息-->
+  <ul class="box coupon-discount">
+    {{#each activityInfo.datas}}
+      <li data-activityId="{{activityId}}"><a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>{{activityTitle}}</li>
+	  {{/each}}
+  </ul>
+  <!--促销信息-->
+
   <!--商品详情-->
   <section class="detail">
     <div class="detail-h" >
@@ -118,9 +126,9 @@
   <!--立即购买-->
 
   {{! {{/if}}
-  </div>
+</div>
 
-  <div id="secondstep" style="display:none">
+<div id="secondstep" style="display:none">
 
   {{! {{#if showSecondStep}}
   <div class="test"></div>
@@ -203,4 +211,16 @@
   <!--立即购买-->
 
   {{! {{/if}}
-  </div>
+</div>
+
+{{#each activityInfo.datas}}
+  <section class="mask dialog dialog-active hide" style="display: none;" data-activityId="{{activityId}}">
+    <div class=" center">
+      <a href="javascript:" class="icon icon15">关闭</a>
+      <h2>活动详情</h2>
+      <div class="dialog-active-b">
+        <ul>{{{rulesHtml}}}</ul>
+      </div>
+    </div>
+  </section>
+{{/each}}
