@@ -215,6 +215,10 @@ requirejs.config({
     'sf.b2c.mall.page.getalipaycoupon': 'scripts/page/sf.b2c.mall.page.getalipaycoupon',
 
     //优惠券分润
-    'sf.b2c.mall.page.receivedividents': 'scripts/page/sf.b2c.mall.page.receivedividents'
+    'sf.b2c.mall.page.receivedividents': 'scripts/page/sf.b2c.mall.page.receivedividents',
+
+    // 台湾旅行者
+    'sf.b2c.mall.page.taiwantravellergift': 'scripts/page/sf.b2c.mall.page.taiwantravellergift',
+    'sf.b2c.mall.taiwantraveller.getgift': 'scripts/taiwantraveller/sf.b2c.mall.taiwantraveller.getgift'
   }
 });
