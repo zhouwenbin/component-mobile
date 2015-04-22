@@ -1,0 +1,31 @@
+.coupon-use{
+  margin-bottom: 10px;
+}
+.coupon-use-h{
+  display: flex;
+  justify-content:space-between;
+  font-size: 14px;
+  margin: 0 10px;
+}
+.coupon-use-h h2{
+  font-weight: normal;
+}
+.coupon-use-h a{
+  color: #3b86c4;
+}
+.coupon-use select{
+  width: 100%;
+  color: #dc3334;
+}
+.order-submit{
+  display: flex;
+  justify-content:space-between;
+  margin-top: 10px;
+}
+.order-submit-c1{
+  font-size: 15px;
+  line-height: 30px;
+}
+.order-submit-c1 .text-important{
+  font-size: 18px;
+}

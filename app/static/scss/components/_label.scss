@@ -17,10 +17,17 @@
  }
  .label-success{
   background: #67b222;
+  @extend .label;
  }
  .label-warning{
   background: #1376ce;
+  @extend .label;
  }
  .label-disabled{
   background: #ccc;
+  @extend .label;
+ }
+ .label-soon{
+  background: #f78e55;
+  @extend .label;
  }
