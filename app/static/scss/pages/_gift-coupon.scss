@@ -8,6 +8,7 @@
   font-size: 14px;
   font-weight:normal;
   margin-left: 10px;
+  margin-top: 10px;
 }
 .gift-coupon .btn-danger{
   margin:0 10px;
@@ -25,4 +26,17 @@
   color: #999;
   list-style: inside;
 }
-  
+.gift-coupon-dialog{
+  width: 125px;
+  height: 130px;
+  padding-top: 97px;
+  color: #fff;
+  text-align: center;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  background-image: url(#{$bg-url}gift-coupon-dialog.png);
+  background-size: 43px;
+  background-repeat: no-repeat;
+  background-position: 47px 41px;
+}
