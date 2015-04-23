@@ -43,7 +43,7 @@
   <!--促销信息-->
   <ul class="box coupon-discount">
     {{#each activityInfo.datas}}
-      <li data-activityId="{{activityId}}"><a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>{{activityTitle}}</li>
+      <li data-activityId="{{activityId}}"><a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>{{activityTitle}}<span class="fr">促销详情</span></li>
 	  {{/each}}
   </ul>
   <!--促销信息-->
@@ -151,6 +151,17 @@
     </ul>
   </section>
   <!--推荐商品-->
+
+  <!--促销信息-->
+  <ul class="box coupon-discount">
+		{{#each activityInfo.datas}}
+        <li data-activityId="{{activityId}}"><a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>{{activityTitle}}
+        <span>促销详情</span>
+        </li>
+		{{/each}}
+  </ul>
+  <!--促销信息-->
+
   <!--规格-->
   <section class="standard">
     <ul class="standard-r1">
