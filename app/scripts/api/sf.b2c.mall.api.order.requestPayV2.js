@@ -29,6 +29,7 @@ function($, can, _, Comm, SecurityType) {
         'payType': 'string'
       },
       OPTIONAL: {
+        'extInfo': 'string'
       },
       VERIFY:{
       },
