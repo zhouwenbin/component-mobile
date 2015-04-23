@@ -40,6 +40,8 @@ define(
         this.options.alltotalamount = params.amount;
         this.options.code = params.code;
 
+        this.options.data.attr("showordersuccess", params.showordersuccess);
+
         // 如果是在微信环境 只显示微信支付
         if (SFUtil.isMobile.WeChat()) {
           this.options.data.attr("onlyWeixinPay", true);
@@ -94,6 +96,11 @@ define(
               'tip': '订单支付失败！',
               'type': 'error'
             });
+          },
+
+          // 回调中设置值回来
+          success: function(payResult) {
+            that.payResult = payResult;
           }
         }
 
@@ -101,6 +108,7 @@ define(
         SFOrderFn.payV2({
           orderid: that.options.orderid,
           payType: that.getPayType(),
+          payResult: that.payResult,
           extInfo: JSON.stringify({
             "code": that.options.code
           })

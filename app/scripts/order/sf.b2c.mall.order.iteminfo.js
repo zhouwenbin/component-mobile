@@ -174,7 +174,8 @@ define('sf.b2c.mall.order.iteminfo', [
           var url = SFConfig.setting.link.gotopay + '&' +
             $.param({
               "orderid": message.value,
-              "recid": selectAddr.recId
+              "recid": selectAddr.recId,
+              "showordersuccess": true
             });
 
           // 转跳到微信授权支付

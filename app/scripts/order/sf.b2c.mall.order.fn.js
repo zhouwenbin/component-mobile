@@ -25,17 +25,29 @@ define(
           'extInfo': data.extInfo
         });
 
+        // 如果已经请求过了，则做缓存处理，防止第二次重复请求时候prepay_id没了
+        if (SFUtil.isMobile.WeChat() && data.payResult) {
+          that.onBridgeReady(data.payResult);
+          return false;
+        }
+
         requestPayV2
           .sendRequest()
           .done(function(data) {
-            alert(data.postBody);
-            var result = that.buildData(data.postBody);
-            that.onBridgeReady(result);
+            if (SFUtil.isMobile.WeChat()) {
+              var payResult = that.buildData(data.postBody);
+              that.onBridgeReady(payResult);
 
-            // //window.location.href = data.url + '?' + data.postBody;
-            // if (callback && _.isFunction(callback.success)) {
-            //   callback.success();
-            // }
+              if (callback && _.isFunction(callback.success)) {
+                callback.success(payResult);
+              }
+
+            } else {
+              window.location.href = data.url + '?' + data.postBody;
+              if (callback && _.isFunction(callback.success)) {
+                callback.success();
+              }
+            }
 
             // if (SFUtil.isMobile.WeChat()) {
             //   store.set("alipayurl", data.url + '?' + data.postBody);
