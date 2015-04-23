@@ -12,12 +12,13 @@ define('sf.b2c.mall.component.login', [
     'sf.b2c.mall.framework.comm',
     'sf.util',
     'sf.b2c.mall.widget.login',
-    'sf.b2c.mall.api.user.checkUserExist' //@noto 检查第三方账号绑定的手机号是否有登录密码
+    'sf.b2c.mall.api.user.checkUserExist',
+    'sf.b2c.mall.widget.message'
   ],
 
   function($, can, md5, store, Fastclick,
-           SFConfig, SFLogin, SFNeedVfCode, SFFrameworkComm,
-           SFFn, SFWeChatLogin,SFCheckUserExist) {
+    SFConfig, SFLogin, SFNeedVfCode, SFFrameworkComm,
+    SFFn, SFWeChatLogin, SFCheckUserExist, SFMessage) {
 
     SFFrameworkComm.register(3);
 
@@ -48,14 +49,14 @@ define('sf.b2c.mall.component.login', [
         isWeChat: function(options) {
           if (SFFn.isMobile.WeChat()) {
             return options.fn(options.contexts || this);
-          }else{
+          } else {
             return options.inverse(options.contexts || this);
           }
         },
         isAlipay: function(options) {
           if (SFFn.isMobile.AlipayChat()) {
             return options.fn(options.contexts || this);
-          }else{
+          } else {
             return options.inverse(options.contexts || this);
           }
         }
@@ -89,7 +90,7 @@ define('sf.b2c.mall.component.login', [
         var that = this;
       },
 
-      '#toRegist click': function (element, event) {
+      '#toRegist click': function(element, event) {
         var params = can.deparam(window.location.search.substr(1));
         var gotoUrl = params.from;
         window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
@@ -108,7 +109,7 @@ define('sf.b2c.mall.component.login', [
         wechatLogin.login(escape(gotoUrl));
       },
       //@note 支付宝登录
-      '.alipaylogin click':function(element, event){
+      '.alipaylogin click': function(element, event) {
         var that = this;
         var params = can.deparam(window.location.search.substr(1));
         var gotoUrl = params.from || "index.html";
@@ -125,7 +126,7 @@ define('sf.b2c.mall.component.login', [
         this.element.append(html);
       },
 
-      '#verified-code-btn click': function () {
+      '#verified-code-btn click': function() {
         this.getVerifiedCode();
       },
 
@@ -159,14 +160,16 @@ define('sf.b2c.mall.component.login', [
         //@note 手机号码输完11位时，验证该账号是否有密码
         if (isTelNum) {
           var checkUserExist = new SFCheckUserExist({
-            'accountId':username,
-            'type':'MOBILE'
+            'accountId': username,
+            'type': 'MOBILE'
           });
           checkUserExist.sendRequest()
-            .fail(function(errorCode){
+            .fail(function(errorCode) {
               if (errorCode == 1000340) {
                 var fn = can.view.mustache(ERROR_NO_PASSWORD);
-                $('#username-error-tips').html(fn({tel:username})).show();
+                $('#username-error-tips').html(fn({
+                  tel: username
+                })).show();
                 return false;
               };
             })
@@ -378,6 +381,17 @@ define('sf.b2c.mall.component.login', [
        */
       '#gotoLogin click': function(element, event) {
         event && event.preventDefault();
+
+        try {
+          // 如果是无痕模式 则要提示用户
+          store.set("testwuhen", "testwuhen");
+        } catch (e) {
+          var message = new SFMessage(null, {
+            'tip': '当前浏览器为无痕模式，请在非无痕模式下登录！',
+            'type': 'error'
+          });
+          return false;
+        }
 
         var that = this;
 
