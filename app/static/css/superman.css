@@ -241,6 +241,14 @@ a[title="站长统计"] {
   z-index: 1;
 }
 
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
 /*text*/
 .text-error,
 .text-important {
@@ -536,6 +544,12 @@ a[title="站长统计"] {
   width: 14px;
   height: 14px;
   background-position: -255px -135px;
+}
+
+.icon43 {
+  width: 34px;
+  height: 27px;
+  background-position: -208px -398px;
 }
 
 .superman {
