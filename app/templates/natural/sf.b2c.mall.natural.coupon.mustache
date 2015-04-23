@@ -44,7 +44,14 @@
         </div>
       </li>
     </ul>
-    <a href="" class="btn btn-big btn-danger">领取优惠券礼包</a>
+    {{^if hasGetLift}}
+      <a href="javascript:;" class="btn btn-big btn-danger" id="getcoupon">领取优惠券礼包</a>
+    {{/if}}
+
+    {{#if hasGetLift}}
+      <a href="javascript:;" class="btn btn-big btn-disable">已经领取</a>
+    {{/if}}
+
     <h2 class="gift-coupon-h2">领券抵扣商品：</h2>
     <ul class="list clearfix">
       <li>
@@ -130,4 +137,4 @@
       <li>该优惠券适用于顺丰海淘所有商品，满68元即可使用</li>
     </ul>
   </section>
-  <section class="mask gift-coupon-dialog">领取成功</section>
+  <section class="mask gift-coupon-dialog" style="display:none" id="successdialog">领取成功</section>

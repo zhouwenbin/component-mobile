@@ -1005,11 +1005,11 @@ module.exports = function (grunt) {
         }
       },
 
-      getalipaycoupon: {
+      naturalcoupon: {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.getalipaycoupon.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.naturalcoupon.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
@@ -1017,9 +1017,9 @@ module.exports = function (grunt) {
           },
           include: [
             "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.getalipaycoupon'
+            'sf.b2c.mall.page.naturalcoupon'
           ],
-          insertRequire: ['sf.b2c.mall.page.getalipaycoupon']
+          insertRequire: ['sf.b2c.mall.page.naturalcoupon']
         }
       },
 
