@@ -387,7 +387,7 @@ define('sf.b2c.mall.component.login', [
           store.set("testwuhen", "testwuhen");
         } catch (e) {
           var message = new SFMessage(null, {
-            'tip': '当前浏览器为无痕模式，请在非无痕模式下登录！',
+            'tip': '当前浏览器模式为无痕模式，请在非无痕模式下登录！',
             'type': 'error'
           });
           return false;
