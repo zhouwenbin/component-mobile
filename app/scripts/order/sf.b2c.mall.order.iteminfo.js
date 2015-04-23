@@ -37,10 +37,13 @@ define('sf.b2c.mall.order.iteminfo', [
         })
         .always(function() {
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
-          that.element.html(html);;
+          that.element.html(html);
 
           if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {
-            $("#selectCoupon option").first().attr('selected', 'true');
+            //找到默认选择的优惠券
+            var price = that.getDefautSelectCoupon(that.itemObj.orderCoupon).price;
+            $("#selectCoupon option[data-price='" + price + "']").first().attr('selected', 'true');
+            $("#selectCoupon").trigger("change");
           }
 
           $('.loadingDIV').hide();
@@ -260,6 +263,7 @@ define('sf.b2c.mall.order.iteminfo', [
       var queryOrderCouponDefer = queryOrderCoupon.sendRequest();
       queryOrderCouponDefer.done(function(orderCoupon) {
           that.itemObj.attr("isShowCouponArea", true);
+
           can.extend(orderCoupon, {
             isHaveAvaliable: orderCoupon.avaliableAmount != 0,
             isHaveDisable: orderCoupon.disableAmount != 0,
@@ -277,6 +281,22 @@ define('sf.b2c.mall.order.iteminfo', [
           console.error(error);
         });
       return queryOrderCouponDefer;
+    },
+    /*
+     * 找到默认选择的优惠券 面额最高的
+     */
+    getDefautSelectCoupon: function(orderCoupon) {
+      //找到面额最高的
+      var tmpPriceCoupon;
+      var tmpPrice = 0;
+      for(var i = 0, tmpCoupon; tmpCoupon = orderCoupon.avaliableCoupons[i]; i++) {
+        if (tmpCoupon.price > tmpPrice) {
+          tmpPrice = tmpCoupon.price;
+          tmpPriceCoupon = tmpCoupon;
+        }
+      }
+
+      return tmpPriceCoupon;
     }
   });
 })
