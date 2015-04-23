@@ -295,58 +295,6 @@ define('sf.b2c.mall.order.iteminfo', [
       }
     },
 
-    initProductHotData: function() {
-      var that = this;
-      var getProductHotData = new SFGetProductHotData({
-        'itemId': that.itemObj.itemid
-      });
-      var getProductHotDataDefer = getProductHotData.sendRequest();
-      getProductHotDataDefer.done(function(priceinfo) {
-        that.itemObj.attr({
-          "singlePrice": priceinfo.sellingPrice,
-          "amount": that.itemObj.amount,
-          "totalPrice": priceinfo.sellingPrice * that.itemObj.amount,
-          "allTotalPrice": priceinfo.sellingPrice * that.itemObj.amount,
-          "shouldPay": priceinfo.sellingPrice * that.itemObj.amount,
-          "sellingPrice": priceinfo.sellingPrice
-        });
-      })
-      .fail(function(error) {
-        console.error(error);
-      });
-      return getProductHotDataDefer;
-    },
-
-    initItemSummary: function() {
-      var that = this;
-      var getItemSummary = new SFGetItemSummary({
-        "itemId":that.itemObj.itemid
-      });
-
-      var getItemSummaryDefer = getItemSummary.sendRequest();
-      getItemSummaryDefer.done(function(iteminfo) {
-          var result = new Array();
-          if (typeof iteminfo.specs != "undefined") {
-            _.each(iteminfo.specs, function(item) {
-              result.push(item.specName + "：" + item.spec.specValue);
-            });
-          }
-
-          that.itemObj.attr({
-            "showTax": iteminfo.bonded, //是否是宁波保税，是得话才展示税额
-            "itemName": iteminfo.title,
-            "picUrl": iteminfo.image && iteminfo.image.thumbImgUrl,
-            "spec": result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : "",
-            "skuId": iteminfo.skuId
-          });
-        })
-        .fail(function(error) {
-          console.error(error);
-        });
-
-      return getItemSummaryDefer;
-    },
-
     /*
      * author:zhangke
      */
