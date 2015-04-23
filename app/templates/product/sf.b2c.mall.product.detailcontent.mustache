@@ -43,7 +43,11 @@
   <!--促销信息-->
   <ul class="box coupon-discount">
     {{#each activityInfo.datas}}
-      <li data-activityId="{{activityId}}"><a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>{{activityTitle}}<span class="fr">促销详情</span></li>
+      <li>
+        <a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>
+        <a href="{{h5ActivityLink}}">{{activityTitle}}</a>
+        <span data-activity-id="{{activityId}}" class="fr">促销详情</span>
+      </li>
 	  {{/each}}
   </ul>
   <!--促销信息-->
@@ -155,9 +159,11 @@
   <!--促销信息-->
   <ul class="box coupon-discount">
 		{{#each activityInfo.datas}}
-        <li data-activityId="{{activityId}}"><a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>{{activityTitle}}
-        <span>促销详情</span>
-        </li>
+      <li>
+        <a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>
+        <a href="{{h5ActivityLink}}">{{activityTitle}}</a>
+        <span data-activity-id="{{activityId}}" class="fr">促销详情</span>
+      </li>
 		{{/each}}
   </ul>
   <!--促销信息-->
@@ -225,7 +231,7 @@
 </div>
 
 {{#each activityInfo.datas}}
-  <section class="mask dialog dialog-active hide" style="display: none;" data-activityId="{{activityId}}">
+  <section class="mask dialog dialog-active hide" activityId="{{activityId}}">
     <div class=" center">
       <a href="javascript:" class="icon icon15">关闭</a>
       <h2>活动详情</h2>

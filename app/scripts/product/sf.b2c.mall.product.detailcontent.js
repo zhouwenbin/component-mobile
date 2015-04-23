@@ -287,9 +287,6 @@ define('sf.b2c.mall.product.detailcontent', [
                   that.options.detailContentInfo.priceInfo.attr("activityTitle", element.activityTitle);
                   that.options.detailContentInfo.priceInfo.attr("h5ActivityLink", element.h5ActivityLink);
                 }
-
-                //标示是否显示展开促销详情
-                element.showDetail = false;
               });
             }
 
@@ -717,8 +714,13 @@ define('sf.b2c.mall.product.detailcontent', [
         return false;
       },
 
-      ".coupon-discount .fr click": function() {
-        alert(1);
+      //促销活动对话框事件
+      ".coupon-discount .fr click": function(element, event) {
+        var activityId = element.data("activityId");
+        $(".dialog-active[activityId='" + activityId + "']").removeClass("hide");
+      },
+      ".dialog-active .icon15 click": function(element) {
+        element.parents(".dialog-active").addClass("hide");
       },
 
       /**
