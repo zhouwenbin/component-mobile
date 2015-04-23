@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM
+  * @class sf.b2c.mall.api.user.getUserCode
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM',
+'sf.b2c.mall.api.user.getUserCode',
 [
   'zepto',
   'can',
@@ -22,20 +22,16 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'cp.generateSubjectUrlWidthSCM',
-      SECURITY_TYPE: SecurityType.None.name,
+      METHOD_NAME: 'user.getUserCode',
+      SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'parentSCM': 'string',
-        'phone': 'string'
+        'codeType': 'string'
       },
       OPTIONAL: {
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '13000001': '参数错误',
-        '13000002': '上级scm不合法',
-        '13000003': '二级scm点的父级为空'
       }
     }
   });
