@@ -9,8 +9,9 @@
 </head>
 <body class="body1">
 	<section class="gift-coupon">
-		<h1 class="box">成功领取原汁原味开业优惠券礼包！</h1>
+		<h2 class="gift-coupon-h2">原汁原味开业优惠礼包</h2>
 		== Slim::Template.new('module/coupons.slim').render	
+		<a href="" class="btn btn-big btn-danger">领取优惠券礼包</a>
 		<h2 class="gift-coupon-h2">领券抵扣商品：</h2>
 		<ul class="list clearfix">
 			<li>
@@ -96,6 +97,7 @@
 			<li>该优惠券适用于顺丰海淘所有商品，满68元即可使用</li>
 		</ul>
 	</section>
+	<section class="mask gift-coupon-dialog">领取成功</section>
 </body>
 	
 </html>

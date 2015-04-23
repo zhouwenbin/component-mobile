@@ -30,7 +30,8 @@ function($, can, _, Comm, SecurityType) {
         'accountId': 'string',
       },
       OPTIONAL: {
-        'smsCode': 'string'
+        'smsCode': 'string',
+        'passWord': 'string'
       },
       VERIFY:{
       },
@@ -39,7 +40,9 @@ function($, can, _, Comm, SecurityType) {
         '1000070': '参数错误',
         '1000350': '验证临时token失败,请重新登录',
         '1000360': '第三方账户已绑定海淘账户',
-        '1000380': '已经绑定了同类的第三方账户'
+        '1000380': '已经绑定了同类的第三方账户',
+        '1000400': '密码缺失，请输入密码',
+        '1000410': '需要短信验证码，请输入'
       }
     }
   });
