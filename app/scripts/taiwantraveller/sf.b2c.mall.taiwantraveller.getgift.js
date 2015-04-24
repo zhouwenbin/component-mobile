@@ -4,9 +4,10 @@ define("sf.b2c.mall.taiwantraveller.getgift", [
     'can',
     'zepto',
     'sf.b2c.mall.api.coupon.hasReceived',
+    'sf.weixin',
     'sf.b2c.mall.api.coupon.receiveCoupon'
   ],
-  function(can, $, SFHasReceived, SFReceiveCoupon) {
+  function(can, $, SFHasReceived, SFWeixin, SFReceiveCoupon) {
 
     return can.Control.extend({
 
@@ -27,7 +28,6 @@ define("sf.b2c.mall.taiwantraveller.getgift", [
         receiveCoupon
           .sendRequest()
           .done(function(data) {
-            debugger;
             that.renderHtml(element, {});
           })
           .fail(function(error) {

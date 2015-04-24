@@ -28,6 +28,11 @@ define(
 
         var that = this;
 
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+           window.location.href = 'http://m.sfht.com/login.html?from=' + escape(window.location.href);
+          return false;
+        }
+
         var getUserCode = new SFGetUserCode({
           "codeType": "SIM4TW"
         });

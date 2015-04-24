@@ -21,23 +21,40 @@ define(
 
         requestPayV2.setData({
           "orderId": data.orderid,
-          'payType': that.getPayType()
+          'payType': data.payType,
+          'extInfo': data.extInfo
         });
+
+        // 如果已经请求过了，则做缓存处理，防止第二次重复请求时候prepay_id没了
+        if (SFUtil.isMobile.WeChat() && data.payResult) {
+          that.onBridgeReady(data.payResult);
+          return false;
+        }
 
         requestPayV2
           .sendRequest()
           .done(function(data) {
-            //window.location.href = data.url + '?' + data.postBody;
-            if (callback && _.isFunction(callback.success)) {
-              callback.success();
-            }
-
             if (SFUtil.isMobile.WeChat()) {
-              store.set("alipayurl", data.url + '?' + data.postBody);
-              window.location.href = SFConfig.setting.link.alipayframe;
+              var payResult = that.buildData(data.postBody);
+              that.onBridgeReady(payResult);
+
+              if (callback && _.isFunction(callback.success)) {
+                callback.success(payResult);
+              }
+
             } else {
               window.location.href = data.url + '?' + data.postBody;
+              if (callback && _.isFunction(callback.success)) {
+                callback.success();
+              }
             }
+
+            // if (SFUtil.isMobile.WeChat()) {
+            //   store.set("alipayurl", data.url + '?' + data.postBody);
+            //   window.location.href = SFConfig.setting.link.alipayframe;
+            // } else {
+            //   window.location.href = data.url + '?' + data.postBody;
+            // }
 
           })
           .fail(function(error) {
@@ -48,14 +65,32 @@ define(
           });
       },
 
-      getPayType: function() {
+      buildData: function(str) {
+        var result = {};
 
-        //如果是支付宝服务窗 则是alipay_intl_wap
-        if (typeof window.AlipayJSBridge != "undefined"){
-          return "alipay_intl_wap";
+        var strArr = str.split("&");
+        for (var i = 0; i < strArr.length; i++) {
+          var item = strArr[i].split("=");
+          if (item.length > 1) {
+            if (item[0] == 'package') {
+              item[1] = item[1].replace("%3D", "=");
+              result[item[0]] = item[1];
+            } else {
+              result[item[0]] = item[1];
+            }
+
+          }
         }
+        return result;
+      },
 
-        return 'alipay_forex_wap';
+      onBridgeReady: function(data) {
+        WeixinJSBridge.invoke(
+          'getBrandWCPayRequest', data,
+          function(res) {
+            if (res.err_msg == "get_brand_wcpay_request:ok") {} // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+          }
+        );
       }
     }
 
