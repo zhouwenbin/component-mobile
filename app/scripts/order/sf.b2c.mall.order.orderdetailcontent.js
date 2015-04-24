@@ -450,23 +450,37 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       '#gotopay click': function(element, event) {
         event && event.preventDefault();
-        var that = this;
-        var callback = {
-          error: function() {
-            var message = new SFMessage(null, {
-              'tip': '支付失败！',
-              'type': 'error',
-              'okFunction': function() {
-                that.render();
-              }
-            });
-          }
-        }
 
         var params = can.deparam(window.location.search.substr(1));
-        SFOrderFn.payV2({
-          orderid: params.orderid
-        }, callback)
+
+        var url = SFConfig.setting.link.gotopay + '&' +
+          $.param({
+            "orderid": params.orderid
+          });
+
+        // 转跳到微信授权支付
+        if (Utils.isMobile.WeChat()) {
+          window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx90f1dcb866f3df60&redirect_uri=" + escape(url) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+        } else {
+          window.location.href = url;
+        }
+
+        // var callback = {
+        //   error: function() {
+        //     var message = new SFMessage(null, {
+        //       'tip': '支付失败！',
+        //       'type': 'error',
+        //       'okFunction': function() {
+        //         that.render();
+        //       }
+        //     });
+        //   }
+        // }
+
+        // var params = can.deparam(window.location.search.substr(1));
+        // SFOrderFn.payV2({
+        //   orderid: params.orderid
+        // }, callback)
       }
 
     });

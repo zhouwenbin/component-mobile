@@ -3,18 +3,19 @@
 define('sf.b2c.mall.order.iteminfo', [
   'can',
   'zepto',
-  'sf.b2c.mall.api.b2cmall.getProductHotData',
-  'sf.b2c.mall.api.b2cmall.getItemSummary',
   'sf.b2c.mall.api.order.submitOrderForAllSys',
   'sf.b2c.mall.api.order.queryOrderCoupon',
+  'sf.b2c.mall.api.order.orderRender',
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.setDefaultAddr',
   'sf.b2c.mall.api.user.setDefaultRecv',
   'sf.helpers',
+  'sf.util',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config'
-], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFMessage, SFConfig) {
+], function(can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFUtil, SFMessage, SFConfig) {
+
   return can.Control.extend({
     itemObj: new can.Map({}),
     /**
@@ -31,11 +32,8 @@ define('sf.b2c.mall.order.iteminfo', [
 
       var that = this;
 
-      can.when(this.initItemSummary(), this.initProductHotData())
-        .then(function(){
-          return that.initCoupons();
-        })
-        .always(function() {
+      can.when(that.initOrderRender())
+        .done(function() {
           var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
           that.element.html(html);
 
@@ -66,13 +64,122 @@ define('sf.b2c.mall.order.iteminfo', [
       this.itemObj.attr("orderCoupon.discountPrice", price);
     },
 
+
+    /**
+     * 初始化 OrderRender
+     */
+    initOrderRender: function() {
+      var that = this;
+      var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
+      var orderRender = new SFOrderRender({
+        address: JSON.stringify({
+          "addrId": selectAddr.addrId,
+          "nationName": selectAddr.nationName,
+          "provinceName": selectAddr.provinceName,
+          "cityName": selectAddr.cityName,
+          "regionName": selectAddr.regionName,
+          "detail": selectAddr.detail,
+          "recName": selectAddr.recName,
+          "mobile": selectAddr.cellphone,
+          "telephone": selectAddr.cellphone,
+          "zipCode": selectAddr.zipCode,
+          "recId": selectAddr.recId,
+          certType: "ID",
+          certNo: selectAddr.credtNum2
+        }),
+        items: JSON.stringify([{
+          "itemId": that.itemObj.itemid,
+          "num": that.itemObj.amount
+        }]),
+        sysType: that.getSysType(that.itemObj.saleid)
+      });
+      return orderRender.sendRequest()
+        .done(function(orderRenderItem){
+          that.processFoundation(orderRenderItem);
+          that.processProducts(orderRenderItem.orderGoodsItemList);
+          that.processCoupons(orderRenderItem.orderCouponItem);
+        })
+        .fail();
+    },
+
+    /**
+     * 加工基础信息
+     * @param 数据
+     */
+    processFoundation: function(orderRenderItem) {
+      this.itemObj.attr({
+        submitKey: orderRenderItem.submitKey,
+        flag: orderRenderItem.flag,
+        errorDes: orderRenderItem.errorDes,
+        orderFeeItem: can.extend(orderRenderItem.orderFeeItem, {
+          shouldPay: orderRenderItem.orderFeeItem.actualTotalFee
+        })
+      });
+    },
+
+    /**
+     * 加工商品信息
+     * @param 商品列表
+     */
+    processProducts: function(orderGoodsItemList) {
+      //@note 如果channels(渠道编号) = 'heike',
+      //cookie中1_uinfo中没有heike，则该用户不能购买
+      this.options.productChannels = orderGoodsItemList[0].channels[0];
+      //是否是宁波保税，是得话才展示税额
+      this.itemObj.attr("showTax", orderGoodsItemList[0].bonded);
+
+      _.each(orderGoodsItemList, function(goodItem){
+        if (goodItem.specItemList) {
+          var result = new Array();
+          _.each(goodItem.specItemList, function(item) {
+            result.push(item.specName + ":" + item.spec.specValue);
+          });
+          goodItem.spec = result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : "";
+          goodItem.totalPrice = goodItem.price * goodItem.quantity;
+        }
+      });
+      this.itemObj.attr("orderGoodsItemList", orderGoodsItemList);
+    },
+    /**
+     * 加工优惠券信息
+     * @param 优惠券
+     */
+    processCoupons: function(orderCoupon) {
+      this.itemObj.attr("isShowCouponArea", true);
+      can.extend(orderCoupon, {
+        isHaveAvaliable: orderCoupon.avaliableAmount != 0,
+        isHaveDisable: orderCoupon.disableAmount != 0,
+        useQuantity: 0,
+        discountPrice: 0,
+        couponExCode: ""
+      });
+      this.itemObj.attr("orderCoupon", orderCoupon);
+      this.itemObj.orderCoupon.selectCoupons = [];
+
+
+      this.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
+        this.attr("orderFeeItem.shouldPay", this.attr("orderFeeItem.shouldPay") + oldVal - newVal);
+        //this.attr("orderFeeItem.discount", this.attr("orderFeeItem.discount") - oldVal + newVal);
+      });
+
+    },
+
     errorMap: {
       //"4000100": "order unkown error",
       "4000200": "订单地址不存在",
       "4000400": "订单商品信息改变",
+      "4000401": "购买数量超过活动每人限购数量",
+      "4000402": "折扣金额大于订单总金额",
+      "4000403": "购买数量超过活动剩余库存",
+      "4000404": "活动已经结束",
+      "4000405": "折扣金额过大，超过订单总金额的30%",
       "4000500": "订单商品库存不足",
       "4000600": "订单商品超过限额",
       "4000700": "订单商品金额改变",
+      "4002300": "购买的多个商品货源地不一致",
+      "4002400": "购买的多个商品的商品形态不一致",
+      "4002500": "购买的商品支付卡类型为空",
+      "4002600": "购买的商品不在配送范围内",
       "4002700": "订单商品已下架",
       "4100901": "优惠券使用失败",
       "4100902": "优惠券不在可使用的时间范围内",
@@ -155,10 +262,13 @@ define('sf.b2c.mall.order.iteminfo', [
             "items": JSON.stringify([{
               "itemId": that.itemObj.itemid,
               "num": that.itemObj.amount,
-              "price": that.itemObj.sellingPrice
+              "price": that.itemObj.orderGoodsItemList[0].price
             }]),
             "sysType": that.getSysType(),
             "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
+          }
+          if (that.itemObj.orderCoupon.selectCoupons && that.itemObj.orderCoupon.selectCoupons.length > 0) {
+            params.couponCodes = JSON.stringify(that.itemObj.orderCoupon.selectCoupons);
           }
         })
         .fail(function(error) {
@@ -169,11 +279,21 @@ define('sf.b2c.mall.order.iteminfo', [
           return submitOrderForAllSys.sendRequest();
         })
         .done(function(message) {
-          window.location.href = SFConfig.setting.link.gotopay + '&' +
+
+          var url = SFConfig.setting.link.gotopay + '&' +
             $.param({
               "orderid": message.value,
-              "recid": selectAddr.recId
+              "recid": selectAddr.recId,
+              "showordersuccess": true
             });
+
+          // 转跳到微信授权支付
+          if (SFUtil.isMobile.WeChat()) {
+            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx90f1dcb866f3df60&redirect_uri=" + escape(url) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+          } else {
+            window.location.href = url;
+          }
+
         })
         .fail(function(error) {
           element.removeClass("disable");
@@ -187,63 +307,11 @@ define('sf.b2c.mall.order.iteminfo', [
     getSysType: function() {
       // alert(window.AlipayJSBridge);
       //如果是支付宝服务窗 则是FWC_H5
-      if (typeof window.AlipayJSBridge != "undefined"){
+      if (typeof window.AlipayJSBridge != "undefined") {
         return "FWC_H5"
       } else {
         return 'B2C_H5'
       }
-    },
-
-    initProductHotData: function() {
-      var that = this;
-      var getProductHotData = new SFGetProductHotData({
-        'itemId': that.itemObj.itemid
-      });
-      var getProductHotDataDefer = getProductHotData.sendRequest();
-      getProductHotDataDefer.done(function(priceinfo) {
-        that.itemObj.attr({
-          "singlePrice": priceinfo.sellingPrice,
-          "amount": that.itemObj.amount,
-          "totalPrice": priceinfo.sellingPrice * that.itemObj.amount,
-          "allTotalPrice": priceinfo.sellingPrice * that.itemObj.amount,
-          "shouldPay": priceinfo.sellingPrice * that.itemObj.amount,
-          "sellingPrice": priceinfo.sellingPrice
-        });
-      })
-      .fail(function(error) {
-        console.error(error);
-      });
-      return getProductHotDataDefer;
-    },
-
-    initItemSummary: function() {
-      var that = this;
-      var getItemSummary = new SFGetItemSummary({
-        "itemId":that.itemObj.itemid
-      });
-
-      var getItemSummaryDefer = getItemSummary.sendRequest();
-      getItemSummaryDefer.done(function(iteminfo) {
-          var result = new Array();
-          if (typeof iteminfo.specs != "undefined") {
-            _.each(iteminfo.specs, function(item) {
-              result.push(item.specName + "：" + item.spec.specValue);
-            });
-          }
-
-          that.itemObj.attr({
-            "showTax": iteminfo.bonded, //是否是宁波保税，是得话才展示税额
-            "itemName": iteminfo.title,
-            "picUrl": iteminfo.image && iteminfo.image.thumbImgUrl,
-            "spec": result.length > 0 ? ("<li>" + result.join('</li><li>') + "</li>") : "",
-            "skuId": iteminfo.skuId
-          });
-        })
-        .fail(function(error) {
-          console.error(error);
-        });
-
-      return getItemSummaryDefer;
     },
 
     /*
@@ -273,7 +341,7 @@ define('sf.b2c.mall.order.iteminfo', [
           that.itemObj.attr("orderCoupon", orderCoupon);
           that.itemObj.orderCoupon.selectCoupons = [];
 
-          that.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
+          that.itemObj.unbind("orderCoupon.discountPrice").bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
             that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
           });
         })
@@ -289,7 +357,7 @@ define('sf.b2c.mall.order.iteminfo', [
       //找到面额最高的
       var tmpPriceCoupon;
       var tmpPrice = 0;
-      for(var i = 0, tmpCoupon; tmpCoupon = orderCoupon.avaliableCoupons[i]; i++) {
+      for (var i = 0, tmpCoupon; tmpCoupon = orderCoupon.avaliableCoupons[i]; i++) {
         if (tmpCoupon.price > tmpPrice) {
           tmpPrice = tmpCoupon.price;
           tmpPriceCoupon = tmpCoupon;

@@ -1005,11 +1005,11 @@ module.exports = function (grunt) {
         }
       },
 
-      getalipaycoupon: {
+      naturalcoupon: {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.getalipaycoupon.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.naturalcoupon.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
@@ -1017,9 +1017,9 @@ module.exports = function (grunt) {
           },
           include: [
             "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.getalipaycoupon'
+            'sf.b2c.mall.page.naturalcoupon'
           ],
-          insertRequire: ['sf.b2c.mall.page.getalipaycoupon']
+          insertRequire: ['sf.b2c.mall.page.naturalcoupon']
         }
       },
 
@@ -1038,6 +1038,42 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.taiwantravellergift'
           ],
           insertRequire: ['sf.b2c.mall.page.taiwantravellergift']
+        }
+      },
+
+      taiwantravellercard: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.taiwantravellercard.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.taiwantravellercard'
+          ],
+          insertRequire: ['sf.b2c.mall.page.taiwantravellercard']
+        }
+      },
+
+      taiwantravellerfoodeat: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.taiwantravellerfoodeat.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.taiwantravellerfoodeat'
+          ],
+          insertRequire: ['sf.b2c.mall.page.taiwantravellerfoodeat']
         }
       }
 
