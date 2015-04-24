@@ -9,6 +9,7 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.api.b2cmall.getItemInfo',
     'sf.b2c.mall.api.b2cmall.getProductHotData',
     'sf.b2c.mall.api.b2cmall.getSkuInfo',
+    'sf.b2c.mall.api.b2cmall.getActivityInfo',
     'sf.b2c.mall.api.product.findRecommendProducts',
     'sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.helpers',
@@ -19,7 +20,9 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.weixin',
     'sf.util'
   ],
-  function(can, $, Swipe, Fastclick, SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
+  function(can, $, Swipe, Fastclick,
+         SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
+         SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
 
     Fastclick.attach(document.body);
 
@@ -60,6 +63,14 @@ define('sf.b2c.mall.product.detailcontent', [
           var oPrice = originPrice();
           if (sellingPrice() < oPrice || oPrice == 0) {
             return options.fn(options.contexts || this);
+          }
+        },
+        //促销展示
+        'sf-showActivity': function(activityType, options) {
+          if (activityType != 'FLASH') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
           }
         }
       },
@@ -131,10 +142,6 @@ define('sf.b2c.mall.product.detailcontent', [
       render: function() {
         var that = this;
 
-        var getItemInfo = new SFGetItemInfo({
-          'itemId': that.itemid
-        });
-
         var getProductHotData = new SFGetProductHotData({
           'itemId': that.itemid
         });
@@ -144,18 +151,13 @@ define('sf.b2c.mall.product.detailcontent', [
           'size': 4
         });
 
-        can.when(getItemInfo.sendRequest(),
-            getProductHotData.sendRequest(),
-            findRecommendProducts.sendRequest())
-          .done(function(itemInfoData, priceData, recommendProducts) {
+        that.options.detailContentInfo = {};
+        that.options.detailContentInfo.showFirstStep = true;
+        that.options.detailContentInfo.showSecondStep = false;
+        that.options.detailContentInfo.activityInfo = new can.Map({});
 
-            that.options.detailContentInfo = {};
-            that.options.detailContentInfo.showFirstStep = true;
-            that.options.detailContentInfo.showSecondStep = false;
-            that.adapter.formatItemInfo(that.detailUrl, that.options.detailContentInfo, itemInfoData);
-            that.adapter.formatPrice(that.options.detailContentInfo, priceData);
-            that.adapter.formatRecommendProducts(that.detailUrl, that.options.detailContentInfo, recommendProducts);
-
+        can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initFindRecommendProducts(that.itemid), that.initActivityInfo(that.itemid))
+          .done(function() {
             document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
 
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
@@ -222,7 +224,75 @@ define('sf.b2c.mall.product.detailcontent', [
             $('.loadingDIV').hide();
           })
       },
+      initGetItemInfo: function(itemid) {
+        var that = this;
 
+        var getItemInfo = new SFGetItemInfo({
+          'itemId': that.itemid
+        });
+        return getItemInfo.sendRequest()
+          .done(function(itemInfoData) {
+            that.adapter.formatItemInfo(that.detailUrl, that.options.detailContentInfo, itemInfoData);
+          });
+      },
+      initGetProductHotData: function(itemid) {
+        var that = this;
+
+        var getProductHotData = new SFGetProductHotData({
+          'itemId': that.itemid
+        });
+        return getProductHotData.sendRequest()
+          .done(function(priceData) {
+            that.adapter.formatPrice(that.options.detailContentInfo, priceData);
+          });
+      },
+      initFindRecommendProducts: function(itemid) {
+        var that = this;
+
+        var findRecommendProducts = new SFFindRecommendProducts({
+          'itemId': itemid,
+          'size': 4
+        });
+        return findRecommendProducts.sendRequest()
+          .done(function(recommendProducts) {
+            that.adapter.formatRecommendProducts(that.detailUrl, that.options.detailContentInfo, recommendProducts);
+          });
+      },
+      initActivityInfo: function(itemid) {
+        var that = this;
+
+        var getActivityInfo = new SFGetActivityInfo({
+          'itemId': itemid
+        });
+
+        return getActivityInfo
+          .sendRequest()
+          .done(function(data) {
+
+            if (data && data.value && data.value.length > 0) {
+              _.each(data.value, function(element, index, list) {
+                //处理活动规则，翻译成html
+                element.rulesHtml = "";
+                if (element.promotionRules) {
+                  for (var index = 0, tempRule; tempRule = element.promotionRules[index]; index++) {
+                    element.rulesHtml += "<li>" + (index+1) + "." + tempRule.ruleDesc + "</li>";
+                  }
+                }
+
+                //处理活动链接
+                element.h5ActivityLink = element.h5ActivityLink || "javascript:void(0);";
+
+                //处理限时促销
+                if (element.activityType == "FLASH") {
+                  that.options.detailContentInfo.priceInfo.attr("activityTitle", element.activityTitle);
+                  that.options.detailContentInfo.priceInfo.attr("h5ActivityLink", element.h5ActivityLink);
+                }
+              });
+            }
+
+            that.options.detailContentInfo.activityInfo.attr("datas", data.value)
+          });
+      },
       /**
        * [weixinShare 微信分享]
        * @param  {[type]} detailContentInfo [description]
@@ -644,6 +714,15 @@ define('sf.b2c.mall.product.detailcontent', [
         return false;
       },
 
+      //促销活动对话框事件
+      ".coupon-discount .fr click": function(element, event) {
+        var activityId = element.data("activityId");
+        $(".dialog-active[activityId='" + activityId + "']").removeClass("hide");
+      },
+      ".dialog-active .icon15 click": function(element) {
+        element.parents(".dialog-active").addClass("hide");
+      },
+
       /**
        * [gotoNewItem description]
        * @return {[type]}
@@ -667,7 +746,8 @@ define('sf.b2c.mall.product.detailcontent', [
         });
 
         can.when(getSKUInfo.sendRequest(),
-            getProductHotData.sendRequest())
+            getProductHotData.sendRequest(),
+            that.initActivityInfo(newItemid))
           .done(function(skuInfoData, priceData) {
 
             $('#showrestrictiontipsspan').hide();
