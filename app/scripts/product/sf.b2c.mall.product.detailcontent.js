@@ -67,7 +67,7 @@ define('sf.b2c.mall.product.detailcontent', [
         },
         //促销展示
         'sf-showActivity': function(activityType, options) {
-          if (activityType != 'FLASH') {
+          if (activityType() != 'FLASH') {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -156,7 +156,7 @@ define('sf.b2c.mall.product.detailcontent', [
         that.options.detailContentInfo.showSecondStep = false;
         that.options.detailContentInfo.activityInfo = new can.Map({});
 
-        can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initFindRecommendProducts(that.itemid), that.initActivityInfo(that.itemid))
+        can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initFindRecommendProducts(that.itemid))
           .done(function() {
             document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
 
@@ -243,6 +243,7 @@ define('sf.b2c.mall.product.detailcontent', [
         });
         return getProductHotData.sendRequest()
           .done(function(priceData) {
+            that.initActivityInfo(that.itemid);
             that.adapter.formatPrice(that.options.detailContentInfo, priceData);
           });
       },
@@ -286,11 +287,13 @@ define('sf.b2c.mall.product.detailcontent', [
                 if (element.activityType == "FLASH") {
                   that.options.detailContentInfo.priceInfo.attr("activityTitle", element.activityTitle);
                   that.options.detailContentInfo.priceInfo.attr("h5ActivityLink", element.h5ActivityLink);
+                } else {
+                  that.options.detailContentInfo.activityInfo.attr("isShow", true)
                 }
               });
             }
 
-            that.options.detailContentInfo.activityInfo.attr("datas", data.value)
+            that.options.detailContentInfo.activityInfo.attr("datas", data.value);
           });
       },
       /**

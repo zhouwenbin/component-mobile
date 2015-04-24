@@ -41,15 +41,19 @@
   <!--商品-->
 
   <!--促销信息-->
+	{{#activityInfo.isShow}}
   <ul class="box coupon-discount">
     {{#each activityInfo.datas}}
+      {{#sf-showActivity activityType}}
       <li>
         <a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>
         <a href="{{h5ActivityLink}}">{{activityTitle}}</a>
         <span data-activity-id="{{activityId}}" class="fr">促销详情</span>
       </li>
+	    {{/sf-showActivity}}
 	  {{/each}}
   </ul>
+	{{/activityInfo.isShow}}
   <!--促销信息-->
 
   <!--商品详情-->
