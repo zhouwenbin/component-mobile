@@ -1,14 +1,23 @@
 <!--订单提交成功-->
 <section class="order order-success">
+  {{#if showordersuccess}}
   <div class="order-success-r1">
     <span class="icon icon11"></span>
     <h1>订单提交成功，<br>请您尽快完成付款！</h1>
   </div>
+  {{/if}}
 
   <p class="box text-error">请您在订单提交后2小时内完成支付,否则订单会自动取消。</p>
   <h2>支付方式</h2>
-  <ul>
-    <li class="box active"><a href="" class="icon icon6">支付宝</a><span class="icon icon8"></span></li>
+  <ul class="gotopaymethodlist">
+
+    {{#if onlyWeixinPay}}
+      <li class="box">微信内卡</a><span></span></li>
+    {{/if}}
+
+    {{^if onlyWeixinPay}}
+      <li class="box active"><a href="" class="icon icon6">支付宝</a><span class="icon icon8"></span></li>
+    {{/if}}
   </ul>
 
 </section>

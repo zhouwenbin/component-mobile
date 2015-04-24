@@ -7,10 +7,11 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.order.fn',
     'sf.helpers',
+    'sf.util',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config'
   ],
-  function(can, $, SFGetOrderList, SFRequestPayV2, SFOrderFn, helpers, SFMessage, SFConfig) {
+  function(can, $, SFGetOrderList, SFRequestPayV2, SFOrderFn, helpers, Utils, SFMessage, SFConfig) {
 
     return can.Control.extend({
 
@@ -90,7 +91,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
                   order.paymentAmount = order.totalPrice - order.discount;
 
                   if (order.orderCouponItemList && order.orderCouponItemList.length > 0) {
-                    _.each(order.orderCouponItemList, function(coupon){
+                    _.each(order.orderCouponItemList, function(coupon) {
                       if (coupon.couponType == "SHAREBAG") {
                         order.isShareBag = true;
                         order.shareBag = coupon;
@@ -149,11 +150,11 @@ define('sf.b2c.mall.order.orderlistcontent', [
           })
       },
 
-      '#notCompleteOrderListTabhead click': function (element, event) {
+      '#notCompleteOrderListTabhead click': function(element, event) {
         this.switchTab(element, 'notCompletedTab');
       },
 
-      '#completeOrderListTabhead click': function (element, event) {
+      '#completeOrderListTabhead click': function(element, event) {
         this.switchTab(element, 'completedTab');
       },
 
@@ -240,21 +241,33 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var that = this;
         var orderId = element.parent('div#operationarea').eq(0).attr('data-orderid');
 
-        var callback = {
-          error: function() {
-            var message = new SFMessage(null, {
-              'tip': '支付失败！',
-              'type': 'error',
-              'okFunction': function() {
-                that.render();
-              }
-            });
-          }
+        var url = SFConfig.setting.link.gotopay + '&' +
+          $.param({
+            "orderid": orderId
+          });
+
+        // 转跳到微信授权支付
+        if (Utils.isMobile.WeChat()) {
+          window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx90f1dcb866f3df60&redirect_uri=" + escape(url) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+        } else {
+          window.location.href = url;
         }
 
-        SFOrderFn.payV2({
-          orderid: orderId
-        }, callback);
+        // var callback = {
+        //   error: function() {
+        //     var message = new SFMessage(null, {
+        //       'tip': '支付失败！',
+        //       'type': 'error',
+        //       'okFunction': function() {
+        //         that.render();
+        //       }
+        //     });
+        //   }
+        // }
+
+        // SFOrderFn.payV2({
+        //   orderid: orderId
+        // }, callback);
 
         return false;
       },
