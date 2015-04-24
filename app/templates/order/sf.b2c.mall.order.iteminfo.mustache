@@ -9,7 +9,7 @@
     </div>
     <div class="table-r1c2 goodsinfo-title">
       <h3 class="ellipsis3">{{goodsName}}</h3>
-      <div class="text-error">{{#flag}}{{description}}{{/flag}}</div>
+      <div class="text-error hide">{{#flag}}{{description}}{{/flag}}</div>
     </div>
   </div>
   <ul class="clearfix table-r2">
@@ -43,5 +43,5 @@
 <div class="order-submit box">
 	<p class="order-submit-c1">实际应付款: <span class="text-important">¥{{sf.price orderFeeItem.shouldPay}}</span></p>
 	<a class="btn btn-danger{{^flag}} disable{{/flag}}" id="submitOrder" href="javascript:void(0);">提交订单</a>
-  <div class="text-error">{{^flag}}{{errorDes}}{{/flag}}</div>
+  <div class="text-error hide">{{^flag}}{{errorDes}}{{/flag}}</div>
 </div>

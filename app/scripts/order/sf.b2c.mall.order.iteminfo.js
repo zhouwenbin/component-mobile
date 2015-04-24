@@ -262,7 +262,7 @@ define('sf.b2c.mall.order.iteminfo', [
             "items": JSON.stringify([{
               "itemId": that.itemObj.itemid,
               "num": that.itemObj.amount,
-              "price": that.itemObj.sellingPrice
+              "price": that.itemObj.orderGoodsItemList[0].price
             }]),
             "sysType": that.getSysType(),
             "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
