@@ -3,48 +3,76 @@
     <ul class="coupons">
       <li class="clearfix">
         <div class="coupons-c2 fr">
-          <div class="coupons-c2r1">￥<span>50</span></div>
-          <div class="coupons-c2r2">满10元立减</div>
+          <div class="coupons-c2r1">￥<span>3</span></div>
+          <div class="coupons-c2r2">满39元立减</div>
         </div>
         <div class="coupons-c1">
-          <h2>新年满减优惠券</h2>
-          <p>有效期：2015.3.3－2015.3.18 <br>特惠商品不可用</p>
+          <h2>3元优惠券</h2>
+          <p>
+            有效期：自领取后30天内有效<br>仅限原汁原味商品
+          </p>
         </div>
       </li>
       <li class="clearfix">
         <div class="coupons-c2 fr">
-          <div class="coupons-c2r1">￥<span>50</span></div>
-          <div class="coupons-c2r2">满10元立减</div>
+          <div class="coupons-c2r1">￥<span>3</span></div>
+          <div class="coupons-c2r2">满39元立减</div>
         </div>
         <div class="coupons-c1">
-          <h2>新年满减优惠券</h2>
-          <p>有效期：2015.3.3－2015.3.18 <br>特惠商品不可用</p>
+          <h2>3元优惠券</h2>
+          <p>
+            有效期：自领取后30天内有效<br>仅限原汁原味商品
+          </p>
         </div>
       </li>
       <li class="clearfix">
         <div class="coupons-c2 fr">
-          <div class="coupons-c2r1">￥<span>50</span></div>
-          <div class="coupons-c2r2">满10元立减</div>
+          <div class="coupons-c2r1">￥<span>5</span></div>
+          <div class="coupons-c2r2">满59元立减</div>
         </div>
         </div>
         <div class="coupons-c1">
-          <h2>新年满减优惠券</h2>
-          <p>有效期：2015.3.3－2015.3.18 <br>特惠商品不可用</p>
+          <h2>5元优惠券</h2>
+          <p>
+            有效期：自领取后30天内有效<br>仅限原汁原味商品
+          </p>
         </div>
       </li>
       <li class="clearfix">
         <div class="coupons-c2 fr">
-          <div class="coupons-c2r1">￥<span>50</span></div>
-          <div class="coupons-c2r2">满10元立减</div>
+          <div class="coupons-c2r1">￥<span>5</span></div>
+          <div class="coupons-c2r2">满59元立减</div>
         </div>
         </div>
         <div class="coupons-c1 clearfix">
-          <h2>新年满减优惠券</h2>
-          <p>有效期：2015.3.3－2015.3.18 <br>特惠商品不可用</p>
+          <h2>5元优惠券</h2>
+          <p>
+            有效期：自领取后30天内有效<br>仅限原汁原味商品
+          </p>
+        </div>
+      </li>
+      <li class="clearfix">
+        <div class="coupons-c2 fr">
+          <div class="coupons-c2r1">￥<span>100</span></div>
+          <div class="coupons-c2r2">满499元立减</div>
+        </div>
+        </div>
+        <div class="coupons-c1 clearfix">
+          <h2>100元优惠券</h2>
+          <p>
+            有效期：自领取后30天内有效<br>仅限原汁原味商品
+          </p>
         </div>
       </li>
     </ul>
-    <a href="" class="btn btn-big btn-danger">领取优惠券礼包</a>
+    {{^if hasGetLift}}
+      <a href="javascript:;" class="btn btn-big btn-danger" id="getcoupon">领取优惠券礼包</a>
+    {{/if}}
+
+    {{#if hasGetLift}}
+      <a href="javascript:;" class="btn btn-big btn-disable">已经领取</a>
+    {{/if}}
+
     <h2 class="gift-coupon-h2">领券抵扣商品：</h2>
     <ul class="list clearfix">
       <li>
@@ -120,7 +148,7 @@
 
       </li>
     </ul>
-    <a href="" class="btn btn-big btn-danger">更多商品去原汁原味逛逛</a>
+    <a href="http://m.sfht.com/y.html" class="btn btn-big btn-danger">更多商品去原汁原味逛逛</a>
   </section>
   <section class="coupon-use box">
     <h2>优惠券使用规则</h2>
@@ -130,4 +158,4 @@
       <li>该优惠券适用于顺丰海淘所有商品，满68元即可使用</li>
     </ul>
   </section>
-  <section class="mask gift-coupon-dialog">领取成功</section>
+  <section class="mask gift-coupon-dialog" style="display:none" id="successdialog">领取成功</section>

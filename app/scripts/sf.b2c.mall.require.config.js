@@ -85,6 +85,7 @@ requirejs.config({
     'sf.b2c.mall.api.user.reqLoginAuth': 'scripts/api/sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.api.user.getWeChatJsApiSig': 'scripts/api/sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.b2c.mall.api.user.getUserCode': 'scripts/api/sf.b2c.mall.api.user.getUserCode',
+    'sf.b2c.mall.api.user.partnerBindByUPswd': 'scripts/api/sf.b2c.mall.api.user.partnerBindByUPswd',
 
     'sf.b2c.mall.api.b2cmall.getBanner': 'scripts/api/sf.b2c.mall.api.b2cmall.getBanner',
     'sf.b2c.mall.api.b2cmall.getFastSaleInfoList': 'scripts/api/sf.b2c.mall.api.b2cmall.getFastSaleInfoList',

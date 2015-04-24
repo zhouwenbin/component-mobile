@@ -3,8 +3,6 @@
 define('sf.b2c.mall.order.iteminfo', [
   'can',
   'zepto',
-  'sf.b2c.mall.api.b2cmall.getProductHotData',
-  'sf.b2c.mall.api.b2cmall.getItemSummary',
   'sf.b2c.mall.api.order.submitOrderForAllSys',
   'sf.b2c.mall.api.order.queryOrderCoupon',
   'sf.b2c.mall.api.order.orderRender',
@@ -13,9 +11,11 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.b2c.mall.api.user.setDefaultAddr',
   'sf.b2c.mall.api.user.setDefaultRecv',
   'sf.helpers',
+  'sf.util',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config'
-], function(can, $, SFGetProductHotData, SFGetItemSummary, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFMessage, SFConfig) {
+], function(can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFUtil, SFMessage, SFConfig) {
+
   return can.Control.extend({
     itemObj: new can.Map({}),
     /**
@@ -279,11 +279,21 @@ define('sf.b2c.mall.order.iteminfo', [
           return submitOrderForAllSys.sendRequest();
         })
         .done(function(message) {
-          window.location.href = SFConfig.setting.link.gotopay + '&' +
+
+          var url = SFConfig.setting.link.gotopay + '&' +
             $.param({
               "orderid": message.value,
-              "recid": selectAddr.recId
+              "recid": selectAddr.recId,
+              "showordersuccess": true
             });
+
+          // 转跳到微信授权支付
+          if (SFUtil.isMobile.WeChat()) {
+            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx90f1dcb866f3df60&redirect_uri=" + escape(url) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+          } else {
+            window.location.href = url;
+          }
+
         })
         .fail(function(error) {
           element.removeClass("disable");
@@ -297,7 +307,7 @@ define('sf.b2c.mall.order.iteminfo', [
     getSysType: function() {
       // alert(window.AlipayJSBridge);
       //如果是支付宝服务窗 则是FWC_H5
-      if (typeof window.AlipayJSBridge != "undefined"){
+      if (typeof window.AlipayJSBridge != "undefined") {
         return "FWC_H5"
       } else {
         return 'B2C_H5'
@@ -347,7 +357,7 @@ define('sf.b2c.mall.order.iteminfo', [
       //找到面额最高的
       var tmpPriceCoupon;
       var tmpPrice = 0;
-      for(var i = 0, tmpCoupon; tmpCoupon = orderCoupon.avaliableCoupons[i]; i++) {
+      for (var i = 0, tmpCoupon; tmpCoupon = orderCoupon.avaliableCoupons[i]; i++) {
         if (tmpCoupon.price > tmpPrice) {
           tmpPrice = tmpCoupon.price;
           tmpPriceCoupon = tmpCoupon;
