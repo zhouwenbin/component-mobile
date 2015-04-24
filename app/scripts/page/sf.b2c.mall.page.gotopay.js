@@ -63,6 +63,7 @@ define(
       },
 
       ".gotopaymethod click": function(element, event) {
+        event && event.preventDefault();
         element.parent().find("li.gotopaymethod").removeClass("active");
         element.addClass("active");
         this.options.payType = element.eq(0).attr('data-payType');
@@ -91,15 +92,6 @@ define(
             result = "alipay_intl_wap";
           }
 
-          result = 'alipay_forex_wap';
-        }
-
-        // 如果是微信环境是wechat_intl_mp，如果是支护宝环境是alipay_intl_wap，其他为alipay_forex_wap
-        if (SFUtil.isMobile.WeChat()) {
-          result = "wechat_intl_mp";
-        } else if (typeof window.AlipayJSBridge != "undefined") {
-          result = "alipay_intl_wap";
-        } else {
           result = 'alipay_forex_wap';
         }
 

@@ -25,7 +25,6 @@ define(
       init: function(element) {
         var params = can.deparam(window.location.search.substr(1));
         var bagid = params.bagid;
-
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
            window.location.href = 'http://m.sfht.com/login.html?from=' + escape(window.location.href);
           return false;
