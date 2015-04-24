@@ -7,11 +7,10 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.order.selectreceiveaddr',
-    'sf.b2c.mall.order.iteminfo',
     'sf.weixin',
     'sf.b2c.mall.business.config'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, ItemInfo, SFWeixin, SFConfig) {
+  function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, SFWeixin, SFConfig) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
     SFWeixin.shareIndex();
@@ -30,10 +29,6 @@ define(
 
       render: function() {
         this.component.selectReceiveAddr = new SelectReceiveAddr('.sf-b2c-mall-order-selectReceiveAddress');
-
-        new ItemInfo('.sf-b2c-mall-order-itemInfo', {
-          selectReceiveAddr: this.component.selectReceiveAddr
-        });
       },
 
       supplement: function() {
