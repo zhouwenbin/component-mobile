@@ -80,9 +80,16 @@ define(
        * @return {[type]} [description]
        */
       getPayType: function() {
-        var result = this.options.payType;
+        var result = "";
 
-         // 针对支付方式概要，做定制处理
+        var paytypelist = $(".gotopaymethodlist").find("li");
+        _.each(paytypelist, function(item) {
+          if ($(item).hasClass("active")) {
+            result = $(item).attr("data-payType");
+          }
+        })
+
+        // 针对支付方式概要，做定制处理
         if (result == "weixinpay") {
           result = "wechat_intl_mp";
         } else if (result == "alipay") {
