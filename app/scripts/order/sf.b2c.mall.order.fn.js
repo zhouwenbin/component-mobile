@@ -16,25 +16,32 @@ define(
     var requestPayV2 = new SFApiRequestPayV2();
 
     return {
-      payV2: function(data, callback) {
+      payV2: function(dataParam, callback) {
         var that = this;
 
-        requestPayV2.setData({
-          "orderId": data.orderid,
-          'payType': data.payType,
-          'extInfo': data.extInfo
-        });
+        if (SFUtil.isMobile.WeChat() && dataParam.payType == "wechat_intl_mp") {
+          requestPayV2.setData({
+            "orderId": dataParam.orderid,
+            'payType': dataParam.payType,
+            'extInfo': dataParam.extInfo
+          });
 
-        // 如果已经请求过了，则做缓存处理，防止第二次重复请求时候prepay_id没了
-        if (SFUtil.isMobile.WeChat() && data.payResult) {
-          that.onBridgeReady(data.payResult);
-          return false;
+          // 如果已经请求过了，则做缓存处理，防止第二次重复请求时候prepay_id没了
+          if (dataParam.payResult) {
+            that.onBridgeReady(dataParam.payResult);
+            return false;
+          }
+        } else {
+          requestPayV2.setData({
+            "orderId": dataParam.orderid,
+            'payType': dataParam.payType
+          });
         }
 
         requestPayV2
           .sendRequest()
           .done(function(data) {
-            if (SFUtil.isMobile.WeChat()) {
+            if (SFUtil.isMobile.WeChat()  && dataParam.payType == "wechat_intl_mp") {
               var payResult = that.buildData(data.postBody);
               that.onBridgeReady(payResult);
 
