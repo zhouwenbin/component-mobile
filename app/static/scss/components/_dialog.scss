@@ -78,9 +78,12 @@
 .dialog-nataral .center{
   text-align:left;
   padding-bottom:0;
+
 }
 .dialog-nataral ul{
   padding:10px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 .dialog-nataral li{
   border-bottom:1px solid #eaeaea;
