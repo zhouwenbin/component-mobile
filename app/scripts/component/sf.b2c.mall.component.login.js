@@ -67,6 +67,13 @@ define('sf.b2c.mall.component.login', [
        * @description 初始化方法
        */
       init: function() {
+
+        // 如果当前是微信环境，直接到微信授权绑定页面
+        if (SFFn.isMobile.WeChat()) {
+          this.weinxinLogin();
+          return false;
+        }
+
         this.component = {};
         this.component.login = new SFLogin();
         this.component.needVfCode = new SFNeedVfCode();
@@ -86,8 +93,6 @@ define('sf.b2c.mall.component.login', [
 
         this.render(this.data);
         this.getVerifiedCode();
-
-        var that = this;
       },
 
       '#toRegist click': function(element, event) {
@@ -96,17 +101,20 @@ define('sf.b2c.mall.component.login', [
         window.location.href = 'http://m.sfht.com/register.html?from=' + escape(gotoUrl);
       },
 
-      /**
-       * [weixinLogin 微信登陆]
-       * @return {[type]} [description]
-       */
-      '.weixinlogin click': function(element, event) {
-        var that = this;
+      weinxinLogin: function() {
         var params = can.deparam(window.location.search.substr(1));
         var gotoUrl = params.from || "index.html";
 
         var wechatLogin = new SFWeChatLogin();
         wechatLogin.login(escape(gotoUrl));
+      },
+
+      /**
+       * [weixinLogin 微信登陆]
+       * @return {[type]} [description]
+       */
+      '.weixinlogin click': function(element, event) {
+        this.weinxinLogin();
       },
       //@note 支付宝登录
       '.alipaylogin click': function(element, event) {

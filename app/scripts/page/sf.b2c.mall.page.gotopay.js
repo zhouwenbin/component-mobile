@@ -42,9 +42,9 @@ define(
 
         this.options.data.attr("showordersuccess", params.showordersuccess);
 
-        // 如果是在微信环境 只显示微信支付
+        // 如果是在微信环境 只显示微信支付和支付宝，其他时候只展示支付宝
         if (SFUtil.isMobile.WeChat()) {
-          this.options.data.attr("onlyWeixinPay", true);
+          this.options.data.attr("showWeixinPay", true);
         }
 
         this.render(this.options.data);
@@ -62,6 +62,13 @@ define(
         this.element.html(html);
       },
 
+      ".gotopaymethod click": function(element, event) {
+        event && event.preventDefault();
+        element.parent().find("li.gotopaymethod").removeClass("active");
+        element.addClass("active");
+        this.options.payType = element.eq(0).attr('data-payType');
+      },
+
       payErrorMap: {
         '3000001': '支付金额非法',
         '3000002': '支付状态不允许支付',
@@ -75,12 +82,23 @@ define(
       getPayType: function() {
         var result = "";
 
-        // 如果是微信环境是wechat_intl_mp，如果是支护宝环境是alipay_intl_wap，其他为alipay_forex_wap
-        if (SFUtil.isMobile.WeChat()) {
+        var paytypelist = $(".gotopaymethodlist").find("li");
+        _.each(paytypelist, function(item) {
+          if ($(item).hasClass("active")) {
+            result = $(item).attr("data-payType");
+          }
+        })
+
+        // 针对支付方式概要，做定制处理
+        if (result == "weixinpay") {
           result = "wechat_intl_mp";
-        } else if (typeof window.AlipayJSBridge != "undefined") {
-          result = "alipay_intl_wap";
-        } else {
+        } else if (result == "alipay") {
+
+          //如果在支付宝服务窗中打开，则使用内卡，否则使用外卡
+          if (typeof window.AlipayJSBridge != "undefined") {
+            result = "alipay_intl_wap";
+          }
+
           result = 'alipay_forex_wap';
         }
 
