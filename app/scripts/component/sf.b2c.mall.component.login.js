@@ -69,10 +69,10 @@ define('sf.b2c.mall.component.login', [
       init: function() {
 
         // 如果当前是微信环境，直接到微信授权绑定页面
-        if (SFFn.isMobile.WeChat()) {
-          this.weinxinLogin();
-          return false;
-        }
+        // if (SFFn.isMobile.WeChat()) {
+        //   this.weinxinLogin();
+        //   return false;
+        // }
 
         this.component = {};
         this.component.login = new SFLogin();
