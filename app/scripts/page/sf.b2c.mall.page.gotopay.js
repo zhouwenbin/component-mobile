@@ -40,8 +40,6 @@ define(
         this.options.alltotalamount = params.amount;
         this.options.code = params.code;
 
-        alert("code:" + params.code);
-
         this.options.data.attr("showordersuccess", params.showordersuccess);
 
         // 如果是在微信环境 只显示微信支付和支付宝，其他时候只展示支付宝
