@@ -67,6 +67,13 @@ define('sf.b2c.mall.component.login', [
        * @description 初始化方法
        */
       init: function() {
+
+        // 如果当前是微信环境，直接到微信授权绑定页面
+        if (SFFn.isMobile.WeChat()) {
+          this.weinxinLogin();
+          return false;
+        }
+
         this.component = {};
         this.component.login = new SFLogin();
         this.component.needVfCode = new SFNeedVfCode();
@@ -86,11 +93,6 @@ define('sf.b2c.mall.component.login', [
 
         this.render(this.data);
         this.getVerifiedCode();
-
-        // 如果当前是微信环境，直接到微信授权绑定页面
-        if (SFFn.isMobile.WeChat()) {
-          this.weinxinLogin();
-        }
       },
 
       '#toRegist click': function(element, event) {
