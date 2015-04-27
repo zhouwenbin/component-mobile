@@ -67,13 +67,12 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.fn(options.contexts || this);
           }
         },
-        'sf-showSellingPrice':function(isPromotion, activitySoldOut, sellingPrice, originPrice, options) {
-          var oPrice = originPrice();
+        'sf-showSellingPrice': function(isPromotion, activitySoldOut, options) {
           var isPromotion = isPromotion();
           var activitySoldOut = activitySoldOut();
           if (isPromotion && !activitySoldOut) {
             return options.fn(options.contexts || this);
-          }else{
+          } else {
             return options.inverse(options.contexts || this);
           }
         },
