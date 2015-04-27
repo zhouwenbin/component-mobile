@@ -41,7 +41,7 @@ define(
         requestPayV2
           .sendRequest()
           .done(function(data) {
-            if (SFUtil.isMobile.WeChat()  && dataParam.payType == "wechat_intl_mp") {
+            if (SFUtil.isMobile.WeChat() && dataParam.payType == "wechat_intl_mp") {
               var payResult = that.buildData(data.postBody);
               that.onBridgeReady(payResult, dataParam.orderid);
 
@@ -52,18 +52,19 @@ define(
               $("#gotopayBtn").text("立即支付");
 
             } else {
-              window.location.href = data.url + '?' + data.postBody;
+
+              //微信环境，要嵌套iframe
+              if (SFUtil.isMobile.WeChat()) {
+                store.set("alipayurl", data.url + '?' + data.postBody);
+                window.location.href = SFConfig.setting.link.alipayframe;
+              } else {
+                window.location.href = data.url + '?' + data.postBody;
+              }
+
               if (callback && _.isFunction(callback.success)) {
                 callback.success();
               }
             }
-
-            // if (SFUtil.isMobile.WeChat()) {
-            //   store.set("alipayurl", data.url + '?' + data.postBody);
-            //   window.location.href = SFConfig.setting.link.alipayframe;
-            // } else {
-            //   window.location.href = data.url + '?' + data.postBody;
-            // }
 
           })
           .fail(function(error) {
@@ -100,7 +101,7 @@ define(
           function(res) {
             if (res.err_msg == "get_brand_wcpay_request:ok") {
               window.location.href = "http://m.sfht.com/pay-success.html?orderid=" + orderid;
-            } else if(res.err_msg == "get_brand_wcpay_request:fail"){
+            } else if (res.err_msg == "get_brand_wcpay_request:fail") {
               window.location.href = "http://m.sfht.com/orderlist.html";
             }
           }
