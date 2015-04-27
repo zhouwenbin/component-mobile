@@ -465,7 +465,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html', 'json/**'],
+            src: ['templates/**', '*.html', 'header/*.html', 'footer/*.html','json/**'],
             dest: 'ROOT'
             // dest: 'statics.h5.<%=config.version%>'
           }
