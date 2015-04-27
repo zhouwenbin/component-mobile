@@ -226,7 +226,7 @@ define(
                 that.data.attr('showPassword', false);
               } else if (errorCode == 1000380) {
                 var params = can.deparam(window.location.search.substr(1));
-                $('#username-error-tips').html('手机号已绑定' + errorValueMap[params.tag] + '账号，换个手机号试试。').show();
+                $('#username-error-tips').html('已经绑定了同类的第三方账户。').show();
               }
             })
         }
