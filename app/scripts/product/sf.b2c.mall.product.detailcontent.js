@@ -21,8 +21,8 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.util'
   ],
   function(can, $, Swipe, Fastclick,
-         SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
-         SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
+    SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
+    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
 
     Fastclick.attach(document.body);
 
@@ -59,10 +59,22 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
 
-        'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
+        'sf-showOriginPrice': function(isPromotion, activitySoldOut, sellingPrice, originPrice, options) {
           var oPrice = originPrice();
-          if (sellingPrice() < oPrice || oPrice == 0) {
+          var isPromotion = isPromotion();
+          var activitySoldOut = activitySoldOut();
+          if (isPromotion && !activitySoldOut && (sellingPrice() < oPrice || oPrice == 0)) {
             return options.fn(options.contexts || this);
+          }
+        },
+        'sf-showSellingPrice':function(isPromotion, activitySoldOut, sellingPrice, originPrice, options) {
+          var oPrice = originPrice();
+          var isPromotion = isPromotion();
+          var activitySoldOut = activitySoldOut();
+          if (isPromotion && !activitySoldOut) {
+            return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
           }
         },
         //促销展示
@@ -164,7 +176,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
             //存放起来用于微信的图片浏览和放大效果
             that.options.sliderImgs = [];
-            _.each(that.options.detailContentInfo.itemInfo.basicInfo.images, function(item){
+            _.each(that.options.detailContentInfo.itemInfo.basicInfo.images, function(item) {
               that.options.sliderImgs.push(item.bigImgUrl);
             });
 
@@ -276,7 +288,7 @@ define('sf.b2c.mall.product.detailcontent', [
                 element.rulesHtml = "";
                 if (element.promotionRules) {
                   for (var index = 0, tempRule; tempRule = element.promotionRules[index]; index++) {
-                    element.rulesHtml += "<li>" + (index+1) + "." + tempRule.ruleDesc + "</li>";
+                    element.rulesHtml += "<li>" + (index + 1) + "." + tempRule.ruleDesc + "</li>";
                   }
                 }
 

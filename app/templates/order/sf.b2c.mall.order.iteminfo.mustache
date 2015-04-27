@@ -40,10 +40,10 @@
 	<li>-促销活动立减￥{{sf.price orderFeeItem.discount}} - 优惠券￥{{sf.price orderCoupon.discountPrice}}</li>
 </ul> -->
 <ul class="order-r3 box">
-  <li>商品总金额￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
-  <li>促销活动立减￥{{sf.price orderFeeItem.discount}}</li>
-  <li>优惠券￥{{sf.price orderCoupon.discountPrice}}</li>
   <li>免运费</li>
+  <li>优惠券折扣：-￥{{sf.price orderCoupon.discountPrice}}</li>   
+  <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li> 
+  <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li> 
 </ul>
 <div class="box">
 <div class="text-error">{{^flag}}{{errorDes}}{{/flag}}</div>
