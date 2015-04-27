@@ -249,7 +249,7 @@ define(
             var params = can.deparam(window.location.search.substr(1));
             var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
-            window.location.href = redirectUrl || SFBizConf.setting.link.index
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
               var defaultText = '绑定失败';
@@ -269,6 +269,11 @@ define(
           .done(function(data) {
             store.set('csrfToken', data.csrfToken);
             store.remove('tempToken');
+
+            var params = can.deparam(window.location.search.substr(1));
+            var redirectUrl = window.decodeURIComponent(params.redirectUrl);
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
+
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
               var defaultText = '绑定失败';
