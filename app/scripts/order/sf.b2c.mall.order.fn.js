@@ -49,6 +49,8 @@ define(
                 callback.success(payResult);
               }
 
+              $("#gotopayBtn").text("立即支付");
+
             } else {
               window.location.href = data.url + '?' + data.postBody;
               if (callback && _.isFunction(callback.success)) {
@@ -65,6 +67,7 @@ define(
 
           })
           .fail(function(error) {
+            $("#gotopayBtn").text("立即支付");
             //var errorText = that.payErrorMap[error.toString()] || '支付失败';
             if (callback && _.isFunction(callback.error)) {
               callback.error();
