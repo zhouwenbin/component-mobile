@@ -12,24 +12,24 @@
 }
 %nav1-icon{
   background:url(#{$bg-url}nav1.png) no-repeat;
-  background-size:290px 40px;
+  background-size:274px;
   display: block;
   margin:0 auto 7px;
-  width:41px;
-  height: 41px;
+  width:39px;
+  height: 39px;
 }
 .nav1-icon1{
   @extend %nav1-icon;
 }
 .nav1-icon2{
   @extend %nav1-icon;
-  background-position: -83px 0;
+  background-position: -79px 0;
 }
 .nav1-icon3{
   @extend %nav1-icon;
-  background-position: -166px 0;
+  background-position: -157px 0;
 }
 .nav1-icon4{
   @extend %nav1-icon;
-  background-position: -250px 0;
+  background-position: right 0;
 }

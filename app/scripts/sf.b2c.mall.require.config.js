@@ -110,6 +110,7 @@ requirejs.config({
     'sf.b2c.mall.api.coupon.getShareBagInfo': 'scripts/api/sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.hasReceived': 'scripts/api/sf.b2c.mall.api.coupon.hasReceived',
     'sf.b2c.mall.api.coupon.rcvCouponByMobile': 'scripts/api/sf.b2c.mall.api.coupon.rcvCouponByMobile',
+    'sf.b2c.mall.api.coupon.hasReceivedCp': 'scripts/api/sf.b2c.mall.api.coupon.hasReceivedCp',
     //账号绑定
     'sf.b2c.mall.api.user.partnerBind': 'scripts/api/sf.b2c.mall.api.user.partnerBind',
     //设置密码并登陆
