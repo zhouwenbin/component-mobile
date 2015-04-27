@@ -16,7 +16,7 @@
 		{{{spec}}}
   </ul>
 	{{/each}}
-  <div class="goodsinfo-r1">免运费</div>
+  <!-- <div class="goodsinfo-r1">免运费</div> -->
 </div>
 
 {{#orderCoupon.isHaveAvaliable}}
@@ -35,13 +35,20 @@
 </div>
 {{/orderCoupon.isHaveAvaliable}}
 
-<ul class="order-r3 box">
+<!-- <ul class="order-r3 box">
 	<li>商品总金额￥{{sf.price orderFeeItem.goodsTotalFee}}{{#if showTax}} + 税额￥0{{/if}} + 运费￥0</li>
 	<li>-促销活动立减￥{{sf.price orderFeeItem.discount}} - 优惠券￥{{sf.price orderCoupon.discountPrice}}</li>
+</ul> -->
+<ul class="order-r3 box">
+  <li>商品总金额￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
+  <li>促销活动立减￥{{sf.price orderFeeItem.discount}}</li>
+  <li>优惠券￥{{sf.price orderCoupon.discountPrice}}</li>
+  <li>免运费</li>
 </ul>
-
-<div class="order-submit box">
+<div class="box">
+<div class="text-error">{{^flag}}{{errorDes}}{{/flag}}</div>
+<div class="order-submit">
 	<p class="order-submit-c1">实际应付款: <span class="text-important">¥{{sf.price orderFeeItem.shouldPay}}</span></p>
-	<a class="btn btn-danger{{^flag}} disable{{/flag}}" id="submitOrder" href="javascript:void(0);">提交订单</a>
-  <div class="text-error hide">{{^flag}}{{errorDes}}{{/flag}}</div>
+	<a class="btn btn-danger{{^flag}} btn-disable{{/flag}}" id="submitOrder" href="javascript:void(0);">提交订单</a>
+</div>
 </div>
