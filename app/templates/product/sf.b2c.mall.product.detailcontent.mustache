@@ -31,11 +31,9 @@
         <div class="goods-r2c1 fl">
           {{#sf-showSellingPrice priceInfo.isPromotion priceInfo.activitySoldOut priceInfo.sellingPrice priceInfo.originPrice}}
           <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>
-          {{/sf-showSellingPrice}}
-
-          {{#sf-not-showSellingPrice priceInfo.isPromotion priceInfo.activitySoldOut priceInfo.sellingPrice priceInfo.originPrice}}
+          {{else}}
           <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.originPrice}}</strong>
-          {{/sf-not-showSellingPrice}}
+          {{/sf-showSellingPrice}}
 
           （含税）{{#sf-showOriginPrice priceInfo.isPromotion priceInfo.activitySoldOut priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>{{/sf-showOriginPrice}}
           }
