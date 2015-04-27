@@ -53,8 +53,14 @@ define("sf.b2c.mall.taiwantraveller.getgift", [
         window.location.href = "http://m.sfht.com/taiwantravellerfoodeat.html";
       },
 
-      "#share click": function() {
+      "#share click": function(element, event) {
+        event && event.preventDefault();
+        $(".share").show();
+      },
 
+      "#getgiftmask click": function(element, event){
+        event && event.preventDefault();
+        $(".share").hide();
       }
     });
   })
