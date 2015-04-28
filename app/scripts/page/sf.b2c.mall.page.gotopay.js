@@ -124,7 +124,7 @@ define(
       },
 
       gotopayBtnClick: function() {
-        $("#gotopayBtn").text("支付中");
+        // $("#gotopayBtn").text("支付中");
         var that = this;
 
         var callback = {
