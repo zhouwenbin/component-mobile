@@ -7,11 +7,12 @@ define(
     'store',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
+    'sf.util',
     'sf.b2c.mall.api.user.reqLoginAuth'
   ],
 
   function($, can,store, SFFrameworkComm, SFConfig,
-    SFReqLoginAuth) {
+    SFUtil, SFReqLoginAuth) {
     return can.Control.extend({
       link: SFConfig.setting.link,
       init: function() {},
@@ -47,6 +48,9 @@ define(
           .sendRequest()
           .done(function(data) {
             window.location.href = data.loginAuthLink;
+
+            //代码打点
+            SFUtil.dotCode();
           })
           .fail(function(error) {
             console.error(error);

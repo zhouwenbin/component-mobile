@@ -125,6 +125,7 @@ define('sf.b2c.mall.component.login', [
         var wechatLogin = new SFWeChatLogin();
         wechatLogin.alipayLogin(escape(gotoUrl));
       },
+
       /**
        * @description 渲染页面
        * @param  {can.Map} data 输入的观察者对象
@@ -352,6 +353,8 @@ define('sf.b2c.mall.component.login', [
               setTimeout(function() {
                 window.location.href = params.from || "index.html";
               }, 2000);
+
+              SFFn.dotCode();
             }
           })
           .fail(function(error) {
