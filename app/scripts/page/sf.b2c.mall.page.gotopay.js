@@ -49,12 +49,29 @@ define(
 
         this.render(this.options.data);
 
+        // 微信环境下 要把微信设为默认
+        if (SFUtil.isMobile.WeChat()) {
+          this.activeWeixinpay();
+        }
+
         var that = this;
         $('#gotopayBtn').click(function() {
           that.gotopayBtnClick($(this));
         })
 
         $('.loadingDIV').hide();
+      },
+
+      activeWeixinpay: function() {
+        var paytypelist = $(".gotopaymethodlist").find("li");
+        _.each(paytypelist, function(item) {
+          var result = $(item).attr("data-payType");
+          if (result == 'weixinpay') {
+            $(item).addClass("active");
+          } else {
+            $(item).removeClass("active");
+          }
+        })
       },
 
       render: function(data) {
