@@ -326,6 +326,7 @@ define('sf.b2c.mall.component.register', [
                 store.set('type', 'MOBILE');
                 store.set('nickname', mobile);
 
+                SFFn.dotCode();
                 that.gotoFromPage();
               }
             })

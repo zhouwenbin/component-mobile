@@ -973,7 +973,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.searchwarriorali.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.getalipaycoupon.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             'moment': '../bower_components/momentjs/min/moment.min',
@@ -981,9 +981,9 @@ module.exports = function (grunt) {
           },
           include: [
             "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.searchwarriorali'
+            'sf.b2c.mall.page.getalipaycoupon'
           ],
-          insertRequire: ['sf.b2c.mall.page.searchwarriorali']
+          insertRequire: ['sf.b2c.mall.page.getalipaycoupon']
         }
       },
 
