@@ -242,6 +242,67 @@ define('sf.weixin', [
           menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage']
         });
       })
+    },
+
+    /**
+     * [shareLuckyMoney 分享红包]
+     * @param  {[type]} title  [标题]
+     * @param  {[type]} desc   [描述]
+     * @param  {[type]} id   [红包ID]
+     */
+    shareTaiwanNatural: function() {
+      //进行微信设置
+      configWeixin();
+
+      var that = this;
+      var shareUrl = "http://m.sfht.com/y.html";
+      var title = "顺丰海淘-原汁原味频道开业送百元礼包，海外商户直供！";
+      var desc = "顺丰海淘-原汁原味频道开业送百元礼包，海外商户直供！";
+
+      // 定义微信分享的数据
+      jweixin.ready(function() {
+        jweixin.onMenuShareTimeline({
+          title: title,
+          desc: desc,
+          link: shareUrl,
+          imgUrl: 'http://img.sfht.com/sfhth5/1.1.31/img/naturalshare.jpg',
+          trigger: function(res) {
+             //alert('用户点击发送给朋友圈');
+          },
+          success: function(res) {
+             //alert('已分享');
+          },
+          cancel: function(res) {
+             //alert('已取消');
+          },
+          fail: function(res) {
+            //alert(JSON.stringify(res));
+          }
+        });
+
+        jweixin.onMenuShareAppMessage({
+          title: title,
+          desc: desc,
+          link: shareUrl,
+          imgUrl: 'http://img.sfht.com/sfhth5/1.1.31/img/naturalshare.jpg',
+          trigger: function(res) {
+             //alert('用户点击发送给朋友');
+          },
+          success: function(res) {
+             //alert('已分享');
+          },
+          cancel: function(res) {
+            //alert('已取消');
+          },
+          fail: function(res) {
+            //alert(JSON.stringify(res));
+          }
+        });
+
+        jweixin.showMenuItems({
+          menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage']
+        });
+      })
     }
 
   };

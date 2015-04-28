@@ -14,7 +14,7 @@ define("sf.b2c.mall.page.naturalcoupon", [
 
     SFFrameworkComm.register(3);
 
-    SFWeixin.shareIndex();
+    SFWeixin.shareTaiwanNatural();
 
     Fastclick.attach(document.body);
 
