@@ -97,9 +97,10 @@ define(
           //如果在支付宝服务窗中打开，则使用内卡，否则使用外卡
           if (typeof window.AlipayJSBridge != "undefined") {
             result = "alipay_intl_wap";
+          } else {
+            result = 'alipay_forex_wap';
           }
 
-          result = 'alipay_forex_wap';
         }
 
         return result;

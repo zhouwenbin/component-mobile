@@ -43,7 +43,7 @@ define(
             var object = {};
 
             if (data.code) {
-              object.code = parseInt(data.code, 32);
+              object.code = parseInt(data.code, 36);
             }
 
             that.render(element, object);

@@ -28,7 +28,7 @@ define(
 
           // 如果已经请求过了，则做缓存处理，防止第二次重复请求时候prepay_id没了
           if (dataParam.payResult) {
-            that.onBridgeReady(dataParam.payResult);
+            that.onBridgeReady(dataParam.payResult, dataParam.orderid);
             return false;
           }
         } else {
@@ -41,9 +41,9 @@ define(
         requestPayV2
           .sendRequest()
           .done(function(data) {
-            if (SFUtil.isMobile.WeChat()  && dataParam.payType == "wechat_intl_mp") {
+            if (SFUtil.isMobile.WeChat() && dataParam.payType == "wechat_intl_mp") {
               var payResult = that.buildData(data.postBody);
-              that.onBridgeReady(payResult);
+              that.onBridgeReady(payResult, dataParam.orderid);
 
               if (callback && _.isFunction(callback.success)) {
                 callback.success(payResult);
@@ -52,18 +52,19 @@ define(
               $("#gotopayBtn").text("立即支付");
 
             } else {
-              window.location.href = data.url + '?' + data.postBody;
+
+              //微信环境，要嵌套iframe
+              if (SFUtil.isMobile.WeChat()) {
+                store.set("alipayurl", data.url + '?' + data.postBody);
+                window.location.href = SFConfig.setting.link.alipayframe;
+              } else {
+                window.location.href = data.url + '?' + data.postBody;
+              }
+
               if (callback && _.isFunction(callback.success)) {
                 callback.success();
               }
             }
-
-            // if (SFUtil.isMobile.WeChat()) {
-            //   store.set("alipayurl", data.url + '?' + data.postBody);
-            //   window.location.href = SFConfig.setting.link.alipayframe;
-            // } else {
-            //   window.location.href = data.url + '?' + data.postBody;
-            // }
 
           })
           .fail(function(error) {
@@ -94,13 +95,15 @@ define(
         return result;
       },
 
-      onBridgeReady: function(data) {
+      onBridgeReady: function(data, orderid) {
         WeixinJSBridge.invoke(
           'getBrandWCPayRequest', data,
           function(res) {
             if (res.err_msg == "get_brand_wcpay_request:ok") {
+              window.location.href = "http://m.sfht.com/pay-success.html?orderid=" + orderid;
+            } else if (res.err_msg == "get_brand_wcpay_request:fail") {
               window.location.href = "http://m.sfht.com/orderlist.html";
-            } // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+            }
           }
         );
       }
