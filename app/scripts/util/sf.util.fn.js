@@ -17,6 +17,13 @@ define('sf.util',
       return /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(data)
     },
 
+    /** [dotCode 代码打点] */
+    dotCode: function() {
+      if (window.SFHT && window.SFHT.T && window.SFHT.T.send) {
+        SFHT.T.send();
+      }
+    },
+
     isMobile: {
       Android: function() {
           return navigator.userAgent.match(/Android/i);
