@@ -60,9 +60,7 @@ define(
 
         var that = this;
 
-        setTimeout(function() {
-          that.checkusername()
-        }, 500);
+        setInterval(function(){that.checkusername()}, 1000);
       },
 
       render: function(data) {
@@ -202,7 +200,7 @@ define(
       },
 
       checkusername: function() {
-        alert("username");
+
         $('#username-error-tips').hide();
 
         var that = this;
