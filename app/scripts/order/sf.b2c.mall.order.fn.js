@@ -49,7 +49,7 @@ define(
                 callback.success(payResult);
               }
 
-              $("#gotopayBtn").text("立即支付");
+              // $("#gotopayBtn").text("立即支付");
 
             } else {
 
@@ -68,7 +68,7 @@ define(
 
           })
           .fail(function(error) {
-            $("#gotopayBtn").text("立即支付");
+            // $("#gotopayBtn").text("立即支付");
             //var errorText = that.payErrorMap[error.toString()] || '支付失败';
             if (callback && _.isFunction(callback.error)) {
               callback.error();

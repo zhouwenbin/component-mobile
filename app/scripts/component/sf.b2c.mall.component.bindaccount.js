@@ -58,6 +58,9 @@ define(
 
         this.render(this.data);
 
+        var that = this;
+
+        setInterval(function(){that.checkusername()}, 500);
       },
 
       render: function(data) {
@@ -73,7 +76,7 @@ define(
           '<h2 class="text-h2">还差一步，完善信息以便与您联系。</h2>' +
           '</li>' +
           '<li>' +
-          '<input type="text" class="input" id="user-name" placeholder="手机号" can-value="username"/>' +
+          '<input type="text" class="input" id="user-name" placeholder="请输入中国大陆手机号" can-value="username"/>' +
           '<span class="text-error" id="username-error-tips" style="display:none"></span>' +
           '</li>' +
           '{{#isBindMobile}}' +
@@ -87,7 +90,7 @@ define(
           '{{/isBindMobile}}' +
           '{{#showPassword}}' +
           '<li>' +
-          '<input type="password" class="input" id="user-pwd" placeholder="请输入密码" />' +
+          '<input type="password" class="input" id="user-pwd" placeholder="请输入顺丰海淘登录密码" />' +
           '<span id="userpwd-error-tips" style="display:none" class="text-error"></span>' +
           '</li>' +
           '{{/showPassword}}' +
@@ -196,8 +199,8 @@ define(
         $('#username-error-tips').hide();
       },
 
-      //note 输完11位手机号码后验证是否存在，存在显示手机验证码
-      '#user-name keyup': function() {
+      checkusername: function() {
+
         $('#username-error-tips').hide();
 
         var that = this;
@@ -237,6 +240,12 @@ define(
           that.data.attr('showPassword', false);
         }
       },
+
+      //note 输完11位手机号码后验证是否存在，存在显示手机验证码
+      // '#user-name keyup': function() {
+
+      // },
+
       '#input-mobile-code focus': function($element, event) {
         $('#mobile-code-error').hide();
         $('#username-error-tips').hide();
@@ -259,7 +268,7 @@ define(
             window.location.href = redirectUrl || SFBizConf.setting.link.index;
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
-              var defaultText = '绑定失败';
+              var defaultText = '绑定失败（输入有误）';
               var errorText = DEFAULT_BIND_ERROR_MAP[errorCode.toString()] || defaultText;
               if (errorCode === 1000020) {
                 $('#username-error-tips').html(errorText).show();
@@ -283,7 +292,7 @@ define(
 
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
-              var defaultText = '绑定失败';
+              var defaultText = '绑定失败（输入有误）';
               var errorText = DEFAULT_BIND_ERROR_MAP[errorCode.toString()] || defaultText;
               if (errorCode === 1000020) {
                 $('#username-error-tips').html(errorText).show();

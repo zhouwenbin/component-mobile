@@ -17,7 +17,7 @@ define(
 
     SFFrameworkComm.register(3);
 
-    SFWeixin.shareIndex();
+    SFWeixin.shareTaiwanNatural();
 
     Fastclick.attach(document.body);
 
