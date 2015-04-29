@@ -58,8 +58,10 @@ define(
 
         this.render(this.data);
 
+        var that = this;
+
         setTimeout(function() {
-          this.checkusername()
+          that.checkusername()
         }, 500);
       },
 
