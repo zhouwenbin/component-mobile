@@ -60,7 +60,7 @@ define(
 
         var that = this;
 
-        setInterval(function(){that.checkusername()}, 1000);
+        setInterval(function(){that.checkusername()}, 500);
       },
 
       render: function(data) {
@@ -211,7 +211,6 @@ define(
         };
 
         if (mobile.length == 11) {
-          alert("mobile:" + mobile);
           var checkUserExist = new SFCheckUserExist({
             accountId: mobile,
             type: 'MOBILE',
