@@ -76,7 +76,7 @@ define(
           '<h2 class="text-h2">还差一步，完善信息以便与您联系。</h2>' +
           '</li>' +
           '<li>' +
-          '<input type="text" class="input" id="user-name" placeholder="手机号" can-value="username"/>' +
+          '<input type="text" class="input" id="user-name" placeholder="请输入中国大陆手机号" can-value="username"/>' +
           '<span class="text-error" id="username-error-tips" style="display:none"></span>' +
           '</li>' +
           '{{#isBindMobile}}' +
@@ -268,7 +268,7 @@ define(
             window.location.href = redirectUrl || SFBizConf.setting.link.index;
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
-              var defaultText = '绑定失败';
+              var defaultText = '绑定失败（输入有误）';
               var errorText = DEFAULT_BIND_ERROR_MAP[errorCode.toString()] || defaultText;
               if (errorCode === 1000020) {
                 $('#username-error-tips').html(errorText).show();
@@ -292,7 +292,7 @@ define(
 
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
-              var defaultText = '绑定失败';
+              var defaultText = '绑定失败（输入有误）';
               var errorText = DEFAULT_BIND_ERROR_MAP[errorCode.toString()] || defaultText;
               if (errorCode === 1000020) {
                 $('#username-error-tips').html(errorText).show();

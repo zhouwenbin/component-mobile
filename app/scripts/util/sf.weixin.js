@@ -255,7 +255,7 @@ define('sf.weixin', [
       configWeixin();
 
       var that = this;
-      var shareUrl = "http://m.sfht.com/y.html";
+      var shareUrl = "http://m.sfht.com/naturalcoupon.html?bagid=14";
       var title = "顺丰海淘-原汁原味频道开业送百元礼包，海外商户直供！";
       var desc = "顺丰海淘-原汁原味频道开业送百元礼包，海外商户直供！";
 
