@@ -58,7 +58,9 @@ define(
 
         this.render(this.data);
 
-        setTimeout(this.checkusername, 500);
+        setTimeout(function() {
+          this.checkusername()
+        }, 500);
       },
 
       render: function(data) {
@@ -208,7 +210,8 @@ define(
           "alipay_qklg": "支付宝"
         };
 
-        if (mobile.length == 11) {alert("mobile:" + mobile);
+        if (mobile.length == 11) {
+          alert("mobile:" + mobile);
           var checkUserExist = new SFCheckUserExist({
             accountId: mobile,
             type: 'MOBILE',
