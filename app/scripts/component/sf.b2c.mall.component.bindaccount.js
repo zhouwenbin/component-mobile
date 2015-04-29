@@ -58,6 +58,7 @@ define(
 
         this.render(this.data);
 
+        setTimeout(this.checkusername, 500);
       },
 
       render: function(data) {
@@ -196,8 +197,7 @@ define(
         $('#username-error-tips').hide();
       },
 
-      //note 输完11位手机号码后验证是否存在，存在显示手机验证码
-      '#user-name keyup': function() {
+      checkusername: function() {
         $('#username-error-tips').hide();
 
         var that = this;
@@ -237,6 +237,12 @@ define(
           that.data.attr('showPassword', false);
         }
       },
+
+      //note 输完11位手机号码后验证是否存在，存在显示手机验证码
+      // '#user-name keyup': function() {
+
+      // },
+
       '#input-mobile-code focus': function($element, event) {
         $('#mobile-code-error').hide();
         $('#username-error-tips').hide();
