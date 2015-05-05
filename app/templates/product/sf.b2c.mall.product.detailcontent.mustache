@@ -16,13 +16,6 @@
           {{/each}}
         </div>
       </div>
-      {{#sf-showXSTM itemInfo.basicInfo.productShape}}
-          <span class="label label-error"><span class="icon icon27"></span>{{sf.timeMDH priceInfo.endTime}}结束</span>
-      {{/sf-showXSTM}}
-
-      {{#sf-showJSHT itemInfo.basicInfo.productShape}}
-          <span class="label label-error"><span class="icon icon31"></span>{{itemInfo.saleInfo.sendTime}}天到</span>
-      {{/sf-showJSHT}}
 
     </div>
     <div class="goods-b">
@@ -235,7 +228,7 @@
         </a>
       </div>
       <div class="nav-c2">
-        <a href="javascript:void(0)" class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}} btn-big" id="buyEnter">确定</a>
+        <a href="javascript:void(0)" class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}} btn-big" id="buyEnter">{{#sf-canBuy priceInfo.soldOut}}确定{{else}}缺货{{/sf-canBuy}}</a>
       </div>
     </div>
   </section>
