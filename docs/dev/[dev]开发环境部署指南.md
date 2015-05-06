@@ -83,3 +83,12 @@ MODULES="zepto event ajax form ie detect fx fx_methods assets data deferred call
         }
       })
     ```
+
+4、因IOS在第三方输入法下不支持onkeyup事件，所以需要使用oninput进行代替
+  http://segmentfault.com/q/1010000002608898
+
+    ```
+    $("#user-name")[0].oninput = function() {
+          that.checkusername();
+        };
+    ```
