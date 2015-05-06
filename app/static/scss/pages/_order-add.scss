@@ -21,10 +21,15 @@
 	font-size:0;
 }
 .order-add .select{
-	width:48%;
-	margin-bottom:8px
+	flex:1;
+  margin: 0 5px;
 }
-.order-add .select:nth-last-child(1),
-.order-add .select:nth-last-child(2){
-	margin-bottom:0;
+.order-add .select:first-child{
+  margin-left: 0;
+}
+.order-add .select:last-child{
+  margin-right: 0;
+}
+.order-add-select{
+  display: flex;
 }
