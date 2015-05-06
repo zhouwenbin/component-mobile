@@ -156,6 +156,7 @@ define('sf.b2c.mall.order.iteminfo', [
       this.itemObj.attr("orderCoupon", orderCoupon);
       this.itemObj.orderCoupon.selectCoupons = [];
 
+      this.itemObj.unbind("orderCoupon.discountPrice");
 
       this.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
         this.attr("orderFeeItem.shouldPay", this.attr("orderFeeItem.shouldPay") + oldVal - newVal);

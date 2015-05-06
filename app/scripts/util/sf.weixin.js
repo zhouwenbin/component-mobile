@@ -255,7 +255,7 @@ define('sf.weixin', [
       configWeixin();
 
       var that = this;
-      var shareUrl = "http://m.sfht.com/y.html";
+      var shareUrl = "http://m.sfht.com/naturalcoupon.html?bagid=14";
       var title = "顺丰海淘-原汁原味频道开业送百元礼包，海外商户直供！";
       var desc = "顺丰海淘-原汁原味频道开业送百元礼包，海外商户直供！";
 
@@ -265,7 +265,7 @@ define('sf.weixin', [
           title: title,
           desc: desc,
           link: shareUrl,
-          imgUrl: 'http://img.sfht.com/sfhth5/1.1.31/img/naturalshare.jpg',
+          imgUrl: 'http://img.sfht.com/sfhth5/1.1.32/img/naturalshare.png',
           trigger: function(res) {
              //alert('用户点击发送给朋友圈');
           },
@@ -284,7 +284,7 @@ define('sf.weixin', [
           title: title,
           desc: desc,
           link: shareUrl,
-          imgUrl: 'http://img.sfht.com/sfhth5/1.1.31/img/naturalshare.jpg',
+          imgUrl: 'http://img.sfht.com/sfhth5/1.1.32/img/naturalshare.png',
           trigger: function(res) {
              //alert('用户点击发送给朋友');
           },
