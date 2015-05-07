@@ -9,8 +9,8 @@
   <input type="text" can-value="addr.input.cellphone" value="{{addr.input.cellphone}}" class="input" placeholder="收货人手机号">
   <h2>城市</h2>
 
-  <div class="justify">
-    <select id="s1" can-value="addr.input.nationName" class="select">
+  <div class="order-add-select">
+    <select id="s1" can-value="addr.input.nationName" class="select hide">
       {{#each addr.place.countries}}
       <option value="{{id}}">{{name}}</option>
       {{/each}}
