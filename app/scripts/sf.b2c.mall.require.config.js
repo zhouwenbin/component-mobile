@@ -101,6 +101,9 @@ requirejs.config({
     'sf.b2c.mall.api.b2cmall.getHeaderConfig': 'scripts/api/sf.b2c.mall.api.b2cmall.getHeaderConfig',
     'sf.b2c.mall.api.b2cmall.getActivityInfo': 'scripts/api/sf.b2c.mall.api.b2cmall.getActivityInfo',
 
+    'sf.b2c.mall.api.promotion.queryProInfo': 'scripts/api/sf.b2c.mall.api.promotion.queryProInfo',
+    'sf.b2c.mall.api.promotion.receivePro': 'scripts/api/sf.b2c.mall.api.promotion.receivePro',
+
     'sf.b2c.mall.api.coupon.receiveCoupon': 'scripts/api/sf.b2c.mall.api.coupon.receiveCoupon',
     'sf.b2c.mall.api.coupon.receiveShareCoupon': 'scripts/api/sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.receiveCpCode': 'scripts/api/sf.b2c.mall.api.coupon.receiveCpCode',
@@ -190,6 +193,7 @@ requirejs.config({
 
     // 微信转跳中心
     'sf.b2c.mall.page.logincenter': 'scripts/page/sf.b2c.mall.page.logincenter',
+    'sf.b2c.mall.page.logincenterafter': 'scripts/page/sf.b2c.mall.page.logincenterafter',
     'sf.b2c.mall.page.weixinlogintest': 'scripts/page/sf.b2c.mall.page.weixinlogintest',
 
     // alipay支付

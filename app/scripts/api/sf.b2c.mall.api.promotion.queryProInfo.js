@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.partnerBindByUPswd
+  * @class sf.b2c.mall.api.promotion.queryProInfo
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.partnerBindByUPswd',
+'sf.b2c.mall.api.promotion.queryProInfo',
 [
   'zepto',
   'can',
@@ -22,25 +22,17 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.partnerBindByUPswd',
+      METHOD_NAME: 'promotion.queryProInfo',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'tempToken': 'string',
-        'type': 'string',
-        'accountId': 'string',
-        'passWord': 'string'
+        'channel': 'string',
+        'event': 'string'
       },
       OPTIONAL: {
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000040': '原密码错误',
-        '1000340': '用户账户还没有密码',
-        '1000350': '验证临时token失败,请重新登录',
-        '1000360': '第三方账户已绑定海淘账户',
-        '1000380': '已经绑定了同类的第三方账户',
-        '1000400': '密码缺失，请输入密码'
       }
     }
   });

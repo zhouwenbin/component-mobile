@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.coupon.receiveExCode
+  * @class sf.b2c.mall.api.shopcart.removeItemsInCart
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.coupon.receiveExCode',
+'sf.b2c.mall.api.shopcart.removeItemsInCart',
 [
   'zepto',
   'can',
@@ -22,21 +22,18 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'coupon.receiveExCode',
+      METHOD_NAME: 'shopcart.removeItemsInCart',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'exCode': 'string'
+        'itemIds': 'string',
+        'goods': 'json'
       },
       OPTIONAL: {
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '11000160': '优惠码不存在',
-        '11000170': '优惠码已使用',
-        '11000200': '优惠码已过期',
-        '11000209': '共用card不存在',
-        '11000220': '本账户兑换次数超出限制'
+        '15000300': '购物车删除商品失败'
       }
     }
   });

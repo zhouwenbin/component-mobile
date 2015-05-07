@@ -11,9 +11,9 @@ define(
     'sf.b2c.mall.api.user.partnerLogin',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.module.header'
+    'sf.b2c.mall.page.logincenterafter'
   ],
-  function(can, $, store, SFPartnerLogin, SFFrameworkComm, SFConfig,SFHeader) {
+  function(can, $, store, SFPartnerLogin, SFFrameworkComm, SFConfig, SFLogincenterafter) {
 
     SFFrameworkComm.register(3);
 
@@ -93,7 +93,7 @@ define(
 
               store.set('tempToken', loginData.tempToken);
               //处理微信账号绑定
-              var header = new SFHeader();
+              var header = new SFLogincenterafter();
 
             } else {
 
