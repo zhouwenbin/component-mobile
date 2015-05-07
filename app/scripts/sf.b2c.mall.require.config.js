@@ -101,6 +101,9 @@ requirejs.config({
     'sf.b2c.mall.api.b2cmall.getHeaderConfig': 'scripts/api/sf.b2c.mall.api.b2cmall.getHeaderConfig',
     'sf.b2c.mall.api.b2cmall.getActivityInfo': 'scripts/api/sf.b2c.mall.api.b2cmall.getActivityInfo',
 
+    'sf.b2c.mall.api.promotion.queryProInfo': 'scripts/api/sf.b2c.mall.api.promotion.queryProInfo',
+    'sf.b2c.mall.api.promotion.receivePro': 'scripts/api/sf.b2c.mall.api.promotion.receivePro',
+
     'sf.b2c.mall.api.coupon.receiveCoupon': 'scripts/api/sf.b2c.mall.api.coupon.receiveCoupon',
     'sf.b2c.mall.api.coupon.receiveShareCoupon': 'scripts/api/sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.receiveCpCode': 'scripts/api/sf.b2c.mall.api.coupon.receiveCpCode',
@@ -171,6 +174,13 @@ requirejs.config({
     'sf.b2c.mall.page.register': 'scripts/page/sf.b2c.mall.page.register',
     'sf.b2c.mall.component.register': 'scripts/component/sf.b2c.mall.component.register',
 
+    // 找回密码
+    'sf.b2c.mall.page.retrieve': 'scripts/page/sf.b2c.mall.page.retrieve',
+    'sf.b2c.mall.component.retrieve': 'scripts/component/sf.b2c.mall.component.retrieve',
+    'sf.b2c.mall.page.process': 'scripts/page/sf.b2c.mall.page.process',
+    'sf.b2c.mall.page.activated': 'scripts/page/sf.b2c.mall.page.activated',
+    'sf.b2c.mall.page.nullactivated': 'scripts/page/sf.b2c.mall.page.nullactivated',
+
     // 去支付
     'sf.b2c.mall.page.gotopay': 'scripts/page/sf.b2c.mall.page.gotopay',
 
@@ -190,6 +200,7 @@ requirejs.config({
 
     // 微信转跳中心
     'sf.b2c.mall.page.logincenter': 'scripts/page/sf.b2c.mall.page.logincenter',
+    'sf.b2c.mall.page.logincenterafter': 'scripts/page/sf.b2c.mall.page.logincenterafter',
     'sf.b2c.mall.page.weixinlogintest': 'scripts/page/sf.b2c.mall.page.weixinlogintest',
 
     // alipay支付

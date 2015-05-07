@@ -45,9 +45,15 @@
     {{#each activityInfo.datas}}
       {{#sf-showActivity activityType}}
       <li>
-        <a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>
-        <a href="{{h5ActivityLink}}">{{activityTitle}}</a>
-        <span data-activity-id="{{activityId}}" class="fr">促销详情</span>
+        <div class="coupon-discount-r1">
+	        <div class="coupon-discount-c1" href="{{h5ActivityLink}}"><button class="label-soon">{{activityTypeDesc}}</button>{{activityTitle}}</div>
+	        <div class="coupon-discount-c2"><a href="javascript:void(0);">更多优惠<span class="icon icon44"></span></a></div>
+        </div>
+        <ul class="coupon-discount-list">
+	        {{#each promotionRules}}
+            <li>{{ruleDesc}}<a href="">去看看</a></li>
+	        {{/each}}
+        </ul>
       </li>
 	    {{/sf-showActivity}}
 	  {{/each}}
@@ -162,15 +168,21 @@
   <!--促销信息-->
 	{{#activityInfo.isShow}}
     <ul class="box coupon-discount">
-			{{#each activityInfo.datas}}
-				{{#sf-showActivity activityType}}
-          <li>
-            <a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>
-            <a href="{{h5ActivityLink}}">{{activityTitle}}</a>
-            <span data-activity-id="{{activityId}}" class="fr">促销详情</span>
-          </li>
-				{{/sf-showActivity}}
-			{{/each}}
+	    {{#each activityInfo.datas}}
+		    {{#sf-showActivity activityType}}
+            <li>
+                <div class="coupon-discount-r1">
+                    <div class="coupon-discount-c1" href="{{h5ActivityLink}}"><button class="label-soon">{{activityTypeDesc}}</button>{{activityTitle}}</div>
+                    <div class="coupon-discount-c2"><a href="javascript:void(0);">更多优惠<span class="icon icon44"></span></a></div>
+                </div>
+                <ul class="coupon-discount-list">
+							    {{#each promotionRules}}
+                      <li>{{ruleDesc}}<a href="{{h5ActivityLink}}">去看看</a></li>
+							    {{/each}}
+                </ul>
+            </li>
+		    {{/sf-showActivity}}
+	    {{/each}}
     </ul>
 	{{/activityInfo.isShow}}
   <!--促销信息-->
@@ -236,15 +248,3 @@
 
   {{! {{/if}}
 </div>
-
-{{#each activityInfo.datas}}
-  <section class="mask dialog dialog-active hide" activityId="{{activityId}}">
-    <div class=" center">
-      <a href="javascript:" class="icon icon15">关闭</a>
-      <h2>活动详情</h2>
-      <div class="dialog-active-b">
-        <ul>{{{rulesHtml}}}</ul>
-      </div>
-    </div>
-  </section>
-{{/each}}
