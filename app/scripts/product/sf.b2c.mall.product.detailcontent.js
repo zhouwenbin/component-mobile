@@ -729,12 +729,8 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       //促销活动对话框事件
-      ".coupon-discount .fr click": function(element, event) {
-        var activityId = element.data("activityId");
-        $(".dialog-active[activityId='" + activityId + "']").removeClass("hide");
-      },
-      ".dialog-active .icon15 click": function(element) {
-        element.parents(".dialog-active").addClass("hide");
+      ".coupon-discount .coupon-discount-c2 a click": function(element, event) {
+        element.parents("li").toggleClass("active");
       },
 
       /**

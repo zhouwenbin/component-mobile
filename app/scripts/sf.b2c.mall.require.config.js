@@ -171,6 +171,13 @@ requirejs.config({
     'sf.b2c.mall.page.register': 'scripts/page/sf.b2c.mall.page.register',
     'sf.b2c.mall.component.register': 'scripts/component/sf.b2c.mall.component.register',
 
+    // 找回密码
+    'sf.b2c.mall.page.retrieve': 'scripts/page/sf.b2c.mall.page.retrieve',
+    'sf.b2c.mall.component.retrieve': 'scripts/component/sf.b2c.mall.component.retrieve',
+    'sf.b2c.mall.page.process': 'scripts/page/sf.b2c.mall.page.process',
+    'sf.b2c.mall.page.activated': 'scripts/page/sf.b2c.mall.page.activated',
+    'sf.b2c.mall.page.nullactivated': 'scripts/page/sf.b2c.mall.page.nullactivated',
+
     // 去支付
     'sf.b2c.mall.page.gotopay': 'scripts/page/sf.b2c.mall.page.gotopay',
 
