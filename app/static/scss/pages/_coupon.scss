@@ -40,14 +40,22 @@
 .coupon-discount{
   margin-bottom:10px;
 }
-.coupon-discount li{
+.coupon-discount-list{
   position:relative;
   border-bottom: 1px solid #f7f7f7;
   margin: 0 14px;
 }
+.coupon-discount-list li{
+  height: 44px;
+  line-height: 44px;
+  color: #999;
+  padding-left: 40px;
+  border-bottom: 1px solid #f7f7f7;
+}
 .coupon-discount .box-link{
   padding: 16px 0;
-
+  border-bottom: 1px solid #f7f7f7;
+  position: relative;
 }
 .coupon-discount .box-arrow{
   right: 0;
