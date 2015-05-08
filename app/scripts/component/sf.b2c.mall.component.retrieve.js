@@ -220,10 +220,10 @@ define('sf.b2c.mall.component.retrieve', [
         setTimeout(function() {
           if (time > 0) {
             time--;
-            that.element.find('#send-code-btn').text(time+'秒后可重新发送').addClass('disable');
+            that.element.find('#send-code-btn').text(time+'秒后可重新发送').addClass('btn-disable');
             that.countdown.call(that, time);
           }else{
-            that.element.find('#send-code-btn').text('发送短信验证码').removeClass('disable');
+            that.element.find('#send-code-btn').text('发送短信验证码').removeClass('btn-disable');
           }
         }, 1000);
       },
