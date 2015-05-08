@@ -92,7 +92,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
       },
 
       'editaddr': function(data) {
-        $(".order").hide();
+        $(".order-manager").hide();
         this.addressEditor.show("editor", this.data, $(".sf-b2c-mall-order-editAdrArea"));
       }
     },
