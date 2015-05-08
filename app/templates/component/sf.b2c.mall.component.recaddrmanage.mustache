@@ -1,23 +1,18 @@
-<section class="order">
-    <!--
-  <a class="order-back" href="javascript:history.back()" id="goback"><span class="icon icon10"></span>返回</a>
-  -->
-  <h2>收货地址</h2>
+<section class="order-manager">
+  <h2>收货地址管理</h2>
   <ul>
     {{#each addressList}}
-
-    <li class="box box-address" >
-      <div class="box-address-c1">
-        <span class="icon icon45 center edit" style="left:30%" name="addrEach" data-addressid="{{addrId}}" data-index="{{@index}}" id="delete">编辑</span>
-        <span class="icon icon7 center delete" style="left:70%" name="addrEach" data-addressid="{{addrId}}" data-index="{{@index}}" id="delete">删除</span>
-      </div>
-      <div class="box-address-c2">
-        <h3><span>{{recName}}</span><span>{{credtNum}}</span><span>{{cellphone}}</span></h3>
-        <p><span>{{nationName}}</span><span>{{provinceName}}</span><span>{{cityName}}</span><span>{{regionName}}</span><span>{{detail}}</span><span>{{zipCode}}</span></p>
-        <span class="icon icon8 delete" name="addrEach" data-addressid="{{addrId}}" data-index="{{@index}}" id="delete" ></span>
-      </div>
-    </li>
-
+      <li class="box box-address">
+        <div class="box-address-c2">
+          <h3>{{recName}}</h3>
+          <div class="box-address-r1"><span>{{credtNum}}</span>{{cellphone}}</div>
+          <p><span>{{nationName}}</span><span>{{provinceName}}</span><span>{{cityName}}</span><span>{{regionName}}</span><span>{{detail}}</span><span>{{zipCode}}</span></p>
+          <div class="box-address-r2">
+            <a href="javascript:;" class="btn btn-normal edit" name="addrEach" data-addressid="{{addrId}}" data-index="{{@index}}">编辑</a>
+            <a href="javascript:;" class="btn btn-normal delete" name="addrEach" data-addressid="{{addrId}}" data-index="{{@index}}">删除</a>
+          </div>
+        </div>
+      </li>
     {{/each}}
   </ul>
 </section>
