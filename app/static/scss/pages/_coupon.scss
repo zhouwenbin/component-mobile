@@ -40,7 +40,21 @@
 .coupon-discount{
   margin-bottom:10px;
 }
+.coupon-discount li{
+  position:relative;
+  border-bottom: 1px solid #f7f7f7;
+  margin: 0 14px;
+}
+.coupon-discount .box-link{
+  padding: 16px 0;
 
+}
+.coupon-discount .box-arrow{
+  right: 0;
+}
+.coupon-discount li:last-child{
+  border-bottom: none;
+}
 .coupon-discount .label{
   margin-right: 10px;
   padding:0 7px;
