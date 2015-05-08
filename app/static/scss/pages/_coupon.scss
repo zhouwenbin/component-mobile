@@ -42,11 +42,14 @@
 }
 .coupon-discount-list{
   position:relative;
-  
+  border-bottom: 1px solid #f7f7f7;
   margin: 0 14px;
 }
+.coupon-discount-list:last-child{
+  border-bottom: none;
+}
 .coupon-discount-list ul{
-  border-bottom: 1px solid #f7f7f7;
+  display: none;
 }
 .coupon-discount-list li{
   height: 44px;
@@ -72,6 +75,7 @@
 }
 .coupon-discount-more{
   text-align: center;
+  margin-top: -2px;
 }
 .coupon-discount-more a{
   color: #3b86c4;
