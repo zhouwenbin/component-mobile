@@ -163,7 +163,6 @@ a[title="站长统计"] {
 
 .ellipsis2, .ellipsis3 {
   overflow: hidden;
-  display: -webkit-box;
   -webkit-box-orient: vertical;
 }
 
@@ -648,7 +647,6 @@ a[title="站长统计"] {
 }
 
 .superman2-r1 {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -662,7 +660,6 @@ a[title="站长统计"] {
 }
 
 .superman2-r1c1 {
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -750,7 +747,6 @@ a[title="站长统计"] {
 }
 
 .superman4-r1 {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -767,7 +763,6 @@ a[title="站长统计"] {
   line-height: 20px;
   border-left: 1px solid #333;
   padding: 8px 13px;
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
