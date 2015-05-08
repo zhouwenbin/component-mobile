@@ -19,21 +19,19 @@
   <!-- <div class="goodsinfo-r1">免运费</div> -->
 </div>
 
-{{#orderCoupon.isHaveAvaliable}}
 <div class="coupon-use">
 	<div class="coupon-use-h">
-		<h2>使用优惠券</h2><!--<a href="javascript:">输入兑换码</a>-->
+		<h2>使用优惠券</h2><a href="javascript:" id="inputCouponCode">输入兑换码</a>
 	</div>
 	<div class="coupon-use-b">
 		<select id="selectCoupon" class="select">
       <option value="" data-price="0" selected="selected">不使用优惠券</option>
 			{{#each orderCoupon.avaliableCoupons}}
-          <option value="{{couponCode}}" data-price="{{price}}">{{couponDescription}}</option>;
+        <option value="{{couponCode}}" data-code="{{couponCode}}" data-price="{{price}}">{{couponDescription}}</option>
 			{{/each}}
 		</select>
 	</div>
 </div>
-{{/orderCoupon.isHaveAvaliable}}
 
 <!-- <ul class="order-r3 box">
 	<li>商品总金额￥{{sf.price orderFeeItem.goodsTotalFee}}{{#if showTax}} + 税额￥0{{/if}} + 运费￥0</li>
@@ -52,3 +50,15 @@
 	<a class="btn btn-danger{{^flag}} btn-disable{{/flag}}" id="submitOrder" href="javascript:void(0);">提交订单</a>
 </div>
 </div>
+
+<section class="mask dialog dialog-active hide" id="couponCodeDialog">
+	<div class="center">
+		<a href="javascript:" class="icon icon15">关闭</a>
+		<h2>输入兑换码</h2>
+		<div class="dialog-active-b">
+			<input class="input" placeholder="输入您的兑换码">
+			<button class="btn btn-big btn-disable">使用</button>
+			<!--输入后<button class="btn btn-big btn-danger">使用</button><-->
+		</div>
+	</div>
+</section>

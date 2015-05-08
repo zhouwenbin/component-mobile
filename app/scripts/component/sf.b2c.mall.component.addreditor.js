@@ -10,6 +10,7 @@ define('sf.b2c.mall.component.addreditor', [
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.widget.message'
 ], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig, SFMessage) {
+
   return can.Control.extend({
     init: function() {
       this.adapter = {};
@@ -60,6 +61,7 @@ define('sf.b2c.mall.component.addreditor', [
       $(".sf-b2c-mall-order-selectReceiveAddress").show();
       $(".sf-b2c-mall-order-itemInfo").show();
       $(".sf-b2c-mall-order-addAdrArea").hide();
+      $(".sf-b2c-mall-order-editAdrArea").hide();
     },
 
     show: function(tag, data, element) {
@@ -122,7 +124,9 @@ define('sf.b2c.mall.component.addreditor', [
               regionName: this.adapter.regions.getIdBySuperreginIdAndName(cityId, data.regionName),
               detail: data.detail,
               cellphone: data.cellphone,
-              recId: data.recId
+              recId: data.recId,
+              recName: data.recName,
+              credtNum: data.credtNum
             },
             place: {
               countries: [{
