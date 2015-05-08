@@ -65,13 +65,14 @@ define('sf.b2c.mall.order.iteminfo', [
       this.itemObj.attr("orderCoupon.discountPrice", price);
     },
 
+    //优惠券兑换相关事件
     '#inputCouponCode click': function(targetElement) {
       $("#couponCodeDialog").show();
     },
-    '#couponCodeDialog .icon15 click': function() {
-      $("#couponCodeDialog").hide();
+    '.dialog .icon15, .dialog1 .btn-normal click': function(targetElement) {
+      targetElement.parents(".dialog").hide();
     },
-    '#couponCodeDialog input keyup': function(targetElement) {
+    '#couponCodeDialog input input': function(targetElement) {
       if (targetElement.val().length > 0) {
         $("#couponCodeDialog button").removeClass("btn-disable").addClass("btn-danger");
       } else {
@@ -83,6 +84,9 @@ define('sf.b2c.mall.order.iteminfo', [
       can.when(this.receiveCouponExCode(exCode))
         .done(function(){
         });
+    },
+    '#couponCodeDialog input focus': function(targetElement) {
+      $("#couponCodeDialog .text-error").text("");
     },
 
 
@@ -97,10 +101,7 @@ define('sf.b2c.mall.order.iteminfo', [
             .then(function() {
               $("#selectCoupon option[data-code='" + exCode + "']").first().attr('selected', 'true');
               $("#selectCoupon").trigger("change");
-              new SFMessage(null, {
-                'tip': '兑换成功！',
-                'type': 'success'
-              });
+              $("#couponCodeDialogSuccess").show();
               $("#couponCodeDialog").hide();
             });
         })
@@ -112,10 +113,7 @@ define('sf.b2c.mall.order.iteminfo', [
             11000209: "请输入正确的兑换码",
             11000220: "本账户超过兑换次数限制"
           };
-          new SFMessage(null, {
-            'tip': errorMap[error] ? errorMap[error] : '请输入有效的兑换码！',
-            'type': 'error'
-          });
+          $("#couponCodeDialog .text-error").text(errorMap[error] ? errorMap[error] : '请输入有效的兑换码！');
         })
         .always(function() {
         });
