@@ -41,23 +41,26 @@
 
   <!--促销信息-->
 	{{#activityInfo.isShow}}
-  <ul class="box coupon-discount">
-    {{#each activityInfo.datas}}
-      {{#sf-showActivity activityType}}
-      <li>
-        <div class="coupon-discount-r1">
-	        <div class="coupon-discount-c1" href="{{h5ActivityLink}}"><button class="label-soon">{{activityTypeDesc}}</button>{{activityTitle}}</div>
-	        <div class="coupon-discount-c2"><a href="javascript:void(0);">更多优惠<span class="icon icon44"></span></a></div>
-        </div>
-        <ul class="coupon-discount-list">
-	        {{#each promotionRules}}
-            <li>{{ruleDesc}}<a href="">去看看</a></li>
-	        {{/each}}
-        </ul>
-      </li>
-	    {{/sf-showActivity}}
-	  {{/each}}
-  </ul>
+  <section class="coupon-discount">
+	  <ul class="box box1">
+	    {{#each activityInfo.datas}}
+	      {{#sf-showActivity activityType}}
+	      <li class="coupon-discount-list">
+		      <a href="{{h5ActivityLink}}" class="box-link">
+			      <span class="label label-soon">{{#sf-showActivityType activityType}}{{/sf-showActivityType}}<i></i></span>{{activityTitle}}
+			      <span class="icon icon13 box-arrow center-vertical"></span>
+		      </a>
+	        <ul class="hide">
+		        {{#each promotionRules}}
+	            <li>{{ruleDesc}}</li>
+		        {{/each}}
+	        </ul>
+	      </li>
+		    {{/sf-showActivity}}
+		  {{/each}}
+	  </ul>
+	  <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
+	</section>
 	{{/activityInfo.isShow}}
   <!--促销信息-->
 
@@ -167,23 +170,26 @@
 
   <!--促销信息-->
 	{{#activityInfo.isShow}}
-    <ul class="box coupon-discount">
-	    {{#each activityInfo.datas}}
-		    {{#sf-showActivity activityType}}
-            <li>
-                <div class="coupon-discount-r1">
-                    <div class="coupon-discount-c1" href="{{h5ActivityLink}}"><button class="label-soon">{{activityTypeDesc}}</button>{{activityTitle}}</div>
-                    <div class="coupon-discount-c2"><a href="javascript:void(0);">更多优惠<span class="icon icon44"></span></a></div>
-                </div>
-                <ul class="coupon-discount-list">
-							    {{#each promotionRules}}
-                      <li>{{ruleDesc}}<a href="{{h5ActivityLink}}">去看看</a></li>
-							    {{/each}}
-                </ul>
-            </li>
-		    {{/sf-showActivity}}
-	    {{/each}}
-    </ul>
+      <section class="coupon-discount">
+          <ul class="box box1">
+						{{#each activityInfo.datas}}
+							{{#sf-showActivity activityType}}
+                  <li class="coupon-discount-list">
+                      <a href="{{h5ActivityLink}}" class="box-link">
+                        <span class="label label-soon" desc="{{activityTypeDesc}}">满减<i></i></span>{{activityTitle}}
+                        <span class="icon icon13 box-arrow center-vertical"></span>
+                      </a>
+                      <ul class="hide">
+												{{#each promotionRules}}
+                            <li>{{ruleDesc}}</li>
+												{{/each}}
+                      </ul>
+                  </li>
+							{{/sf-showActivity}}
+						{{/each}}
+          </ul>
+          <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
+      </section>
 	{{/activityInfo.isShow}}
   <!--促销信息-->
 
