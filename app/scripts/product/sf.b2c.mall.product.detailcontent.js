@@ -83,6 +83,14 @@ define('sf.b2c.mall.product.detailcontent', [
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+        //促销展示类型
+        'sf-showActivityType': function(activityType, options) {
+          if (activityType() == 'REDUCE') {
+            return "满减";
+          } else {
+            return "满折";
+          }
         }
       },
 

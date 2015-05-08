@@ -47,7 +47,7 @@
 	      {{#sf-showActivity activityType}}
 	      <li class="coupon-discount-list">
 		      <a href="{{h5ActivityLink}}" class="box-link">
-			      <span class="label label-soon" desc="{{activityTypeDesc}}">满减<i></i></span>{{activityTitle}}
+			      <span class="label label-soon">{{#sf-showActivityType activityType}}{{/sf-showActivityType}}<i></i></span>{{activityTitle}}
 			      <span class="icon icon13 box-arrow center-vertical"></span>
 		      </a>
 	        <ul class="hide">
