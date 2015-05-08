@@ -2,7 +2,7 @@
 
 define(
   'sf.b2c.mall.page.activated',
-  [`
+  [
     'zepto',
     'can',
     'fastclick',
