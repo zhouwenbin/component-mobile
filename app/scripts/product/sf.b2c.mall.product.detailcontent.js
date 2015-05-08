@@ -729,8 +729,15 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       //促销活动对话框事件
-      ".coupon-discount .coupon-discount-c2 a click": function(element, event) {
-        element.parents("li").toggleClass("active");
+      ".coupon-discount-more click": function(element, event) {
+        var uls = element.siblings("ul").find(" .coupon-discount-list ul");
+        if (element.find("a").text() == "更多优惠") {
+          element.find("a").text("收起");
+          uls.show();
+        } else {
+          element.find("a").text("更多优惠");
+          uls.hide();
+        }
       },
 
       /**
