@@ -8,7 +8,6 @@
   margin-top: -1px;
 }
 .box .icon8{
-  background-color:#666;
   position: absolute;
   left: 12px;
   top:50%;
@@ -16,9 +15,7 @@
 }
 
 .box.active .icon8{
-  display: inline-block;
-  background-color:#dc3334;
-  border-color:#dc3334;
+  background-position: -253px -167px;
 }
 .box-link{
   display: block;
