@@ -249,6 +249,10 @@ a[title="站长统计"] {
   display: none;
 }
 
+.m10 {
+  margin: 10px;
+}
+
 /*text*/
 .text-error,
 .text-important {
