@@ -76,6 +76,10 @@ define(
         window.location.href = SFConfig.setting.link.coupon;
       },
 
+      '.myaddress click': function(element, event) {
+        window.location.href = SFConfig.setting.link.recaddrmanage;
+      },
+
       maskMobile: function(str) {
         if (typeof str == 'undefined') {
           return "";

@@ -36,9 +36,10 @@ define(['zepto'], function ($) {
     'setpassword'       : M_HOST + 'setpassword.html?t='+VER,
     'bindaccount'       : M_HOST + 'bindaccount.html?t='+VER,
     'weixincenter'      : M_HOST + 'weixincenter.html?t='+VER,
-    'luckymoneyshare'      : M_HOST + 'luckymoneyshare.html?t='+VER,
-    'luckymoneyaccept'      : M_HOST + 'luckymoneyaccept.html?t='+VER,
-    'getalipaycoupon'      : M_HOST + 'getcoupons.html?t='+VER
+    'luckymoneyshare'   : M_HOST + 'luckymoneyshare.html?t='+VER,
+    'luckymoneyaccept'  : M_HOST + 'luckymoneyaccept.html?t='+VER,
+    'recaddrmanage'     : M_HOST + 'recaddrmanage.html#!&tag=init?t='+VER,
+    'getalipaycoupon'   : M_HOST + 'getcoupons.html?t='+VER
   }
 
   return {
