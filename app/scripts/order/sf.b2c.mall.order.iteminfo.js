@@ -311,7 +311,9 @@ define('sf.b2c.mall.order.iteminfo', [
               "mobile": selectAddr.cellphone,
               "telephone": selectAddr.cellphone,
               "zipCode": selectAddr.zipCode,
-              "recId": selectAddr.recId
+              "recId": selectAddr.recId,
+              certType: "ID",
+              certNo: selectAddr.credtNum2
             }),
             "userMsg": "",
             "items": JSON.stringify([{

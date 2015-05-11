@@ -122,6 +122,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           if (recAddrItem.isDefault != 0 && presonItem.isDefault != 0 && recAddrItem.recId != 0 && presonItem.recId != 0) {
             recAddrItem.recName = presonItem.recName;
             recAddrItem.credtNum = presonItem.credtNum;
+            recAddrItem.credtNum2 = presonItem.credtNum2;
             result.push(recAddrItem);
 
             defaultRecAddrID = recAddrItem.addrId;
