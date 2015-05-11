@@ -166,7 +166,8 @@ define('sf.b2c.mall.order.iteminfo', [
         flag: orderRenderItem.flag,
         errorDes: orderRenderItem.errorDes,
         orderFeeItem: can.extend(orderRenderItem.orderFeeItem, {
-          shouldPay: orderRenderItem.orderFeeItem.actualTotalFee
+          shouldPay: orderRenderItem.orderFeeItem.actualTotalFee,
+          actualTotalFee: orderRenderItem.orderFeeItem.actualTotalFee
         })
       });
     },
@@ -390,6 +391,7 @@ define('sf.b2c.mall.order.iteminfo', [
       return queryOrderCoupon.sendRequest()
         .done(function(orderCoupon) {
           that.itemObj.attr("isShowCouponArea", true);
+          that.itemObj.orderFeeItem.shouldPay = orderFeeItem.actualTotalFee;
 
           can.extend(orderCoupon, {
             isHaveAvaliable: orderCoupon.avaliableAmount != 0,
@@ -401,9 +403,11 @@ define('sf.b2c.mall.order.iteminfo', [
           that.itemObj.attr("orderCoupon", orderCoupon);
           that.itemObj.orderCoupon.selectCoupons = [];
 
+          /*
           that.itemObj.unbind("orderCoupon.discountPrice").bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
             that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
           });
+          */
         })
         .fail(function(error) {
           console.error(error);
