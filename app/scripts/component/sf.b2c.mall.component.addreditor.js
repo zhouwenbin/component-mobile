@@ -56,6 +56,7 @@ define('sf.b2c.mall.component.addreditor', [
       this.addressSaveClick();
     },
     "#backToOrder click": function() {
+      $(".order").show();
       $(".order-manager").show();
       $(".nav-c1, .nav-c2").show();
       $(".sf-b2c-mall-order-selectReceiveAddress").show();
