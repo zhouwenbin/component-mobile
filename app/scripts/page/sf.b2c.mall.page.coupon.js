@@ -49,6 +49,7 @@ define(
         var that = this;
         can.when(that.initCoupons())
           .then(function(){
+            that.itemObj.attr("totalCount", 1);
             var html = can.view('templates/center/sf.b2c.mall.center.coupon.mustache', that.itemObj);
             that.element.html(html);
           })

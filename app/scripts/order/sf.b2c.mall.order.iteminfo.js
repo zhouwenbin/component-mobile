@@ -320,7 +320,8 @@ define('sf.b2c.mall.order.iteminfo', [
               "price": that.itemObj.orderGoodsItemList[0].price
             }]),
             "sysType": that.getSysType(),
-            "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
+            "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons),
+            submitKey: that.itemObj.submitKey
           }
           if (that.itemObj.orderCoupon.selectCoupons && that.itemObj.orderCoupon.selectCoupons.length > 0) {
             params.couponCodes = JSON.stringify(that.itemObj.orderCoupon.selectCoupons);
