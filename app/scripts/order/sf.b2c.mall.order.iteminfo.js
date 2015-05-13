@@ -11,11 +11,12 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.setDefaultAddr',
   'sf.b2c.mall.api.user.setDefaultRecv',
+  'sf.b2c.mall.api.payment.queryPtnAuthLink',
   'sf.helpers',
   'sf.util',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config'
-], function(can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFUtil, SFMessage, SFConfig) {
+], function(can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFMessage, SFConfig) {
 
   return can.Control.extend({
     itemObj: new can.Map({}),
@@ -82,8 +83,7 @@ define('sf.b2c.mall.order.iteminfo', [
     '#couponCodeDialog .btn-danger click': function(targetElement) {
       var exCode = $('#couponCodeDialog input').val();
       can.when(this.receiveCouponExCode(exCode))
-        .done(function(){
-        });
+        .done(function() {});
     },
     '#couponCodeDialog input focus': function(targetElement) {
       $("#couponCodeDialog .text-error").text("");
@@ -115,8 +115,7 @@ define('sf.b2c.mall.order.iteminfo', [
           };
           $("#couponCodeDialog .text-error").text(errorMap[error] ? errorMap[error] : '请输入有效的兑换码！');
         })
-        .always(function() {
-        });
+        .always(function() {});
     },
 
     /**
@@ -148,7 +147,7 @@ define('sf.b2c.mall.order.iteminfo', [
         sysType: that.getSysType(that.itemObj.saleid)
       });
       return orderRender.sendRequest()
-        .done(function(orderRenderItem){
+        .done(function(orderRenderItem) {
           that.processFoundation(orderRenderItem);
           that.processProducts(orderRenderItem.orderGoodsItemList);
           that.processCoupons(orderRenderItem.orderCouponItem);
@@ -183,7 +182,7 @@ define('sf.b2c.mall.order.iteminfo', [
       //是否是宁波保税，是得话才展示税额
       this.itemObj.attr("showTax", orderGoodsItemList[0].bonded);
 
-      _.each(orderGoodsItemList, function(goodItem){
+      _.each(orderGoodsItemList, function(goodItem) {
         if (goodItem.specItemList) {
           var result = new Array();
           _.each(goodItem.specItemList, function(item) {
@@ -348,7 +347,19 @@ define('sf.b2c.mall.order.iteminfo', [
 
           // 转跳到微信授权支付
           if (SFUtil.isMobile.WeChat()) {
-            window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx90f1dcb866f3df60&redirect_uri=" + escape(url) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+            var queryPtnAuthLink = new queryPtnAuthLink({
+              "serviceType": "wechat_intl_mp",
+              "redirectUrl": escape(url)
+            });
+
+            queryPtnAuthLink
+              .sendRequest()
+              .done(function(data) {
+                window.location.href = data.loginAuthLink;
+              })
+              .fail(function(error) {
+                console.error(error);
+              })
           } else {
             window.location.href = url;
           }
