@@ -344,7 +344,7 @@ define('sf.b2c.mall.order.iteminfo', [
               "recid": selectAddr.recId,
               "showordersuccess": true
             });
-alert(url)
+
           // 转跳到微信授权支付
           if (SFUtil.isMobile.WeChat()) {
             var queryPtnAuthLink = new SFQueryPtnAuthLink({
@@ -354,10 +354,10 @@ alert(url)
 
             queryPtnAuthLink
               .sendRequest()
-              .done(function(data) {alert(data);
+              .done(function(data) {
                 window.location.href = data.loginAuthLink;
               })
-              .fail(function(error) {alert(error);
+              .fail(function(error) {
                 console.error(error);
               })
           } else {
