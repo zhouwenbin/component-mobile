@@ -56,6 +56,8 @@ define('sf.b2c.mall.component.addreditor', [
       this.addressSaveClick();
     },
     "#backToOrder click": function() {
+      can.route.attr('tag', 'init');
+      $(".order").show();
       $(".order-manager").show();
       $(".nav-c1, .nav-c2").show();
       $(".sf-b2c-mall-order-selectReceiveAddress").show();
@@ -315,22 +317,41 @@ define('sf.b2c.mall.component.addreditor', [
       addr.regionName = this.adapter.regions.findOneName(window.parseInt(addr.regionName));
 
       if (!addr.recName) {
-        this.adapter.addr.attr("error", '请填写收货人姓名！');
+
+        var message = new SFMessage(null, {
+          'tip': '请填写收货人姓名！',
+          'type': 'error'
+        });
+
         return false;
       }
       var testRecName = /^[\u4e00-\u9fa5]{0,10}$/.test($.trim(addr.recName));
       var isReceiverName =  /先生|女士|小姐/.test($.trim(addr.receiverName));
       if (testRecName && !isReceiverName) {} else {
-        this.adapter.addr.attr("error", '由于海关发货需要实名制的信息，请您输入真实姓名。感谢您的配合!');
+
+        var message = new SFMessage(null, {
+          'tip': '由于海关发货需要实名制的信息，请您输入真实姓名。感谢您的配合!',
+          'type': 'error'
+        });
         return false;
       }
 
       if (!addr.credtNum) {
-        this.adapter.addr.attr("error", '请填写收货人身份证号码！');
+
+        var message = new SFMessage(null, {
+          'tip': '请填写收货人身份证号码！',
+          'type': 'error'
+        });
+
         return false;
       }
       if (addr.credtNum.length < 18 || addr.credtNum.length > 18) {
-        this.adapter.addr.attr("error", '收货人身份证号码填写有误！');
+
+        var message = new SFMessage(null, {
+          'tip': '收货人身份证号码填写有误！',
+          'type': 'error'
+        });
+
         return false;
       }
 
@@ -377,37 +398,67 @@ define('sf.b2c.mall.component.addreditor', [
 
       }
       if (!info.isTrue) {
-        this.adapter.addr.attr("error", '收货人身份证号码填写有误！');
+
+        var message = new SFMessage(null, {
+          'tip': '收货人身份证号码填写有误！',
+          'type': 'error'
+        });
+
         return false;
       }
 
       if (!addr.cellphone) {
-        this.adapter.addr.attr("error", '请填写收货人手机号码！');
+
+        var message = new SFMessage(null, {
+          'tip': '请填写收货人手机号码！',
+          'type': 'error'
+        });
+
         return false;
       }
 
       //验证详细地址
       if (!addr.detail) {
-        this.adapter.addr.attr("error", '请填写详细地址信息！');
+
+        var message = new SFMessage(null, {
+          'tip': '请填写详细地址信息！',
+          'type': 'error'
+        });
+
         return false;
       }
 
       // 不能含有<>'"
       var isDetailInvalid = /[<>'"]/.test($.trim(addr.detail));
       if (isDetailInvalid) {
-        this.adapter.addr.attr("error", '亲，您的收货地址输入有误，不能含有< > \' \" 等特殊字符！');
+
+        var message = new SFMessage(null, {
+          'tip': '亲，您的收货地址输入有误，不能含有< > \' \" 等特殊字符！',
+          'type': 'error'
+        });
+
         return false;
       }
 
       // 5~60字符之间
       if (addr.detail.length > 60 || addr.detail.length < 5) {
-        this.adapter.addr.attr("error", '亲，您的收货地址输入有误，长度需介于5到60之间！');
+
+        var message = new SFMessage(null, {
+          'tip': '亲，您的收货地址输入有误，长度需介于5到60之间！',
+          'type': 'error'
+        });
+
         return false;
       }
 
       //电话号码正则验证（以1开始，11位验证）)
       if (!/^1\d{10}$/.test(addr.cellphone)) {
-        this.adapter.addr.attr("error", '收货人手机号码填写有误！');
+
+        var message = new SFMessage(null, {
+          'tip': '收货人手机号码填写有误！',
+          'type': 'error'
+        });
+
         return false;
       }
 

@@ -94,6 +94,11 @@ define('sf.b2c.mall.component.recaddrmanage', [
       'editaddr': function(data) {
         $(".order-manager").hide();
         this.addressEditor.show("editor", this.data, $(".sf-b2c-mall-order-editAdrArea"));
+      },
+
+      'addaddr': function(data) {
+        $(".order-manager").hide();
+        this.addressEditor.show("create", this.data, $(".sf-b2c-mall-order-editAdrArea"));
       }
     },
 
@@ -109,6 +114,12 @@ define('sf.b2c.mall.component.recaddrmanage', [
       var index = element[0].dataset["index"];
       this.data = this.adapter4List.addrs.addressList[index];
       can.route.attr('tag', 'editaddr');
+
+      return false;
+    },
+
+    ".addrecaddr click": function(element, event) {
+      can.route.attr('tag', 'addaddr');
 
       return false;
     },

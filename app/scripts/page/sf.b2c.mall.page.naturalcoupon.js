@@ -98,6 +98,7 @@ define("sf.b2c.mall.page.naturalcoupon", [
 
       closeDialog: function(){
         $("#successdialog").hide();
+        window.location.href = "http://m.sfht.com/y.html";
       },
 
       /** 渲染 */

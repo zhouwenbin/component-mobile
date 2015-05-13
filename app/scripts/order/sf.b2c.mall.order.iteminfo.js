@@ -166,7 +166,8 @@ define('sf.b2c.mall.order.iteminfo', [
         flag: orderRenderItem.flag,
         errorDes: orderRenderItem.errorDes,
         orderFeeItem: can.extend(orderRenderItem.orderFeeItem, {
-          shouldPay: orderRenderItem.orderFeeItem.actualTotalFee
+          shouldPay: orderRenderItem.orderFeeItem.actualTotalFee,
+          actualTotalFee: orderRenderItem.orderFeeItem.actualTotalFee
         })
       });
     },
@@ -311,7 +312,9 @@ define('sf.b2c.mall.order.iteminfo', [
               "mobile": selectAddr.cellphone,
               "telephone": selectAddr.cellphone,
               "zipCode": selectAddr.zipCode,
-              "recId": selectAddr.recId
+              "recId": selectAddr.recId,
+              certType: "ID",
+              certNo: selectAddr.credtNum2
             }),
             "userMsg": "",
             "items": JSON.stringify([{
@@ -320,7 +323,8 @@ define('sf.b2c.mall.order.iteminfo', [
               "price": that.itemObj.orderGoodsItemList[0].price
             }]),
             "sysType": that.getSysType(),
-            "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
+            "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons),
+            submitKey: that.itemObj.submitKey
           }
           if (that.itemObj.orderCoupon.selectCoupons && that.itemObj.orderCoupon.selectCoupons.length > 0) {
             params.couponCodes = JSON.stringify(that.itemObj.orderCoupon.selectCoupons);
@@ -387,6 +391,7 @@ define('sf.b2c.mall.order.iteminfo', [
       return queryOrderCoupon.sendRequest()
         .done(function(orderCoupon) {
           that.itemObj.attr("isShowCouponArea", true);
+          that.itemObj.attr("orderFeeItem.shouldPay", that.itemObj.orderFeeItem.actualTotalFee);
 
           can.extend(orderCoupon, {
             isHaveAvaliable: orderCoupon.avaliableAmount != 0,
@@ -398,9 +403,11 @@ define('sf.b2c.mall.order.iteminfo', [
           that.itemObj.attr("orderCoupon", orderCoupon);
           that.itemObj.orderCoupon.selectCoupons = [];
 
+          /*
           that.itemObj.unbind("orderCoupon.discountPrice").bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
             that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
           });
+          */
         })
         .fail(function(error) {
           console.error(error);
