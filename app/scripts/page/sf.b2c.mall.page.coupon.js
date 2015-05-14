@@ -1,54 +1,59 @@
 'use strict';
 define(
   [
-	'can',
-	'zepto',
-	'store',
-	'fastclick',
-	'sf.b2c.mall.framework.comm',
+    'can',
+    'zepto',
+    'store',
+    'fastclick',
+    'sf.b2c.mall.framework.comm',
     'sf.helpers',
-	'sf.b2c.mall.business.config',
-	'sf.b2c.mall.api.coupon.getUserCouponList',
+    'sf.b2c.mall.business.config',
+    'sf.b2c.mall.api.coupon.getUserCouponList',
     'sf.b2c.mall.api.coupon.receiveExCode'
   ],
-  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode){
-  	Fastclick.attach(document.body);
-  	SFFrameworkComm.register(3);
+  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode) {
+    Fastclick.attach(document.body);
+    SFFrameworkComm.register(3);
 
-  	var coupon = can.Control.extend({
+    var coupon = can.Control.extend({
       itemObj: new can.Map({
-        unUsed : {
+        unUsed: {
           count: 0,
           items: []
         },
-        used : {
+        thirdparty: {
+          isShow: false,
           count: 0,
           items: []
         },
-        expired : {
+        used: {
           count: 0,
           items: []
         },
-        cancel : {
+        expired: {
+          count: 0,
+          items: []
+        },
+        cancel: {
           count: 0,
           items: []
         },
         totalCount: 0
       }),
 
-      init: function(){
+      init: function() {
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
           return false;
         }
 
-      	this.render();
+        this.render();
       },
 
-      render:function(){
+      render: function() {
         var that = this;
         can.when(that.initCoupons())
-          .then(function(){
+          .then(function() {
             that.itemObj.attr("totalCount", 1);
             var html = can.view('templates/center/sf.b2c.mall.center.coupon.mustache', that.itemObj);
             that.element.html(html);
@@ -58,39 +63,57 @@ define(
           });
       },
 
-      initCoupons: function(){
+      initCoupons: function() {
         var that = this;
         var getUserCouponList = new SFGetUserCouponList({});
         getUserCouponList.sendRequest()
-          .done(function(data){
+          .done(function(data) {
             that.itemObj.attr("totalCount", data.totalCount || 0);
             var couponStatusMap = {
-              "UNUSED" : function() {
+              "UNUSED": function() {
                 that.itemObj.unUsed.count++;
                 that.itemObj.unUsed.items.push(tmpCoupon);
               },
-              "USED" : function() {
+              "USED": function() {
                 that.itemObj.used.count++;
                 that.itemObj.used.items.push(tmpCoupon);
               },
-              "CANCELED" : function() {
+              "CANCELED": function() {
                 that.itemObj.cancel.count++;
                 that.itemObj.cancel.items.push(tmpCoupon);
               },
-              "EXPIRED" : function() {
+              "EXPIRED": function() {
                 that.itemObj.expired.count++;
                 that.itemObj.expired.items.push(tmpCoupon);
               }
             }
-            var pushCoupon = function(tag) {
-              var fn = couponStatusMap[tag];
+
+            var thirdpartyMap = {
+              "IMPORT_MOVIETICKET": function() {
+                if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.showButton = true;
+                }
+                that.itemObj.thirdparty.count++;
+                that.itemObj.thirdparty.items.push(tmpCoupon);
+              },
+            }
+
+            var pushCoupon = function(couponType, status) {
+              var fn;
+
+              if (couponType == "IMPORT_MOVIETICKET") {
+                fn = thirdpartyMap[couponType];
+              } else {
+                fn = couponStatusMap[status];
+              }
+
               if (_.isFunction(fn)) {
                 return fn.call(this)
               }
             }
             if (data.items) {
               for (var i = 0, tmpCoupon; tmpCoupon = data.items[i]; i++) {
-                pushCoupon(tmpCoupon.status);
+                pushCoupon(tmpCoupon.couponType, tmpCoupon.status);
               }
             }
           });
@@ -113,8 +136,7 @@ define(
       '#couponCodeDialog .btn-danger click': function(targetElement) {
         var exCode = $('#couponCodeDialog input').val();
         can.when(this.receiveCouponExCode(exCode))
-          .done(function(){
-          });
+          .done(function() {});
       },
       '#couponCodeDialog input focus': function(targetElement) {
         $("#couponCodeDialog .text-error").text("");
@@ -146,12 +168,10 @@ define(
             };
             $("#couponCodeDialog .text-error").text(errorMap[error] ? errorMap[error] : '请输入有效的兑换码！');
           })
-          .always(function() {
-          });
+          .always(function() {});
       }
-  	});
+    });
 
-  	new coupon('.sf-b2c-mall-coupon');
+    new coupon('.sf-b2c-mall-coupon');
 
   })
-

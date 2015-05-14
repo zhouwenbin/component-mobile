@@ -13,9 +13,10 @@ define(
     'sf.b2c.mall.api.user.partnerBind',
     'sf.b2c.mall.api.user.partnerBindByUPswd',
     'sf.b2c.mall.api.user.checkUserExist',
+    'sf.b2c.mall.api.promotion.receivePro',
     'sf.b2c.mall.api.user.downSmsCode'
   ],
-  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFPartnerBind, SFPartnerBindByUPswd, SFCheckUserExist, SFApiUserDownSmsCode) {
+  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFPartnerBind, SFPartnerBindByUPswd, SFCheckUserExist, SFReceivePro, SFApiUserDownSmsCode) {
 
     Fastclick.attach(document.body);
 
@@ -268,7 +269,30 @@ define(
             var params = can.deparam(window.location.search.substr(1));
             var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
-            window.location.href = redirectUrl || SFBizConf.setting.link.index;
+            var receivePro = new SFReceivePro({
+              "channel": "B2C",
+              "event": "REGISTER_USER_SUCCESS"
+            });
+
+            receivePro
+              .sendRequest()
+              .done(function(proInfo) {
+
+                if (proInfo.couponInfos) {
+                  new SFMessage($(window.parent.document), {
+                    'tip': "恭喜您获得优惠券",
+                    'type': 'success'
+                  });
+                }
+
+              })
+              .fail(function(errorCode) {
+                console.error(errorCode);
+              })
+              .always(function() {
+                window.location.href = redirectUrl || SFBizConf.setting.link.index;
+              })
+
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
               var defaultText = '绑定失败（输入有误）';

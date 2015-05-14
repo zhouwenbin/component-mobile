@@ -21,6 +21,20 @@
       </div>
     </li>
   {{/each}}
+
+  {{#each unUsed.items}}
+    <li>
+      <div class="coupons-c2 fr">
+
+        <div class="coupons-c2r2">{{extCode}}</div>
+      </div>
+      <div class="coupons-c1">
+        <h2 class="ellipsis">{{title}}</h2>
+        <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
+      </div>
+    </li>
+  {{/each}}
+
   {{#each used.items}}
     <li class="coupons-disabled">
       <div class="coupons-c2 fr">
