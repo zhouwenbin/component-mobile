@@ -37,7 +37,7 @@ define(
       },
 
       "#banner-dialog click": function() {
-        window.location.href = "http://m.sfht.com/detail/184.html";
+        window.location.href = "http://m.sfht.com/detail/520.html";
       },
 
       showAD: function() {
