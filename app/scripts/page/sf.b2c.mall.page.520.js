@@ -438,6 +438,7 @@ define(
       },
 
       '#inviteTaBtn click': function($element, event){
+        var that = this;
         if ($("#inviteTaBtn").hasClass("btn-disable")) {
           return;
         }
@@ -486,6 +487,7 @@ define(
             })
             .always(function() {
               $("#inviteTaBtn").removeClass("btn-disable");
+              that.getVerifiedCode();
             });
 
         }
