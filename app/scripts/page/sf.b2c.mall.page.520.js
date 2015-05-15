@@ -371,7 +371,7 @@ define(
           });
 
           var receivePro = new SFReceivePro({
-            "channel": "B2C",
+            "channel": "B2C_H5",
             "event": "REGISTER_USER_SUCCESS"
           });
 
