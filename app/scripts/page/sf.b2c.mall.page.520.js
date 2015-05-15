@@ -27,7 +27,6 @@ define(
 
     var DEFAULT_FILLINFO_TAG = 'fillinfo';
     var DEFAULT_CAPTCHA_LINK = 'http://checkcode1.sfht.com/get.do';
-    var DEFAULT_CAPTCHA_LINK1 = 'http://121.42.42.43:9090/captcha.web/bin/get.do';
     var DEFAULT_CAPTCHA_ID = 'haitaob2c';
     var DEFAULT_CAPTCHA_HASH = '5f602a27181573d36e6c9d773ce70977';
 
@@ -380,12 +379,23 @@ define(
             .done(function(data) {
               if (data.csrfToken) {
                 // store.set('csrfToken', data.csrfToken);
-                can.route.attr({
-                  'tag': 'success',
-                  'csrfToken': data.csrfToken
-                });
 
-                receivePro.sendRequest();
+                receivePro.sendRequest()
+                  .done(function(proInfo) {
+                    if (proInfo.couponInfos) {
+                      $('.step1').hide();
+                      $('.step1success').show();
+                    } else {
+                      $('.step1').hide();
+                      $('.step1success').show();
+                      $(".notsoldout").hide();
+                      $(".soldout").show();
+                    }
+                  })
+                  .fail(function(errorCode) {
+                    $('.step1').hide();
+                    $('.step1success').show();
+                  });
               }
 
               store.set("alipaylogin", "false");
@@ -445,8 +455,8 @@ define(
         if (this.checkInviteMobile(inviteMobile) && this.checkVerifiedCode.call(this, code)) {
           var downInviteSms = new SFDownInviteSms({
             invtMobile: inviteMobile,
-            vfcode: code,
-            smsCon: message
+            vfcode: "type=default&sessionID=" + this.data.attr('sessionId') + "&code=" + $("#inviteMobileCode").val(),
+            smsCon: message + "该邀请来自您的好友" + $("#input-mobile").val() + "。5.18-5.20注册顺丰海淘会员，即送20元蜘蛛网代金券和官网优惠券。http://m.sfht.com【顺丰海淘】"
           });
           $("#inviteTaBtn").addClass("btn-disable");
           can.when(downInviteSms.sendRequest())
