@@ -140,3 +140,11 @@ body{
 .cart-none .btn{
 	margin: 0 17px;
 }
+.tooltip{
+	  position: fixed;
+	  background: rgba(0,0,0,0.7);
+	  padding: 34px 15px;
+	  color: #fff;
+	  border-radius: 5px;
+	  line-height: 18px;
+}

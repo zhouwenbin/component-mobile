@@ -9,4 +9,7 @@ $(function(){
       left:0
     })
   })
+  $('.cart li').tap(function(){
+    $(this).addClass('active').siblings().removeClass('active');
+  })
 })
