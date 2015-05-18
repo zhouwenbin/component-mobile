@@ -471,7 +471,7 @@ define(
           var downInviteSms = new SFDownInviteSms({
             invtMobile: inviteMobile,
             vfcode: "type=default&sessionID=" + this.data.attr('sessionId') + "&code=" + $("#inviteMobileCode").val(),
-            smsCon: message + "该邀请来自您的好友" + $("#input-mobile").val() + "。5.18-5.20注册顺丰海淘会员，即送20元蜘蛛网代金券和官网优惠券。http://m.sfht.com【顺丰海淘】"
+            smsCon: message + "该邀请来自您的好友" + $("#input-mobile").val() + "。5.18-5.20注册顺丰海淘会员，即送20元蜘蛛网代金券和官网优惠券。http://m.sfht.com/520.html【顺丰海淘】"
           });
           $("#inviteTaBtn").addClass("btn-disable");
           can.when(downInviteSms.sendRequest())
@@ -490,7 +490,7 @@ define(
             })
             .fail(function(errorCode) {
               var errMap = {
-                "1000020": "手机号已注册，请登录",
+                "1000020": "该用户已注册",
                 "1000100": "验证码错误",
                 "1000230": "手机号错误，请输入正确的手机号"
               }
