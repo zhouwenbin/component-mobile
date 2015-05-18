@@ -385,6 +385,8 @@ define(
                     if (proInfo.couponInfos) {
                       $('.step1').hide();
                       $('.step1success').show();
+                      $(".notsoldout").show();
+                      $(".soldout").hide();
                     } else {
                       $('.step1').hide();
                       $('.step1success').show();
@@ -394,7 +396,10 @@ define(
                   })
                   .fail(function(errorCode) {
                     $('.step1').hide();
+                    $('.login-ol2').hide();
                     $('.step1success').show();
+                    $('.notsoldout').show();
+                    $('.login-p').hide();
                   });
               }
 
