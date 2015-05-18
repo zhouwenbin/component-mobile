@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.shopcart.updateItemNumInCart
+  * @class sf.b2c.mall.api.payment.appRequestPay
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.shopcart.updateItemNumInCart',
+'sf.b2c.mall.api.payment.appRequestPay',
 [
   'zepto',
   'can',
@@ -22,19 +22,21 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'shopcart.updateItemNumInCart',
+      METHOD_NAME: 'payment.appRequestPay',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'itemId': 'string',
-        'num': 'int'
+        'serviceType': 'string',
+        'orderId': 'string',
+        'amount': 'int',
+        'orderName': 'string',
       },
       OPTIONAL: {
+        'reserved': 'string',
+        'ext_params': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '15000100': '请求参数有误',
-        '15000900': '商品不在购物车内'
       }
     }
   });
