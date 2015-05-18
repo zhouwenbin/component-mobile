@@ -136,14 +136,6 @@ define(
         var html = renderFn(data, this.helpers);
         this.element.prepend(html);
 
-        if (SFComm.prototype.checkUserLogin.call(this)) {
-          $('.step1').hide();
-          $('.step1success').show();
-          $(".notsoldout").hide();
-          $(".soldout").hide();
-          $('.cannotregister').show();
-        }
-
         this.getVerifiedCode.call(this);
 
         var params = can.deparam(window.location.search.substr(1));
@@ -154,6 +146,14 @@ define(
             data.attr('ilogin', SFConfig.setting.link.ilogin);
           }
           fn.call(this, data);
+        }
+
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          $('.step1').hide();
+          $('.step1success').show();
+          $(".notsoldout").hide();
+          $(".soldout").hide();
+          $('.cannotregister').show();
         }
       },
 
@@ -471,7 +471,7 @@ define(
           var downInviteSms = new SFDownInviteSms({
             invtMobile: inviteMobile,
             vfcode: "type=default&sessionID=" + this.data.attr('sessionId') + "&code=" + $("#inviteMobileCode").val(),
-            smsCon: message + "该邀请来自您的好友" + $("#input-mobile").val() + "。5.18-5.20注册顺丰海淘会员，即送20元蜘蛛网代金券和官网优惠券。http://m.sfht.com【顺丰海淘】"
+            smsCon: message + "该邀请来自您的好友" + $("#input-mobile").val() + "。5.18-5.20注册顺丰海淘会员，即送20元蜘蛛网代金券和官网优惠券。http://m.sfht.com/520.html【顺丰海淘】"
           });
           $("#inviteTaBtn").addClass("btn-disable");
           can.when(downInviteSms.sendRequest())
