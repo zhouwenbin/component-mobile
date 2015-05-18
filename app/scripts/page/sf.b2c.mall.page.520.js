@@ -135,6 +135,15 @@ define(
         var renderFn = can.mustache(template_header_520);
         var html = renderFn(data, this.helpers);
         this.element.prepend(html);
+
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          $('.step1').hide();
+          $('.step1success').show();
+          $(".notsoldout").hide();
+          $(".soldout").hide();
+          $('.cannotregister').show();
+        }
+
         this.getVerifiedCode.call(this);
 
         var params = can.deparam(window.location.search.substr(1));
