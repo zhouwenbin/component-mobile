@@ -12,6 +12,7 @@ requirejs.config({
     'md5': 'http://www.google.com/bower_components/blueimp-md5/js/md5.min',
     'underscore.string': 'http://www.google.com/bower_components/underscore.string/dist/underscore.string.min',
     'store': 'http://www.google.com/bower_components/store/dist/store',
+    'text': '../bower_components/text/text',
 
     'sf.b2c.mall.api.security.type': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.api.security.type',
     'sf.b2c.mall.framework.adapter': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.adapter',
@@ -86,6 +87,7 @@ requirejs.config({
     'sf.b2c.mall.api.user.getWeChatJsApiSig': 'scripts/api/sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.b2c.mall.api.user.getUserCode': 'scripts/api/sf.b2c.mall.api.user.getUserCode',
     'sf.b2c.mall.api.user.partnerBindByUPswd': 'scripts/api/sf.b2c.mall.api.user.partnerBindByUPswd',
+    'sf.b2c.mall.api.user.downInviteSms': 'scripts/api/sf.b2c.mall.api.user.downInviteSms',
 
     'sf.b2c.mall.api.b2cmall.getBanner': 'scripts/api/sf.b2c.mall.api.b2cmall.getBanner',
     'sf.b2c.mall.api.b2cmall.getFastSaleInfoList': 'scripts/api/sf.b2c.mall.api.b2cmall.getFastSaleInfoList',
@@ -244,6 +246,10 @@ requirejs.config({
     'sf.b2c.mall.page.taiwantravellerfoodeat': 'scripts/page/sf.b2c.mall.page.taiwantravellerfoodeat',
 
     // 原滋原味
-    'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon'
+    'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon',
+
+    // 520
+    'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
+    'template_header_520': 'templates/sf.b2c.mall.520.mustache'
   }
 });

@@ -84,14 +84,16 @@ define('sf.b2c.mall.component.addreditor', [
             input: {
               addrId: null,
               nationName: '0',
-              provinceName: this.adapter.regions.findGroup(0)[0].id,
+              provinceName: '0',
               cityName: null,
               regionName: null,
               detail: null,
               recId: null,
               cellphone: null,
               recName: null,
-              credtNum: null
+              credtNum: null,
+              receiverName:null,
+              receiverId:null
             },
             place: {
               countries: [{
@@ -174,18 +176,26 @@ define('sf.b2c.mall.component.addreditor', [
 
     changeCity: function() {
       var pid = this.adapter.addr.input.attr('provinceName');
-
-      var cities = this.adapter.regions.findGroup(window.parseInt(pid));
-      this.adapter.addr.place.attr('cities', cities);
-      this.adapter.addr.input.attr('cityName', cities[0].id);
+      if (pid == 0) {
+        this.adapter.addr.input.attr('cityName', '0');
+        this.adapter.addr.place.attr('cities', '0');
+      }else {
+        var cities = this.adapter.regions.findGroup(window.parseInt(pid));
+        this.adapter.addr.place.attr('cities', cities);
+        this.adapter.addr.input.attr('cityName', cities[0].id);
+      }
     },
 
     changeRegion: function() {
       var cid = this.adapter.addr.input.attr('cityName');
-
-      var regions = this.adapter.regions.findGroup(window.parseInt(cid));
-      this.adapter.addr.place.attr('regions', regions);
-      this.adapter.addr.input.attr('regionName', regions[0].id);
+      if (cid == 0) {
+        this.adapter.addr.input.attr('regionName', '0');
+        this.adapter.addr.place.attr('regions', '0');
+      }else{
+        var regions = this.adapter.regions.findGroup(window.parseInt(cid));
+        this.adapter.addr.place.attr('regions', regions);
+        this.adapter.addr.input.attr('regionName', regions[0].id);
+      }
     },
 
     '#s2 change': function(element, event) {
@@ -315,6 +325,17 @@ define('sf.b2c.mall.component.addreditor', [
       addr.provinceName = this.adapter.regions.findOneName(window.parseInt(addr.provinceName));
       addr.cityName = this.adapter.regions.findOneName(window.parseInt(addr.cityName));
       addr.regionName = this.adapter.regions.findOneName(window.parseInt(addr.regionName));
+
+      //验证是否选择省市区
+      if(typeof addr.provinceName == 'undefined' || typeof addr.cityName == 'undefined' || typeof addr.regionName == 'undefined'){
+
+        var message = new SFMessage(null, {
+          'tip': '请选择收货地区',
+          'type': 'error'
+        });
+
+        return false;
+      }
 
       if (!addr.recName) {
 

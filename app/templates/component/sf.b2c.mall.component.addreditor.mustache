@@ -16,16 +16,19 @@
       {{/each}}
     </select>
     <select id="s2"  can-value="addr.input.provinceName" class="select">
+      <option value="0">请选择</option>
       {{#each addr.place.provinces}}
       <option value="{{id}}">{{name}}</option>
       {{/each}}
     </select>
     <select id="s3"  can-value="addr.input.cityName" class="select">
+      <option value="0">请选择</option>
       {{#each addr.place.cities}}
       <option value="{{id}}">{{name}}</option>
       {{/each}}
     </select>
     <select id="s4"  can-value="addr.input.regionName" class="select">
+      <option value="0">请选择</option>
       {{#each addr.place.regions}}
       <option value="{{id}}">{{name}}</option>
       {{/each}}
