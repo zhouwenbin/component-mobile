@@ -390,7 +390,7 @@ define(
                     } else {
                       $('.step1').hide();
                       $('.step1success').show();
-                      $(".notsoldout").hide();
+                      $(".notsoldout, .login-ol2").hide();
                       $(".soldout").show();
                     }
                   })
