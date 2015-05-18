@@ -398,7 +398,7 @@ define(
                     $('.step1').hide();
                     $('.login-ol2').hide();
                     $('.step1success').show();
-                    $('.notsoldout').show();
+                    $('.notsoldout').hide();
                     $('.login-p').hide();
                   });
               }
