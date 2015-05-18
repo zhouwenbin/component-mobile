@@ -47,7 +47,7 @@
 }
 
 .nav-cart{
-  height: 49px;
+  height: 55px;
 }
 .nav-cart-r1{
   display: flex;
@@ -56,16 +56,29 @@
   bottom: 0;
   width: 100%;
   z-index:999;
-}
-.nav-cart-c1{
-  width: 80px;
-  text-align: center;
-  border-top: 1px solid #dadada;
-  height: 49px;
-  line-height: 49px;
   background: #f3f3f3;
+  padding: 6px 12px;
+  justify-content:space-between;
+  border-top: 1px solid #dadada;
 }
 .nav-cart .btn{
   height: 49px;
   line-height: 49px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+.nav-cart .btn-danger{
+ flex:1;
+}
+.nav-cart .btn-soon{
+  width: 50%;
+}
+.nav-cart .icon47{
+  position: relative;
+  margin-right: 5px;
+}
+.nav-cart .dot{
+  position: absolute;
+  text-indent: 0;
+  right: 0;
 }

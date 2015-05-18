@@ -578,9 +578,34 @@ a[title="站长统计"] {
 }
 
 .icon47 {
-  width: 25px;
-  height: 22px;
-  background-position: -253px -225px;
+  width: 45px;
+  height: 45px;
+  background-position: -190px -225px;
+}
+
+.icon48 {
+  width: 27px;
+  height: 27px;
+  background-position: -49px -29px;
+  text-indent: -999em;
+}
+
+.icon49 {
+  width: 18px;
+  height: 18px;
+  background-position: -255px -225px;
+}
+
+.icon50 {
+  width: 9px;
+  height: 13px;
+  background-position: -258px -270px;
+}
+
+.icon51 {
+  width: 10px;
+  height: 14px;
+  background-position: -270px -270px;
 }
 
 .superman {
