@@ -10,13 +10,14 @@ define(
     'md5',
     'sf.b2c.mall.business.config',
     'sf.util',
+    'sf.b2c.mall.widget.message',
     'sf.b2c.mall.api.user.partnerBind',
     'sf.b2c.mall.api.user.partnerBindByUPswd',
     'sf.b2c.mall.api.user.checkUserExist',
     'sf.b2c.mall.api.promotion.receivePro',
     'sf.b2c.mall.api.user.downSmsCode'
   ],
-  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFPartnerBind, SFPartnerBindByUPswd, SFCheckUserExist, SFReceivePro, SFApiUserDownSmsCode) {
+  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFMessage, SFPartnerBind, SFPartnerBindByUPswd, SFCheckUserExist, SFReceivePro, SFApiUserDownSmsCode) {
 
     Fastclick.attach(document.body);
 
@@ -285,11 +286,11 @@ define(
                   });
                 }
 
+                window.location.href = redirectUrl || SFBizConf.setting.link.index;
               })
               .fail(function(errorCode) {
                 console.error(errorCode);
-              })
-              .always(function() {
+
                 window.location.href = redirectUrl || SFBizConf.setting.link.index;
               })
 
