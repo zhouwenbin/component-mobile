@@ -306,6 +306,9 @@ define('sf.b2c.mall.product.detailcontent', [
                 //处理活动链接
                 element.h5ActivityLink = element.h5ActivityLink || "javascript:void(0);";
 
+                that.options.detailContentInfo.priceInfo = new can.Map(that.options.detailContentInfo.priceInfo || {});
+                that.options.detailContentInfo.activityInfo = new can.Map(that.options.detailContentInfo.activityInfo || {});
+
                 //处理限时促销
                 if (element.activityType == "FLASH") {
                   that.options.detailContentInfo.priceInfo.attr("activityTitle", element.activityTitle);
