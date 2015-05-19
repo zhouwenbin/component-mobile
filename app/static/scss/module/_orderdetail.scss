@@ -60,10 +60,16 @@
 .orderdetail-bag h2{
   font-size: 15px;
 }
+.orderdetail-bag h2 .text-important{
+  margin-left: 25px;
+  font-size: 14px;
+  font-weight: normal;
+}
 .orderdetail-bag-r1{
   display: flex;
   justify-content:space-between;
   margin-bottom: 10px;
+  align-items:center;
 }
 .orderdetail-bag .box{
   margin-bottom: 19px;
