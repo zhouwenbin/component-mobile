@@ -5,11 +5,12 @@ define(
     'store',
     'underscore',
     'fastclick',
+    'sf.util',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.framework.comm'
   ],
 
-  function(can, $, store, _, Fastclick, SFConfig, SFFrameworkComm) {
+  function(can, $, store, _, Fastclick, SFFn, SFConfig, SFFrameworkComm) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -50,6 +51,12 @@ define(
       },
 
       needShowAd: function() {
+
+        // 如果在alipay的服务号则不需要展示
+        if (SFFn.isMobile.AlipayChat()) {
+          return false;
+        }
+
         // 如果已经登录了 则不显示
         if (store.get('csrfToken')) {
           return false;
