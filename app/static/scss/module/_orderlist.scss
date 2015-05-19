@@ -1,75 +1,97 @@
 /*orderlist*/
-.orderlist{
-  margin-top: 1px;
-}
-.orderlist li{
-  padding: 17px 14px 10px;
-  margin-bottom: 6px;
-}
-.orderlist-r1{
-  padding-bottom: 8px;
-  border-width: 0 0 1px 0;
-  border-image: url(#{$border}) 2 0 round;
+.orderlist>li{
+  background: #fff;
   margin-bottom: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
-.orderlist-r1c1{
-  color: #585858;
+.orderlist .box1{
+  margin-top: 0;
+  font-size: 14px;
+  
 }
-.orderlist-r2{
-  padding-bottom: 10px; 
-  position: relative;
+.orderlist .box1 a{
+  color: #666;
 }
-.orderlist-r2c1{
-  width: 66px;
-  height: 66px;
-  margin-right: 10px;
+.orderlist-bag{
+  padding:0 10px;
 }
-.orderlist-r2c1 img{
-  max-width: 66px;
-  max-height: 66px;
+.orderlist-bag-r1{
+  display: flex;
+  justify-content:space-between;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
 }
-.orderlist-r2c2{
-  overflow: hidden;
+.orderlist-bag-r1{
+  font-size: 14px;
 }
-.orderlist h2{
-  font-size: 15px;
-  border-left: 2px solid #dc3334;
-  padding-left: 4px;
-  margin-bottom: 6px;
+.orderlist-bag-r1 .text-important{
+  margin-left: 15px;
+  font-size: 14px;
 }
-.orderlist h3{
+.goodslist>li{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e5e5;
+  background:#fff;
+}
+.goodslist img{
+  width: 53px;
+  height: 53px;
+  border:1px solid #e0e0e0;
+}
+.goodslist h3{
+  flex:1;
+  margin-left: 9px;
+  margin-right: 44px;
   font-size: 14px;
   line-height: 18px;
-  margin-bottom: 5px;
 }
-.orderlist strong{
-  color:#dc3334;
-  font-size: 14px;
-  font-weight: normal;
-}
-.orderlist-r3{
-  border-width: 1px 0 0 0;
-  border-image: url('data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==') 2 0 round;
-  padding-top: 10px;
-}
-.orderlist-r3c1{
-  color: #585858;
-  line-height: 43px;
-}
-.orderlist-r3c2 .btn{
-  margin-left: 8px;
-}
-.orderlist .orderlist-none{
-  padding-top: 80px;
-  text-align: center;
-}
-.orderlist-none p{
-  font-size: 14px;
-  margin-top: 27px;
-}
-.orderlist time{
-  display: block;
+.goodslist-c1{
   text-align: right;
-  color:#999;
-  margin-top: 3px;
+}
+.goodslist .text-important{
+  font-size: 15px;
+}
+.orderlist-num{
+  font-size: 15px;
+  color: #999;
+  margin-bottom: 8px;
+}
+.orderlist-total{
+  padding: 13px 10px;
+  text-align: right;
+}
+.orderlist-total .text-important{
+  font-size: 18px;
+}
+.orderlist-total .text-disable{
+  margin-left: 8px;
+  color: #999;
+}
+.orderlist-btns{
+  margin: 0 10px;
+  padding: 14px 0;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.orderlist-btns .btn{
+  margin-left: 15px;
+}
+.orderlist-cancal .orderlist-num{
+  color: #ccc;
+}
+.orderlist-cancal .text-important{
+  color: #ccc;
+}
+.orderlist-cancal .text-disable{
+  color: #ccc;
+}
+.orderlist-cancal .orderlist-btns{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
 }

@@ -267,7 +267,8 @@ a[title="站长统计"] {
   color: #67b222;
 }
 
-.text-warnning {
+.text-warnning,
+.text-link {
   color: #1376ce;
 }
 

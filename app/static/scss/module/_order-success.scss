@@ -3,15 +3,16 @@
   padding-top: 50px;
   padding-bottom: 24px;
   background: #fff;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
 }
 .order-success h1{
   font-size: 18px;
-  margin-bottom: 12px;
+  margin-bottom: 23px;
 }
 .order-success p{
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 23px;
   margin-bottom: 5px;
   text-align: left;
   margin: 0 16px;
@@ -21,6 +22,7 @@
 	background:#fff;
 	text-align:center;
 	padding-bottom:16px;
+
 }
 .order-success-r2 .btn{
 	margin-top:7px;
@@ -28,8 +30,15 @@
 }
 .order-success .box{
   padding-left:50px;
+  border-color: #dadada;
+  border-style: solid;
+  border-image: none;
 }
 .order-success .icon43,
 .order-success .icon46{
   margin-right: 5px;
+}
+.order-success h2{
+  border-top: 1px solid #ccc;
+  padding: 17px 10px;
 }

@@ -12,9 +12,11 @@
 	<!--订单列表-->
 	<section class="tab">
 		<div class="tab-h">
-			<ul class="clearfix">
-				<li class="active"><a href="">未完成(5)</a></li>
-				<li><a href="">完成</a></li>
+			<ul>
+				<li class="active"><a href="">全部</a></li>
+				<li><a href="">处理中</a></li>
+				<li><a href="">已取消</a></li>
+				<li><a href="">已完成</a></li>
 			</ul>
 		</div>
 		== Slim::Template.new('module/orderlist.slim').render

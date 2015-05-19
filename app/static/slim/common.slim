@@ -21,15 +21,33 @@
 	== Slim::Template.new('components/text.slim').render
 	<h2 class="text-h2">box</h2>
 	== Slim::Template.new('components/box.slim').render
-	<h2 class="text-h2">table</h2>
-	== Slim::Template.new('components/table.slim').render
+	<h2 class="text-h2">goodslist</h2>
+	<ul class="goodslist">
+		<li>
+			<img src="../img/list.jpg">
+			<h3 class="ellipsis2">韩国LG润膏无硅油 洗发水 洗护二合一洗护二合一...</h3>
+			<div class="goodslist-c1">
+				<div class="orderlist-num">X1</div>
+				<div class="text-important">¥56</div>
+			</div>
+		</li>
+		<li>
+			<img src="../img/list.jpg">
+			<h3 class="ellipsis2">韩国LG润膏无硅油 洗发水 洗护二合一洗护二合一...</h3>
+			<div class="goodslist-c1">
+				<div class="orderlist-num">X1</div>
+				<div class="text-important">¥56</div>
+			</div>
+		</li>
+	</ul>
 	
 	<h2 class="text-h2">label</h2>
 	== Slim::Template.new('components/label.slim').render
 	<h2 class="text-h2">alert</h2>
 	== Slim::Template.new('components/alert.slim').render
 	<h2 class="text-h2">dot</h2>
-	<span class="dot dot-important">50</span>
+	<span class="dot dot-error">50</span>
+	<span class="dot dot-important"></span>
 
 </body>
 </html>
