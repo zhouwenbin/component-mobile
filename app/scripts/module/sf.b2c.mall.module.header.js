@@ -56,10 +56,6 @@ define(
       },
 
       needShowAd: function() {
-        var params = can.deparam(window.location.search.substr(1));
-        if (params.__src == 'alipay') {
-          return false;
-        }
 
         // 如果在alipay的服务号则不需要展示
         if (SFFn.isMobile.AlipayChat()) {
