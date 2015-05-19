@@ -180,7 +180,7 @@ define('sf.b2c.mall.product.detailcontent', [
         that.options.detailContentInfo.activityInfo = new can.Map({});
         that.options.detailContentInfo.priceInfo = new can.Map({});
 
-        can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initFindRecommendProducts(that.itemid))
+        can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initActivityInfo(that.itemid), that.initFindRecommendProducts(that.itemid))
           .done(function() {
             document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
 
@@ -274,7 +274,6 @@ define('sf.b2c.mall.product.detailcontent', [
         });
         return getProductHotData.sendRequest()
           .done(function(priceData) {
-            that.initActivityInfo(that.itemid);
             that.adapter.formatPrice(that.options.detailContentInfo, priceData);
           });
       },
