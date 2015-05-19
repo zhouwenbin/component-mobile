@@ -47,14 +47,17 @@
   margin-right: 16px;
 }
 .detail-cart h2{
-  line-height: 18px;
-  margin-top: 15px;
-  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 11px 0;
 }
 .detail-cart del{
   color: #ccc;
   margin-bottom: 5px;
   display: inline-block;
+}
+.detail-cart .text-error{
+  font-size: 14px;
 }
 .detail-cart-c1{
   flex:1;

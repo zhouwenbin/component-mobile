@@ -1,8 +1,59 @@
 /*info*/
+.orderinfo{
+  background: #fff;
+  font-size: 14px;
+  padding: 0 10px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+.orderinfo h2 {
+  font-size: 14px;
+  padding: 23px 0 10px;
+  background: #fff;
+  font-weight: normal;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 17px;
+}
+.orderinfo h2:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 2px;
+  height: 14px;
+  background: #dc3334;
+  margin-right: 4px;
+}
+.orderinfo .text-important{
+  font-size: 14px;
+}
+
+.orderinfo .justify{
+  width: 4em;
+  height: 14px;
+}
+.orderinfo-b li{
+  margin-bottom: 12px;
+}
+.orderinfo-time{
+  color: #999;
+}
+.orderinfo p{
+  color: #999;
+  margin-bottom: 19px;
+}
+.orderinfo p .text-important{
+  margin: 0 5px;
+}
+.orderinfo .icon52{
+  margin-left: 5px;
+}
 .info{
   font-size: 14px;
   line-height: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 19px;
 }
 .info-r1c1{
   color: #7f7f7f;

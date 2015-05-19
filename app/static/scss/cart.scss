@@ -20,8 +20,13 @@ body{
 .cart-inner{
 	display: flex;
 	justify-content:space-between;
-	align-items:center;
-	height: 105px;
+	padding-top: 24px;
+	padding-bottom: 14px;
+	position: relative;
+	padding-left: 25px;
+}
+.cart-inner .icon49{
+	left: 0;
 }
 .cart img{
 	width: 67px;
@@ -43,7 +48,7 @@ body{
 }
 .cart-c2{
 	text-align: right;
-	line-height: 18px;
+	line-height: 20px;
 	margin-left: 20px;
 }
 .cart-c2 del{
