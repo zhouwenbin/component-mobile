@@ -40,6 +40,7 @@ define([], function () {
     'iregister': 'http://test1.www.sfht.net/i.register.html',
     'luckymoneyshare': 'http://test1.sfht.com/luckymoneyshare.html',
     'luckymoneyaccept': 'http://test1.sfht.com/luckymoneyaccept.html',
+    'recaddrmanage':'http://test1.sfht.com/recaddrmanage.html#!&tag=init',
     'getalipaycoupon': 'http://test1.sfht.com/getalipaycoupon.html'
   }
 

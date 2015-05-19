@@ -60,7 +60,10 @@ define(
 
         var that = this;
 
-        setInterval(function(){that.checkusername()}, 500);
+        // 如果是IOS的第三方输入法，使用oninput代替onkeyup事件
+        $("#user-name")[0].oninput = function() {
+          that.checkusername();
+        };
       },
 
       render: function(data) {

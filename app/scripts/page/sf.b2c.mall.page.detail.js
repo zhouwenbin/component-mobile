@@ -5,10 +5,11 @@ define(
     'can',
     'zepto',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.product.detailcontent'
+    'sf.b2c.mall.product.detailcontent',
+    'sf.b2c.mall.module.header'
   ],
 
-  function(can, $, SFFrameworkComm, DetailContent) {
+  function(can, $, SFFrameworkComm, DetailContent, SFHeader) {
     SFFrameworkComm.register(3);
 
     var content = can.Control.extend({

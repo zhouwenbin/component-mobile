@@ -83,6 +83,14 @@ define('sf.b2c.mall.product.detailcontent', [
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+        //促销展示类型
+        'sf-showActivityType': function(activityType, options) {
+          if (activityType() == 'REDUCE') {
+            return "满减";
+          } else {
+            return "满折";
+          }
         }
       },
 
@@ -729,12 +737,15 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       //促销活动对话框事件
-      ".coupon-discount .fr click": function(element, event) {
-        var activityId = element.data("activityId");
-        $(".dialog-active[activityId='" + activityId + "']").removeClass("hide");
-      },
-      ".dialog-active .icon15 click": function(element) {
-        element.parents(".dialog-active").addClass("hide");
+      ".coupon-discount-more click": function(element, event) {
+        var uls = element.siblings("ul").find(" .coupon-discount-list ul");
+        if (element.find("a").text() == "更多优惠") {
+          element.find("a").text("收起");
+          uls.show();
+        } else {
+          element.find("a").text("更多优惠");
+          uls.hide();
+        }
       },
 
       /**

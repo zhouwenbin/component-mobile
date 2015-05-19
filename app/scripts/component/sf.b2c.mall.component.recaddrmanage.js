@@ -11,23 +11,34 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.adapter.address.list',
   'sf.b2c.mall.widget.message',
-  'sf.b2c.mall.business.config'
+  'sf.b2c.mall.business.config',
+  'sf.b2c.mall.component.addreditor',
 
 
-], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage, SFConfig) {
+], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage, SFConfig, SFAddressEditor) {
+
+  can.route.ready();
+  var DEFAULT_INIT_TAG = 'init';
 
   return can.Control.extend({
 
     init: function(data) {
       this.adapter4List = {};
-      this.render(data);
+
+      //如果tag为init，则要进行单独处理，防止刷新
+      var tag = can.route.attr('tag');
+      if (tag === DEFAULT_INIT_TAG) {
+        this.initRender(DEFAULT_INIT_TAG);
+      } else {
+        can.route.attr('tag', DEFAULT_INIT_TAG);
+      }
     },
 
     /**
      * @description 对页面进行渲染
      * @param  {Map} data 渲染页面的数据
      */
-    render: function(data) {
+    render: function(tag) {
       var that = this;
 
       var getRecAddressList = new SFGetRecAddressList();
@@ -51,13 +62,66 @@ define('sf.b2c.mall.component.recaddrmanage', [
             that.deleteRecAddrClick($(this));
           })
 
+          // $('.edit').click(function() {
+          //   that.editRecAddrClick($(this));
+          // })
+
           $('.loadingDIV').hide();
+
+          //初始化进行回调绑定
+          that.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-editAdrArea', {
+            onSuccess: _.bind(that.render, that)
+          });
 
         })
         .fail(function(error) {
           console.error(error);
           $('.loadingDIV').hide();
         })
+    },
+
+    '{can.route} change': function() {
+      var tag = can.route.attr('tag') || DEFAULT_INIT_TAG;
+
+      this.initRender.call(this, tag, this.data);
+    },
+
+    renderMap: {
+      'init': function(data) {
+        this.render();
+      },
+
+      'editaddr': function(data) {
+        $(".order-manager").hide();
+        this.addressEditor.show("editor", this.data, $(".sf-b2c-mall-order-editAdrArea"));
+      },
+
+      'addaddr': function(data) {
+        $(".order-manager").hide();
+        this.addressEditor.show("create", this.data, $(".sf-b2c-mall-order-editAdrArea"));
+      }
+    },
+
+    initRender: function(tag, data) {
+      var params = can.deparam(window.location.search.substr(1));
+      var fn = this.renderMap[tag];
+      if (_.isFunction(fn)) {
+        fn.call(this, data);
+      }
+    },
+
+    ".edit click": function(element, event) {
+      var index = element[0].dataset["index"];
+      this.data = this.adapter4List.addrs.addressList[index];
+      can.route.attr('tag', 'editaddr');
+
+      return false;
+    },
+
+    ".addrecaddr click": function(element, event) {
+      can.route.attr('tag', 'addaddr');
+
+      return false;
     },
 
     deleteRecAddrClick: function(element, event) {

@@ -45,3 +45,27 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+.nav-cart{
+  height: 49px;
+}
+.nav-cart-r1{
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index:999;
+}
+.nav-cart-c1{
+  width: 80px;
+  text-align: center;
+  border-top: 1px solid #dadada;
+  height: 49px;
+  line-height: 49px;
+  background: #f3f3f3;
+}
+.nav-cart .btn{
+  height: 49px;
+  line-height: 49px;
+}

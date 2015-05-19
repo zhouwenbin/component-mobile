@@ -5,7 +5,6 @@
   padding: 10px;
   width: 100%;
 }
-
 .input-num{
   display: inline-block;
   font-size: 0;
@@ -16,15 +15,17 @@
   height: 26px;
   line-height: 26px;
   padding: 0;
-  background:#eeeeee;
+  background:#fafafa;
+  border: 1px solid #ccc;
 }
 .input-num input{
-  width: 77px;
+  width: 51px;
   height: 26px;
   line-height: 26px;
   text-align: center;
-  margin: 0 9px;
+  margin: 0 -1px;
   border:1px solid #ccc;
+  background: #fafafa;
   font-size: 12px;
 }
 /*select*/

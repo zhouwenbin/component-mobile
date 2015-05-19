@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="body1">	
+	<!--商品-->
+	== Slim::Template.new('module/goods.slim').render	
+	<!--商品-->
+	<section class="coupon-discount">
+		<ul class="box box1">
+			<li class="coupon-discount-list"><a href="" class="box-link"><span class="label label-soon">满减<i></i></span>满200元立减30<span class="icon icon13 box-arrow center-vertical"></span></a>
+				<ul>
+					<li>展开信息展开信息展开信息</li>
+					<li>展开信息展开信息展开信息</li>
+				</ul>
+			</li>
+			<li class="coupon-discount-list"><a href="" class="box-link"><span class="label label-soon">满折<i></i></span>满2件立减10元<span class="icon icon13 box-arrow center-vertical"></span></a>
+				<ul>
+					<li>展开信息展开信息展开信息</li>
+					<li>展开信息展开信息展开信息</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="box coupon-discount-more">
+			<a href="">更多优惠</a>
+		</div>
+		
+	</section>
+		
+	<!--商品详情-->
+	== Slim::Template.new('module/detail.slim').render
+	<!--商品详情-->
+	<!--推荐商品-->
+	== Slim::Template.new('module/recommend.slim').render
+	<!--推荐商品-->
+	<div class="mask"></div>
+	<section class="detail-cart">
+		<div class="detail-cart-r">
+			<img src="../img/list.jpg" alt="">
+			<div class="detail-cart-c1">
+				<h2 class="ellipsis2">日本kaoc花王    蒸汽发热眼膜／眼罩无香日本kaoc花王    蒸汽发热眼膜／眼罩无香</h2>
+				<del>¥200</del>
+				<div class="text-error">¥ 100</div>
+			</div>
+		</div>
+		<div class="detail-cart-r detail-cart-r2">
+			<label for="">型号：</label>
+			<ul>
+				<li><button class="btn btn-normal active">无香型</button></li>
+				<li><button class="btn btn-normal">无香型</button></li>
+				<li><button class="btn btn-normal">柚子香型</button></li>
+				<li><button class="btn btn-normal">玫瑰香型</button></li>
+				<li><button class="btn btn-normal">洋甘菊香型</button></li>
+				<li><button class="btn btn-normal">薰衣草香型</button></li>
+			</ul>
+		</div>
+		<div class="detail-cart-r">
+			<label for="">数量：</label>
+			<div class="input-num"><button class="btn">-</button><input type="text" value="1"><button class="btn">+</button></div>
+		</div>
+	</section>
+	<section class="nav-cart">
+		<div class="nav-cart-r1">
+			<div class="nav-cart-c1">
+				<span class="icon icon47"></span>
+			</div>
+			<button class="btn btn-danger btn-big">确定</button>
+		</div>
+			
+	</section>
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/swipe.js"></script>
+	<script src="../js/slider.js"></script>
+</body>
+</html>

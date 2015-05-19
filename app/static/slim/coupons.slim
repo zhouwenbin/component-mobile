@@ -8,11 +8,26 @@
 
 </head>
 <body class="body1">
+	<a href="" class="btn btn-big btn-danger coupons-btn">优惠券兑换</a>
 	<!--优惠券-->
 	== Slim::Template.new('module/coupons.slim').render	
 	<!--优惠券-->
 	<!--弹窗-->
-	//== Slim::Template.new('module/dialog1.slim').render	
+	== Slim::Template.new('module/dialog1.slim').render	
+	<section class="mask dialog dialog-active">
+		<div class=" center">
+			<a href="javascript:" class="icon icon15">关闭</a>
+			<h2>输入兑换码</h2>
+			<div class="dialog-active-b">
+				<input class="input" placeholder="输入您的兑换码">
+				<button class="btn btn-big btn-disable">使用</button>
+				<!--输入后
+				<button class="btn btn-big btn-danger">使用</button>
+				<-->
+				<div class="text-error">错误提示</div>
+			</div>	
+		</div>
+	</section>
 	<!--弹窗-->
 	<footer class="footer1">Copyright © 顺丰海淘</footer>
 	<script src="js/zepto.min.js"></script>

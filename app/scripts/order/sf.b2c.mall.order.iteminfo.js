@@ -6,6 +6,7 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.b2c.mall.api.order.submitOrderForAllSys',
   'sf.b2c.mall.api.order.queryOrderCoupon',
   'sf.b2c.mall.api.order.orderRender',
+  'sf.b2c.mall.api.coupon.receiveExCode',
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.setDefaultAddr',
@@ -14,7 +15,7 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.util',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config'
-], function(can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFUtil, SFMessage, SFConfig) {
+], function(can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, helpers, SFUtil, SFMessage, SFConfig) {
 
   return can.Control.extend({
     itemObj: new can.Map({}),
@@ -64,6 +65,59 @@ define('sf.b2c.mall.order.iteminfo', [
       this.itemObj.attr("orderCoupon.discountPrice", price);
     },
 
+    //优惠券兑换相关事件
+    '#inputCouponCode click': function(targetElement) {
+      $("#couponCodeDialog").show();
+    },
+    '.dialog .icon15, .dialog1 .btn-normal click': function(targetElement) {
+      targetElement.parents(".dialog").hide();
+    },
+    '#couponCodeDialog input input': function(targetElement) {
+      if (targetElement.val().length > 0) {
+        $("#couponCodeDialog button").removeClass("btn-disable").addClass("btn-danger");
+      } else {
+        $("#couponCodeDialog button").addClass("btn-disable").removeClass("btn-danger");
+      }
+    },
+    '#couponCodeDialog .btn-danger click': function(targetElement) {
+      var exCode = $('#couponCodeDialog input').val();
+      can.when(this.receiveCouponExCode(exCode))
+        .done(function(){
+        });
+    },
+    '#couponCodeDialog input focus': function(targetElement) {
+      $("#couponCodeDialog .text-error").text("");
+    },
+
+
+    receiveCouponExCode: function(exCode) {
+      var that = this;
+      var receiveExCode = new SFReceiveExCode({
+        exCode: exCode
+      });
+      receiveExCode.sendRequest()
+        .done(function(userCouponInfo) {
+          can.when(that.initCoupons())
+            .then(function() {
+              $("#selectCoupon option[data-code='" + exCode + "']").first().attr('selected', 'true');
+              $("#selectCoupon").trigger("change");
+              $("#couponCodeDialogSuccess").show();
+              $("#couponCodeDialog").hide();
+            });
+        })
+        .fail(function(error) {
+          var errorMap = {
+            11000160: "请输入有效的兑换码",
+            11000170: "兑换码已使用",
+            11000200: "兑换码已过期",
+            11000209: "请输入正确的兑换码",
+            11000220: "本账户超过兑换次数限制"
+          };
+          $("#couponCodeDialog .text-error").text(errorMap[error] ? errorMap[error] : '请输入有效的兑换码！');
+        })
+        .always(function() {
+        });
+    },
 
     /**
      * 初始化 OrderRender
@@ -112,7 +166,8 @@ define('sf.b2c.mall.order.iteminfo', [
         flag: orderRenderItem.flag,
         errorDes: orderRenderItem.errorDes,
         orderFeeItem: can.extend(orderRenderItem.orderFeeItem, {
-          shouldPay: orderRenderItem.orderFeeItem.actualTotalFee
+          shouldPay: orderRenderItem.orderFeeItem.actualTotalFee,
+          actualTotalFee: orderRenderItem.orderFeeItem.actualTotalFee
         })
       });
     },
@@ -257,7 +312,9 @@ define('sf.b2c.mall.order.iteminfo', [
               "mobile": selectAddr.cellphone,
               "telephone": selectAddr.cellphone,
               "zipCode": selectAddr.zipCode,
-              "recId": selectAddr.recId
+              "recId": selectAddr.recId,
+              certType: "ID",
+              certNo: selectAddr.credtNum2
             }),
             "userMsg": "",
             "items": JSON.stringify([{
@@ -266,7 +323,8 @@ define('sf.b2c.mall.order.iteminfo', [
               "price": that.itemObj.orderGoodsItemList[0].price
             }]),
             "sysType": that.getSysType(),
-            "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons)
+            "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons),
+            submitKey: that.itemObj.submitKey
           }
           if (that.itemObj.orderCoupon.selectCoupons && that.itemObj.orderCoupon.selectCoupons.length > 0) {
             params.couponCodes = JSON.stringify(that.itemObj.orderCoupon.selectCoupons);
@@ -317,6 +375,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
     /*
      * author:zhangke
+     * desc: 获取可用优惠券列表
      */
     initCoupons: function() {
       var that = this;
@@ -324,32 +383,35 @@ define('sf.b2c.mall.order.iteminfo', [
         "items": JSON.stringify([{
           "itemId": that.itemObj.itemid,
           "num": that.itemObj.amount,
-          "price": that.itemObj.singlePrice,
-          "skuId": that.itemObj.skuId
+          "price": that.itemObj.orderGoodsItemList[0].price,
+          "skuId": that.itemObj.orderGoodsItemList[0].skuId
         }]),
         'system': "B2C_H5"
       });
-      var queryOrderCouponDefer = queryOrderCoupon.sendRequest();
-      queryOrderCouponDefer.done(function(orderCoupon) {
+      return queryOrderCoupon.sendRequest()
+        .done(function(orderCoupon) {
           that.itemObj.attr("isShowCouponArea", true);
+          that.itemObj.attr("orderFeeItem.shouldPay", that.itemObj.orderFeeItem.actualTotalFee);
 
           can.extend(orderCoupon, {
             isHaveAvaliable: orderCoupon.avaliableAmount != 0,
             isHaveDisable: orderCoupon.disableAmount != 0,
             useQuantity: 0,
-            discountPrice: 0
+            discountPrice: 0,
+            couponExCode: ""
           });
           that.itemObj.attr("orderCoupon", orderCoupon);
           that.itemObj.orderCoupon.selectCoupons = [];
 
+          /*
           that.itemObj.unbind("orderCoupon.discountPrice").bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
             that.itemObj.attr("shouldPay", that.itemObj.shouldPay + oldVal - newVal);
           });
+          */
         })
         .fail(function(error) {
           console.error(error);
         });
-      return queryOrderCouponDefer;
     },
     /*
      * 找到默认选择的优惠券 面额最高的

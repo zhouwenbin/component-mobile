@@ -6,15 +6,39 @@ define(
     'zepto',
     'fastclick',
     'sf.b2c.mall.framework.comm',
+    'sf.util',
     'sf.b2c.mall.business.config',
     'sf.helpers',
     'sf.b2c.mall.api.order.getOrder'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFConfig, helpers, SFGetOrder) {
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
     var paysuccess = can.Control.extend({
+      helpers: {
+        ismobile: function(mobile, options) {
+          if (mobile() == 'mobile') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        isWeChat: function(options) {
+          if (SFFn.isMobile.WeChat()) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        isAlipay: function(options) {
+          if (SFFn.isMobile.AlipayChat()) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        }
+      },
       init: function() {
         this.render();
       },
@@ -92,7 +116,7 @@ define(
           })
       },
       renderHtml: function(element, itemObj) {
-        var html = can.view('templates/order/sf.b2c.mall.order.paysuccess.mustache', itemObj);
+        var html = can.view('templates/order/sf.b2c.mall.order.paysuccess.mustache', itemObj, this.helpers);
         element.html(html);
       }
     });

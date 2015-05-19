@@ -8,15 +8,35 @@ define(
 	'sf.b2c.mall.framework.comm',
     'sf.helpers',
 	'sf.b2c.mall.business.config',
-	'sf.b2c.mall.api.coupon.getUserCouponList'
+	'sf.b2c.mall.api.coupon.getUserCouponList',
+    'sf.b2c.mall.api.coupon.receiveExCode'
   ],
-  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList){
+  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode){
   	Fastclick.attach(document.body);
   	SFFrameworkComm.register(3);
 
   	var coupon = can.Control.extend({
+      itemObj: new can.Map({
+        unUsed : {
+          count: 0,
+          items: []
+        },
+        used : {
+          count: 0,
+          items: []
+        },
+        expired : {
+          count: 0,
+          items: []
+        },
+        cancel : {
+          count: 0,
+          items: []
+        },
+        totalCount: 0
+      }),
 
-      init:function(){
+      init: function(){
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
           return false;
@@ -27,45 +47,39 @@ define(
 
       render:function(){
         var that = this;
-      	var getUserCouponList = new SFGetUserCouponList({});
-      	getUserCouponList.sendRequest()
-      	  .done(function(data){
-            var options = {
-              unUsed : {
-                count: 0,
-                items: []
-              },
-              used : {
-                count: 0,
-                items: []
-              },
-              expired : {
-                count: 0,
-                items: []
-              },
-              cancel : {
-                count: 0,
-                items: []
-              },
-              totalCount: data.totalCount || 0
-            };
+        can.when(that.initCoupons())
+          .then(function(){
+            that.itemObj.attr("totalCount", 1);
+            var html = can.view('templates/center/sf.b2c.mall.center.coupon.mustache', that.itemObj);
+            that.element.html(html);
+          })
+          .always(function() {
+            $('.loadingDIV').hide();
+          });
+      },
 
+      initCoupons: function(){
+        var that = this;
+        var getUserCouponList = new SFGetUserCouponList({});
+        getUserCouponList.sendRequest()
+          .done(function(data){
+            that.itemObj.attr("totalCount", data.totalCount || 0);
             var couponStatusMap = {
               "UNUSED" : function() {
-                options.unUsed.count++;
-                options.unUsed.items.push(tmpCoupon);
+                that.itemObj.unUsed.count++;
+                that.itemObj.unUsed.items.push(tmpCoupon);
               },
               "USED" : function() {
-                options.used.count++;
-                options.used.items.push(tmpCoupon);
+                that.itemObj.used.count++;
+                that.itemObj.used.items.push(tmpCoupon);
               },
               "CANCELED" : function() {
-                options.cancel.count++;
-                options.cancel.items.push(tmpCoupon);
+                that.itemObj.cancel.count++;
+                that.itemObj.cancel.items.push(tmpCoupon);
               },
               "EXPIRED" : function() {
-                options.expired.count++;
-                options.expired.items.push(tmpCoupon);
+                that.itemObj.expired.count++;
+                that.itemObj.expired.items.push(tmpCoupon);
               }
             }
             var pushCoupon = function(tag) {
@@ -79,16 +93,61 @@ define(
                 pushCoupon(tmpCoupon.status);
               }
             }
+          });
+      },
 
-            var html = can.view('templates/center/sf.b2c.mall.center.coupon.mustache', options);
-            that.element.html(html);
-      	  })
-      	  .fail(function(error){
-            console.error(error);
-      	  })
-          .always(function() {
-            $('.loadingDIV').hide();
+      //优惠券兑换相关事件
+      '#inputCouponCode click': function(targetElement) {
+        $("#couponCodeDialog").show();
+      },
+      '.dialog .icon15, .dialog1 .btn-normal click': function(targetElement) {
+        targetElement.parents(".dialog").hide();
+      },
+      '#couponCodeDialog input input': function(targetElement) {
+        if (targetElement.val().length > 0) {
+          $("#couponCodeDialog button").removeClass("btn-disable").addClass("btn-danger");
+        } else {
+          $("#couponCodeDialog button").addClass("btn-disable").removeClass("btn-danger");
+        }
+      },
+      '#couponCodeDialog .btn-danger click': function(targetElement) {
+        var exCode = $('#couponCodeDialog input').val();
+        can.when(this.receiveCouponExCode(exCode))
+          .done(function(){
+          });
+      },
+      '#couponCodeDialog input focus': function(targetElement) {
+        $("#couponCodeDialog .text-error").text("");
+      },
+
+
+      receiveCouponExCode: function(exCode) {
+        var that = this;
+        var receiveExCode = new SFReceiveExCode({
+          exCode: exCode
+        });
+        receiveExCode.sendRequest()
+          .done(function(userCouponInfo) {
+            can.when(that.initCoupons())
+              .then(function() {
+                $("#selectCoupon option[data-code='" + exCode + "']").first().attr('selected', 'true');
+                $("#selectCoupon").trigger("change");
+                $("#couponCodeDialogSuccess").show();
+                $("#couponCodeDialog").hide();
+              });
           })
+          .fail(function(error) {
+            var errorMap = {
+              11000160: "请输入有效的兑换码",
+              11000170: "兑换码已使用",
+              11000200: "兑换码已过期",
+              11000209: "请输入正确的兑换码",
+              11000220: "本账户超过兑换次数限制"
+            };
+            $("#couponCodeDialog .text-error").text(errorMap[error] ? errorMap[error] : '请输入有效的兑换码！');
+          })
+          .always(function() {
+          });
       }
   	});
 

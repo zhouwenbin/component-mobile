@@ -16,13 +16,6 @@
           {{/each}}
         </div>
       </div>
-      {{#sf-showXSTM itemInfo.basicInfo.productShape}}
-          <span class="label label-error"><span class="icon icon27"></span>{{sf.timeMDH priceInfo.endTime}}结束</span>
-      {{/sf-showXSTM}}
-
-      {{#sf-showJSHT itemInfo.basicInfo.productShape}}
-          <span class="label label-error"><span class="icon icon31"></span>{{itemInfo.saleInfo.sendTime}}天到</span>
-      {{/sf-showJSHT}}
 
     </div>
     <div class="goods-b">
@@ -48,17 +41,26 @@
 
   <!--促销信息-->
 	{{#activityInfo.isShow}}
-  <ul class="box coupon-discount">
-    {{#each activityInfo.datas}}
-      {{#sf-showActivity activityType}}
-      <li>
-        <a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>
-        <a href="{{h5ActivityLink}}">{{activityTitle}}</a>
-        <span data-activity-id="{{activityId}}" class="fr">促销详情</span>
-      </li>
-	    {{/sf-showActivity}}
-	  {{/each}}
-  </ul>
+  <section class="coupon-discount">
+	  <ul class="box box1">
+	    {{#each activityInfo.datas}}
+	      {{#sf-showActivity activityType}}
+	      <li class="coupon-discount-list">
+		      <a href="{{h5ActivityLink}}" class="box-link">
+			      <span class="label label-soon">{{#sf-showActivityType activityType}}{{/sf-showActivityType}}<i></i></span>{{activityTitle}}
+			      <span class="icon icon13 box-arrow center-vertical"></span>
+		      </a>
+	        <ul class="hide">
+		        {{#each promotionRules}}
+	            <li>{{ruleDesc}}</li>
+		        {{/each}}
+	        </ul>
+	      </li>
+		    {{/sf-showActivity}}
+		  {{/each}}
+	  </ul>
+	  <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
+	</section>
 	{{/activityInfo.isShow}}
   <!--促销信息-->
 
@@ -168,17 +170,26 @@
 
   <!--促销信息-->
 	{{#activityInfo.isShow}}
-    <ul class="box coupon-discount">
-			{{#each activityInfo.datas}}
-				{{#sf-showActivity activityType}}
-          <li>
-            <a href="{{h5ActivityLink}}" class="label-soon">{{activityTypeDesc}}</a>
-            <a href="{{h5ActivityLink}}">{{activityTitle}}</a>
-            <span data-activity-id="{{activityId}}" class="fr">促销详情</span>
-          </li>
-				{{/sf-showActivity}}
-			{{/each}}
-    </ul>
+      <section class="coupon-discount">
+          <ul class="box box1">
+						{{#each activityInfo.datas}}
+							{{#sf-showActivity activityType}}
+                  <li class="coupon-discount-list">
+                      <a href="{{h5ActivityLink}}" class="box-link">
+                        <span class="label label-soon" desc="{{activityTypeDesc}}">满减<i></i></span>{{activityTitle}}
+                        <span class="icon icon13 box-arrow center-vertical"></span>
+                      </a>
+                      <ul class="hide">
+												{{#each promotionRules}}
+                            <li>{{ruleDesc}}</li>
+												{{/each}}
+                      </ul>
+                  </li>
+							{{/sf-showActivity}}
+						{{/each}}
+          </ul>
+          <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
+      </section>
 	{{/activityInfo.isShow}}
   <!--促销信息-->
 
@@ -235,7 +246,7 @@
         </a>
       </div>
       <div class="nav-c2">
-        <a href="javascript:void(0)" class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}} btn-big" id="buyEnter">确定</a>
+        <a href="javascript:void(0)" class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}} btn-big" id="buyEnter">{{#sf-canBuy priceInfo.soldOut}}确定{{else}}缺货{{/sf-canBuy}}</a>
       </div>
     </div>
   </section>
@@ -243,15 +254,3 @@
 
   {{! {{/if}}
 </div>
-
-{{#each activityInfo.datas}}
-  <section class="mask dialog dialog-active hide" activityId="{{activityId}}">
-    <div class=" center">
-      <a href="javascript:" class="icon icon15">关闭</a>
-      <h2>活动详情</h2>
-      <div class="dialog-active-b">
-        <ul>{{{rulesHtml}}}</ul>
-      </div>
-    </div>
-  </section>
-{{/each}}

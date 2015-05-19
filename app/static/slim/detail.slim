@@ -11,26 +11,27 @@
 	<!--商品-->
 	== Slim::Template.new('module/goods.slim').render	
 	<!--商品-->
-	<ul class="box coupon-discount">
-		<li class="active">
-			<div class="coupon-discount-r1">
-				<div class="coupon-discount-c1"><button class="label-soon">满就减</button>满200元立减30</div>
-				<div class="coupon-discount-c2"><a href="">更多优惠<span class="icon icon44"></span></a></div>
-			</div>
-				
-			<ul class="coupon-discount-list">
-				<li>满100减20<a href="">去看看</a></li>
-				<li>满100减20<a href="">去看看</a></li>
-			</ul>			
-		</li>
-		<li>
-			<div class="coupon-discount-r1">
-				<div class="coupon-discount-c1"><button class="label-soon">满件折</button>满200元立减30</div>
-				<div class="coupon-discount-c2"><a href="">更多优惠<span class="icon icon44"></span></a></div>
-			</div>
-				
-		</li>
-	</ul>
+	<section class="coupon-discount">
+		<ul class="box box1">
+			<li class="coupon-discount-list"><a href="" class="box-link"><span class="label label-soon">满减<i></i></span>满200元立减30<span class="icon icon13 box-arrow center-vertical"></span></a>
+				<ul>
+					<li>展开信息展开信息展开信息</li>
+					<li>展开信息展开信息展开信息</li>
+				</ul>
+			</li>
+			<li class="coupon-discount-list"><a href="" class="box-link"><span class="label label-soon">满折<i></i></span>满2件立减10元<span class="icon icon13 box-arrow center-vertical"></span></a>
+				<ul>
+					<li>展开信息展开信息展开信息</li>
+					<li>展开信息展开信息展开信息</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="box coupon-discount-more">
+			<a href="">更多优惠</a>
+		</div>
+		
+	</section>
+		
 	<!--商品详情-->
 	== Slim::Template.new('module/detail.slim').render
 	<!--商品详情-->
