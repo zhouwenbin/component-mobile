@@ -33,12 +33,17 @@ define(
           '</section>'
       },
 
-      "#closebutton click": function() {
+      "#closebutton click": function($el, event) {
+        event && event.stopPropagation();
         $(".banner-dialog").hide();
       },
 
-      "#banner-dialog click": function() {
-        window.location.href = "http://m.sfht.com/520.html";
+      "#banner-dialog click": function($el, event) {
+        if($(event.target).attr('id') != $el.attr('id')){
+          return false;
+        }else{
+          window.location.href = "http://m.sfht.com/520.html";
+        }
       },
 
       showAD: function() {
