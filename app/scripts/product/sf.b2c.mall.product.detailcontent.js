@@ -174,6 +174,7 @@ define('sf.b2c.mall.product.detailcontent', [
         that.options.detailContentInfo.showFirstStep = true;
         that.options.detailContentInfo.showSecondStep = false;
         that.options.detailContentInfo.activityInfo = new can.Map({});
+        that.options.detailContentInfo.priceInfo = new can.Map({});
 
         can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initFindRecommendProducts(that.itemid))
           .done(function() {
