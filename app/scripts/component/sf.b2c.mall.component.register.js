@@ -12,10 +12,12 @@ define('sf.b2c.mall.component.register', [
     'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.b2c.mall.business.config',
     'sf.util',
+    'sf.b2c.mall.api.promotion.receivePro',
+    'sf.b2c.mall.widget.message',
     'sf.b2c.mall.api.user.checkUserExist' //@noto 检查第三方账号绑定的手机号是否有登录密码
   ],
 
-  function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn,SFCheckUserExist) {
+  function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn, SFReceivePro, SFMessage, SFCheckUserExist) {
 
     Fastclick.attach(document.body);
 
@@ -141,7 +143,7 @@ define('sf.b2c.mall.component.register', [
         }
       },
 
-      gotoFromPage: function(){
+      gotoFromPage: function() {
         var that = this;
 
         // @todo调用onRegistered 回调
@@ -161,14 +163,16 @@ define('sf.b2c.mall.component.register', [
         //@note 手机号码输完11位时，验证该账号是否有密码
         if (isTelNum) {
           var checkUserExist = new SFCheckUserExist({
-            'accountId':mobile,
-            'type':'MOBILE'
+            'accountId': mobile,
+            'type': 'MOBILE'
           });
           checkUserExist.sendRequest()
-            .fail(function(errorCode){
+            .fail(function(errorCode) {
               if (errorCode == 1000340) {
                 var fn = can.view.mustache(ERROR_NO_SET_PWD);
-                $('#input-mobile-error').html(fn({tel:mobile})).show();
+                $('#input-mobile-error').html(fn({
+                  tel: mobile
+                })).show();
                 return false;
               };
             })
@@ -326,8 +330,28 @@ define('sf.b2c.mall.component.register', [
                 store.set('type', 'MOBILE');
                 store.set('nickname', mobile);
 
+                // 注册送优惠券
+                var receivePro = new SFReceivePro({
+                  "channel": "B2C_H5",
+                  "event": "REGISTER_USER_SUCCESS"
+                });
+
+                receivePro.sendRequest()
+                  .done(function(proInfo) {
+                    if (proInfo.couponInfos) {
+                      var message = new SFMessage(null, {
+                        'tip': '礼包领取成功，请至我的优惠券查看！',
+                        'type': 'success'
+                      });
+                    }
+                  })
+                  .fail(function(errorCode) {
+                    console.error(errorCode);
+                  });
+                // 注册送优惠券
+
                 SFFn.dotCode();
-                that.gotoFromPage();
+                setTimeout(function(){that.gotoFromPage();},1000);
               }
             })
             .fail(function(errorCode) {
