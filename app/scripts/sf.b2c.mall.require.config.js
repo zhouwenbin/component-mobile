@@ -246,5 +246,6 @@ requirejs.config({
     'sf.b2c.mall.page.shoppingcart': 'scripts/page/sf.b2c.mall.page.shoppingcart',
     'sf.b2c.mall.component.shoppingcart': 'scripts/component/sf.b2c.mall.component.shoppingcart',
     'template_order_shoppingcart': 'templates/order/sf.b2c.mall.shoppingcart.mustache',
+    'template_component_header': 'templates/component/sf.b2c.mall.component.header.mustache'
   }
 });
