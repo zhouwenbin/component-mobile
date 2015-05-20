@@ -137,6 +137,8 @@ requirejs.config({
     'sf.weixin': 'scripts/util/sf.weixin',
     'sf.helpers': 'scripts/util/sf.helpers',
     'sf.util': 'scripts/util/sf.util.fn',
+    'sf.env.switcher': 'scripts/util/sf.env.switcher',
+
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.login': 'scripts/widget/sf.b2c.mall.widget.login',
@@ -250,7 +252,7 @@ requirejs.config({
     'sf.b2c.mall.page.shoppingcart': 'scripts/page/sf.b2c.mall.page.shoppingcart',
     'sf.b2c.mall.component.shoppingcart': 'scripts/component/sf.b2c.mall.component.shoppingcart',
     'template_order_shoppingcart': 'templates/order/sf.b2c.mall.shoppingcart.mustache',
-    'template_component_header': 'templates/component/sf.b2c.mall.component.header.mustache',
+    'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
