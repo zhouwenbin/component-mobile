@@ -17,6 +17,8 @@
     scp dist.zip jiyanliang@115.28.235.112:/home/jiyanliang
     ```
 
+    scp dist.zip admin@10.32.156.141:/home/admin
+
 4、文件拷贝。使用jiyanliang用户登录开发环境115.28.235.112，执行如下命令
 
     ```
@@ -27,6 +29,8 @@
     sudo cp dist.zip /home/admin/h5
     ```
 
+    ssh admin@10.32.156.141
+
 5、文件解压。切换到admin用户下，进入h5目录后，确认有dist文件，使用admin用户执行解压
 
     ```
@@ -35,6 +39,8 @@
     cd h5
     unzip -o -d /home/admin/h5 dist.zip
     ```
+
+    unzip -o -d /home/admin/statics dist.zip
 
 --------------
 zepto的各种坑：

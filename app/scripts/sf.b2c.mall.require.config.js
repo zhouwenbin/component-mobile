@@ -5,13 +5,13 @@ requirejs.config({
     // Pre Define
     'can': 'http://www.google.com/bower_components/canjs/amd/can',
     'zepto': 'http://www.google.com/zepto',
-    // 'jquery': 'http://www.google.com/bower_components/jquery/dist/jquery',
     'underscore': 'http://www.google.com/bower_components/underscore/underscore-min',
-    // 'jquery.cookie': 'http://www.google.com/bower_components/jquery.cookie/jquery.cookie',
     'fastclick': 'http://www.google.com/fastclick',
     'md5': 'http://www.google.com/bower_components/blueimp-md5/js/md5.min',
     'underscore.string': 'http://www.google.com/bower_components/underscore.string/dist/underscore.string.min',
     'store': 'http://www.google.com/bower_components/store/dist/store',
+    'text': '../bower_components/text/text',
+
 
     'sf.b2c.mall.api.security.type': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.api.security.type',
     'sf.b2c.mall.framework.adapter': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.framework.adapter',
@@ -86,6 +86,7 @@ requirejs.config({
     'sf.b2c.mall.api.user.getWeChatJsApiSig': 'scripts/api/sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.b2c.mall.api.user.getUserCode': 'scripts/api/sf.b2c.mall.api.user.getUserCode',
     'sf.b2c.mall.api.user.partnerBindByUPswd': 'scripts/api/sf.b2c.mall.api.user.partnerBindByUPswd',
+    'sf.b2c.mall.api.user.downInviteSms': 'scripts/api/sf.b2c.mall.api.user.downInviteSms',
 
     'sf.b2c.mall.api.b2cmall.getBanner': 'scripts/api/sf.b2c.mall.api.b2cmall.getBanner',
     'sf.b2c.mall.api.b2cmall.getFastSaleInfoList': 'scripts/api/sf.b2c.mall.api.b2cmall.getFastSaleInfoList',
@@ -103,6 +104,8 @@ requirejs.config({
 
     'sf.b2c.mall.api.promotion.queryProInfo': 'scripts/api/sf.b2c.mall.api.promotion.queryProInfo',
     'sf.b2c.mall.api.promotion.receivePro': 'scripts/api/sf.b2c.mall.api.promotion.receivePro',
+
+    'sf.b2c.mall.api.payment.queryPtnAuthLink': 'scripts/api/sf.b2c.mall.api.payment.queryPtnAuthLink',
 
     'sf.b2c.mall.api.coupon.receiveCoupon': 'scripts/api/sf.b2c.mall.api.coupon.receiveCoupon',
     'sf.b2c.mall.api.coupon.receiveShareCoupon': 'scripts/api/sf.b2c.mall.api.coupon.receiveShareCoupon',
@@ -123,10 +126,9 @@ requirejs.config({
 
     // --------------------------------------------
     'placeholders': 'bower_components/Placeholders/build/placeholders',
-    // 'vendor.jquery.imagezoom': 'scripts/vendor/vendor.jquery.imagezoom.min',
     'moment': 'bower_components/momentjs/min/moment.min',
     'moment-zh-cn': 'bower_components/momentjs/locale/zh-cn',
-    // 'fastclick': 'bower_components/fastclick/lib/fastclick',
+    'text': 'bower_components/text/text',
 
     // 公共组件
     // 'zepto': 'scripts/vendor/zepto',
@@ -242,6 +244,16 @@ requirejs.config({
     'sf.b2c.mall.page.taiwantravellerfoodeat': 'scripts/page/sf.b2c.mall.page.taiwantravellerfoodeat',
 
     // 原滋原味
-    'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon'
+    'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon',
+
+
+    'sf.b2c.mall.page.shoppingcart': 'scripts/page/sf.b2c.mall.page.shoppingcart',
+    'sf.b2c.mall.component.shoppingcart': 'scripts/component/sf.b2c.mall.component.shoppingcart',
+    'template_order_shoppingcart': 'templates/order/sf.b2c.mall.shoppingcart.mustache',
+    'template_component_header': 'templates/component/sf.b2c.mall.component.header.mustache',
+
+    // 520
+    'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
+    'template_header_520': 'templates/sf.b2c.mall.520.mustache'
   }
 });

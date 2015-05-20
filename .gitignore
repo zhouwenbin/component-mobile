@@ -8,3 +8,6 @@ app/__MACOSX
 publish
 h5-oss
 h5-static
+
+.DS_Store
+**/.DS_Store

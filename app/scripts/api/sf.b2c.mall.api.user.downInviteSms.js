@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.shopcart.refreshCart
+  * @class sf.b2c.mall.api.user.downInviteSms
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.shopcart.refreshCart',
+'sf.b2c.mall.api.user.downInviteSms',
 [
   'zepto',
   'can',
@@ -22,17 +22,21 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'shopcart.refreshCart',
+      METHOD_NAME: 'user.downInviteSms',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'goods': 'json'
+        'invtMobile': 'string',
+        'vfcode': 'string',
+        'smsCon': 'string'
       },
       OPTIONAL: {
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '15000100': '请求参数有误'
+        '1000020': '账户已注册',
+        '1000100': '验证码错误',
+        '1000230': '手机号错误，请输入正确的手机号'
       }
     }
   });
