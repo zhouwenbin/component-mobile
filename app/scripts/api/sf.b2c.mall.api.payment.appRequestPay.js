@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.shopcart.refreshCart
+  * @class sf.b2c.mall.api.payment.appRequestPay
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.shopcart.refreshCart',
+'sf.b2c.mall.api.payment.appRequestPay',
 [
   'zepto',
   'can',
@@ -22,17 +22,21 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'shopcart.refreshCart',
+      METHOD_NAME: 'payment.appRequestPay',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'goods': 'json'
+        'serviceType': 'string',
+        'orderId': 'string',
+        'amount': 'int',
+        'orderName': 'string',
       },
       OPTIONAL: {
+        'reserved': 'string',
+        'ext_params': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '15000100': '请求参数有误'
       }
     }
   });

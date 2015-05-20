@@ -11,6 +11,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     'sf.b2c.mall.api.sc.getUserRoutes',
     'sf.b2c.mall.api.user.getRecvInfo',
     'sf.b2c.mall.api.order.confirmReceive',
+    'sf.b2c.mall.api.payment.queryPtnAuthLink',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
@@ -20,7 +21,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     'sf.b2c.mall.widget.message',
     'moment'
   ],
-  function(can, $, Fastclick, SFGetOrder, SFCancelOrder, SFUpdateReceiverInfo, SFGetIDCardUrlList, SFGetUserRoutes, SFGetRecvInfo, SFConfirmReceive, loading, FrameworkComm, SFConfig, Utils, helpers, SFOrderFn, SFMessage, moment) {
+  function(can, $, Fastclick, SFGetOrder, SFCancelOrder, SFUpdateReceiverInfo, SFGetIDCardUrlList, SFGetUserRoutes, SFGetRecvInfo, SFConfirmReceive, SFQueryPtnAuthLink, loading, FrameworkComm, SFConfig, Utils, helpers, SFOrderFn, SFMessage, moment) {
 
     Fastclick.attach(document.body);
 
@@ -153,7 +154,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             //是否是宁波保税，是得话才展示税额
             that.options.showTax = that.options.productList[0].bonded;
-            that.options.shouldPayPrice = that.options.allTotalPrice -  that.options.discount;
+            that.options.shouldPayPrice = that.options.allTotalPrice - that.options.discount;
 
             that.options.showPayButton = orderData.orderItem.orderStatus == 'SUBMITED' ? true : false;
 
@@ -461,6 +462,19 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         // 转跳到微信授权支付
         if (Utils.isMobile.WeChat()) {
           window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx90f1dcb866f3df60&redirect_uri=" + escape(url) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+          // var queryPtnAuthLink = new SFQueryPtnAuthLink({
+          //   "serviceType": "wechat_intl_mp",
+          //   "redirectUrl": escape(url)
+          // });
+
+          // queryPtnAuthLink
+          //   .sendRequest()
+          //   .done(function(data) {
+          //     window.location.href = data.loginAuthLink;
+          //   })
+          //   .fail(function(error) {
+          //     console.error(error);
+          //   })
         } else {
           window.location.href = url;
         }
