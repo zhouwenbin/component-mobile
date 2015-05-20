@@ -68,7 +68,7 @@ define(
       '.mini-cart-container click': function($el, event) {
         event && event.preventDefault();
 
-        var href = $el.attr('href');
+        var href = $el.attr('data-href');
         var hrefLogin = $el.attr('data-login');
 
         if (SFComm.prototype.checkUserLogin.call(this)) {
