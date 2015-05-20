@@ -60,11 +60,12 @@
   background: #f3f3f3;
   padding: 6px 12px;
   justify-content:space-between;
+  align-items:center;
   border-top: 1px solid #dadada;
 }
 .nav-cart .btn{
-  height: 49px;
-  line-height: 49px;
+  height: 40px;
+  line-height: 40px;
   margin-left: 10px;
   font-size: 15px;
 }
@@ -72,7 +73,7 @@
  flex:1;
 }
 .nav-cart .btn-soon{
-  width: 50%;
+  width: 40%;
 }
 .nav-cart .icon47{
   position: relative;
