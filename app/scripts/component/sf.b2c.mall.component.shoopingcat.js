@@ -26,7 +26,7 @@ define(
     // 注册服务端的appid
     SFFrameworkComm.register(3);
 
-    var LIMITED_PRICE = 1000;
+    var LIMITED_PRICE = 1000 * 100;
 
     var PageShoppingCart = can.Control.extend({
 
@@ -95,6 +95,33 @@ define(
           } else {
             return options.fn(options.contexts || this);
           }
+        },
+
+        /**
+         * @description 是否允许付款
+         * @param  {array} groups  不同goods的分组列表
+         * @return {function} 是否展示
+         */
+        'sf-is-allow-pay': function(groups, fee, options) {
+          var isAllow = false;
+          var array = groups();
+
+          // 如果没有任何商品选中，不允许提交
+          _.each(array, function(item) {
+            _.each(item.goodItemList, function(good) {
+              isAllow = isAllow || good.isSelected;
+              if (isAllow) break;
+            });
+          });
+
+          // 如果超过支付限额，不允许提交
+          if (fee.actualTotalFee > LIMITED_PRICE) isAllow = false;
+
+          if (isAllow) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
         }
       },
 
@@ -159,6 +186,13 @@ define(
           itemId: item.itemId,
           num: item.quantity
         };
+      },
+
+      '.remove-item-btn click': function($element, event) {
+        // 从上层dom中获取good信息
+        var good = $element.closet('li').data('good');
+
+
       },
 
       /**

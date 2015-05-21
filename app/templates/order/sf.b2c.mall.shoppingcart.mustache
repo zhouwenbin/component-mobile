@@ -31,7 +31,7 @@
             <div class="text-orange">{{ruleDesc}}</div>
             {{/promotionInfo.promotionList}}
 
-            <button class="btn btn-danger">删除</button>
+            <button class="btn btn-danger remove-item-btn">删除</button>
             <span class="text-error" style="display:none;"></span>
         </li>
         {{/goodItemList}}
@@ -71,12 +71,15 @@
 
 <section class="cart-footer">
     <div class="cart-footer-r1">
-        <div class="cart-footer-c1"><span class="icon icon49"></span>全选</div>
+        <div class="cart-footer-c1 ">
+          <span class="icon icon49"></span>全选
+        </div>
         <div class="cart-footer-c2">
             <div class="text-important">¥{{sf.price cartFeeItem.actualTotalFee}}</div>
             <div class="cart-footer-save">已省：¥{{sf.price cartFeeItem.discountFee}}</div>
         </div>
-        <button class="btn btn-disable">去结算</button>
+
+        <button class="btn {{#sf-is-allow-pay scopeGroups cartFeeItem}}btn-disable{{/sf-is-allow-pay}}">去结算</button>
     </div>
 </section>
 
