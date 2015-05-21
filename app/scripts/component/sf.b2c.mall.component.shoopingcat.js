@@ -188,11 +188,16 @@ define(
         };
       },
 
+      /**
+       * @description 删除购物车item
+       * @param  {object} $element 减号按钮对象
+       * @param  {event}  event    事件对象
+       * @return
+       */
       '.remove-item-btn click': function($element, event) {
         // 从上层dom中获取good信息
         var good = $element.closet('li').data('good');
-
-
+        this.requestFactory('removeitem', [good]);
       },
 
       /**
