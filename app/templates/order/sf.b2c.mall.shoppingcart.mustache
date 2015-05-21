@@ -4,7 +4,7 @@
 <section class="sf-h5-avail-cart">
     <ul>
         {{#goodItemList}}
-        <li data-itemid="{{itemId}}">
+        <li {{data 'good'}}>
             <div class="cart-inner">
                 <span class="icon icon49 center-vertical"></span>
                 <img src="{{sf-show-img images}}" alt="">
@@ -13,8 +13,8 @@
                     <h2 class="ellipsis2">{{title}}</h2>
                     <div class="input-num">
                         <button class="btn minus-num">-</button>
-                        <input type="text" can-value="quantity">
-                        <button class="btn add-num">+</button>
+                        <input class="input-num" type="text" value="{{quantity}}">
+                        <button class="btn plus-num">+</button>
                     </div>
                 </div>
                 <div class="cart-c2">
@@ -32,6 +32,7 @@
             {{/promotionInfo.promotionList}}
 
             <button class="btn btn-danger">删除</button>
+            <span class="text-error" style="display:none;"></span>
         </li>
         {{/goodItemList}}
     </ul>
@@ -66,19 +67,21 @@
 {{/scopeGroups}}
 
 
-<div class="alert-error">亲，海关规定购买多件商品价格总结算不能超过¥1000，请您分多次购买～</div>
+{{! <div class="alert-error">亲，海关规定购买多件商品价格总结算不能超过¥1000，请您分多次购买～</div> }}
 
 <section class="cart-footer">
     <div class="cart-footer-r1">
         <div class="cart-footer-c1"><span class="icon icon49"></span>全选</div>
         <div class="cart-footer-c2">
-            <div class="text-important">¥999</div>
-            <div class="cart-footer-save">已省：¥69</div>
+            <div class="text-important">¥{{sf.price cartFeeItem.actualTotalFee}}</div>
+            <div class="cart-footer-save">已省：¥{{sf.price cartFeeItem.discountFee}}</div>
         </div>
         <button class="btn btn-disable">去结算</button>
     </div>
 </section>
 
+{{#sf-is-over-limit cartFeeItem.actualTotalFee}}
 <section class="tooltip center">
     <div>您的购物车已满五十件商品，赶紧去买单哦～</div>
 </section>
+{{/sf-is-over-limit}}
