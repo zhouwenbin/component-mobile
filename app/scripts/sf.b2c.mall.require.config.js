@@ -87,6 +87,14 @@ requirejs.config({
     'sf.b2c.mall.api.user.getUserCode': 'scripts/api/sf.b2c.mall.api.user.getUserCode',
     'sf.b2c.mall.api.user.partnerBindByUPswd': 'scripts/api/sf.b2c.mall.api.user.partnerBindByUPswd',
     'sf.b2c.mall.api.user.downInviteSms': 'scripts/api/sf.b2c.mall.api.user.downInviteSms',
+    'sf.b2c.mall.api.minicart.getTotalCount': 'scripts/api/sf.b2c.mall.api.minicart.getTotalCount',
+
+    'sf.b2c.mall.api.shopcart.addItemToCart': 'scripts/api/sf.b2c.mall.api.shopcart.addItemToCart',
+    'sf.b2c.mall.api.shopcart.cleanInvalidItemsInCart': 'scripts/api/sf.b2c.mall.api.shopcart.cleanInvalidItemsInCart',
+    'sf.b2c.mall.api.shopcart.getCart': 'scripts/api/sf.b2c.mall.api.shopcart.getCart',
+    'sf.b2c.mall.api.shopcart.refreshCart': 'scripts/api/sf.b2c.mall.api.shopcart.refreshCart',
+    'sf.b2c.mall.api.shopcart.removeItemsInCart': 'scripts/api/sf.b2c.mall.api.shopcart.removeItemsInCart',
+    'sf.b2c.mall.api.shopcart.updateItemNumInCart': 'scripts/api/sf.b2c.mall.api.shopcart.updateItemNumInCart',
 
     'sf.b2c.mall.api.b2cmall.getBanner': 'scripts/api/sf.b2c.mall.api.b2cmall.getBanner',
     'sf.b2c.mall.api.b2cmall.getFastSaleInfoList': 'scripts/api/sf.b2c.mall.api.b2cmall.getFastSaleInfoList',
@@ -128,7 +136,6 @@ requirejs.config({
     'placeholders': 'bower_components/Placeholders/build/placeholders',
     'moment': 'bower_components/momentjs/min/moment.min',
     'moment-zh-cn': 'bower_components/momentjs/locale/zh-cn',
-    'text': 'bower_components/text/text',
 
     // 公共组件
     // 'zepto': 'scripts/vendor/zepto',
@@ -247,7 +254,6 @@ requirejs.config({
 
     // 原滋原味
     'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon',
-
 
     'sf.b2c.mall.page.shoppingcart': 'scripts/page/sf.b2c.mall.page.shoppingcart',
     'sf.b2c.mall.component.shoppingcart': 'scripts/component/sf.b2c.mall.component.shoppingcart',

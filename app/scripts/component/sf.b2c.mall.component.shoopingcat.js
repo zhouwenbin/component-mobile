@@ -29,7 +29,38 @@ define(
     var PageShoppingCart = can.Control.extend({
 
       helpers: {
+        'sf-cart-type': function(goodList, type, options) {
+          var array = goodList();
+          var map = {
+            'avail': true,
+            'disable': false
+          }
 
+          var goods = _.findWhere(array, {
+            isValid: map[type]
+          });
+
+          if (goods.length > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
+        'sf-show-img': function(images) {
+          var array = images();
+          if (_.isArray(array) && array.length > 0) {
+            return array[0];
+          }
+        },
+
+        'sf-selling-price': function(canUseActivityPrice activityPrice price) {
+          if (canUseActivityPrice()) {
+            return activityPrice() / 100;
+          } else {
+            return price() / 100;
+          }
+        }
       },
 
       init: function() {
@@ -38,23 +69,58 @@ define(
 
       render: function() {
         // 调用requestFactory接入页面render逻辑
-        this.requestFactory('goodsList');
+        this.requestFactory('getcart');
       },
 
-      requestFactory: function(tag) {
+      requestFactory: function(tag, cparams) {
         var map = {
-          'goodsList': function() {
+          'getcart': function() {
             // @todo 获取数据
+            var getCart = new SFShopcartGetCart();
+            getCart.sendRequest().done(_.bind(this.paint, this));
+          },
 
-            // 绘制和渲染页面
-            this.paint();
+          'updatenum': function(item) {
+            var updatenum = new SFShopcartUpdateNumInCart();
+            var params = this.getItemInfo(item)
+          },
+
+          'removeitem': function(list) {
+            var removeitem = new SFShopcartRemoveItem();
+            var params = {
+              itemIds: JSON.stringify(this.getItemIds(list))
+            }
+
+            removeitem.sendRequest(params).done(_.bind(this.paint, this));
+          },
+
+          'refreshcart': function(items) {
+            var refreshCart = new SFShopcartFreshCart();
+            var params = {
+              goods: JSON.stringify(this.getCartItems(items))
+            }
+
+            refreshCart.sendRequest(params).done(_.bind(this.paint, this));
           }
+
         }
 
         var fn = map[tag];
         if (_.isFunction(fn)) {
-          fn.call(this);
+          fn.apply(this, cparams);
         }
+      },
+
+      getCartItems: function(items) {
+
+      },
+
+      getItemIds: function(itemList) {
+
+      },
+
+      getItemInfo: function(itemId) {
+
       },
 
       paint: function(data) {
