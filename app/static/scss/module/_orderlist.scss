@@ -42,16 +42,20 @@
   border-bottom: none;
 }
 .goodslist img{
-  width: 53px;
-  height: 53px;
+  width: 65px;
+  height: 65px;
   border:1px solid #e0e0e0;
 }
-.goodslist h3{
+.goodslist-c2{
   flex:1;
   margin-left: 9px;
   margin-right: 44px;
   font-size: 14px;
   line-height: 18px;
+}
+.goodslist-c2 p{
+  color: #999;
+  margin-top: 5px;
 }
 .goodslist-c1{
   text-align: right;
@@ -113,4 +117,25 @@
 .orderlist-none p{
   margin-bottom: 35px;
   font-size: 15px;
+}
+.goodslist-disable{
+  border-bottom: 1px solid #dadada;
+}
+.goodslist-disable .text-error{
+  padding: 16px 10px 10px;
+  background: #fff;
+}
+.goodslist-disable li{
+  background: #f7f7f7;
+  position: relative;
+  padding:14px 10px 46px;
+}
+.goodslist-disable .label{
+  position: absolute;
+  bottom: 16px;
+  left: 10px;
+  padding: 0 8px;
+}
+.goodslist-disable .icon53{
+  margin-right: 6px;
 }
