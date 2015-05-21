@@ -20,6 +20,13 @@ define('sf.b2c.mall.order.iteminfo', [
 
   return can.Control.extend({
     itemObj: new can.Map({}),
+
+    helpers: {
+      'sf-get-img': function(imgs) {
+        return imgs()[0];
+      }
+    },
+
     /**
      * 初始化
      * @param  {DOM} element 容器element
@@ -150,7 +157,7 @@ define('sf.b2c.mall.order.iteminfo', [
         .done(function(orderRenderItem) {
           that.processFoundation(orderRenderItem);
           // that.processProducts(orderRenderItem.orderGoodsItemList);
-          that.processPackages(orderRenderItem.orderPackageItemList);
+          that.processPackages(orderRenderItem);
           that.processCoupons(orderRenderItem.orderCouponItem);
         })
         .fail();
@@ -172,8 +179,9 @@ define('sf.b2c.mall.order.iteminfo', [
       });
     },
 
-    processPackages: function(packages) {
-      this.itemObj.attr('orderPackageItemList', packages);
+    processPackages: function(item) {
+      this.itemObj.attr('orderPackageItemList', item.orderPackageItemList);
+      this.itemObj.attr('invariableGoodsItemList', item.invariableGoodsItemList);
     },
 
     /**

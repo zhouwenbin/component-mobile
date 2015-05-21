@@ -20,6 +20,46 @@
 </div>
 -->
 
+<!--商品信息-->
+
+<div class="goodsinfo">
+  <h2>商品信息</h2>
+
+  <!--正常商品-->
+  {{#orderPackageItemList}}
+  <div class="goodinfo-stowage">{{shippingWarehouse}}发货</div>
+  <ul class="goodslist">
+      {{#orderGoodsItemList}}
+      <li><img src="{{sf-get-img productImage}}">
+          <h3 class="ellipsis2">{{goodsName}}</h3>
+          <div class="goodslist-c1">
+              <div class="orderlist-num">X{{quantity}}</div>
+              <div class="text-important">¥{{sf.price price}}</div>
+          </div>
+      </li>
+      {{/orderGoodsItemList}}
+  </ul>
+  {{/orderPackageItemList}}
+
+  <!--不能正常下单商品-->
+  {{#if invariableGoodsItemList}}
+  <div class="goodinfo-stowage"></div>
+  <ul class="goodslist">
+      {{#invariableGoodsItemList}}
+      <li><img src="{{sf-get-img productImage}}">
+          <h3 class="ellipsis2">{{goodsName}}</h3>
+          <div class="goodslist-c1">
+              <div class="orderlist-num">X{{quantity}}</div>
+              <div class="text-important">¥{{sf.price price}}</div>
+          </div>
+      </li>
+      {{/invariableGoodsItemList}}
+  </ul>
+  {{/if}}
+
+</div>
+<!--商品信息-->
+
 <div class="coupon-use">
 	<div class="coupon-use-h">
 		<h2>使用优惠券</h2><a href="javascript:" id="inputCouponCode">输入兑换码</a>
