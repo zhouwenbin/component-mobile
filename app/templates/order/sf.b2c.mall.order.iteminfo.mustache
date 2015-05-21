@@ -1,3 +1,4 @@
+<!--
 <div class="table box goodsinfo">
   <h2>商品信息</h2>
 	{{#each orderGoodsItemList}}
@@ -16,8 +17,8 @@
 		{{{spec}}}
   </ul>
 	{{/each}}
-  <!-- <div class="goodsinfo-r1">免运费</div> -->
 </div>
+-->
 
 <div class="coupon-use">
 	<div class="coupon-use-h">
@@ -39,9 +40,9 @@
 </ul> -->
 <ul class="order-r3 box">
   <li>免运费</li>
-  <li>优惠券折扣：-￥{{sf.price orderCoupon.discountPrice}}</li>   
-  <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li> 
-  <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li> 
+  <li>优惠券折扣：-￥{{sf.price orderCoupon.discountPrice}}</li>
+  <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
+  <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
 </ul>
 <div class="box">
 <div class="text-error">{{^flag}}{{errorDes}}{{/flag}}</div>

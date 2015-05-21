@@ -149,7 +149,8 @@ define('sf.b2c.mall.order.iteminfo', [
       return orderRender.sendRequest()
         .done(function(orderRenderItem) {
           that.processFoundation(orderRenderItem);
-          that.processProducts(orderRenderItem.orderGoodsItemList);
+          // that.processProducts(orderRenderItem.orderGoodsItemList);
+          that.processPackages(orderRenderItem.orderPackageItemList);
           that.processCoupons(orderRenderItem.orderCouponItem);
         })
         .fail();
@@ -171,7 +172,12 @@ define('sf.b2c.mall.order.iteminfo', [
       });
     },
 
+    processPackages: function(packages) {
+      this.itemObj.attr('orderPackageItemList', packages);
+    },
+
     /**
+     * @deprecated 接口字段发生变化不再使用
      * 加工商品信息
      * @param 商品列表
      */
@@ -192,6 +198,7 @@ define('sf.b2c.mall.order.iteminfo', [
           goodItem.totalPrice = goodItem.price * goodItem.quantity;
         }
       });
+
       this.itemObj.attr("orderGoodsItemList", orderGoodsItemList);
     },
     /**

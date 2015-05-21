@@ -10,9 +10,10 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
   'sf.b2c.mall.component.addreditor',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.order.iteminfo',
-  'sf.b2c.mall.widget.message'
+  'sf.b2c.mall.widget.message',
+  'text!template_order_selectrecaddr'
 ], function(can, $, SFGetIDCardUrlList, SFGetRecAddressList, SFUserWebLogin,
-            AddressAdapter, SFAddressEditor, SFConfig, SFItemInfo, SFMessage) {
+  AddressAdapter, SFAddressEditor, SFConfig, SFItemInfo, SFMessage, template_order_selectrecaddr) {
 
   return can.Control.extend({
 
@@ -28,7 +29,8 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
     },
 
     render: function(data) {
-      var html = can.view('templates/order/sf.b2c.mall.order.selectrecaddr.mustache', data);
+      var renderFn = can.mustache(template_order_selectrecaddr);
+      var html = renderFn(data);
       this.element.html(html);
     },
 
@@ -55,7 +57,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           if (that.result.length > 0) {
             that.result[0].active = "active";
           }
-          
+
           //获得地址列表
           that.adapter4List.addrs = new AddressAdapter({
             addressList: that.result.slice(0, 1) || []
@@ -79,10 +81,9 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
                 'tip': '很抱歉，每个账户最多可添加20条收货地址',
                 'type': 'error'
               });
-            }else{
+            } else {
               that.addRecaddrClick($(this));
             }
-            
           });
 
           //点击查看更多

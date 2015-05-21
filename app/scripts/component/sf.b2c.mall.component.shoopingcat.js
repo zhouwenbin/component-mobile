@@ -84,13 +84,17 @@ define(
           }
         },
 
-        /**
-         * @description 如果价格超过海关上线提示用户
-         * @param  {function} totalFee 总价格信息
-         * @return {function} 是否展示
-         */
-        'sf-is-over-limit': function(totalFee) {
-          if (totalFee() < LIMITED_PRICE) {
+
+        'sf-is-over-limit': function(totalNum, limitGoodsNum, options) {
+          if (totalNum() < limitGoodsNum()) {
+            return options.inverse(options.contexts || this);
+          } else {
+            return options.fn(options.contexts || this);
+          }
+        },
+
+        'sf-is-over-pay': function(total, limit, options) {
+          if (total() < limit()) {
             return options.inverse(options.contexts || this);
           } else {
             return options.fn(options.contexts || this);
@@ -144,13 +148,15 @@ define(
 
           'updatenum': function(item) {
             var updatenum = new SFShopcartUpdateNumInCart();
-            var params = this.getItemInfo(item)
+            var params = this.getItemInfo(item);
+
+            updatenum.sendRequest().done(_.bind(this.paint, this));
           },
 
           'removeitem': function(items) {
             var removeitem = new SFShopcartRemoveItem();
             var params = {
-              itemIds: JSON.stringify(this.getItemIds(list))
+              itemIds: JSON.stringify(this.getItemIds(items))
             }
 
             removeitem.sendRequest(params).done(_.bind(this.paint, this));
@@ -159,7 +165,7 @@ define(
           'refreshcart': function(items) {
             var refreshCart = new SFShopcartFreshCart();
             var params = {
-              goods: JSON.stringify(this.getCartItems(items))
+              goods: JSON.stringify(this.getItemsSelectd(items))
             }
 
             refreshCart.sendRequest(params).done(_.bind(this.paint, this));
@@ -173,12 +179,25 @@ define(
         }
       },
 
-      getCartItems: function(items) {
+      getItemsSelectd: function(items) {
+        var array = [];
+        _.each(items, function(item) {
+          array.push({
+            isSelected: item.isSelected,
+            itemId: item.itemId
+          });
+        });
 
+        return array;
       },
 
       getItemIds: function(items) {
+        var array = [];
+        _.each(items, function(item) {
+          array.push(item.itemId);
+        });
 
+        return array;
       },
 
       getItemInfo: function(item) {
@@ -258,6 +277,58 @@ define(
         return false;
       },
 
+      /**
+       * @description 选中或者不选商品
+       * @param  {object} $element 减号按钮对象
+       * @param  {event}  event    事件对象
+       * @return boolean
+       */
+      '.select-item click': function($element, event) {
+        var good = $element.closet('li').data('good');
+        good.isSelected = good.isSelected == 0 ? 1 : 0;
+        this.requestFactory('refreshcart', [good]);
+      },
+
+      /**
+       * @description 全选功能
+       * @param  {object} $element 减号按钮对象
+       * @param  {event}  event    事件对象
+       * @return boolean
+       */
+      '.select-all-items click': function($element, event) {
+        var array = [];
+        var isSelectedAll = true;
+        $('li').each(function(index, element) {
+          var good = $(this).data('good');
+          isSelectedAll = isSelectedAll && good.isSelected;
+          array.push(good);
+        });
+
+        if (isSelectedAll) {
+          _.each(array, function(item, index) {
+            array[index].isSelected＝ 0;
+          });
+        } else {
+          _.each(array, function(item, index) {
+            array[index].isSelected＝ 1;
+          });
+        }
+
+        this.requestFactory('updatenum', array);
+      },
+
+      'li swipeLeft': function() {
+        $(this).css({
+          left: -61
+        });
+      },
+
+      'li swipeRight': function() {
+        $(this).css({
+          left: 0
+        });
+      },
+
       showAlert: function($element, good) {
         // 如果用户增加的数量大于限购数量，显示错误提示
         var word = '';
@@ -273,6 +344,7 @@ define(
         var html = renderFn(data, {}, this.helpers);
 
         this.element.html(html);
+        $('.overflow-num').fadeIn('slow');
       }
     });
 

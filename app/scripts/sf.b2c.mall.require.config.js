@@ -259,6 +259,7 @@ requirejs.config({
     'sf.b2c.mall.component.shoppingcart': 'scripts/component/sf.b2c.mall.component.shoppingcart',
     'template_order_shoppingcart': 'templates/order/sf.b2c.mall.shoppingcart.mustache',
     'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
+    'template_order_selectrecaddr': 'templates/order/sf.b2c.mall.order.selectrecaddr.mustache',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
