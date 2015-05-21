@@ -18,11 +18,13 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.message',
     'sf.weixin',
-    'sf.util'
+    'sf.util',
+    'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
+    'sf.b2c.mall.api.shopcart.addItemToCart' // 添加购物车接口
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
-    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn) {
+    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn, SFGetTotalCount, SFAddItemToCart) {
 
     Fastclick.attach(document.body);
 
@@ -127,6 +129,11 @@ define('sf.b2c.mall.product.detailcontent', [
         this.mainUrl = SFConfig.setting.api.mainurl;
         this.adapter = new SFDetailcontentAdapter({});
 
+        // @author Michael.Lee
+        // 将更新购物车事件注册到window上
+        // 其他地方添加需要更新mini购物车的时候调用can.trigger('updateCart')
+        can.on.call(window, 'updateCart', _.bind(this.updateCart, this));
+
         //如果tag为init，则要进行单独处理，防止刷新
         var tag = can.route.attr('tag');
         if (tag === DEFAULT_INIT_TAG) {
@@ -142,13 +149,125 @@ define('sf.b2c.mall.product.detailcontent', [
         this.initRender.call(this, tag, this.data);
       },
 
+      /**
+       * @author Michael.Lee
+       * @description 添加购物车动作触发
+       * @param  {element} el
+       */
+      '.addtocart click': function(el, event) {
+        event && event.preventDefault();
+
+        var itemId = el.closest('.cms-src-item').attr('data-cms-itemid');
+        if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          // 用户如果如果登录
+          this.addCart(itemId);
+        } else {
+          store.set('temp-action-addCart', {
+            itemId: itemId
+          });
+          can.trigger(window, 'showLogin', [window.location.href]);
+        }
+      },
+
+      /**
+       * @author Michael.Lee
+       * @description 用户点击购物车之后的动作变化
+       * @param  {element}  $el   点击对象的jquery对象
+       * @param  {event}    event 绑定在点击对象的event对象
+       * @return
+       */
+      '.mini-cart-container click': function($el, event) {
+        event && event.preventDefault();
+
+        var href = $el.attr('href');
+        var hrefLogin = $el.attr('data-login');
+
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = href;
+        } else {
+          window.location.href = hrefLogin;
+        }
+      },
+
+      /**
+       * @author Michael.Lee
+       * @description 检查有没有临时的添加购物车的任务需要执行
+       * @return
+       */
+      checkTempActionAddCart: function() {
+        var params = store.get('temp-action-addCart');
+
+        if (params) {
+          var itemId = params.itemId;
+          var num = params.num || 1;
+
+          if (itemId && num) {
+            store.remove('temp-action-addCart');
+            this.addCart(itemId, num);
+          }
+        }
+      },
+
+      /**
+       * @author Michael.Lee
+       * @description 加入购物车
+       */
+      addCart: function(itemId, num) {
+        var addItemToCart = new SFAddItemToCart({
+          itemId: itemId,
+          num: num || 1
+        });
+
+        // 添加购物车发送请求
+        addItemToCart.sendRequest()
+          .done(function(data) {
+            if (data.value) {
+              // 更新mini购物车
+              can.trigger(window, 'updateCart');
+            }
+          })
+          .fail(function(data) {
+            // @todo 添加失败提示
+            var error = SFAddItemToCart.api.ERROR_CODE[data.code];
+
+            if (error) {
+              // @todo 需要确认是不是需要提交
+            }
+          })
+      },
+
+      /**
+       * @author Michael.Lee
+       * @description 更新导航栏购物车，调用接口刷新购物车数量
+       */
+      updateCart: function() {
+        var that = this;
+
+        // 如果用户已经登陆了，可以进行购物车更新
+        // @todo 如果是白名单的用户可以看到购物车
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          this.element.find('.mini-cart').show();
+
+          var getTotalCount = new SFGetTotalCount();
+          getTotalCount.sendRequest()
+            .done(function(data) {
+              // @description 将返回数字显示在头部导航栏
+              // 需要跳动的效果
+              that.element.find('.mini-cart-num').text(data.value);
+            })
+            .fail(function(data) {
+              // 更新mini cart失败，不做任何显示
+            });
+        }
+      },
+
       renderMap: {
         'init': function(data) {
           this.render();
         },
 
         'gotobuy': function(data) {
-          $('#firststep').hide();
+          // $('#firststep').hide();
           $('#secondstep').show();
         }
       },
@@ -229,11 +348,6 @@ define('sf.b2c.mall.product.detailcontent', [
             //第一个选中
             $('.swipe-dot span').eq(0).addClass('active');
 
-            $('#gotobuy').click(function() {
-              that.gotobuyClick($(this));
-              that.bindSelectSpecButton();
-            })
-
             $('#detailTab').click(function() {
               that.switchTab($(this), 'detailTab');
             })
@@ -253,12 +367,34 @@ define('sf.b2c.mall.product.detailcontent', [
               }
             });
 
+            // @author Michael.Lee
+            // 判断用户是否登陆，请求minicart
+            this.updateCart();
+
           })
           .fail(function(error) {
             console.error(error);
             $('.loadingDIV').hide();
           })
       },
+
+      '.addcart click': function() {
+        can.route.attr({
+          tag: 'gotobuy',
+          target: 'cart'
+        });
+      },
+
+      '.gotobuy click': function() {
+        can.route.attr({
+          tag: 'gotobuy',
+          target: 'pay'
+        });
+        element.hide();
+
+        that.bindSelectSpecButton();
+      },
+
       initGetItemInfo: function(itemid) {
         var that = this;
 
@@ -537,24 +673,18 @@ define('sf.b2c.mall.product.detailcontent', [
         $('#inputNum').keydown(function() {
           that.options.detailContentInfo.input.attr("error", "");
         })
-
-        $('#buyEnter').click(function() {
-          that.buyEnter($(this));
-        })
       },
 
       /**
        * [buyEnter 构面确认按钮事件]
-       * @return {[type]} [description]
+       * @return
        */
-      buyEnter: function(element) {
-
+      '#buyEnter click': function(element, event) {
         if (element.hasClass('btn-disable')) {
           return false;
         }
 
         var priceInfo = this.options.detailContentInfo.priceInfo;
-
         var input = this.options.detailContentInfo.input;
 
         //校验是否售空
@@ -562,8 +692,6 @@ define('sf.b2c.mall.product.detailcontent', [
           this.options.detailContentInfo.input.attr("error", '商品已经售空！');
           return false;
         }
-
-
 
         var amount = parseInt(input.attr("buyNum"));
 
@@ -588,27 +716,26 @@ define('sf.b2c.mall.product.detailcontent', [
           return false;
         }
 
-        var gotoUrl = 'http://m.sfht.com/order.html' + '?' + $.param({
-          "itemid": this.itemid,
-          "amount": this.options.detailContentInfo.input.buyNum
-        });
+        var params = can.route.attr();
+        var map = {
+          'pay': _.bind(function() {
+            var gotoUrl = 'http://m.sfht.com/order.html' + '?' + $.param({
+              "itemid": this.itemid,
+              "amount": this.options.detailContentInfo.input.buyNum
+            });
 
-        if (!SFComm.prototype.checkUserLogin.call(this)) {
-          window.location.href = 'http://m.sfht.com/login.html?from=' + escape(gotoUrl);
-          return false;
+            if (!SFComm.prototype.checkUserLogin.call(this)) {
+              window.location.href = 'http://m.sfht.com/login.html?from=' + escape(gotoUrl);
+              return false;
+            }
+
+            window.location.href = gotoUrl;
+          }, this),
+
+          'cart': _.bind(function() {
+            this.addcart(this.itemid, this.options.detailContentInfo.input.buyNum);
+          }, this)
         }
-
-        window.location.href = gotoUrl;
-      },
-
-      /**
-       * [gotobuyClick 点击购买按钮]
-       * @param  {[type]} element [description]
-       * @return {[type]}         [description]
-       */
-      gotobuyClick: function(element) {
-        can.route.attr('tag', 'gotobuy');
-        element.hide();
       },
 
       /**

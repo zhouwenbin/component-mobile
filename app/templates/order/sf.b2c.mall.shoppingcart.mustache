@@ -1,122 +1,90 @@
+{{#scopeGroups}}
+
+{{#sf-cart-type goodItemList 'avail'}}
 <section class="sf-h5-avail-cart">
     <ul>
-        <li>
-            <div class="cart-inner"><span class="icon icon49 center-vertical"></span><img src="../img/list.jpg" alt="">
+        {{#goodItemList}}
+        <li {{data 'good'}}>
+            <div class="cart-inner">
+                <span class="icon icon49 center-vertical"></span>
+                <img src="{{sf-show-img images}}" alt="">
+
                 <div class="cart-c1">
-                    <h2 class="ellipsis2">日本kao花王    蒸汽发眼膜／眼罩无香型14片／蒸汽发眼膜...</h2>
+                    <h2 class="ellipsis2">{{title}}</h2>
                     <div class="input-num">
-                        <button class="btn">-</button>
-                        <input type="text" value="1">
-                        <button class="btn">+</button>
+                        <button class="btn minus-num">-</button>
+                        <input class="input-num" type="text" value="{{quantity}}">
+                        <button class="btn plus-num">+</button>
                     </div>
                 </div>
                 <div class="cart-c2">
                     <div class="cart-num">X1</div>
-                    <div class="text-important">¥188</div>
-                    <del>¥200</del>
+                    <div class="text-important">¥{{sf-selling-price canUseActivityPrice activityPrice price}}</div>
+
+                    {{#canUseActivityPrice}}
+                    <del>¥{{sf.price price}}</del>
+                    {{/canUseActivityPrice}}
                 </div>
             </div>
-            <button class="btn btn-danger">删除</button>
+
+            {{#promotionInfo.promotionList}}
+            <div class="text-orange">{{ruleDesc}}</div>
+            {{/promotionInfo.promotionList}}
+
+            <button class="btn btn-danger remove-item-btn">删除</button>
+            <span class="text-error" style="display:none;"></span>
         </li>
-        <li class="active">
-            <div class="cart-inner"><span class="icon icon49 center-vertical"></span><img src="../img/list.jpg" alt="">
-                <div class="cart-c1">
-                    <h2 class="ellipsis2">日本kao花王    蒸汽发眼膜／眼罩无香型14片／蒸汽发眼膜...</h2>
-                    <div class="input-num">
-                        <button class="btn">-</button>
-                        <input type="text" value="1">
-                        <button class="btn">+</button>
-                    </div>
-                </div>
-                <div class="cart-c2">
-                    <div class="cart-num">X1</div>
-                    <div class="text-important">¥188</div>
-                    <del>¥200</del>
-                </div>
-            </div>
-            <button class="btn btn-danger">删除</button>
-        </li>
-        <li>
-            <div class="cart-inner"><span class="icon icon49 center-vertical"></span><img src="../img/list.jpg" alt="">
-                <div class="cart-c1">
-                    <h2 class="ellipsis2">日本kao花王    蒸汽发眼膜／眼罩无香型14片／蒸汽发眼膜...</h2>
-                    <div class="input-num">
-                        <button class="btn">-</button>
-                        <input type="text" value="1">
-                        <button class="btn">+</button>
-                    </div>
-                </div>
-                <div class="cart-c2">
-                    <div class="cart-num">X1</div>
-                    <div class="text-important">¥188</div>
-                    <del>¥200</del>
-                </div>
-            </div>
-            <div class="text-orange">已满足2件享5折</div>
-            <button class="btn btn-danger">删除</button>
-        </li>
-        <li>
-            <div class="cart-inner"><span class="icon icon49 center-vertical"></span><img src="../img/list.jpg" alt="">
-                <div class="cart-c1">
-                    <h2 class="ellipsis2">日本kao花王    蒸汽发眼膜／眼罩无香型14片／蒸汽发眼膜...</h2>
-                    <div class="input-num">
-                        <button class="btn">-</button>
-                        <input type="text" value="1">
-                        <button class="btn">+</button>
-                    </div>
-                </div>
-                <div class="cart-c2">
-                    <div class="cart-num">X1</div>
-                    <div class="text-important">¥188</div>
-                    <del>¥200</del>
-                </div>
-            </div>
-            <div class="text-orange">再买一件享5折</div>
-            <button class="btn btn-danger">删除</button>
-        </li>
+        {{/goodItemList}}
     </ul>
 </section>
+{{/sf-cart-type}}
 
+{{#sf-cart-type goodItemList 'disable'}}
 <section class="sf-h5-disable cart-disable">
     <ul class="cart-disable">
+        {{#goodItemList}}
         <li>
-            <div class="cart-inner"><span class="label label-disabled">售罄</span><img src="../img/list.jpg" alt="">
+            <div class="cart-inner">
+                <span class="label label-disabled">售罄</span>
+                <img src="{{sf-show-img images}}" alt="">
+
                 <div class="cart-c1">
-                    <h2 class="ellipsis2">日本kao花王    蒸汽发眼膜／眼罩无香型14片／蒸汽发眼膜...</h2></div>
+                    <h2 class="ellipsis2">{{title}}</h2>
+                </div>
+
                 <div class="cart-c2">
-                    <div class="cart-num">X1</div>
-                    <div class="text-important">¥188</div>
+                    <div class="cart-num">X{{quantity}}</div>
+                    <div class="text-important">¥{{sf.price price}}</div>
                 </div>
             </div>
             <button class="btn btn-danger">删除</button>
         </li>
-        <li>
-            <div class="cart-inner"><span class="label label-disabled">售罄</span><img src="../img/list.jpg" alt="">
-                <div class="cart-c1">
-                    <h2 class="ellipsis2">日本kao花王    蒸汽发眼膜／眼罩无香型14片／蒸汽发眼膜...</h2></div>
-                <div class="cart-c2">
-                    <div class="cart-num">X1</div>
-                    <div class="text-important">¥188</div>
-                </div>
-            </div>
-            <button class="btn btn-danger">删除</button>
-        </li>
+        {{/goodItemList}}
     </ul>
 </section>
+{{/sf-cart-type}}
 
-<div class="alert-error">亲，海关规定购买多件商品价格总结算不能超过¥1000，请您分多次购买～</div>
+{{/scopeGroups}}
+
+
+{{! <div class="alert-error">亲，海关规定购买多件商品价格总结算不能超过¥1000，请您分多次购买～</div> }}
 
 <section class="cart-footer">
     <div class="cart-footer-r1">
-        <div class="cart-footer-c1"><span class="icon icon49"></span>全选</div>
-        <div class="cart-footer-c2">
-            <div class="text-important">¥999</div>
-            <div class="cart-footer-save">已省：¥69</div>
+        <div class="cart-footer-c1 ">
+          <span class="icon icon49"></span>全选
         </div>
-        <button class="btn btn-disable">去结算</button>
+        <div class="cart-footer-c2">
+            <div class="text-important">¥{{sf.price cartFeeItem.actualTotalFee}}</div>
+            <div class="cart-footer-save">已省：¥{{sf.price cartFeeItem.discountFee}}</div>
+        </div>
+
+        <button class="btn {{#sf-is-allow-pay scopeGroups cartFeeItem}}btn-disable{{/sf-is-allow-pay}}">去结算</button>
     </div>
 </section>
 
+{{#sf-is-over-limit cartFeeItem.actualTotalFee}}
 <section class="tooltip center">
     <div>您的购物车已满五十件商品，赶紧去买单哦～</div>
 </section>
+{{/sf-is-over-limit}}

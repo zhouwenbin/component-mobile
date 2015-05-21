@@ -1,7 +1,5 @@
 <div id = "firststep">
-{{! {{#if showFirstStep}}
   <!--商品-->
-  {{! <div class="alert-info" id="springTip">春节期间订单，节后（26日）陆续发货</div> }}
   <section class="goods">
     {{#notice}}<div class="alert-info" style="background: #F9E6D4; color: #FF7E00; line-height: 19px;">{{notice}}</div>{{/notice}}
 
@@ -115,144 +113,104 @@
     </ul>
   </section>
   <!--推荐商品-->
+
+
   <!--立即购买-->
-  <section class="nav">
-    <div class="nav-r1">
-      <div class="nav-c1">
-        <a href="/index.html">
-          <span class="icon icon25"></span>
-          <div>首页</div>
-        </a>
-      </div>
-      <div class="nav-c1">
-        <a href="/center.html">
-          <span class="icon icon26"></span>
-          <div>我的</div>
-        </a>
-      </div>
-      <div class="nav-c2">
-        {{! {{#sf-canBuy priceInfo.soldOut}}
-          <a href="javascript:void(0)" class="btn btn-danger btn-big" id="gotobuy">立即购买</a>
-        {{! {{else}}
-          {{! <a href="javascript:void(0)" class="btn btn-disable btn-big">立即购买</a> }}
-        {{! {{/sf-canBuy}}
-
-      </div>
-
+  <section class="nav-cart">
+    <div class="nav-cart-r1">
+      <span class="icon icon47 mini-cart-container" data-href="/shoppingcart.html", data-login="/login.html">
+        <span class="dot dot-error mini-cart-num" style="display: none;"></span>
+      </span>
+      <button class="btn btn-soon addcart">+ 加入购物车</button>
+      <button class="btn btn-danger gotobuy">立即购买</button>
     </div>
   </section>
   <!--立即购买-->
 
-  {{! {{/if}}
 </div>
 
 <div id="secondstep" style="display:none">
 
-  {{! {{#if showSecondStep}}
-  <div class="test"></div>
-  <!--推荐商品-->
-  <section class="recommend">
-    <ul>
-      <li class="clearfix">
-        <a href="{{itemInfo.linkUrl}}">
-        <div class="recommend-c1 fl vertical-middle">
-          <img src="{{sf.img itemInfo.step2Image}}" alt="">
-        </div>
-        <div class="recommend-c2">
-          <h3 class="ellipsis2">{{itemInfo.basicInfo.title}}</h3>
-          <div class="recommend-c2r1">
-            <strong>¥{{sf.price priceInfo.sellingPrice}}</strong>（含税）
-          </div>
-        </div>
-        </a>
-      </li>
-    </ul>
-  </section>
-  <!--推荐商品-->
+  <div class="mask"></div>
+  <section class="detail-cart">
+      <div class="detail-cart-r">
+          <a href="{{itemInfo.linkUrl}}">
+            <img src="{{sf.img itemInfo.step2Image}}" alt="">
+            <div class="detail-cart-c1">
+                <h2 class="ellipsis2">{{itemInfo.basicInfo.title}}</h2>
+                <del>¥{{sf.price priceInfo.refrencePrice}}</del>
+                <div class="text-error">¥ {{sf.price priceInfo.sellingPrice}}</div>
+            </div>
+          </a>
+      </div>
 
-  <!--促销信息-->
-	{{#activityInfo.isShow}}
-      <section class="coupon-discount">
-          <ul class="box box1">
-						{{#each activityInfo.datas}}
-							{{#sf-showActivity activityType}}
-                  <li class="coupon-discount-list">
-                      <a href="{{h5ActivityLink}}" class="box-link">
-                        <span class="label label-soon" desc="{{activityTypeDesc}}">满减<i></i></span>{{activityTitle}}
-                        <span class="icon icon13 box-arrow center-vertical"></span>
-                      </a>
-                      <ul class="hide">
-												{{#each promotionRules}}
-                            <li>{{ruleDesc}}</li>
-												{{/each}}
-                      </ul>
-                  </li>
-							{{/sf-showActivity}}
-						{{/each}}
-          </ul>
-          <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
-      </section>
-	{{/activityInfo.isShow}}
-  <!--促销信息-->
+      <!--促销信息-->
+      {{#activityInfo.isShow}}
+          <section class="coupon-discount">
+              <ul class="box box1">
+                {{#each activityInfo.datas}}
+                  {{#sf-showActivity activityType}}
+                      <li class="coupon-discount-list">
+                          <a href="{{h5ActivityLink}}" class="box-link">
+                            <span class="label label-soon" desc="{{activityTypeDesc}}">满减<i></i></span>{{activityTitle}}
+                            <span class="icon icon13 box-arrow center-vertical"></span>
+                          </a>
+                          <ul class="hide">
+                            {{#each promotionRules}}
+                                <li>{{ruleDesc}}</li>
+                            {{/each}}
+                          </ul>
+                      </li>
+                  {{/sf-showActivity}}
+                {{/each}}
+              </ul>
+              <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
+          </section>
+      {{/activityInfo.isShow}}
 
-  <!--规格-->
-  <section class="standard">
-    <ul class="standard-r1">
       {{#each itemInfo.specGroups}}
-      <li class="clearfix">
-        <div class="standard-c1 fl">{{sf.split specName}}：</div>
-        <div class="standard-c2" data-specidorder="{{specIdOrder}}">
+      <div class="detail-cart-r detail-cart-r2">
+        <label for="">{{sf.split specName}}：</label>
+        <ul data-specidorder="{{specIdOrder}}">
           {{#each specs}}
-          <button data-specid="{{specId}}" id="1" data-specIndex="{{specIndex}}" data-compose="{{compose}}" class="btn specbuttons normal {{selected}} {{canShowDottedLine}} {{disabled}}">{{specValue}}</button>
+          <li>
+            <button data-specid="{{specId}}" data-specIndex="{{specIndex}}" data-compose="{{compose}}" class="btn btn-normal btn-dashed {{selected}} {{canShowDottedLine}} {{disabled}}">{{specValue}}</button>
+          </li>
           {{/each}}
-        </div>
-      </li>
+        </ul>
+      </div>
       {{/each}}
-    </ul>
-    <div class="standard-r2">
-      <div class="standard-c1 fl">数 量：</div>
-      <div class="standard-c2">
-        <div class="input-num">
-          <button class="btn" id="reduceNum">-</button>
-          <input type="text" value="{{input.buyNum}}" id="inputNum">
-          <button class="btn" id="addNum">+</button>
 
-          {{#if input.showRestrictionTips}}
-            <span class="text-error" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>
-          {{/if}}
+      <div class="standard-r2">
+        <div class="standard-c1 fl">数 量：</div>
+        <div class="standard-c2">
+          <div class="input-num">
+            <button class="btn" id="reduceNum">-</button>
+            <input type="text" value="{{input.buyNum}}" id="inputNum">
+            <button class="btn" id="addNum">+</button>
+
+            {{#if input.showRestrictionTips}}
+              <span class="text-error" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>
+            {{/if}}
+
+          </div>
 
         </div>
-
       </div>
-    </div>
-    <div id="allerrortip" class="text-error">{{input.error}}</div>
-    {{#sf-showCurrentStock priceInfo.currentStock}}
-      <div class="text-error">商品剩余{{priceInfo.currentStock}}件!</div>
-    {{/sf-showCurrentStock}}
+
+      <div id="allerrortip" class="text-error">{{input.error}}</div>
+      {{#sf-showCurrentStock priceInfo.currentStock}}
+        <div class="text-error">商品剩余{{priceInfo.currentStock}}件!</div>
+      {{/sf-showCurrentStock}}
   </section>
-  <!--规格-->
 
-  <!--立即购买-->
-  <section class="nav">
-    <div class="nav-r1">
-      <div class="nav-c1 fl">
-        <a href="/index.html">
-          <span class="icon icon25"></span>
-          <div>首页</div>
-        </a>
+  <section class="nav-cart">
+      <div class="nav-cart-r1">
+          <span class="icon icon47 mini-cart-container"><span class="dot dot-error mini-cart-num"></span></span>
+          <button class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}}" id="buyEnter">
+            {{#sf-canBuy priceInfo.soldOut}}确定{{else}}缺货{{/sf-canBuy}}
+          </button>
       </div>
-      <div class="nav-c1 fl">
-        <a href="/center.html">
-          <span class="icon icon26"></span>
-          <div>我的</div>
-        </a>
-      </div>
-      <div class="nav-c2">
-        <a href="javascript:void(0)" class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}} btn-big" id="buyEnter">{{#sf-canBuy priceInfo.soldOut}}确定{{else}}缺货{{/sf-canBuy}}</a>
-      </div>
-    </div>
   </section>
-  <!--立即购买-->
 
-  {{! {{/if}}
 </div>
