@@ -56,10 +56,12 @@
             </div>
 
             {{! 待支付状态 }}
+            {{#sf-order-show paymentStatus 'WAITPAY'}}
             <div class="orderlist-btns">
                 <button class="btn btn-normal">取消订单</button>
                 <button class="btn btn-normal active">立即付款</button>
             </div>
+            {{/sf-order-show}}
 
             {{! 已付款未来审核 }}
             <div class="orderlist-btns">
