@@ -38,6 +38,7 @@
 @import 'module/list';
 @import 'module/pay';
 @import 'module/info';
+@import 'module/order-info';
 @import 'module/goodinfo';
 @import 'module/logistics';
 @import 'module/404';
@@ -48,6 +49,8 @@
 @import 'module/coupons';
 @import 'module/coupons-none';
 @import 'module/coupon';
+@import 'module/coupon-gift';
+@import 'module/coupon-discount';
 @import 'module/nav1';
 @import 'module/flashsale';
 @import 'module/carnival';
@@ -68,4 +71,6 @@
 @import 'module/gift-foretaste';
 @import 'module/gift-coupon';
 @import 'module/coupon-use';
+@import 'module/order-submit';
 @import 'module/detail-cart';
+@import 'module/goodslist';
