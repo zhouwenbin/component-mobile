@@ -1,4 +1,4 @@
-{{}}
+{{^if orders}}
 
 <section class="orderlist-none">
   <span class="icon icon55"></span>
@@ -7,31 +7,30 @@
 </section>
 
 
-{{}}
+{{else}}
 
 <!--订单列表-->
 <section class="tab">
     <div class="tab-h">
-        <ul>
-            <li class="active"><a href="">全部</a></li>
-            <li><a href="">处理中</a></li>
-            <li><a href="">已取消</a></li>
-            <li><a href="">已完成</a></li>
+        <ul class="status-list">
+            <li class="{{sf-is-active status ''}}"><a href="#" data-status="all">所有订单</a></li>
+            <li class="{{sf-is-active status 'SUBMITED'}}"><a href="#" data-status="submited">待付款</a></li>
+            <li class="{{sf-is-active status 'WAIT_SHIPPING'}}"><a href="#" data-status="waitshipping">待发货</a></li>
+            <li class="{{sf-is-active status 'SHIPPING'}}"><a href="#" data-status="shipping">待收货</a></li>
         </ul>
     </div>
 
-
     <ul class="orderlist">
         {{#orders}}
-        <li>
+        <li {{data 'order'}}>
             <div class="box box1">
               <a href="" class="box-link">订单号: {{orderId}}</a>
               <span class="icon icon13 box-arrow center-vertical"></span>
             </div>
-            {{#orderPackageItemList}}
+            {{#each orderPackageItemList}}
             <div class="orderlist-bag">
                 <div class="orderlist-bag-r1">
-                    <h2>包裹{{@index}}
+                    <h2>包裹{{sf-index @index}}
                       <span class="text-important">{{sf-package-status status}}</span>
                     </h2>
                     <a href="#" class="text-link">查看物流</a>
@@ -39,7 +38,7 @@
                 <ul class="goodslist">
                     {{#orderGoodsItemList}}
                     <li>
-                      <img src="{{imageUrl}}">
+                      <img src="{{sf-image imageUrl}}">
                         <h3 class="ellipsis2">{{goodsName}}</h3>
                         <div class="goodslist-c1">
                             <div class="orderlist-num">X{{quantity}}</div>
@@ -49,31 +48,26 @@
                     {{/orderGoodsItemList}}
                 </ul>
             </div>
-            {{/orderPackageItemList}}
+            {{/each}}
             <div class="orderlist-total">共{{sf-good-count orderPackageItemList}}件商品
               <span class="text-disable">实付金额：</span>
               <span class="text-important">￥{{sf.price totalPrice}}</span>
             </div>
 
-            {{! 待支付状态 }}
-            {{#sf-order-show paymentStatus 'WAITPAY'}}
             <div class="orderlist-btns">
-                <button class="btn btn-normal">取消订单</button>
-                <button class="btn btn-normal active">立即付款</button>
-            </div>
-            {{/sf-order-show}}
+              <div class="text-disable">{{sf-order-status orderStatus}}</div>
 
-            {{! 已付款未来审核 }}
-            <div class="orderlist-btns">
-                <button class="btn btn-normal">取消订单</button>
-            </div>
+              {{#sf-order-show orderStatus 'SUBMITED,AUDITING'}}
+              <button class="btn btn-normal ordercancel">取消订单</button>
+              {{/sf-order-show}}
 
-            {{! 已取消}}
-            <div class="orderlist-btns">
-                <div class="text-disable">已取消</div>
+              {{#sf-order-show paymentStatus 'WAITPAY'}}
+              <button class="btn btn-normal gotopay active">立即付款</button>
+              {{/sf-order-show}}
             </div>
         </li>
         {{/orders}}
     </ul>
 </section>
 <!--订单列表-->
+{{/if}}

@@ -7,15 +7,25 @@ define(
     'underscore',
     'store',
     'sf.b2c.mall.api.order.requestPayV2',
+    'sf.b2c.mall.api.order.cancelOrder',
     'sf.b2c.mall.business.config',
     'sf.util'
   ],
 
-  function($, can, _, store, SFApiRequestPayV2, SFConfig, SFUtil) {
+  function($, can, _, store, SFApiRequestPayV2, SFApiCancelOrder, SFConfig, SFUtil) {
 
     var requestPayV2 = new SFApiRequestPayV2();
+    var cancelOrder = new SFApiCancelOrder();
 
     return {
+      orderCancel: function(params, success, error) {
+        cancelOrder.setData({
+          orderId: params.orderId
+        });
+
+        cancelOrder.sendRequest().done(success).fail(error);
+      },
+
       payV2: function(dataParam, callback) {
         var that = this;
 

@@ -260,6 +260,8 @@ requirejs.config({
     'template_order_shoppingcart': 'templates/order/sf.b2c.mall.shoppingcart.mustache',
     'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
     'template_order_selectrecaddr': 'templates/order/sf.b2c.mall.order.selectrecaddr.mustache',
+    'template_order_orderlist': 'templates/order/sf.b2c.mall.order.orderlist.mustache',
+    'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',

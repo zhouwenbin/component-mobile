@@ -11,10 +11,12 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.order.orderlistcontent',
     'sf.b2c.mall.widget.message',
+    'sf.b2c.mall.component.nav',
+    'sf.env.switcher',
     'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, Fastclick, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage, SFConfig) {
+  function(can, $, Fastclick, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage, SFNav, SFSwitcher, SFConfig) {
     SFFrameworkComm.register(3);
     Fastclick.attach(document.body);
     SFWeixin.shareIndex();
@@ -46,6 +48,18 @@ define(
       render: function() {
         // 列表区域
         this.orderListComponent = new SFOrderListContent('.sf-b2c-mall-order-orderlist');
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('web', function () {
+          new SFNav('.sf-nav');
+        });
+
+        switcher.register('app', function () {
+          // 不使用导航
+        });
+
+        switcher.go();
       }
     });
 
