@@ -17,6 +17,8 @@ define(
     var requestPayV2 = new SFApiRequestPayV2();
     var cancelOrder = new SFApiCancelOrder();
 
+    var PREFIX = 'http://img0.sfht.com';
+
     return {
 
       helpers: {
@@ -75,8 +77,11 @@ define(
             'SHIPPING': '正在出库',
             'LOGISTICS_EXCEPTION': '物流异常',
             'SHIPPED': '已发货',
+            'CONSIGNED': '已出库',
+            'RECEIPTED': '已签收',
             'COMPLETED': '已完成',
-            'AUTO_COMPLETED': '自动完成'
+            'AUTO_COMPLETED': '自动完成',
+            'CLOSED': '关闭'
           };
 
           return statusMap[status()];

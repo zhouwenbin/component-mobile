@@ -19,9 +19,13 @@
             <li>
               <span class="justify text-disable">商品总额</span>：￥{{sf.price orderItem.totalPrice}}
             </li>
+
+            {{#orderItem.discount}}
             <li>
               <span class="justify text-disable">优 惠</span>：￥{{sf.price orderItem.discount}}
             </li>
+            {{/orderItem.discount}}
+
             <li><span class="justify text-disable">运 费</span>：免运费</li>
           </ul>
             {{! 倒计时 }}
@@ -66,21 +70,32 @@
         </div>
         <!--收货人信息-->
     </section>
+
+    {{#sf-show-status-cancelled orderItem.orderStatus}}
+    <div class="orderdetail-cancel">
+      <span class="icon icon53"></span>
+      <p>尊敬的用户，由于我们在2小时内未收到您的订单款项，订单已被自动取消。</p>
+      <p class="text-disable">订单取消规则：订单会为您保留2小时（从下单算起），2小时后系统将自动取消未付款的订单。</p>
+    </div>
+    {{/sf-show-status-cancelled}}
+
     <!--商品信息-->
     <ul class="orderdetail-bag">
-        {{#orderItem.orderPackageItemList}}
+        {{#each orderItem.orderPackageItemList}}
         <li>
-            <!--取消订单<div class="orderdetail-cancel"><span class="icon icon53"></span><p>尊敬的用户，由于我们在2小时内未收到您的订单款项，订单已被自动取消。</p><p class="text-disable">订单取消规则：订单会为您保留2小时（从下单算起），2小时后系统将自动取消未付款的订单。</p></div><!--取消订单-->
-
             <div class="orderdetail-bag-r1">
-                <h2>包裹{{sf-index @index}}<span class="text-important">{{sf-package-status status}}</span></h2>
+                <h2>包裹{{sf-index @index}}
+                  <span class="text-important">{{sf-package-status status}}</span>
+                </h2>
                 <div class="text-disable">{{shippingWarehouse}}发货</div>
             </div>
             <div class="box box1">
                 <a href="" class="box-link">
                     <div>物流信息</div>
-                    <time>{{sf.time shippingTime}}</time>
-                    <p>{{sf-package-status status}}</p>
+                    {{#sf-first actionTraceItemList}}
+                    <time>{{sf.time gmtHappened}}</time>
+                    <p>{{status}}</p>
+                    {{/sf-first}}
                 </a>
                 <span class="icon icon13 box-arrow center-vertical"></span>
             </div>
@@ -97,7 +112,19 @@
                 {{/orderGoodsItemList}}
             </ul>
         </li>
-        {{/orderItem.orderPackageItemList}}
+        {{/each}}
     </ul>
     <!--商品信息-->
 </section>
+
+{{#sf-show-paybtn orderItem.payType}}
+<!--立即购买-->
+<section class="nav">
+    <div class="nav-r1">
+        <div class="nav-c2">
+            <button class="btn btn-danger btn-big gotopay">去支付</button>
+        </div>
+    </div>
+</section>
+<!--立即购买-->
+{{/sf-show-paybtn}}
