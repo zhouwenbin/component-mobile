@@ -1,120 +1,103 @@
-  <!--订单详情-->
-  <section class="orderdetail" id="orderdetail">
-    {{#if needShowTips}}<div class="orderdetail-r1">{{{uploadIDCardTips}}}</div>{{/if}}
-    <ul class="box orderdetail-r2 clearfix">
-      <li>订单号：{{orderId}}</li>
-      <li><time>{{sf.time gmtCreate "YYYY-MM-DD HH:mm"}}</time></li>
-      <li>订单总额：<span class="text-error">￥{{sf.price shouldPayPrice}}</span></li>
-      <li><span class="text-error">{{status}}</span> {{{operationHTML}}}</li>
+<section class="orderdetail">
+    <section class="orderinfo">
+        <h2>订单信息</h2>
+        <div class="orderinfo-b">
+          <ul>
+            <li><span class="justify">订 单 号</span>：{{orderItem.orderId}}</li>
+            <li>
+              <span class="justify text-disable">下单时间</span>
+              <span class="text-disable">：{{sf.time orderItem.gmtCreate}}</span>
+            </li>
+            <li>
+              <span class="justify">实付金额</span>：
+              <span class="text-important">￥{{sf.price orderItem.totalPrice}}</span>
+              <span class="text-disable">({{sf-payment-type orderItem.payType}})</span>
+
+              <!--取消订单-->
+              <span class="text-success">{{sf-pay-status orderItem.paymentStatus}}</span>
+            </li>
+            <li>
+              <span class="justify text-disable">商品总额</span>：￥{{sf.price orderItem.totalPrice}}
+            </li>
+            <li>
+              <span class="justify text-disable">优 惠</span>：￥{{sf.price orderItem.discount}}
+            </li>
+            <li><span class="justify text-disable">运 费</span>：免运费</li>
+          </ul>
+            {{! 倒计时 }}
+            <p>
+              <span class="text-important">!</span>请在
+              <span class="text-important">01小时20分15秒</span>内付款
+            </p>
+
+            <a class="text-link">
+              <span id="orderdetail-more">查看更多</span>
+              <span class="icon icon52"></span>
+            </a>
+          </div>
+        <!--收货人信息-->
+        <div class="info">
+            <ul class="info-r1">
+                <li>
+                    <div class="fl info-r1c1 justify">收货人：</div>
+                    <div class="info-r1c2">{{orderItem.orderAddressItem.receiveName}}</div>
+                </li>
+                <li>
+                    <div class="fl info-r1c1 justify">手 机：</div>
+                    <div class="info-r1c2">{{orderItem.orderAddressItem.mobile}}</div>
+                </li>
+                <li>
+                    <div class="fl info-r1c1 justify">地 址：</div>
+                    <div class="info-r1c2">
+                      <span>{{orderItem.orderAddressItem.country}}</span>
+                      <span>{{orderItem.orderAddressItem.province}}</span>
+                      <span>{{orderItem.orderAddressItem.city}}</span>
+                      <span>{{orderItem.orderAddressItem.region}}</span>
+                      <span>{{orderItem.orderAddressItem.detailAddress}}</span>
+                    </div>
+                </li>
+                <!--
+                <li>
+                    <div class="fl info-r1c1 justify">邮 编：</div>
+                    <div class="info-r1c2">{{orderItem.orderAddressItem.zipCode}}</div>
+                </li>
+                -->
+            </ul>
+        </div>
+        <!--收货人信息-->
+    </section>
+    <!--商品信息-->
+    <ul class="orderdetail-bag">
+        {{#orderItem.orderPackageItemList}}
+        <li>
+            <!--取消订单<div class="orderdetail-cancel"><span class="icon icon53"></span><p>尊敬的用户，由于我们在2小时内未收到您的订单款项，订单已被自动取消。</p><p class="text-disable">订单取消规则：订单会为您保留2小时（从下单算起），2小时后系统将自动取消未付款的订单。</p></div><!--取消订单-->
+
+            <div class="orderdetail-bag-r1">
+                <h2>包裹{{sf-index @index}}<span class="text-important">{{sf-package-status status}}</span></h2>
+                <div class="text-disable">{{shippingWarehouse}}发货</div>
+            </div>
+            <div class="box box1">
+                <a href="" class="box-link">
+                    <div>物流信息</div>
+                    <time>{{sf.time shippingTime}}</time>
+                    <p>{{sf-package-status status}}</p>
+                </a>
+                <span class="icon icon13 box-arrow center-vertical"></span>
+            </div>
+            <h3>商品信息</h3>
+            <ul class="goodslist">
+                {{#orderGoodsItemList}}
+                <li><img src="{{sf-image imageUrl}}">
+                    <h3 class="ellipsis2">{{goodsName}}</h3>
+                    <div class="goodslist-c1">
+                        <div class="orderlist-num">X{{quantity}}</div>
+                        <div class="text-important">¥{{sf.price price}}</div>
+                    </div>
+                </li>
+                {{/orderGoodsItemList}}
+            </ul>
+        </li>
+        {{/orderItem.orderPackageItemList}}
     </ul>
-    <div class="orderdetail-r3">
-      <a href="javascript:void(0)" id="viewUserRoutes">
-        <time>{{firstRoute.gmtHappened}}</time> {{firstRoute.description}} {{firstRoute.operator}}
-        {{#if firstRoute}}
-          <span class="icon icon13 center-vertical"></span>
-        {{else}}
-          暂无物流信息
-        {{/if}}
-      </a>
-    </div>
-    <div class="box info">
-      <ul class="info-r1">
-        <li>
-          <div class="fl info-r1c1">收货人：</div>
-          <div class="info-r1c2">{{receiveInfo.receiveName}}</div>
-        </li>
-        <li>
-          <div class="fl info-r1c1">身份证：</div>
-          <div class="info-r1c2">{{receiveInfo.certNo}} </div>
-        </li>
-        <li>
-          <div class="fl info-r1c1">手　机：</div>
-          <div class="info-r1c2">{{receiveInfo.mobile}}</div>
-        </li>
-        <li>
-          <div class="fl info-r1c1">地　址：</div>
-          <div class="info-r1c2">
-          <span>{{receiveInfo.country}}</span><span>{{receiveInfo.province}}</span><span>{{receiveInfo.city}}</span><span>{{receiveInfo.region}}</span><span>{{receiveInfo.detailAddress}}</span></div>
-        </li>
-
-      </ul>
-      <ul class="info-r2">
-        <li>支付方式：在线支付</li>
-        <li>配送方式：顺丰配送</li>
-      </ul>
-    </div>
-    <div class="table box goodsinfo">
-      <h2>商品信息</h2>
-      {{#each productList}}
-      <div class="table-r1 clearfix">
-        <div class="table-r1c1 fl vertical-middle"><img src="{{sf.img imageUrl}}@63h_63w_100Q_1x.jpg"></div>
-
-        <div class="table-r1c3 fr">
-            <div class="goodsinfo-price">¥{{sf.price price}}</div>
-            <div class="goodsinfo-num">x{{quantity}}</div>
-        </div>
-        <div class="table-r1c2 goodsinfo-title">
-            <h3 class="ellipsis3">{{goodsName}}</h3>
-        </div>
-      </div>
-      <ul class="clearfix table-r2">
-        <li>{{{spec}}}</li>
-      </ul>
-      {{/each}}
-    </div>
-
-    <div class="orderdetail-r4 box">
-      <ul>
-        <li>商品总额：<span class="text-important">¥{{sf.price allTotalPrice}}</span></li>
-        <li><span class="text-important">免运费</span></li>
-        {{#if showTax}}
-          <li>税额：<span class="text-important">¥0</span></li>
-        {{/if}}
-	      {{#discount}}
-          <li>优惠金额：<span class="text-important">¥{{sf.price discount}}</span></li>
-	      {{/discount}}
-      </ul>
-      <div class="center-vertical orderdetail-r4c2">
-        {{#showShouldPayPrice}}实际应付款：<span class="text-important">¥{{sf.price shouldPayPrice}}</span>{{/showShouldPayPrice}}
-      </div>
-    </div>
-  </section>
-  <!--订单详情-->
-
-  <section class="nav" id="buy">
-    <div class="nav-r1">
-      <div class="nav-c1 fl">
-        <a href="/index.html">
-          <span class="icon icon25"></span>
-          <div>首页</div>
-        </a>
-      </div>
-      <div class="nav-c1 fl">
-        <a href="/center.html">
-          <span class="icon icon26"></span>
-          <div>我的</div>
-        </a>
-      </div>
-      {{#if showPayButton}}
-        <div class="nav-c2"><button class="btn btn-danger btn-big" id="gotopay">立即支付</button></div>
-      {{/if}}
-    </div>
-  </section>
-
-  <section class="order logistics" id="userRoutes" style="display:none">
-      <h2>物流跟踪</h2>
-      <ul>
-      {{#each userRoutes}}
-        <li><time>{{gmtHappened}}</time>{{description}} {{operator}}</li>
-      {{/each}}
-      </ul>
-  </section>
-
-  <section class="mask dialog" style="display:none">
-    <div class=" center">
-      <h2>客服电话：021-69763622</h2>
-      <p>工作时间：周一至周日 8:00 - 22:00</p>
-      <a class="icon icon14" href="tel:021-69763622"></a>
-      <a href="javascript:void(0)" class="icon icon15" id="closeContactMe">关闭</a>
-    </div>
-  </section>
+    <!--商品信息-->
+</section>

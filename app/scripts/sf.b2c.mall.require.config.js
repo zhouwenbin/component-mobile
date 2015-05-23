@@ -262,6 +262,8 @@ requirejs.config({
     'template_order_selectrecaddr': 'templates/order/sf.b2c.mall.order.selectrecaddr.mustache',
     'template_order_orderlist': 'templates/order/sf.b2c.mall.order.orderlist.mustache',
     'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
+    'template_order_orderdetail': 'templates/order/sf.b2c.mall.order.orderdetail.mustache',
+    'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',

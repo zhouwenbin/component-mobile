@@ -18,6 +18,97 @@ define(
     var cancelOrder = new SFApiCancelOrder();
 
     return {
+
+      helpers: {
+        /**
+         * @description 从string中获取图片地址
+         * @param  {function} imgs  图片地址源
+         * @return {string}         图片地址
+         */
+        'sf-image': function(imgs) {
+          var array = eval(imgs());
+          if (_.isArray(array)) {
+            var url = array[0].replace(/.jpg/g, '.jpg@63h_63w.jpg');
+            if (/^http/.test(url)) {
+              return url;
+            } else {
+              // 单独处理 '/spu/68e30153-ea6e-48f3-825b-788fb18e8552.jpg@63h_63w.jpg'
+              return PREFIX + url;
+            }
+          } else {
+            return EMPTY_IMG
+          }
+        },
+
+        'sf-good-count': function(items) {
+          var count = 0;
+          var array = items().attr();
+          _.each(array, function(item) {
+            count = item.orderGoodsItemList.length + count;
+          });
+          return count;
+        },
+
+        'sf-index': function(index) {
+          return index() + 1;
+        },
+
+        'sf-order-show': function(status, allows, options) {
+          var array = allows.split(',');
+          if (_.contains(array, status())) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
+        'sf-order-status': function(status) {
+          var statusMap = {
+            'SUBMITED': '已提交',
+            'AUTO_CANCEL': '自动取消',
+            'USER_CANCEL': '用户取消',
+            'AUDITING': '待审核',
+            'OPERATION_CANCEL': '运营取消',
+            'BUYING': '采购中',
+            'BUYING_EXCEPTION': '采购异常',
+            'WAIT_SHIPPING': '待发货',
+            'SHIPPING': '正在出库',
+            'LOGISTICS_EXCEPTION': '物流异常',
+            'SHIPPED': '已发货',
+            'COMPLETED': '已完成',
+            'AUTO_COMPLETED': '自动完成'
+          };
+
+          return statusMap[status()];
+        },
+
+        'sf-pay-status': function (paymentStatus) {
+          var paymentStatusMap = {
+            'WAITPAY': '待支付',
+            'PAYING': '支付中',
+            'PAYED': '已支付',
+            'PAYFAILURE': '支付失败',
+            'PAYBACKING': '退款中',
+            'REFUNDED': '已退款',
+            'REFUND_FAILED': '退款失败'
+          };
+
+          return paymentStatusMap[paymentStatus()];
+        },
+
+        'sf-payment-type': function (payType) {
+          var map = {
+            'alipay': '支付宝',
+            'tenpay_forex': '财付通',
+            'tenpay_forex_wxsm': '微信支付',
+            'lianlianpay': '快捷支付'
+          }
+
+          return map[payType()];
+        }
+
+      },
+
       orderCancel: function(params, success, error) {
         cancelOrder.setData({
           orderId: params.orderId
