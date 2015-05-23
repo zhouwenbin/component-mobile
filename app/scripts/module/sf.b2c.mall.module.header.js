@@ -34,7 +34,8 @@ define(
 
         // 一般环境显示头部
         switcher.register('web', _.bind(function() {
-          this.element.fadeIn();
+          // this.element.fadeIn();
+          this.element.show();
         }, this));
 
         // app环境内隐藏头部

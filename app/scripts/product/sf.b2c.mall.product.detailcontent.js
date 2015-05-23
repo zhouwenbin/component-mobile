@@ -214,9 +214,12 @@ define('sf.b2c.mall.product.detailcontent', [
        */
       addCart: function(itemId, num) {
         var addItemToCart = new SFAddItemToCart({
-          itemId: itemId,
-          num: num || 1
+          items: JSON.stringify([{
+            itemId: itemId,
+            num: num || 1
+          }])
         });
+
 
         // 添加购物车发送请求
         addItemToCart.sendRequest()
@@ -246,7 +249,7 @@ define('sf.b2c.mall.product.detailcontent', [
         // 如果用户已经登陆了，可以进行购物车更新
         // @todo 如果是白名单的用户可以看到购物车
         if (SFComm.prototype.checkUserLogin.call(this)) {
-          this.element.find('.mini-cart').show();
+          this.element.find('.mini-cart-num').show();
 
           var getTotalCount = new SFGetTotalCount();
           getTotalCount.sendRequest()
@@ -369,7 +372,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
             // @author Michael.Lee
             // 判断用户是否登陆，请求minicart
-            this.updateCart();
+            that.updateCart();
 
           })
           .fail(function(error) {
@@ -733,8 +736,13 @@ define('sf.b2c.mall.product.detailcontent', [
           }, this),
 
           'cart': _.bind(function() {
-            this.addcart(this.itemid, this.options.detailContentInfo.input.buyNum);
+            this.addCart(this.itemid, this.options.detailContentInfo.input.buyNum);
           }, this)
+        }
+
+        var fn = map[params.target];
+        if (_.isFunction(fn)) {
+          fn();
         }
       },
 

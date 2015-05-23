@@ -131,6 +131,8 @@
 
 <div id="secondstep" style="display:none">
 
+
+
   <div class="mask"></div>
   <section class="detail-cart">
       <div class="detail-cart-r">
@@ -138,7 +140,7 @@
             <img src="{{sf.img itemInfo.step2Image}}" alt="">
             <div class="detail-cart-c1">
                 <h2 class="ellipsis2">{{itemInfo.basicInfo.title}}</h2>
-                <del>¥{{sf.price priceInfo.refrencePrice}}</del>
+                <del>¥{{sf.price priceInfo.originPrice}}</del>
                 <div class="text-error">¥ {{sf.price priceInfo.sellingPrice}}</div>
             </div>
           </a>
@@ -181,20 +183,15 @@
       </div>
       {{/each}}
 
-      <div class="standard-r2">
-        <div class="standard-c1 fl">数 量：</div>
-        <div class="standard-c2">
-          <div class="input-num">
-            <button class="btn" id="reduceNum">-</button>
-            <input type="text" value="{{input.buyNum}}" id="inputNum">
-            <button class="btn" id="addNum">+</button>
-
-            {{#if input.showRestrictionTips}}
-              <span class="text-error" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>
-            {{/if}}
-
-          </div>
-
+      <div class="detail-cart-r">
+        <label for="">数量：</label>
+        <div class="input-num">
+          <button class="btn" id="reduceNum">-</button>
+          <input type="text" value="{{input.buyNum}}" id="inputNum">
+          <button class="btn" id="addNum">+</button>
+          {{#if input.showRestrictionTips}}
+            <span class="text-error" id="showrestrictiontipsspan">商品限购{{priceInfo.limitBuy}}件</span>
+          {{/if}}
         </div>
       </div>
 
