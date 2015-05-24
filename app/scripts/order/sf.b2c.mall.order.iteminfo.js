@@ -23,7 +23,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
     helpers: {
       'sf-get-img': function(imgs) {
-        return imgs()[0];
+        return imgs().thumbImgUrl;
       }
     },
 
@@ -43,7 +43,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
       can.when(that.initOrderRender())
         .done(function() {
-          var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj);
+          var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj, that.helpers);
           that.element.html(html);
 
           if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {
@@ -334,7 +334,7 @@ define('sf.b2c.mall.order.iteminfo', [
             "items": JSON.stringify([{
               "itemId": that.itemObj.itemid,
               "num": that.itemObj.amount,
-              "price": that.itemObj.orderGoodsItemList[0].price
+              "price": that.itemObj.orderFeeItem.actualTotalFee
             }]),
             "sysType": that.getSysType(),
             "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons),

@@ -179,13 +179,13 @@ define('sf.b2c.mall.product.detailcontent', [
       '.mini-cart-container click': function($el, event) {
         event && event.preventDefault();
 
-        var href = $el.attr('href');
+        var href = $el.attr('data-href');
         var hrefLogin = $el.attr('data-login');
 
         if (SFComm.prototype.checkUserLogin.call(this)) {
           window.location.href = href;
         } else {
-          window.location.href = hrefLogin;
+          window.location.href = hrefLogin + '?from='+window.location.href;
         }
       },
 
@@ -227,6 +227,9 @@ define('sf.b2c.mall.product.detailcontent', [
             if (data.value) {
               // 更新mini购物车
               can.trigger(window, 'updateCart');
+              $('#firststep').show();
+              $('#secondstep').hide();
+
             }
           })
           .fail(function(data) {
@@ -382,10 +385,14 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       '.addcart click': function() {
-        can.route.attr({
-          tag: 'gotobuy',
-          target: 'cart'
-        });
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          can.route.attr({
+            tag: 'gotobuy',
+            target: 'cart'
+          });
+        } else {
+          window.location.href = 'http://m.sfht.com/login.html?from=' + encodeURIComponent(window.location.href);
+        }
       },
 
       '.gotobuy click': function() {

@@ -5,8 +5,9 @@ define(
 
   [
     'can',
-    'jquery',
+    'zepto',
     'underscore',
+    'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.util',
     'sf.helpers',
@@ -14,7 +15,7 @@ define(
     'sf.b2c.mall.component.shoppingcart'
   ],
 
-  function(can, $, _, SFFrameworkComm, SFFn, SFHelpers, SFConfig, SFShoppingCart) {
+  function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFConfig, SFShoppingCart) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
@@ -31,5 +32,7 @@ define(
         var shoopingCart = new SFShoppingCart('.sf-h5-shoppingcart');
       }
     });
+
+    new PageShoppingCart();
 
   });

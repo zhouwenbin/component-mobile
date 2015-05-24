@@ -5,11 +5,14 @@ define(
 
   [
     'can',
-    'jquery',
+    'zepto',
+    'touch',
     'underscore',
+    'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.util',
     'sf.helpers',
+    'sf.b2c.mall.order.fn',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.shopcart.getCart',
     'sf.b2c.mall.api.shopcart.refreshCart',
@@ -19,7 +22,7 @@ define(
     'text!template_order_shoppingcart'
   ],
 
-  function(can, $, _, SFFrameworkComm, SFFn, SFHelpers, SFConfig, SFShopcartGetCart, SFShopcartFreshCart, SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart) {
+  function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart, SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
@@ -28,7 +31,7 @@ define(
 
     var LIMITED_PRICE = 1000 * 100;
 
-    var PageShoppingCart = can.Control.extend({
+    return can.Control.extend({
 
       helpers: {
 
@@ -46,11 +49,12 @@ define(
             'disable': false
           }
 
-          var goods = _.findWhere(array, {
-            isValid: map[type]
+          var isAllow = true;
+          _.each(array, function(value, key, list){
+            isAllow = isAllow && map[type]
           });
 
-          if (goods.length > 0) {
+          if (isAllow) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -64,7 +68,7 @@ define(
          */
         'sf-show-img': function(images) {
           var array = images();
-          if (_.isArray(array) && array.length > 0) {
+          if (array.length > 0) {
             return array[0];
           }
         },
@@ -101,6 +105,36 @@ define(
           }
         },
 
+        'sf-select-all': function (groups, options) {
+          var isSelectedAll = true;
+          var array = groups();
+
+          if (array.length == 0) {
+            return options.inverse(options.contexts || this);
+          }
+
+          array.each(function (item) {
+            item.goodItemList.each(function (good) {
+              isSelectedAll = isSelectedAll && good.isSelected;
+            })
+          });
+
+          if (isSelectedAll) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
+        'sf-is-empty': function (groups, options) {
+          var array = groups();
+          if (array.length > 0) {
+            return options.inverse(options.contexts || this);
+          } else {
+            return options.fn(options.contexts || this);
+          }
+        },
+
         /**
          * @description 是否允许付款
          * @param  {array} groups  不同goods的分组列表
@@ -114,12 +148,13 @@ define(
           _.each(array, function(item) {
             _.each(item.goodItemList, function(good) {
               isAllow = isAllow || good.isSelected;
-              if (isAllow) break;
             });
           });
 
           // 如果超过支付限额，不允许提交
-          if (fee.actualTotalFee > LIMITED_PRICE) isAllow = false;
+          if (fee().actualTotalFee > LIMITED_PRICE) {
+            isAllow = false;
+          }
 
           if (isAllow) {
             return options.fn(options.contexts || this);
@@ -150,6 +185,7 @@ define(
             var updatenum = new SFShopcartUpdateNumInCart();
             var params = this.getItemInfo(item);
 
+            updatenum.setData(params);
             updatenum.sendRequest().done(_.bind(this.paint, this));
           },
 
@@ -159,6 +195,7 @@ define(
               itemIds: JSON.stringify(this.getItemIds(items))
             }
 
+            removeitem.setData(params);
             removeitem.sendRequest(params).done(_.bind(this.paint, this));
           },
 
@@ -168,6 +205,7 @@ define(
               goods: JSON.stringify(this.getItemsSelectd(items))
             }
 
+            refreshCart.setData(params);
             refreshCart.sendRequest(params).done(_.bind(this.paint, this));
           }
 
@@ -175,7 +213,7 @@ define(
 
         var fn = map[tag];
         if (_.isFunction(fn)) {
-          fn.apply(this, cparams);
+          fn.call(this, cparams);
         }
       },
 
@@ -215,7 +253,7 @@ define(
        */
       '.remove-item-btn click': function($element, event) {
         // 从上层dom中获取good信息
-        var good = $element.closet('li').data('good');
+        var good = $element.closest('li').data('good');
         this.requestFactory('removeitem', [good]);
       },
 
@@ -227,7 +265,7 @@ define(
        */
       '.minus-num click': function($element, event) {
         // 从上层dom中获取good信息
-        var good = $element.closet('li').data('good');
+        var good = $element.closest('li').data('good');
 
         if (good.quantity > 0) {
           good.quantity = good.quantity - 1;
@@ -245,7 +283,7 @@ define(
        */
       '.plus-num click': function($element, event) {
         // 从上层dom中获取good信息
-        var good = $element.closet('li').data('good');
+        var good = $element.closest('li').data('good');
 
         if (good.quantity + 1 < good.limitQuantity) {
           good.quantity = good.quantity + 1;
@@ -265,7 +303,7 @@ define(
        */
       '.input-num change': function($element, event) {
         var ask = $element.val();
-        var good = $element.closet('li').data('good');
+        var good = $element.closest('li').data('good');
 
         if (ask < good.limitQuantity) {
           this.requestFactory('updatenum', good);
@@ -284,7 +322,7 @@ define(
        * @return boolean
        */
       '.select-item click': function($element, event) {
-        var good = $element.closet('li').data('good');
+        var good = $element.closest('li').data('good');
         good.isSelected = good.isSelected == 0 ? 1 : 0;
         this.requestFactory('refreshcart', [good]);
       },
@@ -298,7 +336,7 @@ define(
       '.select-all-items click': function($element, event) {
         var array = [];
         var isSelectedAll = true;
-        $('li').each(function(index, element) {
+        $('.sf-h5-avail-cart li').each(function(index, element) {
           var good = $(this).data('good');
           isSelectedAll = isSelectedAll && good.isSelected;
           array.push(good);
@@ -306,27 +344,35 @@ define(
 
         if (isSelectedAll) {
           _.each(array, function(item, index) {
-            array[index].isSelected＝ 0;
+            array[index].isSelected = 0;
           });
         } else {
           _.each(array, function(item, index) {
-            array[index].isSelected＝ 1;
+            array[index].isSelected = 1;
           });
         }
 
-        this.requestFactory('updatenum', array);
+        this.requestFactory('refreshcart', array);
       },
 
-      'li swipeLeft': function() {
-        $(this).css({
+      'li swipeLeft': function($element) {
+        $element.css({
           left: -61
         });
       },
 
-      'li swipeRight': function() {
-        $(this).css({
+      'li swipeRight': function($element) {
+        $element.css({
           left: 0
         });
+      },
+
+      '.gotopay click': function ($element, event) {
+        if ($element.hasClass('btn-disable')) {
+          return false;
+        }
+
+        window.location.href = '/order.html';
       },
 
       showAlert: function($element, good) {
@@ -336,15 +382,17 @@ define(
           word = word + value.desc + ' '
         });
 
-        $element.closet('.text-error').text(word);
+        $element.closest('.text-error').text(word);
       },
 
       paint: function(data) {
+        this.options.data = new can.Map(data);
+
         var renderFn = can.mustache(template_order_shoppingcart);
-        var html = renderFn(data, {}, this.helpers);
+        var html = renderFn(this.options.data, this.helpers);
 
         this.element.html(html);
-        $('.overflow-num').fadeIn('slow');
+        $('.overflow-num').show();
       }
     });
 
