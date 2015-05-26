@@ -61,6 +61,11 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         }
       },
 
+      'sf-reverse': function (array, options) {
+        var group = array().attr();
+        return options.fn({group: group});
+      },
+
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case']
     },
 
