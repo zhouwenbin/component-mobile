@@ -479,7 +479,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html', 'img/**', 'json/**', 'scripts/**', 'styles/**'],
+            src: ['templates/**', '*.html', 'img/**', 'json/**', 'scripts/**', 'styles/**', 'header/*.html', 'footer/*.html','json/**'],
             dest: '<%=config.version%>'
           }
         ]

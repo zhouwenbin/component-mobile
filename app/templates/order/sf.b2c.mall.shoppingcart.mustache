@@ -2,7 +2,10 @@
 <section class="cart-none">
     <p>购物车空空如也～</p>
     <a href="/index.html" class="btn btn-normal btn-radius">去逛逛</a>
+
+    {{^sf-is-login}}
     <a href="/login.html" class="btn btn-normal btn-radius">去登录</a>
+    {{/sf-is-login}}
 </section>
 {{/sf-is-empty}}
 

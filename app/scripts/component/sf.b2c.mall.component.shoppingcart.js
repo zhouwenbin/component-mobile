@@ -35,6 +35,14 @@ define(
 
       helpers: {
 
+        'sf-is-login': function (options) {
+          if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
         /**
          * @description 商品情况是否属于可购买
          * @param  {array} goodList   商品列表
