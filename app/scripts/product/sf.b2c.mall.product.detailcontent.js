@@ -227,9 +227,11 @@ define('sf.b2c.mall.product.detailcontent', [
             if (data.value) {
               // 更新mini购物车
               can.trigger(window, 'updateCart');
-              $('#firststep').show();
-              $('#secondstep').hide();
+              // $('#firststep').show();
+              // $('#secondstep').hide();
 
+              can.route.attr('tag', 'init');
+              can.route.removeAttr('target');
             }
           })
           .fail(function(data) {
@@ -396,14 +398,12 @@ define('sf.b2c.mall.product.detailcontent', [
         }
       },
 
-      '.gotobuy click': function() {
+      '.gotobuy click': function(element) {
         can.route.attr({
           tag: 'gotobuy',
           target: 'pay'
         });
         element.hide();
-
-        that.bindSelectSpecButton();
       },
 
       initGetItemInfo: function(itemid) {
@@ -661,30 +661,55 @@ define('sf.b2c.mall.product.detailcontent', [
       bindSelectSpecButton: function() {
         var that = this;
 
-        $('.specbuttons').click(function() {
-          that.specbuttonsClick($(this));
-        })
+        // $('.specbuttons').click(function() {
+        //   that.specbuttonsClick($(this));
+        // })
 
-        $('#reduceNum').click(function() {
-          that.reduceNumClick($(this));
-        })
+        // $('#reduceNum').click(function() {
+        //   that.reduceNumClick($(this));
+        // })
 
-        $('#addNum').click(function() {
-          that.addNumClick($(this));
-        })
+        // $('#addNum').click(function() {
+        //   that.addNumClick($(this));
+        // })
 
-        $('#inputNum').blur(function() {
-          that.dealBuyNumByInput($(this));
-        })
+        // $('#inputNum').blur(function() {
+        //   that.dealBuyNumByInput($(this));
+        // })
 
-        $('#inputNum').keyup(function() {
-          that.dealBuyNumByInput($(this));
-        })
+        // $('#inputNum').keyup(function() {
+        //   that.dealBuyNumByInput($(this));
+        // })
 
-        $('#inputNum').keydown(function() {
-          that.options.detailContentInfo.input.attr("error", "");
-        })
+        // $('#inputNum').keydown(function() {
+        //   that.options.detailContentInfo.input.attr("error", "");
+        // })
       },
+
+      '#addNum click': function ($element) {
+        this.addNumClick($element);
+      },
+
+      '#reduceNum click': function ($element) {
+        this.reduceNumClick($element);
+      },
+
+      '.specbuttons click': function ($element) {
+        this.specbuttonsClick($element);
+      },
+
+      '#inputNum blur': function ($element) {
+        this.dealBuyNumByInput($element);
+      },
+
+      '#inputNum keyup': function ($element) {
+        this.dealBuyNumByInput($element);
+      },
+
+      '#inputNum keydown': function ($element) {
+        this.options.detailContentInfo.input.attr("error", "");
+      },
+
 
       /**
        * [buyEnter 构面确认按钮事件]
@@ -910,8 +935,9 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       '#secondstep .mask click': function () {
-        $('#firststep').show();
-        $('#secondstep').hide();
+        can.route.attr('tag', 'init');
+        can.route.removeAttr('target');
+        // $('#secondstep').hide();
       },
 
       /**

@@ -522,6 +522,7 @@ module.exports = function (grunt) {
       },
       detail: {
         options: {
+          optimize:'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.detail.js',
