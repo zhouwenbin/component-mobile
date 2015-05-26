@@ -275,6 +275,7 @@ define('sf.b2c.mall.product.detailcontent', [
         'gotobuy': function(data) {
           // $('#firststep').hide();
           $('#secondstep').show();
+          this.bindSelectSpecButton();
         }
       },
 
@@ -906,6 +907,11 @@ define('sf.b2c.mall.product.detailcontent', [
           element.find("a").text("更多优惠");
           uls.hide();
         }
+      },
+
+      '#secondstep .mask click': function () {
+        $('#firststep').show();
+        $('#secondstep').hide();
       },
 
       /**
