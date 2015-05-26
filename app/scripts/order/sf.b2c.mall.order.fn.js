@@ -130,10 +130,10 @@ define(
             'LOGISTICS_EXCEPTION': ['ROUTE', 'INFO'],
             'SHIPPED': ['INFO', 'ROUTE', 'RECEIVED'],
             'CONSIGNED': ['INFO', 'ROUTE', 'RECEIVED'],
-            'COMPLETED': ['INFO', 'ROUTE', 'DELETE', 'REPAY'],
+            'COMPLETED': ['INFO', 'ROUTE', 'REPAY'],
             'RECEIPTED': ['INFO', 'ROUTE', 'RECEIVED'],
             'CLOSED': ['INFO', 'DELETE', 'REPAY'],
-            'AUTO_COMPLETED': ['INFO', 'ROUTE', 'DELETE', 'REPAY']
+            'AUTO_COMPLETED': ['INFO', 'ROUTE', 'REPAY']
           }
 
           var array = map[status()];
