@@ -77,14 +77,15 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     request: function(params) {
       $('.loadingDIV').hide();
 
-      var getOrder = new SFGetOrder({
+      this.getOrder = new SFGetOrder({
         orderId: params.orderid
       });
 
-      getOrder.sendRequest().done(_.bind(this.paint, this));
+      this.getOrder.sendRequest().done(_.bind(this.paint, this));
     },
 
     paint: function(data) {
+      this.serverTime = this.getOrder.getServerTime();
       this.options.data = new can.Map(data);
 
       var renderFn = can.mustache(template_order_orderdetail);
@@ -111,8 +112,19 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
     drawTime: function () {
       var date = new Date();
-      var time = moment.duration(this.options.data.orderItem.gmtCreate + 20*60*1000 - date.valueOf());
-      this.element.find('#pay-timmer').text(time._data.minutes + '分钟' + time._data.seconds + '秒');
+      var time = moment.duration(this.options.data.orderItem.gmtCreate + 2*60*60*1000 - this.serverTime);
+
+      var timeStr = null;
+
+      if (time._data.hours) {
+        timeStr = time._data.hours + '小时' + time._data.minutes + '分钟' + time._data.seconds + '秒'
+      }else if (time._data.minutes) {
+        timeStr = time._data.minutes + '分钟' + time._data.seconds + '秒'
+      }else{
+        timeStr = time._data.seconds + '秒'
+      }
+
+      this.element.find('#pay-timmer').text(timeStr);
       this.options.data.orderItem.attr('gmtCreate', this.options.data.orderItem.gmtCreate - 1000);
     },
 
