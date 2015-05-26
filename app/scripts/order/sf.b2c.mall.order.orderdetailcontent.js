@@ -40,12 +40,17 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       'sf-first': function (group, options) {
         var array = group();
-        var first = array[0];
-        if (first) {
-          return options.fn(first);
+        if (array.length > 0) {
+          var last = array[array.length - 1];
+          if (last) {
+            return options.fn(last);
+          }else{
+            return options.inverse(options.contexts || this);
+          }
         }else{
           return options.inverse(options.contexts || this);
         }
+
       },
 
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case']
