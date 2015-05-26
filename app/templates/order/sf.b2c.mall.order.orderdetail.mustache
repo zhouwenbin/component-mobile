@@ -120,7 +120,7 @@
     <!--商品信息-->
 </section>
 
-{{#sf-status-show-case orderStatus 'NEEDPAY'}}
+{{#sf-status-show-case orderItem.orderStatus 'NEEDPAY'}}
 <!--立即购买-->
 <section class="nav">
     <div class="nav-r1">
@@ -132,7 +132,7 @@
 <!--立即购买-->
 {{/sf-status-show-case}}
 
-{{#sf-status-show-case orderStatus 'RECEIVED'}}
+{{#sf-status-show-case orderItem.orderStatus 'RECEIVED'}}
 <!--确认收货-->
 <section class="nav">
     <div class="nav-r1">
