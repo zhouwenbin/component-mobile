@@ -117,7 +117,7 @@
     <!--商品信息-->
 </section>
 
-{{#sf-show-paybtn orderItem.payType}}
+{{#sf-status-show-case orderStatus 'NEEDPAY'}}
 <!--立即购买-->
 <section class="nav">
     <div class="nav-r1">
@@ -127,4 +127,16 @@
     </div>
 </section>
 <!--立即购买-->
+{{/sf-status-show-case}}
+
+{{#sf-status-show-case orderStatus 'RECEIVED'}}
+<!--确认收货-->
+<section class="nav">
+    <div class="nav-r1">
+        <div class="nav-c2">
+            <button class="btn btn-success btn-big received">确认收货</button>
+        </div>
+    </div>
+</section>
+<!--确认收货-->
 {{/sf-show-paybtn}}

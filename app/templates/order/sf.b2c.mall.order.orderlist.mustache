@@ -57,13 +57,21 @@
             <div class="orderlist-btns">
               <div class="text-disable">{{sf-order-status orderStatus}}</div>
 
-              {{#sf-order-show orderStatus 'SUBMITED,AUDITING'}}
+              {{#sf-status-show-case orderStatus 'CANCEL'}}
               <button class="btn btn-normal ordercancel">取消订单</button>
-              {{/sf-order-show}}
+              {{/sf-status-show-case}}
 
-              {{#sf-order-show paymentStatus 'WAITPAY'}}
-              <button class="btn btn-normal gotopay active">立即付款</button>
-              {{/sf-order-show}}
+              {{#sf-status-show-case orderStatus 'NEEDPAY'}}
+              <button class="btn btn-normal active gotopay">立即付款</button>
+              {{/sf-status-show-case}}
+
+              {{#sf-status-show-case orderStatus 'DELETE'}}
+              <button class="btn btn-normal delete">删除订单</button>
+              {{/sf-status-show-case}}
+
+              {{#sf-status-show-case orderStatus 'RECEIVED'}}
+              <button class="btn btn-normal success received">确认收货</button>
+              {{/sf-status-show-case}}
             </div>
         </li>
         {{/orders}}

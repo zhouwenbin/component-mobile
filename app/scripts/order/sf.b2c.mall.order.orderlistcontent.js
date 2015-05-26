@@ -45,7 +45,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
          */
         'sf-image': function(imgs) {
           var array = eval(imgs());
-          if (_.isArray(array)) {
+          if (_.isArray(array) && array.length > 0) {
             var url = array[0].replace(/.jpg/g, '.jpg@63h_63w.jpg');
             if (/^http/.test(url)) {
               return url;
@@ -104,7 +104,9 @@ define('sf.b2c.mall.order.orderlistcontent', [
           if (status() == cstatus) {
             return 'active';
           }
-        }
+        },
+
+        'sf-status-show-case': OrderFn.helpers['sf-status-show-case']
 
       },
 
@@ -197,6 +199,36 @@ define('sf.b2c.mall.order.orderlistcontent', [
         }
 
         OrderFn.orderCancel(order, success, error);
+      },
+
+      '.delete click': function ($element, event) {
+        event && event.preventDefault();
+        var order = $element.closest('li').data('order');
+
+        var success = function() {
+          window.location.reload();
+        };
+
+        var error = function() {
+          // @todo 错误提示
+        }
+
+        OrderFn.orderDelete(order, success, error);
+      },
+
+      '.received click': function ($element, event) {
+        event && event.preventDefault();
+        var order = $element.closest('li').data('order');
+
+        var success = function() {
+          window.location.reload();
+        };
+
+        var error = function() {
+          // @todo 错误提示
+        }
+
+        OrderFn.orderConfirm(order, success, error);
       },
 
       '.status-list li a click': function($element, event) {

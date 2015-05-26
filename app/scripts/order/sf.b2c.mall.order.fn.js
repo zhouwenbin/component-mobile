@@ -8,14 +8,18 @@ define(
     'store',
     'sf.b2c.mall.api.order.requestPayV2',
     'sf.b2c.mall.api.order.cancelOrder',
+    'sf.b2c.mall.api.order.confirmReceive',
+    'sf.b2c.mall.api.order.deleteOrder',
     'sf.b2c.mall.business.config',
     'sf.util'
   ],
 
-  function($, can, _, store, SFApiRequestPayV2, SFApiCancelOrder, SFConfig, SFUtil) {
+  function($, can, _, store, SFApiRequestPayV2, SFApiCancelOrder, SFConfirmReceive, SFDeleteOrder, SFConfig, SFUtil) {
 
     var requestPayV2 = new SFApiRequestPayV2();
     var cancelOrder = new SFApiCancelOrder();
+    var confirmReceive = new SFConfirmReceive();
+    var deleteOrder = new SFDeleteOrder();
 
     var PREFIX = 'http://img0.sfht.com';
 
@@ -110,6 +114,34 @@ define(
           }
 
           return map[payType()];
+        },
+
+        'sf-status-show-case': function(status, target, options) {
+          var map = {
+            'SUBMITED': ['NEEDPAY', 'CANCEL', 'INFO'],
+            'AUTO_CANCEL': ['INFO', 'DELETE'],
+            'USER_CANCEL': ['INFO', 'DELETE'],
+            'AUDITING': ['CANCEL', 'INFO'],
+            'OPERATION_CANCEL': ['INFO', 'DELETE'],
+            'BUYING': ['INFO'],
+            'BUYING_EXCEPTION': ['INFO'],
+            'WAIT_SHIPPING': ['INFO'],
+            'SHIPPING': ['ROUTE', 'INFO'],
+            'LOGISTICS_EXCEPTION': ['ROUTE', 'INFO'],
+            'SHIPPED': ['INFO', 'ROUTE', 'RECEIVED'],
+            'CONSIGNED': ['INFO', 'ROUTE', 'RECEIVED'],
+            'COMPLETED': ['INFO', 'ROUTE', 'DELETE', 'REPAY'],
+            'RECEIPTED': ['INFO', 'ROUTE', 'RECEIVED'],
+            'CLOSED': ['INFO', 'DELETE', 'REPAY'],
+            'AUTO_COMPLETED': ['INFO', 'ROUTE', 'DELETE', 'REPAY']
+          }
+
+          var array = map[status()];
+          if (array && _.contains(array, target)) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
         }
 
       },
@@ -212,7 +244,22 @@ define(
             }
           }
         );
+      },
+
+      orderConfirm: function (params, success, error) {
+        confirmReceive.setData({
+          subOrderId: params.orderId
+        });
+
+        confirmReceive.sendRequest().done(success).fail(error);
+      },
+
+      orderDelete: function (params, success, error) {
+        deleteOrder.setData({
+          orderId: params.orderId
+        });
+
+        deleteOrder.sendRequest().done(success).fail(error);
       }
     }
-
-  })
+  });

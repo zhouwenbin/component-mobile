@@ -110,7 +110,22 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       switcher.go();
       // －－－－－－－－－－－－－－－－－－－
+    },
+
+    '.received click': function ($element, event) {
+      event && event.preventDefault();
+
+      var success = function () {
+        window.location.reload();
+      }
+
+      var error = function () {
+        // @todo 错误提示
+      }
+
+      SFOrderFn.orderConfirm(this.options.data.orderItem, success, error);
     }
+
   });
 
 });
