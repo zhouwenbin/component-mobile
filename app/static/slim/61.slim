@@ -10,16 +10,51 @@
 </head>
 <body class="body1">
 	<section class="banner">
-		<div>儿童节抢先在即</div>
-	</section>
+    <img src="../img/61-banner.jpg">
+  </section>
 
-	<section class="recCoupon">
-		<button class="btn btn-success btn-big">点击领券</button>
-	</section>
+  <section class="recCoupon">
+    <a href="javascript:;" class="cms-fill-coupon" >
+      <img src="../img/61-reccoupon.jpg" data-cmscouponbagid="1" data-cmscoupontype="GIFTBAG">
+    </a>
+  </section>
 
-	<section class="activity">
+  <section class="activity">
+  	<ul>
+  		<li id="61li">六月一日</li>
+  		<li id="62li">六月二日</li>
+  		<li id="63li">六月三日</li>
+  	</ul>
+  	<div id="61" style="display:block">6.1
+  		<img src="../img/61-activity.jpg">
+  	</div>
+    <div id="62" style="display:none">6.2
+  		<img src="../img/61-activity.jpg">
+  	</div>
+    <div id="63" style="display:none">6.3
+  		<img src="../img/61-activity.jpg">
+  	</div>
+  </section>
 
-	</section>
+  <script type="text/javascript">debugger;
+  	document.getElementById("61li").onclick = function(){
+  		document.getElementById("61").style.display = "inline";
+  		document.getElementById("62").style.display = "none";
+  		document.getElementById("63").style.display = "none";
+  	};
+
+  	document.getElementById("62li").onclick = function(){
+  		document.getElementById("61").style.display = "none";
+  		document.getElementById("62").style.display = "inline";
+  		document.getElementById("63").style.display = "none";
+  	};
+
+  	document.getElementById("63li").onclick = function(){
+  		document.getElementById("61").style.display = "none";
+  		document.getElementById("62").style.display = "none";
+  		document.getElementById("63").style.display = "inline";
+  	};
+  </script>
 </body>
 
 </html>
