@@ -15,9 +15,10 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
-    'text!template_order_orderlist'
+    'text!template_order_orderlist',
+    'sf.b2c.mall.widget.message',
   ],
-  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist) {
+  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFMessage) {
 
     var DEFAULT_PAGE_NUM = 1;
     var DEFAULT_PAGE_SIZE = 50;
@@ -184,30 +185,42 @@ define('sf.b2c.mall.order.orderlistcontent', [
         event && event.preventDefault();
         var order = $element.closest('li').data('order');
 
-        var success = function() {
-          window.location.reload();
-        };
+        var message = new SFMessage(null, {
+          'tip': '确认要取消该订单？',
+          'type': 'confirm',
+          'okFunction': function() {
+            var success = function() {
+              window.location.reload();
+            };
 
-        var error = function() {
-          // @todo 错误提示
-        }
+            var error = function() {
+              // @todo 错误提示
+            }
 
-        OrderFn.orderCancel(order, success, error);
+            OrderFn.orderCancel(order, success, error);
+          }
+        });
       },
 
-      '.delete click': function ($element, event) {
+      '.delete click': function($element, event) {
         event && event.preventDefault();
         var order = $element.closest('li').data('order');
 
-        var success = function() {
-          window.location.reload();
-        };
+        var message = new SFMessage(null, {
+          'tip': '确认要删除该订单？',
+          'type': 'confirm',
+          'okFunction': function() {
+            var success = function() {
+              window.location.reload();
+            };
 
-        var error = function() {
-          // @todo 错误提示
-        }
+            var error = function() {
+              // @todo 错误提示
+            }
 
-        OrderFn.orderDelete(order, success, error);
+            OrderFn.orderDelete(order, success, error);
+          }
+        });
       },
 
       '.received click': function ($element, event) {
