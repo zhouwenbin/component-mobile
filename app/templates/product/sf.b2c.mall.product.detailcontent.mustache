@@ -203,7 +203,7 @@
 
   <section class="nav-cart">
       <div class="nav-cart-r1">
-          <span class="icon icon47 mini-cart-container"><span class="dot dot-error mini-cart-num"></span></span>
+          <span class="icon icon47 mini-cart-container" data-href="/shoppingcart.html" data-login="/login.html"><span class="dot dot-error mini-cart-num"></span></span>
           <button class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}}" id="buyEnter">
             {{#sf-canBuy priceInfo.soldOut}}确定{{else}}缺货{{/sf-canBuy}}
           </button>
