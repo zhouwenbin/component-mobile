@@ -46,7 +46,9 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         }else{
           return options.inverse(options.contexts || this);
         }
-      }
+      },
+
+      'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case']
     },
 
     init: function() {

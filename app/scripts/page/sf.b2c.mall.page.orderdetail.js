@@ -7,10 +7,11 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.order.orderdetailcontent',
     'sf.weixin',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'sf.b2c.mall.component.nav'
   ],
 
-  function(can, $, SFFrameworkComm, SFOrderDetailContent, SFWeixin, SFConfig) {
+  function(can, $, SFFrameworkComm, SFOrderDetailContent, SFWeixin, SFConfig, SFNav) {
 
     SFFrameworkComm.register(3);
 
@@ -30,6 +31,7 @@ define(
 
       render: function() {
         new SFOrderDetailContent('.sf-b2c-mall-orderdetail');
+        new SFNav('.sf-b2c-mall-nav');
       },
 
       supplement: function() {

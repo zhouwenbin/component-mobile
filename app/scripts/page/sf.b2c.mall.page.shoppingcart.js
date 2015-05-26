@@ -12,10 +12,11 @@ define(
     'sf.util',
     'sf.helpers',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.component.shoppingcart'
+    'sf.b2c.mall.component.shoppingcart',
+    'sf.b2c.mall.module.header'
   ],
 
-  function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFConfig, SFShoppingCart) {
+  function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFConfig, SFShoppingCart, SFHeaderModule) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
