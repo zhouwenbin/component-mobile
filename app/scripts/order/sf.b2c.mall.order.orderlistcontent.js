@@ -25,7 +25,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     var PREFIX = 'http://img0.sfht.com';
     var DEFAULT_STATUS = 'all';
 
-    can.route.ready();
+    // can.route.ready();
 
     return can.Control.extend({
 
@@ -115,9 +115,12 @@ define('sf.b2c.mall.order.orderlistcontent', [
       },
 
       render: function() {
+        var params = can.deparam(window.location.search.substr(1));
+
         this.request({
-          pageNum: 1,
-          pageSize: 50
+          pageNum: params.pageNum || 1,
+          pageSize: params.pageSize || 50,
+          status: params.status
         });
       },
 
@@ -126,7 +129,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
         var params = {
           query: JSON.stringify({
-            status: cparams.status,
+            status: cparams.status || DEFAULT_STATUS,
             receiverName: cparams.receiverName,
             orderId: cparams.orderId,
             pageNum: cparams.pageNum || DEFAULT_PAGE_NUM,
@@ -140,24 +143,15 @@ define('sf.b2c.mall.order.orderlistcontent', [
       },
 
       paint: function(data) {
+        var params = can.deparam(window.location.search.substr(1));
         var renderFn = can.view.mustache(template_order_orderlist);
 
         this.options.data = new can.Map(data);
-        this.options.data.attr('status', this.orderStatusMap[can.route.attr('status') || DEFAULT_STATUS]);
+        this.options.data.attr('status', this.orderStatusMap[params.status || DEFAULT_STATUS]);
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
 
         can.$('.loadingDIV').hide();
-      },
-
-      '{can.route} change': function() {
-        var params = can.route.attr();
-        this.request(params);
-      },
-
-      '.status-list li click': function($element, event) {
-        var status = $element.attr('data-status');
-        can.route.attr('status', status);
       },
 
       '.gotopay click': function($element, event) {
@@ -235,9 +229,15 @@ define('sf.b2c.mall.order.orderlistcontent', [
         event && event.preventDefault();
 
         var status = $element.attr('data-status');
-        can.route.attr('status', status);
+        // can.route.attr('status', status);
 
-        return false;
+        var params = can.deparam(window.location.search.substr(1));
+        params.status = status;
+
+        // window.location.search = '?' + $.param(params)
+        window.location = window.location.pathname + '?' + $.param(params)
+
+        // return false;
       }
 
     });
