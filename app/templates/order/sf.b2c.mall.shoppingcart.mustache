@@ -19,10 +19,15 @@
         <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
                 <span class="icon icon49 select-item"></span>
-                <img src="{{sf-show-img images}}" alt="">
+
+                <a href="/detail/{{itemId}}.html">
+                    <img src="{{sf-show-img images}}" alt="">
+                </a>
 
                 <div class="cart-c1">
-                    <h2 class="ellipsis2">{{title}}</h2>
+                    <a href="/detail/{{itemId}}.html">
+                        <h2 class="ellipsis2">{{title}}</h2>
+                    </a>
                     <div class="input-num">
                         <button class="btn minus-num">-</button>
                         <input class="input-num" type="text" value="{{quantity}}">
