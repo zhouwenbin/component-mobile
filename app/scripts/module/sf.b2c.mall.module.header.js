@@ -47,7 +47,7 @@ define(
         switcher.go();
         // －－－－－－－－－－－－－－－－－－－－－－
 
-        this.showAD();
+        // this.showAD();
 
         // @author Michael.Lee
         // 判断用户是否登陆，请求minicart
