@@ -29,10 +29,13 @@
             <li><span class="justify text-disable">运 费</span>：免运费</li>
           </ul>
             {{! 倒计时 }}
+
+            {{#sf-is-not-pay orderItem.paymentStatus}}
             <p>
               <span class="text-important">!</span>请在
-              <span class="text-important">01小时20分15秒</span>内付款
+              <span class="text-important" id="pay-timmer">orderItem.gmtCreate</span>内付款
             </p>
+            {{/sf-is-not-pay}}
 
             <a class="text-link">
               <span id="orderdetail-more">查看更多</span>
@@ -90,7 +93,7 @@
                 <div class="text-disable">{{shippingWarehouse}}发货</div>
             </div>
             <div class="box box1">
-                <a href="" class="box-link">
+                <a href="#!&packageNo={{packageNo}}" class="box-link">
                     <div>物流信息</div>
                     {{#sf-first actionTraceItemList}}
                     <time>{{sf.time gmtHappened}}</time>
@@ -140,3 +143,14 @@
 </section>
 <!--确认收货-->
 {{/sf-show-paybtn}}
+
+{{#each orderItem.orderPackageItemList}}
+<section class="order logistics logistics-{{packageNo}}" style="display:none">
+    <h2>物流跟踪</h2>
+    <ul>
+    {{#each actionTraceItemList}}
+      <li><time>{{gmtHappened}}</time>{{status}} {{operator}}</li>
+    {{/each}}
+    </ul>
+</section>
+{{/each}}

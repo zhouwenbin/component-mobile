@@ -6,11 +6,12 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'sf.helpers',
   'fastclick',
   'underscore',
+  'moment',
   'sf.b2c.mall.api.order.getOrder',
   'text!template_order_orderdetail',
   'sf.b2c.mall.order.fn',
   'sf.b2c.mall.business.config',
-], function(can, $, SFHelpers, Fastclick, _, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig) {
+], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig) {
 
   var PREFIX = 'http://img0.sfht.com';
 
@@ -50,7 +51,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         }else{
           return options.inverse(options.contexts || this);
         }
+      },
 
+      'sf-is-not-pay': function (paymentStatus, options) {
+        if (paymentStatus() == 'WAITPAY') {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
       },
 
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case']
@@ -83,8 +91,29 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       var html = renderFn(this.options.data, this.helpers);
 
       this.element.html(html);
+      this.timmer();
+
+      var params = can.route.attr();
+      this.dispatch(params);
 
       $('.loadingDIV').hide();
+    },
+
+    timmer: function () {
+      var that = this;
+      if (this.options.data.orderItem.paymentStatus == 'WAITPAY') {
+        this.drawTime();
+        setInterval(function () {
+          that.drawTime.call(that);
+        }, 1000)
+      }
+    },
+
+    drawTime: function () {
+      var date = new Date();
+      var time = moment.duration(this.options.data.orderItem.gmtCreate + 20*60*1000 - date.valueOf());
+      this.element.find('#pay-timmer').text(time._data.minutes + '分钟' + time._data.seconds + '秒');
+      this.options.data.orderItem.attr('gmtCreate', this.options.data.orderItem.gmtCreate - 1000);
     },
 
     '#orderdetail-more click': function($element, event) {
@@ -95,6 +124,21 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         $(this).text('收起');
       } else {
         $(this).text('查看更多');
+      }
+    },
+
+    '{can.route} change': function() {
+      var params = can.route.attr();
+      this.dispatch(params)
+    },
+
+    dispatch: function (params) {
+      if (params.packageNo) {
+        this.element.find('.orderdetail').hide();
+        this.element.find('.logistics-'+params.packageNo).show();
+      }else{
+        this.element.find('.orderdetail').show();
+        this.element.find('.logistics').hide();
       }
     },
 
