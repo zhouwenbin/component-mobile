@@ -157,7 +157,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     dispatch: function(params) {
       if (params.packageNo) {
         this.element.find('.orderdetail').hide();
-        this.element.find('.logistics-' + params.packageNo).show();
+        this.element.find('.logistics-' + params.packageNo).show().scrollTop();
       } else {
         this.element.find('.orderdetail').show();
         this.element.find('.logistics').hide();
