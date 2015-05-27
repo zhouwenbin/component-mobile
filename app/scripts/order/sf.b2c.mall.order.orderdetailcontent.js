@@ -11,7 +11,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'text!template_order_orderdetail',
   'sf.b2c.mall.order.fn',
   'sf.b2c.mall.business.config',
-], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig) {
+  'sf.env.switcher'
+], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher) {
 
   var PREFIX = 'http://img0.sfht.com';
 
@@ -31,7 +32,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         }
       },
 
-      'sf-show-status-cancelled': function (status, options) {
+      'sf-show-status-cancelled': function(status, options) {
         if (status() == 'OPERATION_CANCEL') {
           return options.fn(options.contexts || this);
         } else {
@@ -39,21 +40,21 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         }
       },
 
-      'sf-first': function (group, options) {
+      'sf-first': function(group, options) {
         var array = group();
         if (array.length > 0) {
           var first = array[0];
           if (first) {
             return options.fn(first);
-          }else{
+          } else {
             return options.inverse(options.contexts || this);
           }
-        }else{
+        } else {
           return options.inverse(options.contexts || this);
         }
       },
 
-      'sf-is-not-pay': function (paymentStatus, options) {
+      'sf-is-not-pay': function(paymentStatus, options) {
         if (paymentStatus() == 'WAITPAY') {
           return options.fn(options.contexts || this);
         } else {
@@ -61,9 +62,11 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         }
       },
 
-      'sf-reverse': function (array, options) {
+      'sf-reverse': function(array, options) {
         var group = array().attr();
-        return options.fn({group: group});
+        return options.fn({
+          group: group
+        });
       },
 
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case']
@@ -106,27 +109,27 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     },
 
     // 倒计时
-    timmer: function () {
+    timmer: function() {
       var that = this;
       if (this.options.data.orderItem.paymentStatus == 'WAITPAY') {
         this.drawTime();
-        setInterval(function () {
+        setInterval(function() {
           that.drawTime.call(that);
         }, 1000)
       }
     },
 
-    drawTime: function () {
+    drawTime: function() {
       var date = new Date();
-      var time = moment.duration(this.options.data.orderItem.gmtCreate + 2*60*60*1000 - this.serverTime);
+      var time = moment.duration(this.options.data.orderItem.gmtCreate + 2 * 60 * 60 * 1000 - this.serverTime);
 
       var timeStr = null;
 
       if (time._data.hours) {
         timeStr = time._data.hours + '小时' + time._data.minutes + '分钟' + time._data.seconds + '秒'
-      }else if (time._data.minutes) {
+      } else if (time._data.minutes) {
         timeStr = time._data.minutes + '分钟' + time._data.seconds + '秒'
-      }else{
+      } else {
         timeStr = time._data.seconds + '秒'
       }
 
@@ -151,11 +154,11 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       this.dispatch(params)
     },
 
-    dispatch: function (params) {
+    dispatch: function(params) {
       if (params.packageNo) {
         this.element.find('.orderdetail').hide();
-        this.element.find('.logistics-'+params.packageNo).show();
-      }else{
+        this.element.find('.logistics-' + params.packageNo).show();
+      } else {
         this.element.find('.orderdetail').show();
         this.element.find('.logistics').hide();
       }
@@ -182,14 +185,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       // －－－－－－－－－－－－－－－－－－－
     },
 
-    '.received click': function ($element, event) {
+    '.received click': function($element, event) {
       event && event.preventDefault();
 
-      var success = function () {
+      var success = function() {
         window.location.reload();
       }
 
-      var error = function () {
+      var error = function() {
         // @todo 错误提示
       }
 
