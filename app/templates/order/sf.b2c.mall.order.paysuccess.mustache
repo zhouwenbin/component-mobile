@@ -9,6 +9,10 @@
 			{{#isShareBag}}
         <a href="{{links.luckymoneyshare}}&id={{shareBag.code}}" class="btn btn-normal btn-radius">分享红包</a>
 			{{/isShareBag}}
+
+      {{^isShareBag}}
+        <a href="/shoppingcart.html" class="btn btn-normal btn-radius">前往购物车</a>
+      {{/isShareBag}}
     </div>
 	{{#isPresentCoupon}}
     <div class="coupon">
