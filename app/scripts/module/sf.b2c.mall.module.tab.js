@@ -16,7 +16,7 @@ define(
       '.cms-fill-tabfunction click': function (element, event) {
         var tabid = element.attr('data-cms-tabid');
 
-        var contentids = element.parent().parent().find(".cms-src-tabcontent");
+        var contentids = element.parent().parent().find("[name='cms-src-tabcontent']");
         contentids.hide();
 
         var contentid = element.parent().parent().find("#cms-src-tabcontent"+tabid);
