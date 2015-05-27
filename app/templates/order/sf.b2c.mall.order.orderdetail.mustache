@@ -10,7 +10,7 @@
             </li>
             <li>
               <span class="justify">实付金额</span>：
-              <span class="text-important">￥{{sf.price orderItem.totalPrice}}</span>
+              <span class="text-important">￥{{sf.price totalPrice}}</span>
               {{#if orderItem.payTyp}}<span class="text-disable">({{sf-payment-type orderItem.payType}})</span>{{/if}}
 
               <!--取消订单-->
