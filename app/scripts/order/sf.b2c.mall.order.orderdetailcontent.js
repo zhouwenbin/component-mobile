@@ -15,6 +15,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'sf.b2c.mall.widget.message'
 ], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher, SFMessage) {
 
+  Fastclick.attach(document.body);
+
   var PREFIX = 'http://img0.sfht.com';
 
   return can.Control.extend({
