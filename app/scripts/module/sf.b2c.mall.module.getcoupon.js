@@ -41,8 +41,8 @@ define('sf.b2c.mall.module.getcoupon', [
           }
 
           var params = {
-            bagId: $(targetElement.target).data('cmscouponbagid'),
-            type: $(targetElement.target).data('cmscoupontype')
+            bagId: $(targetElement.target).data('cms-couponbagid'),
+            type: $(targetElement.target).data('cms-coupontype')
           }
           var needSms = $(targetElement.target).data('needsms');
           var smsCon = $(targetElement.target).data('smscon');
