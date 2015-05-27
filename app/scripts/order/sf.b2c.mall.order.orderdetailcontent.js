@@ -11,8 +11,9 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'text!template_order_orderdetail',
   'sf.b2c.mall.order.fn',
   'sf.b2c.mall.business.config',
-  'sf.env.switcher'
-], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher) {
+  'sf.env.switcher',
+  'sf.b2c.mall.widget.message'
+], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher, SFMessage) {
 
   var PREFIX = 'http://img0.sfht.com';
 
@@ -188,17 +189,21 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     '.received click': function($element, event) {
       event && event.preventDefault();
 
-      var success = function() {
-        window.location.reload();
-      }
+      var message = new SFMessage(null, {
+        'tip': '确认收货？',
+        'type': 'confirm',
+        'okFunction': function() {
+          var success = function() {
+            window.location.reload();
+          }
 
-      var error = function() {
-        // @todo 错误提示
-      }
+          var error = function() {
+            // @todo 错误提示
+          }
 
-      SFOrderFn.orderConfirm(this.options.data.orderItem, success, error);
+          SFOrderFn.orderConfirm(this.options.data.orderItem, success, error);
+        }
+      });
     }
-
   });
-
 });
