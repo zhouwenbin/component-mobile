@@ -348,12 +348,21 @@ define('sf.b2c.mall.component.register', [
                 //   .fail(function(errorCode) {
                 //     console.error(errorCode);
                 //   });
+                //
+                var currentServerTime = this.component.mobileRegister.getServerTime();
+                if (currentServerTime > 1432828800 && currentServerTime < 1433087999) {
+                  var message = new SFMessage(null, {
+                    'tip': '新人礼10元打车券将在6月1日发放至您的账户，请注意查收。',
+                    'type': 'success'
+                  });
+                }
+
                 // 注册送优惠券
 
                 SFFn.dotCode();
 
                 that.gotoFromPage()
-                // setTimeout(function(){that.gotoFromPage();},1000);
+                  // setTimeout(function(){that.gotoFromPage();},1000);
               }
             })
             .fail(function(errorCode) {

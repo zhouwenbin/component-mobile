@@ -22,12 +22,6 @@ define(
         var contentid = element.parent().parent().find("#cms-src-tabcontent"+tabid);
 
         contentid.show();
-      },
-      '.cms-src-tabcontent': function (element, event) {
-        var contentid = $(this).attr('data-cms-tabcontentid');
-        if (!_.isEmpty(contentid)) {
-
-        }
       }
     })
 
