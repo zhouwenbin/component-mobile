@@ -229,7 +229,7 @@ define('sf.b2c.mall.product.detailcontent', [
               // $('#firststep').show();
               // $('#secondstep').hide();
 
-              can.route.attr({tag: 'init', target: null});
+              can.route.attr({tag: 'init', target: 'empty'});
             }
           })
           .fail(function(data) {
@@ -273,9 +273,11 @@ define('sf.b2c.mall.product.detailcontent', [
         },
 
         'gotobuy': function(data) {
-          // $('#firststep').hide();
           $('#secondstep').show();
-          this.bindSelectSpecButton();
+        },
+
+        'back': function () {
+          $('#secondstep').hide();
         }
       },
 
@@ -401,7 +403,6 @@ define('sf.b2c.mall.product.detailcontent', [
           tag: 'gotobuy',
           target: 'pay'
         });
-        element.hide();
       },
 
       initGetItemInfo: function(itemid) {
@@ -933,7 +934,7 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       '#secondstep .mask click': function () {
-        can.route.attr({tag: 'init', target: null});
+        can.route.attr({tag: 'back', target: 'empty'});
         // $('#secondstep').hide();
       },
 
@@ -974,6 +975,19 @@ define('sf.b2c.mall.product.detailcontent', [
             that.options.detailContentInfo.attr("priceInfo", priceData);
             that.adapter.reSetSelectedAndCanSelectedSpec(newItemid, priceData, that.detailUrl, that.options.detailContentInfo, gotoItemSpec);
             // $('.loadingDIV').hide();
+
+            new Swipe($('#slider')[0], {
+              startSlide: 0,
+              speed: 400,
+              auto: 0,
+              continuous: true,
+              disableScroll: false,
+              stopPropagation: false,
+              callback: function(index, elem) {
+                $('.swipe-dot span').eq(index).addClass('active').siblings().removeClass('active');
+              },
+              transitionEnd: function(index, elem) {}
+            });
           })
           .fail(function(error) {
             // $('.loadingDIV').hide();
