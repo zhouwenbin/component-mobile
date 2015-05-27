@@ -105,6 +105,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       $('.loadingDIV').hide();
     },
 
+    // 倒计时
     timmer: function () {
       var that = this;
       if (this.options.data.orderItem.paymentStatus == 'WAITPAY') {
@@ -130,7 +131,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       }
 
       this.element.find('#pay-timmer').text(timeStr);
-      this.options.data.orderItem.attr('gmtCreate', this.options.data.orderItem.gmtCreate - 1000);
+      // this.options.data.orderItem.attr('gmtCreate', this.options.data.orderItem.gmtCreate - 1000);
+      this.serverTime = this.serverTime + 1000;
     },
 
     '#orderdetail-more click': function($element, event) {

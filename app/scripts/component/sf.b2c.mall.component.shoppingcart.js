@@ -394,6 +394,7 @@ define(
       },
 
       paint: function(data) {
+        $('.loadingDIV').show();
         this.options.data = new can.Map(data);
 
         var renderFn = can.mustache(template_order_shoppingcart);
@@ -401,6 +402,7 @@ define(
 
         this.element.html(html);
         $('.overflow-num').show();
+        $('.loadingDIV').hide();
       }
     });
 
