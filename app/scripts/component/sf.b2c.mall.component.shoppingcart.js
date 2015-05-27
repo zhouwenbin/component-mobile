@@ -293,7 +293,7 @@ define(
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
 
-        if (good.quantity + 1 < good.limitQuantity) {
+        if (good.quantity < good.limitQuantity) {
           good.quantity = good.quantity + 1;
           this.requestFactory('updatenum', good);
         } else {
