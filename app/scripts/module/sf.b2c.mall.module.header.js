@@ -75,7 +75,7 @@ define(
         if (SFComm.prototype.checkUserLogin.call(this)) {
           window.location.href = href;
         } else {
-          window.location.href = hrefLogin + '?from='+ encodeURIComponent(window.location.href);
+          window.location.href = hrefLogin + '?from='+ encodeURIComponent(href);
         }
       },
 
