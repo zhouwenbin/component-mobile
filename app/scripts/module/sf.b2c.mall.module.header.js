@@ -117,11 +117,12 @@ define(
             }
           })
           .fail(function(data) {
-            // @todo 添加失败提示
-            var error = SFAddItemToCart.api.ERROR_CODE[data.code];
-
-            if (error) {
-              // @todo 需要确认是不是需要提交
+            if (data == 15000800) {
+              new SFMessage(null, {
+                "title": '顺丰海淘',
+                'tip': '您的购物车已满',
+                'type': 'error'
+              });
             }
           })
       },
