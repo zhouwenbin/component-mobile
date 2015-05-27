@@ -18,12 +18,12 @@ define(
     var header = can.Control.extend({
 
       init: function() {
-        this.setup($('body'));
+        // this.setup($('body'));
 
-        var template = can.view.mustache(this.getADHtml());
-        $('body').append(template({}));
+        // var template = can.view.mustache(this.getADHtml());
+        // $('body').append(template({}));
 
-        this.showAD();
+        // this.showAD();
       },
 
       getADHtml: function() {
