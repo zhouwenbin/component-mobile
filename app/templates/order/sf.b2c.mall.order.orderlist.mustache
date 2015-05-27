@@ -34,7 +34,11 @@
                     <h2>包裹{{sf-index @index}}
                       <span class="text-important">{{sf-package-status status}}</span>
                     </h2>
+
+                    {{#sf-show-route status}}
                     <a href="/orderdetail.html?orderid={{orderId}}#!&packageNo={{packageNo}}" class="text-link">查看物流</a>
+                    {{/sf-show-route}}
+
                 </div>
                 <ul class="goodslist">
                     {{#orderGoodsItemList}}

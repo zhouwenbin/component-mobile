@@ -111,6 +111,14 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
         'sf-real-price': function (total, discount) {
           return (total() - discount()) / 100;
+        },
+
+        'sf-show-route': function (status, options) {
+          if (status() != 'SUBMITED' && status() != 'AUDITING') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
         }
 
       },
