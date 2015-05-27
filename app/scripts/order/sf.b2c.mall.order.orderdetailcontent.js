@@ -42,9 +42,9 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       'sf-first': function (group, options) {
         var array = group();
         if (array.length > 0) {
-          var last = array[array.length - 1];
-          if (last) {
-            return options.fn(last);
+          var first = array[0];
+          if (first) {
+            return options.fn(first);
           }else{
             return options.inverse(options.contexts || this);
           }
@@ -63,7 +63,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       'sf-reverse': function (array, options) {
         var group = array().attr();
-        return options.fn({group: group.reverse()});
+        return options.fn({group: group});
       },
 
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case']
