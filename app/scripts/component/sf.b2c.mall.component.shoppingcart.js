@@ -401,6 +401,9 @@ define(
         var html = renderFn(this.options.data, this.helpers);
 
         this.element.html(html);
+
+        can.trigger(window, 'updateCart');
+
         $('.overflow-num').show();
         $('.loadingDIV').hide();
 
