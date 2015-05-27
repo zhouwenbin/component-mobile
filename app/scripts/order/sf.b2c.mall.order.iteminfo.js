@@ -23,7 +23,9 @@ define('sf.b2c.mall.order.iteminfo', [
 
     helpers: {
       'sf-get-img': function(imgs) {
-        return imgs().thumbImgUrl;
+        if (imgs()) {
+          return imgs().thumbImgUrl;
+        }
       }
     },
 
