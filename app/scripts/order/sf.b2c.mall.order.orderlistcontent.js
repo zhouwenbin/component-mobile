@@ -24,7 +24,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     var DEFAULT_PAGE_SIZE = 50;
     var EMPTY_IMG = "http://m.sfht.com/static/img/no.png";
     var PREFIX = 'http://img0.sfht.com';
-    var DEFAULT_STATUS = 'all';
+    var DEFAULT_STATUS = '';
 
     // can.route.ready();
 

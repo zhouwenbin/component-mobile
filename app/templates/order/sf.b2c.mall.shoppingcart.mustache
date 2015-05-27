@@ -47,12 +47,8 @@
                 </div>
             </div>
 
-            {{#promotionInfo.promotionList}}
-            <div class="text-orange">{{ruleDesc}}</div>
-            {{/promotionInfo.promotionList}}
-
+            <div class="text-orange">{{#limitDescList}}{{desc}} {{/limitDescList}}</div>
             <button class="btn btn-danger remove-item-btn">删除</button>
-            <span class="text-error" style="display:none;"></span>
         </li>
         {{/goodItemList}}
     </ul>

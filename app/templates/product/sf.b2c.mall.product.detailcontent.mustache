@@ -131,8 +131,6 @@
 
 <div id="secondstep" style="display:none">
 
-
-
   <div class="mask"></div>
   <section class="detail-cart">
       <div class="detail-cart-r">
@@ -145,30 +143,6 @@
             </div>
           </a>
       </div>
-
-      <!--促销信息-->
-      {{#activityInfo.isShow}}
-          <section class="coupon-discount">
-              <ul class="box box1">
-                {{#each activityInfo.datas}}
-                  {{#sf-showActivity activityType}}
-                      <li class="coupon-discount-list">
-                          <a href="{{h5ActivityLink}}" class="box-link">
-                            <span class="label label-soon" desc="{{activityTypeDesc}}">满减<i></i></span>{{activityTitle}}
-                            <span class="icon icon13 box-arrow center-vertical"></span>
-                          </a>
-                          <ul class="hide">
-                            {{#each promotionRules}}
-                                <li>{{ruleDesc}}</li>
-                            {{/each}}
-                          </ul>
-                      </li>
-                  {{/sf-showActivity}}
-                {{/each}}
-              </ul>
-              <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
-          </section>
-      {{/activityInfo.isShow}}
 
       {{#each itemInfo.specGroups}}
       <div class="detail-cart-r detail-cart-r2">
@@ -203,7 +177,7 @@
 
   <section class="nav-cart">
       <div class="nav-cart-r1">
-          <span class="icon icon47 mini-cart-container" data-href="/shoppingcart.html" data-login="/login.html"><span class="dot dot-error mini-cart-num"></span></span>
+          {{! <span class="icon icon47 mini-cart-container" data-href="/shoppingcart.html" data-login="/login.html"><span class="dot dot-error mini-cart-num"></span></span> }}
           <button class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}}" id="buyEnter">
             {{#sf-canBuy priceInfo.soldOut}}确定{{else}}缺货{{/sf-canBuy}}
           </button>

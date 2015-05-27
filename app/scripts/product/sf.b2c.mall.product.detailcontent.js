@@ -220,7 +220,6 @@ define('sf.b2c.mall.product.detailcontent', [
           }])
         });
 
-
         // 添加购物车发送请求
         addItemToCart.sendRequest()
           .done(function(data) {
@@ -230,8 +229,7 @@ define('sf.b2c.mall.product.detailcontent', [
               // $('#firststep').show();
               // $('#secondstep').hide();
 
-              can.route.attr('tag', 'init');
-              can.route.removeAttr('target');
+              can.route.attr({tag: 'init', target: null});
             }
           })
           .fail(function(data) {
@@ -935,8 +933,7 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       '#secondstep .mask click': function () {
-        can.route.attr('tag', 'init');
-        can.route.removeAttr('target');
+        can.route.attr({tag: 'init', target: null});
         // $('#secondstep').hide();
       },
 
