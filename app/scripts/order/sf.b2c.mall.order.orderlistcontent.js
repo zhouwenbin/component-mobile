@@ -107,7 +107,11 @@ define('sf.b2c.mall.order.orderlistcontent', [
           }
         },
 
-        'sf-status-show-case': OrderFn.helpers['sf-status-show-case']
+        'sf-status-show-case': OrderFn.helpers['sf-status-show-case'],
+
+        'sf-real-price': function (total, discount) {
+          return (total() - discount()) / 100;
+        }
 
       },
 
