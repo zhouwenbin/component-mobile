@@ -69,7 +69,7 @@ define(
       },
 
       '.myorder click': function(element, event) {
-        window.location.href = SFConfig.setting.link.orderlist + '&status=all';
+        window.location.href = SFConfig.setting.link.orderlist;
       },
 
       '.mycoupon click': function(element, event) {
