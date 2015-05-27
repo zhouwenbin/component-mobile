@@ -403,6 +403,10 @@ define(
         this.element.html(html);
         $('.overflow-num').show();
         $('.loadingDIV').hide();
+
+        setTimeout(function() {
+          $('.overflow-num').hide();
+        }, 1000);
       }
     });
 

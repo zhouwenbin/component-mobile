@@ -234,11 +234,11 @@ define('sf.b2c.mall.product.detailcontent', [
           })
           .fail(function(data) {
             if (data == 15000800) {
-              new SFMessage(null, {
-                "title": '顺丰海淘',
-                'tip': '您的购物车已满',
-                'type': 'error'
-              });
+              var $el = '<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>';
+              $(document.body).append($el);
+              setTimeout(function() {
+                $el.remove();
+              }, 1000);
             }
           })
       },
