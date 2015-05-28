@@ -119,6 +119,29 @@ define('sf.b2c.mall.order.orderlistcontent', [
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+
+        'sf-package-status': function (status, options) {
+          var statusMap = {
+            'SUBMITED': '已提交',
+            'AUTO_CANCEL': '自动取消',
+            'USER_CANCEL': '用户取消',
+            'AUDITING': '待审核',
+            'OPERATION_CANCEL': '运营取消',
+            'BUYING': '采购中',
+            'BUYING_EXCEPTION': '采购异常',
+            'WAIT_SHIPPING': '待发货',
+            'SHIPPING': '正在出库',
+            'LOGISTICS_EXCEPTION': '物流异常',
+            'SHIPPED': '已发货',
+            'COMPLETED': '已完成',
+            'AUTO_COMPLETED': '自动完成',
+            'CLOSED': '已关闭',
+            'CONSIGNED': '已出库',
+            'RECEIPTED': '已签收'
+          }
+
+          return statusMap[status()];
         }
 
       },
