@@ -169,6 +169,20 @@ define(
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+
+        'sf-is-show-origin': function (canUseActivityPrice, activityPrice, price, options) {
+          if (canUseActivityPrice()) {
+
+            if (price() > activityPrice() ) {
+              return options.fn(options.contexts || this);
+            }else{
+              return options.inverse(options.contexts || this);
+            }
+
+          }else{
+            return options.inverse(options.contexts || this);
+          }
         }
       },
 

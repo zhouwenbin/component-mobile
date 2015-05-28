@@ -41,9 +41,11 @@
                     <div class="cart-num">X1</div>
                     <div class="text-important">¥{{sf-selling-price canUseActivityPrice activityPrice price}}</div>
 
-                    {{#canUseActivityPrice}}
+                    {{! canUseActivityPrice}}
+                    {{#sf-is-show-origin canUseActivityPrice activityPrice price}}
                     <del>¥{{sf.price price}}</del>
-                    {{/canUseActivityPrice}}
+                    {{/sf-is-show-origin}}
+                    {{! canUseActivityPrice}}
                 </div>
             </div>
 

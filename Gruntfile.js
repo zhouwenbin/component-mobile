@@ -1166,6 +1166,7 @@ module.exports = function (grunt) {
 
       shoppingcart: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.shoppingcart.js',
