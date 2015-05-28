@@ -350,7 +350,7 @@ define('sf.b2c.mall.component.register', [
                 //   });
                 //
                 var currentServerTime = this.component.mobileRegister.getServerTime();
-                if (currentServerTime > 1432915200 && currentServerTime < 1433087999) {
+                if (currentServerTime > 1432828800 && currentServerTime < 1433087999) {
                   var message = new SFMessage(null, {
                     'tip': '新人礼10元打车券将在6月1日发放至您的账户，请注意查收。',
                     'type': 'success'
