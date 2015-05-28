@@ -49,12 +49,14 @@
                 </div>
             </div>
 
-            {{#sf-is-empty limitDescList}}
+            {{^sf-is-empty limitDescList}}
             <div class="text-orange">{{#limitDescList}}{{desc}} {{/limitDescList}}</div>
             {{/sf-is-empty}}
 
             {{#if promotionInfo}}
+            {{^sf-is-empty promotionInfo.promotionList}}
             <div class="text-orange">{{#promotionInfo.promotionList}}{{useRuleDesc}} {{/promotionInfo.promotionList}}</div>
+            {{/sf-is-empty}}
             {{/if}}
             <button class="btn btn-danger remove-item-btn">删除</button>
         </li>

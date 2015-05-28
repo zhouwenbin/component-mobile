@@ -195,12 +195,16 @@ define(
         this.requestFactory('getcart');
       },
 
+      requestError: function () {
+        $('.loadingDIV').hide();
+      },
+
       requestFactory: function(tag, cparams) {
         var map = {
           'getcart': function() {
             // @todo 获取数据
             var getCart = new SFShopcartGetCart();
-            getCart.sendRequest().done(_.bind(this.paint, this));
+            getCart.sendRequest().done(_.bind(this.paint, this)).fail(this.requestError);
           },
 
           'updatenum': function(item) {
@@ -208,7 +212,7 @@ define(
             var params = this.getItemInfo(item);
 
             updatenum.setData(params);
-            updatenum.sendRequest().done(_.bind(this.paint, this));
+            updatenum.sendRequest().done(_.bind(this.paint, this)).fail(this.requestError);
           },
 
           'removeitem': function(items) {
@@ -218,7 +222,7 @@ define(
             }
 
             removeitem.setData(params);
-            removeitem.sendRequest(params).done(_.bind(this.paint, this));
+            removeitem.sendRequest(params).done(_.bind(this.paint, this)).fail(this.requestError);
           },
 
           'refreshcart': function(items) {
@@ -228,13 +232,14 @@ define(
             }
 
             refreshCart.setData(params);
-            refreshCart.sendRequest(params).done(_.bind(this.paint, this));
+            refreshCart.sendRequest(params).done(_.bind(this.paint, this)).fail(this.requestError);
           }
 
         }
 
         var fn = map[tag];
         if (_.isFunction(fn)) {
+          $('.loadingDIV').show();
           fn.call(this, cparams);
         }
       },
@@ -307,12 +312,12 @@ define(
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
 
-        if (good.quantity < good.limitQuantity) {
+        // if (good.quantity < good.limitQuantity) {
           good.quantity = good.quantity + 1;
           this.requestFactory('updatenum', good);
-        } else {
-          this.showAlert($element, good);
-        }
+        // } else {
+        //   this.showAlert($element, good);
+        // }
 
         return false;
       },
@@ -404,11 +409,11 @@ define(
           word = word + value.desc + ' '
         });
 
-        $element.closest('.text-error').text(word);
+        $element.closest('.text-orange').text(word);
       },
 
       paint: function(data) {
-        $('.loadingDIV').show();
+
         this.options.data = new can.Map(data);
 
         var renderFn = can.mustache(template_order_shoppingcart);
