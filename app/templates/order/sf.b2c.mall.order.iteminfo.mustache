@@ -46,6 +46,13 @@
   <div class="goodinfo-stowage"></div>
   <ul class="goodslist">
       {{#invariableGoodsItemList}}
+
+      {{#if flag}}
+      <div class="text-error">
+        <span class="icon icon53"></span>{{description}}
+      </div>
+      {{/if}}
+
       <li><img src="{{sf-get-img productImage}}">
           <h3 class="ellipsis2">{{goodsName}}</h3>
           <div class="goodslist-c1">
