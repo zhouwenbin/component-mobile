@@ -263,6 +263,7 @@ define(
 
       //绑定账号
       partnerBind: function(newUser) {
+        var that = this;
         this.component.partnerBind.sendRequest()
           .done(function(data) {
             store.set('csrfToken', data.csrfToken);
@@ -277,8 +278,8 @@ define(
             //   "event": "REGISTER_USER_SUCCESS"
             // });
             if (newUser) {
-              var currentServerTime = this.component.partnerBind.getServerTime();
-              if (currentServerTime > 1432828800 && currentServerTime < 1433087999) {
+              var currentServerTime = that.component.partnerBind.getServerTime();
+              if (currentServerTime > 1432828800000 && currentServerTime < 1433087999000) {
                 var message = new SFMessage(null, {
                   'tip': '新人礼10元打车券将在6月1日发放至您的账户，请注意查收。',
                   'type': 'success'
