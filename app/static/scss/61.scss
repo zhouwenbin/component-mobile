@@ -1,5 +1,8 @@
 ﻿@import 'utils/variables';
 @import 'utils/placeholders';
+body{
+	max-width: 320px;
+}
 .children-day{
 	background: url(#{$bg-url}61/bg.jpg) no-repeat center top;
 	background-size: 320px;
@@ -101,10 +104,37 @@
 	margin-left: 10px;
 	margin-bottom: 10px;
 	width: 139px;
+	position: relative;
 	}
 .tab2-b li img{
 	width: 100%;
 }
 .tab2-b{
 	padding-bottom: 28px;
+}
+.icon-soldout{
+	background: url(#{$bg-url}61/icon1.png) no-repeat;
+	background-size: 87px;
+	width: 87px;
+	height: 87px;
+	position: absolute;
+	left: 74px;
+	top: 277px;
+	text-indent: -999em;
+}
+.mask{
+	position: absolute;;
+	display: block;
+	box-sizing:border-box;
+}
+.tab2-b li span{
+	font-size: 18px;
+	line-height: 20px;
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	left: 0;
+	top: 61px;
+	width: 100%;
+	z-index: 999;
 }
