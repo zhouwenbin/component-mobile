@@ -105,8 +105,17 @@
             <h3>商品信息</h3>
             <ul class="goodslist">
                 {{#orderGoodsItemList}}
-                <li><img src="{{sf-image imageUrl}}">
-                    <h3 class="ellipsis2">{{goodsName}}</h3>
+                <li>
+                    <a href="/detail/{{itemId}}.html">
+                      <img src="{{sf-image imageUrl}}">
+                    </a>
+
+                    <div class="goodslist-c2">
+                      <h3 class="ellipsis2">
+                        <a href="/detail/{{itemId}}.html">{{goodsName}}</a>
+                      </h3>
+                    </div>
+
                     <div class="goodslist-c1">
                         <div class="orderlist-num">X{{quantity}}</div>
                         <div class="text-important">¥{{sf.price price}}</div>

@@ -30,8 +30,15 @@
   <div class="goodinfo-stowage">{{shippingWarehouse}}</div>
   <ul class="goodslist">
       {{#orderGoodsItemList}}
-      <li><img src="{{sf-get-img productImage}}">
-          <h3 class="ellipsis2">{{goodsName}}</h3>
+      <li>
+          <img src="{{sf-get-img productImage}}">
+
+          <div class="goodslist-c2">
+            <h3 class="ellipsis2">
+              {{goodsName}}
+            </h3>
+          </div>
+
           <div class="goodslist-c1">
               <div class="orderlist-num">X{{quantity}}</div>
               <div class="text-important">¥{{sf.price price}}</div>
@@ -53,8 +60,15 @@
       </div>
       {{/if}}
 
-      <li><img src="{{sf-get-img productImage}}">
-          <h3 class="ellipsis2">{{goodsName}}</h3>
+      <li>
+          <img src="{{sf-get-img productImage}}">
+
+          <div class="goodslist-c2">
+            <h3 class="ellipsis2">
+              {{goodsName}}
+            </h3>
+          </div>
+
           <div class="goodslist-c1">
               <div class="orderlist-num">X{{quantity}}</div>
               <div class="text-important">¥{{sf.price price}}</div>

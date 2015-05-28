@@ -46,11 +46,11 @@
                         <a href="/detail/{{itemId}}.html">
                           <img src="{{sf-image imageUrl}}">
                         </a>
-                        <a href="/detail/{{itemId}}.html">
-                          <div class="goodslist-c2">
-                            <h3 class="ellipsis2">{{goodsName}}</h3>
-                          </div>
-                        </a>
+                        <div class="goodslist-c2">
+                          <h3 class="ellipsis2">
+                            <a href="/detail/{{itemId}}.html">{{goodsName}}</a>
+                          </h3>
+                        </div>
                         <div class="goodslist-c1">
                             <div class="orderlist-num">X{{quantity}}</div>
                             <div class="text-important">¥{{sf.price price}}</div>
