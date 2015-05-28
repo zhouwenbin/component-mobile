@@ -1241,7 +1241,7 @@ module.exports = function (grunt) {
         'autoprefixer',
         'concat',
         'requirejs',
-        'cssmin',
+        // 'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',
