@@ -22,6 +22,7 @@ define(
     var deleteOrder = new SFDeleteOrder();
 
     var PREFIX = 'http://img0.sfht.com';
+    var EMPTY_IMG = 'http://img0.sfht.com';//@todo 增加一个备用图片地址
 
     return {
 
@@ -91,7 +92,7 @@ define(
           return statusMap[status()];
         },
 
-        'sf-pay-status': function (paymentStatus) {
+        'sf-pay-status': function(paymentStatus) {
           var paymentStatusMap = {
             'WAITPAY': '待支付',
             'PAYING': '支付中',
@@ -105,7 +106,7 @@ define(
           return paymentStatusMap[paymentStatus()];
         },
 
-        'sf-payment-type': function (payType) {
+        'sf-payment-type': function(payType) {
           var map = {
             'alipay': '支付宝',
             'tenpay_forex': '财付通',
@@ -246,7 +247,7 @@ define(
         );
       },
 
-      orderConfirm: function (params, success, error) {
+      orderConfirm: function(params, success, error) {
         confirmReceive.setData({
           subOrderId: params.orderId
         });
@@ -254,7 +255,7 @@ define(
         confirmReceive.sendRequest().done(success).fail(error);
       },
 
-      orderDelete: function (params, success, error) {
+      orderDelete: function(params, success, error) {
         deleteOrder.setData({
           orderId: params.orderId
         });
