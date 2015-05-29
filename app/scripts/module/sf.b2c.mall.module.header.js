@@ -118,7 +118,7 @@ define(
           })
           .fail(function(data) {
             if (data == 15000800) {
-              var $el = '<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>';
+              var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
