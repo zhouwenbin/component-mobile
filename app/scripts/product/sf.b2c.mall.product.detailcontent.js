@@ -213,6 +213,8 @@ define('sf.b2c.mall.product.detailcontent', [
        * @description 加入购物车
        */
       addCart: function(itemId, num) {
+        can.route.attr({tag: 'init', target: 'empty'});
+
         var addItemToCart = new SFAddItemToCart({
           items: JSON.stringify([{
             itemId: itemId,
@@ -229,16 +231,16 @@ define('sf.b2c.mall.product.detailcontent', [
               // $('#firststep').show();
               // $('#secondstep').hide();
 
-              can.route.attr({tag: 'init', target: 'empty'});
+              // can.route.attr({tag: 'init', target: 'empty'});
             }
           })
           .fail(function(data) {
             if (data == 15000800) {
-              var $el = '<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>';
+              var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
-              }, 1000);
+              }, 10000);
             }
           })
       },
