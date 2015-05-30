@@ -672,6 +672,7 @@ module.exports = function (grunt) {
       },
       gotopay: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.gotopay.js',
