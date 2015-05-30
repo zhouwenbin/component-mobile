@@ -183,6 +183,20 @@ define(
           }else{
             return options.inverse(options.contexts || this);
           }
+        },
+
+        'sf-is-avil-promotion': function (list, options) {
+          var info = list();
+          var isAllow = false;
+          info.each(function (index, element) {
+            isAllow = isAllow || element.useRuleDesc
+          })
+
+          if (isAllow) {
+            return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
+          }
         }
       },
 
