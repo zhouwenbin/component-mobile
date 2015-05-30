@@ -1,6 +1,7 @@
 'use strict';
 
 define('sf.b2c.mall.order.iteminfo', [
+  'text',
   'can',
   'zepto',
   'sf.b2c.mall.api.order.submitOrderForAllSys',
@@ -15,8 +16,9 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.helpers',
   'sf.util',
   'sf.b2c.mall.widget.message',
-  'sf.b2c.mall.business.config'
-], function(can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFMessage, SFConfig) {
+  'sf.b2c.mall.business.config',
+  'text!template_order_iteminfo'
+], function(text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFMessage, SFConfig, template_order_iteminfo) {
 
   return can.Control.extend({
     itemObj: new can.Map({}),
@@ -45,7 +47,9 @@ define('sf.b2c.mall.order.iteminfo', [
 
       can.when(that.initOrderRender())
         .done(function() {
-          var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj, that.helpers);
+          // var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj, that.helpers);
+          var renderFn = can.mustache(template_order_iteminfo);
+          var html = renderFn(that.itemObj, that.helpers);
           that.element.html(html);
 
           if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {

@@ -265,6 +265,7 @@ requirejs.config({
     'template_order_orderlist': 'templates/order/sf.b2c.mall.order.orderlist.mustache',
     'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
     'template_order_orderdetail': 'templates/order/sf.b2c.mall.order.orderdetail.mustache',
+    'template_order_iteminfo': 'templates/order/sf.b2c.mall.order.iteminfo.mustache',
     'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
 
     // 520
