@@ -124,6 +124,14 @@
 <section class="tooltip center overflow-num">
     <div>{{errorDesc}}</div>
 </section>
+{{else}}
+
+{{#sf-is-over-limit totalNum limitGoodsNum}}
+<section class="tooltip center overflow-num">
+    <div>您的购物车已满，赶紧去买单哦～</div>
+</section>
+{{/sf-is-over-limit}}
+
 {{/if}}
 
 {{!sf-is-over-limit totalNum limitGoodsNum}}
