@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.order.requestPayV2
+  * @class sf.b2c.mall.api.order.getOrderV2
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.order.requestPayV2',
+'sf.b2c.mall.api.order.getOrderV2',
 [
   'zepto',
   'can',
@@ -22,22 +22,18 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'order.requestPayV2',
+      METHOD_NAME: 'order.getOrderV2',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'orderId': 'string',
-        'payType': 'string',
+        'orderId': 'string'
       },
       OPTIONAL: {
-        'extInfo': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
         '4000100': 'order unkown error',
-        '4001500': '请求支付系统失败',
-        '4001504': '',
-        '4001700': '满足查询条件的订单不存在'
+        '4100600': '请求参数有误'
       }
     }
   });

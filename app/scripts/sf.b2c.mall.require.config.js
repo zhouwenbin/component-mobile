@@ -5,6 +5,7 @@ requirejs.config({
     // Pre Define
     'can': 'http://www.google.com/bower_components/canjs/amd/can',
     'zepto': 'http://www.google.com/zepto',
+    'zepto.cookie': 'http://www.google.com/zepto.cookie',
     'underscore': 'http://www.google.com/bower_components/underscore/underscore-min',
     'fastclick': 'http://www.google.com/fastclick',
     'md5': 'http://www.google.com/bower_components/blueimp-md5/js/md5.min',
@@ -267,6 +268,7 @@ requirejs.config({
     'template_order_orderdetail': 'templates/order/sf.b2c.mall.order.orderdetail.mustache',
     'template_order_iteminfo': 'templates/order/sf.b2c.mall.order.iteminfo.mustache',
     'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
+    'sf.b2c.mall.api.shopcart.isShowCart': 'scripts/api/sf.b2c.mall.api.shopcart.isShowCart',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',

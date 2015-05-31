@@ -876,6 +876,7 @@ module.exports = function (grunt) {
 
       price: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl:        './app/',
           out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.price.js',
@@ -903,6 +904,7 @@ module.exports = function (grunt) {
       },
       header: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl:        './app/',
           out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.header.js',
