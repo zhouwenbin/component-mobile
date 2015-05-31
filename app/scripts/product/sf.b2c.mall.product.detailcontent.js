@@ -222,7 +222,8 @@ define('sf.b2c.mall.product.detailcontent', [
               })
 
           }else{
-            $(".mini-cart-container-parent").show();
+            $(".mini-cart-container").show();
+            $(".addcart").show();
           }
         }else{
           var isShowCart = new SFIsShowCart();
