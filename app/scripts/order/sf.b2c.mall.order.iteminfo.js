@@ -391,10 +391,23 @@ define('sf.b2c.mall.order.iteminfo', [
         })
         .fail(function(error) {
           element.removeClass("disable");
-          new SFMessage(null, {
+          // new SFMessage(null, {
+          //   'tip': that.errorMap[error] || '下单失败',
+          //   'type': 'error'
+          // });
+
+          var callback = function () {
+            if (error == '4000404') {
+              window.location.reload();
+            }
+          }
+
+          var message = new SFMessage(null, {
             'tip': that.errorMap[error] || '下单失败',
-            'type': 'error'
+            'type': 'confirm',
+            'okFunction': callback
           });
+
         });
     },
 
