@@ -31,6 +31,7 @@ requirejs.config({
     'sf.b2c.mall.api.order.confirmReceive': 'scripts/api/sf.b2c.mall.api.order.confirmReceive',
     'sf.b2c.mall.api.order.deleteOrder': 'scripts/api/sf.b2c.mall.api.order.deleteOrder',
     'sf.b2c.mall.api.order.getOrder': 'scripts/api/sf.b2c.mall.api.order.getOrder',
+    'sf.b2c.mall.api.order.getOrderV2': 'scripts/api/sf.b2c.mall.api.order.getOrderV2',
     'sf.b2c.mall.api.order.getOrderList': 'scripts/api/sf.b2c.mall.api.order.getOrderList',
     'sf.b2c.mall.api.order.getSubOrder': 'scripts/api/sf.b2c.mall.api.order.getSubOrder',
     'sf.b2c.mall.api.order.requestPay': 'scripts/api/sf.b2c.mall.api.order.requestPay',
