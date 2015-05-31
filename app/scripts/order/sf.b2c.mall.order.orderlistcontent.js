@@ -17,8 +17,9 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.env.switcher',
     'text!template_order_orderlist',
     'sf.b2c.mall.widget.message',
+    'sf.b2c.mall.api.shopcart.addItemToCart', // 添加购物车接口
   ],
-  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFMessage) {
+  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFMessage, SFAddItemToCart) {
 
     var DEFAULT_PAGE_NUM = 1;
     var DEFAULT_PAGE_SIZE = 50;
@@ -286,7 +287,49 @@ define('sf.b2c.mall.order.orderlistcontent', [
         window.location = window.location.pathname + '?' + $.param(params)
 
         // return false;
-      }
+      },
+
+      '.rebuy click': function ($element, event) {
+        event && event.preventDefault();
+        var order = $element.closest('li').data('order');
+
+        var array = [];
+        order.orderPackageItemList.each(function (packageInfo, index) {
+          packageInfo.orderGoodsItemList.each(function (good, index) {
+            array.push({itemId: good.itemId, num: good.quantity})
+          })
+        });
+
+        this.addCart(array);
+      },
+
+       /**
+       * @author Michael.Lee
+       * @description 加入购物车
+       */
+      addCart: function(array) {
+        var addItemToCart = new SFAddItemToCart({
+          items: JSON.stringify(array)
+        });
+
+        // 添加购物车发送请求
+        addItemToCart.sendRequest()
+          .done(function(data) {
+            if (data.value) {
+              // can.trigger(window, 'updateCart');
+              window.location.href = '/shoppingcart.html'
+            }
+          })
+          .fail(function(data) {
+            if (data == 15000800) {
+              var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
+              $(document.body).append($el);
+              setTimeout(function() {
+                $el.remove();
+              }, 10000);
+            }
+          })
+      },
 
     });
   });

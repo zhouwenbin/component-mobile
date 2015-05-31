@@ -19,10 +19,11 @@ define(
     'sf.b2c.mall.api.shopcart.removeItemsInCart',
     'sf.b2c.mall.api.shopcart.updateItemNumInCart',
     'sf.b2c.mall.widget.message',
-    'text!template_order_shoppingcart'
+    'text!template_order_shoppingcart',
+    'sf.b2c.mall.api.shopcart.isShowCart',
   ],
 
-  function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart, SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart) {
+  function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart, SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
@@ -201,7 +202,50 @@ define(
       },
 
       init: function() {
+        this.controlCart();
+
         this.render();
+      },
+
+      controlCart: function() {
+        if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          var uinfo = $.fn.cookie('3_uinfo');
+          var arr = [];
+          if (uinfo) {
+            arr = uinfo.split(',');
+          }
+
+          var flag = arr[4];
+
+          // 如果判断开关关闭，使用dom操作不显示购物车
+          if (typeof flag == 'undefined' || flag == '2') {
+            window.location.href = '/index.html';
+          }else if (flag == '0') {
+            // @todo 请求总开关进行判断
+            var isShowCart = new SFIsShowCart();
+            isShowCart
+              .sendRequest()
+              .done(function (data) {
+                if (data.value) {
+                }else{
+                  window.location.href = '/index.html';
+                }
+              })
+
+          }else{
+            $(".mini-cart-container-parent").show();
+          }
+        }else{
+          var isShowCart = new SFIsShowCart();
+          isShowCart
+            .sendRequest()
+            .done(function (data) {
+              if (data.value) {
+              }else{
+                window.location.href = '/index.html';
+              }
+            });
+        }
       },
 
       render: function() {
