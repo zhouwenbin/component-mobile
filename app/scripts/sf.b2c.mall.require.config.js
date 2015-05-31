@@ -269,6 +269,7 @@ requirejs.config({
     'template_order_iteminfo': 'templates/order/sf.b2c.mall.order.iteminfo.mustache',
     'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
     'sf.b2c.mall.api.shopcart.isShowCart': 'scripts/api/sf.b2c.mall.api.shopcart.isShowCart',
+    'template_product_detailcontent':'templates/product/sf.b2c.mall.product.detailcontent.mustache',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',

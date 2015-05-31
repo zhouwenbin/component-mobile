@@ -65,7 +65,7 @@ define(
 
       controlCart: function() {
         if (SFComm.prototype.checkUserLogin.call(this)) {
-          var uinfo = $.fn.cookie('1_uinfo');
+          var uinfo = $.fn.cookie('3_uinfo');
           var arr = [];
           if (uinfo) {
             arr = uinfo.split(',');
