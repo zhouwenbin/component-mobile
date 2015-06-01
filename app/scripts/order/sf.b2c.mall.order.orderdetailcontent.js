@@ -179,7 +179,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
     '.gotopay click': function($element, event) {
       var url = SFConfig.setting.link.gotopay + '&' + $.param({
-        "orderid": this.options.data.orderItem.orderId
+        "orderid": this.options.data.orderItem.orderId,
+        "showordersuccess": true
       });
 
       // －－－－－－－－－－－－－－－－－－

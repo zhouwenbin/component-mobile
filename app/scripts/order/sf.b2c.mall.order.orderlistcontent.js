@@ -106,6 +106,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
         'sf-is-active': function(status, cstatus) {
           if (status() == cstatus) {
             return 'active';
+          }else if (!status() && cstatus == '') {
+            return 'active';
           }
         },
 
@@ -162,7 +164,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var renderFn = can.view.mustache(template_order_orderlist);
 
         this.options.data = new can.Map(data);
-        this.options.data.attr('status', this.orderStatusMap[params.status || DEFAULT_STATUS]);
+        this.options.data.attr('status', params.status || DEFAULT_STATUS);
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
 
@@ -174,7 +176,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
         var order = $element.closest('li').data('order');
         var url = SFConfig.setting.link.gotopay + '&' + $.param({
-          "orderid": order.orderId
+          "orderid": order.orderId,
+          "showordersuccess": true
         });
 
         // －－－－－－－－－－－－－－－－－－
