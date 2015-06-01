@@ -116,7 +116,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     // 倒计时
     timmer: function() {
       var that = this;
-      if (this.options.data.orderItem.paymentStatus == 'WAITPAY') {
+      if (this.options.data.orderItem.paymentStatus == 'WAITPAY' && this.options.data.orderItem.orderStatus == 'SUBMITED') {
         this.drawTime();
         setInterval(function() {
           that.drawTime.call(that);
