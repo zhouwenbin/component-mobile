@@ -36,7 +36,7 @@ define(
 
       helpers: {
 
-        'sf-is-login': function (options) {
+        'sf-is-login': function(options) {
           if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
             return options.fn(options.contexts || this);
           } else {
@@ -59,7 +59,7 @@ define(
           }
 
           var isAllow = true;
-          _.each(array, function(value, key, list){
+          _.each(array, function(value, key, list) {
             isAllow = isAllow && map[type]
           });
 
@@ -114,7 +114,7 @@ define(
           }
         },
 
-        'sf-select-all': function (groups, options) {
+        'sf-select-all': function(groups, options) {
           var isSelectedAll = true;
           var array = groups();
 
@@ -122,8 +122,8 @@ define(
             return options.inverse(options.contexts || this);
           }
 
-          array.each(function (item) {
-            item.goodItemList.each(function (good) {
+          array.each(function(item) {
+            item.goodItemList.each(function(good) {
               isSelectedAll = isSelectedAll && good.isSelected;
             })
           });
@@ -135,7 +135,7 @@ define(
           }
         },
 
-        'sf-is-empty': function (groups, options) {
+        'sf-is-empty': function(groups, options) {
           var array = groups();
           if (array.length > 0) {
             return options.inverse(options.contexts || this);
@@ -172,40 +172,40 @@ define(
           }
         },
 
-        'sf-is-show-origin': function (canUseActivityPrice, activityPrice, price, options) {
+        'sf-is-show-origin': function(canUseActivityPrice, activityPrice, price, options) {
           if (canUseActivityPrice()) {
 
-            if (price() > activityPrice() ) {
+            if (price() > activityPrice()) {
               return options.fn(options.contexts || this);
-            }else{
+            } else {
               return options.inverse(options.contexts || this);
             }
 
-          }else{
+          } else {
             return options.inverse(options.contexts || this);
           }
         },
 
-        'sf-is-avil-promotion': function (list, options) {
+        'sf-is-avil-promotion': function(list, options) {
           var info = list();
           var isAllow = false;
-          info.each(function (index, element) {
+          info.each(function(index, element) {
             isAllow = isAllow || element.useRuleDesc
           })
 
           if (isAllow) {
             return options.fn(options.contexts || this);
-          }else{
+          } else {
             return options.inverse(options.contexts || this);
           }
         },
 
-        'sf-allow': function (canAddNum, options) {
+        'sf-allow': function(canAddNum, options) {
           var isAllow = canAddNum();
 
           if (!isAllow) {
             return options.fn(options.contexts || this);
-          }else{
+          } else {
             return options.inverse(options.contexts || this);
           }
         }
@@ -230,28 +230,26 @@ define(
           // 如果判断开关关闭，使用dom操作不显示购物车
           if (typeof flag == 'undefined' || flag == '2') {
             window.location.href = '/index.html';
-          }else if (flag == '0') {
+          } else if (flag == '0') {
             // @todo 请求总开关进行判断
             var isShowCart = new SFIsShowCart();
             isShowCart
               .sendRequest()
-              .done(function (data) {
-                if (data.value) {
-                }else{
+              .done(function(data) {
+                if (data.value) {} else {
                   window.location.href = '/index.html';
                 }
               })
 
-          }else{
+          } else {
             $(".mini-cart-container-parent").show();
           }
-        }else{
+        } else {
           var isShowCart = new SFIsShowCart();
           isShowCart
             .sendRequest()
-            .done(function (data) {
-              if (data.value) {
-              }else{
+            .done(function(data) {
+              if (data.value) {} else {
                 window.location.href = '/index.html';
               }
             });
@@ -263,7 +261,7 @@ define(
         this.requestFactory('getcart');
       },
 
-      requestError: function () {
+      requestError: function() {
         $('.loadingDIV').hide();
       },
 
@@ -381,8 +379,8 @@ define(
         var good = $element.closest('li').data('good');
 
         // if (good.quantity < good.limitQuantity) {
-          good.quantity = good.quantity + 1;
-          this.requestFactory('updatenum', good);
+        good.quantity = good.quantity + 1;
+        this.requestFactory('updatenum', good);
         // } else {
         //   this.showAlert($element, good);
         // }
@@ -400,7 +398,8 @@ define(
         var ask = $element.val();
         var good = $element.closest('li').data('good');
 
-        if (ask < good.limitQuantity) {
+        if (ask <= good.limitQuantity) {
+          good.quantity = $element.val();
           this.requestFactory('updatenum', good);
         } else {
           $element.val(1);
@@ -462,7 +461,7 @@ define(
         });
       },
 
-      '.gotopay click': function ($element, event) {
+      '.gotopay click': function($element, event) {
         if ($element.hasClass('btn-disable')) {
           return false;
         }
