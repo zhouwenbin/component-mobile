@@ -262,7 +262,8 @@ define(
       },
 
       //绑定账号
-      partnerBind: function() {
+      partnerBind: function(newUser) {
+        var that = this;
         this.component.partnerBind.sendRequest()
           .done(function(data) {
             store.set('csrfToken', data.csrfToken);
@@ -270,29 +271,40 @@ define(
             var params = can.deparam(window.location.search.substr(1));
             var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
-            var receivePro = new SFReceivePro({
-              "channel": "B2C_H5",
-              "event": "REGISTER_USER_SUCCESS"
-            });
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
 
-            receivePro
-              .sendRequest()
-              .done(function(proInfo) {
+            // var receivePro = new SFReceivePro({
+            //   "channel": "B2C_H5",
+            //   "event": "REGISTER_USER_SUCCESS"
+            // });
+            // if (newUser) {
+            //   var currentServerTime = that.component.partnerBind.getServerTime();
+            //   if (currentServerTime > 1432828800000 && currentServerTime < 1433087999000) {
+            //     var message = new SFMessage(null, {
+            //       'tip': '新人礼10元打车券将在6月1日发放至您的账户，请注意查收。',
+            //       'type': 'success'
+            //     });
+            //   }
+            // }
 
-                if (proInfo.couponInfos) {
-                  new SFMessage($(window.parent.document), {
-                    'tip': "恭喜您获得优惠券",
-                    'type': 'success'
-                  });
-                }
+            // receivePro
+            //   .sendRequest()
+            //   .done(function(proInfo) {
 
-                window.location.href = redirectUrl || SFBizConf.setting.link.index;
-              })
-              .fail(function(errorCode) {
-                console.error(errorCode);
+            //     if (proInfo.couponInfos) {
+            //       new SFMessage($(window.parent.document), {
+            //         'tip': "恭喜您获得优惠券",
+            //         'type': 'success'
+            //       });
+            //     }
 
-                window.location.href = redirectUrl || SFBizConf.setting.link.index;
-              })
+            //     window.location.href = redirectUrl || SFBizConf.setting.link.index;
+            //   })
+            //   .fail(function(errorCode) {
+            //     console.error(errorCode);
+
+            //     window.location.href = redirectUrl || SFBizConf.setting.link.index;
+            //   })
 
           }).fail(function(errorCode) {
             if (_.isNumber(errorCode)) {
@@ -390,7 +402,7 @@ define(
               'type': 'MOBILE',
               'accountId': mobile
             });
-            this.partnerBind();
+            this.partnerBind(true);
           }
 
         }

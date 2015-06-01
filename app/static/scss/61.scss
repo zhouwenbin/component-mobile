@@ -1,140 +1,36 @@
-﻿@import 'utils/variables';
-@import 'utils/placeholders';
-body{
-	max-width: 320px;
-}
-.children-day{
-	background: url(#{$bg-url}61/bg.jpg) no-repeat center top;
-	background-size: 320px;
-	
-	
-}
-.children-day .pm{
-	padding-top: 453px;
-	height: 1548px;
-	box-sizing:border-box;
-	position: relative;
-}
-.children-day .a1{
-	width: 47px;
-	height: 47px;
-	position: absolute;
-	left: 95px;
-	top: 108px;
-	text-indent: -999em;
-}
-.children-day .a2{
-	width: 133px;
-	height: 61px;
-	position: absolute;
-	left: 15px;
-	top: 291px;
-	text-indent: -999em;
-}
-.m-dialog{
-	
-	position: absolute;
-	top:10%;
-	left: 50%;
-	display: none;
-	width: 90%;
-}
-.m-dialog .mb{
-	position: relative;
-	left: -50%;
-	margin-top: -50%;
-	background: #fff;
-	background: rgba(255,255,255,0.85);
-	border:2px solid #ccc;
-	padding: 10px 26px;
-	border-radius:4px;
-}
-.m-dialog h2，
-.m-dialog h3{
-	color: #ff0064;
-	margin: 10px 0;
-}
-.m-dialog li{
-	line-height: 1.5;
-}
-.m-dialog .close{
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	font-size: 18px;
-	color: #ccc;
-}
-.tab2{
-	background: #fff;
-}
-.tab2-h{
-	padding-top: 37px;
-	border-bottom: 1px solid #b6b6b6;
-	height: 60px;
-	margin-bottom: 21px;
-}
-.tab2-h li{
-	width: 33%;
-	text-align: center;
-	display: inline-block;
-	background: url(#{$bg-url}61/tab-h.png) no-repeat center bottom;
-	background-size: 17px;
-	padding-bottom: 20px;
-}
-.tab2-h li.active{
-	background: url(#{$bg-url}61/tab-h-active.png) no-repeat center bottom;
-	background-size: 17px;
-}
-.tab2-h .active a{
-	color: #009ae4;
+@import 'utils/variables';
+.banner img{
+	width: 100%;
 }
 
-.tab2-h a{
-	color: #b6b6b6;
+.recCoupon img{
+  width: 100%
 }
-.tab2-b{
-	padding-left: 6px;
-	display: none;
+
+.activity img{
+  width: 100%
 }
-.tab2-b.active{
-	display: block;
+
+.activity li {
+  float: left;
+  width: 33.3%;
+  height: 30px;
+  font-size: 15px;
+  border: 1px solid #c6c6c6;
+  background: #fff;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
 }
-.tab2-b li{
-	display: inline-block;
-	margin-left: 10px;
-	margin-bottom: 10px;
-	width: 139px;
-	position: relative;
-	}
-.tab2-b li img{
-	width: 100%;
-}
-.tab2-b{
-	padding-bottom: 28px;
-}
-.icon-soldout{
-	background: url(#{$bg-url}61/icon1.png) no-repeat;
-	background-size: 87px;
-	width: 87px;
-	height: 87px;
-	position: absolute;
-	left: 74px;
-	top: 277px;
-	text-indent: -999em;
-}
-.mask{
-	position: absolute;;
-	display: block;
-	box-sizing:border-box;
-}
-.tab2-b li span{
-	font-size: 18px;
-	line-height: 20px;
-	text-align: center;
-	color: #fff;
-	position: absolute;
-	left: 0;
-	top: 61px;
-	width: 100%;
-	z-index: 999;
+
+.cms-module-filltab li {
+  float: left;
+  width: 33.3%;
+  height: 30px;
+  font-size: 15px;
+  border: 1px solid #c6c6c6;
+  background: #fff;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 30px;
 }

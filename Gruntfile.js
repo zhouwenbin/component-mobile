@@ -874,6 +874,20 @@ module.exports = function (grunt) {
         }
       },
 
+      tab: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.tab.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.tab"],
+          insertRequire:  ['sf.b2c.mall.module.tab']
+        }
+      },
+
       price: {
         options: {
           optimize: 'none',

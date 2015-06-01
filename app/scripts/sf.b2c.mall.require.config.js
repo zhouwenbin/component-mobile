@@ -161,6 +161,7 @@ requirejs.config({
     'sf.b2c.mall.module.price': 'scripts/module/sf.b2c.mall.module.price',
     'sf.b2c.mall.module.time': 'scripts/module/sf.b2c.mall.module.time',
     'sf.b2c.mall.module.header': 'scripts/module/sf.b2c.mall.module.header',
+    'sf.b2c.mall.module.tab': 'scripts/module/sf.b2c.mall.module.tab',
 
     // 首页
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',

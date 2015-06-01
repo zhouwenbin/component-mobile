@@ -219,8 +219,8 @@ define(
       "#banner-dialog click": function($el, event) {
         if ($(event.target).attr('id') != $el.attr('id')) {
           return false;
-        } else {
-          window.location.href = "http://m.sfht.com/520.html";
+        }else{
+          window.location.href = "http://m.sfht.com/61.html";
         }
       },
 
@@ -247,9 +247,9 @@ define(
         }
 
         // 如果已经登录了 则不显示
-        if (store.get('csrfToken')) {
-          return false;
-        }
+        // if (store.get('csrfToken')) {
+        //   return false;
+        // }
 
         // 如果显示没超过一天 则不要显示广告
         if (store.get('lastadshowtime') && (new Date().getTime() - store.get('lastadshowtime') < 60 * 60 * 24 * 1000)) {

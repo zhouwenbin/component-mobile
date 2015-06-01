@@ -96,12 +96,20 @@ define(
                 that.itemObj.thirdparty.count++;
                 that.itemObj.thirdparty.items.push(tmpCoupon);
               },
+
+              "EXT_TAXICOUPON": function() {
+                if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.showButton = true;
+                }
+                that.itemObj.thirdparty.count++;
+                that.itemObj.thirdparty.items.push(tmpCoupon);
+              }
             }
 
             var pushCoupon = function(couponType, status) {
               var fn;
 
-              if (couponType == "EXT_MOVIETICKET") {
+              if (couponType == "EXT_MOVIETICKET" || couponType == "EXT_TAXICOUPON") {
                 fn = thirdpartyMap[couponType];
               } else {
                 fn = couponStatusMap[status];
