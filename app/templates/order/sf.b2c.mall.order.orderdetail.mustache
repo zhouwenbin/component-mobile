@@ -125,7 +125,7 @@
                 <div class="text-disable">{{shippingWarehouse}}发货</div>
             </div>
             <div class="box box1">
-                <a href="#!&packageNo={{packageNo}}" class="box-link">
+                <a href="#!&packageNo={{@index}}" class="box-link">
                     <div>物流信息</div>
                     {{#sf-first actionTraceItemList}}
                     <time>{{sf.time gmtHappened}}</time>
@@ -133,9 +133,7 @@
                     {{/sf-first}}
                 </a>
 
-                {{#packageNo}}
                 <span class="icon icon13 box-arrow center-vertical"></span>
-                {{/packageNo}}
             </div>
             <h3>商品信息</h3>
             <ul class="goodslist">
@@ -166,7 +164,7 @@
 
 {{#sf-status-show-case orderItem.orderStatus 'NEEDPAY'}}
 <!--立即购买-->
-<section class="nav">
+<section class="nav" style="height: 0px;">
     <div class="nav-r1">
         <div class="nav-c2">
             <button class="btn btn-danger btn-big gotopay">去支付</button>
@@ -178,7 +176,7 @@
 
 {{#sf-status-show-case orderItem.orderStatus 'RECEIVED'}}
 <!--确认收货-->
-<section class="nav">
+<section class="nav" style="height: 0px;">
     <div class="nav-r1">
         <div class="nav-c2">
             <button class="btn btn-success btn-big received">确认收货</button>
@@ -189,7 +187,7 @@
 {{/sf-show-paybtn}}
 
 {{#each orderItem.orderPackageItemList}}
-<section class="order logistics logistics-{{packageNo}}" style="display:none">
+<section class="order logistics logistics-{{@index}}" style="display:none">
     <h2>物流跟踪</h2>
     <ul>
     {{#sf-reverse actionTraceItemList}}
