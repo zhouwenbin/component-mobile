@@ -140,6 +140,32 @@ define(
           return statusMap[status()];
         },
 
+        'sf-coupon-type': function (action, type, target, options) {
+          if (action() == 'COST') {
+
+            if (type() == 'CASH' && target == 'COSTCOUPON') {
+              return options.fn(options.contexts || this);
+            } else {
+              return options.inverse(options.contexts || this);
+            }
+
+          }else if (action() == 'PRESENT') {
+
+            if (type() == 'CASH' && target == 'CASH') {
+              return options.fn(options.contexts || this);
+            }else if (type() == 'GIFTBAG' && target == 'GIFTBAG') {
+              return options.fn(options.contexts || this);
+            }else if (type() == 'SHAREBAG' && target == 'SHAREBAG') {
+              return options.fn(options.contexts || this);
+            }else{
+              return options.inverse(options.contexts || this);
+            }
+
+          }else{
+            return options.inverse(options.contexts || this);
+          }
+        },
+
         'sf-status-show-case': function(status, target, options) {
           var map = {
             // 'SUBMITED': ['NEEDPAY', 'CANCEL', 'INFO'],

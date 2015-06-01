@@ -32,11 +32,11 @@
                     <div class="input-num">
                         <button class="btn minus-num">-</button>
                         <input class="input-num" type="text" value="{{quantity}}">
-                        <button class="btn plus-num">+</button>
+                        <button class="btn plus-num" {{#canAddNum}}disabled{{/canAddNum}}>+</button>
                     </div>
                 </div>
                 <div class="cart-c2">
-                    <div class="cart-num">X1</div>
+                    <div class="cart-num">x1</div>
                     <div class="text-important">¥{{sf-selling-price canUseActivityPrice activityPrice price}}</div>
 
                     {{#sf-is-show-origin canUseActivityPrice activityPrice price}}
