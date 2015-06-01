@@ -20,11 +20,13 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.weixin',
     'sf.util',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
-    'sf.b2c.mall.api.shopcart.addItemToCart' // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.addItemToCart', // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.isShowCart',
+    'text!template_product_detailcontent'
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
-    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn, SFGetTotalCount, SFAddItemToCart) {
+    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin, SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, template_product_detailcontent) {
 
     Fastclick.attach(document.body);
 
@@ -189,6 +191,56 @@ define('sf.b2c.mall.product.detailcontent', [
         }
       },
 
+      controlCart: function() {
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          var uinfo = $.fn.cookie('3_uinfo');
+          var arr = [];
+          if (uinfo) {
+            arr = uinfo.split(',');
+          }
+
+          var flag = arr[4];
+
+          // 如果判断开关关闭，使用dom操作不显示购物车
+          if (typeof flag == 'undefined' || flag == '2') {
+            $(".mini-cart-container").hide();
+            $(".addcart").hide();
+          }else if (flag == '0') {
+            // @todo 请求总开关进行判断
+            var isShowCart = new SFIsShowCart();
+            isShowCart
+              .sendRequest()
+              .done(function (data) {
+                if (data.value) {
+                  // $(".mini-cart-container-parent").show();
+                  $(".mini-cart-container").show();
+                  $(".addcart").show();
+                }else{
+                  $(".mini-cart-container").hide();
+                  $(".addcart").hide();
+                }
+              })
+
+          }else{
+            $(".mini-cart-container").show();
+            $(".addcart").show();
+          }
+        }else{
+          var isShowCart = new SFIsShowCart();
+          isShowCart
+            .sendRequest()
+            .done(function (data) {
+              if (data.value) {
+                $(".mini-cart-container").show();
+                $(".addcart").show();
+              }else{
+                $(".mini-cart-container").hide();
+                $(".addcart").hide();
+              }
+            });
+        }
+      },
+
       /**
        * @author Michael.Lee
        * @description 检查有没有临时的添加购物车的任务需要执行
@@ -213,7 +265,8 @@ define('sf.b2c.mall.product.detailcontent', [
        * @description 加入购物车
        */
       addCart: function(itemId, num) {
-        can.route.attr({tag: 'init', target: 'empty'});
+        // can.route.attr({tag: 'init', target: 'empty'});
+        can.route.attr({tag: 'back', target: 'empty'});
 
         var addItemToCart = new SFAddItemToCart({
           items: JSON.stringify([{
@@ -279,7 +332,7 @@ define('sf.b2c.mall.product.detailcontent', [
           $('#secondstep').show();
         },
 
-        'back': function () {
+        'back': function (data) {
           $('#secondstep').hide();
         }
       },
@@ -341,8 +394,12 @@ define('sf.b2c.mall.product.detailcontent', [
               });
             }
 
-            var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
+            var renderFn = can.mustache(template_product_detailcontent);
+            var html = renderFn(that.options.detailContentInfo, that.helpers);
+            // var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
             that.element.html(html);
+
+            that.controlCart();
 
             //滚动效果
             new Swipe($('#slider')[0], {
@@ -938,7 +995,6 @@ define('sf.b2c.mall.product.detailcontent', [
 
       '#secondstep .mask click': function () {
         can.route.attr({tag: 'back', target: 'empty'});
-        // $('#secondstep').hide();
       },
 
       /**

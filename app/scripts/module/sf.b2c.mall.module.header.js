@@ -2,6 +2,7 @@ define(
   'sf.b2c.mall.module.header', [
     'can',
     'zepto',
+    'zepto.cookie',
     'store',
     'underscore',
     'fastclick',
@@ -11,10 +12,11 @@ define(
     'sf.b2c.mall.framework.comm',
     'text!template_widget_header_ad',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
-    'sf.b2c.mall.api.shopcart.addItemToCart' // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.addItemToCart', // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.isShowCart'
   ],
 
-  function(can, $, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, template_widget_header_ad, SFGetTotalCount, SFAddItemToCart) {
+  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart) {
 
     Fastclick.attach(document.body);
     SFComm.register(3);
@@ -47,6 +49,8 @@ define(
         switcher.go();
         // －－－－－－－－－－－－－－－－－－－－－－
 
+        this.controlCart();
+
         // this.showAD();
 
         // @author Michael.Lee
@@ -57,6 +61,49 @@ define(
         // 将更新购物车事件注册到window上
         // 其他地方添加需要更新mini购物车的时候调用can.trigger('updateCart')
         can.on.call(window, 'updateCart', _.bind(this.updateCart, this));
+      },
+
+      controlCart: function() {
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          var uinfo = $.fn.cookie('3_uinfo');
+          var arr = [];
+          if (uinfo) {
+            arr = uinfo.split(',');
+          }
+
+          var flag = arr[4];
+
+          // 如果判断开关关闭，使用dom操作不显示购物车
+          if (typeof flag == 'undefined' || flag == '2') {
+            $(".mini-cart-container-parent").hide();
+          }else if (flag == '0') {
+            // @todo 请求总开关进行判断
+            var isShowCart = new SFIsShowCart();
+            isShowCart
+              .sendRequest()
+              .done(function (data) {
+                if (data.value) {
+                  $(".mini-cart-container-parent").show();
+                }else{
+                  $(".mini-cart-container-parent").hide();
+                }
+              })
+
+          }else{
+            $(".mini-cart-container-parent").show();
+          }
+        }else{
+          var isShowCart = new SFIsShowCart();
+          isShowCart
+            .sendRequest()
+            .done(function (data) {
+              if (data.value) {
+                $(".mini-cart-container-parent").show();
+              }else{
+                $(".mini-cart-container-parent").hide();
+              }
+            });
+        }
       },
 
       /**

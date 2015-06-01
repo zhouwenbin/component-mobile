@@ -1,25 +1,3 @@
-<!--
-<div class="table box goodsinfo">
-  <h2>商品信息</h2>
-	{{#each orderGoodsItemList}}
-  <div class="table-r1 clearfix{{^flag}} disable{{/flag}}">
-    <div class="table-r1c1 fl vertical-middle"><img src="{{sf.img productImage.thumbImgUrl}}"></div>
-    <div class="table-r1c3 fr">
-      <div class="goodsinfo-price">¥{{sf.price price}}</div>
-      <div class="goodsinfo-num">x{{quantity}}</div>
-    </div>
-    <div class="table-r1c2 goodsinfo-title">
-      <h3 class="ellipsis3">{{goodsName}}</h3>
-      <div class="text-error hide">{{#flag}}{{description}}{{/flag}}</div>
-    </div>
-  </div>
-  <ul class="clearfix table-r2">
-		{{{spec}}}
-  </ul>
-	{{/each}}
-</div>
--->
-
 <!--商品信息-->
 
 <div class="goodsinfo">
@@ -48,36 +26,33 @@
   </ul>
   {{/orderPackageItemList}}
 
-  <!--不能正常下单商品-->
-  {{#if invariableGoodsItemList}}
-  <div class="goodinfo-stowage"></div>
-  <ul class="goodslist">
-      {{#invariableGoodsItemList}}
+</div>
 
-      {{#if flag}}
-      <div class="text-error">
-        <span class="icon icon53"></span>{{description}}
-      </div>
-      {{/if}}
+<div class="goodslist-disable">
+    <!--不能正常下单商品-->
+    {{#if invariableGoodsItemList}}
+    {{#invariableGoodsItemList}}
+    <ul class="goodslist">
 
-      <li>
-          <img src="{{sf-get-img productImage}}">
+        {{^if flag}}<div class="text-error"><span class="icon icon53"></span>{{description}}</div>{{/if}}
+        <li style="padding: 14px 10px 14px;">
+            <img src="{{sf-get-img productImage}}">
 
-          <div class="goodslist-c2">
-            <h3 class="ellipsis2">
-              {{goodsName}}
-            </h3>
-          </div>
+            <div class="goodslist-c2">
+              <h3 class="ellipsis2">
+                {{goodsName}}
+              </h3>
+            </div>
 
-          <div class="goodslist-c1">
-              <div class="orderlist-num">X{{quantity}}</div>
-              <div class="text-important">¥{{sf.price price}}</div>
-          </div>
-      </li>
-      {{/invariableGoodsItemList}}
-  </ul>
-  {{/if}}
+            <div class="goodslist-c1">
+                <div class="orderlist-num">X{{quantity}}</div>
+                <div class="text-important">¥{{sf.price price}}</div>
+            </div>
+        </li>
 
+    </ul>
+    {{/invariableGoodsItemList}}
+    {{/if}}
 </div>
 <!--商品信息-->
 

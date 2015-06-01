@@ -7,7 +7,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'fastclick',
   'underscore',
   'moment',
-  'sf.b2c.mall.api.order.getOrder',
+  'sf.b2c.mall.api.order.getOrderV2',
   'text!template_order_orderdetail',
   'sf.b2c.mall.order.fn',
   'sf.b2c.mall.business.config',

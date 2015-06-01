@@ -11,14 +11,12 @@
 
 {{^sf-is-empty scopeGroups}}
 
-{{#scopeGroups}}
-
 <article class="cart">
-
-{{#sf-cart-type goodItemList 'avail'}}
 <section class="sf-h5-avail-cart">
     <ul>
+    {{#scopeGroups}}
         {{#goodItemList}}
+        {{#if isValid}}
         <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
                 <span class="icon icon49 select-item"></span>
@@ -41,11 +39,9 @@
                     <div class="cart-num">X1</div>
                     <div class="text-important">¥{{sf-selling-price canUseActivityPrice activityPrice price}}</div>
 
-                    {{! canUseActivityPrice}}
                     {{#sf-is-show-origin canUseActivityPrice activityPrice price}}
                     <del>¥{{sf.price price}}</del>
                     {{/sf-is-show-origin}}
-                    {{! canUseActivityPrice}}
                 </div>
             </div>
 
@@ -54,43 +50,55 @@
             {{/sf-is-empty}}
 
             {{#if promotionInfo}}
+
             {{^sf-is-empty promotionInfo.promotionList}}
+            {{#sf-is-avil-promotion promotionInfo.promotionList}}
             <div class="text-orange">{{#promotionInfo.promotionList}}{{useRuleDesc}} {{/promotionInfo.promotionList}}</div>
+            {{/sf-is-avil-promotion}}
             {{/sf-is-empty}}
+
             {{/if}}
             <button class="btn btn-danger remove-item-btn">删除</button>
         </li>
+        {{/if}}
         {{/goodItemList}}
+    {{/scopeGroups}}
     </ul>
-</section>
-{{/sf-cart-type}}
 
-{{#sf-cart-type goodItemList 'disable'}}
-<section class="sf-h5-disable cart-disable">
     <ul class="cart-disable">
+    {{#scopeGroups}}
         {{#goodItemList}}
-        <li>
+        {{#if isValid}}
+
+        {{else}}
+        <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
-                <span class="label label-disabled">售罄</span>
-                <img src="{{sf-show-img images}}" alt="">
+                <span class="label label-disabled">已下架</span>
+
+                <a href="/detail/{{itemId}}.html">
+                    <img src="{{sf-show-img images}}" alt="">
+                </a>
 
                 <div class="cart-c1">
-                    <h2 class="ellipsis2">{{title}}</h2>
+                    <a href="/detail/{{itemId}}.html">
+                        <h2 class="ellipsis2">{{title}}</h2>
+                    </a>
                 </div>
-
                 <div class="cart-c2">
-                    <div class="cart-num">X{{quantity}}</div>
-                    <div class="text-important">¥{{sf.price price}}</div>
+                    <div class="cart-num">X1</div>
+                    <div class="text-important">¥{{sf-selling-price canUseActivityPrice activityPrice price}}</div>
                 </div>
             </div>
             <button class="btn btn-danger remove-item-btn">删除</button>
         </li>
+        {{/if}}
         {{/goodItemList}}
+    {{/scopeGroups}}
     </ul>
 </section>
-{{/sf-cart-type}}
+</article>
 
-{{/scopeGroups}}
+
 
 {{#sf-is-over-pay cartFeeItem.actualTotalFee limitAmount}}
 <div class="alert-error">亲，海关规定购买多件商品价格总结算不能超过¥1000，请您分多次购买～</div>
@@ -112,11 +120,27 @@
     </div>
 </section>
 
+{{#if errorDesc}}
+<section class="tooltip center overflow-num">
+    <div>{{errorDesc}}</div>
+</section>
+{{else}}
+
 {{#sf-is-over-limit totalNum limitGoodsNum}}
 <section class="tooltip center overflow-num">
-    <div>您的购物车已满{{limitGoodsNum}}件商品，赶紧去买单哦～</div>
+    <div>您的购物车已满，赶紧去买单哦～</div>
 </section>
 {{/sf-is-over-limit}}
+
+{{/if}}
+
+{{!sf-is-over-limit totalNum limitGoodsNum}}
+<!--
+<section class="tooltip center overflow-num">
+    <div>您的购物车已满{{!limitGoodsNum}}件商品，赶紧去买单哦～</div>
+</section>
+-->
+{{!sf-is-over-limit}}
 
 </article>
 {{/sf-is-empty}}

@@ -22,6 +22,7 @@ define(
     var deleteOrder = new SFDeleteOrder();
 
     var PREFIX = 'http://img0.sfht.com';
+    var EMPTY_IMG = 'http://img0.sfht.com';//@todo 增加一个备用图片地址
 
     return {
 
@@ -91,7 +92,7 @@ define(
           return statusMap[status()];
         },
 
-        'sf-pay-status': function (paymentStatus) {
+        'sf-pay-status': function(paymentStatus) {
           var paymentStatusMap = {
             'WAITPAY': '待支付',
             'PAYING': '支付中',
@@ -105,7 +106,7 @@ define(
           return paymentStatusMap[paymentStatus()];
         },
 
-        'sf-payment-type': function (payType) {
+        'sf-payment-type': function(payType) {
           var map = {
             'alipay': '支付宝',
             'tenpay_forex': '财付通',
@@ -118,22 +119,38 @@ define(
 
         'sf-status-show-case': function(status, target, options) {
           var map = {
-            'SUBMITED': ['NEEDPAY', 'CANCEL', 'INFO'],
-            'AUTO_CANCEL': ['INFO', 'DELETE'],
-            'USER_CANCEL': ['INFO', 'DELETE'],
-            'AUDITING': ['CANCEL', 'INFO'],
-            'OPERATION_CANCEL': ['INFO', 'DELETE'],
-            'BUYING': ['INFO'],
-            'BUYING_EXCEPTION': ['INFO'],
-            'WAIT_SHIPPING': ['INFO'],
-            'SHIPPING': ['ROUTE', 'INFO'],
-            'LOGISTICS_EXCEPTION': ['ROUTE', 'INFO'],
-            'SHIPPED': ['INFO', 'ROUTE', 'RECEIVED'],
-            'CONSIGNED': ['INFO', 'ROUTE', 'RECEIVED'],
-            'COMPLETED': ['INFO', 'ROUTE', 'REPAY'],
-            'RECEIPTED': ['INFO', 'ROUTE', 'RECEIVED'],
-            'CLOSED': ['INFO', 'DELETE', 'REPAY'],
-            'AUTO_COMPLETED': ['INFO', 'ROUTE', 'REPAY']
+            // 'SUBMITED': ['NEEDPAY', 'CANCEL', 'INFO'],
+            // 'AUTO_CANCEL': ['INFO', 'DELETE'],
+            // 'USER_CANCEL': ['INFO', 'DELETE'],
+            // 'AUDITING': ['CANCEL', 'INFO'],
+            // 'OPERATION_CANCEL': ['INFO', 'DELETE'],
+            // 'BUYING': ['INFO'],
+            // 'BUYING_EXCEPTION': ['INFO'],
+            // 'WAIT_SHIPPING': ['INFO'],
+            // 'SHIPPING': ['ROUTE', 'INFO'],
+            // 'LOGISTICS_EXCEPTION': ['ROUTE', 'INFO'],
+            // 'SHIPPED': ['INFO', 'ROUTE', 'RECEIVED'],
+            // 'CONSIGNED': ['INFO', 'ROUTE', 'RECEIVED'],
+            // 'COMPLETED': ['INFO', 'ROUTE', 'REPAY'],
+            // 'RECEIPTED': ['INFO', 'ROUTE', 'RECEIVED'],
+            // 'CLOSED': ['INFO', 'DELETE', 'REPAY'],
+            // 'AUTO_COMPLETED': ['INFO', 'ROUTE', 'REPAY']
+            'SUBMITED': ['NEEDPAY', 'CANCEL', 'INFO', 'REBUY'],
+            'AUTO_CANCEL': ['INFO', 'REBUY'],
+            'USER_CANCEL': ['INFO', 'REBUY'],
+            'AUDITING': ['CANCEL', 'INFO', 'REBUY'],
+            'OPERATION_CANCEL': ['INFO', 'REBUY'],
+            'BUYING': ['INFO', 'REBUY'],
+            'BUYING_EXCEPTION': ['INFO', 'REBUY'],
+            'WAIT_SHIPPING': ['INFO', 'REBUY'],
+            'SHIPPING': ['ROUTE', 'INFO', 'REBUY'],
+            'LOGISTICS_EXCEPTION': ['ROUTE', 'INFO', 'REBUY'],
+            'SHIPPED': ['INFO', 'ROUTE', 'RECEIVED', 'REBUY'],
+            'CONSIGNED': ['INFO', 'ROUTE', 'RECEIVED', 'REBUY'],
+            'COMPLETED': ['INFO', 'ROUTE', 'REBUY'],
+            'RECEIPTED': ['INFO', 'ROUTE', 'RECEIVED', 'REBUY'],
+            'CLOSED': ['INFO', 'REBUY'],
+            'AUTO_COMPLETED': ['INFO', 'ROUTE', 'REBUY']
           }
 
           var array = map[status()];
@@ -246,7 +263,7 @@ define(
         );
       },
 
-      orderConfirm: function (params, success, error) {
+      orderConfirm: function(params, success, error) {
         confirmReceive.setData({
           subOrderId: params.orderId
         });
@@ -254,7 +271,7 @@ define(
         confirmReceive.sendRequest().done(success).fail(error);
       },
 
-      orderDelete: function (params, success, error) {
+      orderDelete: function(params, success, error) {
         deleteOrder.setData({
           orderId: params.orderId
         });
