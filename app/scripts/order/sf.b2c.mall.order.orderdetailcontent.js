@@ -72,7 +72,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         });
       },
 
-      'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case']
+      'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case'],
+      'sf-package-status': SFOrderFn.helpers['sf-package-status']
     },
 
     init: function() {
