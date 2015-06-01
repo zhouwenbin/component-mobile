@@ -63,7 +63,9 @@ define('sf.b2c.mall.order.orderlistcontent', [
           var count = 0;
           var array = items().attr();
           _.each(array, function(item) {
-            count = item.orderGoodsItemList.length + count;
+            _.each(item.orderGoodsItemList, function(good){
+              count = good.quantity + count;
+            });
           });
           return count;
         },
