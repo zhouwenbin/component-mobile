@@ -72,6 +72,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         });
       },
 
+      'sf-timmer': function (pay, order, options) {
+        if (pay()== 'WAITPAY' && order() == 'SUBMITED') {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
+      },
+
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case'],
       'sf-package-status': SFOrderFn.helpers['sf-package-status'],
       'sf-coupon-type': SFOrderFn.helpers['sf-coupon-type']
@@ -190,9 +198,31 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       // －－－－－－－－－－－－－－－－－－－
     },
 
+    '.ordercancel click': function ($element, event) {
+      event && event.preventDefault();
+
+      var that = this;
+      var message = new SFMessage(null, {
+        'tip': '确认要取消该订单？',
+        'type': 'confirm',
+        'okFunction': function() {
+          var success = function() {
+            window.location.reload();
+          };
+
+          var error = function() {
+            // @todo 错误提示
+          }
+
+          SFOrderFn.orderCancel(that.options.data.orderItem, success, error);
+        }
+      });
+    },
+
     '.received click': function($element, event) {
       event && event.preventDefault();
 
+      var that = this;
       var message = new SFMessage(null, {
         'tip': '确认收货？',
         'type': 'confirm',
@@ -205,7 +235,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             // @todo 错误提示
           }
 
-          SFOrderFn.orderConfirm(this.options.data.orderItem, success, error);
+          SFOrderFn.orderConfirm(that.options.data.orderItem, success, error);
         }
       });
     }
