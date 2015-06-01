@@ -1,3 +1,15 @@
+141环境：
+
+grunt build:prd
+cd dist
+tar -cvf dist.tar ./*
+scp dist.tar admin@10.32.156.141:/home/admin/h5
+ssh admin@10.32.156.141
+cd h5
+tar -xvf dist.tar
+
+
+123环境：
 1、执行打包。进入haitao-b2c-web目录执行如下命令
 
     ```

@@ -1,6 +1,10 @@
 <section class="orderdetail">
     <section class="orderinfo">
-        <h2>订单信息</h2>
+        <h2>订单信息
+          {{#sf-status-show-case orderItem.orderStatus 'CANCEL'}}
+          <button class="btn btn-normal" style="float: right;margin: -10px 0 5px 0;">取消订单</button>
+          {{/sf-status-show-case}}
+        </h2>
         <div class="orderinfo-b">
           <ul>
             <li><span class="justify">订 单 号</span>：{{orderItem.orderId}}</li>
@@ -25,6 +29,30 @@
               <span class="justify text-disable">优 惠</span>：￥{{sf.price orderItem.discount}}
             </li>
             {{/orderItem.discount}}
+
+            <li><span class="justify text-disable">优惠券抵</span>：-￥{{sf.price couponReducePrice}}</li>
+
+            {{#orderItem.orderCouponItemList}}
+
+              {{#sf-coupon-type orderAction couponType 'COSTCOUPON'}}
+              {{/sf-coupon-type}}
+
+              {{#sf-coupon-type orderAction couponType 'CASH'}}
+              <li><span class="justify text-disable">送优惠券</span>：{{couponDescription}}{{couponName}}</li>
+              {{/sf-coupon-type}}
+
+              {{#sf-coupon-type orderAction couponType 'GIFTBAG'}}
+              <li><span class="justify text-disable">赠送礼包</span>：{{couponDescription}}{{couponName}}</li>
+              {{/sf-coupon-type}}
+
+              {{#sf-coupon-type orderAction couponType 'SHAREBAG'}}
+              <li>
+                <span class="justify text-disable">赠送红包</span>：{{couponDescription}}{{couponName}}
+                <a href="http://m.sfht.com/luckymoneyshare.html?id={{code}}" class="btn btn-normal">分享红包</a>
+              </li>
+              {{/sf-coupon-type}}
+
+            {{/orderItem.orderCouponItemList}}
 
             <li><span class="justify text-disable">运 费</span>：免运费</li>
           </ul>

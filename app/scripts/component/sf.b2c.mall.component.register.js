@@ -331,27 +331,38 @@ define('sf.b2c.mall.component.register', [
                 store.set('nickname', mobile);
 
                 // 注册送优惠券
-                var receivePro = new SFReceivePro({
-                  "channel": "B2C_H5",
-                  "event": "REGISTER_USER_SUCCESS"
-                });
+                // var receivePro = new SFReceivePro({
+                //   "channel": "B2C_H5",
+                //   "event": "REGISTER_USER_SUCCESS"
+                // });
 
-                receivePro.sendRequest()
-                  .done(function(proInfo) {
-                    if (proInfo.couponInfos) {
-                      var message = new SFMessage(null, {
-                        'tip': '礼包领取成功，请至我的优惠券查看！',
-                        'type': 'success'
-                      });
-                    }
-                  })
-                  .fail(function(errorCode) {
-                    console.error(errorCode);
-                  });
+                // receivePro.sendRequest()
+                //   .done(function(proInfo) {
+                //     if (proInfo.couponInfos) {
+                //       var message = new SFMessage(null, {
+                //         'tip': '礼包领取成功，请至我的优惠券查看！',
+                //         'type': 'success'
+                //       });
+                //     }
+                //   })
+                //   .fail(function(errorCode) {
+                //     console.error(errorCode);
+                //   });
+                //
+                // var currentServerTime = that.component.mobileRegister.getServerTime();
+                // if (currentServerTime > 1432828800000 && currentServerTime < 1433087999000) {
+                //   var message = new SFMessage(null, {
+                //     'tip': '新人礼10元打车券将在6月1日发放至您的账户，请注意查收。',
+                //     'type': 'success'
+                //   });
+                // }
+
                 // 注册送优惠券
 
                 SFFn.dotCode();
-                setTimeout(function(){that.gotoFromPage();},1000);
+
+                that.gotoFromPage()
+                  // setTimeout(function(){that.gotoFromPage();},1000);
               }
             })
             .fail(function(errorCode) {

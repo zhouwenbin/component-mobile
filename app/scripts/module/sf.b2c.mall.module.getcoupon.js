@@ -28,24 +28,24 @@ define('sf.b2c.mall.module.getcoupon', [
       init: function() {
         var that = this;
 
-        $(".cms-fill-coupon").click(function(targetElement) {
+        $("[name='cms-fill-coupon']").click(function(targetElement) {
           if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
             new SFMessage(null, {
               'tip': '抱歉！需要登录后才可以领取优惠券！',
               'type': 'success',
               'okFunction': function(){
-                window.location.href = "http://m.sfht.com/login.html"
+                window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
               }
             });
             return false;
           }
 
           var params = {
-            bagId: $(targetElement.target).data('cmsCouponbagid'),
-            type: $(targetElement.target).data('cmsCoupontype')
+            bagId: $(targetElement.target).data('cms-couponbagid'),
+            type: $(targetElement.target).data('cms-coupontype')
           }
-          var needSms = $(targetElement.target).data('needSms');
-          var smsCon = $(targetElement.target).data('smsCon');
+          var needSms = $(targetElement.target).data('needsms');
+          var smsCon = $(targetElement.target).data('smscon');
           if (needSms) {
             params.needSms = needSms;
           }
