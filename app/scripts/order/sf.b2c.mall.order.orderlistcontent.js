@@ -241,15 +241,21 @@ define('sf.b2c.mall.order.orderlistcontent', [
         event && event.preventDefault();
         var order = $element.closest('li').data('order');
 
-        var success = function() {
-          window.location.reload();
-        };
+        var message = new SFMessage(null, {
+          'tip': '确认收货？',
+          'type': 'confirm',
+          'okFunction': function() {
+            var success = function() {
+              window.location.reload();
+            };
 
-        var error = function() {
-          // @todo 错误提示
-        }
+            var error = function() {
+              // @todo 错误提示
+            }
 
-        OrderFn.orderConfirm(order, success, error);
+            OrderFn.orderConfirm(order, success, error);
+          }
+        });
       },
 
       '.status-list li a click': function($element, event) {
