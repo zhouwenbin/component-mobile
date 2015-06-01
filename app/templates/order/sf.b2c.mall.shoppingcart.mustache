@@ -32,7 +32,7 @@
                     <div class="input-num">
                         <button class="btn minus-num">-</button>
                         <input class="input-num" type="text" value="{{quantity}}">
-                        <button class="btn plus-num" {{#canAddNum}}disabled{{/canAddNum}}>+</button>
+                        <button class="btn plus-num" {{#sf-allow canAddNum}}disabled{{/sf-allow}}>+</button>
                     </div>
                 </div>
                 <div class="cart-c2">
