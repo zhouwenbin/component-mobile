@@ -139,7 +139,7 @@ requirejs.config({
     'placeholders': 'bower_components/Placeholders/build/placeholders',
     'moment': 'bower_components/momentjs/min/moment.min',
     'moment-zh-cn': 'bower_components/momentjs/locale/zh-cn',
-    'touch': 'bower_components/zeptojs/src/touch',
+    'touch': 'scripts/vendor/touch',
 
     // 公共组件
     // 'zepto': 'scripts/vendor/zepto',
