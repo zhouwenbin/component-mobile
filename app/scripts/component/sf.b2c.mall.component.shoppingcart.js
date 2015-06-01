@@ -198,6 +198,16 @@ define(
           }else{
             return options.inverse(options.contexts || this);
           }
+        },
+
+        'sf-allow': function (canAddNum, options) {
+          var isAllow = canAddNum();
+
+          if (!isAllow) {
+            return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
+          }
         }
       },
 

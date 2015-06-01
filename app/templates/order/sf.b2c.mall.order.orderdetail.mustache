@@ -2,16 +2,20 @@
     <section class="orderinfo">
         <h2>订单信息
           {{#sf-status-show-case orderItem.orderStatus 'CANCEL'}}
-          <button class="btn btn-normal" style="float: right;margin: -10px 0 5px 0;">取消订单</button>
+          <button class="btn btn-normal ordercancel" style="float: right;margin: -10px 0 5px 0;">取消订单</button>
           {{/sf-status-show-case}}
         </h2>
         <div class="orderinfo-b">
           <ul>
             <li><span class="justify">订 单 号</span>：{{orderItem.orderId}}</li>
+
+
             <li>
               <span class="justify text-disable">下单时间</span>
               <span class="text-disable">：{{sf.time orderItem.gmtCreate}}</span>
             </li>
+
+
             <li>
               <span class="justify">实付金额</span>：
               <span class="text-important">￥{{sf.price totalPrice}}</span>
@@ -58,12 +62,12 @@
           </ul>
             {{! 倒计时 }}
 
-            {{#sf-is-not-pay orderItem.paymentStatus}}
+            {{#sf-timmer orderItem.paymentStatus orderItem.orderStatus}}
             <p>
               <span class="text-important">!</span>请在
               <span class="text-important" id="pay-timmer">orderItem.gmtCreate</span>内付款
             </p>
-            {{/sf-is-not-pay}}
+             {{/sf-timmer}}
 
             <a class="text-link">
               <span id="orderdetail-more">查看更多</span>
