@@ -16,10 +16,9 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
     'text!template_order_orderlist',
-    'sf.b2c.mall.widget.message',
     'sf.b2c.mall.api.shopcart.addItemToCart', // 添加购物车接口
   ],
-  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFMessage, SFAddItemToCart) {
+  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFAddItemToCart) {
 
     var DEFAULT_PAGE_NUM = 1;
     var DEFAULT_PAGE_SIZE = 50;
@@ -110,19 +109,19 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
         'sf-status-show-case': OrderFn.helpers['sf-status-show-case'],
 
-        'sf-real-price': function (total, discount) {
+        'sf-real-price': function(total, discount) {
           return (total() - discount()) / 100;
         },
 
-        'sf-show-route': function (status, options) {
-          if (status() != 'SUBMITED' && status() != 'AUDITING') {
+        'sf-show-route': function(status, options) {
+          if (status() != 'SUBMITED' && status() != 'AUDITING' && status() != 'AUTO_CANCEL' && status() != 'USER_CANCEL' && status() != 'OPERATION_CANCEL' && status() != 'CLOSED') {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
           }
         },
 
-        'sf-package-status': function (status, options) {
+        'sf-package-status': function(status, options) {
           var statusMap = {
             'SUBMITED': '已提交',
             'AUTO_CANCEL': '自动取消',
@@ -259,7 +258,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         });
       },
 
-      '.received click': function ($element, event) {
+      '.received click': function($element, event) {
         event && event.preventDefault();
         var order = $element.closest('li').data('order');
 
@@ -289,21 +288,24 @@ define('sf.b2c.mall.order.orderlistcontent', [
         // return false;
       },
 
-      '.rebuy click': function ($element, event) {
+      '.rebuy click': function($element, event) {
         event && event.preventDefault();
         var order = $element.closest('li').data('order');
 
         var array = [];
-        order.orderPackageItemList.each(function (packageInfo, index) {
-          packageInfo.orderGoodsItemList.each(function (good, index) {
-            array.push({itemId: good.itemId, num: good.quantity})
+        order.orderPackageItemList.each(function(packageInfo, index) {
+          packageInfo.orderGoodsItemList.each(function(good, index) {
+            array.push({
+              itemId: good.itemId,
+              num: good.quantity
+            })
           })
         });
 
         this.addCart(array);
       },
 
-       /**
+      /**
        * @author Michael.Lee
        * @description 加入购物车
        */
