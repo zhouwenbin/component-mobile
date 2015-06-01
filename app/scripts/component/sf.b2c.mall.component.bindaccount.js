@@ -277,15 +277,15 @@ define(
             //   "channel": "B2C_H5",
             //   "event": "REGISTER_USER_SUCCESS"
             // });
-            if (newUser) {
-              var currentServerTime = that.component.partnerBind.getServerTime();
-              if (currentServerTime > 1432828800000 && currentServerTime < 1433087999000) {
-                var message = new SFMessage(null, {
-                  'tip': '新人礼10元打车券将在6月1日发放至您的账户，请注意查收。',
-                  'type': 'success'
-                });
-              }
-            }
+            // if (newUser) {
+            //   var currentServerTime = that.component.partnerBind.getServerTime();
+            //   if (currentServerTime > 1432828800000 && currentServerTime < 1433087999000) {
+            //     var message = new SFMessage(null, {
+            //       'tip': '新人礼10元打车券将在6月1日发放至您的账户，请注意查收。',
+            //       'type': 'success'
+            //     });
+            //   }
+            // }
 
             // receivePro
             //   .sendRequest()
