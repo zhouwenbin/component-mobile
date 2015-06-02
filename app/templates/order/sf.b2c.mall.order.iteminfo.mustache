@@ -82,11 +82,13 @@
 </ul>
 <div class="box">
 <div class="text-error">{{^flag}}{{errorDes}}{{/flag}}</div>
-<div class="order-submit">
-	<p class="order-submit-c1">实际应付款: <span class="text-important">¥{{sf.price orderFeeItem.shouldPay}}</span></p>
-	<a class="btn btn-danger{{^flag}} btn-disable{{/flag}}" id="submitOrder" href="javascript:void(0);">提交订单</a>
-</div>
-</div>
+
+<section class="nav-cart">
+  <div class="nav-cart-r1 order-submit">
+  	<p class="order-submit-c1">实际应付款: <span class="text-important">¥{{sf.price orderFeeItem.shouldPay}}</span></p>
+  	<a class="btn btn-danger{{^flag}} btn-disable{{/flag}}" id="submitOrder" href="javascript:void(0);">提交订单</a>
+  </div>
+</section>
 
 <section class="mask dialog dialog-active hide" id="couponCodeDialog">
 	<div class="center">

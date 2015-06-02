@@ -490,12 +490,12 @@ define(
 
         can.trigger(window, 'updateCart');
 
-        $('.overflow-num').show();
+        // $('.overflow-num').show();
         $('.loadingDIV').hide();
 
-        setTimeout(function() {
-          $('.overflow-num').hide();
-        }, 1000);
+        // setTimeout(function() {
+        //   $('.overflow-num').hide();
+        // }, 1000);
       }
     });
 

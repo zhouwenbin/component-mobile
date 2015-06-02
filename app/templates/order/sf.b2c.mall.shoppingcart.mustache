@@ -120,19 +120,22 @@
     </div>
 </section>
 
-{{#if errorDesc}}
+{{! 产品确认这里去掉}}
+{{! #if errorDesc}}
+<!--
 <section class="tooltip center overflow-num">
-    <div>{{errorDesc}}</div>
+    <div>{{!errorDesc}}</div>
 </section>
-{{else}}
+-->
+{{! else}}
 
-{{#sf-is-over-limit totalNum limitGoodsNum}}
-<section class="tooltip center overflow-num">
+{{! #sf-is-over-limit totalNum limitGoodsNum}}
+{{! <section class="tooltip center overflow-num">
     <div>您的购物车已满，赶紧去买单哦～</div>
-</section>
-{{/sf-is-over-limit}}
+</section> }}
+{{! /sf-is-over-limit}}
 
-{{/if}}
+{{! /if}}
 
 {{!sf-is-over-limit totalNum limitGoodsNum}}
 <!--
