@@ -30,9 +30,9 @@
                         <h2 class="ellipsis2">{{title}}</h2>
                     </a>
                     <div class="input-num">
-                        <button class="btn minus-num">-</button>
+                        <button class="btn minus-num" style="font-size: 16px; line-height: 10px;">-</button>
                         <input class="input-num" type="text" value="{{quantity}}">
-                        <button class="btn plus-num" {{#sf-allow canAddNum}}disabled{{/sf-allow}}>+</button>
+                        <button class="btn plus-num" {{#sf-allow canAddNum}}disabled{{/sf-allow}} style="font-size: 16px; line-height: 10px;">+</button>
                     </div>
                 </div>
                 <div class="cart-c2">
@@ -101,7 +101,7 @@
 
 
 {{#sf-is-over-pay cartFeeItem.actualTotalFee limitAmount}}
-<div class="alert-error">亲，海关规定购买多件商品价格总结算不能超过¥1000，请您分多次购买～</div>
+<div class="alert-error">亲，海关规定购买多个商品总价不能超过1000</div>
 {{/sf-is-over-pay}}
 
 <section class="cart-footer">
