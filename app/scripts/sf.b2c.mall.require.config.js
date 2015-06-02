@@ -12,6 +12,7 @@ requirejs.config({
     'underscore.string': 'http://www.google.com/bower_components/underscore.string/dist/underscore.string.min',
     'store': 'http://www.google.com/bower_components/store/dist/store',
     'text': '../bower_components/text/text',
+    'sf.hybrid': ''
 
 
     'sf.b2c.mall.api.security.type': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.api.security.type',
