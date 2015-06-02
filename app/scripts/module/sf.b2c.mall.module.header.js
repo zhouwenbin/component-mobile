@@ -113,7 +113,7 @@ define(
        * @param  {event}    event 绑定在点击对象的event对象
        * @return
        */
-      '.mini-cart-container click': function($el, event) {
+      '.mini-cart-container-parent click': function($el, event) {
         event && event.preventDefault();
 
         var href = $el.attr('data-href');
