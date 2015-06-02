@@ -27,11 +27,13 @@ define('sf.b2c.mall.component.recaddrmanage', [
 
       //如果tag为init，则要进行单独处理，防止刷新
       var tag = can.route.attr('tag');
-      if (tag === DEFAULT_INIT_TAG) {
-        this.initRender(DEFAULT_INIT_TAG);
-      } else {
-        can.route.attr('tag', DEFAULT_INIT_TAG);
-      }
+      // if (tag === DEFAULT_INIT_TAG) {
+      //   this.initRender(DEFAULT_INIT_TAG);
+      // } else {
+      //   can.route.attr('tag', DEFAULT_INIT_TAG);
+      // }
+
+      this.initRender.call(this, tag || DEFAULT_INIT_TAG);
     },
 
     /**
@@ -70,7 +72,9 @@ define('sf.b2c.mall.component.recaddrmanage', [
 
           //初始化进行回调绑定
           that.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-editAdrArea', {
-            onSuccess: _.bind(that.render, that)
+            onSuccess: _.bind(function(){
+              can.route.attr('tag', 'init');
+            }, this)
           });
 
         })
@@ -92,11 +96,19 @@ define('sf.b2c.mall.component.recaddrmanage', [
       },
 
       'editaddr': function(data) {
+        if (!data) {
+          return can.route.attr('tag', 'init');
+        }
+
         $(".order-manager").hide();
         this.addressEditor.show("editor", this.data, $(".sf-b2c-mall-order-editAdrArea"));
       },
 
       'addaddr': function(data) {
+        if (!data) {
+          return can.route.attr('tag', 'init');
+        }
+
         $(".order-manager").hide();
         this.addressEditor.show("create", this.data, $(".sf-b2c-mall-order-editAdrArea"));
       }
@@ -172,6 +184,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
           if (recAddrItem.isDefault != 0 && presonItem.isDefault != 0 && recAddrItem.recId != 0 && presonItem.recId != 0) {
             recAddrItem.recName = presonItem.recName;
             recAddrItem.credtNum = presonItem.credtNum;
+            recAddrItem.credtNum2 = presonItem.credtNum2;
             result.push(recAddrItem);
 
             defaultRecAddrID = recAddrItem.addrId;
@@ -190,6 +203,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
               tempObje = recAddrItemTemp;
               tempObje.recName = presonItemTemp.recName;
               tempObje.credtNum = presonItemTemp.credtNum;
+              tempObje.credtNum2 = presonItemTemp.credtNum2;
 
               result.push(tempObje);
             }

@@ -67,6 +67,7 @@ define('sf.b2c.mall.component.addreditor', [
     },
 
     show: function(tag, data, element) {
+      this.odata = data;
       var that = this;
       if (this.adapter.regions) {
         that._show.call(that, tag, data, element);
@@ -130,7 +131,8 @@ define('sf.b2c.mall.component.addreditor', [
               cellphone: data.cellphone,
               recId: data.recId,
               recName: data.recName,
-              credtNum: data.credtNum
+              credtNum: data.credtNum,
+              credtNum2: data.credtNum2
             },
             place: {
               countries: [{
@@ -366,6 +368,11 @@ define('sf.b2c.mall.component.addreditor', [
 
         return false;
       }
+
+      if (addr.credtNum == this.odata.credtNum) {
+        addr.credtNum = this.odata.credtNum2
+      }
+
       if (addr.credtNum.length < 18 || addr.credtNum.length > 18) {
 
         var message = new SFMessage(null, {
