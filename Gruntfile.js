@@ -31,6 +31,17 @@ module.exports = function (grunt) {
 
   var OSS_HOST = 'http://img.sfht.com/sfhth5';
 
+  var cut = function (dest) {
+    var map = ['order/', 'main/', 'center/', 'detail/'];
+    for(var i in map){
+      if (startsWith(dest, map[i])) {
+        dest = dest.slice(0, map[i].length - 1);
+      }
+    }
+
+    return dest;
+  }
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -248,6 +259,23 @@ module.exports = function (grunt) {
         ],
         blockReplacements: {
           js: function (block) {
+
+            if (!config.hybrid && block.dest == 'cordova.js') {
+              return '';
+            }
+
+            if (config.hybrid) {
+              if (block.dest[0] == '/') {
+                return '<script src="' + '.' + block.dest +'"></script>';
+              }else if (block.dest[0] != './') {
+                return '<script src="' + './' + block.dest +'"></script>';
+              }else{
+                return '<script src="' + block.dest +'"></script>';
+              }
+
+              block.dest = cut(dest);
+            }
+
             if (config.version) {
               if (block.dest[0] != '/') {
                 return '<script src="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'"></script>';
@@ -263,6 +291,18 @@ module.exports = function (grunt) {
             }
           },
           css: function (block) {
+            if (config.hybrid) {
+              if (block.dest[0] == '/') {
+                return '<link rel="stylesheet" href="' + '.' + block.dest +'">';
+              }else if (block.dest[0] != './') {
+                return '<link rel="stylesheet" href="' + './' + block.dest +'">';
+              }else{
+                return '<link rel="stylesheet" href="' + block.dest +'">';
+              }
+
+              block.dest = cut(dest);
+            }
+
             if (config.version) {
               if (block.dest[0] !='/') {
                 return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'">';
