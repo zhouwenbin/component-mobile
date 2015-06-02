@@ -13,9 +13,11 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.component.addreditor',
+  'text!template_component_recaddrmanage'
 
 
-], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage, SFConfig, SFAddressEditor) {
+], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter,
+  AddressAdapter, SFMessage, SFConfig, SFAddressEditor, template_component_recaddrmanage) {
 
   can.route.ready();
   var DEFAULT_INIT_TAG = 'init';
@@ -56,7 +58,10 @@ define('sf.b2c.mall.component.recaddrmanage', [
             addressList: that.result || []
           });
 
-          var html = can.view('templates/component/sf.b2c.mall.component.recaddrmanage.mustache', that.adapter4List.addrs);
+          // var html = can.view('templates/component/sf.b2c.mall.component.recaddrmanage.mustache', that.adapter4List.addrs);
+          var renderFn = can.mustache(template_component_recaddrmanage);
+          var html =  renderFn(that.adapter4List.addrs);
+
           that.element.html(html);
 
           //绑定事件
@@ -96,7 +101,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
       },
 
       'editaddr': function(data) {
-        if (!data) {
+        if (!data || !this.addressEditor) {
           return can.route.attr('tag', 'init');
         }
 
@@ -105,7 +110,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
       },
 
       'addaddr': function(data) {
-        if (!data) {
+        if (!this.addressEditor) {
           return can.route.attr('tag', 'init');
         }
 
@@ -123,17 +128,20 @@ define('sf.b2c.mall.component.recaddrmanage', [
     },
 
     ".edit click": function(element, event) {
+      event && event.preventDefault();
+
       var index = element[0].dataset["index"];
       this.data = this.adapter4List.addrs.addressList[index];
       can.route.attr('tag', 'editaddr');
 
-      return false;
+      // return false;
     },
 
     ".addrecaddr click": function(element, event) {
+      event && event.preventDefault();
       can.route.attr('tag', 'addaddr');
 
-      return false;
+      // return false;
     },
 
     deleteRecAddrClick: function(element, event) {
