@@ -36,7 +36,8 @@ define(
 
           // @todo app的判断逻辑预留
           'app': function() {
-            return false
+            // 如果有cordova对象存在则判断在app中
+            return !!cordova;
           }
         }
 
