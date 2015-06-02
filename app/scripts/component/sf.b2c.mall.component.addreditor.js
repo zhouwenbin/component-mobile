@@ -369,7 +369,7 @@ define('sf.b2c.mall.component.addreditor', [
         return false;
       }
 
-      if (addr.credtNum == this.odata.credtNum) {
+      if (this.odata && this.odata.credtNum && addr.credtNum == this.odata.credtNum) {
         addr.credtNum = this.odata.credtNum2
       }
 
