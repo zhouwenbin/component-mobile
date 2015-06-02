@@ -22,14 +22,12 @@
 }
 .detail-cart-r ul{
   flex:1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:space-between;
-
 }
 .detail-cart-r li{
   width: 31%;
   margin-bottom: 8px;
+  display: inline-block;
+  margin-right: 2%;
 }
 .detail-cart-r .btn-normal{
   padding: 0;  
