@@ -30,6 +30,7 @@
 }
 .goodslist .text-important{
   font-size: 15px;
+  font-weight: bold;
 }
 .goodslist-disable{
   border-bottom: 1px solid #dadada;
@@ -51,4 +52,7 @@
 }
 .goodslist-disable .icon53{
   margin-right: 6px;
+}
+.goodslist h3{
+  font-weight: normal;
 }

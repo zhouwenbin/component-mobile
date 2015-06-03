@@ -1,7 +1,7 @@
 .orderinfo{
   background: #fff;
   font-size: 14px;
-  padding: 0 10px;
+  padding: 0 12px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
 }
@@ -9,7 +9,6 @@
   font-size: 14px;
   padding: 23px 0 10px;
   background: #fff;
-  font-weight: normal;
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 17px;
 }
@@ -33,7 +32,7 @@
 .orderinfo-b li{
   margin-bottom: 12px;
 }
-.orderinfo-b li:nth-child(n+4){
+.orderinfo-b li:nth-child(n+5){
   display: none;
 }
 .orderinfo-b.active li{
@@ -48,7 +47,6 @@
 }
 .orderinfo p{
   color: #999;
-  margin-bottom: 19px;
 }
 .orderinfo p .text-important{
   margin: 0 5px;
