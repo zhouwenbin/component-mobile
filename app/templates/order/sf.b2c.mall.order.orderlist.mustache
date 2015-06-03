@@ -86,6 +86,12 @@
               {{#sf-status-show-case orderStatus 'REBUY'}}
               <button class="btn btn-normal rebuy">再次购买</button>
               {{/sf-status-show-case}}
+
+              {{#orderCouponItemList}}
+                {{#sf-coupon-type orderAction couponType 'SHAREBAG'}}
+                <a href="http://m.sfht.com/luckymoneyshare.html?id={{code}}" class="btn btn-normal">分享红包</a>
+                {{/sf-coupon-type}}
+              {{/orderCouponItemList}}
             </div>
         </li>
         {{/orders}}
