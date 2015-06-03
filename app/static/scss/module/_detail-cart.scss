@@ -3,8 +3,12 @@
   position: fixed;
   width: 100%;
   left: 0;
-  bottom: 55px;
+  bottom: 58px;
   z-index: 999;
+
+  .detail-cart-error{
+    padding: 0px 0px 10px 14px;
+  }
 }
 .detail-cart-r{
   display: flex;
@@ -30,7 +34,7 @@
   margin-right: 2%;
 }
 .detail-cart-r .btn-normal{
-  padding: 0;  
+  padding: 0;
   width: 100%;
 }
 .detail-cart-r label{
