@@ -33,7 +33,12 @@
       <a href="/register.html" class="fl">新用户注册</a>
       <a href="/retrieve.html" class="fr">忘记密码</a>
     </div>
-    <div class="login-r1 clearfix">
+  </section>
+
+<section class="otherlogin">
+    <div class="line">
+      <span>或者</span>
+    </div>
     {{#isWeChat}}
         <button class="btn btn-soon btn-big weixinlogin">微信快捷登录</button>
     {{/isWeChat}}
@@ -41,5 +46,4 @@
     {{#isAlipay}}
       <button class="btn btn-soon btn-big alipaylogin">支付宝快捷登录</button>
     {{/isAlipay}}
-    </div>
-  </section>
+</section>
