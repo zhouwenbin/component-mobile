@@ -1,4 +1,6 @@
+
 $(function(){
+
 	$('.tab2-h li').click(function(){
     $(this).addClass('active').siblings().removeClass('active');
     var index=$('.tab2-h li').index(this);

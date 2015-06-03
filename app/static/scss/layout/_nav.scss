@@ -58,6 +58,7 @@
   z-index:999;
   background: #f3f3f3;
   padding: 6px 12px;
+  height: 58px;
   justify-content:space-between;
   align-items:center;
   border-top: 1px solid #dadada;
@@ -65,7 +66,6 @@
 .nav-cart .btn{
   height: 40px;
   line-height: 40px;
-  margin-left: 10px;
   font-size: 15px;
 }
 .nav-cart .btn-danger{
@@ -75,6 +75,7 @@
 .nav-cart .btn-soon{
   display: block;
   width: 40%;
+  margin: 0 10px;
 }
 .nav-cart .icon47{
   position: relative;
