@@ -1416,7 +1416,7 @@ module.exports = function (grunt) {
       'copy:templates',
       // 'copy:scripts',
       'usemin',
-      'htmlmin',
+      // 'htmlmin',
       // 'copy:styles',
       'clean:publish'
     ]

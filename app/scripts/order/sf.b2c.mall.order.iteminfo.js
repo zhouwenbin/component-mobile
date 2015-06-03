@@ -20,6 +20,8 @@ define('sf.b2c.mall.order.iteminfo', [
   'text!template_order_iteminfo'
 ], function(text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFMessage, SFConfig, template_order_iteminfo) {
 
+  can.route.ready();
+
   return can.Control.extend({
     itemObj: new can.Map({}),
 
@@ -38,6 +40,9 @@ define('sf.b2c.mall.order.iteminfo', [
      */
     init: function(element, options) {
       var params = can.deparam(window.location.search.substr(1));
+
+      params = _.extend(params, can.route.attr());
+
       this.itemObj.attr({
         itemid: params.itemid,
         amount: params.amount
