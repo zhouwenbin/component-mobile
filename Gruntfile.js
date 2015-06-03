@@ -457,6 +457,17 @@ module.exports = function (grunt) {
         ]
       },
 
+      icon: {
+        expand: true,
+        dot: true,
+        timestamp: true,
+        cwd: '<%= config.app %>/static',
+        dest: '<%= config.dist %>',
+        src: [
+          'img/icon.png',
+        ]
+      },
+
       // @todo需要修改，自动笔变化图片
       templates: {
         expand: true,
@@ -1400,7 +1411,8 @@ module.exports = function (grunt) {
       'uglify',
       'copy:dist',
       'copy:html',
-      'copy:image',
+      // 'copy:image',
+      'copy:icon',
       'copy:templates',
       // 'copy:scripts',
       'usemin',
