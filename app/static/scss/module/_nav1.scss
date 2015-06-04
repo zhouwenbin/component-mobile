@@ -1,5 +1,5 @@
 .nav1{
-  padding: 10px 0;
+  padding: 10px * 2 / $ppr 0;
   border-bottom:1px solid #dfdfdf;
   background: #fff;
 } 
@@ -9,25 +9,26 @@
 .nav1 li{
   flex:1;
   text-align: center;
+  font-size:24px / $ppr;
 }
 %nav1-icon{
   background:url(#{$bg-url}nav1.png) no-repeat;
-  background-size:274px;
+  background-size:274px * 2 / $ppr;
   display: block;
-  margin:0 auto 7px;
-  width:40px;
-  height: 39px;
+  margin:0 auto 7px * 2 / $ppr;
+  width:40px * 2 / $ppr;
+  height: 39px * 2 / $ppr;
 }
 .nav1-icon1{
   @extend %nav1-icon;
 }
 .nav1-icon2{
   @extend %nav1-icon;
-  background-position: -78px 0;
+  background-position: -79px * 2 / $ppr 0;
 }
 .nav1-icon3{
   @extend %nav1-icon;
-  background-position: -157px 0;
+  background-position: -157px * 2 / $ppr 0;
 }
 .nav1-icon4{
   @extend %nav1-icon;

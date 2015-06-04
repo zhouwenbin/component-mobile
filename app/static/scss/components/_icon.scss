@@ -3,290 +3,290 @@
   display: inline-block;
   vertical-align: middle;
   background: url(#{$bg-url}icon.png) no-repeat;
-  background-size: 450px 450px;
+  background-size: 450px *2 / $ppr 450px *2 / $ppr;
   text-indent: -999em;
 }
 .icon1{
-  width: 18px;
-  height: 12px;
+  width: 18px *2 / $ppr;
+  height: 12px *2 / $ppr;
 }
 .icon2{
-  width: 27px;
-  height: 27px;
-  background-position: -49px 0;
+  width: 28px *2 / $ppr;
+  height: 28px *2 / $ppr;
+  background-position: -49px *2 / $ppr 0;
 }
 .icon3{
-  width: 90px;
-  height: 24px;
-  background-position: -129px -58px;
+  width: 90px *2 / $ppr;
+  height: 24px *2 / $ppr;
+  background-position: -129px *2 / $ppr -58px *2 / $ppr;
 }
 .icon4{
-  width: 76px;
-  height: 76px;
-  background-position: 0 -60px;
+  width: 76px *2 / $ppr;
+  height: 76px *2 / $ppr;
+  background-position: 0 -60px *2 / $ppr;
 }
 .icon5{
-  width: 76px;
-  height: 76px;
-  background-position: 0 -138px;
+  width: 76px *2 / $ppr;
+  height: 76px *2 / $ppr;
+  background-position: 0 -138px *2 / $ppr;
 }
 .icon6{
-  width: 77px;
-  height: 23px;
-  background-position: 0 -219px;
+  width: 77px *2 / $ppr;
+  height: 23px *2 / $ppr;
+  background-position: 0 -219px *2 / $ppr;
 }
 .icon7{
-  width: 19px;
-  height: 19px;
-  background-position: -29px 0;
+  width: 19px *2 / $ppr;
+  height: 19px *2 / $ppr;
+  background-position: -29px *2 / $ppr 0;
 }
 .icon8{
-  width: 25px;
-  height: 25px;
-  background-position: -253px -195px;
+  width: 25px *2 / $ppr;
+  height: 25px *2 / $ppr;
+  background-position: -253px *2 / $ppr -195px *2 / $ppr;
 }
 
 .icon9{
-  width: 9px;
-  height: 5px;
-  background-position: -102px 0;
+  width: 9px *2 / $ppr;
+  height: 5px *2 / $ppr;
+  background-position: -102px *2 / $ppr 0;
 }
 .icon10{
-  width: 7px;
-  height: 13px;
-  background-position: -113px 0;
+  width: 7px *2 / $ppr;
+  height: 13px *2 / $ppr;
+  background-position: -113px *2 / $ppr 0;
 }
 .icon11{
-  width: 91px;
-  height: 91px;
-  background-position: 0 -248px;
+  width: 91px *2 / $ppr;
+  height: 91px *2 / $ppr;
+  background-position: 0 -248px *2 / $ppr;
 }
 .icon12{
-  width: 38px;
-  height: 45px;
-  background-position: -81px -22px;
+  width: 38px *2 / $ppr;
+  height: 45px *2 / $ppr;
+  background-position: -81px *2 / $ppr -22px *2 / $ppr;
 }
 .icon13{
-  width: 6px;
-  height: 10px;
-  background-position: -121px 0;
+  width: 6px *2 / $ppr;
+  height: 10px *2 / $ppr;
+  background-position: -121px *2 / $ppr 0;
 }
 .icon14{
-  width: 43px;
-  height: 43px;
-  background-position: -84px -71px;
+  width: 43px *2 / $ppr;
+  height: 43px *2 / $ppr;
+  background-position: -84px *2 / $ppr -71px *2 / $ppr;
 }
 .icon15{
-  width: 13px;
-  height: 13px;
-  background-position: -132px 0;
+  width: 13px *2 / $ppr;
+  height: 13px *2 / $ppr;
+  background-position: -132px *2 / $ppr 0;
   text-indent: -999em;
 }
 .icon16{
-  width: 79px;
-  height: 95px;
-  background-position: -82px -120px;
+  width: 79px *2 / $ppr;
+  height: 95px *2 / $ppr;
+  background-position: -82px *2 / $ppr -120px *2 / $ppr;
 }
 .icon17{
-  width: 62px;
-  height: 62px;
-  background-position: 0 -378px;
+  width: 62px *2 / $ppr;
+  height: 62px *2 / $ppr;
+  background-position: 0 -378px *2 / $ppr;
 }
 .icon18{
-  width: 51px;
-  height: 41px;
-  background-position: -67px -393px;
+  width: 51px *2 / $ppr;
+  height: 41px *2 / $ppr;
+  background-position: -67px *2 / $ppr -393px *2 / $ppr;
 }
 .icon19{
-  width: 19px;
-  height: 16px;
-  background-position: -171px 0;
+  width: 19px *2 / $ppr;
+  height: 16px *2 / $ppr;
+  background-position: -171px *2 / $ppr 0;
 }
 .icon19.active{
-  background-position: -147px 0;
+  background-position: -147px *2 / $ppr 0;
 }
 .icon20{
-  width: 156px;
-  height: 156px;
-  background-position: -294px 0;
+  width: 156px *2 / $ppr;
+  height: 156px *2 / $ppr;
+  background-position: -294px *2 / $ppr 0;
 }
 .icon21{
-  width: 28px;
-  height: 31px;
-  background-position: -124px -21px;
+  width: 28px *2 / $ppr;
+  height: 31px *2 / $ppr;
+  background-position: -124px *2 / $ppr -21px *2 / $ppr;
 }
 .icon22{
-  width: 39px;
-  height: 28px;
-  background-position: -157px -23px;
+  width: 39px *2 / $ppr;
+  height: 28px *2 / $ppr;
+  background-position: -157px *2 / $ppr -23px *2 / $ppr;
 }
 .icon23{
-  width: 36px;
-  height: 30px;
-  background-position: -201px -24px;
+  width: 36px *2 / $ppr;
+  height: 30px *2 / $ppr;
+  background-position: -201px *2 / $ppr -24px *2 / $ppr;
 }
 .icon24{
-  width: 16px;
-  height: 20px;
-  background-position: -198px 0;
+  width: 16px *2 / $ppr;
+  height: 20px *2 / $ppr;
+  background-position: -198px *2 / $ppr 0;
 }
 .icon25{
-  width: 12px;
-  height: 12px;
-  background-position: -219px 0;
+  width: 12px *2 / $ppr;
+  height: 12px *2 / $ppr;
+  background-position: -219px *2 / $ppr 0;
 }
 .icon26{
-  width: 11px;
-  height: 12px;
-  background-position: -238px 0;
+  width: 11px *2 / $ppr;
+  height: 12px *2 / $ppr;
+  background-position: -238px *2 / $ppr 0;
 }
 .icon27{
-  width: 13px;
-  height: 13px;
-  background-position: -255px 0;
+  width: 13px *2 / $ppr;
+  height: 13px *2 / $ppr;
+  background-position: -255px *2 / $ppr 0;
 }
 .icon28{
-  width: 6px;
-  height: 11px;
-  background-position: -270px 0;
+  width: 6px *2 / $ppr;
+  height: 11px *2 / $ppr;
+  background-position: -270px *2 / $ppr 0;
 }
 .icon29{
-  width: 16px;
-  height: 17px;
-  background-position: 0 -22px;
+  width: 16px *2 / $ppr;
+  height: 17px *2 / $ppr;
+  background-position: 0 -22px *2 / $ppr;
 }
 .icon30{
-  width: 77px;
-  height: 93px;
-  background-position: -166px -123px;
+  width: 77px *2 / $ppr;
+  height: 93px *2 / $ppr;
+  background-position: -166px *2 / $ppr -123px *2 / $ppr;
 }
 .icon31{
-  width: 18px;
-  height: 18px;
-  background-position: -237px -24px;
+  width: 18px *2 / $ppr;
+  height: 18px *2 / $ppr;
+  background-position: -237px *2 / $ppr -24px *2 / $ppr;
 }
 .icon32{
-  width: 15px;
-  height: 25px;
-  background-position: -138px -90px;
+  width: 15px *2 / $ppr;
+  height: 25px *2 / $ppr;
+  background-position: -138px *2 / $ppr -90px *2 / $ppr;
 }
 .icon33{
-  width: 15px;
-  height: 25px;
-  background-position: -160px -90px;
+  width: 15px *2 / $ppr;
+  height: 25px *2 / $ppr;
+  background-position: -160px *2 / $ppr -90px *2 / $ppr;
 }
 .icon34{
-  width: 15px;
-  height: 25px;
-  background-position: -180px -90px;
+  width: 15px *2 / $ppr;
+  height: 25px *2 / $ppr;
+  background-position: -180px *2 / $ppr -90px *2 / $ppr;
 }
 .icon35{
-  width: 15px;
-  height: 25px;
-  background-position: -200px -90px;
+  width: 15px *2 / $ppr;
+  height: 25px *2 / $ppr;
+  background-position: -200px *2 / $ppr -90px *2 / $ppr;
 }
 .icon36{
-  width: 13px;
-  height: 13px;
-  background-position: -219px -92px;
+  width: 13px *2 / $ppr;
+  height: 13px *2 / $ppr;
+  background-position: -219px *2 / $ppr -93px *2 / $ppr;
 }
 .icon37{
-  width: 62px;
-  height: 33px;
-  background-position: -135px -394px;
+  width: 62px *2 / $ppr;
+  height: 33px *2 / $ppr;
+  background-position: -135px *2 / $ppr -394px *2 / $ppr;
 }
 .icon38{
-  width: 18px;
-  height: 18px;
-  background-position: -230px -60px;
+  width: 18px *2 / $ppr;
+  height: 18px *2 / $ppr;
+  background-position: -230px *2 / $ppr -60px *2 / $ppr;
 }
 .icon39{
-  width: 13px;
-  height: 16px;
-  background-position: -256px -60px;
+  width: 13px *2 / $ppr;
+  height: 16px *2 / $ppr;
+  background-position: -256px *2 / $ppr -60px *2 / $ppr;
 }
 .icon40{
-  width: 18px;
-  height: 13px;
-  background-position: -255px -92px;
+  width: 18px *2 / $ppr;
+  height: 13px *2 / $ppr;
+  background-position: -255px *2 / $ppr -92px *2 / $ppr;
 }
 .icon41{
-  width: 12px;
-  height: 14px;
-  background-position: -255px -113px;
+  width: 12px *2 / $ppr;
+  height: 14px *2 / $ppr;
+  background-position: -255px *2 / $ppr -113px *2 / $ppr;
 }
 .icon42{
-  width: 14px;
-  height: 14px;
-  background-position: -255px -135px;
+  width: 14px *2 / $ppr;
+  height: 14px *2 / $ppr;
+  background-position: -255px *2 / $ppr -135px *2 / $ppr;
 }
 .icon43{
-  width: 34px;
-  height: 27px;
-  background-position: -208px -398px;
+  width: 34px *2 / $ppr;
+  height: 27px *2 / $ppr;
+  background-position: -208px *2 / $ppr -398px *2 / $ppr;
 }
 .icon44{
-  width: 12px;
-  height: 7px;
-  background-position: -256px -153px;
+  width: 12px *2 / $ppr;
+  height: 7px *2 / $ppr;
+  background-position: -256px *2 / $ppr -153px *2 / $ppr;
 }
 .icon45{
-  width: 15px;
-  height: 15px;
-  background-position: -31px -25px;
+  width: 15px *2 / $ppr;
+  height: 15px *2 / $ppr;
+  background-position: -31px *2 / $ppr -25px *2 / $ppr;
   text-indent: -999em;
 }
 .icon46{
-  width: 18px;
-  height: 14px;
-  background-position: -260px -23px;
+  width: 18px *2 / $ppr;
+  height: 14px *2 / $ppr;
+  background-position: -260px *2 / $ppr -23px *2 / $ppr;
 }
 .icon47{
-  width: 45px;
-  height: 45px;
-  background-position: -190px -225px;
+  width: 45px *2 / $ppr;
+  height: 45px *2 / $ppr;
+  background-position: -190px *2 / $ppr -225px *2 / $ppr;
 }
 .icon48{
-  width: 27px;
-  height: 27px;
-  background-position: -49px -29px;
+  width: 28px *2 / $ppr;
+  height: 28px *2 / $ppr;
+  background-position: -49px *2 / $ppr -29px *2 / $ppr;
   text-indent: -999em;
 }
 .icon49{
-  width: 18px;
-  height: 18px;
-  background-position: -255px -225px;
+  width: 18px *2 / $ppr;
+  height: 18px *2 / $ppr;
+  background-position: -255px *2 / $ppr -225px *2 / $ppr;
 }
 .icon49.active{
-  background-position: -255px -249px;
+  background-position: -255px *2 / $ppr -249px *2 / $ppr;
 }
 .icon50{
-  width: 9px;
-  height: 13px;
-  background-position: -258px -270px;
+  width: 9px *2 / $ppr;
+  height: 13px *2 / $ppr;
+  background-position: -258px *2 / $ppr -270px *2 / $ppr;
 }
 .icon51{
-  width: 10px;
-  height: 14px;
-  background-position: -270px -270px;
+  width: 10px *2 / $ppr;
+  height: 14px *2 / $ppr;
+  background-position: -270px *2 / $ppr -270px *2 / $ppr;
 }
 .icon52{
-  width: 10px;
-  height: 5px;
-  background-position: -260px -288px;
+  width: 10px *2 / $ppr;
+  height: 5px *2 / $ppr;
+  background-position: -260px *2 / $ppr -288px *2 / $ppr;
 }
 .icon53{
-  width: 18px;
-  height: 18px;
-  background-position: -258px -300px;
+  width: 18px *2 / $ppr;
+  height: 18px *2 / $ppr;
+  background-position: -258px *2 / $ppr -300px *2 / $ppr;
 }
 .icon54{
-  width: 17px;
-  height: 13px;
-  background-position: -260px -325px;
+  width: 17px *2 / $ppr;
+  height: 13px *2 / $ppr;
+  background-position: -260px *2 / $ppr -325px *2 / $ppr;
 }
 .icon55{
-  width: 68px;
-  height: 93px;
-  background-position: -186px -282px;
+  width: 68px *2 / $ppr;
+  height: 93px *2 / $ppr;
+  background-position: -186px *2 / $ppr -282px *2 / $ppr;
 }

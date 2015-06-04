@@ -1,8 +1,8 @@
 .dot{
 	display:inline-block;
 	vertical-align:middle;
-	width:8px;
-	height:8px;
+	width:8px * 2 / $ppr;
+	height:8px * 2 / $ppr;
 	border-radius:50%;
 	
 }
@@ -10,12 +10,13 @@
 	background:#c00000;
 }
 .dot-error{
-	width: 18px;
-	height: 18px;
-	line-height: 18px;
+	width: 18px * 2 / $ppr;
+	height: 18px * 2 / $ppr;
+	line-height: 18px * 2 / $ppr;
 	text-align: center;
 	background: #df3c3a;
 	color: #fff;
 	text-indent: 0;
 	transform:scale(0.8);
+	font-size:24px / $ppr;
 }

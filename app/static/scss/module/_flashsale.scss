@@ -4,17 +4,17 @@
 .flashsale li{
   background: #fff;
   border-bottom: 1px solid #d9d9d9;
-  padding-top: 17px;
-  padding-bottom:30px;
+  padding-top: 17px * 2 / $ppr;
+  padding-bottom:30px * 2 / $ppr;
 }
 .flashsale h3{
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 14px * 2 / $ppr;
+  line-height: 18px * 2 / $ppr;
   font-weight: normal;
-  margin-bottom: 10px;
+  margin-bottom: 10px * 2 / $ppr;
 }
 .flashsale-c1{
-  width: 123px;
+  width: 123px * 2 / $ppr;
   text-align: center;
 }
 .flashsale-c2{
@@ -22,18 +22,22 @@
 }
 .flashsale-c2r1{
   color: #999;
-  margin-bottom: 13px;
+  margin-bottom: 13px * 2 / $ppr;
+  font-size: 24px / $ppr;
 }
 .flashsale-c2r1 .icon{
-  margin-right: 2px;
+  margin-right: 2px * 2 / $ppr;
 }
 .flashsale-c2r2 .text-error{
-  font-size: 15px;
-  margin-right: 5px;
+  font-size: 15px * 2 / $ppr;
+  margin-right: 5px * 2 / $ppr;
 }
 .flashsale-c2r2 del{
   color: #666;
+  font-size: 24px / $ppr;
 }
 .flashsale img{
   border:1px solid #ebebeb;
+  width: 170px / $ppr;
+  height: 170px / $ppr
 }

@@ -1,21 +1,21 @@
 /*alert*/
 .alert{
-	padding: 14px 0 14px 17px;
+	padding: 14px * 2 / $ppr 0 14px * 2 / $ppr 17px * 2 / $ppr;
 	color: #fff;
 	position: relative;
-	font-size:14px;
+	font-size:14px * 2 / $ppr;
 }
 .alert a{
 	display:block;
 }
 .alert .icon{
 	position:absolute;
-	right:13px;
+	right:13px * 2 / $ppr;
 }
 .alert-warning {
 	@extend .alert;
 	background: #1376ce;
-	margin-bottom:5px;
+	margin-bottom:5px * 2 / $ppr;
 }
 .alert-error{
 	@extend .alert;
