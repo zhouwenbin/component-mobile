@@ -12,16 +12,23 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.weixin',
     'sf.util',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'text!template_order_gotopay',
+    'sf.env.switcher',
+    'sf.hybrid'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage, SFWeixin, SFUtil, SFConfig) {
+  function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn,
+    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid) {
+
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
     SFWeixin.shareIndex();
 
-    var gotopay = can.Control.extend({
+    can.route.ready();
+
+    var SFGotoPay = can.Control.extend({
 
       init: function(element, options) {
 
@@ -34,6 +41,7 @@ define(
         }
 
         var params = can.deparam(window.location.search.substr(1));
+        params = _.extend(params, can.route.attr());
 
         this.options.orderid = params.orderid;
         this.options.recid = params.recid;
@@ -75,7 +83,9 @@ define(
       },
 
       render: function(data) {
-        var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache', data);
+        // var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache', data);
+        var renderFn = can.mustache(template_order_gotopay);
+        var html = renderFn(data);
         this.element.html(html);
       },
 
@@ -153,5 +163,40 @@ define(
       }
     });
 
-    new gotopay('.sf-b2c-mall-gotopay');
+    // －－－－－－－－－－－－－－－－－－－－－－
+    // 启动分支逻辑
+    var switcher = new SFSwitcher();
+
+    switcher.register('web', function() {
+      new SFGotoPay('.sf-b2c-mall-gotopay');
+      new SFNav('.sf-b2c-mall-nav');
+    });
+
+    switcher.register('app', function() {
+      var app = {
+        initialize: function() {
+          this.bindEvents();
+        },
+
+        bindEvents: function() {
+          document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+
+        onDeviceReady: function() {
+          app.receivedEvent('deviceready');
+        },
+
+        receivedEvent: function(id) {
+
+          SFHybrid.setNetworkListener();
+          SFHybrid.isLogin();
+          new SFGotoPay('.sf-b2c-mall-gotopay');
+        }
+      };
+
+      app.initialize();
+    });
+
+    switcher.go();
+    // －－－－－－－－－－－－－－－－－－－－－－
   });

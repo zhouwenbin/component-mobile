@@ -8,8 +8,9 @@ define('sf.b2c.mall.component.addreditor', [
   'sf.b2c.mall.api.user.createReceiverInfo',
   'sf.b2c.mall.api.user.updateRecAddress',
   'sf.b2c.mall.business.config',
-  'sf.b2c.mall.widget.message'
-], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig, SFMessage) {
+  'sf.b2c.mall.widget.message',
+  'text!json_regions'
+], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig, SFMessage, json_regions) {
 
   return can.Control.extend({
     init: function() {
@@ -20,15 +21,21 @@ define('sf.b2c.mall.component.addreditor', [
 
     request: function() {
       var that = this;
-      return can.ajax({url: '/json/sf.b2c.mall.regions.json'})
-        .done(_.bind(function(cities) {
-          this.adapter.regions = new RegionsAdapter({
-            cityList: cities
-          });
-        }, this))
-        .fail(function(error) {
+      var cities = JSON.parse(json_regions);
 
-        });
+      this.adapter.regions = new RegionsAdapter({
+          cityList: cities
+      });
+
+      // return can.ajax({url: '/json/sf.b2c.mall.regions.json'})
+      //   .done(_.bind(function(cities) {
+      //     this.adapter.regions = new RegionsAdapter({
+      //       cityList: cities
+      //     });
+      //   }, this))
+      //   .fail(function(error) {
+
+      //   });
     },
 
     /**

@@ -261,8 +261,11 @@ requirejs.config({
     // 原滋原味
     'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon',
 
+    'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
+    'sf.b2c.mall.api.shopcart.isShowCart': 'scripts/api/sf.b2c.mall.api.shopcart.isShowCart',
     'sf.b2c.mall.page.shoppingcart': 'scripts/page/sf.b2c.mall.page.shoppingcart',
     'sf.b2c.mall.component.shoppingcart': 'scripts/component/sf.b2c.mall.component.shoppingcart',
+
     'template_order_shoppingcart': 'templates/order/sf.b2c.mall.shoppingcart.mustache',
     'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
     'template_order_selectrecaddr': 'templates/order/sf.b2c.mall.order.selectrecaddr.mustache',
@@ -270,9 +273,9 @@ requirejs.config({
     'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
     'template_order_orderdetail': 'templates/order/sf.b2c.mall.order.orderdetail.mustache',
     'template_order_iteminfo': 'templates/order/sf.b2c.mall.order.iteminfo.mustache',
-    'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
-    'sf.b2c.mall.api.shopcart.isShowCart': 'scripts/api/sf.b2c.mall.api.shopcart.isShowCart',
     'template_product_detailcontent':'templates/product/sf.b2c.mall.product.detailcontent.mustache',
+    'template_order_gotopay': 'templates/order/sf.b2c.mall.order.gotopay.mustache',
+    'json_regions': 'json/sf.b2c.mall.regions.json',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
