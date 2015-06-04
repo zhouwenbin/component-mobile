@@ -264,11 +264,15 @@ module.exports = function (grunt) {
               return '';
             }
 
-            if (config.hybrid && block.dest == 'sf.h5.base.js') {
+            if (config.hybrid && block.dest == '/scripts/sf.h5.base.js') {
               return ''
-            }else if (!config.hybrid && block.dest == 'sf.h5.hybrid.base.js') {
+            }else if (!config.hybrid && block.dest == '/scripts/sf.h5.hybrid.base.js') {
               return '';
-            };
+            }
+
+            if (!config.hybrid && block.dest == '../cordova.js') {
+              return '';
+            }
 
             if (config.hybrid) {
               if (block.dest[0] == '/') {
