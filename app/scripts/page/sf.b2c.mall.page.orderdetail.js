@@ -33,7 +33,6 @@ define(
 
       render: function() {
         new SFOrderDetailContent('.sf-b2c-mall-orderdetail');
-        new SFNav('.sf-b2c-mall-nav');
       },
 
       supplement: function() {

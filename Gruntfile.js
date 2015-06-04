@@ -945,6 +945,7 @@ module.exports = function (grunt) {
       },
       paysuccess: {
         options: {
+          optimize:'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.paysuccess.js',
