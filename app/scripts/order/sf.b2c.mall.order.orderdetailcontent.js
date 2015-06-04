@@ -19,6 +19,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
   var PREFIX = 'http://img0.sfht.com';
 
+  can.route.ready();
+
   return can.Control.extend({
 
     helpers: {
@@ -92,6 +94,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     render: function() {
       // 从url的search中获取参数
       var params = can.deparam(window.location.search.substr(1));
+      params = _.extend(params, can.route.attr());
       this.request(params);
     },
 
