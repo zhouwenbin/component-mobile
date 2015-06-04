@@ -7,9 +7,10 @@ define(
     'store',
     'sf.b2c.mall.framework.comm',
     'sf.weixin',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'text!template_order_alipayframe'
   ],
-  function(can, $, store, SFFrameworkComm, SFWeixin, SFConfig) {
+  function(can, $, store, SFFrameworkComm, SFWeixin, SFConfig, template_order_alipayframe) {
 
     SFFrameworkComm.register(3);
 
@@ -44,7 +45,7 @@ define(
         if (!this.options.src) {
           //alert("alipayurl error");
         }
-        var html = can.view('/templates/order/sf.b2c.mall.order.alipayframe.mustache', this.options);
+        var html = can.view(template_order_alipayframe, this.options);
         this.element.html(html);
       }
     });

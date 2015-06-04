@@ -11,9 +11,10 @@ define(
     'sf.b2c.mall.business.config',
     'sf.util',
     'sf.b2c.mall.api.user.setPswdAndLogin',
-    'sf.b2c.mall.api.user.downSmsCode'
+    'sf.b2c.mall.api.user.downSmsCode',
+    'text!template_component_setpassword'
   ],
-  function($, can, store, md5, Fastclick, SFBizConf, SFFn, SFSetPswdAndLogin, SFDownSmsCode) {
+  function($, can, store, md5, Fastclick, SFBizConf, SFFn, SFSetPswdAndLogin, SFDownSmsCode, template_component_setpassword) {
 
     Fastclick.attach(document.body);
 
@@ -49,7 +50,7 @@ define(
       },
 
       render: function(data) {
-        var html = can.view('templates/component/sf.b2c.mall.component.setpassword.mustache', data);
+        var html = can.view(template_component_setpassword, data);
         this.element.append(html);
         var params = can.deparam(window.location.search.substr(1));
         if (params.tel) {

@@ -13,9 +13,10 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.component.addreditor',
+  'text!template_component_recaddrmanage'
 
 
-], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage, SFConfig, SFAddressEditor) {
+], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage, SFConfig, SFAddressEditor, template_component_recaddrmanage) {
 
   can.route.ready();
   var DEFAULT_INIT_TAG = 'init';
@@ -54,7 +55,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
             addressList: that.result || []
           });
 
-          var html = can.view('templates/component/sf.b2c.mall.component.recaddrmanage.mustache', that.adapter4List.addrs);
+          var html = can.view(template_component_recaddrmanage, that.adapter4List.addrs);
           that.element.html(html);
 
           //绑定事件

@@ -19,9 +19,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     'sf.helpers',
     'sf.b2c.mall.order.fn',
     'sf.b2c.mall.widget.message',
-    'moment'
+    'moment',
+    'text!template_order_orderdetail'
   ],
-  function(can, $, Fastclick, SFGetOrder, SFCancelOrder, SFUpdateReceiverInfo, SFGetIDCardUrlList, SFGetUserRoutes, SFGetRecvInfo, SFConfirmReceive, SFQueryPtnAuthLink, loading, FrameworkComm, SFConfig, Utils, helpers, SFOrderFn, SFMessage, moment) {
+  function(can, $, Fastclick, SFGetOrder, SFCancelOrder, SFUpdateReceiverInfo, SFGetIDCardUrlList, SFGetUserRoutes, SFGetRecvInfo, SFConfirmReceive, SFQueryPtnAuthLink, loading, FrameworkComm, SFConfig, Utils, helpers, SFOrderFn, SFMessage, moment, template_order_orderdetail) {
 
     Fastclick.attach(document.body);
 
@@ -124,7 +125,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             orderData = data;
             // @todo 年后做渲染物流模块组件
-            var html = can.view('templates/order/sf.b2c.mall.order.orderdetail.mustache', that.options);
+            var html = can.view(template_order_orderdetail, that.options);
             that.element.html(html);
           })
           .then(function() {
@@ -160,7 +161,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             that.options.firstRoute = that.options.userRoutes[0];
 
-            var html = can.view('templates/order/sf.b2c.mall.order.orderdetail.mustache', that.options);
+            var html = can.view(template_order_orderdetail, that.options);
             that.element.html(html);
 
             //页面初始化布局

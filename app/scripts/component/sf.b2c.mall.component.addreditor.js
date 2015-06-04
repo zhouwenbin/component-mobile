@@ -9,8 +9,9 @@ define('sf.b2c.mall.component.addreditor', [
   'sf.b2c.mall.api.user.updateRecAddress',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.widget.message',
-  'text!json_regions'
-], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig, SFMessage, json_regions) {
+  'text!json_regions',
+  'text!template_component_addreditor'
+], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig, SFMessage, json_regions, template_component_addreditor) {
 
   return can.Control.extend({
     init: function() {
@@ -44,7 +45,7 @@ define('sf.b2c.mall.component.addreditor', [
      */
     render: function(data, tag, element) {
       this.setup(element);
-      var html = can.view('templates/component/sf.b2c.mall.component.addreditor.mustache', data);
+      var html = can.view(template_component_addreditor, data);
       element.html(html);
 
       this.supplement(tag);

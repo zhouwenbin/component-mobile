@@ -6,10 +6,11 @@ define(
   [
     'zepto',
     'can',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'text!template_widget_message'
   ],
 
-  function($, can, SFConfig) {
+  function($, can, SFConfig, template_widget_message) {
     return can.Control.extend({
 
       init: function(element, options) {
@@ -26,7 +27,7 @@ define(
 
       render: function() {
         this.setup($('body'));
-        this.options.html = can.view('/templates/widget/sf.b2c.mall.widget.message.mustache', this.data);
+        this.options.html = can.view(template_widget_message, this.data);
         $('body').append(this.options.html);
       },
 

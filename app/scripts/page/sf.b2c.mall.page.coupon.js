@@ -9,9 +9,10 @@ define(
     'sf.helpers',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.coupon.getUserCouponList',
-    'sf.b2c.mall.api.coupon.receiveExCode'
+    'sf.b2c.mall.api.coupon.receiveExCode',
+    'text!template_center_coupon'
   ],
-  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode) {
+  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode, template_center_coupon) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -55,7 +56,7 @@ define(
         can.when(that.initCoupons())
           .then(function() {
             that.itemObj.attr("totalCount", 1);
-            var html = can.view('templates/center/sf.b2c.mall.center.coupon.mustache', that.itemObj);
+            var html = can.view(template_center_coupon, that.itemObj);
             that.element.html(html);
           })
           .always(function() {

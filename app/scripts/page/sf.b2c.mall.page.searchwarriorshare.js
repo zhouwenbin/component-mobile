@@ -12,11 +12,12 @@ define(
     'sf.helpers',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.login',
-    'sf.b2c.mall.widget.message'
+    'sf.b2c.mall.widget.message',
+    'text!template_searchwarrior_share'
   ],
   function(can, $, Fastclick, SFFn,
            SFWeixin, SFFrameworkComm, SFConfig, helpers,
-           SFLoading, SFLogin, SFMessage) {
+           SFLoading, SFLogin, SFMessage, template_searchwarrior_share) {
       Fastclick.attach(document.body);
       SFFrameworkComm.register(3);
 
@@ -119,7 +120,7 @@ define(
       },
       render: function() {
         var that = this;
-        this.element.html(can.view("templates/searchwarrior/sf.b2c.mall.searchwarrior.share.mustache", this.itemObj, this.helpers));
+        this.element.html(can.view(template_searchwarrior_share, this.itemObj, this.helpers));
         this.loading.hide();
       },
 

@@ -14,11 +14,12 @@ define(
     'sf.b2c.mall.api.coupon.getShareBagInfo',
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.hasReceived',
-    'sf.b2c.mall.widget.login'
+    'sf.b2c.mall.widget.login',
+    'text!template_luckymoney_accept'
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
-           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin) {
+           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin, template_luckymoney_accept) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -127,7 +128,7 @@ define(
       },
 
       renderHtml: function(element, itemObj) {
-        var html = can.view('templates/luckymoney/sf.b2c.mall.luckymoney.accept.mustache', itemObj);
+        var html = can.view(template_luckymoney_accept, itemObj);
         element.html(html);
       },
       errorMap: {
