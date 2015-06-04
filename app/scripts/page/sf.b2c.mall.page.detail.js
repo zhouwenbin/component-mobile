@@ -17,7 +17,7 @@ define(
 
     var SFContent = can.Control.extend({
 
-      init: function(element, options) {
+      init: function(element, options) {alert("init");
         this.render();
         this.supplement();
       },

@@ -56,7 +56,9 @@ define(
 
       /** 渲染 */
       render: function(element, data) {
-        var html = can.view(template_taiwantraveller_foodeat, data);
+        // var html = can.view(template_taiwantraveller_foodeat, data);
+        var renderFn = can.mustache(template_taiwantraveller_foodeat);
+        var html = renderFn(data);
         element.html(html);
       }
 

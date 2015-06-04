@@ -56,7 +56,9 @@ define(
 
       /** 渲染 */
       render: function(element, data) {
-        var html = can.view(template_taiwantraveller_getcard, data);
+        // var html = can.view(template_taiwantraveller_getcard, data);
+        var renderFn = can.mustache(template_taiwantraveller_getcard);
+        var html = renderFn(data);
         element.html(html);
       }
 

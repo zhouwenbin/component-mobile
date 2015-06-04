@@ -55,7 +55,9 @@ define('sf.b2c.mall.component.recaddrmanage', [
             addressList: that.result || []
           });
 
-          var html = can.view(template_component_recaddrmanage, that.adapter4List.addrs);
+          // var html = can.view(template_component_recaddrmanage, that.adapter4List.addrs);
+          var renderFn = can.mustache(template_component_recaddrmanage);
+          var html = renderFn(that.adapter4List.addrs);
           that.element.html(html);
 
           //绑定事件

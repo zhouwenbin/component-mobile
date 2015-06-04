@@ -125,7 +125,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             orderData = data;
             // @todo 年后做渲染物流模块组件
-            var html = can.view(template_order_orderdetail, that.options);
+            // var html = can.view(template_order_orderdetail, that.options);
+            var renderFn = can.mustache(template_order_orderdetail);
+            var html = renderFn(that.options);
+
             that.element.html(html);
           })
           .then(function() {
@@ -161,7 +164,9 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             that.options.firstRoute = that.options.userRoutes[0];
 
-            var html = can.view(template_order_orderdetail, that.options);
+            // var html = can.view(template_order_orderdetail, that.options);
+            var renderFn = can.mustache(template_order_orderdetail);
+            var html = renderFn(that.options);
             that.element.html(html);
 
             //页面初始化布局

@@ -50,7 +50,10 @@ define(
       },
 
       render: function(data) {
-        var html = can.view(template_component_setpassword, data);
+        // var html = can.view(template_component_setpassword, data);
+        var renderFn = can.mustache(template_component_setpassword);
+        var html = renderFn(data);
+
         this.element.append(html);
         var params = can.deparam(window.location.search.substr(1));
         if (params.tel) {

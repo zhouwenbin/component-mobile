@@ -117,7 +117,9 @@ define(
           })
       },
       renderHtml: function(element, itemObj) {
-        var html = can.view(template_order_paysuccess, itemObj, this.helpers);
+        // var html = can.view(template_order_paysuccess, itemObj, this.helpers);
+        var renderFn = can.mustache(template_order_paysuccess);
+        var html = renderFn(itemObj, this.helpers);
         element.html(html);
       }
     });

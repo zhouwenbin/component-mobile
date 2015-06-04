@@ -45,7 +45,9 @@ define(
         if (!this.options.src) {
           //alert("alipayurl error");
         }
-        var html = can.view(template_order_alipayframe, this.options);
+        // var html = can.view(template_order_alipayframe, this.options);
+        var renderFn = can.mustache(template_order_alipayframe);
+        var html = renderFn(this.options);
         this.element.html(html);
       }
     });

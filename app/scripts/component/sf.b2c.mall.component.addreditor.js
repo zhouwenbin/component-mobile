@@ -45,7 +45,8 @@ define('sf.b2c.mall.component.addreditor', [
      */
     render: function(data, tag, element) {
       this.setup(element);
-      var html = can.view(template_component_addreditor, data);
+      var renderFn = can.mustache(template_component_addreditor);
+      var html = renderFn(data);
       element.html(html);
 
       this.supplement(tag);

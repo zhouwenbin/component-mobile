@@ -60,7 +60,9 @@ define(
           });
       },
       renderHtml: function(element, itemObj) {
-        var html = can.view(template_luckymoney_share, itemObj);
+        // var html = can.view(template_luckymoney_share, itemObj);
+        var renderFn = can.mustache(template_luckymoney_share);
+        var html = renderFn(itemObj);
         element.html(html);
       },
       "#shareBtn click": function() {
