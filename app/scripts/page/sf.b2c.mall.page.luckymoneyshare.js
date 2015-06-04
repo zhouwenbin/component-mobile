@@ -10,9 +10,10 @@ define(
     'sf.b2c.mall.business.config',
     'sf.helpers',
     'sf.b2c.mall.api.coupon.getShareBagInfo',
-    'sf.b2c.mall.luckymoney.users'
+    'sf.b2c.mall.luckymoney.users',
+    'text!template_luckymoney_share'
   ],
-  function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo, SFLuckyMoneyUsers) {
+  function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo, SFLuckyMoneyUsers, template_luckymoney_share) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -59,7 +60,7 @@ define(
           });
       },
       renderHtml: function(element, itemObj) {
-        var html = can.view('templates/luckymoney/sf.b2c.mall.luckymoney.share.mustache', itemObj);
+        var html = can.view(template_luckymoney_share, itemObj);
         element.html(html);
       },
       "#shareBtn click": function() {

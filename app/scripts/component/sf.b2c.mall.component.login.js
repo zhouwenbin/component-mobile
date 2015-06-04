@@ -13,12 +13,13 @@ define('sf.b2c.mall.component.login', [
     'sf.util',
     'sf.b2c.mall.widget.login',
     'sf.b2c.mall.api.user.checkUserExist',
-    'sf.b2c.mall.widget.message'
+    'sf.b2c.mall.widget.message',
+    'text!template_component_login'
   ],
 
   function($, can, md5, store, Fastclick,
     SFConfig, SFLogin, SFNeedVfCode, SFFrameworkComm,
-    SFFn, SFWeChatLogin, SFCheckUserExist, SFMessage) {
+    SFFn, SFWeChatLogin, SFCheckUserExist, SFMessage, template_component_login) {
 
     SFFrameworkComm.register(3);
 
@@ -131,7 +132,7 @@ define('sf.b2c.mall.component.login', [
        * @param  {can.Map} data 输入的观察者对象
        */
       render: function(data) {
-        var html = can.view('templates/component/sf.b2c.mall.component.login.mustache', data, this.helpers);
+        var html = can.view(template_component_login, data, this.helpers);
         this.element.append(html);
       },
 

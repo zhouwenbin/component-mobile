@@ -10,10 +10,11 @@ define(
     'sf.b2c.mall.api.user.reqLoginAuth',
     'sf.weixin',
     'sf.b2c.mall.api.user.getUserCode',
-    'sf.b2c.mall.widget.login'
+    'sf.b2c.mall.widget.login',
+    'text!template_taiwantraveller_getcard'
   ],
 
-  function($, can, store, Fastclick, SFFrameworkComm, SFReqLoginAuth, SFWeixin, SFGetUserCode, SFWeChatLogin) {
+  function($, can, store, Fastclick, SFFrameworkComm, SFReqLoginAuth, SFWeixin, SFGetUserCode, SFWeChatLogin, template_taiwantraveller_getcard) {
 
     SFFrameworkComm.register(3);
 
@@ -55,7 +56,7 @@ define(
 
       /** 渲染 */
       render: function(element, data) {
-        var html = can.view('templates/taiwantraveller/sf.b2c.mall.taiwantraveller.getcard.mustache', data);
+        var html = can.view(template_taiwantraveller_getcard, data);
         element.html(html);
       }
 

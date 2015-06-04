@@ -9,9 +9,10 @@ define(
     'sf.util',
     'sf.b2c.mall.business.config',
     'sf.helpers',
-    'sf.b2c.mall.api.order.getOrder'
+    'sf.b2c.mall.api.order.getOrder',
+    'text!template_order_paysuccess'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder) {
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder, template_order_paysuccess) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -116,7 +117,7 @@ define(
           })
       },
       renderHtml: function(element, itemObj) {
-        var html = can.view('templates/order/sf.b2c.mall.order.paysuccess.mustache', itemObj, this.helpers);
+        var html = can.view(template_order_paysuccess, itemObj, this.helpers);
         element.html(html);
       }
     });

@@ -14,10 +14,11 @@ define('sf.b2c.mall.component.register', [
     'sf.util',
     'sf.b2c.mall.api.promotion.receivePro',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.user.checkUserExist' //@noto 检查第三方账号绑定的手机号是否有登录密码
+    'sf.b2c.mall.api.user.checkUserExist',
+    'text!template_component_register_fillinfo'
   ],
 
-  function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn, SFReceivePro, SFMessage, SFCheckUserExist) {
+  function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf, SFFn, SFReceivePro, SFMessage, SFCheckUserExist, template_component_register_fillinfo) {
 
     Fastclick.attach(document.body);
 
@@ -125,7 +126,7 @@ define('sf.b2c.mall.component.register', [
 
       renderMap: {
         'fillinfo': function(data) {
-          var html = can.view('templates/component/sf.b2c.mall.component.register.fillinfo.mustache', data, this.helpers);
+          var html = can.view(template_component_register_fillinfo, data, this.helpers);
           this.element.html(html)
           console.log(this.element.find('.register'))
           this.element.find('.register').show('slow');

@@ -4,9 +4,10 @@ define("sf.b2c.mall.luckymoney.users",
   [
     'can',
     'zepto',
-    'sf.b2c.mall.api.coupon.getShareBagCpList'
+    'sf.b2c.mall.api.coupon.getShareBagCpList',
+    'text!template_luckymoney_users'
   ],
-  function(can, $, SFGetShareBagCpList) {
+  function(can, $, SFGetShareBagCpList, template_luckymoney_users) {
     return can.Control.extend({
       itemObj:  new can.Map({
         userCouponInfo: {}
@@ -39,7 +40,7 @@ define("sf.b2c.mall.luckymoney.users",
           });
       },
       renderHtml: function(element, itemObj) {
-        var html =  can.view('templates/luckymoney/sf.b2c.mall.luckymoney.users.mustache', itemObj);
+        var html =  can.view(template_luckymoney_users, itemObj);
         element.html(html);
       }
     });
