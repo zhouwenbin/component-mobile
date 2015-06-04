@@ -16,7 +16,7 @@
         <section class="orderlist-none" style="height: inherit;">
           <span class="icon icon55"></span>
           <p>您当前还没有任何订单～</p>
-          <a href="/index.html" class="btn btn-normal btn-radius">去逛逛</a>
+          <a href="http://m.sfht.com/index.html" class="btn btn-normal btn-radius">去逛逛</a>
         </section>
 
         {{else}}
@@ -24,7 +24,7 @@
         {{#orders}}
         <li {{data 'order'}}>
             <div class="box box1">
-              <a href="/orderdetail.html?orderid={{orderId}}" class="box-link">订单号: {{orderId}}</a>
+              <a href="http://m.sfht.com/orderdetail.html?orderid={{orderId}}" class="box-link">订单号: {{orderId}}</a>
               <span class="icon icon13 box-arrow center-vertical"></span>
             </div>
             {{#each orderPackageItemList}}
@@ -35,19 +35,19 @@
                     </h2>
 
                     {{#sf-show-route status}}
-                    <a href="/orderdetail.html?orderid={{orderId}}#!&packageNo={{@index}}" class="text-link">查看物流</a>
+                    <a href="http://m.sfht.com/orderdetail.html?orderid={{orderId}}#!&packageNo={{@index}}" class="text-link">查看物流</a>
                     {{/sf-show-route}}
 
                 </div>
                 <ul class="goodslist">
                     {{#orderGoodsItemList}}
                     <li>
-                        <a href="/detail/{{itemId}}.html">
+                        <a href="http://m.sfht.com/detail/{{itemId}}.html">
                           <img src="{{sf-image imageUrl}}">
                         </a>
                         <div class="goodslist-c2">
                           <h3 class="ellipsis2">
-                            <a href="/detail/{{itemId}}.html">{{goodsName}}</a>
+                            <a href="http://m.sfht.com/detail/{{itemId}}.html">{{goodsName}}</a>
                           </h3>
                         </div>
                         <div class="goodslist-c1">
