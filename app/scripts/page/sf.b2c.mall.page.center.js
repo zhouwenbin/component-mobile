@@ -59,7 +59,9 @@ define(
             }
 
 
-            var html = can.view(template_center_content, that.options);
+            // var html = can.view(template_center_content, that.options);
+            var renderFn = can.mustache(template_center_content);
+            var html = renderFn(that.options);
             that.element.html(html);
 
             $('.loadingDIV').hide();

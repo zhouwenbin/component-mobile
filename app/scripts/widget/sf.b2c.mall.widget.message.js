@@ -27,7 +27,9 @@ define(
 
       render: function() {
         this.setup($('body'));
-        this.options.html = can.view(template_widget_message, this.data);
+        // this.options.html = can.view(template_widget_message, this.data);
+        var renderFn = can.mustache(template_widget_message);
+        this.options.html = renderFn(this.data);
         $('body').append(this.options.html);
       },
 

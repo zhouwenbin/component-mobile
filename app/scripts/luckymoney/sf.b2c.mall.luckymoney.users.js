@@ -40,7 +40,10 @@ define("sf.b2c.mall.luckymoney.users",
           });
       },
       renderHtml: function(element, itemObj) {
-        var html =  can.view(template_luckymoney_users, itemObj);
+        // var html =  can.view(template_luckymoney_users, itemObj);
+        var renderFn = can.mustache(template_luckymoney_users);
+        var html = renderFn(itemObj);
+
         element.html(html);
       }
     });

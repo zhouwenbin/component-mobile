@@ -61,7 +61,9 @@ define(
 
       },
       renderHtml: function() {
-        var html = can.view(template_receivedividents, this.itemObj);
+        // var html = can.view(template_receivedividents, this.itemObj);
+        var renderFn = can.mustache(template_receivedividents);
+        var html = renderFn(this.itemObj);
         this.element.html(html);
         this.loading.hide();
       },

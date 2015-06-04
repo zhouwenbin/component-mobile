@@ -128,7 +128,9 @@ define(
       },
 
       renderHtml: function(element, itemObj) {
-        var html = can.view(template_luckymoney_accept, itemObj);
+        // var html = can.view(template_luckymoney_accept, itemObj);
+        var renderFn = can.mustache(template_luckymoney_accept);
+        var html = renderFn(itemObj);
         element.html(html);
       },
       errorMap: {

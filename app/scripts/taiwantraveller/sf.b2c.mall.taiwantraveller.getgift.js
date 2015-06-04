@@ -42,7 +42,9 @@ define("sf.b2c.mall.taiwantraveller.getgift", [
       },
 
       renderHtml: function(element, data) {
-        var html = can.view(template_taiwantraveller_getgift, data);
+        // var html = can.view(template_taiwantraveller_getgift, data);
+        var renderFn = can.mustache(template_taiwantraveller_getgift);
+        var html = renderFn(data);
         element.html(html);
       },
 

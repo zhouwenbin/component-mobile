@@ -18,7 +18,9 @@ define(
 
       render: function() {
         this.setup($('body'));
-        var html = can.view(template_widget_loading, {});
+        // var html = can.view(template_widget_loading, {});
+        var renderFn = can.mustache(template_widget_loading);
+        var html = renderFn({});
         $('body').append(html);
       },
 

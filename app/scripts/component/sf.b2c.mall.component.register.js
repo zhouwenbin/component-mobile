@@ -126,7 +126,9 @@ define('sf.b2c.mall.component.register', [
 
       renderMap: {
         'fillinfo': function(data) {
-          var html = can.view(template_component_register_fillinfo, data, this.helpers);
+          // var html = can.view(template_component_register_fillinfo, data, this.helpers);
+          var renderFn = can.mustache(template_component_register_fillinfo);
+          var html = renderFn(data, this.helpers);
           this.element.html(html)
           console.log(this.element.find('.register'))
           this.element.find('.register').show('slow');

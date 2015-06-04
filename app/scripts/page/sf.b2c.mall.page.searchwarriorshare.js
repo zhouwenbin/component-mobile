@@ -120,7 +120,9 @@ define(
       },
       render: function() {
         var that = this;
-        this.element.html(can.view(template_searchwarrior_share, this.itemObj, this.helpers));
+        var renderFn = can.mustache(template_searchwarrior_share);
+        var html = renderFn(this.itemObj, this.helpers);
+        this.element.html(html);
         this.loading.hide();
       },
 

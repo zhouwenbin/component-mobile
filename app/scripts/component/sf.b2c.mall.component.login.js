@@ -132,7 +132,9 @@ define('sf.b2c.mall.component.login', [
        * @param  {can.Map} data 输入的观察者对象
        */
       render: function(data) {
-        var html = can.view(template_component_login, data, this.helpers);
+        // var html = can.view(template_component_login, data, this.helpers);
+        var renderFn = can.mustache(template_component_login);
+        var html = renderFn(data,this.helpers);
         this.element.append(html);
       },
 

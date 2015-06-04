@@ -56,7 +56,9 @@ define(
         can.when(that.initCoupons())
           .then(function() {
             that.itemObj.attr("totalCount", 1);
-            var html = can.view(template_center_coupon, that.itemObj);
+            // var html = can.view(template_center_coupon, that.itemObj);
+            var renderFn = can.mustache(template_center_coupon);
+            var html = renderFn(that.itemObj);
             that.element.html(html);
           })
           .always(function() {
