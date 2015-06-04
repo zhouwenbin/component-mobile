@@ -152,14 +152,45 @@ define(
         }
 
         var that = this;
-        SFOrderFn.payV2({
-          orderid: that.options.orderid,
-          payType: that.getPayType(),
-          payResult: that.payResult,
-          extInfo: JSON.stringify({
-            "code": that.options.code
-          })
-        }, callback);
+
+        var switcher = new SFSwitcher()
+
+        switcher.register('app', function () {
+          SFHybrid.pay(that.options.orderid, 'ALIPAY')
+            .done(function () {
+              SFHybrid.toast.dismiss();
+              window.location.href = SFConfig.setting.link.orderlist;
+            })
+            .fail(function (errorInfo) {
+              SFHybrid.toast.dismiss();
+
+              var defaultMsg = '订单支付失败！';
+              var map = {
+                '4000': '订单支付失败！',
+                '6001': '用户中途取消支付',
+                '6002': '网络连接出错'
+              }
+
+              var msg = map[(errorInfo && errorInfo.code)] || defaultMsg;
+
+              if (msg) {
+                SFHybrid.toast.show(msg);
+              }
+            });
+        })
+
+        switcher.register('web', function () {
+          SFOrderFn.payV2({
+            orderid: that.options.orderid,
+            payType: that.getPayType(),
+            payResult: that.payResult,
+            extInfo: JSON.stringify({
+              "code": that.options.code
+            })
+          }, callback);
+        });
+
+        switcher.go();
       }
     });
 

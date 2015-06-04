@@ -26,7 +26,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     var PREFIX = 'http://img0.sfht.com';
     var DEFAULT_STATUS = '';
 
-    // can.route.ready();
+    can.route.ready();
 
     return can.Control.extend({
 
@@ -133,6 +133,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
       render: function() {
         var params = can.deparam(window.location.search.substr(1));
+        params = _.extend(params, can.route.attr());
 
         this.request({
           pageNum: params.pageNum || 1,
@@ -161,6 +162,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
       paint: function(data) {
         var params = can.deparam(window.location.search.substr(1));
+        params = _.extend(params, can.route.attr());
         var renderFn = can.view.mustache(template_order_orderlist);
 
         this.options.data = new can.Map(data);
@@ -271,7 +273,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
         params.status = status;
 
         // window.location.search = '?' + $.param(params)
-        window.location = window.location.pathname + '?' + $.param(params)
+        // window.location = window.location.pathname + '?' + $.param(params)
+        window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
 
         // return false;
       },
