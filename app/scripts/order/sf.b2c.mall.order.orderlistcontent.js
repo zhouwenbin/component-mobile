@@ -128,6 +128,10 @@ define('sf.b2c.mall.order.orderlistcontent', [
         'sf-package-status': OrderFn.helpers['sf-package-status']
       },
 
+      '{can.route} change': function() {
+        this.render();
+      },
+
       init: function() {
         this.render();
       },
@@ -275,7 +279,18 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
         // window.location.search = '?' + $.param(params)
         // window.location = window.location.pathname + '?' + $.param(params)
-        window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('web', function () {
+          window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
+        });
+
+        switcher.register('app', function () {
+          can.route.attr('status', status);
+        });
+
+        switcher.go();
 
         // return false;
       },
