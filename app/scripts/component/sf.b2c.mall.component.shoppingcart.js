@@ -466,7 +466,7 @@ define(
           return false;
         }
 
-        window.location.href = '/order.html';
+        window.location.href = SFConfig.setting.link.order;
       },
 
       showAlert: function($element, good) {
