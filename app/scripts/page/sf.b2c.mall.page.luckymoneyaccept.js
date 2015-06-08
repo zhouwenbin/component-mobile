@@ -15,11 +15,13 @@ define(
     'sf.b2c.mall.api.coupon.receiveShareCoupon',
     'sf.b2c.mall.api.coupon.hasReceived',
     'sf.b2c.mall.widget.login',
-    'text!template_luckymoney_accept'
+    'text!template_luckymoney_accept',
+    'sf.env.switcher',
+    'sf.hybrid'
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
-           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin, template_luckymoney_accept) {
+           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin, template_luckymoney_accept, SFSwitcher, SFHybrid) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -190,5 +192,44 @@ define(
       }
     });
 
-    new luckymoneyaccept('.sf-b2c-mall-luckymoney-accept');
+    // new luckymoneyaccept('.sf-b2c-mall-luckymoney-accept');
+    //
+
+    // －－－－－－－－－－－－－－－－－－－－－－
+    // 启动分支逻辑
+    var switcher = new SFSwitcher();
+
+    switcher.register('web', function() {
+      new luckymoneyaccept('.sf-b2c-mall-luckymoney-accept');
+      new SFNav('.sf-b2c-mall-nav');
+    });
+
+    switcher.register('app', function() {
+      var app = {
+        initialize: function() {
+          this.bindEvents();
+        },
+
+        bindEvents: function() {
+          document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+
+        onDeviceReady: function() {
+          app.receivedEvent('deviceready');
+        },
+
+        receivedEvent: function(id) {
+
+          SFHybrid.setNetworkListener();
+          SFHybrid.isLogin().done(function () {
+            new luckymoneyaccept('.sf-b2c-mall-luckymoney-accept');
+          });
+        }
+      };
+
+      app.initialize();
+    });
+
+    switcher.go();
+    // －－－－－－－－－－－－－－－－－－－－－－
   })

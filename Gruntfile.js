@@ -469,6 +469,7 @@ module.exports = function (grunt) {
         dest: '<%= config.dist %>',
         src: [
           'img/icon.png',
+          'img/coupons.png'
         ]
       },
 
@@ -582,18 +583,22 @@ module.exports = function (grunt) {
             src: [
               'scripts/require.min.js',
               'scripts/sf.h5.hybrid.base.js',
-              'scripts/sf.b2c.mall.h5.page.center.js',
+              // 'scripts/sf.b2c.mall.h5.page.center.js',
               'scripts/sf.b2c.mall.h5.page.coupon.js',
               'scripts/sf.b2c.mall.h5.page.luckymoneyshare.js',
               'scripts/sf.b2c.mall.h5.page.luckymoneyaccept.js',
-              'scripts/sf.b2c.mall.h5.page.recaddrmanage.js',
-              'img/**',
+              // 'scripts/sf.b2c.mall.h5.page.recaddrmanage.js',
+              'img/icon.png',
+              'img/coupon.png',
+              'img/coupons.png',
+              'img/coupons-c1.png',
+              'img/coupons2.png',
               'styles/**',
-              'center.html',
+              // 'center.html',
               'coupon.html',
               'luckymoneyaccept.html',
               'luckymoneyshare.html',
-              'recaddrmanage.html'
+              // 'recaddrmanage.html'
             ],
             dest: 'center'
           }
@@ -1079,6 +1084,7 @@ module.exports = function (grunt) {
 
       coupon: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.coupon.js',
@@ -1097,6 +1103,7 @@ module.exports = function (grunt) {
 
       luckymoneyshare: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.luckymoneyshare.js',
@@ -1115,6 +1122,7 @@ module.exports = function (grunt) {
 
       luckymoneyaccept: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.luckymoneyaccept.js',

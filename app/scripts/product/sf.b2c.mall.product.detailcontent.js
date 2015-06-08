@@ -150,11 +150,12 @@ define('sf.b2c.mall.product.detailcontent', [
 
         //如果tag为init，则要进行单独处理，防止刷新
         var tag = can.route.attr('tag');
-        if (tag === DEFAULT_INIT_TAG) {
-          this.initRender(DEFAULT_INIT_TAG);
-        } else {
-          can.route.attr('tag', DEFAULT_INIT_TAG);
-        }
+        this.initRender(tag || DEFAULT_INIT_TAG);
+        // if (tag === DEFAULT_INIT_TAG) {
+        //   this.initRender(DEFAULT_INIT_TAG);
+        // } else {
+        //   can.route.attr('tag', DEFAULT_INIT_TAG);
+        // }
       },
 
       '{can.route} change': function() {

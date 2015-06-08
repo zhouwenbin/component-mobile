@@ -63,8 +63,9 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin();
-          new PageShoppingCart();
+          SFHybrid.isLogin().done(function () {
+            new PageShoppingCart();
+          });
         }
       };
 

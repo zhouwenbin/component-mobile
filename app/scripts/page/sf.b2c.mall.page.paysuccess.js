@@ -156,8 +156,9 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin();
-          new paysuccess('.sf-b2c-mall-order-paysuccess');
+          SFHybrid.isLogin().done(function () {
+            new paysuccess('.sf-b2c-mall-order-paysuccess');
+          });
         }
       };
 
