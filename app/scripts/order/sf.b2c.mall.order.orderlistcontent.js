@@ -16,7 +16,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
     'text!template_order_orderlist',
-    'sf.b2c.mall.api.shopcart.addItemToCart', // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
   ],
   function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFAddItemToCart) {
 
@@ -112,6 +112,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         },
 
         'sf-status-show-case': OrderFn.helpers['sf-status-show-case'],
+        'sf-coupon-type': OrderFn.helpers['sf-coupon-type'],
 
         'sf-real-price': function(total, discount) {
           return (total() - discount()) / 100;
@@ -125,6 +126,10 @@ define('sf.b2c.mall.order.orderlistcontent', [
           }
         },
         'sf-package-status': OrderFn.helpers['sf-package-status']
+      },
+
+      '{can.route} change': function() {
+        this.render();
       },
 
       init: function() {
@@ -274,7 +279,18 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
         // window.location.search = '?' + $.param(params)
         // window.location = window.location.pathname + '?' + $.param(params)
-        window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('web', function () {
+          window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
+        });
+
+        switcher.register('app', function () {
+          can.route.attr('status', status);
+        });
+
+        switcher.go();
 
         // return false;
       },
@@ -308,19 +324,26 @@ define('sf.b2c.mall.order.orderlistcontent', [
         // 添加购物车发送请求
         addItemToCart.sendRequest()
           .done(function(data) {
-            if (data.value) {
+            if (data.isSuccess) {
               // can.trigger(window, 'updateCart');
               window.location.href = '/shoppingcart.html'
-            }
-          })
-          .fail(function(data) {
-            if (data == 15000800) {
-              var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
+            }else{
+
+              var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
               }, 10000);
             }
+          })
+          .fail(function(data) {
+            // if (data == 15000800) {
+            //   var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
+            //   $(document.body).append($el);
+            //   setTimeout(function() {
+            //     $el.remove();
+            //   }, 10000);
+            // }
           })
       },
 

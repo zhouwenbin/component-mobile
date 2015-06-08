@@ -469,7 +469,10 @@ module.exports = function (grunt) {
         dest: '<%= config.dist %>',
         src: [
           'img/icon.png',
-          'img/coupons.png'
+          'img/coupon.png',
+          'img/coupons.png',
+          'img/coupons-c1.png',
+          'img/coupons2.png'
         ]
       },
 
@@ -588,11 +591,7 @@ module.exports = function (grunt) {
               'scripts/sf.b2c.mall.h5.page.luckymoneyshare.js',
               'scripts/sf.b2c.mall.h5.page.luckymoneyaccept.js',
               // 'scripts/sf.b2c.mall.h5.page.recaddrmanage.js',
-              'img/icon.png',
-              'img/coupon.png',
-              'img/coupons.png',
-              'img/coupons-c1.png',
-              'img/coupons2.png',
+              'img/**',
               'styles/**',
               // 'center.html',
               'coupon.html',
@@ -979,6 +978,7 @@ module.exports = function (grunt) {
       // },
       recaddrmanage: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.recaddrmanage.js',

@@ -18,7 +18,7 @@
           </div>
 
           <div class="goodslist-c1">
-              <div class="orderlist-num">X{{quantity}}</div>
+              <div class="orderlist-num">x{{quantity}}</div>
               <div class="text-important">¥{{sf.price price}}</div>
           </div>
       </li>
@@ -80,8 +80,12 @@
   <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
   <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
 </ul>
+
+{{^flag}}
 <div class="box">
-<div class="text-error">{{^flag}}{{errorDes}}{{/flag}}</div>
+  <div class="text-error">{{^flag}}{{errorDes}}{{/flag}}
+</div>
+{{/flag}}
 
 <section class="nav-cart">
   <div class="nav-cart-r1 order-submit">

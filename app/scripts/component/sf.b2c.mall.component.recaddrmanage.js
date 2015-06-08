@@ -14,9 +14,8 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.component.addreditor',
   'text!template_component_recaddrmanage'
-
-
-], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter, AddressAdapter, SFMessage, SFConfig, SFAddressEditor, template_component_recaddrmanage) {
+], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter,
+  AddressAdapter, SFMessage, SFConfig, SFAddressEditor, template_component_recaddrmanage) {
 
   can.route.ready();
   var DEFAULT_INIT_TAG = 'init';
@@ -28,11 +27,13 @@ define('sf.b2c.mall.component.recaddrmanage', [
 
       //如果tag为init，则要进行单独处理，防止刷新
       var tag = can.route.attr('tag');
-      if (tag === DEFAULT_INIT_TAG) {
-        this.initRender(DEFAULT_INIT_TAG);
-      } else {
-        can.route.attr('tag', DEFAULT_INIT_TAG);
-      }
+      // if (tag === DEFAULT_INIT_TAG) {
+      //   this.initRender(DEFAULT_INIT_TAG);
+      // } else {
+      //   can.route.attr('tag', DEFAULT_INIT_TAG);
+      // }
+
+      this.initRender.call(this, tag || DEFAULT_INIT_TAG);
     },
 
     /**
@@ -55,9 +56,10 @@ define('sf.b2c.mall.component.recaddrmanage', [
             addressList: that.result || []
           });
 
-          // var html = can.view(template_component_recaddrmanage, that.adapter4List.addrs);
+          // var html = can.view('templates/component/sf.b2c.mall.component.recaddrmanage.mustache', that.adapter4List.addrs);
           var renderFn = can.mustache(template_component_recaddrmanage);
-          var html = renderFn(that.adapter4List.addrs);
+          var html =  renderFn(that.adapter4List.addrs);
+
           that.element.html(html);
 
           //绑定事件
@@ -73,7 +75,9 @@ define('sf.b2c.mall.component.recaddrmanage', [
 
           //初始化进行回调绑定
           that.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-editAdrArea', {
-            onSuccess: _.bind(that.render, that)
+            onSuccess: _.bind(function(){
+              can.route.attr('tag', 'init');
+            }, this)
           });
 
         })
@@ -95,11 +99,19 @@ define('sf.b2c.mall.component.recaddrmanage', [
       },
 
       'editaddr': function(data) {
+        if (!data || !this.addressEditor) {
+          return can.route.attr('tag', 'init');
+        }
+
         $(".order-manager").hide();
         this.addressEditor.show("editor", this.data, $(".sf-b2c-mall-order-editAdrArea"));
       },
 
       'addaddr': function(data) {
+        if (!this.addressEditor) {
+          return can.route.attr('tag', 'init');
+        }
+
         $(".order-manager").hide();
         this.addressEditor.show("create", this.data, $(".sf-b2c-mall-order-editAdrArea"));
       }
@@ -114,17 +126,20 @@ define('sf.b2c.mall.component.recaddrmanage', [
     },
 
     ".edit click": function(element, event) {
+      event && event.preventDefault();
+
       var index = element[0].dataset["index"];
       this.data = this.adapter4List.addrs.addressList[index];
       can.route.attr('tag', 'editaddr');
 
-      return false;
+      // return false;
     },
 
     ".addrecaddr click": function(element, event) {
+      event && event.preventDefault();
       can.route.attr('tag', 'addaddr');
 
-      return false;
+      // return false;
     },
 
     deleteRecAddrClick: function(element, event) {
@@ -175,6 +190,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
           if (recAddrItem.isDefault != 0 && presonItem.isDefault != 0 && recAddrItem.recId != 0 && presonItem.recId != 0) {
             recAddrItem.recName = presonItem.recName;
             recAddrItem.credtNum = presonItem.credtNum;
+            recAddrItem.credtNum2 = presonItem.credtNum2;
             result.push(recAddrItem);
 
             defaultRecAddrID = recAddrItem.addrId;
@@ -193,6 +209,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
               tempObje = recAddrItemTemp;
               tempObje.recName = presonItemTemp.recName;
               tempObje.credtNum = presonItemTemp.credtNum;
+              tempObje.credtNum2 = presonItemTemp.credtNum2;
 
               result.push(tempObje);
             }

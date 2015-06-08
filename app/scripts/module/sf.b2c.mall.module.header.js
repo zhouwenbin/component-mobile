@@ -12,7 +12,7 @@ define(
     'sf.b2c.mall.framework.comm',
     'text!template_widget_header_ad',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
-    'sf.b2c.mall.api.shopcart.addItemToCart', // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
     'sf.b2c.mall.api.shopcart.isShowCart'
   ],
 
@@ -158,19 +158,29 @@ define(
         // 添加购物车发送请求
         addItemToCart.sendRequest()
           .done(function(data) {
-            if (data.value) {
+            if (data.isSuccess) {
+
               // 更新mini购物车
               can.trigger(window, 'updateCart');
-            }
-          })
-          .fail(function(data) {
-            if (data == 15000800) {
-              var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
+            }else{
+
+              var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
               }, 1000);
+
             }
+          })
+          .fail(function(data) {
+            // @deprecated 接口变动，不再用errorCode作为判断错误依据
+            // if (data == 15000800) {
+            //   var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
+            //   $(document.body).append($el);
+            //   setTimeout(function() {
+            //     $el.remove();
+            //   }, 1000);
+            // }
           })
       },
 

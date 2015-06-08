@@ -27,17 +27,23 @@
       </li>
       {{/isNeedVerifiedCode}}
 
-      <li><button class="btn btn-success btn-big" id="gotoLogin">登录</button></li>
+      <li><button class="btn btn-danger btn-big" id="gotoLogin">登录</button></li>
     </ol>
     <div class="login-r1 clearfix">
       <a href="/register.html" class="fl">新用户注册</a>
       <a href="/retrieve.html" class="fr">忘记密码</a>
     </div>
+  </section>
+
+<section class="otherlogin">
+    <div class="line">
+      <span>或者</span>
+    </div>
     {{#isWeChat}}
-        <div class="login-r2" id="weChatLoginBox"><div>微信快捷登录</div><br /><a href="javascript:void(0)" class="weixinlogin"><span class="icon icon18"></span></a></div>
+        <button class="btn btn-soon btn-big weixinlogin">微信快捷登录</button>
     {{/isWeChat}}
 
     {{#isAlipay}}
-      <div class="login-r2" id="weChatLoginBox"><div>支付宝快捷登录</div><br /><a href="javascript:void(0)" class="alipaylogin"><span class="icon icon37"></span></a></div>
+      <button class="btn btn-soon btn-big alipaylogin">支付宝快捷登录</button>
     {{/isAlipay}}
-  </section>
+</section>

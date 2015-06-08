@@ -20,15 +20,16 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.weixin',
     'sf.util',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
-    'sf.b2c.mall.api.shopcart.addItemToCart', // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
     'sf.b2c.mall.api.shopcart.isShowCart',
     'text!template_product_detailcontent',
-    'sf.env.switcher'
+    'sf.env.switcher',
+    'sf.hybrid'
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
     SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin,
-    SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, template_product_detailcontent, SFSwitcher) {
+    SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, template_product_detailcontent, SFSwitcher, SFHybrid) {
 
     Fastclick.attach(document.body);
 
@@ -206,52 +207,72 @@ define('sf.b2c.mall.product.detailcontent', [
 
       controlCart: function() {
         if (SFComm.prototype.checkUserLogin.call(this)) {
-          var uinfo = $.fn.cookie('3_uinfo');
-          var arr = [];
-          if (uinfo) {
-            arr = uinfo.split(',');
-          }
+          this.getUserInfo(_.bind(function(uinfo){
 
-          var flag = arr[4];
+            var arr = [];
+            if (uinfo) {
+              arr = uinfo.split(',');
+            }
 
-          // 如果判断开关关闭，使用dom操作不显示购物车
-          if (typeof flag == 'undefined' || flag == '2') {
-            $(".mini-cart-container").hide();
-            $(".addcart").hide();
-          }else if (flag == '0') {
-            // @todo 请求总开关进行判断
-            var isShowCart = new SFIsShowCart();
-            isShowCart
-              .sendRequest()
-              .done(function (data) {
-                if (data.value) {
-                  // $(".mini-cart-container-parent").show();
-                  $(".mini-cart-container").show();
-                  $(".addcart").show();
-                }else{
-                  $(".mini-cart-container").hide();
-                  $(".addcart").hide();
-                }
-              })
+            var flag = arr[4];
 
-          }else{
-            $(".mini-cart-container").show();
-            $(".addcart").show();
-          }
+            // 如果判断开关关闭，使用dom操作不显示购物车
+            if (typeof flag == 'undefined' || flag == '2') {
+              $(".mini-cart-container").hide();
+              $(".addcart").hide();
+            }else if (flag == '0') {
+              // 请求总开关进行判断
+              this.requestIsShowCart();
+
+            }else{
+              $(".mini-cart-container").show();
+              $(".addcart").show();
+            }
+          }, this));
+
+
         }else{
-          var isShowCart = new SFIsShowCart();
-          isShowCart
-            .sendRequest()
-            .done(function (data) {
-              if (data.value) {
-                $(".mini-cart-container").show();
-                $(".addcart").show();
-              }else{
-                $(".mini-cart-container").hide();
-                $(".addcart").hide();
-              }
-            });
+          this.requestIsShowCart();
         }
+      },
+
+      getUserInfo: function (callback) {
+
+        var that = this;
+        var switcher = new SFSwitcher();
+
+        switcher.register('web', function () {
+          var uinfo = $.fn.cookie('3_uinfo');
+          callback.call(that, uinfo);
+        });
+
+        switcher.register('app', function () {
+          SFHybrid.getTokenInfo()
+            .done(function (data) {
+              callback.call(that, data && data.cookie);
+            })
+            .fail(function () {
+
+            });
+        });
+
+        switcher.go();
+
+      },
+
+      requestIsShowCart: function () {
+        var isShowCart = new SFIsShowCart();
+        isShowCart
+          .sendRequest()
+          .done(function (data) {
+            if (data.value) {
+              $(".mini-cart-container").show();
+              $(".addcart").show();
+            }else{
+              $(".mini-cart-container").hide();
+              $(".addcart").hide();
+            }
+          });
       },
 
       /**
@@ -291,23 +312,30 @@ define('sf.b2c.mall.product.detailcontent', [
         // 添加购物车发送请求
         addItemToCart.sendRequest()
           .done(function(data) {
-            if (data.value) {
+            if (data.isSuccess) {
               // 更新mini购物车
               can.trigger(window, 'updateCart');
               // $('#firststep').show();
               // $('#secondstep').hide();
 
               // can.route.attr({tag: 'init', target: 'empty'});
-            }
-          })
-          .fail(function(data) {
-            if (data == 15000800) {
-              var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
+            }else{
+
+              var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
               }, 10000);
             }
+          })
+          .fail(function(data) {
+            // if (data == 15000800) {
+            //   var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
+            //   $(document.body).append($el);
+            //   setTimeout(function() {
+            //     $el.remove();
+            //   }, 10000);
+            // }
           })
       },
 
