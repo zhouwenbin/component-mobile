@@ -50,8 +50,8 @@ define(
 
         this.options.data.attr("showordersuccess", params.showordersuccess);
 
-        // 如果是在微信环境 只显示微信支付和支付宝，其他时候只展示支付宝
-        if (SFUtil.isMobile.WeChat()) {
+        // 如果是在微信环境和APP下 显示微信支付和支付宝，其他时候只展示支付宝
+        if (SFUtil.isMobile.WeChat() || SFUtil.isMobile.APP()) {
           this.options.data.attr("showWeixinPay", true);
         }
 
@@ -133,6 +133,28 @@ define(
         return result;
       },
 
+      /**
+       * [getAppPayType 针对APP应用做的支付类型定制]
+       * @return {[type]} [description]
+       */
+      getAppPayType: function(){
+        var result = "";
+
+        var paytypelist = $(".gotopaymethodlist").find("li");
+        _.each(paytypelist, function(item) {
+          if ($(item).hasClass("active")) {
+            result = $(item).attr("data-payType");
+          }
+        })
+
+        // 针对支付方式概要，做定制处理
+        if (result == "weixinpay") {
+          result = "WXPAY";
+        }
+
+        return result.toUpperCase();
+      },
+
       gotopayBtnClick: function() {
         // $("#gotopayBtn").text("支付中");
         var that = this;
@@ -156,7 +178,7 @@ define(
         var switcher = new SFSwitcher()
 
         switcher.register('app', function () {
-          SFHybrid.pay(that.options.orderid, 'ALIPAY')
+          SFHybrid.pay(that.options.orderid, that.getAppPayType())
             .done(function () {
               SFHybrid.toast.dismiss();
               window.location.href = SFConfig.setting.link.orderlist;

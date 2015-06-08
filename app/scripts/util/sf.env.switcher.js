@@ -40,14 +40,7 @@ define(
             // 如果有cordova对象存在则判断在app中
             // return !!cordova;
 
-            var hash = window.location.hash;
-            if (hash.indexOf('platform=android') > -1) {
-              return 'android';
-            }else if (hash.indexOf('platform=ios') > -1) {
-              return 'ios';
-            }else{
-              return false;
-            }
+            return SFFn.isMobile.APP();
           }
         }
 
