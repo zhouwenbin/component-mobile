@@ -147,11 +147,6 @@ define(
           }
         })
 
-        // 针对支付方式概要，做定制处理
-        if (result == "weixinpay") {
-          result = "WXPAY";
-        }
-
         return result.toUpperCase();
       },
 
