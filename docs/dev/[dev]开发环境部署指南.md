@@ -16,6 +16,8 @@ tar -xvf dist.tar
     grunt build:prd
     ```
 
+    grunt hybrid:order:1.0.2
+
 2、文件压缩。进入dist目录，执行zip压缩
 
     ```
