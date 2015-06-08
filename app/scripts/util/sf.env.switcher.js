@@ -61,6 +61,42 @@ define(
         }
       },
 
+      /**
+       * [registerManyToOne 注册一个回调到多个环境中]
+       * @param  {[type]}   env      [description]
+       * @param  {Function} callback [description]
+       * @return {[type]}            [description]
+       */
+      registerOneCallbackToManyEnv: function(envs, callback) {
+        var that = this;
+
+        var envArr = envs.split(",");
+
+        _.each(envArr, function(item) {
+          that.register(item, callback);
+        })
+      },
+
+      /**
+       * [registerManyToOne 除去某个环境，其他环境都一个回调]
+       * @param  {[type]}   env      [description]
+       * @param  {Function} callback [description]
+       * @return {[type]}            [description]
+       */
+      registerOneCallbackExceptEnv: function(envs, callback) {
+        var that = this;
+
+        var envArr = envs.split(",");
+
+        _.each(setting, function(item) {
+          _.each(envArr, function(notRegisterItem) {
+            if (notRegisterItem != item){
+              that.register(item, callback);
+            }
+          })
+        })
+      },
+
       go: function() {
         var fn = this.options.group[this.options.env] || this.options.group[defaultSetting];
         if (_.isFunction(fn)) {
