@@ -1,31 +1,31 @@
 .sharepocket{
-	padding-top:14px;
+	padding-top:14px * 2 / $ppr;
 	text-align:center;
 	background:#fff url(#{$bg-url}sharepocket.jpg) no-repeat center top;
-	background-size:320px;
-	height:354px;
+	background-size:320px * 2 / $ppr;
+	height:354px * 2 / $ppr;
 }
 .sharepocket p{
-	font-size:14px;
+	font-size:14px * 2 / $ppr;
 	color:#666;
-	margin-bottom:124px;
+	margin-bottom:124px * 2 / $ppr;
 }
 .sharepocket-r1{
-	font-size:21px;
+	font-size:21px * 2 / $ppr;
 	color:#fff18d;
-	margin-bottom:66px;
+	margin-bottom:66px * 2 / $ppr;
 }
 
 .sharepocket-r1 span{
-	font-size:40px;
+	font-size:40px * 2 / $ppr;
 }
 .sharepocket-btn{
-	font-size:15px;
+	font-size:15px * 2 / $ppr;
 	color:#dc3334;
 	background:#feef86;
-	border-radius:5px;
-	height:40px;
-	line-height:40px;
-	padding:0 20px;
+	border-radius:5px * 2 / $ppr;
+	height:40px * 2 / $ppr;
+	line-height:40px * 2 / $ppr;
+	padding:0 20px * 2 / $ppr;
 	display: inline-block;
 }

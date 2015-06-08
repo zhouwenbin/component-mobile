@@ -1,9 +1,9 @@
 .coupon-gift .coupon-b{
   background-image: url("#{$bg-url}gift.png");
-  background-size:165px 85px;
-  width: 165px;
-  height: 85px;
+  background-size:165px * 2 / $ppr 85px * 2 / $ppr;
+  width: 165px * 2 / $ppr;
+  height: 85px * 2 / $ppr;
 }
 .coupon-gift .coupon-r1{
-  padding-top:23px;
+  padding-top:23px * 2 / $ppr;
 }

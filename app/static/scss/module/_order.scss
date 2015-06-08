@@ -1,60 +1,60 @@
 /*订单*/
 .order{
   background: #F6F8F9;
-  margin-bottom: 10px;
+  margin-bottom: 10px * 2 / $ppr;
 }
 .order-h{
   background: #fff;
 
 }
 .order-hc2{
-  padding-right: 11px;
-  padding-top: 10px;
+  padding-right: 11px * 2 / $ppr;
+  padding-top: 10px * 2 / $ppr;
 }
 .order-hc2 .btn{
-  margin: 0 3px;
+  margin: 0 3px * 2 / $ppr;
 }
 .order h2{
-  font-size: 14px;
-  padding: 23px 0 10px 14px;
+  font-size: 14px * 2 / $ppr;
+  padding: 23px * 2 / $ppr 0 10px * 2 / $ppr 14px * 2 / $ppr;
   background: #fff;
 }
 .order h2:before{
   content: '';
   display: inline-block;
   vertical-align: middle;
-  width: 2px;
-  height: 14px;
+  width: 2px * 2 / $ppr;
+  height: 14px * 2 / $ppr;
   background: #dc3334;
-  margin-right: 4px;
+  margin-right: 4px * 2 / $ppr;
 }
 .order-r1{
-  font-size: 15px;
+  font-size: 15px * 2 / $ppr;
 }
 .order-r2{
   text-align: center;
   background: #fff;
   
-  font-size: 12px;
+  font-size: 12px * 2 / $ppr;
 }
 .order-r2 .icon{
-  right:14px;
+  right:14px * 2 / $ppr;
 }
 .order-r2 a{
   color: #999;
 }
 .order-r2 .icon{
-  margin-left: 9px;
+  margin-left: 9px * 2 / $ppr;
 }
 .order-r3{
-  padding: 7px 14px;
+  padding: 7px * 2 / $ppr 14px * 2 / $ppr;
   color: #666;
-  line-height: 24px;
-  font-size:14px;
+  line-height: 24px * 2 / $ppr;
+  font-size:14px * 2 / $ppr;
 }
 .order .icon51{
-  margin-right: 5px;
+  margin-right: 5px * 2 / $ppr;
 }
 .order .box-link{
-  font-size: 14px;
+  font-size: 14px * 2 / $ppr;
 }

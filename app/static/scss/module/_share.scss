@@ -1,11 +1,11 @@
 .share{
 	background: url(#{$bg-url}share.png) no-repeat;
-	background-size:235px;
-	width:235px;
-	height:154px;
+	background-size:235px * 2 / $ppr;
+	width:235px * 2 / $ppr;
+	height:154px * 2 / $ppr;
 	position: absolute;
-	right:45px;
-	top:21px;
+	right:45px * 2 / $ppr;
+	top:21px * 2 / $ppr;
 }
 .share .mask{
 	background:rgba(0,0,0,0.5);

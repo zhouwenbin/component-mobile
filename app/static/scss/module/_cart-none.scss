@@ -1,13 +1,13 @@
 .cart-none{
   height: 100%;
-  padding-top: 190px;
+  padding-top: 190px * 2 / $ppr;
   text-align: center;
-  background: #fff url(#{$bg-url}cart-none.png) no-repeat center 87px;
-  background-size: 92px;
+  background: #fff url(#{$bg-url}cart-none.png) no-repeat center 87px * 2 / $ppr;
+  background-size: 92px * 2 / $ppr;
 }
 .cart-none p{
-  margin-bottom: 36px;
+  margin-bottom: 36px * 2 / $ppr;
 }
 .cart-none .btn{
-  margin: 0 17px;
+  margin: 0 17px * 2 / $ppr;
 }

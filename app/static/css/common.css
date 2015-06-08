@@ -92,7 +92,7 @@ html {
 
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
-  font-size: 12px;
+  font-size: 0.6rem;
   color: #333;
   width: 16rem;
   min-width: 320px;
@@ -172,6 +172,7 @@ a[title="站长统计"] {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-height: 1.5;
 }
 
 .ellipsis2 {
@@ -262,7 +263,7 @@ a[title="站长统计"] {
 
 /*立即购买*/
 .nav {
-  height: 55px;
+  height: 2.75rem;
 }
 
 .nav-r1 {
@@ -277,17 +278,17 @@ a[title="站长统计"] {
 
 .nav-c1 {
   position: absolute;
-  bottom: 50px;
-  right: 7px;
+  bottom: 2.5rem;
+  right: 0.35rem;
   -webkit-transform: translate(0, -100%);
   -webkit-border-radius: 50%;
           border-radius: 50%;
   border: 1px solid #ccc;
   text-align: center;
   background: rgba(255, 255, 255, 0.9);
-  width: 40px;
-  height: 40px;
-  margin-top: -45px;
+  width: 2rem;
+  height: 2rem;
+  margin-top: -2.25rem;
 }
 
 .nav-c1:nth-child(1) {
@@ -297,26 +298,26 @@ a[title="站长统计"] {
 .nav-c1 a {
   color: #999;
   display: block;
-  padding-top: 5px;
+  padding-top: 0.25rem;
 }
 
 .nav-c1 .icon {
-  margin-bottom: 4px;
+  margin-bottom: 0.2rem;
 }
 
 .nav-c2 {
-  padding: 5px;
+  padding: 0.25rem;
 }
 
 .nav .btn {
-  height: 44px;
-  line-height: 44px;
-  font-size: 18px;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
 .nav-cart {
-  height: 55px;
+  height: 2.75rem;
 }
 
 .nav-cart-r1 {
@@ -330,8 +331,8 @@ a[title="站长统计"] {
   width: 100%;
   z-index: 999;
   background: #f3f3f3;
-  padding: 6px 12px;
-  height: 58px;
+  padding: 0.3rem 0.6rem;
+  height: 2.9rem;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
@@ -344,9 +345,9 @@ a[title="站长统计"] {
 }
 
 .nav-cart .btn {
-  height: 40px;
-  line-height: 40px;
-  font-size: 15px;
+  height: 2rem;
+  line-height: 2rem;
+  font-size: 0.75rem;
 }
 
 .nav-cart .btn-danger {
@@ -360,12 +361,12 @@ a[title="站长统计"] {
 .nav-cart .btn-soon {
   display: block;
   width: 40%;
-  margin: 0 10px;
+  margin: 0 0.5rem;
 }
 
 .nav-cart .icon47 {
   position: relative;
-  margin-right: 5px;
+  margin-right: 0.25rem;
 }
 
 .nav-cart .dot {
@@ -426,7 +427,6 @@ a[title="站长统计"] {
 
 .footer-r1 li {
   padding: 0.2rem 0.3rem;
-  font-size: 0.6rem;
   float: left;
   text-align: left;
 }
@@ -448,7 +448,6 @@ a[title="站长统计"] {
   line-height: 1.55rem;
   text-align: center;
   color: #666;
-  font-size: 0.6rem;
 }
 
 .footer-r2 a {
@@ -991,8 +990,8 @@ a[title="站长统计"] {
 /*input*/
 .input {
   border: 1px solid #e3e3e3;
-  font-size: 14px;
-  padding: 10px;
+  font-size: 0.7rem;
+  padding: 0.5rem;
   width: 100%;
 }
 
@@ -1003,32 +1002,36 @@ a[title="站长统计"] {
 
 .input-num .btn {
   display: inline-block;
-  width: 30px;
-  height: 26px;
-  line-height: 24px;
+  width: 1.5rem;
+  height: 1.3rem;
+  line-height: 1.2rem;
   padding: 0;
   background: #fafafa;
   border: 1px solid #ccc;
-  font-size: 18px;
+  font-size: 0.9rem;
 }
 
 .input-num input {
-  width: 51px;
-  height: 26px;
-  line-height: 26px;
+  width: 2.55rem;
+  height: 1.3rem;
+  line-height: 1.3rem;
   text-align: center;
-  margin: 0 -1px;
+  margin: 0 -0.05rem;
   border: 1px solid #ccc;
   background: #fafafa;
-  font-size: 12px;
+  font-size: 0.6rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-border-radius: 0;
+          border-radius: 0;
 }
 
 /*select*/
 .select {
-  height: 30px;
-  line-height: 30px;
-  padding-left: 10px;
-  font-size: 15px;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  padding-left: 0.5rem;
+  font-size: 0.75rem;
   border-color: #ccc;
   -webkit-border-radius: 0;
           border-radius: 0;
@@ -1036,9 +1039,9 @@ a[title="站长统计"] {
 
 /*textarea*/
 .textarea {
-  padding: 10px;
+  padding: 0.5rem;
   width: 100%;
-  font-size: 14px;
+  font-size: 0.7rem;
   line-height: 1.5;
   height: 5.5em;
   border-color: #ccc;
@@ -1047,18 +1050,17 @@ a[title="站长统计"] {
 
 /*box*/
 .box {
-  padding: 16px 14px;
-  border-width: 1px 0 1px 0;
-  -webkit-border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
-          border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
+  padding: 0.8rem 0.7rem;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   background: #fff;
   position: relative;
-  margin-top: -1px;
+  margin-top: -0.05rem;
 }
 
 .box .icon8 {
   position: absolute;
-  left: 12px;
+  left: 0.6rem;
   top: 50%;
   -webkit-transform: translate(0, -50%);
       -ms-transform: translate(0, -50%);
@@ -1066,7 +1068,7 @@ a[title="站长统计"] {
 }
 
 .box.active .icon8 {
-  background-position: -253px -167px;
+  background-position: -12.65rem -8.35rem;
 }
 
 .box-link {
@@ -1075,7 +1077,7 @@ a[title="站长统计"] {
 }
 
 .box-arrow {
-  right: 14px;
+  right: 0.7rem;
 }
 
 .box1 {
@@ -1083,24 +1085,24 @@ a[title="站长统计"] {
 }
 
 .box1 .box-link {
-  padding: 16px 14px;
+  padding: 0.8rem 0.7rem;
 }
 
 /*box-address*/
 .box-address {
-  font-size: 14px;
+  font-size: 0.7rem;
   line-height: 1.5;
-  padding-left: 47px;
+  padding-left: 2.35rem;
   color: #666;
 }
 
 .box-address h3 {
-  font-size: 14px;
-  margin-bottom: 8px;
+  font-size: 0.7rem;
+  margin-bottom: 0.4rem;
 }
 
 .box-address span {
-  margin-right: 5px;
+  margin-right: 0.25rem;
 }
 
 .box-address p {
@@ -1108,16 +1110,16 @@ a[title="站长统计"] {
 }
 
 .box-address-r1 span {
-  margin-right: 33px;
+  margin-right: 1.65rem;
 }
 
 .box-address-c1 {
-  width: 46px;
+  width: 2.3rem;
   height: 100%;
   position: absolute;
   border: 1px solid #ececec;
   right: 0;
-  margin-top: -16px;
+  margin-top: -0.8rem;
 }
 
 .box-address-c1:active {
@@ -1126,7 +1128,7 @@ a[title="站长统计"] {
 
 .box-address-c2 {
   overflow: hidden;
-  margin-right: 31px;
+  margin-right: 1.55rem;
 }
 
 .box-address-r2 {
@@ -1145,19 +1147,17 @@ a[title="站长统计"] {
 }
 
 .box-check {
-  padding-left: 50px;
+  padding-left: 2.5rem;
 }
 
 /*table*/
 .table-r1 {
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 0.75rem;
+  line-height: 1.2rem;
   font-weight: normal;
-  padding-bottom: 12px;
-  border-width: 0 0 1px 0;
-  -webkit-border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
-          border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
-  margin-bottom: 15px;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 0.75rem;
 }
 
 .table-r1c2 {
@@ -1165,24 +1165,24 @@ a[title="站长统计"] {
 }
 
 .table-r1c1 {
-  margin-right: 11px;
-  width: 66px;
-  height: 66px;
+  margin-right: 0.55rem;
+  width: 3.3rem;
+  height: 3.3rem;
 }
 
 .table-r1c1 img {
-  max-width: 66px;
-  max-height: 66px;
+  max-width: 3.3rem;
+  max-height: 3.3rem;
 }
 
 .table-r1c2 h3 {
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: 0.7rem;
+  margin-bottom: 0.25rem;
   font-weight: normal;
 }
 
 .table-r1c2 .text-important {
-  font-size: 18px;
+  font-size: 0.9rem;
 }
 
 .table-r1c3 {
@@ -1192,12 +1192,12 @@ a[title="站长统计"] {
 .table-r2 li {
   float: left;
   width: 50%;
-  margin-bottom: 15px;
-  font-size: 14px;
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
 }
 
 .table-r3 {
-  font-size: 14px;
+  font-size: 0.7rem;
 }
 
 /*滑动*/
@@ -1251,14 +1251,14 @@ a[title="站长统计"] {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 24px;
-  height: 24px;
+  width: 1.2rem;
+  height: 1.2rem;
   -webkit-transform: translate(-50%, -50%);
-  border-width: 3px;
+  border-width: 0.15rem;
   border-style: solid;
   border-color: #fff #fff rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.5);
-  -webkit-border-radius: 20px;
-          border-radius: 20px;
+  -webkit-border-radius: 1rem;
+          border-radius: 1rem;
   -webkit-animation: rotate 1s linear infinite;
   animation: rotate 1s linear infinite;
 }
@@ -1281,9 +1281,9 @@ a[title="站长统计"] {
 }
 /*tab*/
 .tab-h {
-  height: 44px;
+  height: 2.2rem;
   background: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .tab-h ul {
@@ -1298,7 +1298,7 @@ a[title="站长统计"] {
   display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #ccc;
-  height: 44px;
+  height: 2.2rem;
 }
 
 .tab-h li {
@@ -1306,21 +1306,21 @@ a[title="站长统计"] {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-size: 15px;
+  font-size: 0.75rem;
   border-bottom: 1px solid #f2f2f3;
   text-align: center;
 }
 
 .tab-h li a {
   display: inline-block;
-  height: 43px;
-  line-height: 43px;
+  height: 2.15rem;
+  line-height: 2.15rem;
   font-weight: bold;
 }
 
 .tab-h li.active a {
   color: #dc3334;
-  border-bottom: 2px solid #dc3334;
+  border-bottom: 0.1rem solid #dc3334;
 }
 
 .tab-b {
@@ -1333,93 +1333,93 @@ a[title="站长统计"] {
 
 /*弹窗*/
 .dialog .center {
-  width: 292px;
+  width: 14.6rem;
   background: #fff;
   text-align: center;
-  padding-top: 39px;
-  padding-bottom: 21px;
-  -webkit-border-radius: 2px;
-          border-radius: 2px;
+  padding-top: 1.95rem;
+  padding-bottom: 1.05rem;
+  -webkit-border-radius: 0.1rem;
+          border-radius: 0.1rem;
 }
 
 .dialog h2 {
-  font-size: 16px;
+  font-size: 0.8rem;
   font-weight: normal;
-  margin-bottom: 12px;
+  margin-bottom: 0.6rem;
 }
 
 .dialog p {
-  margin-bottom: 13px;
+  margin-bottom: 0.65rem;
   color: #999;
 }
 
 .dialog-r1 {
-  margin-top: 4px;
+  margin-top: 0.2rem;
 }
 
 .dialog .icon15 {
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 0.75rem;
+  top: 0.75rem;
 }
 
 .dialog .icon15:after {
   content: '';
   position: absolute;
-  left: -15px;
-  right: -15px;
-  top: -15px;
-  bottom: -15px;
+  left: -0.75rem;
+  right: -0.75rem;
+  top: -0.75rem;
+  bottom: -0.75rem;
 }
 
 .dialog1 .center {
-  padding-top: 22px;
-  padding-bottom: 29px;
+  padding-top: 1.1rem;
+  padding-bottom: 1.45rem;
 }
 
 .dialog1 h2 {
-  font-size: 14px;
-  line-height: 24px;
-  margin-top: 5px;
-  margin-bottom: 7px;
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .dialog1 p {
-  margin-bottom: 6px;
+  margin-bottom: 0.3rem;
 }
 
 .dialog1 .btn {
-  margin-top: 11px;
-  padding: 0 45px;
+  margin-top: 0.55rem;
+  padding: 0 2.25rem;
 }
 
 .dialog1-r1 {
-  margin-top: 22px;
+  margin-top: 1.1rem;
 }
 
 .dialog1-r1 .btn {
-  padding: 0 27px;
-  margin: 0 8px;
+  padding: 0 1.35rem;
+  margin: 0 0.4rem;
 }
 
 .dialog-spring .center {
   width: 90%;
-  font-size: 14px;
+  font-size: 0.7rem;
   text-align: left;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .dialog-spring h2 {
   color: #dc3334;
-  margin-bottom: 15px;
-  font-size: 14px;
+  margin-bottom: 0.75rem;
+  font-size: 0.7rem;
 }
 
 .dialog-spring p {
-  line-height: 24px;
+  line-height: 1.2rem;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 0.7rem;
 }
 
 .dialog-nataral .center {
@@ -1428,14 +1428,14 @@ a[title="站长统计"] {
 }
 
 .dialog-nataral ul {
-  padding: 10px;
-  max-height: 400px;
+  padding: 0.5rem;
+  max-height: 20rem;
   overflow-y: auto;
 }
 
 .dialog-nataral li {
   border-bottom: 1px solid #eaeaea;
-  margin-bottom: 13px;
+  margin-bottom: 0.65rem;
 }
 
 .dialog-nataral li:last-child {
@@ -1444,18 +1444,18 @@ a[title="站长统计"] {
 }
 
 .dialog-nataral h2 {
-  font-size: 14px;
-  padding-left: 17px;
+  font-size: 0.7rem;
+  padding-left: 0.85rem;
 }
 
 .dialog-nataral p {
-  line-height: 18px;
+  line-height: 0.9rem;
   color: #666;
-  padding-left: 17px;
+  padding-left: 0.85rem;
 }
 
 .dialog-nataral .icon39 {
-  margin-left: -17px;
+  margin-left: -0.85rem;
   float: left;
 }
 
@@ -1464,66 +1464,66 @@ a[title="站长统计"] {
 }
 
 .dialog-active h2 {
-  font-size: 14px;
+  font-size: 0.7rem;
   color: #f78e55;
   background: #f9f9f9;
-  height: 43px;
-  line-height: 43px;
+  height: 2.15rem;
+  line-height: 2.15rem;
   text-align: left;
-  padding-left: 15px;
+  padding-left: 0.75rem;
   margin-bottom: 0;
   border-bottom: 1px solid #e5e5e5;
 }
 
 .dialog-active-b {
-  padding: 10px 15px;
+  padding: 0.5rem 0.75rem;
 }
 
 .dialog-active .input {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .dialog-active .btn {
-  height: 44px;
-  line-height: 44px;
+  height: 2.2rem;
+  line-height: 2.2rem;
 }
 
 .dialog-active li {
-  line-height: 21px;
-  font-size: 14px;
+  line-height: 1.05rem;
+  font-size: 0.7rem;
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .dialog-active .text-error {
-  margin-top: 10px;
+  margin-top: 0.5rem;
 }
 
 /*banner*/
 .banner {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
 }
 
 .banner-dialog-b {
-  width: 230px;
-  height: 313px;
+  width: 11.5rem;
+  height: 15.65rem;
   background: url(../img/banner-dialog.jpg) no-repeat;
-  -webkit-background-size: 230px 230px;
-          background-size: 230px;
+  -webkit-background-size: 11.5rem 11.5rem;
+          background-size: 11.5rem;
   position: fixed;
   z-index: 999;
-  padding-top: 119px;
-  padding-left: 29px;
+  padding-top: 5.95rem;
+  padding-left: 1.45rem;
 }
 
 .banner-dialog ul {
-  margin-bottom: 14px;
+  margin-bottom: 0.7rem;
 }
 
 .banner-dialog li {
-  line-height: 17px;
+  line-height: 0.85rem;
 }
 
 .banner-dialog a {
@@ -1531,8 +1531,8 @@ a[title="站长统计"] {
 }
 
 .banner-dialog .icon {
-  right: 10px;
-  top: 10px;
+  right: 0.5rem;
+  top: 0.5rem;
   position: absolute;
 }
 
@@ -1599,5 +1599,4 @@ a[title="站长统计"] {
   -webkit-transform: scale(0.8);
       -ms-transform: scale(0.8);
           transform: scale(0.8);
-  font-size: 0.6rem;
 }

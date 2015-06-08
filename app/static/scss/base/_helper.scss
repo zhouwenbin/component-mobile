@@ -24,12 +24,14 @@
   white-space: nowrap;
   width: 100%;
   overflow: hidden;
-  text-overflow:    ellipsis;
+  text-overflow: ellipsis;
+  
 }
 .ellipsis2,.ellipsis3{
   overflow : hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-height: 1.5;
 }
 .ellipsis2{
   -webkit-line-clamp: 2;

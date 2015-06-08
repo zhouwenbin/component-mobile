@@ -1,5 +1,5 @@
 .nataral-list{
-  margin: 10px;
+  margin: 10px * 2 /$ppr;
 }
 .nataral-list ul{
   overflow: hidden;
@@ -19,13 +19,13 @@
   width: 100%;
 }
 .nataral-list-b{
-  padding:10px;
+  padding:10px * 2 /$ppr;
 }
 .nataral-list h2{
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 10px;
+  font-size: 14px * 2 /$ppr;
+  line-height: 18px * 2 /$ppr;
+  margin-bottom: 10px * 2 /$ppr;
 }
 .nataral-list .text-important{
-  font-size: 15px;
+  font-size: 15px * 2 /$ppr;
 }

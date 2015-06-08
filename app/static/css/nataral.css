@@ -1,1 +1,186 @@
-.nataral-index{padding:0 0 10px 0}.nataral-index img{width:100%}.nataral-index>ul>li{border-bottom:1px solid #E5E5E5;margin-bottom:20px;background:#fff}.nataral-inner{padding:20px}.nataral-index h2{margin-bottom:13px;font-size:16px}.nataral-index .justify{width:4em;vertical-align:top;height:20px}.nataral-label{margin-right:10px;color:#a78567}.nataral-index li li{font-size:14px;line-height:20px;color:#666;margin-bottom:5px}.nataral-index-r1{margin-top:19px}.nataral-index-r1c1{color:#999;font-size:14px}.nataral-index-r1c2{padding:0 14px;line-height:20px;background:#ffcc00;color:#663300}.nataral-video{margin:10px 0;background:#fff;border-bottom:1px solid #E5E5E5}.nataral-video-b{padding:20px}.nataral-video video,.nataral-video img{width:100%}.nataral-video h2{font-size:16px;margin:10px 0}.nataral-video p{font-size:14px;line-height:20px;color:#666;margin-bottom:20px}.nataral-video-r1 a{color:#0066cc;font-size:14px}.nataral-list{margin:10px}.nataral-list ul{overflow:hidden}.nataral-list li{width:48.33%;border:1px solid #E5E5E5;background:#fff}.nataral-list li:nth-child(odd){float:left}.nataral-list li:nth-child(even){float:right}.nataral-list img{width:100%}.nataral-list-b{padding:10px}.nataral-list h2{font-size:14px;line-height:18px;margin-bottom:10px}.nataral-list .text-important{font-size:15px}.nataral-detail{padding:10px;background:#fff}.nataral-detail .swipe{margin-bottom:10px}.nataral-detail h1{font-size:14px;line-height:20px;margin-bottom:10px}.nataral-detail-r1{margin-bottom:20px}.nataral-detail-r1 .text-important{font-size:18px;margin-right:5px}.nataral-detail-r2{font-size:14px;color:#666;margin-bottom:30px}.nataral-detail h2{font-size:15px;background:#f9f9f9;height:35px;line-height:35px;padding-left:30px}.nataral-detail ul{padding:10px 30px;border-bottom:1px solid #eee}.nataral-detail ul:last-child{border:none}.nataral-detail li{font-size:14px;line-height:24px}.nataral-detail .justify{vertical-align:top;width:4em;height:14px}
+.nataral-index {
+  padding: 0 0 0.5rem 0;
+}
+
+.nataral-index img {
+  width: 100%;
+}
+
+.nataral-index > ul > li {
+  border-bottom: 1px solid #E5E5E5;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+
+.nataral-inner {
+  padding: 1rem;
+}
+
+.nataral-index h2 {
+  margin-bottom: 0.65rem;
+  font-size: 0.8rem;
+}
+
+.nataral-index .justify {
+  width: 4em;
+  vertical-align: top;
+  height: 1rem;
+}
+
+.nataral-label {
+  margin-right: 0.5rem;
+  color: #a78567;
+}
+
+.nataral-index li li {
+  font-size: 0.7rem;
+  line-height: 1rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.nataral-index-r1 {
+  margin-top: 0.95rem;
+}
+
+.nataral-index-r1c1 {
+  color: #999;
+  font-size: 0.7rem;
+}
+
+.nataral-index-r1c2 {
+  padding: 0 0.7rem;
+  line-height: 1rem;
+  background: #ffcc00;
+  color: #663300;
+}
+
+.nataral-video {
+  margin: 0.5rem 0;
+  background: #fff;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.nataral-video-b {
+  padding: 1rem;
+}
+
+.nataral-video video,
+.nataral-video img {
+  width: 100%;
+}
+
+.nataral-video h2 {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.nataral-video p {
+  font-size: 0.7rem;
+  line-height: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.nataral-video-r1 a {
+  color: #0066cc;
+  font-size: 0.7rem;
+}
+
+.nataral-list {
+  margin: 0.5rem;
+}
+
+.nataral-list ul {
+  overflow: hidden;
+}
+
+.nataral-list li {
+  width: 48.33%;
+  border: 1px solid #E5E5E5;
+  background: #fff;
+}
+
+.nataral-list li:nth-child(odd) {
+  float: left;
+}
+
+.nataral-list li:nth-child(even) {
+  float: right;
+}
+
+.nataral-list img {
+  width: 100%;
+}
+
+.nataral-list-b {
+  padding: 0.5rem;
+}
+
+.nataral-list h2 {
+  font-size: 0.7rem;
+  line-height: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.nataral-list .text-important {
+  font-size: 0.75rem;
+}
+
+.nataral-detail {
+  padding: 0.5rem;
+  background: #fff;
+}
+
+.nataral-detail .swipe {
+  margin-bottom: 0.5rem;
+}
+
+.nataral-detail h1 {
+  font-size: 0.7rem;
+  line-height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.nataral-detail-r1 {
+  margin-bottom: 1rem;
+}
+
+.nataral-detail-r1 .text-important {
+  font-size: 0.9rem;
+  margin-right: 0.25rem;
+}
+
+.nataral-detail-r2 {
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.nataral-detail h2 {
+  font-size: 0.75rem;
+  background: #f9f9f9;
+  height: 1.75rem;
+  line-height: 1.75rem;
+  padding-left: 1.5rem;
+}
+
+.nataral-detail ul {
+  padding: 0.5rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.nataral-detail ul:last-child {
+  border: none;
+}
+
+.nataral-detail li {
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+}
+
+.nataral-detail .justify {
+  vertical-align: top;
+  width: 4em;
+  height: 0.7rem;
+}

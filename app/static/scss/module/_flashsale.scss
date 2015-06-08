@@ -1,9 +1,9 @@
 .flashsale ul{
-  border-top: 1px solid #d9d9d9;
+  border-top: 1 solid #d9d9d9;
 }
 .flashsale li{
   background: #fff;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1 solid #d9d9d9;
   padding-top: 17px * 2 / $ppr;
   padding-bottom:30px * 2 / $ppr;
 }
@@ -23,7 +23,6 @@
 .flashsale-c2r1{
   color: #999;
   margin-bottom: 13px * 2 / $ppr;
-  font-size: 24px / $ppr;
 }
 .flashsale-c2r1 .icon{
   margin-right: 2px * 2 / $ppr;
@@ -34,10 +33,9 @@
 }
 .flashsale-c2r2 del{
   color: #666;
-  font-size: 24px / $ppr;
 }
 .flashsale img{
   border:1px solid #ebebeb;
   width: 170px / $ppr;
-  height: 170px / $ppr
+  height: 170px / $ppr;
 }

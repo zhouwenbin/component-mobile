@@ -1,6 +1,6 @@
 /*立即购买*/
 .nav{
-  height: 55px;
+  height: 55px * 2 / $ppr;
 }
 .nav-r1{
   position: fixed;
@@ -13,16 +13,16 @@
 }
 .nav-c1{
   position: absolute;
-  bottom: 50px;
-  right: 7px;
+  bottom: 50px * 2 / $ppr;
+  right: 7px * 2 / $ppr;
   -webkit-transform: translate(0,-100%);
   border-radius:50%;
   border:1px solid #ccc;
   text-align: center;
   background:rgba(255,255,255,0.9);
-  width: 40px;
-  height: 40px;
-  margin-top: -45px;
+  width: 40px * 2 / $ppr;
+  height: 40px * 2 / $ppr;
+  margin-top: -45px * 2 / $ppr;
 }
 .nav-c1:nth-child(1){
   -webkit-transform: translate(0,-210%);
@@ -30,24 +30,24 @@
 .nav-c1 a{
   color: #999;
   display: block;
-  padding-top: 5px;
+  padding-top: 5px * 2 / $ppr;
 }
 .nav-c1 .icon{
-  margin-bottom: 4px;
+  margin-bottom: 4px * 2 / $ppr;
 }
 .nav-c2{
-  padding:5px;
+  padding:5px * 2 / $ppr;
   
 }
 .nav .btn{
-  height: 44px;
-  line-height: 44px;
-  font-size: 18px;
+  height: 44px * 2 / $ppr;
+  line-height: 44px * 2 / $ppr;
+  font-size: 18px * 2 / $ppr;
   font-weight: bold;
 }
 
 .nav-cart{
-  height: 55px;
+  height: 55px * 2 / $ppr;
 }
 .nav-cart-r1{
   display: flex;
@@ -57,16 +57,16 @@
   width: 100%;
   z-index:999;
   background: #f3f3f3;
-  padding: 6px 12px;
-  height: 58px;
+  padding: 6px * 2 / $ppr 12px * 2 / $ppr;
+  height: 58px * 2 / $ppr;
   justify-content:space-between;
   align-items:center;
   border-top: 1px solid #dadada;
 }
 .nav-cart .btn{
-  height: 40px;
-  line-height: 40px;
-  font-size: 15px;
+  height: 40px * 2 / $ppr;
+  line-height: 40px * 2 / $ppr;
+  font-size: 15px * 2 / $ppr;
 }
 .nav-cart .btn-danger{
  flex:1;
@@ -75,11 +75,11 @@
 .nav-cart .btn-soon{
   display: block;
   width: 40%;
-  margin: 0 10px;
+  margin: 0 10px * 2 / $ppr;
 }
 .nav-cart .icon47{
   position: relative;
-  margin-right: 5px;
+  margin-right: 5px * 2 / $ppr;
 }
 .nav-cart .dot{
   position: absolute;

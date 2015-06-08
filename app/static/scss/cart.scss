@@ -9,11 +9,11 @@ body{
 }
 
 .alert-error{
-	line-height: 18px;
+	line-height: 18px * 2 / $ppr;
 	background: rgba(221,62,63,0.85);
 	position: fixed;
 	left: 0;
-	bottom: 70px;
+	bottom: 70px * 2 / $ppr;
 	width: 100%;
 	color: #ff9000;
 	background: #fff0e2;

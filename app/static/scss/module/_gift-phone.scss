@@ -1,28 +1,28 @@
 .gift-phone-b{
-  width: 277px;
-  height: 216px;
+  width: 277px * 2 /$ppr;
+  height: 216px * 2 /$ppr;
   background: #fff;
-  border-radius: 5px;
-  padding:23px 30px;
-  margin: 86px auto 0;
+  border-radius: 5px * 2 /$ppr;
+  padding:23px * 2 /$ppr 30px * 2 /$ppr;
+  margin: 86px * 2 /$ppr auto 0;
 }
 .gift-phone-icon{
-  width: 39px;
-  height: 47px;
+  width: 39px * 2 /$ppr;
+  height: 47px * 2 /$ppr;
   float: left;
   background:url(#{$bg-url}gift-icon.png) no-repeat;
-  background-size: 39px;
-  margin-left: -51px;
+  background-size: 39px * 2 /$ppr;
+  margin-left: -51px * 2 /$ppr;
 }
 .gift-phone h2{
-  margin-bottom: 24px;
-  font-size: 15px;
-  line-height: 21px;
-  padding-left: 51px;
+  margin-bottom: 24px * 2 /$ppr;
+  font-size: 15px * 2 /$ppr;
+  line-height: 21px * 2 /$ppr;
+  padding-left: 51px * 2 /$ppr;
 }
 .gift-phone input{
-  border-radius:5px;
-  margin-bottom: 10px;
+  border-radius:5px * 2 /$ppr;
+  margin-bottom: 10px * 2 /$ppr;
   text-align: center;
 }
 .gift-phone img{
@@ -33,7 +33,7 @@
   left:0;
 }
 .gift-phone button{
-  height: 40px;
-  line-height: 40px;
-  border-radius: 5px;
+  height: 40px * 2 /$ppr;
+  line-height: 40px * 2 /$ppr;
+  border-radius: 5px * 2 /$ppr;
 }

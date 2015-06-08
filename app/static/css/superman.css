@@ -92,7 +92,7 @@ html {
 
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
-  font-size: 12px;
+  font-size: 0.6rem;
   color: #333;
   width: 16rem;
   min-width: 320px;
@@ -172,6 +172,7 @@ a[title="站长统计"] {
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-height: 1.5;
 }
 
 .ellipsis2 {

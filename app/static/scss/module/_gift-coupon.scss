@@ -1,46 +1,46 @@
 .gift-coupon{}
 .gift-coupon h1{
   color: #da4148;
-  font-size: 16px;
+  font-size: 16px * 2 /$ppr;
   text-align: center;
 }
 .gift-coupon-h2{
-  font-size: 14px;
+  font-size: 14px * 2 /$ppr;
   font-weight:normal;
-  margin-left: 10px;
-  margin-top: 10px;
+  margin-left: 10px * 2 /$ppr;
+  margin-top: 10px * 2 /$ppr;
 }
 .gift-coupon .btn-danger{
-  margin:0 10px;
+  margin:0 10px * 2 /$ppr;
   width: auto;
-  height: 40px;
-  line-height: 40px;
-  font-size: 14px;
+  height: 40px * 2 /$ppr;
+  line-height: 40px * 2 /$ppr;
+  font-size: 14px * 2 /$ppr;
 }
 .coupon-use{
-  margin-top: 20px;
+  margin-top: 20px * 2 /$ppr;
 }
 .coupon-use h2{
-  font-size: 13px;
-  margin-bottom: 10px;
+  font-size: 13px * 2 /$ppr;
+  margin-bottom: 10px * 2 /$ppr;
 }
 .coupon-use li{
-  font-size: 13px;
-  line-height: 21px;
+  font-size: 13px * 2 /$ppr;
+  line-height: 21px * 2 /$ppr;
   color: #999;
   list-style: inside;
 }
 .gift-coupon-dialog{
-  width: 125px;
-  height: 130px;
-  padding-top: 97px;
+  width: 125px * 2 /$ppr;
+  height: 130px * 2 /$ppr;
+  padding-top: 97px * 2 /$ppr;
   color: #fff;
   text-align: center;
   left: 50%;
   top:50%;
   transform: translate(-50%,-50%);
   background-image: url(#{$bg-url}gift-coupon-dialog.png);
-  background-size: 43px;
+  background-size: 43px * 2 /$ppr;
   background-repeat: no-repeat;
-  background-position: 47px 41px;
+  background-position: 47px * 2 /$ppr 41px * 2 /$ppr;
 }

@@ -1,62 +1,62 @@
 /*orderlist*/
 .orderlist>li{
   background: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 10px * 2 /$ppr;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
 .orderlist .box1{
   margin-top: 0;
-  font-size: 14px;
+  font-size: 14px * 2 /$ppr;
   
 }
 .orderlist .box1 a{
   color: #666;
 }
 .orderlist-bag{
-  padding:0 10px;
+  padding:0 10px * 2 /$ppr;
 }
 .orderlist-bag-r1{
   display: flex;
   justify-content:space-between;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 20px * 2 /$ppr;
+  padding-bottom: 10px * 2 /$ppr;
   border-bottom: 1px solid #e5e5e5;
 }
 .orderlist-bag-r1{
-  font-size: 14px;
+  font-size: 14px * 2 /$ppr;
 }
 .orderlist-bag-r1 .text-important{
-  margin-left: 15px;
-  font-size: 14px;
+  margin-left: 15px * 2 /$ppr;
+  font-size: 14px * 2 /$ppr;
 }
 
 .orderlist-num{
-  font-size: 15px;
+  font-size: 15px * 2 /$ppr;
   color: #999;
-  margin-bottom: 8px;
+  margin-bottom: 8px * 2 /$ppr;
 }
 .orderlist-total{
-  margin: 0 10px;
-  padding: 13px 0;
+  margin: 0 10px * 2 /$ppr;
+  padding: 13px * 2 /$ppr 0;
   text-align: right;
   border-top: 1px solid #e5e5e5;
 }
 .orderlist-total .text-important{
-  font-size: 18px;
+  font-size: 18px * 2 /$ppr;
 }
 .orderlist-total .text-disable{
-  margin-left: 8px;
+  margin-left: 8px * 2 /$ppr;
   color: #999;
 }
 .orderlist-btns{
-  margin: 0 10px;
-  padding: 14px 0;
+  margin: 0 10px * 2 /$ppr;
+  padding: 14px * 2 /$ppr 0;
   border-top: 1px solid #e5e5e5;
 }
 .orderlist-btns .btn{
-  margin-left: 15px;
-  font-size: 14px;
+  margin-left: 15px * 2 /$ppr;
+  font-size: 14px * 2 /$ppr;
 }
 .orderlist-cancal .orderlist-num{
   color: #ccc;
@@ -81,10 +81,10 @@
   background: #fff;
 }
 .orderlist-none .icon55{
-  margin-top: 77px;
-  margin-bottom: 20px;
+  margin-top: 77px * 2 /$ppr;
+  margin-bottom: 20px * 2 /$ppr;
 }
 .orderlist-none p{
-  margin-bottom: 35px;
-  font-size: 15px;
+  margin-bottom: 35px * 2 /$ppr;
+  font-size: 15px * 2 /$ppr;
 }

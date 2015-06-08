@@ -1,24 +1,24 @@
 .gift-card{
-  margin-bottom: 10px;
+  margin-bottom: 10px * 2 /$ppr;
 }
 .gift-card p{
-  font-size: 15px;
-  line-height: 21px;
-  margin-bottom: 19px;
+  font-size: 15px * 2 /$ppr;
+  line-height: 21px * 2 /$ppr;
+  margin-bottom: 19px * 2 /$ppr;
 }
 .gift-card .text-important{
-  font-size: 15px;
+  font-size: 15px * 2 /$ppr;
 }
 .gift-card ul{
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 15px * 2 /$ppr;
 }
 .gift-card li{
   flex:1;
   text-align: center;
-  font-size: 30px;
-  height: 63px;
-  line-height: 63px;
+  font-size: 30px * 2 /$ppr;
+  height: 63px * 2 /$ppr;
+  line-height: 63px * 2 /$ppr;
   background: #dc3f44;
   color: #fff;
   border-right: 1px solid #dc5b60;
@@ -27,43 +27,43 @@
   border-right:none;
 }
 .gift-card-r1 .icon{
-  margin-right: 10px;
+  margin-right: 10px * 2 /$ppr;
 }
 .gift-card-address{
-  margin-bottom: 10px;
+  margin-bottom: 10px * 2 /$ppr;
 }
 .gift-card-address h2{
-  font-size: 15px;
-  margin-bottom: 20px;
+  font-size: 15px * 2 /$ppr;
+  margin-bottom: 20px * 2 /$ppr;
 }
 .gift-card-address h3{
-  font-size: 14px;
-  margin-bottom: 10px;
+  font-size: 14px * 2 /$ppr;
+  margin-bottom: 10px * 2 /$ppr;
 }
 .gift-card-address address,
 .gift-card-address time{
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 14px * 2 /$ppr;
+  line-height: 21px * 2 /$ppr;
   font-style: normal;
 }
 .gift-card-address li{
-  padding-left: 26px;
-  margin-bottom: 15px;
+  padding-left: 26px * 2 /$ppr;
+  margin-bottom: 15px * 2 /$ppr;
 }
 .gift-card-address li:last-child{
   margin-bottom: 0;
 }
 .gift-card-address .icon{
   float: left;
-  margin-left: -26px;
+  margin-left: -26px * 2 /$ppr;
 }
 .gift-card-time h2{
-  font-size: 15px;
-  margin-bottom: 20px;
+  font-size: 15px * 2 /$ppr;
+  margin-bottom: 20px * 2 /$ppr;
 }
 .gift-card-time time{
-  font-size:14px;
+  font-size:14px * 2 /$ppr;
 }
 .gift-card-time .icon{
-  margin-right: 12px;
+  margin-right: 12px * 2 /$ppr;
 }

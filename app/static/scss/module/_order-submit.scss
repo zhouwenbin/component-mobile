@@ -3,20 +3,20 @@
   justify-content:space-between;
   background: #f3f3f3;
   border-top: 1px solid #dadada;
-  padding: 10px 12px;
-  line-height: 40px;
+  padding: 10px * 2 /$ppr 12px * 2 /$ppr;
+  line-height: 40px * 2 /$ppr;
 }
 .order-submit-c1{
-  font-size: 15px;
-  line-height: 40px;
+  font-size: 15px * 2 /$ppr;
+  line-height: 40px * 2 /$ppr;
 }
 .order-submit-c1 .text-important{
-  font-size: 20px;
+  font-size: 20px * 2 /$ppr;
 }
 .order-submit .btn{
 	flex:1;
 	display: block;
-	margin-left: 20px;
-	height: 40px;
-	line-height: 40px;
+	margin-left: 20px * 2 /$ppr;
+	height: 40px * 2 /$ppr;
+	line-height: 40px * 2 /$ppr;
 }

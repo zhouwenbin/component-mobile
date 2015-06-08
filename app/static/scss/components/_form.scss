@@ -1,8 +1,8 @@
 /*input*/
 .input{
   border: 1px solid #e3e3e3;
-  font-size: 14px;
-  padding: 10px;
+  font-size: 14px * 2 /$ppr;
+  padding: 10px * 2 /$ppr;
   width: 100%;
 }
 .input-num{
@@ -11,38 +11,40 @@
 }
 .input-num .btn{
   display: inline-block;
-  width: 30px;
-  height: 26px;
-  line-height: 24px;
+  width: 30px * 2 /$ppr;
+  height: 26px * 2 /$ppr;
+  line-height: 24px * 2 /$ppr;
   padding: 0;
   background:#fafafa;
   border: 1px solid #ccc;
-  font-size: 18px;
+  font-size: 18px * 2 /$ppr;
 }
 .input-num input{
-  width: 51px;
-  height: 26px;
-  line-height: 26px;
+  width: 51px * 2 /$ppr;
+  height: 26px * 2 /$ppr;
+  line-height: 26px * 2 /$ppr;
   text-align: center;
-  margin: 0 -1px;
+  margin: 0 -1px * 2 /$ppr;
   border:1px solid #ccc;
   background: #fafafa;
-  font-size: 12px;
+  font-size: 12px * 2 /$ppr;
+  box-shadow: none;
+  border-radius: 0;
 }
 /*select*/
 .select{
-  height: 30px;
-  line-height: 30px;
-  padding-left: 10px;
-  font-size: 15px;
+  height: 30px * 2 /$ppr;
+  line-height: 30px * 2 /$ppr;
+  padding-left: 10px * 2 /$ppr;
+  font-size: 15px * 2 /$ppr;
   border-color:#ccc;
   border-radius:0;
 }
 /*textarea*/
 .textarea{
-  padding: 10px;
+  padding: 10px * 2 /$ppr;
   width: 100%;
-  font-size: 14px;
+  font-size: 14px * 2 /$ppr;
   line-height: 1.5;
   height: 5.5em;
   border-color:#ccc;

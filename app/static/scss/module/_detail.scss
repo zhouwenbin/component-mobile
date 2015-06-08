@@ -1,13 +1,13 @@
 /*商品详情*/
 .detail{
   background: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 10px * 2 /$ppr;
 }
 .detail-h{
   position: -webkit-sticky;
   position: sticky;
   background: #fff;
-  height: 43px;
+  height: 43px * 2 /$ppr;
   z-index: 1;
   top: 0;
 }
@@ -17,18 +17,17 @@
 .detail-h li{
   float: left;
   width: 50%;
-  font-size: 15px;
-  border-width: 0 0 1px 0;
-  border-image: url(#{$border}) 2 0 round;
+  font-size: 15px * 2 /$ppr;
+  border-bottom: 1px solid #ccc;
   
   text-align: center;
 }
 
 .detail-h li a{
-  height: 43px;
-  line-height: 43px;
+  height: 43px * 2 /$ppr;
+  line-height: 43px * 2 /$ppr;
   display: inline-block;
-  padding: 0 20px;
+  padding: 0 20px * 2 /$ppr;
   font-weight: bold;
 }
 .detail-h li.active a{
@@ -37,27 +36,26 @@
 }
 
 .detail-b{
-  padding: 0 17px;
+  padding: 0 17px * 2 /$ppr;
   line-height: 1.5;
 }
 .detail-b:last-child{
   padding:0;
 }
 .detail-b ul{
-  border-width: 0 0 1px 0;
-  border-image: url(#{$border}) 2 0 round;
-  padding: 11px 17px;
+  border-bottom: 1px solid #ccc;
+  padding: 11px * 2 /$ppr 17px * 2 /$ppr;
 }
 .detail-b ul:last-child{
   border: none;
 }
 .detail-b li{
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 14px * 2 /$ppr;
+  line-height: 24px * 2 /$ppr;
 }
 .detail .justify{
   width: 4em;
-  height: 24px;
+  height: 24px * 2 /$ppr;
   overflow: hidden;
 }
 .detail-b img{
@@ -66,11 +64,11 @@
 
 .detail-b:last-child .btn{
   display: block;
-  margin: 10px auto;
+  margin: 10px * 2 /$ppr auto;
   width: 90%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 16px;   
+  height: 40px * 2 /$ppr;
+  line-height: 40px * 2 /$ppr;
+  font-size: 16px * 2 /$ppr;   
 }
 .detail-b:last-child h3{
   text-align: center;

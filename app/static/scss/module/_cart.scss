@@ -3,42 +3,42 @@
 }
 .cart li{
   background: #fff;
-  margin-top: -1px;
-  padding: 0 12px 0 5px;
+  margin-top: -1px * 2 / $ppr;
+  padding: 0 12px * 2 / $ppr 0 5px * 2 / $ppr;
   position: relative;
   border-bottom: 1px solid #e5e5e5;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px * 2 / $ppr solid #e5e5e5;
   left: 0;
   transition:all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  font-size: 14px;
+  font-size: 14px * 2 / $ppr;
 }
 .cart li.active .icon49,{
-  background-position: -255px -249px;
+  background-position: -255px * 2 / $ppr -249px * 2 / $ppr;
 }
 .cart-inner{
   display: flex;
   justify-content:space-between;
   align-items:center;
-  padding-top: 24px;
-  padding-bottom: 14px;
+  padding-top: 24px * 2 / $ppr;
+  padding-bottom: 14px * 2 / $ppr;
   position: relative;
 }
 .cart-inner .icon49{
   display: block;
 }
 .cart img{
-  width: 67px;
-  height: 67px;
+  width: 67px * 2 / $ppr;
+  height: 67px * 2 / $ppr;
   border: 1px solid #e0e0e0;
-  margin-left: 5px;
-  margin-right: 10px;
+  margin-left: 5px * 2 / $ppr;
+  margin-right: 10px * 2 / $ppr;
 }
 .cart .btn-danger{
   height: 100%;
   line-height: 100%;
-  font-size: 17px;
+  font-size: 17px * 2 / $ppr;
   position: absolute;
-  right: -62px;
+  right: -62px * 2 / $ppr;
   top: 0;
 }
 .cart-c1{
@@ -46,8 +46,8 @@
 }
 .cart-c2{
   text-align: right;
-  line-height: 20px;
-  margin-left: 20px;
+  line-height: 20px * 2 / $ppr;
+  margin-left: 20px * 2 / $ppr;
 }
 .cart-c2 del{
   color: #ccc;
@@ -56,28 +56,28 @@
   color: #999;
 }
 .cart h2{
-  line-height: 18px;
-  margin-bottom: 8px;
+  line-height: 18px * 2 / $ppr;
+  margin-bottom: 8px * 2 / $ppr;
   font-weight: normal;
 }
 .cart .text-important{
-  font-size: 14px;
+  font-size: 14px * 2 / $ppr;
 }
 .cart .text-orange{
-  padding-bottom: 18px;
-  padding-left: 31px;
+  padding-bottom: 18px * 2 / $ppr;
+  padding-left: 31px * 2 / $ppr;
 }
 .cart-disable{
-  margin-top: 10px;
+  margin-top: 10px * 2 / $ppr;
 }
 .cart-disable .text-important{
   color: #ccc;
 }
 .cart-disable .label-disabled{
-  font-size: 10px;
-  padding: 0 2px;
+  font-size: 10px * 2 / $ppr;
+  padding: 0 2px * 2 / $ppr;
   display:block;
 }
 .cart .icon49{
-  margin: 0 5px;
+  margin: 0 5px * 2 / $ppr;
 }

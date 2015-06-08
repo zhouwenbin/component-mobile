@@ -1,8 +1,8 @@
 /*tab*/
 .tab-h{
-  height: 44px;
+  height: 44px * 2 / $ppr;
   background: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 10px * 2 / $ppr;
 
 }
 .tab-h ul{
@@ -14,11 +14,11 @@
   z-index: 1;
   display: flex;
   border-bottom: 1px solid #ccc;
-  height: 44px;
+  height: 44px * 2 / $ppr;
 }
 .tab-h li{
   flex:1;
-  font-size: 15px;
+  font-size: 15px * 2 / $ppr;
   border-bottom: 1px solid #f2f2f3;
   
   text-align: center;
@@ -26,13 +26,13 @@
 
 .tab-h li a{
   display: inline-block;
-  height: 43px;
-  line-height: 43px;
+  height: 43px * 2 / $ppr;
+  line-height: 43px * 2 / $ppr;
   font-weight: bold;
 }
 .tab-h li.active a{
   color: #dc3334;
-  border-bottom:2px solid #dc3334;
+  border-bottom:2px * 2 / $ppr solid #dc3334;
 }
 .tab-b{
   display: none;
