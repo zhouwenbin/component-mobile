@@ -11,9 +11,10 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.order.iteminfo',
   'sf.b2c.mall.widget.message',
-  'text!template_order_selectrecaddr'
+  'text!template_order_selectrecaddr',
+  'sf.env.switcher'
 ], function(can, $, SFGetIDCardUrlList, SFGetRecAddressList, SFUserWebLogin,
-  AddressAdapter, SFAddressEditor, SFConfig, SFItemInfo, SFMessage, template_order_selectrecaddr) {
+  AddressAdapter, SFAddressEditor, SFConfig, SFItemInfo, SFMessage, template_order_selectrecaddr, SFSwitcher) {
 
   return can.Control.extend({
 
@@ -75,22 +76,22 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           });
 
           //绑定事件 添加地址
-          $('.addrecaddr').click(function() {
-            if (that.result.length >= 20) {
-              new SFMessage(null, {
-                'tip': '很抱歉，每个账户最多可添加20条收货地址',
-                'type': 'error'
-              });
-            } else {
-              that.addRecaddrClick($(this));
-            }
-          });
+          // $('.addrecaddr').click(function() {
+          //   if (that.result.length >= 20) {
+          //     new SFMessage(null, {
+          //       'tip': '很抱歉，每个账户最多可添加20条收货地址',
+          //       'type': 'error'
+          //     });
+          //   } else {
+          //     that.addRecaddrClick($(this));
+          //   }
+          // });
 
           //点击查看更多
-          $('#viewmore').click(function() {
-            that.adapter4List.addrs.attr("addressList", that.result || []);
-            that.adapter4List.addrs.attr("showMore", false);
-          });
+          // $('#viewmore').click(function() {
+          //   that.adapter4List.addrs.attr("addressList", that.result || []);
+          //   that.adapter4List.addrs.attr("showMore", false);
+          // });
 
           that.initItemInfo();
 
@@ -98,6 +99,34 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
         .fail(function(error) {
           console.error(error);
         })
+    },
+
+    '.addrecaddr click': function (element, event) {
+      if (this.result.length >= 20) {
+        new SFMessage(null, {
+          'tip': '很抱歉，每个账户最多可添加20条收货地址',
+          'type': 'error'
+        });
+      } else {
+
+        var switcher = new SFSwitcher();
+
+        var that = this;
+        switcher.register('web', function () {
+          that.addRecaddrClick(element);
+        });
+
+        switcher.register('app', function () {
+          window.location.href = 'http://m.sfht.com/detail/addressedit.html'
+        });
+
+        switcher.go();
+      }
+    },
+
+    '#viewmore click': function (element, event) {
+      this.adapter4List.addrs.attr("addressList", this.result || []);
+      this.adapter4List.addrs.attr("showMore", false);
     },
 
     //初始化 itemInfo
