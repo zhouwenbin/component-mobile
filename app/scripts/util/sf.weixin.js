@@ -51,7 +51,7 @@ define('sf.weixin', [
           "nonceStr": noncestr,
           "signature": data.value,
           "jsApiList": [
-            'onMenuShareTimeline','onMenuShareAppMessage','imagePreview'
+            'onMenuShareTimeline', 'onMenuShareAppMessage', 'imagePreview'
           ]
         });
       })
@@ -65,11 +65,11 @@ define('sf.weixin', [
     /** [shareIndex 分享首页] */
     shareIndex: function() {
 
-      //进行微信设置
-      configWeixin();
-
       // 定义微信分享的数据
       jweixin.ready(function() {
+        //进行微信设置
+        configWeixin();
+
         jweixin.onMenuShareTimeline({
           title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
           desc: '别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
@@ -124,11 +124,11 @@ define('sf.weixin', [
     shareDetail: function(title, desc, link, imgUrl) {
       var that = this;
 
-      //进行微信设置
-      configWeixin();
-
       // 定义微信分享的数据
       jweixin.ready(function() {
+        //进行微信设置
+        configWeixin();
+
         jweixin.onMenuShareTimeline({
           title: title,
           desc: desc,
@@ -180,8 +180,6 @@ define('sf.weixin', [
      * @param  {[type]} id   [红包ID]
      */
     shareLuckyMoney: function(title, desc, id) {
-      //进行微信设置
-      configWeixin();
 
       var that = this;
       /*
@@ -200,19 +198,22 @@ define('sf.weixin', [
 
       // 定义微信分享的数据
       jweixin.ready(function() {
+        //进行微信设置
+        configWeixin();
+
         jweixin.onMenuShareTimeline({
           title: title,
           desc: desc,
           link: shareUrl,
           imgUrl: 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           trigger: function(res) {
-             //alert('用户点击发送给朋友圈');
+            //alert('用户点击发送给朋友圈');
           },
           success: function(res) {
-             //alert('已分享');
+            //alert('已分享');
           },
           cancel: function(res) {
-             //alert('已取消');
+            //alert('已取消');
           },
           fail: function(res) {
             //alert(JSON.stringify(res));
@@ -225,10 +226,10 @@ define('sf.weixin', [
           link: shareUrl,
           imgUrl: 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           trigger: function(res) {
-             //alert('用户点击发送给朋友');
+            //alert('用户点击发送给朋友');
           },
           success: function(res) {
-             //alert('已分享');
+            //alert('已分享');
           },
           cancel: function(res) {
             //alert('已取消');
@@ -251,8 +252,6 @@ define('sf.weixin', [
      * @param  {[type]} id   [红包ID]
      */
     shareTaiwanNatural: function() {
-      //进行微信设置
-      configWeixin();
 
       var that = this;
       var shareUrl = "http://m.sfht.com/naturalcoupon.html?bagid=14";
@@ -261,19 +260,21 @@ define('sf.weixin', [
 
       // 定义微信分享的数据
       jweixin.ready(function() {
+        //进行微信设置
+        configWeixin();
         jweixin.onMenuShareTimeline({
           title: title,
           desc: desc,
           link: shareUrl,
           imgUrl: 'http://img.sfht.com/sfhth5/1.1.32/img/naturalshare.png',
           trigger: function(res) {
-             //alert('用户点击发送给朋友圈');
+            //alert('用户点击发送给朋友圈');
           },
           success: function(res) {
-             //alert('已分享');
+            //alert('已分享');
           },
           cancel: function(res) {
-             //alert('已取消');
+            //alert('已取消');
           },
           fail: function(res) {
             //alert(JSON.stringify(res));
@@ -286,10 +287,10 @@ define('sf.weixin', [
           link: shareUrl,
           imgUrl: 'http://img.sfht.com/sfhth5/1.1.32/img/naturalshare.png',
           trigger: function(res) {
-             //alert('用户点击发送给朋友');
+            //alert('用户点击发送给朋友');
           },
           success: function(res) {
-             //alert('已分享');
+            //alert('已分享');
           },
           cancel: function(res) {
             //alert('已取消');
