@@ -117,7 +117,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
         });
 
         switcher.register('app', function () {
-          window.location.href = 'http://m.sfht.com/detail/addressedit.html'
+          window.location.href = 'http://m.sfht.com/addressedit.html'
         });
 
         switcher.go();
