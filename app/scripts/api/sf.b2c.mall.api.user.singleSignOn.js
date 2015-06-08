@@ -25,7 +25,7 @@ function($, can, _, Comm, SecurityType) {
       METHOD_NAME: 'user.singleSignOn',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'targetDeviceId': 'int',
+        'targetDeviceId': 'long',
         'targetAppId': 'int'
       },
       OPTIONAL: {

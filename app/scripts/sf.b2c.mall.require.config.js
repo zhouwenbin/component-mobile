@@ -93,7 +93,8 @@ requirejs.config({
     'sf.b2c.mall.api.user.downInviteSms': 'scripts/api/sf.b2c.mall.api.user.downInviteSms',
     'sf.b2c.mall.api.minicart.getTotalCount': 'scripts/api/sf.b2c.mall.api.minicart.getTotalCount',
 
-    'sf.b2c.mall.api.shopcart.addItemToCart': 'scripts/api/sf.b2c.mall.api.shopcart.addItemToCart',
+    'sf.b2c.mall.api.shopcart.addItemToCart':   'scripts/api/sf.b2c.mall.api.shopcart.addItemToCart',
+    'sf.b2c.mall.api.shopcart.addItemsToCart':  'scripts/api/sf.b2c.mall.api.shopcart.addItemsToCart',
     'sf.b2c.mall.api.shopcart.cleanInvalidItemsInCart': 'scripts/api/sf.b2c.mall.api.shopcart.cleanInvalidItemsInCart',
     'sf.b2c.mall.api.shopcart.getCart': 'scripts/api/sf.b2c.mall.api.shopcart.getCart',
     'sf.b2c.mall.api.shopcart.refreshCart': 'scripts/api/sf.b2c.mall.api.shopcart.refreshCart',

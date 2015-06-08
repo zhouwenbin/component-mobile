@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.reqLoginAuth
+  * @class sf.b2c.mall.api.user.partnerAppLogin
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.reqLoginAuth',
+'sf.b2c.mall.api.user.partnerAppLogin',
 [
   'zepto',
   'can',
@@ -22,17 +22,20 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.reqLoginAuth',
-      SECURITY_TYPE: SecurityType.None.name,
+      METHOD_NAME: 'user.partnerAppLogin',
+      SECURITY_TYPE: SecurityType.RegisteredDevice.name,
       REQUIRED: {
         'partnerId': 'string',
+        'authResp': 'string',
       },
       OPTIONAL: {
-        'redirectUrl': 'string'
+        'rembFlag': 'int'
       },
       VERIFY:{
       },
       ERROR_CODE: {
+        '1000320': '用户未授权',
+        '1000370': '支付宝验签失败'
       }
     }
   });
