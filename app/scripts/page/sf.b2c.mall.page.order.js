@@ -54,6 +54,12 @@ define(
 
         bindEvents: function() {
           document.addEventListener('deviceready', this.onDeviceReady, false);
+          document.addEventListener('resume', this.onResume, false);
+        },
+
+        onResume: function () {
+          // 粗暴的重刷页面获取新数据
+          window.location.reload();
         },
 
         onDeviceReady: function() {
@@ -63,8 +69,9 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin();
-          new SFOrder('#order');
+          SFHybrid.isLogin().done(function () {
+            new SFOrder('#order');
+          });
         }
       };
 

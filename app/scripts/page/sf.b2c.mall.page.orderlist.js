@@ -96,8 +96,9 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin();
-          new SFOrderList('#orderList');
+          SFHybrid.isLogin().done(function () {
+            new SFOrderList('#orderList');
+          });
         }
       };
 

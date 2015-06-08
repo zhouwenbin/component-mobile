@@ -68,8 +68,9 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin();
-          new SFOrderDetail('#order');
+          SFHybrid.isLogin().done(function () {
+            new SFOrderDetail('#order');
+          });
         }
       };
 

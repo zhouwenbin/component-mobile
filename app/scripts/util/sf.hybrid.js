@@ -109,7 +109,8 @@ define(
       var def = can.Deferred();
 
       var map = {
-        'ALIPAY': sf.payment.PayType.ALIPAY
+        'ALIPAY': sf.payment.PayType.ALIPAY,
+        'WEIXINPAY': sf.payment.PayType.WXPAY
       }
 
       var successcallback = function(data) {
