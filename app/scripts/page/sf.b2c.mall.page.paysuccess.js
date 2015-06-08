@@ -10,11 +10,15 @@ define(
     'sf.b2c.mall.business.config',
     'sf.helpers',
     'sf.b2c.mall.api.order.getOrder',
-    'text!template_order_paysuccess'
+    'text!template_order_paysuccess',
+    'sf.env.switcher',
+    'sf.hybrid'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder, template_order_paysuccess) {
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder, template_order_paysuccess, SFSwitcher, SFHybrid) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
+
+    can.route.ready();
 
     var paysuccess = can.Control.extend({
       helpers: {
@@ -56,6 +60,7 @@ define(
         };
 
         var params = can.deparam(window.location.search.substr(1));
+        params = _.extend(params, can.route.attr());
 
         if (!params.orderid) {
           itemObj.isPaySuccess = false;
@@ -123,5 +128,42 @@ define(
         element.html(html);
       }
     });
-    new paysuccess('.sf-b2c-mall-order-paysuccess');
+    // new paysuccess('.sf-b2c-mall-order-paysuccess');
+
+    // －－－－－－－－－－－－－－－－－－－－－－
+    // 启动分支逻辑
+    var switcher = new SFSwitcher();
+
+    switcher.register('web', function() {
+      new paysuccess('.sf-b2c-mall-order-paysuccess');
+      new SFNav('.sf-b2c-mall-nav');
+    });
+
+    switcher.register('app', function() {
+      var app = {
+        initialize: function() {
+          this.bindEvents();
+        },
+
+        bindEvents: function() {
+          document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+
+        onDeviceReady: function() {
+          app.receivedEvent('deviceready');
+        },
+
+        receivedEvent: function(id) {
+
+          SFHybrid.setNetworkListener();
+          SFHybrid.isLogin();
+          new paysuccess('.sf-b2c-mall-order-paysuccess');
+        }
+      };
+
+      app.initialize();
+    });
+
+    switcher.go();
+    // －－－－－－－－－－－－－－－－－－－－－－
   })

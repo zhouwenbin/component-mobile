@@ -559,9 +559,11 @@ module.exports = function (grunt) {
               'scripts/require.min.js',
               'scripts/sf.h5.hybrid.base.js',
               'scripts/sf.b2c.mall.h5.page.detail.js',
+              'scripts/sf.b2c.mall.h5.page.shoppingcart.js',
               'img/**',
               'styles/**',
-              'detail.html'
+              'detail.html',
+              'shoppingcart.html'
             ],
             dest: 'detail'
           }
@@ -945,6 +947,7 @@ module.exports = function (grunt) {
       },
       paysuccess: {
         options: {
+          optimize:'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.paysuccess.js',
