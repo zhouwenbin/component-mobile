@@ -221,8 +221,9 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin();
-          new luckymoneyaccept('.sf-b2c-mall-luckymoney-accept');
+          SFHybrid.isLogin().done(function () {
+            new luckymoneyaccept('.sf-b2c-mall-luckymoney-accept');
+          });
         }
       };
 

@@ -215,8 +215,9 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin();
-          new coupon('.sf-b2c-mall-coupon');
+          SFHybrid.isLogin().done(function () {
+            new coupon('.sf-b2c-mall-coupon');
+          });
         }
       };
 

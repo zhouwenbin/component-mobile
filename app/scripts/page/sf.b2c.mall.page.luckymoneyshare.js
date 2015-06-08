@@ -103,8 +103,9 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin();
-          new luckymoneyshare('.sf-b2c-mall-luckyMoney-share');
+          SFHybrid.isLogin().done(function () {
+            new luckymoneyshare('.sf-b2c-mall-luckyMoney-share');
+          });
         }
       };
 
