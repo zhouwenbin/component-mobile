@@ -9,9 +9,10 @@ define(
     'sf.util',
     'sf.b2c.mall.business.config',
     'sf.helpers',
-    'sf.b2c.mall.api.order.getOrder'
+    'sf.b2c.mall.api.order.getOrder',
+    'sf.b2c.mall.api.minicart.getTotalCount'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder) {
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder, SFMinicartGetcount) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -118,6 +119,18 @@ define(
       renderHtml: function(element, itemObj) {
         var html = can.view('templates/order/sf.b2c.mall.order.paysuccess.mustache', itemObj, this.helpers);
         element.html(html);
+
+        var that = this;
+        var getcount = new SFMinicartGetcount();
+        getcount.sendRequest()
+                .done(function (data) {
+                  if (data.value) {
+                    that.element.find('.gotocart').show();
+                  }
+                })
+                .fail(function () {
+
+                })
       }
     });
     new paysuccess('.sf-b2c-mall-order-paysuccess');
