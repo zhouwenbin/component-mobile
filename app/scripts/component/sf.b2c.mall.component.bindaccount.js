@@ -305,7 +305,6 @@ define(
             var params = can.deparam(window.location.search.substr(1));
             var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
-            window.location.href = redirectUrl || SFBizConf.setting.link.index;
 
             // var receivePro = new SFReceivePro({
             //   "channel": "B2C_H5",
@@ -323,6 +322,8 @@ define(
             if (newUser) {
               that.receiveCoupon();
             }
+
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
             // receivePro
             //   .sendRequest()
             //   .done(function(proInfo) {
