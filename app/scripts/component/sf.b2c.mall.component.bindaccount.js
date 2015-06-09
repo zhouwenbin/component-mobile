@@ -271,7 +271,7 @@ define(
         "11000140": "卡包已作废"
       },
 
-      receiveCoupon: function() {
+      receiveCoupon: function(redirectUrl) {
 
         var params = {};
         params.bagId = '234';
@@ -306,6 +306,8 @@ define(
           .done(function(data) {
             store.set('csrfToken', data.csrfToken);
             store.remove('tempToken');
+
+
             var params = can.deparam(window.location.search.substr(1));
             var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
@@ -324,7 +326,7 @@ define(
             //   }
             // }
             if (newUser) {
-              that.receiveCoupon();
+              that.receiveCoupon(redirectUrl);
             }
 
             // receivePro
