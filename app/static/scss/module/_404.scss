@@ -1,13 +1,13 @@
 /*404*/
 .pagenone{
   text-align: center;
-  padding-top: 100px * 2 / $ppr;
+  padding-top: 100px;
 }
 .pagenone p{
-  margin-top: 20px * 2 / $ppr;
+  margin-top: 20px;
 }
 .pagenone p a{
-  margin: 0 10px * 2 / $ppr;
+  margin: 0 10px;
   text-decoration: underline;
 }
 .pagenone .body{
@@ -49,10 +49,10 @@
 }
 @-webkit-keyframes shake{
   10%,30%,50%{
-    transform: translatey(-6px * 2 / $ppr);
+    transform: translatey(-6px);
   }
   20%,40%,60%{
-    transform: translatey(-3px * 2 / $ppr);
+    transform: translatey(-3px);
   }
   100%{
     transform: translatey(0);

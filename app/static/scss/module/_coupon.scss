@@ -1,30 +1,30 @@
 .coupon{
   text-align: center;
-  padding-top: 20px * 2 / $ppr;
+  padding-top: 20px;
   border-top: 1px solid #ccc;
 }
 .coupon p{
-  margin-bottom: 15px * 2 / $ppr;
+  margin-bottom: 15px;
   color: #666;
-  line-height: 18px * 2 / $ppr;
+  line-height: 18px;
 }
 .coupon-b{
   background: url(#{$bg-url}coupon.png) no-repeat;
   background-size:100%;
-  width: 169px * 2 / $ppr;
-  padding-left:36px * 2 / $ppr;
-  height: 69px * 2 / $ppr;
+  width: 169px;
+  padding-left:36px;
+  height: 69px;
   color:#fff;
   display: inline-block;
 }
 .coupon-r1{
-  font-size: 24px * 2 / $ppr;
-  padding-top:6px * 2 / $ppr;
+  font-size: 24px;
+  padding-top:6px;
 }
 .coupon-r1 strong{
-  font-size: 38px * 2 / $ppr;
+  font-size: 38px;
 }
 .coupon-r2{
-  padding-left:10px * 2 / $ppr;
+  padding-left:10px;
   line-height: 1.2;
 }

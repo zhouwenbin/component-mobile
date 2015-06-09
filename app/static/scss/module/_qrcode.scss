@@ -1,16 +1,16 @@
 .qrcode{
   text-align: center;
-  margin-left: 27px * 2 /$ppr;
-  margin-right: 18px * 2 /$ppr;
-  padding-top:25px * 2 /$ppr;
+  margin-left: 27px;
+  margin-right: 18px;
+  padding-top:25px;
 }
 .qrcode img{
-  margin-right: 8px * 2 /$ppr;
+  margin-right: 8px;
 }
 .qrcode-c1{
   overflow: hidden;
-  font-size: 13px * 2 /$ppr;
-  line-height: 18px * 2 /$ppr;
+  font-size: 13px;
+  line-height: 18px;
   color: #666;
-  padding:17px * 2 /$ppr 0;
+  padding:17px 0;
 }

@@ -1,30 +1,30 @@
 /*banner*/
 .banner{
   width: 100%;
-  margin-bottom: 10px * 2 /$ppr;
+  margin-bottom: 10px;
 }
 
 .banner-dialog-b{
-	width: 230px * 2 /$ppr;
-	height: 313px * 2 /$ppr;
+	width: 230px;
+	height: 313px;
 	background: url(#{$bg-url}banner-dialog.jpg) no-repeat;
-	background-size: 230px * 2 /$ppr;
+	background-size: 230px;
 	position: fixed;
 	z-index: 999;
-	padding-top: 119px * 2 /$ppr;
-	padding-left: 29px * 2 /$ppr;
+	padding-top: 119px;
+	padding-left: 29px;
 }
 .banner-dialog ul{
-	margin-bottom: 14px * 2 /$ppr;
+	margin-bottom: 14px;
 }
 .banner-dialog li{
-	line-height: 17px * 2 /$ppr;
+	line-height: 17px;
 }
 .banner-dialog a{
 	font-weight: bold;
 }
 .banner-dialog .icon{
-	right: 10px * 2 /$ppr;
-	top: 10px * 2 /$ppr;
+	right: 10px;
+	top: 10px;
 	position: absolute;
 }

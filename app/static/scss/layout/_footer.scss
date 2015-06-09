@@ -15,6 +15,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
     padding:4px * 2 / $ppr 6px * 2 / $ppr;
+<<<<<<< HEAD
 =======
     padding:4px 8px;
     font-size: 12px;
@@ -23,6 +24,9 @@
     padding:4px 8px;
     font-size: 12px;
 >>>>>>> parent of 5c46a0e... rem
+=======
+    font-size: 12px * 2 / $ppr;
+>>>>>>> parent of 5b8c06f... 修改成rem布局
     float:left;
     text-align: left;
 }
@@ -42,6 +46,7 @@
  	line-height: 31px;
  	text-align: center;
  	color: #666;
+  font-size: 24px / $ppr;
  }
  .footer-r2 a{
 	margin:0 12px;

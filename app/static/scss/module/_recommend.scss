@@ -1,54 +1,56 @@
 /*推荐商品*/
 .recommend{
-  padding: 14px * 2 /$ppr 0 0;
+  padding: 14px 0 0;
   background: #fff;
-  margin-bottom: 10px * 2 /$ppr;
+  margin-bottom: 10px;
 }
 .recommend-c1{
-  width: 66px * 2 /$ppr;
-  height: 66px * 2 /$ppr;
-  margin-right: 10px * 2 /$ppr;
+  width: 66px;
+  height: 66px;
+  margin-right: 10px;
 }
 .recommend1 .recommend-c1{
-  width: 102px * 2 /$ppr;
-  height: 102px * 2 /$ppr;
+  width: 102px;
+  height: 102px;
 }
 .recommend-c1 img{
-  max-width: 66px * 2 /$ppr;
-  max-height: 66px * 2 /$ppr;
+  max-width: 66px;
+  max-height: 66px;
 }
 .recommend1 .recommend-c1 img{
-  max-width: 102px * 2 /$ppr;
-  max-height: 102px * 2 /$ppr;
+  max-width: 102px;
+  max-height: 102px;
 }
 .recommend-c2{
   overflow: hidden;
 }
 .recommend h2{
 
-  font-size: 15px * 2 /$ppr;
-  border-left: 2px * 2 /$ppr solid #dc3334;
-  padding-left: 4px * 2 /$ppr;
-  margin-bottom: 6px * 2 /$ppr;
-  margin-left: 15px * 2 /$ppr;
+  font-size: 15px;
+  border-left: 2px solid #dc3334;
+  padding-left: 4px;
+  margin-bottom: 6px;
+  margin-left: 15px;
 }
 .recommend h3{
-  font-size: 14px * 2 /$ppr;
-  line-height: 18px * 2 /$ppr;
-  margin-bottom: 5px * 2 /$ppr;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 5px;
 }
 .recommend strong{
   color:#dc3334;
-  font-size: 14px * 2 /$ppr;
+  font-size: 14px;
 }
 .recommend ul{
-  padding: 0 15px * 2 /$ppr;
-  border-top: 1px solid #ccc;
+  padding: 0 15px;
+  border-width: 1px 0 0 0;
+  border-image: url(#{$border}) 2 0 round;
 }
 .recommend li{
   position: relative;
-  padding: 10px * 2 /$ppr 0;
-  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  border-width: 0 0 1px 0;
+  border-image: url(#{$border}) 2 0 round;
 }
 .recommend1 ul{
   border-top:0;

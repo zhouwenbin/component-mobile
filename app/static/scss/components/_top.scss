@@ -1,9 +1,9 @@
 /*回到顶部*/
 .top{
-  padding: 6px * 2 / $ppr 8px * 2 / $ppr;
+  padding: 6px 8px;
   background:rgba(0,0,0,0.1);
-  border-radius: 4px * 2 / $ppr;
+  border-radius: 4px;
   position: fixed;
-  right: 15px * 2 / $ppr;
-  bottom: 15px * 2 / $ppr;
+  right: 15px;
+  bottom: 15px;
  }

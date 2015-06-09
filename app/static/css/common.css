@@ -9,11 +9,11 @@ Error: Invalid CSS after "... 6px * 2 / $ppr": expected "{", was ";"
 15: <<<<<<< HEAD
 16: <<<<<<< HEAD
 17:     padding:4px * 2 / $ppr 6px * 2 / $ppr;
-18: =======
-19:     padding:4px 8px;
-20:     font-size: 12px;
-21: >>>>>>> parent of 5c46a0e... rem
-22: =======
+18: <<<<<<< HEAD
+19: =======
+20:     padding:4px 8px;
+21:     font-size: 12px;
+22: >>>>>>> parent of 5c46a0e... rem
 
 Backtrace:
 layout/_footer.scss:17
@@ -70,4 +70,4 @@ common.scss:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"... 6px * 2 / $ppr\": expected \"{\", was \";\"\A         on line 17 of layout/_footer.scss\A         from line 9 of common.scss\A \A 12:   display: inline-block;\A 13:  }\A 14: .footer-r1 li {  \A 15: <<<<<<< HEAD\A 16: <<<<<<< HEAD\A 17:     padding:4px * 2 / $ppr 6px * 2 / $ppr;\A 18: =======\A 19:     padding:4px 8px;\A 20:     font-size: 12px;\A 21: >>>>>>> parent of 5c46a0e... rem\A 22: ======="; }
+  content: "Error: Invalid CSS after \"... 6px * 2 / $ppr\": expected \"{\", was \";\"\A         on line 17 of layout/_footer.scss\A         from line 9 of common.scss\A \A 12:   display: inline-block;\A 13:  }\A 14: .footer-r1 li {  \A 15: <<<<<<< HEAD\A 16: <<<<<<< HEAD\A 17:     padding:4px * 2 / $ppr 6px * 2 / $ppr;\A 18: <<<<<<< HEAD\A 19: =======\A 20:     padding:4px 8px;\A 21:     font-size: 12px;\A 22: >>>>>>> parent of 5c46a0e... rem"; }

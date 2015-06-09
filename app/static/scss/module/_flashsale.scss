@@ -1,11 +1,15 @@
 .flashsale ul{
-  border-top: 1 solid #d9d9d9;
+  border-top: 1px solid #d9d9d9;
 }
 .flashsale li{
   background: #fff;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   border-bottom: 1 solid #d9d9d9;
+=======
+  border-bottom: 1px solid #d9d9d9;
+>>>>>>> parent of 5b8c06f... 修改成rem布局
   padding-top: 17px * 2 / $ppr;
   padding-bottom:30px * 2 / $ppr;
 =======
@@ -37,12 +41,16 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
   margin-bottom: 13px * 2 / $ppr;
+<<<<<<< HEAD
 =======
   margin-bottom: 13px;
 >>>>>>> parent of 5c46a0e... rem
 =======
   margin-bottom: 13px;
 >>>>>>> parent of 5c46a0e... rem
+=======
+  font-size: 24px / $ppr;
+>>>>>>> parent of 5b8c06f... 修改成rem布局
 }
 .flashsale-c2r1 .icon{
   margin-right: 2px;
@@ -53,15 +61,20 @@
 }
 .flashsale-c2r2 del{
   color: #666;
+  font-size: 24px / $ppr;
 }
 .flashsale img{
   border:1px solid #ebebeb;
 <<<<<<< HEAD
 <<<<<<< HEAD
   width: 170px / $ppr;
+<<<<<<< HEAD
   height: 170px / $ppr;
 =======
 >>>>>>> parent of 5c46a0e... rem
 =======
 >>>>>>> parent of 5c46a0e... rem
+=======
+  height: 170px / $ppr
+>>>>>>> parent of 5b8c06f... 修改成rem布局
 }

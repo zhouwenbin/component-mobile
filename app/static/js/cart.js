@@ -1,7 +1,7 @@
 $(function(){
   $('.cart li').swipeLeft(function(){
     $(this).css({
-      left:-61*2/640*16+'rem'
+      left:-61
     })
   })
   $('.cart li').swipeRight(function(){

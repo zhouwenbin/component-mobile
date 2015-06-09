@@ -1,69 +1,69 @@
 /*box*/
 .box{
-  padding: 16px * 2 / $ppr 14px * 2 / $ppr;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  padding: 16px 14px;
+  border-width: 1px 0 1px 0;
+  border-image: url(#{$border}) 2 0 round;
   background: #fff;
   position: relative;
-  margin-top: -1px * 2 / $ppr;
+  margin-top: -1px;
 }
 .box .icon8{
   position: absolute;
-  left: 12px * 2 / $ppr;
+  left: 12px;
   top:50%;
   transform: translate(0,-50%);
 }
 
 .box.active .icon8{
-  background-position: -253px * 2 / $ppr -167px * 2 / $ppr;
+  background-position: -253px -167px;
 }
 .box-link{
   display: block;
   position: relative;
 }
 .box-arrow{
-  right: 14px * 2 / $ppr;
+  right: 14px;
 }
 .box1{
   padding: 0;
 }
 .box1 .box-link{
-  padding: 16px * 2 / $ppr 14px * 2 / $ppr;
+  padding: 16px 14px;
 }
 /*box-address*/
 .box-address{
-  font-size: 14px * 2 / $ppr;
+  font-size: 14px;
   line-height: 1.5;
-  padding-left:47px * 2 / $ppr;
+  padding-left:47px;
   color: #666;
 }
 .box-address h3{
-  font-size: 14px * 2 / $ppr;
-  margin-bottom: 8px * 2 / $ppr;
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 .box-address span{
-  margin-right: 5px * 2 / $ppr;
+  margin-right: 5px;
 }
 .box-address p{
   color: #666;
 }
 .box-address-r1 span{
-  margin-right: 33px * 2 / $ppr;
+  margin-right: 33px;
 }
 .box-address-c1{
-  width: 46px * 2 / $ppr;
+  width: 46px;
   height: 100%;
   position: absolute;
   border: 1px solid #ececec;
   right: 0;
-  margin-top: -16px * 2 / $ppr;
+  margin-top: -16px;
 }
 .box-address-c1:active{
   background:#b1b1b1;
 }
 .box-address-c2{
   overflow: hidden;
-  margin-right: 31px * 2 / $ppr;
+  margin-right: 31px;
 }
 .box-address-r2{
   text-align: right;
@@ -73,5 +73,5 @@
   justify-content:space-between;
 }
 .box-check{
-  padding-left: 50px * 2 / $ppr;
+  padding-left: 50px;
 }

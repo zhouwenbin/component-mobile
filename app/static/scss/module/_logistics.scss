@@ -3,45 +3,45 @@
   background: #fff;
 }
 .logistics h2{
-  margin: 0 12px * 2 /$ppr 7px * 2 /$ppr;
-  padding-top: 19px * 2 /$ppr;
-  padding-bottom: 12px * 2 /$ppr;
+  margin: 0 12px 7px;
+  padding-top: 19px;
+  padding-bottom: 12px;
   border-bottom: 1px solid #e5e5e5;
-  font-size: 14px * 2 /$ppr;
+  font-size: 14px;
 }
 .logistics h2 .icon{
-  margin-right: 8px * 2 /$ppr;
-  vertical-align: -1px * 2 /$ppr;
+  margin-right: 8px;
+  vertical-align: -1px;
 }
 .logistics ul{
   background: #fff;
 }
 .logistics time{
   display: block;
-  font-size: 12px * 2 /$ppr;
+  font-size: 12px;
   color: #999;
-  margin-top: 5px * 2 /$ppr;
+  margin-top: 5px;
 }
 .logistics li{
-  line-height: 18px * 2 /$ppr;
+  line-height: 18px;
   position: relative;
-  padding: 13px * 2 /$ppr 0 10px * 2 /$ppr;
-  margin-right:14px * 2 /$ppr;
-  margin-left: 40px * 2 /$ppr;
-  font-size: 14px * 2 /$ppr;
+  padding: 13px 0 10px;
+  margin-right:14px;
+  margin-left: 40px;
+  font-size: 14px;
 }
 
 
 .logistics li:before{
   content: '';
-  width: 8px * 2 /$ppr;
-  height: 8px * 2 /$ppr;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #ccc;
-  border: 2px * 2 /$ppr solid #ccc;
+  border: 2px solid #ccc;
   position: absolute;
-  margin-left: -25px * 2 /$ppr;
-  margin-top: 3px * 2 /$ppr;
+  margin-left: -25px;
+  margin-top: 3px;
   
 }
 .logistics li:first-child{
@@ -53,12 +53,12 @@
 }
 .logistics li:after{
   content: '';
-  width: 1px * 2 /$ppr;
+  width: 1px;
   height: 100%;
   position: absolute;
   background: #eee;
-  left: -19px * 2 /$ppr;
-  top: 28px * 2 /$ppr;
+  left: -19px;
+  top: 28px;
 }
 .logistics li:last-child{
   border-bottom: none;
