@@ -286,12 +286,16 @@ define(
               'tip': '50元优惠券已发放至您的账户，请注意查收。',
               'type': 'success'
             });
+
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
           })
           .fail(function(error) {
             new SFMessage(null, {
               'tip': that.errorMap[error] || '领取失败',
               'type': 'error'
             });
+
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
           });
       },
 
@@ -323,7 +327,6 @@ define(
               that.receiveCoupon();
             }
 
-            window.location.href = redirectUrl || SFBizConf.setting.link.index;
             // receivePro
             //   .sendRequest()
             //   .done(function(proInfo) {
