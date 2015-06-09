@@ -17,22 +17,21 @@
 .swipe-dot{
   text-align: center;
   position: absolute;;
-  bottom: 10px * 2 / $ppr;
+  bottom: 10px;
   width: 100%;
   font-size: 0;
 }
 .swipe-dot span{
   display: inline-block;
-  width: 7px * 2 / $ppr;
-  height:7px * 2 / $ppr;
-  border-radius: 7px * 2 / $ppr;
+  width: 7px;
+  height:7px;
+  border-radius: 7px;
   background:rgba(0,0,0,0.3);
-  margin:0 7px * 2 / $ppr;
+  margin:0 7px;
 }
 .swipe-dot span.active{
   background: #dc3334;
 }
 .swipe img{
-  width: 640px / $ppr;
-  height: 230px / $ppr;
+  width: 100%;
 }

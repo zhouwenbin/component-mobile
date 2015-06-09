@@ -2,8 +2,8 @@
 
  .footer-r1{
  	border-top:1px solid #d9d9d9;
- 	margin-left: -17px * 2 / $ppr;
- 	padding:12px * 2 / $ppr 0 12px * 2 / $ppr 14px * 2 / $ppr;
+ 	margin-left: -17px;
+ 	padding:12px 0 12px 14px;
  	background:#fff;
  	border-bottom:1px solid #d9d9d9;
   text-align: center;
@@ -12,12 +12,17 @@
   display: inline-block;
  }
 .footer-r1 li {  
+<<<<<<< HEAD
     padding:4px * 2 / $ppr 6px * 2 / $ppr;
+=======
+    padding:4px 8px;
+    font-size: 12px;
+>>>>>>> parent of 5c46a0e... rem
     float:left;
     text-align: left;
 }
 .footer-r1 li .icon{
-  margin-right: 3px * 2 / $ppr;
+  margin-right: 3px;
 }
 .footer-r1 h2{
     font-weight: normal;
@@ -28,24 +33,24 @@
 
 
 .footer-r2{
- 	height: 31px * 2 / $ppr;
- 	line-height: 31px * 2 / $ppr;
+ 	height: 31px;
+ 	line-height: 31px;
  	text-align: center;
  	color: #666;
  }
  .footer-r2 a{
-	margin:0 12px * 2 / $ppr;
+	margin:0 12px;
  }
  .footer-r3{
   color:rgba(0,0,0,0.3);
-  font-size: 9px * 2 / $ppr;
+  font-size: 9px;
   text-align: center;
-  padding-top: 4px * 2 / $ppr;
-  padding-bottom: 17px * 2 / $ppr;
+  padding-top: 4px;
+  padding-bottom: 17px;
  }
  .footer1{
  	position: fixed;
- 	bottom:10px * 2 / $ppr;
+ 	bottom:10px;
  	left: 0;
  	width: 100%;
  	text-align: center;

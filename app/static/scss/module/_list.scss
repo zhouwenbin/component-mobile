@@ -1,6 +1,6 @@
 /*list*/
 .list{
-  padding: 14px * 2 / $ppr;
+  padding: 14px;
 }
 .list .mask{
   position: absolute;
@@ -8,7 +8,7 @@
 }
 .list li{
   width: 48.8%;
-  margin-bottom: 7px * 2 / $ppr;
+  margin-bottom: 7px;
   background: #fff;
   position: relative;
 }
@@ -28,38 +28,37 @@
   transform-origin: 0 0;
   left: 0;
   top: 0;
-  padding:1px * 2 / $ppr;
+  padding:1px;
   box-sizing: border-box;
 }
 .list li a{
   display: block;
 }
 .list h2{
-  font-size: 14px * 2 / $ppr;
-  line-height: 20px * 2 / $ppr;
-  height: 40px * 2 / $ppr;
-  margin-bottom: 10px * 2 / $ppr;
+  font-size: 14px;
+  line-height: 20px;
+  height: 40px;
+  margin-bottom: 10px;
   font-weight: normal;
 }
 .list del{
   color: #666;
-  font-size: 10px * 2 / $ppr;
+  font-size: 10px;
 }
 .list-r1{
   position: relative;
-  margin-bottom: 6px * 2 / $ppr;
+  margin-bottom: 6px;
 }
 .list-price{
-  font-size: 15px * 2 / $ppr;
+  font-size: 15px;
   color: #dc3334;
-  margin-right: 10px / $ppr;
 }
 .list-b{
-  padding: 10px * 2 / $ppr 8px * 2 / $ppr 12px * 2 / $ppr;
+  padding: 10px 8px 12px;
 }
 .list-r2{
   position: relative;
-  height: 24px * 2 / $ppr;
+  height: 24px;
 }
 .list .label-danger{
   position: absolute;
@@ -68,11 +67,10 @@
   border-radius:0;
 }
 .list-r1 img{
-  width: 283px / $ppr;
-  height: 283px / $ppr;
+  width: 100%;
 }
 .list-r3c2 img{
-  width: 19px * 2 / $ppr;
+  width: 19px;
   vertical-align: middle;
 }
 .list a:visited{

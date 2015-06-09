@@ -1,14 +1,14 @@
 /*label*/
 .label {
-height: 21px * 2 / $ppr;
-line-height: 21px * 2 / $ppr;
+height: 21px;
+line-height: 21px;
 color: #fff;
 text-align: center;
-border-radius: 2px * 2 / $ppr;
-padding: 0 15px * 2 / $ppr;
+border-radius: 2px;
+padding: 0 15px;
 display: inline-block;
 vertical-align: middle;
-font-size: 12px * 2 / $ppr;
+font-size: 12px;
 position: relative;
 }
 .label-error,
@@ -33,10 +33,10 @@ background: #f78e55;
 @extend .label;
 }
 .label i{
-  border-width: 3px * 2 / $ppr 3px * 2 / $ppr;
+  border-width: 3px 3px;
   border-style: solid;
   border-color: transparent transparent transparent #f78e55;
   position: absolute;
-  right: -6px * 2 / $ppr;
-  top: 7px * 2 / $ppr;
+  right: -6px;
+  top: 7px;
 }

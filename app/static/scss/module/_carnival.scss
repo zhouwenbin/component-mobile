@@ -1,43 +1,40 @@
 .carnival img{
-  width: 640px / $ppr;
-  height: 324px / $ppr;
+  width: 100%;
 }
 .carnival h3{
-  font-size: 14px * 2 / $ppr;
-  line-height: 18px * 2 / $ppr;
-  margin-bottom: 4px * 2 / $ppr;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 4px;
   font-weight: normal;
 }
 .carnival p{
-  line-height: 18px * 2 / $ppr;
-  margin-bottom: 8px * 2 / $ppr;
+  line-height: 18px;
+  margin-bottom: 8px;
   color: #666;
-  font-size: 24px / $ppr
 }
 .carnival li{
   border-top: 1px solid #d9d9d9;
   border-bottom: 1px solid #d9d9d9;
-  margin-bottom: 10px * 2 / $ppr;
+  margin-bottom: 10px;
   background: #fff;
 }
 .carnival li:last-child{
   margin-bottom: 0;
 }
 .carnival-b{
-  padding: 20px * 2 / $ppr 14px * 2 / $ppr;
+  padding: 20px 14px;
 }
 .carnival-r1{
   color: #999;
-  margin-bottom: 18px * 2 / $ppr;
-  font-size: 24px / $ppr;
+  margin-bottom: 18px;
 }
 .carnival-r1 .icon{
-  margin-right: 3px * 2 / $ppr;
+  margin-right: 3px;
 }
 .carnival-r2c1{
-  font-size: 14px * 2 / $ppr;
+  font-size: 14px;
   color: #d8363b;
 }
 .carnival-r2c1 strong{
-  font-size: 24px * 2 / $ppr;
+  font-size: 24px;
 }

@@ -2,7 +2,8 @@
 .text-error,
 .text-important{
   color:#dc3334;
-  font-size: 12px * 2 / $ppr;
+  font-size: 12px;
+  vertical-align: middle;
 }
 .text-success{
   color: #67b222;
@@ -19,8 +20,8 @@
 }
 
 .text-h2{
-	padding:21px * 2 / $ppr 0 7px * 2 / $ppr 12px * 2 / $ppr;
-	font-size:14px * 2 / $ppr;
+	padding:21px 0 7px 12px;
+	font-size:14px;
 	color:#666;
 	font-weight:normal;
 }

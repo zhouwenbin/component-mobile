@@ -86,15 +86,10 @@ input, select {
   -webkit-tap-highlight-color: transparent;
 }
 
-html {
-  font-size: 40px;
-}
-
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
   font-size: 0.6rem;
   color: #333;
-  width: 16rem;
   min-width: 320px;
   margin: 0 auto;
   background: #f0eff5;
@@ -265,7 +260,8 @@ a[title="站长统计"] {
 .text-error,
 .text-important {
   color: #dc3334;
-  font-size: 0.6rem;
+  font-size: 12px;
+  vertical-align: middle;
 }
 
 .text-success {
@@ -286,8 +282,8 @@ a[title="站长统计"] {
 }
 
 .text-h2 {
-  padding: 1.05rem 0 0.35rem 0.6rem;
-  font-size: 0.7rem;
+  padding: 21px 0 7px 12px;
+  font-size: 14px;
   color: #666;
   font-weight: normal;
 }
@@ -297,349 +293,349 @@ a[title="站长统计"] {
   display: inline-block;
   vertical-align: middle;
   background: url(../img/icon.png) no-repeat;
-  -webkit-background-size: 22.5rem 22.5rem;
-          background-size: 22.5rem 22.5rem;
+  -webkit-background-size: 450px 450px;
+          background-size: 450px 450px;
   text-indent: -999em;
 }
 
 .icon1 {
-  width: 0.9rem;
-  height: 0.6rem;
+  width: 18px;
+  height: 12px;
 }
 
 .icon2 {
-  width: 1.4rem;
-  height: 1.4rem;
-  background-position: -2.45rem 0;
+  width: 27px;
+  height: 27px;
+  background-position: -49px 0;
 }
 
 .icon3 {
-  width: 4.5rem;
-  height: 1.2rem;
-  background-position: -6.45rem -2.9rem;
+  width: 90px;
+  height: 24px;
+  background-position: -129px -58px;
 }
 
 .icon4 {
-  width: 3.8rem;
-  height: 3.8rem;
-  background-position: 0 -3rem;
+  width: 76px;
+  height: 76px;
+  background-position: 0 -60px;
 }
 
 .icon5 {
-  width: 3.8rem;
-  height: 3.8rem;
-  background-position: 0 -6.9rem;
+  width: 76px;
+  height: 76px;
+  background-position: 0 -138px;
 }
 
 .icon6 {
-  width: 3.85rem;
-  height: 1.15rem;
-  background-position: 0 -10.95rem;
+  width: 77px;
+  height: 23px;
+  background-position: 0 -219px;
 }
 
 .icon7 {
-  width: 0.95rem;
-  height: 0.95rem;
-  background-position: -1.45rem 0;
+  width: 19px;
+  height: 19px;
+  background-position: -29px 0;
 }
 
 .icon8 {
-  width: 1.25rem;
-  height: 1.25rem;
-  background-position: -12.65rem -9.75rem;
+  width: 25px;
+  height: 25px;
+  background-position: -253px -195px;
 }
 
 .icon9 {
-  width: 0.45rem;
-  height: 0.25rem;
-  background-position: -5.1rem 0;
+  width: 9px;
+  height: 5px;
+  background-position: -102px 0;
 }
 
 .icon10 {
-  width: 0.35rem;
-  height: 0.65rem;
-  background-position: -5.65rem 0;
+  width: 7px;
+  height: 13px;
+  background-position: -113px 0;
 }
 
 .icon11 {
-  width: 4.55rem;
-  height: 4.55rem;
-  background-position: 0 -12.4rem;
+  width: 91px;
+  height: 91px;
+  background-position: 0 -248px;
 }
 
 .icon12 {
-  width: 1.9rem;
-  height: 2.25rem;
-  background-position: -4.05rem -1.1rem;
+  width: 38px;
+  height: 45px;
+  background-position: -81px -22px;
 }
 
 .icon13 {
-  width: 0.3rem;
-  height: 0.5rem;
-  background-position: -6.05rem 0;
+  width: 6px;
+  height: 10px;
+  background-position: -121px 0;
 }
 
 .icon14 {
-  width: 2.15rem;
-  height: 2.15rem;
-  background-position: -4.2rem -3.55rem;
+  width: 43px;
+  height: 43px;
+  background-position: -84px -71px;
 }
 
 .icon15 {
-  width: 0.65rem;
-  height: 0.65rem;
-  background-position: -6.6rem 0;
+  width: 13px;
+  height: 13px;
+  background-position: -132px 0;
   text-indent: -999em;
 }
 
 .icon16 {
-  width: 3.95rem;
-  height: 4.75rem;
-  background-position: -4.1rem -6rem;
+  width: 79px;
+  height: 95px;
+  background-position: -82px -120px;
 }
 
 .icon17 {
-  width: 3.1rem;
-  height: 3.1rem;
-  background-position: 0 -18.9rem;
+  width: 62px;
+  height: 62px;
+  background-position: 0 -378px;
 }
 
 .icon18 {
-  width: 2.55rem;
-  height: 2.05rem;
-  background-position: -3.35rem -19.65rem;
+  width: 51px;
+  height: 41px;
+  background-position: -67px -393px;
 }
 
 .icon19 {
-  width: 0.95rem;
-  height: 0.8rem;
-  background-position: -8.55rem 0;
+  width: 19px;
+  height: 16px;
+  background-position: -171px 0;
 }
 
 .icon19.active {
-  background-position: -7.35rem 0;
+  background-position: -147px 0;
 }
 
 .icon20 {
-  width: 7.8rem;
-  height: 7.8rem;
-  background-position: -14.7rem 0;
+  width: 156px;
+  height: 156px;
+  background-position: -294px 0;
 }
 
 .icon21 {
-  width: 1.4rem;
-  height: 1.55rem;
-  background-position: -6.2rem -1.05rem;
+  width: 28px;
+  height: 31px;
+  background-position: -124px -21px;
 }
 
 .icon22 {
-  width: 1.95rem;
-  height: 1.4rem;
-  background-position: -7.85rem -1.15rem;
+  width: 39px;
+  height: 28px;
+  background-position: -157px -23px;
 }
 
 .icon23 {
-  width: 1.8rem;
-  height: 1.5rem;
-  background-position: -10.05rem -1.2rem;
+  width: 36px;
+  height: 30px;
+  background-position: -201px -24px;
 }
 
 .icon24 {
-  width: 0.8rem;
-  height: 1rem;
-  background-position: -9.9rem 0;
+  width: 16px;
+  height: 20px;
+  background-position: -198px 0;
 }
 
 .icon25 {
-  width: 0.6rem;
-  height: 0.6rem;
-  background-position: -10.95rem 0;
+  width: 12px;
+  height: 12px;
+  background-position: -219px 0;
 }
 
 .icon26 {
-  width: 0.55rem;
-  height: 0.6rem;
-  background-position: -11.9rem 0;
+  width: 11px;
+  height: 12px;
+  background-position: -238px 0;
 }
 
 .icon27 {
-  width: 0.65rem;
-  height: 0.65rem;
-  background-position: -12.75rem 0;
+  width: 13px;
+  height: 13px;
+  background-position: -255px 0;
 }
 
 .icon28 {
-  width: 0.3rem;
-  height: 0.55rem;
-  background-position: -13.5rem 0;
+  width: 6px;
+  height: 11px;
+  background-position: -270px 0;
 }
 
 .icon29 {
-  width: 0.8rem;
-  height: 0.85rem;
-  background-position: 0 -1.1rem;
+  width: 16px;
+  height: 17px;
+  background-position: 0 -22px;
 }
 
 .icon30 {
-  width: 3.85rem;
-  height: 4.65rem;
-  background-position: -8.3rem -6.15rem;
+  width: 77px;
+  height: 93px;
+  background-position: -166px -123px;
 }
 
 .icon31 {
-  width: 0.9rem;
-  height: 0.9rem;
-  background-position: -11.85rem -1.2rem;
+  width: 18px;
+  height: 18px;
+  background-position: -237px -24px;
 }
 
 .icon32 {
-  width: 0.75rem;
-  height: 1.25rem;
-  background-position: -6.9rem -4.5rem;
+  width: 15px;
+  height: 25px;
+  background-position: -138px -90px;
 }
 
 .icon33 {
-  width: 0.75rem;
-  height: 1.25rem;
-  background-position: -8rem -4.5rem;
+  width: 15px;
+  height: 25px;
+  background-position: -160px -90px;
 }
 
 .icon34 {
-  width: 0.75rem;
-  height: 1.25rem;
-  background-position: -9rem -4.5rem;
+  width: 15px;
+  height: 25px;
+  background-position: -180px -90px;
 }
 
 .icon35 {
-  width: 0.75rem;
-  height: 1.25rem;
-  background-position: -10rem -4.5rem;
+  width: 15px;
+  height: 25px;
+  background-position: -200px -90px;
 }
 
 .icon36 {
-  width: 0.65rem;
-  height: 0.65rem;
-  background-position: -10.95rem -4.65rem;
+  width: 13px;
+  height: 13px;
+  background-position: -219px -92px;
 }
 
 .icon37 {
-  width: 3.1rem;
-  height: 1.65rem;
-  background-position: -6.75rem -19.7rem;
+  width: 62px;
+  height: 33px;
+  background-position: -135px -394px;
 }
 
 .icon38 {
-  width: 0.9rem;
-  height: 0.9rem;
-  background-position: -11.5rem -3rem;
+  width: 18px;
+  height: 18px;
+  background-position: -230px -60px;
 }
 
 .icon39 {
-  width: 0.65rem;
-  height: 0.8rem;
-  background-position: -12.8rem -3rem;
+  width: 13px;
+  height: 16px;
+  background-position: -256px -60px;
 }
 
 .icon40 {
-  width: 0.9rem;
-  height: 0.65rem;
-  background-position: -12.75rem -4.6rem;
+  width: 18px;
+  height: 13px;
+  background-position: -255px -92px;
 }
 
 .icon41 {
-  width: 0.6rem;
-  height: 0.7rem;
-  background-position: -12.75rem -5.65rem;
+  width: 12px;
+  height: 14px;
+  background-position: -255px -113px;
 }
 
 .icon42 {
-  width: 0.7rem;
-  height: 0.7rem;
-  background-position: -12.75rem -6.75rem;
+  width: 14px;
+  height: 14px;
+  background-position: -255px -135px;
 }
 
 .icon43 {
-  width: 1.7rem;
-  height: 1.35rem;
-  background-position: -10.4rem -19.9rem;
+  width: 34px;
+  height: 27px;
+  background-position: -208px -398px;
 }
 
 .icon44 {
-  width: 0.6rem;
-  height: 0.35rem;
-  background-position: -12.8rem -7.65rem;
+  width: 12px;
+  height: 7px;
+  background-position: -256px -153px;
 }
 
 .icon45 {
-  width: 0.75rem;
-  height: 0.75rem;
-  background-position: -1.55rem -1.25rem;
+  width: 15px;
+  height: 15px;
+  background-position: -31px -25px;
   text-indent: -999em;
 }
 
 .icon46 {
-  width: 0.9rem;
-  height: 0.7rem;
-  background-position: -13rem -1.15rem;
+  width: 18px;
+  height: 14px;
+  background-position: -260px -23px;
 }
 
 .icon47 {
-  width: 2.25rem;
-  height: 2.25rem;
-  background-position: -9.5rem -11.25rem;
+  width: 45px;
+  height: 45px;
+  background-position: -190px -225px;
 }
 
 .icon48 {
-  width: 1.4rem;
-  height: 1.4rem;
-  background-position: -2.45rem -1.45rem;
+  width: 27px;
+  height: 27px;
+  background-position: -49px -29px;
   text-indent: -999em;
 }
 
 .icon49 {
-  width: 0.9rem;
-  height: 0.9rem;
-  background-position: -12.75rem -11.25rem;
+  width: 18px;
+  height: 18px;
+  background-position: -255px -225px;
 }
 
 .icon49.active {
-  background-position: -12.75rem -12.45rem;
+  background-position: -255px -249px;
 }
 
 .icon50 {
-  width: 0.45rem;
-  height: 0.65rem;
-  background-position: -12.9rem -13.5rem;
+  width: 9px;
+  height: 13px;
+  background-position: -258px -270px;
 }
 
 .icon51 {
-  width: 0.5rem;
-  height: 0.7rem;
-  background-position: -13.5rem -13.5rem;
+  width: 10px;
+  height: 14px;
+  background-position: -270px -270px;
 }
 
 .icon52 {
-  width: 0.5rem;
-  height: 0.25rem;
-  background-position: -13rem -14.4rem;
+  width: 10px;
+  height: 5px;
+  background-position: -260px -288px;
 }
 
 .icon53 {
-  width: 0.9rem;
-  height: 0.9rem;
-  background-position: -12.9rem -15rem;
+  width: 18px;
+  height: 18px;
+  background-position: -258px -300px;
 }
 
 .icon54 {
-  width: 0.85rem;
-  height: 0.65rem;
-  background-position: -13rem -16.25rem;
+  width: 17px;
+  height: 13px;
+  background-position: -260px -325px;
 }
 
 .icon55 {
-  width: 3.4rem;
-  height: 4.65rem;
-  background-position: -9.3rem -14.1rem;
+  width: 68px;
+  height: 93px;
+  background-position: -186px -282px;
 }
 
 .superman {
