@@ -1,22 +1,22 @@
 /*
 Error: Invalid CSS after "... 6px * 2 / $ppr": expected "{", was ";"
-        on line 22 of layout/_footer.scss
+        on line 23 of layout/_footer.scss
         from line 9 of style.scss
 
-17: <<<<<<< HEAD
 18: <<<<<<< HEAD
 19: <<<<<<< HEAD
 20: <<<<<<< HEAD
 21: <<<<<<< HEAD
-22:     padding:4px * 2 / $ppr 6px * 2 / $ppr;
-23: <<<<<<< HEAD
-24: =======
-25:     padding:4px 8px;
-26:     font-size: 12px;
-27: >>>>>>> parent of 5c46a0e... rem
+22: <<<<<<< HEAD
+23:     padding:4px * 2 / $ppr 6px * 2 / $ppr;
+24: <<<<<<< HEAD
+25: =======
+26:     padding:4px 8px;
+27:     font-size: 12px;
+28: >>>>>>> parent of 5c46a0e... rem
 
 Backtrace:
-layout/_footer.scss:22
+layout/_footer.scss:23
 style.scss:9
 /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1165:in `expected'
 /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/scss/parser.rb:1101:in `expected'
@@ -70,4 +70,4 @@ style.scss:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"... 6px * 2 / $ppr\": expected \"{\", was \";\"\A         on line 22 of layout/_footer.scss\A         from line 9 of style.scss\A \A 17: <<<<<<< HEAD\A 18: <<<<<<< HEAD\A 19: <<<<<<< HEAD\A 20: <<<<<<< HEAD\A 21: <<<<<<< HEAD\A 22:     padding:4px * 2 / $ppr 6px * 2 / $ppr;\A 23: <<<<<<< HEAD\A 24: =======\A 25:     padding:4px 8px;\A 26:     font-size: 12px;\A 27: >>>>>>> parent of 5c46a0e... rem"; }
+  content: "Error: Invalid CSS after \"... 6px * 2 / $ppr\": expected \"{\", was \";\"\A         on line 23 of layout/_footer.scss\A         from line 9 of style.scss\A \A 18: <<<<<<< HEAD\A 19: <<<<<<< HEAD\A 20: <<<<<<< HEAD\A 21: <<<<<<< HEAD\A 22: <<<<<<< HEAD\A 23:     padding:4px * 2 / $ppr 6px * 2 / $ppr;\A 24: <<<<<<< HEAD\A 25: =======\A 26:     padding:4px 8px;\A 27:     font-size: 12px;\A 28: >>>>>>> parent of 5c46a0e... rem"; }
