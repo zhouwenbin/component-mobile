@@ -99,6 +99,10 @@ define(
           SFHybrid.isLogin().done(function () {
             new SFOrderList('#orderList');
           });
+
+          SFHybrid.sfnavigator.setLeftButton(function () {
+            SFHybrid.sfnavigator.popToRoot();
+          });
         }
       };
 
