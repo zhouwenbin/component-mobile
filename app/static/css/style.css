@@ -420,7 +420,7 @@ a[title="站长统计"] {
 }
 
 .footer-r1 li {
-  padding: 4px 8px;
+  padding: 4px 6px;
   font-size: 12px;
   float: left;
   text-align: left;
@@ -1240,37 +1240,78 @@ a[title="站长统计"] {
   width: 100%;
 }
 
-/*loading*/
-.loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  -webkit-transform: translate(-50%, -50%);
-  border-width: 3px;
-  border-style: solid;
-  border-color: #fff #fff rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.5);
-  -webkit-border-radius: 20px;
-          border-radius: 20px;
-  -webkit-animation: rotate 1s linear infinite;
-  animation: rotate 1s linear infinite;
+.loading9 {
+  z-index: 999;
 }
 
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
+.loading9 i {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background: #ffffff;
+}
+
+.loading9 i:first-child {
+  -webkit-animation: loading9-ani2 0.6s linear infinite;
+          animation: loading9-ani2 0.6s linear infinite;
+  opacity: 0;
+  -webkit-transform: translate(-100%);
+      -ms-transform: translate(-100%);
+          transform: translate(-100%);
+}
+
+.loading9 i:nth-child(2),
+.loading9 i:nth-child(3) {
+  -webkit-animation: loading9-ani3 0.6s linear infinite;
+          animation: loading9-ani3 0.6s linear infinite;
+}
+
+.loading9 i:last-child {
+  -webkit-animation: loading9-ani1 0.6s linear infinite;
+          animation: loading9-ani1 0.6s linear infinite;
+}
+
+@-webkit-keyframes loading9-ani1 {
   100% {
-    -webkit-transform: rotate(360deg);
+    -webkit-transform: translate(200%);
+            transform: translate(200%);
+    opacity: 0;
   }
 }
-@-ms-keyframes rotate {
-  0% {
-    -ms-transform: rotate(0deg);
-  }
+
+@keyframes loading9-ani1 {
   100% {
-    -ms-transform: rotate(360deg);
+    -webkit-transform: translate(200%);
+            transform: translate(200%);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes loading9-ani2 {
+  100% {
+    -webkit-transform: translate(100%);
+            transform: translate(100%);
+    opacity: 1;
+  }
+}
+@keyframes loading9-ani2 {
+  100% {
+    -webkit-transform: translate(100%);
+            transform: translate(100%);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes loading9-ani3 {
+  100% {
+    -webkit-transform: translate(100%);
+            transform: translate(100%);
+  }
+}
+@keyframes loading9-ani3 {
+  100% {
+    -webkit-transform: translate(100%);
+            transform: translate(100%);
   }
 }
 /*tab*/
