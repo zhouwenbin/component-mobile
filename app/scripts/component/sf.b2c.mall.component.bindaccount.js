@@ -15,9 +15,10 @@ define(
     'sf.b2c.mall.api.user.partnerBindByUPswd',
     'sf.b2c.mall.api.user.checkUserExist',
     'sf.b2c.mall.api.promotion.receivePro',
+    'sf.b2c.mall.api.coupon.receiveCoupon',
     'sf.b2c.mall.api.user.downSmsCode'
   ],
-  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFMessage, SFPartnerBind, SFPartnerBindByUPswd, SFCheckUserExist, SFReceivePro, SFApiUserDownSmsCode) {
+  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFMessage, SFPartnerBind, SFPartnerBindByUPswd, SFCheckUserExist, SFReceivePro, SFReceiveCoupon, SFApiUserDownSmsCode) {
 
     Fastclick.attach(document.body);
 
@@ -261,6 +262,43 @@ define(
         this.checkCode(code);
       },
 
+      errorMap: {
+        "11000020": "卡券不存在",
+        "11000030": "卡券已作废",
+        "11000050": "卡券已领完",
+        "11000100": "您已领过该券",
+        "11000130": "卡包不存在",
+        "11000140": "卡包已作废"
+      },
+
+      receiveCoupon: function(redirectUrl) {
+
+        var params = {};
+        params.bagId = '236';
+        params.type = 'CARD';
+        params.receiveChannel = 'B2C';
+        params.receiveWay = 'ZTLQ';
+        var that = this;
+        var receiveCouponData = new SFReceiveCoupon(params);
+        return can.when(receiveCouponData.sendRequest())
+          .done(function(userCouponInfo) {
+            new SFMessage(null, {
+              'tip': '50元优惠券已发放至您的账户，请注意查收。',
+              'type': 'success'
+            });
+
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
+          })
+          .fail(function(error) {
+            new SFMessage(null, {
+              'tip': that.errorMap[error] || '领取失败',
+              'type': 'error'
+            });
+
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
+          });
+      },
+
       //绑定账号
       partnerBind: function(newUser) {
         var that = this;
@@ -268,10 +306,11 @@ define(
           .done(function(data) {
             store.set('csrfToken', data.csrfToken);
             store.remove('tempToken');
+
+
             var params = can.deparam(window.location.search.substr(1));
             var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
-            window.location.href = redirectUrl || SFBizConf.setting.link.index;
 
             // var receivePro = new SFReceivePro({
             //   "channel": "B2C_H5",
@@ -286,6 +325,9 @@ define(
             //     });
             //   }
             // }
+            if (newUser) {
+              that.receiveCoupon(redirectUrl);
+            }
 
             // receivePro
             //   .sendRequest()
