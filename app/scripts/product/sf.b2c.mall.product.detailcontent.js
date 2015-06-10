@@ -471,7 +471,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
             var switcher = new SFSwitcher();
 
-            switcher.register('weixin', function () {
+            switcher.register('wechat', function () {
               //微信分享
               that.weixinShare(that.itemid, that.options.detailContentInfo);
             });

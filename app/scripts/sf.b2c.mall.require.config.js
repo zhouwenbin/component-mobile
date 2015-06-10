@@ -164,6 +164,7 @@ requirejs.config({
     'sf.b2c.mall.module.time': 'scripts/module/sf.b2c.mall.module.time',
     'sf.b2c.mall.module.header': 'scripts/module/sf.b2c.mall.module.header',
     'sf.b2c.mall.module.tab': 'scripts/module/sf.b2c.mall.module.tab',
+    'sf.b2c.mall.module.sso': 'scripts/module/sf.b2c.mall.module.sso',
 
     // 首页
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
@@ -258,6 +259,8 @@ requirejs.config({
     'sf.b2c.mall.taiwantraveller.getgift': 'scripts/taiwantraveller/sf.b2c.mall.taiwantraveller.getgift',
     'sf.b2c.mall.page.taiwantravellercard': 'scripts/page/sf.b2c.mall.page.taiwantravellercard',
     'sf.b2c.mall.page.taiwantravellerfoodeat': 'scripts/page/sf.b2c.mall.page.taiwantravellerfoodeat',
+
+    'sf.b2c.mall.api.user.singleSignOn': 'scripts/api/sf.b2c.mall.api.user.singleSignOn',
 
     // 原滋原味
     'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon',

@@ -12,8 +12,9 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'sf.b2c.mall.order.fn',
   'sf.b2c.mall.business.config',
   'sf.env.switcher',
-  'sf.b2c.mall.widget.message'
-], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher, SFMessage) {
+  'sf.b2c.mall.widget.message',
+  'sf.hybrid'
+], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid) {
 
   Fastclick.attach(document.body);
 
@@ -172,9 +173,35 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
     dispatch: function(params) {
       if (params.packageNo) {
+        var switcher = new SFSwitcher();
+        switcher.register('web', function () {
+
+        });
+
+        switcher.register('app', function () {
+          SFHybrid.sfnavigator.setLeftButton(function () {
+            SFHybrid.sfnavigator.popToIdentifier('history');
+          });
+        });
+
+        switcher.go();
+
         this.element.find('.orderdetail').hide();
         this.element.find('.logistics-' + params.packageNo).show().scrollTop();
       } else {
+        var switcher = new SFSwitcher();
+        switcher.register('web', function () {
+
+        });
+
+        switcher.register('app', function () {
+          SFHybrid.sfnavigator.setLeftButton(function () {
+            SFHybrid.sfnavigator.popToIdentifier();
+          });
+        });
+
+        switcher.go();
+
         this.element.find('.orderdetail').show();
         this.element.find('.logistics').hide();
       }
