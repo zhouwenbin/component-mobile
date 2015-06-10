@@ -97,6 +97,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       var params = can.deparam(window.location.search.substr(1));
       params = _.extend(params, can.route.attr());
       this.request(params);
+
+      this.setBackButton();
     },
 
     request: function(params) {
@@ -172,39 +174,34 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     },
 
     dispatch: function(params) {
-      if (params.packageNo) {
-        var switcher = new SFSwitcher();
-        switcher.register('web', function () {
-
-        });
-
-        switcher.register('app', function () {
-          SFHybrid.sfnavigator.setLeftButton(function () {
-            SFHybrid.sfnavigator.popToIdentifier('history');
-          });
-        });
-
-        switcher.go();
-
+      if (params.packageNo || params.packageNo == '0') {
         this.element.find('.orderdetail').hide();
         this.element.find('.logistics-' + params.packageNo).show().scrollTop();
       } else {
-        var switcher = new SFSwitcher();
-        switcher.register('web', function () {
-
-        });
-
-        switcher.register('app', function () {
-          SFHybrid.sfnavigator.setLeftButton(function () {
-            SFHybrid.sfnavigator.popToIdentifier();
-          });
-        });
-
-        switcher.go();
-
         this.element.find('.orderdetail').show();
         this.element.find('.logistics').hide();
       }
+    },
+
+    setBackButton: function () {
+      var switcher = new SFSwitcher();
+
+      switcher.register('web', function () {
+
+      });
+
+      switcher.register('app', function () {
+        SFHybrid.sfnavigator.setLeftButton(function () {
+          var params = can.route.attr();
+          if (params.packageNo || params.packageNo == '0') {
+            SFHybrid.sfnavigator.popToIdentifier('history');
+          }else{
+            SFHybrid.sfnavigator.popToIdentifier();
+          }
+        });
+      });
+
+      switcher.go();
     },
 
     '.gotopay click': function($element, event) {
