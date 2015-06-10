@@ -274,7 +274,7 @@ define(
       receiveCoupon: function(redirectUrl) {
 
         var params = {};
-        params.bagId = '234';
+        params.bagId = '236';
         params.type = 'CARD';
         params.receiveChannel = 'B2C';
         params.receiveWay = 'ZTLQ';

@@ -320,7 +320,7 @@ define('sf.b2c.mall.component.register', [
       receiveCoupon: function(params) {
 
         var params = {};
-        params.bagId = '234';
+        params.bagId = '236';
         params.type = 'CARD';
         params.receiveChannel = 'B2C';
         params.receiveWay = 'ZTLQ';
