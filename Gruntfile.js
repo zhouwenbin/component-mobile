@@ -1082,6 +1082,21 @@ module.exports = function (grunt) {
         }
       },
 
+      sso: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.sso.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.sso"],
+          insertRequire:  ['sf.b2c.mall.module.sso']
+        }
+      },
+
       coupon: {
         options: {
           optimize: 'none',
