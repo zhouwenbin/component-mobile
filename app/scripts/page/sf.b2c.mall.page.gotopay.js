@@ -176,7 +176,7 @@ define(
           SFHybrid.pay(that.options.orderid, that.getAppPayType())
             .done(function () {
               SFHybrid.toast.dismiss();
-              window.location.href = SFConfig.setting.link.orderlist;
+              window.location.href = SFConfig.setting.link.paysuccess + '?' + $.param({orderid: that.options.orderid});
             })
             .fail(function (errorInfo) {
               SFHybrid.toast.dismiss();
