@@ -326,7 +326,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
           .done(function(data) {
             if (data.isSuccess) {
               // can.trigger(window, 'updateCart');
-              window.location.href = '/shoppingcart.html'
+              window.location.href = 'http://m.sfht.com/shoppingcart.html'
             }else{
 
               var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');

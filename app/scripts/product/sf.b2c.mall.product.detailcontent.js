@@ -176,6 +176,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var itemId = el.closest('.cms-src-item').attr('data-cms-itemid');
         if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           // 用户如果如果登录
+
           this.addCart(itemId);
         } else {
           store.set('temp-action-addCart', {
@@ -906,6 +907,8 @@ define('sf.b2c.mall.product.detailcontent', [
           element.val(priceInfo.limitBuy);
           input.attr('buyNum', priceInfo.limitBuy);
           return false;
+        } else{
+          input.attr('buyNum', amount);
         }
 
         //input.attr('buyNum', amount);
