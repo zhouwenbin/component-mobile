@@ -1240,6 +1240,12 @@ a[title="站长统计"] {
   width: 100%;
 }
 
+.logout.center {
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  padding: 33px 60px;
+}
+
 .loading9 {
   z-index: 999;
 }
