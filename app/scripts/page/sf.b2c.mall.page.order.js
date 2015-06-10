@@ -54,7 +54,7 @@ define(
 
         bindEvents: function() {
           document.addEventListener('deviceready', this.onDeviceReady, false);
-          document.addEventListener('resume', this.onResume, false);
+          // document.addEventListener('resume', this.onResume, false);
         },
 
         onResume: function () {
@@ -72,6 +72,15 @@ define(
           SFHybrid.isLogin().done(function () {
             new SFOrder('#order');
           });
+
+          var callback = function () {
+            window.location.reload();
+          }
+
+          SFHybrid.notification.add('NotificationAddressDidDelete', callback);
+          SFHybrid.notification.add('NotificationAddressDidEdit', callback);
+          SFHybrid.notification.add('NotificationAddressDidAdd', callback);
+          SFHybrid.notification.add('NotificationAddressDidSetDefault', callback);
         }
       };
 

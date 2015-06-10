@@ -155,6 +155,16 @@ define(
       }
     }
 
+    var sfnotifivation = {
+      add: function (key, callback) {
+        sf.notificationCenter.add(key, callback);
+      },
+
+      remove: function (key) {
+        sf.notificationCenter.remove(key)
+      }
+    }
+
     var setNetworkListener = function() {
       var isBroken = false;
       document.addEventListener("offline", function() {
@@ -183,7 +193,8 @@ define(
       share: share,
       setNetworkListener: setNetworkListener,
       toRoot: toRoot,
-      toast: toast
+      toast: toast,
+      notification: sfnotifivation
     }
 
   });
