@@ -67,6 +67,10 @@ define(
 
         receivedEvent: function(id) {
 
+          // SFHybrid.sfnavigator.setLeftButton(function () {
+          //   SFHybrid.sfnavigator.popToIdentifier('history');
+          // });
+
           SFHybrid.setNetworkListener();
           SFHybrid.isLogin().done(function () {
             new SFOrderDetail('#order');

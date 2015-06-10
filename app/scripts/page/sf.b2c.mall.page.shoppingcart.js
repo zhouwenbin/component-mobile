@@ -54,6 +54,12 @@ define(
 
         bindEvents: function() {
           document.addEventListener('deviceready', this.onDeviceReady, false);
+          document.addEventListener('resume', this.onResume, false);
+        },
+
+        onResume: function () {
+          // 粗暴的重刷页面获取新数据
+          window.location.reload();
         },
 
         onDeviceReady: function() {

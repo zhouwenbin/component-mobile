@@ -147,11 +147,30 @@ define(
       setRightButton: function(title, imagePath, onclick) {
         sf.navigation.setRightButton(title, imagePath, onclick);
       },
+      setLeftButton: function (onclick) {
+        sf.navigation.setLeftButton(onclick);
+      },
       setNavigationBarHidden: function(hidden, animate) {
         sf.navigation.setNavigationBarHidden(hidden, animate);
       },
+      pop: function (animate) {
+        sf.navigation.pop(animate);
+      },
       popToRoot: function(animate) {
         sf.navigation.popToRoot(animate);
+      },
+      popToIdentifier: function (identifier ,animate) {
+        sf.navigation.popToIdentifier(identifier, animate);
+      }
+    }
+
+    var sfnotifivation = {
+      add: function (key, callback) {
+        sf.notificationCenter.add(key, callback);
+      },
+
+      remove: function (key) {
+        sf.notificationCenter.remove(key)
       }
     }
 
@@ -183,7 +202,8 @@ define(
       share: share,
       setNetworkListener: setNetworkListener,
       toRoot: toRoot,
-      toast: toast
+      toast: toast,
+      notification: sfnotifivation
     }
 
   });

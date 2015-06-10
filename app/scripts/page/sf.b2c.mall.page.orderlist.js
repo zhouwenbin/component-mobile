@@ -95,6 +95,10 @@ define(
 
         receivedEvent: function(id) {
 
+          SFHybrid.sfnavigator.setLeftButton(function () {
+            SFHybrid.sfnavigator.popToIdentifier('maintab');
+          });
+
           SFHybrid.setNetworkListener();
           SFHybrid.isLogin().done(function () {
             new SFOrderList('#orderList');

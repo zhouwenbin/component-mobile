@@ -69,7 +69,18 @@ define(
         element.html(html);
       },
       "#shareBtn click": function() {
-        this.itemObj.attr("isShowMask", true);
+        var that = this;
+        // 启动分支逻辑
+        var switcher = new SFSwitcher();
+        switcher.register('app', function() {
+          SFHybrid.share();
+        });
+
+        switcher.registerOneCallbackExceptEnv('app', function() {
+          that.itemObj.attr("isShowMask", true);
+        });
+
+        switcher.go();
       },
       ".mask click": function() {
         this.itemObj.attr("isShowMask", false);

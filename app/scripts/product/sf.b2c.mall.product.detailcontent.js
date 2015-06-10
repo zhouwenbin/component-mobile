@@ -469,8 +469,18 @@ define('sf.b2c.mall.product.detailcontent', [
               that.switchTab($(this), 'itemInfoTab');
             })
 
-            //微信分享
-            that.weixinShare(that.itemid, that.options.detailContentInfo);
+            var switcher = new SFSwitcher();
+
+            switcher.register('wechat', function () {
+              //微信分享
+              that.weixinShare(that.itemid, that.options.detailContentInfo);
+            });
+
+            switcher.register('app', function () {
+              that.setShareBtn(that.itemid, that.options.detailContentInfo);
+            });
+
+            switcher.go();
 
             $('.loadingDIV').hide();
 
@@ -1112,6 +1122,32 @@ define('sf.b2c.mall.product.detailcontent', [
         }
 
         return saleSkuSpecTuple;
+      },
+
+      setShareBtn: function (itemid, detailContentInfo) {
+        SFHybrid.sfnavigator.setRightButton('分享', null, function(){
+          var imgUrl = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
+
+          var hasURL = _.str.include(imgUrl, 'http://')
+          if (!hasURL) {
+            imgUrl = 'http://img0.sfht.com/' + imgUrl;
+          }
+
+          var message = {
+            subject: detailContentInfo.itemInfo.basicInfo.title,
+            description: "[" + detailContentInfo.itemInfo.basicInfo.brand + "]" + detailContentInfo.itemInfo.basicInfo.title,
+            url: "http://m.sfht.com/detail/" + itemid + ".html",
+            imageUrl: imgUrl
+          };
+
+          SFHybrid.share(message)
+            .done(function () {
+              alert('感谢分享');
+            })
+            .fail(function () {
+
+            })
+        });
       }
     });
   })
