@@ -51,7 +51,8 @@ define(
         this.options.data.attr("showordersuccess", params.showordersuccess);
 
         // 如果是在微信环境和APP下 显示微信支付和支付宝，其他时候只展示支付宝
-        if (SFUtil.isMobile.WeChat() || SFUtil.isMobile.APP()) {
+        // if (SFUtil.isMobile.WeChat() || SFUtil.isMobile.APP()) {
+        if (SFUtil.isMobile.WeChat()) {
           this.options.data.attr("showWeixinPay", true);
         }
 

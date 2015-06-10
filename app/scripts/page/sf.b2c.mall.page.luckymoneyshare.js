@@ -73,7 +73,20 @@ define(
         // 启动分支逻辑
         var switcher = new SFSwitcher();
         switcher.register('app', function() {
-          SFHybrid.share();
+
+          var message = {
+            subject: "顺丰海淘",
+            description: "红包分享",
+            url: window.location.href
+          };
+
+          SFHybrid.share(message)
+            .done(function () {
+              alert('感谢分享');
+            })
+            .fail(function () {
+
+            })
         });
 
         switcher.registerOneCallbackExceptEnv('app', function() {
