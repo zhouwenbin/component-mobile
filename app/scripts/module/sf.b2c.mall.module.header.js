@@ -13,7 +13,8 @@ define(
     'text!template_widget_header_ad',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
     'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
-    'sf.b2c.mall.api.shopcart.isShowCart'
+    'sf.b2c.mall.api.shopcart.isShowCart',
+    'sf.b2c.mall.module.sso'
   ],
 
   function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart) {
