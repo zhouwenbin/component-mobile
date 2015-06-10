@@ -148,8 +148,7 @@ define(
         sf.navigation.setRightButton(title, imagePath, onclick);
       },
       setLeftButton: function (onclick) {
-        alert(0)
-        sf.navigation.setLeftButton(onclick)
+        sf.navigation.setLeftButton(onclick);
       },
       setNavigationBarHidden: function(hidden, animate) {
         sf.navigation.setNavigationBarHidden(hidden, animate);
