@@ -472,7 +472,8 @@ module.exports = function (grunt) {
           'img/coupon.png',
           'img/coupons.png',
           'img/coupons-c1.png',
-          'img/coupons2.png'
+          'img/coupons2.png',
+          'img/sharepocket.jpg'
         ]
       },
 
