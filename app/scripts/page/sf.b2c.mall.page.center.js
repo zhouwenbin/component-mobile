@@ -92,6 +92,9 @@ define(
       },
 
       maskMail: function(str) {
+        if (!str) {
+          return "";
+        }
         return str.replace(/([^@]{3})[^@]*?(@[\s\S]*)/, "$1...$2")
       },
 
