@@ -1243,7 +1243,7 @@ a[title="站长统计"] {
 .logout.center {
   -webkit-border-radius: 10px;
           border-radius: 10px;
-  padding: 33px 60px;
+  padding: 33px 45px;
 }
 
 .loading9 {
@@ -1550,7 +1550,7 @@ a[title="站长统计"] {
 .banner-dialog-b {
   width: 230px;
   height: 313px;
-  background: url(http://img.sfht.com/sfhth5/1.1.73/img/banner-dialog.jpg) no-repeat;
+  background: url(../img/banner-dialog.jpg) no-repeat;
   -webkit-background-size: 230px 230px;
           background-size: 230px;
   position: fixed;
@@ -1630,7 +1630,8 @@ a[title="站长统计"] {
 }
 
 .dot-error {
-  width: 18px;
+  padding: 0 4px;
+  width: auto;
   height: 18px;
   line-height: 18px;
   text-align: center;
