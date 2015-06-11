@@ -30,23 +30,37 @@ define(
       },
       render: function() {
         var that = this;
-        var params = can.deparam(window.location.search.substr(1));
-        var id = params.id;
 
-        can.when(that.initOrderShareBagInfo(id))
+        // －－－－－－－－－－－－－－－－－－－－－－－
+        var switcher = new SFSwitcher();
+
+        switcher.register('web', function () {
+          var params = can.deparam(window.location.search.substr(1));
+          that.id = params.id;
+        });
+
+        switcher.register('app', function () {
+          var params = can.route.attr();
+          that.id = params.id;
+        });
+
+        switcher.go();
+        // －－－－－－－－－－－－－－－－－－－－－－－
+
+        can.when(that.initOrderShareBagInfo(that.id))
           .always(function() {
             that.renderHtml(that.element, that.itemObj);
-            var sfLuckyMoneyUsers = new SFLuckyMoneyUsers(".users", {shareBagId: id});
+            var sfLuckyMoneyUsers = new SFLuckyMoneyUsers(".users", {shareBagId: that.id});
             that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo);
             $('.loadingDIV').hide();
           });
       },
+
       initOrderShareBagInfo: function(shareBagId) {
         var that = this;
         var getOrderShareBagInfo = new SFGetOrderShareBagInfo({
           "shareBagId": shareBagId
         });
-
 
         return getOrderShareBagInfo.sendRequest()
           .done(function(cardBagInfo) {
@@ -73,14 +87,10 @@ define(
         // 启动分支逻辑
         var switcher = new SFSwitcher();
         switcher.register('app', function() {
-
-          var params = can.deparam(window.location.search.substr(1));
-          var id = params.id;
-
           var message = {
             subject: "顺丰海淘",
             description: "红包分享",
-            url: "http://m.sfht.com/luckymoneyshare.html?id=" + id
+            url: "http://m.sfht.com/luckymoneyshare.html?id=" + that.id
           };
 
           SFHybrid.share(message)
