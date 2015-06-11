@@ -215,7 +215,18 @@ define(
       },
 
       init: function() {
-        this.controlCart();
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('app', function () {
+
+        });
+
+        switcher.register('web', _.bind(function(){
+          this.controlCart();
+        }, this);
+
+        switcher.go();
 
         this.render();
       },
