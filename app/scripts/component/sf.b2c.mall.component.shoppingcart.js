@@ -224,7 +224,7 @@ define(
 
         switcher.register('web', _.bind(function(){
           this.controlCart();
-        }, this);
+        }, this));
 
         switcher.go();
 
