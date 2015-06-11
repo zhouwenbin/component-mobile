@@ -394,7 +394,7 @@ define('sf.b2c.mall.order.iteminfo', [
             //   })
           });
 
-          switcher.registerOneCallbackExceptEnv('wechat', function() {
+          switcher.register('web', function() {
             window.location.href = url;
           });
 
