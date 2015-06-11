@@ -12,19 +12,22 @@
   display: inline-block;
  }
 .footer-r1 li {  
-    padding:4px 8px;
+    padding:0 10px;
     font-size: 12px;
     float:left;
-    text-align: left;
+    text-align: center;
 }
 .footer-r1 li .icon{
-  margin-right: 3px;
+  display: block;
+  margin: 0 auto 4px;
 }
 .footer-r1 h2{
     font-weight: normal;
 }
 .footer-r1 li:last-child{
   border-left:1px solid #e5e5e5;
+  padding-left: 12px;
+  margin-left: 2px;
 }
 
 
