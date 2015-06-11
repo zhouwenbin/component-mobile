@@ -36,7 +36,7 @@ define(
             if (isLogin) {
               SFHybrid.getTokenInfo().done(function (data) {
 
-                alert(JSON.stringify(data));
+                // alert(JSON.stringify(data));
 
                 var sso =  new SFSSO({
                   targetDeviceId: data.token.deviceId,
