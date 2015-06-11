@@ -1248,6 +1248,7 @@ a[title="站长统计"] {
   -webkit-border-radius: 50%;
           border-radius: 50%;
   position: absolute;
+  margin-top: -15px;
 }
 
 .loading9 i:nth-child(1) {
