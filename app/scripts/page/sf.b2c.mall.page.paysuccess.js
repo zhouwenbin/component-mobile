@@ -14,9 +14,11 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.api.minicart.getTotalCount'
   ],
   function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder,
-    template_order_paysuccess, SFSwitcher, SFHybrid, SFNav) {
+    template_order_paysuccess, SFSwitcher, SFHybrid, SFNav, SFMinicartGetcount) {
+
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -128,6 +130,18 @@ define(
         var renderFn = can.mustache(template_order_paysuccess);
         var html = renderFn(itemObj, this.helpers);
         element.html(html);
+
+        var that = this;
+        var getcount = new SFMinicartGetcount();
+        getcount.sendRequest()
+                .done(function (data) {
+                  if (data.value) {
+                    that.element.find('.gotocart').show();
+                  }
+                })
+                .fail(function () {
+
+                })
       }
     });
     // new paysuccess('.sf-b2c-mall-order-paysuccess');
