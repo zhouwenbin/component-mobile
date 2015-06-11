@@ -89,8 +89,8 @@ define(
         var switcher = new SFSwitcher();
         switcher.register('app', function() {
           var message = {
-            subject: "顺丰海淘",
-            description: "红包分享",
+            subject: "［顺丰海淘］送你个大红包，伙食立马从白馒头变成大鸡腿，赶紧去领吧",
+            description: "［顺丰海淘］送你个大红包，伙食立马从白馒头变成大鸡腿，赶紧去领吧",
             url: "http://m.sfht.com/luckymoneyshare.html?id=" + that.id
           };
 
