@@ -420,14 +420,15 @@ a[title="站长统计"] {
 }
 
 .footer-r1 li {
-  padding: 4px 6px;
+  padding: 0 10px;
   font-size: 12px;
   float: left;
-  text-align: left;
+  text-align: center;
 }
 
 .footer-r1 li .icon {
-  margin-right: 3px;
+  display: block;
+  margin: 0 auto 4px;
 }
 
 .footer-r1 h2 {
@@ -436,6 +437,8 @@ a[title="站长统计"] {
 
 .footer-r1 li:last-child {
   border-left: 1px solid #e5e5e5;
+  padding-left: 12px;
+  margin-left: 2px;
 }
 
 .footer-r2 {
@@ -949,6 +952,30 @@ a[title="站长统计"] {
   width: 68px;
   height: 93px;
   background-position: -186px -282px;
+}
+
+.icon56 {
+  width: 27px;
+  height: 30px;
+  background-position: -287px -159px;
+}
+
+.icon57 {
+  width: 28px;
+  height: 30px;
+  background-position: -287px -195px;
+}
+
+.icon58 {
+  width: 28px;
+  height: 30px;
+  background-position: -287px -229px;
+}
+
+.icon59 {
+  width: 29px;
+  height: 29px;
+  background-position: -287px -264px;
 }
 
 /*text*/
