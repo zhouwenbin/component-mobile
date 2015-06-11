@@ -17,11 +17,14 @@ define(
     'sf.b2c.mall.widget.login',
     'text!template_luckymoney_accept',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.component.nav',
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
-           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin, template_luckymoney_accept, SFSwitcher, SFHybrid) {
+           SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin,
+           template_luckymoney_accept, SFSwitcher, SFHybrid, SFNav) {
+
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 

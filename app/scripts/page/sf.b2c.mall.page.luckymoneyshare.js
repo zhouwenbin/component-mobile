@@ -13,10 +13,11 @@ define(
     'sf.b2c.mall.luckymoney.users',
     'text!template_luckymoney_share',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.component.nav',
   ],
   function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo,
-    SFLuckyMoneyUsers, template_luckymoney_share, SFSwitcher, SFHybrid) {
+    SFLuckyMoneyUsers, template_luckymoney_share, SFSwitcher, SFHybrid, SFNav) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 

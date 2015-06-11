@@ -10,9 +10,10 @@ define(
     'sf.weixin',
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.component.nav',
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, SFWeixin, SFConfig, SFSwitcher, SFHybrid) {
+  function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, SFWeixin, SFConfig, SFSwitcher, SFHybrid, SFNav) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
     SFWeixin.shareIndex();

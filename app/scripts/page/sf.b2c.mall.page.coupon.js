@@ -12,10 +12,11 @@ define(
     'sf.b2c.mall.api.coupon.receiveExCode',
     'text!template_center_coupon',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.component.nav'
   ],
   function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode,
-    template_center_coupon, SFSwitcher, SFHybrid) {
+    template_center_coupon, SFSwitcher, SFHybrid, SFNav) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);

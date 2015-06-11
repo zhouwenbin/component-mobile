@@ -12,9 +12,11 @@ define(
     'sf.b2c.mall.api.order.getOrder',
     'text!template_order_paysuccess',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.component.nav',
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder, template_order_paysuccess, SFSwitcher, SFHybrid) {
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder,
+    template_order_paysuccess, SFSwitcher, SFHybrid, SFNav) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 

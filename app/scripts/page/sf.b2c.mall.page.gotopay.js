@@ -15,11 +15,12 @@ define(
     'sf.b2c.mall.business.config',
     'text!template_order_gotopay',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.component.nav'
   ],
 
   function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn,
-    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid) {
+    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid, SFNav) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
