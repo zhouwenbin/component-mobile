@@ -74,10 +74,13 @@ define(
         var switcher = new SFSwitcher();
         switcher.register('app', function() {
 
+          var params = can.deparam(window.location.search.substr(1));
+          var id = params.id;
+
           var message = {
             subject: "顺丰海淘",
             description: "红包分享",
-            url: window.location.href
+            url: "http://m.sfht.com/luckymoneyshare.html?id=" + id
           };
 
           SFHybrid.share(message)
