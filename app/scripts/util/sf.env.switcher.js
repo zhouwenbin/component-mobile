@@ -36,7 +36,11 @@ define(
 
           // @todo app的判断逻辑预留
           'app': function() {
-            return false
+            // @deprecated
+            // 如果有cordova对象存在则判断在app中
+            // return !!cordova;
+
+            return SFFn.isMobile.APP();
           }
         }
 
@@ -55,6 +59,42 @@ define(
         if (_.contains(setting, env)) {
           this.options.group[env] = callback;
         }
+      },
+
+      /**
+       * [registerManyToOne 注册一个回调到多个环境中]
+       * @param  {[type]}   env      [description]
+       * @param  {Function} callback [description]
+       * @return {[type]}            [description]
+       */
+      registerOneCallbackToManyEnv: function(envs, callback) {
+        var that = this;
+
+        var envArr = envs.split(",");
+
+        _.each(envArr, function(item) {
+          that.register(item, callback);
+        })
+      },
+
+      /**
+       * [registerManyToOne 除去某个环境，其他环境都一个回调]
+       * @param  {[type]}   env      [description]
+       * @param  {Function} callback [description]
+       * @return {[type]}            [description]
+       */
+      registerOneCallbackExceptEnv: function(envs, callback) {
+        var that = this;
+
+        var envArr = envs.split(",");
+
+        _.each(setting, function(item) {
+          _.each(envArr, function(notRegisterItem) {
+            if (notRegisterItem != item){
+              that.register(item, callback);
+            }
+          })
+        })
       },
 
       go: function() {

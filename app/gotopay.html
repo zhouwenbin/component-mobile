@@ -9,33 +9,25 @@
 <link rel="stylesheet" href="static/css/style.css">
 <!-- endbuild -->
 
+<script src="../cordova.js"></script>
+
 </head>
 <body>
   <div class="sf-b2c-mall-gotopay"></div>
 
   <div class="loadingDIV">
-    <div class="mask">
-      <div class="loading">
+    <div class="center">
+      <div class="loading9">
         <i></i><i></i><i></i><i></i>
       </div>
     </div>
   </div>
 
+  <div class="sf-b2c-mall-nav"></div>
+
   <!--立即购买-->
   <section class="nav">
     <div class="nav-r1">
-      <div class="nav-c1 fl">
-        <a href="/index.html">
-          <span class="icon icon25"></span>
-          <div>首页</div>
-        </a>
-      </div>
-      <div class="nav-c1 fl">
-        <a href="/center.html">
-          <span class="icon icon26"></span>
-          <div>我的</div>
-        </a>
-      </div>
       <div class="nav-c2"><button id="gotopayBtn" class="btn btn-danger btn-big">立即支付</button></div>
     </div>
   </section>
@@ -48,7 +40,11 @@
   <!-- endbuild -->
 
   <!-- build:js({app, tmp}) scripts/sf.h5.base.js-->
-  <script src="scripts/base/sf.h5.base.ver.1.0.build.1423449545244.js"></script>
+  <script src="scripts/base/sf.h5.base.ver.1.0.2.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+  <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
   <!-- endbuild -->
 
   <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.gotopay.js -->
@@ -57,8 +53,6 @@
     require(['sf.b2c.mall.page.gotopay']);
   </script>
   <!-- endbuild -->
-
-   <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1254533571%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 
 </body>
 </html>

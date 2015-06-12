@@ -12,12 +12,15 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'sf.b2c.mall.order.fn',
   'sf.b2c.mall.business.config',
   'sf.env.switcher',
-  'sf.b2c.mall.widget.message'
-], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher, SFMessage) {
+  'sf.b2c.mall.widget.message',
+  'sf.hybrid'
+], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid) {
 
   Fastclick.attach(document.body);
 
   var PREFIX = 'http://img0.sfht.com';
+
+  can.route.ready();
 
   return can.Control.extend({
 
@@ -92,7 +95,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     render: function() {
       // 从url的search中获取参数
       var params = can.deparam(window.location.search.substr(1));
+      params = _.extend(params, can.route.attr());
       this.request(params);
+
+      this.setBackButton();
     },
 
     request: function(params) {
@@ -168,13 +174,34 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     },
 
     dispatch: function(params) {
-      if (params.packageNo) {
+      if (params.packageNo || params.packageNo == '0') {
         this.element.find('.orderdetail').hide();
         this.element.find('.logistics-' + params.packageNo).show().scrollTop();
       } else {
         this.element.find('.orderdetail').show();
         this.element.find('.logistics').hide();
       }
+    },
+
+    setBackButton: function () {
+      var switcher = new SFSwitcher();
+
+      switcher.register('web', function () {
+
+      });
+
+      switcher.register('app', function () {
+        SFHybrid.sfnavigator.setLeftButton(function () {
+          var params = can.route.attr();
+          if (params.packageNo || params.packageNo == '0') {
+            SFHybrid.sfnavigator.popToIdentifier('history');
+          }else{
+            SFHybrid.sfnavigator.popToIdentifier();
+          }
+        });
+      });
+
+      switcher.go();
     },
 
     '.gotopay click': function($element, event) {

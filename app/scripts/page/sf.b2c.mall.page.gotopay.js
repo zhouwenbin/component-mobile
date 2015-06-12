@@ -12,16 +12,24 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.weixin',
     'sf.util',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'text!template_order_gotopay',
+    'sf.env.switcher',
+    'sf.hybrid',
+    'sf.b2c.mall.component.nav'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn, SFMessage, SFWeixin, SFUtil, SFConfig) {
+  function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn,
+    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid, SFNav) {
+
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
     SFWeixin.shareIndex();
 
-    var gotopay = can.Control.extend({
+    can.route.ready();
+
+    var SFGotoPay = can.Control.extend({
 
       init: function(element, options) {
 
@@ -34,6 +42,7 @@ define(
         }
 
         var params = can.deparam(window.location.search.substr(1));
+        params = _.extend(params, can.route.attr());
 
         this.options.orderid = params.orderid;
         this.options.recid = params.recid;
@@ -42,7 +51,8 @@ define(
 
         this.options.data.attr("showordersuccess", params.showordersuccess);
 
-        // 如果是在微信环境 只显示微信支付和支付宝，其他时候只展示支付宝
+        // 如果是在微信环境和APP下 显示微信支付和支付宝，其他时候只展示支付宝
+        // if (SFUtil.isMobile.WeChat() || SFUtil.isMobile.APP()) {
         if (SFUtil.isMobile.WeChat()) {
           this.options.data.attr("showWeixinPay", true);
         }
@@ -75,7 +85,9 @@ define(
       },
 
       render: function(data) {
-        var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache', data);
+        // var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache', data);
+        var renderFn = can.mustache(template_order_gotopay);
+        var html = renderFn(data);
         this.element.html(html);
       },
 
@@ -123,6 +135,23 @@ define(
         return result;
       },
 
+      /**
+       * [getAppPayType 针对APP应用做的支付类型定制]
+       * @return {[type]} [description]
+       */
+      getAppPayType: function(){
+        var result = "";
+
+        var paytypelist = $(".gotopaymethodlist").find("li");
+        _.each(paytypelist, function(item) {
+          if ($(item).hasClass("active")) {
+            result = $(item).attr("data-payType");
+          }
+        })
+
+        return result.toUpperCase();
+      },
+
       gotopayBtnClick: function() {
         // $("#gotopayBtn").text("支付中");
         var that = this;
@@ -142,16 +171,82 @@ define(
         }
 
         var that = this;
-        SFOrderFn.payV2({
-          orderid: that.options.orderid,
-          payType: that.getPayType(),
-          payResult: that.payResult,
-          extInfo: JSON.stringify({
-            "code": that.options.code
-          })
-        }, callback);
+
+        var switcher = new SFSwitcher()
+
+        switcher.register('app', function () {
+          SFHybrid.pay(that.options.orderid, that.getAppPayType())
+            .done(function () {
+              SFHybrid.toast.dismiss();
+              window.location.href = SFConfig.setting.link.paysuccess + '?' + $.param({orderid: that.options.orderid});
+            })
+            .fail(function (errorInfo) {
+              SFHybrid.toast.dismiss();
+
+              var defaultMsg = '订单支付失败！';
+              var map = {
+                '4000': '订单支付失败！',
+                '6001': '用户中途取消支付',
+                '6002': '网络连接出错'
+              }
+
+              var msg = map[(errorInfo && errorInfo.code)] || defaultMsg;
+
+              if (msg) {
+                SFHybrid.toast.show(msg);
+              }
+            });
+        })
+
+        switcher.register('web', function () {
+          SFOrderFn.payV2({
+            orderid: that.options.orderid,
+            payType: that.getPayType(),
+            payResult: that.payResult,
+            extInfo: JSON.stringify({
+              "code": that.options.code
+            })
+          }, callback);
+        });
+
+        switcher.go();
       }
     });
 
-    new gotopay('.sf-b2c-mall-gotopay');
+    // －－－－－－－－－－－－－－－－－－－－－－
+    // 启动分支逻辑
+    var switcher = new SFSwitcher();
+
+    switcher.register('web', function() {
+      new SFGotoPay('.sf-b2c-mall-gotopay');
+      new SFNav('.sf-b2c-mall-nav');
+    });
+
+    switcher.register('app', function() {
+      var app = {
+        initialize: function() {
+          this.bindEvents();
+        },
+
+        bindEvents: function() {
+          document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+
+        onDeviceReady: function() {
+          app.receivedEvent('deviceready');
+        },
+
+        receivedEvent: function(id) {
+
+          SFHybrid.setNetworkListener();
+          SFHybrid.isLogin();
+          new SFGotoPay('.sf-b2c-mall-gotopay');
+        }
+      };
+
+      app.initialize();
+    });
+
+    switcher.go();
+    // －－－－－－－－－－－－－－－－－－－－－－
   });

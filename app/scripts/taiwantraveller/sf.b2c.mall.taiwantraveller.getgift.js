@@ -5,9 +5,10 @@ define("sf.b2c.mall.taiwantraveller.getgift", [
     'zepto',
     'sf.b2c.mall.api.coupon.hasReceived',
     'sf.weixin',
-    'sf.b2c.mall.api.coupon.receiveCoupon'
+    'sf.b2c.mall.api.coupon.receiveCoupon',
+    'text!template_taiwantraveller_getgift'
   ],
-  function(can, $, SFHasReceived, SFWeixin, SFReceiveCoupon) {
+  function(can, $, SFHasReceived, SFWeixin, SFReceiveCoupon, template_taiwantraveller_getgift) {
 
     return can.Control.extend({
 
@@ -41,7 +42,9 @@ define("sf.b2c.mall.taiwantraveller.getgift", [
       },
 
       renderHtml: function(element, data) {
-        var html = can.view('templates/taiwantraveller/sf.b2c.mall.taiwantraveller.getgift.mustache', data);
+        // var html = can.view(template_taiwantraveller_getgift, data);
+        var renderFn = can.mustache(template_taiwantraveller_getgift);
+        var html = renderFn(data);
         element.html(html);
       },
 

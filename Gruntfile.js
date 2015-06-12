@@ -31,6 +31,17 @@ module.exports = function (grunt) {
 
   var OSS_HOST = 'http://img.sfht.com/sfhth5';
 
+  var cut = function (dest) {
+    var map = ['order/', 'main/', 'center/', 'detail/'];
+    for(var i in map){
+      if (startsWith(dest, map[i])) {
+        dest = dest.slice(0, map[i].length - 1);
+      }
+    }
+
+    return dest;
+  }
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -248,6 +259,33 @@ module.exports = function (grunt) {
         ],
         blockReplacements: {
           js: function (block) {
+
+            if (!config.hybrid && block.dest == 'cordova.js') {
+              return '';
+            }
+
+            if (config.hybrid && block.dest == '/scripts/sf.h5.base.js') {
+              return ''
+            }else if (!config.hybrid && block.dest == '/scripts/sf.h5.hybrid.base.js') {
+              return '';
+            }
+
+            if (!config.hybrid && block.dest == '../cordova.js') {
+              return '';
+            }
+
+            if (config.hybrid) {
+              if (block.dest[0] == '/') {
+                return '<script src="' + '.' + block.dest +'"></script>';
+              }else if (block.dest[0] != './') {
+                return '<script src="' + './' + block.dest +'"></script>';
+              }else{
+                return '<script src="' + block.dest +'"></script>';
+              }
+
+              block.dest = cut(dest);
+            }
+
             if (config.version) {
               if (block.dest[0] != '/') {
                 return '<script src="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'"></script>';
@@ -263,6 +301,18 @@ module.exports = function (grunt) {
             }
           },
           css: function (block) {
+            if (config.hybrid) {
+              if (block.dest[0] == '/') {
+                return '<link rel="stylesheet" href="' + '.' + block.dest +'">';
+              }else if (block.dest[0] != './') {
+                return '<link rel="stylesheet" href="' + './' + block.dest +'">';
+              }else{
+                return '<link rel="stylesheet" href="' + block.dest +'">';
+              }
+
+              block.dest = cut(dest);
+            }
+
             if (config.version) {
               if (block.dest[0] !='/') {
                 return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'">';
@@ -411,6 +461,22 @@ module.exports = function (grunt) {
         ]
       },
 
+      icon: {
+        expand: true,
+        dot: true,
+        timestamp: true,
+        cwd: '<%= config.app %>/static',
+        dest: '<%= config.dist %>',
+        src: [
+          'img/icon.png',
+          'img/coupon.png',
+          'img/coupons.png',
+          'img/coupons-c1.png',
+          'img/coupons2.png',
+          'img/sharepocket.jpg'
+        ]
+      },
+
       // @todo需要修改，自动笔变化图片
       templates: {
         expand: true,
@@ -481,6 +547,90 @@ module.exports = function (grunt) {
             cwd: '<%=config.dist%>',
             src: ['templates/**', '*.html', 'img/**', 'json/**', 'scripts/**', 'styles/**', 'header/*.html', 'footer/*.html','json/**'],
             dest: '<%=config.version%>'
+          }
+        ]
+      },
+
+      // hybrid:详情页
+      hybrid_detail: {
+        options: {
+          archive: '<%=config.publish%>/detail.<%=config.version%>.zip',
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%=config.dist%>',
+            src: [
+              'scripts/require.min.js',
+              'scripts/sf.h5.hybrid.base.js',
+              'scripts/sf.b2c.mall.h5.page.detail.js',
+              'scripts/sf.b2c.mall.h5.page.shoppingcart.js',
+              'img/**',
+              'styles/**',
+              'detail.html',
+              'shoppingcart.html'
+            ],
+            dest: 'detail'
+          }
+        ]
+      },
+
+      // center
+      hybrid_center: {
+        options: {
+          archive: '<%=config.publish%>/center.<%=config.version%>.zip',
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%=config.dist%>',
+            src: [
+              'scripts/require.min.js',
+              'scripts/sf.h5.hybrid.base.js',
+              // 'scripts/sf.b2c.mall.h5.page.center.js',
+              'scripts/sf.b2c.mall.h5.page.coupon.js',
+              'scripts/sf.b2c.mall.h5.page.luckymoneyshare.js',
+              'scripts/sf.b2c.mall.h5.page.luckymoneyaccept.js',
+              // 'scripts/sf.b2c.mall.h5.page.recaddrmanage.js',
+              'img/**',
+              'styles/**',
+              // 'center.html',
+              'coupon.html',
+              'luckymoneyaccept.html',
+              'luckymoneyshare.html',
+              // 'recaddrmanage.html'
+            ],
+            dest: 'center'
+          }
+        ]
+      },
+
+      // order
+      hybrid_order: {
+        options: {
+          archive: '<%=config.publish%>/order.<%=config.version%>.zip',
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%=config.dist%>',
+            src: [
+              'scripts/require.min.js',
+              'scripts/sf.h5.hybrid.base.js',
+              'scripts/sf.b2c.mall.h5.page.order.js',
+              'scripts/sf.b2c.mall.h5.page.gotopay.js',
+              'scripts/sf.b2c.mall.h5.page.paysuccess.js',
+              'scripts/sf.b2c.mall.h5.page.order.detail.js',
+              'scripts/sf.b2c.mall.h5.page.order.list.js',
+              'img/**',
+              'styles/**',
+              'order.html',
+              'gotopay.html',
+              'pay-success.html',
+              'orderdetail.html',
+              'orderlist.html'
+            ],
+            dest: 'order'
           }
         ]
       }
@@ -802,6 +952,7 @@ module.exports = function (grunt) {
       },
       paysuccess: {
         options: {
+          optimize:'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.paysuccess.js',
@@ -946,8 +1097,24 @@ module.exports = function (grunt) {
         }
       },
 
+      sso: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.sso.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.sso"],
+          insertRequire:  ['sf.b2c.mall.module.sso']
+        }
+      },
+
       coupon: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.coupon.js',
@@ -966,6 +1133,7 @@ module.exports = function (grunt) {
 
       luckymoneyshare: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.luckymoneyshare.js',
@@ -984,6 +1152,7 @@ module.exports = function (grunt) {
 
       luckymoneyaccept: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.luckymoneyaccept.js',
@@ -1262,6 +1431,45 @@ module.exports = function (grunt) {
     ]);
   });
 
+  grunt.registerTask('hybrid', function (module, version) {
+
+    var map = {
+      all: ['compress:hybrid_detail', 'compress:hybrid_order', 'compress:hybrid_center'],
+      detail: ['compress:hybrid_detail'],
+      order: ['compress:hybrid_order'],
+      center: ['compress:hybrid_center']
+    }
+
+    config.version = version;
+    config.hybrid = true;
+    config.target = 'prd';
+
+    var base = [
+      'clean:dist',
+      // 'wiredep',
+      'useminPrepare',
+      'concurrent:dist',
+      'autoprefixer',
+      'concat',
+      'requirejs',
+      'cssmin',
+      'uglify',
+      'copy:dist',
+      'copy:html',
+      // 'copy:image',
+      'copy:icon',
+      'copy:templates',
+      // 'copy:scripts',
+      'usemin',
+      // 'htmlmin',
+      // 'copy:styles',
+      'clean:publish'
+    ]
+
+    var array = base.concat(map[module] || []);
+    grunt.task.run(array);
+  });
+
 
   grunt.registerTask('build', function (target) {
     config.target = target;
@@ -1272,10 +1480,10 @@ module.exports = function (grunt) {
         'wiredep',
         'useminPrepare',
         'concurrent:dist',
-        // 'autoprefixer',
+        'autoprefixer',
         'concat',
         'requirejs',
-        // 'cssmin',
+        'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',
@@ -1304,10 +1512,10 @@ module.exports = function (grunt) {
         'wiredep',
         'useminPrepare',
         'concurrent:dist',
-        // 'autoprefixer',
+        'autoprefixer',
         'concat',
         'requirejs',
-        // 'cssmin',
+        'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',

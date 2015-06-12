@@ -1,6 +1,8 @@
 'use strict';
 
 define(
+  'sf.b2c.mall.page.orderlist',
+
   [
     'can',
     'zepto',
@@ -12,16 +14,19 @@ define(
     'sf.b2c.mall.order.orderlistcontent',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.business.config',
     'sf.env.switcher',
-    'sf.b2c.mall.business.config'
+    'sf.hybrid'
   ],
 
-  function(can, $, Fastclick, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage, SFNav, SFSwitcher, SFConfig) {
+  function(can, $, Fastclick, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage,
+    SFNav, SFConfig, SFSwitcher, SFHybrid) {
+
     SFFrameworkComm.register(3);
     Fastclick.attach(document.body);
     SFWeixin.shareIndex();
 
-    var orderList = can.Control.extend({
+    var SFOrderList = can.Control.extend({
 
       /**
        * [init 初始化]
@@ -63,5 +68,47 @@ define(
       }
     });
 
-    new orderList('#orderList');
+    // new orderList('#orderList');
+
+    // －－－－－－－－－－－－－－－－－－－－－－
+    // 启动分支逻辑
+    var switcher = new SFSwitcher();
+
+    switcher.register('web', function() {
+      new SFOrderList('#orderList');
+      new SFNav('.sf-b2c-mall-nav');
+    });
+
+    switcher.register('app', function() {
+      var app = {
+        initialize: function() {
+          this.bindEvents();
+        },
+
+        bindEvents: function() {
+          document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+
+        onDeviceReady: function() {
+          app.receivedEvent('deviceready');
+        },
+
+        receivedEvent: function(id) {
+
+          SFHybrid.sfnavigator.setLeftButton(function () {
+            SFHybrid.sfnavigator.popToIdentifier('maintab');
+          });
+
+          SFHybrid.setNetworkListener();
+          SFHybrid.isLogin().done(function () {
+            new SFOrderList('#orderList');
+          });
+        }
+      };
+
+      app.initialize();
+    });
+
+    switcher.go();
+    // －－－－－－－－－－－－－－－－－－－－－－
   });

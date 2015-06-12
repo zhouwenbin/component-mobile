@@ -139,12 +139,14 @@
             <ul class="goodslist">
                 {{#orderGoodsItemList}}
                 <li>
-                    <a href="/detail/{{itemId}}.html">
+                    <a href="http://m.sfht.com/detail/{{itemId}}.html">
                       <img src="{{sf-image imageUrl}}">
                     </a>
 
                     <div class="goodslist-c2">
-                      <a href="/detail/{{itemId}}.html"><h3 class="ellipsis2">{{goodsName}}</h3></a>
+                      <h3 class="ellipsis2">
+                        <a href="http://m.sfht.com/detail/{{itemId}}.html">{{goodsName}}</a>
+                      </h3>
                     </div>
 
                     <div class="goodslist-c1">
@@ -160,29 +162,6 @@
     <!--商品信息-->
 </section>
 
-{{#sf-status-show-case orderItem.orderStatus 'NEEDPAY'}}
-<!--立即购买-->
-<section class="nav" style="height: 0;">
-    <div class="nav-r1">
-        <div class="nav-c2">
-            <button class="btn btn-danger btn-big gotopay">立即付款</button>
-        </div>
-    </div>
-</section>
-<!--立即购买-->
-{{/sf-status-show-case}}
-
-{{#sf-status-show-case orderItem.orderStatus 'RECEIVED'}}
-<!--确认收货-->
-<section class="nav" style="height: 0;">
-    <div class="nav-r1">
-        <div class="nav-c2">
-            <button class="btn btn-success btn-big received">确认收货</button>
-        </div>
-    </div>
-</section>
-<!--确认收货-->
-{{/sf-show-paybtn}}
 
 {{#each orderItem.orderPackageItemList}}
 <section class="order logistics logistics-{{@index}}" style="display:none">
@@ -196,3 +175,28 @@
     </ul>
 </section>
 {{/each}}
+
+
+{{#sf-status-show-case orderItem.orderStatus 'NEEDPAY'}}
+<!--立即购买-->
+<section class="nav">
+    <div class="nav-r1">
+        <div class="nav-c2">
+            <button class="btn btn-danger btn-big gotopay">立即付款</button>
+        </div>
+    </div>
+</section>
+<!--立即购买-->
+{{/sf-status-show-case}}
+
+{{#sf-status-show-case orderItem.orderStatus 'RECEIVED'}}
+<!--确认收货-->
+<section class="nav">
+    <div class="nav-r1">
+        <div class="nav-c2">
+            <button class="btn btn-success btn-big received">确认收货</button>
+        </div>
+    </div>
+</section>
+<!--确认收货-->
+{{/sf-show-paybtn}}

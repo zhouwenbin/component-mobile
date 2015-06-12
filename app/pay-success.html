@@ -9,36 +9,17 @@
 	<link rel="stylesheet" href="static/css/style.css">
 	<!-- endbuild -->
 
+  <!-- build:js({app, tmp}) ../cordova.js-->
+  <script src="../cordova.js"></script>
+  <!-- endbuild -->
+
 </head>
 <body class="body1">
-    <div class="sf-b2c-mall-order-paysuccess">
+    <div class="sf-b2c-mall-order-paysuccess"></div>
 
-    </div>
-	<!--关注-->
-	<!-- <section class="attention">
-		<span class="icon icon12 center"></span>
-		<p>关注顺丰海淘服务号<br>随时随地了解订单信息</p>
-		<button class="btn btn-normal btn-radius center">点击关注</button>
-	</section> -->
-	<!--关注-->
 
 	<!--立即购买-->
-  <section class="nav">
-    <div class="nav-r1">
-      <div class="nav-c1 fl">
-        <a href="/index.html">
-          <span class="icon icon25"></span>
-          <div>首页</div>
-        </a>
-      </div>
-      <div class="nav-c1 fl">
-        <a href="/center.html">
-          <span class="icon icon26"></span>
-          <div>我的</div>
-        </a>
-      </div>
-    </div>
-  </section>
+  <article class="sf-nav"></article>
   <!--立即购买-->
 
   <div id="version" data-version="{version}"></div>
@@ -53,8 +34,12 @@
   <script src="bower_components/requirejs/require.js"></script>
   <!-- endbuild -->
 
-  <!-- build:js({app, tmp}) scripts/sf.h5.base.js-->
-  <script src="scripts/base/sf.h5.base.ver.1.0.build.1423449545244.js"></script>
+  <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+  <script src="/scripts/base/sf.h5.base.ver.1.0.2.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+  <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
   <!-- endbuild -->
 
   <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.paysuccess.js -->
@@ -64,5 +49,4 @@
   </script>
   <!-- endbuild -->
 
-	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1254533571%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 </html>

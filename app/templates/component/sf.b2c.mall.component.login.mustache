@@ -36,9 +36,11 @@
   </section>
 
 <section class="otherlogin">
-    <div class="line">
-      <span>或者</span>
-    </div>
+    {{#isNotWechatAndAlipay}}
+      <div class="line">
+        <span>或者</span>
+      </div>
+    {{/isNotWechatAndAlipay}}
     {{#isWeChat}}
         <button class="btn btn-soon btn-big weixinlogin">微信快捷登录</button>
     {{/isWeChat}}

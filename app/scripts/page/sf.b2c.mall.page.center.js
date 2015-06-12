@@ -11,9 +11,10 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.api.user.logout',
     'sf.weixin',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'text!template_center_content'
   ],
-  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin, SFConfig) {
+  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin, SFConfig, template_center_content) {
 
     Fastclick.attach(document.body);
 
@@ -58,7 +59,9 @@ define(
             }
 
 
-            var html = can.view('/templates/center/sf.b2c.mall.center.content.mustache', that.options);
+            // var html = can.view(template_center_content, that.options);
+            var renderFn = can.mustache(template_center_content);
+            var html = renderFn(that.options);
             that.element.html(html);
 
             $('.loadingDIV').hide();
@@ -89,6 +92,9 @@ define(
       },
 
       maskMail: function(str) {
+        if (!str) {
+          return "";
+        }
         return str.replace(/([^@]{3})[^@]*?(@[\s\S]*)/, "$1...$2")
       },
 

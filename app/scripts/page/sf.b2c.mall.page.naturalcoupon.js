@@ -8,9 +8,10 @@ define("sf.b2c.mall.page.naturalcoupon", [
     'sf.weixin',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.coupon.hasReceivedCp',
-    'sf.b2c.mall.api.coupon.receiveCoupon'
+    'sf.b2c.mall.api.coupon.receiveCoupon',
+    'text!template_natural_coupon'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFWeixin, SFConfig, SFHasReceivedCp, SFReceiveCoupon) {
+  function(can, $, Fastclick, SFFrameworkComm, SFWeixin, SFConfig, SFHasReceivedCp, SFReceiveCoupon, template_natural_coupon) {
 
     SFFrameworkComm.register(3);
 
@@ -103,7 +104,9 @@ define("sf.b2c.mall.page.naturalcoupon", [
 
       /** 渲染 */
       renderHtml: function(element, data) {
-        var html = can.view('templates/natural/sf.b2c.mall.natural.coupon.mustache', data);
+        // var html = can.view(template_natural_coupon, data);
+        var renderFn = can.mustache(template_natural_coupon);
+        var html = renderFn(data);
         element.html(html);
       }
     });

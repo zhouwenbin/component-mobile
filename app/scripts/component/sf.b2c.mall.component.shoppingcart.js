@@ -21,9 +21,12 @@ define(
     'sf.b2c.mall.widget.message',
     'text!template_order_shoppingcart',
     'sf.b2c.mall.api.shopcart.isShowCart',
+    'sf.env.switcher',
+    'sf.hybrid'
   ],
 
-  function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart, SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart) {
+  function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart,
+    SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
@@ -189,8 +192,9 @@ define(
         'sf-is-avil-promotion': function(list, options) {
           var info = list();
           var isAllow = false;
-          info.each(function(index, element) {
-            isAllow = isAllow || element.useRuleDesc
+
+          _.each(info, function(item){
+            isAllow = isAllow || item.useRuleDesc
           })
 
           if (isAllow) {
@@ -212,48 +216,83 @@ define(
       },
 
       init: function() {
-        this.controlCart();
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('app', function () {
+
+        });
+
+        switcher.register('web', _.bind(function(){
+          this.controlCart();
+        }, this));
+
+        switcher.go();
 
         this.render();
       },
 
       controlCart: function() {
         if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          var uinfo = $.fn.cookie('3_uinfo');
-          var arr = [];
-          if (uinfo) {
-            arr = uinfo.split(',');
-          }
+          this.getUserInfo(_.bind(function(uinfo){
 
-          var flag = arr[4];
+            var arr = [];
+            if (uinfo) {
+              arr = uinfo.split(',');
+            }
 
-          // 如果判断开关关闭，使用dom操作不显示购物车
-          if (typeof flag == 'undefined' || flag == '2') {
-            window.location.href = '/index.html';
-          } else if (flag == '0') {
-            // @todo 请求总开关进行判断
-            var isShowCart = new SFIsShowCart();
-            isShowCart
-              .sendRequest()
-              .done(function(data) {
-                if (data.value) {} else {
-                  window.location.href = '/index.html';
-                }
-              })
+            var flag = arr[4];
 
-          } else {
-            $(".mini-cart-container-parent").show();
-          }
+            // 如果判断开关关闭，使用dom操作不显示购物车
+            if (typeof flag == 'undefined' || flag == '2') {
+              window.location.href = 'http://m.sfht.com/index.html';
+            }else if (flag == '0') {
+              // 请求总开关进行判断
+              this.requestIsShowCart();
+
+            }else{
+              $(".mini-cart-container-parent").show();
+            }
+          }, this));
+
         } else {
-          var isShowCart = new SFIsShowCart();
-          isShowCart
-            .sendRequest()
-            .done(function(data) {
-              if (data.value) {} else {
-                window.location.href = '/index.html';
-              }
-            });
+          this.requestIsShowCart();
         }
+      },
+
+      getUserInfo: function (callback) {
+
+        var that = this;
+        var switcher = new SFSwitcher();
+
+        switcher.register('web', function () {
+          var uinfo = $.fn.cookie('3_uinfo');
+          callback.call(that, uinfo);
+        });
+
+        switcher.register('app', function () {
+          SFHybrid.getTokenInfo()
+            .done(function (data) {
+              callback.call(that, data && data.cookie);
+            })
+            .fail(function () {
+
+            });
+        });
+
+        switcher.go();
+
+      },
+
+      requestIsShowCart: function () {
+        var isShowCart = new SFIsShowCart();
+        isShowCart
+          .sendRequest()
+          .done(function(data) {
+            if (data.value) {} else {
+              window.location.href = 'http://m.sfht.com/index.html';
+            }
+          });
       },
 
       render: function() {
@@ -466,7 +505,7 @@ define(
           return false;
         }
 
-        window.location.href = '/order.html';
+        window.location.href = SFConfig.setting.link.order;
       },
 
       showAlert: function($element, good) {

@@ -14,8 +14,6 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.component.addreditor',
   'text!template_component_recaddrmanage'
-
-
 ], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter,
   AddressAdapter, SFMessage, SFConfig, SFAddressEditor, template_component_recaddrmanage) {
 

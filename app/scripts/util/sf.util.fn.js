@@ -1,7 +1,6 @@
 'use strict';
 
-define('sf.util',
-[
+define('sf.util', [
   'zepto',
   'can',
   'underscore',
@@ -26,31 +25,41 @@ define('sf.util',
 
     isMobile: {
       Android: function() {
-          return navigator.userAgent.match(/Android/i);
+        return navigator.userAgent.match(/Android/i);
       },
       BlackBerry: function() {
-          return navigator.userAgent.match(/BlackBerry/i);
+        return navigator.userAgent.match(/BlackBerry/i);
       },
       iOS: function() {
-          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
       },
       Opera: function() {
-          return navigator.userAgent.match(/Opera Mini/i);
+        return navigator.userAgent.match(/Opera Mini/i);
       },
       Windows: function() {
-          return navigator.userAgent.match(/IEMobile/i);
+        return navigator.userAgent.match(/IEMobile/i);
       },
-      Firefox: function () {
-          return (navigator.userAgent.indexOf("Firefox") > -1)
+      Firefox: function() {
+        return (navigator.userAgent.indexOf("Firefox") > -1)
       },
       WeChat: function() {
         return navigator.userAgent.match(/MicroMessenger/i);
       },
-      AlipayChat:function(){
+      AlipayChat: function() {
         return navigator.userAgent.match(/AlipayClient/i);
       },
+      APP: function() {
+        var hash = window.location.hash;
+        if (hash.indexOf('platform=android') > -1) {
+          return 'android';
+        } else if (hash.indexOf('platform=ios') > -1) {
+          return 'ios';
+        } else {
+          return false;
+        }
+      },
       any: function() {
-          return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows()) || this.Firefox();
+        return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows()) || this.Firefox();
       }
     },
 

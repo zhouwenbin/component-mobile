@@ -9,9 +9,10 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM'
+    'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM',
+    'text!template_receivedividents'
   ],
-  function(can, $, SFFrameworkComm, SFWeixin, SFMessage, SFLoading, SFConfig, SFGenerateSubjectUrlWidthSCM) {
+  function(can, $, SFFrameworkComm, SFWeixin, SFMessage, SFLoading, SFConfig, SFGenerateSubjectUrlWidthSCM, template_receivedividents) {
     SFFrameworkComm.register(3);
     SFWeixin.shareIndex();
 
@@ -60,7 +61,9 @@ define(
 
       },
       renderHtml: function() {
-        var html = can.view('templates/receivedividents/sf.b2c.mall.receivedividents.mustache', this.itemObj);
+        // var html = can.view(template_receivedividents, this.itemObj);
+        var renderFn = can.mustache(template_receivedividents);
+        var html = renderFn(this.itemObj);
         this.element.html(html);
         this.loading.hide();
       },

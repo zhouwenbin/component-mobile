@@ -15,10 +15,14 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.b2c.mall.api.payment.queryPtnAuthLink',
   'sf.helpers',
   'sf.util',
+  'sf.env.switcher',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config',
   'text!template_order_iteminfo'
-], function(text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFMessage, SFConfig, template_order_iteminfo) {
+], function(text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList,
+  SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher, SFMessage, SFConfig, template_order_iteminfo) {
+
+  can.route.ready();
 
   return can.Control.extend({
     itemObj: new can.Map({}),
@@ -38,6 +42,9 @@ define('sf.b2c.mall.order.iteminfo', [
      */
     init: function(element, options) {
       var params = can.deparam(window.location.search.substr(1));
+
+      params = _.extend(params, can.route.attr());
+
       this.itemObj.attr({
         itemid: params.itemid,
         amount: params.amount
@@ -270,11 +277,11 @@ define('sf.b2c.mall.order.iteminfo', [
       var that = this;
 
       //防止重复提交
-      if (element.hasClass("disable")) {
+      if (element.hasClass("btn-disable")) {
         return false;
       }
 
-      element.addClass("disable");
+      element.addClass("btn-disable");
 
       var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
       var isDetailInvalid = /[<>'"]/.test($.trim(selectAddr.detail));
@@ -366,9 +373,10 @@ define('sf.b2c.mall.order.iteminfo', [
               "showordersuccess": true
             });
 
-          // 转跳到微信授权支付
-          if (SFUtil.isMobile.WeChat()) {
+          var switcher = new SFSwitcher();
 
+          // 转跳到微信授权支付
+          switcher.register('wechat', function() {
             window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx90f1dcb866f3df60&redirect_uri=" + escape(url) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
 
             // var queryPtnAuthLink = new SFQueryPtnAuthLink({
@@ -384,9 +392,13 @@ define('sf.b2c.mall.order.iteminfo', [
             //   .fail(function(error) {
             //     console.error(error);
             //   })
-          } else {
+          });
+
+          switcher.register('web', function() {
             window.location.href = url;
-          }
+          });
+
+          switcher.go();
 
         })
         .fail(function(error) {
@@ -396,7 +408,7 @@ define('sf.b2c.mall.order.iteminfo', [
           //   'type': 'error'
           // });
 
-          var callback = function () {
+          var callback = function() {
             if (error == '4000404') {
               window.location.reload();
             }

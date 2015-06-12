@@ -26,7 +26,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     var PREFIX = 'http://img0.sfht.com';
     var DEFAULT_STATUS = '';
 
-    // can.route.ready();
+    can.route.ready();
 
     return can.Control.extend({
 
@@ -128,12 +128,17 @@ define('sf.b2c.mall.order.orderlistcontent', [
         'sf-package-status': OrderFn.helpers['sf-package-status']
       },
 
+      '{can.route} change': function() {
+        this.render();
+      },
+
       init: function() {
         this.render();
       },
 
       render: function() {
         var params = can.deparam(window.location.search.substr(1));
+        params = _.extend(params, can.route.attr());
 
         this.request({
           pageNum: params.pageNum || 1,
@@ -162,6 +167,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
       paint: function(data) {
         var params = can.deparam(window.location.search.substr(1));
+        params = _.extend(params, can.route.attr());
         var renderFn = can.view.mustache(template_order_orderlist);
 
         this.options.data = new can.Map(data);
@@ -272,7 +278,19 @@ define('sf.b2c.mall.order.orderlistcontent', [
         params.status = status;
 
         // window.location.search = '?' + $.param(params)
-        window.location = window.location.pathname + '?' + $.param(params)
+        // window.location = window.location.pathname + '?' + $.param(params)
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('web', function () {
+          window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
+        });
+
+        switcher.register('app', function () {
+          can.route.attr('status', status);
+        });
+
+        switcher.go();
 
         // return false;
       },
@@ -308,7 +326,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
           .done(function(data) {
             if (data.isSuccess) {
               // can.trigger(window, 'updateCart');
-              window.location.href = '/shoppingcart.html'
+              window.location.href = 'http://m.sfht.com/shoppingcart.html'
             }else{
 
               var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');

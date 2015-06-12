@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>顺丰海淘</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>顺丰海淘</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- endbuild -->
 
-	<!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
-	<link rel="stylesheet" href="static/css/style.css">
-	<!-- endbuild -->
-
+    <!-- build:js({app, tmp}) ../cordova.js-->
+    <script src="../cordova.js"></script>
+    <!-- endbuild -->
 </head>
+
 <body class="body1">
-	<!--订单-->
-	<section class="order">
-
-		<div class="sf-b2c-mall-order-selectReceiveAddress"></div>
-
+    <!--订单-->
+    <section class="order">
+        <div class="sf-b2c-mall-order-selectReceiveAddress"></div>
     </section>
-		<div class="sf-b2c-mall-order-itemInfo"></div>
-
-		<div class="sf-b2c-mall-order-addAdrArea"></div>
-
-		<div class="loadingDIV">
-		  <div class="mask">
-		    <div class="loading">
-		    	<i></i><i></i><i></i><i></i>
-		    </div>
-		  </div>
-		</div>
-
-	<!--订单-->
-
-	<!--立即购买-->
-    <div class="nav-r1" style="height:auto;">
-      <div class="nav-c1">
-        <a href="/index.html">
-          <span class="icon icon25"></span>
-          <div>首页</div>
-        </a>
-      </div>
-      <div class="nav-c1">
-        <a href="/center.html">
-          <span class="icon icon26"></span>
-          <div>我的</div>
-        </a>
-      </div>
+    <div class="sf-b2c-mall-order-itemInfo"></div>
+    <div class="sf-b2c-mall-order-addAdrArea"></div>
+    <div class="loadingDIV">
+        <div class="center">
+            <div class="loading9">
+                <i></i><i></i><i></i><i></i>
+            </div>
+        </div>
     </div>
+    <!--订单-->
 
+    <!--立即购买-->
+    <div class="sf-b2c-mall-nav"></div>
 
-  </section>
-  <!--立即购买-->
-
-  <div id="version" data-version="{version}"></div>
-
-	<!-- build:js(.) scripts/require.min.js -->
-	<script src="bower_components/requirejs/require.js"></script>
-	<!-- endbuild -->
-	<!-- build:js({app, tmp}) scripts/sf.h5.base.js-->
-	<script src="scripts/base/sf.h5.base.ver.1.0.build.1423449545244.js"></script>
-	<!-- endbuild -->
-	<!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.order.js -->
-	<script src="scripts/sf.b2c.mall.require.config.js"></script>
-	<script type="text/javascript">
-	require(['sf.b2c.mall.page.order']);
-	</script>
-	<!-- endbuild -->
-
-	 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/z_stat.php%3Fid%3D1254533571%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    <div id="version" data-version="{version}"></div>
+    <!-- build:js(.) scripts/require.min.js -->
+    <script src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+    <script src="scripts/base/sf.h5.base.ver.1.0.2.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+    <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.order.js -->
+    <script src="scripts/sf.b2c.mall.require.config.js"></script>
+    <script type="text/javascript">
+    require(['sf.b2c.mall.page.order']);
+    </script>
+    <!-- endbuild -->
 </body>
+
 </html>

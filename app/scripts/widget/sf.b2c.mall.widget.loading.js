@@ -6,10 +6,11 @@ define(
   [
     'zepto',
     'can',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'text!template_widget_loading'
   ],
 
-  function($, can, SFConfig) {
+  function($, can, SFConfig, template_widget_loading) {
     return can.Control.extend({
 
       init: function() {
@@ -17,7 +18,9 @@ define(
 
       render: function() {
         this.setup($('body'));
-        var html = can.view('templates/widget/sf.b2c.mall.widget.loading.mustache', {});
+        // var html = can.view(template_widget_loading, {});
+        var renderFn = can.mustache(template_widget_loading);
+        var html = renderFn({});
         $('body').append(html);
       },
 

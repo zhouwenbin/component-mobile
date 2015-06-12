@@ -7,9 +7,12 @@ define('sf.b2c.mall.component.addreditor', [
   'sf.b2c.mall.api.user.createRecAddress',
   'sf.b2c.mall.api.user.createReceiverInfo',
   'sf.b2c.mall.api.user.updateRecAddress',
+  'sf.b2c.mall.api.user.updateReceiverInfo',
   'sf.b2c.mall.business.config',
-  'sf.b2c.mall.widget.message'
-], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig, SFMessage) {
+  'sf.b2c.mall.widget.message',
+  'text!json_regions',
+  'text!template_component_addreditor'
+], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFUpdateReceiverInfo, SFConfig, SFMessage, json_regions, template_component_addreditor) {
 
   return can.Control.extend({
     init: function() {
@@ -20,15 +23,21 @@ define('sf.b2c.mall.component.addreditor', [
 
     request: function() {
       var that = this;
-      return can.ajax({url: '/json/sf.b2c.mall.regions.json'})
-        .done(_.bind(function(cities) {
-          this.adapter.regions = new RegionsAdapter({
-            cityList: cities
-          });
-        }, this))
-        .fail(function(error) {
+      var cities = JSON.parse(json_regions);
 
-        });
+      this.adapter.regions = new RegionsAdapter({
+          cityList: cities
+      });
+
+      // return can.ajax({url: '/json/sf.b2c.mall.regions.json'})
+      //   .done(_.bind(function(cities) {
+      //     this.adapter.regions = new RegionsAdapter({
+      //       cityList: cities
+      //     });
+      //   }, this))
+      //   .fail(function(error) {
+
+      //   });
     },
 
     /**
@@ -37,7 +46,8 @@ define('sf.b2c.mall.component.addreditor', [
      */
     render: function(data, tag, element) {
       this.setup(element);
-      var html = can.view('templates/component/sf.b2c.mall.component.addreditor.mustache', data);
+      var renderFn = can.mustache(template_component_addreditor);
+      var html = renderFn(data);
       element.html(html);
 
       this.supplement(tag);
@@ -131,7 +141,7 @@ define('sf.b2c.mall.component.addreditor', [
               cellphone: data.cellphone,
               recId: data.recId,
               recName: data.recName,
-              credtNum: data.credtNum,
+              credtNum: data.credtNum2,
               credtNum2: data.credtNum2
             },
             place: {
@@ -275,9 +285,16 @@ define('sf.b2c.mall.component.addreditor', [
     update: function(addr) {
       var that = this;
 
+      var that = this;
+      var person = {
+        recId: addr.recId,
+        recName: addr.receiverName,
+        type: "ID",
+        credtNum: addr.credtNum
+      };
+      var updateReceiverInfo = new SFUpdateReceiverInfo(person);
       var updateRecAddress = new SFUpdateRecAddress(addr);
-      updateRecAddress
-        .sendRequest()
+      can.when(updateReceiverInfo.sendRequest(), updateRecAddress.sendRequest())
         .done(function(data) {
 
           var message = new SFMessage(null, {
@@ -317,6 +334,8 @@ define('sf.b2c.mall.component.addreditor', [
       $('.input').blur();
 
       var addr = this.adapter.addr.input.attr();
+      addr.receiverName = addr.recName;
+      addr.receiverId = addr.credtNum2;
 
       var key;
       for (key in addr) {

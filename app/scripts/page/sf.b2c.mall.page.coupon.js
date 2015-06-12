@@ -9,9 +9,15 @@ define(
     'sf.helpers',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.coupon.getUserCouponList',
-    'sf.b2c.mall.api.coupon.receiveExCode'
+    'sf.b2c.mall.api.coupon.receiveExCode',
+    'text!template_center_coupon',
+    'sf.env.switcher',
+    'sf.hybrid',
+    'sf.b2c.mall.component.nav'
   ],
-  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode) {
+  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode,
+    template_center_coupon, SFSwitcher, SFHybrid, SFNav) {
+
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -55,7 +61,9 @@ define(
         can.when(that.initCoupons())
           .then(function() {
             that.itemObj.attr("totalCount", 1);
-            var html = can.view('templates/center/sf.b2c.mall.center.coupon.mustache', that.itemObj);
+            // var html = can.view(template_center_coupon, that.itemObj);
+            var renderFn = can.mustache(template_center_coupon);
+            var html = renderFn(that.itemObj);
             that.element.html(html);
           })
           .always(function() {
@@ -180,6 +188,44 @@ define(
       }
     });
 
-    new coupon('.sf-b2c-mall-coupon');
+    // new coupon('.sf-b2c-mall-coupon');
 
-  })
+    // －－－－－－－－－－－－－－－－－－－－－－
+    // 启动分支逻辑
+    var switcher = new SFSwitcher();
+
+    switcher.register('web', function() {
+      new coupon('.sf-b2c-mall-coupon');
+      new SFNav('.sf-b2c-mall-nav');
+    });
+
+    switcher.register('app', function() {
+      var app = {
+        initialize: function() {
+          this.bindEvents();
+        },
+
+        bindEvents: function() {
+          document.addEventListener('deviceready', this.onDeviceReady, false);
+        },
+
+        onDeviceReady: function() {
+          app.receivedEvent('deviceready');
+        },
+
+        receivedEvent: function(id) {
+
+          SFHybrid.setNetworkListener();
+          SFHybrid.isLogin().done(function () {
+            new coupon('.sf-b2c-mall-coupon');
+          });
+        }
+      };
+
+      app.initialize();
+    });
+
+    switcher.go();
+    // －－－－－－－－－－－－－－－－－－－－－－
+
+  });
