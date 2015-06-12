@@ -1222,6 +1222,51 @@ a[title="站长统计"] {
   font-size: 14px;
 }
 
+/*滑动*/
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.swipe-wrap > div {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+.swipe-dot {
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  font-size: 0;
+}
+
+.swipe-dot span {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  -webkit-border-radius: 7px;
+          border-radius: 7px;
+  background: rgba(0, 0, 0, 0.3);
+  margin: 0 7px;
+}
+
+.swipe-dot span.active {
+  background: #dc3334;
+}
+
+.swipe img {
+  width: 100%;
+}
+
 .swiper-container {
   width: 100%;
 }
