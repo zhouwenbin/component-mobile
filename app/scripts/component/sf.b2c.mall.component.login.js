@@ -60,6 +60,13 @@ define('sf.b2c.mall.component.login', [
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+        isNotWechatAndAlipay: function(options) {
+          if (!SFFn.isMobile.WeChat() && !SFFn.isMobile.AlipayChat()) {
+            return options.inverse(options.contexts || this);
+          } else {
+            return options.fn(options.contexts || this);
+          }
         }
       },
 
