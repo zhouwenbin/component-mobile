@@ -277,11 +277,11 @@ define('sf.b2c.mall.order.iteminfo', [
       var that = this;
 
       //防止重复提交
-      if (element.hasClass("disable")) {
+      if (element.hasClass("btn-disable")) {
         return false;
       }
 
-      element.addClass("disable");
+      element.addClass("btn-disable");
 
       var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
       var isDetailInvalid = /[<>'"]/.test($.trim(selectAddr.detail));
