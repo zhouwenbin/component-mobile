@@ -141,7 +141,7 @@ define('sf.b2c.mall.component.addreditor', [
               cellphone: data.cellphone,
               recId: data.recId,
               recName: data.recName,
-              credtNum: data.credtNum,
+              credtNum: data.credtNum2,
               credtNum2: data.credtNum2
             },
             place: {
@@ -290,7 +290,7 @@ define('sf.b2c.mall.component.addreditor', [
         recId: addr.recId,
         recName: addr.receiverName,
         type: "ID",
-        credtNum: addr.receiverId
+        credtNum: addr.credtNum
       };
       var updateReceiverInfo = new SFUpdateReceiverInfo(person);
       var updateRecAddress = new SFUpdateRecAddress(addr);
@@ -335,6 +335,7 @@ define('sf.b2c.mall.component.addreditor', [
 
       var addr = this.adapter.addr.input.attr();
       addr.receiverName = addr.recName;
+      addr.receiverId = addr.credtNum2;
 
       var key;
       for (key in addr) {
