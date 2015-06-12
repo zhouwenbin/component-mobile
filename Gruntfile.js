@@ -471,6 +471,20 @@ module.exports = function (grunt) {
           }
         ]
       },
+      testv2: {
+        options: {
+          archive: '<%=config.statics%>/target/<%=config.statics%>.zip',
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%=config.dist%>',
+            src: ['templates/**', '*.html', 'header/*.html', 'footer/*.html','json/**', 'scripts/**', 'styles/**', 'img/**'],
+            dest: 'ROOT'
+            // dest: 'statics.h5.<%=config.version%>'
+          }
+        ]
+      },
       test: {
         options: {
           archive: '<%=config.publish%>/statics.<%=config.target%>.<%=config.timestamp%>.tar'
@@ -1278,6 +1292,36 @@ module.exports = function (grunt) {
       grunt.fail.fatal('缺少环境参数!');
     }
   });
+
+  grunt.registerTask('test', function () {
+      config.target = 'prd';
+
+      grunt.task.run([
+        'clean:dist',
+        'wiredep',
+        'useminPrepare',
+        'concurrent:dist',
+        // 'autoprefixer',
+        'concat',
+        'requirejs',
+        // 'cssmin',
+        'uglify',
+        'copy:dist',
+        'copy:html',
+        'copy:image',
+        'copy:templates',
+        'usemin',
+        'htmlmin',
+        'copy:styles',
+        'clean:extra',
+        'clean:publish',
+        'clean:oss',
+        'clean:statics',
+        'compress:testv2'
+        // 'compress:oss',
+        // 'compress:statics'
+      ]);
+  })
 
   grunt.registerTask('release', function (version) {
     config.version = version;
