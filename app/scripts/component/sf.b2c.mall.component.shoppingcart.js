@@ -192,8 +192,9 @@ define(
         'sf-is-avil-promotion': function(list, options) {
           var info = list();
           var isAllow = false;
-          info.each(function(index, element) {
-            isAllow = isAllow || element.useRuleDesc
+
+          _.each(info, function(item){
+            isAllow = isAllow || item.useRuleDesc
           })
 
           if (isAllow) {
