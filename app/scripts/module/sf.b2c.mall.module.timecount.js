@@ -79,7 +79,6 @@ function(can, $,Fastclick, SFConfig, SFFrameworkComm) {
             clickEvent = setInterval(function(){
                 new  deadTime($("[data-cms-module='timeclient'][class='active']"));
             }, 1000);
-            $(timeCountModule).css("background", "red");
         } );
     });
 
