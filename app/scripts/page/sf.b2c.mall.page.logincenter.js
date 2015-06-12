@@ -72,10 +72,10 @@ define(
               store.set('csrfToken', loginData.csrfToken);
 
               // ?不懂
-              can.route.attr({
-                'tag': 'success',
-                'csrfToken': loginData.csrfToken
-              });
+              // can.route.attr({
+              //   'tag': 'success',
+              //   'csrfToken': loginData.csrfToken
+              // });
 
               window.location.href = redirectUrl || SFConfig.setting.link.index;
 
