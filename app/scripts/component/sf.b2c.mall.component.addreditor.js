@@ -7,11 +7,12 @@ define('sf.b2c.mall.component.addreditor', [
   'sf.b2c.mall.api.user.createRecAddress',
   'sf.b2c.mall.api.user.createReceiverInfo',
   'sf.b2c.mall.api.user.updateRecAddress',
+  'sf.b2c.mall.api.user.updateReceiverInfo',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.widget.message',
   'text!json_regions',
   'text!template_component_addreditor'
-], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFConfig, SFMessage, json_regions, template_component_addreditor) {
+], function(can, $, RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo, SFUpdateRecAddress, SFUpdateReceiverInfo, SFConfig, SFMessage, json_regions, template_component_addreditor) {
 
   return can.Control.extend({
     init: function() {
@@ -284,9 +285,16 @@ define('sf.b2c.mall.component.addreditor', [
     update: function(addr) {
       var that = this;
 
+      var that = this;
+      var person = {
+        recId: addr.recId,
+        recName: addr.receiverName,
+        type: "ID",
+        credtNum: addr.receiverId
+      };
+      var updateReceiverInfo = new SFUpdateReceiverInfo(person);
       var updateRecAddress = new SFUpdateRecAddress(addr);
-      updateRecAddress
-        .sendRequest()
+      can.when(updateReceiverInfo.sendRequest(), updateRecAddress.sendRequest())
         .done(function(data) {
 
           var message = new SFMessage(null, {
@@ -326,6 +334,7 @@ define('sf.b2c.mall.component.addreditor', [
       $('.input').blur();
 
       var addr = this.adapter.addr.input.attr();
+      addr.receiverName = addr.recName;
 
       var key;
       for (key in addr) {
