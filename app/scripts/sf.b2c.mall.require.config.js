@@ -146,6 +146,7 @@ requirejs.config({
     // 公共组件
     // 'zepto': 'scripts/vendor/zepto',
     'swipe': 'scripts/vendor/swipe',
+    'swiper': 'scripts/vendor/swiper',
     'jweixin': 'scripts/vendor/jweixin-1.0.0',
     'sf.weixin': 'scripts/util/sf.weixin',
     'sf.helpers': 'scripts/util/sf.helpers',
