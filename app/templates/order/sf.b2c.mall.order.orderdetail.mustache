@@ -162,6 +162,21 @@
     <!--商品信息-->
 </section>
 
+
+{{#each orderItem.orderPackageItemList}}
+<section class="order logistics logistics-{{@index}}" style="display:none">
+    <h2>物流跟踪</h2>
+    <ul>
+    {{#sf-reverse actionTraceItemList}}
+      {{#each group}}
+      <li><time>{{gmtHappened}}</time>{{status}}</li>
+      {{/each}}
+    {{/sf-reverse}}
+    </ul>
+</section>
+{{/each}}
+
+
 {{#sf-status-show-case orderItem.orderStatus 'NEEDPAY'}}
 <!--立即购买-->
 <section class="nav">
@@ -185,16 +200,3 @@
 </section>
 <!--确认收货-->
 {{/sf-show-paybtn}}
-
-{{#each orderItem.orderPackageItemList}}
-<section class="order logistics logistics-{{@index}}" style="display:none">
-    <h2>物流跟踪</h2>
-    <ul>
-    {{#sf-reverse actionTraceItemList}}
-      {{#each group}}
-      <li><time>{{gmtHappened}}</time>{{status}}</li>
-      {{/each}}
-    {{/sf-reverse}}
-    </ul>
-</section>
-{{/each}}
