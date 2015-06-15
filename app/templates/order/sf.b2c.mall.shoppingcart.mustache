@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div class="cart-c2">
-                    <div class="cart-num">x1</div>
-                    <div class="text-important">¥{{sf-selling-price canUseActivityPrice activityPrice price}}</div>
+                    <div class="cart-num">x{{quantity}}</div>
+                    <div class="text-important">¥{{sf.price perTotalPrice}}</div>
 
                     {{#sf-is-show-origin canUseActivityPrice activityPrice price}}
                     <del>¥{{sf.price price}}</del>
