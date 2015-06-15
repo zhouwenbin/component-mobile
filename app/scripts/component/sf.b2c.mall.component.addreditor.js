@@ -62,8 +62,11 @@ define('sf.b2c.mall.component.addreditor', [
         this.changeRegion();
       }
     },
-    "#addressSave click": function() {
-      this.addressSaveClick();
+    "#addressSave click": function(element, event) {
+      var result = this.addressSaveClick(element, event);
+      if (result === false) {
+        element.removeClass("btn-disable");
+      }
     },
     "#backToOrder click": function() {
       can.route.attr('tag', 'init');
@@ -234,7 +237,7 @@ define('sf.b2c.mall.component.addreditor', [
       this.element.empty();
     },
 
-    add: function(addr) {
+    add: function(addr, element) {
       var that = this;
 
       var person = {
@@ -259,6 +262,7 @@ define('sf.b2c.mall.component.addreditor', [
               'type': 'error'
             });
           }
+          element.removeClass("btn-disable");
           //def.reject(error);
         })
         .then(function(){
@@ -268,6 +272,7 @@ define('sf.b2c.mall.component.addreditor', [
         })
         .done(function(data) {
           that.onSuccess(data);
+          element.removeClass("btn-disable");
           return true;
         })
         .fail(function(error) {
@@ -278,11 +283,12 @@ define('sf.b2c.mall.component.addreditor', [
               'type': 'error'
             });
           }
+          element.removeClass("btn-disable");
           return false;
         });
     },
 
-    update: function(addr) {
+    update: function(addr, element) {
       var that = this;
 
       var that = this;
@@ -302,10 +308,12 @@ define('sf.b2c.mall.component.addreditor', [
             'type': 'success'
           });
 
+          element.removeClass("btn-disable");
+
           that.hide();
           that.onSuccess();
         })
-        .fail(function(error) {});
+        .fail(function(error) {element.removeClass("btn-disable");});
     },
 
     '#paddressSaveCancel click': function(element, event) {
@@ -327,6 +335,13 @@ define('sf.b2c.mall.component.addreditor', [
 
     addressSaveClick: function(element, event) {
       event && event.preventDefault();
+
+      //防止重复提交
+      if (element.hasClass("btn-disable")) {
+        return false;
+      }
+
+      element.addClass("btn-disable");
 
       $('.tel-hide').hide();
 
@@ -375,6 +390,7 @@ define('sf.b2c.mall.component.addreditor', [
           'tip': '由于海关发货需要实名制的信息，请您输入真实姓名。感谢您的配合!',
           'type': 'error'
         });
+
         return false;
       }
 
@@ -510,9 +526,9 @@ define('sf.b2c.mall.component.addreditor', [
       }
 
       if (addr.addrId) {
-        this.update(addr);
+        this.update(addr, element);
       } else {
-        var result = this.add(addr);
+        var result = this.add(addr, element);
         if (result) {
 
 
