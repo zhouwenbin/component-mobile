@@ -19,7 +19,9 @@
         {{#if isValid}}
         <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
-                <span class="icon icon49 select-item" style="margin: 0 15px;"></span>
+                <a href="javascript:void(0)" class="select-item">
+                    <span class="icon icon49" style="margin: 0 15px;"></span>
+                </a>
 
                 <a href="http://m.sfht.com/detail/{{itemId}}.html">
                     <img src="{{sf-show-img images}}" alt="">

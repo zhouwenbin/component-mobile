@@ -152,6 +152,7 @@ requirejs.config({
     'sf.helpers': 'scripts/util/sf.helpers',
     'sf.util': 'scripts/util/sf.util.fn',
     'sf.env.switcher': 'scripts/util/sf.env.switcher',
+    'animate': 'scripts/vendor/fx',
 
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
