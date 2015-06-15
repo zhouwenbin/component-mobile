@@ -1085,6 +1085,7 @@ module.exports = function (grunt) {
 
       617: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl:        './app/',
           out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.617.js',

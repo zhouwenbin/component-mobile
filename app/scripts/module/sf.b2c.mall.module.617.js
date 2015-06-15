@@ -59,5 +59,5 @@ define(
 			}
 		})
 
-		new modActivity();
+		new modActivity('body');
 	});
