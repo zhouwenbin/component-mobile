@@ -7,8 +7,7 @@
   position: relative;
   margin-top: -1px;
 }
-.box .icon8,
-.box .icon49{
+.box .icon8{
   position: absolute;
   left: 12px;
   top:50%;
@@ -17,9 +16,6 @@
 
 .box.active .icon8{
   background-position: -253px -167px;
-}
-.box.active .icon49{
-  background-position: -255px -249px;
 }
 .box-link{
   display: block;
