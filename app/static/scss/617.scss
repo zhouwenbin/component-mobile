@@ -1,31 +1,27 @@
 ﻿@import 'utils/variables';
 @import 'utils/placeholders';
-
+img{
+	width: 100%;
+}
 body{
 	background: #fff;
 }
 .m617-banner{
 	margin-bottom: 5px;
 }
-.m617-banner img{
-	width: 100%;
-}
+
 .m617-r1{
 	margin-bottom: 5px;
 	display: flex;
 }
 
-.m617-r1 img{
-	width: 100%;
-}
+
 .m617-time{
 	font-family: arial;
 	margin-bottom: 4px;
 	position: relative;
 }
-.m617-time img{
-	width: 100%;
-}
+
 .m617-time span{
 	margin-right: 11px;
 	letter-spacing: 6px;
@@ -110,7 +106,4 @@ body{
 	width: 48%;
 	margin-left: 4px;
 	margin-bottom: 20px;
-}
-.m617-tab-b img{
-	width: 100%;
 }
