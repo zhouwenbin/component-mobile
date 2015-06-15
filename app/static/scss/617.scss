@@ -3,46 +3,53 @@
 
 body{
 	background: #fff;
-	width: 640px;
 }
 .m617-banner{
-	height: 494px;
-	background: url(#{$bg-url}617/617_01.jpg) no-repeat center top ;
 	margin-bottom: 5px;
+}
+.m617-banner img{
+	width: 100%;
 }
 .m617-r1{
 	margin-bottom: 5px;
+	display: flex;
+}
+
+.m617-r1 img{
+	width: 100%;
 }
 .m617-time{
-	padding-top: 102px;
-	padding-left: 285px;
-	box-sizing:border-box;
-	height: 140px;
-	background: url(#{$bg-url}617/617_04.jpg) no-repeat center top;
 	font-family: arial;
-	font-size: 24px;
 	margin-bottom: 4px;
+	position: relative;
+}
+.m617-time img{
+	width: 100%;
 }
 .m617-time span{
-	margin-right: 23px;
+	margin-right: 8px;
 	letter-spacing: 10px;
+}
+.m617-time-r1{
+	position: absolute;
+	left: 43.75%;
+	top: 71.42%;
 }
 
 .m617-tab-h{
 	float: left;
-	width: 48px;
-	padding-top: 12px;
-	padding-left: 5px;
+	width: 24px;
+	padding-top: 6px;
+	padding-left: 2px;
 }
 .m617-tab-h li{
-	width: 27px;
+	width: 22px;
 	padding-top: 8px;
 	box-sizing:border-box;
 	height: 79px;
 	background: #f63c3f;
 	text-align: center;
 	border-radius: 4px;
-	font-size: 17px;
 	margin-bottom: 40px;
 	line-height: 20px;
 	position: relative;
@@ -100,7 +107,7 @@ body{
 }
 .m617-tab-b li{
 	display: inline-block;
-	width: 275px;
+	width: 137px;
 	margin-left: 4px;
 	margin-bottom: 20px;
 }
