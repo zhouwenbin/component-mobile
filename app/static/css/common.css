@@ -1281,36 +1281,16 @@ a[title="站长统计"] {
 
 .swiper-time {
   position: absolute;
-  top: 20px;
-  left: 189px;
-  font-family: arial;
+  top: 64px;
+  left: 161px;
+  font-family: Impact;
+  font-size: 13px;
 }
 
 .swiper-time span {
-  margin-right: 12px;
-  letter-spacing: 5px;
+  margin-right: 10px;
 }
 
-@media screen and (min-width: 375px) {
-  .swiper-time {
-    top: 24px;
-    left: 223px;
-  }
-
-  .swiper-time span {
-    margin-right: 17px;
-  }
-}
-@media screen and (min-width: 414px) {
-  .swiper-time {
-    top: 28px;
-    left: 246px;
-  }
-
-  .swiper-time span {
-    margin-right: 22px;
-  }
-}
 .logout.center {
   -webkit-border-radius: 10px;
           border-radius: 10px;
