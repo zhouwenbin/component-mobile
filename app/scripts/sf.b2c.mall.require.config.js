@@ -1,5 +1,5 @@
-requirejs.config({ 
-    baseUrl: ' /',
+requirejs.config({
+        baseUrl: ' /',
         paths: {
             // ----------------------------------------
             // Pre Define
@@ -12,6 +12,7 @@ requirejs.config({
             'underscore.string': 'http://www.google.com/bower_components/underscore.string/dist/underscore.string.min',
             'store': 'http://www.google.com/bower_components/store/dist/store',
             'text': '../bower_components/text/text',
+            'sf.hybrid': 'scripts/util/sf.hybrid',
 
 
             'sf.b2c.mall.api.security.type': 'http://www.google.com/app/scripts/framework/sf.b2c.mall.api.security.type',
@@ -145,6 +146,7 @@ requirejs.config({
             // 公共组件
             // 'zepto': 'scripts/vendor/zepto',
             'swipe': 'scripts/vendor/swipe',
+            'swiper': 'scripts/vendor/swiper',
             'jweixin': 'scripts/vendor/jweixin-1.0.0',
             'sf.weixin': 'scripts/util/sf.weixin',
             'sf.helpers': 'scripts/util/sf.helpers',
@@ -163,10 +165,9 @@ requirejs.config({
             'sf.b2c.mall.module.time': 'scripts/module/sf.b2c.mall.module.time',
             'sf.b2c.mall.module.header': 'scripts/module/sf.b2c.mall.module.header',
             'sf.b2c.mall.module.tab': 'scripts/module/sf.b2c.mall.module.tab',
+            'sf.b2c.mall.module.sso': 'scripts/module/sf.b2c.mall.module.sso',
             'sf.b2c.mall.module.timecount': 'scripts/module/sf.b2c.mall.module.timecount',
             'sf.b2c.mall.module.617': 'scripts/module/sf.b2c.mall.module.617',
-
-
 
             // 首页
             'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
@@ -262,22 +263,55 @@ requirejs.config({
             'sf.b2c.mall.page.taiwantravellercard': 'scripts/page/sf.b2c.mall.page.taiwantravellercard',
             'sf.b2c.mall.page.taiwantravellerfoodeat': 'scripts/page/sf.b2c.mall.page.taiwantravellerfoodeat',
 
+            'sf.b2c.mall.api.user.singleSignOn': 'scripts/api/sf.b2c.mall.api.user.singleSignOn',
+
             // 原滋原味
             'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon',
 
-            'sf.b2c.mall.page.shoppingcart': 'scripts/page/sf.b2c.mall.page.shoppingcart',
-            'sf.b2c.mall.component.shoppingcart': 'scripts/component/sf.b2c.mall.component.shoppingcart',
-            'template_order_shoppingcart': 'templates/order/sf.b2c.mall.shoppingcart.mustache',
-            'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
-            'template_order_selectrecaddr': 'templates/order/sf.b2c.mall.order.selectrecaddr.mustache',
-            'template_order_orderlist': 'templates/order/sf.b2c.mall.order.orderlist.mustache',
-            'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
-            'template_order_orderdetail': 'templates/order/sf.b2c.mall.order.orderdetail.mustache',
-            'template_order_iteminfo': 'templates/order/sf.b2c.mall.order.iteminfo.mustache',
             'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
             'sf.b2c.mall.api.shopcart.isShowCart': 'scripts/api/sf.b2c.mall.api.shopcart.isShowCart',
+            'sf.b2c.mall.page.shoppingcart': 'scripts/page/sf.b2c.mall.page.shoppingcart',
+            'sf.b2c.mall.component.shoppingcart': 'scripts/component/sf.b2c.mall.component.shoppingcart',
+
+            'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
+            'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
             'template_product_detailcontent': 'templates/product/sf.b2c.mall.product.detailcontent.mustache',
+            'json_regions': 'json/sf.b2c.mall.regions.json',
+
+            'template_order_shoppingcart': 'templates/order/sf.b2c.mall.shoppingcart.mustache',
+            'template_order_selectrecaddr': 'templates/order/sf.b2c.mall.order.selectrecaddr.mustache',
+            'template_order_orderlist': 'templates/order/sf.b2c.mall.order.orderlist.mustache',
+            'template_order_orderdetail': 'templates/order/sf.b2c.mall.order.orderdetail.mustache',
+            'template_order_iteminfo': 'templates/order/sf.b2c.mall.order.iteminfo.mustache',
+            'template_order_gotopay': 'templates/order/sf.b2c.mall.order.gotopay.mustache',
+            'template_order_alipayframe': 'templates/order/sf.b2c.mall.order.alipayframe.mustache',
+            'template_order_paysuccess': 'templates/order/sf.b2c.mall.order.paysuccess.mustache',
+
+            'template_center_content': 'templates/center/sf.b2c.mall.center.content.mustache',
+            'template_center_coupon': 'templates/center/sf.b2c.mall.center.coupon.mustache',
+
+            'template_component_addreditor': 'templates/component/sf.b2c.mall.component.addreditor.mustache',
+            'template_component_login': 'templates/component/sf.b2c.mall.component.login.mustache',
             'template_component_recaddrmanage': 'templates/component/sf.b2c.mall.component.recaddrmanage.mustache',
+            'template_component_register_fillinfo': 'templates/component/sf.b2c.mall.component.register.fillinfo.mustache',
+            'template_component_setpassword': 'templates/component/sf.b2c.mall.component.setpassword.mustache',
+
+            'template_luckymoney_users': 'templates/luckymoney/sf.b2c.mall.luckymoney.users.mustache',
+            'template_luckymoney_accept': 'templates/luckymoney/sf.b2c.mall.luckymoney.accept.mustache',
+            'template_luckymoney_share': 'templates/luckymoney/sf.b2c.mall.luckymoney.share.mustache',
+
+            'template_natural_coupon': 'templates/natural/sf.b2c.mall.natural.coupon.mustache',
+
+            'template_receivedividents': 'templates/receivedividents/sf.b2c.mall.receivedividents.mustache',
+
+            'template_searchwarrior_share': 'templates/searchwarrior/sf.b2c.mall.searchwarrior.share.mustache',
+
+            'template_taiwantraveller_getcard': 'templates/taiwantraveller/sf.b2c.mall.taiwantraveller.getcard.mustache',
+            'template_taiwantraveller_foodeat': 'templates/taiwantraveller/sf.b2c.mall.taiwantraveller.foodeat.mustache',
+            'template_taiwantraveller_getgift': 'templates/taiwantraveller/sf.b2c.mall.taiwantraveller.getgift.mustache',
+
+            'template_widget_loading': 'templates/widget/sf.b2c.mall.widget.loading.mustache',
+            'template_widget_message': 'templates/widget/sf.b2c.mall.widget.message.mustache',
 
             // 520
             'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
