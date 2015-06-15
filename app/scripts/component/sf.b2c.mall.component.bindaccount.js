@@ -325,10 +325,10 @@ define(
             //     });
             //   }
             // }
-            if (newUser) {
-              that.receiveCoupon(redirectUrl);
-            }
-
+            // if (newUser) {
+            //   that.receiveCoupon(redirectUrl);
+            // }
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
             // receivePro
             //   .sendRequest()
             //   .done(function(proInfo) {
