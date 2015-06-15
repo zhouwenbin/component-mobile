@@ -382,7 +382,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
               // can.route.attr({tag: 'init', target: 'empty'});
             }else{
-
+              can.route.attr({tag: 'back', target: 'empty'});
               var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
