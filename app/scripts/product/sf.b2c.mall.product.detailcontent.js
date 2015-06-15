@@ -357,7 +357,12 @@ define('sf.b2c.mall.product.detailcontent', [
             .done(function(data) {
               // @description 将返回数字显示在头部导航栏
               // 需要跳动的效果
-              that.element.find('.mini-cart-num').text(data.value);
+              that.element.find('.mini-cart-num').text(data.value)
+              that.element.find('.mini-cart-num').addClass('animated bounce');
+
+              setTimeout(function() {
+                that.element.find('.mini-cart-num').removeClass('animated bounce');
+              }, 500);
             })
             .fail(function(data) {
               // 更新mini cart失败，不做任何显示
@@ -371,11 +376,19 @@ define('sf.b2c.mall.product.detailcontent', [
         },
 
         'gotobuy': function(data) {
-          $('#secondstep').show();
+          if ($('#secondstep').length > 0) {
+            $('#secondstep').show();
+          }else{
+            can.route.attr('tag', 'init');
+          }
         },
 
         'back': function (data) {
-          $('#secondstep').hide();
+          if ($('#secondstep').length > 0) {
+            $('#secondstep').hide();
+          }else{
+            can.route.attr('tag', 'init');
+          }
         }
       },
 
