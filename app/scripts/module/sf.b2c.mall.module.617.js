@@ -46,17 +46,17 @@ define(
 			},
 
 			'.m617-banner click': function(element, event) {
+				event && event.preventDefault();
 				window.open("http://m.sfht.com/617gl.html");
 			},
 
 			'.m617-tab-h li click': function(element, event) {
+				event && event.preventDefault();
 				$(element).addClass('active').siblings().removeClass('active');
 				var index = $('.m617-tab-h li').index($(element));
 				$('.m617-tab-b').eq(index).addClass('active').siblings().removeClass('active');
 				return false;
-			},
-
-
+			}
 		})
 
 		new modActivity();
