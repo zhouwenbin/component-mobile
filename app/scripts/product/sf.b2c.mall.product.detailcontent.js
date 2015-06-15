@@ -343,7 +343,7 @@ define('sf.b2c.mall.product.detailcontent', [
                 zIndex:1000,
                 // display: 'none'
                 visibility:'hidden'
-              }, 3000, 'ease-out');
+              }, 2000, 'ease-out');
 
 
 
