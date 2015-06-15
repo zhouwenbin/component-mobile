@@ -4,9 +4,10 @@ define('sf.weixin', [
   'zepto',
   'can',
   'jweixin',
+  'sf.util',
   'sf.b2c.mall.api.user.getWeChatJsApiSig'
 
-], function($, can, jweixin, SFGetWeChatJsApiSig) {
+], function($, can, jweixin, SFUtil, SFGetWeChatJsApiSig) {
 
   var createNonceStr = function() {
     return Math.random().toString(36).substr(2, 15);
@@ -65,10 +66,13 @@ define('sf.weixin', [
     /** [shareIndex 分享首页] */
     shareIndex: function() {
 
-      // 定义微信分享的数据
-      jweixin.ready(function() {
+      if (SFUtil.isMobile.WeChat()) {
         //进行微信设置
         configWeixin();
+      }
+
+      // 定义微信分享的数据
+      jweixin.ready(function() {
 
         jweixin.onMenuShareTimeline({
           title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
@@ -124,10 +128,14 @@ define('sf.weixin', [
     shareDetail: function(title, desc, link, imgUrl) {
       var that = this;
 
+      if (SFUtil.isMobile.WeChat()) {
+        //进行微信设置
+        configWeixin();
+      }
+
       // 定义微信分享的数据
       jweixin.ready(function() {
         //进行微信设置
-        configWeixin();
 
         jweixin.onMenuShareTimeline({
           title: title,
@@ -195,11 +203,13 @@ define('sf.weixin', [
       */
       var shareUrl = "http://m.sfht.com/luckymoneyaccept.html?id=" + id;
 
+      if (SFUtil.isMobile.WeChat()) {
+        //进行微信设置
+        configWeixin();
+      }
 
       // 定义微信分享的数据
       jweixin.ready(function() {
-        //进行微信设置
-        configWeixin();
 
         jweixin.onMenuShareTimeline({
           title: title,
@@ -258,10 +268,13 @@ define('sf.weixin', [
       var title = "顺丰海淘-原汁原味频道开业送百元礼包，海外商户直供！";
       var desc = "顺丰海淘-原汁原味频道开业送百元礼包，海外商户直供！";
 
-      // 定义微信分享的数据
-      jweixin.ready(function() {
+      if (SFUtil.isMobile.WeChat()) {
         //进行微信设置
         configWeixin();
+      }
+
+      // 定义微信分享的数据
+      jweixin.ready(function() {
         jweixin.onMenuShareTimeline({
           title: title,
           desc: desc,
