@@ -1078,7 +1078,8 @@ a[title="站长统计"] {
   margin-top: -1px;
 }
 
-.box .icon8 {
+.box .icon8,
+.box .icon49 {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -1089,6 +1090,10 @@ a[title="站长统计"] {
 
 .box.active .icon8 {
   background-position: -253px -167px;
+}
+
+.box.active .icon49 {
+  background-position: -255px -249px;
 }
 
 .box-link {
@@ -3163,6 +3168,11 @@ a[title="站长统计"] {
 .coupons-btn {
   margin: 10px 10px 0;
   width: auto;
+  color: #ff5b54;
+}
+
+.coupons-btn:visited {
+  color: #ff5b54;
 }
 
 .coupons-none {
