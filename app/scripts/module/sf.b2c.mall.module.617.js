@@ -45,7 +45,27 @@ define(
 					$('.m617-tab-b').eq(5).addClass('active').siblings().removeClass('active');
 				}
 			},
+			//导航条
 
+			'#fixed-nav li click': function(element, event) {
+				event && event.preventDefault();
+				var nav1 = $('#h5buying_1_1').position().top;
+				var nav2 = $('#h5buying_1_2').position().top;
+				var nav3 = $('#h5buying_1_9').position().top;
+				var nav4 = $('#h5buying_1_7').position().top;
+				var nav5 = 0;
+				var heightMap = {
+					0: nav1,
+					1: nav2,
+					2: nav3,
+					3: nav4,
+					4: nav5
+				};
+				var index = $('#fixed-nav li').index($(element));
+				$("body").animate({
+					scrollTop: heightMap[index]
+				}, 1000);
+			},
 			'.m617-banner click': function(element, event) {
 				event && event.preventDefault();
 				window.open("http://m.sfht.com/617gl.html");
@@ -58,6 +78,7 @@ define(
 				$('.m617-tab-b').eq(index).addClass('active').siblings().removeClass('active');
 				return false;
 			}
+
 		})
 
 		new modActivity('body');
