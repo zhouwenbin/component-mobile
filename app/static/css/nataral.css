@@ -1,186 +1,148 @@
-.nataral-index {
-  padding: 0 0 10px 0;
-}
-
-.nataral-index img {
-  width: 100%;
-}
-
-.nataral-index > ul > li {
-  border-bottom: 1px solid #E5E5E5;
-  margin-bottom: 20px;
+.nataral-nav ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid #dcdcdc;
   background: #fff;
 }
 
-.nataral-inner {
-  padding: 20px;
-}
-
-.nataral-index h2 {
-  margin-bottom: 13px;
+.nataral-nav li {
+  width: 51px;
+  height: 51px;
+  text-align: center;
+  background: #eb87bb;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   font-size: 16px;
+  position: relative;
 }
 
-.nataral-index .justify {
-  width: 4em;
-  vertical-align: top;
-  height: 20px;
+.nataral-nav li:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
 }
 
-.nataral-label {
-  margin-right: 10px;
-  color: #a78567;
-}
-
-.nataral-index li li {
-  font-size: 14px;
-  line-height: 20px;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.nataral-index-r1 {
-  margin-top: 19px;
-}
-
-.nataral-index-r1c1 {
-  color: #999;
-  font-size: 14px;
-}
-
-.nataral-index-r1c2 {
-  padding: 0 14px;
-  line-height: 20px;
-  background: #ffcc00;
-  color: #663300;
-}
-
-.nataral-video {
-  margin: 10px 0;
+.nataral-nav li.active:after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-left: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
   background: #fff;
-  border-bottom: 1px solid #E5E5E5;
+  left: 50%;
+  bottom: -18px;
+  margin-left: -6px;
 }
 
-.nataral-video-b {
-  padding: 20px;
+.nataral-nav li a {
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.nataral-video video,
-.nataral-video img {
-  width: 100%;
+.nataral-nav li:nth-child(2) {
+  background: #ff5b54;
 }
 
-.nataral-video h2 {
-  font-size: 16px;
-  margin: 10px 0;
+.nataral-nav li:nth-child(3) {
+  background: #72bbdb;
 }
 
-.nataral-video p {
-  font-size: 14px;
-  line-height: 20px;
-  color: #666;
-  margin-bottom: 20px;
+.nataral-nav li span {
+  font-family: Apple Chancery;
+  font-size: 17px;
 }
 
-.nataral-video-r1 a {
-  color: #0066cc;
-  font-size: 14px;
-}
-
-.nataral-list {
-  margin: 10px;
-}
-
-.nataral-list ul {
-  overflow: hidden;
-}
-
-.nataral-list li {
-  width: 48.33%;
-  border: 1px solid #E5E5E5;
+.nataral-product {
   background: #fff;
-}
-
-.nataral-list li:nth-child(odd) {
-  float: left;
-}
-
-.nataral-list li:nth-child(even) {
-  float: right;
-}
-
-.nataral-list img {
-  width: 100%;
-}
-
-.nataral-list-b {
-  padding: 10px;
-}
-
-.nataral-list h2 {
-  font-size: 14px;
-  line-height: 18px;
   margin-bottom: 10px;
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  margin-top: -1px;
 }
 
-.nataral-list .text-important {
-  font-size: 15px;
+.nataral-product ul {
+  border-top: 1px solid #e4e4e4;
 }
 
-.nataral-detail {
-  padding: 10px;
-  background: #fff;
+.nataral-product li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e4e4e4;
 }
 
-.nataral-detail .swipe {
-  margin-bottom: 10px;
-}
-
-.nataral-detail h1 {
-  font-size: 14px;
-  line-height: 20px;
-  margin-bottom: 10px;
-}
-
-.nataral-detail-r1 {
-  margin-bottom: 20px;
-}
-
-.nataral-detail-r1 .text-important {
-  font-size: 18px;
-  margin-right: 5px;
-}
-
-.nataral-detail-r2 {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-.nataral-detail h2 {
-  font-size: 15px;
-  background: #f9f9f9;
-  height: 35px;
-  line-height: 35px;
-  padding-left: 30px;
-}
-
-.nataral-detail ul {
-  padding: 10px 30px;
-  border-bottom: 1px solid #eee;
-}
-
-.nataral-detail ul:last-child {
+.nataral-product li:last-child {
   border: none;
 }
 
-.nataral-detail li {
-  font-size: 14px;
-  line-height: 24px;
+.nataral-product img {
+  width: 75px;
+  height: 75px;
+  border: 1px solid #f7f7f7;
 }
 
-.nataral-detail .justify {
-  vertical-align: top;
-  width: 4em;
-  height: 14px;
+.nataral-product-c2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding-left: 15px;
+  padding-right: 12px;
+}
+
+.nataral-product-c2 h3 {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: normal;
+  margin-bottom: 12px;
+}
+
+.nataral-product-c2 .text-important {
+  margin-right: 8px;
+}
+
+.nataral-product-more {
+  padding: 0 10px 20px;
+}
+
+.nataral-h2 {
+  font-size: 15px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  margin-left: 10px;
+}
+
+.nataral-h2:before {
+  content: '';
+  display: inline-block;
+  margin-right: 5px;
+  width: 3px;
+  height: 12px;
+  background: #ff5b54;
+}
+
+.carnival {
+  background: #fff;
+  border-top: 1px solid #e4e4e4;
+  margin-bottom: 10px;
 }
