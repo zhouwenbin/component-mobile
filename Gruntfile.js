@@ -1068,7 +1068,7 @@ module.exports = function (grunt) {
           insertRequire:  ['sf.b2c.mall.module.time']
         }
       },
-      
+
       timecount: {
         options: {
           preserveLicenseComments: false,
@@ -1097,7 +1097,7 @@ module.exports = function (grunt) {
           insertRequire:  ['sf.b2c.mall.module.617']
         }
       },
-      
+
       header: {
         options: {
           optimize: 'none',
@@ -1493,13 +1493,13 @@ module.exports = function (grunt) {
     if (config.target) {
       grunt.task.run([
         'clean:dist',
-        'wiredep',
+        // 'wiredep',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'requirejs',
-        'cssmin',
+        // 'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',
@@ -1525,13 +1525,13 @@ module.exports = function (grunt) {
 
       grunt.task.run([
         'clean:dist',
-        'wiredep',
+        // 'wiredep',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'requirejs',
-        'cssmin',
+        // 'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',
