@@ -176,11 +176,10 @@ define(
         switcher.register('app', function () {
           SFHybrid.pay(that.options.orderid, that.getAppPayType())
             .done(function () {
-              alert(1);
               SFHybrid.toast.dismiss();
               window.location.href = SFConfig.setting.link.paysuccess + '?' + $.param({orderid: that.options.orderid});
             })
-            .fail(function (errorInfo) {alert(errorInfo);
+            .fail(function (errorInfo) {
               SFHybrid.toast.dismiss();
 
               var defaultMsg = '订单支付失败！';
