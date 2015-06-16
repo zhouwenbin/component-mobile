@@ -62,9 +62,7 @@ define(
 					4: nav5
 				};
 				var index = $('#fixed-nav li').index($(element));
-				$("body").animate({
-					scrollTop: heightMap[index]
-				}, 1000);
+				$("body,html").scrollTop(heightMap[index]);
 			},
 			'.m617-banner click': function(element, event) {
 				event && event.preventDefault();
