@@ -176,7 +176,12 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     dispatch: function(params) {
       if (params.packageNo || params.packageNo == '0') {
         this.element.find('.orderdetail').hide();
-        this.element.find('.logistics-' + params.packageNo).show().scrollTop();
+
+        var that = this;
+        setTimeout(function(){
+          that.element.find('.logistics-' + params.packageNo).show().scrollTop();
+        }, 0);
+
       } else {
         this.element.find('.orderdetail').show();
         this.element.find('.logistics').hide();
