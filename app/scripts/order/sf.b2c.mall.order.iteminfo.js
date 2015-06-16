@@ -45,6 +45,10 @@ define('sf.b2c.mall.order.iteminfo', [
 
       params = _.extend(params, can.route.attr());
 
+      if (navigator.userAgent.match(/AlipayClient/i)) {
+        $('#alipaytips').show();
+        $('#alltips').hide();
+      }
       this.itemObj.attr({
         itemid: params.itemid,
         amount: params.amount
