@@ -35,3 +35,23 @@
 .swipe img{
   width: 100%;
 }
+.swiper-container {
+    width: 100%;
+}  
+.swiper-container img{
+    width: 100%;
+}  
+.swiper-pagination-bullet-active{
+  background: #df3c3a;
+}
+
+.swiper-time{
+  position: absolute;
+  top: 64px;
+  left: 161px;
+  font-family: Impact;
+  font-size: 13px;
+}
+.swiper-time span{
+  margin-right: 10px;
+}
