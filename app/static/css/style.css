@@ -1284,105 +1284,6 @@ a[title="站长统计"] {
   background: #df3c3a;
 }
 
-.loading9 i {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  background: #ff5954;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  position: absolute;
-}
-
-.loading9 i:nth-child(1) {
-  -webkit-transform: translate(-40px, 0);
-      -ms-transform: translate(-40px, 0);
-          transform: translate(-40px, 0);
-  -webkit-animation: loading9-ani1 1.5s linear infinite;
-          animation: loading9-ani1 1.5s linear infinite;
-}
-
-.loading9 i:nth-child(2) {
-  background: #00a8ce;
-  -webkit-transform: translate(40px, 0);
-      -ms-transform: translate(40px, 0);
-          transform: translate(40px, 0);
-  -webkit-animation: loading9-ani2 1.5s linear infinite;
-          animation: loading9-ani2 1.5s linear infinite;
-}
-
-@-webkit-keyframes loading9-ani1 {
-  25% {
-    z-index: 2;
-  }
-  50% {
-    -webkit-transform: translate(50px, 0) scale(1);
-            transform: translate(50px, 0) scale(1);
-  }
-  75% {
-    -webkit-transform: translate(0, 0) scale(0.75);
-            transform: translate(0, 0) scale(0.75);
-  }
-  100% {
-    -webkit-transform: translate(-50px, 0) scale(1);
-            transform: translate(-50px, 0) scale(1);
-  }
-}
-
-@keyframes loading9-ani1 {
-  25% {
-    z-index: 2;
-  }
-  50% {
-    -webkit-transform: translate(50px, 0) scale(1);
-            transform: translate(50px, 0) scale(1);
-  }
-  75% {
-    -webkit-transform: translate(0, 0) scale(0.75);
-            transform: translate(0, 0) scale(0.75);
-  }
-  100% {
-    -webkit-transform: translate(-50px, 0) scale(1);
-            transform: translate(-50px, 0) scale(1);
-  }
-}
-@-webkit-keyframes loading9-ani2 {
-  25% {
-    -webkit-transform: translate(0, 0) scale(0.75);
-            transform: translate(0, 0) scale(0.75);
-  }
-  50% {
-    -webkit-transform: translate(-50px, 0) scale(1);
-            transform: translate(-50px, 0) scale(1);
-  }
-  75% {
-    z-index: 2;
-  }
-  100% {
-    -webkit-transform: translate(50px, 0) scale(1);
-            transform: translate(50px, 0) scale(1);
-  }
-}
-@keyframes loading9-ani2 {
-  25% {
-    -webkit-transform: translate(0, 0) scale(0.75);
-            transform: translate(0, 0) scale(0.75);
-  }
-  50% {
-    -webkit-transform: translate(-50px, 0) scale(1);
-            transform: translate(-50px, 0) scale(1);
-  }
-  75% {
-    z-index: 2;
-  }
-  100% {
-    -webkit-transform: translate(50px, 0) scale(1);
-            transform: translate(50px, 0) scale(1);
-  }
-}
-
-/*.logout.center {
-=======
 .swiper-time {
   position: absolute;
   top: 64px;
@@ -1396,10 +1297,9 @@ a[title="站长统计"] {
 }
 
 .logout.center {
->>>>>>> zhouwenbin
   -webkit-border-radius: 10px;
           border-radius: 10px;
-  padding: 33px 45px;
+  padding: 33px 60px;
 }
 
 .loading9 i {
@@ -1498,7 +1398,7 @@ a[title="站长统计"] {
     -webkit-transform: translate(50px, 0) scale(1);
             transform: translate(50px, 0) scale(1);
   }
-}*/
+}
 /*tab*/
 .tab-h {
   height: 44px;
@@ -1809,8 +1709,7 @@ a[title="站长统计"] {
 }
 
 .dot-error {
-  padding: 0 4px;
-  width: auto;
+  width: 18px;
   height: 18px;
   line-height: 18px;
   text-align: center;
@@ -3108,15 +3007,8 @@ a[title="站长统计"] {
 }
 
 .login-r1 a {
-  text-decoration: underline;
-}
-
-.login-r1 .fl {
-  color: #DC3334;
-}
-
-.login-r1 .fr {
   color: #888888;
+  text-decoration: underline;
 }
 
 .login-r2 {
@@ -3165,32 +3057,6 @@ a[title="站长统计"] {
 }
 
 .login .btn {
-  font-size: 18px;
-  font-weight: bold;
-  height: 44px;
-  line-height: 44px;
-}
-
-.otherlogin {
-  margin: 15px 13px;
-}
-.otherlogin .line {
-  border-top: 1px solid #e3d3da;
-  border-bottom: 1px solid #fff;
-  margin: 20px 0;
-  position: relative;
-}
-.otherlogin .line span {
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  left: 50%;
-  background-color: #f0eff5;
-  padding: 0px 24px;
-  color: #888888;
-}
-.otherlogin .btn {
   font-size: 18px;
   font-weight: bold;
   height: 44px;
