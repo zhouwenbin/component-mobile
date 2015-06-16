@@ -17,6 +17,7 @@ define(
 				//如果是支付宝服务窗，不展示领券模块
 				if (navigator.userAgent.match(/AlipayClient/i)) {
 					$('.m617-r1').hide();
+					$('#alipayenter').show();
 				}
 				//根据当前时间自动切换时间轴
 				var time = new Date();
