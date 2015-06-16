@@ -52,8 +52,7 @@ define(
         this.options.data.attr("showordersuccess", params.showordersuccess);
 
         // 如果是在微信环境和APP下 显示微信支付和支付宝，其他时候只展示支付宝
-        // if (SFUtil.isMobile.WeChat() || SFUtil.isMobile.APP()) {
-        if (SFUtil.isMobile.WeChat()) {
+        if (SFUtil.isMobile.WeChat() || (SFUtil.isMobile.APP() && SFHybrid.getInfo.getAppInfo() != '1.0.0')) {
           this.options.data.attr("showWeixinPay", true);
         }
 
@@ -177,10 +176,11 @@ define(
         switcher.register('app', function () {
           SFHybrid.pay(that.options.orderid, that.getAppPayType())
             .done(function () {
+              alert(1);
               SFHybrid.toast.dismiss();
               window.location.href = SFConfig.setting.link.paysuccess + '?' + $.param({orderid: that.options.orderid});
             })
-            .fail(function (errorInfo) {
+            .fail(function (errorInfo) {alert(errorInfo);
               SFHybrid.toast.dismiss();
 
               var defaultMsg = '订单支付失败！';
