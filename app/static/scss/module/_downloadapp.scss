@@ -1,0 +1,40 @@
+.downloadapp{
+	position: relative;
+	height: 65px;
+	
+}
+.downloadapp-r1{
+	height: 65px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	background: #FF5B54;
+	padding: 0 11px;
+	z-index: 999;
+}
+.downloadapp-logo{
+	width: 205px;
+	height: 46px;
+	background: url(#{$bg-url}downloadapp-logo.png) no-repeat;
+	background-size: 205px 46px;
+}
+.downloadapp-close{
+	width: 16px;
+	height: 16px;
+	background: url(#{$bg-url}downloadapp-close.png) no-repeat;
+	background-size: 16px;
+	text-indent: -999em;
+	position: absolute;
+	left: 4px;
+	top: 4px;
+}
+.downloadapp .btn{
+	height: 35px;
+	line-height: 35px;
+	flex:1;
+	margin-left: 20px;
+}
