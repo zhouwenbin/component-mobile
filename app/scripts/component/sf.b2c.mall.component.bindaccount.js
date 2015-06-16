@@ -307,7 +307,6 @@ define(
             store.set('csrfToken', data.csrfToken);
             store.remove('tempToken');
 
-
             var params = can.deparam(window.location.search.substr(1));
             var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
