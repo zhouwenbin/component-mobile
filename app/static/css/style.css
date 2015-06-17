@@ -978,6 +978,12 @@ a[title="站长统计"] {
   background-position: -261px -343px;
 }
 
+.icon61 {
+  width: 18px;
+  height: 14px;
+  background-position: -261px -361px;
+}
+
 /*text*/
 .text-error,
 .text-important {
@@ -1740,7 +1746,6 @@ a[title="站长统计"] {
 .goods-r1 {
   margin-bottom: 20px;
   position: relative;
-  padding: 0 20px;
 }
 
 .goods-r1 .label, .goods-r1 .label-error,
@@ -1782,6 +1787,16 @@ a[title="站长统计"] {
   font-size: 15px;
 }
 
+.goods-price2 {
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0 10px;
+  line-height: 20px;
+}
+
 .goods del {
   color: rgba(0, 0, 0, 0.5);
 }
@@ -1816,6 +1831,10 @@ a[title="站长统计"] {
 .goods .mask {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.goods .icon20 {
+  z-index: 999;
 }
 
 /*商品详情*/
