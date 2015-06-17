@@ -15,10 +15,16 @@ define(
 		var modActivity = can.Control.extend({
 			init: function() {
 				//如果是支付宝服务窗，不展示领券模块
-				if (navigator.userAgent.match(/AlipayClient/i)) {
-					$('.m617-r1').hide();
-					$('#alipayenter').show();
-				}
+				// if (navigator.userAgent.match(/AlipayClient/i)) {
+					// $('.m617-r1').hide();
+					// $('#alipayenter').show();
+				// }
+
+				// @author Michael.Lee
+				// @note 逻辑修改 全部打开
+				$('.m617-r1').show();
+				$('#alipayenter').show();
+
 				//根据当前时间自动切换时间轴
 				var time = new Date();
 				var day = time.getDate(); //获取当前几号
