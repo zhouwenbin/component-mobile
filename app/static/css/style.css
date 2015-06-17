@@ -420,14 +420,15 @@ a[title="站长统计"] {
 }
 
 .footer-r1 li {
-  padding: 4px 6px;
+  padding: 0 10px;
   font-size: 12px;
   float: left;
-  text-align: left;
+  text-align: center;
 }
 
 .footer-r1 li .icon {
-  margin-right: 3px;
+  display: block;
+  margin: 0 auto 4px;
 }
 
 .footer-r1 h2 {
@@ -436,6 +437,8 @@ a[title="站长统计"] {
 
 .footer-r1 li:last-child {
   border-left: 1px solid #e5e5e5;
+  padding-left: 12px;
+  margin-left: 2px;
 }
 
 .footer-r2 {
@@ -951,6 +954,30 @@ a[title="站长统计"] {
   background-position: -186px -282px;
 }
 
+.icon56 {
+  width: 27px;
+  height: 30px;
+  background-position: -287px -159px;
+}
+
+.icon57 {
+  width: 28px;
+  height: 30px;
+  background-position: -287px -195px;
+}
+
+.icon58 {
+  width: 28px;
+  height: 30px;
+  background-position: -287px -229px;
+}
+
+.icon59 {
+  width: 29px;
+  height: 29px;
+  background-position: -287px -264px;
+}
+
 /*text*/
 .text-error,
 .text-important {
@@ -1051,7 +1078,8 @@ a[title="站长统计"] {
   margin-top: -1px;
 }
 
-.box .icon8 {
+.box .icon8,
+.box .icon49 {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -1062,6 +1090,10 @@ a[title="站长统计"] {
 
 .box.active .icon8 {
   background-position: -253px -167px;
+}
+
+.box.active .icon49 {
+  background-position: -255px -249px;
 }
 
 .box-link {
@@ -1240,14 +1272,45 @@ a[title="站长统计"] {
   width: 100%;
 }
 
+.swiper-container {
+  width: 100%;
+}
+
+.swiper-container img {
+  width: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  background: #df3c3a;
+}
+
+.swiper-time {
+  position: absolute;
+  top: 64px;
+  left: 161px;
+  font-family: Impact;
+  font-size: 13px;
+}
+
+.swiper-time span {
+  margin-right: 10px;
+}
+
+.logout.center {
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  padding: 33px 60px;
+}
+
 .loading9 i {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
   background: #ff5954;
   -webkit-border-radius: 50%;
           border-radius: 50%;
   position: absolute;
+  margin-top: -15px;
 }
 
 .loading9 i:nth-child(1) {
@@ -1336,87 +1399,6 @@ a[title="站长统计"] {
             transform: translate(50px, 0) scale(1);
   }
 }
-
-/*.logout.center {
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
-  padding: 33px 45px;
-}
-
-.loading9 {
-  z-index: 999;
-}
-
-.loading9 i {
-  width: 12px;
-  height: 12px;
-  display: inline-block;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  background: #ffffff;
-}
-
-.loading9 i:first-child {
-  -webkit-animation: loading9-ani2 0.6s linear infinite;
-          animation: loading9-ani2 0.6s linear infinite;
-  opacity: 0;
-  -webkit-transform: translate(-100%);
-      -ms-transform: translate(-100%);
-          transform: translate(-100%);
-}
-
-.loading9 i:nth-child(2),
-.loading9 i:nth-child(3) {
-  -webkit-animation: loading9-ani3 0.6s linear infinite;
-          animation: loading9-ani3 0.6s linear infinite;
-}
-
-.loading9 i:last-child {
-  -webkit-animation: loading9-ani1 0.6s linear infinite;
-          animation: loading9-ani1 0.6s linear infinite;
-}
-
-@-webkit-keyframes loading9-ani1 {
-  100% {
-    -webkit-transform: translate(200%);
-            transform: translate(200%);
-    opacity: 0;
-  }
-}
-
-@keyframes loading9-ani1 {
-  100% {
-    -webkit-transform: translate(200%);
-            transform: translate(200%);
-    opacity: 0;
-  }
-}
-@-webkit-keyframes loading9-ani2 {
-  100% {
-    -webkit-transform: translate(100%);
-            transform: translate(100%);
-    opacity: 1;
-  }
-}
-@keyframes loading9-ani2 {
-  100% {
-    -webkit-transform: translate(100%);
-            transform: translate(100%);
-    opacity: 1;
-  }
-}
-@-webkit-keyframes loading9-ani3 {
-  100% {
-    -webkit-transform: translate(100%);
-            transform: translate(100%);
-  }
-}
-@keyframes loading9-ani3 {
-  100% {
-    -webkit-transform: translate(100%);
-            transform: translate(100%);
-  }
-}*/
 /*tab*/
 .tab-h {
   height: 44px;
@@ -1727,8 +1709,7 @@ a[title="站长统计"] {
 }
 
 .dot-error {
-  padding: 0 4px;
-  width: auto;
+  width: 18px;
   height: 18px;
   line-height: 18px;
   text-align: center;
@@ -3026,15 +3007,8 @@ a[title="站长统计"] {
 }
 
 .login-r1 a {
-  text-decoration: underline;
-}
-
-.login-r1 .fl {
-  color: #DC3334;
-}
-
-.login-r1 .fr {
   color: #888888;
+  text-decoration: underline;
 }
 
 .login-r2 {
@@ -3083,32 +3057,6 @@ a[title="站长统计"] {
 }
 
 .login .btn {
-  font-size: 18px;
-  font-weight: bold;
-  height: 44px;
-  line-height: 44px;
-}
-
-.otherlogin {
-  margin: 15px 13px;
-}
-.otherlogin .line {
-  border-top: 1px solid #e3d3da;
-  border-bottom: 1px solid #fff;
-  margin: 20px 0;
-  position: relative;
-}
-.otherlogin .line span {
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  left: 50%;
-  background-color: #f0eff5;
-  padding: 0px 24px;
-  color: #888888;
-}
-.otherlogin .btn {
   font-size: 18px;
   font-weight: bold;
   height: 44px;
@@ -3220,6 +3168,11 @@ a[title="站长统计"] {
 .coupons-btn {
   margin: 10px 10px 0;
   width: auto;
+  color: #ff5b54;
+}
+
+.coupons-btn:visited {
+  color: #ff5b54;
 }
 
 .coupons-none {
@@ -4350,11 +4303,29 @@ a[title="站长统计"] {
   left: 0;
   bottom: 58px;
   z-index: 999;
+  -webkit-transform: translate(0, 150%);
+      -ms-transform: translate(0, 150%);
+          transform: translate(0, 150%);
+  -webkit-animation: detail-cart 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+          animation: detail-cart 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
 }
 .detail-cart .detail-cart-error {
   padding: 0px 0px 10px 14px;
 }
 
+@-webkit-keyframes detail-cart {
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@keyframes detail-cart {
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
 .detail-cart-r {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4399,12 +4370,13 @@ a[title="站长统计"] {
   margin-right: 10px;
 }
 
-.detail-cart img {
+.detail-cart-c2 {
   width: 110px;
   height: 110px;
   border: 1px solid #ccc;
   margin-top: -20px;
   margin-right: 16px;
+  position: relative;
 }
 
 .detail-cart h2 {
@@ -4425,6 +4397,17 @@ a[title="站长统计"] {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.detail-cart img {
+  width: 110px;
+  height: 110px;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  -webkit-transition: 0.5s -webkit-transform ease-in-out,0.5s left linear,0.5s top ease-out,0.1s visibility 0.5s linear;
+          transition: 0.5s transform ease-in-out,0.5s left linear,0.5s top ease-out,0.1s visibility 0.5s linear;
 }
 
 .goodslist > li {
@@ -4509,4 +4492,62 @@ a[title="站长统计"] {
 
 .goodslist h3 {
   font-weight: normal;
+}
+
+.downloadapp {
+  position: relative;
+  height: 65px;
+}
+
+.downloadapp-r1 {
+  height: 65px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #FF5B54;
+  padding: 0 11px;
+  z-index: 999;
+}
+
+.downloadapp-logo {
+  width: 205px;
+  height: 46px;
+  background: url(../img/downloadapp-logo.png) no-repeat;
+  -webkit-background-size: 205px 46px;
+          background-size: 205px 46px;
+}
+
+.downloadapp-close {
+  width: 16px;
+  height: 16px;
+  background: url(../img/downloadapp-close.png) no-repeat;
+  -webkit-background-size: 16px 16px;
+          background-size: 16px;
+  text-indent: -999em;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+
+.downloadapp .btn {
+  height: 35px;
+  line-height: 35px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 10px;
 }

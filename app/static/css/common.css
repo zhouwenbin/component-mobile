@@ -7,7 +7,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   outline: 0;
   font-size: inherit;
   vertical-align: baseline;
-  /*background: transparent;*/
+  background: transparent;
 }
 
 body {
@@ -420,14 +420,15 @@ a[title="站长统计"] {
 }
 
 .footer-r1 li {
-  padding: 4px 6px;
+  padding: 0 10px;
   font-size: 12px;
   float: left;
-  text-align: left;
+  text-align: center;
 }
 
 .footer-r1 li .icon {
-  margin-right: 3px;
+  display: block;
+  margin: 0 auto 4px;
 }
 
 .footer-r1 h2 {
@@ -436,6 +437,8 @@ a[title="站长统计"] {
 
 .footer-r1 li:last-child {
   border-left: 1px solid #e5e5e5;
+  padding-left: 12px;
+  margin-left: 2px;
 }
 
 .footer-r2 {
@@ -951,6 +954,30 @@ a[title="站长统计"] {
   background-position: -186px -282px;
 }
 
+.icon56 {
+  width: 27px;
+  height: 30px;
+  background-position: -287px -159px;
+}
+
+.icon57 {
+  width: 28px;
+  height: 30px;
+  background-position: -287px -195px;
+}
+
+.icon58 {
+  width: 28px;
+  height: 30px;
+  background-position: -287px -229px;
+}
+
+.icon59 {
+  width: 29px;
+  height: 29px;
+  background-position: -287px -264px;
+}
+
 /*text*/
 .text-error,
 .text-important {
@@ -1051,7 +1078,8 @@ a[title="站长统计"] {
   margin-top: -1px;
 }
 
-.box .icon8 {
+.box .icon8,
+.box .icon49 {
   position: absolute;
   left: 12px;
   top: 50%;
@@ -1062,6 +1090,10 @@ a[title="站长统计"] {
 
 .box.active .icon8 {
   background-position: -253px -167px;
+}
+
+.box.active .icon49 {
+  background-position: -255px -249px;
 }
 
 .box-link {
@@ -1240,14 +1272,45 @@ a[title="站长统计"] {
   width: 100%;
 }
 
+.swiper-container {
+  width: 100%;
+}
+
+.swiper-container img {
+  width: 100%;
+}
+
+.swiper-pagination-bullet-active {
+  background: #df3c3a;
+}
+
+.swiper-time {
+  position: absolute;
+  top: 64px;
+  left: 161px;
+  font-family: Impact;
+  font-size: 13px;
+}
+
+.swiper-time span {
+  margin-right: 10px;
+}
+
+.logout.center {
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  padding: 33px 60px;
+}
+
 .loading9 i {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   display: inline-block;
   background: #ff5954;
   -webkit-border-radius: 50%;
           border-radius: 50%;
   position: absolute;
+  margin-top: -15px;
 }
 
 .loading9 i:nth-child(1) {
@@ -1336,87 +1399,6 @@ a[title="站长统计"] {
             transform: translate(50px, 0) scale(1);
   }
 }
-
-/*.logout.center {
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
-  padding: 33px 35px;
-}*/
-
-/*.loading9 {
-  z-index: 999;
-}
-
-.loading9 i {
-  width: 12px;
-  height: 12px;
-  display: inline-block;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  background: #ffffff;
-}
-
-.loading9 i:first-child {
-  -webkit-animation: loading9-ani2 0.6s linear infinite;
-          animation: loading9-ani2 0.6s linear infinite;
-  opacity: 0;
-  -webkit-transform: translate(-100%);
-      -ms-transform: translate(-100%);
-          transform: translate(-100%);
-}
-
-.loading9 i:nth-child(2),
-.loading9 i:nth-child(3) {
-  -webkit-animation: loading9-ani3 0.6s linear infinite;
-          animation: loading9-ani3 0.6s linear infinite;
-}
-
-.loading9 i:last-child {
-  -webkit-animation: loading9-ani1 0.6s linear infinite;
-          animation: loading9-ani1 0.6s linear infinite;
-}
-
-@-webkit-keyframes loading9-ani1 {
-  100% {
-    -webkit-transform: translate(200%);
-            transform: translate(200%);
-    opacity: 0;
-  }
-}
-
-@keyframes loading9-ani1 {
-  100% {
-    -webkit-transform: translate(200%);
-            transform: translate(200%);
-    opacity: 0;
-  }
-}
-@-webkit-keyframes loading9-ani2 {
-  100% {
-    -webkit-transform: translate(100%);
-            transform: translate(100%);
-    opacity: 1;
-  }
-}
-@keyframes loading9-ani2 {
-  100% {
-    -webkit-transform: translate(100%);
-            transform: translate(100%);
-    opacity: 1;
-  }
-}
-@-webkit-keyframes loading9-ani3 {
-  100% {
-    -webkit-transform: translate(100%);
-            transform: translate(100%);
-  }
-}
-@keyframes loading9-ani3 {
-  100% {
-    -webkit-transform: translate(100%);
-            transform: translate(100%);
-  }
-}*/
 /*tab*/
 .tab-h {
   height: 44px;
@@ -1727,8 +1709,7 @@ a[title="站长统计"] {
 }
 
 .dot-error {
-  padding: 0 4px;
-  width: auto;
+  width: 18px;
   height: 18px;
   line-height: 18px;
   text-align: center;

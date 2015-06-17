@@ -1,6 +1,227 @@
 @import 'utils/variables';
+.nataral-nav{
+	
+}
+.nataral-nav ul{
+	display: flex;
+	justify-content:space-between;
+	padding: 12px 20px;
+	border-bottom: 1px solid #dcdcdc;
+	background: #fff;
+}
 
-@import 'module/nataral-index';
-@import 'module/nataral-video';
-@import 'module/nataral-list';
-@import 'module/nataral-detail';
+.nataral-nav li{
+	width: 51px;
+	height: 51px;
+	text-align: center;
+	background: #eb87bb;
+	border-radius: 50%;
+	font-size: 16px;
+	position: relative;
+}
+.nataral-nav li:before{
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+.nataral-nav li.active:after{
+	content: '';
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	transform:rotate(45deg);
+	border-left: 1px solid #dcdcdc;
+	border-top: 1px solid #dcdcdc;
+	background: #fff;
+	left:50%;
+	bottom:-18px;
+	margin-left: -6px;
+}
+
+.nataral-nav li a{
+	color: #fff;
+	display: inline-block;
+	vertical-align: middle;
+}
+.nataral-nav li:nth-child(2){
+	background: #ff5b54;
+}
+.nataral-nav li:nth-child(3){
+	background: #72bbdb;
+}
+.nataral-nav li span{
+	font-family: Apple Chancery;
+	font-size: 17px;
+}
+
+.nataral-product{
+	background: #fff;
+	margin-bottom: 10px;
+	border-top: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	margin-top: -1px;
+}
+.nataral-product ul{
+	border-top: 1px solid #e4e4e4;
+}
+.nataral-product li{
+	display: flex;
+	align-items:center;
+	margin: 0 10px;
+	padding: 10px 0;
+	border-bottom: 1px solid #e4e4e4;
+}
+.nataral-product li:last-child{
+	border: none;
+}
+.nataral-product img{
+	width: 75px;
+	height: 75px;
+	border: 1px solid #f7f7f7;
+}
+.nataral-product-c2{
+	flex:1;
+	padding-left: 15px;
+	padding-right: 12px;
+}
+.nataral-product-c2 h3{
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: normal;
+	margin-bottom: 12px;
+}
+.nataral-product-c2 .text-important{
+	margin-right: 8px;
+}
+.nataral-product-more{
+	padding: 0 10px 20px;
+}
+.nataral-h2{
+	font-size: 15px;
+	padding-bottom: 10px;
+	padding-top: 20px;
+	margin-left: 10px;
+}
+.nataral-h2:before{
+	content: '';
+	display: inline-block;
+	margin-right: 5px;
+	width: 3px;
+	height: 12px;
+	background: #ff5b54;
+}
+.carnival{
+	background: #fff;
+	border-top:1px solid #e4e4e4;
+	margin-bottom: 10px;
+}
+.nataral-tab ul{
+	display: flex;
+	border-bottom: 1px solid #e5e5e5;
+	justify-content:space-between;
+	background: #f9f9f9;
+}
+.nataral-tab li{	
+	text-align: center;
+	height: 43px;
+	line-height: 43px;
+	font-size: 14px;
+	width: 80px;
+}
+.nataral-tab li:after{
+	content: '';
+	display: inline-block;
+	vertical-align: 3px;
+	width: 6px;
+	height: 6px;
+	border-left: 1px solid #bdbdbd;
+	border-bottom: 1px solid #bdbdbd;
+	transform:rotate(-45deg);
+	margin-left: 6px;
+}
+.nataral-tab li.active{
+	border-bottom: 2px solid #ff5b54;
+}
+.nataral-tab li.active:after{
+	border-color: #ff5b54;
+}
+.nataral-tab li.active a{
+	color: #ff5b54;
+}
+.nataral-classify-h{
+	background: #f0f0f0;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	display: flex;
+	justify-content:space-between;
+	align-items: center;
+}
+.nataral-classify-h a{
+	text-indent: -999em;
+	display: block;
+	width: 12px;
+	height: 1px;
+	position: relative;
+}
+.nataral-classify-btn:before,
+.nataral-classify-btn:after{
+	content: '';
+	width: 12px;
+	height: 1px;
+	background: #999;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition:all 0.5s;
+}
+.nataral-classify.active .nataral-classify-btn:before{
+	transform:rotate(270deg);
+}
+.nataral-classify.active .nataral-classify-btn:after{
+	transform:rotate(360deg);
+}
+.nataral-classify.active .nataral-classify-b{
+	display: none;
+}
+.nataral-classify-b{
+	background: #fff;
+}
+.nataral-classify-b ul{
+	padding-top: 19px;
+}
+.nataral-classify-b li{
+	display: inline-block;
+	width: 25%;
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 0;
+}
+.nataral-classify-b li.active img{
+	border-color: #ff5b54;
+}
+.nataral-classify-b li.active h3{
+	display: inline-block;
+	background: #ff5b54;
+	color: #fff;
+	
+	border-radius: 16px;
+	padding: 0 5px;
+}
+
+.nataral-classify-b img{
+	max-width: 50px;
+	max-height: 50px;
+	border-radius: 50%;
+	border: 1px solid #fcfcfc;
+}
+.nataral-classify-b h3{
+	margin-top: 8px;
+	font-weight: normal;
+	font-size: 12px;
+	height: 16px;
+	line-height: 16px;
+}
