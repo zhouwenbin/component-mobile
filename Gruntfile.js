@@ -1082,6 +1082,36 @@ module.exports = function (grunt) {
           insertRequire:  ['sf.b2c.mall.module.time']
         }
       },
+
+      timecount: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.timecount.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.timecount"],
+          insertRequire:  ['sf.b2c.mall.module.timecount']
+        }
+      },
+
+      617: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.617.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.617"],
+          insertRequire:  ['sf.b2c.mall.module.617']
+        }
+      },
+
       header: {
         options: {
           optimize: 'none',
@@ -1477,13 +1507,13 @@ module.exports = function (grunt) {
     if (config.target) {
       grunt.task.run([
         'clean:dist',
-        'wiredep',
+        // 'wiredep',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'requirejs',
-        'cssmin',
+        // 'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',
@@ -1539,13 +1569,13 @@ module.exports = function (grunt) {
 
       grunt.task.run([
         'clean:dist',
-        'wiredep',
+        // 'wiredep',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'requirejs',
-        'cssmin',
+        // 'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',
