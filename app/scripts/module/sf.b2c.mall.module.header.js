@@ -13,10 +13,12 @@ define(
     'text!template_widget_header_ad',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
     'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
-    'sf.b2c.mall.api.shopcart.isShowCart'
+    'sf.b2c.mall.api.shopcart.isShowCart',
+    'sf.hybrid'
   ],
 
-  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart) {
+  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm,
+    template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid) {
 
     Fastclick.attach(document.body);
     SFComm.register(3);
@@ -43,6 +45,7 @@ define(
         // app环境内隐藏头部
         switcher.register('app', _.bind(function() {
           this.element.hide();
+          this.setRightButton();
         }, this));
 
         // 根据逻辑环境进行执行
@@ -208,6 +211,32 @@ define(
             });
         }
       },
+
+      setShareBtn: function () {
+        SFHybrid.sfnavigator.setRightButton('分享', null, function(){
+          // var imgUrl = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
+
+          // var hasURL = _.str.include(imgUrl, 'http://')
+          // if (!hasURL) {
+          //   imgUrl = 'http://img0.sfht.com/' + imgUrl;
+          // }
+
+          var message = {
+            subject: document.title,
+            description: $('meta[name=description]').attr('content'),
+            url: window.location.href,
+            imageUrl: 'http://img.sfht.com/sfhth5/1.1.86/img/luck.png'
+          };
+
+          SFHybrid.share(message)
+            .done(function () {
+              alert('感谢分享');
+            })
+            .fail(function () {
+
+            })
+        });
+      }
 
       /**
        * @description 点击广告关闭按钮
