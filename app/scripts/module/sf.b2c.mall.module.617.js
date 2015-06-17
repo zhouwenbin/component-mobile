@@ -25,31 +25,31 @@ define(
 				$('.m617-r1').show();
 				$('#alipayenter').show();
 
-				//根据当前时间自动切换时间轴
-				var time = new Date();
-				var day = time.getDate(); //获取当前几号
-				var hour = time.getHours() + 1;
-				//如果当时日期等于17号，开始判断
-				if (day == 17 && hour <= 14 && hour > 10) {
-					$('.m617-tab-h li').eq(1).addClass('active').siblings().removeClass('active');
-					$('.m617-tab-b').eq(1).addClass('active').siblings().removeClass('active');
-				}
-				if (day == 17 && hour <= 15 && hour > 14) {
-					$('.m617-tab-h li').eq(2).addClass('active').siblings().removeClass('active');
-					$('.m617-tab-b').eq(2).addClass('active').siblings().removeClass('active');
-				}
-				if (day == 17 && hour <= 16 && hour > 15) {
-					$('.m617-tab-h li').eq(3).addClass('active').siblings().removeClass('active');
-					$('.m617-tab-b').eq(3).addClass('active').siblings().removeClass('active');
-				}
-				if (day == 17 && hour <= 21 && hour > 16) {
-					$('.m617-tab-h li').eq(4).addClass('active').siblings().removeClass('active');
-					$('.m617-tab-b').eq(4).addClass('active').siblings().removeClass('active');
-				}
-				if (day == 17 && hour > 21) {
-					$('.m617-tab-h li').eq(5).addClass('active').siblings().removeClass('active');
-					$('.m617-tab-b').eq(5).addClass('active').siblings().removeClass('active');
-				}
+				// //根据当前时间自动切换时间轴
+				// var time = new Date();
+				// var day = time.getDate(); //获取当前几号
+				// var hour = time.getHours() + 1;
+				// //如果当时日期等于17号，开始判断
+				// if (day == 17 && hour <= 14 && hour > 10) {
+				// 	$('.m617-tab-h li').eq(1).addClass('active').siblings().removeClass('active');
+				// 	$('.m617-tab-b').eq(1).addClass('active').siblings().removeClass('active');
+				// }
+				// if (day == 17 && hour <= 15 && hour > 14) {
+				// 	$('.m617-tab-h li').eq(2).addClass('active').siblings().removeClass('active');
+				// 	$('.m617-tab-b').eq(2).addClass('active').siblings().removeClass('active');
+				// }
+				// if (day == 17 && hour <= 16 && hour > 15) {
+				// 	$('.m617-tab-h li').eq(3).addClass('active').siblings().removeClass('active');
+				// 	$('.m617-tab-b').eq(3).addClass('active').siblings().removeClass('active');
+				// }
+				// if (day == 17 && hour <= 21 && hour > 16) {
+				// 	$('.m617-tab-h li').eq(4).addClass('active').siblings().removeClass('active');
+				// 	$('.m617-tab-b').eq(4).addClass('active').siblings().removeClass('active');
+				// }
+				// if (day == 17 && hour > 21) {
+				// 	$('.m617-tab-h li').eq(5).addClass('active').siblings().removeClass('active');
+				// 	$('.m617-tab-b').eq(5).addClass('active').siblings().removeClass('active');
+				// }
 			},
 			//导航条
 
