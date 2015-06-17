@@ -5,6 +5,7 @@ img{
 }
 body{
 	background: #fff;
+	width: 100%;
 }
 .m617-banner{
 	margin-bottom: 5px;
@@ -14,8 +15,12 @@ body{
 	margin-bottom: 5px;
 	display: flex;
 }
-
-
+.m617-r1c1{
+	width: 53.12%;
+}
+.m617-r1c2{
+	width: 46.88%;
+}
 .m617-time{
 	font-family: arial;
 	margin-bottom: 4px;
