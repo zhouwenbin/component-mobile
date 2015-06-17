@@ -25,6 +25,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     var EMPTY_IMG = "http://m.sfht.com/static/img/no.png";
     var PREFIX = 'http://img0.sfht.com';
     var DEFAULT_STATUS = '';
+    var DEFAULT_ANIMATE_TIME = 3000;
 
     can.route.ready();
 
@@ -333,7 +334,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
-              }, 10000);
+              }, DEFAULT_ANIMATE_TIME);
             }
           })
           .fail(function(data) {

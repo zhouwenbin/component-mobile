@@ -9,7 +9,13 @@
 	<link rel="stylesheet" href="/static/css/style.css">
 	<!-- endbuild -->
 
-	<script src="../cordova.js"></script>
+	<!-- build:css({app, .tmp}) /styles/sf.b2c.h5.animate.css -->
+	<link rel="stylesheet" href="/static/css/animate.css">
+	<!-- endbuild -->
+
+	<!-- build:js({app, tmp}) ../cordova.js-->
+  <script src="../cordova.js"></script>
+  <!-- endbuild -->
 
 </head>
 <body>
@@ -20,11 +26,7 @@
 	<div class="sf-b2c-mall-nav"></div>
 
 	<div class="loadingDIV">
-	  <div class="center">
-	    <div class="loading9">
-	    	<i></i><i></i><i></i><i></i>
-	    </div>
-	  </div>
+	  <div class="loading9 center"><i></i><i></i></div>
 	</div>
 
 	<div id="version" data-version="{version}"></div>

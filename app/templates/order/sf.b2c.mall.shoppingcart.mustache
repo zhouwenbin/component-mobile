@@ -19,7 +19,9 @@
         {{#if isValid}}
         <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
-                <span class="icon icon49 select-item" style="margin: 0 15px;"></span>
+                <a href="javascript:void(0)" class="select-item" style="padding:20px 0;">
+                    <span class="icon icon49" style="margin: 0 15px;"></span>
+                </a>
 
                 <a href="http://m.sfht.com/detail/{{itemId}}.html">
                     <img src="{{sf-show-img images}}" alt="">
@@ -36,8 +38,8 @@
                     </div>
                 </div>
                 <div class="cart-c2">
-                    <div class="cart-num">x1</div>
-                    <div class="text-important">¥{{sf-selling-price canUseActivityPrice activityPrice price}}</div>
+                    <div class="cart-num">x{{quantity}}</div>
+                    <div class="text-important">¥{{sf.price perTotalPrice}}</div>
 
                     {{#sf-is-show-origin canUseActivityPrice activityPrice price}}
                     <del>¥{{sf.price price}}</del>
@@ -85,8 +87,8 @@
                     </a>
                 </div>
                 <div class="cart-c2">
-                    <div class="cart-num">X1</div>
-                    <div class="text-important">¥{{sf-selling-price canUseActivityPrice activityPrice price}}</div>
+                    <div class="cart-num">x{{quantity}}</div>
+                    <div class="text-important">¥{{sf.price perTotalPrice}}</div>
                 </div>
             </div>
             <button class="btn btn-danger remove-item-btn">删除</button>
@@ -106,17 +108,14 @@
 
 <section class="cart-footer">
     <div class="cart-footer-r1">
-
         <div class="cart-footer-c1 select-all-items">
-            <span class="icon icon49" style="{{#sf-select-all scopeGroups}}background-position: -255px -249px;{{/sf-select-all}}"></span>全选
+            <span class="icon icon49" style="{{#sf-select-all scopeGroups}}background-position: -255px -249px;{{/sf-select-all}}"></span>
         </div>
-
         <div class="cart-footer-c2">
-            <div class="text-important">
-                <span class="text-disable" style="font-size: 12px;">总计(含税)</span>
-                ¥{{sf.price cartFeeItem.actualTotalFee}}
+            <div>
+            总计：<span class="text-important">¥{{sf.price cartFeeItem.actualTotalFee}}</span>(含税)
             </div>
-            <div class="cart-footer-save">节省了：¥{{sf.price cartFeeItem.discountFee}}</div>
+            <div class="cart-footer-save">已省：¥{{sf.price cartFeeItem.discountFee}}</div>
         </div>
 
         <button class="btn {{^sf-is-allow-pay scopeGroups cartFeeItem}}btn-disable{{/sf-is-allow-pay}} gotopay" {{#sf-is-allow-pay scopeGroups cartFeeItem}}style="background:#dc3334;"{{/sf-is-allow-pay}} >去结算</button>

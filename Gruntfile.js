@@ -260,7 +260,8 @@ module.exports = function (grunt) {
         blockReplacements: {
           js: function (block) {
 
-            if (!config.hybrid && block.dest == 'cordova.js') {
+            console.log(!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js'));
+            if (!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js')) {
               return '';
             }
 
@@ -531,7 +532,21 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html', 'header/*.html', 'footer/*.html','json/**'],
+            src: ['templates/**', '*.html', 'header/*.html', 'footer/*.html','json/**', '*.ico'],
+            dest: 'ROOT'
+            // dest: 'statics.h5.<%=config.version%>'
+          }
+        ]
+      },
+      testv2: {
+        options: {
+          archive: '<%=config.statics%>/target/<%=config.statics%>.zip',
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%=config.dist%>',
+            src: ['templates/**', '*.html', 'header/*.html', 'footer/*.html','json/**', 'scripts/**', 'styles/**', 'img/**'],
             dest: 'ROOT'
             // dest: 'statics.h5.<%=config.version%>'
           }
@@ -1068,6 +1083,36 @@ module.exports = function (grunt) {
           insertRequire:  ['sf.b2c.mall.module.time']
         }
       },
+
+      timecount: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.timecount.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.timecount"],
+          insertRequire:  ['sf.b2c.mall.module.timecount']
+        }
+      },
+
+      617: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.617.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.617"],
+          insertRequire:  ['sf.b2c.mall.module.617']
+        }
+      },
+
       header: {
         options: {
           optimize: 'none',
@@ -1503,13 +1548,13 @@ module.exports = function (grunt) {
     if (config.target) {
       grunt.task.run([
         'clean:dist',
-        'wiredep',
+        // 'wiredep',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'requirejs',
-        'cssmin',
+        // 'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',
@@ -1527,6 +1572,36 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('test', function () {
+      config.target = 'prd';
+
+      grunt.task.run([
+        'clean:dist',
+        'wiredep',
+        'useminPrepare',
+        'concurrent:dist',
+        // 'autoprefixer',
+        'concat',
+        'requirejs',
+        // 'cssmin',
+        'uglify',
+        'copy:dist',
+        'copy:html',
+        'copy:image',
+        'copy:templates',
+        'usemin',
+        'htmlmin',
+        'copy:styles',
+        'clean:extra',
+        'clean:publish',
+        'clean:oss',
+        'clean:statics',
+        'compress:testv2'
+        // 'compress:oss',
+        // 'compress:statics'
+      ]);
+  })
+
   grunt.registerTask('release', function (version) {
     config.version = version;
 
@@ -1535,13 +1610,13 @@ module.exports = function (grunt) {
 
       grunt.task.run([
         'clean:dist',
-        'wiredep',
+        // 'wiredep',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
         'concat',
         'requirejs',
-        'cssmin',
+        // 'cssmin',
         'uglify',
         'copy:dist',
         'copy:html',

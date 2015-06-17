@@ -137,6 +137,8 @@ define(
 
       //优惠券兑换相关事件
       '#inputCouponCode click': function(targetElement) {
+        $("#couponCodeDialog").find(".input").val("");
+        $("#couponCodeDialog").find(".text-error").text("");
         $("#couponCodeDialog").show();
       },
       '.dialog .icon15, .dialog1 .btn-normal click': function(targetElement) {

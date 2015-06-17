@@ -394,7 +394,7 @@ define('sf.b2c.mall.component.register', [
                 //     'type': 'success'
                 //   });
                 // }
-                that.receiveCoupon();
+                // that.receiveCoupon();
                 // 注册送优惠券
 
                 SFFn.dotCode();

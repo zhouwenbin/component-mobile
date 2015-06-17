@@ -118,7 +118,7 @@
   <!--立即购买-->
   <section class="nav-cart">
     <div class="nav-cart-r1">
-      <span class="icon icon47 mini-cart-container" style="display: none;" data-href="http://m.sfht.com/shoppingcart.html" data-login="http://m.sfht.com/login.html">
+      <span class="icon icon47 mini-cart-container" data-href="http://m.sfht.com/shoppingcart.html" data-login="http://m.sfht.com/login.html">
         <span class="dot dot-error mini-cart-num" style="display: none;"></span>
       </span>
       <button class="btn btn-soon addcart" style="display: none;">+ 加入购物车</button>
@@ -133,14 +133,18 @@
 
   <div class="mask"></div>
   <section class="detail-cart">
+
       <div class="detail-cart-r">
-            <a href="{{itemInfo.linkUrl}}">
-              <img src="{{sf.img itemInfo.step2Image}}" alt="">
-            </a>
+            <div class="detail-cart-c2">
+              <a href="{{itemInfo.linkUrl}}">
+                <img src="{{sf.img itemInfo.step2Image}}" alt="">
+              </a>
+            </div>
             <div class="detail-cart-c1">
                 <h2 class="ellipsis2">{{itemInfo.basicInfo.title}}</h2>
+
+                <span class="text-error">¥ {{sf.price priceInfo.sellingPrice}}</span>
                 <del>¥{{sf.price priceInfo.originPrice}}</del>
-                <div class="text-error">¥ {{sf.price priceInfo.sellingPrice}}</div>
             </div>
 
       </div>
@@ -178,7 +182,9 @@
 
   <section class="nav-cart">
       <div class="nav-cart-r1">
-          {{! <span class="icon icon47 mini-cart-container" data-href="/shoppingcart.html" data-login="/login.html"><span class="dot dot-error mini-cart-num"></span></span> }}
+          <span class="icon icon47 mini-cart-container" data-href="http://m.sfht.com/shoppingcart.html" data-login="http://m.sfht.com/login.html">
+            <span class="dot dot-error mini-cart-num"></span>
+          </span>
           <button class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}}" id="buyEnter">
             {{#sf-canBuy priceInfo.soldOut}}确定{{else}}缺货{{/sf-canBuy}}
           </button>

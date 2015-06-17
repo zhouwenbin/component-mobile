@@ -307,7 +307,6 @@ define(
             store.set('csrfToken', data.csrfToken);
             store.remove('tempToken');
 
-
             var params = can.deparam(window.location.search.substr(1));
             var redirectUrl = window.decodeURIComponent(params.redirectUrl);
 
@@ -325,10 +324,10 @@ define(
             //     });
             //   }
             // }
-            if (newUser) {
-              that.receiveCoupon(redirectUrl);
-            }
-
+            // if (newUser) {
+            //   that.receiveCoupon(redirectUrl);
+            // }
+            window.location.href = redirectUrl || SFBizConf.setting.link.index;
             // receivePro
             //   .sendRequest()
             //   .done(function(proInfo) {
