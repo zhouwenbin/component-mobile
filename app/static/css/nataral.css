@@ -268,7 +268,7 @@
   font-size: 0;
 }
 
-.nataral-classify-b li.active img {
+.nataral-classify-b li.active figure {
   border-color: #ff5b54;
 }
 
@@ -281,12 +281,26 @@
   padding: 0 5px;
 }
 
-.nataral-classify-b img {
-  max-width: 50px;
-  max-height: 50px;
+.nataral-classify-b figure {
+  width: 50px;
+  height: 50px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  border: 1px solid #fcfcfc;
+  border: 1px solid #efefef;
+  margin: 0 auto;
+}
+
+.nataral-classify-b figure:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.nataral-classify-b img {
+  max-width: 34px;
+  max-height: 34px;
+  vertical-align: middle;
 }
 
 .nataral-classify-b h3 {
@@ -295,4 +309,23 @@
   font-size: 12px;
   height: 16px;
   line-height: 16px;
+}
+
+.nataral-shop img {
+  width: 100%;
+}
+
+.nataral-shop figcaption {
+  height: 30px;
+  line-height: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 0 10px;
+  margin-top: -30px;
+  position: relative;
+  z-index: 1;
+}
+
+.nataral-shop figcaption .icon {
+  margin-right: 6px;
 }
