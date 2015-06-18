@@ -22,7 +22,8 @@ define(
     'text!template_order_shoppingcart',
     'sf.b2c.mall.api.shopcart.isShowCart',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+
   ],
 
   function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart,
@@ -34,6 +35,7 @@ define(
     SFFrameworkComm.register(3);
 
     var LIMITED_PRICE = 1000 * 100;
+    var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
 
@@ -301,7 +303,7 @@ define(
       },
 
       requestError: function() {
-        $('.loadingDIV').hide();
+        loadingCtrl.hide();
       },
 
       requestFactory: function(tag, cparams) {
@@ -344,7 +346,7 @@ define(
 
         var fn = map[tag];
         if (_.isFunction(fn)) {
-          $('.loadingDIV').show();
+          loadingCtrl.show();
           fn.call(this, cparams);
         }
       },
@@ -530,7 +532,7 @@ define(
         can.trigger(window, 'updateCart');
 
         // $('.overflow-num').show();
-        $('.loadingDIV').hide();
+        loadingCtrl.hide();
 
         // setTimeout(function() {
         //   $('.overflow-num').hide();

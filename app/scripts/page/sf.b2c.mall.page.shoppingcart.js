@@ -15,15 +15,19 @@ define(
     'sf.b2c.mall.component.shoppingcart',
     'sf.b2c.mall.module.header',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.widget.loading',
   ],
 
-  function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFConfig, SFShoppingCart, SFHeaderModule, SFSwitcher, SFHybrid) {
+  function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFConfig,
+    SFShoppingCart, SFHeaderModule, SFSwitcher, SFHybrid, SFLoading) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
     // 注册服务端的appid
     SFFrameworkComm.register(3);
+
+    var loadingCtrl = new SFLoading();
 
     var PageShoppingCart = can.Control.extend({
 
@@ -44,7 +48,7 @@ define(
 
     switcher.register('web', function() {
       // 显示蒙层
-      $('.loadingDIV').show();
+      loadingCtrl.show();
       new PageShoppingCart();
     });
 
