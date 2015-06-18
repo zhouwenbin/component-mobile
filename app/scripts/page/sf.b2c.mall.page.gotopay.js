@@ -29,6 +29,8 @@ define(
 
     can.route.ready();
 
+    var loadingCtrl = new SFLoading();
+
     var SFGotoPay = can.Control.extend({
 
       init: function(element, options) {
@@ -42,7 +44,7 @@ define(
         }
 
         // 显示蒙层
-        $('.loadingDIV').show();
+        loadingCtrl.show();
 
         var params = can.deparam(window.location.search.substr(1));
         params = _.extend(params, can.route.attr());
@@ -71,7 +73,7 @@ define(
           that.gotopayBtnClick($(this));
         })
 
-        $('.loadingDIV').hide();
+        loadingCtrl.hide();
       },
 
       activeWeixinpay: function() {
