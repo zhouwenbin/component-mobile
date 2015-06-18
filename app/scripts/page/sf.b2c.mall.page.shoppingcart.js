@@ -32,6 +32,7 @@ define(
     var PageShoppingCart = can.Control.extend({
 
       init: function() {
+        loadingCtrl.show();
         this.render();
       },
 
@@ -48,7 +49,6 @@ define(
 
     switcher.register('web', function() {
       // 显示蒙层
-      loadingCtrl.show();
       new PageShoppingCart();
     });
 
@@ -73,7 +73,6 @@ define(
         },
 
         receivedEvent: function(id) {
-
           SFHybrid.setNetworkListener();
           SFHybrid.isLogin().done(function () {
             new PageShoppingCart();

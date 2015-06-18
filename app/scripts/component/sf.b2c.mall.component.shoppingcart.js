@@ -23,11 +23,11 @@ define(
     'sf.b2c.mall.api.shopcart.isShowCart',
     'sf.env.switcher',
     'sf.hybrid',
-
+    'sf.b2c.mall.widget.loading'
   ],
 
   function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart,
-    SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid) {
+    SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid, SFLoading) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
