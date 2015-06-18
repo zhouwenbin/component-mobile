@@ -18,12 +18,13 @@ define('sf.b2c.mall.component.search', [
   'sf.b2c.mall.business.config',
   'sf.util',
   'sf.b2c.mall.widget.message',
+  'sf.b2c.mall.widget.loading',
   'sf.b2c.mall.api.search.searchItem',
   'sf.b2c.mall.api.b2cmall.getProductHotDataList',
   'sf.b2c.mall.api.shopcart.addItemsToCart',
   'sf.b2c.mall.api.shopcart.isShowCart',
   'text!template_component_search'
-], function(text, $, cookie, can, _, md5, store, helpers, SFFrameworkComm, SFConfig, SFFn, SFMessage,
+], function(text, $, cookie, can, _, md5, store, helpers, SFFrameworkComm, SFConfig, SFFn, SFMessage, SFLoading,
   SFSearchItem, SFGetProductHotDataList, SFAddItemToCart, SFIsShowCart,
   template_component_search) {
 
@@ -112,6 +113,9 @@ define('sf.b2c.mall.component.search', [
         }
       }
     },
+
+
+    loading: new SFLoading(),
 
     //用于调用搜索接口的对象
     searchParams: {
@@ -349,30 +353,31 @@ define('sf.b2c.mall.component.search', [
       var that = this;
 
       can.when(this.initSearchItem())
-        .always(function() {
-          $(".mask, .loading, .loadingBg").hide();
-          //渲染页面
-          that.renderHtml(data);
-        })
-        .fail(function() {
-          that.searchFail();
-        })
-        .then(function() {
-          if (that.renderData.itemSearch.results.length != 0 && that.renderData.itemSearch.totalHits) {
-
-            that.checkCartIsShown.call(that, element);
-            //获取实时价格和库存
-            var itemIds = _.pluck(that.renderData.itemSearch.results, 'itemId');
-            return that.initGetProductHotDataList(itemIds);
-          } else {
+          .always(function() {
+            that.loading.hide();
+            //渲染页面
+            that.renderHtml(data);
+          })
+          .fail(function() {
             that.searchFail();
-          }
-        });
+          })
+          .then(function() {
+            if (that.renderData.itemSearch.results.length != 0 && that.renderData.itemSearch.totalHits) {
+
+              that.checkCartIsShown.call(that, element);
+              //获取实时价格和库存
+              var itemIds = _.pluck(that.renderData.itemSearch.results, 'itemId');
+              return that.initGetProductHotDataList(itemIds);
+            } else {
+              that.searchFail();
+            }
+          });
     },
     /**
      * 搜索失败
      */
     searchFail: function() {
+      new SFRecommendProducts('.recommend')
     },
     /**
      * @description 渲染html
@@ -394,19 +399,40 @@ define('sf.b2c.mall.component.search', [
         itemSearchRequest: JSON.stringify(this.searchParams)
       });
       return searchItem.sendRequest()
-        .done(function(itemSearchData) {
-          that.renderData.attr("itemSearch", itemSearchData);
+          .done(function(itemSearchData) {
+            that.renderData.attr("itemSearch", itemSearchData);
 
-          //将得到的聚合数据存储起来，用于展示赛选条件
-          _.each(itemSearchData.aggregations, function(value, key, list) {
-            var fn = that.aggregationsMap[value.name];
-            if (_.isFunction(fn)) {
-              fn.call(that, value)
-            }
-          })
-        });
+            //将得到的聚合数据存储起来，用于展示赛选条件
+            _.each(itemSearchData.aggregations, function(value, key, list) {
+              var fn = that.aggregationsMap[value.name];
+              if (_.isFunction(fn)) {
+                fn.call(that, value)
+              }
+            });
+
+            //关联一二级分类
+            that.unionCategory();
+          });
     },
+    /**
+     * 关联一二级分类
+     */
+    unionCategory: function() {
+      if (this.renderData.filterCustom.secondCategoryName) {
+        var categoryies = this.renderData.attr("categories");
+        var secondCategoryies = this.renderData.attr("secondCategories");
 
+        _.each(categoryies.buckets, function(value, key, list) {
+          var tempSecondCategories = [];
+          _.find(secondCategoryies.buckets, function(secondCategory) {
+            if (value.id == secondCategory.levelOneCategoryId) {
+              tempSecondCategories.push(secondCategory);
+            }
+          });
+          value.attr("secondCategories", tempSecondCategories);
+        });
+      }
+    },
     /**
      * 聚合数据处理map
      */
@@ -434,13 +460,13 @@ define('sf.b2c.mall.component.search', [
         var categoryIds = this.searchParams.categoryIds;
         if (categoryIds) {
           _.each(categoryIds, function(bvalue, bkey, blist) {
-              _.find(value.buckets, function(bucket) {
-                if (bucket.id == bvalue) {
-                  bucket.selected = true;
-                  that.renderData.filterCategories.push(bucket);
-                  that.renderData.filters.push(bucket);
-                }
-              });
+            _.find(value.buckets, function(bucket) {
+              if (bucket.id == bvalue) {
+                bucket.selected = true;
+                that.renderData.filterCategories.push(bucket);
+                that.renderData.filters.push(bucket);
+              }
+            });
           })
         }
 
@@ -450,17 +476,19 @@ define('sf.b2c.mall.component.search', [
         var that = this;
 
         var secondCategoryIds = this.searchParams.secondCategoryIds;
-        if (secondCategoryIds) {
-          _.each(secondCategoryIds, function(bvalue, bkey, blist) {
-            _.find(value.buckets, function(bucket) {
-              if (bucket.id == bvalue) {
-                bucket.selected = true;
-                that.renderData.filterSecondCategories.push(bucket);
-                that.renderData.filters.push(bucket);
+
+        _.each(value.buckets, function(bvalue, bkey, blist) {
+          //处理已选项
+          if (secondCategoryIds) {
+            _.find(secondCategoryIds, function(cateId) {
+              if (cateId == bvalue.id) {
+                bvalue.selected = true;
+                that.renderData.filterSecondCategories.push(bvalue);
+                that.renderData.filters.push(bvalue);
               }
-            });
-          })
-        }
+            })
+          }
+        });
 
         this.renderData.attr("secondCategories", value);
       },
@@ -510,23 +538,23 @@ define('sf.b2c.mall.component.search', [
         itemIds: JSON.stringify(itemIds)
       });
       return getProductHotDataList.sendRequest()
-        .done(function(hotDataList) {
+          .done(function(hotDataList) {
 
-          //合并价格 并入库存 购物车支持
-          _.each(hotDataList.value, function(value, key, list) {
-            _.each(that.renderData.itemSearch.results, function(ivalue, ikey, ilist) {
-              if (ivalue.itemId == value.itemId) {
-                ivalue.attr("sellingPrice", value.sellingPrice);
-                ivalue.attr("referencePrice", value.referencePrice);
-                ivalue.attr("actualPrice", value.originPrice);
-                ivalue.attr("soldOut", value.soldOut);
-                ivalue.attr("supportShoppingCart", value.supportShoppingCart);
-                ivalue.attr("originRetailPrice", value.localSellingPrice);
-                ivalue.attr("currencySymbol", value.currencySymbol);
-              }
-            });
-          })
-        });
+            //合并价格 并入库存 购物车支持
+            _.each(hotDataList.value, function(value, key, list) {
+              _.each(that.renderData.itemSearch.results, function(ivalue, ikey, ilist) {
+                if (ivalue.itemId == value.itemId) {
+                  ivalue.attr("sellingPrice", value.sellingPrice);
+                  ivalue.attr("referencePrice", value.referencePrice);
+                  ivalue.attr("actualPrice", value.originPrice);
+                  ivalue.attr("soldOut", value.soldOut);
+                  ivalue.attr("supportShoppingCart", value.supportShoppingCart);
+                  ivalue.attr("originPrice", value.localSellingPrice);
+                  ivalue.attr("currencySymbol", value.currencySymbol);
+                }
+              });
+            })
+          });
     },
     /**
      * 格式化url参数，用于跳到新的搜索页面
@@ -705,10 +733,10 @@ define('sf.b2c.mall.component.search', [
       if (isShowFlag) {
         var isShowCart = new SFIsShowCart();
         isShowCart
-          .sendRequest()
-          .done(function(info) {
-            that.renderData.attr("isShowShoppintCart", !!info.value)
-          });
+            .sendRequest()
+            .done(function(info) {
+              that.renderData.attr("isShowShoppintCart", !!info.value)
+            });
       }
     },
 
@@ -752,61 +780,61 @@ define('sf.b2c.mall.component.search', [
 
       // 添加购物车发送请求
       addItemToCart.sendRequest()
-        .done(function(data) {
-          if (data.isSuccess) {
-            // 更新mini购物车
-            can.trigger(window, 'updateCart');
+          .done(function(data) {
+            if (data.isSuccess) {
+              // 更新mini购物车
+              can.trigger(window, 'updateCart');
 
-            var $el = window.el;
+              var $el = window.el;
 
-            if ($(window).scrollTop() > 166) {
-              var target = $('.nav .icon100').eq(1).offset()
+              if ($(window).scrollTop() > 166) {
+                var target = $('.nav .icon100').eq(1).offset()
+              } else {
+                var target = $('.nav .icon100').eq(0).offset()
+              }
+              var targetX = target.left,
+                  targetY = target.top,
+                  current = $el.offset(),
+                  currentX = current.left,
+                  currentY = current.top,
+                  cart_num = $('.cart-num').eq(0).text();
+              $el.clone().appendTo($el.parent());
+              $el.css({
+                left: targetX - currentX,
+                top: targetY - currentY,
+                zIndex: 2,
+                visibility: 'hidden'
+              })
+
+              setTimeout(function() {
+                $el.remove();
+              }, 1000);
+              cart_num++;
+              $('.cart-num').text(cart_num);
+              $('.nav .label-error').addClass('active');
+
+              setTimeout(function() {
+                $('.nav .label-error').removeClass('active');
+              }, 500);
             } else {
-              var target = $('.nav .icon100').eq(0).offset()
+              var $el = $('<div class="dialog-cart" style="z-index:9999;"><div class="dialog-cart-inner" style="width:242px;padding:20px 60px;"><p style="margin-bottom:10px;">' + data.resultMsg + '</p></div><a href="javascript:" class="icon icon108 closeDialog">关闭</a></div>');
+              if ($('.dialog-cart').length > 0) {
+                return false;
+              };
+              $(document.body).append($el);
+              $('.closeDialog').click(function(event) {
+                $el.remove();
+              });
+              setTimeout(function() {
+                $el.remove();
+              }, 3000);
             }
-            var targetX = target.left,
-              targetY = target.top,
-              current = $el.offset(),
-              currentX = current.left,
-              currentY = current.top,
-              cart_num = $('.cart-num').eq(0).text();
-            $el.clone().appendTo($el.parent());
-            $el.css({
-              left: targetX - currentX,
-              top: targetY - currentY,
-              zIndex: 2,
-              visibility: 'hidden'
-            })
-
-            setTimeout(function() {
-              $el.remove();
-            }, 1000);
-            cart_num++;
-            $('.cart-num').text(cart_num);
-            $('.nav .label-error').addClass('active');
-
-            setTimeout(function() {
-              $('.nav .label-error').removeClass('active');
-            }, 500);
-          } else {
-            var $el = $('<div class="dialog-cart" style="z-index:9999;"><div class="dialog-cart-inner" style="width:242px;padding:20px 60px;"><p style="margin-bottom:10px;">' + data.resultMsg + '</p></div><a href="javascript:" class="icon icon108 closeDialog">关闭</a></div>');
-            if ($('.dialog-cart').length > 0) {
-              return false;
-            };
-            $(document.body).append($el);
-            $('.closeDialog').click(function(event) {
-              $el.remove();
-            });
-            setTimeout(function() {
-              $el.remove();
-            }, 3000);
-          }
 
 
-        })
-        .fail(function(data) {
+          })
+          .fail(function(data) {
 
-        })
+          })
     }
   });
 

@@ -3,6 +3,7 @@ define(
   [
     'can',
     'zepto',
+    'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.util',
     'sf.b2c.mall.business.config',
@@ -10,10 +11,11 @@ define(
     'sf.b2c.mall.shop.detail',
     'sf.b2c.mall.module.header'
   ],
-  function(can, $, SFFrameworkComm, SFFn, SFBusiness,
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness,
            SFSearch, SFShopDetail, SFHeader) {
-    SFFrameworkComm.register(1);
-    SFFn.monitor();
+    Fastclick.attach(document.body);
+    SFFrameworkComm.register(3);
+
     var searchPage = can.Control.extend({
 
       /**
