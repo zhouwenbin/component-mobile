@@ -17,11 +17,13 @@ define(
     'sf.b2c.mall.api.user.checkUserExist',
     'sf.b2c.mall.api.user.downInviteSms',
     'sf.b2c.mall.api.promotion.receivePro',
-    'text!template_header_520'
+    'text!template_header_520',
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.component.nav'
   ],
   function(can, $, store, Fastclick, _, md5, helpers, SFComm, SFConfig, SFFn, SFMessage,
            SFApiUserDownSmsCode, SFApiUserMobileRegister, SFCheckUserExist, SFDownInviteSms, SFReceivePro,
-           template_header_520){
+           template_header_520, SFLoading, SFNav){
     Fastclick.attach(document.body);
     SFComm.register(3);
 
@@ -80,6 +82,8 @@ define(
 
     can.route.ready();
 
+    var loadingCtrl = new SFLoading();
+
     var a520 = can.Control.extend({
       helpers: {
         ismobile: function(mobile, options) {
@@ -99,7 +103,10 @@ define(
       init: function(element, options) {
 
         // 显示蒙层
-        $('.loadingDIV').show();
+        loadingCtrl.show();
+
+        // render导航
+        new SFNav('.sf-b2c-mall-nav');
 
         this.component = {};
         this.component.sms = new SFApiUserDownSmsCode();
@@ -113,7 +120,7 @@ define(
         var tag = can.route.attr('tag') || DEFAULT_FILLINFO_TAG;
 
         this.render(tag, this.data);
-        $(".loadingDIV").hide();
+        loadingCtrl.hide();
       },
 
       '{can.route} change': function() {
