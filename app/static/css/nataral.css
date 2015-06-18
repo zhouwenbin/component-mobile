@@ -63,6 +63,8 @@
 .nataral-nav li span {
   font-family: Apple Chancery;
   font-size: 17px;
+  vertical-align: 3px;
+  display: inline-block;
 }
 
 .nataral-product {
@@ -115,6 +117,7 @@
   line-height: 18px;
   font-weight: normal;
   margin-bottom: 12px;
+  word-break: break-all;
 }
 
 .nataral-product-c2 .text-important {
@@ -170,6 +173,10 @@
   margin-bottom: 10px;
 }
 
+.nataral-tab {
+  height: 44px;
+}
+
 .nataral-tab ul {
   display: -webkit-box;
   display: -webkit-flex;
@@ -181,6 +188,14 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   background: #f9f9f9;
+}
+
+.nataral-tab-fixed {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .nataral-tab li {
@@ -202,6 +217,8 @@
   -webkit-transform: rotate(-45deg);
       -ms-transform: rotate(-45deg);
           transform: rotate(-45deg);
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
   margin-left: 6px;
 }
 
@@ -211,6 +228,9 @@
 
 .nataral-tab li.active i {
   border-color: #ff5b54;
+  -webkit-transform: rotate(-225deg);
+      -ms-transform: rotate(-225deg);
+          transform: rotate(-225deg);
 }
 
 .nataral-tab li.active a {
@@ -218,11 +238,25 @@
 }
 
 .nataral-tab-b {
-  display: none;
+  position: absolute;
+  width: 100%;
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+  -webkit-transform-origin: center top;
+      -ms-transform-origin: center top;
+          transform-origin: center top;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
 }
 
 .nataral-tab-b.active {
-  display: block;
+  z-index: 1;
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+
+.nataral-classify {
+  margin-bottom: -1px;
 }
 
 .nataral-classify-h {
@@ -305,7 +339,8 @@
 }
 
 .nataral-classify-b li.active .nataral-classify-icon {
-  border-color: #ff5b54;
+  -webkit-box-shadow: 0 0 0 1px #ff5b54;
+          box-shadow: 0 0 0 1px #ff5b54;
 }
 
 .nataral-classify-b li.active h3 {
@@ -322,12 +357,13 @@
   height: 50px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  border: 1px solid #efefef;
   margin: 0 auto;
   background-repeat: no-repeat;
   background-position: center;
   -webkit-background-size: 50px 50px;
           background-size: 50px;
+  -webkit-box-shadow: 0 0 0 1px #efefef;
+          box-shadow: 0 0 0 1px #efefef;
 }
 
 .nataral-classify-icon:before {
@@ -440,19 +476,42 @@
   border-left: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
   -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
   margin-left: 6px;
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
 }
 
-.nataral-brand h2 {
+.nataral-brand-select h2 {
   border-bottom: none;
   padding-top: 10px;
 }
 
-.nataral-brand ul {
+.nataral-brand-select ul {
   position: absolute;
   width: 100%;
+  overflow: hidden;
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+  -webkit-transform-origin: center top;
+      -ms-transform-origin: center top;
+          transform-origin: center top;
+  -webkit-box-shadow: 0 3px 3px rgba(125, 125, 125, 0.18);
+          box-shadow: 0 3px 3px rgba(125, 125, 125, 0.18);
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+}
+
+.nataral-brand-select.active ul {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+
+.nataral-brand-select.active .nataral-brand-h-icon {
+  -webkit-transform: rotate(-225deg);
+      -ms-transform: rotate(-225deg);
+          transform: rotate(-225deg);
 }
 
 .nataral-area img {
@@ -460,21 +519,26 @@
 }
 
 .nataral-area-b {
-  padding: 10px;
+  padding: 15px 10px 24px;
   background: #fff;
 }
 
 .nataral-area h2 {
   font-size: 17px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .nataral-area h2 .icon {
   margin-right: 7px;
+  vertical-align: -2px;
 }
 
 .nataral-area p {
   font-size: 14px;
   line-height: 20px;
   color: #666;
+}
+
+.nataral-hanguo {
+  margin: 10px;
 }
