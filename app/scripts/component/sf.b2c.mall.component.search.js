@@ -30,6 +30,13 @@ define('sf.b2c.mall.component.search', [
 
   return can.Control.extend({
     helpers: {
+      'sf-isNull': function(list, options) {
+        if (list() && list().length > 0) {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
+      },
       'sf-isShowMoreBrand': function(brands, options) {
         if (brands().length > 10) {
           return options.fn(options.contexts || this);
@@ -57,28 +64,35 @@ define('sf.b2c.mall.component.search', [
         }
       },
       'sf-isSortByDEFAULT': function(sort, options) {
-        if (sort() == "DEFAULT" || !sort()) {
+        if (!sort() || sort().value == "DEFAULT") {
           return options.fn(options.contexts || this);
         } else {
           return options.inverse(options.contexts || this);
         }
       },
       'sf-isSortBySALE': function(sort, options) {
-        if (sort() == "SALE_DESC" || sort() == "SALE_ASC") {
+        if (sort() && (sort().value == "SALE_DESC" || sort().value == "SALE_ASC")) {
           return options.fn(options.contexts || this);
         } else {
           return options.inverse(options.contexts || this);
         }
       },
       'sf-isSortByPRICE': function(sort, options) {
-        if (sort() == "PRICE_DESC" || sort() == "PRICE_ASC") {
+        if (sort() && (sort().value == "PRICE_DESC" || sort().value == "PRICE_ASC")) {
           return options.fn(options.contexts || this);
         } else {
           return options.inverse(options.contexts || this);
         }
       },
       'sf-isSortByPRICEDESC': function(sort, options) {
-        if (sort() == "PRICE_DESC") {
+        if (sort() && (sort().value == "PRICE_DESC")) {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
+      },
+      'sf-isSortByPRICEASC': function(sort, options) {
+        if (sort() && (sort().value == "PRICE_ASC")) {
           return options.fn(options.contexts || this);
         } else {
           return options.inverse(options.contexts || this);
@@ -136,6 +150,10 @@ define('sf.b2c.mall.component.search', [
       page: null,
       nextPage: null,
       prevPage: 0,
+      sort : {
+        value: "DEFAULT",
+        name: "综合"
+      },
       //是否展示购物车
       isShowShoppintCart: false,
       //聚合数据，主要用于前端数据展示
@@ -156,21 +174,68 @@ define('sf.b2c.mall.component.search', [
         showCrumbs: false,
         showStatInfo: true,
         brandName: "品牌",
-        categoryName: "分类",
+        categoryName: "类目",
         secondCategoryName: "",
-        originName: "货源地",
+        originName: "货源",
         shopNationName: ""
+      },
+
+      h5ShowFilter: {
+        show: false,
+
+        map: {
+          brand: false,
+          category: false,
+          secondCategory: false,
+          origin: false,
+          shopNation: false,
+          sort: false
+        },
+
+        showFilter: function(context, targetElement, event) {
+        var tab = targetElement.data("tab");
+        if (context.h5ShowFilter.map.attr(tab)) {
+          context.h5ShowFilter.map.attr(tab, false);
+          context.h5ShowFilter.attr("show", false);
+        } else {
+          context.h5ShowFilter.map.each(function(value , key, obj){
+            if (_.isBoolean(value)) {
+              obj.attr(key, false);
+            }
+          });
+          context.h5ShowFilter.map.attr(tab, true);
+          context.h5ShowFilter.attr("show", true);
+        }
+      },
       }
     }),
 
     //排序类型map
     sortMap: {
-      "DEFAULT": "DEFAULT",
-      "SCORE": "SCORE",
-      "PRICE_DESC": "PRICE_DESC",
-      "PRICE_ASC": "PRICE_ASC",
-      "SALE_DESC": "SALE_DESC",
-      "SALE_ASC": "SALE_ASC"
+      "DEFAULT": {
+        value: "DEFAULT",
+        name: "综合"
+      },
+      "SCORE":  {
+        value: "SCORE",
+        name: ""
+      },
+      "PRICE_DESC":  {
+        value: "PRICE_DESC",
+        name: "价格由高到低"
+      },
+      "PRICE_ASC":  {
+        value: "PRICE_ASC",
+        name: "价格由低到高"
+      },
+      "SALE_DESC":  {
+        value: "SALE_DESC",
+        name: "人气"
+      },
+      "SALE_ASC":  {
+        value: "SALE_ASC",
+        name: "人气"
+      }
     },
 
     /**
@@ -233,10 +298,11 @@ define('sf.b2c.mall.component.search', [
       if (pfs == "YZYW") {
         this.renderData.attr("filterCustom", {
           showStatInfo: true,
-          brandName: "人气品牌",
-          categoryName: "商品分类",
-          secondCategoryName: "选购热点",
-          shopNationName: "名品货源"
+          brandName: "品牌",
+          categoryName: "类目",
+          secondCategoryName: "类目2",
+          originName: "",
+          shopNationName: "货源"
         });
       }
 
@@ -271,8 +337,8 @@ define('sf.b2c.mall.component.search', [
         that.renderData.attr("prevPage", newVal - 1);
       });
       this.renderData.bind("sort", function(ev, newVal, oldVal) {
-        that.searchParams.sort = newVal;
-        that.searchData.sort = newVal;
+        that.searchParams.sort = newVal.value;
+        that.searchData.sort = newVal.value;
       });
       this.renderData.bind("brandIds", function(ev, newVal, oldVal) {
         if (newVal) {
@@ -377,7 +443,6 @@ define('sf.b2c.mall.component.search', [
      * 搜索失败
      */
     searchFail: function() {
-      new SFRecommendProducts('.recommend')
     },
     /**
      * @description 渲染html
@@ -429,7 +494,7 @@ define('sf.b2c.mall.component.search', [
               tempSecondCategories.push(secondCategory);
             }
           });
-          value.attr("secondCategories", tempSecondCategories);
+          value.attr("innerSecondCategories", tempSecondCategories);
         });
       }
     },
@@ -583,12 +648,7 @@ define('sf.b2c.mall.component.search', [
       window.location.href = window.location.pathname + "?" + this.getSearchParamStr(data);
     },
 
-    /**
-     * 筛选条件更多按钮展开事件
-     */
-    "#classify-more click": function(targetElement) {
-      targetElement.parents('li').toggleClass('active');
-    },
+
     /**
      * 按品牌条件筛选
      * @param targetElement
@@ -644,9 +704,14 @@ define('sf.b2c.mall.component.search', [
      * @param targetElement
      */
     '#emptyFilterBtn click': function(targetElement) {
-      this.gotoNewPage({
-        keyword: this.renderData.attr("keyword")
-      });
+      var searchDataTemp = _.clone(this.searchData);
+      delete searchDataTemp.page;
+      delete searchDataTemp.brandIds;
+      delete searchDataTemp.categoryIds;
+      delete searchDataTemp.catg2ndIds;
+      delete searchDataTemp.originIds;
+      delete searchDataTemp.snIds;
+      this.gotoNewPage(searchDataTemp);
     },
     /**
      * 删除一个以选中条件
@@ -689,10 +754,16 @@ define('sf.b2c.mall.component.search', [
      * 排序事件
      * @param targerElement
      */
-    "#sortBox li click": function(targerElement) {
+    "[data-role=sortBox] li click": function(targerElement) {
       var role = targerElement.data("role");
-      this.renderData.attr("sort", this.sortMap[role]);
-      this.gotoNewPage();
+      var selectSort = _.find(this.sortMap, function(item){
+        if (item.value == role) {
+          return item;
+        }
+      })
+      var searchDataTemp = _.clone(this.searchData);
+      searchDataTemp.sort = selectSort.value;
+      this.gotoNewPage(searchDataTemp);
     },
     /**
      * 是否显示接口数据、用户数据、实时库存
@@ -705,7 +776,7 @@ define('sf.b2c.mall.component.search', [
       var isShowFlag = false;
       if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
         // 从cookie中获得值确认购物车是不是显示
-        var uinfo = $.cookie('1_uinfo');
+        var uinfo = $.fn.cookie('3_uinfo');
         var arr = [];
         if (uinfo) {
           arr = uinfo.split(',');
