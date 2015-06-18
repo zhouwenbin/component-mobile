@@ -45,7 +45,7 @@ define(
         // app环境内隐藏头部
         switcher.register('app', _.bind(function() {
           this.element.hide();
-          this.setRightButton();
+          this.setShareBtn();
         }, this));
 
         // 根据逻辑环境进行执行
