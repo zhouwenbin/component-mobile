@@ -447,8 +447,8 @@ define('sf.b2c.mall.order.iteminfo', [
         "items": JSON.stringify([{
           "itemId": that.itemObj.itemid,
           "num": that.itemObj.amount,
-          "price": that.itemObj.orderGoodsItemList[0].price,
-          "skuId": that.itemObj.orderGoodsItemList[0].skuId
+          "price": that.itemObj.orderPackageItemList[0].orderGoodsItemList[0].price,
+          "skuId": that.itemObj.orderPackageItemList[0].orderGoodsItemList[0].skuId
         }]),
         'system': "B2C_H5"
       });
