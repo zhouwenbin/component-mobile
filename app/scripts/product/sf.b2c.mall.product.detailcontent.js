@@ -25,16 +25,20 @@ define('sf.b2c.mall.product.detailcontent', [
     'text!template_product_detailcontent',
     'sf.env.switcher',
     'sf.hybrid',
-    'animate'
+    'animate',
+    'sf.b2c.mall.widget.loading',
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
     SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin,
-    SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, template_product_detailcontent, SFSwitcher, SFHybrid, animate) {
+    SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart,
+    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFLoading) {
 
     Fastclick.attach(document.body);
 
     var DEFAULT_INIT_TAG = 'init';
+
+    var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
 
@@ -111,6 +115,8 @@ define('sf.b2c.mall.product.detailcontent', [
 
         // this.loading = new SFLoading();
         // this.loading.show();
+
+        loadingCtrl.show();
 
         //解析路由，取出itemid
         //example: /detail/1.html
@@ -556,7 +562,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
             switcher.go();
 
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
 
             $(document).ready(function() {
               if (SFFn.isMobile.Android()) {
@@ -571,7 +577,7 @@ define('sf.b2c.mall.product.detailcontent', [
           })
           .fail(function(error) {
             console.error(error);
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           })
       },
 
