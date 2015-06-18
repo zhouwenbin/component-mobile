@@ -78,6 +78,9 @@
 	height: 75px;
 	border: 1px solid #f7f7f7;
 }
+.nataral-product-c1{
+	position: relative;
+}
 .nataral-product-c2{
 	flex:1;
 	padding-left: 15px;
@@ -94,6 +97,24 @@
 }
 .nataral-product-more{
 	padding: 0 10px 20px;
+}
+.nataral-product-soldout{
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	border-radius: 50%;
+	background: rgba(0,0,0,0.6);
+	position: absolute;
+	color: #fff;
+}
+.nataral-product-star{
+	display: inline-block;
+	background: #ffc600;
+	border-radius: 2px;
+	color: #fff;
+	padding: 0 5px;
+	margin-right: 3px;
 }
 .nataral-h2{
 	font-size: 15px;
