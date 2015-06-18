@@ -16,13 +16,13 @@
 	== Slim::Template.new('module/swipe.slim').render
 	<nav class="nataral-nav">
 		<ul>
-			<li class="active"><a href="">全球<br>精品</a></li>
+			<li><a href="">全球<br>精品</a></li>
 			<li><a href=""><span>in</span><br>韩国</button></a></li>
-			<li><a href=""><span>in</span><br>台湾</a></li>
+			<li class="active"><a href=""><span>in</span><br>台湾</a></li>
 		</ul>
 	</nav>
 	<section class="nataral-product">
-		<h2 class="nataral-h2">热卖商品</h2>
+		<h2 class="nataral-h2">明星爆款</h2>
 		<ul>
 			<li>
 				<div class="nataral-product-c1">
@@ -62,96 +62,56 @@
 			</li>
 		</ul>
 	</section>
-	<section class="carnival">
-		<h2 class="nataral-h2">主题特卖</h2>
-		<ul>
-			<li>
-				<img src="../img/carnival.png" alt="">
-				<div class="carnival-b">
-					<h3 class="ellipsis2">荷兰Nutrilon牛栏婴儿奶粉1段 850g/罐荷兰牛
-	栏婴儿奶粉1段 850g/罐</h3>
-					<p class="ellipsis3">荷兰奶粉第一品牌，进口市场占有率高达73%。只采用最优质无污染的天然牧场奶源。口味清淡、粉质精细，更有活动超值狂欢价，单罐仅需110元，好味道更有好价格！</p>
-					<div class="carnival-r1">
-						<span class="icon icon36"></span>仅剩:<span class="text-error">10天8小时8分8秒</span>
-					</div>
-					<div class="carnival-r2 clearfix">
-						<div class="carnival-r2c1 fl">
-							￥<strong>69</strong>元起
-						</div>
-						<div class="carnival-r2c2 fr">
-							<button class="btn btn-normal btn-remain">即将开始</button>
-						</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<img src="../img/carnival.png" alt="">
-				<div class="carnival-b">
-					<h3 class="ellipsis2">荷兰Nutrilon牛栏婴儿奶粉1段 850g/罐荷兰牛
-	栏婴儿奶粉1段 850g/罐</h3>
-					<p class="ellipsis3">荷兰奶粉第一品牌，进口市场占有率高达73%。只采用最优质无污染的天然牧场奶源。口味清淡、粉质精细，更有活动超值狂欢价，单罐仅需110元，好味道更有好价格！</p>
-					<div class="carnival-r1">
-						<span class="icon icon36"></span>仅剩:<span class="text-error">10天8小时8分8秒</span>
-					</div>
-					<div class="carnival-r2 clearfix">
-						<div class="carnival-r2c1 fl">
-							￥<strong>69</strong>元起
-						</div>
-						<div class="carnival-r2c2 fr">
-							<button class="btn btn-normal btn-danger">即将开始</button>
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</section>
-	<section class="nataral-product">
-		<h2 class="nataral-h2">美妆个护</h2>
-		<ul>
-			<li>
-				<div class="nataral-product-c1">
-					<img src="http://placehold.it/150x150">
-				</div>
-				<div class="nataral-product-c2">
-					<h3><a href="">意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
-					<span class="text-important">¥1999</span><span class="text-disable">约NT$999</span>
-				</div>
-			</li>
-			<li>
-				<div class="nataral-product-c1">
-					<img src="http://placehold.it/150x150">
-				</div>
-				<div class="nataral-product-c2">
-					<h3><a href="">意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
-					<span class="text-important">¥1999</span><span class="text-disable">约NT$999</span>
-				</div>
-			</li>
-			<li>
-				<div class="nataral-product-c1">
-					<img src="http://placehold.it/150x150">
-				</div>
-				<div class="nataral-product-c2">
-					<h3><a href="">意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
-					<span class="text-important">¥1999</span><span class="text-disable">约NT$999</span>
-				</div>
-			</li>
-			<li>
-				<div class="nataral-product-c1">
-					<img src="http://placehold.it/150x150">
-				</div>
-				<div class="nataral-product-c2">
-					<h3><a href="">意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
-					<span class="text-important">¥1999</span><span class="text-disable">约NT$999</span>
-				</div>
-			</li>
-		</ul>
-		<div class="nataral-product-more">
-			<button class="btn btn-danger btn-big">更多商品</button>
+	<section class="nataral-brand">
+		<div class="nataral-brand-h">
+			<h2 class="nataral-h2">全部商铺</h2>
+			<div class="nataral-brand-h-icon"></div>
 		</div>
 		
+		<ul>
+			<li class="active"><a href="javascript:">全部商铺</a><div class="icon icon61"></div></li>
+			<li><a href="javascript:">地方美食</a><div class="icon icon61"></div></li>
+			<li><a href="javascript:">美妆个护</a><div class="icon icon61"></div></li>
+		</ul>
+	</section>
+	<figure class="nataral-shop">
+		<img src="http://placehold.it/640x387">
+		<figcaption><span class="icon icon60"></span>淘最热米粉品牌-Earths Best店</figcaption>
+	</figure>
+	<section class="nataral-product">
+		<ul>
+			<li>
+				<div class="nataral-product-c1">
+					<img src="http://placehold.it/150x150">
+				</div>
+				<div class="nataral-product-c2">
+					<h3><a href="">意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
+					<span class="text-important">¥1999</span><span class="text-disable">约NT$999</span>
+				</div>
+			</li>
+			<li>
+				<div class="nataral-product-c1">
+					<img src="http://placehold.it/150x150">
+				</div>
+				<div class="nataral-product-c2">
+					<h3><a href="">意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
+					<span class="text-important">¥1999</span><span class="text-disable">约NT$999</span>
+				</div>
+			</li>
+			<li>
+				<div class="nataral-product-c1">
+					<img src="http://placehold.it/150x150">
+				</div>
+				<div class="nataral-product-c2">
+					<h3><a href="">意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
+					<span class="text-important">¥1999</span><span class="text-disable">约NT$999</span>
+				</div>
+			</li>
+		</ul>
 	</section>
 	<script src="../js/zepto.min.js"></script>
 	<script src="../js/swiper.js"></script>
 	<script src="../js/slider.js"></script>
+	<script src="../js/nataral-classify.js"></script>
 </body>
 </html>

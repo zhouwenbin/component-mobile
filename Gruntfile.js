@@ -260,7 +260,8 @@ module.exports = function (grunt) {
         blockReplacements: {
           js: function (block) {
 
-            if (!config.hybrid && block.dest == 'cordova.js') {
+            console.log(!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js'));
+            if (!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js')) {
               return '';
             }
 
@@ -531,7 +532,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%=config.dist%>',
-            src: ['templates/**', '*.html', 'header/*.html', 'footer/*.html','json/**'],
+            src: ['templates/**', '*.html', 'header/*.html', 'footer/*.html','json/**', '*.ico'],
             dest: 'ROOT'
             // dest: 'statics.h5.<%=config.version%>'
           }
