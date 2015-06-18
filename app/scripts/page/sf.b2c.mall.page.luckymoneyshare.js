@@ -27,6 +27,10 @@ define(
       }),
 
       init: function() {
+
+        // 显示蒙层
+        $('.loadingDIV').show();
+
         this.render();
       },
       render: function() {

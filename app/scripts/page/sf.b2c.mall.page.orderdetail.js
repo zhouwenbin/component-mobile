@@ -47,6 +47,10 @@ define(
     var switcher = new SFSwitcher();
 
     switcher.register('web', function() {
+
+      // 显示蒙层
+      $('.loadingDIV').show();
+
       new SFOrderDetail('#order');
       new SFNav('.sf-b2c-mall-nav');
     });

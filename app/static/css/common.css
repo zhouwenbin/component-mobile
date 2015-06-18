@@ -1720,3 +1720,7 @@ a[title="站长统计"] {
       -ms-transform: scale(0.8);
           transform: scale(0.8);
 }
+
+.loadingDIV{
+  display: none;
+}

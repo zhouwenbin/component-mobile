@@ -25,6 +25,8 @@ define(
           return false;
         }
 
+        $('.loadingDIV').show();
+
         this.render();
         this.supplement();
       },

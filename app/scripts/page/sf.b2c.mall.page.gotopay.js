@@ -41,6 +41,9 @@ define(
           return false;
         }
 
+        // 显示蒙层
+        $('.loadingDIV').show();
+
         var params = can.deparam(window.location.search.substr(1));
         params = _.extend(params, can.route.attr());
 

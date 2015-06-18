@@ -34,6 +34,9 @@ define(
           return false;
         }
 
+        // 显示蒙层
+        $('.loadingDIV').show();
+
         this.render();
       },
 

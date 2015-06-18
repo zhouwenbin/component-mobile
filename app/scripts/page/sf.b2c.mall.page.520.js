@@ -97,6 +97,10 @@ define(
        * @param  {Map} options 传递的参数
        */
       init: function(element, options) {
+
+        // 显示蒙层
+        $('.loadingDIV').show();
+
         this.component = {};
         this.component.sms = new SFApiUserDownSmsCode();
         this.component.mobileRegister = new SFApiUserMobileRegister();
