@@ -15,15 +15,18 @@ define(
   function($, can, SFConfig, template_widget_loading, SFHybrid, SFSwitcher) {
     return can.Control.extend({
 
-      init: function() {
-      },
+      init: function() {},
 
       render: function() {
         this.setup($('body'));
 
-        var renderFn = can.mustache(template_widget_loading);
-        var html = renderFn({});
-        $('body').append(html);
+        if ($('.loadingDIV').length == 0) {
+          var renderFn = can.mustache(template_widget_loading);
+          var html = renderFn({});
+          $('body').append(html);
+        }else{
+          $('.loadingDIV').show();
+        }
       },
 
       show: function() {

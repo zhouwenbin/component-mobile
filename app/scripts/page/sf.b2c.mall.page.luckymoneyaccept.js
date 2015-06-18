@@ -19,14 +19,17 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.widget.loading',
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
            SFGetOrderShareBagInfo, SFReceiveShareCoupon, SFHasReceived, SFLogin,
-           template_luckymoney_accept, SFSwitcher, SFHybrid, SFNav) {
+           template_luckymoney_accept, SFSwitcher, SFHybrid, SFNav, SFLoading) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
+
+    var loadingCtrl = new SFLoading();
 
     var luckymoneyaccept = can.Control.extend({
       itemObj:  new can.Map({
@@ -43,7 +46,7 @@ define(
       init: function() {
 
         // 显示蒙层
-        $('.loadingDIV').show();
+        loadingCtrl.show();
 
         this.render();
       },
@@ -108,7 +111,7 @@ define(
             console.error(error);
           })
           .always(function() {
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           });
       },
 

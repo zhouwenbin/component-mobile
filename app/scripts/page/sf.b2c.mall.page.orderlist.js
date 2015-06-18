@@ -16,15 +16,18 @@ define(
     'sf.b2c.mall.component.nav',
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.widget.loading',
   ],
 
   function(can, $, Fastclick, jweixin, SFWeixin, util, SFFrameworkComm, SFOrderListContent, SFMessage,
-    SFNav, SFConfig, SFSwitcher, SFHybrid) {
+    SFNav, SFConfig, SFSwitcher, SFHybrid, SFLoading) {
 
     SFFrameworkComm.register(3);
     Fastclick.attach(document.body);
     SFWeixin.shareIndex();
+
+    var loadingCtrl = new SFLoading();
 
     var SFOrderList = can.Control.extend({
 
@@ -77,7 +80,7 @@ define(
     switcher.register('web', function() {
 
       // 显示蒙层
-      $('.loadingDIV').show();
+      loadingCtrl.show();
 
       new SFOrderList('#orderList');
       new SFNav('.sf-b2c-mall-nav');

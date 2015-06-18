@@ -17,8 +17,10 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.env.switcher',
     'text!template_order_orderlist',
     'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
+    'sf.b2c.mall.widget.loading'
   ],
-  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFAddItemToCart) {
+  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher,
+    template_order_orderlist, SFAddItemToCart, SFLoading) {
 
     var DEFAULT_PAGE_NUM = 1;
     var DEFAULT_PAGE_SIZE = 50;
@@ -26,6 +28,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
     var PREFIX = 'http://img0.sfht.com';
     var DEFAULT_STATUS = '';
     var DEFAULT_ANIMATE_TIME = 3000;
+
+    var loadingCtrl = new SFLoading();
 
     can.route.ready();
 
@@ -161,7 +165,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
           })
         };
 
-        can.$('.loadingDIV').show();
+        loadingCtrl.show();
         var getOrderList = new SFGetOrderList(params);
         getOrderList.sendRequest().done(_.bind(this.paint, this));
       },
@@ -176,7 +180,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
 
-        can.$('.loadingDIV').hide();
+        loadingCtrl.hide();
       },
 
       '.gotopay click': function($element, event) {

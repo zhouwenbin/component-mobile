@@ -13,10 +13,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'sf.b2c.mall.business.config',
   'sf.env.switcher',
   'sf.b2c.mall.widget.message',
-  'sf.hybrid'
-], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail, SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid) {
+  'sf.hybrid',
+  'sf.b2c.mall.widget.loading'
+], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail,
+  SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid, SFLoading) {
 
   Fastclick.attach(document.body);
+
+  var loadingCtrl = new SFLoading();
 
   var PREFIX = 'http://img0.sfht.com';
 
@@ -102,7 +106,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     },
 
     request: function(params) {
-      $('.loadingDIV').hide();
+      loadingCtrl.hide();
 
       this.getOrder = new SFGetOrder({
         orderId: params.orderid
@@ -124,7 +128,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       var params = can.route.attr();
       this.dispatch(params);
 
-      $('.loadingDIV').hide();
+      loadingCtrl.hide();
     },
 
     // 倒计时
