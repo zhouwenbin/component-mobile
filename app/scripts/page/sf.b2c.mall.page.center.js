@@ -12,15 +12,20 @@ define(
     'sf.b2c.mall.api.user.logout',
     'sf.weixin',
     'sf.b2c.mall.business.config',
-    'text!template_center_content'
+    'text!template_center_content',
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.component.nav'
   ],
-  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin, SFConfig, template_center_content) {
+  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin,
+    SFConfig, template_center_content, SFLoading, SFNav) {
 
     Fastclick.attach(document.body);
 
     SFFrameworkComm.register(3);
 
     SFWeixin.shareIndex();
+
+    var loadingCtrl = new SFLoading();
 
     var center = can.Control.extend({
 
@@ -35,8 +40,7 @@ define(
         }
 
         // 显示蒙层
-        $('.loadingDIV').show();
-
+        loadingCtrl.show();
         this.render();
       },
 
@@ -67,10 +71,10 @@ define(
             var html = renderFn(that.options);
             that.element.html(html);
 
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           })
           .fail(function(error) {
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           })
       },
 
@@ -135,5 +139,7 @@ define(
       }
     });
 
+    // render导航
+    new SFNav('.sf-b2c-mall-nav');
     new center('.sf-b2c-mall-center');
   })
