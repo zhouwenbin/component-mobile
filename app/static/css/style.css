@@ -984,6 +984,12 @@ a[title="站长统计"] {
   background-position: -261px -361px;
 }
 
+.icon62 {
+  width: 61px;
+  height: 14px;
+  background-position: -131px -91px;
+}
+
 /*text*/
 .text-error,
 .text-important {
@@ -4373,14 +4379,13 @@ a[title="站长统计"] {
 }
 
 .detail-cart-r li {
-  width: 31%;
   margin-bottom: 8px;
   display: inline-block;
   margin-right: 2%;
 }
 
 .detail-cart-r .btn-normal {
-  padding: 0;
+  padding: 0 10px;
   width: 100%;
 }
 

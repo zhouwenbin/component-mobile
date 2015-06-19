@@ -8,7 +8,8 @@
 	<link rel="stylesheet" href="../css/style.css">
 
 </head>
-<body class="body1">	
+<body class="body1">
+	== Slim::Template.new('module/header.slim').render	
 	<!--商品-->
 	== Slim::Template.new('module/goods.slim').render	
 	<!--商品-->
@@ -39,9 +40,6 @@
 	<!--推荐商品-->
 	== Slim::Template.new('module/recommend.slim').render
 	<!--推荐商品-->
-	<!--立即购买-->
-	== Slim::Template.new('module/nav-buy.slim').render
-	<!--立即购买-->
 	<section class="nav-cart">
 		<div class="nav-cart-r1">
 			<span class="icon icon47"><span class="dot dot-error">10</span></span>
