@@ -14,7 +14,20 @@
       {{/if}}
       {{#if filterCustom.categoryName}}
         <li can-click="h5ShowFilter.showFilter" data-tab="category" class="{{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}">
-          <a href="javascript:">{{#sf-isNull filterCategories}}{{#each filterCategories}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterCategories}}{{filterCustom.categoryName}}{{/sf-isNull}}<i></i></a>
+          <a href="javascript:">
+            {{#sf-isNull filterCategories}}
+              {{#each filterCategories}}{{key}}{{/each}}
+            {{/sf-isNull}}
+            {{#sf-isNull filterSecondCategories}}
+              {{#each filterSecondCategories}}{{key}}{{/each}}
+            {{/sf-isNull}}
+            {{^sf-isNull filterCategories}}
+              {{^sf-isNull filterSecondCategories}}
+                {{filterCustom.categoryName}}
+              {{/sf-isNull}}
+            {{/sf-isNull}}
+            <i></i>
+          </a>
         </li>
       {{/if}}
       {{#if filterCustom.originName}}
@@ -57,29 +70,31 @@
       </section>
     {{/if}}
     {{#if filterCustom.secondCategoryName}}
-      <div class="nataral-tab-b {{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}">
+      <div class="nataral-tab-b {{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}" data-role="selectSecondCategory">
       <section class="nataral-classify active">
         <div class="nataral-classify-b">
           <ul>
-            <li class="active" data-id="{{id}}"><div class="nataral-classify-icon" style="background-image:url(../img/nataral-classify-all.png);background-size: 37px;"></div><h3>全部</h3></a></li>
+            <li data-id=""><div class="nataral-classify-icon" style="background-image:url(../img/nataral-classify-all.png);background-size: 37px;"></div><h3>全部</h3></a></li>
           </ul>
         </div>
       </section>
       {{#each categories.buckets}}
-        <section class="nataral-classify active">
-          <div class="nataral-classify-h" data-id="{{id}}">
+        <section class="nataral-classify {{#sf-isUnfold selected innerSecondCategories}}active{{/sf-isUnfold}}">
+          <div class="nataral-classify-h" can-click="h5SecondCategory.show">
             <h2>{{key}}</h2>
-            {{#if innerSecondCategories}}<a href="javascript:" class="nataral-classify-btn">展开</a>{{/if}}
+            {{#if innerSecondCategories}}
+              <a href="javascript:" class="nataral-classify-btn">展开</a>
+            {{/if}}
           </div>
           {{#if innerSecondCategories}}
           <div class="nataral-classify-b">
             <ul>
               {{#each innerSecondCategories}}
-              <li class="active" data-id="{{id}}">
-                <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>{{key}}</h3>
-              </li>
-              {{/each}}
-              <li>
+                <li class="{{#if selected}}active{{/if}}" data-second-id="{{id}}">
+                  <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>{{key}}</h3>
+                </li>
+              {{/each}} 
+              <li class="{{#if selected}}active{{/if}}" data-id="{{id}}">
                 <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>全部</h3>
               </li>
             </ul>
@@ -128,19 +143,25 @@
         <li data-item-id="{{itemId}}">
           {{^sf-isYZYW productForm}}
             <div class="nataral-product-c1">
+              {{#sf-isSoldOut soldOut}}
+                <span class="nataral-product-soldout center">售完</span>
+              {{/sf-isSoldOut}}
               <img {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
             </div>
             <div class="nataral-product-c2">
-              <h3><a href="http://www.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{#sf-isSoldOut soldOut}}<del>卖没了</del>{{/sf-isSoldOut}}{{title}}</a></h3>
+              <h3><a href="http://www.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{title}}</a></h3>
               <span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>￥{{sf.price referencePrice}}</del></span>
             </div>
           {{/sf-isYZYW}}
           {{#sf-isYZYW productForm}}
             <div class="nataral-product-c1">
+              {{#sf-isSoldOut soldOut}}
+                <span class="nataral-product-soldout center">售完</span>
+              {{/sf-isSoldOut}}
               <img {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} src="{{itemImage.bigImgUrl}}@150W_150h.jpg" />
             </div>
             <div class="nataral-product-c2">
-              <h3><a href="http://www.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{#starGoods}}明星{{/#starGoods}}{{#sf-isSoldOut soldOut}}<del>卖没了</del>{{/sf-isSoldOut}}{{title}}</a></h3>
+              <h3><a href="http://www.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{#starGoods}}<span class="nataral-product-star">明星</span>{{/#starGoods}}{{title}}</a></h3>
               <span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable">约{{currencySymbol}}{{sf.price originPrice}}</span>
             </div>
           {{/sf-isYZYW}}
