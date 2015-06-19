@@ -149,7 +149,7 @@
               <img {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
             </div>
             <div class="nataral-product-c2">
-              <h3><a href="http://www.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{title}}</a></h3>
+              <h3><a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{title}}</a></h3>
               <span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>￥{{sf.price referencePrice}}</del></span>
             </div>
           {{/sf-isYZYW}}
@@ -171,3 +171,5 @@
   </section>
   {{/if}}
 {{/sf-isHasResults}}
+
+<button type="button" data-role="loadItemSearch">刷新</button>
