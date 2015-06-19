@@ -53,6 +53,8 @@
 .nataral-nav li span{
 	font-family: Apple Chancery;
 	font-size: 17px;
+	vertical-align: 3px;
+	display: inline-block;
 }
 
 .nataral-product{
@@ -78,6 +80,9 @@
 	height: 75px;
 	border: 1px solid #f7f7f7;
 }
+.nataral-product-c1{
+	position: relative;
+}
 .nataral-product-c2{
 	flex:1;
 	padding-left: 15px;
@@ -88,12 +93,37 @@
 	line-height: 18px;
 	font-weight: normal;
 	margin-bottom: 12px;
+	word-break:break-all;
 }
 .nataral-product-c2 .text-important{
 	margin-right: 8px;
 }
 .nataral-product-more{
 	padding: 0 10px 20px;
+}
+.nataral-product-loading{
+	text-align: center;
+	padding: 10px 0;
+	border-top: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+}
+.nataral-product-soldout{
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	border-radius: 50%;
+	background: rgba(0,0,0,0.6);
+	position: absolute;
+	color: #fff;
+}
+.nataral-product-star{
+	display: inline-block;
+	background: #ffc600;
+	border-radius: 2px;
+	color: #fff;
+	padding: 0 5px;
+	margin-right: 3px;
 }
 .nataral-h2{
 	font-size: 15px;
@@ -115,11 +145,21 @@
 	border-top:1px solid #e4e4e4;
 	margin-bottom: 10px;
 }
+.nataral-tab{
+	height: 44px;
+}
 .nataral-tab ul{
 	display: flex;
 	border-bottom: 1px solid #e5e5e5;
 	justify-content:space-between;
 	background: #f9f9f9;
+}
+.nataral-tab-fixed{
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 1;
 }
 .nataral-tab li{	
 	text-align: center;
@@ -137,6 +177,7 @@
 	border-left: 1px solid #bdbdbd;
 	border-bottom: 1px solid #bdbdbd;
 	transform:rotate(-45deg);
+	transition:all 0.3s;
 	margin-left: 6px;
 }
 .nataral-tab li.active{
@@ -144,15 +185,24 @@
 }
 .nataral-tab li.active i{
 	border-color: #ff5b54;
+	transform:rotate(-225deg);
 }
 .nataral-tab li.active a{
 	color: #ff5b54;
 }
 .nataral-tab-b{
-	display: none;
+	position: absolute;
+	width: 100%;
+	transform:rotateX(90deg);
+	transform-origin:center top;
+	transition:all 0.3s;
 }
 .nataral-tab-b.active{
-	display: block;
+	z-index: 1;
+	transform:rotateX(0deg);
+}
+.nataral-classify{
+	margin-bottom: -1px;
 }
 .nataral-classify-h{
 	background: #f0f0f0;
@@ -210,7 +260,7 @@
 	font-size: 0;
 }
 .nataral-classify-b li.active .nataral-classify-icon{
-	border-color: #ff5b54;
+	box-shadow: 0 0 0 1px #ff5b54;
 	
 }
 .nataral-classify-b li.active h3{
@@ -226,11 +276,11 @@
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	border: 1px solid #efefef;
 	margin:0 auto;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 50px;
+	box-shadow: 0 0 0 1px #efefef;
 }
 .nataral-classify-icon:before{
 	content: '';
@@ -313,36 +363,51 @@
 	height: 8px;
 	border-left: 1px solid #bdbdbd;
 	border-bottom: 1px solid #bdbdbd;
-	-webkit-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 	margin-left: 6px;
+	transition:all 0.3s ease-in;
 }
-.nataral-brand h2{
+.nataral-brand-select h2{
 	border-bottom: none;
 	padding-top: 10px;
 }
-.nataral-brand ul{
+.nataral-brand-select ul{
 	position: absolute;
 	width: 100%;
+	overflow: hidden;
+	transform:rotateX(-90deg);
+	transform-origin:center top;
+	box-shadow: 0 3px 3px rgba(125,125,125,0.18);
+	transition:all 0.3s ease-in;
+}
+.nataral-brand-select.active ul{
+	transform:rotateX(0deg);
+	
+}
+.nataral-brand-select.active .nataral-brand-h-icon{
+	transform: rotate(-225deg);
 }
 
 .nataral-area img{
 	width: 100%;
 }
 .nataral-area-b{
-	padding: 10px;
+	padding: 15px 10px 24px;
 	background:#fff;
 }
 .nataral-area h2{
 	font-size: 17px;
-	margin-bottom: 8px;
+	margin-bottom: 10px;
 }
 .nataral-area h2 .icon{
 	margin-right: 7px;
+	vertical-align: -2px;
 }
 .nataral-area p{
 	font-size: 14px;
 	line-height: 20px;
 	color: #666;
+}
+.nataral-hanguo{
+	margin: 10px;
 }

@@ -11,7 +11,7 @@
 </head>
 <body class="body1">
 	<!--头部-->
-	== Slim::Template.new('module/header-nataral.slim').render
+	== Slim::Template.new('module/header.slim').render	
 	<!--头部-->
 	== Slim::Template.new('module/swipe.slim').render
 	<nav class="nataral-nav">
@@ -26,6 +26,7 @@
 		<ul>
 			<li>
 				<div class="nataral-product-c1">
+					<span class="nataral-product-soldout center">售完</span>
 					<img src="http://placehold.it/150x150">
 				</div>
 				<div class="nataral-product-c2">
