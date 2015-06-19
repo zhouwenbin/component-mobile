@@ -18,9 +18,11 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.env.switcher',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config',
-  'text!template_order_iteminfo'
+  'text!template_order_iteminfo',
+  'sf.mediav'
 ], function(text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList,
-  SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher, SFMessage, SFConfig, template_order_iteminfo) {
+  SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher,
+  SFMessage, SFConfig, template_order_iteminfo, SFMediav) {
 
   can.route.ready();
 
@@ -74,7 +76,45 @@ define('sf.b2c.mall.order.iteminfo', [
           $("#submitOrder").click(function() {
             that.submitOrderClick($(this));
           });
+
+          that.watchIteminfo.call(that);
         });
+    },
+
+    watchIteminfo: function () {
+      var uinfo = $.fn.cookie('3_uinfo');
+      var arr = [];
+      if (uinfo) {
+        arr = uinfo.split(',');
+      }
+
+      var name = arr[0];
+
+      var products = [];
+      this.itemObj.orderPackageItemList.each(function (packageInfo, index) {
+        packageInfo.orderGoodsItemList.each(function (value) {
+          products.push(value);
+        });
+      });
+      SFMediav.watchShoppingCart({name: name}, products);
+    },
+
+    watchSubmit: function () {
+      var uinfo = $.fn.cookie('3_uinfo');
+      var arr = [];
+      if (uinfo) {
+        arr = uinfo.split(',');
+      }
+
+      var name = arr[0];
+
+      var products = [];
+      this.itemObj.orderPackageItemList.each(function (packageInfo, index) {
+        packageInfo.orderGoodsItemList.each(function (value) {
+          products.push(value);
+        });
+      });
+      SFMediav.watchOrderSubmit({name: name}, {amount: that.itemObj.orderFeeItem.actualTotalFee}, products);
     },
 
     '#selectCoupon change': function(targetElement) {
@@ -405,6 +445,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
           switcher.go();
 
+          that.watchSubmit.call(that);
         })
         .fail(function(error) {
           element.removeClass("disable");

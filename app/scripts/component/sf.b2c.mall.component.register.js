@@ -16,11 +16,12 @@ define('sf.b2c.mall.component.register', [
     'sf.b2c.mall.api.coupon.receiveCoupon',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.api.user.checkUserExist',
-    'text!template_component_register_fillinfo'
+    'text!template_component_register_fillinfo',
+    'sf.mediav'
   ],
 
   function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf,
-    SFFn, SFReceivePro, SFReceiveCoupon, SFMessage, SFCheckUserExist, template_component_register_fillinfo) {
+    SFFn, SFReceivePro, SFReceiveCoupon, SFMessage, SFCheckUserExist, template_component_register_fillinfo, SFMediav) {
 
     Fastclick.attach(document.body);
 
@@ -364,6 +365,7 @@ define('sf.b2c.mall.component.register', [
 
           this.component.mobileRegister.sendRequest()
             .done(function(data) {
+
               if (data.csrfToken) {
                 store.set('type', 'MOBILE');
                 store.set('nickname', mobile);
@@ -402,6 +404,8 @@ define('sf.b2c.mall.component.register', [
                 that.gotoFromPage()
                   // setTimeout(function(){that.gotoFromPage();},1000);
               }
+
+              SFMediav.watchRegistered({name: mobile});
             })
             .fail(function(errorCode) {
               if (_.isNumber(errorCode)) {

@@ -316,6 +316,8 @@ requirejs.config({
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
-    'template_header_520': 'templates/sf.b2c.mall.520.mustache'
+    'template_header_520': 'templates/sf.b2c.mall.520.mustache',
+
+    'sf.mediav': 'scripts/util/sf.mediav'
   }
 });
