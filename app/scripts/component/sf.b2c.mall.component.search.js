@@ -340,6 +340,22 @@ define('sf.b2c.mall.component.search', [
     },
 
     /**
+     * @description 初始化tab固定事件
+     */
+    initTabFixedEvent: function() {
+      //节流阀
+      var fixedFun = function(){
+        var nataral_tab_position=$('.nataral-tab').position().top;
+        if($(window).scrollTop()>nataral_tab_position){
+          $('.nataral-tab ul').addClass('nataral-tab-fixed');
+        }else{
+          $('.nataral-tab ul').removeClass('nataral-tab-fixed');
+        }
+      };
+      $(window).scroll(_.throttle(fixedFun, 200));
+    },
+
+    /**
      * @description 给renderData添加bind
      */
     addRenderDataBind: function() {
@@ -446,6 +462,9 @@ define('sf.b2c.mall.component.search', [
             that.searchFail();
           })
           .then(function() {
+
+            that.initTabFixedEvent();
+
             if (that.renderData.itemSearch.results.length != 0 && that.renderData.itemSearch.totalHits) {
 
               that.checkCartIsShown.call(that, element);

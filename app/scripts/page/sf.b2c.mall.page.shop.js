@@ -34,9 +34,9 @@ define(
         new SFSearch('#sf-b2c-mall-search', {
           filterCustom: {
             showStatInfo: false,
-            brandName: "人气品牌",
-            categoryName: "商品分类",
-            secondCategoryName: "选购热点",
+            brandName: "品牌",
+            categoryName: "类目",
+            secondCategoryName: "类目2",
             originName: ""
           }
         });
