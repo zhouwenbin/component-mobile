@@ -182,7 +182,15 @@ define(
           SFHybrid.pay(that.options.orderid, that.getAppPayType())
             .done(function () {
               SFHybrid.toast.dismiss();
-              window.location.href = SFConfig.setting.link.paysuccess + '?' + $.param({orderid: that.options.orderid});
+              var link = SFConfig.setting.link.paysuccess;
+
+              if (link.indexOf('?') > -1) {
+                link = link + '&' + $.param({orderid: that.options.orderid});
+              }else{
+                link = link + '?' + $.param({orderid: that.options.orderid});
+              }
+
+              window.location.href = link;
             })
             .fail(function (errorInfo) {
               SFHybrid.toast.dismiss();
