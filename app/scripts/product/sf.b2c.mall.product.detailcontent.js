@@ -67,6 +67,12 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
 
+        'sf-showYZYW': function(productShape, options) {
+          if (productShape() == "YZYW") {
+            return options.fn(options.contexts || this);
+          }
+        },
+
         'sf-showOriginPrice': function(isPromotion, activitySoldOut, sellingPrice, originPrice, options) {
           var oPrice = originPrice();
           var isPromotion = isPromotion();
