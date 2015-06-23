@@ -155,6 +155,9 @@ define('sf.b2c.mall.order.iteminfo', [
 
 
     receiveCouponExCode: function(exCode) {
+      //can.when(this.initCoupons());
+
+      
       var that = this;
       var receiveExCode = new SFReceiveExCode({
         exCode: exCode
@@ -181,6 +184,7 @@ define('sf.b2c.mall.order.iteminfo', [
           $("#couponCodeDialog .text-error").text(errorMap[error] ? errorMap[error] : '请输入有效的兑换码！');
         })
         .always(function() {});
+        
     },
 
     /**
@@ -485,13 +489,21 @@ define('sf.b2c.mall.order.iteminfo', [
      */
     initCoupons: function() {
       var that = this;
+      var tmpItemObj = this.itemObj.serialize();
+
+      var params = [];
+      _.each(tmpItemObj.orderPackageItemList, function(itemPackage){
+        _.each(itemPackage.orderGoodsItemList, function(item) {
+          params.push({
+            "itemId": item.itemId,
+            "num": item.quantity,
+            "price": item.price,
+            "skuId": item.skuId
+          });
+        });
+      });
       var queryOrderCoupon = new SFQueryOrderCoupon({
-        "items": JSON.stringify([{
-          "itemId": that.itemObj.itemid,
-          "num": that.itemObj.amount,
-          "price": that.itemObj.orderPackageItemList[0].orderGoodsItemList[0].price,
-          "skuId": that.itemObj.orderPackageItemList[0].orderGoodsItemList[0].skuId
-        }]),
+        "items": JSON.stringify(params),
         'system': "B2C_H5"
       });
       return queryOrderCoupon.sendRequest()
