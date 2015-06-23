@@ -339,6 +339,7 @@ requirejs.config({
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
     'template_header_520': 'templates/sf.b2c.mall.520.mustache',
 
+    'sf.mediav': 'scripts/util/sf.mediav',
 
     'template_shop_detail': 'templates/shop/sf.b2c.mall.shop.detail.mustache'
   }
