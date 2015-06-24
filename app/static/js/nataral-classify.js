@@ -54,7 +54,7 @@ $(function(){
   function checkload(){
     var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
     var windowHeight = $(window).height(); //窗口的高度
-    var dbHiht = $("body").height(); //整个页面文件的高度
+    var dbHiht = $(".nataral-product").height(); //整个页面文件的高度
     s= setTimeout(function(){
       if((windowHeight + srollPos) >= (dbHiht) && num != maxnum){
         LoadList();

@@ -146,7 +146,7 @@ define('sf.b2c.mall.component.search', [
     //用于调用搜索接口的对象
     searchParams: {
       q: "",
-      size: 2,
+      size: 10,
       from: 0
     },
 
@@ -225,6 +225,10 @@ define('sf.b2c.mall.component.search', [
         show: function(context, targetElement, event) {
           targetElement.parents("section").toggleClass("active");
         }
+      },
+
+      h5LoadingData: {
+        show: false
       }
     }),
 
@@ -356,6 +360,26 @@ define('sf.b2c.mall.component.search', [
     },
 
     /**
+     * @description 初始化上拉加载数据事件
+     */
+    initLoadDataEvent: function() {
+      var that = this;
+      //节流阀
+      var fixedFun = function(){
+        var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
+        var windowHeight = $(window).height(); //窗口的高度
+        var dbHiht = $(".nataral-product").height(); //整个页面文件的高度
+
+        if((windowHeight + srollPos) >= (dbHiht)){
+
+          that.loadingData();
+        }
+      };
+
+      $(window).scroll(_.throttle(fixedFun, 200));
+    },
+
+    /**
      * @description 给renderData添加bind
      */
     addRenderDataBind: function() {
@@ -463,6 +487,7 @@ define('sf.b2c.mall.component.search', [
           })
           .then(function() {
 
+            that.initLoadDataEvent();
             that.initTabFixedEvent();
 
             if (that.renderData.itemSearch.results.length != 0 && that.renderData.itemSearch.totalHits) {
@@ -851,17 +876,14 @@ define('sf.b2c.mall.component.search', [
       this.gotoNewPage(searchDataTemp);
     },
 
-    /**
-     * 加载数据
-     * @param targerElement
-     */
-    "[data-role=loadItemSearch] click": function(targerElement) {
-      this.loadingData();
-    },
-
     loadingData: function() {
       var that = this;
 
+      if (!/^\+?[1-9]\d*$/.test(this.renderData.nextPage)) {
+        return;
+      }
+
+      this.renderData.attr("h5LoadingData.show", true);
 
       this.renderData.attr("page", this.renderData.nextPage);
 
@@ -873,6 +895,9 @@ define('sf.b2c.mall.component.search', [
           });
         })
         .fail(function() {
+        })
+        .always(function() {
+          that.renderData.attr("h5LoadingData.show", false);
         })
         .then(function(itemSearchData) {
           if (that.renderData.itemSearch.results.length != 0 && that.renderData.itemSearch.totalHits) {
