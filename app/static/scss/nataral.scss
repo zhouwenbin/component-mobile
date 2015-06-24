@@ -106,6 +106,7 @@
 	padding: 10px 0;
 	border-top: 1px solid #e4e4e4;
 	border-bottom: 1px solid #e4e4e4;
+	display: none;
 }
 .nataral-product-soldout{
 	width: 35px;
@@ -410,4 +411,11 @@
 }
 .nataral-hanguo{
 	margin: 10px;
+}
+.nataral-classify-none{
+	background: url(#{$bg-url}nataral-classify-none.png) no-repeat center 150px;
+	background-size: 111px 81px;
+	color: #999;
+	text-align: center;
+	padding-top: 250px;
 }
