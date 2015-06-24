@@ -14,9 +14,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'sf.env.switcher',
   'sf.b2c.mall.widget.message',
   'sf.hybrid',
-  'sf.b2c.mall.widget.loading'
+  'sf.b2c.mall.widget.loading',
+  'sf.mediav'
 ], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail,
-  SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid, SFLoading) {
+  SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid, SFLoading, SFMediav) {
 
   Fastclick.attach(document.body);
 
@@ -129,6 +130,18 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       this.dispatch(params);
 
       loadingCtrl.hide();
+      this.watchDetail.call(this, data);
+    },
+
+    watchDetail: function (data) {
+      var uinfo = $.fn.cookie('3_uinfo');
+      var arr = [];
+      if (uinfo) {
+        arr = uinfo.split(',');
+      }
+
+      var name = arr[0];
+      SFMediav.watchOrderDetail({name: name}, {id: (new Date()).valueOf(), amount: data.totalPrice});
     },
 
     // 倒计时

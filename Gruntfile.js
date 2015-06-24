@@ -754,6 +754,7 @@ module.exports = function (grunt) {
       },
       register: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.register.js',
