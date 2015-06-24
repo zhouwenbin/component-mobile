@@ -133,7 +133,6 @@
   padding: 10px 0;
   border-top: 1px solid #e4e4e4;
   border-bottom: 1px solid #e4e4e4;
-  display: none;
 }
 
 .nataral-product-soldout {
@@ -212,6 +211,14 @@
   line-height: 43px;
   font-size: 14px;
   width: 80px;
+}
+
+.nataral-tab li a {
+  display: inline-block;
+  width: 4em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .nataral-tab li i {
