@@ -498,8 +498,8 @@ a[title="站长统计"] {
 }
 
 .btn.active {
-  border-color: #dc3334;
-  color: #dc3334 !important;
+  border-color: #ff5b54;
+  color: #ff5b54 !important;
 }
 
 .btn-dashed,
@@ -511,8 +511,8 @@ a[title="站长统计"] {
 
 .btn-danger {
   color: #fff !important;
-  background: #dc3334;
-  border: 1px solid #dc3334;
+  background: #ff5b54;
+  border: 1px solid #ff5b54;
 }
 
 .btn-warnning,
@@ -575,7 +575,7 @@ a[title="站长统计"] {
 
 .label-error,
 .label-danger {
-  background: #dc3334;
+  background: #ff5b54;
 }
 
 .label-success {
@@ -990,10 +990,16 @@ a[title="站长统计"] {
   background-position: -131px -91px;
 }
 
+.icon63 {
+  width: 11px;
+  height: 16px;
+  background-position: -261px -380px;
+}
+
 /*text*/
 .text-error,
 .text-important {
-  color: #dc3334;
+  color: #ff5b54;
   font-size: 12px;
   vertical-align: middle;
 }
@@ -1451,8 +1457,8 @@ a[title="站长统计"] {
 }
 
 .tab-h li.active a {
-  color: #dc3334;
-  border-bottom: 2px solid #dc3334;
+  color: #ff5b54;
+  border-bottom: 2px solid #ff5b54;
 }
 
 .tab-b {
@@ -1691,7 +1697,7 @@ a[title="站长统计"] {
 }
 
 .alert-error {
-  background: #dc3334;
+  background: #ff5b54;
 }
 
 .alert-success {
@@ -1717,15 +1723,18 @@ a[title="站长统计"] {
 }
 
 .dot-important {
-  background: #c00000;
+  background: #ff5b54;
 }
 
 .dot-error {
-  width: 18px;
+  padding: 0 5px;
+  width: auto;
   height: 18px;
   line-height: 18px;
+  -webkit-border-radius: 9px;
+          border-radius: 9px;
   text-align: center;
-  background: #df3c3a;
+  background: #ff5b54;
   color: #fff;
   text-indent: 0;
   -webkit-transform: scale(0.8);
@@ -1741,6 +1750,40 @@ a[title="站长统计"] {
   -webkit-border-radius: 5px;
           border-radius: 5px;
   line-height: 18px;
+}
+
+.switch {
+  width: 46px;
+  height: 24px;
+  -webkit-border-radius: 24px;
+          border-radius: 24px;
+  background: #ccc;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+}
+
+.switch:before {
+  width: 22px;
+  height: 22px;
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  background: #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+}
+
+.switch.active {
+  background: #df3c3a;
+}
+
+.switch.active:before {
+  left: 23px;
 }
 
 /*goods*/
@@ -1803,10 +1846,6 @@ a[title="站长统计"] {
   line-height: 20px;
 }
 
-.goods del {
-  color: rgba(0, 0, 0, 0.5);
-}
-
 .goods-r2 {
   padding-bottom: 11px;
   margin-bottom: 15px;
@@ -1832,6 +1871,14 @@ a[title="站长统计"] {
   margin-bottom: 9px;
   color: #666;
   padding-bottom: 18px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .goods .mask {
@@ -1841,6 +1888,15 @@ a[title="站长统计"] {
 
 .goods .icon20 {
   z-index: 999;
+}
+
+.goods-r4 {
+  color: #999;
+}
+
+.goods-r4 del {
+  color: rgba(0, 0, 0, 0.5);
+  margin-right: 15px;
 }
 
 /*商品详情*/
@@ -4284,6 +4340,11 @@ a[title="站长统计"] {
   height: 42px;
   line-height: 42px;
   background: #fff;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  -webkit-appearance: button;
 }
 
 .order-submit {
@@ -4541,7 +4602,7 @@ a[title="站长统计"] {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #FF5B54;
+  background: #CA3F44;
   padding: 0 11px;
   z-index: 999;
 }
@@ -4574,4 +4635,50 @@ a[title="站长统计"] {
       -ms-flex: 1;
           flex: 1;
   margin-left: 10px;
+}
+
+.integral-use {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.integral-use > div {
+  height: 43px;
+  line-height: 43px;
+  padding: 0 12px;
+}
+
+.integral-use-r1 {
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.integral-use-r2 {
+  background: #f7f7f7;
+}
+
+.integral-use .input {
+  width: 75px;
+  height: 29px;
+  line-height: 29px;
+  margin: 0 6px;
+}
+
+.integral-use .text-important {
+  font-size: 14px;
+}
+
+.integral-use .switch {
+  display: block;
 }

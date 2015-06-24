@@ -8,6 +8,7 @@
 
 </head>
 <body class="body1">
+	== Slim::Template.new('module/header.slim').render	
 	<!--订单-->
 	== Slim::Template.new('module/order.slim').render
 	<!--订单-->
@@ -25,17 +26,27 @@
 			</select>
 		</div>	
 	</div>
+	<section class="integral-use">
+		<div class="integral-use-r1">
+			<div>可用积分：<span class="text-important">1000</span>点</div>
+			<div>抵<span class="text-important">- ¥10.00</span></div>
+			<a href="javascript:" class="switch"></a>
+		</div>
+		<div class="integral-use-r2">使用<input type="text" class="input" value="1000">点，抵<span class="text-important">- ¥10</span></div>
+	</section>
 	<ul class="order-r3 box">
 		<li>免运费</li>
 		<li>优惠券折扣：-¥0</li>
 		<li>活动优惠：-¥0</li>
+		<li>积分抵扣：-¥10</li>
+		<li>本单获得积分：99点</li>
 		<li>商品总金额：-¥69</li>
 	</ul>
 	<div class="order-submit">
 		<p class="order-submit-c1">实际应付款: <span class="text-important">¥1730.00</span></p>		
 		<a class="btn btn-danger" href="pay-success.html">提交订单</a>
 	</div>
-	<section class="mask dialog dialog-active">
+	<section class="mask dialog dialog-active hide">
 		<div class=" center">
 			<a href="javascript:" class="icon icon15">关闭</a>
 			<h2>输入兑换码</h2>
@@ -48,20 +59,7 @@
 			</div>	
 		</div>
 	</section>
-	<div class="nav-r1">
-		<div class="nav-c1">
-			<a href="">
-				<span class="icon icon25"></span>
-				<div>首页</div>
-			</a>			
-		</div>
-		<div class="nav-c1">
-			<a href="">
-				<span class="icon icon26"></span>
-				<div>我的</div>
-			</a>				
-		</div>
-		
-	</div>		
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/switch.js"></script>	
 </body>
 </html>
