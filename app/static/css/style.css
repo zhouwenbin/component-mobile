@@ -1749,6 +1749,40 @@ a[title="站长统计"] {
   line-height: 18px;
 }
 
+.switch {
+  width: 46px;
+  height: 24px;
+  -webkit-border-radius: 24px;
+          border-radius: 24px;
+  background: #ccc;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+}
+
+.switch:before {
+  width: 22px;
+  height: 22px;
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  background: #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+}
+
+.switch.active {
+  background: #df3c3a;
+}
+
+.switch.active:before {
+  left: 23px;
+}
+
 /*goods*/
 .goods {
   background: #fff;
@@ -1809,10 +1843,6 @@ a[title="站长统计"] {
   line-height: 20px;
 }
 
-.goods del {
-  color: rgba(0, 0, 0, 0.5);
-}
-
 .goods-r2 {
   padding-bottom: 11px;
   margin-bottom: 15px;
@@ -1838,6 +1868,14 @@ a[title="站长统计"] {
   margin-bottom: 9px;
   color: #666;
   padding-bottom: 18px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .goods .mask {
@@ -1847,6 +1885,15 @@ a[title="站长统计"] {
 
 .goods .icon20 {
   z-index: 999;
+}
+
+.goods-r4 {
+  color: #999;
+}
+
+.goods-r4 del {
+  color: rgba(0, 0, 0, 0.5);
+  margin-right: 15px;
 }
 
 /*商品详情*/
@@ -4290,6 +4337,11 @@ a[title="站长统计"] {
   height: 42px;
   line-height: 42px;
   background: #fff;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  -webkit-appearance: button;
 }
 
 .order-submit {
@@ -4580,4 +4632,50 @@ a[title="站长统计"] {
       -ms-flex: 1;
           flex: 1;
   margin-left: 10px;
+}
+
+.integral-use {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.integral-use > div {
+  height: 43px;
+  line-height: 43px;
+  padding: 0 12px;
+}
+
+.integral-use-r1 {
+  background: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.integral-use-r2 {
+  background: #f7f7f7;
+}
+
+.integral-use .input {
+  width: 75px;
+  height: 29px;
+  line-height: 29px;
+  margin: 0 6px;
+}
+
+.integral-use .text-important {
+  font-size: 14px;
+}
+
+.integral-use .switch {
+  display: block;
 }

@@ -45,9 +45,6 @@
   padding:0 10px;
   line-height: 20px;
 }
-.goods del{
-  color:rgba(0,0,0,0.5);
-}
 .goods-r2{
   padding-bottom: 11px;
   margin-bottom: 15px;
@@ -69,6 +66,8 @@
   margin-bottom: 9px;
   color:#666;
   padding-bottom: 18px;
+  display: flex;
+  justify-content:space-between;
 }
 .goods .mask{
   position: absolute;
@@ -76,4 +75,11 @@
 }
 .goods .icon20{
   z-index: 999;
+}
+.goods-r4{
+  color: #999;
+}
+.goods-r4 del{
+  color:rgba(0,0,0,0.5);
+  margin-right: 15px;
 }
