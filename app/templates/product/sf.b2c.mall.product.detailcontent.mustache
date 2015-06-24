@@ -16,6 +16,11 @@
           {{/each}}
         </div>
       </div>
+
+      {{#if priceInfo.soldOut}}
+        <div class="mask"></div>
+        <span class="icon icon20 center">售完</span>
+      {{/if}}
       {{#sf-showYZYW priceInfo.productShape}}
       <div class="goods-price2">
         <div class="text-disable">当地售价</div>

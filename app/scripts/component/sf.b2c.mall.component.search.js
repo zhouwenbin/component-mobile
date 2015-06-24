@@ -856,12 +856,18 @@ define('sf.b2c.mall.component.search', [
      * @param targerElement
      */
     "[data-role=loadItemSearch] click": function(targerElement) {
+      this.loadingData();
+    },
+
+    loadingData: function() {
       var that = this;
+
 
       this.renderData.attr("page", this.renderData.nextPage);
 
       can.when(this.initSearchItemAsyn())
         .done(function(itemSearchData) {
+          //将拿到的数据push
           _.each(itemSearchData.results, function(item) {
             that.renderData.itemSearch.results.push(item);
           });
@@ -876,6 +882,7 @@ define('sf.b2c.mall.component.search', [
           }
         });
     },
+
     /**
      * 是否显示接口数据、用户数据、实时库存
      * @param element
@@ -923,7 +930,6 @@ define('sf.b2c.mall.component.search', [
     },
 
     /**
-     * @author 张可
      * @description 添加购物车动作触发
      * @param  {element} el
      */
