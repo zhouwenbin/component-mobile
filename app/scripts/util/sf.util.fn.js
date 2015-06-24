@@ -49,10 +49,16 @@ define('sf.util', [
         return navigator.userAgent.match(/AlipayClient/i);
       },
       APP: function() {
+        var isApp = store.get('IS_APP');
         var hash = window.location.hash;
-        if (hash.indexOf('platform=android') > -1) {
+
+        if (isApp) {
+          return isApp;
+        }else if (hash.indexOf('platform=android') > -1) {
+          store.set('IS_APP', 'android');
           return 'android';
         } else if (hash.indexOf('platform=ios') > -1) {
+          store.set('IS_APP', 'ios');
           return 'ios';
         } else {
           return false;

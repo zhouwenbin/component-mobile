@@ -288,7 +288,16 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var switcher = new SFSwitcher();
 
         switcher.register('web', function () {
-          window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
+          var link = SFConfig.setting.link.orderlist;
+
+          if (link.indexOf('?') > -1) {
+            link = link + '&' + $.param(params);
+          }else{
+            link = link + '?' + $.param(params);
+          }
+
+          window.location.href = link;
+          // window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
         });
 
         switcher.register('app', function () {
