@@ -5,8 +5,9 @@ define('sf.util', [
   'can',
   'underscore',
   'md5',
-  'store'
-], function($, can, _, md5, store) {
+  'store',
+  'sf.b2c.mall.business.config'
+], function($, can, _, md5, store, config) {
 
   //$(window).hashchange();
   can.route.ready();
@@ -49,7 +50,7 @@ define('sf.util', [
         return navigator.userAgent.match(/AlipayClient/i);
       },
       APP: function() {
-        var isApp = store.get('IS_APP');
+        var isApp = config.setting['is_app'] || store.get('IS_APP');
         var hash = window.location.hash;
 
         if (isApp) {

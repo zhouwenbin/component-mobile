@@ -1473,7 +1473,7 @@ module.exports = function (grunt) {
 
     config.version = version;
     config.hybrid = true;
-    config.target = 'prd';
+    config.target = 'hybrid';
 
     var base = [
       'clean:dist',
