@@ -948,6 +948,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var params = can.route.attr();
         var map = {
           'pay': _.bind(function() {
+            element.addClass('btn-disable');
             var gotoUrl = 'http://m.sfht.com/order.html' + '?' + $.param({
               "itemid": this.itemid,
               "amount": this.options.detailContentInfo.input.buyNum
