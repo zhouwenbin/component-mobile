@@ -169,6 +169,13 @@
 	font-size: 14px;
 	width: 80px;
 }
+.nataral-tab li a{
+	display: inline-block;
+	width: 4em;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
 .nataral-tab li i{
 	content: '';
 	display: inline-block;
