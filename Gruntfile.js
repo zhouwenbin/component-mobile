@@ -1128,6 +1128,21 @@ module.exports = function (grunt) {
         }
       },
 
+      footer: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.footer.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.footer"],
+          insertRequire:  ['sf.b2c.mall.module.footer']
+        }
+      },
+
       sso: {
         options: {
           optimize: 'none',

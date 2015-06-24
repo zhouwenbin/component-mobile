@@ -169,6 +169,7 @@ requirejs.config({
     'sf.b2c.mall.module.sso': 'scripts/module/sf.b2c.mall.module.sso',
     'sf.b2c.mall.module.timecount': 'scripts/module/sf.b2c.mall.module.timecount',
     'sf.b2c.mall.module.617': 'scripts/module/sf.b2c.mall.module.617',
+    'sf.b2c.mall.module.footer': 'scripts/module/sf.b2c.mall.module.footer',
 
     // 首页
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
