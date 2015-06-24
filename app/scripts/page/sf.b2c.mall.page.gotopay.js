@@ -157,7 +157,14 @@ define(
       },
 
       gotopayBtnClick: function() {
-        // $("#gotopayBtn").text("支付中");
+
+        if ($("#gotopayBtn").hasClass('btn-disable')) {
+          return false;
+        }
+
+        $("#gotopayBtn").addClass('btn-disable');
+
+        // $("#gotopayBtn").add.text("支付中");
         var that = this;
 
         var callback = {
@@ -166,10 +173,14 @@ define(
               'tip': '订单支付失败！',
               'type': 'error'
             });
+
+            $("#gotopayBtn").removeClass('btn-disable');
           },
 
           // 回调中设置值回来
           success: function(payResult) {
+            $("#gotopayBtn").removeClass('btn-disable');
+
             that.payResult = payResult;
           }
         }
@@ -207,6 +218,8 @@ define(
               if (msg) {
                 SFHybrid.toast.show(msg);
               }
+
+              $("#gotopayBtn").removeClass('btn-disable');
             });
         })
 

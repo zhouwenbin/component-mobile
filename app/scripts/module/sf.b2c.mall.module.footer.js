@@ -13,13 +13,19 @@ define(
 
       init: function () {
 
-        var isShowAd = store.get('IS_SHOW_AD');
+        var isHideAd = store.get('IS_HIDE_AD');
 
-        this.element.find('.downloadapp').hide();
+        if (isHideAd) {
+          this.element.find('.downloadapp').hide();
+        }else{
+          this.element.find('.downloadapp').show();
+        }
+
       },
 
       '.downloadapp-close click': function ($element, event) {
-
+        store.set('IS_HIDE_AD', 'show');
+        this.element.find('.downloadapp').hide();
       }
 
     });
