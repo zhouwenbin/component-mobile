@@ -1843,10 +1843,6 @@ a[title="站长统计"] {
   line-height: 20px;
 }
 
-.goods del {
-  color: rgba(0, 0, 0, 0.5);
-}
-
 .goods-r2 {
   padding-bottom: 11px;
   margin-bottom: 15px;
@@ -1872,6 +1868,14 @@ a[title="站长统计"] {
   margin-bottom: 9px;
   color: #666;
   padding-bottom: 18px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .goods .mask {
@@ -1881,6 +1885,15 @@ a[title="站长统计"] {
 
 .goods .icon20 {
   z-index: 999;
+}
+
+.goods-r4 {
+  color: #999;
+}
+
+.goods-r4 del {
+  color: rgba(0, 0, 0, 0.5);
+  margin-right: 15px;
 }
 
 /*商品详情*/
