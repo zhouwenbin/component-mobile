@@ -125,7 +125,7 @@
                 <div class="text-disable">{{shippingWarehouse}}</div>
             </div>
             <div class="box box1">
-                <a href="#!&packageNo={{@index}}" class="box-link">
+                <a href="#!&packageNo={{@index}}&orderid={{orderItem.orderId}}" class="box-link">
                     <div>物流信息</div>
                     {{#sf-first actionTraceItemList}}
                     <time>{{sf.time gmtHappened}}</time>
