@@ -1457,8 +1457,8 @@ a[title="站长统计"] {
 }
 
 .tab-h li.active a {
-  color: #dc3334;
-  border-bottom: 2px solid #dc3334;
+  color: #ff5b54;
+  border-bottom: 2px solid #ff5b54;
 }
 
 .tab-b {
@@ -1723,7 +1723,7 @@ a[title="站长统计"] {
 }
 
 .dot-important {
-  background: #c00000;
+  background: #ff5b54;
 }
 
 .dot-error {
@@ -1734,7 +1734,7 @@ a[title="站长统计"] {
   -webkit-border-radius: 9px;
           border-radius: 9px;
   text-align: center;
-  background: #df3c3a;
+  background: #ff5b54;
   color: #fff;
   text-indent: 0;
   -webkit-transform: scale(0.8);
