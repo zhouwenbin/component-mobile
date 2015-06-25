@@ -584,3 +584,9 @@
   right: 0;
   background: #333;
 }
+
+.carnival li {
+  margin-bottom: 0;
+  border-bottom: none;
+  border-top: none;
+}
