@@ -32,7 +32,7 @@ $(function(){
   })
   //台湾全部商铺
   $('.nataral-brand-h').click(function(){
-    $(this).parents().toggleClass('active');
+    $(this).parent().toggleClass('active');
   })
   //tab置顶
   var nataral_tab_position=$('.nataral-tab').offset().top;
