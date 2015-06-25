@@ -28,6 +28,7 @@ define([], function () {
     'order': 'http://test1.www.sfht.net/order.html',
     'orderdetail': 'http://test1.www.sfht.net/orderdetail.html',
     'orderlist': 'http://test1.www.sfht.net/orderlist.html',
+      'mypoint': 'http://dev.sfht.com/mypoint.html',
     'passwordchange': 'http://test1.www.sfht.net/password-change.html',
     'preheat': 'http://test1.www.sfht.net/preheat.html',
     'process': 'http://test1.www.sfht.net/process.html',

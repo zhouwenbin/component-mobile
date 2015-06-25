@@ -28,6 +28,7 @@ define(['md5'], function (md5) {
     'order': 'http://dev.sfht.com/order.html',
     'orderdetail': 'http://dev.sfht.com/orderdetail.html',
     'orderlist': 'http://dev.sfht.com/orderlist.html',
+     'mypoint': 'http://dev.sfht.com/mypoint.html',
     'passwordchange': 'http://dev.sfht.com/password-change.html',
     'preheat': 'http://dev.sfht.com/preheat.html',
     'process': 'http://dev.sfht.com/process.html',

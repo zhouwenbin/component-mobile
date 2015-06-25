@@ -1,0 +1,27 @@
+<section class="integral">
+    <div class="integral-r1">可用积分:<span class="text-important">{{integralTotalAmount}}</span></div>
+    <div class="integral-r2">{{expirationDate}}即将过期: <span class="text-important">{{expireIntegralAmount}}</span></div>
+</section>
+<section class="integral-tab">
+    <ul>
+        <li class="active" tag="all"><a href="javascript:">全部</a></li>
+        <li tag="add"><a href="javascript:">收入</a></li>
+        <li tag="sub"><a href="javascript:">支出</a></li>
+    </ul>
+</section>
+<section class="integral-list">
+    <ul>
+        {{#each result}}
+            <li>
+                <div class="integral-list-c1">
+                    <div class="integral-list-from">{{description}}</div>
+                    <div class="integral-list-date">{{createDate}}</div>
+                </div>
+                <div class="integral-list-c2">
+                    <div class="{{flag}}">{{integralAmount}}</div>
+                    <div class="integral-list-time">{{createDate}}</div>
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+</section>
