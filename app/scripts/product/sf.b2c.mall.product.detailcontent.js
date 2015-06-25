@@ -67,11 +67,9 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
 
-        'sf-showOriginPrice': function(isPromotion, activitySoldOut, sellingPrice, originPrice, options) {
+        'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
           var oPrice = originPrice();
-          var isPromotion = isPromotion();
-          var activitySoldOut = activitySoldOut();
-          if (isPromotion && !activitySoldOut && (sellingPrice() < oPrice || oPrice == 0)) {
+          if (sellingPrice() < oPrice || oPrice == 0) {
             return options.fn(options.contexts || this);
           }
         },
