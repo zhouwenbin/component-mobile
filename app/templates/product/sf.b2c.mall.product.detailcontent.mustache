@@ -22,10 +22,12 @@
         <span class="icon icon20 center">售完</span>
       {{/if}}
       {{#sf-showYZYW priceInfo.productShape}}
-      <div class="goods-price2">
-        <div class="text-disable">当地售价</div>
-        <div class="text-important">{{priceInfo.currencySymbol}}{{itemInfo.basicInfo.originRetailPrice}}</div>
-      </div>
+        {{#sf itemInfo.basicInfo.originRetailPrice}}
+          <div class="goods-price2">
+            <div class="text-disable">当地售价</div>
+            <div class="text-important">{{priceInfo.currencySymbol}}{{itemInfo.basicInfo.originRetailPrice}}</div>
+          </div>
+        {{/if}}
       {{/sf-showYZYW}}
     </div>
     <div class="goods-b">

@@ -207,9 +207,12 @@ define('sf.b2c.mall.component.search', [
         showFilter: function(context, targetElement, event) {
           var tab = targetElement.data("tab");
           if (context.h5ShowFilter.map.attr(tab)) {
+            //隐藏
             context.h5ShowFilter.map.attr(tab, false);
             context.h5ShowFilter.attr("show", false);
+            $("body").css("backgroundColor", "");
           } else {
+            //显示
             context.h5ShowFilter.map.each(function(value , key, obj){
               if (_.isBoolean(value)) {
                 obj.attr(key, false);
@@ -217,6 +220,7 @@ define('sf.b2c.mall.component.search', [
             });
             context.h5ShowFilter.map.attr(tab, true);
             context.h5ShowFilter.attr("show", true);
+            $("body").css("backgroundColor", "#fff");
           }
         },
       },

@@ -1,135 +1,152 @@
-
-
-  <section class="nataral-tab">
-    <ul>
-      {{#if filterCustom.brandName}}
-        <li can-click="h5ShowFilter.showFilter" data-tab="brand" class="{{#h5ShowFilter.map.brand}}active{{/h5ShowFilter.map.brand}}">
-          <a href="javascript:">{{#sf-isNull filterBrands}}{{#each filterBrands}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterBrands}}{{filterCustom.brandName}}{{/sf-isNull}}<i></i></a>
-        </li>
-      {{/if}}
-      {{#if filterCustom.categoryName}}
-        <li can-click="h5ShowFilter.showFilter" data-tab="category" class="{{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}">
-          <a href="javascript:">
-            {{#sf-isNull filterCategories}}
-              {{#each filterCategories}}{{key}}{{/each}}
-            {{/sf-isNull}}
-            {{#sf-isNull filterSecondCategories}}
-              {{#each filterSecondCategories}}{{key}}{{/each}}
-            {{/sf-isNull}}
-            {{^sf-isNull filterCategories}}
-              {{^sf-isNull filterSecondCategories}}
-                {{filterCustom.categoryName}}
-              {{/sf-isNull}}
-            {{/sf-isNull}}
-            <i></i>
-          </a>
-        </li>
-      {{/if}}
-      {{#if filterCustom.originName}}
-      <li can-click="h5ShowFilter.showFilter" data-tab="origin" class="{{#h5ShowFilter.map.origin}}active{{/h5ShowFilter.map.origin}}">
-        <a href="javascript:">{{#sf-isNull filterOrigins}}{{#each filterOrigins}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterOrigins}}{{filterCustom.originName}}{{/sf-isNull}}<i></i></a>
+<section class="nataral-tab">
+  <ul>
+    {{#if filterCustom.brandName}}
+      <li can-click="h5ShowFilter.showFilter" data-tab="brand" class="{{#h5ShowFilter.map.brand}}active{{/h5ShowFilter.map.brand}}">
+        <a href="javascript:">{{#sf-isNull filterBrands}}{{#each filterBrands}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterBrands}}{{filterCustom.brandName}}{{/sf-isNull}}<i></i></a>
       </li>
-      {{/if}}
-      <li can-click="h5ShowFilter.showFilter" data-tab="sort" class="{{#h5ShowFilter.map.sort}}active{{/h5ShowFilter.map.sort}}">
-        <a href="javascript:">{{sort.name}}<i></i></a>
-      </li>
-    </ul>
-  </section>
-  {{#if filterCustom.brandName}}
-  <section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.brand}}active{{/h5ShowFilter.map.brand}}" data-role="selectBrand">
-    <ul>
-      <li class="{{^brandIds}}active{{/brandIds}}" data-id="">
-        <a href="javascript:">全部品牌</a><div class="icon icon61"></div>
-      </li>
-      {{#each brands.buckets}}
-      <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
-        <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
-      </li>
-      {{/each}}
-    </ul>
-  </section>
-  {{/if}}
-  {{#if filterCustom.categoryName}}
-    {{^if filterCustom.secondCategoryName}}
-      <section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}" data-role="selectCategory">
-        <ul>
-          <li class="{{^categoryIds}}active{{/categoryIds}}" data-id="">
-            <a href="javascript:">全部类目</a><div class="icon icon61"></div>
-          </li>
-          {{#each categories.buckets}}
-          <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
-            <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
-          </li>
-          {{/each}}
-        </ul>
-      </section>
     {{/if}}
-    {{#if filterCustom.secondCategoryName}}
-      <div class="nataral-tab-b {{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}" data-role="selectSecondCategory">
-      <section class="nataral-classify active">
+    {{#if filterCustom.categoryName}}
+      <li can-click="h5ShowFilter.showFilter" data-tab="category" class="{{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}">
+        <a href="javascript:">
+          {{#sf-isNull filterCategories}}
+            {{#each filterCategories}}{{key}}{{/each}}
+          {{/sf-isNull}}
+          {{#sf-isNull filterSecondCategories}}
+            {{#each filterSecondCategories}}{{key}}{{/each}}
+          {{/sf-isNull}}
+          {{^sf-isNull filterCategories}}
+            {{^sf-isNull filterSecondCategories}}
+              {{filterCustom.categoryName}}
+            {{/sf-isNull}}
+          {{/sf-isNull}}
+        </a>
+        <i></i>
+      </li>
+    {{/if}}
+    {{#if filterCustom.originName}}
+    <li can-click="h5ShowFilter.showFilter" data-tab="origin" class="{{#h5ShowFilter.map.origin}}active{{/h5ShowFilter.map.origin}}">
+      <a href="javascript:">{{#sf-isNull filterOrigins}}{{#each filterOrigins}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterOrigins}}{{filterCustom.originName}}{{/sf-isNull}}<i></i></a>
+    </li>
+    {{/if}}
+    {{#if filterCustom.shopNationName}}
+    <li can-click="h5ShowFilter.showFilter" data-tab="shopNation" class="{{#h5ShowFilter.map.shopNation}}active{{/h5ShowFilter.map.shopNation}}">
+      <a href="javascript:">{{#sf-isNull filterShopNations}}{{#each filterShopNations}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterShopNations}}{{filterCustom.shopNationName}}{{/sf-isNull}}<i></i></a>
+    </li>
+    {{/if}}
+    <li can-click="h5ShowFilter.showFilter" data-tab="sort" class="{{#h5ShowFilter.map.sort}}active{{/h5ShowFilter.map.sort}}">
+      <a href="javascript:">{{sort.name}}<i></i></a>
+    </li>
+  </ul>
+</section>
+{{#if filterCustom.brandName}}
+<section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.brand}}active{{/h5ShowFilter.map.brand}}" data-role="selectBrand">
+  <ul>
+    <li class="{{^brandIds}}active{{/brandIds}}" data-id="">
+      <a href="javascript:">全部品牌</a><div class="icon icon61"></div>
+    </li>
+    {{#each brands.buckets}}
+    <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
+      <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+{{#if filterCustom.categoryName}}
+  {{^if filterCustom.secondCategoryName}}
+    <section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}" data-role="selectCategory">
+      <ul>
+        <li class="{{^categoryIds}}active{{/categoryIds}}" data-id="">
+          <a href="javascript:">全部类目</a><div class="icon icon61"></div>
+        </li>
+        {{#each categories.buckets}}
+        <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
+          <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
+        </li>
+        {{/each}}
+      </ul>
+    </section>
+  {{/if}}
+  {{#if filterCustom.secondCategoryName}}
+    <div class="nataral-tab-b {{#h5ShowFilter.map.category}}active{{/h5ShowFilter.map.category}}" data-role="selectSecondCategory">
+    <section class="nataral-classify active">
+      <div class="nataral-classify-b">
+        <ul>
+          <li data-id=""><div class="nataral-classify-icon" style="background-image:url(../img/nataral-classify-all.png);background-size: 37px;"></div><h3>全部</h3></a></li>
+        </ul>
+      </div>
+    </section>
+    {{#each categories.buckets}}
+      <section class="nataral-classify {{#sf-isUnfold selected innerSecondCategories}}active{{/sf-isUnfold}}">
+        <div class="nataral-classify-h" can-click="h5SecondCategory.show">
+          <h2>{{key}}</h2>
+          {{#if innerSecondCategories}}
+            <a href="javascript:" class="nataral-classify-btn">展开</a>
+          {{/if}}
+        </div>
+        {{#if innerSecondCategories}}
         <div class="nataral-classify-b">
           <ul>
-            <li data-id=""><div class="nataral-classify-icon" style="background-image:url(../img/nataral-classify-all.png);background-size: 37px;"></div><h3>全部</h3></a></li>
+            {{#each innerSecondCategories}}
+              <li class="{{#if selected}}active{{/if}}" data-second-id="{{id}}">
+                <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>{{key}}</h3>
+              </li>
+            {{/each}} 
+            <li class="{{#if selected}}active{{/if}}" data-id="{{id}}">
+              <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>全部</h3>
+            </li>
           </ul>
         </div>
+        {{/if}}
       </section>
-      {{#each categories.buckets}}
-        <section class="nataral-classify {{#sf-isUnfold selected innerSecondCategories}}active{{/sf-isUnfold}}">
-          <div class="nataral-classify-h" can-click="h5SecondCategory.show">
-            <h2>{{key}}</h2>
-            {{#if innerSecondCategories}}
-              <a href="javascript:" class="nataral-classify-btn">展开</a>
-            {{/if}}
-          </div>
-          {{#if innerSecondCategories}}
-          <div class="nataral-classify-b">
-            <ul>
-              {{#each innerSecondCategories}}
-                <li class="{{#if selected}}active{{/if}}" data-second-id="{{id}}">
-                  <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>{{key}}</h3>
-                </li>
-              {{/each}} 
-              <li class="{{#if selected}}active{{/if}}" data-id="{{id}}">
-                <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>全部</h3>
-              </li>
-            </ul>
-          </div>
-          {{/if}}
-        </section>
-      {{/each}}
-      </div>
-    {{/if}}
+    {{/each}}
+    </div>
   {{/if}}
-  {{#if filterCustom.originName}}
-  <section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.origin}}active{{/h5ShowFilter.map.origin}}" data-role="selectOrigin">
-    <ul>
-      <li class="{{^originIds}}active{{/originIds}}" data-id="">
-        <a href="javascript:">全部货源地</a><div class="icon icon61"></div>
-      </li>
-      {{#each origins.buckets}}
-      <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
-        <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
-      </li>
-      {{/each}}
-    </ul>
-  </section>
-  {{/if}}
-  <section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.sort}}active{{/h5ShowFilter.map.sort}}" data-role="sortBox">
-    <ul>
-      <li class="{{#sf-isSortByDEFAULT sort}}active{{/sf-isSortByDEFAULT}}" data-role="DEFAULT">
-        <a href="javascript:">综合</a><div class="icon icon61"></div>
-      </li>
-      <li class="{{#sf-isSortBySALE sort}}active{{/sf-isSortBySALE}}" data-role="SALE_DESC">
-        <a href="javascript:">人气</a><div class="icon icon61"></div>
-      </li>
-      <li class="{{#sf-isSortByPRICEASC sort}}active{{/sf-isSortByPRICEASC}}" data-role="PRICE_ASC">
-        <a href="javascript:">价格由低到高</a><div class="icon icon61"></div>
-      </li>
-      <li class="{{#sf-isSortByPRICEDESC sort}}active{{/sf-isSortByPRICEDESC}}" data-role="PRICE_DESC">
-        <a href="javascript:">价格由高到低</a><div class="icon icon61"></div>
-      </li>
-    </ul>
-  </section>
+{{/if}}
+{{#if filterCustom.originName}}
+<section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.origin}}active{{/h5ShowFilter.map.origin}}" data-role="selectOrigin">
+  <ul>
+    <li class="{{^originIds}}active{{/originIds}}" data-id="">
+      <a href="javascript:">全部货源地</a><div class="icon icon61"></div>
+    </li>
+    {{#each origins.buckets}}
+    <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
+      <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+{{#if filterCustom.shopNationName}}
+<section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.shopNation}}active{{/h5ShowFilter.map.shopNation}}" data-role="selectShopNation">
+  <ul>
+    <li class="{{^shopNationIds}}active{{/shopNationIds}}" data-id="">
+      <a href="javascript:">全部货源地</a><div class="icon icon61"></div>
+    </li>
+    {{#each shopNations.buckets}}
+    <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
+      <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
+<section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.sort}}active{{/h5ShowFilter.map.sort}}" data-role="sortBox">
+  <ul>
+    <li class="{{#sf-isSortByDEFAULT sort}}active{{/sf-isSortByDEFAULT}}" data-role="DEFAULT">
+      <a href="javascript:">综合</a><div class="icon icon61"></div>
+    </li>
+    <li class="{{#sf-isSortBySALE sort}}active{{/sf-isSortBySALE}}" data-role="SALE_DESC">
+      <a href="javascript:">人气</a><div class="icon icon61"></div>
+    </li>
+    <li class="{{#sf-isSortByPRICEASC sort}}active{{/sf-isSortByPRICEASC}}" data-role="PRICE_ASC">
+      <a href="javascript:">价格由低到高</a><div class="icon icon61"></div>
+    </li>
+    <li class="{{#sf-isSortByPRICEDESC sort}}active{{/sf-isSortByPRICEDESC}}" data-role="PRICE_DESC">
+      <a href="javascript:">价格由高到低</a><div class="icon icon61"></div>
+    </li>
+  </ul>
+</section>
 
 {{^sf-isHasResults itemSearch.totalHits itemSearch.results}}
   <section class="nataral-classify-none"><p>哎呦！这里空空如也~</p></section>
@@ -149,7 +166,7 @@
               <img {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
             </div>
             <div class="nataral-product-c2">
-              <h3><a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{title}}</a></h3>
+              <h3 class="ellipsis2"><a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{title}}</a></h3>
               <span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>￥{{sf.price referencePrice}}</del></span>
             </div>
           {{/sf-isYZYW}}
