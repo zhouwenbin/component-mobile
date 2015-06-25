@@ -4682,3 +4682,105 @@ a[title="站长统计"] {
 .integral-use .switch {
   display: block;
 }
+
+.integral {
+  padding-left: 11px;
+  padding-top: 17px;
+  padding-bottom: 11px;
+  background: #fff;
+  border-top: 1px solid #DCDCDC;
+  border-bottom: 1px solid #DCDCDC;
+  font-size: 14px;
+  margin: 25px 0;
+}
+
+.integral-r1 {
+  margin-bottom: 5px;
+}
+
+.integral-r1 .text-important {
+  font-size: 18px;
+}
+
+.integral-r2 {
+  color: #9B9B9B;
+}
+
+.integral-r2 .text-important {
+  font-size: 14px;
+}
+
+.integral-tab {
+  height: 44px;
+}
+
+.integral-tab ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #f9f9f9;
+}
+
+.integral-tab-fixed {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.integral-tab li {
+  text-align: center;
+  height: 43px;
+  line-height: 43px;
+  font-size: 14px;
+  width: 80px;
+}
+
+.integral-tab li a {
+  color: #9B9B9B;
+}
+
+.integral-tab li.active {
+  border-bottom: 4px solid #ff5b54;
+}
+
+.integral-tab li.active a {
+  color: #ff5b54;
+}
+
+.integral-list li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid #DCDCDC;
+  padding: 11px 15px 10px;
+  font-size: 14px;
+}
+
+.integral-list-date,
+.integral-list-time {
+  color: #9B9B9B;
+  margin-top: 10px;
+}
+
+.integral-list-orderid {
+  color: #9B9B9B;
+}
+
+.integral-list .text-success,
+.integral-list .text-important {
+  font-size: 18px;
+}
