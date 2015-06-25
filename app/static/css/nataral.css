@@ -571,3 +571,16 @@
   text-align: center;
   padding: 250px 0;
 }
+
+.icon65 {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+}
+
+.icon65 .dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #333;
+}

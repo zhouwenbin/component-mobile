@@ -1006,7 +1006,12 @@ a[title="站长统计"] {
   width: 14px;
   height: 13px;
   background-position: -260px -400px;
-  text-indent: -999em;
+}
+
+.icon65 {
+  width: 48px;
+  height: 48px;
+  background-position: -288px -296px;
 }
 
 /*text*/
