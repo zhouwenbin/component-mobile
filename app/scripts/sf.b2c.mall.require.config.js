@@ -179,6 +179,9 @@ requirejs.config({
     'sf.b2c.mall.module.sso': 'scripts/module/sf.b2c.mall.module.sso',
     'sf.b2c.mall.module.timecount': 'scripts/module/sf.b2c.mall.module.timecount',
     'sf.b2c.mall.module.617': 'scripts/module/sf.b2c.mall.module.617',
+    'sf.b2c.mall.module.newpage': 'scripts/module/sf.b2c.mall.module.newpage',
+    'sf.b2c.mall.module.nataralSelect': 'scripts/module/sf.b2c.mall.module.nataralSelect',
+    'sf.b2c.mall.module.fixtab': 'scripts/module/sf.b2c.mall.module.fixtab',
 
     // 首页
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',

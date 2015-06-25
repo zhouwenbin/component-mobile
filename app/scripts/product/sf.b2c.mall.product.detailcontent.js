@@ -618,9 +618,11 @@ define('sf.b2c.mall.product.detailcontent', [
         });
         return getProductHotData.sendRequest()
           .done(function(priceData) {
-            //获得服务器时间
-            var currentServerTime = getProductHotData.getServerTime();
-            that.initCountDown(currentServerTime, priceData.endTime);
+            if(priceData.endTime) {
+              //获得服务器时间
+              var currentServerTime = getProductHotData.getServerTime();
+              that.initCountDown(currentServerTime, priceData.endTime);
+            }
 
             that.adapter.formatPrice(that.options.detailContentInfo, priceData);
           });
@@ -1191,8 +1193,10 @@ define('sf.b2c.mall.product.detailcontent', [
 
 
             //获得服务器时间
-            var currentServerTime = getProductHotData.getServerTime();
-            that.initCountDown(currentServerTime, priceData.endTime);
+            if (priceData.endTime) {
+              var currentServerTime = getProductHotData.getServerTime();
+              that.initCountDown(currentServerTime, priceData.endTime);
+            }
           })
           .fail(function(error) {
             // $('.loadingDIV').hide();
@@ -1242,9 +1246,11 @@ define('sf.b2c.mall.product.detailcontent', [
 
 
       initCountDown: function(currentServerTime, endTime) {
-        endTime = 1445044886397
-
         var that = this;
+        //endTime = 1445044886397
+        if(!endTime) {
+          that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+        }
 
         var currentClientTime = new Date().getTime();
         var distance = currentServerTime - currentClientTime;

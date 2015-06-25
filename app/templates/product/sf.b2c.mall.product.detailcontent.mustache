@@ -39,9 +39,9 @@
         （含税）{{#sf-showOriginPrice priceInfo.isPromotion priceInfo.activitySoldOut priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>{{/sf-showOriginPrice}}
         {{#sf-showYZYW priceInfo.productShape}}约{{priceInfo.currencySymbol}}{{sf.price priceInfo.localSellingPrice}}{{/sf-showYZYW}}
       </div>
-      <div class="goods-r2">
-        {{#if priceInfo.timeIcon}}剩余：<span class="text-important">{{priceInfo.time.day}}</span>天<span class="text-important">{{priceInfo.time.hour}}</span>小时<span class="text-important">{{priceInfo.time.minute}}</span>分<span class="text-important">{{priceInfo.time.second}}</span>秒{{/if}}
-      </div>
+      {{#if priceInfo.timeIcon}}
+        <div class="goods-r2">剩余：<span class="text-important">{{priceInfo.time.day}}</span>天<span class="text-important">{{priceInfo.time.hour}}</span>小时<span class="text-important">{{priceInfo.time.minute}}</span>分<span class="text-important">{{priceInfo.time.second}}</span>秒</div>
+      {{/if}}
 
       <div class="goods-r3">
         <div>{{itemInfo.saleInfo.seller}}：{{itemInfo.saleInfo.shippingPoint}} 发货,预计{{itemInfo.saleInfo.sendTime}}天内到货&nbsp;&nbsp;&nbsp;&nbsp;运费：0元</div>

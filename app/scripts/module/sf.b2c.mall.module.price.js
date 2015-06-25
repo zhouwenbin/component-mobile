@@ -95,6 +95,17 @@ define(
           element.find('.cms-fill-gotobuy').text('已经抢光');
           element.find('.product-r1').append('<div class="mask show"></div>');
           element.find('.product-r1').append('<span class="icon icon24"></span>');
+
+          element.find('.cms-fill-soldout').show();
+        }
+
+        // 原汁原味明星产品 折算价
+        if (value.productShape == "YZYW") {
+        // 当地折算价
+          element.find('.cms-fill-localsellingprice').text("约" + value.currencySymbol + (value.localSellingPrice / 100));
+          if (value.isStartGoods === true) {
+            element.find('.cms-fill-label').show();
+          }
         }
       },
 
