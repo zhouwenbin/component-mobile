@@ -65,7 +65,7 @@ define('sf.b2c.mall.shop.detail', [
     },
 
     goto404: function() {
-      window.location.href = "404.html";
+      window.location.href = "http://m.sfht.com";
     },
 
     /**
