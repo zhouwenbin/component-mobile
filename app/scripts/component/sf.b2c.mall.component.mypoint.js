@@ -6,16 +6,15 @@ define('sf.b2c.mall.component.mypoint', [
       'store',
       'fastclick',
     'sf.b2c.mall.api.integral.getUserIntegralLog',
-    'sf.b2c.mall.adapter.pagination',
-    'sf.b2c.mall.widget.pagination',
     'sf.helpers',
     'sf.b2c.mall.api.sc.getUserRoutes',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.api.product.findRecommendProducts',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.framework.comm'
+    'sf.b2c.mall.framework.comm',
+    'text!template_center_point'
   ],
-  function(can, $, store, Fastclick,  IntegralLog,  PaginationAdapter, Pagination, helpers,  SFGetUserRoutes, SFMessage, SFFindRecommendProducts, SFConfig,SFFrameworkComm) {
+  function(can, $, store, Fastclick,  IntegralLog,   helpers,  SFGetUserRoutes, SFMessage, SFFindRecommendProducts, SFConfig,SFFrameworkComm,template_center_point) {
      Fastclick.attach(document.body);
      SFFrameworkComm.register(3);
     can.route.ready();
@@ -36,14 +35,15 @@ define('sf.b2c.mall.component.mypoint', [
 
             var params = {
               "operateType": routeParams.operateType,
-                "page": routeParams.page,
-                "size": 10
+                "page": routeParams.page || 1,
+                "size": 50
             }
             this.render(params);
       },
 
       render: function(params) {
         var that = this;
+        var dateAndTime ;
           //调用积分接口
         var getPointList = new IntegralLog(params);
           getPointList.sendRequest()
@@ -57,58 +57,68 @@ define('sf.b2c.mall.component.mypoint', [
                           _.each(that.options.result, function(point) {
                                     if(point.integralAmount > 0){
                                         point.flag = "text-success";
+                                        point.integralAmount = "+" + point.integralAmount;
                                     }
                                    else{
                                         point.flag = "text-important";
                                     }
+                                  dateAndTime =  that.getDateAndTime(point.createDate);
+                                  point.dateValue = dateAndTime.datePart;
+                                  point.timeValue = dateAndTime.timePart;
                           })
                     } else {
 
                     }
                 //  var html = can.view('templates/center/sf.b2c.mall.center.point.mustache', that.options);
-                  var renderPoint = can.mustache(template_center_point, that.options);
-                  var html = renderFn(that.options);
+                  var renderPoint = can.mustache(template_center_point);
+                  var html = renderPoint(that.options);
                   that.element.html(html);
                   //获取当前的操作类型，设置当前的li标签
                   var routeParams = can.route.attr();
                   if (routeParams.operateType) {
-                      _.each($(".integral-tab-c1 li"), function(element) {
+                      _.each($(".integral-tab li"), function(element) {
                           if($(element).attr("tag") == routeParams.operateType){
                               $(element).addClass("active").siblings().removeClass("active");
                           }
                       }, this)
                   } else {
-                      $(".integral-tab-c1 li").eq(0).addClass("active");
+                      $(".integral-tab li").eq(0).addClass("active");
                   }
-
-                  //分页 保留 已经调通 误删 后面设计会给样式
-                  that.options.page = new PaginationAdapter();
-                  that.options.page.format({
-                      "pageNum":data.totalPage,
-                      "currentNum":data.currentPage,
-                      "totalNum":data.totalCount,
-                      "pageSize":data.pageSize
-                  });
-                  new Pagination('.sf-b2c-mall-order-orderlist-pagination', that.options);
+                  can.$('.loadingDIV').hide();
           })
           .fail(function(error) {
             console.error(error);
+            can.$('.loadingDIV').hide();
           });
       },
 
+       getDateAndTime: function(timeValue){
+            var DateValue = new Date(timeValue);
+           var monV = DateValue.getMonth() + 1;
+           var dayV = DateValue.getDate();
+           var hourV = DateValue.getHours();
+           var minV = DateValue.getMinutes();
+           var secV = DateValue.getSeconds();
+            var datePart = DateValue.getFullYear() + "-" + (monV < 10?("0" + monV):monV) + "-" + (dayV < 10?("0" + dayV):dayV);
+           var timePart = (hourV < 10?("0" + hourV):hourV) + ":" + (minV < 10?("0" + minV):minV)+ ":" + (secV < 10?("0" + secV):secV);
+           return {
+               "datePart":datePart,
+               "timePart":timePart
+           };
+       },
       '{can.route} change': function(el, attr, how, newVal, oldVal) {
           var routeParams = can.route.attr();
           var params = {
               "operateType": routeParams.operateType,
               "page": routeParams.page,
-              "size": 10
+              "size": 50
           };
           this.render(params);
       },
 
 
         //点击不同的li，传入不同的参数
-      '.integral-tab-c1 li click': function(element, event) {
+      '.integral-tab li click': function(element, event) {
         event && event.preventDefault();
         var that = this;
         // @todo 知道当前需要访问那个tag，并且根据tag，设置params，传给render
@@ -120,7 +130,7 @@ define('sf.b2c.mall.component.mypoint', [
        $(element).addClass("active").siblings().removeClass("active");
 
         //window.location.href = SFConfig.setting.link.pointlist + '#!' + $.param({
-          window.location.href = " http://www.sfht.com/point-manage.html" + '#!' + "operateType=" + tag + "&page=" + 1;
+          window.location.href = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" + tag + "&page=" + 1;
 
       }
     });

@@ -1014,6 +1014,25 @@ module.exports = function (grunt) {
         }
       },
 
+        mypoint: {
+            options: {
+                optimize: 'none',
+                preserveLicenseComments: false,
+                baseUrl: './app/',
+                out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.mypoint.js',
+                mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+                paths: {
+                    'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+                },
+                include: [
+                    "sf.b2c.mall.business.config",
+                    'sf.b2c.mall.component.mypoint',
+                    'sf.b2c.mall.page.mypoint'
+                ],
+                insertRequire: ['sf.b2c.mall.page.mypoint']
+            }
+        },
+
       slider: {
         options: {
           preserveLicenseComments: false,

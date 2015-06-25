@@ -8,14 +8,13 @@ define(
     'fastclick',
     'sf.util',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.order.orderlistcontent',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.component.nav',
     'sf.b2c.mall.business.config',
    'sf.b2c.mall.component.mypoint'
   ],
 
-  function(can, $, Fastclick,  util, SFFrameworkComm, SFOrderListContent, SFMessage,
+  function(can, $, Fastclick,  util, SFFrameworkComm, SFMessage,
     SFNav, SFConfig, SFPoint) {
 
       SFFrameworkComm.register(3);
@@ -39,7 +38,7 @@ define(
                   return false;
               }
 
-              new SFMyPoint('body');
+              new SFPoint('body');
           }
 
       });

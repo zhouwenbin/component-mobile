@@ -85,7 +85,7 @@ define(
 
         '.mypoint click': function(element, event) {
             //window.location.href = SFConfig.setting.link.mypoint;
-            window.location.href = 'http://dev.sfht.com/mypoint.html';
+            window.location.href = 'http://m.sfht.com/mypoint.html';
         },
 
       maskMobile: function(str) {

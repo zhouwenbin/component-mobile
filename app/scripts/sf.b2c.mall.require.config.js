@@ -138,7 +138,7 @@ requirejs.config({
     'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM': 'scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM',
 
       //积分接口
-     ' sf.b2c.mall.api.integral.getUserIntegralLog':'scripts/api/sf.b2c.mall.api.integral.getUserIntegralLog',
+     'sf.b2c.mall.api.integral.getUserIntegralLog':'scripts/api/sf.b2c.mall.api.integral.getUserIntegralLog',
 
 
     // --------------------------------------------
