@@ -51,10 +51,8 @@
 	background: #72bbdb;
 }
 .nataral-nav li span{
-	font-family: Apple Chancery;
-	font-size: 17px;
-	vertical-align: 3px;
-	display: inline-block;
+	
+	margin-bottom: 3px;
 }
 
 .nataral-product{
@@ -170,7 +168,8 @@
 }
 .nataral-tab li a{
 	display: inline-block;
-	width: 4em;
+	vertical-align: middle;
+	max-width: 3.5em;
 	text-overflow:ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -427,5 +426,5 @@
 	background-size: 111px 81px;
 	color: #999;
 	text-align: center;
-	padding-top: 250px;
+	padding: 250px 0;
 }
