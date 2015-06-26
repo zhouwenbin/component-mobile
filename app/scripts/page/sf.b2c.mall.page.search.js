@@ -8,11 +8,10 @@ define(
     'sf.util',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.component.search',
-    'sf.b2c.mall.module.header',
-    'sf.b2c.mall.module.sso'
+    'sf.b2c.mall.module.header'
   ],
   function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness,
-           SFSearch, SFSso) {
+           SFSearch) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
