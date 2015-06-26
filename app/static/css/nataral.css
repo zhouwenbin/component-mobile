@@ -90,16 +90,11 @@
   border: none;
 }
 
-.nataral-product img:first-child {
-  z-index: 0;
-}
-
 .nataral-product img {
   width: 75px;
   height: 75px;
   border: 1px solid #f7f7f7;
   position: absolute;
-  z-index: -1;
   left: 0;
   top: 0;
   -webkit-transition: 0.5s -webkit-transform ease-in-out,0.5s left linear,0.5s top ease-in,0.1s visibility 0.5s linear;
@@ -114,7 +109,6 @@
 
 .nataral-product-c1 .mask {
   position: absolute;
-  z-index: 0;
 }
 
 .nataral-product-c2 {

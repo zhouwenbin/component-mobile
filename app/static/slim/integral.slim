@@ -12,7 +12,12 @@
 	== Slim::Template.new('module/header.slim').render
 	<!--头部-->
 	<section class="integral">
-		<div class="integral-r1">可用积分:<span class="text-important">2136</span></div>
+		<div class="integral-r1">
+			<div class="integral-r1c1">可用积分:<span class="text-important">2136</span></div>
+			<div class="integral-r1c2">积分说明
+				== Slim::Template.new('../svg/icon-integral-explain.svg').render
+			</div>
+		</div>
 		<div class="integral-r2">2016年6月30日 即将过期: <span class="text-important">250</span></div>
 	</section>
 	<section class="integral-tab">
