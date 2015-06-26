@@ -161,6 +161,7 @@
           {{^sf-isYZYW productForm}}
             <div class="nataral-product-c1">
               {{#sf-isSoldOut soldOut}}
+                <div class="mask"></div>
                 <span class="nataral-product-soldout center">售完</span>
               {{/sf-isSoldOut}}
               <img {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
@@ -173,6 +174,7 @@
           {{#sf-isYZYW productForm}}
             <div class="nataral-product-c1">
               {{#sf-isSoldOut soldOut}}
+                <div class="mask"></div>
                 <span class="nataral-product-soldout center">售完</span>
               {{/sf-isSoldOut}}
               <img {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} src="{{itemImage.bigImgUrl}}@150W_150h.jpg" />
