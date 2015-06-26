@@ -966,6 +966,10 @@ define('sf.b2c.mall.component.search', [
       }
     },
 
+    '.icon66.disabled click': function() {
+      return false;
+    },
+
     /**
      * @description 添加购物车动作触发
      * @param  {element} el

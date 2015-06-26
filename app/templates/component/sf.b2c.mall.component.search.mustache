@@ -181,7 +181,7 @@
               {{#sf-isYZYW productForm}}
                 <h3 class="ellipsis2">{{#starGoods}}<span class="nataral-product-star">明星</span>{{/#starGoods}}{{title}}</h3>
                 <div class="nataral-product-r1">
-                  <div><span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>约{{currencySymbol}}{{sf.price originPrice}}</del></span></div>
+                  <div><span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable">约{{currencySymbol}}{{sf.price originPrice}}</span></div>
                   {{#if isShowShoppintCart}}
                     <span {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} class="icon icon66 {{^sf-isShowAddToCart soldOut supportShoppingCart}}disabled{{/sf-isShowAddToCart}}"></span>
                   {{/if}}
