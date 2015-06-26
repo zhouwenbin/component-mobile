@@ -9,7 +9,7 @@ define(
     'sf.util',
     'sf.b2c.mall.business.config',
     'sf.helpers',
-    'sf.b2c.mall.api.order.getOrder',
+    'sf.b2c.mall.api.order.getOrderV2',
     'text!template_order_paysuccess',
     'sf.env.switcher',
     'sf.hybrid',
@@ -78,7 +78,7 @@ define(
         getOrder.sendRequest()
           .done(function(data) {
             itemObj.isPaySuccess = data.orderItem.paymentStatus === "PAYED";
-
+            itemObj.totalPoint = data.presentIntegral;
             var couponTypeMap = {
               "CASH" : function() {
                 switch (tmpOrderCouponItem.orderAction)

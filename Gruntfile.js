@@ -260,7 +260,7 @@ module.exports = function (grunt) {
         blockReplacements: {
           js: function (block) {
 
-            console.log(!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js'));
+         //   console.log(!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js'));
             if (!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js')) {
               return '';
             }

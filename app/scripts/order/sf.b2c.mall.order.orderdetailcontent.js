@@ -115,8 +115,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
     paint: function(data) {
       this.serverTime = this.getOrder.getServerTime();
+      this.options.totalPoint =data.presentIntegral;
       this.options.data = new can.Map(data);
-
       var renderFn = can.mustache(template_order_orderdetail);
       var html = renderFn(this.options.data, this.helpers);
 
