@@ -12,6 +12,7 @@ $(function(){
     that.css({
       left:targetX-currentX,
       top:targetY-currentY,
+      borderRadius:'50%',
       transform:'rotate(360deg) scale(0.1)',
       zIndex:1000,
       visibility:'hidden'
