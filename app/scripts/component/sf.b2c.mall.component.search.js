@@ -208,8 +208,8 @@ define('sf.b2c.mall.component.search', [
           var tab = targetElement.data("tab");
           if (context.h5ShowFilter.map.attr(tab)) {
             //隐藏
-            context.h5ShowFilter.map.attr(tab, false);
             context.h5ShowFilter.attr("show", false);
+            context.h5ShowFilter.map.attr(tab, false);
             $("body").css("backgroundColor", "");
           } else {
             //显示
