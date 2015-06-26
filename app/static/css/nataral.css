@@ -625,3 +625,15 @@
   border-bottom: none;
   border-top: none;
 }
+
+.nataral-code {
+  background: url(../img/nataral-code.png) no-repeat center;
+  -webkit-background-size: 320px 320px;
+          background-size: 320px;
+  height: 75px;
+  padding-left: 170px;
+  padding-top: 30px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 24px;
+}
