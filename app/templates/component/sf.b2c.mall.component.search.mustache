@@ -2,7 +2,7 @@
   <ul>
     {{#if filterCustom.brandName}}
       <li can-click="h5ShowFilter.showFilter" data-tab="brand" class="{{#h5ShowFilter.map.brand}}active{{/h5ShowFilter.map.brand}}">
-        <a href="javascript:">{{#sf-isNull filterBrands}}{{#each filterBrands}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterBrands}}{{filterCustom.brandName}}{{/sf-isNull}}<i></i></a>
+        <a href="javascript:">{{#sf-isNull filterBrands}}{{#each filterBrands}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterBrands}}{{filterCustom.brandName}}{{/sf-isNull}}</a><i></i>
       </li>
     {{/if}}
     {{#if filterCustom.categoryName}}
@@ -25,16 +25,16 @@
     {{/if}}
     {{#if filterCustom.originName}}
     <li can-click="h5ShowFilter.showFilter" data-tab="origin" class="{{#h5ShowFilter.map.origin}}active{{/h5ShowFilter.map.origin}}">
-      <a href="javascript:">{{#sf-isNull filterOrigins}}{{#each filterOrigins}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterOrigins}}{{filterCustom.originName}}{{/sf-isNull}}<i></i></a>
+      <a href="javascript:">{{#sf-isNull filterOrigins}}{{#each filterOrigins}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterOrigins}}{{filterCustom.originName}}{{/sf-isNull}}</a><i></i>
     </li>
     {{/if}}
     {{#if filterCustom.shopNationName}}
     <li can-click="h5ShowFilter.showFilter" data-tab="shopNation" class="{{#h5ShowFilter.map.shopNation}}active{{/h5ShowFilter.map.shopNation}}">
-      <a href="javascript:">{{#sf-isNull filterShopNations}}{{#each filterShopNations}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterShopNations}}{{filterCustom.shopNationName}}{{/sf-isNull}}<i></i></a>
+      <a href="javascript:">{{#sf-isNull filterShopNations}}{{#each filterShopNations}}{{key}}{{/each}}{{/sf-isNull}}{{^sf-isNull filterShopNations}}{{filterCustom.shopNationName}}{{/sf-isNull}}</a><i></i>
     </li>
     {{/if}}
     <li can-click="h5ShowFilter.showFilter" data-tab="sort" class="{{#h5ShowFilter.map.sort}}active{{/h5ShowFilter.map.sort}}">
-      <a href="javascript:">{{sort.name}}<i></i></a>
+      <a href="javascript:">{{sort.name}}</a><i></i>
     </li>
   </ul>
 </section>

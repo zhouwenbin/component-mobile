@@ -21,13 +21,18 @@ define(
           $(this).toggleClass("active");
         })
         $(item).on("click", "li", function() {
+          if($(this).hasClass("active")) {
+            return;
+          }
           $(this).addClass("active").siblings(".active").removeClass("active");
           var pos = $(this).parents("ul").find("li").index(this);
-          var siblingsDivs = $(this)
-            .parents(".nataral-brand-select")
-            .siblings("div");
+          var parentsDiv = $(this)
+            .parents(".nataral-brand-select");
+          var siblingsDivs = parentsDiv.siblings("div");
           siblingsDivs.hide().eq(pos).show();
 
+          var tabName = $(this).find("a").text();
+          parentsDiv.find(".nataral-h2").text(tabName);
         })
       }
     })
