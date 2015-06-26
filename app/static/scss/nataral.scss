@@ -99,6 +99,10 @@
 .nataral-product-more{
 	padding: 0 10px 20px;
 }
+.nataral-product-more .btn{
+	height: 39px;
+	line-height: 39px;
+}
 .nataral-product-loading{
 	text-align: center;
 	padding: 10px 0;
@@ -144,7 +148,7 @@
 	margin-bottom: 10px;
 }
 .nataral-tab{
-	height: 44px;
+	height: 46px;
 }
 .nataral-tab ul{
 	display: flex;
@@ -161,8 +165,8 @@
 }
 .nataral-tab li{	
 	text-align: center;
-	height: 43px;
-	line-height: 43px;
+	height: 46px;
+	line-height: 46px;
 	font-size: 14px;
 	width: 80px;
 }
