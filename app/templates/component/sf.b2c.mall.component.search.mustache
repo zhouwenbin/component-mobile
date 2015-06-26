@@ -158,32 +158,35 @@
     <ul>
       {{#each itemSearch.results}}
         <li data-item-id="{{itemId}}">
-          {{^sf-isYZYW productForm}}
-            <div class="nataral-product-c1">
+          <div class="nataral-product-c1">
+            <a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">
               {{#sf-isSoldOut soldOut}}
                 <div class="mask"></div>
                 <span class="nataral-product-soldout center">售完</span>
               {{/sf-isSoldOut}}
-              <img {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
-            </div>
-            <div class="nataral-product-c2">
-              <h3 class="ellipsis2"><a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{title}}</a></h3>
-              <span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>￥{{sf.price referencePrice}}</del></span>
-            </div>
-          {{/sf-isYZYW}}
-          {{#sf-isYZYW productForm}}
-            <div class="nataral-product-c1">
-              {{#sf-isSoldOut soldOut}}
-                <div class="mask"></div>
-                <span class="nataral-product-soldout center">售完</span>
-              {{/sf-isSoldOut}}
-              <img {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} src="{{itemImage.bigImgUrl}}@150W_150h.jpg" />
-            </div>
-            <div class="nataral-product-c2">
-              <h3 class="ellipsis2"><a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">{{#starGoods}}<span class="nataral-product-star">明星</span>{{/#starGoods}}{{title}}</a></h3>
-              <span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable">约{{currencySymbol}}{{sf.price originPrice}}</span>
-            </div>
-          {{/sf-isYZYW}}
+              <img src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
+            </a>
+          </div>
+          <div class="nataral-product-c2">
+            <a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">
+              {{^sf-isYZYW productForm}}
+                <h3 class="ellipsis2">{{title}}</h3>
+                <div class="nataral-product-r1">
+                  <div><span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>￥{{sf.price referencePrice}}</del></span></div>
+                  <span class="icon icon66"></span>
+                </div>
+              {{/sf-isYZYW}}
+              {{#sf-isYZYW productForm}}
+                <h3 class="ellipsis2">{{#starGoods}}<span class="nataral-product-star">明星</span>{{/#starGoods}}{{title}}</h3>
+                <div class="nataral-product-r1">
+                  <div><span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>约{{currencySymbol}}{{sf.price originPrice}}</del></span></div>
+                  {{#if isShowShoppintCart}}
+                    <span {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} class="icon icon66 {{#sf-isShowAddToCart soldOut supportShoppingCart}}addtocart{{/sf-isShowAddToCart}}{{^sf-isShowAddToCart soldOut supportShoppingCart}}disable{{/sf-isShowAddToCart}}"></span>
+                  {{/if}}
+                </div>
+              {{/sf-isYZYW}}
+            </a>
+          </div>
         </li>
       {{/each}}
     </ul>
@@ -193,3 +196,4 @@
   </section>
   {{/if}}
 {{/sf-isHasResults}}
+<span class="icon icon65"><span class="dot dot-error">60</span></span>
