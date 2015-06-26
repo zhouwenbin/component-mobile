@@ -109,6 +109,8 @@
 
 .nataral-product-c1 .mask {
   position: absolute;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .nataral-product-c2 {
