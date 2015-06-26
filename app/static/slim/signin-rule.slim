@@ -11,49 +11,31 @@
 	<!--头部-->
 	== Slim::Template.new('module/header.slim').render
 	<!--头部-->
-	<section class="integral">
-		<div class="integral-r1">可用积分:<span class="text-important">2136</span></div>
-		<div class="integral-r2">2016年6月30日 即将过期: <span class="text-important">250</span></div>
-	</section>
-	<section class="integral-tab">
+	<section class="signin-rule">
+		<table>
+			<thead>
+				<tr>
+					<th>第一天</th>
+					<th>第二天</th>
+					<th>第三天</th>
+					<th>第四天...
+						== Slim::Template.new('../svg/icon-star.svg').render
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span>5</span>分</td>
+					<td><span>10</span>分</td>
+					<td><span>15</span>分</td>
+					<td><span>30</span>分</td>
+				</tr>
+			</tbody>
+		</table>
 		<ul>
-			<li class="active"><a href="javascript:">全部</a></li>
-			<li><a href="javascript:">收入</a></li>
-			<li><a href="javascript:">支出</a></li>
-		</ul>
-	</section>
-	<section class="integral-list">
-		<ul>
-			<li>
-				<div class="integral-list-c1">
-					<div class="integral-list-from">签到</div>
-					<div class="integral-list-date">2015-06-01</div>
-				</div>
-				<div class="integral-list-c2">
-					<div class="text-success">+50</div>
-					<div class="integral-list-time">17:32:46</div>
-				</div>
-			</li>
-			<li>
-				<div class="integral-list-c1">
-					<div class="integral-list-from">积分抵现</div>
-					<div class="integral-list-date">2015-06-01</div>
-				</div>
-				<div class="integral-list-c2">
-					<div class="text-important">-500</div>
-					<div class="integral-list-time">17:32:46</div>
-				</div>
-			</li>
-			<li>
-				<div class="integral-list-c1">
-					<div class="integral-list-from">完成订单<span class="integral-list-orderid">(9371721038)</span></div>
-					<div class="integral-list-date">2015-06-01</div>
-				</div>
-				<div class="integral-list-c2">
-					<div class="text-success">+50</div>
-					<div class="integral-list-time">17:32:46</div>
-				</div>
-			</li>
+			<li>1. 	第一天签到领5分，第二天领10分，第三天领15分，第四天可领30分</li>
+			<li>2. 	连续签到4天及以上，以后每天可领30分</li>
+			<li>3. 	若中断签到，将重新从5分开始领</li>
 		</ul>
 	</section>
 	== Slim::Template.new('module/nav.slim').render
