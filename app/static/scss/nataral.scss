@@ -89,6 +89,8 @@
 }
 .nataral-product-c1 .mask{
 	position: absolute;
+	background: rgba(0,0,0,0.2);
+	z-index: 1;
 }
 .nataral-product-c2{
 	flex:1;
@@ -465,4 +467,14 @@
 	margin-bottom: 0;
 	border-bottom: none;
 	border-top: none;
+}
+.nataral-code{
+	background: url(#{$bg-url}nataral-code.png) no-repeat center;
+	background-size: 320px;
+	height: 75px;
+	padding-left: 170px;
+	padding-top: 30px;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 24px;
 }
