@@ -160,11 +160,11 @@
         <li data-item-id="{{itemId}}">
           <div class="nataral-product-c1">
             <a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">
+              <img src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
               {{#sf-isSoldOut soldOut}}
                 <div class="mask"></div>
                 <span class="nataral-product-soldout center">售完</span>
               {{/sf-isSoldOut}}
-              <img src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
             </a>
           </div>
           <div class="nataral-product-c2">
@@ -173,7 +173,9 @@
                 <h3 class="ellipsis2">{{title}}</h3>
                 <div class="nataral-product-r1">
                   <div><span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>￥{{sf.price referencePrice}}</del></span></div>
-                  <span class="icon icon66"></span>
+                  {{#if isShowShoppintCart}}
+                    <span {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} class="icon icon66 {{^sf-isShowAddToCart soldOut supportShoppingCart}}disabled{{/sf-isShowAddToCart}}"></span>
+                  {{/if}}
                 </div>
               {{/sf-isYZYW}}
               {{#sf-isYZYW productForm}}
@@ -181,7 +183,7 @@
                 <div class="nataral-product-r1">
                   <div><span class="text-important">¥{{sf.price sellingPrice}}</span><span class="text-disable"><del>约{{currencySymbol}}{{sf.price originPrice}}</del></span></div>
                   {{#if isShowShoppintCart}}
-                    <span {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} class="icon icon66 {{#sf-isShowAddToCart soldOut supportShoppingCart}}addtocart{{/sf-isShowAddToCart}}{{^sf-isShowAddToCart soldOut supportShoppingCart}}disable{{/sf-isShowAddToCart}}"></span>
+                    <span {{#sf-isShowAddToCart soldOut supportShoppingCart}}data-role="addtocart"{{/sf-isShowAddToCart}} class="icon icon66 {{^sf-isShowAddToCart soldOut supportShoppingCart}}disabled{{/sf-isShowAddToCart}}"></span>
                   {{/if}}
                 </div>
               {{/sf-isYZYW}}
@@ -196,4 +198,8 @@
   </section>
   {{/if}}
 {{/sf-isHasResults}}
-<span class="icon icon65"><span class="dot dot-error">60</span></span>
+{{#if isShowShoppintCart}}
+<a href="shoppingcart.html">
+  <span class="icon icon65">{{#if miniShopCart.num}}<span class="dot dot-error">{{miniShopCart.num}}</span>{{/if}}</span>
+</a>
+{{/if}}

@@ -52,11 +52,8 @@ define(
           }
         })
         $('.nataral-tab li').click(function(){
-            var index=$('.nataral-tab li').index(this);
-            $("html")[0].animate({scrollTop:nataral_pruduct_offset[index]},500);
-            $("body")[0].animate({scrollTop:nataral_pruduct_offset[index]},500);
-            return false;
-          })
+          var index=$('.nataral-tab li').index(this);
+        })
       }
     })
     new fixtab();

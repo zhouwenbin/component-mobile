@@ -24,9 +24,10 @@ define('sf.b2c.mall.component.search', [
   'sf.b2c.mall.api.b2cmall.getProductHotDataList',
   'sf.b2c.mall.api.shopcart.addItemsToCart',
   'sf.b2c.mall.api.shopcart.isShowCart',
+  'sf.b2c.mall.api.minicart.getTotalCount',
   'text!template_component_search'
 ], function(text, $, cookie, can, _, md5, store, helpers, SFFrameworkComm, SFConfig, SFFn, SFMessage, SFLoading,
-  SFSearchItem, SFSearchItemAggregation, SFGetProductHotDataList, SFAddItemToCart, SFIsShowCart,
+  SFSearchItem, SFSearchItemAggregation, SFGetProductHotDataList, SFAddItemToCart, SFIsShowCart, SFGetTotalCount,
   template_component_search) {
 
   return can.Control.extend({
@@ -233,6 +234,10 @@ define('sf.b2c.mall.component.search', [
 
       h5LoadingData: {
         show: false
+      },
+
+      miniShopCart: {
+        num: 0
       }
     }),
 
@@ -343,6 +348,9 @@ define('sf.b2c.mall.component.search', [
       if (options.filterCustom) {
         this.renderData.attr("filterCustom", options.filterCustom);
       }
+
+      //更新mimicart的数量
+      this.updateCart();
 
       this.render(this.renderData, element);
     },
@@ -964,10 +972,44 @@ define('sf.b2c.mall.component.search', [
      */
     '[data-role=addtocart] click': function(el, event) {
       event && event.preventDefault();
+      var that = this;
 
       var itemId = el.parents("li[data-item-id]").data("itemId");
       if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          this.addCart(itemId);
+          //向服务器端发送加入购物车的请求
+          can.when(this.addCart(itemId))
+            .done(function(data) {
+              if (data.isSuccess) {
+
+                var thata = $(el).parents('li').find('img').eq(-1);
+                var target=$('.icon65').offset()
+                var targetX=target.left,
+                    targetY=target.top,
+                    current=thata.offset(),
+                    currentX=current.left,
+                    currentY=current.top;
+                thata.clone().appendTo(thata.parent());
+                thata.css({
+                  left:targetX-currentX,
+                  top:targetY-currentY,
+                  transform:'rotate(360deg) scale(0.1)',
+                  zIndex:1000,
+                  visibility:'hidden'
+                })
+                
+                setTimeout(function(){
+                  can.trigger(window, 'updateCart');
+                  thata.remove();
+                  that.updateCart();
+                },1000);
+              }else{
+                var $el = $('<section style="position:fixed" class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
+                $(document.body).append($el);
+                setTimeout(function() {
+                  $el.remove();
+                }, 3000);
+              }
+            });
       } else {
         store.set('temp-action-addCart', {
           itemId: itemId
@@ -989,116 +1031,18 @@ define('sf.b2c.mall.component.search', [
       });
 
       // 添加购物车发送请求
-      addItemToCart.sendRequest()
+      return addItemToCart.sendRequest()
         .done(function(data) {
-          if (data.isSuccess) {
-
-            var that = $(this).parents('li').find('img').eq(-1);
-            var target=$('.icon65').offset()
-            var targetX=target.left,
-                targetY=target.top,
-                current=that.offset(),
-                currentX=current.left,
-                currentY=current.top,
-                cart_num=$('.dot-error').text();
-            that.clone().appendTo(that.parent());
-            that.css({
-              left:targetX-currentX,
-              top:targetY-currentY,
-              transform:'rotate(360deg) scale(0.1)',
-              zIndex:1000,
-              visibility:'hidden'
-            })
-            
-            setTimeout(function(){
-                that.remove();
-            },1000);
-            cart_num++;
-            $('.dot-error').text(cart_num);
-
-            /*
-            var carticon = $('.detail-cart-r a img').clone();
-            var current=carticon.offset();
-            $('.detail-cart-r a').append(carticon.css({
-              'position': 'absolute',
-              'top': current.top,
-              'left': current.left + 30,
-              'width': '60px',
-              'height': '60px',
-              'border-radius': '60px',
-              'z-index': '1000'
-            }));
-
-            var target=$('.icon47').offset()
-            var targetX=target.left,
-                targetY=target.top,
-                // current=carticon.offset(),
-                currentX=current.left,
-                currentY=current.top,
-                cart_num=$('.dot-error').text();
-            carticon.appendTo(carticon.parent());
-            carticon.animate({
-              left:targetX-currentX-50,
-              top:targetY-currentY,
-              transform:'rotate(360deg) scale(0.1)',
-              zIndex:1000,
-              // display: 'none'
-              visibility:'hidden'
-            }, 2000, 'ease-out');
-
-
-            setTimeout(function() {
-              can.trigger(window, 'updateCart');
-              carticon.remove();
-              can.route.attr({tag: 'back', target: 'empty'});
-            }, 1000);
-            */
-
-            // var carticon = $('.detail-cart-r img');
-            // var target=$('.icon47').offset()
-            // var targetX=target.left,
-            //     targetY=target.top,
-            //     current=carticon.offset(),
-            //     currentX=current.left,
-            //     currentY=current.top,
-            //     cart_num=$('.dot-error').text();
-            // carticon.clone().appendTo(carticon.parent());
-            // carticon.css({
-            //   left:targetX-currentX-50,
-            //   top:targetY-currentY,
-            //   transform:'rotate(360deg) scale(0.1)',
-            //   zIndex:1000,
-            //   visibility:'hidden'
-            // })
-
-            // setTimeout(function() {
-            //   can.route.attr({tag: 'back', target: 'empty'});
-
-            //   // 更新mini购物车
-            //   can.trigger(window, 'updateCart');
-            // }, 1000);
-
-            // $('#firststep').show();
-            // $('#secondstep').hide();
-
-            // can.route.attr({tag: 'init', target: 'empty'});
-          }else{
-            can.route.attr({tag: 'back', target: 'empty'});
-            var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
-            $(document.body).append($el);
-            setTimeout(function() {
-              $el.remove();
-            }, 10000);
-          }
+          
         })
         .fail(function(data) {
-          // if (data == 15000800) {
-          //   var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
-          //   $(document.body).append($el);
-          //   setTimeout(function() {
-          //     $el.remove();
-          //   }, 10000);
-          // }
+           if (data == 15000800) {
+             var $el = $('<section style="position:fixed" class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
+             $(document.body).append($el);
+             setTimeout(function() {
+               $el.remove();
+             }, 3000);
+           }
         })
     },
 
@@ -1111,20 +1055,13 @@ define('sf.b2c.mall.component.search', [
 
       // 如果用户已经登陆了，可以进行购物车更新
       // @todo 如果是白名单的用户可以看到购物车
-      if (SFComm.prototype.checkUserLogin.call(this)) {
+      if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
         this.element.find('.mini-cart-num').show();
 
         var getTotalCount = new SFGetTotalCount();
         getTotalCount.sendRequest()
           .done(function(data) {
-            // @description 将返回数字显示在头部导航栏
-            // 需要跳动的效果
-            that.element.find('.mini-cart-num').text(data.value)
-            that.element.find('.mini-cart-num').addClass('animated bounce');
-
-            setTimeout(function() {
-              that.element.find('.mini-cart-num').removeClass('animated bounce');
-            }, 500);
+            that.renderData.attr("miniShopCart.num", data.value);
           })
           .fail(function(data) {
             // 更新mini cart失败，不做任何显示

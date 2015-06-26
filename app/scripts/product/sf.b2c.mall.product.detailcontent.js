@@ -67,7 +67,7 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
 
-        'sf-showYZYW': function(productShape, options) {
+        'sf-isYZYW': function(productShape, options) {
           if (productShape() == "YZYW") {
             return options.fn(options.contexts || this);
           }
