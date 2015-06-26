@@ -81,6 +81,10 @@
 .nataral-product-c1{
 	position: relative;
 }
+.nataral-product-c1 .mask{
+	position: absolute;
+	z-index: 0;
+}
 .nataral-product-c2{
 	flex:1;
 	padding-left: 15px;
