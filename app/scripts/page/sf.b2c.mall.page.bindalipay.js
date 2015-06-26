@@ -1,7 +1,7 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.page.bindalipay',
+  'sf.b2c.mall.page.bindaccount',
 
   [
     'zepto',
@@ -16,7 +16,7 @@ define(
 
     SFWeixin.shareIndex();
 
-    var bindalipay = can.Control.extend({
+    var bindaccount = can.Control.extend({
 
 
       init:function(){
@@ -29,5 +29,5 @@ define(
 
     });
 
-    new bindalipay('body');
+    new bindaccount('body');
   });
