@@ -81,6 +81,10 @@
 .nataral-product-c1{
 	position: relative;
 }
+.nataral-product-c1 .mask{
+	position: absolute;
+	z-index: 0;
+}
 .nataral-product-c2{
 	flex:1;
 	padding-left: 15px;
@@ -98,6 +102,10 @@
 }
 .nataral-product-more{
 	padding: 0 10px 20px;
+}
+.nataral-product-more .btn{
+	height: 39px;
+	line-height: 39px;
 }
 .nataral-product-loading{
 	text-align: center;
@@ -144,7 +152,7 @@
 	margin-bottom: 10px;
 }
 .nataral-tab{
-	height: 44px;
+	height: 46px;
 }
 .nataral-tab ul{
 	display: flex;
@@ -161,8 +169,8 @@
 }
 .nataral-tab li{	
 	text-align: center;
-	height: 43px;
-	line-height: 43px;
+	height: 46px;
+	line-height: 46px;
 	font-size: 14px;
 	width: 80px;
 }
@@ -427,4 +435,21 @@
 	color: #999;
 	text-align: center;
 	padding: 250px 0;
+}
+
+.icon65{
+	position: fixed;
+	right: 8px;
+	bottom: 8px;
+}
+.icon65 .dot{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #333;
+}
+.carnival li{
+	margin-bottom: 0;
+	border-bottom: none;
+	border-top: none;
 }
