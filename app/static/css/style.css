@@ -1020,6 +1020,10 @@ a[title="站长统计"] {
   background-position: -292px -347px;
 }
 
+.icon66.disabled {
+  background-position: -292px -380px;
+}
+
 /*text*/
 .text-error,
 .text-important {
