@@ -6,7 +6,6 @@ define('sf.b2c.mall.component.mypoint', [
      'store',
      'fastclick',
     'sf.b2c.mall.api.integral.getUserIntegralLog',
-    'sf.helpers',
     'sf.b2c.mall.api.sc.getUserRoutes',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config',
@@ -14,7 +13,7 @@ define('sf.b2c.mall.component.mypoint', [
     'sf.env.switcher',
     'text!template_center_point'
   ],
-  function(can, $, store, Fastclick,  IntegralLog,   helpers,  SFGetUserRoutes, SFMessage, SFConfig,SFFrameworkComm,SFSwitcher, template_center_point) {
+  function(can, $, store, Fastclick,  IntegralLog,  SFGetUserRoutes, SFMessage, SFConfig,SFFrameworkComm,SFSwitcher, template_center_point) {
       var DEFAULT_PAGE_NUM = 1;
       var DEFAULT_PAGE_SIZE = 50;
      Fastclick.attach(document.body);
