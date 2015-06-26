@@ -51,10 +51,8 @@
 	background: #72bbdb;
 }
 .nataral-nav li span{
-	font-family: Apple Chancery;
-	font-size: 17px;
-	vertical-align: 3px;
-	display: inline-block;
+	
+	margin-bottom: 3px;
 }
 
 .nataral-product{
@@ -79,9 +77,18 @@
 	width: 75px;
 	height: 75px;
 	border: 1px solid #f7f7f7;
+	position: absolute;
+	left: 0;
+	top: 0;
+    transition: 0.5s transform ease-in-out,0.5s left linear,0.5s top ease-in,0.1s visibility 0.5s linear;
 }
 .nataral-product-c1{
 	position: relative;
+	width: 75px;
+	height: 75px;
+}
+.nataral-product-c1 .mask{
+	position: absolute;
 }
 .nataral-product-c2{
 	flex:1;
@@ -92,7 +99,7 @@
 	font-size: 14px;
 	line-height: 18px;
 	font-weight: normal;
-	margin-bottom: 12px;
+	margin-bottom: 5px;
 	word-break:break-all;
 }
 .nataral-product-c2 .text-important{
@@ -100,6 +107,10 @@
 }
 .nataral-product-more{
 	padding: 0 10px 20px;
+}
+.nataral-product-more .btn{
+	height: 39px;
+	line-height: 39px;
 }
 .nataral-product-loading{
 	text-align: center;
@@ -125,6 +136,14 @@
 	padding: 0 5px;
 	margin-right: 3px;
 }
+.nataral-product-r1{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+}
+.nataral-product-r1 .icon66{
+	display: block;
+}
 .nataral-h2{
 	font-size: 15px;
 	padding-bottom: 10px;
@@ -146,7 +165,7 @@
 	margin-bottom: 10px;
 }
 .nataral-tab{
-	height: 44px;
+	height: 46px;
 }
 .nataral-tab ul{
 	display: flex;
@@ -159,18 +178,19 @@
 	width: 100%;
 	left: 0;
 	top: 0;
-	z-index: 1;
+	z-index: 2;
 }
 .nataral-tab li{	
 	text-align: center;
-	height: 43px;
-	line-height: 43px;
+	height: 46px;
+	line-height: 46px;
 	font-size: 14px;
 	width: 80px;
 }
 .nataral-tab li a{
 	display: inline-block;
-	width: 4em;
+	vertical-align: middle;
+	max-width: 3.5em;
 	text-overflow:ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
@@ -240,8 +260,11 @@
 	top: 0;
 	transition:all 0.5s;
 }
+.nataral-classify-btn:before{
+	transform:rotate(90deg);
+}
 .nataral-classify.active .nataral-classify-btn:before{
-	transform:rotate(270deg);
+	transform:rotate(360deg);
 }
 .nataral-classify.active .nataral-classify-btn:after{
 	transform:rotate(360deg);
@@ -380,6 +403,7 @@
 }
 .nataral-brand-select ul{
 	position: absolute;
+	z-index: 2;
 	width: 100%;
 	overflow: hidden;
 	transform:rotateX(-90deg);
@@ -423,5 +447,22 @@
 	background-size: 111px 81px;
 	color: #999;
 	text-align: center;
-	padding-top: 250px;
+	padding: 250px 0;
+}
+
+.icon65{
+	position: fixed;
+	right: 8px;
+	bottom: 8px;
+}
+.icon65 .dot{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #333;
+}
+.carnival li{
+	margin-bottom: 0;
+	border-bottom: none;
+	border-top: none;
 }

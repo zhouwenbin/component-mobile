@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="body1">
+	<!--头部-->
+	== Slim::Template.new('module/header.slim').render
+	<!--头部-->
+	<section class="signin-rule">
+		<table>
+			<thead>
+				<tr>
+					<th>第一天</th>
+					<th>第二天</th>
+					<th>第三天</th>
+					<th>第四天...
+						== Slim::Template.new('../svg/icon-star.svg').render
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><span>5</span>分</td>
+					<td><span>10</span>分</td>
+					<td><span>15</span>分</td>
+					<td><span>30</span>分</td>
+				</tr>
+			</tbody>
+		</table>
+		<ul>
+			<li>1. 	第一天签到领5分，第二天领10分，第三天领15分，第四天可领30分</li>
+			<li>2. 	连续签到4天及以上，以后每天可领30分</li>
+			<li>3. 	若中断签到，将重新从5分开始领</li>
+		</ul>
+	</section>
+	== Slim::Template.new('module/nav.slim').render
+	<script src="../js/zepto.min.js"></script>
+</body>
+</html>
