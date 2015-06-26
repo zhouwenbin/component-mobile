@@ -196,7 +196,7 @@ requirejs.config({
       //积分模块
       'sf.b2c.mall.page.mypoint': 'scripts/page/sf.b2c.mall.page.mypoint',
       'sf.b2c.mall.component.mypoint': 'scripts/component/sf.b2c.mall.component.mypoint',
-
+      'sf.b2c.mall.page.pointexplain': 'scripts/page/sf.b2c.mall.page.pointexplain',
 
     // 登录
     'sf.b2c.mall.page.login': 'scripts/page/sf.b2c.mall.page.login',

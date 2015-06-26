@@ -118,7 +118,9 @@ define('sf.b2c.mall.component.mypoint', [
           this.render(params);
       },
 
-
+     "svg click": function(element, event) {
+         window.location.href = http://m.sfht.com/integral-explain.html;
+     },
         //点击不同的li，传入不同的参数
       '.integral-tab li click': function(element, event) {
         event && event.preventDefault();
