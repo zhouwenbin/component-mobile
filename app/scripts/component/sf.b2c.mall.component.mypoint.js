@@ -3,18 +3,20 @@
 define('sf.b2c.mall.component.mypoint', [
     'can',
      'zepto',
-      'store',
-      'fastclick',
+     'store',
+     'fastclick',
     'sf.b2c.mall.api.integral.getUserIntegralLog',
     'sf.helpers',
     'sf.b2c.mall.api.sc.getUserRoutes',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.product.findRecommendProducts',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.framework.comm',
+    'sf.env.switcher',
     'text!template_center_point'
   ],
-  function(can, $, store, Fastclick,  IntegralLog,   helpers,  SFGetUserRoutes, SFMessage, SFFindRecommendProducts, SFConfig,SFFrameworkComm,template_center_point) {
+  function(can, $, store, Fastclick,  IntegralLog,   helpers,  SFGetUserRoutes, SFMessage, SFConfig,SFFrameworkComm,SFSwitcher, template_center_point) {
+      var DEFAULT_PAGE_NUM = 1;
+      var DEFAULT_PAGE_SIZE = 50;
      Fastclick.attach(document.body);
      SFFrameworkComm.register(3);
     can.route.ready();
@@ -35,7 +37,7 @@ define('sf.b2c.mall.component.mypoint', [
 
             var params = {
               "operateType": routeParams.operateType,
-                "page": routeParams.page || 1,
+                "page": routeParams.page || DEFAULT_PAGE_NUM,
                 "size": 50
             }
             this.render(params);
@@ -67,7 +69,7 @@ define('sf.b2c.mall.component.mypoint', [
                                   point.timeValue = dateAndTime.timePart;
                           })
                     } else {
-
+                       that.options.result = null;
                     }
                 //  var html = can.view('templates/center/sf.b2c.mall.center.point.mustache', that.options);
                   var renderPoint = can.mustache(template_center_point);
@@ -106,6 +108,7 @@ define('sf.b2c.mall.component.mypoint', [
                "timePart":timePart
            };
        },
+
       '{can.route} change': function(el, attr, how, newVal, oldVal) {
           var routeParams = can.route.attr();
           var params = {
@@ -128,10 +131,18 @@ define('sf.b2c.mall.component.mypoint', [
         }
          //选中li的样式的改变
        $(element).addClass("active").siblings().removeClass("active");
+       //window.location.href = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" + tag + "&page=" + 1;
 
-        //window.location.href = SFConfig.setting.link.pointlist + '#!' + $.param({
-          window.location.href = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" + tag + "&page=" + 1;
+          var switcher = new SFSwitcher();
 
+          switcher.register('web', function () {
+              window.location = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" + tag + "&page=" + 1;
+          });
+
+          switcher.register('app', function () {
+              can.route.attr('operateType', tag);
+          });
+          switcher.go();
       }
     });
   })

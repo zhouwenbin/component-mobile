@@ -28,19 +28,14 @@ define(
            * @param  {[type]} options 选项
            */
           init: function (element, options) {
-
-              setInterval(function () {
-                  window.parent.postMessage("mypoint.html", '*');
-              }, 500)
-
               if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
                   window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
                   return false;
               }
 
-              new SFPoint('body');
+              new SFPoint('#mypoint');
           }
 
       });
-      new myPoint("body");
+      new myPoint("#mypoint");
   })

@@ -402,6 +402,7 @@ define('sf.b2c.mall.order.iteminfo', [
             "items": JSON.stringify([{
               "itemId": that.itemObj.itemid,
               "num": that.itemObj.amount,
+               "integral":$("#pointUsed").val(),
               "price": that.itemObj.orderFeeItem.actualTotalFee
             }]),
             "sysType": that.getSysType(),

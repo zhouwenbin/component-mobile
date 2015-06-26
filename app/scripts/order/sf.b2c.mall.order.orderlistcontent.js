@@ -21,7 +21,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
   function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFAddItemToCart) {
 
     var DEFAULT_PAGE_NUM = 1;
-    var DEFAULT_PAGE_SIZE = 50;
+    var DEFAULT_PAGE_SIZE = 2;
     var EMPTY_IMG = "http://m.sfht.com/static/img/no.png";
     var PREFIX = 'http://img0.sfht.com';
     var DEFAULT_STATUS = '';
