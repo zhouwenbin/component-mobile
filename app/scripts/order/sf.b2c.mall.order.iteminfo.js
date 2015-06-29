@@ -221,10 +221,10 @@ define('sf.b2c.mall.order.iteminfo', [
           // that.processProducts(orderRenderItem.orderGoodsItemList);
           that.processPackages(orderRenderItem);
           that.processCoupons(orderRenderItem.orderCouponItem);
-          var point = (typeof orderRenderItem.intrgral  == "undefined" || orderRenderItem.intrgral  == "") ?0 : orderRenderItem.intrgral;
+          var point = (typeof orderRenderItem.integral  == "undefined" || orderRenderItem.integral  == "") ?0 : orderRenderItem.integral;
 
           that.itemObj.attr('totalPoint',point);
-          that.itemObj.attr('exchangeRate', orderRenderItem.proportion ? 0:orderRenderItem.proportion);
+          that.itemObj.attr('proportion', orderRenderItem.proportion );
           that.itemObj.attr('totalPointPrice',( point*100/orderRenderItem.proportion));
         })
         .fail();
@@ -296,7 +296,11 @@ define('sf.b2c.mall.order.iteminfo', [
 
       this.itemObj.bind("orderCoupon.discountPrice", function(ev, newVal, oldVal) {
         this.attr("orderFeeItem.shouldPay", this.attr("orderFeeItem.shouldPay") + oldVal - newVal);
-         this.itemObj.attr("getpoint", Math.floor((this.attr("orderFeeItem.shouldPay") + oldVal - newVal)/100)*100);
+         var payValue = this.attr("orderFeeItem.shouldPay");
+//          if(payValue < 0){
+//              payValue = 0;
+//         }
+         this.attr("getpoint", Math.floor(( payValue)/100)*100);
         //this.attr("orderFeeItem.discount", this.attr("orderFeeItem.discount") - oldVal + newVal);
       });
 
@@ -564,19 +568,21 @@ define('sf.b2c.mall.order.iteminfo', [
               else  if(!(/^[1-9]+[0-9]*$/.test($("#pointUsed").val()) ||  $("#pointUsed").val() == 0)){
                   $("#pointToMoney").text("输入的积分格式不正确");
               }
-              else if($("#pointUsed").val() > parseInt($("#usedPoint").text())){
-                  $("#pointUsed").val(parseInt($("#usedPoint").text()));
+              else if($("#pointUsed").val() > parseInt(this.itemObj.attr("totalPoint"))){
+                  $("#pointUsed").val(parseInt(this.itemObj.attr("totalPoint")));
+                  $("#pointToMoney").text("-￥" + parseInt(this.itemObj.attr("totalPoint"))/ this.itemObj.attr('proportion'));
               }
               else{
-                //  $("#pointToMoney").text("-￥" + $("#pointUsed").val()/ this.itemObj.attr('orderRenderItem.proportion'));
-                 $("#pointToMoney").text("-￥" + $("#pointUsed").val()/100);
+                 $("#pointToMoney").text("-￥" + $("#pointUsed").val()/ this.itemObj.attr('proportion'));
+               //  $("#pointToMoney").text("-￥" + $("#pointUsed").val()/100);
               }
           }
           else{
               $("#pointToMoney").text("-￥0.0");
               $("#pointUsed").val(0)
           }
-          var shouldPay = this.itemObj.attr('orderFeeItem.actualTotalFee') -$("#pointUsed").val();
+
+          var shouldPay = this.itemObj.attr('orderFeeItem.actualTotalFee')-this.itemObj.attr('orderCoupon.discountPrice') -($("#pointUsed").val()*100/this.itemObj.attr('proportion'));
           this.itemObj.attr("orderFeeItem.shouldPay", shouldPay);
           this.itemObj.attr("getpoint", Math.floor(shouldPay/100)*100);
       },
@@ -587,7 +593,7 @@ define('sf.b2c.mall.order.iteminfo', [
               $("#pointToMoney").text("-￥0.0");
               $("#pointUsed").val(0);
           }
-          var shouldPay = this.itemObj.attr('orderFeeItem.actualTotalFee') -$("#pointUsed").val();
+          var shouldPay = this.itemObj.attr('orderFeeItem.shouldPay') -$("#pointUsed").val();
           this.itemObj.attr("orderFeeItem.shouldPay", shouldPay);
           this.itemObj.attr("getpoint", Math.floor(shouldPay/100)*100);
       }
