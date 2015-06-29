@@ -11,14 +11,14 @@
 </head>
 <body class="body1">
 	<!--头部-->
-	== Slim::Template.new('module/header-nataral.slim').render
+	== Slim::Template.new('module/header.slim').render
 	<!--头部-->
 	== Slim::Template.new('module/swipe.slim').render
 	<nav class="nataral-nav">
 		<ul>
 			<li><a href="">全球<br>精品</a></li>
-			<li><a href=""><span>in</span><br>韩国</button></a></li>
-			<li class="active"><a href=""><span>in</span><br>台湾</a></li>
+			<li><a href=""><span class="icon icon64">in</span><br>韩国</button></a></li>
+			<li class="active"><a href=""><span class="icon icon64">in</span><br>台湾</a></li>
 		</ul>
 	</nav>
 	<section class="nataral-product">
@@ -29,7 +29,7 @@
 					<img src="http://placehold.it/150x150">
 				</div>
 				<div class="nataral-product-c2">
-					<h3><a href="">意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
+					<h3><a href=""><span class="nataral-product-star">明星</span>意大利Mellin美林动物饼干可爱360g/盒*2</a></h3>
 					<span class="text-important">¥1999</span><span class="text-disable">约NT$999</span>
 				</div>
 			</li>
@@ -62,7 +62,7 @@
 			</li>
 		</ul>
 	</section>
-	<section class="nataral-brand">
+	<section class="nataral-brand nataral-brand-select">
 		<div class="nataral-brand-h">
 			<h2 class="nataral-h2">全部商铺</h2>
 			<div class="nataral-brand-h-icon"></div>
@@ -76,7 +76,7 @@
 	</section>
 	<figure class="nataral-shop">
 		<img src="http://placehold.it/640x387">
-		<figcaption><span class="icon icon60"></span>淘最热米粉品牌-Earths Best店</figcaption>
+		<figcaption class="ellipsis"><span class="icon icon60"></span>淘最热米粉品牌-Earths Best店淘最热米粉品牌-Earths Best店</figcaption>
 	</figure>
 	<section class="nataral-product">
 		<ul>
@@ -109,6 +109,7 @@
 			</li>
 		</ul>
 	</section>
+	<section class="nataral-code">FKXO1234</section>
 	<script src="../js/zepto.min.js"></script>
 	<script src="../js/swiper.js"></script>
 	<script src="../js/slider.js"></script>
