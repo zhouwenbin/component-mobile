@@ -182,6 +182,7 @@ requirejs.config({
     'sf.b2c.mall.module.newpage': 'scripts/module/sf.b2c.mall.module.newpage',
     'sf.b2c.mall.module.nataralSelect': 'scripts/module/sf.b2c.mall.module.nataralSelect',
     'sf.b2c.mall.module.fixtab': 'scripts/module/sf.b2c.mall.module.fixtab',
+    'sf.b2c.mall.module.exchangecode': 'scripts/module/sf.b2c.mall.module.exchangecode',
 
     // 首页
     'sf.b2c.mall.page.main': 'scripts/page/sf.b2c.mall.page.main',
@@ -337,6 +338,7 @@ requirejs.config({
 
     'template_widget_loading': 'templates/widget/sf.b2c.mall.widget.loading.mustache',
     'template_widget_message': 'templates/widget/sf.b2c.mall.widget.message.mustache',
+    'template_exchange_code': 'templates/sf.b2c.mall.exchange.code.mustache',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',

@@ -10,7 +10,7 @@ define(
         'text!template_exchange_code'
     ],
 
-    function(text, can, $, cookie, SFSwitcher, SFFrameworkComm, SFHybrid, template_exchange_code) {
+    function(text, can, $, cookie, SFFrameworkComm, SFSwitcher, SFHybrid, template_exchange_code) {
         // －－－－－－－－－－－－－－－－－－－－－－
         // 启动分支逻辑
         var switcher = new SFSwitcher();
