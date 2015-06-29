@@ -979,10 +979,10 @@ define('sf.b2c.mall.component.search', [
         }
       } else {
 
-        // if (SFFn.isMobile.APP()) {
+        if (SFFn.isMobile.APP()) {
         //   flag = 1;
-        //   that.renderData.attr("isShowShoppintCart", true);
-        // }
+          that.renderData.attr("isShowShoppintCart", false);
+        }
 
         isShowFlag = true;
       }
