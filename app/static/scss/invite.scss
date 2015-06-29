@@ -128,14 +128,12 @@
 .invite-rule-bg{
 	width: 273px;
 	height: 352px;
-	display: inline-block;
-	vertical-align: middle;
+	display: block;
 	background: url(#{$bg-url}invite-rule.png) no-repeat;
 	background-size: 273px 330px;
-	margin-top: 8px;
+	margin: 8px auto 20px;
 	padding-bottom: 22px;
 	border-bottom: 1px dashed #ccc;
-	margin-bottom: 20px;
 }
 .invite-rule .btn{
 	border-radius: 15px;
