@@ -966,7 +966,7 @@ define('sf.b2c.mall.component.search', [
 
         // @todo 暂时处理，因为在app里获得不了用户uinfo
         if (SFFn.isMobile.APP()) {
-          flag = 0;
+          flag = 1;
         }
 
         // 如果判断开关关闭，使用dom操作不显示购物车
@@ -983,12 +983,13 @@ define('sf.b2c.mall.component.search', [
 
       // @todo 请求总开关进行判断
       if (isShowFlag) {
-        var isShowCart = new SFIsShowCart();
-        isShowCart
-            .sendRequest()
-            .done(function(info) {
-              that.renderData.attr("isShowShoppintCart", !!info.value)
-            });
+        // @todo 暂时全局关闭购物车按钮
+        // var isShowCart = new SFIsShowCart();
+        // isShowCart
+        //     .sendRequest()
+        //     .done(function(info) {
+        //       that.renderData.attr("isShowShoppintCart", !!info.value)
+        //     });
       }
     },
 
