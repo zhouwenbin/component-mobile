@@ -992,12 +992,12 @@ define('sf.b2c.mall.component.search', [
       // @todo 请求总开关进行判断
       if (isShowFlag) {
         // @todo 暂时全局关闭购物车按钮
-        // var isShowCart = new SFIsShowCart();
-        // isShowCart
-        //     .sendRequest()
-        //     .done(function(info) {
-        //       that.renderData.attr("isShowShoppintCart", !!info.value)
-        //     });
+        var isShowCart = new SFIsShowCart();
+        isShowCart
+            .sendRequest()
+            .done(function(info) {
+              that.renderData.attr("isShowShoppintCart", !!info.value)
+            });
       }
     },
 

@@ -94,16 +94,16 @@ define(
           }
         }else{
           // @todo 暂时全局关闭购物车按钮
-          // var isShowCart = new SFIsShowCart();
-          // isShowCart
-          //   .sendRequest()
-          //   .done(function (data) {
-          //     if (data.value) {
-          //       $(".mini-cart-container-parent").show();
-          //     }else{
-          //       $(".mini-cart-container-parent").hide();
-          //     }
-          //   });
+          var isShowCart = new SFIsShowCart();
+          isShowCart
+            .sendRequest()
+            .done(function (data) {
+              if (data.value) {
+                $(".mini-cart-container-parent").show();
+              }else{
+                $(".mini-cart-container-parent").hide();
+              }
+            });
         }
       },
 

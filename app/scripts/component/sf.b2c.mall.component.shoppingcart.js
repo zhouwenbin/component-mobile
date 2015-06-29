@@ -290,14 +290,14 @@ define(
 
       requestIsShowCart: function () {
         // @todo 暂时全局关闭购物车按钮
-        // var isShowCart = new SFIsShowCart();
-        // isShowCart
-        //   .sendRequest()
-        //   .done(function(data) {
-        //     if (data.value) {} else {
-        //       window.location.href = 'http://m.sfht.com/index.html';
-        //     }
-        //   });
+        var isShowCart = new SFIsShowCart();
+        isShowCart
+          .sendRequest()
+          .done(function(data) {
+            if (data.value) {} else {
+              window.location.href = 'http://m.sfht.com/index.html';
+            }
+          });
       },
 
       render: function() {

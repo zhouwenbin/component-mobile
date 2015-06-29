@@ -269,18 +269,18 @@ define('sf.b2c.mall.product.detailcontent', [
 
       requestIsShowCart: function () {
         // @todo 暂时全局关闭购物车按钮
-        // var isShowCart = new SFIsShowCart();
-        // isShowCart
-        //   .sendRequest()
-        //   .done(function (data) {
-        //     if (data.value) {
-        //       $(".mini-cart-container").show();
-        //       $(".addcart").show();
-        //     }else{
-        //       $(".mini-cart-container").hide();
-        //       $(".addcart").hide();
-        //     }
-        //   });
+        var isShowCart = new SFIsShowCart();
+        isShowCart
+          .sendRequest()
+          .done(function (data) {
+            if (data.value) {
+              $(".mini-cart-container").show();
+              $(".addcart").show();
+            }else{
+              $(".mini-cart-container").hide();
+              $(".addcart").hide();
+            }
+          });
       },
 
       /**
