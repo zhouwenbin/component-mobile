@@ -230,7 +230,9 @@ define('sf.b2c.mall.component.search', [
 
       h5SecondCategory: {
         show: function(context, targetElement, event) {
-          targetElement.parents("section").toggleClass("active");
+          var parent  = targetElement.parents("section");
+          parent.siblings(".active").removeClass("active");
+          parent.toggleClass("active");
         }
       },
 
