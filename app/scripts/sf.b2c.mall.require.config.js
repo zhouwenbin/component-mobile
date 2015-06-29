@@ -91,6 +91,10 @@ requirejs.config({
     'sf.b2c.mall.api.user.getUserCode': 'scripts/api/sf.b2c.mall.api.user.getUserCode',
     'sf.b2c.mall.api.user.partnerBindByUPswd': 'scripts/api/sf.b2c.mall.api.user.partnerBindByUPswd',
     'sf.b2c.mall.api.user.downInviteSms': 'scripts/api/sf.b2c.mall.api.user.downInviteSms',
+    'sf.b2c.mall.api.user.getCashActTransList': 'scripts/api/sf.b2c.mall.api.user.getCashActTransList',
+    'sf.b2c.mall.api.user.rqCash': 'scripts/api/sf.b2c.mall.api.user.rqCash',
+    'sf.b2c.mall.api.user.getCashActInfo': 'scripts/api/sf.b2c.mall.api.user.getCashActInfo',
+    'sf.b2c.mall.api.user.bindAliAct': 'scripts/api/sf.b2c.mall.api.user.bindAliAct',
     'sf.b2c.mall.api.minicart.getTotalCount': 'scripts/api/sf.b2c.mall.api.minicart.getTotalCount',
 
     'sf.b2c.mall.api.shopcart.addItemToCart':   'scripts/api/sf.b2c.mall.api.shopcart.addItemToCart',
@@ -153,6 +157,7 @@ requirejs.config({
     'sf.util': 'scripts/util/sf.util.fn',
     'sf.env.switcher': 'scripts/util/sf.env.switcher',
     'animate': 'scripts/vendor/fx',
+    'canvasjs':'scripts/vendor/canvasjs.min',
 
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
@@ -269,6 +274,11 @@ requirejs.config({
     // 原滋原味
     'sf.b2c.mall.page.naturalcoupon': 'scripts/page/sf.b2c.mall.page.naturalcoupon',
 
+    //
+    "sf.b2c.mall.page.invitation": "scripts/page/sf.b2c.mall.page.invitation",
+    'sf.b2c.mall.center.invitationcontent': 'scripts/center/sf.b2c.mall.center.invitationcontent',
+    'sf.b2c.mall.component.bindalipay': 'scripts/component/sf.b2c.mall.component.bindalipay',
+
     'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
     'sf.b2c.mall.api.shopcart.isShowCart': 'scripts/api/sf.b2c.mall.api.shopcart.isShowCart',
     'sf.b2c.mall.page.shoppingcart': 'scripts/page/sf.b2c.mall.page.shoppingcart',
@@ -313,6 +323,8 @@ requirejs.config({
 
     'template_widget_loading': 'templates/widget/sf.b2c.mall.widget.loading.mustache',
     'template_widget_message': 'templates/widget/sf.b2c.mall.widget.message.mustache',
+
+    'template_center_invitationcontent': 'templates/center/sf.b2c.mall.center.invitationcontent.mustache',
 
     // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
