@@ -403,7 +403,13 @@ define('sf.b2c.mall.component.search', [
       this.renderData.bind("page", function(ev, newVal, oldVal) {
         that.searchData.page = newVal;
         that.searchParams.from = (newVal - 1) * that.searchParams.size;
-        that.renderData.attr("nextPage", 1 + +newVal);
+
+        if (that.renderData.itemSearch && (that.renderData.page * that.searchParams.size >= that.renderData.itemSearch.totalHits)) {
+          that.renderData.attr("nextPage", 0)
+        } else {
+          that.renderData.attr("nextPage", 1 + +newVal);
+        }
+
         that.renderData.attr("prevPage", newVal - 1);
       });
       this.renderData.bind("sort", function(ev, newVal, oldVal) {
@@ -905,6 +911,7 @@ define('sf.b2c.mall.component.search', [
           _.each(itemSearchData.results, function(item) {
             that.renderData.itemSearch.results.push(item);
           });
+          that.renderData.attr("itemSearch", that.renderData.itemSearch);
         })
         .fail(function() {
         })
