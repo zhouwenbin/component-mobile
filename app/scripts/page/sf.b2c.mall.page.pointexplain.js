@@ -8,12 +8,12 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.component.nav',
+      'sf.b2c.mall.module.header',
     'sf.b2c.mall.business.config',
     'sf.env.switcher'
   ],
 
-  function(can, $, Fastclick,  SFFrameworkComm,
-    SFNav, SFConfig, SFSwitcher) {
+  function(can, $, Fastclick,  SFFrameworkComm, SFNav, SFheader, SFConfig, SFSwitcher) {
 
     SFFrameworkComm.register(3);
     Fastclick.attach(document.body);
