@@ -223,6 +223,7 @@ define('sf.b2c.mall.component.search', [
             context.h5ShowFilter.attr("show", true);
             $("body").css("backgroundColor", "#fff");
           }
+          $.trigger("window", scroll);
         },
       },
 
