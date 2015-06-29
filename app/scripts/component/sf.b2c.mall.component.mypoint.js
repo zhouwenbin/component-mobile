@@ -15,7 +15,8 @@ define('sf.b2c.mall.component.mypoint', [
   ],
   function(can, $, store, Fastclick,  IntegralLog,  SFGetUserRoutes, SFMessage, SFConfig,SFFrameworkComm,SFSwitcher, template_center_point) {
       var DEFAULT_PAGE_NUM = 1;
-      var DEFAULT_PAGE_SIZE = 50;
+      var DEFAULT_PAGE_SIZE = 10;
+      var totalNumber = 0;
      Fastclick.attach(document.body);
      SFFrameworkComm.register(3);
     can.route.ready();
@@ -37,7 +38,7 @@ define('sf.b2c.mall.component.mypoint', [
             var params = {
               "operateType": routeParams.operateType,
                 "page": routeParams.page || DEFAULT_PAGE_NUM,
-                "size": 50
+                "size": 10
             }
             this.render(params);
       },
@@ -52,9 +53,9 @@ define('sf.b2c.mall.component.mypoint', [
                   that.options.integralTotalAmount = data.userTotalIntegral.integralTotalAmount;
                   that.options.expirationDate = data.userTotalIntegral.expireDate;
                   that.options.expireIntegralAmount = data.userTotalIntegral.expireIntegralAmount;
+                  totalNumber = data.totalCount;
                    if (data.result && data.result.length > 0) {
                           that.options.result = data.result;
-
                           _.each(that.options.result, function(point) {
                                     if(point.integralAmount > 0){
                                         point.flag = "text-success";
@@ -76,6 +77,10 @@ define('sf.b2c.mall.component.mypoint', [
                   that.element.html(html);
                   //获取当前的操作类型，设置当前的li标签
                   var routeParams = can.route.attr();
+                  var pageNum = typeof routeParams.page == "undefined"?1:routeParams.page;
+                  if( totalNumber < pageNum * 10 + 1){
+                      $(".order-r2").css("display","none");
+                  }
                   if (routeParams.operateType) {
                       _.each($(".integral-tab li"), function(element) {
                           if($(element).attr("tag") == routeParams.operateType){
@@ -113,10 +118,25 @@ define('sf.b2c.mall.component.mypoint', [
           var params = {
               "operateType": routeParams.operateType,
               "page": routeParams.page,
-              "size": 50
+              "size": 10
           };
           this.render(params);
       },
+
+     "#viewmore click":function(element, event){
+         var routeParams = can.route.attr();
+         var currentPage = typeof routeParams.page == "undefined" ?1:routeParams.page;
+         if(parseInt(currentPage)  + 1 >= totalNumber/10){
+             $(".order-r2").css("display","none");
+         }
+         if(typeof routeParams.operateType == "undefined" ){
+             window.location = " http://m.sfht.com/mypoint.html" + '#!'  + "&page=" + (parseInt(currentPage) + 1);
+         }
+         else{
+             window.location = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" +  routeParams.operateType + "&page=" + (parseInt(currentPage) + 1);
+         }
+
+     },
 
      "svg click": function(element, event) {
          window.location.href = "http://m.sfht.com/integral-explain.html";
