@@ -12,13 +12,9 @@
 	line-height: 18px;
 	text-align: left;
 }
-.invite-income-icon{
-	width: 41px;
-	height: 50px;
+.invite-income-none svg{
 	display: inline-block;
 	vertical-align: middle;
-	background: url(#{$bg-url}invite-income-icon.png) no-repeat;
-	background-size: 41px;
 	margin-right: 10px;
 }
 .invite-income{
