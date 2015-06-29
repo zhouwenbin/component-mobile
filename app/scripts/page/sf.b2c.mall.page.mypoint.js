@@ -10,12 +10,12 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.component.nav',
+     'sf.b2c.mall.module.header',
     'sf.b2c.mall.business.config',
    'sf.b2c.mall.component.mypoint'
   ],
 
-  function(can, $, Fastclick,  util, SFFrameworkComm, SFMessage,
-    SFNav, SFConfig, SFPoint) {
+  function(can, $, Fastclick,  util, SFFrameworkComm, SFMessage,SFHeader, SFNav, SFConfig, SFPoint) {
 
       SFFrameworkComm.register(3);
       Fastclick.attach(document.body);
