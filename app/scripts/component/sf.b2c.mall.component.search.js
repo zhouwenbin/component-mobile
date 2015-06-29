@@ -968,6 +968,12 @@ define('sf.b2c.mall.component.search', [
           that.renderData.attr("isShowShoppintCart", true);
         }
       } else {
+
+        if (SFFn.isMobile.APP()) {
+          flag = 1;
+          that.renderData.attr("isShowShoppintCart", true);
+        }
+
         isShowFlag = true;
       }
 
