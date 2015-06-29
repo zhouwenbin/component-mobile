@@ -31,28 +31,6 @@ define(
           window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
           return false;
         }
-
-          var switcher = new SFSwitcher();
-
-          switcher.register('web', function () {
-              new SFNav('.sf-nav');
-          });
-      },
-
-      /**
-       * [render 执行渲染]
-       */
-      render: function() {
-        var switcher = new SFSwitcher();
-
-        switcher.register('web', function () {
-          new SFNav('.sf-nav');
-
-            switcher.register('app', function () {
-                // 不使用导航
-            });
-            switcher.go();
-        });
       }
     });
   });
