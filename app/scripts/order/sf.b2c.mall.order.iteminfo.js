@@ -18,9 +18,11 @@ define('sf.b2c.mall.order.iteminfo', [
   'sf.env.switcher',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config',
-  'text!template_order_iteminfo'
+  'text!template_order_iteminfo',
+  'sf.mediav'
 ], function(text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList,
-  SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher, SFMessage, SFConfig, template_order_iteminfo) {
+  SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher,
+  SFMessage, SFConfig, template_order_iteminfo, SFMediav) {
 
   can.route.ready();
 
@@ -74,7 +76,45 @@ define('sf.b2c.mall.order.iteminfo', [
           $("#submitOrder").click(function() {
             that.submitOrderClick($(this));
           });
+
+          that.watchIteminfo.call(that);
         });
+    },
+
+    watchIteminfo: function () {
+      var uinfo = $.fn.cookie('3_uinfo');
+      var arr = [];
+      if (uinfo) {
+        arr = uinfo.split(',');
+      }
+
+      var name = arr[0];
+
+      var products = [];
+      this.itemObj.orderPackageItemList.each(function (packageInfo, index) {
+        packageInfo.orderGoodsItemList.each(function (value) {
+          products.push(value);
+        });
+      });
+      SFMediav.watchShoppingCart({name: name}, products);
+    },
+
+    watchSubmit: function () {
+      var uinfo = $.fn.cookie('3_uinfo');
+      var arr = [];
+      if (uinfo) {
+        arr = uinfo.split(',');
+      }
+
+      var name = arr[0];
+
+      var products = [];
+      this.itemObj.orderPackageItemList.each(function (packageInfo, index) {
+        packageInfo.orderGoodsItemList.each(function (value) {
+          products.push(value);
+        });
+      });
+      SFMediav.watchOrderSubmit({name: name}, {amount: that.itemObj.orderFeeItem.actualTotalFee}, products);
     },
 
     '#selectCoupon change': function(targetElement) {
@@ -115,6 +155,9 @@ define('sf.b2c.mall.order.iteminfo', [
 
 
     receiveCouponExCode: function(exCode) {
+      //can.when(this.initCoupons());
+
+      
       var that = this;
       var receiveExCode = new SFReceiveExCode({
         exCode: exCode
@@ -132,6 +175,7 @@ define('sf.b2c.mall.order.iteminfo', [
         .fail(function(error) {
           var errorMap = {
             11000160: "请输入有效的兑换码",
+            11000100: "您已经兑换过此券",
             11000170: "兑换码已使用",
             11000200: "兑换码已过期",
             11000209: "请输入正确的兑换码",
@@ -140,6 +184,7 @@ define('sf.b2c.mall.order.iteminfo', [
           $("#couponCodeDialog .text-error").text(errorMap[error] ? errorMap[error] : '请输入有效的兑换码！');
         })
         .always(function() {});
+        
     },
 
     /**
@@ -260,14 +305,14 @@ define('sf.b2c.mall.order.iteminfo', [
       "4000403": "部分商品超出可购买数量，请重新提交订单", //"购买数量超过活动剩余库存",
       "4000404": "订单金额发生变化，请重新提交订", //"活动已经结束",
       "4000405": "折扣金额过大，超过订单总金额的30%",
-      "4000500": "部分商品超出可购买数量，请重新提交订单", //"订单商品库存不足",
+      "4000500": "商品被抢光啦，看看其他商品吧", //"订单商品库存不足",
       "4000600": "订单商品超过限额",
       "4000700": "订单商品金额改变",
       "4002300": "购买的多个商品货源地不一致",
       "4002400": "购买的多个商品的商品形态不一致",
       "4002500": "购买的商品支付卡类型为空",
       "4002600": "购买的商品不在配送范围内",
-      "4002700": "部分商品超出可购买数量，请重新提交订单", //"订单商品已下架",
+      "4002700": "商品被抢光啦，看看其他商品吧", //"订单商品已下架",
       "4100901": "优惠券使用失败",
       "4100902": "优惠券不在可使用的时间范围内",
       "4100903": "优惠券不能在该渠道下使用",
@@ -404,6 +449,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
           switcher.go();
 
+          that.watchSubmit.call(that);
         })
         .fail(function(error) {
           element.removeClass("disable");
@@ -443,13 +489,21 @@ define('sf.b2c.mall.order.iteminfo', [
      */
     initCoupons: function() {
       var that = this;
+      var tmpItemObj = this.itemObj.serialize();
+
+      var params = [];
+      _.each(tmpItemObj.orderPackageItemList, function(itemPackage){
+        _.each(itemPackage.orderGoodsItemList, function(item) {
+          params.push({
+            "itemId": item.itemId,
+            "num": item.quantity,
+            "price": item.price,
+            "skuId": item.skuId
+          });
+        });
+      });
       var queryOrderCoupon = new SFQueryOrderCoupon({
-        "items": JSON.stringify([{
-          "itemId": that.itemObj.itemid,
-          "num": that.itemObj.amount,
-          "price": that.itemObj.orderGoodsItemList[0].price,
-          "skuId": that.itemObj.orderGoodsItemList[0].skuId
-        }]),
+        "items": JSON.stringify(params),
         'system': "B2C_H5"
       });
       return queryOrderCoupon.sendRequest()

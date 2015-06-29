@@ -20,7 +20,8 @@ define('sf.b2c.mall.shop.detail', [
     helpers: {
       'sf-firstImg': function(imageList, options) {
         if (imageList() && imageList().length > 1) {
-          return imageList()[0];
+          //imageList 首页用第一张，店铺页用第二张
+          return imageList()[1] || imageList()[0];
         } else {
           return "";
         }
@@ -39,7 +40,7 @@ define('sf.b2c.mall.shop.detail', [
     }),
 
     /**
-     * 初始化slide控件
+     * 初始化
      * @param  {DOM} element 容器element
      * @param  {Object} options 传递的参数
      */
@@ -64,7 +65,7 @@ define('sf.b2c.mall.shop.detail', [
     },
 
     goto404: function() {
-      window.location.href = "404.html";
+      window.location.href = "http://m.sfht.com";
     },
 
     /**

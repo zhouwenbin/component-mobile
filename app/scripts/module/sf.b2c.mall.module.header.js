@@ -93,16 +93,17 @@ define(
             $(".mini-cart-container-parent").show();
           }
         }else{
-          var isShowCart = new SFIsShowCart();
-          isShowCart
-            .sendRequest()
-            .done(function (data) {
-              if (data.value) {
-                $(".mini-cart-container-parent").show();
-              }else{
-                $(".mini-cart-container-parent").hide();
-              }
-            });
+          // @todo 暂时全局关闭购物车按钮
+          // var isShowCart = new SFIsShowCart();
+          // isShowCart
+          //   .sendRequest()
+          //   .done(function (data) {
+          //     if (data.value) {
+          //       $(".mini-cart-container-parent").show();
+          //     }else{
+          //       $(".mini-cart-container-parent").hide();
+          //     }
+          //   });
         }
       },
 

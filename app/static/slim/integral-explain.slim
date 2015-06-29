@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="body1">
+	<!--头部-->
+	== Slim::Template.new('module/header.slim').render
+	<!--头部-->
+	<section class="integral-explain">
+		<ul>
+			<li>
+				<h2>积分的有效期</h2>
+				<p>积分的有效期为1年，即从获得获得积分开始至次年年底，逾期自动作废（如若交易在使用积分有效期之外发生退款，该部分积分不予退还）</p>
+			</li>
+			<li>
+				<h2>积分的兑换比例</h2>
+				<p>积分和人民币兑换比例是100:1，即100个积分相当于人民币1元。</p>
+			</li>
+			<li>
+				<h2>积分如何获取</h2>
+				<p>用户在顺丰海淘进行签到、在线支付订单都可以获得积分。每支付1元即获得1积分。</p>
+			</li>
+			<li>
+				<h2>积分的扣除</h2>
+				<p>所支付订单发生退货，需要扣除该商品通过支付所获赠的积分，如账户积分不足，则从商品退款金额中扣除相应的现金。</p>
+			</li>
+		</ul>
+	</section>
+	== Slim::Template.new('module/nav.slim').render
+	<script src="../js/zepto.min.js"></script>
+</body>
+</html>

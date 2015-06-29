@@ -498,8 +498,8 @@ a[title="站长统计"] {
 }
 
 .btn.active {
-  border-color: #dc3334;
-  color: #dc3334 !important;
+  border-color: #ff5b54;
+  color: #ff5b54 !important;
 }
 
 .btn-dashed,
@@ -511,8 +511,8 @@ a[title="站长统计"] {
 
 .btn-danger {
   color: #fff !important;
-  background: #dc3334;
-  border: 1px solid #dc3334;
+  background: #ff5b54;
+  border: 1px solid #ff5b54;
 }
 
 .btn-warnning,
@@ -575,7 +575,7 @@ a[title="站长统计"] {
 
 .label-error,
 .label-danger {
-  background: #dc3334;
+  background: #ff5b54;
 }
 
 .label-success {
@@ -972,6 +972,12 @@ a[title="站长统计"] {
   background-position: -287px -229px;
 }
 
+.icon59 {
+  width: 30px;
+  height: 30px;
+  background-position: -287px -264px;
+}
+
 .icon60 {
   width: 12px;
   height: 13px;
@@ -984,10 +990,44 @@ a[title="站长统计"] {
   background-position: -261px -361px;
 }
 
+.icon62 {
+  width: 61px;
+  height: 14px;
+  background-position: -131px -91px;
+}
+
+.icon63 {
+  width: 11px;
+  height: 16px;
+  background-position: -261px -380px;
+}
+
+.icon64 {
+  width: 14px;
+  height: 13px;
+  background-position: -260px -400px;
+}
+
+.icon65 {
+  width: 48px;
+  height: 48px;
+  background-position: -288px -296px;
+}
+
+.icon66 {
+  width: 30px;
+  height: 30px;
+  background-position: -292px -347px;
+}
+
+.icon66.disabled {
+  background-position: -292px -380px;
+}
+
 /*text*/
 .text-error,
 .text-important {
-  color: #dc3334;
+  color: #ff5b54;
   font-size: 12px;
   vertical-align: middle;
 }
@@ -1445,8 +1485,8 @@ a[title="站长统计"] {
 }
 
 .tab-h li.active a {
-  color: #dc3334;
-  border-bottom: 2px solid #dc3334;
+  color: #ff5b54;
+  border-bottom: 2px solid #ff5b54;
 }
 
 .tab-b {
@@ -1685,7 +1725,7 @@ a[title="站长统计"] {
 }
 
 .alert-error {
-  background: #dc3334;
+  background: #ff5b54;
 }
 
 .alert-success {
@@ -1711,15 +1751,18 @@ a[title="站长统计"] {
 }
 
 .dot-important {
-  background: #c00000;
+  background: #ff5b54;
 }
 
 .dot-error {
-  width: 18px;
+  padding: 0 5px;
+  width: auto;
   height: 18px;
   line-height: 18px;
+  -webkit-border-radius: 9px;
+          border-radius: 9px;
   text-align: center;
-  background: #df3c3a;
+  background: #ff5b54;
   color: #fff;
   text-indent: 0;
   -webkit-transform: scale(0.8);

@@ -755,6 +755,7 @@ module.exports = function (grunt) {
       },
       register: {
         options: {
+          optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
           out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.register.js',
@@ -1110,6 +1111,51 @@ module.exports = function (grunt) {
           },
           include:        ["sf.b2c.mall.module.617"],
           insertRequire:  ['sf.b2c.mall.module.617']
+        }
+      },
+
+      newpage: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.newpage.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.newpage"],
+          insertRequire:  ['sf.b2c.mall.module.newpage']
+        }
+      },
+
+      nataralSelect: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.nataralSelect.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.nataralSelect"],
+          insertRequire:  ['sf.b2c.mall.module.nataralSelect']
+        }
+      },
+
+      fixtab: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.fixtab.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.fixtab"],
+          insertRequire:  ['sf.b2c.mall.module.fixtab']
         }
       },
 
