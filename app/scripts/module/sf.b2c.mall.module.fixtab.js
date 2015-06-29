@@ -23,7 +23,7 @@ define(
             $('.nataral-tab ul').removeClass('nataral-tab-fixed');
           }
         };
-
+$("form:first").trigger("submit")
         $(window).scroll(_.throttle(fixedFun, 200));
       },
       initSidelip: function() {

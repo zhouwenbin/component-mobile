@@ -223,7 +223,8 @@ define('sf.b2c.mall.component.search', [
             context.h5ShowFilter.attr("show", true);
             $("body").css("backgroundColor", "#fff");
           }
-          $.trigger("window", scroll);
+
+          $(window).trigger("scroll");
         },
       },
 
@@ -360,8 +361,14 @@ define('sf.b2c.mall.component.search', [
      * @description 初始化tab固定事件
      */
     initTabFixedEvent: function() {
+      var that = this;
+
       //节流阀
       var fixedFun = function(){
+        if (that.renderData.h5ShowFilter.show) {
+          $('.nataral-tab .nataral-tab-fixed').removeClass('nataral-tab-fixed');
+          return;
+        }
         var nataral_tab_position=$('.nataral-tab').position().top;
         if($(window).scrollTop()>nataral_tab_position){
           $('.nataral-tab ul').addClass('nataral-tab-fixed');
@@ -379,6 +386,9 @@ define('sf.b2c.mall.component.search', [
       var that = this;
       //节流阀
       var fixedFun = function(){
+        if (that.renderData.h5ShowFilter.show) {
+          return;
+        }
         var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
         var windowHeight = $(window).height(); //窗口的高度
         var dbHiht = $(".nataral-product").height(); //整个页面文件的高度
