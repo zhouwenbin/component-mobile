@@ -16,7 +16,8 @@ define(
         var switcher = new SFSwitcher();
 
         switcher.register('app', function() {
-            var app = {
+
+            var App = can.Control.extend({
                 /**
                  * @description 渲染html
                  * @param data
@@ -25,7 +26,7 @@ define(
                     //渲染页面
                     var renderFn = can.mustache(template_exchange_code);
                     var html = renderFn(data);
-                    this.element.html(html);
+                    return html;
                 },
 
                 calculateExchangeCode: function() {
@@ -39,7 +40,7 @@ define(
                     return decimal.toString(16);
                 },
 
-                initialize: function(id) {
+                init: function(id) {
                     var that = this;
                     var renderData = {};
                     if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
@@ -47,10 +48,13 @@ define(
                     } else {
                         renderData.exchangeCode = '请登入后查看';
                     }
-                    $(".fill-exchangecode").html(renderHtml(renderData));
+
+                    var html = this.renderHtml(renderData);
+                    this.element.html(html);
                 }
-            };
-            app.initialize();
+            });
+
+            new App('.fill-exchangecode');
         });
 
         switcher.go();
