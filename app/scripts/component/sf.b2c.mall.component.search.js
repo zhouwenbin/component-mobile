@@ -930,8 +930,11 @@ define('sf.b2c.mall.component.search', [
 
       var isShowFlag = false;
       if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+
+        var _aid = $.fn.cookie('_aid') || '3';
+
         // 从cookie中获得值确认购物车是不是显示
-        var uinfo = $.fn.cookie('3_uinfo');
+        var uinfo = $.fn.cookie(_aid + '_uinfo');
         var arr = [];
         if (uinfo) {
           arr = uinfo.split(',');
@@ -942,6 +945,11 @@ define('sf.b2c.mall.component.search', [
         // 第四位标示是否能够展示购物车
         // 0表示听从总开关的，1表示显示，2表示不显示
         var flag = arr[4];
+
+        // @todo 暂时处理，因为在app里获得不了用户uinfo
+        if (SFFn.isMobile.APP()) {
+          flag = 0;
+        }
 
         // 如果判断开关关闭，使用dom操作不显示购物车
         if (typeof flag == 'undefined' || flag == '2') {
@@ -1000,7 +1008,7 @@ define('sf.b2c.mall.component.search', [
                   zIndex:1000,
                   visibility:'hidden'
                 })
-                
+
                 setTimeout(function(){
                   can.trigger(window, 'updateCart');
                   thata.remove();
@@ -1037,7 +1045,7 @@ define('sf.b2c.mall.component.search', [
       // 添加购物车发送请求
       return addItemToCart.sendRequest()
         .done(function(data) {
-          
+
         })
         .fail(function(data) {
            if (data == 15000800) {
