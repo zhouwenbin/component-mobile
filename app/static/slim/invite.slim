@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/invite.css">
+
+</head>
+<body class="body1">
+	<section class="invite-income-none">
+		<span class="invite-income-icon"></span><p>对不起您暂时还没有收益，<br>赶紧去分享吧！</p>
+	</section>
+	<section class="invite-income">
+		<div class="invite-income-h">
+			<div class="invite-income-hr1">
+				== Slim::Template.new('../svg/icon-income.svg').render
+				<span>累计收益（元）</span>
+			</div>
+			<div class="invite-income-hr2">1,000</div>
+		</div>
+		<div class="invite-income-b">
+			<ul>
+				<li>昨日收益（元）<span class="text-important">1,000</span></li>
+				<li>账户余额（元）<span class="text-important">5,000</span></li>
+			</ul>
+			<div class="invite-income-br1">
+				<button class="btn btn-normal">提现</button>支付宝账号：123***678@qq.com
+			</div>
+		</div>		
+	</section>
+	<section class="invite-account">
+		<div class="invite-account-h">
+			<h2>账户明细</h2>
+			<a class="text-link">
+				== Slim::Template.new('../svg/icon-change.svg').render
+				<span>切换至账户明细</span>
+			</a>
+		</div>
+		<div class="invite-account-b">
+			<ul>
+				<li>
+					<div>
+						<h3>手机尾号为0788的用户支付达标</h3>
+						<time>2015-06-23</time>
+					</div>
+					<div class="text-important">+30</div>
+				</li>
+				<li>
+					<div>
+						<h3>手机尾号为0788的用户支付达标</h3>
+						<time>2015-06-23</time>
+					</div>
+					<div class="text-disable">-2000</div>
+				</li>
+				<li>
+					<div>
+						<h3>手机尾号为0788的用户支付达标</h3>
+						<time>2015-06-23</time>
+					</div>
+					<div class="text-important">+30</div>
+				</li>
+				<li>
+					<div>
+						<h3>手机尾号为0788的用户支付达标</h3>
+						<time>2015-06-23</time>
+					</div>
+					<div class="text-important">+30</div>
+				</li>
+				<li>
+					<div>
+						<h3>手机尾号为0788的用户支付达标</h3>
+						<time>2015-06-23</time>
+					</div>
+					<div class="text-important">+30</div>
+				</li>
+			</ul>
+			<div class="invite-account-br1">
+				<button class="btn btn-normal btn-radius">加载更多</button>
+			</div>
+		</div>
+		<div class="invite-account-b active">
+			 <div id="chartContainer"></div>
+		</div>
+			
+	</section>
+
+	<section class="invite-share">
+		<h2 class="invite-h2">分享途径</h2>
+		<div class="invite-share-icon"></div>
+		<h3>微信扫码撒红包</h3>
+		<p>撒完红包找到您觉得靠谱的朋友卖力推荐<br>成功率更高哦！</p>
+		<button class="btn btn-normal">分享</button>
+	</section>
+
+	<section class="invite-rule">
+
+		<h2 class="invite-h2">本期规则</h2>
+		<div class="invite-rule-bg"></div>
+		<button class="btn btn-normal active">查看规则条款</button>
+		<p>请务必仔细查看规则，否则可能导致无法获得奖励。</p>
+	</section>
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/canvasjs.min.js"></script>
+	<script src="../js/invite-chart.js"></script>
+</body>
+</html>
