@@ -224,7 +224,7 @@ define('sf.b2c.mall.component.search', [
             $("body").css("backgroundColor", "#fff");
           }
 
-          $("window").trigger(scroll);
+          $(window).trigger("scroll");
         },
       },
 
@@ -383,12 +383,12 @@ define('sf.b2c.mall.component.search', [
      * @description 初始化上拉加载数据事件
      */
     initLoadDataEvent: function() {
-      if (that.renderData.h5ShowFilter.show) {
-        return;
-      }
       var that = this;
       //节流阀
       var fixedFun = function(){
+        if (that.renderData.h5ShowFilter.show) {
+          return;
+        }
         var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
         var windowHeight = $(window).height(); //窗口的高度
         var dbHiht = $(".nataral-product").height(); //整个页面文件的高度
