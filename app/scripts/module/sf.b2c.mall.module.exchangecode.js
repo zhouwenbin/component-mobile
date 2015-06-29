@@ -59,7 +59,7 @@ define(
                     }else{
                         renderData.exchangeCode = '请登入后查看';
                     }
-                    renderHtml(renderData);
+                    $(".fill-exchangecode").html(renderHtml(renderData));
                 }
             };
 
