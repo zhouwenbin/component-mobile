@@ -7,7 +7,6 @@ define('sf.b2c.mall.center.invitationcontent', [
     'sf.helpers',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.component.bindalipay',
     'sf.b2c.mall.api.user.getUserInfo',
     'text!template_center_invitationcontent',
     'canvasjs',
@@ -15,7 +14,7 @@ define('sf.b2c.mall.center.invitationcontent', [
     'sf.b2c.mall.api.user.getCashActTransList',
     'sf.b2c.mall.api.user.rqCash'
   ],
-  function(can, $, Fastclick, helpers, SFMessage, SFConfig, SFBindalipay, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
+  function(can, $, Fastclick, helpers, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
 
     Fastclick.attach(document.body);
 
@@ -57,7 +56,7 @@ define('sf.b2c.mall.center.invitationcontent', [
           .fail(function(error) {
             console.error(error);
             var mainInfo = {
-              "bindAliAct": null,
+              "bindAliAct": "123",
               "lastestIncome": "200",
               "totalIncome": 400,
               "actBalance": "10000"
@@ -134,7 +133,7 @@ define('sf.b2c.mall.center.invitationcontent', [
         var that = this;
 
         if (!this.data.bindAliAct) {
-          new SFBindalipay();
+          window.location.href = "http://m.sfht.com/bindalipay.html?from=" + escape(window.location.href);
         } else {
           if (this.data.actBalance < 5000) {
             var message = new SFMessage(null, {
@@ -166,6 +165,15 @@ define('sf.b2c.mall.center.invitationcontent', [
 
       "#switchwiew click": function(element, event) {
         $('.invite-account-b').toggleClass('active');
+      },
+
+      "#sharebutton click": function(element, event) {
+        $("body,html").scrollTop(0);
+        $("#sharearea").show();
+      },
+
+      "#sharearea click": function(){
+        $("#sharearea").hide();
       },
 
       errorMap: {

@@ -277,7 +277,7 @@ requirejs.config({
     //
     "sf.b2c.mall.page.invitation": "scripts/page/sf.b2c.mall.page.invitation",
     'sf.b2c.mall.center.invitationcontent': 'scripts/center/sf.b2c.mall.center.invitationcontent',
-    'sf.b2c.mall.component.bindalipay': 'scripts/component/sf.b2c.mall.component.bindalipay',
+    'sf.b2c.mall.page.bindalipay': 'scripts/page/sf.b2c.mall.page.bindalipay',
 
     'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
     'sf.b2c.mall.api.shopcart.isShowCart': 'scripts/api/sf.b2c.mall.api.shopcart.isShowCart',

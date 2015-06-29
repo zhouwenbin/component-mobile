@@ -46,6 +46,10 @@ define(
         getUserInfo
           .sendRequest()
           .done(function(data) {
+
+            //获得userid
+            that.userId = data.userId;
+
             if (store.get('type') == 'MOBILE') {
               that.options.welcomeName = that.maskMobile(data.mobile);
             } else if (store.get('type') == 'MAIL') {
@@ -81,6 +85,10 @@ define(
 
       '.myaddress click': function(element, event) {
         window.location.href = SFConfig.setting.link.recaddrmanage;
+      },
+
+      '.myinvitation click': function() {
+        window.location.href = "http://m.sfht.com/invitation.html?_src=" + this.userId;
       },
 
       maskMobile: function(str) {

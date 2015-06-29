@@ -969,6 +969,24 @@ module.exports = function (grunt) {
         }
       },
 
+      bindalipay: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.bindalipay.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.bindalipay'
+          ],
+          insertRequire: ['sf.b2c.mall.page.bindalipay']
+        }
+      },
+
       alipayframe: {
         options: {
           preserveLicenseComments: false,
