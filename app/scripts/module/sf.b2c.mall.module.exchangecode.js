@@ -46,7 +46,7 @@ define(
                     if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
                         renderData.exchangeCode = calculateExchangeCode();
                     } else {
-                        renderData.exchangeCode = '请登入后查看';
+                        renderData.exchangeCode = '请登录';
                     }
 
                     var html = this.renderHtml(renderData);
