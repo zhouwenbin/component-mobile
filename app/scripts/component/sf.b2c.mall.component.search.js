@@ -861,7 +861,6 @@ define('sf.b2c.mall.component.search', [
     '#classify-select li .btn-search-close click': function(targetElement) {
       var role = targetElement.data("role");
 
-      var searchDataTemp = _.clone(this.searchData);
       delete searchDataTemp.page;
       delete searchDataTemp[role];
       this.gotoNewPage(searchDataTemp);
@@ -872,6 +871,7 @@ define('sf.b2c.mall.component.search', [
      * @param targerElement
      */
     "#pageUpBtn click": function(targetElement) {
+      var searchDataTemp = _.clone(this.searchData);
       var prevPage = this.renderData.prevPage;
 
       var searchDataTemp = _.clone(this.searchData);
@@ -984,9 +984,10 @@ define('sf.b2c.mall.component.search', [
         if (SFFn.isMobile.APP()) {
         //   flag = 1;
           that.renderData.attr("isShowShoppintCart", false);
+          isShowFlag = false;
+        }else{
+          isShowFlag = true;
         }
-
-        isShowFlag = true;
       }
 
       // @todo 请求总开关进行判断
