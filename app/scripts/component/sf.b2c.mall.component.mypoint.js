@@ -140,9 +140,9 @@ define('sf.b2c.mall.component.mypoint', [
           }
       },
 
-     "#viewmore click":function(element, event){
+     ".order-r2 click":function(element, event){
          var routeParams = can.route.attr();
-         var currentPage = typeof routeParams.page == "undefined" ?2:routeParams.page;
+         var currentPage = typeof routeParams.page == "undefined" ?1:routeParams.page;
          if(parseInt(currentPage)  + 1 >= totalNumber/10){
              $(".order-r2").css("display","none");
          }
