@@ -347,13 +347,11 @@ requirejs.config({
 
     'template_widget_loading': 'templates/widget/sf.b2c.mall.widget.loading.mustache',
     'template_widget_message': 'templates/widget/sf.b2c.mall.widget.message.mustache',
-<<<<<<< HEAD
+
      'template_center_point': 'templates/center/sf.b2c.mall.center.point.mustache',
-=======
+
     'template_exchange_code': 'templates/sf.b2c.mall.exchange.code.mustache',
 
->>>>>>> master
-    // 520
     'sf.b2c.mall.page.520': 'scripts/page/sf.b2c.mall.page.520',
     'template_header_520': 'templates/sf.b2c.mall.520.mustache',
 

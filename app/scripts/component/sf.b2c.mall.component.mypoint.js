@@ -54,6 +54,7 @@ define('sf.b2c.mall.component.mypoint', [
                   that.options.expirationDate = data.userTotalIntegral.expireDate;
                   that.options.expireIntegralAmount = data.userTotalIntegral.expireIntegralAmount;
                   totalNumber = data.totalCount;
+                  var htmlValue  = "";
                    if (data.result && data.result.length > 0) {
                           that.options.result = data.result;
                           _.each(that.options.result, function(point) {
@@ -67,14 +68,23 @@ define('sf.b2c.mall.component.mypoint', [
                                   dateAndTime =  that.getDateAndTime(point.createDate);
                                   point.dateValue = dateAndTime.datePart;
                                   point.timeValue = dateAndTime.timePart;
+                                if(data.currentPage > 1 ){
+                                        htmlValue = htmlValue + '<li><div class="integral-list-c1"><div class="integral-list-from">' + point.description + '</div><div class="integral-list-date">' + point.dateValue + '</div></div><div class="integral-list-c2"><div class="' +point.flag+ '">'+ point.integralAmount+ '</div> <div class="integral-list-time">' + point.timeValue+ '</div></div></li>';
+                                }
                           })
                     } else {
                        that.options.result = null;
                     }
                 //  var html = can.view('templates/center/sf.b2c.mall.center.point.mustache', that.options);
-                  var renderPoint = can.mustache(template_center_point);
-                  var html = renderPoint(that.options);
-                  that.element.html(html);
+                  if(data.currentPage > 1 && $(".integral-list ul").length > 0){
+                      $(".integral-list ul").append(htmlValue);
+                  }
+                  else{
+                      var renderPoint = can.mustache(template_center_point);
+                      var html = renderPoint(that.options);
+                      that.element.html(html);
+                  }
+
                   //获取当前的操作类型，设置当前的li标签
                   var routeParams = can.route.attr();
                   var pageNum = typeof routeParams.page == "undefined"?1:routeParams.page;
@@ -168,7 +178,7 @@ define('sf.b2c.mall.component.mypoint', [
           });
 
           switcher.register('app', function () {
-              can.route.attr('operateType', tag);
+             can.route.attr('operateType', tag);
           });
           switcher.go();
       }
