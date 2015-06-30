@@ -214,6 +214,7 @@ requirejs.config({
       'sf.b2c.mall.page.mypoint': 'scripts/page/sf.b2c.mall.page.mypoint',
       'sf.b2c.mall.component.mypoint': 'scripts/component/sf.b2c.mall.component.mypoint',
       'sf.b2c.mall.page.pointexplain': 'scripts/page/sf.b2c.mall.page.pointexplain',
+      'sf.b2c.mall.page.signrule': 'scripts/page/sf.b2c.mall.page.signrule',
 
     // 登录
     'sf.b2c.mall.page.login': 'scripts/page/sf.b2c.mall.page.login',
