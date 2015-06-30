@@ -395,13 +395,13 @@ define('sf.b2c.mall.component.search', [
         var windowHeight = $(window).height(); //窗口的高度
         var dbHiht = $(".nataral-product").height(); //整个页面文件的高度
 
-        if((windowHeight + srollPos) >= (dbHiht)){
+        if((windowHeight + srollPos + 100) >= (dbHiht)){
 
           that.loadingData();
         }
       };
 
-      $(window).scroll(_.throttle(fixedFun, 200));
+      $(window).scroll(_.throttle(fixedFun, 500));
     },
 
     /**
