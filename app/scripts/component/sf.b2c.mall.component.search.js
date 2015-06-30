@@ -188,7 +188,7 @@ define('sf.b2c.mall.component.search', [
         showStatInfo: true,
         brandName: "品牌",
         categoryName: "类目",
-        secondCategoryName: "",
+        secondCategoryName: "类目2",
         originName: "货源",
         shopNationName: ""
       },
@@ -330,6 +330,7 @@ define('sf.b2c.mall.component.search', [
         this.renderData.attr("pfs", pfs.split("||"));
       }
 
+
       if (pfs == "YZYW") {
         this.renderData.attr("filterCustom", {
           showStatInfo: true,
@@ -340,6 +341,7 @@ define('sf.b2c.mall.component.search', [
           shopNationName: "货源"
         });
       }
+
 
       //过滤店铺
       var shopId = params.shopId;
@@ -395,13 +397,13 @@ define('sf.b2c.mall.component.search', [
         var windowHeight = $(window).height(); //窗口的高度
         var dbHiht = $(".nataral-product").height(); //整个页面文件的高度
 
-        if((windowHeight + srollPos) >= (dbHiht)){
+        if((windowHeight + srollPos + 100) >= (dbHiht)){
 
           that.loadingData();
         }
       };
 
-      $(window).scroll(_.throttle(fixedFun, 200));
+      $(window).scroll(_.throttle(fixedFun, 500));
     },
 
     /**
@@ -984,9 +986,10 @@ define('sf.b2c.mall.component.search', [
         if (SFFn.isMobile.APP()) {
         //   flag = 1;
           that.renderData.attr("isShowShoppintCart", false);
+          isShowFlag = false;
+        }else{
+          isShowFlag = true;
         }
-
-        isShowFlag = true;
       }
 
       // @todo 请求总开关进行判断
