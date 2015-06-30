@@ -608,7 +608,7 @@ a[title="站长统计"] {
 .icon {
   display: inline-block;
   vertical-align: middle;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/icon.png) no-repeat;
+  background: url(../img/icon.png) no-repeat;
   -webkit-background-size: 450px 450px;
           background-size: 450px 450px;
   text-indent: -999em;
@@ -1675,7 +1675,7 @@ a[title="站长统计"] {
 .banner-dialog-b {
   width: 230px;
   height: 313px;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/banner-dialog.jpg) no-repeat;
+  background: url(../img/banner-dialog.jpg) no-repeat;
   -webkit-background-size: 230px 230px;
           background-size: 230px;
   position: fixed;
@@ -3065,7 +3065,7 @@ a[title="站长统计"] {
   text-align: center;
   height: 230px;
   background-color: #da494f;
-  background-image: url(http://img.sfht.com/sfhth5/1.1.107/img/person.png);
+  background-image: url(../img/person.png);
   background-position: center bottom;
   background-repeat: no-repeat;
   -webkit-background-size: 250px;
@@ -3216,7 +3216,7 @@ a[title="站长统计"] {
 }
 
 .coupons-c1 {
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/coupons-c1.png) no-repeat;
+  background: url(../img/coupons-c1.png) no-repeat;
   -webkit-background-size: 320px 320px;
           background-size: 320px;
   height: 70px;
@@ -3226,7 +3226,7 @@ a[title="站长统计"] {
 }
 
 .coupons-c2 {
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/coupons.png) no-repeat;
+  background: url(../img/coupons.png) no-repeat;
   -webkit-background-size: 90px 70px;
           background-size: 90px 70px;
   height: 70px;
@@ -3237,7 +3237,7 @@ a[title="站长统计"] {
 }
 
 .coupons-disabled .coupons-c2 {
-  background-image: url(http://img.sfht.com/sfhth5/1.1.107/img/coupons2.png);
+  background-image: url(../img/coupons2.png);
 }
 
 .coupons-c2r1 span {
@@ -3306,7 +3306,7 @@ a[title="站长统计"] {
 }
 
 .coupon-b {
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/coupon.png) no-repeat;
+  background: url(../img/coupon.png) no-repeat;
   -webkit-background-size: 100% 100%;
           background-size: 100%;
   width: 169px;
@@ -3331,7 +3331,7 @@ a[title="站长统计"] {
 }
 
 .coupon-gift .coupon-b {
-  background-image: url("http://img.sfht.com/sfhth5/1.1.107/img/gift.png");
+  background-image: url("../img/gift.png");
   -webkit-background-size: 165px 85px;
           background-size: 165px 85px;
   width: 165px;
@@ -3420,7 +3420,7 @@ a[title="站长统计"] {
 }
 
 .nav1-icon1, .nav1-icon2, .nav1-icon3, .nav1-icon4 {
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/nav1.png) no-repeat;
+  background: url(../img/nav1.png) no-repeat;
   -webkit-background-size: 274px 274px;
           background-size: 274px;
   display: block;
@@ -3630,7 +3630,7 @@ a[title="站长统计"] {
 .sharepocket {
   padding-top: 14px;
   text-align: center;
-  background: #fff url(http://img.sfht.com/sfhth5/1.1.107/img/sharepocket.jpg) no-repeat center top;
+  background: #fff url(../img/sharepocket.jpg) no-repeat center top;
   -webkit-background-size: 320px 320px;
           background-size: 320px;
   height: 354px;
@@ -3668,7 +3668,7 @@ a[title="站长统计"] {
   text-align: center;
   padding-top: 14px;
   height: 388px;
-  background: #fff url(http://img.sfht.com/sfhth5/1.1.107/img/getpocket.jpg) no-repeat center top;
+  background: #fff url(../img/getpocket.jpg) no-repeat center top;
   -webkit-background-size: 320px 320px;
           background-size: 320px;
 }
@@ -3752,7 +3752,7 @@ a[title="站长统计"] {
 }
 
 .share {
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/share.png) no-repeat;
+  background: url(../img/share.png) no-repeat;
   -webkit-background-size: 235px 235px;
           background-size: 235px;
   width: 235px;
@@ -3781,7 +3781,7 @@ a[title="站长统计"] {
 .share-topic h2 {
   font-size: 24px;
   color: #fff;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/share-topic.jpg) no-repeat center;
+  background: url(../img/share-topic.jpg) no-repeat center;
   height: 120px;
   -webkit-background-size: 320px 120px;
           background-size: 320px 120px;
@@ -4007,7 +4007,7 @@ a[title="站长统计"] {
   width: 39px;
   height: 47px;
   float: left;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/gift-icon.png) no-repeat;
+  background: url(../img/gift-icon.png) no-repeat;
   -webkit-background-size: 39px 39px;
           background-size: 39px;
   margin-left: -51px;
@@ -4080,7 +4080,7 @@ a[title="站长统计"] {
 .gift-c1 {
   width: 82px;
   height: 115px;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/gift-c1.png) no-repeat;
+  background: url(../img/gift-c1.png) no-repeat;
   -webkit-background-size: 82px 82px;
           background-size: 82px;
   margin-right: 16px;
@@ -4218,7 +4218,7 @@ a[title="站长统计"] {
 
 .foretaste-h {
   padding-left: 91px;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/foretaste.jpg) no-repeat;
+  background: url(../img/foretaste.jpg) no-repeat;
   height: 125px;
   -webkit-background-size: cover;
           background-size: cover;
@@ -4329,7 +4329,7 @@ a[title="站长统计"] {
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-image: url(http://img.sfht.com/sfhth5/1.1.107/img/gift-coupon-dialog.png);
+  background-image: url(../img/gift-coupon-dialog.png);
   -webkit-background-size: 43px 43px;
           background-size: 43px;
   background-repeat: no-repeat;
@@ -4637,7 +4637,7 @@ a[title="站长统计"] {
 .downloadapp-logo {
   width: 205px;
   height: 46px;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/downloadapp-logo.png) no-repeat;
+  background: url(../img/downloadapp-logo.png) no-repeat;
   -webkit-background-size: 205px 46px;
           background-size: 205px 46px;
 }
@@ -4645,7 +4645,7 @@ a[title="站长统计"] {
 .downloadapp-close {
   width: 16px;
   height: 16px;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/downloadapp-close.png) no-repeat;
+  background: url(../img/downloadapp-close.png) no-repeat;
   -webkit-background-size: 16px 16px;
           background-size: 16px;
   text-indent: -999em;
@@ -4919,4 +4919,48 @@ a[title="站长统计"] {
 
 .integral-explain li:last-child {
   border-bottom: none;
+}
+
+.service {
+  padding: 18px 15px 18px 40px;
+}
+
+.service h2 {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.service h2:before,
+.service p:before {
+  display: inline-block;
+  text-align: center;
+  font-family: Arial;
+  width: 20px;
+  line-height: 20px;
+  height: 20px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  color: #fff;
+  margin-left: -25px;
+  font-weight: normal;
+  font-size: 12px;
+  float: left;
+}
+
+.service h2:before {
+  content: 'Q';
+  background: #f36364;
+}
+
+.service p:before {
+  content: 'A';
+  background: #7bb0d1;
+}
+
+.service p {
+  font-size: 14px;
+  line-height: 22px;
+  color: #666;
+  margin-bottom: 18px;
 }

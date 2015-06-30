@@ -7,7 +7,7 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 12px 20px;
+  padding: 12px 40px;
   border-bottom: 1px solid #dcdcdc;
   background: #fff;
 }
@@ -601,7 +601,7 @@
 }
 
 .nataral-classify-none {
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/nataral-classify-none.png) no-repeat center 150px;
+  background: url(../img/nataral-classify-none.png) no-repeat center 150px;
   -webkit-background-size: 111px 81px;
           background-size: 111px 81px;
   color: #999;
@@ -629,7 +629,7 @@
 }
 
 .nataral-code {
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/nataral-code.png) no-repeat center;
+  background: url(../img/nataral-code.png) no-repeat center;
   -webkit-background-size: 320px 320px;
           background-size: 320px;
   height: 75px;
