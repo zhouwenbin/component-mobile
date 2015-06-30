@@ -48,7 +48,6 @@
 .goods-r2{
   padding-bottom: 11px;
   margin-bottom: 15px;
-  margin-top:15px;
   border-width: 0 0 1px 0;
   font-size:14px;
   border-image: url(#{$border}) 2 0 round;
@@ -63,7 +62,6 @@
 }
 .goods-r3{
   font-size: 14px;
-  margin-bottom: 9px;
   color:#666;
   padding-bottom: 18px;
   display: flex;
@@ -78,6 +76,7 @@
 }
 .goods-r4{
   color: #999;
+  margin-bottom: 15px;
 }
 .goods-r4 del{
   color:rgba(0,0,0,0.5);

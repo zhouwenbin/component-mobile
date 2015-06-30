@@ -1002,6 +1002,28 @@ a[title="站长统计"] {
   background-position: -261px -380px;
 }
 
+.icon64 {
+  width: 14px;
+  height: 13px;
+  background-position: -260px -400px;
+}
+
+.icon65 {
+  width: 48px;
+  height: 48px;
+  background-position: -288px -296px;
+}
+
+.icon66 {
+  width: 30px;
+  height: 30px;
+  background-position: -292px -347px;
+}
+
+.icon66.disabled {
+  background-position: -292px -380px;
+}
+
 /*text*/
 .text-error,
 .text-important {
@@ -1463,8 +1485,8 @@ a[title="站长统计"] {
 }
 
 .tab-h li.active a {
-  color: #dc3334;
-  border-bottom: 2px solid #dc3334;
+  color: #ff5b54;
+  border-bottom: 2px solid #ff5b54;
 }
 
 .tab-b {
@@ -1729,7 +1751,7 @@ a[title="站长统计"] {
 }
 
 .dot-important {
-  background: #c00000;
+  background: #ff5b54;
 }
 
 .dot-error {
@@ -1740,7 +1762,7 @@ a[title="站长统计"] {
   -webkit-border-radius: 9px;
           border-radius: 9px;
   text-align: center;
-  background: #df3c3a;
+  background: #ff5b54;
   color: #fff;
   text-indent: 0;
   -webkit-transform: scale(0.8);
@@ -1751,3 +1773,4 @@ a[title="站长统计"] {
 .loadingDIV{
   display: none;
 }
+

@@ -1070,6 +1070,21 @@ module.exports = function (grunt) {
         }
       },
 
+      exchangecode: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.exchangecode.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ['sf.b2c.mall.module.exchangecode'],
+          insertRequire:  ['sf.b2c.mall.module.exchangecode']
+        }
+      },
+
       time: {
         options: {
           preserveLicenseComments: false,
@@ -1110,6 +1125,51 @@ module.exports = function (grunt) {
           },
           include:        ["sf.b2c.mall.module.617"],
           insertRequire:  ['sf.b2c.mall.module.617']
+        }
+      },
+
+      newpage: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.newpage.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.newpage"],
+          insertRequire:  ['sf.b2c.mall.module.newpage']
+        }
+      },
+
+      nataralSelect: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.nataralSelect.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.nataralSelect"],
+          insertRequire:  ['sf.b2c.mall.module.nataralSelect']
+        }
+      },
+
+      fixtab: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.fixtab.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.fixtab"],
+          insertRequire:  ['sf.b2c.mall.module.fixtab']
         }
       },
 
@@ -1428,6 +1488,46 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.shoppingcart'
           ],
           insertRequire: ['sf.b2c.mall.page.shoppingcart']
+        }
+      },
+
+      search: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.search.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.search'
+          ],
+          insertRequire: ['sf.b2c.mall.page.search']
+        }
+      },
+
+      shop: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.shop.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.shop'
+          ],
+          insertRequire: ['sf.b2c.mall.page.shop']
         }
       }
     }

@@ -19,7 +19,7 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
-    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.widget.loading'
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,

@@ -96,6 +96,7 @@ define(
             $(".mini-cart-container-parent").show();
           }
         }else{
+          // @todo 暂时全局关闭购物车按钮
           var isShowCart = new SFIsShowCart();
           isShowCart
             .sendRequest()

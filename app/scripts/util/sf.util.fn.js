@@ -51,14 +51,17 @@ define('sf.util', [
       },
       APP: function() {
         var isApp = config.setting['is_app'] || store.get('IS_APP');
+
         var hash = window.location.hash;
+        var search = window.location.search;
+        var whole = search + hash;
 
         if (isApp) {
           return isApp;
-        }else if (hash.indexOf('platform=android') > -1) {
+        }else if (whole.indexOf('platform=android') > -1) {
           store.set('IS_APP', 'android');
           return 'android';
-        } else if (hash.indexOf('platform=ios') > -1) {
+        } else if (whole.indexOf('platform=ios') > -1) {
           store.set('IS_APP', 'ios');
           return 'ios';
         } else {
