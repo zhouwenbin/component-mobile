@@ -17,6 +17,7 @@ define('sf.b2c.mall.component.mypoint', [
       var DEFAULT_PAGE_NUM = 1;
       var DEFAULT_PAGE_SIZE = 10;
       var totalNumber = 0;
+      var pageNum = 1;
      Fastclick.attach(document.body);
      SFFrameworkComm.register(3);
     can.route.ready();
@@ -87,7 +88,7 @@ define('sf.b2c.mall.component.mypoint', [
 
                   //获取当前的操作类型，设置当前的li标签
                   var routeParams = can.route.attr();
-                  var pageNum = typeof routeParams.page == "undefined"?1:routeParams.page;
+                  //var pageNum = typeof routeParams.page == "undefined"?1:routeParams.page;
                   if( totalNumber < pageNum * 10 + 1){
                       $(".order-r2").css("display","none");
                   }
@@ -130,7 +131,7 @@ define('sf.b2c.mall.component.mypoint', [
           var routeParams = can.route.attr();
           var params = {
               "operateType": routeParams.operateType,
-              "page": routeParams.page,
+              "page": pageNum,
               "size": 10
           };
           // 加上标示 防止触发三次
@@ -142,15 +143,27 @@ define('sf.b2c.mall.component.mypoint', [
 
      ".order-r2 click":function(element, event){
          var routeParams = can.route.attr();
-         var currentPage = typeof routeParams.page == "undefined" ?1:routeParams.page;
-         if(parseInt(currentPage)  + 1 >= totalNumber/10){
+         //var currentPage = typeof routeParams.page == "undefined" ?1:routeParams.page;
+         if(pageNum + 1 >= totalNumber/10){
              $(".order-r2").css("display","none");
          }
+         pageNum =  pageNum + 1;
          if(typeof routeParams.operateType == "undefined" ){
-             window.location = " http://m.sfht.com/mypoint.html" + '#!'  + "&page=" + (parseInt(currentPage) + 1);
+           //  window.location = " http://m.sfht.com/mypoint.html" + '#!'  + "&page=" + (parseInt(currentPage) + 1);
+             var params = {
+                 "page": pageNum,
+                 "size": 10
+             };
+             this.render(params);
          }
          else{
-             window.location = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" +  routeParams.operateType + "&page=" + (parseInt(currentPage) + 1);
+             var params = {
+                 "operateType": routeParams.operateType,
+                 "page": pageNum,
+                 "size": 10
+             };
+             this.render(params);
+           //  window.location = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" +  routeParams.operateType + "&page=" + (parseInt(currentPage) + 1);
          }
 
      },
@@ -167,6 +180,7 @@ define('sf.b2c.mall.component.mypoint', [
         if(tag == "all"){
             tag = "";
         }
+          pageNum = 1;
          //选中li的样式的改变
        $(element).addClass("active").siblings().removeClass("active");
        //window.location.href = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" + tag + "&page=" + 1;
@@ -174,7 +188,8 @@ define('sf.b2c.mall.component.mypoint', [
           var switcher = new SFSwitcher();
 
           switcher.register('web', function () {
-              window.location = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" + tag + "&page=" + 1;
+
+              window.location = " http://m.sfht.com/mypoint.html" + '#!' + "operateType=" + tag ;
           });
 
           switcher.register('app', function () {
