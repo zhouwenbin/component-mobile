@@ -588,7 +588,7 @@ define('sf.b2c.mall.order.iteminfo', [
               $("#pointUsed").val(0)
           }
           this.itemObj.attr('pointForUsed',pointValue)
-          var shouldPay = this.itemObj.attr('orderFeeItem.actualTotalFee')-this.itemObj.attr('orderCoupon.discountPrice') -($("#pointUsed").val()*100/this.itemObj.attr('proportion'));
+          var shouldPay = this.itemObj.attr('orderFeeItem.actualTotalFee')-this.itemObj.attr('orderCoupon.discountPrice') -(pointValue*100/this.itemObj.attr('proportion'));
           this.itemObj.attr("orderFeeItem.shouldPay", shouldPay);
           this.itemObj.attr("pointForUsed", pointValue/this.itemObj.attr('proportion'));
           this.itemObj.attr("getpoint", Math.floor(shouldPay/100)*100);
