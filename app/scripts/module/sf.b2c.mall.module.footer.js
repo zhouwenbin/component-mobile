@@ -34,16 +34,6 @@ define(
 
         // 根据逻辑环境进行执行
         switcher.go();
-
-
-        var isHideAd = store.get('IS_HIDE_AD');
-
-        if (!this.downloadapp.show  || isHideAd) {
-          this.element.find('.downloadapp').hide();
-        }else{
-          this.element.find('.downloadapp').show();
-        }
-
       },
 
       '.downloadapp-close click': function ($element, event) {
