@@ -8,7 +8,7 @@ body {
 }
 
 .children-day {
-  background: url(../img/61/bg.jpg) no-repeat center top;
+  background: url(http://img.sfht.com/sfhth5/1.1.107/img/61/bg.jpg) no-repeat center top;
   -webkit-background-size: cover;
           background-size: cover;
 }
@@ -103,7 +103,7 @@ body {
   width: 33%;
   text-align: center;
   display: inline-block;
-  background: url(../img/61/tab-h.png) no-repeat center bottom;
+  background: url(http://img.sfht.com/sfhth5/1.1.107/img/61/tab-h.png) no-repeat center bottom;
   -webkit-background-size: 0.875rem 0.875rem;
           background-size: 0.875rem;
   padding-bottom: 1rem;
@@ -111,7 +111,7 @@ body {
 }
 
 .tab2-h li.active {
-  background: url(../img/61/tab-h-active.png) no-repeat center bottom;
+  background: url(http://img.sfht.com/sfhth5/1.1.107/img/61/tab-h-active.png) no-repeat center bottom;
   -webkit-background-size: 0.875rem 0.875rem;
           background-size: 0.875rem;
 }
@@ -150,7 +150,7 @@ body {
 }
 
 .icon-soldout {
-  background: url(../img/61/icon1.png) no-repeat;
+  background: url(http://img.sfht.com/sfhth5/1.1.107/img/61/icon1.png) no-repeat;
   -webkit-background-size: cover;
           background-size: cover;
   width: 4.35rem;
