@@ -68,6 +68,23 @@ define('sf.util', [
           return false;
         }
       },
+
+      onlineApp: function () {
+        if (this.isMobile.APP() || !window.sf) {
+          return true;
+        }else{
+          return false;
+        }
+      },
+
+      localApp: function () {
+        if (this.isMobile.APP() || window.sf) {
+          return true;
+        }else{
+          return false;
+        }
+      },
+
       any: function() {
         return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows()) || this.Firefox();
       }

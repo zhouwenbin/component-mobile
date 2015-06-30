@@ -13,7 +13,7 @@ define(
 
   function($, can, _, SFFn) {
 
-    var setting = ['web', 'wechat', 'alipay', 'app'];
+    var setting = ['web', 'wechat', 'alipay', 'app', 'localapp', 'onlineapp'];
     var defaultSetting = 'web';
 
     return can.Control.extend({
@@ -41,6 +41,14 @@ define(
             // return !!cordova;
 
             return SFFn.isMobile.APP();
+          },
+
+          'localapp': function () {
+            return SFFn.isMobile.localApp();
+          },
+
+          'onlineapp': function () {
+            return SFFn.isMobile.onlineApp();
           }
         }
 
