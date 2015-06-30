@@ -7,10 +7,11 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.center.invitationcontent',
-    'sf.b2c.mall.business.config'
+    'sf.b2c.mall.business.config',
+    'text!template_center_invitationshare'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness) {
+  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness, template_center_invitationshare) {
 
     SFFrameworkComm.register(3);
 
@@ -30,7 +31,14 @@ define(
        */
       render: function() {
         // 列表区域
-        this.invitationcontent = new SFInvitationcontent('.sf-b2c-mall-invitation');
+        var params = can.deparam(window.location.search.substr(1));
+
+        this.data = {};
+        this.data.bagid = params.bagid;
+
+        var renderFn = can.mustache(template_center_invitationshare);
+        this.options.html = renderFn(this.data, this.helpers);
+        this.element.html(this.options.html);
       }
     });
 

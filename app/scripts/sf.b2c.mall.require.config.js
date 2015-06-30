@@ -307,6 +307,8 @@ requirejs.config({
     //店铺
     'sf.b2c.mall.page.shop': 'scripts/page/sf.b2c.mall.page.shop',
 
+    'sf.b2c.mall.page.invitationshare': 'scripts/page/sf.b2c.mall.page.invitationshare',
+
     'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
     'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
     'template_product_detailcontent':'templates/product/sf.b2c.mall.product.detailcontent.mustache',
