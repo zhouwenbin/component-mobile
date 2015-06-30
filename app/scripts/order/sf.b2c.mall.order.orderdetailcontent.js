@@ -118,7 +118,13 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       this.options.data = new can.Map(data);
         this.options.data.attr("totalPoint", data.presentIntegral);
-        this.options.data.attr("pointPrice", (data.orderItem.totalPrice- data.orderItem.discount-data.couponReducePrice-data.totalPrice));
+        var that = this;
+        //this.options.data.attr("pointPrice", (data.orderItem.totalPrice- data.orderItem.discount-data.couponReducePrice-data.totalPrice));
+        _.each(data.orderItem.orderCouponItemList, function(item) {
+            if(item.couponType == "INTRGAL" && item.orderAction == "COST"){
+                that.options.data.attr("pointPrice",item.price);
+            }
+        });
 //       this.options.data.totalPoint =data.presentIntegral;
       var renderFn = can.mustache(template_order_orderdetail);
       var html = renderFn(this.options.data, this.helpers);
