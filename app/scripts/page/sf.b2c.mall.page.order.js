@@ -11,7 +11,7 @@ define(
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
     'sf.hybrid',
-    'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.component.nav'
   ],
   function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, SFWeixin, SFConfig, SFSwitcher, SFHybrid, SFNav) {
     Fastclick.attach(document.body);

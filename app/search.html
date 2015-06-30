@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>顺丰海淘</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.search.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/nataral.css">
+    <link rel="stylesheet" href="static/css/animate.css">
+    <!-- endbuild -->
+</head>
+
+<body class="body1">
+
+<!--头部-->
+<!--# include file="/header/header.h5.natural.index.html" -->
+<!--头部-->
+<div id="sf-b2c-mall-search"></div>
+
+<div class="loadingDIV">
+    <div class="center">
+        <div class="loading9">
+            <i></i><i></i><i></i><i></i>
+        </div>
+    </div>
+</div>
+
+<!--尾部-->
+<!--# include file="/footer/footer.h5.index.html" -->
+<!--尾部-->
+
+<div id="version" data-version="{version}"></div>
+<!-- build:js(.) scripts/require.min.js -->
+<script src="bower_components/requirejs/require.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+<script src="scripts/base/sf.h5.base.ver.1.0.2.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+<script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.search.js -->
+<script src="scripts/sf.b2c.mall.require.config.js"></script>
+<script type="text/javascript">
+    require(['sf.b2c.mall.page.search']);
+</script>
+<!-- endbuild -->
+</body>
+
+</html>

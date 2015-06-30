@@ -67,7 +67,14 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
 
-        'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
+        'sf-isYZYW': function(productShape, options) {
+          if (productShape() == "YZYW") {
+            return options.fn(options.contexts || this);
+          }
+        },
+
+        'sf-showOriginPrice': function(isPromotion, activitySoldOut, sellingPrice, originPrice, options) {
+        // 'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
           var oPrice = originPrice();
           if (sellingPrice() < oPrice || oPrice == 0) {
             return options.fn(options.contexts || this);
@@ -261,6 +268,7 @@ define('sf.b2c.mall.product.detailcontent', [
       },
 
       requestIsShowCart: function () {
+        // @todo 暂时全局关闭购物车按钮
         var isShowCart = new SFIsShowCart();
         isShowCart
           .sendRequest()
@@ -512,7 +520,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
             var renderFn = can.mustache(template_product_detailcontent);
             var html = renderFn(that.options.detailContentInfo, that.helpers);
-            // var html = can.view('/templates/product/sf.b2c.mall.product.detailcontent.mustache', that.options.detailContentInfo, that.helpers);
+
             that.element.html(html);
 
             that.controlCart();
@@ -610,6 +618,12 @@ define('sf.b2c.mall.product.detailcontent', [
         });
         return getProductHotData.sendRequest()
           .done(function(priceData) {
+            if(priceData.endTime) {
+              //获得服务器时间
+              var currentServerTime = getProductHotData.getServerTime();
+              that.initCountDown(currentServerTime, priceData.endTime);
+            }
+
             that.adapter.formatPrice(that.options.detailContentInfo, priceData);
           });
       },
@@ -1175,6 +1189,14 @@ define('sf.b2c.mall.product.detailcontent', [
               },
               transitionEnd: function(index, elem) {}
             });
+
+
+
+            //获得服务器时间
+            if (priceData.endTime) {
+              var currentServerTime = getProductHotData.getServerTime();
+              that.initCountDown(currentServerTime, priceData.endTime);
+            }
           })
           .fail(function(error) {
             // $('.loadingDIV').hide();
@@ -1220,6 +1242,60 @@ define('sf.b2c.mall.product.detailcontent', [
 
             })
         });
+      },
+
+
+      initCountDown: function(currentServerTime, endTime) {
+        var that = this;
+        //endTime = 1445044886397
+        if(!endTime) {
+          that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+        }
+
+        var currentClientTime = new Date().getTime();
+        var distance = currentServerTime - currentClientTime;
+
+        if (that.interval) {
+          clearInterval(that.interval);
+        }
+
+        //设置倒计时
+        //如果当前时间活动已经结束了 就不要走倒计时设定了
+        if (endTime - new Date().getTime() + distance > 0) {
+          that.interval = setInterval(function() {
+
+            //走倒计时过程中 如果发现活动时间已经结束了，则去刷新下当前页面
+            if (endTime - new Date().getTime() + distance <= 0) {
+              that.refreshPage();
+            } else {
+              that.setCountDown(that.options.detailContentInfo.priceInfo, distance, endTime);
+            }
+          }, '1000')
+        } else {
+          that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+        }
+      },
+
+      /**
+       * [showCountDown 参考倒计时]
+       * @param  {[type]} currentTime
+       * @param  {[type]} destTime
+       * @return {[type]}
+       */
+      setCountDown: function(item, distance, endDate) {
+        var leftTime = endDate - new Date().getTime() + distance;
+        var leftsecond = parseInt(leftTime / 1000);
+        var day1 = Math.floor(leftsecond / (60 * 60 * 24));
+        var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);
+        var minute = Math.floor((leftsecond - day1 * 24 * 60 * 60 - hour * 3600) / 60);
+        var second = Math.floor(leftsecond - day1 * 24 * 60 * 60 - hour * 3600 - minute * 60);
+        this.options.detailContentInfo.attr("priceInfo.time", {
+          day: day1,
+          hour: hour,
+          minute: minute,
+          second: second
+        });
+        this.options.detailContentInfo.attr('priceInfo.timeIcon', "icon4");
       }
     });
   })
