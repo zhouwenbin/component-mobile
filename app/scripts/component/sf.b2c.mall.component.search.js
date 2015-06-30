@@ -330,7 +330,7 @@ define('sf.b2c.mall.component.search', [
         this.renderData.attr("pfs", pfs.split("||"));
       }
 
-      
+
       if (pfs == "YZYW") {
         this.renderData.attr("filterCustom", {
           showStatInfo: true,
@@ -341,7 +341,7 @@ define('sf.b2c.mall.component.search', [
           shopNationName: "货源"
         });
       }
-      
+
 
       //过滤店铺
       var shopId = params.shopId;
@@ -986,9 +986,10 @@ define('sf.b2c.mall.component.search', [
         if (SFFn.isMobile.APP()) {
         //   flag = 1;
           that.renderData.attr("isShowShoppintCart", false);
+          isShowFlag = false;
+        }else{
+          isShowFlag = true;
         }
-
-        isShowFlag = true;
       }
 
       // @todo 请求总开关进行判断
