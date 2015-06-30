@@ -37,9 +37,9 @@ define(
           this.render();
         }, this));
 
-        switcher.register('app', function () {
+        switcher.register('localapp', function () {
           SFHybrid.toast.loading();
-        });
+        })
 
         switcher.go();
       },
@@ -52,7 +52,7 @@ define(
           $('.loadingDIV').remove();
         });
 
-        switcher.register('app', function () {
+        switcher.register('localapp', function () {
           SFHybrid.toast.dismiss();
         });
 
