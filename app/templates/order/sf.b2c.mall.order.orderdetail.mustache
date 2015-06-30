@@ -38,7 +38,7 @@
             {{/orderItem.discount}}
 
             <li><span class="justify text-disable">优惠券抵</span>：-￥{{sf.price couponReducePrice}}</li>
-
+            <li><span class="justify text-disable">积分抵</span>：-￥{{sf.price pointPrice}}</li>
             {{#orderItem.orderCouponItemList}}
 
               {{#sf-coupon-type orderAction couponType 'COSTCOUPON'}}

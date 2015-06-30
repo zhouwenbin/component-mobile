@@ -95,6 +95,9 @@ define('sf.b2c.mall.component.mypoint', [
           .fail(function(error) {
             console.error(error);
             can.$('.loadingDIV').hide();
+          })
+          .always(function() {
+              that.hasRendered = false;
           });
       },
 
@@ -120,7 +123,11 @@ define('sf.b2c.mall.component.mypoint', [
               "page": routeParams.page,
               "size": 10
           };
-          this.render(params);
+          // 加上标示 防止触发三次
+          if (!this.hasRendered) {
+              this.render(params);
+              this.hasRendered = true;
+          }
       },
 
      "#viewmore click":function(element, event){

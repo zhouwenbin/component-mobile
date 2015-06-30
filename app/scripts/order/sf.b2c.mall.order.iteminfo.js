@@ -61,6 +61,7 @@ define('sf.b2c.mall.order.iteminfo', [
       can.when(that.initOrderRender())
         .done(function() {
           // var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj, that.helpers);
+              that.itemObj.attr("pointForUsed","0");
           var renderFn = can.mustache(template_order_iteminfo);
           var html = renderFn(that.itemObj, that.helpers);
           that.element.html(html);
@@ -561,19 +562,23 @@ define('sf.b2c.mall.order.iteminfo', [
 
       //积分格式校验
       '#pointUsed keyup': function(element, event){
+          var pointValue = 0;
           if($(".integral-use-r1 a.active").length > 0){
-              if($("#pointUsed").val() == null || $("#pointUsed").val() == ""){
+              pointValue = $("#pointUsed").val();
+              if(pointValue == null || pointValue == ""){
                   $("#pointToMoney").text("-￥0.0");
               }
-              else  if(!(/^[1-9]+[0-9]*$/.test($("#pointUsed").val()) ||  $("#pointUsed").val() == 0)){
+              else  if(!(/^[1-9]+[0-9]*$/.test(pointValue) ||  pointValue == 0)){
                   $("#pointToMoney").text("输入的积分格式不正确");
+                  pointValue = 0;
               }
-              else if($("#pointUsed").val() > parseInt(this.itemObj.attr("totalPoint"))){
+              else if(pointValue > parseInt(this.itemObj.attr("totalPoint"))){
+                  pointValue = parseInt(this.itemObj.attr("totalPoint"));
                   $("#pointUsed").val(parseInt(this.itemObj.attr("totalPoint")));
                   $("#pointToMoney").text("-￥" + parseInt(this.itemObj.attr("totalPoint"))/ this.itemObj.attr('proportion'));
               }
               else{
-                 $("#pointToMoney").text("-￥" + $("#pointUsed").val()/ this.itemObj.attr('proportion'));
+                 $("#pointToMoney").text("-￥" + pointValue/ this.itemObj.attr('proportion'));
                //  $("#pointToMoney").text("-￥" + $("#pointUsed").val()/100);
               }
           }
@@ -581,19 +586,24 @@ define('sf.b2c.mall.order.iteminfo', [
               $("#pointToMoney").text("-￥0.0");
               $("#pointUsed").val(0)
           }
-
+          this.itemObj.attr('pointForUsed',pointValue)
           var shouldPay = this.itemObj.attr('orderFeeItem.actualTotalFee')-this.itemObj.attr('orderCoupon.discountPrice') -($("#pointUsed").val()*100/this.itemObj.attr('proportion'));
           this.itemObj.attr("orderFeeItem.shouldPay", shouldPay);
+          this.itemObj.attr("pointForUsed", pointValue/this.itemObj.attr('proportion'));
           this.itemObj.attr("getpoint", Math.floor(shouldPay/100)*100);
       },
 
       ".switch click":function(targetElement){
           $(targetElement).toggleClass('active');
+          $(".integral-use-r2").css("display","block");
           if($(".integral-use-r1 a.active").length < 1){
+              $(".integral-use-r2").css("display","none");
               $("#pointToMoney").text("-￥0.0");
+              this.itemObj.attr('pointForUsed',0)
               $("#pointUsed").val(0);
           }
-          var shouldPay = this.itemObj.attr('orderFeeItem.shouldPay') -$("#pointUsed").val();
+
+          var shouldPay = this.itemObj.attr('orderFeeItem.goodsTotalFee') - this.itemObj.attr('orderFeeItem.discount')- this.itemObj.attr('orderCoupon.discountPrice')-$("#pointUsed").val()*100;
           this.itemObj.attr("orderFeeItem.shouldPay", shouldPay);
           this.itemObj.attr("getpoint", Math.floor(shouldPay/100)*100);
       }
