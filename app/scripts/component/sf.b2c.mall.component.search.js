@@ -188,7 +188,7 @@ define('sf.b2c.mall.component.search', [
         showStatInfo: true,
         brandName: "品牌",
         categoryName: "类目",
-        secondCategoryName: "",
+        secondCategoryName: "类目2",
         originName: "货源",
         shopNationName: ""
       },
@@ -330,6 +330,7 @@ define('sf.b2c.mall.component.search', [
         this.renderData.attr("pfs", pfs.split("||"));
       }
 
+      
       if (pfs == "YZYW") {
         this.renderData.attr("filterCustom", {
           showStatInfo: true,
@@ -340,6 +341,7 @@ define('sf.b2c.mall.component.search', [
           shopNationName: "货源"
         });
       }
+      
 
       //过滤店铺
       var shopId = params.shopId;
