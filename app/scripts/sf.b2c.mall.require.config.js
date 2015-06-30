@@ -166,11 +166,7 @@ requirejs.config({
     'sf.util': 'scripts/util/sf.util.fn',
     'sf.env.switcher': 'scripts/util/sf.env.switcher',
     'animate': 'scripts/vendor/fx',
-<<<<<<< HEAD
-    'canvasjs':'scripts/vendor/canvasjs.min',
-=======
     'canvasjs': 'scripts/vendor/canvasjs',
->>>>>>> master
 
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
