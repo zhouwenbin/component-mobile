@@ -608,7 +608,7 @@ a[title="站长统计"] {
 .icon {
   display: inline-block;
   vertical-align: middle;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/icon.png) no-repeat;
+  background: url(../img/icon.png) no-repeat;
   -webkit-background-size: 450px 450px;
           background-size: 450px 450px;
   text-indent: -999em;
@@ -1675,7 +1675,7 @@ a[title="站长统计"] {
 .banner-dialog-b {
   width: 230px;
   height: 313px;
-  background: url(http://img.sfht.com/sfhth5/1.1.107/img/banner-dialog.jpg) no-repeat;
+  background: url(../img/banner-dialog.jpg) no-repeat;
   -webkit-background-size: 230px 230px;
           background-size: 230px;
   position: fixed;
