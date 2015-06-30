@@ -50,9 +50,13 @@ define('sf.util', [
       },
       APP: function() {
         var hash = window.location.hash;
-        if (hash.indexOf('platform=android') > -1) {
+        var search = window.location.search;
+
+        var whole = search + hash;
+
+        if (whole.indexOf('platform=android') > -1) {
           return 'android';
-        } else if (hash.indexOf('platform=ios') > -1) {
+        } else if (whole.indexOf('platform=ios') > -1) {
           return 'ios';
         } else {
           return false;

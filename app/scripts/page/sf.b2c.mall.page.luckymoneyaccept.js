@@ -18,7 +18,7 @@ define(
     'text!template_luckymoney_accept',
     'sf.env.switcher',
     'sf.hybrid',
-    'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.component.nav'
   ],
   function(can, $, store, Fastclick, SFWeixin,
            SFFrameworkComm, SFConfig, helpers, SFLuckyMoneyUsers,
