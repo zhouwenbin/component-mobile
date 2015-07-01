@@ -126,6 +126,13 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             }
         });
 //       this.options.data.totalPoint =data.presentIntegral;
+        if(typeof this.options.data.attr("pointPrice") == "undefined" || this.options.data.attr("pointPrice") == ""){
+            this.options.data.attr("pointPrice","0");
+        }
+        if(typeof this.options.data.attr("totalPoint") == "undefined" || this.options.data.attr("totalPoint") == ""){
+            this.options.data.attr("totalPoint","0");
+        }
+
       var renderFn = can.mustache(template_order_orderdetail);
       var html = renderFn(this.options.data, this.helpers);
 
