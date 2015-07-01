@@ -21,7 +21,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
   function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFAddItemToCart) {
 
     var DEFAULT_PAGE_NUM = 1;
-    var DEFAULT_PAGE_SIZE = 10;
+    var DEFAULT_PAGE_SIZE = 50;
     var EMPTY_IMG = "http://m.sfht.com/static/img/no.png";
     var PREFIX = 'http://img0.sfht.com';
     var DEFAULT_STATUS = '';
@@ -178,7 +178,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         this.element.html(html);
 
         can.$('.loadingDIV').hide();
-        this.initLoadDataEvent();
+        //this.initLoadDataEvent();
       },
 
       /**
@@ -227,6 +227,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var getOrderList = new SFGetOrderList(params);
         getOrderList.sendRequest().done(function(data) {
           that.options.data.attr("supplement.onLoadingData", false);
+          
           _.each(data.orders, function(item) {
             that.options.data.orders.push(item);
           });
