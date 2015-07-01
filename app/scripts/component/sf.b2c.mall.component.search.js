@@ -983,13 +983,15 @@ define('sf.b2c.mall.component.search', [
         }
       } else {
 
-        if (SFFn.isMobile.APP()) {
-        //   flag = 1;
-          that.renderData.attr("isShowShoppintCart", false);
-          isShowFlag = false;
-        }else{
-          isShowFlag = true;
-        }
+        isShowFlag = true;
+
+        // if (SFFn.isMobile.APP()) {
+        // //   flag = 1;
+        //   that.renderData.attr("isShowShoppintCart", false);
+        //   isShowFlag = false;
+        // }else{
+        //   isShowFlag = true;
+        // }
       }
 
       // @todo 请求总开关进行判断
