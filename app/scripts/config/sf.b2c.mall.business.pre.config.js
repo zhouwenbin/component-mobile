@@ -26,6 +26,7 @@ define([], function () {
     'login': 'http://pre.sfht.com/login.html',
     'nullactivated':'http://pre.sfht.com/nullactivated.html',
     'order': 'http://pre.sfht.com/order.html',
+     'mypoint': 'http://pre.sfht.com/mypoint.html',
     'orderdetail': 'http://pre.sfht.com/orderdetail.html',
     'orderlist': 'http://pre.sfht.com/orderlist.html',
     'passwordchange': 'http://pre.sfht.com/password-change.html',

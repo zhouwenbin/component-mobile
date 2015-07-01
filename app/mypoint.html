@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>顺丰海淘</title>
+
+    <!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- endbuild -->
+</head>
+<body class="body1">
+<!--头部-->
+<!--# include file="/header/header.h5.index.html" -->
+<!--头部-->
+<div class="loadingDIV">
+    <div class="loading9 center"><i></i><i></i></div>
+</div>
+<div id="mypoint"></div>
+
+<section class="nav">
+    <div class="nav-r1">
+        <div class="nav-c1 fl">
+            <a href="/index.html">
+                <span class="icon icon25"></span>
+                <div>首页</div>
+            </a>
+        </div>
+        <div class="nav-c1 fl">
+            <a href="/center.html">
+                <span class="icon icon26"></span>
+                <div>我的</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<div id="version" data-version="{version}"></div>
+
+<!-- build:js(.) scripts/require.min.js -->
+<script src="bower_components/requirejs/require.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+<script src="/scripts/base/sf.h5.base.ver.1.0.2.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.mypoint.js -->
+<script src="scripts/sf.b2c.mall.require.config.js"></script>
+<script type="text/javascript">
+  require(['sf.b2c.mall.page.mypoint']);
+</script>
+<!-- endbuild -->
+</body>
+</html>

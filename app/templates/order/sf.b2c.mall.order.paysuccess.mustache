@@ -1,6 +1,7 @@
 {{#isPaySuccess}}
 <section class="pay">
     <h2><span class="icon icon46"></span>订单支付成功！</h2>
+    <p>可获得<span class="text-important">{{totalPoint}}积分</span></p>
 		{{#isShareBag}}
       <p>恭喜您获得<span class="text-important">{{sf.price shareBag.price}}元红包</span>，您可给小伙伴散红包啦！<br>立即分享给你的小伙伴吧！</p>
 		{{/isShareBag}}

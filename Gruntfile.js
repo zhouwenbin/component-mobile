@@ -1013,6 +1013,58 @@ module.exports = function (grunt) {
         }
       },
 
+        mypoint: {
+            options: {
+                optimize: 'none',
+                preserveLicenseComments: false,
+                baseUrl: './app/',
+                out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.mypoint.js',
+                mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+                paths: {
+                    'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+                },
+                include: [
+                    "sf.b2c.mall.business.config",
+                    'sf.b2c.mall.component.mypoint',
+                    'sf.b2c.mall.page.mypoint'
+                ],
+                insertRequire: ['sf.b2c.mall.page.mypoint']
+            }
+        },
+        pointexplain: {
+            options: {
+                optimize: 'none',
+                preserveLicenseComments: false,
+                baseUrl: './app/',
+                out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.pointexplain.js',
+                mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+                paths: {
+                    'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+                },
+                include: [
+                    "sf.b2c.mall.business.config",
+                    'sf.b2c.mall.page.pointexplain'
+                ],
+                insertRequire: ['sf.b2c.mall.page.pointexplain']
+            }
+        },
+        signrule: {
+            options: {
+                optimize: 'none',
+                preserveLicenseComments: false,
+                baseUrl: './app/',
+                out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.signrule.js',
+                mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+                paths: {
+                    'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+                },
+                include: [
+                    "sf.b2c.mall.business.config",
+                    'sf.b2c.mall.page.signrule'
+                ],
+                insertRequire: ['sf.b2c.mall.page.signrule']
+            }
+        },
       slider: {
         options: {
           preserveLicenseComments: false,
@@ -1528,6 +1580,26 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.shop'
           ],
           insertRequire: ['sf.b2c.mall.page.shop']
+        }
+      },
+
+      app: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.app.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.app'
+          ],
+          insertRequire: ['sf.b2c.mall.page.app']
         }
       }
     }

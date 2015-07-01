@@ -20,7 +20,6 @@ define(
         }else{
           this.element.find('.downloadapp').show();
         }
-
       },
 
       '.downloadapp-close click': function ($element, event) {

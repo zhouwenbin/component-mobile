@@ -69,7 +69,14 @@
 		</select>
 	</div>
 </div>
-
+<section class="integral-use">
+    <div class="integral-use-r1">
+        <div>可用积分：<span class="text-important">{{totalPoint}}</span>点</div>
+        <div>抵<span class="text-important">- ¥{{sf.price totalPointPrice}}</span></div>
+        <a href="javascript:" class="switch"></a>
+    </div>
+    <div class="integral-use-r2" style="display: none;">使用<input type="text" class="input" value="0" id="pointUsed">点，抵<span class="text-important" id="pointToMoney">- ¥0.0</span></div>
+</section>
 <!-- <ul class="order-r3 box">
 	<li>商品总金额￥{{sf.price orderFeeItem.goodsTotalFee}}{{#if showTax}} + 税额￥0{{/if}} + 运费￥0</li>
 	<li>-促销活动立减￥{{sf.price orderFeeItem.discount}} - 优惠券￥{{sf.price orderCoupon.discountPrice}}</li>
@@ -78,7 +85,9 @@
   <li>免运费</li>
   <li>优惠券折扣：-￥{{sf.price orderCoupon.discountPrice}}</li>
   <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
+    <li>积分抵扣：-￥{{pointForUsed}}</li>
   <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
+   <li>可获得海淘积分：{{sf.price getpoint}}</li>
 </ul>
 
 {{^flag}}
