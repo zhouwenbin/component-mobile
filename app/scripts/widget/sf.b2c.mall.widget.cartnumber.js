@@ -4,12 +4,13 @@ define(
   'sf.b2c.mall.widget.cartnumber',
 
   [
+    'underscore',
     'sf.b2c.mall.api.minicart.getTotalCount',
     'sf.env.switcher',
     'sf.hybrid'
   ],
 
-  function (SFGetTotalCount, SFSwitcher, SFHybrid) {
+  function (_, SFGetTotalCount, SFSwitcher, SFHybrid) {
 
     return function (success, error) {
 
@@ -28,7 +29,10 @@ define(
           .done(function (data) {
             SFHybrid.run('updateCartNumber', {amount: data.value});
 
-            success(data);
+            if (_.isFunction(success)) {
+              success(data);
+            };
+
           })
           .fail(error);
 

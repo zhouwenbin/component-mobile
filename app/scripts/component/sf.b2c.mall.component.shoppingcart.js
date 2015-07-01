@@ -23,11 +23,12 @@ define(
     'sf.b2c.mall.api.shopcart.isShowCart',
     'sf.env.switcher',
     'sf.hybrid',
-    'sf.b2c.mall.widget.loading'
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.widget.cartnumber'
   ],
 
   function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart,
-    SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid, SFLoading) {
+    SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid, SFLoading, SFWidgetCartNumber) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
@@ -535,6 +536,8 @@ define(
         this.element.html(html);
 
         can.trigger(window, 'updateCart');
+
+        new SFWidgetCartNumber();
 
         // $('.overflow-num').show();
         loadingCtrl.hide();
