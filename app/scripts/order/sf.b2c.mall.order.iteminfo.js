@@ -62,6 +62,7 @@ define('sf.b2c.mall.order.iteminfo', [
         .done(function() {
           // var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj, that.helpers);
               that.itemObj.attr("pointForUsed","0");
+              that.itemObj.attr("getpoint",Math.floor(that.itemObj.attr("orderFeeItem.shouldPay")/100)*100);
           var renderFn = can.mustache(template_order_iteminfo);
           var html = renderFn(that.itemObj, that.helpers);
           that.element.html(html);
