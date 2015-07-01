@@ -12,6 +12,12 @@ define('sf.util', [
   //$(window).hashchange();
   can.route.ready();
 
+  window.getShareIcon = function () {
+    var src = $('#icon').attr('data-src');
+    return src || 'false';
+  }
+
+
   return {
     checkEmail: function(data) {
       return /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(data)
