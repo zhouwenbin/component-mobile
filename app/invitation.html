@@ -1,33 +1,71 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-<title>顺丰海淘-我的邀请</title>
-<!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
-<link rel="stylesheet" href="static/css/style.css">
-<!-- endbuild -->
-<!-- build:css({app, .tmp}) styles/sf.b2c.invite.css -->
-<link rel="stylesheet" href="static/css/invite.css">
-<!-- endbuild -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>顺丰海淘-我的邀请</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- endbuild -->
+    <!-- build:css({app, .tmp}) styles/sf.b2c.invite.css -->
+    <link rel="stylesheet" href="static/css/invite.css">
+    <!-- endbuild -->
+    <style type="text/css">
+    .m-dialog {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        display: none;
+        width: 90%
+    }
+
+    .m-dialog .mb {
+        position: relative;
+        left: -50%;
+        margin-top: -50%;
+        background: #fff;
+        background: rgba(255, 255, 255, 0.85);
+        border: 2px solid #ccc;
+        padding: 10px 26px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px
+    }
+
+    .m-dialog h2， .m-dialog h3 {
+        color: #ff0064;
+        margin: 10px 0
+    }
+
+    .m-dialog li {
+        line-height: 1.5
+    }
+
+    .m-dialog .close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-size: 18px;
+        color: #ccc
+    }
+    </style>
 </head>
+
 <body class="body1">
-
-<div class="sf-b2c-mall-invitation" style="height:100%"></div>
-<div id="version" data-version="{version}"></div>
-
-<!-- build:js(.) scripts/require.min.js -->
- <script src="bower_components/requirejs/require.js"></script>
- <!-- endbuild -->
- <!-- build:js({app, tmp}) scripts/sf.h5.base.js-->
- <script src="scripts/base/sf.h5.base.ver.1.0.2.js"></script>
- <!-- endbuild -->
- <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.invitation.js -->
- <script src="scripts/sf.b2c.mall.require.config.js"></script>
- <script type="text/javascript">
-  require(['sf.b2c.mall.page.invitation']);
-</script>
-<!-- endbuild -->
-
+    <div class="sf-b2c-mall-invitation" style="height:100%"></div>
+    <div id="version" data-version="{version}"></div>
+    <!-- build:js(.) scripts/require.min.js -->
+    <script src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) scripts/sf.h5.base.js-->
+    <script src="scripts/base/sf.h5.base.ver.1.0.2.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.invitation.js -->
+    <script src="scripts/sf.b2c.mall.require.config.js"></script>
+    <script type="text/javascript">
+    require(['sf.b2c.mall.page.invitation']);
+    </script>
+    <!-- endbuild -->
 </body>
+
 </html>
