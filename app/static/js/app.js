@@ -1,1 +1,3 @@
-$('.wp-inner').fullpage();
+$('.wp-inner').fullpage({
+  loop:true
+});
