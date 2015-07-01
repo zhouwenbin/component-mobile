@@ -64,7 +64,7 @@ define(
 
         bindEvents: function() {
           document.addEventListener('deviceready', this.onDeviceReady, false);
-          // document.addEventListener('resume', this.onResume, false);
+          document.addEventListener('resume', this.onResume, false);
         },
 
         onResume: function () {

@@ -28,33 +28,7 @@ define('sf.b2c.mall.module.getcoupon', [
       init: function() {
         var that = this;
 
-        $("[name='cms-fill-coupon']").click(function(targetElement) {
-          if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-            new SFMessage(null, {
-              'tip': '抱歉！需要登录后才可以领取优惠券！',
-              'type': 'success',
-              'okFunction': function(){
-                window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
-              }
-            });
-            return false;
-          }
-
-          var params = {
-            bagId: $(targetElement.target).data('cms-couponbagid'),
-            type: $(targetElement.target).data('cms-coupontype')
-          }
-          var needSms = $(targetElement.target).data('needsms');
-          var smsCon = $(targetElement.target).data('smscon');
-          if (needSms) {
-            params.needSms = needSms;
-          }
-          if (smsCon) {
-            params.smsCon = smsCon;
-          }
-
-          that.receiveCpCodeData(params);
-        });
+        $("[name='cms-fill-coupon']").one(this.action);
 
         return false;
       },
@@ -68,6 +42,34 @@ define('sf.b2c.mall.module.getcoupon', [
         "11000140": "卡包已作废"
       },
 
+      action: function(targetElement) {
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          new SFMessage(null, {
+            'tip': '抱歉！需要登录后才可以领取优惠券！',
+            'type': 'success',
+            'okFunction': function(){
+              window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
+            }
+          });
+          return false;
+        }
+
+        var params = {
+          bagId: $(targetElement.target).data('cms-couponbagid'),
+          type: $(targetElement.target).data('cms-coupontype')
+        }
+        var needSms = $(targetElement.target).data('needsms');
+        var smsCon = $(targetElement.target).data('smscon');
+        if (needSms) {
+          params.needSms = needSms;
+        }
+        if (smsCon) {
+          params.smsCon = smsCon;
+        }
+
+        that.receiveCpCodeData(params);
+      },
+
       receiveCpCodeData: function(params) {
         params.receiveChannel = 'B2C';
         params.receiveWay = 'ZTLQ';
@@ -75,12 +77,16 @@ define('sf.b2c.mall.module.getcoupon', [
         var receiveCouponData = new SFReceiveCoupon(params);
         return can.when(receiveCouponData.sendRequest())
           .done(function(userCouponInfo) {
+            $("[name='cms-fill-coupon']").one(that.action);
+
             new SFMessage(null, {
               'tip': '领取成功！',
               'type': 'success'
             });
           })
           .fail(function(error) {
+            $("[name='cms-fill-coupon']").one(that.action);
+
             new SFMessage(null, {
               'tip': that.errorMap[error] || '领取失败',
               'type': 'error'
