@@ -21,6 +21,8 @@ define(
        * [init 初始化]
        */
       init: function() {
+        //删除header中原汁原味信息
+        $(".header-c3").remove();
         this.render();
       },
 
