@@ -636,13 +636,15 @@ module.exports = function (grunt) {
               'scripts/sf.b2c.mall.h5.page.paysuccess.js',
               'scripts/sf.b2c.mall.h5.page.order.detail.js',
               'scripts/sf.b2c.mall.h5.page.order.list.js',
+              'scripts/sf.b2c.mall.h5.page.mypoint.js',
               'img/**',
               'styles/**',
               'order.html',
               'gotopay.html',
               'pay-success.html',
               'orderdetail.html',
-              'orderlist.html'
+              'orderlist.html',
+              'mypoint.html'
             ],
             dest: 'order'
           }
