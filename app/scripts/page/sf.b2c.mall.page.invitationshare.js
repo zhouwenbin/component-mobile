@@ -9,10 +9,11 @@ define(
     'sf.weixin',
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.business.config',
+    'sf.b2c.mall.component.nav',
     'text!template_center_invitationshare'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFWeixin, SFInvitationcontent, SFBusiness, template_center_invitationshare) {
+  function(can, $, Fastclick, SFFrameworkComm, SFWeixin, SFInvitationcontent, SFBusiness, SFNav, template_center_invitationshare) {
 
     SFFrameworkComm.register(3);
 
@@ -48,6 +49,8 @@ define(
         var renderFn = can.mustache(template_center_invitationshare);
         this.options.html = renderFn(this.data, this.helpers);
         this.element.html(this.options.html);
+
+        new SFNav('.sf-b2c-mall-nav');
       },
 
       "#gotoinvitation click": function(){

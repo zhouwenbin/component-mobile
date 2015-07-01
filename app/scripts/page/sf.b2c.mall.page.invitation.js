@@ -7,10 +7,11 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.center.invitationcontent',
+    'sf.b2c.mall.component.nav',
     'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness) {
+  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFNav, SFBusiness) {
 
     SFFrameworkComm.register(3);
 
@@ -31,6 +32,7 @@ define(
       render: function() {
         // 列表区域
         this.invitationcontent = new SFInvitationcontent('.sf-b2c-mall-invitation');
+        new SFNav('.sf-b2c-mall-nav');
       }
     });
 

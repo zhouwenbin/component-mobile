@@ -8,10 +8,11 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.business.config',
+    'sf.b2c.mall.component.nav',
     'text!template_center_invitationbag'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness, template_center_invitationbag) {
+  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, template_center_invitationbag) {
 
     SFFrameworkComm.register(3);
 
@@ -46,9 +47,8 @@ define(
         this.options.html = renderFn(this.data, this.helpers);
         this.element.html(this.options.html);
 
-        requirejs(['sf.b2c.mall.module.getcoupon'], function(getcoupon){
-
-        });
+        requirejs(['sf.b2c.mall.module.getcoupon']);
+        new SFNav('.sf-b2c-mall-nav');
       }
     });
 
