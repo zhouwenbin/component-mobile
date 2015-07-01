@@ -1189,6 +1189,21 @@ module.exports = function (grunt) {
         }
       },
 
+      footer: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.footer.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.footer"],
+          insertRequire:  ['sf.b2c.mall.module.footer']
+        }
+      },
+
       sso: {
         options: {
           optimize: 'none',
@@ -1514,6 +1529,26 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.shop'
           ],
           insertRequire: ['sf.b2c.mall.page.shop']
+        }
+      },
+
+      app: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.app.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.app'
+          ],
+          insertRequire: ['sf.b2c.mall.page.app']
         }
       }
     }
