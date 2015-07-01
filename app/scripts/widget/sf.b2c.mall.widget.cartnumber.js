@@ -11,20 +11,20 @@ define(
 
   function (SFGetTotalCount, SFSwitcher, SFHybrid) {
 
-    var switcher = new SFSwitcher();
-
     return function (success, error) {
+
+      var switcher = new SFSwitcher();
 
       switcher.register('web', function () {
         var getTotalCount = new SFGetTotalCount();
-        getTotalCount
+        getTotalCount.sendRequest()
           .done(success)
           .fail(error);
       });
 
       switcher.register('app', function () {
         var getTotalCount = new SFGetTotalCount();
-        getTotalCount
+        getTotalCount.sendRequest()
           .done(function (data) {
             SFHybrid.run('updateCartNumber', {amount: data.value});
 
