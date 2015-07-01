@@ -11,7 +11,7 @@
 	background-size: 800px;
 	animation:app-anywhere-bg 20s linear forwards infinite;
 	padding-top: 70px;
-	padding-bottom: 410px;
+	padding-bottom: 323px;
 }
 .app-anywhere h2{
 	font-size: 34px;
@@ -19,7 +19,7 @@
 	font-weight: normal;
 }
 .app-anywhere p{
-	font-size: 13px;
+	font-size: 16px;
 	line-height: 21px;
 	margin-bottom: 97px;
 }
@@ -69,7 +69,7 @@
 	font-weight: normal;
 }
 .app-logistics p{
-	font-size: 13px;
+	font-size: 16px;
 	line-height: 21px;
 	margin-bottom: 57px;
 }
@@ -173,9 +173,9 @@
 }
 
 .app-favorable{
-	padding-top: 70px;
+	padding-top: 40px;
 	padding-bottom: 27px;
-	background: url(#{$bg-url}app/app-favorable.png) no-repeat 24px 206px;
+	background: url(#{$bg-url}app/app-favorable.png) no-repeat 24px 116px;
 	background-size: 78px;
 }
 .app-favorable li{
@@ -186,7 +186,7 @@
 	font-size: 34px;
 	text-align: center;
 	font-weight: normal;
-	margin-bottom: 104px;
+	margin-bottom: 44px;
 }
 .app-favorable h3{
 	min-width: 111px;
@@ -249,4 +249,13 @@
 .app-user li{
 	font-size: 14px;
 	line-height: 29px;
+}
+
+.wp{
+    overflow: hidden; 
+    height: 100%;           
+}
+.inner{
+	height: 480px;
+	margin:auto;
 }
