@@ -8,10 +8,11 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.module.header',
     'sf.b2c.mall.business.config'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFNav, SFBusiness) {
+  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFNav, SFHeader, SFBusiness) {
 
     SFFrameworkComm.register(3);
 

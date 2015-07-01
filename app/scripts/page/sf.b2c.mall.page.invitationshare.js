@@ -7,17 +7,29 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.weixin',
+    'sf.util',
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.module.header',
     'text!template_center_invitationshare'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFWeixin, SFInvitationcontent, SFBusiness, SFNav, template_center_invitationshare) {
+  function(can, $, Fastclick, SFFrameworkComm, SFWeixin, SFFn, SFInvitationcontent, SFBusiness, SFNav, SFHeader, template_center_invitationshare) {
 
     SFFrameworkComm.register(3);
 
     var myInvitation = can.Control.extend({
+
+      helpers: {
+        isWeChat: function(options) {
+          if (SFFn.isMobile.WeChat()) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        }
+      },
 
       /**
        * [init 初始化]

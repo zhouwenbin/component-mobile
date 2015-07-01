@@ -135,12 +135,20 @@
 
   {{/hasIncome}}
 
+
   <section class="invite-share">
     <h2 class="invite-h2">分享途径</h2>
+
+    {{#isWeChat}}
     <div class="invite-share-icon"></div>
     <h3>微信扫码撒红包</h3>
     <p>撒完红包找到您觉得靠谱的朋友卖力推荐<br>成功率更高哦！</p>
     <button class="btn btn-normal" id="sharebutton">分享</button>
+    {{/isWeChat}}
+
+    {{^isWeChat}}
+    <a class="btn btn-danger" href="http://m.sfht.com/app.html" style="width:200px">下载app至我的邀请开始邀请</a>
+    {{/isWeChat}}
   </section>
 
   <section class="invite-rule">

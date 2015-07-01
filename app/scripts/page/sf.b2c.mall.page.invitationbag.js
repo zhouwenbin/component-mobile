@@ -9,10 +9,11 @@ define(
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.module.header',
     'text!template_center_invitationbag'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, template_center_invitationbag) {
+  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, SFHeader, template_center_invitationbag) {
 
     SFFrameworkComm.register(3);
 

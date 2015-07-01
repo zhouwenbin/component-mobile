@@ -61,6 +61,17 @@ define(
         // 将更新购物车事件注册到window上
         // 其他地方添加需要更新mini购物车的时候调用can.trigger('updateCart')
         can.on.call(window, 'updateCart', _.bind(this.updateCart, this));
+
+        this.setCookie();
+      },
+
+      setCookie: function() {
+        var params = can.deparam(window.location.search.substr(1));
+        if (params._src && !$.fn.cookie('_src')) {
+          $.fn.cookie('_src', params._src, {
+            expires: 15
+          })
+        }
       },
 
       controlCart: function() {
@@ -76,31 +87,31 @@ define(
           // 如果判断开关关闭，使用dom操作不显示购物车
           if (typeof flag == 'undefined' || flag == '2') {
             $(".mini-cart-container-parent").hide();
-          }else if (flag == '0') {
+          } else if (flag == '0') {
             // @todo 请求总开关进行判断
             var isShowCart = new SFIsShowCart();
             isShowCart
               .sendRequest()
-              .done(function (data) {
+              .done(function(data) {
                 if (data.value) {
                   $(".mini-cart-container-parent").show();
-                }else{
+                } else {
                   $(".mini-cart-container-parent").hide();
                 }
               })
 
-          }else{
+          } else {
             $(".mini-cart-container-parent").show();
           }
-        }else{
+        } else {
           // @todo 暂时全局关闭购物车按钮
           var isShowCart = new SFIsShowCart();
           isShowCart
             .sendRequest()
-            .done(function (data) {
+            .done(function(data) {
               if (data.value) {
                 $(".mini-cart-container-parent").show();
-              }else{
+              } else {
                 $(".mini-cart-container-parent").hide();
               }
             });
@@ -123,7 +134,7 @@ define(
         if (SFComm.prototype.checkUserLogin.call(this)) {
           window.location.href = href;
         } else {
-          window.location.href = hrefLogin + '?from='+ encodeURIComponent(href);
+          window.location.href = hrefLogin + '?from=' + encodeURIComponent(href);
         }
       },
 
@@ -163,9 +174,9 @@ define(
 
               // 更新mini购物车
               can.trigger(window, 'updateCart');
-            }else{
+            } else {
 
-              var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
+              var $el = $('<section class="tooltip center overflow-num"><div>' + data.resultMsg + '</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
@@ -230,7 +241,7 @@ define(
       "#banner-dialog click": function($el, event) {
         if ($(event.target).attr('id') != $el.attr('id')) {
           return false;
-        }else{
+        } else {
           window.location.href = "http://m.sfht.com/61.html";
         }
       },

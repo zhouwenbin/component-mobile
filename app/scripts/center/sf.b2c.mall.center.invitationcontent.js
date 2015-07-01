@@ -5,6 +5,7 @@ define('sf.b2c.mall.center.invitationcontent', [
     'zepto',
     'fastclick',
     'sf.helpers',
+    'sf.util',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.getUserInfo',
@@ -14,13 +15,22 @@ define('sf.b2c.mall.center.invitationcontent', [
     'sf.b2c.mall.api.user.getCashActTransList',
     'sf.b2c.mall.api.user.rqCash'
   ],
-  function(can, $, Fastclick, helpers, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
+  function(can, $, Fastclick, helpers, SFFn, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
 
     Fastclick.attach(document.body);
 
     return can.Control.extend({
 
       helpers: {
+
+        isWeChat: function(options) {
+          if (SFFn.isMobile.WeChat()) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
         hasIncome: function(infoList, options) {
           if (infoList && infoList.length > 0) {
             return options.fn(options.contexts || this);
