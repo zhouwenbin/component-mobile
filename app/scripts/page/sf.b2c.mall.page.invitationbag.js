@@ -42,22 +42,13 @@ define(
         this.data = {};
         this.data.bagid = params.bagid;
 
-        var renderFn = can.mustache(template_center_invitationshare);
+        var renderFn = can.mustache(template_center_invitationbag);
         this.options.html = renderFn(this.data, this.helpers);
         this.element.html(this.options.html);
-      },
 
-      "#gotoinvitation click": function(){
-        window.location.href = "http://m.sfht.com/invitation.html"
-      },
+        requirejs(['sf.b2c.mall.module.getcoupon'], function(getcoupon){
 
-      "#sharebutton click": function(element, event) {
-        $("body,html").scrollTop(0);
-        $("#sharearea").show();
-      },
-
-      "#sharearea click": function(){
-        $("#sharearea").hide();
+        });
       }
     });
 

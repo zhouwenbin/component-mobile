@@ -20,7 +20,7 @@ define('sf.b2c.mall.module.getcoupon', [
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
-    var getCoupon =can.Control.extend({
+    var getCoupon = can.Control.extend({
       /**
        * @override
        * @description 初始化方法
@@ -33,7 +33,7 @@ define('sf.b2c.mall.module.getcoupon', [
             new SFMessage(null, {
               'tip': '抱歉！需要登录后才可以领取优惠券！',
               'type': 'success',
-              'okFunction': function(){
+              'okFunction': function() {
                 window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
               }
             });
@@ -79,13 +79,27 @@ define('sf.b2c.mall.module.getcoupon', [
               'tip': '领取成功！',
               'type': 'success'
             });
+
+            // 定制代码
+            that.customized();
+
+            return true;
           })
           .fail(function(error) {
             new SFMessage(null, {
               'tip': that.errorMap[error] || '领取失败',
               'type': 'error'
             });
+
+            return false;
           });
+      },
+
+      customized: function() {
+        // 定制给invitation-bag.html使用
+        if ($("#pop")) {
+          $("#pop").hide();
+        }
       }
     });
 
