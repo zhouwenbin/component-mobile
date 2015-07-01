@@ -212,7 +212,7 @@ define(
         $('body').append('<iframe id="appruner"></iframe>');
       }
 
-      $('#appruner').attr('src', 'sfht://service/pluginHelper?plugin=SFNotificationCenter&method=post&params=[' + map[key] + ', ' + JSON.stringify(params) + ']');
+      $('#appruner').attr('src', 'sfht://service/pluginHelper?plugin=SFNotificationCenter&method=post&params=["' + map[key] + '", ' + JSON.stringify(params) + ']');
     };
 
     return {
