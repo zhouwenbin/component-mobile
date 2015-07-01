@@ -25,10 +25,11 @@ define('sf.b2c.mall.component.search', [
   'sf.b2c.mall.api.shopcart.addItemsToCart',
   'sf.b2c.mall.api.shopcart.isShowCart',
   'sf.b2c.mall.api.minicart.getTotalCount',
-  'text!template_component_search'
+  'text!template_component_search',
+  'sf.b2c.mall.widget.cartnumber',
 ], function(text, $, cookie, can, _, md5, store, helpers, SFFrameworkComm, SFConfig, SFFn, SFMessage, SFLoading,
   SFSearchItem, SFSearchItemAggregation, SFGetProductHotDataList, SFAddItemToCart, SFIsShowCart, SFGetTotalCount,
-  template_component_search) {
+  template_component_search, SFWidgetCartNumber) {
 
   return can.Control.extend({
     helpers: {
@@ -1102,14 +1103,24 @@ define('sf.b2c.mall.component.search', [
       if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
         this.element.find('.mini-cart-num').show();
 
-        var getTotalCount = new SFGetTotalCount();
-        getTotalCount.sendRequest()
-          .done(function(data) {
-            that.renderData.attr("miniShopCart.num", data.value);
-          })
-          .fail(function(data) {
-            // 更新mini cart失败，不做任何显示
-          });
+        var success = function (data) {
+          that.renderData.attr("miniShopCart.num", data.value);
+        };
+
+        var error = function() {
+          // 更新mini cart失败，不做任何显示
+        };
+
+        new SFWidgetCartNumber(success, error);
+
+        // var getTotalCount = new SFGetTotalCount();
+        // getTotalCount.sendRequest()
+        //   .done(function(data) {
+        //     that.renderData.attr("miniShopCart.num", data.value);
+        //   })
+        //   .fail(function(data) {
+        //     // 更新mini cart失败，不做任何显示
+        //   });
       }
     }
   });

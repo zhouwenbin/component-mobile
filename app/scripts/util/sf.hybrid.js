@@ -203,6 +203,18 @@ define(
       }, false);
     }
 
+    var run = function (key, params) {
+      var map = {
+        'updateCartNumber': 'NotificationAddedCart'
+      };
+
+      if ($('#appruner').length == 0) {
+        $('body').append('<iframe id="appruner"></iframe>');
+      }
+
+      $('#appruner').attr('src', 'sfht://service/pluginHelper?plugin=SFNotificationCenter&method=post&params=[' + map[key] + ', ' + JSON.stringify(params) + ']');
+    };
+
     return {
       login: login,
       isLogin: isLogin,
@@ -215,7 +227,8 @@ define(
       setNetworkListener: setNetworkListener,
       toRoot: toRoot,
       toast: toast,
-      notification: sfnotifivation
+      notification: sfnotifivation,
+      run: run
     }
 
   });

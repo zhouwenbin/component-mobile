@@ -27,12 +27,13 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.hybrid',
     'animate',
     'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.widget.cartnumber',
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
     SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin,
     SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart,
-    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFLoading) {
+    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFLoading, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
 
@@ -425,21 +426,38 @@ define('sf.b2c.mall.product.detailcontent', [
         if (SFComm.prototype.checkUserLogin.call(this)) {
           this.element.find('.mini-cart-num').show();
 
-          var getTotalCount = new SFGetTotalCount();
-          getTotalCount.sendRequest()
-            .done(function(data) {
-              // @description 将返回数字显示在头部导航栏
-              // 需要跳动的效果
-              that.element.find('.mini-cart-num').text(data.value)
-              that.element.find('.mini-cart-num').addClass('animated bounce');
+          var success = function (data) {
+            // @description 将返回数字显示在头部导航栏
+            // 需要跳动的效果
+            that.element.find('.mini-cart-num').text(data.value)
+            that.element.find('.mini-cart-num').addClass('animated bounce');
 
-              setTimeout(function() {
-                that.element.find('.mini-cart-num').removeClass('animated bounce');
-              }, 500);
-            })
-            .fail(function(data) {
-              // 更新mini cart失败，不做任何显示
-            });
+            setTimeout(function() {
+              that.element.find('.mini-cart-num').removeClass('animated bounce');
+            }, 500);
+          };
+
+          var error = function () {
+            // 更新mini cart失败，不做任何显示
+          };
+
+          new SFWidgetCartNumber(success, error);
+
+          // var getTotalCount = new SFGetTotalCount();
+          // getTotalCount.sendRequest()
+          //   .done(function(data) {
+          //     // @description 将返回数字显示在头部导航栏
+          //     // 需要跳动的效果
+          //     that.element.find('.mini-cart-num').text(data.value)
+          //     that.element.find('.mini-cart-num').addClass('animated bounce');
+
+          //     setTimeout(function() {
+          //       that.element.find('.mini-cart-num').removeClass('animated bounce');
+          //     }, 500);
+          //   })
+          //   .fail(function(data) {
+          //     // 更新mini cart失败，不做任何显示
+          //   });
         }
       },
 
