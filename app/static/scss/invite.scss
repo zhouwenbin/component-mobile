@@ -189,3 +189,51 @@
 .canvasjs-chart-canvas{
 	width: 100%;
 }
+
+.invite-alipay img{
+	width: 100%;
+}
+.invite-alipay .invite-share{
+	border-color: #fff;
+}
+.invite-alipay .invite-share img{
+	margin-top: 38px;
+	margin-bottom: 32px;
+	width: auto
+}
+
+.invite-bag{
+	background:#fff7e3 url(#{$bg-url}invite-bag.jpg) no-repeat center top;
+	background-size: 320px;
+	text-align: center;
+	padding-top: 50px;
+	height: 100%;
+}
+.invite-bag-r1{
+	margin-bottom: 14px;
+}
+.invite-bag-r1 span{
+	font-size: 65px;
+}
+.invite-bag h1{
+	font-size: 20px;
+	color: #ffffdb;
+	font-weight: normal;
+	margin-bottom: 6px;
+}
+.invite-bag h2{
+	font-size: 15px;
+	color: #ffffdb;
+	font-weight: normal;
+	margin-bottom: 134px;
+}
+.invite-bag  .text-important{
+	font-size: 18px;
+}
+.invite-bag-dialog{
+	width: 205px;
+	z-index: 999;
+}
+.mask{
+	background: rgba(0,0,0,0.8)
+}
