@@ -22,7 +22,7 @@ define('sf.b2c.mall.center.invitationcontent', [
 
       helpers: {
         hasIncome: function(infoList, options) {
-          if (infoList.length > 0) {
+          if (infoList && infoList.length > 0) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -48,6 +48,7 @@ define('sf.b2c.mall.center.invitationcontent', [
           .done(function(mainInfo, infoList) {
 
             that.data = _.extend(that.data, mainInfo);
+            that.data.infoList = infoList.infos;
             var renderFn = can.mustache(template_center_invitationcontent);
             that.options.html = renderFn(that.data, that.helpers);
             that.element.html(that.options.html);
@@ -55,27 +56,6 @@ define('sf.b2c.mall.center.invitationcontent', [
           })
           .fail(function(error) {
             console.error(error);
-            var mainInfo = {
-              "bindAliAct": "123",
-              "lastestIncome": "200",
-              "totalIncome": 400,
-              "actBalance": "10000"
-            }
-            var infoList = {
-              "infos": [{
-                "income": 100,
-                "reason": "abc",
-                "gmtOrder": "2015-05-15 14:43:42",
-                "gmtCreate": "2015-05-15 14:43:42"
-              }]
-            }
-
-            that.data = _.extend(that.data, mainInfo);
-            that.data.infoList = infoList.infos;
-            var renderFn = can.mustache(template_center_invitationcontent);
-            that.options.html = renderFn(that.data, that.helpers);
-            that.element.html(that.options.html);
-            that.supplement();
           })
       },
 

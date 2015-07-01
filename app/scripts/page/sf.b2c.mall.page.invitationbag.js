@@ -1,17 +1,17 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.page.invitationshare', [
+  'sf.b2c.mall.page.invitationbag', [
     'can',
     'zepto',
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.business.config',
-    'text!template_center_invitationshare'
+    'text!template_center_invitationbag'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness, template_center_invitationshare) {
+  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness, template_center_invitationbag) {
 
     SFFrameworkComm.register(3);
 
@@ -61,5 +61,5 @@ define(
       }
     });
 
-    new myInvitation('.sf-b2c-mall-invitationshare');
+    new myInvitation('.sf-b2c-mall-invitationbag');
   });

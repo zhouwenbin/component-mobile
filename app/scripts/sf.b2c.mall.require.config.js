@@ -294,6 +294,7 @@ requirejs.config({
     //
     "sf.b2c.mall.page.invitation": "scripts/page/sf.b2c.mall.page.invitation",
     'sf.b2c.mall.center.invitationcontent': 'scripts/center/sf.b2c.mall.center.invitationcontent',
+    'sf.b2c.mall.page.invitationbag': 'scripts/page/sf.b2c.mall.page.invitationbag',
     'sf.b2c.mall.page.bindalipay': 'scripts/page/sf.b2c.mall.page.bindalipay',
 
     'sf.b2c.mall.component.nav': 'scripts/component/sf.b2c.mall.component.nav',
@@ -354,6 +355,8 @@ requirejs.config({
     'template_widget_message': 'templates/widget/sf.b2c.mall.widget.message.mustache',
     'template_exchange_code': 'templates/sf.b2c.mall.exchange.code.mustache',
 
+    'template_center_invitationshare': 'templates/center/sf.b2c.mall.center.invitationshare.mustache',
+    'template_center_invitationbag': 'templates/center/sf.b2c.mall.center.invitationbag.mustache',
     'template_center_invitationcontent': 'templates/center/sf.b2c.mall.center.invitationcontent.mustache',
 
     // 520
