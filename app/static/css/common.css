@@ -1769,3 +1769,47 @@ a[title="站长统计"] {
       -ms-transform: scale(0.8);
           transform: scale(0.8);
 }
+
+.tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 34px 15px;
+  color: #fff;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  line-height: 18px;
+}
+
+.switch {
+  width: 46px;
+  height: 24px;
+  -webkit-border-radius: 24px;
+          border-radius: 24px;
+  background: #ccc;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+}
+
+.switch:before {
+  width: 22px;
+  height: 22px;
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  background: #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+}
+
+.switch.active {
+  background: #df3c3a;
+}
+
+.switch.active:before {
+  left: 23px;
+}

@@ -167,6 +167,7 @@ requirejs.config({
     'sf.util': 'scripts/util/sf.util.fn',
     'sf.env.switcher': 'scripts/util/sf.env.switcher',
     'animate': 'scripts/vendor/fx',
+    'canvasjs': 'scripts/vendor/canvasjs',
 
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
@@ -179,6 +180,7 @@ requirejs.config({
     'sf.b2c.mall.module.price': 'scripts/module/sf.b2c.mall.module.price',
     'sf.b2c.mall.module.time': 'scripts/module/sf.b2c.mall.module.time',
     'sf.b2c.mall.module.header': 'scripts/module/sf.b2c.mall.module.header',
+    'sf.b2c.mall.module.footer': 'scripts/module/sf.b2c.mall.module.footer',
     'sf.b2c.mall.module.tab': 'scripts/module/sf.b2c.mall.module.tab',
     'sf.b2c.mall.module.sso': 'scripts/module/sf.b2c.mall.module.sso',
     'sf.b2c.mall.module.timecount': 'scripts/module/sf.b2c.mall.module.timecount',
@@ -307,6 +309,9 @@ requirejs.config({
 
     //店铺
     'sf.b2c.mall.page.shop': 'scripts/page/sf.b2c.mall.page.shop',
+
+    //app下载落地页
+    'sf.b2c.mall.page.app': 'scripts/page/sf.b2c.mall.page.app',
 
     'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
     'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
