@@ -138,6 +138,17 @@ define('sf.b2c.mall.component.search', [
         } else {
           return options.inverse(options.contexts || this);
         }
+      },
+      'sf-isHasAggregation': function(brands, categories, secondCategories, origins, shopNations, options) {
+        if (brands().buckets.length
+         || categories().buckets.length 
+         || secondCategories().buckets.length 
+         || origins().buckets.length 
+         || shopNations().buckets.length) {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
       }
     },
 
