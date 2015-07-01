@@ -61,12 +61,12 @@ define('sf.b2c.mall.order.iteminfo', [
       can.when(that.initOrderRender())
         .done(function() {
           // var html = can.view('templates/order/sf.b2c.mall.order.iteminfo.mustache', that.itemObj, that.helpers);
-              that.itemObj.attr("pointForUsed","0");  
-              that.itemObj.attr("getpoint",Math.floor(that.itemObj.attr("orderFeeItem.shouldPay")/100)*100);
+              that.itemObj.attr("pointForUsed","0");
+
           var renderFn = can.mustache(template_order_iteminfo);
           var html = renderFn(that.itemObj, that.helpers);
           that.element.html(html);
-
+              that.itemObj.attr("getpoint",Math.floor(that.itemObj.attr("orderFeeItem.shouldPay")/100)*100);
           if (that.itemObj.orderCoupon && that.itemObj.orderCoupon.avaliableAmount) {
             //找到默认选择的优惠券
             var price = that.getDefautSelectCoupon(that.itemObj.orderCoupon).price;
