@@ -60,7 +60,6 @@ define('sf.b2c.mall.center.invitationcontent', [
       },
 
       supplement: function() {
-
         if (this.data.infoList && this.data.infoList.length > 0) {
           this.renderChart();
         }
@@ -145,12 +144,12 @@ define('sf.b2c.mall.center.invitationcontent', [
         }
       },
 
-      "#viewrule click": function(element, event){
+      "#viewrule click": function(element, event) {
         event && event.preventDefault();
         $(".m-dialog").show();
       },
 
-      ".close click": function(element, event){
+      ".close click": function(element, event) {
         event && event.preventDefault();
         $(".m-dialog").hide();
       },
@@ -170,7 +169,8 @@ define('sf.b2c.mall.center.invitationcontent', [
 
       errorMap: {
         1000420: '尚未绑定支付宝账户',
-        1000430: '未达到提现金额限制'
+        1000430: '未达到提现金额限制',
+        1000450: '请耐心等待，目前小章鱼正在整理上一天的提现哟，目前暂停提现预计2:00恢复，为了您的身体着想睡饱了再来提现吧：）'
       },
 
       '#gotohome click': function() {

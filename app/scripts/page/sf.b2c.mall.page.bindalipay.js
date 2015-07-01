@@ -98,7 +98,7 @@ define(
 
         bindAliAct.sendRequest()
           .done(function(data) {
-            if (dta.value) {
+            if (data.value) {
               var params = can.deparam(window.location.search.substr(1));
               var gotoUrl = params.from;
               window.location.href = gotoUrl;
