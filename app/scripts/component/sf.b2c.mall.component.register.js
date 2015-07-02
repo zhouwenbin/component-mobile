@@ -2,6 +2,7 @@
 
 define('sf.b2c.mall.component.register', [
     'zepto',
+    'zepto.cookie',
     'can',
     'md5',
     'underscore',
@@ -20,7 +21,7 @@ define('sf.b2c.mall.component.register', [
     'sf.mediav'
   ],
 
-  function($, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf,
+  function($, cookie, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf,
     SFFn, SFReceivePro, SFReceiveCoupon, SFMessage, SFCheckUserExist, template_component_register_fillinfo, SFMediav) {
 
     Fastclick.attach(document.body);
@@ -367,6 +368,7 @@ define('sf.b2c.mall.component.register', [
             .done(function(data) {
 
               if (data.csrfToken) {
+                $.fn.cookie('userId', data.userId);
                 store.set('type', 'MOBILE');
                 store.set('nickname', mobile);
 
