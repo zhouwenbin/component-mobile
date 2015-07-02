@@ -28,7 +28,9 @@ define(
           "alipayaccount": "",
           "alipayaccounterror": "",
           "realipayaccount": "",
-          "realipayaccounterror": ""
+          "realipayaccounterror": "",
+          "alipayname": "",
+          "alipaynameerror": ""
         });
 
         this.render(this.data);
@@ -39,6 +41,10 @@ define(
 
         $("#realipayaccount")[0].oninput = function() {
           $("#realipayaccounterror")[0].style.display = "none";
+        };
+
+        $("#alipayname")[0].oninput = function() {
+          $("#alipaynameerror")[0].style.display = "none";
         };
       },
 
@@ -61,6 +67,10 @@ define(
           '<li>' +
           '<input type="text" class="input" id="realipayaccount" placeholder="确认支付宝账号" can-value="realipayaccount"/>' +
           '<span class="text-error" id="realipayaccounterror" style="display:none">{{realipayaccounterror}}</span>' +
+          '</li>' +
+          '<li>' +
+          '<input type="text" class="input" id="alipayname" placeholder="姓名" can-value="alipayname"/>' +
+          '<span class="text-error" id="alipaynameerror" style="display:none">{{alipaynameerror}}</span>' +
           '</li>' +
           '<li><button class="btn btn-success btn-big" id="bindaccount">确定</button></li>' +
           '</ol>' +
@@ -90,8 +100,15 @@ define(
           return false;
         }
 
+        if (!data.alipayname) {
+          $("#alipaynameerror")[0].style.display = "";
+          this.data.attr("alipaynameerror", "不能为空");
+          return false;
+        }
+
         var bindAliAct = new SFBindAliAct({
-          "aliAct": data.alipayaccount
+          "aliAct": data.alipayaccount,
+          "aliActName": data.alipayname
         });
 
         var that = this;
@@ -105,8 +122,8 @@ define(
             }
           })
           .fail(function(error) {
-            $("#realipayaccounterror")[0].style.display = "";
-            that.data.attr("realipayaccounterror", "支付宝账号绑定失败！");
+            $("#alipaynameerror")[0].style.display = "";
+            that.data.attr("alipaynameerror", "支付宝账号绑定失败！");
             return false;
           })
 
