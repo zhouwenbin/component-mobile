@@ -25,6 +25,8 @@ define('sf.b2c.mall.order.iteminfo', [
 
     can.route.ready();
 
+    var loadingCtrl = new SFLoading();
+
     return can.Control.extend({
         itemObj: new can.Map({}),
 
