@@ -187,11 +187,11 @@ define('sf.weixin', [
      * @param  {[type]} desc   [描述]
      * @param  {[type]} id   [红包ID]
      */
-    shareInvitation: function(title, desc, bagid) {
+    shareInvitation: function(title, desc, bagid, userid) {
 
       var that = this;
 
-      var shareUrl = "http://m.sfht.com/invitation-bag.html?bagid=" + bagid;
+      var shareUrl = "http://m.sfht.com/invitation-bag.html?_src=" + userid + "&bagid=" + bagid;
 
       if (SFUtil.isMobile.WeChat()) {
         //进行微信设置

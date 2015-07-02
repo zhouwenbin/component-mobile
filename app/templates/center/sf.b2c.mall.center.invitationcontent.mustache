@@ -21,7 +21,7 @@
             </g>
         </g>
     </svg>
-    <p>对不起您暂时还没有收益，<br>赶紧去分享吧！</p>
+    <p >对不起您暂时还没有收益，<br><a href="#gotoshare" style="color:red">赶紧去分享吧！</a></p>
   </section>
   {{/hasIncome}}
 
@@ -66,7 +66,7 @@
 
   <section class="invite-account">
 
-    <div class="invite-account-b active">
+    <div class="invite-account-b">
 
       <div class="invite-account-h">
         <h2>账户明细</h2>
@@ -97,7 +97,12 @@
             <h3>{{reason}}</h3>
             <time>{{gmtCreate}}</time>
           </div>
-          <div class="text-important">{{income}}</div>
+          {{^isNegative income}}
+          <div class="text-important">+{{income}}</div>
+          {{/isNegative}}
+          {{#isNegative income}}
+          <div class="text-disable">{{income}}</div>
+          {{/isNegative}}
         </li>
         {{/each}}
 
@@ -106,7 +111,7 @@
         <button class="btn btn-normal btn-radius">加载更多</button>
       </div> }}
     </div>
-    <div class="invite-account-b">
+    <div class="invite-account-b active">
       <div class="invite-account-h">
         <h2>账户明细</h2>
         <a class="text-link" id="switchwiew">
@@ -135,7 +140,7 @@
 
   {{/hasIncome}}
 
-
+  <a name="gotoshare"></a>
   <section class="invite-share">
     <h2 class="invite-h2">分享途径</h2>
 

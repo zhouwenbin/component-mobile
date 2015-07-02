@@ -74,7 +74,7 @@ define('sf.b2c.mall.product.detailcontent', [
         },
 
         'sf-showOriginPrice': function(isPromotion, activitySoldOut, sellingPrice, originPrice, options) {
-        // 'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
+          // 'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
           var oPrice = originPrice();
           if (sellingPrice() < oPrice || oPrice == 0) {
             return options.fn(options.contexts || this);
@@ -125,7 +125,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var that = this;
         var switcher = new SFSwitcher();
 
-        switcher.register('web', function () {
+        switcher.register('web', function() {
           var pathname = window.location.pathname;
           var pathArr = /\d+/g.exec(pathname);
 
@@ -137,7 +137,7 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         });
 
-        switcher.register('app', function () {
+        switcher.register('app', function() {
           var params = can.route.attr();
           that.itemid = params.itemId;
         });
@@ -208,13 +208,13 @@ define('sf.b2c.mall.product.detailcontent', [
         if (SFComm.prototype.checkUserLogin.call(this)) {
           window.location.href = href;
         } else {
-          window.location.href = hrefLogin + '?from='+window.location.href;
+          window.location.href = hrefLogin + '?from=' + window.location.href;
         }
       },
 
       controlCart: function() {
         if (SFComm.prototype.checkUserLogin.call(this)) {
-          this.getUserInfo(_.bind(function(uinfo){
+          this.getUserInfo(_.bind(function(uinfo) {
 
             var arr = [];
             if (uinfo) {
@@ -227,38 +227,38 @@ define('sf.b2c.mall.product.detailcontent', [
             if (typeof flag == 'undefined' || flag == '2') {
               $(".mini-cart-container").hide();
               $(".addcart").hide();
-            }else if (flag == '0') {
+            } else if (flag == '0') {
               // 请求总开关进行判断
               this.requestIsShowCart();
 
-            }else{
+            } else {
               $(".mini-cart-container").show();
               $(".addcart").show();
             }
           }, this));
 
 
-        }else{
+        } else {
           this.requestIsShowCart();
         }
       },
 
-      getUserInfo: function (callback) {
+      getUserInfo: function(callback) {
 
         var that = this;
         var switcher = new SFSwitcher();
 
-        switcher.register('web', function () {
+        switcher.register('web', function() {
           var uinfo = $.fn.cookie('3_uinfo');
           callback.call(that, uinfo);
         });
 
-        switcher.register('app', function () {
+        switcher.register('app', function() {
           SFHybrid.getTokenInfo()
-            .done(function (data) {
+            .done(function(data) {
               callback.call(that, data && data.cookie);
             })
-            .fail(function () {
+            .fail(function() {
 
             });
         });
@@ -267,16 +267,16 @@ define('sf.b2c.mall.product.detailcontent', [
 
       },
 
-      requestIsShowCart: function () {
+      requestIsShowCart: function() {
         // @todo 暂时全局关闭购物车按钮
         var isShowCart = new SFIsShowCart();
         isShowCart
           .sendRequest()
-          .done(function (data) {
+          .done(function(data) {
             if (data.value) {
               $(".mini-cart-container").show();
               $(".addcart").show();
-            }else{
+            } else {
               $(".mini-cart-container").hide();
               $(".addcart").hide();
             }
@@ -323,7 +323,7 @@ define('sf.b2c.mall.product.detailcontent', [
             if (data.isSuccess) {
 
               var carticon = $('.detail-cart-r a img').clone();
-              var current=carticon.offset();
+              var current = carticon.offset();
               $('.detail-cart-r a').append(carticon.css({
                 'position': 'absolute',
                 'top': current.top,
@@ -334,21 +334,21 @@ define('sf.b2c.mall.product.detailcontent', [
                 'z-index': '1000'
               }));
 
-              var target=$('.icon47').offset()
-              var targetX=target.left,
-                  targetY=target.top,
-                  // current=carticon.offset(),
-                  currentX=current.left,
-                  currentY=current.top,
-                  cart_num=$('.dot-error').text();
+              var target = $('.icon47').offset()
+              var targetX = target.left,
+                targetY = target.top,
+                // current=carticon.offset(),
+                currentX = current.left,
+                currentY = current.top,
+                cart_num = $('.dot-error').text();
               carticon.appendTo(carticon.parent());
               carticon.animate({
-                left:targetX-currentX-50,
-                top:targetY-currentY,
-                transform:'rotate(360deg) scale(0.1)',
-                zIndex:1000,
+                left: targetX - currentX - 50,
+                top: targetY - currentY,
+                transform: 'rotate(360deg) scale(0.1)',
+                zIndex: 1000,
                 // display: 'none'
-                visibility:'hidden'
+                visibility: 'hidden'
               }, 2000, 'ease-out');
 
 
@@ -356,7 +356,10 @@ define('sf.b2c.mall.product.detailcontent', [
               setTimeout(function() {
                 can.trigger(window, 'updateCart');
                 carticon.remove();
-                can.route.attr({tag: 'back', target: 'empty'});
+                can.route.attr({
+                  tag: 'back',
+                  target: 'empty'
+                });
               }, 1000);
 
               // var carticon = $('.detail-cart-r img');
@@ -387,9 +390,12 @@ define('sf.b2c.mall.product.detailcontent', [
               // $('#secondstep').hide();
 
               // can.route.attr({tag: 'init', target: 'empty'});
-            }else{
-              can.route.attr({tag: 'back', target: 'empty'});
-              var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
+            } else {
+              can.route.attr({
+                tag: 'back',
+                target: 'empty'
+              });
+              var $el = $('<section class="tooltip center overflow-num"><div>' + data.resultMsg + '</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
@@ -445,15 +451,15 @@ define('sf.b2c.mall.product.detailcontent', [
         'gotobuy': function(data) {
           if ($('#secondstep').length > 0) {
             $('#secondstep').show();
-          }else{
+          } else {
             can.route.attr('tag', 'init');
           }
         },
 
-        'back': function (data) {
+        'back': function(data) {
           if ($('#secondstep').length > 0) {
             $('#secondstep').hide();
-          }else{
+          } else {
             can.route.attr('tag', 'init');
           }
         }
@@ -551,12 +557,12 @@ define('sf.b2c.mall.product.detailcontent', [
 
             var switcher = new SFSwitcher();
 
-            switcher.register('wechat', function () {
+            switcher.register('wechat', function() {
               //微信分享
               that.weixinShare(that.itemid, that.options.detailContentInfo);
             });
 
-            switcher.register('app', function () {
+            switcher.register('app', function() {
               that.setShareBtn(that.itemid, that.options.detailContentInfo);
             });
 
@@ -618,7 +624,7 @@ define('sf.b2c.mall.product.detailcontent', [
         });
         return getProductHotData.sendRequest()
           .done(function(priceData) {
-            if(priceData.endTime) {
+            if (priceData.endTime) {
               //获得服务器时间
               var currentServerTime = getProductHotData.getServerTime();
               that.initCountDown(currentServerTime, priceData.endTime);
@@ -695,7 +701,24 @@ define('sf.b2c.mall.product.detailcontent', [
           imgUrl = 'http://img0.sfht.com/' + imgUrl;
         }
 
-        SFWeixin.shareDetail(title, desc, link, imgUrl)
+        // 如果用户登录 会记录cookie,对于老用户如果已经登录的 则要重新读取userid
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          if (!$.fn.cookie('userId')) {
+            var getUserInfo = new SFGetUserInfo();
+            getUserInfo
+              .sendRequest()
+              .done(function(data) {
+                link = "http://m.sfht.com/detail/" + itemid + ".html?_src=" + data.userId;
+                SFWeixin.shareDetail(title, desc, link, imgUrl)
+              })
+              .fail()
+          } else {
+            link = "http://m.sfht.com/detail/" + itemid + ".html?_src=" + $.fn.cookie('userId');
+            SFWeixin.shareDetail(title, desc, link, imgUrl)
+          }
+        } else {
+          SFWeixin.shareDetail(title, desc, link, imgUrl)
+        }
       },
 
       /**
@@ -885,27 +908,27 @@ define('sf.b2c.mall.product.detailcontent', [
         // })
       },
 
-      '#addNum click': function ($element) {
+      '#addNum click': function($element) {
         this.addNumClick($element);
       },
 
-      '#reduceNum click': function ($element) {
+      '#reduceNum click': function($element) {
         this.reduceNumClick($element);
       },
 
-      '.specbuttons click': function ($element) {
+      '.specbuttons click': function($element) {
         this.specbuttonsClick($element);
       },
 
-      '#inputNum blur': function ($element) {
+      '#inputNum blur': function($element) {
         this.dealBuyNumByInput($element);
       },
 
-      '#inputNum keyup': function ($element) {
+      '#inputNum keyup': function($element) {
         this.dealBuyNumByInput($element);
       },
 
-      '#inputNum keydown': function ($element) {
+      '#inputNum keydown': function($element) {
         this.options.detailContentInfo.input.attr("error", "");
       },
 
@@ -1003,7 +1026,7 @@ define('sf.b2c.mall.product.detailcontent', [
           element.val(priceInfo.limitBuy);
           input.attr('buyNum', priceInfo.limitBuy);
           return false;
-        } else{
+        } else {
           input.attr('buyNum', amount);
         }
 
@@ -1135,8 +1158,11 @@ define('sf.b2c.mall.product.detailcontent', [
         }
       },
 
-      '#secondstep .mask click': function () {
-        can.route.attr({tag: 'back', target: 'empty'});
+      '#secondstep .mask click': function() {
+        can.route.attr({
+          tag: 'back',
+          target: 'empty'
+        });
       },
 
       /**
@@ -1218,8 +1244,8 @@ define('sf.b2c.mall.product.detailcontent', [
         return saleSkuSpecTuple;
       },
 
-      setShareBtn: function (itemid, detailContentInfo) {
-        SFHybrid.sfnavigator.setRightButton('分享', null, function(){
+      setShareBtn: function(itemid, detailContentInfo) {
+        SFHybrid.sfnavigator.setRightButton('分享', null, function() {
           var imgUrl = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
 
           var hasURL = _.str.include(imgUrl, 'http://')
@@ -1235,10 +1261,10 @@ define('sf.b2c.mall.product.detailcontent', [
           };
 
           SFHybrid.share(message)
-            .done(function () {
+            .done(function() {
               alert('感谢分享');
             })
-            .fail(function () {
+            .fail(function() {
 
             })
         });
@@ -1248,7 +1274,7 @@ define('sf.b2c.mall.product.detailcontent', [
       initCountDown: function(currentServerTime, endTime) {
         var that = this;
         //endTime = 1445044886397
-        if(!endTime) {
+        if (!endTime) {
           that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
         }
 

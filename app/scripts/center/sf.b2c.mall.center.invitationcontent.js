@@ -3,9 +3,11 @@
 define('sf.b2c.mall.center.invitationcontent', [
     'can',
     'zepto',
+    'zepto.cookie',
     'fastclick',
     'sf.helpers',
     'sf.util',
+    'sf.weixin',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.user.getUserInfo',
@@ -15,7 +17,7 @@ define('sf.b2c.mall.center.invitationcontent', [
     'sf.b2c.mall.api.user.getCashActTransList',
     'sf.b2c.mall.api.user.rqCash'
   ],
-  function(can, $, Fastclick, helpers, SFFn, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
+  function(can, $, cookie, Fastclick, helpers, SFFn, SFWeixin, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
 
     Fastclick.attach(document.body);
 
@@ -25,6 +27,14 @@ define('sf.b2c.mall.center.invitationcontent', [
 
         isWeChat: function(options) {
           if (SFFn.isMobile.WeChat()) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
+        isNegative: function(income, options) {
+          if (parseInt(income, 10) < 0) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -41,6 +51,17 @@ define('sf.b2c.mall.center.invitationcontent', [
       },
 
       init: function(element, options) {
+
+        var that = this;
+
+        var getUserInfo = new SFGetUserInfo();
+        getUserInfo
+          .sendRequest()
+          .done(function(data) {
+            SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "22", data.userId);
+          })
+          .fail()
+
         this.render();
       },
 
@@ -56,6 +77,20 @@ define('sf.b2c.mall.center.invitationcontent', [
 
         can.when(getCashActInfo.sendRequest(), getCashActTransList.sendRequest())
           .done(function(mainInfo, infoList) {
+
+            // var infoList = {
+            //   "infos": [{
+            //     "income": 100,
+            //     "reason": "abc",
+            //     "gmtOrder": "2015-05-15 14:43:42",
+            //     "gmtCreate": "2015-05-15 14:43:42"
+            //   },{
+            //     "income": -50,
+            //     "reason": "abc",
+            //     "gmtOrder": "2015-05-16 14:43:42",
+            //     "gmtCreate": "2015-05-16 14:43:42"
+            //   }]
+            // }
 
             that.data = _.extend(that.data, mainInfo);
             that.data.infoList = infoList.infos;
