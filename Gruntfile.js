@@ -999,6 +999,7 @@ module.exports = function (grunt) {
           },
           include: [
             "sf.b2c.mall.business.config",
+            'sf.b2c.mall.module.getcoupon',
             'sf.b2c.mall.page.invitationbag'
           ],
           insertRequire: ['sf.b2c.mall.page.invitationbag']
