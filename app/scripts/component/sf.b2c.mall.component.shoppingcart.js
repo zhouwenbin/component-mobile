@@ -529,18 +529,39 @@ define(
       paint: function(data) {
 
         this.options.data = new can.Map(data);
-
         var renderFn = can.mustache(template_order_shoppingcart);
         var html = renderFn(this.options.data, this.helpers);
 
-        this.element.html(html);
+        var switcher = new SFSwitcher();
 
-        can.trigger(window, 'updateCart');
+        switcher.register('web', function () {
+          this.element.html(html);
+          can.trigger(window, 'updateCart');
+          new SFWidgetCartNumber();
+          loadingCtrl.hide();
+        });
 
-        new SFWidgetCartNumber();
+        switcher.register('app', _.bind(function(){
+
+          if (this.options.data.scopeGroups.length > 0) {
+            this.element.html(html);
+          }
+
+          can.trigger(window, 'updateCart');
+          new SFWidgetCartNumber();
+          loadingCtrl.hide();
+        }, this));
+
+        switcher.go();
+
+        // this.element.html(html);
+
+        // can.trigger(window, 'updateCart');
+
+        // new SFWidgetCartNumber();
 
         // $('.overflow-num').show();
-        loadingCtrl.hide();
+        // loadingCtrl.hide();
 
         // setTimeout(function() {
         //   $('.overflow-num').hide();
