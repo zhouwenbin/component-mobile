@@ -260,7 +260,12 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         window.location.href = url;
       });
 
-      SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+      switcher.register('app', function () {
+        SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+        window.location.href = url;
+      });
+
+
       switcher.go();
       // －－－－－－－－－－－－－－－－－－－
     },
@@ -274,7 +279,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         'type': 'confirm',
         'okFunction': function() {
           var success = function() {
-            SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+
+            var switcher = new SFSwitcher();
+
+            switcher.register('app', function () {
+              SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+            });
+
+            switcher.go();
 
             window.location.reload();
           };
@@ -297,7 +309,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         'type': 'confirm',
         'okFunction': function() {
           var success = function() {
-            SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+
+            var switcher = new SFSwitcher();
+
+            switcher.register('app', function () {
+              SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+            });
+
+            switcher.go();
 
             window.location.reload();
           }
