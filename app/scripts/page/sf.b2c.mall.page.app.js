@@ -34,16 +34,16 @@ define(
           $("#downloadAppBtn").attr("href", "http://img.sfht.com/ios/sfht_sfhaitao.apk");
         }
 
-        setTimeout(function(){
-          if (SFFn.isMobile.iOS()) {
-            //window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
-            that.openApp('https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8');
-            //$("iframe").attr("src", 'https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8');
-          } else if (SFFn.isMobile.Android()) {
-            that.openApp('http://img.sfht.com/ios/sfht_sfhaitao.apk');
-            //$("iframe").attr("src", 'http://img.sfht.com/ios/sfht_sfhaitao.apk');
-          }
-        }, 2000);
+        // setTimeout(function(){
+        //   if (SFFn.isMobile.iOS()) {
+        //     //window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+        //     that.openApp('https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8');
+        //     //$("iframe").attr("src", 'https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8');
+        //   } else if (SFFn.isMobile.Android()) {
+        //     that.openApp('http://img.sfht.com/ios/sfht_sfhaitao.apk');
+        //     //$("iframe").attr("src", 'http://img.sfht.com/ios/sfht_sfhaitao.apk');
+        //   }
+        // }, 600);
       },
 
       initFullPage: function() {
