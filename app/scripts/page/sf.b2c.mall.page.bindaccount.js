@@ -1,7 +1,7 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.page.bindalipay',
+  'sf.b2c.mall.page.bindaccount',
 
   [
     'zepto',
