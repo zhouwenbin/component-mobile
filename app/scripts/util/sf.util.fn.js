@@ -76,7 +76,7 @@ define('sf.util', [
       },
 
       onlineApp: function () {
-        if (this.APP() || !window.sf) {
+        if (this.APP() && !window.sf) {
           return true;
         }else{
           return false;
@@ -84,7 +84,7 @@ define('sf.util', [
       },
 
       localApp: function () {
-        if (this.APP() || window.sf) {
+        if (this.APP() && window.sf) {
           return true;
         }else{
           return false;
