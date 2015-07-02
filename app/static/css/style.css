@@ -1348,101 +1348,30 @@ a[title="站长统计"] {
   padding: 33px 60px;
 }
 
-.loading9 i {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  background: #ff5954;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  position: absolute;
-  margin-top: -15px;
+.loading {
+  width: 25px;
+  height: 25px;
+  background: url(../img/loading.png) no-repeat;
+  -webkit-background-size: 25px 25px;
+          background-size: 25px;
+  position: fixed;
+  -webkit-animation: loading 1s linear infinite;
+          animation: loading 1s linear infinite;
+  -webkit-transform: rotateZ(0deg);
+          transform: rotateZ(0deg);
 }
 
-.loading9 i:nth-child(1) {
-  -webkit-transform: translate(-40px, 0);
-      -ms-transform: translate(-40px, 0);
-          transform: translate(-40px, 0);
-  -webkit-animation: loading9-ani1 1.5s linear infinite;
-          animation: loading9-ani1 1.5s linear infinite;
-}
-
-.loading9 i:nth-child(2) {
-  background: #00a8ce;
-  -webkit-transform: translate(40px, 0);
-      -ms-transform: translate(40px, 0);
-          transform: translate(40px, 0);
-  -webkit-animation: loading9-ani2 1.5s linear infinite;
-          animation: loading9-ani2 1.5s linear infinite;
-}
-
-@-webkit-keyframes loading9-ani1 {
-  25% {
-    z-index: 2;
-  }
-  50% {
-    -webkit-transform: translate(50px, 0) scale(1);
-            transform: translate(50px, 0) scale(1);
-  }
-  75% {
-    -webkit-transform: translate(0, 0) scale(0.75);
-            transform: translate(0, 0) scale(0.75);
-  }
+@-webkit-keyframes loading {
   100% {
-    -webkit-transform: translate(-50px, 0) scale(1);
-            transform: translate(-50px, 0) scale(1);
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
   }
 }
 
-@keyframes loading9-ani1 {
-  25% {
-    z-index: 2;
-  }
-  50% {
-    -webkit-transform: translate(50px, 0) scale(1);
-            transform: translate(50px, 0) scale(1);
-  }
-  75% {
-    -webkit-transform: translate(0, 0) scale(0.75);
-            transform: translate(0, 0) scale(0.75);
-  }
+@keyframes loading {
   100% {
-    -webkit-transform: translate(-50px, 0) scale(1);
-            transform: translate(-50px, 0) scale(1);
-  }
-}
-@-webkit-keyframes loading9-ani2 {
-  25% {
-    -webkit-transform: translate(0, 0) scale(0.75);
-            transform: translate(0, 0) scale(0.75);
-  }
-  50% {
-    -webkit-transform: translate(-50px, 0) scale(1);
-            transform: translate(-50px, 0) scale(1);
-  }
-  75% {
-    z-index: 2;
-  }
-  100% {
-    -webkit-transform: translate(50px, 0) scale(1);
-            transform: translate(50px, 0) scale(1);
-  }
-}
-@keyframes loading9-ani2 {
-  25% {
-    -webkit-transform: translate(0, 0) scale(0.75);
-            transform: translate(0, 0) scale(0.75);
-  }
-  50% {
-    -webkit-transform: translate(-50px, 0) scale(1);
-            transform: translate(-50px, 0) scale(1);
-  }
-  75% {
-    z-index: 2;
-  }
-  100% {
-    -webkit-transform: translate(50px, 0) scale(1);
-            transform: translate(50px, 0) scale(1);
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg);
   }
 }
 /*tab*/

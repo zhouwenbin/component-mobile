@@ -2,51 +2,17 @@
 	  border-radius: 10px;
 	  padding: 33px 60px;
 }
-.loading9 i{
-  width: 30px;
-  height: 30px;
-  display: inline-block;
-  background: #ff5954;
-  border-radius: 50%;
-  position: absolute;
-  margin-top:-15px;
+.loading{
+  width: 25px;
+  height: 25px;
+  background: url(#{$bg-url}loading.png) no-repeat;
+  background-size: 25px;
+  position: fixed;
+  animation:loading 1s linear infinite;
+  transform:rotateZ(0deg);
 }
-.loading9 i:nth-child(1){
-  transform:translate(-40px,0);
-  animation:loading9-ani1 1.5s linear infinite;
-
-}
-.loading9 i:nth-child(2){
-  background: #00a8ce;
-  transform:translate(40px,0);
-  animation:loading9-ani2 1.5s linear infinite;
-}
-@keyframes loading9-ani1{
-  25%{
-    z-index: 2;
-  }
-  50%{
-    transform:translate(50px,0) scale(1);
-  }
-  75%{
-    transform:translate(0,0) scale(0.75);
-  }
+@keyframes loading{
   100%{
-    transform:translate(-50px,0) scale(1);
-
-  }
-}
-@keyframes loading9-ani2{
-  25%{
-    transform:translate(0,0) scale(0.75);
-  }
-  50%{
-    transform:translate(-50px,0) scale(1);
-  }
-  75%{
-    z-index: 2;
-  }
-  100%{
-    transform:translate(50px,0) scale(1);
+    transform:rotateZ(360deg);
   }
 }
