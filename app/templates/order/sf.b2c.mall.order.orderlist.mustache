@@ -21,7 +21,7 @@
 
         {{else}}
 
-          {{#orders}}
+          {{#each orders}}
           <li {{data 'order'}}>
               <div class="box box1">
                 <a href="http://m.sfht.com/orderdetail.html?orderid={{orderId}}" class="box-link">订单号: {{orderId}}</a>
@@ -40,7 +40,7 @@
 
                   </div>
                   <ul class="goodslist">
-                      {{#orderGoodsItemList}}
+                      {{#each orderGoodsItemList}}
                       <li>
                           <a href="http://m.sfht.com/detail/{{itemId}}.html">
                             <img src="{{sf-image imageUrl}}">
@@ -55,7 +55,7 @@
                               <div class="text-important">¥{{sf.price price}}</div>
                           </div>
                       </li>
-                      {{/orderGoodsItemList}}
+                      {{/each}}
                   </ul>
               </div>
               {{/each}}
@@ -94,7 +94,7 @@
                 {{/orderCouponItemList}}
               </div>
           </li>
-          {{/orders}}
+          {{/each}}
           {{#if supplement.onLoadingData}}
             <div style="text-align: center;padding: 10px 0;"><span class="loading"></span>正在加载，请稍等...</div>
           {{/if}}

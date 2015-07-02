@@ -21,7 +21,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
   function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFAddItemToCart) {
 
     var DEFAULT_PAGE_NUM = 1;
-    var DEFAULT_PAGE_SIZE = 50;
+    var DEFAULT_PAGE_SIZE = 10;
 
     var EMPTY_IMG = "http://m.sfht.com/static/img/no.png";
     var PREFIX = 'http://img0.sfht.com';
@@ -121,7 +121,12 @@ define('sf.b2c.mall.order.orderlistcontent', [
         },
 
         'sf-show-route': function(status, options) {
-          if (status() != 'SUBMITED' && status() != 'AUDITING' && status() != 'AUTO_CANCEL' && status() != 'USER_CANCEL' && status() != 'OPERATION_CANCEL' && status() != 'CLOSED') {
+          if (status() != 'SUBMITED' 
+            && status() != 'AUDITING' 
+            && status() != 'AUTO_CANCEL' 
+            && status() != 'USER_CANCEL' 
+            && status() != 'OPERATION_CANCEL' 
+            && status() != 'CLOSED') {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -179,7 +184,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         this.element.html(html);
 
         can.$('.loadingDIV').hide();
-        //this.initLoadDataEvent();
+        this.initLoadDataEvent();
       },
 
       /**
@@ -198,7 +203,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
           var windowHeight = $(window).height(); //窗口的高度
           var dbHiht = $(".sf-b2c-mall-order-orderlist").height(); //整个页面文件的高度
 
-          if((windowHeight + srollPos + 100) >= (dbHiht)){
+          if((windowHeight + srollPos + 200) >= (dbHiht)){
 
             that.loadingData();
           }
