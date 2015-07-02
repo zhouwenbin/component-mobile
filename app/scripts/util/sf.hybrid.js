@@ -208,8 +208,18 @@ define(
         'updateCartNumber': 'NotificationAddedCart'
       };
 
-      var iframe = document.createElement('iframe');
-      iframe.src = 'sfht://service/pluginHelper?plugin=SFNotificationCenter&method=post&params=["' + map[key] + '", ' + JSON.stringify(params) + ']';
+      var urlscheme = 'sfht://service/pluginHelper?plugin=SFNotificationCenter&method=post&params=["' + map[key] + '", ' + JSON.stringify(params) + ']';
+
+      if ($('#apprunner').length == 0) {
+
+        var $el = $('<iframe id="apprunner"></iframe>');
+        $el.attr('src', urlscheme);
+
+        $('body').append($el);
+      }else{
+        $('#apprunner').attr('src', urlscheme);
+      }
+
       return false;
     };
 
