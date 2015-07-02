@@ -616,7 +616,7 @@ define('sf.b2c.mall.order.iteminfo', [
           }
           else{
               shouldPay = this.itemObj.attr('orderFeeItem.actualTotalFee')-this.itemObj.attr('orderCoupon.discountPrice') -(pointValue*100/rateValue);
-              this.itemObj.attr("pointForUsed", pointValue/pointValue);
+              this.itemObj.attr("pointForUsed", pointValue/rateValue);
           }
 
           this.itemObj.attr("orderFeeItem.shouldPay", shouldPay);
