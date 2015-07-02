@@ -4558,17 +4558,16 @@ a[title="站长统计"] {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #CA3F44;
   padding: 0 11px;
   z-index: 999;
+  background: #ec6b5f url(../img/downloadapp-logo.png) no-repeat 19px bottom;
+  -webkit-background-size: 216px 44px;
+          background-size: 216px 44px;
 }
 
 .downloadapp-logo {
-  width: 205px;
-  height: 46px;
-  background: url(../img/downloadapp-logo.png) no-repeat;
-  -webkit-background-size: 205px 46px;
-          background-size: 205px 46px;
+  width: 226px;
+  height: 44px;
 }
 
 .downloadapp-close {
@@ -4579,8 +4578,8 @@ a[title="站长统计"] {
           background-size: 16px;
   text-indent: -999em;
   position: absolute;
-  left: 4px;
-  top: 4px;
+  left: 0;
+  top: 0;
 }
 
 .downloadapp .btn {
@@ -4591,6 +4590,9 @@ a[title="站长统计"] {
       -ms-flex: 1;
           flex: 1;
   margin-left: 10px;
+  background: #46cfdf;
+  border-color: #46cfdf;
+  padding: 0;
 }
 
 .integral-use {
