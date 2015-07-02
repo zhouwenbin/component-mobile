@@ -261,7 +261,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       });
 
       switcher.register('app', function () {
-        SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+        SFHybrid.notification.post('NotificationOrderRefresh', function(){});
         window.location.href = url;
       });
 
@@ -283,7 +283,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             var switcher = new SFSwitcher();
 
             switcher.register('app', function () {
-              SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+              SFHybrid.notification.post('NotificationOrderRefresh', function(){});
             });
 
             switcher.go();
@@ -313,7 +313,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             var switcher = new SFSwitcher();
 
             switcher.register('app', function () {
-              SFHybrid.notification.add('NotificationOrderRefresh', function(){});
+              SFHybrid.notification.post('NotificationOrderRefresh', function(){});
             });
 
             switcher.go();

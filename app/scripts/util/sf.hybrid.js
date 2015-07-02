@@ -182,6 +182,10 @@ define(
 
       remove: function(key) {
         sf.notificationCenter.remove(key)
+      },
+
+      post: function (key, params) {
+        sf.notificationCenter.post(key, params)
       }
     }
 
