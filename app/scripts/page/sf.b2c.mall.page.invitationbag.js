@@ -5,6 +5,7 @@ define(
     'can',
     'zepto',
     'fastclick',
+    'sf.weixin',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.business.config',
@@ -13,7 +14,7 @@ define(
     'text!template_center_invitationbag'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, SFHeader, template_center_invitationbag) {
+  function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, SFHeader, template_center_invitationbag) {
 
     SFFrameworkComm.register(3);
 
@@ -43,6 +44,8 @@ define(
 
         this.data = {};
         this.data.bagid = params.bagid;
+
+        SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", this.data.bagid);
 
         var renderFn = can.mustache(template_center_invitationbag);
         this.options.html = renderFn(this.data, this.helpers);
