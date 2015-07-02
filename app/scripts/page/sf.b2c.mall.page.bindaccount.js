@@ -13,7 +13,7 @@ define(
 
   function ($, can, SFFrameworkComm, SFBindAccount,SFWeixin) {
     SFFrameworkComm.register(3);
-
+    alert(1);
     SFWeixin.shareIndex();
 
     var bindalipay = can.Control.extend({

@@ -47,7 +47,7 @@ define(
 
     return can.Control.extend({
 
-      init: function() {
+      init: function() {alert(2);
 
         this.component = {};
         this.component.sms = new SFApiUserDownSmsCode();
@@ -60,7 +60,7 @@ define(
         });
 
         this.render(this.data);
-
+        alert(4);
         var that = this;
 
         // 如果是IOS的第三方输入法，使用oninput代替onkeyup事件

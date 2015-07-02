@@ -58,7 +58,7 @@ define('sf.b2c.mall.center.invitationcontent', [
         getUserInfo
           .sendRequest()
           .done(function(data) {
-            SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "22", data.userId);
+            SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "76", data.userId);
           })
           .fail()
 
