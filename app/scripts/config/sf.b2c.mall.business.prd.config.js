@@ -27,6 +27,7 @@ define(['zepto'], function ($) {
     'index'             : M_HOST + 'index.html',
     'login'             : M_HOST + 'login.html?t='+VER,
     'order'             : M_HOST + 'order.html?t='+VER,
+    'mypoint'             : M_HOST + 'mypoint.html?t='+VER,
     'orderdetail'       : M_HOST + 'orderdetail.html?t='+VER,
     'orderlist'         : M_HOST + 'orderlist.html?t='+VER,
     'pay-success'       : M_HOST + 'pay-success.html?t='+VER,

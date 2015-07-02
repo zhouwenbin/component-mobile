@@ -4,7 +4,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     'can',
     'zepto',
     'fastclick',
-    'sf.b2c.mall.api.order.getOrder',
+    'sf.b2c.mall.api.order.getOrderV2',
     'sf.b2c.mall.api.order.cancelOrder',
     'sf.b2c.mall.api.user.updateReceiverInfo',
     'sf.b2c.mall.api.user.getIDCardUrlList',
@@ -110,7 +110,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
             that.options.recId = data.orderItem.rcvrId;
             that.options.gmtCreate = data.orderItem.gmtCreate;
             that.options.discount = data.orderItem.discount || 0;
-
+            that.options.totalPoint = data.presentIntegral;
             that.options.status = that.statsMap[data.orderItem.orderStatus];
             that.options.operationHTML = that.optionHTML[that.nextStepMap[data.orderItem.orderStatus]];
 

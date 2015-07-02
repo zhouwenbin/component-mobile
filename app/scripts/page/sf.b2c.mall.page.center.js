@@ -91,6 +91,11 @@ define(
         window.location.href = "http://m.sfht.com/invitation.html?_src=" + this.userId;
       },
 
+      '.mypoint click': function(element, event) {
+          window.location.href = SFConfig.setting.link.mypoint;
+         // window.location.href = 'http://m.sfht.com/mypoint.html';
+      },
+
       maskMobile: function(str) {
         if (typeof str == 'undefined') {
           return "";

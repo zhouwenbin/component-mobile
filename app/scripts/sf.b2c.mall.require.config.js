@@ -150,6 +150,10 @@ requirejs.config({
 
     'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM': 'scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM',
 
+      //积分接口
+     'sf.b2c.mall.api.integral.getUserIntegralLog':'scripts/api/sf.b2c.mall.api.integral.getUserIntegralLog',
+
+
     // --------------------------------------------
     'placeholders': 'bower_components/Placeholders/build/placeholders',
     'moment': 'bower_components/momentjs/min/moment.min',
@@ -210,6 +214,12 @@ requirejs.config({
     'sf.b2c.mall.adapter.address.list': 'scripts/adapter/sf.b2c.mall.adapter.address.list',
     'sf.b2c.mall.adapter.regions': 'scripts/adapter/sf.b2c.mall.adapter.regions',
     'sf.b2c.mall.adapter.order': 'scripts/adapter/sf.b2c.mall.adapter.order',
+
+      //积分模块
+      'sf.b2c.mall.page.mypoint': 'scripts/page/sf.b2c.mall.page.mypoint',
+      'sf.b2c.mall.component.mypoint': 'scripts/component/sf.b2c.mall.component.mypoint',
+      'sf.b2c.mall.page.pointexplain': 'scripts/page/sf.b2c.mall.page.pointexplain',
+      'sf.b2c.mall.page.signrule': 'scripts/page/sf.b2c.mall.page.signrule',
 
     // 登录
     'sf.b2c.mall.page.login': 'scripts/page/sf.b2c.mall.page.login',
@@ -353,6 +363,9 @@ requirejs.config({
 
     'template_widget_loading': 'templates/widget/sf.b2c.mall.widget.loading.mustache',
     'template_widget_message': 'templates/widget/sf.b2c.mall.widget.message.mustache',
+
+     'template_center_point': 'templates/center/sf.b2c.mall.center.point.mustache',
+
     'template_exchange_code': 'templates/sf.b2c.mall.exchange.code.mustache',
 
     'template_center_invitationshare': 'templates/center/sf.b2c.mall.center.invitationshare.mustache',

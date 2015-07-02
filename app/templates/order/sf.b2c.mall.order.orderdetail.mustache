@@ -24,6 +24,9 @@
               <!--取消订单-->
               <!-- <span class="text-success">{{sf-pay-status orderItem.paymentStatus}}</span> -->
             </li>
+              <li>
+                  <span class="justify text-disable">可获积分</span>：{{totalPoint}}
+              </li>
             <li>
               <span class="justify text-disable">商品总额</span>：￥{{sf.price orderItem.totalPrice}}
             </li>
@@ -35,7 +38,7 @@
             {{/orderItem.discount}}
 
             <li><span class="justify text-disable">优惠券抵</span>：-￥{{sf.price couponReducePrice}}</li>
-
+            <li><span class="justify text-disable">积分抵</span>：-￥{{sf.price pointPrice}}</li>
             {{#orderItem.orderCouponItemList}}
 
               {{#sf-coupon-type orderAction couponType 'COSTCOUPON'}}
