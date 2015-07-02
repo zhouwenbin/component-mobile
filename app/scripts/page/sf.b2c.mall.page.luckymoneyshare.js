@@ -110,7 +110,7 @@ define(
             })
         });
 
-        switcher.registerOneCallbackExceptEnv('app', function() {
+        switcher.register('web', function() {
           that.itemObj.attr("isShowMask", true);
         });
 
