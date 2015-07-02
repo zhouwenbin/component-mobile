@@ -16,7 +16,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
     'text!template_order_orderlist',
-    'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.addItemsToCart' // 添加购物车接口
   ],
   function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFAddItemToCart) {
 
@@ -142,8 +142,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
         params = _.extend(params, can.route.attr());
 
         this.request({
-          pageNum: params.pageNum || 1,
-          pageSize: params.pageSize || 50,
+          pageNum: params.pageNum,
+          pageSize: params.pageSize,
           status: params.status
         });
       },
@@ -171,12 +171,69 @@ define('sf.b2c.mall.order.orderlistcontent', [
         params = _.extend(params, can.route.attr());
         var renderFn = can.view.mustache(template_order_orderlist);
 
+        data.supplement = {onLoadingData: false};
         this.options.data = new can.Map(data);
         this.options.data.attr('status', params.status || DEFAULT_STATUS);
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
 
         can.$('.loadingDIV').hide();
+        //this.initLoadDataEvent();
+      },
+
+      /**
+       * @author zhangke
+       * @description 初始化上拉加载数据事件
+       */
+      initLoadDataEvent: function() {
+        var that = this;
+        var renderData = this.options.data;
+        //节流阀
+        var loadingDatas = function(){
+          if (renderData.page.pageNum * renderData.page.pageSize > renderData.page.totalNum) {
+            return;
+          }
+          var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
+          var windowHeight = $(window).height(); //窗口的高度
+          var dbHiht = $(".sf-b2c-mall-order-orderlist").height(); //整个页面文件的高度
+
+          if((windowHeight + srollPos + 100) >= (dbHiht)){
+
+            that.loadingData();
+          }
+        };
+
+        $(window).scroll(_.throttle(loadingDatas, 200));
+      },
+
+      loadingData: function(cparams) {
+
+        var that = this;
+        that.options.data.attr("supplement.onLoadingData", true);
+
+        var params = can.deparam(window.location.search.substr(1));
+        params = _.extend(params, can.route.attr());
+
+        var params = {
+          query: JSON.stringify({
+            status: params.status,
+            receiverName: "",
+            orderId: params.orderId,
+            pageNum: this.options.data.page.pageNum + 1,
+            pageSize: this.options.data.page.pageSize
+          })
+        };
+
+        var getOrderList = new SFGetOrderList(params);
+        getOrderList.sendRequest().done(function(data) {
+          that.options.data.attr("supplement.onLoadingData", false);
+          
+          _.each(data.orders, function(item) {
+            that.options.data.orders.push(item);
+          });
+
+          that.options.data.attr("page", data.page);
+        });
       },
 
       '.gotopay click': function($element, event) {
@@ -346,7 +403,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
             //   }, 10000);
             // }
           })
-      },
+      }
 
     });
   });

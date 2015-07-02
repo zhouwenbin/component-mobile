@@ -1,5 +1,5 @@
 <!--订单列表-->
-<section class="tab" style="height: inherit;">
+<section class="tab">
     <div class="tab-h">
         <ul class="status-list">
             <li class="{{sf-is-active status ''}}"><a href="#" data-status="">所有订单</a></li>
@@ -9,7 +9,7 @@
         </ul>
     </div>
 
-    <ul class="orderlist" style="height: inherit;">
+    <ul class="orderlist">
 
         {{^if orders}}
 
@@ -21,82 +21,85 @@
 
         {{else}}
 
-        {{#orders}}
-        <li {{data 'order'}}>
-            <div class="box box1">
-              <a href="http://m.sfht.com/orderdetail.html?orderid={{orderId}}" class="box-link">订单号: {{orderId}}</a>
-              <span class="icon icon13 box-arrow center-vertical"></span>
-            </div>
-            {{#each orderPackageItemList}}
-            <div class="orderlist-bag">
-                <div class="orderlist-bag-r1">
-                    <h2>包裹{{sf-index @index}}
-                      <span class="text-important">{{sf-package-status status}}</span>
-                    </h2>
+          {{#orders}}
+          <li {{data 'order'}}>
+              <div class="box box1">
+                <a href="http://m.sfht.com/orderdetail.html?orderid={{orderId}}" class="box-link">订单号: {{orderId}}</a>
+                <span class="icon icon13 box-arrow center-vertical"></span>
+              </div>
+              {{#each orderPackageItemList}}
+              <div class="orderlist-bag">
+                  <div class="orderlist-bag-r1">
+                      <h2>包裹{{sf-index @index}}
+                        <span class="text-important">{{sf-package-status status}}</span>
+                      </h2>
 
-                    {{#sf-show-route status}}
-                    <a href="http://m.sfht.com/orderdetail.html?orderid={{orderId}}#!&packageNo={{@index}}" class="text-link">查看物流</a>
-                    {{/sf-show-route}}
+                      {{#sf-show-route status}}
+                      <a href="http://m.sfht.com/orderdetail.html?orderid={{orderId}}#!&packageNo={{@index}}" class="text-link">查看物流</a>
+                      {{/sf-show-route}}
 
-                </div>
-                <ul class="goodslist">
-                    {{#orderGoodsItemList}}
-                    <li>
-                        <a href="http://m.sfht.com/detail/{{itemId}}.html">
-                          <img src="{{sf-image imageUrl}}">
-                        </a>
-                        <div class="goodslist-c2">
-                          <h3 class="ellipsis2">
-                            <a href="http://m.sfht.com/detail/{{itemId}}.html">{{goodsName}}</a>
-                          </h3>
-                        </div>
-                        <div class="goodslist-c1">
-                            <div class="orderlist-num">x{{quantity}}</div>
-                            <div class="text-important">¥{{sf.price price}}</div>
-                        </div>
-                    </li>
-                    {{/orderGoodsItemList}}
-                </ul>
-            </div>
-            {{/each}}
-            <div class="orderlist-total">共{{sf-good-count orderPackageItemList}}件商品
-              <span class="text-disable">实付金额：</span>
-              <span class="text-important">¥{{sf-real-price totalPrice discount}}</span>
-            </div>
+                  </div>
+                  <ul class="goodslist">
+                      {{#orderGoodsItemList}}
+                      <li>
+                          <a href="http://m.sfht.com/detail/{{itemId}}.html">
+                            <img src="{{sf-image imageUrl}}">
+                          </a>
+                          <div class="goodslist-c2">
+                            <h3 class="ellipsis2">
+                              <a href="http://m.sfht.com/detail/{{itemId}}.html">{{goodsName}}</a>
+                            </h3>
+                          </div>
+                          <div class="goodslist-c1">
+                              <div class="orderlist-num">x{{quantity}}</div>
+                              <div class="text-important">¥{{sf.price price}}</div>
+                          </div>
+                      </li>
+                      {{/orderGoodsItemList}}
+                  </ul>
+              </div>
+              {{/each}}
+              <div class="orderlist-total">共{{sf-good-count orderPackageItemList}}件商品
+                <span class="text-disable">实付金额：</span>
+                <span class="text-important">¥{{sf-real-price totalPrice discount}}</span>
+              </div>
 
-            <div class="orderlist-btns">
-              <!-- <div class="text-disable">{{sf-order-status orderStatus}}</div> -->
+              <div class="orderlist-btns">
+                <!-- <div class="text-disable">{{sf-order-status orderStatus}}</div> -->
 
-              {{#sf-status-show-case orderStatus 'CANCEL'}}
-              <button class="btn btn-normal ordercancel">取消订单</button>
-              {{/sf-status-show-case}}
+                {{#sf-status-show-case orderStatus 'CANCEL'}}
+                <button class="btn btn-normal ordercancel">取消订单</button>
+                {{/sf-status-show-case}}
 
-              {{#sf-status-show-case orderStatus 'NEEDPAY'}}
-              <button class="btn btn-normal active gotopay">立即付款</button>
-              {{/sf-status-show-case}}
+                {{#sf-status-show-case orderStatus 'NEEDPAY'}}
+                <button class="btn btn-normal active gotopay">立即付款</button>
+                {{/sf-status-show-case}}
 
-              {{#sf-status-show-case orderStatus 'DELETE'}}
-              <button class="btn btn-normal delete">删除订单</button>
-              {{/sf-status-show-case}}
+                {{#sf-status-show-case orderStatus 'DELETE'}}
+                <button class="btn btn-normal delete">删除订单</button>
+                {{/sf-status-show-case}}
 
-              {{#sf-status-show-case orderStatus 'RECEIVED'}}
-              <button class="btn btn-normal success received">确认收货</button>
-              {{/sf-status-show-case}}
+                {{#sf-status-show-case orderStatus 'RECEIVED'}}
+                <button class="btn btn-normal success received">确认收货</button>
+                {{/sf-status-show-case}}
 
-              {{#sf-status-show-case orderStatus 'REBUY'}}
-              <button class="btn btn-normal rebuy">再次购买</button>
-              {{/sf-status-show-case}}
+                {{#sf-status-show-case orderStatus 'REBUY'}}
+                <button class="btn btn-normal rebuy">再次购买</button>
+                {{/sf-status-show-case}}
 
-              {{#orderCouponItemList}}
-                {{#sf-coupon-type orderAction couponType 'SHAREBAG'}}
-                <a href="http://m.sfht.com/luckymoneyshare.html?id={{code}}" class="btn btn-normal">分享红包</a>
-                {{/sf-coupon-type}}
-              {{/orderCouponItemList}}
-            </div>
-        </li>
-        {{/orders}}
-
+                {{#orderCouponItemList}}
+                  {{#sf-coupon-type orderAction couponType 'SHAREBAG'}}
+                  <a href="http://m.sfht.com/luckymoneyshare.html?id={{code}}" class="btn btn-normal">分享红包</a>
+                  {{/sf-coupon-type}}
+                {{/orderCouponItemList}}
+              </div>
+          </li>
+          {{/orders}}
+          {{#if supplement.onLoadingData}}
+            <div style="text-align: center;padding: 10px 0;"><span class="loading"></span>正在加载，请稍等...</div>
+          {{/if}}
         {{/if}}
     </ul>
+    
 </section>
 <!--订单列表-->
