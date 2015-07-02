@@ -13,7 +13,7 @@ define(
 
   function($, can, _, SFFn) {
 
-    var setting = ['web', 'wechat', 'alipay', 'app', 'localapp', 'onlineapp'];
+    var setting = ['web', 'wechat', 'alipay', 'localapp', 'onlineapp', 'app'];
     var defaultSetting = 'web';
 
     return can.Control.extend({
