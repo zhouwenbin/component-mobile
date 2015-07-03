@@ -314,6 +314,9 @@ requirejs.config({
     //app下载落地页
     'sf.b2c.mall.page.app': 'scripts/page/sf.b2c.mall.page.app',
 
+    //关于我们
+    'sf.b2c.mall.page.aboutus': 'scripts/page/sf.b2c.mall.page.aboutus',
+
     'template_widget_header_ad': 'templates/widget/sf.b2c.mall.widget.ad.mustache',
     'template_component_nav': 'templates/component/sf.b2c.mall.component.nav.mustache',
     'template_product_detailcontent':'templates/product/sf.b2c.mall.product.detailcontent.mustache',
