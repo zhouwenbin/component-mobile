@@ -66,8 +66,8 @@ define(
       },
 
       setCookie: function() {
-        alert("get:" + $.fn.cookie('_ruser2'));
-        alert(document.cookie);
+        // alert("get:" + $.fn.cookie('_ruser2'));
+        // alert(document.cookie);
         var params = can.deparam(window.location.search.substr(1));
 
         // if (params._src && !$.fn.cookie('_ruser')) {
