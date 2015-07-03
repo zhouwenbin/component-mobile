@@ -5,14 +5,20 @@
   right: 15px;
   margin-top: -22px;
 }
-.order-manager h2{
-  font-size: 15px;
-  height: 40px;
-  line-height: 40px;
-  margin-bottom: 10px;
-  background: #fff;
-  text-align: center;
+
+.order-manager li{
+  font-size: 14px;
+  margin-bottom: 15px;
 }
-.order-manager .box-address-c2{
-  margin-right: 0;
+.order-manager-r1{
+  display: block;
+  margin-bottom: 11px;
+}
+.order-manager-r1 strong{
+  font-size: 16px;
+  margin-right: 30px;
+}
+.order-manager-r2 .text-important{
+  margin-right: 6px;
+  font-size: 14px;
 }

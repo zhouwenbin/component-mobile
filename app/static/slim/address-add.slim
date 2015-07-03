@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="body1">
+	== Slim::Template.new('module/header.slim').render	
+	<section class="address-detail">
+		<h2 class="address-title">收货地址</h2>
+		<ul>
+			<ul>
+				<li><input type="text" placeholder="收货人（需与身份证上的姓名一致）"></li>
+				<li><input type="text" placeholder="手机号码"></li>
+				<li><input type="text" placeholder="身份证号"></li>
+				<li><input type="text" placeholder="所在地区"></li>
+				<li><input type="text" placeholder="详细地址"></li>
+				<li class="last"><label>设置为默认收货地址</label><a href="javascript:" class="switch"></a></li>
+			</ul>
+		</ul>
+	</section>
+	<section class="nav">
+	<div class="nav-r1">
+		<div class="nav-c2">
+			<a href="detail-select.html" class="btn btn-danger btn-big">保存</a>
+		</div>
+		
+	</div>		
+</section>
+</body>
+</html>
