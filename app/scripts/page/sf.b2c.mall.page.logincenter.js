@@ -7,13 +7,14 @@ define(
   [
     'can',
     'zepto',
+    'zepto.cookie',
     'store',
     'sf.b2c.mall.api.user.partnerLogin',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.page.logincenterafter'
   ],
-  function(can, $, store, SFPartnerLogin, SFFrameworkComm, SFConfig, SFLogincenterafter) {
+  function(can, $, cookie, store, SFPartnerLogin, SFFrameworkComm, SFConfig, SFLogincenterafter) {
 
     SFFrameworkComm.register(3);
 
@@ -55,6 +56,7 @@ define(
 
         var partnerLogin = new SFPartnerLogin({
           "partnerId": tag,
+          "srcUid":$.fn.cookie('_src'),
           "authResp": authResp
         });
 

@@ -447,7 +447,6 @@ define('sf.b2c.mall.component.login', [
               accountId: can.$.trim(this.data.attr('username')),
               type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key),
-              srcUid: $.fn.cookie('_src'),
               vfCode: vfCode
             });
             that.sendRequest(element);
