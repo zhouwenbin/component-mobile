@@ -136,6 +136,22 @@ define(
         "11000140": "卡包已作废"
       },
 
+      download: function () {
+        if (SFFn.isMobile.WeChat()) {
+
+          window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
+          // $("#downloadAppBtn").attr("href", "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m");
+        } else if (SFFn.isMobile.iOS()) {
+
+          window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+          // $("#downloadAppBtn").attr("href", "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8");
+        } else if (SFFn.isMobile.Android()) {
+
+          window.location.href = "http://img.sfht.com/ios/sfht_sfhaitao.apk";
+          // $("#downloadAppBtn").attr("href", "http://img.sfht.com/ios/sfht_sfhaitao.apk");
+        }
+      },
+
       receiveCpCodeData: function(params) {
         params.receiveChannel = 'B2C';
         params.receiveWay = 'ZTLQ';
@@ -148,24 +164,15 @@ define(
               'type': 'success'
             });
 
-            if (SFFn.isMobile.WeChat()) {
-
-              window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
-              // $("#downloadAppBtn").attr("href", "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m");
-            } else if (SFFn.isMobile.iOS()) {
-
-              window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
-              // $("#downloadAppBtn").attr("href", "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8");
-            } else if (SFFn.isMobile.Android()) {
-
-              window.location.href = "http://img.sfht.com/ios/sfht_sfhaitao.apk";
-              // $("#downloadAppBtn").attr("href", "http://img.sfht.com/ios/sfht_sfhaitao.apk");
-            }
+            that.download();
           })
           .fail(function(error) {
             new SFMessage(null, {
               'tip': that.errorMap[error] || '领取失败',
-              'type': 'error'
+              'type': 'error',
+              'okFunction': function(){
+                that.download();
+              }
             });
           });
       }
