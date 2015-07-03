@@ -53,10 +53,11 @@ define(
           authResp = authResp + "&sign_type=" + params.sign_type;
           */
         }
-
+debugger;
+alert($.fn.cookie('_src'));
         var partnerLogin = new SFPartnerLogin({
           "partnerId": tag,
-          "srcUid":$.fn.cookie('_src'),
+          "srcUid": $.fn.cookie('_src'),
           "authResp": authResp
         });
 
