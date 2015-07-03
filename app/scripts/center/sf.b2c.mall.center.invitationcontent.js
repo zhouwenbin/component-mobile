@@ -7,6 +7,7 @@ define('sf.b2c.mall.center.invitationcontent', [
     'fastclick',
     'sf.helpers',
     'sf.util',
+    'moment',
     'sf.weixin',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config',
@@ -17,7 +18,7 @@ define('sf.b2c.mall.center.invitationcontent', [
     'sf.b2c.mall.api.user.getCashActTransList',
     'sf.b2c.mall.api.user.rqCash'
   ],
-  function(can, $, cookie, Fastclick, helpers, SFFn, SFWeixin, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
+  function(can, $, cookie, Fastclick, helpers, SFFn, moment, SFWeixin, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
 
     Fastclick.attach(document.body);
 
@@ -113,6 +114,7 @@ define('sf.b2c.mall.center.invitationcontent', [
       renderChart: function() {
         var dataPoints = [];
         _.each(this.data.infoList, function(item) {
+          item.gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
           dataPoints.push({
             x: new Date(item.gmtCreate.substring(0, 4), parseInt(item.gmtCreate.substring(5, 7), 10) - 1, item.gmtCreate.substring(8, 10)),
             y: item.income,
