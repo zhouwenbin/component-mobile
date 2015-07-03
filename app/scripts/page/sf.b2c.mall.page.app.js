@@ -168,7 +168,7 @@ define(
           })
           .fail(function(error) {
             new SFMessage(null, {
-              'tip': that.errorMap[error] || '领取失败',
+              'tip': that.errorMap[error] || '网络不给力',
               'type': 'error',
               'okFunction': function(){
                 that.download();
