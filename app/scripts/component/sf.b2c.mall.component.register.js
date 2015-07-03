@@ -361,6 +361,7 @@ define('sf.b2c.mall.component.register', [
           this.component.mobileRegister.setData({
             mobile: mobile,
             smsCode: code,
+            srcUid: $.fn.cookie('_src'),
             password: md5(password + SFBizConf.setting.md5_key)
           });
 

@@ -4,6 +4,7 @@
 define(
   'sf.b2c.mall.component.bindaccount', [
     'zepto',
+    'zepto.cookie',
     'can',
     'store',
     'fastclick',
@@ -18,7 +19,7 @@ define(
     'sf.b2c.mall.api.coupon.receiveCoupon',
     'sf.b2c.mall.api.user.downSmsCode'
   ],
-  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFMessage, SFPartnerBind, SFPartnerBindByUPswd, SFCheckUserExist, SFReceivePro, SFReceiveCoupon, SFApiUserDownSmsCode) {
+  function($, cookie, can, store, Fastclick, md5, SFBizConf, SFFn, SFMessage, SFPartnerBind, SFPartnerBindByUPswd, SFCheckUserExist, SFReceivePro, SFReceiveCoupon, SFApiUserDownSmsCode) {
 
     Fastclick.attach(document.body);
 
@@ -409,6 +410,7 @@ define(
               'tempToken': store.get('tempToken'),
               'type': 'MOBILE',
               'accountId': mobile,
+              'srcUid': $.fn.cookie('_src'),
               'smsCode': code
             });
             this.partnerBind();
@@ -430,6 +432,7 @@ define(
               'tempToken': store.get('tempToken'),
               'type': 'MOBILE',
               'accountId': mobile,
+              'srcUid': $.fn.cookie('_src'),
               'passWord': md5(pwd + SFBizConf.setting.md5_key)
             });
 
@@ -441,6 +444,7 @@ define(
             this.component.partnerBind.setData({
               'tempToken': store.get('tempToken'),
               'type': 'MOBILE',
+              'srcUid': $.fn.cookie('_src'),
               'accountId': mobile
             });
             this.partnerBind(true);

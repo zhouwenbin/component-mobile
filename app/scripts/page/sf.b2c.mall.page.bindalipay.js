@@ -30,7 +30,9 @@ define(
           "realipayaccount": "",
           "realipayaccounterror": "",
           "alipayname": "",
-          "alipaynameerror": ""
+          "alipaynameerror": "",
+          "rule": false,
+          "ruleerror": ""
         });
 
         this.render(this.data);
@@ -72,16 +74,32 @@ define(
           '<input type="text" class="input" id="alipayname" placeholder="姓名" can-value="alipayname"/>' +
           '<span class="text-error" id="alipaynameerror" style="display:none">{{alipaynameerror}}</span>' +
           '</li>' +
+          '<li>' +
+          '<input id="rule" type="checkbox" can-value="rule" style="margin-right: 5px;">我同意规则条款' +
+          '<span class="text-error" id="ruleerror" style="display:none">{{ruleerror}}</span>' +
+          '</li>' +
+
           '<li><button class="btn btn-success btn-big" id="bindaccount">确定</button></li>' +
           '</ol>' +
           '</form>' +
           '</section>';
       },
 
+      "#rule click": function(element, event) {
+        $("#ruleerror")[0].style.display = "none";
+      },
+
       "#bindaccount click": function(element, event) {
         event && event.preventDefault();
         // 调用绑定接口  绑定成功后调用体现接口
         var data = this.data.attr();
+
+        if (!data.rule) {
+          $("#ruleerror")[0].style.display = "";
+          this.data.attr("ruleerror", "需同意规则条款");
+          return false;
+        }
+
         if (!data.alipayaccount) {
           $("#alipayaccounterror")[0].style.display = "";
           this.data.attr("alipayaccounterror", "不能为空");
