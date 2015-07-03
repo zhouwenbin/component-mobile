@@ -410,7 +410,7 @@ define(
               'tempToken': store.get('tempToken'),
               'type': 'MOBILE',
               'accountId': mobile,
-              'srcUid': $.fn.cookie('_src'),
+              'srcUid': $.fn.cookie('_ruser'),
               'smsCode': code
             });
             this.partnerBind();
@@ -432,7 +432,7 @@ define(
               'tempToken': store.get('tempToken'),
               'type': 'MOBILE',
               'accountId': mobile,
-              'srcUid': $.fn.cookie('_src'),
+              'srcUid': $.fn.cookie('_ruser'),
               'passWord': md5(pwd + SFBizConf.setting.md5_key)
             });
 
@@ -444,7 +444,7 @@ define(
             this.component.partnerBind.setData({
               'tempToken': store.get('tempToken'),
               'type': 'MOBILE',
-              'srcUid': $.fn.cookie('_src'),
+              'srcUid': $.fn.cookie('_ruser'),
               'accountId': mobile
             });
             this.partnerBind(true);

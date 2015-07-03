@@ -66,14 +66,12 @@ define(
       },
 
       setCookie: function() {
-        alert("setcookie" + $.fn.cookie('_src'));
         var params = can.deparam(window.location.search.substr(1));
-        if (params._src && !$.fn.cookie('_src')) {
-          $.fn.cookie('_src', params._src, {
+        if (params._src && !$.fn.cookie('_ruser')) {
+          $.fn.cookie('_ruser', params._src, {
             expires: 15
           })
         }
-        alert("aftersetcookie" + $.fn.cookie('_src'));
       },
 
       controlCart: function() {
