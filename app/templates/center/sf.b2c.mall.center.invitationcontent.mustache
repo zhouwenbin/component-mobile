@@ -98,10 +98,10 @@
             <time>{{sf.time gmtCreate}}</time>
           </div>
           {{^isNegative income}}
-          <div class="text-important">+{{income}}</div>
+          <div class="text-important">+{{sf.price income}}</div>
           {{/isNegative}}
           {{#isNegative income}}
-          <div class="text-disable">{{income}}</div>
+          <div class="text-disable">{{sf.price income}}</div>
           {{/isNegative}}
         </li>
         {{/each}}
