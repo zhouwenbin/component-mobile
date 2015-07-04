@@ -72,9 +72,7 @@ define(
 
         // if (params._src && !$.fn.cookie('_ruser')) {
         if (params._src && !$.fn.cookie('_ruser')) {
-          $.fn.cookie('_ruser', params._src, {
-            expires: 15
-          })
+          $.fn.cookie('_ruser', params._src, {expires: 15, domain: '.sfht.com', path: '/'})
         }
 
         // alert("afterset:" + $.fn.cookie('_ruser'));
