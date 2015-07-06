@@ -216,7 +216,7 @@ define(
 
       if ($('#apprunner').length == 0) {
 
-        var $el = $('<iframe id="apprunner"></iframe>');
+        var $el = $('<iframe id="apprunner" style="height:0px"></iframe>');
         $el.attr('src', urlscheme);
 
         $('body').append($el);
@@ -239,7 +239,7 @@ define(
 
       if ($('#apprunner').length == 0) {
 
-        var $el = $('<iframe id="apprunner"></iframe>');
+        var $el = $('<iframe id="apprunner" style="height:0px"></iframe>');
         $el.attr('src', urlscheme);
 
         $('body').append($el);
