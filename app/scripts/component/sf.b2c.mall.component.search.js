@@ -916,6 +916,7 @@ define('sf.b2c.mall.component.search', [
         }
       })
       var searchDataTemp = _.clone(this.searchData);
+      delete searchDataTemp.page;
       searchDataTemp.sort = selectSort.value;
       this.gotoNewPage(searchDataTemp);
     },
