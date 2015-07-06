@@ -220,13 +220,17 @@ define('sf.b2c.mall.center.invitationcontent', [
         $(".m-dialog").hide();
       },
 
+      '.m-dialog click': function(element, event) {
+        event && event.preventDefault();
+        $(".m-dialog").hide();
+      },
+
       "#switchwiew click": function(element, event) {
         $('.invite-account-b').toggleClass('active');
       },
 
       "#sharebutton click": function(element, event) {
         if (SFFn.isMobile.APP()) {
-          alert("test2");
           var title = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
           var desp = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
           var shareUrl = "http://m.sfht.com/invitation-bag.html?_src=" + userid + "&bagid=" + bagid;

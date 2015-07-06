@@ -29,7 +29,6 @@ define(
 
       helpers: {
         isWeChatOrApp: function(options) {
-          alert("app");
           if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
             return options.fn(options.contexts || this);
           } else {
