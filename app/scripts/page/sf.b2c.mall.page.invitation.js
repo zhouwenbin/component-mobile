@@ -44,7 +44,7 @@ define(
     // 启动分支逻辑
     var switcher = new SFSwitcher();
     var loadingCtrl = new SFLoading();
-
+    alert("switch");
     switcher.register('web', function() {alert("web")
 
       // 显示蒙层
