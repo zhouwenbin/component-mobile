@@ -19,7 +19,6 @@ define(
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
-    SFWeixin.shareIndex();
 
     var myInvitation = can.Control.extend({
 
@@ -45,7 +44,7 @@ define(
     // 启动分支逻辑
     var switcher = new SFSwitcher();
 
-    switcher.register('web', function() {alert("web");
+    switcher.register('web', function() {
 
       // 显示蒙层
       loadingCtrl.show();
@@ -54,7 +53,7 @@ define(
       new SFNav('.sf-b2c-mall-nav');
     });
 
-    switcher.register('app', function() {alert("app");
+    switcher.register('app', function() {
       var app = {
         initialize: function() {
           this.bindEvents();

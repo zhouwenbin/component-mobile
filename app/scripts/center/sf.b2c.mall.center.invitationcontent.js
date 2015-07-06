@@ -29,7 +29,6 @@ define('sf.b2c.mall.center.invitationcontent', [
 
         isWeChatOrApp: function(options) {
           if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
-            alert("app2");
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
