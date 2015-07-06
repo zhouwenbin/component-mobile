@@ -231,8 +231,8 @@ define(
       var params = {
         "subject": title,
         "description": description,
-        "imageUrl": imageUrl,
-        "url": url
+        "imageUrl": "22",
+        "url": "33"
       };
 
       var urlscheme = 'sfht://service/pluginHelper?plugin=SocialSharing&method=share&params=[' + JSON.stringify(params) + ']';
