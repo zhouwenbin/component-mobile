@@ -42,7 +42,16 @@ define('sf.b2c.mall.center.invitationcontent', [
           }
         },
 
+        hasBindAccount: function(bindAliAct, options) {
+          if (bindAliAct != "" && bindAliAct != null) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+
         hasIncome: function(infoList, options) {
+          return options.fn(options.contexts || this);
           if (infoList && infoList.length > 0) {
             return options.fn(options.contexts || this);
           } else {
@@ -79,19 +88,19 @@ define('sf.b2c.mall.center.invitationcontent', [
         can.when(getCashActInfo.sendRequest(), getCashActTransList.sendRequest())
           .done(function(mainInfo, infoList) {
 
-            // var infoList = {
-            //   "infos": [{
-            //     "income": 100,
-            //     "reason": "abc",
-            //     "gmtOrder": "2015-05-15 14:43:42",
-            //     "gmtCreate": "2015-05-15 14:43:42"
-            //   },{
-            //     "income": -50,
-            //     "reason": "abc",
-            //     "gmtOrder": "2015-05-16 14:43:42",
-            //     "gmtCreate": "2015-05-16 14:43:42"
-            //   }]
-            // }
+            var infoList = {
+              "infos": [{
+                "income": 100,
+                "reason": "abc",
+                "gmtOrder": "2015-05-15 14:43:42",
+                "gmtCreate": "2015-05-15 14:43:42"
+              },{
+                "income": -50,
+                "reason": "abc",
+                "gmtOrder": "2015-05-16 14:43:42",
+                "gmtCreate": "2015-05-16 14:43:42"
+              }]
+            }
 
             that.data = _.extend(that.data, mainInfo);
             that.data.infoList = infoList.infos;
@@ -114,14 +123,17 @@ define('sf.b2c.mall.center.invitationcontent', [
       renderChart: function() {
         var dataPoints = [];
         _.each(this.data.infoList, function(item) {
-          item.gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
-          dataPoints.push({
-            x: new Date(item.gmtCreate.substring(0, 4), parseInt(item.gmtCreate.substring(5, 7), 10) - 1, item.gmtCreate.substring(8, 10)),
-            y: item.income / 100,
-            indexLabel: item.income / 100 + "",
-            indexLabelFontColor: "#FF9E36",
-            markerColor: "#FF9E36"
-          });
+          if (item.income > 0) {
+            item.gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
+            dataPoints.push({
+              x: new Date(item.gmtCreate.substring(0, 4), parseInt(item.gmtCreate.substring(5, 7), 10) - 1, item.gmtCreate.substring(8, 10)),
+              y: item.income / 100,
+              indexLabel: item.income / 100 + "",
+              indexLabelFontColor: "#FF9E36",
+              markerColor: "#FF9E36"
+            });
+          }
+
         })
 
         var chart = new CanvasJS.Chart("chartContainer", {

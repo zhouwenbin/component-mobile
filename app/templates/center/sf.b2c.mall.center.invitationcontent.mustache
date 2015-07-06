@@ -58,7 +58,12 @@
         <li>账户余额（元）<span class="text-important">{{sf.price actBalance}}</span></li>
       </ul>
       <div class="invite-income-br1">
-        <button class="btn btn-normal" id="getmoney">提现</button>支付宝账号：{{bindAliAct}}
+
+        <button class="btn btn-normal" id="getmoney">提现</button>
+        {{#hasBindAccount bindAliAct}}
+        支付宝账号：{{bindAliAct}}
+        <a href="javascript:;" id="modifyaccount" class="text-link" style="display: block; padding-top: 5px; ">修改账号</a>
+        {{/hasBindAccount}}
       </div>
 
     </div>
@@ -113,7 +118,7 @@
     </div>
     <div class="invite-account-b active">
       <div class="invite-account-h">
-        <h2>账户明细</h2>
+        <h2>收益图表</h2>
         <a class="text-link" id="switchwiew">
           <?xml version="1.0" encoding="UTF-8" standalone="no"?>
           <svg width="17px" height="9px" viewBox="0 0 17 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -130,7 +135,7 @@
                   </g>
               </g>
           </svg>
-          <span>切换至收益列表</span>
+          <span>切换至账户明细</span>
         </a>
       </div>
       <div id="chartContainer"></div>
