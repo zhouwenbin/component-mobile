@@ -54,7 +54,6 @@ define(
           */
         }
 
-        alert($.fn.cookie('_ruser'));
         var partnerLogin = new SFPartnerLogin({
           "partnerId": tag,
           "srcUid": $.fn.cookie('_ruser'),

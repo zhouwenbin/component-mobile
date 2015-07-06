@@ -89,6 +89,16 @@ define(
         $("#ruleerror")[0].style.display = "none";
       },
 
+      checkAccount: function(account){
+        var isTelNum = /^1\d{10}$/.test(account);
+        var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(account);
+        if (!isTelNum && !isEmail) {
+          return "账号不合法，必须为邮箱或者手机号"
+        } else {
+          return true;
+        }
+      },
+
       "#bindaccount click": function(element, event) {
         event && event.preventDefault();
         // 调用绑定接口  绑定成功后调用体现接口
@@ -100,24 +110,42 @@ define(
           return false;
         }
 
+        // 1 校验账号
         if (!data.alipayaccount) {
           $("#alipayaccounterror")[0].style.display = "";
           this.data.attr("alipayaccounterror", "不能为空");
           return false;
         }
 
+        var result = this.checkAccount(data.alipayaccount);
+        if (result !== true) {
+          $("#alipayaccounterror")[0].style.display = "";
+          this.data.attr("alipayaccounterror", result);
+          return false;
+        }
+
+        // 2 校验重复输入账号
         if (!data.realipayaccount) {
           $("#realipayaccounterror")[0].style.display = "";
           this.data.attr("realipayaccounterror", "不能为空");
           return false;
         }
 
+        var result = this.checkAccount(data.realipayaccount);
+        if (result !== true) {
+          $("#realipayaccounterror")[0].style.display = "";
+          this.data.attr("realipayaccounterror", result);
+          return false;
+        }
+
+        // 3、校验账号和重复输入账号是否一致
         if (data.alipayaccount != data.realipayaccount) {
           $("#realipayaccounterror")[0].style.display = "";
           this.data.attr("realipayaccounterror", "输入的账号不一致");
           return false;
         }
 
+        //4、校验账号姓名
         if (!data.alipayname) {
           $("#alipaynameerror")[0].style.display = "";
           this.data.attr("alipaynameerror", "不能为空");
