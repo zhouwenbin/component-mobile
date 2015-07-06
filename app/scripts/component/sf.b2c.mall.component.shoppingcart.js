@@ -534,14 +534,14 @@ define(
 
         var switcher = new SFSwitcher();
 
-        switcher.register('web', function () {
+        switcher.register('web', _.bind(function(){
           this.element.html(html);
           can.trigger(window, 'updateCart');
           new SFWidgetCartNumber();
           loadingCtrl.hide();
-        });
+        }, this));
 
-        switcher.register('localapp', _.bind(function(){
+        switcher.register('app', _.bind(function(){
 
           if (this.options.data.scopeGroups.length > 0) {
             this.element.html(html);
