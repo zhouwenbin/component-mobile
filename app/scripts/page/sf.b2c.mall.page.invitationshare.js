@@ -97,6 +97,7 @@ define(
     // －－－－－－－－－－－－－－－－－－－－－－
     // 启动分支逻辑
     var switcher = new SFSwitcher();
+    var loadingCtrl = new SFLoading();
 
     switcher.register('web', function() {
 
