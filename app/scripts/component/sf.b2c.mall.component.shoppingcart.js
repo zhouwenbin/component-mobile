@@ -541,7 +541,7 @@ define(
           loadingCtrl.hide();
         });
 
-        switcher.register('app', _.bind(function(){
+        switcher.register('localapp', _.bind(function(){
 
           if (this.options.data.scopeGroups.length > 0) {
             this.element.html(html);
