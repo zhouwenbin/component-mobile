@@ -23,6 +23,9 @@ define('sf.b2c.mall.center.invitationcontent', [
 
     Fastclick.attach(document.body);
 
+    var bagid = "245";
+    var userid = null;
+
     return can.Control.extend({
 
       helpers: {
@@ -68,7 +71,8 @@ define('sf.b2c.mall.center.invitationcontent', [
         getUserInfo
           .sendRequest()
           .done(function(data) {
-            SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "245", data.userId);
+            userid = data.userId;
+            SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", bagid, userid);
           })
           .fail()
 
@@ -224,8 +228,8 @@ define('sf.b2c.mall.center.invitationcontent', [
         if (SFFn.isMobile.APP()) {
           var title = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
           var desp = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
-          var shareUrl = "http://m.sfht.com/invitation-bag.html?_src=" + $.fn.cookie('userId') + "&bagid=" + this.data.bagid;
-          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          var shareUrl = escape("http://m.sfht.com/invitation-bag.html?_src=" + userid + "&bagid=" + bagid);
+          var imgUrl = escape('http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg');
 
           SFHybrid.h5share(title, desp, imgUrl, shareUrl);
         } else {
