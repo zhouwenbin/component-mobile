@@ -226,11 +226,11 @@ define('sf.b2c.mall.center.invitationcontent', [
 
       "#sharebutton click": function(element, event) {
         if (SFFn.isMobile.APP()) {
-          alert("test");
+          alert("test2");
           var title = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
           var desp = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
-          var shareUrl = encodeURIComponent("http://m.sfht.com/invitation-bag.html?_src=" + userid + "&bagid=" + bagid);
-          var imgUrl = encodeURIComponent('http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg');
+          var shareUrl = ("http://m.sfht.com/invitation-bag.html?_src=" + userid + "&bagid=" + bagid);
+          var imgUrl = ('http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg');
 
           SFHybrid.h5share(title, desp, imgUrl, shareUrl);
         } else {

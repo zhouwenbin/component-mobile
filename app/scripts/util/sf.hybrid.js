@@ -228,8 +228,14 @@ define(
     };
 
     var h5share = function (title, description, imageUrl, url) {
+      var params = {
+        "subject": title,
+        "description": description,
+        "imageUrl": imageUrl,
+        "url": url
+      };
 
-      var urlscheme = 'sfht://service/pluginHelper?plugin=SocialSharing&method=share&params=[{"subject":"' + title + '", "description":"' + description + '", "imageUrl"="' +imageUrl+ '",url="' + url + '"}]';
+      var urlscheme = 'sfht://service/pluginHelper?plugin=SocialSharing&method=share&params=[' + JSON.stringify(params) + ']';
 
       if ($('#apprunner').length == 0) {
 
