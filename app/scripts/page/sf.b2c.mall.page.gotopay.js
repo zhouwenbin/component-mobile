@@ -29,6 +29,8 @@ define(
 
     can.route.ready();
 
+    var loadingCtrl = new SFLoading();
+
     var SFGotoPay = can.Control.extend({
 
       init: function(element, options) {
@@ -40,6 +42,9 @@ define(
           window.location.href = SFConfig.setting.link.login;
           return false;
         }
+
+        // 显示蒙层
+        loadingCtrl.show();
 
         var params = can.deparam(window.location.search.substr(1));
         params = _.extend(params, can.route.attr());
@@ -68,7 +73,7 @@ define(
           that.gotopayBtnClick($(this));
         })
 
-        $('.loadingDIV').hide();
+        loadingCtrl.hide();
       },
 
       activeWeixinpay: function() {
@@ -152,7 +157,14 @@ define(
       },
 
       gotopayBtnClick: function() {
-        // $("#gotopayBtn").text("支付中");
+
+        if ($("#gotopayBtn").hasClass('btn-disable')) {
+          return false;
+        }
+
+        $("#gotopayBtn").addClass('btn-disable');
+
+        // $("#gotopayBtn").add.text("支付中");
         var that = this;
 
         var callback = {
@@ -161,10 +173,14 @@ define(
               'tip': '订单支付失败！',
               'type': 'error'
             });
+
+            $("#gotopayBtn").removeClass('btn-disable');
           },
 
           // 回调中设置值回来
           success: function(payResult) {
+            $("#gotopayBtn").removeClass('btn-disable');
+
             that.payResult = payResult;
           }
         }
@@ -177,7 +193,15 @@ define(
           SFHybrid.pay(that.options.orderid, that.getAppPayType())
             .done(function () {
               SFHybrid.toast.dismiss();
-              window.location.href = SFConfig.setting.link.paysuccess + '?' + $.param({orderid: that.options.orderid});
+              var link = SFConfig.setting.link.paysuccess;
+
+              if (link.indexOf('?') > -1) {
+                link = link + '&' + $.param({orderid: that.options.orderid});
+              }else{
+                link = link + '?' + $.param({orderid: that.options.orderid});
+              }
+
+              window.location.href = link;
             })
             .fail(function (errorInfo) {
               SFHybrid.toast.dismiss();
@@ -194,6 +218,8 @@ define(
               if (msg) {
                 SFHybrid.toast.show(msg);
               }
+
+              $("#gotopayBtn").removeClass('btn-disable');
             });
         })
 

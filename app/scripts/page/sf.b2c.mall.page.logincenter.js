@@ -12,10 +12,10 @@ define(
     'sf.b2c.mall.api.user.partnerLogin',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.page.logincenterafter'
+    'sf.b2c.mall.page.logincenterafter',
+    'sf.b2c.mall.component.nav'
   ],
-  function(can, $, cookie, store, SFPartnerLogin, SFFrameworkComm, SFConfig, SFLogincenterafter) {
-
+  function(can, $, cookie, store, SFPartnerLogin, SFFrameworkComm, SFConfig, SFLogincenterafter, SFNav) {
     SFFrameworkComm.register(3);
 
     var center = can.Control.extend({
@@ -110,5 +110,6 @@ define(
       }
     });
 
+    new SFNav('.sf-b2c-mall-nav');
     new center('.sf-b2c-mall-weixincenter');
   });

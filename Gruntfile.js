@@ -260,7 +260,6 @@ module.exports = function (grunt) {
         blockReplacements: {
           js: function (block) {
 
-         //   console.log(!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js'));
             if (!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js')) {
               return '';
             }
@@ -637,13 +636,15 @@ module.exports = function (grunt) {
               'scripts/sf.b2c.mall.h5.page.paysuccess.js',
               'scripts/sf.b2c.mall.h5.page.order.detail.js',
               'scripts/sf.b2c.mall.h5.page.order.list.js',
+              'scripts/sf.b2c.mall.h5.page.mypoint.js',
               'img/**',
               'styles/**',
               'order.html',
               'gotopay.html',
               'pay-success.html',
               'orderdetail.html',
-              'orderlist.html'
+              'orderlist.html',
+              'mypoint.html'
             ],
             dest: 'order'
           }
@@ -1755,7 +1756,7 @@ module.exports = function (grunt) {
 
     config.version = version;
     config.hybrid = true;
-    config.target = 'prd';
+    config.target = 'hybrid';
 
     var base = [
       'clean:dist',

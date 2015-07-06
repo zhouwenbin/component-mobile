@@ -13,10 +13,13 @@ define(
     'text!template_widget_header_ad',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
     'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
-    'sf.b2c.mall.api.shopcart.isShowCart'
+    'sf.b2c.mall.api.shopcart.isShowCart',
+    'sf.hybrid',
+    'sf.b2c.mall.widget.cartnumber',
   ],
 
-  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart) {
+  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm,
+    template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
     SFComm.register(3);
@@ -43,6 +46,7 @@ define(
         // app环境内隐藏头部
         switcher.register('app', _.bind(function() {
           this.element.hide();
+          // this.setShareBtn();
         }, this));
 
         // 根据逻辑环境进行执行
@@ -212,17 +216,55 @@ define(
         if (SFComm.prototype.checkUserLogin.call(this)) {
           this.element.find('.mini-cart').show();
 
-          var getTotalCount = new SFGetTotalCount();
-          getTotalCount.sendRequest()
-            .done(function(data) {
-              // @description 将返回数字显示在头部导航栏
-              // 需要跳动的效果
-              that.element.find('.mini-cart-num').text(data.value).show();
-            })
-            .fail(function(data) {
-              // 更新mini cart失败，不做任何显示
-            });
+          var success = function (data) {
+            // @description 将返回数字显示在头部导航栏
+            // 需要跳动的效果
+            that.element.find('.mini-cart-num').text(data.value).show();
+          };
+
+          var error = function() {
+            // 更新mini cart失败，不做任何显示
+          };
+
+          new SFWidgetCartNumber(success, error);
+
+          // var getTotalCount = new SFGetTotalCount();
+          // getTotalCount.sendRequest()
+          //   .done(function(data) {
+          //     // @description 将返回数字显示在头部导航栏
+          //     // 需要跳动的效果
+          //     that.element.find('.mini-cart-num').text(data.value).show();
+          //   })
+          //   .fail(function(data) {
+          //     // 更新mini cart失败，不做任何显示
+          //   });
         }
+      },
+
+      setShareBtn: function () {
+        SFHybrid.sfnavigator.setRightButton('分享', null, function(){
+          // var imgUrl = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
+
+          // var hasURL = _.str.include(imgUrl, 'http://')
+          // if (!hasURL) {
+          //   imgUrl = 'http://img0.sfht.com/' + imgUrl;
+          // }
+
+          var message = {
+            subject: document.title,
+            description: $('meta[name=description]').attr('content'),
+            url: window.location.href,
+            imageUrl: 'http://img.sfht.com/sfhth5/1.1.86/img/luck.png'
+          };
+
+          SFHybrid.share(message)
+            .done(function () {
+              alert('感谢分享');
+            })
+            .fail(function () {
+
+            })
+        });
       },
 
       /**

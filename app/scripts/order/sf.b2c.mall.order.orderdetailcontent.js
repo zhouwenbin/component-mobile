@@ -14,11 +14,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'sf.env.switcher',
   'sf.b2c.mall.widget.message',
   'sf.hybrid',
+  'sf.b2c.mall.widget.loading',
   'sf.mediav'
 ], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail,
-  SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid, SFMediav) {
+  SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid, SFLoading, SFMediav) {
 
   Fastclick.attach(document.body);
+
+  var loadingCtrl = new SFLoading();
 
   var PREFIX = 'http://img0.sfht.com';
 
@@ -104,7 +107,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     },
 
     request: function(params) {
-      $('.loadingDIV').hide();
+      loadingCtrl.hide();
 
       this.getOrder = new SFGetOrder({
         orderId: params.orderid
@@ -142,8 +145,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       var params = can.route.attr();
       this.dispatch(params);
 
-      $('.loadingDIV').hide();
-
+      loadingCtrl.hide();
       this.watchDetail.call(this, data);
     },
 
@@ -258,6 +260,12 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         window.location.href = url;
       });
 
+      switcher.register('app', function () {
+        SFHybrid.notification.post('NotificationOrderRefresh', function(){});
+        window.location.href = url;
+      });
+
+
       switcher.go();
       // －－－－－－－－－－－－－－－－－－－
     },
@@ -271,6 +279,15 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         'type': 'confirm',
         'okFunction': function() {
           var success = function() {
+
+            var switcher = new SFSwitcher();
+
+            switcher.register('app', function () {
+              SFHybrid.notification.post('NotificationOrderRefresh', function(){});
+            });
+
+            switcher.go();
+
             window.location.reload();
           };
 
@@ -292,6 +309,15 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         'type': 'confirm',
         'okFunction': function() {
           var success = function() {
+
+            var switcher = new SFSwitcher();
+
+            switcher.register('app', function () {
+              SFHybrid.notification.post('NotificationOrderRefresh', function(){});
+            });
+
+            switcher.go();
+
             window.location.reload();
           }
 

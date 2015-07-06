@@ -19,10 +19,13 @@ define('sf.b2c.mall.order.iteminfo', [
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.business.config',
     'text!template_order_iteminfo',
+    'sf.b2c.mall.widget.loading',
     'sf.mediav'
-], function (text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher, SFMessage, SFConfig, template_order_iteminfo, SFMediav) {
+], function (text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher, SFMessage, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
 
     can.route.ready();
+
+    var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
         itemObj: new can.Map({}),
@@ -72,7 +75,8 @@ define('sf.b2c.mall.order.iteminfo', [
                         $("#selectCoupon").trigger("change");
                     }
 
-                    $('.loadingDIV').hide();
+                    // $('.loadingDIV').hide();
+                    loadingCtrl.hide();
                     $("#submitOrder").click(function () {
                         that.submitOrderClick($(this));
                     });

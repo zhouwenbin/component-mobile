@@ -25,16 +25,21 @@ define('sf.b2c.mall.product.detailcontent', [
     'text!template_product_detailcontent',
     'sf.env.switcher',
     'sf.hybrid',
-    'animate'
+    'animate',
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.widget.cartnumber',
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
     SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin,
-    SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, template_product_detailcontent, SFSwitcher, SFHybrid, animate) {
+    SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart,
+    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFLoading, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
 
     var DEFAULT_INIT_TAG = 'init';
+
+    var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
 
@@ -116,6 +121,8 @@ define('sf.b2c.mall.product.detailcontent', [
 
         // this.loading = new SFLoading();
         // this.loading.show();
+
+        loadingCtrl.show();
 
         //解析路由，取出itemid
         //example: /detail/1.html
@@ -425,21 +432,38 @@ define('sf.b2c.mall.product.detailcontent', [
         if (SFComm.prototype.checkUserLogin.call(this)) {
           this.element.find('.mini-cart-num').show();
 
-          var getTotalCount = new SFGetTotalCount();
-          getTotalCount.sendRequest()
-            .done(function(data) {
-              // @description 将返回数字显示在头部导航栏
-              // 需要跳动的效果
-              that.element.find('.mini-cart-num').text(data.value)
-              that.element.find('.mini-cart-num').addClass('animated bounce');
+          var success = function (data) {
+            // @description 将返回数字显示在头部导航栏
+            // 需要跳动的效果
+            that.element.find('.mini-cart-num').text(data.value)
+            that.element.find('.mini-cart-num').addClass('animated bounce');
 
-              setTimeout(function() {
-                that.element.find('.mini-cart-num').removeClass('animated bounce');
-              }, 500);
-            })
-            .fail(function(data) {
-              // 更新mini cart失败，不做任何显示
-            });
+            setTimeout(function() {
+              that.element.find('.mini-cart-num').removeClass('animated bounce');
+            }, 500);
+          };
+
+          var error = function () {
+            // 更新mini cart失败，不做任何显示
+          };
+
+          new SFWidgetCartNumber(success, error);
+
+          // var getTotalCount = new SFGetTotalCount();
+          // getTotalCount.sendRequest()
+          //   .done(function(data) {
+          //     // @description 将返回数字显示在头部导航栏
+          //     // 需要跳动的效果
+          //     that.element.find('.mini-cart-num').text(data.value)
+          //     that.element.find('.mini-cart-num').addClass('animated bounce');
+
+          //     setTimeout(function() {
+          //       that.element.find('.mini-cart-num').removeClass('animated bounce');
+          //     }, 500);
+          //   })
+          //   .fail(function(data) {
+          //     // 更新mini cart失败，不做任何显示
+          //   });
         }
       },
 
@@ -568,7 +592,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
             switcher.go();
 
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
 
             $(document).ready(function() {
               if (SFFn.isMobile.Android()) {
@@ -583,7 +607,7 @@ define('sf.b2c.mall.product.detailcontent', [
           })
           .fail(function(error) {
             console.error(error);
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           })
       },
 
@@ -977,6 +1001,7 @@ define('sf.b2c.mall.product.detailcontent', [
         var params = can.route.attr();
         var map = {
           'pay': _.bind(function() {
+            element.addClass('btn-disable');
             var gotoUrl = 'http://m.sfht.com/order.html' + '?' + $.param({
               "itemid": this.itemid,
               "amount": this.options.detailContentInfo.input.buyNum
