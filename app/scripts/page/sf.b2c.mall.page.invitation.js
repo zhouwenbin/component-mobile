@@ -49,7 +49,7 @@ define(
       loadingCtrl.show();
       new myInvitation('.sf-b2c-mall-invitation');
       new SFNav('.sf-b2c-mall-nav');
-    };
+    });
 
     switcher.register('onlineapp', function () {
       loadingCtrl.show();
