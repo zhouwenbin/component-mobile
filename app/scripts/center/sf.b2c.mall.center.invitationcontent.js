@@ -16,9 +16,10 @@ define('sf.b2c.mall.center.invitationcontent', [
     'canvasjs',
     'sf.b2c.mall.api.user.getCashActInfo',
     'sf.b2c.mall.api.user.getCashActTransList',
-    'sf.b2c.mall.api.user.rqCash'
+    'sf.b2c.mall.api.user.rqCash',
+    'sf.hybrid'
   ],
-  function(can, $, cookie, Fastclick, helpers, SFFn, moment, SFWeixin, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash) {
+  function(can, $, cookie, Fastclick, helpers, SFFn, moment, SFWeixin, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, canvasjs, SFGetCashActInfo, SFGetCashActTransList, SFRqCash, SFHybrid) {
 
     Fastclick.attach(document.body);
 
@@ -26,8 +27,8 @@ define('sf.b2c.mall.center.invitationcontent', [
 
       helpers: {
 
-        isWeChat: function(options) {
-          if (SFFn.isMobile.WeChat()) {
+        isWeChatOrApp: function(options) {
+          if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -220,8 +221,17 @@ define('sf.b2c.mall.center.invitationcontent', [
       },
 
       "#sharebutton click": function(element, event) {
-        $("body,html").scrollTop(0);
-        $("#sharearea").show();
+        if (SFFn.isMobile.APP()) {
+          var title = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
+          var desp = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
+          var shareUrl = "http://m.sfht.com/invitation-bag.html?_src=" + $.fn.cookie('userId') + "&bagid=" + this.data.bagid;
+          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+
+          SFHybrid.h5share(title, desp, imgUrl, shareUrl);
+        } else {
+          $("body,html").scrollTop(0);
+          $("#sharearea").show();
+        }
       },
 
       "#sharearea click": function() {
