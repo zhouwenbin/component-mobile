@@ -147,6 +147,7 @@ requirejs.config({
         "sf.b2c.mall.widget.message": "scripts/widget/sf.b2c.mall.widget.message",
         "sf.b2c.mall.widget.loading": "scripts/widget/sf.b2c.mall.widget.loading",
         "sf.b2c.mall.widget.login": "scripts/widget/sf.b2c.mall.widget.login",
+        "sf.b2c.mall.widget.cartnumber": "scripts/widget/sf.b2c.mall.widget.cartnumber",
         "sf.b2c.mall.module.getcoupon": "scripts/module/sf.b2c.mall.module.getcoupon",
         "sf.b2c.mall.module.slider": "scripts/module/sf.b2c.mall.module.slider",
         "sf.b2c.mall.module.price": "scripts/module/sf.b2c.mall.module.price",
@@ -273,7 +274,6 @@ requirejs.config({
         "sf.b2c.mall.page.520": "scripts/page/sf.b2c.mall.page.520",
         "template_header_520": "templates/sf.b2c.mall.520.mustache",
         "sf.mediav": "scripts/util/sf.mediav",
-        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
-        "sf.b2c.mall.widget.cartnumber": "scripts/widget/sf.b2c.mall.widget.cartnumber"
+        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache"
     }
 });
