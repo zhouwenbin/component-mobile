@@ -227,6 +227,23 @@ define(
       return false;
     };
 
+    var h5share = function (title, description, imageUrl, url) {
+
+      var urlscheme = 'sfht://service/pluginHelper?plugin=SocialSharing&method=share&params=[{"subject":"' + title + '", "description":"' + description + '", "imageUrl"="' +imageUrl+ '",url="' + url + '"}]';
+
+      if ($('#apprunner').length == 0) {
+
+        var $el = $('<iframe id="apprunner"></iframe>');
+        $el.attr('src', urlscheme);
+
+        $('body').append($el);
+      }else{
+        $('#apprunner').attr('src', urlscheme);
+      }
+
+      return false;
+    };
+
     return {
       login: login,
       isLogin: isLogin,
@@ -240,7 +257,8 @@ define(
       toRoot: toRoot,
       toast: toast,
       notification: sfnotifivation,
-      run: run
+      run: run,
+      h5share: h5share
     }
 
   });

@@ -5,7 +5,7 @@
   <img src="../img/invite-alipay/invite-alipay_05.jpg">
   <a href="javascript:;" id="gotoinvitation"><img src="../img/invite-alipay/invite-alipay_06.jpg"></a>
 
-  {{#isWeChat}}
+  {{#isWeChatOrApp}}
   <section class="invite-share">
     <h2 class="invite-h2">分享途径</h2>
     <div class="invite-share-icon"></div>
@@ -13,14 +13,14 @@
     <p>撒完红包找到您觉得靠谱的朋友卖力推荐<br>成功率更高哦！</p>
     <button class="btn btn-normal" id="sharebutton">分享</button>
   </section>
-  {{/isWeChat}}
+  {{/isWeChatOrApp}}
 
-  {{^isWeChat}}
+  {{^isWeChatOrApp}}
   <section class="invite-share">
     <h2 class="invite-h2">分享途径</h2>
     <a class="btn btn-danger" href="http://m.sfht.com/app.html" style="width:200px">下载app至我的邀请开始邀请</a>
   </section>
-  {{/isWeChat}}
+  {{/isWeChatOrApp}}
 </section>
 
 
