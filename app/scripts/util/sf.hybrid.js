@@ -235,7 +235,7 @@ define(
         "url": url
       };
 
-      var urlscheme = 'sfht://service/pluginHelper?plugin=SocialSharing&method=share&params=[' + JSON.stringify(params) + ']';
+      var urlscheme = 'sfht://service/pluginHelper?plugin=SocialSharing&method=share&params='+ encodeURIComponent('[' + JSON.stringify(params) + ']');
 
       if ($('#apprunner').length == 0) {
 
