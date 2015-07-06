@@ -1,0 +1,19 @@
+<section class="address-detail">
+  <h2 class="address-title">修改收货地址</h2>
+  <ul>
+    <li><label>收货人</label>{{addr.input.recName}}</li>
+		<li><label>手机号码</label>{{addr.input.cellphone}}</li>
+		<li><label>身份证号</label>{{addr.input.credtNum}}</li>
+		<li><label>所在地区</label>{{addr.input.cityName}}  {{addr.input.provinceName}}  {{addr.input.regionName}}</li>
+		<li><label>详细地址</label>{{addr.input.detail}}</li>
+  </ul>
+  <button class="btn btn-normal btn-big" role="delete">删除收货地址</button>
+  {{^if addr.isDefault}}<button class="btn btn-normal btn-big" role="default">设为默认地址</button>{{/if}}
+</section>
+<section class="nav">
+	<div class="nav-r1">
+		<div class="nav-c2">
+			<a href="javascript:;" role="edit" class="btn btn-danger btn-big">修改</a>
+		</div>
+	</div>		
+</section>

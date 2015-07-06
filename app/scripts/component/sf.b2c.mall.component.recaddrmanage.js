@@ -4,34 +4,37 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'can',
   'zepto',
   'fastclick',
-  'sf.b2c.mall.api.user.delRecAddress',
-  'sf.b2c.mall.api.user.delRecvInfo',
+  'sf.b2c.mall.business.config',
   'sf.b2c.mall.api.user.getIDCardUrlList',
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.adapter.regions',
   'sf.b2c.mall.adapter.address.list',
   'sf.b2c.mall.widget.message',
-  'sf.b2c.mall.business.config',
+  'sf.b2c.mall.widget.loading',
   'sf.b2c.mall.component.addreditor',
+  'sf.b2c.mall.component.addrcreate',
+  'sf.b2c.mall.component.addrdetail',
   'text!template_component_recaddrmanage'
-], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter,
-  AddressAdapter, SFMessage, SFConfig, SFAddressEditor, template_component_recaddrmanage) {
+], function(can, $, Fastclick, SFConfig,
+  SFGetIDCardUrlList, SFGetRecAddressList, 
+  RegionsAdapter, AddressAdapter, SFMessage, SFLoading, 
+  SFAddressEditor, SFAddressCreate, SFAddressDetail, 
+  template_component_recaddrmanage) {
 
   can.route.ready();
   var DEFAULT_INIT_TAG = 'init';
 
   return can.Control.extend({
 
+    adapter4List: {},
+    widgetLoading: new SFLoading(),
+
     init: function(data) {
-      this.adapter4List = {};
+
+      this.widgetLoading.show();
 
       //如果tag为init，则要进行单独处理，防止刷新
       var tag = can.route.attr('tag');
-      // if (tag === DEFAULT_INIT_TAG) {
-      //   this.initRender(DEFAULT_INIT_TAG);
-      // } else {
-      //   can.route.attr('tag', DEFAULT_INIT_TAG);
-      // }
 
       this.initRender.call(this, tag || DEFAULT_INIT_TAG);
     },
@@ -49,32 +52,30 @@ define('sf.b2c.mall.component.recaddrmanage', [
       can.when(getRecAddressList.sendRequest(), getIDCardUrlList.sendRequest())
         .done(function(recAddrs, recPersons) {
 
-          that.result = that.queryAddress(recAddrs, recPersons);
+          var result = that.queryAddress(recAddrs, recPersons);
 
           //获得地址列表
           that.adapter4List.addrs = new AddressAdapter({
-            addressList: that.result || []
+            addressList: result || []
           });
 
-          // var html = can.view('templates/component/sf.b2c.mall.component.recaddrmanage.mustache', that.adapter4List.addrs);
           var renderFn = can.mustache(template_component_recaddrmanage);
-          var html =  renderFn(that.adapter4List.addrs);
+          var html =  renderFn(that.adapter4List);
 
           that.element.html(html);
 
-          //绑定事件
-          $('.delete').click(function() {
-            that.deleteRecAddrClick($(this));
-          })
-
-          // $('.edit').click(function() {
-          //   that.editRecAddrClick($(this));
-          // })
-
-          $('.loadingDIV').hide();
-
           //初始化进行回调绑定
           that.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-editAdrArea', {
+            onSuccess: _.bind(function(){
+              can.route.attr('tag', 'init');
+            }, this)
+          });
+          that.addressDetail = new SFAddressDetail('.sf-b2c-mall-order-adrDetailArea', {
+            onSuccess: _.bind(function(){
+              can.route.attr('tag', 'init');
+            }, this)
+          });
+          that.addressCreate = new SFAddressCreate('.sf-b2c-mall-order-editAdrArea', {
             onSuccess: _.bind(function(){
               can.route.attr('tag', 'init');
             }, this)
@@ -83,8 +84,10 @@ define('sf.b2c.mall.component.recaddrmanage', [
         })
         .fail(function(error) {
           console.error(error);
-          $('.loadingDIV').hide();
         })
+        .always(function() {
+          that.widgetLoading.hide();
+        });
     },
 
     '{can.route} change': function() {
@@ -98,12 +101,21 @@ define('sf.b2c.mall.component.recaddrmanage', [
         this.render();
       },
 
+      'detailaddr': function(data) {
+        if (!data || !this.addressEditor) {
+          return can.route.attr('tag', 'init');
+        }
+
+        this.hideAddrManage();
+        this.addressDetail.show("detail", this.data, $(".sf-b2c-mall-order-adrDetailArea"));
+      },
+
       'editaddr': function(data) {
         if (!data || !this.addressEditor) {
           return can.route.attr('tag', 'init');
         }
 
-        $(".order-manager").hide();
+        this.hideAddrManage();
         this.addressEditor.show("editor", this.data, $(".sf-b2c-mall-order-editAdrArea"));
       },
 
@@ -112,9 +124,13 @@ define('sf.b2c.mall.component.recaddrmanage', [
           return can.route.attr('tag', 'init');
         }
 
-        $(".order-manager").hide();
-        this.addressEditor.show("create", this.data, $(".sf-b2c-mall-order-editAdrArea"));
+        this.hideAddrManage();
+        this.addressCreate.show("create", this.data, $(".sf-b2c-mall-order-editAdrArea"));
       }
+    },
+
+    hideAddrManage: function() {
+      $(".sf-b2c-mall-order-addrListArea").hide();
     },
 
     initRender: function(tag, data) {
@@ -125,57 +141,17 @@ define('sf.b2c.mall.component.recaddrmanage', [
       }
     },
 
-    ".edit click": function(element, event) {
+    "[role=detail] click": function(element, event) {
       event && event.preventDefault();
 
-      var index = element[0].dataset["index"];
+      var index = $(element).data("index");
       this.data = this.adapter4List.addrs.addressList[index];
-      can.route.attr('tag', 'editaddr');
-
-      // return false;
+      can.route.attr('tag', 'detailaddr');
     },
 
-    ".addrecaddr click": function(element, event) {
+    "[role=addrecaddr] click": function(element, event) {
       event && event.preventDefault();
       can.route.attr('tag', 'addaddr');
-
-      // return false;
-    },
-
-    deleteRecAddrClick: function(element, event) {
-      event && event.preventDefault();
-      var index = element.data('index');
-      var address = this.adapter4List.addrs.get(index);
-
-      var that = this;
-      var message = new SFMessage(null, {
-        'tip': '确认要删除该收货地址信息吗？',
-        'type': 'confirm',
-        'okFunction': _.bind(that.delAddress, that, element, address)
-      });
-    },
-
-    delAddress: function(element, address) {
-      var that = this;
-
-      var delRecAddress = new SFDelRecAddress({
-        "addrId": address.addrId
-      });
-
-      var delRecvInfo = new SFDelRecvInfo({
-        "recId": address.recId
-      });
-
-      can.when(delRecAddress.sendRequest())
-        .done(function(data) {
-          if (data.value) {
-            that.render();
-          }
-        })
-        .fail(function(error, resulterror) {
-          console.error(error);
-          that.render();
-        })
     },
 
     /** 获得收获人和收获地址 */

@@ -209,6 +209,8 @@ requirejs.config({
     'sf.b2c.mall.order.iteminfo': 'scripts/order/sf.b2c.mall.order.iteminfo',
     'sf.b2c.mall.order.selectreceiveaddr': 'scripts/order/sf.b2c.mall.order.selectreceiveaddr',
     'sf.b2c.mall.component.addreditor': 'scripts/component/sf.b2c.mall.component.addreditor',
+    'sf.b2c.mall.component.addrdetail': 'scripts/component/sf.b2c.mall.component.addrdetail',
+    'sf.b2c.mall.component.addrcreate': 'scripts/component/sf.b2c.mall.component.addrcreate',
     'sf.b2c.mall.adapter.address.list': 'scripts/adapter/sf.b2c.mall.adapter.address.list',
     'sf.b2c.mall.adapter.regions': 'scripts/adapter/sf.b2c.mall.adapter.regions',
     'sf.b2c.mall.adapter.order': 'scripts/adapter/sf.b2c.mall.adapter.order',
@@ -335,6 +337,8 @@ requirejs.config({
     'template_center_coupon': 'templates/center/sf.b2c.mall.center.coupon.mustache',
 
     'template_component_addreditor': 'templates/component/sf.b2c.mall.component.addreditor.mustache',
+    'template_component_addrcreate': 'templates/component/sf.b2c.mall.component.addrcreate.mustache',
+    'template_component_addrdetail': 'templates/component/sf.b2c.mall.component.addrdetail.mustache',
     'template_component_login': 'templates/component/sf.b2c.mall.component.login.mustache',
     'template_component_recaddrmanage': 'templates/component/sf.b2c.mall.component.recaddrmanage.mustache',
     'template_component_register_fillinfo': 'templates/component/sf.b2c.mall.component.register.fillinfo.mustache',
@@ -358,7 +362,7 @@ requirejs.config({
     'template_widget_loading': 'templates/widget/sf.b2c.mall.widget.loading.mustache',
     'template_widget_message': 'templates/widget/sf.b2c.mall.widget.message.mustache',
 
-     'template_center_point': 'templates/center/sf.b2c.mall.center.point.mustache',
+    'template_center_point': 'templates/center/sf.b2c.mall.center.point.mustache',
 
     'template_exchange_code': 'templates/sf.b2c.mall.exchange.code.mustache',
 

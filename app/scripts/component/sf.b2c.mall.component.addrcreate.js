@@ -1,17 +1,17 @@
 'use strict';
 
-define('sf.b2c.mall.component.addreditor', [
+define('sf.b2c.mall.component.addrcreate', [
   'can',
   'zepto',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.adapter.regions',
-  'sf.b2c.mall.api.user.updateRecAddress',
-  'sf.b2c.mall.api.user.updateReceiverInfo',
+  'sf.b2c.mall.api.user.createRecAddress',
+  'sf.b2c.mall.api.user.createReceiverInfo',
   'text!json_regions',
-  'text!template_component_addreditor'
+  'text!template_component_addrcreate'
 ], function(can, $, SFConfig, SFMessage, 
-  RegionsAdapter, SFUpdateRecAddress, SFUpdateReceiverInfo, 
+  RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo,  
   json_regions, template_component_addreditor) {
 
   return can.Control.extend({
@@ -53,7 +53,7 @@ define('sf.b2c.mall.component.addreditor', [
         this.changeRegion();
       }
     },
-    "#addressSaveUpdate click": function(element, event) {
+    "#addressSaveCreate click": function(element, event) {
       var result = this.addressSaveClick(element, event);
       if (result === false) {
         element.removeClass("btn-disable");
@@ -87,22 +87,21 @@ define('sf.b2c.mall.component.addreditor', [
 
     _show: function(tag, params, element) {
       var map = {
-        'editor': function(data) {
-          var provinceId = this.adapter.regions.getIdByName(data.provinceName);
-          var cityId = this.adapter.regions.getIdBySuperreginIdAndName(provinceId, data.cityName);
+        'create': function(data) {
           return {
             input: {
-              addrId: data.addrId,
+              addrId: null,
               nationName: 0,
-              provinceName: provinceId,
-              cityName: cityId,
-              regionName: this.adapter.regions.getIdBySuperreginIdAndName(cityId, data.regionName),
-              detail: data.detail,
-              cellphone: data.cellphone,
-              recId: data.recId,
-              recName: data.recName,
-              credtNum: data.credtNum2,
-              credtNum2: data.credtNum2
+              provinceName: 0,
+              cityName: null,
+              regionName: null,
+              detail: null,
+              recId: null,
+              cellphone: null,
+              recName: null,
+              credtNum: null,
+              receiverName:null,
+              receiverId:null
             },
             place: {
               countries: [{
@@ -110,17 +109,17 @@ define('sf.b2c.mall.component.addreditor', [
                 name: '中国'
               }],
               provinces: this.adapter.regions.findGroup(0),
-              cities: this.adapter.regions.getGroupByName(data.provinceName),
-              regions: this.adapter.regions.getGroupByName(data.cityName)
+              cities: null,
+              regions: null
             },
             control: {
               add: false
             },
             mainTitle: {
-              text: '修改收货地址'
+              text: '添加收货地址'
             },
             cancle: {
-              text: '取消修改'
+              text: '取消添加'
             },
             error: null
           };
@@ -170,7 +169,7 @@ define('sf.b2c.mall.component.addreditor', [
       }
     },
 
-    '#s2 change': function(element, event) {
+    '#s22 change': function(element, event) {
       this.changeCity();
       this.changeRegion();
     },
@@ -180,7 +179,7 @@ define('sf.b2c.mall.component.addreditor', [
      * @param  {Dom}    element
      * @param  {Event}  event
      */
-    '#s3 change': function(element, event) {
+    '#s33 change': function(element, event) {
       this.changeRegion();
     },
 
@@ -194,32 +193,55 @@ define('sf.b2c.mall.component.addreditor', [
       this.element.empty();
     },
 
-    update: function(addr, element) {
+    add: function(addr, element) {
       var that = this;
 
-      var that = this;
       var person = {
-        recId: addr.recId,
-        recName: addr.receiverName,
+        recName: addr.recName,
         type: "ID",
         credtNum: addr.credtNum
       };
-      var updateReceiverInfo = new SFUpdateReceiverInfo(person);
-      var updateRecAddress = new SFUpdateRecAddress(addr);
-      can.when(updateReceiverInfo.sendRequest(), updateRecAddress.sendRequest())
+
+      var recId = null;
+      var createReceiverInfo = new SFCreateReceiverInfo(person);
+
+      createReceiverInfo
+        .sendRequest()
         .done(function(data) {
-
-          var message = new SFMessage(null, {
-            'tip': '修改收货地址成功！',
-            'type': 'success'
-          });
-
-          element.removeClass("btn-disable");
-
-          that.hide();
-          that.onSuccess();
+          recId = data.value;
         })
-        .fail(function(error) {element.removeClass("btn-disable");});
+        .fail(function(error) {
+          if (error === 1000310) {
+            new SFMessage(null, {
+              "title": '顺丰海淘',
+              'tip': '您已添加20条收货地址信息，请返回修改！',
+              'type': 'error'
+            });
+          }
+          element.removeClass("btn-disable");
+          //def.reject(error);
+        })
+        .then(function(){
+          addr.recId = recId;
+          var createRecAddress = new SFCreateRecAddress(addr);
+          return createRecAddress.sendRequest()
+        })
+        .done(function(data) {
+          that.onSuccess(data);
+          element.removeClass("btn-disable");
+          return true;
+        })
+        .fail(function(error) {
+          if (error === 1000310) {
+            new SFMessage(null, {
+              "title": '顺丰海淘',
+              'tip': '您已添加20条收货地址信息，请返回修改！',
+              'type': 'error'
+            });
+          }
+          element.removeClass("btn-disable");
+          return false;
+        });
     },
 
     '#paddressSaveCancel click': function(element, event) {
@@ -422,7 +444,7 @@ define('sf.b2c.mall.component.addreditor', [
         return false;
       }
 
-      this.update(addr, element);
+    	var result = this.add(addr, element);
     }
   });
 })

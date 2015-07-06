@@ -25,7 +25,9 @@ define(
       },
 
       show: function() {
-        this.render();
+        if ($('.loadingDIV').length == 0) {
+          this.render();
+        }
       },
 
       hide: function() {
