@@ -79,7 +79,7 @@ define(
           '<span class="text-error" id="ruleerror" style="display:none">{{ruleerror}}</span>' +
           '</li>' +
           '<li><button class="btn btn-success btn-big" id="bindaccount">确定</button></li>' +
-          '<li><span style="color:red">注：为了确认您能够成功付款请确认输入无误</span></li>' +
+          '<li><span style="color:red">注：为了确认您能够成功提现请确认输入无误</span></li>' +
           '</ol>' +
           '</form>' +
           '</section>';
