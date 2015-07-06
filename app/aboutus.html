@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>顺丰海淘</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.aboutus.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/common.css">
+    <!-- endbuild -->
+</head>
+
+<body class="body1">
+
+<!--头部-->
+<!--# include file="/header/header.h5.index.html" -->
+<!--头部-->
+<div style="background-color: #fff;">
+<div style="text-align: center; padding: 40px 0 40px 0;">
+<p style='font-family:"黑体"; font-size: 28px;'>强悍的人生，不需要解释</p>
+<p style='font-family:"黑体"; font-size: 28px; margin: 8px 0;'>只卖正品，顺丰直营</p>
+<p style='font-family:"黑体"; font-size: 28px;'><b>100%正品保障</b></p>
+</div>
+
+
+
+<p style='font-family:"黑体"; font-size: 16px; text-indent: 2em; padding: 0 10px 80px 10px; line-height: 28px;'>顺丰海淘是一个专为中国国内消费者打造的海外购物平台，网站专营各类海外热销产品，利用顺丰速运在国际运输与贸易上的优势，为消费者提供实惠、高品质的服务体验，全程做到让用户放心，购物省心。
+顺丰海淘整合了国际仓储及物流、跨国支付等各种资源,让用户可以一键式下单，轻轻松松购买到心仪价优的海外商品</p>
+</div>
+
+
+
+<!--尾部-->
+<!--# include file="/footer/footer.h5.index.html" -->
+<!--尾部-->
+
+<div id="version" data-version="{version}"></div>
+<!-- build:js(.) scripts/require.min.js -->
+<script src="bower_components/requirejs/require.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+<script src="scripts/base/sf.h5.base.ver.1.0.2.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+<script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.aboutus.js -->
+<script src="scripts/sf.b2c.mall.require.config.js"></script>
+<script type="text/javascript">
+    require(['sf.b2c.mall.page.aboutus']);
+</script>
+<!-- endbuild -->
+</body>
+
+</html>

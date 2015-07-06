@@ -14,6 +14,11 @@ define(
       init: function () {
 
         var isHideAd = store.get('IS_HIDE_AD');
+        // 过期
+        if (isHideAd && (isHideAd - Date().now() > 30*24*60*60*1000)) {
+          store.remove('IS_HIDE_AD');
+          isHideAd = null;
+        }
 
         if (isHideAd) {
           this.element.find('.downloadapp').hide();
@@ -23,7 +28,7 @@ define(
       },
 
       '.downloadapp-close click': function ($element, event) {
-        store.set('IS_HIDE_AD', 'show');
+        store.set('IS_HIDE_AD', Date.now());
         this.element.find('.downloadapp').hide();
       }
 
