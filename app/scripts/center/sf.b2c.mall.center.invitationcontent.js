@@ -51,7 +51,6 @@ define('sf.b2c.mall.center.invitationcontent', [
         },
 
         hasIncome: function(infoList, options) {
-          return options.fn(options.contexts || this);
           if (infoList && infoList.length > 0) {
             return options.fn(options.contexts || this);
           } else {
