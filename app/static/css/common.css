@@ -608,7 +608,7 @@ a[title="站长统计"] {
 .icon {
   display: inline-block;
   vertical-align: middle;
-  background: url(../img/icon.png) no-repeat;
+  background: url(http://img.sfht.com/sfhth5/1.1.130/img/icon.png) no-repeat;
   -webkit-background-size: 450px 450px;
           background-size: 450px 450px;
   text-indent: -999em;
@@ -972,7 +972,7 @@ a[title="站长统计"] {
   background-position: -287px -229px;
 }
 
-.icon59{
+.icon59 {
   width: 30px;
   height: 30px;
   background-position: -287px -264px;
@@ -1345,13 +1345,13 @@ a[title="站长统计"] {
 .logout.center {
   -webkit-border-radius: 10px;
           border-radius: 10px;
-  padding: 33px 60px;
+  padding: 33px 35px;
 }
 
 .loading {
   width: 25px;
   height: 25px;
-  background: url(../img/loading.png) no-repeat;
+  background: url(http://img.sfht.com/sfhth5/1.1.130/img/loading.png) no-repeat;
   -webkit-background-size: 25px 25px;
           background-size: 25px;
   position: fixed;
@@ -1604,7 +1604,7 @@ a[title="站长统计"] {
 .banner-dialog-b {
   width: 230px;
   height: 313px;
-  background: url(../img/banner-dialog.jpg) no-repeat;
+  background: url(http://img.sfht.com/sfhth5/1.1.130/img/banner-dialog.jpg) no-repeat;
   -webkit-background-size: 230px 230px;
           background-size: 230px;
   position: fixed;
