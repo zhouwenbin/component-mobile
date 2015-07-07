@@ -17,6 +17,7 @@ define(
   function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, SFHeader, template_center_invitationbag) {
 
     SFFrameworkComm.register(3);
+    var bagid = 245;
 
     var myInvitation = can.Control.extend({
 
@@ -40,10 +41,8 @@ define(
        */
       render: function() {
         // 列表区域
-        var params = can.deparam(window.location.search.substr(1));
-
         this.data = {};
-        this.data.bagid = params.bagid;
+        this.data.bagid = bagid;
 
         SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", this.data.bagid);
 
