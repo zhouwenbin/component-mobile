@@ -3,6 +3,7 @@ define(
   [
     'can',
     'zepto',
+    'zepto.cookie',
     // 'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.util',
@@ -13,7 +14,7 @@ define(
     'sf.b2c.mall.api.coupon.receiveCoupon'
     // 'animate'
   ],
-  function(can, $, SFFrameworkComm, SFFn, Fullpage, store, SFConfig, SFMessage, SFReceiveCoupon) {
+  function(can, $, $cookie, SFFrameworkComm, SFFn, Fullpage, store, SFConfig, SFMessage, SFReceiveCoupon) {
     // Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -22,6 +23,12 @@ define(
        * [init 初始化]
        */
       init: function() {
+
+        if (window.clipboardData) {
+          var _src = $.fn.cookie('_src');
+          window.clipboardData.setData("_src", _src);
+        }
+
         this.initFullPage();
         this.render();
         var that = this;
