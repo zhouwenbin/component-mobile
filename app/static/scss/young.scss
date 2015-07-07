@@ -539,3 +539,74 @@ img{
 	margin-bottom: 15px;
 	display: block;
 }
+
+.dialog-b{
+	width: 590px;
+	background: #fff;
+	border-radius: 10px;
+	padding: 38px 40px;
+}
+.dialog-phone h2{
+	font-size: 28px;
+	margin-bottom: 30px;
+}
+.dialog-phone input{
+	background: #f1f1f1;
+	width: 100%;
+	height: 80px;
+	line-height: 80px;
+	padding-left: 32px;
+	font-size: 28px;
+	font-family: arial;
+	border: none;
+	box-shadow: inset 0 2px 3px rgba(170,170,170,0.2); 
+	border-radius: 10px;
+	margin-bottom: 30px;
+}
+.btn{
+	height: 80px;
+	line-height: 80px;
+	width: 100%;
+	background: #e54588;
+	font-size: 28px;
+	color: #fff;
+	border-radius: 10px;
+}
+.btn2{
+	background: #f6b645;
+}
+.btn3{
+	background: #45cc5b;
+	line-height: 32px;
+	text-align: left;
+	padding-left: 88px;
+	padding-right: 44px;
+}
+.dialog-success{
+	text-align: center;
+}
+.dialog-success h2{
+	font-size: 28px;
+	color: #e54588;
+	margin-bottom: 10px;
+	margin-top: 24px;
+}
+.dialog-success p{
+	font-size: 28px;
+	margin-bottom: 56px;
+}
+.dialog-success-r1{
+	display: flex;
+	justify-content:space-between;
+	margin-bottom: 10px;
+}
+.dialog-success-r1 .btn{
+	display: block;
+	width: 246px;
+}
+.icon-success{
+	width: 90px;
+	height: 90px;
+	display: inline-block;
+	background: url(#{$bg-url}young/icon-success.png) no-repeat;
+}

@@ -9,7 +9,6 @@ $(function(){
 		if(index<11){
 			$('.people>li').eq(11-index).addClass('active');
 			index++;
-			console.log(index)
 		}
 		
 		
@@ -18,11 +17,17 @@ $(function(){
 		if(index>0){
 			$('.people>li').eq(12-index).removeClass('active');		
 			index--;
-			console.log(index)
 		}
 			
 	})
 	$('.tab li').click(function(){
 		$(this).addClass('active').siblings().removeClass('active');
+	})
+	$('.page3 .a2').click(function(){
+		$('.dialog-phone').removeClass('hide');
+	})
+	$('.dialog-phone .btn').click(function(){
+		$('.dialog-phone').addClass('hide');
+		$('.dialog-success').removeClass('hide');
 	})
 })
