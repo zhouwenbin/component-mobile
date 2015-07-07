@@ -173,6 +173,7 @@ requirejs.config({
     'sf.b2c.mall.widget.message': 'scripts/widget/sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading': 'scripts/widget/sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.login': 'scripts/widget/sf.b2c.mall.widget.login',
+    'sf.b2c.mall.widget.region': 'scripts/widget/sf.b2c.mall.widget.region',
 
 
     //公共模块
@@ -361,6 +362,7 @@ requirejs.config({
 
     'template_widget_loading': 'templates/widget/sf.b2c.mall.widget.loading.mustache',
     'template_widget_message': 'templates/widget/sf.b2c.mall.widget.message.mustache',
+    'template_widget_region': 'templates/widget/sf.b2c.mall.widget.region.mustache',
 
     'template_center_point': 'templates/center/sf.b2c.mall.center.point.mustache',
 

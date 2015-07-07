@@ -5,29 +5,23 @@ define('sf.b2c.mall.component.addrcreate', [
   'zepto',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.widget.message',
-  'sf.b2c.mall.adapter.regions',
+  'sf.b2c.mall.widget.region',
   'sf.b2c.mall.api.user.createRecAddress',
   'sf.b2c.mall.api.user.createReceiverInfo',
-  'text!json_regions',
   'text!template_component_addrcreate'
-], function(can, $, SFConfig, SFMessage, 
-  RegionsAdapter, SFCreateRecAddress, SFCreateReceiverInfo,  
-  json_regions, template_component_addreditor) {
+], function(can, $, SFConfig, SFMessage, SFRegion,
+  SFCreateRecAddress, SFCreateReceiverInfo,  
+  template_component_addrcreate) {
 
   return can.Control.extend({
+
+    renderData: null,
     init: function() {
-      this.adapter = {};
-      this.request();
       this.onSuccess = this.options.onSuccess;
     },
 
     request: function() {
       var that = this;
-      var cities = JSON.parse(json_regions);
-
-      this.adapter.regions = new RegionsAdapter({
-          cityList: cities
-      });
     },
 
     /**
@@ -36,220 +30,51 @@ define('sf.b2c.mall.component.addrcreate', [
      */
     render: function(data, tag, element) {
       this.setup(element);
-      var renderFn = can.mustache(template_component_addreditor);
+      var renderFn = can.mustache(template_component_addrcreate);
       
       var html = renderFn(data);
       element.html(html);
-
-      this.supplement(tag);
     },
 
-    /**
-     * @description 对页面进行补充处理
-     */
-    supplement: function(tag) {
-      if (tag == 'create') {
-        this.changeCity();
-        this.changeRegion();
-      }
-    },
     "#addressSaveCreate click": function(element, event) {
       var result = this.addressSaveClick(element, event);
       if (result === false) {
         element.removeClass("btn-disable");
       }
     },
-    "#backToOrder click": function() {
-      can.route.attr('tag', 'init');
-      $(".order").show();
-      $(".order-manager").show();
-      $(".nav-c1, .nav-c2").show();
-      $(".sf-b2c-mall-order-selectReceiveAddress").show();
-      $(".sf-b2c-mall-order-itemInfo").show();
-      $(".sf-b2c-mall-order-addAdrArea").hide();
-      $(".sf-b2c-mall-order-editAdrArea").hide();
-    },
 
     show: function(tag, data, element) {
       this.odata = data;
       var that = this;
-      if (this.adapter.regions) {
-        that._show.call(that, tag, data, element);
-      } else {
-        this.request().then(function() {
-          that._show.call(that, tag, data, element);
-        });
-      }
+
+      that._show.call(that, tag, data, element);
 
       $(".sf-b2c-mall-order-editAdrArea").show();
       $(".sf-b2c-mall-order-adrDetailArea").hide();
     },
 
     _show: function(tag, params, element) {
-      var map = {
-        'create': function(data) {
-          return {
-            input: {
-              addrId: null,
-              nationName: 0,
-              provinceName: 0,
-              cityName: null,
-              regionName: null,
-              detail: null,
-              recId: null,
-              cellphone: null,
-              recName: null,
-              credtNum: null,
-              receiverName:null,
-              receiverId:null
-            },
-            place: {
-              countries: [{
-                id: 0,
-                name: '中国'
-              }],
-              provinces: this.adapter.regions.findGroup(0),
-              cities: null,
-              regions: null
-            },
-            control: {
-              add: false
-            },
-            mainTitle: {
-              text: '添加收货地址'
-            },
-            cancle: {
-              text: '取消添加'
-            },
-            error: null
-          };
-        }
+      var info = {
+        input: {
+          addrId: null,
+          nationName: null,
+          provinceName: null,
+          cityName: null,
+          regionName: null,
+          detail: null,
+          recId: null,
+          cellphone: null,
+          recName: null,
+          credtNum: null,
+          receiverName:null,
+          receiverId:null,
+          isDefault: false
+        },
+        error: null
       };
-      var info = map[tag].call(this, params);
-      this.adapter.addr = new can.Map(info);
+      this.renderData = new can.Map({"addr" :info});
 
-      this.render(this.adapter, tag, element);
-    },
-
-    hide: function() {
-      this.destroy();
-    },
-
-    clearComponents: function() {
-      if (this.component.idList) {
-        this.component.idList.destroy();
-      }
-
-      if (this.component.idEditor) {
-        this.component.idEditor.destroy();
-      }
-    },
-
-    changeCity: function() {
-      var pid = this.adapter.addr.input.attr('provinceName');
-      if (pid == 0) {
-        this.adapter.addr.input.attr('cityName', '0');
-        this.adapter.addr.place.attr('cities', '0');
-      }else {
-        var cities = this.adapter.regions.findGroup(window.parseInt(pid));
-        this.adapter.addr.place.attr('cities', cities);
-        this.adapter.addr.input.attr('cityName', cities[0].id);
-      }
-    },
-
-    changeRegion: function() {
-      var cid = this.adapter.addr.input.attr('cityName');
-      if (cid == 0) {
-        this.adapter.addr.input.attr('regionName', '0');
-        this.adapter.addr.place.attr('regions', '0');
-      }else{
-        var regions = this.adapter.regions.findGroup(window.parseInt(cid));
-        this.adapter.addr.place.attr('regions', regions);
-        this.adapter.addr.input.attr('regionName', regions[0].id);
-      }
-    },
-
-    '#s22 change': function(element, event) {
-      this.changeCity();
-      this.changeRegion();
-    },
-
-    /**
-     * @description 城市发生变化，区同时发生变化
-     * @param  {Dom}    element
-     * @param  {Event}  event
-     */
-    '#s33 change': function(element, event) {
-      this.changeRegion();
-    },
-
-    /**
-     * @description 取消保存
-     * @param  {Dom}    element
-     * @param  {Event}  event
-     */
-    '#center-add-address-cancel-btn click': function(element, event) {
-      event && event.preventDefault();
-      this.element.empty();
-    },
-
-    add: function(addr, element) {
-      var that = this;
-
-      var person = {
-        recName: addr.recName,
-        type: "ID",
-        credtNum: addr.credtNum
-      };
-
-      var recId = null;
-      var createReceiverInfo = new SFCreateReceiverInfo(person);
-
-      createReceiverInfo
-        .sendRequest()
-        .done(function(data) {
-          recId = data.value;
-        })
-        .fail(function(error) {
-          if (error === 1000310) {
-            new SFMessage(null, {
-              "title": '顺丰海淘',
-              'tip': '您已添加20条收货地址信息，请返回修改！',
-              'type': 'error'
-            });
-          }
-          element.removeClass("btn-disable");
-          //def.reject(error);
-        })
-        .then(function(){
-          addr.recId = recId;
-          var createRecAddress = new SFCreateRecAddress(addr);
-          return createRecAddress.sendRequest()
-        })
-        .done(function(data) {
-          that.onSuccess(data);
-          element.removeClass("btn-disable");
-          return true;
-        })
-        .fail(function(error) {
-          if (error === 1000310) {
-            new SFMessage(null, {
-              "title": '顺丰海淘',
-              'tip': '您已添加20条收货地址信息，请返回修改！',
-              'type': 'error'
-            });
-          }
-          element.removeClass("btn-disable");
-          return false;
-        });
-    },
-
-    '#paddressSaveCancel click': function(element, event) {
-      // this.hide();
-      this.element.hide();
-      this.element.empty();
-      $('#btn-add-addr').show();
-      return false;
+      this.render(this.renderData, tag, element);
     },
 
     addressSaveClick: function(element, event) {
@@ -258,31 +83,33 @@ define('sf.b2c.mall.component.addrcreate', [
       //防止重复提交
       if (element.hasClass("btn-disable")) {
         return false;
-      }
+      } 
 
       element.addClass("btn-disable");
-
-      $('.tel-hide').hide();
 
       $('.textarea').blur();
       $('.input').blur();
 
-      var addr = this.adapter.addr.input.attr();
+      var addr = this.renderData.addr.input.attr();
       addr.receiverName = addr.recName;
       addr.receiverId = addr.credtNum2;
 
-      var key;
-      for (key in addr) {
+      for (var key in addr) {
         addr[key] = _.str.trim(addr[key]);
       }
 
-      addr.nationName = '中国';
-      addr.provinceName = this.adapter.regions.findOneName(window.parseInt(addr.provinceName));
-      addr.cityName = this.adapter.regions.findOneName(window.parseInt(addr.cityName));
-      addr.regionName = this.adapter.regions.findOneName(window.parseInt(addr.regionName));
+      if (!this.validateForm(addr)) {
+        return false;
+      }
 
+    	var result = this.add(addr, element);
+    },
+
+    validateForm: function(addr) {
       //验证是否选择省市区
-      if(typeof addr.provinceName == 'undefined' || typeof addr.cityName == 'undefined' || typeof addr.regionName == 'undefined'){
+      if(addr.provinceName == '' 
+        || addr.cityName == '' 
+        || addr.regionName == ''){
 
         var message = new SFMessage(null, {
           'tip': '请选择收货地区',
@@ -303,8 +130,7 @@ define('sf.b2c.mall.component.addrcreate', [
       }
       var testRecName = /^[\u4e00-\u9fa5]{0,10}$/.test($.trim(addr.recName));
       var isReceiverName =  /先生|女士|小姐/.test($.trim(addr.receiverName));
-      if (testRecName && !isReceiverName) {} else {
-
+      if (!testRecName || isReceiverName) {
         var message = new SFMessage(null, {
           'tip': '由于海关发货需要实名制的信息，请您输入真实姓名。感谢您的配合!',
           'type': 'error'
@@ -314,7 +140,6 @@ define('sf.b2c.mall.component.addrcreate', [
       }
 
       if (!addr.credtNum) {
-
         var message = new SFMessage(null, {
           'tip': '请填写收货人身份证号码！',
           'type': 'error'
@@ -444,7 +269,85 @@ define('sf.b2c.mall.component.addrcreate', [
         return false;
       }
 
-    	var result = this.add(addr, element);
+      return true;
+    },
+
+    add: function(addr, element) {
+      var that = this;
+
+      var person = {
+        recName: addr.recName,
+        type: "ID",
+        credtNum: addr.credtNum
+      };
+
+      var recId = null;
+      var createReceiverInfo = new SFCreateReceiverInfo(person);
+
+      createReceiverInfo
+        .sendRequest()
+        .done(function(data) {
+          recId = data.value;
+        })
+        .fail(function(error) {
+          if (error === 1000310) {
+            new SFMessage(null, {
+              "title": '顺丰海淘',
+              'tip': '您已添加20条收货地址信息，请返回修改！',
+              'type': 'error'
+            });
+          }
+          element.removeClass("btn-disable");
+          //def.reject(error);
+        })
+        .then(function(){
+          addr.recId = recId;
+          var createRecAddress = new SFCreateRecAddress(addr);
+          return createRecAddress.sendRequest()
+        })
+        .done(function(data) {
+          that.onSuccess(data);
+          element.removeClass("btn-disable");
+          return true;
+        })
+        .fail(function(error) {
+          if (error === 1000310) {
+            new SFMessage(null, {
+              "title": '顺丰海淘',
+              'tip': '您已添加20条收货地址信息，请返回修改！',
+              'type': 'error'
+            });
+          }
+          element.removeClass("btn-disable");
+          return false;
+        });
+    },
+
+    '#selectRegion click': function(element, event) {
+      var that = this;
+      $(".address-detail, .nav").hide();
+      var region = new SFRegion('.address-region', {
+          onFinish: _.bind(function(data){
+            this.renderData.addr.input.attr({
+              "nationName": data.nationName,
+              "provinceName": data.provinceName,
+              "cityName": data.cityName,
+              "regionName": data.regionName
+            })
+            $(".address-detail, .nav").show();
+          },that),
+        }
+      );
+    },
+
+    "#setDefaultCreate click": function(element, event) {
+      if($(element).hasClass("active")) {
+        $(element).removeClass("active");
+        this.renderData.addr.input.attr("isDefault", 0);
+      } else {
+        $(element).addClass("active");
+        this.renderData.addr.input.attr("isDefault", 1);
+      }
     }
   });
 })

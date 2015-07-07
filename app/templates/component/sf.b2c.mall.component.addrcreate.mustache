@@ -1,47 +1,28 @@
-<h2 class="hide">城市</h2>
-<div class="order-add-select">
-  <select id="s11" can-value="addr.input.nationName" class="select hide">
-    {{#each addr.place.countries}}
-    <option value="{{id}}">{{name}}</option>
-    {{/each}}
-  </select>
-  <select id="s22"  can-value="addr.input.provinceName" class="select">
-    <option value="0">请选择</option>
-    {{#each addr.place.provinces}}
-    <option value="{{id}}">{{name}}</option>
-    {{/each}}
-  </select>
-  <select id="s33"  can-value="addr.input.cityName" class="select">
-    <option value="0">请选择</option>
-    {{#each addr.place.cities}}
-    <option value="{{id}}">{{name}}</option>
-    {{/each}}
-  </select>
-  <select id="s44"  can-value="addr.input.regionName" class="select">
-    <option value="0">请选择</option>
-    {{#each addr.place.regions}}
-    <option value="{{id}}">{{name}}</option>
-    {{/each}}
-  </select>
-</div>
-<div class="text-error">{{addr.error}}</div>
-
-
-
 <section class="address-detail">
-    <h2 class="address-title">收货地址</h2>
+    <h2 class="address-title">添加收货地址</h2>
     <ul>
       <ul>
         <li><input type="text" placeholder="收货人（需与身份证上的姓名一致）" can-value="addr.input.recName"></li>
         <li><input type="text" placeholder="手机号码" can-value="addr.input.cellphone"></li>
         <li><input type="text" placeholder="身份证号" can-value="addr.input.credtNum"></li>
-        <li><input type="text" placeholder="所在地区"></li>
+        <li id="selectRegion">
+          {{^if addr.input.provinceName}}
+            <span style="color:#A9A9A9">所在地区</span>
+          {{else}}
+            <span>{{addr.input.provinceName}}</span>
+            <span>{{addr.input.cityName}}</span>
+            <span>{{addr.input.regionName}}</span>
+          {{/if}}
+        </li>
         <li><input type="text" placeholder="详细地址" can-value="addr.input.detail"></li>
-        <li class="last hide"><label>设置为默认收货地址</label><a href="javascript:" class="switch"></a></li>
+        <li class="last"><label>设置为默认收货地址</label><a id="setDefaultCreate" href="javascript:" class="switch"></a></li>
       </ul>
     </ul>
-  </section>
-  <section class="nav">
+</section>
+
+<section class="address-region"></section>
+
+<section class="nav">
   <div class="nav-r1">
     <div class="nav-c2">
       <a href="detail-select.html" class="btn btn-danger btn-big" id="addressSaveCreate">保存</a>

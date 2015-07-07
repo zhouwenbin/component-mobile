@@ -67,7 +67,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
           //初始化进行回调绑定
           that.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-editAdrArea', {
             onSuccess: _.bind(function(){
-              can.route.attr('tag', 'init');
+              can.route.attr('tag', 'detailaddr');
             }, this)
           });
           that.addressDetail = new SFAddressDetail('.sf-b2c-mall-order-adrDetailArea', {
