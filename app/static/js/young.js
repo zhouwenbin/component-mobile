@@ -30,4 +30,7 @@ $(function(){
 		$('.dialog-phone').addClass('hide');
 		$('.dialog-success').removeClass('hide');
 	})
+	$('.dialog-success .btn').click(function(){
+		$('.dialog-success').addClass('hide');
+	})
 })
