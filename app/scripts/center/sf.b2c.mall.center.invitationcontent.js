@@ -136,6 +136,7 @@ define('sf.b2c.mall.center.invitationcontent', [
         var dataMap = {};
         // 按天进行统计
         _.each(this.data.infoList, function(item) {
+          if (item.income > 0) {
             item.gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
             var month = parseInt(item.gmtCreate.substring(5, 7), 10);
             var day = item.gmtCreate.substring(8, 10);
@@ -146,6 +147,7 @@ define('sf.b2c.mall.center.invitationcontent', [
             } else {
               dataMap[label] = item.income / 100
             }
+          }
         })
 
         _.map(dataMap, function(num, key) {
