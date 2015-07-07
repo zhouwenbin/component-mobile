@@ -94,12 +94,17 @@ define('sf.b2c.mall.center.invitationcontent', [
 
             // var infoList = {
             //   "infos": [{
-            //     "income": 300,
+            //     "income": 3000,
             //     "reason": "abc",
             //     "gmtOrder": "2015-05-15 14:43:42",
             //     "gmtCreate": "2015-05-15 14:43:42"
             //   }, {
             //     "income": 5000,
+            //     "reason": "abc",
+            //     "gmtOrder": "2015-05-16 14:43:42",
+            //     "gmtCreate": "2015-05-16 14:43:42"
+            //   }, {
+            //     "income": -1000,
             //     "reason": "abc",
             //     "gmtOrder": "2015-05-16 14:43:42",
             //     "gmtCreate": "2015-05-16 14:43:42"
@@ -124,21 +129,29 @@ define('sf.b2c.mall.center.invitationcontent', [
         }
       },
 
-      renderChart: function() {debugger;
+      renderChart: function() {
         var labels = [];
         var data = [];
 
-        var dataPoints = [];
-
+        var dataMap = {};
+        // 按天进行统计
         _.each(this.data.infoList, function(item) {
-          if (item.income > 0) {
             item.gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
             var month = parseInt(item.gmtCreate.substring(5, 7), 10);
             var day = item.gmtCreate.substring(8, 10);
-            labels.push(month + "月" + day +"日");
-            data.push(item.income / 100);
-          }
+            var label = month + "月" + day + "日";
+
+            if (dataMap[label]) {
+              dataMap[label] = dataMap[label] + item.income / 100
+            } else {
+              dataMap[label] = item.income / 100
+            }
         })
+
+        _.map(dataMap, function(num, key) {
+          labels.push(key);
+          data.push(num);
+        });
 
         var lineChartData = {
           labels: labels,
