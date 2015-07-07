@@ -1,9 +1,7 @@
-$('.wp-inner').fullpage({
-  loop:true
-});
+$('.wp-inner').fullpage();
 $(function(){
-	$('.icon1').click(function(){
-		$('.page1 .photo').addClass('active');
+	$('.page1 .icon1').click(function(){
+		$('.page1').addClass('active');
 		$(this).hide();
 	})
 	var index = 0;
