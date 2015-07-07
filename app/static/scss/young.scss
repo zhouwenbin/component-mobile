@@ -20,13 +20,28 @@ img{
 .page1{
 	padding: 8px;
 }
-.page1>header{
-	font-size: 0;
+.page1 h1{
+	font-size: 52px;
+	color: #fff;
+	font-family: '宋体';
+}
+.page1 h2{
+	color: #fff;
+	font-family: '宋体';
+}
+.page1 .s1{
+	font-size: 70px;
+}
+.page1 .s2{
+	font-size: 91px;
+}
+.page1 .s3{
+	font-size: 114px;
 }
 .page1>footer{
 	color: #fff;
 	text-align: center;
-	height: 91px;
+	height: 85px;
 	font-size: 24px;
 	padding-top: 13px;
 	position: absolute;
@@ -35,7 +50,7 @@ img{
 	right:0;
 }
 .page1>section{
-	height: 60%;
+	height: 652px;
 	position: relative;
 	background: #fff;
 	overflow: hidden;
@@ -44,14 +59,15 @@ img{
 
 .page1 .photo{
 	border: 14px solid #333;
-	margin: 0 69px;
+	margin: 0 auto;
 	border-radius: 8px;
 	height: 100%;
 	overflow: hidden;
 	transform-style: preserve-3d;
 	transition:all 0.5s;
 	position: relative;
-
+	width: 476px;
+	height: 606px;
 }
 .page1 .photo img{
 	border-radius: 8px;
@@ -74,17 +90,24 @@ img{
 	width: 90px;
 	height: 90px;
 	line-height: 90px;
-	padding: 6px;
 	text-align: center;
 	color: #ea4392;
 	font-size: 30px;
 	border-radius: 50%;
 	background: rgba(255,255,255,0.8);
-	background-clip: content-box;
-	box-sizing:content-box;
-	border:6px solid rgba(255,255,255,0.8);
-	//animation: icon1 1.5s infinite linear;
+	animation: icon1 1.5s infinite linear;
 	z-index: 1;
+}
+.page1 .icon1:before{
+	content: '';
+	width: 96px;
+	height: 96px;
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%,-50%);
+	border:6px solid rgba(255,255,255,0.8);
 }
 @keyframes icon1{
 	50%{
