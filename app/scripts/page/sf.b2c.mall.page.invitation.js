@@ -28,6 +28,11 @@ define(
        * @param  {[type]} options 选项
        */
       init: function(element, options) {
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = SFConfig.setting.link.login;
+          return false;
+        }
+
         this.render();
       },
 
