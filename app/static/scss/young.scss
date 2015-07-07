@@ -89,11 +89,13 @@ img{
 	color: #e84792;
 	position: absolute;
 	z-index: 2;
-	left:152px;
+	left:50%;
+	margin-left: -75px;
 	top: 399px;
 	text-align: center;
 	opacity: 0;
 	transition:all 0.5s 1s;
+	white-space: nowrap;
 }
 .page1.active h5{
 	opacity: 1;
@@ -111,10 +113,10 @@ img{
 	left: 0;
 	bottom:0;
 	right:0;
-	background: #363636;
+	background: rgba(51,51,51,0.8);
 }
 .page1.active>footer{
-	background:#e0407c;
+	background:rgba(232,71,146,0.8);
 	transition:all 0.5s 1s;
 }
 .page1>section{
@@ -233,6 +235,7 @@ img{
 	transform:translate(640px,-300px);
 	transition:all 0.5s;
 	opacity: 0;
+	font-size: 0;
 }
 .page2.cur li{
 	transform:translate(0,0);
@@ -378,7 +381,7 @@ img{
 	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.4),
 				1px 1px 0 rgba(255,255,255,0.08);
 	padding: 5px;
-	margin: 24px;
+	margin: 0 24px;
 }
 .bar-current{
 	height: 100%;
@@ -609,4 +612,78 @@ img{
 	height: 90px;
 	display: inline-block;
 	background: url(#{$bg-url}young/icon-success.png) no-repeat;
+}
+@media (max-height: 832px) {
+	.page1 header{
+		padding-top: 7px;
+		height: 243px;
+		background-image:url(#{$bg-url}young/page1-bg-4s.jpg);
+	}
+    .page1 .photo{
+    	width: 404px;
+    	height: 535px;
+    }
+    .page1 h5{
+    	top: 323px;
+    }
+    .page1 h4{
+    	margin-top: 20px;
+    }
+    .page2{
+    	background-image:url(#{$bg-url}young/page2-bg-4s.jpg);
+    }
+    .page2 li:nth-child(n+7){
+		display: none;
+    }
+    .page2 h3{
+    	margin-bottom: 17px;
+    	white-space: nowrap;
+    	font-size: 22px;
+    }
+    .page3 .people img{
+    	width: 567px;
+    	height: 593px;
+    }
+	.people{
+		width: 567px;
+		height: 609px;
+	}
+	.page3 section{
+		margin-top: 12px;
+	}
+	.page3 footer{
+		height: 155px;
+	}
+	.page3-r2 a{
+		height: 70px;
+		padding-top: 12px;
+	}
+	.page3 .tab>li{
+		width: 163px;
+		height: 50px;
+		line-height: 50px;
+		margin-right: -30px;
+		background: url(#{$bg-url}young/tab-li-4s.png) no-repeat;
+	}
+	.page3 .tab>li.active{
+		background: url(#{$bg-url}young/tab-li-active-4s.png) no-repeat;
+	}
+
+	.bar{
+		height: 21px;
+		padding: 4px;
+	}
+	.page3-r1{
+		margin-top: 16px;
+		margin-bottom: 20px;
+	}
+	.page4{
+    	background-image:url(#{$bg-url}young/page4-bg-4s.jpg);
+    }
+    .page4 h3{
+    	margin-top: 220px;
+    }
+    .page4 .share{
+    	margin-top: 114px;
+    }
 }

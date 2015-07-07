@@ -20,6 +20,18 @@ $(function(){
 		}
 			
 	})
+	$('.people').swipeRight(function(){
+		if(index<11){
+			$('.people>li').eq(11-index).addClass('active');
+			index++;
+		}
+	})
+	$('.people').swipeLeft(function(){
+		if(index>0){
+			$('.people>li').eq(12-index).removeClass('active');		
+			index--;
+		}
+	})
 	$('.tab li').click(function(){
 		$(this).addClass('active').siblings().removeClass('active');
 	})
