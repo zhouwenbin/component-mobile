@@ -4,9 +4,9 @@
     <ul>
       {{#each addrs.addressList}}
         <li class="box box1">
-          <a href="javascript:;" role="detail" class="box-link" data-addressid="{{addrId}}" data-index="{{@index}}">
+          <a href="javascript:;" style="padding-right:24px;" role="detail" class="box-link" data-addressid="{{addrId}}" data-index="{{@index}}">
             <span class="order-manager-r1"><strong>{{recName}}</strong>{{cellphone}}</span>
-            <span class="order-manager-r2">{{#if isDefault}}<span class="text-important">[默认]</span>{{/if}}{{detail}}</span>
+            <span class="order-manager-r2" style="line-height:22px;">{{#if isDefault}}<span class="text-important">[默认]</span>{{/if}}{{detail}}</span>
           </a>
           <span class="icon icon13 box-arrow center-vertical"></span>
         </li>
