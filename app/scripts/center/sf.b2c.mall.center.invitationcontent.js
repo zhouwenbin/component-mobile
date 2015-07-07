@@ -92,19 +92,19 @@ define('sf.b2c.mall.center.invitationcontent', [
         can.when(getCashActInfo.sendRequest(), getCashActTransList.sendRequest())
           .done(function(mainInfo, infoList) {
 
-            // var infoList = {
-            //   "infos": [{
-            //     "income": 100,
-            //     "reason": "abc",
-            //     "gmtOrder": "2015-05-15 14:43:42",
-            //     "gmtCreate": "2015-05-15 14:43:42"
-            //   },{
-            //     "income": -50,
-            //     "reason": "abc",
-            //     "gmtOrder": "2015-05-16 14:43:42",
-            //     "gmtCreate": "2015-05-16 14:43:42"
-            //   }]
-            // }
+            var infoList = {
+              "infos": [{
+                "income": 100,
+                "reason": "abc",
+                "gmtOrder": "2015-05-15 14:43:42",
+                "gmtCreate": "2015-05-15 14:43:42"
+              },{
+                "income": -50,
+                "reason": "abc",
+                "gmtOrder": "2015-05-16 14:43:42",
+                "gmtCreate": "2015-05-16 14:43:42"
+              }]
+            }
 
             that.data = _.extend(that.data, mainInfo);
             that.data.infoList = infoList.infos;
@@ -172,6 +172,10 @@ define('sf.b2c.mall.center.invitationcontent', [
 
         chart.render();
         $(".canvasjs-chart-credit")[0].style.display = "none";
+      },
+
+      '#modifyaccount click': function(element, event) {
+        window.location.href = "http://m.sfht.com/bindalipay.html?from=" + escape(window.location.href);
       },
 
       '#getmoney click': function(element, event) {
