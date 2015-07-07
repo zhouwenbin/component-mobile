@@ -143,6 +143,7 @@ requirejs.config({
         "sf.env.switcher": "scripts/util/sf.env.switcher",
         "animate": "scripts/vendor/fx",
         "canvasjs": "scripts/vendor/canvasjs",
+        "chart": "scripts/vendor/Chart",
         "zepto.fullpage": "scripts/vendor/zepto.fullpage",
         "sf.b2c.mall.widget.message": "scripts/widget/sf.b2c.mall.widget.message",
         "sf.b2c.mall.widget.loading": "scripts/widget/sf.b2c.mall.widget.loading",
