@@ -4,27 +4,38 @@ define(
   [
     'can',
     'zepto',
-    'store'
+    'store',
+    'sf.env.switcher'
   ],
 
-  function (can, $, store) {
+  function (can, $, store, SFSwitcher) {
 
     var SFFooter = can.Control.extend({
 
       init: function () {
 
-        var isHideAd = store.get('IS_HIDE_AD');
-        // 过期
-        if (isHideAd && (isHideAd - Date().now() > 30*24*60*60*1000)) {
-          store.remove('IS_HIDE_AD');
-          isHideAd = null;
-        }
+        var switcher = new SFSwitcher();
 
-        if (isHideAd) {
+        switcher.register('web', _.bind(function () {
+          var isHideAd = store.get('IS_HIDE_AD');
+          // 过期
+          if (isHideAd && (isHideAd - Date().now() > 30*24*60*60*1000)) {
+            store.remove('IS_HIDE_AD');
+            isHideAd = null;
+          }
+
+          if (isHideAd) {
+            this.element.find('.downloadapp').hide();
+          }else{
+            this.element.find('.downloadapp').show();
+          }
+        }, this));
+
+        switcher.register('app', _.bind(function () {
           this.element.find('.downloadapp').hide();
-        }else{
-          this.element.find('.downloadapp').show();
-        }
+        }, this));
+
+        switcher.go();
       },
 
       '.downloadapp-close click': function ($element, event) {
