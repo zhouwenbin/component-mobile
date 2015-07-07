@@ -17,7 +17,7 @@ define(
   function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, SFHeader, template_center_invitationbag) {
 
     SFFrameworkComm.register(3);
-    var bagid = 245;
+    var bagid = 286;
 
     var myInvitation = can.Control.extend({
 

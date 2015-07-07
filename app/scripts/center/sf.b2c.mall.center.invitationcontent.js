@@ -23,7 +23,7 @@ define('sf.b2c.mall.center.invitationcontent', [
 
     Fastclick.attach(document.body);
 
-    var bagid = "245";
+    var bagid = "286";
     var userid = null;
 
     return can.Control.extend({
