@@ -1,7 +1,7 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.page.detailmxi', [
+  'sf.b2c.mall.page.detailmix', [
     'can',
     'zepto',
     'underscore',
@@ -11,10 +11,11 @@ define(
     'sf.helpers',
     'sf.b2c.mall.business.config',
     'text!template_detail_mix',
-    'sf.b2c.mall.api.product.findMixDiscountProducts'
+    'sf.b2c.mall.api.product.findMixDiscountProducts',
+    'sf.b2c.mall.api.shopcart.addItemsToCart'
   ],
 
-  function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFConfig, template_detail_mix, SFFindMixDiscountProducts) {
+  function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFConfig, template_detail_mix, SFFindMixDiscountProducts, SFAddItemToCart) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
@@ -29,11 +30,10 @@ define(
 
       render: function() {
         var that = this;
-        var param =
-          var params = can.deparam(window.location.search.substr(1));
+        var params = can.deparam(window.location.search.substr(1));
         var findMixDiscountProducts = new SFFindMixDiscountProducts({
-          'itemId': param.itemid,
-          'activityId': param.activityId
+          'itemId': 1,//param.itemid,
+          'activityId': 100353//param.activityId
         });
         findMixDiscountProducts.sendRequest()
           .done(function(data) {
@@ -113,10 +113,12 @@ define(
 
             })
         }
+
+
       }
 
     });
 
-    new pageDetailMix();
+    new pageDetailMix('body');
 
   });

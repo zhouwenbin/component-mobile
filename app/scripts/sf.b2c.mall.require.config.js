@@ -205,7 +205,7 @@ requirejs.config({
     'sf.b2c.mall.adapter.detailcontent': 'scripts/adapter/sf.b2c.mall.adapter.detailcontent',
     
     //商品详情搭配购买
-    'sf.b2c.mall.page.detailmix': 'scripts/shop/sf.b2c.mall.page.detailmix',
+    'sf.b2c.mall.page.detailmix': 'scripts/page/sf.b2c.mall.page.detailmix',
 
     //店铺
     'sf.b2c.mall.shop.detail': 'scripts/shop/sf.b2c.mall.shop.detail',
