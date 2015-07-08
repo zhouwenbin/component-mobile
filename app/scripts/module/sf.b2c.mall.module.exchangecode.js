@@ -11,6 +11,9 @@ define(
     ],
 
     function(text, can, $, cookie, SFFrameworkComm, SFSwitcher, SFHybrid, template_exchange_code) {
+
+        can.route.ready();
+
         // －－－－－－－－－－－－－－－－－－－－－－
         // 启动分支逻辑
         var switcher = new SFSwitcher();
@@ -31,6 +34,12 @@ define(
 
                 calculateExchangeCode: function() {
                     var _aid = $.fn.cookie('_aid') || '3';
+
+                    var cookieInfo = can.route.attr('cookieInfo');
+                    if (cookieInfo) {
+                        $.fn.cookie(_aid + '_uinfo', cookieInfo);
+                    }
+
                     var uinfo = $.fn.cookie(_aid + '_uinfo');
                     var arr = [];
                     if (uinfo) {
