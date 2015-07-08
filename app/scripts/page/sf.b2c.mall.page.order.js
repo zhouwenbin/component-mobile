@@ -11,12 +11,17 @@ define(
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
     'sf.hybrid',
-    'sf.b2c.mall.component.nav'
+    'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.widget.loading'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, SFWeixin, SFConfig, SFSwitcher, SFHybrid, SFNav) {
+  function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, SFWeixin, SFConfig,
+    SFSwitcher, SFHybrid, SFNav, SFLoading) {
+
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
     SFWeixin.shareIndex();
+
+    var loadingCtrl = new SFLoading();
 
     var SFOrder = can.Control.extend({
 
@@ -43,6 +48,10 @@ define(
     var switcher = new SFSwitcher();
 
     switcher.register('web', function() {
+
+      // 显示蒙层
+      loadingCtrl.show();
+
       new SFOrder('#order');
       new SFNav('.sf-b2c-mall-nav');
     });

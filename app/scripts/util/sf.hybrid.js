@@ -182,6 +182,10 @@ define(
 
       remove: function(key) {
         sf.notificationCenter.remove(key)
+      },
+
+      post: function (key, params) {
+        sf.notificationCenter.post(key, params)
       }
     }
 
@@ -203,6 +207,49 @@ define(
       }, false);
     }
 
+    var run = function (key, params) {
+      var map = {
+        'updateCartNumber': 'NotificationAddedCart'
+      };
+
+      var urlscheme = 'sfht://service/pluginHelper?plugin=SFNotificationCenter&method=post&params=["' + map[key] + '", ' + JSON.stringify(params) + ']';
+
+      if ($('#apprunner').length == 0) {
+
+        var $el = $('<iframe id="apprunner" style="height:0px"></iframe>');
+        $el.attr('src', urlscheme);
+
+        $('body').append($el);
+      }else{
+        $('#apprunner').attr('src', urlscheme);
+      }
+
+      return false;
+    };
+
+    var h5share = function (title, description, imageUrl, url) {
+      var params = {
+        "subject": title,
+        "description": description,
+        "imageUrl": imageUrl,
+        "url": url
+      };
+
+      var urlscheme = 'sfht://service/pluginHelper?plugin=SocialSharing&method=share&params='+ encodeURIComponent('[' + JSON.stringify(params) + ']');
+
+      if ($('#apprunner').length == 0) {
+
+        var $el = $('<iframe id="apprunner" style="height:0px"></iframe>');
+        $el.attr('src', urlscheme);
+
+        $('body').append($el);
+      }else{
+        $('#apprunner').attr('src', urlscheme);
+      }
+
+      return false;
+    };
+
     return {
       login: login,
       isLogin: isLogin,
@@ -215,7 +262,9 @@ define(
       setNetworkListener: setNetworkListener,
       toRoot: toRoot,
       toast: toast,
-      notification: sfnotifivation
+      notification: sfnotifivation,
+      run: run,
+      h5share: h5share
     }
 
   });

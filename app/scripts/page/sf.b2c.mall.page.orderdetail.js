@@ -10,14 +10,17 @@ define(
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.component.nav',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.widget.loading',
   ],
 
-  function(can, $, SFFrameworkComm, SFOrderDetailContent, SFWeixin, SFConfig, SFNav, SFSwitcher, SFHybrid) {
+  function(can, $, SFFrameworkComm, SFOrderDetailContent, SFWeixin, SFConfig, SFNav, SFSwitcher, SFHybrid, SFLoading) {
 
     SFFrameworkComm.register(3);
 
     SFWeixin.shareIndex();
+
+    var loadingCtrl = new SFLoading();
 
     var SFOrderDetail = can.Control.extend({
 
@@ -47,6 +50,11 @@ define(
     var switcher = new SFSwitcher();
 
     switcher.register('web', function() {
+
+      // 显示蒙层
+      // $('.loadingDIV').show();
+      loadingCtrl.show();
+
       new SFOrderDetail('#order');
       new SFNav('.sf-b2c-mall-nav');
     });
@@ -70,6 +78,8 @@ define(
           // SFHybrid.sfnavigator.setLeftButton(function () {
           //   SFHybrid.sfnavigator.popToIdentifier('history');
           // });
+
+          loadingCtrl.show();
 
           SFHybrid.setNetworkListener();
           SFHybrid.isLogin().done(function () {

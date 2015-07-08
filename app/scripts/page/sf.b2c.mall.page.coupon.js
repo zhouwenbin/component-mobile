@@ -13,13 +13,16 @@ define(
     'text!template_center_coupon',
     'sf.env.switcher',
     'sf.hybrid',
-    'sf.b2c.mall.component.nav'
+    'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.widget.loading'
   ],
   function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode,
-    template_center_coupon, SFSwitcher, SFHybrid, SFNav) {
+    template_center_coupon, SFSwitcher, SFHybrid, SFNav, SFLoading) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
+
+    var loadingCtrl = new SFLoading();
 
     var coupon = can.Control.extend({
       itemObj: new can.Map({
@@ -53,6 +56,9 @@ define(
           return false;
         }
 
+        // 显示蒙层
+        loadingCtrl.show();
+
         this.render();
       },
 
@@ -67,7 +73,7 @@ define(
             that.element.html(html);
           })
           .always(function() {
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           });
       },
 

@@ -5,11 +5,18 @@ define('sf.util', [
   'can',
   'underscore',
   'md5',
-  'store'
-], function($, can, _, md5, store) {
+  'store',
+  'sf.b2c.mall.business.config'
+], function($, can, _, md5, store, config) {
 
   //$(window).hashchange();
   can.route.ready();
+
+  window.getShareIcon = function () {
+    var src = $('#icon').attr('data-src');
+    return src || 'false';
+  }
+
 
   return {
     checkEmail: function(data) {
@@ -49,19 +56,41 @@ define('sf.util', [
         return navigator.userAgent.match(/AlipayClient/i);
       },
       APP: function() {
+        var isApp = config.setting['is_app'] || store.get('IS_APP');
+
         var hash = window.location.hash;
         var search = window.location.search;
-
         var whole = search + hash;
 
-        if (whole.indexOf('platform=android') > -1) {
+        if (isApp) {
+          return isApp;
+        }else if (whole.indexOf('platform=android') > -1) {
+          store.set('IS_APP', 'android');
           return 'android';
         } else if (whole.indexOf('platform=ios') > -1) {
+          store.set('IS_APP', 'ios');
           return 'ios';
         } else {
           return false;
         }
       },
+
+      onlineApp: function () {
+        if (this.APP() && !window.sf) {
+          return true;
+        }else{
+          return false;
+        }
+      },
+
+      localApp: function () {
+        if (this.APP() && window.sf) {
+          return true;
+        }else{
+          return false;
+        }
+      },
+
       any: function() {
         return (this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows()) || this.Firefox();
       }
