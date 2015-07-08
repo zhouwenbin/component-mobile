@@ -543,7 +543,7 @@ define(
 
         switcher.register('app', _.bind(function(){
 
-          if (this.options.data.scopeGroups.length > 0 && SFFn.isMobile.Android()) {
+          if (this.options.data.scopeGroups.length > 0 || SFFn.isMobile.Android()) {
             this.element.html(html);
           }
 
