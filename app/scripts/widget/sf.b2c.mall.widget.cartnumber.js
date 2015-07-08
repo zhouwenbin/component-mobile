@@ -7,10 +7,11 @@ define(
     'underscore',
     'sf.b2c.mall.api.minicart.getTotalCount',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.util'
   ],
 
-  function (_, SFGetTotalCount, SFSwitcher, SFHybrid) {
+  function (_, SFGetTotalCount, SFSwitcher, SFHybrid, SFFn) {
 
     return function (success, error) {
 
@@ -27,7 +28,10 @@ define(
         var getTotalCount = new SFGetTotalCount();
         getTotalCount.sendRequest()
           .done(function (data) {
-            SFHybrid.run('updateCartNumber', {amount: data.value});
+
+            if (SFFn.isMobile.iOS()) {
+              SFHybrid.run('updateCartNumber', {amount: data.value});
+            }
 
             if (_.isFunction(success)) {
               success(data);
