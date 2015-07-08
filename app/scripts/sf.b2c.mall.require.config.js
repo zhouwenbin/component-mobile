@@ -203,6 +203,9 @@ requirejs.config({
     'sf.b2c.mall.page.detail': 'scripts/page/sf.b2c.mall.page.detail',
     'sf.b2c.mall.product.detailcontent': 'scripts/product/sf.b2c.mall.product.detailcontent',
     'sf.b2c.mall.adapter.detailcontent': 'scripts/adapter/sf.b2c.mall.adapter.detailcontent',
+    
+    //商品详情搭配购买
+    'sf.b2c.mall.page.detailmix': 'scripts/shop/sf.b2c.mall.page.detailmix',
 
     //店铺
     'sf.b2c.mall.shop.detail': 'scripts/shop/sf.b2c.mall.shop.detail',
@@ -371,6 +374,7 @@ requirejs.config({
 
     'sf.mediav': 'scripts/util/sf.mediav',
 
-    'template_shop_detail': 'templates/shop/sf.b2c.mall.shop.detail.mustache'
+    'template_shop_detail': 'templates/shop/sf.b2c.mall.shop.detail.mustache',
+    'template_detail_mix': 'templates/product/sf.b2c.mall.product.detailmix.mustache',
   }
 });
