@@ -1,9 +1,7 @@
-$('.wp-inner').fullpage({
-  loop:true
-});
+$('.wp-inner').fullpage();
 $(function(){
-	$('.icon1').click(function(){
-		$('.page1 .photo').addClass('active');
+	$('.page1 .icon1').click(function(){
+		$('.page1').addClass('active');
 		$(this).hide();
 	})
 	var index = 0;
@@ -11,7 +9,6 @@ $(function(){
 		if(index<11){
 			$('.people>li').eq(11-index).addClass('active');
 			index++;
-			console.log(index)
 		}
 		
 		
@@ -20,11 +17,32 @@ $(function(){
 		if(index>0){
 			$('.people>li').eq(12-index).removeClass('active');		
 			index--;
-			console.log(index)
 		}
 			
 	})
+	$('.people').swipeRight(function(){
+		if(index<11){
+			$('.people>li').eq(11-index).addClass('active');
+			index++;
+		}
+	})
+	$('.people').swipeLeft(function(){
+		if(index>0){
+			$('.people>li').eq(12-index).removeClass('active');		
+			index--;
+		}
+	})
 	$('.tab li').click(function(){
 		$(this).addClass('active').siblings().removeClass('active');
+	})
+	$('.page3 .a2').click(function(){
+		$('.dialog-phone').removeClass('hide');
+	})
+	$('.dialog-phone .btn').click(function(){
+		$('.dialog-phone').addClass('hide');
+		$('.dialog-success').removeClass('hide');
+	})
+	$('.dialog-success .btn').click(function(){
+		$('.dialog-success').addClass('hide');
 	})
 })
