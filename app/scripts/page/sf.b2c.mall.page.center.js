@@ -12,15 +12,20 @@ define(
     'sf.b2c.mall.api.user.logout',
     'sf.weixin',
     'sf.b2c.mall.business.config',
-    'text!template_center_content'
+    'text!template_center_content',
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.component.nav'
   ],
-  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin, SFConfig, template_center_content) {
+  function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin,
+    SFConfig, template_center_content, SFLoading, SFNav) {
 
     Fastclick.attach(document.body);
 
     SFFrameworkComm.register(3);
 
     SFWeixin.shareIndex();
+
+    var loadingCtrl = new SFLoading();
 
     var center = can.Control.extend({
 
@@ -34,6 +39,8 @@ define(
           return false;
         }
 
+        // 显示蒙层
+        loadingCtrl.show();
         this.render();
       },
 
@@ -46,6 +53,10 @@ define(
         getUserInfo
           .sendRequest()
           .done(function(data) {
+
+            //获得userid
+            that.userId = data.userId;
+
             if (store.get('type') == 'MOBILE') {
               that.options.welcomeName = that.maskMobile(data.mobile);
             } else if (store.get('type') == 'MAIL') {
@@ -64,10 +75,10 @@ define(
             var html = renderFn(that.options);
             that.element.html(html);
 
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           })
           .fail(function(error) {
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           })
       },
 
@@ -83,10 +94,14 @@ define(
         window.location.href = SFConfig.setting.link.recaddrmanage;
       },
 
-        '.mypoint click': function(element, event) {
-            window.location.href = SFConfig.setting.link.mypoint;
-           // window.location.href = 'http://m.sfht.com/mypoint.html';
-        },
+      '.myinvitation click': function() {
+        window.location.href = "http://m.sfht.com/invitation.html?_src=" + this.userId;
+      },
+
+      '.mypoint click': function(element, event) {
+          window.location.href = SFConfig.setting.link.mypoint;
+         // window.location.href = 'http://m.sfht.com/mypoint.html';
+      },
 
       maskMobile: function(str) {
         if (typeof str == 'undefined') {
@@ -137,5 +152,7 @@ define(
       }
     });
 
+    // render导航
+    new SFNav('.sf-b2c-mall-nav');
     new center('.sf-b2c-mall-center');
   })

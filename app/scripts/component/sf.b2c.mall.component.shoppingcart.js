@@ -22,11 +22,13 @@ define(
     'text!template_order_shoppingcart',
     'sf.b2c.mall.api.shopcart.isShowCart',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.widget.cartnumber'
   ],
 
   function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart,
-    SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid) {
+    SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid, SFLoading, SFWidgetCartNumber) {
     // 在页面上使用fastclick
     Fastclick.attach(document.body);
 
@@ -34,6 +36,7 @@ define(
     SFFrameworkComm.register(3);
 
     var LIMITED_PRICE = 1000 * 100;
+    var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
 
@@ -306,7 +309,7 @@ define(
       },
 
       requestError: function() {
-        $('.loadingDIV').hide();
+        loadingCtrl.hide();
       },
 
       requestFactory: function(tag, cparams) {
@@ -349,7 +352,7 @@ define(
 
         var fn = map[tag];
         if (_.isFunction(fn)) {
-          $('.loadingDIV').show();
+          loadingCtrl.show();
           fn.call(this, cparams);
         }
       },
@@ -404,7 +407,7 @@ define(
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
 
-        if (good.quantity > 0) {
+        if (good.quantity - 1 > 0) {
           good.quantity = good.quantity - 1;
           this.requestFactory('updatenum', good);
         }
@@ -526,16 +529,39 @@ define(
       paint: function(data) {
 
         this.options.data = new can.Map(data);
-
         var renderFn = can.mustache(template_order_shoppingcart);
         var html = renderFn(this.options.data, this.helpers);
 
-        this.element.html(html);
+        var switcher = new SFSwitcher();
 
-        can.trigger(window, 'updateCart');
+        switcher.register('web', _.bind(function(){
+          this.element.html(html);
+          can.trigger(window, 'updateCart');
+          new SFWidgetCartNumber();
+          loadingCtrl.hide();
+        }, this));
+
+        switcher.register('app', _.bind(function(){
+
+          if (this.options.data.scopeGroups.length > 0 && SFFn.isMobile.Android()) {
+            this.element.html(html);
+          }
+
+          can.trigger(window, 'updateCart');
+          new SFWidgetCartNumber();
+          loadingCtrl.hide();
+        }, this));
+
+        switcher.go();
+
+        // this.element.html(html);
+
+        // can.trigger(window, 'updateCart');
+
+        // new SFWidgetCartNumber();
 
         // $('.overflow-num').show();
-        $('.loadingDIV').hide();
+        // loadingCtrl.hide();
 
         // setTimeout(function() {
         //   $('.overflow-num').hide();

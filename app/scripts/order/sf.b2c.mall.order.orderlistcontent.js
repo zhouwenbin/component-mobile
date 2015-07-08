@@ -16,9 +16,11 @@ define('sf.b2c.mall.order.orderlistcontent', [
     'sf.b2c.mall.business.config',
     'sf.env.switcher',
     'text!template_order_orderlist',
-    'sf.b2c.mall.api.shopcart.addItemsToCart' // 添加购物车接口
+    'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
+    'sf.b2c.mall.widget.loading'
   ],
-  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher, template_order_orderlist, SFAddItemToCart) {
+  function(can, $, SFGetOrderList, OrderFn, SFHelpers, SFFn, SFMessage, SFConfig, SFSwitcher,
+    template_order_orderlist, SFAddItemToCart, SFLoading) {
 
     var DEFAULT_PAGE_NUM = 1;
     var DEFAULT_PAGE_SIZE = 50;
@@ -27,6 +29,8 @@ define('sf.b2c.mall.order.orderlistcontent', [
     var PREFIX = 'http://img0.sfht.com';
     var DEFAULT_STATUS = '';
     var DEFAULT_ANIMATE_TIME = 3000;
+
+    var loadingCtrl = new SFLoading();
 
     can.route.ready();
 
@@ -162,7 +166,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
           })
         };
 
-        can.$('.loadingDIV').show();
+        loadingCtrl.show();
         var getOrderList = new SFGetOrderList(params);
         getOrderList.sendRequest().done(_.bind(this.paint, this));
       },
@@ -178,8 +182,10 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
 
-        can.$('.loadingDIV').hide();
-        //this.initLoadDataEvent();
+        loadingCtrl.hide();
+
+        // can.$('.loadingDIV').hide();
+        // this.initLoadDataEvent();
       },
 
       /**
@@ -228,7 +234,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var getOrderList = new SFGetOrderList(params);
         getOrderList.sendRequest().done(function(data) {
           that.options.data.attr("supplement.onLoadingData", false);
-          
+
           _.each(data.orders, function(item) {
             that.options.data.orders.push(item);
           });
@@ -342,7 +348,16 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var switcher = new SFSwitcher();
 
         switcher.register('web', function () {
-          window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
+          var link = SFConfig.setting.link.orderlist;
+
+          if (link.indexOf('?') > -1) {
+            link = link + '&' + $.param(params);
+          }else{
+            link = link + '?' + $.param(params);
+          }
+
+          window.location.href = link;
+          // window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
         });
 
         switcher.register('app', function () {
