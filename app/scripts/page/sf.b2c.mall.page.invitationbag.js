@@ -6,6 +6,7 @@ define(
     'zepto',
     'fastclick',
     'sf.weixin',
+    'sf.b2c.mall.api.coupon.hasReceivedCp',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.business.config',
@@ -14,10 +15,10 @@ define(
     'text!template_center_invitationbag'
   ],
 
-  function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, SFHeader, template_center_invitationbag) {
+  function(can, $, Fastclick, SFWeixin, SFHasReceivedCp, SFFrameworkComm, SFInvitationcontent, SFBusiness, SFNav, SFHeader, template_center_invitationbag) {
 
     SFFrameworkComm.register(3);
-    var bagid = 286;
+    var bagid = 230;
 
     var myInvitation = can.Control.extend({
 
@@ -33,6 +34,7 @@ define(
           return false;
         }
 
+
         this.render();
       },
 
@@ -41,17 +43,39 @@ define(
        */
       render: function() {
         // 列表区域
+        var that = this;
+
         this.data = {};
         this.data.bagid = bagid;
 
         SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", this.data.bagid);
 
-        var renderFn = can.mustache(template_center_invitationbag);
-        this.options.html = renderFn(this.data, this.helpers);
-        this.element.html(this.options.html);
+        can.when(that.initHasReceivedCp(bagid))
+          .then(function() {
 
-        requirejs(['sf.b2c.mall.module.getcoupon']);
-        new SFNav('.sf-b2c-mall-nav');
+
+            var renderFn = can.mustache(template_center_invitationbag);
+            that.options.html = renderFn(that.data, that.helpers);
+            that.element.html(that.options.html);
+
+            requirejs(['sf.b2c.mall.module.getcoupon']);
+            new SFNav('.sf-b2c-mall-nav');
+          });
+      },
+
+      initHasReceivedCp: function(bagId) {
+        var that = this;
+        var params = {
+          "bagId": bagId,
+          "bagType": "CARD"
+        };
+
+        var hasReceivedCp = new SFHasReceivedCp(params);
+
+        return hasReceivedCp.sendRequest()
+          .done(function(boolResp) {
+            that.data.isHasReceived = boolResp.value;
+          })
       }
     });
 
