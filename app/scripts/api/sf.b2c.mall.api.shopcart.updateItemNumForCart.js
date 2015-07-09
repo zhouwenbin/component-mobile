@@ -29,11 +29,7 @@ function($, can, _, Comm, SecurityType) {
         'num': 'int',
       },
       OPTIONAL: {
-<<<<<<< HEAD
         'mainItemId': 'string'
-=======
-        'mainItemId': 'int'
->>>>>>> master
       },
       VERIFY:{
       },
