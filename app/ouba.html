@@ -7,10 +7,32 @@
 
     <!-- build:css({app, .tmp}) styles/sf.b2c.ouba.css -->
     <link rel="stylesheet" href="static/css/young.css">
-    <link rel="stylesheet" href="static/lib/zepto.fullpage/src/zepto.fullPage.css">
     <!-- endbuild -->
 
     <style type="text/css">
+        .fullPage-wp{
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+        .fullPage-wp:after {
+            display: block;
+            content: ' ';
+            height: 0;
+            clear: both;
+        }
+        .fullPage-wp.anim{
+            -webkit-transition: all 500ms ease-out 0s;
+            transition: all 500ms ease-out 0s;
+        }
+        .fullPage-page{
+            display: block;
+            overflow: hidden;
+        }
+
+        .fullPage-dir-h {
+            float: left;
+        }
+
         .text-error{
             color:#FF5B54;
             font-size:25px;
@@ -224,7 +246,7 @@
     <a class="next" href="javascript:"></a>
 
     <footer>
-        <div class="bar"><div class="bar-current" style="width:80%;"></span></div>
+        <div class="bar"><div class="bar-current" style="width:80%;"></div></div>
             <div class="page3-r1">他已经被扒<span id="clickNum">80，000</span>下</div>
             <div class="page3-r2">
                 <a href="javascript:" class="a1"><div>扒下他（<span id="clickTimes">10</span>）</div><span>每日更新</span></a>
