@@ -32,14 +32,15 @@ define(
         var that = this;
         var params = can.deparam(window.location.search.substr(1));
         var findMixDiscountProducts = new SFFindMixDiscountProducts({
-          'itemId': 1,//param.itemid,
-          'activityId': 100353//param.activityId
+          'itemId': 1, //param.itemid,
+          'activityId': 100353 //param.activityId
         });
         findMixDiscountProducts.sendRequest()
           .done(function(data) {
             that.options.data = new can.Map(data);
-            var html = can.view(template_detail_mix);
-            $('body').append(html(that.options.data));
+            var renderFn = can.mustache(template_detail_mix);
+            var html = renderFn(that.options.data, that.helpers);
+            $('body').append(html);
           })
       },
 
