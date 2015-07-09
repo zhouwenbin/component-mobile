@@ -215,21 +215,6 @@ define('sf.b2c.mall.center.invitationcontent', [
         }
       },
 
-      "#viewrule click": function(element, event) {
-        event && event.preventDefault();
-        $(".m-dialog").show();
-      },
-
-      ".close click": function(element, event) {
-        event && event.preventDefault();
-        $(".m-dialog").hide();
-      },
-
-      '.m-dialog click': function(element, event) {
-        event && event.preventDefault();
-        $(".m-dialog").hide();
-      },
-
       "#switchwiew click": function(element, event) {
         $('.invite-account-b').toggleClass('active');
       },
