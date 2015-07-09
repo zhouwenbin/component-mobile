@@ -79,7 +79,7 @@ define(
                             index--;
                             that.changFresh(index);
                         }
-                    })
+                    })   
 //                    $('.people').swipeRight(function(){
 //                        if(index<11){
 //                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
