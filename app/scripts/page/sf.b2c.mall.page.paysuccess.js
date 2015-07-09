@@ -14,10 +14,11 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
-    'sf.b2c.mall.api.minicart.getTotalCount'
+    'sf.b2c.mall.api.minicart.getTotalCount',
+    'sf.b2c.mall.widget.cartnumber',
   ],
   function(can, $, Fastclick, SFFrameworkComm, SFFn, SFConfig, helpers, SFGetOrder,
-    template_order_paysuccess, SFSwitcher, SFHybrid, SFNav, SFMinicartGetcount) {
+    template_order_paysuccess, SFSwitcher, SFHybrid, SFNav, SFMinicartGetcount, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -132,16 +133,27 @@ define(
         element.html(html);
 
         var that = this;
-        var getcount = new SFMinicartGetcount();
-        getcount.sendRequest()
-                .done(function (data) {
-                  if (data.value) {
-                    that.element.find('.gotocart').show();
-                  }
-                })
-                .fail(function () {
 
-                })
+        // 兼容app更新购物车数字
+        var success = function (data) {
+          if (data.value) {
+            that.element.find('.gotocart').show();
+          }
+        };
+
+        var error = function () {};
+        new SFWidgetCartNumber(success, error);
+
+        // var getcount = new SFMinicartGetcount();
+        // getcount.sendRequest()
+        //   .done(function (data) {
+        //     if (data.value) {
+        //       that.element.find('.gotocart').show();
+        //     }
+        //   })
+        //   .fail(function () {
+
+        //   })
       }
     });
     // new paysuccess('.sf-b2c-mall-order-paysuccess');

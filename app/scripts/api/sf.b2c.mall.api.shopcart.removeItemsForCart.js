@@ -25,7 +25,11 @@ function($, can, _, Comm, SecurityType) {
       METHOD_NAME: 'shopcart.removeItemsForCart',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
+<<<<<<< HEAD
         'items': 'json'
+=======
+        '删除商品列表': 'json'
+>>>>>>> master
       },
       OPTIONAL: {
       },

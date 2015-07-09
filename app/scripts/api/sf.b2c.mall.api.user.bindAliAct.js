@@ -33,7 +33,10 @@ function($, can, _, Comm, SecurityType) {
       VERIFY:{
       },
       ERROR_CODE: {
+<<<<<<< HEAD
         '1000440': '已绑定支付宝账户'
+=======
+>>>>>>> master
       }
     }
   });

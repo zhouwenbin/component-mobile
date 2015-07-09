@@ -13,10 +13,13 @@ define(
     'text!template_widget_header_ad',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
     'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
-    'sf.b2c.mall.api.shopcart.isShowCart'
+    'sf.b2c.mall.api.shopcart.isShowCart',
+    'sf.hybrid',
+    'sf.b2c.mall.widget.cartnumber',
   ],
 
-  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart) {
+  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm,
+    template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
     SFComm.register(3);
@@ -43,6 +46,7 @@ define(
         // app环境内隐藏头部
         switcher.register('app', _.bind(function() {
           this.element.hide();
+          // this.setShareBtn();
         }, this));
 
         // 根据逻辑环境进行执行
@@ -61,6 +65,21 @@ define(
         // 将更新购物车事件注册到window上
         // 其他地方添加需要更新mini购物车的时候调用can.trigger('updateCart')
         can.on.call(window, 'updateCart', _.bind(this.updateCart, this));
+
+        this.setCookie();
+      },
+
+      setCookie: function() {
+        // alert("get:" + $.fn.cookie('_ruser2'));
+        // alert(document.cookie);
+        var params = can.deparam(window.location.search.substr(1));
+
+        // if (params._src && !$.fn.cookie('_ruser')) {
+        if (params._src && !$.fn.cookie('_ruser')) {
+          $.fn.cookie('_ruser', params._src, {expires: 15, domain: '.sfht.com', path: '/'})
+        }
+
+        // alert("afterset:" + $.fn.cookie('_ruser'));
       },
 
       controlCart: function() {
@@ -76,31 +95,31 @@ define(
           // 如果判断开关关闭，使用dom操作不显示购物车
           if (typeof flag == 'undefined' || flag == '2') {
             $(".mini-cart-container-parent").hide();
-          }else if (flag == '0') {
+          } else if (flag == '0') {
             // @todo 请求总开关进行判断
             var isShowCart = new SFIsShowCart();
             isShowCart
               .sendRequest()
-              .done(function (data) {
+              .done(function(data) {
                 if (data.value) {
                   $(".mini-cart-container-parent").show();
-                }else{
+                } else {
                   $(".mini-cart-container-parent").hide();
                 }
               })
 
-          }else{
+          } else {
             $(".mini-cart-container-parent").show();
           }
-        }else{
+        } else {
           // @todo 暂时全局关闭购物车按钮
           var isShowCart = new SFIsShowCart();
           isShowCart
             .sendRequest()
-            .done(function (data) {
+            .done(function(data) {
               if (data.value) {
                 $(".mini-cart-container-parent").show();
-              }else{
+              } else {
                 $(".mini-cart-container-parent").hide();
               }
             });
@@ -123,7 +142,7 @@ define(
         if (SFComm.prototype.checkUserLogin.call(this)) {
           window.location.href = href;
         } else {
-          window.location.href = hrefLogin + '?from='+ encodeURIComponent(href);
+          window.location.href = hrefLogin + '?from=' + encodeURIComponent(href);
         }
       },
 
@@ -163,9 +182,9 @@ define(
 
               // 更新mini购物车
               can.trigger(window, 'updateCart');
-            }else{
+            } else {
 
-              var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
+              var $el = $('<section class="tooltip center overflow-num"><div>' + data.resultMsg + '</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();
@@ -197,17 +216,55 @@ define(
         if (SFComm.prototype.checkUserLogin.call(this)) {
           this.element.find('.mini-cart').show();
 
-          var getTotalCount = new SFGetTotalCount();
-          getTotalCount.sendRequest()
-            .done(function(data) {
-              // @description 将返回数字显示在头部导航栏
-              // 需要跳动的效果
-              that.element.find('.mini-cart-num').text(data.value).show();
-            })
-            .fail(function(data) {
-              // 更新mini cart失败，不做任何显示
-            });
+          var success = function (data) {
+            // @description 将返回数字显示在头部导航栏
+            // 需要跳动的效果
+            that.element.find('.mini-cart-num').text(data.value).show();
+          };
+
+          var error = function() {
+            // 更新mini cart失败，不做任何显示
+          };
+
+          new SFWidgetCartNumber(success, error);
+
+          // var getTotalCount = new SFGetTotalCount();
+          // getTotalCount.sendRequest()
+          //   .done(function(data) {
+          //     // @description 将返回数字显示在头部导航栏
+          //     // 需要跳动的效果
+          //     that.element.find('.mini-cart-num').text(data.value).show();
+          //   })
+          //   .fail(function(data) {
+          //     // 更新mini cart失败，不做任何显示
+          //   });
         }
+      },
+
+      setShareBtn: function () {
+        SFHybrid.sfnavigator.setRightButton('分享', null, function(){
+          // var imgUrl = detailContentInfo.itemInfo.basicInfo.images[0].thumbImgUrl;
+
+          // var hasURL = _.str.include(imgUrl, 'http://')
+          // if (!hasURL) {
+          //   imgUrl = 'http://img0.sfht.com/' + imgUrl;
+          // }
+
+          var message = {
+            subject: document.title,
+            description: $('meta[name=description]').attr('content'),
+            url: window.location.href,
+            imageUrl: 'http://img.sfht.com/sfhth5/1.1.86/img/luck.png'
+          };
+
+          SFHybrid.share(message)
+            .done(function () {
+              alert('感谢分享');
+            })
+            .fail(function () {
+
+            })
+        });
       },
 
       /**
@@ -230,7 +287,7 @@ define(
       "#banner-dialog click": function($el, event) {
         if ($(event.target).attr('id') != $el.attr('id')) {
           return false;
-        }else{
+        } else {
           window.location.href = "http://m.sfht.com/61.html";
         }
       },

@@ -13,11 +13,9 @@ define(
 
   function ($, can, SFFrameworkComm, SFBindAccount,SFWeixin) {
     SFFrameworkComm.register(3);
-
     SFWeixin.shareIndex();
 
-    var bindaccount = can.Control.extend({
-
+    var bindalipay = can.Control.extend({
 
       init:function(){
         this.render();
@@ -29,5 +27,5 @@ define(
 
     });
 
-    new bindaccount('body');
+    new bindalipay('body');
   });

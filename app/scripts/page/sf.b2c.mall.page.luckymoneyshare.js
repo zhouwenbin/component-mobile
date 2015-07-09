@@ -15,11 +15,14 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.widget.loading',
   ],
   function(can, $, Fastclick, SFWeixin, SFFrameworkComm, SFConfig, helpers, SFGetOrderShareBagInfo,
-    SFLuckyMoneyUsers, template_luckymoney_share, SFSwitcher, SFHybrid, SFNav) {
+    SFLuckyMoneyUsers, template_luckymoney_share, SFSwitcher, SFHybrid, SFNav, SFLoading) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
+
+    var loadingCtrl = new SFLoading();
 
     var luckymoneyshare = can.Control.extend({
       itemObj:  new can.Map({
@@ -27,6 +30,10 @@ define(
       }),
 
       init: function() {
+
+        // 显示蒙层
+        loadingCtrl.show();
+
         this.render();
       },
       render: function() {
@@ -53,7 +60,7 @@ define(
             that.renderHtml(that.element, that.itemObj);
             var sfLuckyMoneyUsers = new SFLuckyMoneyUsers(".users", {shareBagId: that.id});
             that.itemObj.attr("userCouponInfo", sfLuckyMoneyUsers.itemObj.userCouponInfo);
-            $('.loadingDIV').hide();
+            loadingCtrl.hide();
           });
       },
 
@@ -103,7 +110,7 @@ define(
             })
         });
 
-        switcher.registerOneCallbackExceptEnv('app', function() {
+        switcher.register('web', function() {
           that.itemObj.attr("isShowMask", true);
         });
 

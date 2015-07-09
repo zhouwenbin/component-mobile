@@ -260,7 +260,6 @@ module.exports = function (grunt) {
         blockReplacements: {
           js: function (block) {
 
-         //   console.log(!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js'));
             if (!config.hybrid && (block.dest == '../cordova.js' || block.dest == '/../cordova.js')) {
               return '';
             }
@@ -637,13 +636,15 @@ module.exports = function (grunt) {
               'scripts/sf.b2c.mall.h5.page.paysuccess.js',
               'scripts/sf.b2c.mall.h5.page.order.detail.js',
               'scripts/sf.b2c.mall.h5.page.order.list.js',
+              'scripts/sf.b2c.mall.h5.page.mypoint.js',
               'img/**',
               'styles/**',
               'order.html',
               'gotopay.html',
               'pay-success.html',
               'orderdetail.html',
-              'orderlist.html'
+              'orderlist.html',
+              'mypoint.html'
             ],
             dest: 'order'
           }
@@ -950,6 +951,80 @@ module.exports = function (grunt) {
           insertRequire: ['sf.b2c.mall.page.weixinlogintest']
         }
       },
+
+      invitation: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.invitation.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.invitation'
+          ],
+          insertRequire: ['sf.b2c.mall.page.invitation']
+        }
+      },
+
+      invitationshare: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.invitationshare.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.invitationshare'
+          ],
+          insertRequire: ['sf.b2c.mall.page.invitationshare']
+        }
+      },
+
+      invitationbag: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.invitationbag.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.module.getcoupon',
+            'sf.b2c.mall.page.invitationbag'
+          ],
+          insertRequire: ['sf.b2c.mall.page.invitationbag']
+        }
+      },
+
+      bindalipay: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.bindalipay.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.bindalipay'
+          ],
+          insertRequire: ['sf.b2c.mall.page.bindalipay']
+        }
+      },
+
       alipayframe: {
         options: {
           preserveLicenseComments: false,
@@ -1699,7 +1774,7 @@ module.exports = function (grunt) {
 
     config.version = version;
     config.hybrid = true;
-    config.target = 'prd';
+    config.target = 'hybrid';
 
     var base = [
       'clean:dist',

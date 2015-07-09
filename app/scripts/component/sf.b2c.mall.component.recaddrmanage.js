@@ -13,12 +13,15 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.widget.message',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.component.addreditor',
-  'text!template_component_recaddrmanage'
+  'text!template_component_recaddrmanage',
+  'sf.b2c.mall.widget.loading'
 ], function(can, $, Fastclick, SFDelRecAddress, SFDelRecvInfo, SFGetIDCardUrlList, SFGetRecAddressList, RegionsAdapter,
-  AddressAdapter, SFMessage, SFConfig, SFAddressEditor, template_component_recaddrmanage) {
+  AddressAdapter, SFMessage, SFConfig, SFAddressEditor, template_component_recaddrmanage, SFLoading) {
 
   can.route.ready();
   var DEFAULT_INIT_TAG = 'init';
+
+  var loadingCtrl = new SFLoading();
 
   return can.Control.extend({
 
@@ -71,7 +74,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
           //   that.editRecAddrClick($(this));
           // })
 
-          $('.loadingDIV').hide();
+          loadingCtrl.hide();
 
           //初始化进行回调绑定
           that.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-editAdrArea', {
@@ -83,7 +86,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
         })
         .fail(function(error) {
           console.error(error);
-          $('.loadingDIV').hide();
+          loadingCtrl.hide();
         })
     },
 

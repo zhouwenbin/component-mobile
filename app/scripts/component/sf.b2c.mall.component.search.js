@@ -25,10 +25,11 @@ define('sf.b2c.mall.component.search', [
   'sf.b2c.mall.api.shopcart.addItemsToCart',
   'sf.b2c.mall.api.shopcart.isShowCart',
   'sf.b2c.mall.api.minicart.getTotalCount',
-  'text!template_component_search'
+  'text!template_component_search',
+  'sf.b2c.mall.widget.cartnumber',
 ], function(text, $, cookie, can, _, md5, store, helpers, SFFrameworkComm, SFConfig, SFFn, SFMessage, SFLoading,
   SFSearchItem, SFSearchItemAggregation, SFGetProductHotDataList, SFAddItemToCart, SFIsShowCart, SFGetTotalCount,
-  template_component_search) {
+  template_component_search, SFWidgetCartNumber) {
 
   return can.Control.extend({
     helpers: {
@@ -874,7 +875,6 @@ define('sf.b2c.mall.component.search', [
     '#classify-select li .btn-search-close click': function(targetElement) {
       var role = targetElement.data("role");
 
-      var searchDataTemp = _.clone(this.searchData);
       delete searchDataTemp.page;
       delete searchDataTemp[role];
       this.gotoNewPage(searchDataTemp);
@@ -885,6 +885,7 @@ define('sf.b2c.mall.component.search', [
      * @param targerElement
      */
     "#pageUpBtn click": function(targetElement) {
+      var searchDataTemp = _.clone(this.searchData);
       var prevPage = this.renderData.prevPage;
 
       var searchDataTemp = _.clone(this.searchData);
@@ -994,13 +995,15 @@ define('sf.b2c.mall.component.search', [
         }
       } else {
 
-        if (SFFn.isMobile.APP()) {
-        //   flag = 1;
-          that.renderData.attr("isShowShoppintCart", false);
-          isShowFlag = false;
-        }else{
-          isShowFlag = true;
-        }
+        isShowFlag = true;
+
+        // if (SFFn.isMobile.APP()) {
+        // //   flag = 1;
+        //   that.renderData.attr("isShowShoppintCart", false);
+        //   isShowFlag = false;
+        // }else{
+        //   isShowFlag = true;
+        // }
       }
 
       // @todo 请求总开关进行判断
@@ -1111,14 +1114,24 @@ define('sf.b2c.mall.component.search', [
       if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
         this.element.find('.mini-cart-num').show();
 
-        var getTotalCount = new SFGetTotalCount();
-        getTotalCount.sendRequest()
-          .done(function(data) {
-            that.renderData.attr("miniShopCart.num", data.value);
-          })
-          .fail(function(data) {
-            // 更新mini cart失败，不做任何显示
-          });
+        var success = function (data) {
+          that.renderData.attr("miniShopCart.num", data.value);
+        };
+
+        var error = function() {
+          // 更新mini cart失败，不做任何显示
+        };
+
+        new SFWidgetCartNumber(success, error);
+
+        // var getTotalCount = new SFGetTotalCount();
+        // getTotalCount.sendRequest()
+        //   .done(function(data) {
+        //     that.renderData.attr("miniShopCart.num", data.value);
+        //   })
+        //   .fail(function(data) {
+        //     // 更新mini cart失败，不做任何显示
+        //   });
       }
     }
   });

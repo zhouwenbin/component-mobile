@@ -10,9 +10,12 @@ define(
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM',
-    'text!template_receivedividents'
+    'text!template_receivedividents',
+    'sf.b2c.mall.component.nav'
   ],
-  function(can, $, SFFrameworkComm, SFWeixin, SFMessage, SFLoading, SFConfig, SFGenerateSubjectUrlWidthSCM, template_receivedividents) {
+  function(can, $, SFFrameworkComm, SFWeixin, SFMessage, SFLoading, SFConfig,
+    SFGenerateSubjectUrlWidthSCM, template_receivedividents, SFNav) {
+
     SFFrameworkComm.register(3);
     SFWeixin.shareIndex();
 
@@ -49,6 +52,8 @@ define(
           title: title,
           desc: desc
         });
+
+        this.loading.show();
         this.render();
         this.supplement();
       },
@@ -127,5 +132,6 @@ define(
 
     });
 
+    new SFNav('.sf-b2c-mall-nav');
     new content('.sf-b2c-mall-receivedividents');
   });

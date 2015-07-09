@@ -2,6 +2,7 @@
 
 define('sf.b2c.mall.component.login', [
     'zepto',
+    'zepto.cookie',
     'can',
     'md5',
     'store',
@@ -17,7 +18,7 @@ define('sf.b2c.mall.component.login', [
     'text!template_component_login'
   ],
 
-  function($, can, md5, store, Fastclick,
+  function($, cookie, can, md5, store, Fastclick,
     SFConfig, SFLogin, SFNeedVfCode, SFFrameworkComm,
     SFFn, SFWeChatLogin, SFCheckUserExist, SFMessage, template_component_login) {
 
@@ -353,6 +354,7 @@ define('sf.b2c.mall.component.login', [
         this.component.login.sendRequest()
           .done(function(data) {
             if (data.userId) {
+              $.fn.cookie('userId', data.userId);
               that.data.attr('autologin');
 
               store.set('type', that.checkTypeOfAccount(that.data.attr('username')));
