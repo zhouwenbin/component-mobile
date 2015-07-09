@@ -33,12 +33,24 @@ define(
         getVoteNum.sendRequest()
           .done(function(data) {
             $("#votenum").text(data.voteTotalNum);
+
+            // var i = 0;
+            // var interval = setInterval(function(){
+            //     if (i <= data.voteTotalNum) {
+            //       $("#votenum").text(i);
+            //       i = i + 100;
+            //     } else {
+            //       clearInterval(interval)
+            //     }
+
+            // }, 0.1);
           })
           .fail(function(error) {
             console.error(error)
           })
 
         $("#sharefriend").click(function(){
+          $("body,html").scrollTop(0);
           $("#sharearea").show();
         })
 
