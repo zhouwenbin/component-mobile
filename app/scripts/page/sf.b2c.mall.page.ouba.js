@@ -87,7 +87,7 @@ define(
                         if(index<11){
                             $('.people>li').eq(11-index).addClass('active');
                             index++;
-                            $(".tab li").eq(0)..addClass('active').siblings().removeClass('active');
+                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
 //                            that.changeImg();
                         }
                     })
@@ -95,20 +95,20 @@ define(
                         if(index>0){
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
-                            $(".tab li").eq(0)..addClass('active').siblings().removeClass('active');
+                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
 //                            that.changeImg();
                         }
                     })
                     $('.people').swipeRight(function(){
                         if(index<11){
-                            $(".tab li").eq(0)..addClass('active').siblings().removeClass('active');
+                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
                             $('.people>li').eq(11-index).addClass('active');
                             index++;
                         }
                     })
                     $('.people').swipeLeft(function(){
                         if(index>0){
-                            $(".tab li").eq(0)..addClass('active').siblings().removeClass('active');
+                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
                             $('.people>li').eq(12-index).removeClass('active');
                             index--;
                         }
@@ -178,11 +178,11 @@ define(
                             .fail(function(error) {
                                 $("#username-error-tips").text('领优惠券失败！');
 //                                new SFMessage(null,{'type': 'error','tip':'领优惠券失败！'});
-                                return ;
+                                return  fase;
                             });
 
-                        $('.dialog-phone').addClass('hide');
-                        $('.dialog-success').removeClass('hide');
+//                        $('.dialog-phone').addClass('hide');
+//                        $('.dialog-success').removeClass('hide');
                     })
                     $('#goOn').click(function(){
                         $('.dialog-success').addClass('hide');
