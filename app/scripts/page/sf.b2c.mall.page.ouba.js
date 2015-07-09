@@ -76,7 +76,7 @@ define(
                 }
 
                 //初始化收个小鲜肉的投票数
-                this.changeImg();
+              //  this.changeImg();
                 $(function(){
                     $('.page1 .icon1').click(function(){
                         $('.page1').addClass('active');
@@ -99,20 +99,20 @@ define(
 //                            that.changeImg();
                         }
                     })
-                    $('.people').swipeRight(function(){
-                        if(index<11){
-                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-                            $('.people>li').eq(11-index).addClass('active');
-                            index++;
-                        }
-                    })
-                    $('.people').swipeLeft(function(){
-                        if(index>0){
-                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-                            $('.people>li').eq(12-index).removeClass('active');
-                            index--;
-                        }
-                    })
+//                    $('.people').swipeRight(function(){
+//                        if(index<11){
+//                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+//                            $('.people>li').eq(11-index).addClass('active');
+//                            index++;
+//                        }
+//                    })
+//                    $('.people').swipeLeft(function(){
+//                        if(index>0){
+//                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+//                            $('.people>li').eq(12-index).removeClass('active');
+//                            index--;
+//                        }
+//                    })
 
                     //tab切换
                     $('.tab li').click(function(){
@@ -244,7 +244,7 @@ define(
                                 ticketList = data.infos;
                                 var tickets = that.getTicketsByNo(ticketList, num);
                                 $("#clickNum").text(tickets);
-                                that.tabUnlock(tickets, num);
+                                that.tabUnlock(tickets);
                             })
                             .fail(function(error) {
                                 console.error(error);
@@ -287,28 +287,35 @@ define(
                 $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[freshNum-num][index]);
                 var tickets = this.getTicketsByNo(ticketList, num);
                 $("#clickNum").text( tickets);
-                this.tabUnlock(tickets, num);
+                this.tabUnlock(tickets);
             },
 
             //根据票数判断标签页是否解锁以及百分比滚动条
-            tabUnlock: function(num, index){
+            tabUnlock: function(num){
                 if(num > mi){
-                    $(".people>li").eq(index).find(".tab li").removeClass("lock").addClass("unlock");
+                    $(".tab li").removeClass("tab-lock");
+                    $(".tab li").find("span").removeClass("lock").addClass("unlock");
                     $(".bar-current").css("width","100%");
                 }
                 else if(num > banLuo){
-                    $(".people>li").eq(index).find(".tab li").removeClass("lock").addClass("unlock");
-                    $(".people>li").eq(index).find(".tab li").eq(3).removeClass("unlock").addClass("lock");
+                    $(".tab li").removeClass("tab-lock");
+                    $(".tab li").eq(3).addClass("tab-lock");
+                    $(".tab li").find("span").removeClass("lock").addClass("unlock");
+                    $(".tab li").eq(3).find("span").removeClass("unlock").addClass("lock");
                     $(".bar-current").css("width","75%");
                 }
                 else if(num > xiaoXiu){
-                    $(".people>li").eq(index).find(".tab li").removeClass("unlock").addClass("lock");
-                    $(".people>li").eq(index).find(".tab li").lt(2).removeClass("lock").addClass("unlock");
+                    $(".tab li").addClass("tab-lock");
+                    $(".tab li").lt(2).removeClass("tab-lock");
+                    $(".tab li").find("span").removeClass("lock").addClass("unlock");
+                    $(".tab li").lt(2).find("span").removeClass("unlock").addClass("lock");
                     $(".bar-current").css("width","50%");
                 }
                 else {
-                    $(".people>li").eq(index).find(".tab li").removeClass("unlock").addClass("lock");
-                    $(".people>li").eq(index).find(".tab li").eq(0).removeClass("lock").addClass("unlock");
+                    $(".tab li").addClass("lock");
+                    $(".tab li").lt(2).removeClass("tab-lock");
+                    $(".tab li").find("span").removeClass("unlock").addClass("lock");
+                    $(".tab li").eq(1).find("span").removeClass("lock").addClass("unlock");
                     $(".bar-current").css("width","25%");
                 }
             }
