@@ -21,6 +21,8 @@ define('sf.b2c.mall.module.getcoupon', [
     SFFrameworkComm.register(3);
 
     var getCoupon = can.Control.extend({
+
+      isPromptSuccess: true,
       /**
        * @override
        * @description 初始化方法
@@ -53,6 +55,13 @@ define('sf.b2c.mall.module.getcoupon', [
             params.smsCon = smsCon;
           }
 
+          var isPromptSuccess = $(targetElement.target).data('isPromptSuccess');
+          if ((typeof isPromptSuccess != "undefined") && isPromptSuccess === false)  {
+            that.isPromptSuccess = false;
+          } else {
+            that.isPromptSuccess = true;
+          }
+          
           that.receiveCpCodeData(params);
         });
 
@@ -69,33 +78,6 @@ define('sf.b2c.mall.module.getcoupon', [
         "11000140": "卡包已作废"
       },
 
-      // action: function(targetElement, this) {
-      //   if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-      //     new SFMessage(null, {
-      //       'tip': '抱歉！需要登录后才可以领取优惠券！',
-      //       'type': 'success',
-      //       'okFunction': function(){
-      //         window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
-      //       }
-      //     });
-      //     return false;
-      //   }
-
-      //   var params = {
-      //     bagId: $(targetElement.target).data('cms-couponbagid'),
-      //     type: $(targetElement.target).data('cms-coupontype')
-      //   }
-      //   var needSms = $(targetElement.target).data('needsms');
-      //   var smsCon = $(targetElement.target).data('smscon');
-      //   if (needSms) {
-      //     params.needSms = needSms;
-      //   }
-      //   if (smsCon) {
-      //     params.smsCon = smsCon;
-      //   }
-
-      //   this.receiveCpCodeData(params);
-      // },
 
       receiveCpCodeData: function(params) {
         params.receiveChannel = 'B2C';
@@ -106,10 +88,13 @@ define('sf.b2c.mall.module.getcoupon', [
           .done(function(userCouponInfo) {
             // $("[name='cms-fill-coupon']").one(that.action);
 
-            new SFMessage(null, {
-              'tip': '领取成功！',
-              'type': 'success'
-            });
+            if (that.isPromptSuccess) {
+              new SFMessage(null, {
+                'tip': '领取成功！',
+                'type': 'success'
+              });
+            }
+            
 
             // 定制代码
             that.customized();

@@ -458,6 +458,9 @@ module.exports = function (grunt) {
         dest: '<%= config.dist %>',
         src: [
           'img/{,*/}*.*',
+          'img/*/{,*/}*.*',
+          'img/*/*/{,*/}*.*',
+          'img/*/*/*/{,*/}*.*',
         ]
       },
 
