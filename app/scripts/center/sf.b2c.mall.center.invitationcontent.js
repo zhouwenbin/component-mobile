@@ -72,7 +72,7 @@ define('sf.b2c.mall.center.invitationcontent', [
           .sendRequest()
           .done(function(data) {
             userid = data.userId;
-            SFWeixin.shareInvitation("［雷锋来了］他奋力抢到了一波现金红包，在围堵之下撒向了朋友圈，赶紧来抢！", "［雷锋来了］他奋力抢到了一波现金红包，在围堵之下撒向了朋友圈，赶紧来抢！", bagid, userid);
+            SFWeixin.shareInvitation("［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！", "［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！", bagid, userid);
           })
           .fail()
 
