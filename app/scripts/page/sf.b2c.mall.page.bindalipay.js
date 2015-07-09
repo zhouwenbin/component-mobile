@@ -75,7 +75,7 @@ define(
           '<span class="text-error" id="alipaynameerror" style="display:none">{{alipaynameerror}}</span>' +
           '</li>' +
           '<li>' +
-          '<input id="rule" type="checkbox" can-value="rule" style="margin-right: 5px;">我同意<a href="/helpcenter-invitation.html">规则条款</a>' +
+          '<input id="rule" type="checkbox" can-value="rule" style="margin-right: 5px;">我同意<a href="/helpcenter-invitation.html" style="color:#dc3334;">规则条款</a>' +
           '<span class="text-error" id="ruleerror" style="display:none">{{ruleerror}}</span>' +
           '</li>' +
           '<li><button class="btn btn-success btn-big" id="bindaccount">确定</button></li>' +
