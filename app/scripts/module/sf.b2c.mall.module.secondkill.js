@@ -45,15 +45,18 @@ define(
         var that = this;
         $(".cms-src-dayline").click(function(targetElement) {
 
-          while(targetElement.target.tagName != "LI"){
-            targetElement.target = targetElement.target.parentElement;
+          var srcElement = targetElement.target;
+
+          while (srcElement.tagName != "LI") {
+            srcElement = srcElement.parentElement;
           }
+
 
           // 1激活选中天
           //  1、隐藏其他天
           $('.cms-src-dayline').removeClass("active");
           //  2、显示该天
-          $(targetElement.target).addClass("active");
+          $(srcElement).addClass("active");
 
           // 2显示产品
           //  1、隐藏其他天的产品
@@ -61,7 +64,7 @@ define(
           $("[class*='daylinetarget']").hide();
 
           //  2、显示该天的产品
-          activeDay = $(targetElement.target).attr('data-daylinestart');
+          activeDay = $(srcElement).attr('data-daylinestart');
           var dayProducts = $(".daylinetarget" + activeDay);
           dayProducts.show();
 
@@ -91,17 +94,20 @@ define(
       bindTimeClick: function() {
         var that = this;
         $(".cms-src-hourline").click(function(targetElement) {
-          if (targetElement.target.tagName != "LI") {
-            targetElement.target = targetElement.target.parentElement;
+
+          var srcElement = targetElement.target;
+
+          while (srcElement.tagName != "LI") {
+            srcElement = targetElement.target.parentElement;
           }
 
           $(".cms-src-hourline").removeClass("active");
-          $(targetElement.target).addClass("active");
+          $(srcElement).addClass("active");
 
           // $(".hourlinetarget*").hide();
           $("div[class*='hourlinetarget']").hide();
 
-          var time = $(targetElement.target).attr('data-hourlinestart');
+          var time = $(srcElement).attr('data-hourlinestart');
           var timeProducts = $(".hourlinetarget" + activeDay + time);
           timeProducts.show();
           that.setPrice($('.hourlinetarget' + activeDay + time));
@@ -206,7 +212,8 @@ define(
         _.each(data.value, function(value, key, list) {
 
           // 填充价格
-          var $el = element.find('[data-itemid=' + value.itemId + ']');
+          // var $el = element.find('[data-itemid=' + value.itemId + ']');
+          var $el = $("[data-cms-itemid='" + value.itemId +"']")
 
           // 如果有重复的itemid，则进行容错
           if ($el.length && $el.length > 1) {
