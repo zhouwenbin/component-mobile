@@ -68,7 +68,7 @@ define('sf.b2c.mall.component.addrcreate', [
           credtNum: null,
           receiverName:null,
           receiverId:null,
-          isDefault: false
+          isDefault: 0
         },
         error: null
       };
