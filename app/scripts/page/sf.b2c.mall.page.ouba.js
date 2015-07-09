@@ -25,22 +25,6 @@ define(
         Fastclick.attach(document.body);
         SFComm.register(3);
 
-        //初始化小鲜肉图片数组
-        var imgArray = {
-            "1":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg','http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "2":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "3":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "4":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "5":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "6":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "7":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "8":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "9":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "10":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "11":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg'],
-            "12":['http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg','http://img0.sfht.com/img/36d28144d3bdba07b90d80be79de2214.jpg']
-        };
-
         var xingNan = 1000;
         var xiaoXiu = 3000;
         var banLuo = 10000;
@@ -86,30 +70,32 @@ define(
                         if(index<freshNum-1){
                             $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
-                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+                            that.changFresh(index);
                         }
                     })
                     $('.prev').click(function(){
                         if(index>0){
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
-                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+                            that.changFresh(index);
                         }
                     })
-                    $('.people').swipeRight(function(){
-                        if(index<11){
-                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-                            $('.people>li').eq(11-index).addClass('active');
-                            index++;
-                        }
-                    })
-                    $('.people').swipeLeft(function(){
-                        if(index>0){
-                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-                            $('.people>li').eq(12-index).removeClass('active');
-                            index--;
-                        }
-                    })
+//                    $('.people').swipeRight(function(){
+//                        if(index<11){
+//                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+//                            $('.people>li').eq(11-index).addClass('active');
+//                            index++;
+//                   that.changFresh(index);
+//                        }
+//                    })
+//                    $('.people').swipeLeft(function(){
+//                        if(index>0){
+//                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+//                            $('.people>li').eq(12-index).removeClass('active');
+//                            index--;
+//                   that.changFresh(index);
+//                        }
+//                    })
 
                     //tab切换
                     $('.tab li').click(function(){
@@ -248,6 +234,20 @@ define(
                             })
                     });
                 })
+            },
+
+            //点击下一个或者是上一个的时候触发的东东,index为第几个图片
+            changFresh:function(index){
+                $(".tab li").eq(0).addClass('active').siblings().removeClass('active');  //默认第一个tab为激活状态
+                var tickets = this.getTicketsByNo(ticketList, freshNum-index);
+                $("#clickNum").text(tickets);   //更新扒的票数
+                this.tabUnlock(tickets);   //更新tab的解锁
+
+                var tab_index=index;
+                var people_index=1;
+                var photo_index=tab_index+1;
+                $('.people>li').eq(10-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
+                $('.people>li').eq(10-index).find('.people-lock').hide();  //去掉蒙层
             },
 
             //根据小鲜肉的牌号，获取投票数,num为图上的序列号
