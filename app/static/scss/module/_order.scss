@@ -59,14 +59,16 @@
   font-size: 14px;
 }
 .order-error{
-  height: 39px;
-  line-height: 39px;
+  position: fixed;
+  left: 0;
+  bottom: 55px;
+  width: 100%;
+  line-height: 1.5;
+  padding: 5px 13px 5px 34px;
   border-bottom: 1px solid #f6d7b8;
   border-top: 1px solid #f6d7b8;
   background: #fff0e1;
   color: #ff9000;
-  padding-left: 13px;
-  padding-right: 13px;
 }
 .order-error span{
   width: 14px;
@@ -77,6 +79,7 @@
   vertical-align: middle;
   color: #fff;
   border-radius: 50%;
-  margin-right: 7px;
   text-align: center;
+  float: left;
+  margin-left: -21px;
 }
