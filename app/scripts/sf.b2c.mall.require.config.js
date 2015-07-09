@@ -1,6 +1,9 @@
 requirejs.config({
     baseUrl: ' /',
     paths: {
+
+
+
         "can": "http://www.google.com/bower_components/canjs/amd/can",
         "zepto": "http://www.google.com/zepto",
         "zepto.cookie": "http://www.google.com/zepto.cookie",
@@ -133,7 +136,7 @@ requirejs.config({
         "sf.b2c.mall.api.user.setPswdAndLogin": "scripts/api/sf.b2c.mall.api.user.setPswdAndLogin",
         "sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM": "scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM",
         "sf.b2c.mall.api.integral.getUserIntegralLog": "scripts/api/sf.b2c.mall.api.integral.getUserIntegralLog",
-        "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
+
         "placeholders": "bower_components/Placeholders/build/placeholders",
         "moment": "bower_components/momentjs/min/moment.min",
         "moment-zh-cn": "bower_components/momentjs/locale/zh-cn",
@@ -167,6 +170,7 @@ requirejs.config({
         "sf.b2c.mall.module.nataralSelect": "scripts/module/sf.b2c.mall.module.nataralSelect",
         "sf.b2c.mall.module.fixtab": "scripts/module/sf.b2c.mall.module.fixtab",
         "sf.b2c.mall.module.exchangecode": "scripts/module/sf.b2c.mall.module.exchangecode",
+        "sf.b2c.mall.module.secondkill": "scripts/module/sf.b2c.mall.module.secondkill",
         "sf.b2c.mall.page.main": "scripts/page/sf.b2c.mall.page.main",
         "sf.b2c.mall.component.price": "scripts/component/sf.b2c.mall.component.price",
         "sf.b2c.mall.page.detail": "scripts/page/sf.b2c.mall.page.detail",
