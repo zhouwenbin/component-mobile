@@ -87,28 +87,32 @@ define(
                         if(index<11){
                             $('.people>li').eq(11-index).addClass('active');
                             index++;
-                            that.changeImg();
+                            $(".tab li").eq(0)..addClass('active').siblings().removeClass('active');
+//                            that.changeImg();
                         }
                     })
                     $('.prev').click(function(){
                         if(index>0){
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
-                            that.changeImg();
+                            $(".tab li").eq(0)..addClass('active').siblings().removeClass('active');
+//                            that.changeImg();
                         }
                     })
-//                    $('.people').swipeRight(function(){
-//                        if(index<11){
-//                            $('.people>li').eq(11-index).addClass('active');
-//                            index++;
-//                        }
-//                    })
-//                    $('.people').swipeLeft(function(){
-//                        if(index>0){
-//                            $('.people>li').eq(12-index).removeClass('active');
-//                            index--;
-//                        }
-//                    })
+                    $('.people').swipeRight(function(){
+                        if(index<11){
+                            $(".tab li").eq(0)..addClass('active').siblings().removeClass('active');
+                            $('.people>li').eq(11-index).addClass('active');
+                            index++;
+                        }
+                    })
+                    $('.people').swipeLeft(function(){
+                        if(index>0){
+                            $(".tab li").eq(0)..addClass('active').siblings().removeClass('active');
+                            $('.people>li').eq(12-index).removeClass('active');
+                            index--;
+                        }
+                    })
 
                     //tab切换
                     $('.tab li').click(function(){
@@ -125,25 +129,25 @@ define(
                     })
 
                     //切换下面的型男或者是小鲜肉,对应的改变图片
-                    $('.tab li').click(function(){
-                        $(this).addClass('active').siblings().removeClass('active');
-
-                        var num = freshNum;
-                        if($(".people>li").index($(".people>li.active")) != -1){
-                            num =$(".people>li").index($(".people>li.active"));
-                        }
-                        num = num -1;
-//                    var index =  $(".people>li").eq(num).find(".tab li").index($(".people>li").eq(num).find(".tab li.active"));
-                        var index = $(this).index();
-                        $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[freshNum-num][index]);
-                    })
+//                    $('.tab li').click(function(){
+//                        $(this).addClass('active').siblings().removeClass('active');
+//
+//                        var num = freshNum;
+//                        if($(".people>li").index($(".people>li.active")) != -1){
+//                            num =$(".people>li").index($(".people>li.active"));
+//                        }
+//                        num = num -1;
+////                    var index =  $(".people>li").eq(num).find(".tab li").index($(".people>li").eq(num).find(".tab li.active"));
+//                        var index = $(this).index();
+//                        $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[freshNum-num][index]);
+//                    })
 
                     $('.page3 .a2').click(function(){
                         $('.dialog-phone').removeClass('hide');
                     })
 
                     $("#phoneNum").keyup(function(){
-                        if(!((/^1[0-9]{9}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
+                        if(!((/^1[0-9]{10}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
                             $("#username-error-tips").text('号码格式不正确！');
                             return ;
                         }
@@ -153,7 +157,7 @@ define(
                     });
                     //领优惠券
                     $('.dialog-phone .btn').click(function(){
-                        if(!((/^1[0-9]{9}/).test($("#phoneNum").val()) && $("#phoneNum").val().length == 10)){
+                        if(!((/^1[0-9]{9}/).test($("#phoneNum").val()) && $("#phoneNum").val().length == 11)){
                             $("#username-error-tips").text('号码格式不正确！');
                             return ;
                         }
