@@ -217,16 +217,16 @@ define(
                         }
 
                         //投票代码
-//                        var voteTicket = new Vote(params);
-//                        voteTicket.sendRequest()
-//                            .done(function(data) {
-//                                ticketList = data.infos;
-//                                $("#clickNum").text(ticketList.attr(num));
-//                                this.tabUnlock(ticketList.attr(num), num);
-//                            })
-//                            .fail(function(error) {
-//                                console.error(error);
-//                            })
+                        var voteTicket = new Vote(params);
+                        voteTicket.sendRequest()
+                            .done(function(data) {
+                                ticketList = data.infos;
+                                $("#clickNum").text(ticketList.attr(num));
+                                this.tabUnlock(ticketList.attr(num), num);
+                            })
+                            .fail(function(error) {
+                                console.error(error);
+                            })
                     });
                 })
             },
@@ -234,16 +234,13 @@ define(
             //每次进入页面查询出所有的投票记录
             getTicketList: function(){
                 var voteNum = new VoteNum({'voteType':'XXMAN'});
-                ticketList = new can.Map([{'voteNo':'0','voteNum':1000},{'voteNo':'1','voteNum':1001},{'voteNo':'2','voteNum':1002},{'voteNo':'3','voteNum':1003},{'voteNo':'4','voteNum':1004},
-                    {'voteNo':'5','voteNum':1000},{'voteNo':'6','voteNum':1001},{'voteNo':'7','voteNum':1002},{'voteNo':'8','voteNum':1003},{'voteNo':'9','voteNum':1004},
-                    {'voteNo':'10','voteNum':1000},{'voteNo':'11','voteNum':1001}]);
-//                voteNum.sendRequest()
-//                    .done(function(data) {
-//                        ticketList =  new can.Map(data.infos);
-//                    })
-//                    .fail(function(error) {
-//                        console.error(error);
-//                    })
+                voteNum.sendRequest()
+                    .done(function(data) {
+                        ticketList =  new can.Map(data.infos);
+                    })
+                    .fail(function(error) {
+                        console.error(error);
+                    })
             },
 
             //切换小鲜肉图片，更新页面中显示的票数和tab的解锁
