@@ -17,10 +17,10 @@ define(
         'sf.b2c.mall.api.user.getVoteNum',
         'sf.b2c.mall.api.user.vote',
         'sf.weixin',
-        'sf.b2c.mall.api.coupon.receiveShareCoupon',
+        'sf.b2c.mall.api.coupon.rcvCouponByMobile',
         'sf.hybrid'
     ],
-    function(can, $, cookie,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveShareCoupon, SFHybrid){
+    function(can, $, cookie,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon, SFHybrid){
         Fastclick.attach(document.body);
         SFComm.register(3);
 
@@ -110,6 +110,20 @@ define(
 //                        }
 //                    })
 
+                    //tab切换
+                    $('.tab li').click(function(){
+                        var tab_index=$('.tab li').index(this);
+                        var people_index=11-index;
+                        var photo_index=tab_index+1;
+                        $('.people>li').eq(10-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
+                        $(this).addClass('active').siblings().removeClass('active');
+                        if($(this).hasClass('tab-lock')){
+                            $('.people>li').eq(10-index).find('.people-lock').show();
+                        }else{
+                            $('.people>li').eq(10-index).find('.people-lock').hide();
+                        }
+                    })
+
                     //切换下面的型男或者是小鲜肉,对应的改变图片
                     $('.tab li').click(function(){
                         $(this).addClass('active').siblings().removeClass('active');
@@ -129,7 +143,7 @@ define(
                     })
 
                     $("#phoneNum").keyup(function(){
-                        if(!((/^1[0-9]{9}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 10)){
+                        if(!((/^1[0-9]{9}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
                             $("#username-error-tips").text('号码格式不正确！');
                             return ;
                         }
@@ -145,12 +159,12 @@ define(
                         }
 
                         //领取优惠券
-                        var receiveShareCoupon = new SFReceiveShareCoupon({
-                            'mobile':$("#phoneNum"),
-                            'receiveChannel': 'B2C',
-                            'receiveWay': 'HBLQ',
-                            'shareBagId': this.itemObj.cardBagInfo.bagCodeId,
-                            tempToken: store.get('tempToken')
+                        var receiveShareCoupon = new SFReceiveCoupon({
+                            bagId: "337",
+                            mobile: $("#phoneNum").val(),
+                            type: "CARD",
+                            receiveChannel: 'B2C',
+                            receiveWay: 'ZTLQ'
                         });
                         receiveShareCoupon.sendRequest()
                             .done(function(data) {
@@ -158,7 +172,8 @@ define(
                                 $('.dialog-success').removeClass('hide');
                             })
                             .fail(function(error) {
-                                new SFMessage(null,{'type': 'error','tip':'领优惠券失败！'});
+                                $("#username-error-tips").text('领优惠券失败！');
+//                                new SFMessage(null,{'type': 'error','tip':'领优惠券失败！'});
                                 return ;
                             });
 
