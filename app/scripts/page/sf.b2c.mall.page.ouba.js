@@ -18,9 +18,10 @@ define(
         'sf.b2c.mall.api.user.vote',
         'sf.weixin',
         'sf.b2c.mall.api.coupon.rcvCouponByMobile',
+        'sf.env.switcher',
         'sf.hybrid'
     ],
-    function(can, $, cookie,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon, SFHybrid){
+    function(can, $, cookie,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,SFHybrid){
         Fastclick.attach(document.body);
         SFComm.register(3);
 
@@ -45,7 +46,7 @@ define(
         var banLuo = 10000;
         var mi = 30000;
         var ticketList = null;
-        var freshNum = 12;
+        var freshNum = 11;
         var young= can.Control.extend({
 
             /**
@@ -75,8 +76,6 @@ define(
                     }
                 }
 
-                //初始化收个小鲜肉的投票数
-              //  this.changeImg();
                 $(function(){
                     $('.page1 .icon1').click(function(){
                         $('.page1').addClass('active');
@@ -84,11 +83,10 @@ define(
                     })
                     var index = 0;
                     $('.next').click(function(){
-                        if(index<11){
-                            $('.people>li').eq(11-index).addClass('active');
+                        if(index<freshNum-1){
+                            $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
                             $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-//                            that.changeImg();
                         }
                     })
                     $('.prev').click(function(){
@@ -96,23 +94,22 @@ define(
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
                             $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-//                            that.changeImg();
                         }
                     })
-//                    $('.people').swipeRight(function(){
-//                        if(index<11){
-//                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-//                            $('.people>li').eq(11-index).addClass('active');
-//                            index++;
-//                        }
-//                    })
-//                    $('.people').swipeLeft(function(){
-//                        if(index>0){
-//                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-//                            $('.people>li').eq(12-index).removeClass('active');
-//                            index--;
-//                        }
-//                    })
+                    $('.people').swipeRight(function(){
+                        if(index<11){
+                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+                            $('.people>li').eq(11-index).addClass('active');
+                            index++;
+                        }
+                    })
+                    $('.people').swipeLeft(function(){
+                        if(index>0){
+                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+                            $('.people>li').eq(12-index).removeClass('active');
+                            index--;
+                        }
+                    })
 
                     //tab切换
                     $('.tab li').click(function(){
@@ -266,28 +263,16 @@ define(
             //每次进入页面查询出所有的投票记录
             getTicketList: function(){
                 var voteNum = new VoteNum({'voteType':'XXMAN'});
+                var that =  this;
                 voteNum.sendRequest()
                     .done(function(data) {
                         ticketList =  data.infos;
+                        $("#clickNum").text(that.getTicketsByNo(ticketList, freshNum));
+                        that.tabUnlock(that.getTicketsByNo(ticketList, freshNum));
                     })
                     .fail(function(error) {
                         console.error(error);
                     })
-            },
-
-            //切换小鲜肉图片，更新页面中显示的票数和tab的解锁
-            changeImg: function(){
-                var num = freshNum;
-                if($(".people>li").index($(".people>li.active")) != -1){
-                    num =$(".people>li").index($(".people>li.active"));
-                }
-                num = num -1;
-                var index =  $(".people>li").eq(num).find(".tab li").index($(".people>li").eq(num).find(".tab li.active"));
-
-                $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[freshNum-num][index]);
-                var tickets = this.getTicketsByNo(ticketList, num);
-                $("#clickNum").text( tickets);
-                this.tabUnlock(tickets);
             },
 
             //根据票数判断标签页是否解锁以及百分比滚动条
@@ -305,21 +290,36 @@ define(
                     $(".bar-current").css("width","75%");
                 }
                 else if(num > xiaoXiu){
-                    $(".tab li").addClass("tab-lock");
-                    $(".tab li").lt(2).removeClass("tab-lock");
+                    $(".tab li").removeClass("tab-lock");
+                    $(".tab li").eq(2).addClass("tab-lock");
+                    $(".tab li").eq(3).addClass("tab-lock");
                     $(".tab li").find("span").removeClass("lock").addClass("unlock");
-                    $(".tab li").lt(2).find("span").removeClass("unlock").addClass("lock");
+                    $(".tab li").eq(3).find("span").removeClass("unlock").addClass("lock");
+                    $(".tab li").eq(2).find("span").removeClass("unlock").addClass("lock");
                     $(".bar-current").css("width","50%");
                 }
                 else {
-                    $(".tab li").addClass("lock");
-                    $(".tab li").lt(2).removeClass("tab-lock");
+                    $(".tab li").addClass("tab-lock");
+                    $(".tab li").eq(0).removeClass("tab-lock");
                     $(".tab li").find("span").removeClass("unlock").addClass("lock");
-                    $(".tab li").eq(1).find("span").removeClass("lock").addClass("unlock");
+                    $(".tab li").eq(0).find("span").removeClass("lock").addClass("unlock");
                     $(".bar-current").css("width","25%");
                 }
             }
         });
 
         new young("body");
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('app', function () {
+
+        });
+
+        switcher.register('web', function(){
+
+        });
+
+        switcher.go();
+
     });

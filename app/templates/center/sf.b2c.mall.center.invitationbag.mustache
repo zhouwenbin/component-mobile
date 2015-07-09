@@ -2,10 +2,15 @@
   <h1>顺丰海淘</h1>
   <h2>红包大派发</h2>
   <div class="invite-bag-r1"><span>20</span>元</div>
-  <div class="text-important">领取成功！</div>
+  <div class="text-important">{{#if isHasReceived}}您已领取过！{{/if}}{{^if isHasReceived}}领取成功！{{/if}}</div>
+	<a href="/" class="btn btn-danger" style="margin: 22px 12px 0 0;height: 60px;
+  font-size: 24px;line-height: 60px;">去用掉它</a>
 </section>
 
+
+{{^if isHasReceived}}
 <div id="pop">
   <div class="mask"></div>
-  <a href="javascript:;"><img name="cms-fill-coupon" data-cms-couponbagid="{{bagid}}" data-cms-coupontype="CARD" class="invite-bag-dialog center" src="http://img.sfht.com/sfhth5/1.1.130/img/invite-bag.png"></a>
+  <a href="javascript:;"><img name="cms-fill-coupon" data-is-prompt-success="false" data-cms-couponbagid="{{bagid}}" data-cms-coupontype="CARD" class="invite-bag-dialog center" src="http://img.sfht.com/sfhth5/1.1.130/img/invite-bag.png"></a>
 </div>
+{{/if}}
