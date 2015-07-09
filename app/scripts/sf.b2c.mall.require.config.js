@@ -90,6 +90,9 @@ requirejs.config({
         "sf.b2c.mall.api.user.rqCash": "scripts/api/sf.b2c.mall.api.user.rqCash",
         "sf.b2c.mall.api.user.getCashActInfo": "scripts/api/sf.b2c.mall.api.user.getCashActInfo",
         "sf.b2c.mall.api.user.bindAliAct": "scripts/api/sf.b2c.mall.api.user.bindAliAct",
+        "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
+        "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
+
         "sf.b2c.mall.api.minicart.getTotalCount": "scripts/api/sf.b2c.mall.api.minicart.getTotalCount",
         "sf.b2c.mall.api.shopcart.addItemToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemToCart",
         "sf.b2c.mall.api.shopcart.addItemsToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemsToCart",
@@ -178,6 +181,7 @@ requirejs.config({
         "sf.b2c.mall.adapter.regions": "scripts/adapter/sf.b2c.mall.adapter.regions",
         "sf.b2c.mall.adapter.order": "scripts/adapter/sf.b2c.mall.adapter.order",
         "sf.b2c.mall.page.mypoint": "scripts/page/sf.b2c.mall.page.mypoint",
+        "sf.b2c.mall.page.ouba": "scripts/page/sf.b2c.mall.page.ouba",
         "sf.b2c.mall.component.mypoint": "scripts/component/sf.b2c.mall.component.mypoint",
         "sf.b2c.mall.page.pointexplain": "scripts/page/sf.b2c.mall.page.pointexplain",
         "sf.b2c.mall.page.signrule": "scripts/page/sf.b2c.mall.page.signrule",
