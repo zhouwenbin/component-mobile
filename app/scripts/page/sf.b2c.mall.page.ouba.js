@@ -44,6 +44,7 @@ define(
         var banLuo = 10000;
         var mi = 30000;
         var ticketList = null;
+        var freshNum = 12;
         var young= can.Control.extend({
 
             /**
@@ -90,7 +91,7 @@ define(
                     })
                     $('.prev').click(function(){
                         if(index>0){
-                            $('.people>li').eq(12-index).removeClass('active');
+                            $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
                             that.changeImg();
                         }
@@ -112,14 +113,14 @@ define(
                     $('.tab li').click(function(){
                         $(this).addClass('active').siblings().removeClass('active');
 
-                        var num = 12;
+                        var num = freshNum;
                         if($(".people>li").index($(".people>li.active")) != -1){
                             num =$(".people>li").index($(".people>li.active"));
                         }
                         num = num -1;
 //                    var index =  $(".people>li").eq(num).find(".tab li").index($(".people>li").eq(num).find(".tab li.active"));
                         var index = $(this).index();
-                        $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[12-num][index]);
+                        $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[freshNum-num][index]);
                     })
 
                     $('.page3 .a2').click(function(){
@@ -143,22 +144,22 @@ define(
                         }
 
                         //领取优惠券
-//                        var receiveShareCoupon = new SFReceiveShareCoupon({
-//                            'mobile':$("#phoneNum"),
-//                            'receiveChannel': 'B2C',
-//                            'receiveWay': 'HBLQ',
-//                            'shareBagId': this.itemObj.cardBagInfo.bagCodeId,
-//                            tempToken: store.get('tempToken')
-//                        });
-//                        receiveShareCoupon.sendRequest()
-//                            .done(function(data) {
-//                                $('.dialog-phone').addClass('hide');
-//                                $('.dialog-success').removeClass('hide');
-//                            })
-//                            .fail(function(error) {
-//                                new SFMessage(null,{'type': 'error','tip':'领优惠券失败！'});
-//                                return ;
-//                            });
+                        var receiveShareCoupon = new SFReceiveShareCoupon({
+                            'mobile':$("#phoneNum"),
+                            'receiveChannel': 'B2C',
+                            'receiveWay': 'HBLQ',
+                            'shareBagId': this.itemObj.cardBagInfo.bagCodeId,
+                            tempToken: store.get('tempToken')
+                        });
+                        receiveShareCoupon.sendRequest()
+                            .done(function(data) {
+                                $('.dialog-phone').addClass('hide');
+                                $('.dialog-success').removeClass('hide');
+                            })
+                            .fail(function(error) {
+                                new SFMessage(null,{'type': 'error','tip':'领优惠券失败！'});
+                                return ;
+                            });
 
                         $('.dialog-phone').addClass('hide');
                         $('.dialog-success').removeClass('hide');
@@ -203,13 +204,13 @@ define(
                         var params = {
                             'voteType': 'XXMAN'
                         };
-                        var num = 12;
+                        var num = freshNum;
                         if($(".people>li").index($(".people>li.active")) != -1){
                             num =$(".people>li").index($(".people>li.active"));
                         }
                         num = num -1;
 
-                        params.voteNo = 12-num;
+                        params.voteNo = freshNum-num;
                         var clickTimes = $.fn.cookie('clickTimes');
                         if(clickTimes && clickTimes.split("-")[1] > 0){
                             $.fn.cookie('clickTimes',  clickTimes.split("-")[0] + "-" + (parseInt(clickTimes.split("-")[1]) -1));;
@@ -217,47 +218,56 @@ define(
                         }
 
                         //投票代码
-//                        var voteTicket = new Vote(params);
-//                        voteTicket.sendRequest()
-//                            .done(function(data) {
-//                                ticketList = data.infos;
-//                                $("#clickNum").text(ticketList.attr(num));
-//                                this.tabUnlock(ticketList.attr(num), num);
-//                            })
-//                            .fail(function(error) {
-//                                console.error(error);
-//                            })
+                        var voteTicket = new Vote(params);
+                        voteTicket.sendRequest()
+                            .done(function(data) {
+                                ticketList = data.infos;
+                                var tickets = that.getTicketsByNo(ticketList, num);
+                                $("#clickNum").text(tickets);
+                                that.tabUnlock(tickets, num);
+                            })
+                            .fail(function(error) {
+                                console.error(error);
+                            })
                     });
                 })
             },
 
+            //根据小鲜肉的牌号，获取投票数,num为图上的序列号
+            getTicketsByNo:function(ticketList, num){
+                if(ticketList != null && ticketList.length > 0){
+                    for(var i = 0; i < ticketList.length; i++){
+                        if(parseInt(ticketList[i].voteNo) == freshNum - num){
+                                return ticketList[i].voteNum;
+                        }
+                    }
+                }
+            },
             //每次进入页面查询出所有的投票记录
             getTicketList: function(){
                 var voteNum = new VoteNum({'voteType':'XXMAN'});
-                ticketList = new can.Map([{'voteNo':'0','voteNum':1000},{'voteNo':'1','voteNum':1001},{'voteNo':'2','voteNum':1002},{'voteNo':'3','voteNum':1003},{'voteNo':'4','voteNum':1004},
-                    {'voteNo':'5','voteNum':1000},{'voteNo':'6','voteNum':1001},{'voteNo':'7','voteNum':1002},{'voteNo':'8','voteNum':1003},{'voteNo':'9','voteNum':1004},
-                    {'voteNo':'10','voteNum':1000},{'voteNo':'11','voteNum':1001}]);
-//                voteNum.sendRequest()
-//                    .done(function(data) {
-//                        ticketList =  new can.Map(data.infos);
-//                    })
-//                    .fail(function(error) {
-//                        console.error(error);
-//                    })
+                voteNum.sendRequest()
+                    .done(function(data) {
+                        ticketList =  data.infos;
+                    })
+                    .fail(function(error) {
+                        console.error(error);
+                    })
             },
 
             //切换小鲜肉图片，更新页面中显示的票数和tab的解锁
             changeImg: function(){
-                var num = 12;
+                var num = freshNum;
                 if($(".people>li").index($(".people>li.active")) != -1){
                     num =$(".people>li").index($(".people>li.active"));
                 }
                 num = num -1;
                 var index =  $(".people>li").eq(num).find(".tab li").index($(".people>li").eq(num).find(".tab li.active"));
 
-                $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[12-num][index]);
-                $("#clickNum").text( ticketList.attr(num).voteNum);
-                this.tabUnlock(ticketList.attr(num).voteNum, num);
+                $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[freshNum-num][index]);
+                var tickets = this.getTicketsByNo(ticketList, num);
+                $("#clickNum").text( tickets);
+                this.tabUnlock(tickets, num);
             },
 
             //根据票数判断标签页是否解锁以及百分比滚动条

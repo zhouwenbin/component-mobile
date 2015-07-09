@@ -93,8 +93,6 @@ requirejs.config({
         "sf.b2c.mall.api.user.rqCash": "scripts/api/sf.b2c.mall.api.user.rqCash",
         "sf.b2c.mall.api.user.getCashActInfo": "scripts/api/sf.b2c.mall.api.user.getCashActInfo",
         "sf.b2c.mall.api.user.bindAliAct": "scripts/api/sf.b2c.mall.api.user.bindAliAct",
-        "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
-        "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
 
         "sf.b2c.mall.api.minicart.getTotalCount": "scripts/api/sf.b2c.mall.api.minicart.getTotalCount",
         "sf.b2c.mall.api.shopcart.addItemToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemToCart",
@@ -137,6 +135,8 @@ requirejs.config({
         "sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM": "scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM",
         "sf.b2c.mall.api.integral.getUserIntegralLog": "scripts/api/sf.b2c.mall.api.integral.getUserIntegralLog",
 
+        "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
+        "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
         "placeholders": "bower_components/Placeholders/build/placeholders",
         "moment": "bower_components/momentjs/min/moment.min",
         "moment-zh-cn": "bower_components/momentjs/locale/zh-cn",
@@ -237,7 +237,7 @@ requirejs.config({
         "sf.b2c.mall.page.invitationbag": "scripts/page/sf.b2c.mall.page.invitationbag",
         "sf.b2c.mall.page.bindalipay": "scripts/page/sf.b2c.mall.page.bindalipay",
         "sf.b2c.mall.component.nav": "scripts/component/sf.b2c.mall.component.nav",
-        "sf.b2c.mall.api.shopcart.isShowCart": "scripts/api/sf.b2c.mall.api.shopcart.isShowCart",
+        "sf.b2c.mall.api.shopcart.isShowCart": "scripts/api/sf.b2c.mall.api.shopcart.isShowCart.agency",
         "sf.b2c.mall.page.shoppingcart": "scripts/page/sf.b2c.mall.page.shoppingcart",
         "sf.b2c.mall.component.shoppingcart": "scripts/component/sf.b2c.mall.component.shoppingcart",
         "sf.b2c.mall.page.search": "scripts/page/sf.b2c.mall.page.search",
