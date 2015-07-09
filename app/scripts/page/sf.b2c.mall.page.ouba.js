@@ -17,9 +17,10 @@ define(
         'sf.b2c.mall.api.user.getVoteNum',
         'sf.b2c.mall.api.user.vote',
         'sf.weixin',
+        'sf.b2c.mall.api.coupon.receiveShareCoupon',
         'sf.hybrid'
     ],
-    function(can, $, cookie,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin, SFHybrid){
+    function(can, $, cookie,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveShareCoupon, SFHybrid){
         Fastclick.attach(document.body);
         SFComm.register(3);
 
