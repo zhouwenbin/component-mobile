@@ -37,6 +37,14 @@ define(
           .fail(function(error) {
             console.error(error)
           })
+
+        $("#sharefriend").click(function(){
+          $("#sharearea").show();
+        })
+
+        $(".mask").click(function(){
+          $("#sharearea").hide();
+        })
       }
 
     });
