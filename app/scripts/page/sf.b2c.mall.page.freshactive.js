@@ -32,6 +32,21 @@ define(
         });
         getVoteNum.sendRequest()
           .done(function(data) {
+
+            if(data.voteTotalNum.length  == 1) {
+              data.voteTotalNum = "000000" + data.voteTotalNum;
+            } else if (data.voteTotalNum.length  == 2){
+              data.voteTotalNum = "00000" + data.voteTotalNum;
+            } else if (data.voteTotalNum.length  == 3){
+              data.voteTotalNum = "0000" + data.voteTotalNum;
+            } else if (data.voteTotalNum.length  == 4){
+              data.voteTotalNum = "000" + data.voteTotalNum;
+            } else if (data.voteTotalNum.length  == 5){
+              data.voteTotalNum = "00" + data.voteTotalNum;
+            } else if (data.voteTotalNum.length  == 6){
+              data.voteTotalNum = "0" + data.voteTotalNum;
+            }
+
             $("#votenum").text(data.voteTotalNum);
 
             // var i = 0;
