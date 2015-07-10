@@ -8,7 +8,7 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.component.nav',
-      'sf.b2c.mall.module.header',
+    'sf.b2c.mall.module.header',
     'sf.b2c.mall.business.config',
     'sf.env.switcher'
   ],
@@ -18,7 +18,7 @@ define(
     SFFrameworkComm.register(3);
     Fastclick.attach(document.body);
 
-    var pointexplain = can.Control.extend({
+    var SFPointExplain = can.Control.extend({
 
       /**
        * [init 初始化]
@@ -33,4 +33,18 @@ define(
         }
       }
     });
+
+
+    var switcher = new SFSwitcher();
+
+    switcher.register('web', function() {
+      new SFPointExplain()
+      new SFNav('.sf-b2c-mall-nav');
+    });
+
+    switcher.register('app', function() {
+      new SFPointExplain()
+    });
+
+    switcher.go();
   });
