@@ -25,15 +25,17 @@ define(
     function(can, $, cookie, touch,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,SFHybrid){
         Fastclick.attach(document.body);
         SFComm.register(3);
+        SFWeixin.shareYoung();
 
         var xingNan = 1000;
-        var xiaoXiu = 3000;
-        var banLuo = 10000;
-        var mi = 30000;
+        var xiaoXiu = 100000;
+        var banLuo = 150000;
+        var mi = 300000;
         var ticketList = null;
         var freshNum = 11;
         var defaultCouponid = 337;
-
+        var startFlag = false;
+        var index = 0;
         var young= can.Control.extend({
             ".people .btn click":function(){
                 //微信分享
@@ -47,10 +49,14 @@ define(
              * @param  {Map} options 传递的参数
              */
             init: function(element, options) {
+
                 $('.wp-inner').fullpage();
+                $.fn.fullpage.stop();
+
                 this.getTicketList();
                 var that = this;
 
+                this.hideShare();
                 //初始化每日可以扒衣的次数
                 var obj = $.fn.cookie('clickTimes');
                 var currentDate = new Date();
@@ -64,21 +70,24 @@ define(
                     }
                     else{
                         $("#clickTimes").text( parseInt(obj.split("-")[1]));
+
+                        if(parseInt(obj.split("-")[1]) < 1){
+                            $(".page3-r2  .a1").css("background","grey");
+                        }
                     }
                 }
 
+                //进入页面初始化随机出现的欧巴
+            //    this.getRandomFresh();
 //                $(function(){
-                //翻看小鲜肉图片
-                    $('.page1 .icon1').click(function(){
-                        $('.page1').addClass('active');
-                        $(this).hide();
-                    })
-                    var index = 0;
+
                     $('.next').click(function(){
                         if(index<freshNum-1){
                             $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
                             that.changFresh(index);
+                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                     })
                     $('.prev').click(function(){
@@ -86,6 +95,8 @@ define(
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
                             that.changFresh(index);
+                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                     })
 
@@ -95,6 +106,8 @@ define(
                             $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
                             that.changFresh(index);
+                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                     })
                     $('.people').swipeLeft(function(){
@@ -102,6 +115,8 @@ define(
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
                             that.changFresh(index);
+                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                     })
 
@@ -110,18 +125,26 @@ define(
                         var tab_index=$('.tab li').index(this);
                         var people_index=freshNum-index;
                         var photo_index=tab_index+1;
-                        $('.people>li').eq(10-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
+                        $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
                         $(this).addClass('active').siblings().removeClass('active');
                         if($(this).hasClass('tab-lock')){
-                            $('.people>li').eq(10-index).find('.people-lock').show();
+                            $('.people>li').eq(freshNum-1-index).find('.people-lock').show();
                         }else{
-                            $('.people>li').eq(10-index).find('.people-lock').hide();
+                            $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();
                         }
                     })
 
                     $('.page3 .a2').click(function(){
                         $('.dialog-phone').removeClass('hide');
                     })
+            },
+
+            //首页点击过后才可以下拉查看
+            //翻看小鲜肉图片
+            ".page1 .icon1 click":function(){
+                $.fn.fullpage.start();
+                $('.page1').addClass('active');
+                $( ".page1 .icon1").hide();
             },
 
             //领优惠劵时，对输入的号码进行校验
@@ -132,6 +155,15 @@ define(
                 }
                 else{
                     $("#username-error-tips").text('');
+                }
+            },
+
+            //对于非微信打开的，去掉所有的分享
+            hideShare:function(){
+                if (!SFFn.isMobile.WeChat()) {
+                    $(".people li .btn").hide();  //小鲜肉中的分享不显示
+                    $("#share").hide();    //领卷成功后的分享不显示
+                    $("#share4").text("");  //最后一页的分享字段不显示
                 }
             },
 
@@ -149,14 +181,6 @@ define(
             //点击分享
             "#share click": function(){
                 $('.dialog-success').addClass('hide');
-                //app分享
-//                        if (SFFn.isMobile.APP()) {
-//                            var title = '顺丰海淘疯了~COO带头脱光揽生意， 是！真！脱！';
-//                            var desp = '顺丰海淘疯了~COO带头脱光揽生意， 是！真！脱！';
-//                            var shareUrl = "http://m.sfht.com/activity/291.html";
-//                            var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-//                            SFHybrid.h5share(title, desp, imgUrl, shareUrl);
-//                        }
 
                 //微信分享
                 if (SFFn.isMobile.WeChat()) {
@@ -178,6 +202,7 @@ define(
                     $("#clickTimes").text( parseInt(clickTimes.split("-")[1]) -1 );
                 }
                 else if(clickTimes && clickTimes.split("-")[1] < 1){
+                    $(".page3-r2  .a1").css("background","grey");
                     return;
                 }
 
@@ -200,6 +225,7 @@ define(
                         var tickets = that.getTicketsByNo(ticketList, num);
                         $("#clickNum").text(tickets);
                         that.tabUnlock(tickets);
+                        that.initActiveTab(tickets, freshNum-num, index);
                     })
                     .fail(function(error) {
                         console.error(error);
@@ -257,17 +283,37 @@ define(
                 "11000140": "卡包已作废"
             },
 
+            // 获得随机信息
+            getRandomAlertInfo: function() {
+                var map = {
+                    "0": "哎呀，欧巴还差一点就脱了，继续扒！",
+                    "1": "欧巴就要脱了！叫上闺蜜一起来！人多扒的快",
+                    "2": "欧巴的衣服很脆弱，继续扒！根本停不下来！"
+                };
+                var random = Math.random().toString(3).substr(2, 1);
+                return map[random];
+            },
+
+            //每次进入页面时，随机出现欧巴
+            getRandomFresh: function(){
+                var random = Math.round(Math.random()*freshNum);
+                index = random;
+                $('.people>li').eq(freshNum-1-index).addClass('active');
+                this.changFresh(index);
+                var tickets = this.getTicketsByNo(ticketList, freshNum-index);
+                this.initActiveTab(tickets,freshNum-index,index);
+            },
+
             //点击下一个或者是上一个的时候触发的东东,index为第几个图片
             changFresh:function(index){
-                $(".tab li").eq(0).addClass('active').siblings().removeClass('active');  //默认第一个tab为激活状态
+            //    $(".tab li").eq(0).addClass('active').siblings().removeClass('active');  //默认第一个tab为激活状态
                 var tickets = this.getTicketsByNo(ticketList, freshNum-index);
                 $("#clickNum").text(tickets);   //更新扒的票数
                 this.tabUnlock(tickets);   //更新tab的解锁
 
                 var people_index=freshNum-index;
                 var photo_index=1;
-                $('.people>li').eq(10-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
-                $('.people>li').eq(10-index).find('.people-lock').hide();  //去掉蒙层
+                this.initActiveTab(tickets, people_index, index);
             },
 
             //根据小鲜肉的牌号，获取投票数,num为图上的序列号
@@ -297,6 +343,30 @@ define(
                     .fail(function(error) {
                         console.error(error);
                     })
+            },
+
+            //根据票数，显示当前最新的扒图,index为计数器，num为小鲜肉的号码
+            initActiveTab:function(tickets, Num, index){
+                if(tickets > mi){
+                    $(".tab li").eq(3).addClass('active').siblings().removeClass('active');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+Num+'/'+4+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
+                }
+                else if(tickets > banLuo){
+                    $(".tab li").eq(2).addClass('active').siblings().removeClass('active');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+Num+'/'+3+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
+                }
+                else if(tickets > xiaoXiu){
+                    $(".tab li").eq(1).addClass('active').siblings().removeClass('active');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+Num+'/'+2+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
+                }
+                else{
+                    $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+Num+'/'+1+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
+                }
             },
 
             //根据票数判断标签页是否解锁以及百分比滚动条

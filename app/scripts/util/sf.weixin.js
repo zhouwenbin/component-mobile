@@ -381,7 +381,63 @@ define('sf.weixin', [
           menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage']
         });
       })
-    }
+    },
+
+
+      /** [shareYoung 分享小鲜肉] */
+      shareYoung: function() {
+
+          if (SFUtil.isMobile.WeChat()) {
+              //进行微信设置
+              configWeixin();
+          }
+
+          // 定义微信分享的数据
+          jweixin.ready(function() {
+
+              jweixin.onMenuShareTimeline({
+                  title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
+                  desc: '别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
+                  link: 'http://m.sfht.com/index.html',
+                  imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
+                  trigger: function(res) {
+                      // alert('用户点击发送给朋友');
+                  },
+                  success: function(res) {
+                      // alert('已分享');
+                  },
+                  cancel: function(res) {
+                      // alert('已取消');
+                  },
+                  fail: function(res) {
+                      //alert(JSON.stringify(res));
+                  }
+              });
+
+              jweixin.onMenuShareAppMessage({
+                  title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
+                  desc: '别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
+                  link: 'http://m.sfht.com/index.html',
+                  imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
+                  trigger: function(res) {
+                      // alert('用户点击发送给朋友');
+                  },
+                  success: function(res) {
+                      // alert('已分享');
+                  },
+                  cancel: function(res) {
+                      // alert('已取消');
+                  },
+                  fail: function(res) {
+                      //alert(JSON.stringify(res));
+                  }
+              });
+
+              jweixin.showMenuItems({
+                  menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage', 'imagePreview']
+              });
+          })
+      }
 
   };
 
