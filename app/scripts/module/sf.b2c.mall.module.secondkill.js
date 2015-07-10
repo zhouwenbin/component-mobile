@@ -213,7 +213,7 @@ define(
 
           // 填充价格
           // var $el = element.find('[data-itemid=' + value.itemId + ']');
-          var $el = $("[data-cms-itemid='" + value.itemId +"']")
+          var $el = $("[data-itemid='" + value.itemId +"']")
 
           // 如果有重复的itemid，则进行容错
           if ($el.length && $el.length > 1) {
