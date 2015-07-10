@@ -32,8 +32,15 @@ define(
         var mi = 30000;
         var ticketList = null;
         var freshNum = 11;
-        var young= can.Control.extend({
+        var defaultCouponid = 337;
 
+        var young= can.Control.extend({
+            ".people .btn click":function(){
+                //微信分享
+                if (SFFn.isMobile.WeChat()) {
+                    $("#sharearea").show();
+                }
+            }  ,
             /**
              * @description 初始化方法，当调用new时会执行init方法
              * @param  {Dom} element 当前dom元素
@@ -61,6 +68,7 @@ define(
                 }
 
 //                $(function(){
+                //翻看小鲜肉图片
                     $('.page1 .icon1').click(function(){
                         $('.page1').addClass('active');
                         $(this).hide();
@@ -114,63 +122,34 @@ define(
                     $('.page3 .a2').click(function(){
                         $('.dialog-phone').removeClass('hide');
                     })
+            },
 
-                    $("#phoneNum").keyup(function(){
-                        if(!((/^1[0-9]{10}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
-                            $("#username-error-tips").text('号码格式不正确！');
-                            return ;
-                        }
-                        else{
-                            $("#username-error-tips").text('');
-                        }
-                    });
-                    //领优惠券
-                    $('.dialog-phone .btn').click(function(){
-                        if(!((/^1[0-9]{9}/).test($("#phoneNum").val()) && $("#phoneNum").val().length == 11)){
-                            $("#username-error-tips").text('号码格式不正确！');
-                            return ;
-                        }
+            //领优惠劵时，对输入的号码进行校验
+            "#phoneNum keyup": function(){
+                if(!((/^1[0-9]{10}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
+                    $("#username-error-tips").text('号码格式不正确！');
+                    return ;
+                }
+                else{
+                    $("#username-error-tips").text('');
+                }
+            },
 
-                        //领取优惠券
-                        var receiveShareCoupon = new SFReceiveCoupon({
-                            bagId: "337",
-                            mobile: $("#phoneNum").val(),
-                            type: "CARD",
-                            receiveChannel: 'B2C',
-                            receiveWay: 'ZTLQ'
-                        });
-                        receiveShareCoupon.sendRequest()
-                            .done(function(data) {
-                                $('.dialog-phone').addClass('hide');
-                                $('.dialog-success').removeClass('hide');
-                            })
-                            .fail(function(error) {
-                                $("#username-error-tips").text('领优惠券失败！');
-//                                new SFMessage(null,{'type': 'error','tip':'领优惠券失败！'});
-                                return  fase;
-                            });
+            //进入活动页面
+            "#huodong click":function(){
+                $('.dialog-success').addClass('hide');
+                window.location.href = "http://m.sfht.com/index.html";
+            },
 
-//                        $('.dialog-phone').addClass('hide');
-//                        $('.dialog-success').removeClass('hide');
-                    })
-                    $('#goOn').click(function(){
-                        $('.dialog-success').addClass('hide');
-                    })
+            //继续扒小鲜肉
+            "#goOn click": function(){
+                $('.dialog-success').addClass('hide');
+            },
 
-                    $('.bt2').click(function(){
-                        $('.dialog-success').addClass('hide');
-                        window.location.href = "http://m.sfht.com/index.html";
-                    })
-
-                    $('#huodong').click(function(){
-                        $('.dialog-success').addClass('hide');
-                        window.location.href = "http://m.sfht.com/index.html";
-                    })
-
-                    $('#share').click(function() {
-                        $('.dialog-success').addClass('hide');
-
-                        //app分享
+            //点击分享
+            "#share click": function(){
+                $('.dialog-success').addClass('hide');
+                //app分享
 //                        if (SFFn.isMobile.APP()) {
 //                            var title = '顺丰海淘疯了~COO带头脱光揽生意， 是！真！脱！';
 //                            var desp = '顺丰海淘疯了~COO带头脱光揽生意， 是！真！脱！';
@@ -179,47 +158,103 @@ define(
 //                            SFHybrid.h5share(title, desp, imgUrl, shareUrl);
 //                        }
 
-                        //微信分享
-                        if (SFFn.isMobile.WeChat()) {
-                            $("#sharearea").show();
-                        }
+                //微信分享
+                if (SFFn.isMobile.WeChat()) {
+                    $("#sharearea").show();
+                }
+            },
+
+            //取消分享按钮
+            "#sharearea click": function(){
+                $("#sharearea").hide();
+            },
+
+            //进行投票，并且刷新页面上的票数
+            ".page3-r2  .a1 click": function(){
+                var that = this;
+                var clickTimes = $.fn.cookie('clickTimes');
+                if(clickTimes && clickTimes.split("-")[1] > 0){
+                    $.fn.cookie('clickTimes',  clickTimes.split("-")[0] + "-" + (parseInt(clickTimes.split("-")[1]) -1));;
+                    $("#clickTimes").text( parseInt(clickTimes.split("-")[1]) -1 );
+                }
+                else if(clickTimes && clickTimes.split("-")[1] < 1){
+                    return;
+                }
+
+                var params = {
+                    'voteType': 'XXMAN'
+                };
+                var num = freshNum;
+                if($(".people>li").index($(".people>li.active")) != -1){
+                    num =$(".people>li").index($(".people>li.active"));
+                }
+                num = num -1;
+
+                params.voteNo = freshNum-num;
+
+                //刷新投票数
+                var voteTicket = new Vote(params);
+                voteTicket.sendRequest()
+                    .done(function(data) {
+                        ticketList = data.infos;
+                        var tickets = that.getTicketsByNo(ticketList, num);
+                        $("#clickNum").text(tickets);
+                        that.tabUnlock(tickets);
                     })
+                    .fail(function(error) {
+                        console.error(error);
+                    })
+            },
 
-                    $("#sharearea").click(function(){
-                        $("#sharearea").hide();
+            //领优惠券
+            ".dialog-phone .btn click":function(){
+                var that = this;
+                if(!((/^1[0-9]{9}/).test($("#phoneNum").val()) && $("#phoneNum").val().length == 11)){
+                    $("#username-error-tips").text('号码格式不正确！');
+                    return ;
+                }
+
+                var day = (new Date()).getDate();
+                var coupon1id = this.coupon1Map[day] || defaultCouponid;
+
+                var receiveShareCoupon = new SFReceiveCoupon({
+                    bagId: coupon1id,
+                    mobile: $("#phoneNum").val(),
+                    type: "CARD",
+                    receiveChannel: 'B2C',
+                    receiveWay: 'ZTLQ'
+                });
+                receiveShareCoupon.sendRequest()
+                    .done(function(data) {
+                        $('.dialog-phone').addClass('hide');
+                        $('.dialog-success').removeClass('hide');
+                    })
+                    .fail(function(error) {
+                        $("#username-error-tips").text(that.errorMap[error] || '领取失败');
+                        return  false;
                     });
-                    //进行投票，并且刷新页面上的票数
-                    $(".page3-r2  .a1").click(function(){
-                        var params = {
-                            'voteType': 'XXMAN'
-                        };
-                        var num = freshNum;
-                        if($(".people>li").index($(".people>li.active")) != -1){
-                            num =$(".people>li").index($(".people>li.active"));
-                        }
-                        num = num -1;
+            },
 
-                        params.voteNo = freshNum-num;
-                        var clickTimes = $.fn.cookie('clickTimes');
-                        if(clickTimes && clickTimes.split("-")[1] > 0){
-                            $.fn.cookie('clickTimes',  clickTimes.split("-")[0] + "-" + (parseInt(clickTimes.split("-")[1]) -1));;
-                            $("#clickTimes").text( parseInt(clickTimes.split("-")[1]) -1 );
-                        }
+            //每天的优惠券id
+            coupon1Map: {
+                "13": '1',
+                "14": '2',
+                "15": '3',
+                "16": '4',
+                "17": '5',
+                "18": '6',
+                "19": '7',
+                "20": '8'
+            },
 
-                        //投票代码
-                        var voteTicket = new Vote(params);
-                        voteTicket.sendRequest()
-                            .done(function(data) {
-                                ticketList = data.infos;
-                                var tickets = that.getTicketsByNo(ticketList, num);
-                                $("#clickNum").text(tickets);
-                                that.tabUnlock(tickets);
-                            })
-                            .fail(function(error) {
-                                console.error(error);
-                            })
-                    });
-//                })
+            //领取优惠券失败的id
+            errorMap: {
+                "11000020": "卡券不存在",
+                "11000030": "卡券已作废",
+                "11000050": "卡券已领完",
+                "11000100": "您已领过该券",
+                "11000130": "卡包不存在",
+                "11000140": "卡包已作废"
             },
 
             //点击下一个或者是上一个的时候触发的东东,index为第几个图片
@@ -237,14 +272,18 @@ define(
 
             //根据小鲜肉的牌号，获取投票数,num为图上的序列号
             getTicketsByNo:function(ticketList, num){
+                var tickets = 0;
                 if(ticketList != null && ticketList.length > 0){
                     for(var i = 0; i < ticketList.length; i++){
                         if(parseInt(ticketList[i].voteNo) == freshNum - num){
-                                return ticketList[i].voteNum;
+                            tickets = ticketList[i].voteNum;
                         }
                     }
                 }
+
+                return tickets;
             },
+
             //每次进入页面查询出所有的投票记录
             getTicketList: function(){
                 var voteNum = new VoteNum({'voteType':'XXMAN'});
