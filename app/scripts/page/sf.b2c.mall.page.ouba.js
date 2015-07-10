@@ -5,6 +5,7 @@ define(
         'can',
         'zepto',
         'zepto.cookie',
+        'touch',
         'store',
         'fastclick',
         'underscore',
@@ -21,7 +22,7 @@ define(
         'sf.env.switcher',
         'sf.hybrid'
     ],
-    function(can, $, cookie,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,SFHybrid){
+    function(can, $, cookie, touch,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,SFHybrid){
         Fastclick.attach(document.body);
         SFComm.register(3);
 
@@ -39,7 +40,6 @@ define(
              * @param  {Map} options 传递的参数
              */
             init: function(element, options) {
-
                 $('.wp-inner').fullpage();
                 this.getTicketList();
                 var that = this;
@@ -60,7 +60,7 @@ define(
                     }
                 }
 
-                $(function(){
+//                $(function(){
                     $('.page1 .icon1').click(function(){
                         $('.page1').addClass('active');
                         $(this).hide();
@@ -79,28 +79,28 @@ define(
                             index--;
                             that.changFresh(index);
                         }
-                    })   
-//                    $('.people').swipeRight(function(){
-//                        if(index<11){
-//                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-//                            $('.people>li').eq(11-index).addClass('active');
-//                            index++;
-//                   that.changFresh(index);
-//                        }
-//                    })
-//                    $('.people').swipeLeft(function(){
-//                        if(index>0){
-//                            $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-//                            $('.people>li').eq(12-index).removeClass('active');
-//                            index--;
-//                   that.changFresh(index);
-//                        }
-//                    })
+                    })
+
+                  //左右滑动
+                    $('.people').swipeRight(function(){
+                        if(index<freshNum-1){
+                            $('.people>li').eq(freshNum-1-index).addClass('active');
+                            index++;
+                            that.changFresh(index);
+                        }
+                    })
+                    $('.people').swipeLeft(function(){
+                        if(index>0){
+                            $('.people>li').eq(freshNum-index).removeClass('active');
+                            index--;
+                            that.changFresh(index);
+                        }
+                    })
 
                     //tab切换
                     $('.tab li').click(function(){
                         var tab_index=$('.tab li').index(this);
-                        var people_index=11-index;
+                        var people_index=freshNum-index;
                         var photo_index=tab_index+1;
                         $('.people>li').eq(10-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
                         $(this).addClass('active').siblings().removeClass('active');
@@ -110,20 +110,6 @@ define(
                             $('.people>li').eq(10-index).find('.people-lock').hide();
                         }
                     })
-
-                    //切换下面的型男或者是小鲜肉,对应的改变图片
-//                    $('.tab li').click(function(){
-//                        $(this).addClass('active').siblings().removeClass('active');
-//
-//                        var num = freshNum;
-//                        if($(".people>li").index($(".people>li.active")) != -1){
-//                            num =$(".people>li").index($(".people>li.active"));
-//                        }
-//                        num = num -1;
-////                    var index =  $(".people>li").eq(num).find(".tab li").index($(".people>li").eq(num).find(".tab li.active"));
-//                        var index = $(this).index();
-//                        $(".people>li").eq(num).find("a").find("img").attr("src", imgArray[freshNum-num][index]);
-//                    })
 
                     $('.page3 .a2').click(function(){
                         $('.dialog-phone').removeClass('hide');
@@ -233,7 +219,7 @@ define(
                                 console.error(error);
                             })
                     });
-                })
+//                })
             },
 
             //点击下一个或者是上一个的时候触发的东东,index为第几个图片
@@ -243,9 +229,8 @@ define(
                 $("#clickNum").text(tickets);   //更新扒的票数
                 this.tabUnlock(tickets);   //更新tab的解锁
 
-                var tab_index=index;
-                var people_index=1;
-                var photo_index=tab_index+1;
+                var people_index=freshNum-index;
+                var photo_index=1;
                 $('.people>li').eq(10-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
                 $('.people>li').eq(10-index).find('.people-lock').hide();  //去掉蒙层
             },
@@ -307,19 +292,5 @@ define(
                 }
             }
         });
-
-        new young("body");
-
-        var switcher = new SFSwitcher();
-
-        switcher.register('app', function () {
-
-        });
-
-        switcher.register('web', function(){
-
-        });
-
-        switcher.go();
-
+         new young("body");
     });
