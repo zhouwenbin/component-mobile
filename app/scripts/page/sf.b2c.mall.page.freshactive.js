@@ -13,9 +13,13 @@ define(
     'sf.b2c.mall.business.config',
     'sf.util',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.user.getVoteNum'
+    'sf.b2c.mall.api.user.getVoteNum',
+    'sf.env.switcher',
+    'sf.hybrid',
+    'sf.b2c.mall.component.mypoint',
+    'sf.b2c.mall.widget.loading'
   ],
-  function(can, $, store, Fastclick, _, md5, helpers, SFComm, SFConfig, SFFn, SFMessage, SFGetVoteNum) {
+  function(can, $, store, Fastclick, _, md5, helpers, SFComm, SFConfig, SFFn, SFMessage, SFGetVoteNum, SFSwitcher, SFHybrid, SFPoint, SFLoading) {
     Fastclick.attach(document.body);
     SFComm.register(3);
 
@@ -27,6 +31,7 @@ define(
        * @param  {Map} options 传递的参数
        */
       init: function(element, options) {
+
         var getVoteNum = new SFGetVoteNum({
           "voteType": "XXMAN"
         });
@@ -48,17 +53,6 @@ define(
             }
 
             $("#votenum").text(data.voteTotalNum);
-
-            // var i = 0;
-            // var interval = setInterval(function(){
-            //     if (i <= data.voteTotalNum) {
-            //       $("#votenum").text(i);
-            //       i = i + 100;
-            //     } else {
-            //       clearInterval(interval)
-            //     }
-
-            // }, 0.1);
           })
           .fail(function(error) {
             console.error(error)
@@ -76,5 +70,28 @@ define(
 
     });
 
-    new fresh(".sf-b2c-mall-fresh");
+    var switcher = new SFSwitcher();
+    var loadingCtrl = new SFLoading();
+
+    switcher.register('web', function() {
+      loadingCtrl.show();
+      new fresh(".sf-b2c-mall-fresh");
+
+      $("#gotoapp").click(function(){
+        window.location.href = "http://m.sfht.com/app.html";
+      })
+    });
+
+    switcher.register('onlineapp', function () {
+      loadingCtrl.show();
+      new fresh(".sf-b2c-mall-fresh");
+
+      $("#gotoapp").click(function(){
+        window.location.href = "http://m.sfht.com/login.html";
+      })
+    });
+
+    switcher.go();
+
+
   });
