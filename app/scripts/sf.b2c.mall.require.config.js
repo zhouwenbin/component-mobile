@@ -220,7 +220,7 @@ requirejs.config({
     "sf.b2c.mall.api.user.singleSignOn":"scripts/api/sf.b2c.mall.api.user.singleSignOn",
     "sf.b2c.mall.page.naturalcoupon":"scripts/page/sf.b2c.mall.page.naturalcoupon",
     "sf.b2c.mall.component.nav":"scripts/component/sf.b2c.mall.component.nav",
-    "sf.b2c.mall.api.shopcart.isShowCart":"scripts/api/sf.b2c.mall.api.shopcart.isShowCart",
+    "sf.b2c.mall.api.shopcart.isShowCart":"scripts/api/sf.b2c.mall.api.shopcart.isShowCart.agency",
     "sf.b2c.mall.page.shoppingcart":"scripts/page/sf.b2c.mall.page.shoppingcart",
     "sf.b2c.mall.component.shoppingcart":"scripts/component/sf.b2c.mall.component.shoppingcart",
     "sf.b2c.mall.page.search":"scripts/page/sf.b2c.mall.page.search",
