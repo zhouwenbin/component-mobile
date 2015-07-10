@@ -1,8 +1,9 @@
 <section class="cart">
     <ul>
-        <li>
+        {{#each goods}}
+        <li class="active" {{data 'mixDiscount'}}>
             <div class="cart-inner">
-                <span class="icon icon49"></span>
+                <span data-isSelected="1" class="icon icon49"></span>
                 <a target="_blank" href="http://m.sfht.com/detail/{{itemId}}.html"><img src="{{imageName}}" alt=""></a>
                 <div class="cart-c1">
                     <h2 class="ellipsis2"><a target="_blank" href="http://m.sfht.com/detail/{{itemId}}.html">{{productName}}</a></h2>
@@ -10,20 +11,21 @@
                 <div class="cart-c2">
                     <div class="cart-num">X1</div>
                     <div class="text-important">¥{{sf.price sellingPrice}}</div>
-                    <del>¥{{sf.price originPrice}}</del>
+                    {{#sf-show-originPrice originPrice sellingPrice}}<del>¥{{sf.price originPrice}}</del>{{/sf-show-originPrice}}
                 </div>
             </div>
-        </li>            
+        </li>
+        {{/each}}            
     </ul>
 </section>
 <section class="mix-total clearfix">
     <div class="mix-total-r1 fl">总共{{totalcount}}件</div>
     <div class="mix-total-r2 fr">
        <div class="mix-total-c1">
-           <span class="save-tag">立省¥{{sf.price totalSavePrice}}</span>
+           {{#isShowTotalSavePrice totalSavePrice}}<span class="save-tag">立省¥{{sf.price totalSavePrice}}</span>{{/isShowTotalSavePrice}}
             套餐价：<span class="text-important">¥{{sf.price totalSellingPrice}}</span>
        </div> 
-       <del>原价：¥{{totalOriginPrice}}</del>
+       <del>原价：¥{{sf.price totalOriginPrice}}</del>
     </div>
 </section>
 <section class="nav-cart">

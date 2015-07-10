@@ -14,10 +14,11 @@
 <article class="cart">
 <section class="sf-h5-avail-cart">
     <ul>
-    {{#scopeGroups}}
+    {{#singleScope}}
         {{#goodItemList}}
         {{#if isValid}}
-        <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
+
+        <li class="single-goods {{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
                 <a href="javascript:void(0)" class="select-item" style="padding:20px 0;">
                     <span class="icon icon49" style="margin: 0 15px;"></span>
@@ -64,11 +65,78 @@
         </li>
         {{/if}}
         {{/goodItemList}}
-    {{/scopeGroups}}
+    {{/singleScope}}
     </ul>
+    
+    {{!搭配商品  }}
+    {{#partScopeGroups}}
+    <ul>
+        {{#firstGoodItem}}
+        <li class="cart-match {{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
+            <div class="cart-inner">
+                <a href="javascript:void(0)" class="select-item" style="padding:20px 0;">
+                    <span class="icon icon49" style="margin: 0 15px;"></span>
+                </a>
+                <div class="cart-c3">                                   
+                    <span class="cart-c3-c1">搭配优惠</span>
+                    <div class="cart-c3-c2">套餐价: <span class="text-important">¥{{sf.price totalSavePrice}}</span></div>
+                </div>
+                <div class="cart-c1">
+                    <div class="input-num">
+                        <button class="btn minus-num" style="font-size: 16px; line-height: 10px;">-</button>
+                        <input class="input-num" type="text" value="{{quantity}}">
+                        <button class="btn plus-num" {{#sf-allow canAddNum}}disabled{{/sf-allow}} style="font-size: 16px; line-height: 10px;">+</button>
+                    </div>
+                </div> 
+                <div class="cart-c2">
+                  <button class="icon icon-deleted remove-item-btn">删除</button>
+                </div>
+            </div>              
+        </li>
+        {{/firstGoodItem}}
+        {{#goodItemList}}
+        <li class="cart-match cart-match1" {{data 'good'}}>
+            <div class="cart-inner">            
+                <a href="javascript:void(0)" class="select-item" style="padding:20px 0;">
+                    <span class="icon icon49" style="margin: 0 15px;"></span>
+                </a>
+                <a href="http://m.sfht.com/detail/{{itemId}}.html">
+                    <img src="{{sf-show-img images}}" alt="">
+                </a>
+                <div class="cart-c1">
+                    <a href="http://m.sfht.com/detail/{{itemId}}.html">
+                        <h2 class="ellipsis2">{{title}}</h2>
+                    </a>
+                </div>
+                <div class="cart-c2">
+                    <div class="cart-num">x{{quantity}}</div>
+                    <div class="text-important">¥{{sf.price perTotalPrice}}</div>
+
+                    {{#sf-is-show-origin canUseActivityPrice activityPrice price}}
+                    <del>¥{{sf.price price}}</del>
+                    {{/sf-is-show-origin}}
+                </div>
+            </div>
+            {{^sf-is-empty limitDescList}}
+            <div class="text-orange">{{#limitDescList}}{{desc}} {{/limitDescList}}</div>
+            {{/sf-is-empty}}
+
+            {{#if promotionInfo}}
+
+            {{^sf-is-empty promotionInfo.promotionList}}
+            {{#sf-is-avil-promotion promotionInfo.promotionList}}
+            <div class="text-orange">{{#promotionInfo.promotionList}}{{useRuleDesc}} {{/promotionInfo.promotionList}}</div>
+            {{/sf-is-avil-promotion}}
+            {{/sf-is-empty}}
+
+            {{/if}}
+        </li>
+        {{/goodItemList}}
+    </ul>
+    {{/partScopeGroups}}
 
     <ul class="cart-disable">
-    {{#scopeGroups}}
+    {{#singleScope}}
         {{#goodItemList}}
         {{#if isValid}}
 
@@ -95,7 +163,7 @@
         </li>
         {{/if}}
         {{/goodItemList}}
-    {{/scopeGroups}}
+    {{/singleScope}}
     </ul>
 </section>
 </article>

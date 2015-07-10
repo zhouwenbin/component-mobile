@@ -14,7 +14,6 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.helpers',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.message',
     'sf.weixin',
@@ -28,12 +27,14 @@ define('sf.b2c.mall.product.detailcontent', [
     'animate',
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.cartnumber',
+    'sf.b2c.mall.api.product.findMixDiscountProducts'
+
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
-    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin,
+    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFConfig, SFMessage, SFWeixin,
     SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart,
-    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFLoading, SFWidgetCartNumber) {
+    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFLoading, SFWidgetCartNumber, SFFindMixDiscountProducts) {
 
     Fastclick.attach(document.body);
 
@@ -108,6 +109,13 @@ define('sf.b2c.mall.product.detailcontent', [
             return "满减";
           } else {
             return "满折";
+          }
+        },
+        'isShowMixDiscount': function(goods, options) {
+          if (goods() == 'MIX_DISCOUNT') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
           }
         }
       },
@@ -432,7 +440,7 @@ define('sf.b2c.mall.product.detailcontent', [
         if (SFComm.prototype.checkUserLogin.call(this)) {
           this.element.find('.mini-cart-num').show();
 
-          var success = function (data) {
+          var success = function(data) {
             // @description 将返回数字显示在头部导航栏
             // 需要跳动的效果
             that.element.find('.mini-cart-num').text(data.value)
@@ -443,7 +451,7 @@ define('sf.b2c.mall.product.detailcontent', [
             }, 500);
           };
 
-          var error = function () {
+          var error = function() {
             // 更新mini cart失败，不做任何显示
           };
 
@@ -512,11 +520,11 @@ define('sf.b2c.mall.product.detailcontent', [
           'size': 4
         });
 
-        that.options.detailContentInfo = {};
-        that.options.detailContentInfo.showFirstStep = true;
-        that.options.detailContentInfo.showSecondStep = false;
-        that.options.detailContentInfo.activityInfo = new can.Map({});
-        that.options.detailContentInfo.priceInfo = new can.Map({});
+        this.options.detailContentInfo = {};
+        this.options.detailContentInfo.showFirstStep = true;
+        this.options.detailContentInfo.showSecondStep = false;
+        this.options.detailContentInfo.activityInfo = new can.Map({});
+        this.options.detailContentInfo.priceInfo = new can.Map({});
 
         can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initActivityInfo(that.itemid), that.initFindRecommendProducts(that.itemid))
           .done(function() {
@@ -701,13 +709,60 @@ define('sf.b2c.mall.product.detailcontent', [
                   that.options.detailContentInfo.priceInfo.attr("activityTitle", element.activityTitle);
                   that.options.detailContentInfo.priceInfo.attr("h5ActivityLink", element.h5ActivityLink);
                 } else {
-                  that.options.detailContentInfo.activityInfo.attr("isShow", true)
+                  that.options.detailContentInfo.activityInfo.attr("isShow", true);
+                }
+
+                //如果活动类型是搭配折扣，展示搭配购买区域
+                if (element.activityType == "MIX_DISCOUNT") {
+                  that.options.detailContentInfo.activityInfo.attr("activityType", element.activityType);
+                  that.options.detailContentInfo.activityInfo.attr("activityId", element.activityId);
+                  that.initMixDiscountProduct(itemid, that.options.detailContentInfo.activityInfo.attr('activityId'));
                 }
               });
             }
 
             that.options.detailContentInfo.activityInfo.attr("datas", data.value);
           });
+      },
+      // 搭配购买
+      initMixDiscountProduct: function(itemId, activityId) {
+        var that = this;
+        var findMixDiscountProducts = new SFFindMixDiscountProducts({
+          'itemId': itemId,
+          'activityId': activityId
+        });
+        findMixDiscountProducts.sendRequest()
+          .done(function(data) {
+
+            var totalSellingPrice = 0;
+            var totalOriginPrice = 0;
+
+            //找到主商品
+            var mainProductItem = _.find(data.value, function(item) {
+              return item.isMixDiscountMasterItem == true
+            });
+            //剩余搭配商品
+            var mixProductItems = _.reject(data.value, function(item) {
+              return item.isMixDiscountMasterItem == true
+            });
+            //将主商品放在第一位
+            mixProductItems.splice(0, 0, mainProductItem);
+            //获取总原价和总活动价
+            _.each(data.value, function(item) {
+              totalSellingPrice += item.sellingPrice;
+              totalOriginPrice += item.originPrice;
+            });
+            that.options.detailContentInfo.mixDiscount = new can.Map();
+            that.options.detailContentInfo.mixDiscount.attr({
+              goods: mixProductItems,
+              totalSavePrice: totalOriginPrice - totalSellingPrice,
+            })
+          });
+      },
+      '#link-to-mixdiscount click': function(element, event) {
+        var itemid = this.options.detailContentInfo.priceInfo.attr('itemId');
+        var activityId = this.options.detailContentInfo.activityInfo.attr("activityId");
+        window.location.href = 'http://m.sfht.com/detail-mix.html?itemid=' + itemid + '&activityId=' + activityId;
       },
       /**
        * [weixinShare 微信分享]
