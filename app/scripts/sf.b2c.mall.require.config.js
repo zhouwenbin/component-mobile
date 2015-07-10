@@ -144,6 +144,7 @@ requirejs.config({
     "sf.b2c.mall.widget.loading":"scripts/widget/sf.b2c.mall.widget.loading",
     "sf.b2c.mall.widget.login":"scripts/widget/sf.b2c.mall.widget.login",
     "sf.b2c.mall.widget.region":"scripts/widget/sf.b2c.mall.widget.region",
+    "sf.b2c.mall.widget.bubble":"scripts/widget/sf.b2c.mall.widget.bubble",
     "sf.b2c.mall.module.getcoupon":"scripts/module/sf.b2c.mall.module.getcoupon",
     "sf.b2c.mall.module.slider":"scripts/module/sf.b2c.mall.module.slider",
     "sf.b2c.mall.module.price":"scripts/module/sf.b2c.mall.module.price",

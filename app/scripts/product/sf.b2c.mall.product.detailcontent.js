@@ -26,14 +26,13 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.env.switcher',
     'sf.hybrid',
     'animate',
-    'sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.widget.cartnumber',
+    'sf.b2c.mall.widget.cartnumber'
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
     SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin,
     SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart,
-    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFLoading, SFWidgetCartNumber) {
+    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
 

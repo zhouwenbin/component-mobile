@@ -5,12 +5,13 @@ define('sf.b2c.mall.component.addrdetail', [
   'zepto',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.widget.message',
+  "sf.b2c.mall.widget.bubble",
   'sf.b2c.mall.api.user.setDefaultAddr',
   'sf.b2c.mall.api.user.setDefaultRecv',
   'sf.b2c.mall.api.user.delRecAddress',
   'sf.b2c.mall.api.user.delRecvInfo',
   'text!template_component_addrdetail'
-], function(can, $, SFConfig, SFMessage, 
+], function(can, $, SFConfig, SFMessage, SFBubble,
 	SFSetDefaultAddr, SFSetDefaultRecv, SFDelRecAddress, SFDelRecvInfo,
 	template_component_addrdetail) {
 
@@ -57,10 +58,10 @@ define('sf.b2c.mall.component.addrdetail', [
       });
       can.when(setDefaultRecv.sendRequest(), setDefaultAddr.sendRequest())
         .done(function(data){
-          new SFMessage(null,{
-            'tip': '设为默认地址成功！',
-            'type': 'success'
-          });
+          new SFBubble(null, {
+            "message":'设为默认地址成功！', 
+            "tick" :3000}
+            );
         });
     },
 
