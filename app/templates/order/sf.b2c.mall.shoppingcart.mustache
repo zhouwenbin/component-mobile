@@ -75,7 +75,7 @@
         {{else}}
         <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
-                <span class="label label-disabled">已售罄</span>
+                <span class="label label-disabled" style="margin: 0 4px;">已售罄</span>
 
                 <a href="http://m.sfht.com/detail/{{itemId}}.html">
                     <img src="{{sf-show-img images}}" alt="">
@@ -105,6 +105,9 @@
 {{#sf-is-over-pay cartFeeItem.actualTotalFee limitAmount}}
 <div class="alert-error">亲，海关规定购买多个商品总价不能超过1000</div>
 {{/sf-is-over-pay}}
+
+<div style="height:20px;">
+</div>
 
 <section class="cart-footer">
     <div class="cart-footer-r1">
