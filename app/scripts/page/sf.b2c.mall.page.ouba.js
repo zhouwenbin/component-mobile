@@ -36,6 +36,7 @@ define(
         var defaultCouponid = 337;
         var startFlag = false;
         var index = 0;
+        var MESSAGE_CLOSE_TIME = 3000;
         var young= can.Control.extend({
             ".people .btn click":function(){
                 //微信分享
@@ -78,7 +79,7 @@ define(
                 }
 
                 //进入页面初始化随机出现的欧巴
-            //    this.getRandomFresh();
+                this.getRandomFresh();
 //                $(function(){
 
                     $('.next').click(function(){
@@ -129,6 +130,7 @@ define(
                         $(this).addClass('active').siblings().removeClass('active');
                         if($(this).hasClass('tab-lock')){
                             $('.people>li').eq(freshNum-1-index).find('.people-lock').show();
+                            $('.people>li').eq(freshNum-1-index).find('.people-lock').find("p").html(that.textMap[tab_index]);
                         }else{
                             $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();
                         }
@@ -197,6 +199,7 @@ define(
             ".page3-r2  .a1 click": function(){
                 var that = this;
                 var clickTimes = $.fn.cookie('clickTimes');
+
                 if(clickTimes && clickTimes.split("-")[1] > 0){
                     $.fn.cookie('clickTimes',  clickTimes.split("-")[0] + "-" + (parseInt(clickTimes.split("-")[1]) -1));;
                     $("#clickTimes").text( parseInt(clickTimes.split("-")[1]) -1 );
@@ -226,6 +229,13 @@ define(
                         $("#clickNum").text(tickets);
                         that.tabUnlock(tickets);
                         that.initActiveTab(tickets, freshNum-num, index);
+
+                        //弹出按钮
+//                        var message = new SFMessage(null, {
+//                            'tip': that.getRandomAlertInfo(),
+//                            'type': 'success',
+//                            'closeTime': MESSAGE_CLOSE_TIME
+//                        });
                     })
                     .fail(function(error) {
                         console.error(error);
@@ -283,6 +293,13 @@ define(
                 "11000140": "卡包已作废"
             },
 
+            //锁的文案
+            textMap: {
+                "1": "被扒1,000,00次就看到啦！",
+                "2": "被扒1,500,00次就看到啦！",
+                "3": "被扒3,000,00次就看到啦！"
+            },
+
             // 获得随机信息
             getRandomAlertInfo: function() {
                 var map = {
@@ -298,8 +315,17 @@ define(
             getRandomFresh: function(){
                 var random = Math.round(Math.random()*freshNum);
                 index = random;
-                $('.people>li').eq(freshNum-1-index).addClass('active');
+                var len = $('.people>li').length;
+                for(var i = 0; i < len; i++){
+                    if(i <freshNum - index){
+                        $('.people>li').eq(i).removeClass('active');
+                    }
+                    else{
+                        $('.people>li').eq(i).addClass('active');
+                    }
+                }
                 this.changFresh(index);
+
                 var tickets = this.getTicketsByNo(ticketList, freshNum-index);
                 this.initActiveTab(tickets,freshNum-index,index);
             },
