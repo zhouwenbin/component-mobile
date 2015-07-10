@@ -62,7 +62,9 @@ define(
         this.data = {};
         this.data.bagid = params.bagid;
 
-        SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", this.data.bagid, $.fn.cookie('userId'));
+        SFWeixin.shareInvitation(
+          "［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！", 
+          "［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！", this.data.bagid, $.fn.cookie('userId'));
 
         var renderFn = can.mustache(template_center_invitationshare);
         this.options.html = renderFn(this.data, this.helpers);
@@ -77,8 +79,8 @@ define(
 
       "#sharebutton click": function(element, event) {
         if (SFFn.isMobile.APP()) {
-          var title = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
-          var desp = '［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？';
+          var title = '［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！';
+          var desp = '［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！';
           var shareUrl = "http://m.sfht.com/invitation-bag.html?_src=" + $.fn.cookie('userId') + "&bagid=" + this.data.bagid;
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
 
