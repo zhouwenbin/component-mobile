@@ -17,9 +17,10 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.mypoint',
-    'sf.b2c.mall.widget.loading'
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.module.getcoupon'
   ],
-  function(can, $, store, Fastclick, _, md5, helpers, SFComm, SFConfig, SFFn, SFMessage, SFGetVoteNum, SFSwitcher, SFHybrid, SFPoint, SFLoading) {
+  function(can, $, store, Fastclick, _, md5, helpers, SFComm, SFConfig, SFFn, SFMessage, SFGetVoteNum, SFSwitcher, SFHybrid, SFPoint, SFLoading, SFGetcoupon) {
     Fastclick.attach(document.body);
     SFComm.register(3);
 
@@ -85,10 +86,6 @@ define(
     switcher.register('onlineapp', function () {
       loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
-
-      $("#gotoapp").click(function(){
-        window.location.href = "http://m.sfht.com/login.html";
-      })
     });
 
     switcher.go();
