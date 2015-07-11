@@ -101,6 +101,7 @@ define(
 
                         if(parseInt(obj.split("-")[1]) < 1){
                             $(".page3-r2  .a1").css("background","grey");
+                            $(".page3-r2  .a1 div").html("小主，明天再来扒衣啊");
                         }
                     }
                 }
@@ -202,7 +203,7 @@ define(
             },
 
             "#goActive click":function(){
-                window.location.href = "http://m.sfht.com/index.html";
+                window.location.href = "http://m.sfht.com/activity/439.html";
             },
             //领优惠劵时，对输入的号码进行校验
 //            "#phoneNum keyup": function(){
@@ -246,7 +247,7 @@ define(
             //进入活动页面
             "#huodong click":function(){
                 $('#success').addClass('hide');
-                window.location.href = "http://m.sfht.com/index.html";
+                window.location.href = "http://m.sfht.com/activity/439.html";
             },
 
             //继续扒小鲜肉
@@ -279,8 +280,15 @@ define(
                 var clickTimes = $.fn.cookie('clickTimes');
 
                 if(clickTimes && clickTimes.split("-")[1] > 0){
-                    $.fn.cookie('clickTimes',  clickTimes.split("-")[0] + "-" + (parseInt(clickTimes.split("-")[1]) -1));;
-                    $("#clickTimes").text( parseInt(clickTimes.split("-")[1]) -1 );
+                    $.fn.cookie('clickTimes',  clickTimes.split("-")[0] + "-" + (parseInt(clickTimes.split("-")[1]) -1));
+                    var times = parseInt(clickTimes.split("-")[1]) -1;
+                    if(times < 1){
+                        $(".page3-r2  .a1").css("background","grey");
+                        $(".page3-r2  .a1 div").html("小主，明天再来扒衣啊");
+                    }
+                   else{
+                        $("#clickTimes").text( times);
+                    }
                 }
                 else if(clickTimes && clickTimes.split("-")[1] < 1){
                     $(".page3-r2  .a1").css("background","grey");
