@@ -87,6 +87,8 @@ define(
       $("#gotoapp").click(function() {
         window.location.href = "http://m.sfht.com/app.html";
       })
+
+      loadingCtrl.hide();
     });
 
     switcher.register('onlineapp', function() {
@@ -94,6 +96,7 @@ define(
       new fresh(".sf-b2c-mall-fresh");
     });
 
+    loadingCtrl.hide();
     switcher.go();
 
 
