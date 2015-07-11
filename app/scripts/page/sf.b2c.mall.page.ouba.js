@@ -423,22 +423,22 @@ define(
             initActiveTab:function(tickets, Num, index){
                 if(tickets > mi){
                     $(".tab li").eq(3).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+Num+'/'+4+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+Num+'/'+4+'.jpg');
                     $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
                 }
                 else if(tickets > banLuo){
                     $(".tab li").eq(2).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+Num+'/'+3+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+Num+'/'+3+'.jpg');
                     $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
                 }
                 else if(tickets > xiaoXiu){
                     $(".tab li").eq(1).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+Num+'/'+2+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+Num+'/'+2+'.jpg');
                     $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
                 }
                 else{
                     $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+Num+'/'+1+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+Num+'/'+1+'.jpg');
                     $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
                 }
             },
