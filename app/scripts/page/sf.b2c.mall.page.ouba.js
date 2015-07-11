@@ -53,7 +53,7 @@ define(
 
                 $('.wp-inner').fullpage();
                 $.fn.fullpage.stop();
-
+                 $("#nextPage").css("display","none");
                 this.getTicketList();
                 var that = this;
                 var audio=$('#audio');
@@ -116,6 +116,11 @@ define(
 //                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
 //                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
+                        else{
+                            index = 0;
+                            $('.people>li').removeClass("active");
+                            that.changFresh(index);
+                        }
                     })
                     $('.prev').click(function(){
                         if(index>0){
@@ -124,6 +129,12 @@ define(
                             that.changFresh(index);
 //                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
 //                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
+                        }
+                        else{
+                            index = 14;
+                            $('.people>li').addClass("active");
+                            $('.people>li').eq(0).removeClass("active");
+                            that.changFresh(index);
                         }
                     })
 
@@ -171,20 +182,21 @@ define(
             //翻看小鲜肉图片
             ".page1 .icon1 click":function(){
                 $.fn.fullpage.start();
+                $("#nextPage").css("display","block");
                 $('.page1').addClass('active');
                 $( ".page1 .icon1").hide();
             },
 
             //领优惠劵时，对输入的号码进行校验
-            "#phoneNum keyup": function(){
-                if(!((/^1[0-9]{10}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
-                    $("#username-error-tips").text('号码格式不正确！');
-                    return ;
-                }
-                else{
-                    $("#username-error-tips").text('');
-                }
-            },
+//            "#phoneNum keyup": function(){
+//                if(!((/^1[0-9]{10}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
+//                    $("#username-error-tips").text('号码格式不正确！');
+//                    return ;
+//                }
+//                else{
+//                    $("#username-error-tips").text('');
+//                }
+//            },
 
             //对于非微信打开的，去掉所有的分享
             hideShare:function(){
@@ -204,6 +216,10 @@ define(
             //继续扒小鲜肉
             "#goOn click": function(){
                 $('#success').addClass('hide');
+            },
+
+            "#closeButton click": function(){
+                $('.dialog-phone').addClass('hide');
             },
 
             //点击分享
@@ -345,7 +361,7 @@ define(
 
             //每次进入页面时，随机出现欧巴
             getRandomFresh: function(){
-                var random = Math.round(Math.random()*freshNum);
+                var random = Math.floor(Math.random() * 7 );
                 index = random;
                 var len = $('.people>li').length;
                 for(var i = 0; i < len; i++){
