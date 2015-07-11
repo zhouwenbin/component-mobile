@@ -396,10 +396,10 @@ define('sf.weixin', [
           jweixin.ready(function() {
 
               jweixin.onMenuShareTimeline({
-                  title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
-                  desc: '别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
-                  link: 'http://m.sfht.com/index.html',
-                  imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
+                  title: '顺丰海淘疯了~COO带头脱光揽生意，是！真！脱！',
+                  desc: '',
+                  link: 'http://m.sfht.com/ouba.html',
+                  imgUrl: 'img/young/photo/1/1.jpg',
                   trigger: function(res) {
                       // alert('用户点击发送给朋友');
                   },
@@ -415,10 +415,10 @@ define('sf.weixin', [
               });
 
               jweixin.onMenuShareAppMessage({
-                  title: '顺丰海淘--别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
-                  desc: '别再淘宝啦！快来顺丰海淘，挑海外好货，一起提升B格！',
-                  link: 'http://m.sfht.com/index.html',
-                  imgUrl: 'http://img.sfht.com/sfht/img/sharelog.png',
+                  title: '顺丰海淘疯了~COO带头脱光揽生意，是！真！脱！',
+                  desc: '裸价狂欢进口美妆休食专场 4个字—划算到爆',
+                  link: 'http://m.sfht.com/ouba.html',
+                  imgUrl: 'img/young/photo/1/1.jpg',
                   trigger: function(res) {
                       // alert('用户点击发送给朋友');
                   },
