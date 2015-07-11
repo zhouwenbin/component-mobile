@@ -219,6 +219,13 @@ define(
                 }
             },
 
+            "#shareWeixin click":function(){
+                //微信分享
+                if (SFFn.isMobile.WeChat()) {
+                    $("#sharearea").show();
+                }
+            }  ,
+
             //进入活动页面
             "#huodong click":function(){
                 $('#success').addClass('hide');
