@@ -32,7 +32,7 @@ define(
         var banLuo = 150000;
         var mi = 300000;
         var ticketList = null;
-        var freshNum = 11;
+        var freshNum = 15;
         var defaultCouponid = 337;
         var startFlag = false;
         var index = 0;
@@ -56,6 +56,32 @@ define(
 
                 this.getTicketList();
                 var that = this;
+                var audio=$('#audio');
+
+                //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以
+                document.getElementById('audio').play();
+                //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
+                document.addEventListener("WeixinJSBridgeReady", function () {
+                    document.getElementById('audio').play();
+                }, false);
+                //loading效果
+                setTimeout(function(){
+                    $('.young-loading').hide();
+                },10000);
+
+                //播放/关闭音乐
+                $('.icon-audio').click(function(){
+                    if(audio.hasClass('active')){
+                        audio[0].play();
+                        $(this).removeClass('active');
+                        audio.removeClass('active');
+                    }else{
+                        audio[0].pause();
+                        $(this).addClass('active');
+                        audio.addClass('active');
+                    }
+
+                })
 
                 this.hideShare();
                 //初始化每日可以扒衣的次数
@@ -87,8 +113,8 @@ define(
                             $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
                             that.changFresh(index);
-                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
-                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
+//                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+//                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                     })
                     $('.prev').click(function(){
@@ -96,8 +122,8 @@ define(
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
                             that.changFresh(index);
-                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
-                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
+//                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+//                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                     })
 
@@ -107,8 +133,8 @@ define(
                             $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
                             that.changFresh(index);
-                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
-                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
+//                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+//                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                     })
                     $('.people').swipeLeft(function(){
@@ -116,8 +142,8 @@ define(
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
                             that.changFresh(index);
-                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
-                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
+//                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+//                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                     })
 
@@ -171,18 +197,18 @@ define(
 
             //进入活动页面
             "#huodong click":function(){
-                $('.dialog-success').addClass('hide');
+                $('#success').addClass('hide');
                 window.location.href = "http://m.sfht.com/index.html";
             },
 
             //继续扒小鲜肉
             "#goOn click": function(){
-                $('.dialog-success').addClass('hide');
+                $('#success').addClass('hide');
             },
 
             //点击分享
             "#share click": function(){
-                $('.dialog-success').addClass('hide');
+                $('#success').addClass('hide');
 
                 //微信分享
                 if (SFFn.isMobile.WeChat()) {
@@ -209,6 +235,11 @@ define(
                     return;
                 }
 
+                //扒小鲜肉的文案提示
+                $("#textMap").text(that.getRandomAlertInfo());
+                $("#notice").removeClass("hide");
+                setTimeout(' $("#notice").addClass("hide")',1000);
+
                 var params = {
                     'voteType': 'XXMAN'
                 };
@@ -229,6 +260,7 @@ define(
                         $("#clickNum").text(tickets);
                         that.tabUnlock(tickets);
                         that.initActiveTab(tickets, freshNum-num, index);
+
 
                         //弹出按钮
 //                        var message = new SFMessage(null, {
@@ -263,7 +295,7 @@ define(
                 receiveShareCoupon.sendRequest()
                     .done(function(data) {
                         $('.dialog-phone').addClass('hide');
-                        $('.dialog-success').removeClass('hide');
+                        $('#success').removeClass('hide');
                     })
                     .fail(function(error) {
                         $("#username-error-tips").text(that.errorMap[error] || '领取失败');
@@ -326,8 +358,8 @@ define(
                 }
                 this.changFresh(index);
 
-                var tickets = this.getTicketsByNo(ticketList, freshNum-index);
-                this.initActiveTab(tickets,freshNum-index,index);
+//                var tickets = this.getTicketsByNo(ticketList, freshNum-index);
+//                this.initActiveTab(tickets,freshNum-index,index);
             },
 
             //点击下一个或者是上一个的时候触发的东东,index为第几个图片
