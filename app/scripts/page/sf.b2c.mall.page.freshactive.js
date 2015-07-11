@@ -1,7 +1,6 @@
 'use strict';
 define(
-  'sf.b2c.mall.page.freshactive',
-  [
+  'sf.b2c.mall.page.freshactive', [
     'can',
     'zepto',
     'store',
@@ -33,6 +32,10 @@ define(
        */
       init: function(element, options) {
 
+        if (!SFFn.isMobile.WeChat()) {
+          $("#sharefriend")[0].style.visibility = "hidden";
+        }
+
         var getVoteNum = new SFGetVoteNum({
           "voteType": "XXMAN"
         });
@@ -41,17 +44,17 @@ define(
 
             data.voteTotalNum = data.voteTotalNum.toString();
 
-            if(data.voteTotalNum.length  == 1) {
+            if (data.voteTotalNum.length == 1) {
               data.voteTotalNum = "000000" + data.voteTotalNum;
-            } else if (data.voteTotalNum.length  == 2){
+            } else if (data.voteTotalNum.length == 2) {
               data.voteTotalNum = "00000" + data.voteTotalNum;
-            } else if (data.voteTotalNum.length  == 3){
+            } else if (data.voteTotalNum.length == 3) {
               data.voteTotalNum = "0000" + data.voteTotalNum;
-            } else if (data.voteTotalNum.length  == 4){
+            } else if (data.voteTotalNum.length == 4) {
               data.voteTotalNum = "000" + data.voteTotalNum;
-            } else if (data.voteTotalNum.length  == 5){
+            } else if (data.voteTotalNum.length == 5) {
               data.voteTotalNum = "00" + data.voteTotalNum;
-            } else if (data.voteTotalNum.length  == 6){
+            } else if (data.voteTotalNum.length == 6) {
               data.voteTotalNum = "0" + data.voteTotalNum;
             }
 
@@ -61,12 +64,12 @@ define(
             console.error(error)
           })
 
-        $("#sharefriend").click(function(){
+        $("#sharefriend").click(function() {
           $("body,html").scrollTop(0);
           $("#sharearea").show();
         })
 
-        $(".mask").click(function(){
+        $(".mask").click(function() {
           $("#sharearea").hide();
         })
       }
@@ -80,12 +83,13 @@ define(
       loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
 
-      $("#gotoapp").click(function(){
+
+      $("#gotoapp").click(function() {
         window.location.href = "http://m.sfht.com/app.html";
       })
     });
 
-    switcher.register('onlineapp', function () {
+    switcher.register('onlineapp', function() {
       loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
     });
