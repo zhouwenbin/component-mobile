@@ -39,6 +39,8 @@ define(
         getVoteNum.sendRequest()
           .done(function(data) {
 
+            data.voteTotalNum = data.voteTotalNum.toString();
+
             if(data.voteTotalNum.length  == 1) {
               data.voteTotalNum = "000000" + data.voteTotalNum;
             } else if (data.voteTotalNum.length  == 2){
