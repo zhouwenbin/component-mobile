@@ -1,9 +1,6 @@
 requirejs.config({
     baseUrl: ' /',
     paths: {
-
-
-
         "can": "http://www.google.com/bower_components/canjs/amd/can",
         "zepto": "http://www.google.com/zepto",
         "zepto.cookie": "http://www.google.com/zepto.cookie",

@@ -1,49 +1,30 @@
-<div class="alert-warning">政策规定，商品进口需提供收货人的实名认证信息。</div>
-<a href="javascript:void(0)" class="btn btn-normal" id="backToOrder">< 返回</a>
-<section class="order-add">
-  <h2>收货人</h2>
-  <input type="text" can-value="addr.input.recName" value="{{addr.input.recName}}" class="input" placeholder="需要填写收货人的真实姓名">
-  <h2>身份证</h2>
-  <input type="text" can-value="addr.input.credtNum" value="{{addr.input.credtNum}}" class="input" placeholder="由于国家海关规定，海淘需提交实名信息">
-  <h2>手机</h2>
-  <input type="text" can-value="addr.input.cellphone" value="{{addr.input.cellphone}}" class="input" placeholder="收货人手机号">
-  <h2>城市</h2>
-
-  <div class="order-add-select">
-    <select id="s1" can-value="addr.input.nationName" class="select hide">
-      {{#each addr.place.countries}}
-      <option value="{{id}}">{{name}}</option>
-      {{/each}}
-    </select>
-    <select id="s2"  can-value="addr.input.provinceName" class="select">
-      <option value="0">请选择</option>
-      {{#each addr.place.provinces}}
-      <option value="{{id}}">{{name}}</option>
-      {{/each}}
-    </select>
-    <select id="s3"  can-value="addr.input.cityName" class="select">
-      <option value="0">请选择</option>
-      {{#each addr.place.cities}}
-      <option value="{{id}}">{{name}}</option>
-      {{/each}}
-    </select>
-    <select id="s4"  can-value="addr.input.regionName" class="select">
-      <option value="0">请选择</option>
-      {{#each addr.place.regions}}
-      <option value="{{id}}">{{name}}</option>
-      {{/each}}
-    </select>
-  </div>
-
-  <h2>地址</h2>
-  <textarea name="" can-value="addr.input.detail" value="{{addr.input.detail}}" id="" class="textarea" placeholder="填写详细地址"></textarea>
-  {{! <h2>邮编</h2>
-  <input type="text" can-value="addr.input.zipCode" value="{{addr.input.zipCode" class="input" placeholder="填写邮政编码"> }}
-  <div class="text-error">{{addr.error}}</div>
-  <div style="height:20px"></div>
+<section class="address-detail">
+  <h2 class="address-title">修改收货地址</h2>
+  <ul>
+    <ul>
+      <li><input type="text" placeholder="收货人姓名（需与身份证的姓名一致）" value="{{addr.input.recName}}" can-value="addr.input.recName"></li>
+      <li><input type="text" placeholder="手机号码" value="{{addr.input.cellphone}}" can-value="addr.input.cellphone"></li>
+      <li><input type="text" placeholder="身份证号" value="{{addr.input.credtNum2}}" can-value="addr.input.credtNum2"></li>
+      <li id="selectRegionUpdate">
+        {{^if addr.input.provinceName}}
+          <span style="color:#A9A9A9">所在地区</span>
+        {{else}}
+          <span>{{addr.input.provinceName}}</span>
+          <span>{{addr.input.cityName}}</span>
+          <span>{{addr.input.regionName}}</span>
+        {{/if}}
+      </li>
+      <li><input type="text" placeholder="详细地址" value="{{addr.input.detail}}" can-value="addr.input.detail"></li>
+    </ul>
+  </ul>
 </section>
+
+<section class="address-region"></section>
+
 <section class="nav">
   <div class="nav-r1">
-    <div class="nav-c2"><button class="btn btn-danger btn-big" id="addressSave">确认收货人地址</button></div>
-  </div>
+    <div class="nav-c2">
+      <a href="detail-select.html" class="btn btn-danger btn-big" id="addressSaveUpdate">保存</a>
+    </div>
+  </div>    
 </section>
