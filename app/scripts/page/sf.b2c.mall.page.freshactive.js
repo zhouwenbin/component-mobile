@@ -80,14 +80,14 @@ define(
     var loadingCtrl = new SFLoading();
 
     switcher.register('web', function() {
-      loadingCtrl.show();
+      // loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
 
       $("#gotoapp").click(function() {
         window.location.href = "http://m.sfht.com/app.html";
       })
 
-      loadingCtrl.hide();
+      // loadingCtrl.hide();
     });
 
     switcher.register('onlineapp', function() {
