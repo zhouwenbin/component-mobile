@@ -59,10 +59,10 @@ define(
                 var audio=$('#audio');
 
                 //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以
-                audio.play();
+                audio[0].play();
                 //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
                 document.addEventListener("WeixinJSBridgeReady", function () {
-                    audio.play();
+                    audio[0].play();
                 }, false);
                 //loading效果
                 setTimeout(function(){
@@ -226,6 +226,18 @@ define(
                 }
             }  ,
 
+            popNotice:function(){
+                var $el = $('<div class="dialog-cart" style="z-index:9999;position:fixed;bottom:20px;"><div class="dialog-cart-inner" style="width:242px;padding:20px 60px;"><p style="margin-bottom:10px;">' + this.getRandomAlertInfo() + '</p></div><a href="javascript:" class="icon icon108 closeDialog">关闭</a></div>');
+                $(".page3-r1").append($el);
+                $('.closeDialog').click(function(event) {
+                    $el.remove();
+                });
+                setTimeout(function() {
+                    $el.remove();
+                }, 3000);
+
+            },
+
             //进入活动页面
             "#huodong click":function(){
                 $('#success').addClass('hide');
@@ -294,6 +306,7 @@ define(
                         var tickets = that.getTicketsByNo(ticketList, num);
                         $("#clickNum").text(tickets);
                         that.tabUnlock(tickets);
+                        that.popNotice();
 //                        that.initActiveTab(tickets, freshNum-num, index);
 
 
