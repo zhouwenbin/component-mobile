@@ -182,7 +182,7 @@ define(
             //翻看小鲜肉图片
             ".page1 .icon1 click":function(){
                 $.fn.fullpage.start();
-                $("#nextPage").css("display","block");
+                $("#nextPage").css("display","inline");
                 $('.page1').addClass('active');
                 $( ".page1 .icon1").hide();
             },
