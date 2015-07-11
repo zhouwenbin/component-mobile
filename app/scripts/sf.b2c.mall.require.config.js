@@ -90,7 +90,6 @@ requirejs.config({
         "sf.b2c.mall.api.user.rqCash": "scripts/api/sf.b2c.mall.api.user.rqCash",
         "sf.b2c.mall.api.user.getCashActInfo": "scripts/api/sf.b2c.mall.api.user.getCashActInfo",
         "sf.b2c.mall.api.user.bindAliAct": "scripts/api/sf.b2c.mall.api.user.bindAliAct",
-
         "sf.b2c.mall.api.minicart.getTotalCount": "scripts/api/sf.b2c.mall.api.minicart.getTotalCount",
         "sf.b2c.mall.api.shopcart.addItemToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemToCart",
         "sf.b2c.mall.api.shopcart.addItemsToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemsToCart",
@@ -131,7 +130,6 @@ requirejs.config({
         "sf.b2c.mall.api.user.setPswdAndLogin": "scripts/api/sf.b2c.mall.api.user.setPswdAndLogin",
         "sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM": "scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM",
         "sf.b2c.mall.api.integral.getUserIntegralLog": "scripts/api/sf.b2c.mall.api.integral.getUserIntegralLog",
-
         "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
         "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
         "placeholders": "bower_components/Placeholders/build/placeholders",
@@ -282,6 +280,13 @@ requirejs.config({
         "sf.b2c.mall.page.520": "scripts/page/sf.b2c.mall.page.520",
         "template_header_520": "templates/sf.b2c.mall.520.mustache",
         "sf.mediav": "scripts/util/sf.mediav",
-        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache"
+        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
+        "sf.b2c.mall.widget.region": "scripts/widget/sf.b2c.mall.widget.region",
+        "sf.b2c.mall.widget.bubble": "scripts/widget/sf.b2c.mall.widget.bubble",
+        "sf.b2c.mall.component.addrdetail": "scripts/component/sf.b2c.mall.component.addrdetail",
+        "sf.b2c.mall.component.addrcreate": "scripts/component/sf.b2c.mall.component.addrcreate",
+        "template_component_addrcreate": "templates/component/sf.b2c.mall.component.addrcreate.mustache",
+        "template_component_addrdetail": "templates/component/sf.b2c.mall.component.addrdetail.mustache",
+        "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache"
     }
 });
