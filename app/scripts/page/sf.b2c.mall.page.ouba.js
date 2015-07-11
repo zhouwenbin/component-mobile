@@ -152,7 +152,7 @@ define(
                         var tab_index=$('.tab li').index(this);
                         var people_index=freshNum-index;
                         var photo_index=tab_index+1;
-                        $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
+                        $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+people_index+'/'+photo_index+'.jpg');
                         $(this).addClass('active').siblings().removeClass('active');
                         if($(this).hasClass('tab-lock')){
                             $('.people>li').eq(freshNum-1-index).find('.people-lock').show();
@@ -236,9 +236,9 @@ define(
                 }
 
                 //扒小鲜肉的文案提示
-                $("#textMap").text(that.getRandomAlertInfo());
-                $("#notice").removeClass("hide");
-                setTimeout(' $("#notice").addClass("hide")',1000);
+//                $("#textMap").text(that.getRandomAlertInfo());
+//                $("#notice").removeClass("hide");
+//                setTimeout(' $("#notice").addClass("hide")',1000);
 
                 var params = {
                     'voteType': 'XXMAN'
@@ -407,22 +407,22 @@ define(
             initActiveTab:function(tickets, Num, index){
                 if(tickets > mi){
                     $(".tab li").eq(3).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+Num+'/'+4+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+Num+'/'+4+'.jpg');
                     $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
                 }
                 else if(tickets > banLuo){
                     $(".tab li").eq(2).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+Num+'/'+3+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+Num+'/'+3+'.jpg');
                     $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
                 }
                 else if(tickets > xiaoXiu){
                     $(".tab li").eq(1).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+Num+'/'+2+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+Num+'/'+2+'.jpg');
                     $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
                 }
                 else{
                     $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','../img/young/photo/'+Num+'/'+1+'.jpg');
+                    $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+Num+'/'+1+'.jpg');
                     $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();  //去掉蒙层
                 }
             },
