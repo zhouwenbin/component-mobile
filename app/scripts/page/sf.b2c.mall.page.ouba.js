@@ -293,6 +293,7 @@ define(
             //领优惠券
             ".dialog-phone .btn click":function(){
                 var that = this;
+                $("#username-error-tips").text("");
                 if(!((/^1[0-9]{9}/).test($("#phoneNum").val()) && $("#phoneNum").val().length == 11)){
                     $("#username-error-tips").text('号码格式不正确！');
                     return ;
