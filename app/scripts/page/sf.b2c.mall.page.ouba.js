@@ -109,6 +109,7 @@ define(
 //                $(function(){
 
                     $('.next').click(function(){
+                        $('.page3').addClass('active');
                         if(index<freshNum-1){
                             $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
@@ -121,6 +122,7 @@ define(
                         }
                     })
                     $('.prev').click(function(){
+                        $('.page3').addClass('active');
                         if(index>0){
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
@@ -138,6 +140,7 @@ define(
 
                   //左右滑动
                     $('.people').swipeRight(function(){
+                        $('.page3').addClass('active');
                         if(index>0){
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
@@ -153,6 +156,7 @@ define(
                         }
                     })
                     $('.people').swipeLeft(function(){
+                        $('.page3').addClass('active');
                         if(index<freshNum-1){
                             $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
@@ -290,32 +294,24 @@ define(
                 var params = {
                     'voteType': 'XXMAN'
                 };
-                var num = freshNum;
-                if($(".people>li").index($(".people>li.active")) != -1){
-                    num =$(".people>li").index($(".people>li.active"));
-                }
-                num = num -1;
+//                var num = freshNum;
+//                if($(".people>li").index($(".people>li.active")) != -1){
+//                    num =$(".people>li").index($(".people>li.active"));
+//                }
+//                num = num -1;
 
-                params.voteNo = freshNum-num;
+                params.voteNo = freshNum-index;
 
                 //刷新投票数
                 var voteTicket = new Vote(params);
                 voteTicket.sendRequest()
                     .done(function(data) {
                         ticketList = data.infos;
-                        var tickets = that.getTicketsByNo(ticketList, num);
+                        var tickets = that.getTicketsByNo(ticketList, freshNum-index);
                         $("#clickNum").text(tickets);
                         that.tabUnlock(tickets);
-                        that.popNotice();
+                   //     that.popNotice();
 //                        that.initActiveTab(tickets, freshNum-num, index);
-
-
-                        //弹出按钮
-//                        var message = new SFMessage(null, {
-//                            'tip': that.getRandomAlertInfo(),
-//                            'type': 'success',
-//                            'closeTime': MESSAGE_CLOSE_TIME
-//                        });
                     })
                     .fail(function(error) {
                         console.error(error);
@@ -427,7 +423,7 @@ define(
                 var tickets = 0;
                 if(ticketList != null && ticketList.length > 0){
                     for(var i = 0; i < ticketList.length; i++){
-                        if(parseInt(ticketList[i].voteNo) == freshNum - num){
+                        if(parseInt(ticketList[i].voteNo) == num){
                             tickets = ticketList[i].voteNum;
                         }
                     }
@@ -443,8 +439,8 @@ define(
                 voteNum.sendRequest()
                     .done(function(data) {
                         ticketList =  data.infos;
-                        $("#clickNum").text(that.getTicketsByNo(ticketList, freshNum));
-                        that.tabUnlock(that.getTicketsByNo(ticketList, freshNum));
+                        $("#clickNum").text(that.getTicketsByNo(ticketList, freshNum-index));
+                        that.tabUnlock(that.getTicketsByNo(ticketList, freshNum-index));
                     })
                     .fail(function(error) {
                         console.error(error);
