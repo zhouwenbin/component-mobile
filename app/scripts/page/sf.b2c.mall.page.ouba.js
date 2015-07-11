@@ -423,7 +423,7 @@ define(
                 var tickets = 0;
                 if(ticketList != null && ticketList.length > 0){
                     for(var i = 0; i < ticketList.length; i++){
-                        if(parseInt(ticketList[i].voteNo) == freshNum - num){
+                        if(parseInt(ticketList[i].voteNo) == num){
                             tickets = ticketList[i].voteNum;
                         }
                     }
