@@ -33,7 +33,7 @@ define(
         var mi = 300000;
         var ticketList = null;
         var freshNum = 15;
-        var defaultCouponid = 337;
+        var defaultCouponid = 100;
         var startFlag = false;
         var index = 0;
         var MESSAGE_CLOSE_TIME = 3000;
@@ -113,8 +113,6 @@ define(
                             $('.people>li').eq(freshNum-1-index).addClass('active');
                             index++;
                             that.changFresh(index);
-//                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
-//                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
                         }
                         else{
                             index = 0;
@@ -140,21 +138,30 @@ define(
 
                   //左右滑动
                     $('.people').swipeRight(function(){
-                        if(index<freshNum-1){
-                            $('.people>li').eq(freshNum-1-index).addClass('active');
-                            index++;
-                            that.changFresh(index);
-//                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
-//                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
-                        }
-                    })
-                    $('.people').swipeLeft(function(){
                         if(index>0){
                             $('.people>li').eq(freshNum-index).removeClass('active');
                             index--;
                             that.changFresh(index);
 //                            var tickets = that.getTicketsByNo(ticketList, freshNum-index);
 //                            that.initActiveTab(tickets,freshNum-index,index);  //初始化话最新欧巴图片
+                        }
+                        else{
+                            index = 14;
+                            $('.people>li').addClass("active");
+                            $('.people>li').eq(0).removeClass("active");
+                            that.changFresh(index);
+                        }
+                    })
+                    $('.people').swipeLeft(function(){
+                        if(index<freshNum-1){
+                            $('.people>li').eq(freshNum-1-index).addClass('active');
+                            index++;
+                            that.changFresh(index);
+                        }
+                        else{
+                            index = 0;
+                            $('.people>li').removeClass("active");
+                            that.changFresh(index);
                         }
                     })
 
@@ -175,6 +182,8 @@ define(
 
                     $('.page3 .a2').click(function(){
                         $('.dialog-phone').removeClass('hide');
+                        $("#username-error-tips").text("");
+                        $("#phoneNum").val("");
                     })
             },
 
@@ -187,6 +196,9 @@ define(
                 $( ".page1 .icon1").hide();
             },
 
+            "#goActive click":function(){
+                window.location.href = "http://m.sfht.com/index.html";
+            },
             //领优惠劵时，对输入的号码进行校验
 //            "#phoneNum keyup": function(){
 //                if(!((/^1[0-9]{10}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
@@ -203,9 +215,16 @@ define(
                 if (!SFFn.isMobile.WeChat()) {
                     $(".people li .btn").hide();  //小鲜肉中的分享不显示
                     $("#share").hide();    //领卷成功后的分享不显示
-                    $("#share4").text("");  //最后一页的分享字段不显示
+                    $("#share4").css("display","none");  //最后一页的分享字段不显示
                 }
             },
+
+            "#shareWeixin click":function(){
+                //微信分享
+                if (SFFn.isMobile.WeChat()) {
+                    $("#sharearea").show();
+                }
+            }  ,
 
             //进入活动页面
             "#huodong click":function(){
@@ -275,7 +294,7 @@ define(
                         var tickets = that.getTicketsByNo(ticketList, num);
                         $("#clickNum").text(tickets);
                         that.tabUnlock(tickets);
-                        that.initActiveTab(tickets, freshNum-num, index);
+//                        that.initActiveTab(tickets, freshNum-num, index);
 
 
                         //弹出按钮
@@ -293,7 +312,6 @@ define(
             //领优惠券
             ".dialog-phone .btn click":function(){
                 var that = this;
-                $("#username-error-tips").text("");
                 if(!((/^1[0-9]{9}/).test($("#phoneNum").val()) && $("#phoneNum").val().length == 11)){
                     $("#username-error-tips").text('号码格式不正确！');
                     return ;
@@ -322,14 +340,14 @@ define(
 
             //每天的优惠券id
             coupon1Map: {
-                "13": '1',
-                "14": '2',
-                "15": '3',
-                "16": '4',
-                "17": '5',
-                "18": '6',
-                "19": '7',
-                "20": '8'
+                "13": '289',
+                "14": '290',
+                "15": '291',
+                "16": '292',
+                "17": '293',
+                "18": '294',
+                "19": '295',
+                "20": '296'
             },
 
             //领取优惠券失败的id
