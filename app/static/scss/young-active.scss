@@ -286,6 +286,32 @@ body{
 	left: -18px;
 	top: 14px;
 }
+.spike-r1 .mask {
+  position: absolute;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+.spike-r1 span {
+  font-size: 36px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 122px;
+  width: 100%;
+  z-index: 1;
+}
 .spike{
     background: #ffbf00;
 }
