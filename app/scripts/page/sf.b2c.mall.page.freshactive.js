@@ -93,7 +93,6 @@ define(
       })
 
 
-
       // loadingCtrl.hide();
     });
 
