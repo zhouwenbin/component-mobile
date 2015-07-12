@@ -52,12 +52,13 @@ define(
              */
             init: function(element, options) {
 
-                var ratio = window.width / 640;
-                $('head').append('<meta content="tariget-densitydpi=device-dpi,width=640,initial-scale='+ ratio +'" name=viewport>');
+                var ratio = $(window).width() / 640;
+                $('head').append('<meta content="tariget-densitydpi=device-dpi,width=640,initial-scale='+ ratio.toFixed(2) +'" name=viewport>');
 
                 $('.wp-inner').fullpage();
                 $.fn.fullpage.stop();
-                 $("#nextPage").css("display","none");
+
+                $("#nextPage").css("display","none");
                 this.getTicketList();
                 var that = this;
                 var audio=$('#audio');
@@ -170,6 +171,8 @@ define(
                             $('.people>li').eq(freshNum-1-index).find('.people-lock').hide();
                         }
                     })
+
+
 
             },
 
@@ -552,5 +555,8 @@ define(
                 }
             }
         });
+
+
+        
          new young("body");
     });
