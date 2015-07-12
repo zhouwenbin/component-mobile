@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <!-- <meta content="target-densitydpi=device-dpi,width=640" name="viewport"> -->
-    <meta content="tariget-densitydpi=device-dpi,width=640, initial-scale=0.5 " name="viewport">
+    <meta content="tariget-densitydpi=device-dpi,width=640" name="viewport">
     <title>顺丰海淘详情页</title>
     <!-- build:css({app, .tmp}) styles/sf.b2c.ouba.css -->
     <link rel="stylesheet" href="static/css/common.css">
     <link rel="stylesheet" href="static/css/young.css">
     <!-- endbuild -->
+
+    <script type="text/javascript">
+        var ratio = window.width / 640;
+        var meta = document.querySelector('meta[name="viewport"]');
+        meta.setAttribute('content', 'tariget-densitydpi=device-dpi,width=640, initial-scale=0.5'
+    </script>
 
     <style type="text/css">
         .fullPage-wp{
