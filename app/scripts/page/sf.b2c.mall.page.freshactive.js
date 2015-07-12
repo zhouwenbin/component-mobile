@@ -43,6 +43,7 @@ define(
         var getVoteNum = new SFGetVoteNum({
           "voteType": "XXMAN"
         });
+
         getVoteNum.sendRequest()
           .done(function(data) {
 
@@ -84,7 +85,7 @@ define(
     var switcher = new SFSwitcher();
     var loadingCtrl = new SFLoading();
 
-    switcher.register('web', function() {
+    var callback = function() {
       // loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
 
@@ -93,9 +94,12 @@ define(
         window.location.href = "http://m.sfht.com/app.html";
       })
 
-
       // loadingCtrl.hide();
-    });
+    }
+
+    switcher.register('web', callback);
+    switcher.register('wechat', callback);
+    switcher.register('alipay', callback);
 
     switcher.register('onlineapp', function() {
       loadingCtrl.show();
