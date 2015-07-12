@@ -296,9 +296,10 @@ define(
 
             //进入活动页面
             "#huodong click":function(){
+                window.location.href = "http://m.sfht.com/activity/439.html";
+
                 $('#success').addClass('hide');
                 $('#audio')[0].pause();
-                window.location.href = "http://m.sfht.com/activity/439.html";
             },
 
             //继续扒小鲜肉
