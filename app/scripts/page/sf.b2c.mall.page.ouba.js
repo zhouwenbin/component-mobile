@@ -174,13 +174,7 @@ define(
                 var obj = $.fn.cookie('coupon20');
                 var currentDate = new Date();
                 if(obj && obj.split("-").length > 1){
-                    if(parseInt(obj.split("-")[1]) == 1){
-                        $.fn.cookie('coupon20',  currentDate.getDate() + "-" + 0);
-                        $(".page3-r2  .a2").css("background","grey");
-                        $(".page3-r2  .a2 div").html("已领20元现金卷");
-                        $(".page3-r2  .a2 span").html("小主，明天还有！");
-                    }
-                    else{
+                    if(parseInt(obj.split("-")[1]) != 1){
                         return ;
                     }
                 }
@@ -253,16 +247,6 @@ define(
             "#goActive click":function(){
                 window.location.href = "http://m.sfht.com/activity/439.html";
             },
-            //领优惠劵时，对输入的号码进行校验
-//            "#phoneNum keyup": function(){
-//                if(!((/^1[0-9]{10}/).test($("#phoneNum").val())&& $("#phoneNum").val().length == 11)){
-//                    $("#username-error-tips").text('号码格式不正确！');
-//                    return ;
-//                }
-//                else{
-//                    $("#username-error-tips").text('');
-//                }
-//            },
 
             //对于非微信打开的，去掉所有的分享
             hideShare:function(){
@@ -396,6 +380,12 @@ define(
                     .done(function(data) {
                         $('.dialog-phone').addClass('hide');
                         $('#success').removeClass('hide');
+
+                        var currentDate = new Date();
+                        $.fn.cookie('coupon20',  currentDate.getDate() + "-" + 0);
+                        $(".page3-r2  .a2").css("background","grey");
+                        $(".page3-r2  .a2 div").html("已领20元现金卷");
+                        $(".page3-r2  .a2 span").html("小主，明天还有！");
                     })
                     .fail(function(error) {
                         $("#username-error-tips").text(that.errorMap[error] || '领取失败');
