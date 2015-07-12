@@ -58,7 +58,7 @@ define(
               data.voteTotalNum = "0" + data.voteTotalNum;
             }
 
-            $("#votenum").text(data.voteTotalNum);
+            $("#votenum").html(data.voteTotalNum);
           })
           .fail(function(error) {
             console.error(error)
