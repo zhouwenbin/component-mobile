@@ -34,8 +34,6 @@ define(
 
         if (!SFFn.isMobile.WeChat()) {
           $("#sharefriend")[0].style.visibility = "hidden";
-        } else {
-          $("#sharefriend")[0].style.visibility = "visible";
         }
 
         setInterval(function() {

@@ -287,7 +287,6 @@ requirejs.config({
         "sf.b2c.mall.component.addrcreate": "scripts/component/sf.b2c.mall.component.addrcreate",
         "template_component_addrcreate": "templates/component/sf.b2c.mall.component.addrcreate.mustache",
         "template_component_addrdetail": "templates/component/sf.b2c.mall.component.addrdetail.mustache",
-        "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache",
-        "vendor.page.response": "scripts/vendor/vendor.response"
+        "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache"
     }
 });
