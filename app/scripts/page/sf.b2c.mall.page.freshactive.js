@@ -43,6 +43,7 @@ define(
         var getVoteNum = new SFGetVoteNum({
           "voteType": "XXMAN"
         });
+
         getVoteNum.sendRequest()
           .done(function(data) {
 
@@ -84,23 +85,44 @@ define(
     var switcher = new SFSwitcher();
     var loadingCtrl = new SFLoading();
 
-    switcher.register('web', function() {
+    var callback = function() {
+
+      $('#gotoapp').attr('href', "http://m.sfht.com/app.html");
+      $('#gotoapp').removeAttr('data-cms-couponbagid')
+      $('#gotoapp').removeAttr('data-cms-coupontype')
+      $('#gotoapp').removeAttr('name')
+
       // loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
 
-      $("#gotoapp").click(function() {
-        window.location.href = "http://m.sfht.com/app.html";
-      })
-
+      // $("#gotoapp").click(function(e) {
+      //   e && e.preventDefault();
+      //   window.location.href = "http://m.sfht.com/app.html";
+      // })
 
       // loadingCtrl.hide();
-    });
+    }
+
+    switcher.register('web', callback);
+    switcher.register('wechat', callback);
+    switcher.register('alipay', callback);
 
     switcher.register('onlineapp', function() {
       loadingCtrl.show();
-      new fresh(".sf-b2c-mall-fresh");
 
-      $('#ouba').attr('href', 'http://m.sfht.com/ouba2.html');
+      $('#ouba').hide();
+
+      var arr = [289, 290, 291, 292, 293, 294, 295, 296];
+
+      var date = new Date();
+      var pos =  date.getDate();
+
+      $('#getcoupon').show();
+      if (pos - 12 > 0 && pos - 20 < 0) {
+        $('#getcoupon').attr('data-cms-couponbagid', arr[pos - 13]);
+      }
+
+      new fresh(".sf-b2c-mall-fresh");
 
       loadingCtrl.hide();
     });

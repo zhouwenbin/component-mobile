@@ -43,5 +43,4 @@ $(function(){
       $('.nataral-tab ul').removeClass('nataral-tab-fixed');
     }
   })
-  
 })

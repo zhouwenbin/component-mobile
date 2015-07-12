@@ -2,41 +2,46 @@
 @import 'base/reset';
 @import 'base/base';
 @import 'base/helper';
-img{
-	width: 100%;
+
+body{
+	width: 640px;
+}
+.young-banner{
+	background: url(#{$bg-url}young-active/young-banner.jpg) no-repeat;
+	height: 656px;
 }
 .young-coupon{
 	display: flex;
 	justify-content:space-between;
-	padding: 29px*0.5 13px*0.5;
+	padding: 29px 13px;
 	background: #23232b;
 }
 .young-coupon a{
 	display: block;
 }
 .young-h2{
-	font-size: 21px*0.5;
+	font-size: 21px;
 	color: #a8a8a8;
-	height: 54px*0.5;
-	line-height: 54px*0.5;
+	height: 54px;
+	line-height: 54px;
 	text-align: center;
 	background: #ebebeb;
 }
 .young-h2:before,
 .young-h2:after{
 	content: '';
-	width: 140px*0.5;
-	height: 2px*0.5;
+	width: 140px;
+	height: 2px;
 	display: inline-block;
 	background: #a8a8a8;
 	vertical-align: middle;
-	margin: 0 19px*0.5;
+	margin: 0 19px;
 }
 .young-time{
 	display: flex;
 	justify-content:space-between;
 	align-items:center;
-	padding: 16px*0.5 32px*0.5;
+	padding: 16px 32px;
 	background: #d0155c;
 }
 .young-time h2{
@@ -58,9 +63,8 @@ img{
 	border-radius: 3px*0.5;
 	font-size: 30px*0.5;
 	color: #fff;
-	letter-spacing: 16px*0.5;
-	padding-left: 25px*0.5;
-	transform:translateZ(0);
+	letter-spacing: 16px;
+	padding-left: 25px;
 }
 .young-time .btn{
 	display: block;
@@ -78,15 +82,15 @@ img{
 
 .young-tab{
 	background: #ffbf00;
-	padding-top: 47px*0.5;
-	padding-bottom: 15px*0.5;
+	padding-top: 47px;
+	padding-bottom: 15px;
 }
 .young-tab-h{
-	margin-bottom: 20px*0.5;
+	margin-bottom: 20px;
 	text-align: center;
 }
 .young-tab-h li{
-	margin: 0 1px*0.5;
+	margin: 0 5px;
 	display: inline-block;
 	position: relative;
 }
@@ -95,27 +99,27 @@ img{
 }
 .young-tab-h li a{
 	display: block;
-	width: 77px*0.5;
-	height: 77px*0.5;
-	line-height: 77px*0.5;
+	width: 77px;
+	height: 77px;
+	line-height: 77px;
 	text-align: center;
 	border-radius: 50%;
 	background: #070707;
 	color: #fff;
-	font-size: 19px*0.5;
-	border: 3px*0.5 solid #fff;
+	font-size: 19px;
+	border: 3px solid #fff;
 	position: relative;
 	overflow: hidden;
 }
 .young-tab-h li:before{
 	content: '';
 	border-style: solid;
-	border-width: 19px*0.5 8px*0.5;
+	border-width: 19px 8px;
 	border-color: #070707 transparent transparent transparent;
 	position: absolute;
-	bottom:-38px*0.5;
+	bottom:-38px;
 	left: 50%;
-	margin-left: -9px*0.5;
+	margin-left: -9px;
 }
 .young-tab-h li.active:before{
 	border-color: #d0175d transparent transparent transparent;
@@ -146,8 +150,8 @@ img{
 	margin: 0 auto;
 }
 .young-tab-br1>img{
-	border: 7px*0.5 solid #d0155c;
-	padding: 8px*0.5;
+	border: 7px solid #d0155c;
+	padding: 8px;
 	background: #fff;
 	display: block;
 	width: 100%;
@@ -158,39 +162,39 @@ img{
 }
 .spike-tab-h {
     float: left;
-    width: 48px*0.5;
-    padding-top: 12px*0.5
+    width: 48px;
+    padding-top: 12px
 }
 
 .spike-tab-h li {
-    width: 27px*0.5;
-    padding-top: 8px*0.5;
+    width: 27px;
+    padding-top: 8px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    height: 79px*0.5;
+    height: 79px;
     background: #f63c3f;
     text-align: center;
-    -webkit-border-radius: 4px*0.5;
-    border-radius: 4px*0.5;
-    font-size: 17px*0.5;
-    margin-bottom: 40px*0.5;
-    line-height: 20px*0.5;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 17px;
+    margin-bottom: 40px;
+    line-height: 20px;
     position: relative
 }
 
 .spike-tab-h li:before {
     content: '';
-    width: 11px*0.5;
-    height: 11px*0.5;
+    width: 11px;
+    height: 11px;
     background: #f63c3f;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     position: absolute;
-    right: -31px*0.5;
-    border: 4px*0.5 solid #ffc5c2;
+    right: -31px;
+    border: 4px solid #ffc5c2;
     top: 50%;
-    margin-top: -9px*0.5
+    margin-top: -9px
 }
 
 .spike-tab-h li.active {
@@ -204,10 +208,10 @@ img{
 
 .spike-tab-h li .icon {
     position: absolute;
-    right: -16px*0.5;
+    right: -16px;
     top: 50%;
-    margin-top: -8px*0.5;
-    border-width: 8px*0.5
+    margin-top: -8px;
+    border-width: 8px
 }
 
 .spike-tab-h li.active .icon {
@@ -219,10 +223,10 @@ img{
 }
 
 .spike-tab-b {
-    margin-left: 48px*0.5;
-    border-left: 1px*0.5 dashed #800a2d;
-    padding-left: 15px*0.5;
-    padding-top: 12px*0.5;
+    margin-left: 48px;
+    border-left: 1px dashed #800a2d;
+    padding-left: 15px;
+    padding-top: 12px;
     display: none
 }
 
@@ -231,15 +235,15 @@ img{
 }
 
 .spike-tab-b ul {
-    margin-left: -4px*0.5
+    margin-left: -4px
 }
 
 .spike-tab-b li {
     display: inline-block;
-    width: 48%;
-    margin-bottom: 20px*0.5;
+    width: 275px;
+    margin-bottom: 20px;
     position: relative;
-    margin-left: 10px*0.5
+    margin-left: 10px
 }
 
 .spike-tab-b img {
@@ -247,38 +251,36 @@ img{
 }
 .spike-r2{
 	background: #f3f3f3;
-	padding: 10px*0.5 12px*0.5;
+	padding: 10px 12px;
 }
 .spike-tab h3{
-	font-size: 18px*0.5;
+	font-size: 18px;
 	color: #7a7a7a;
 	font-weight: normal;
-	line-height: 24px*0.5;
-	height: 48px*0.5;
-	overflow: hidden;
-	margin-bottom: 16px*0.5;
+	line-height: 24px;
+	margin-bottom: 16px;
 }
 .spike-tab-r1{
-	font-size: 19px*0.5;
+	font-size: 19px;
 	color: #7a7a7a;
 }
 .spike-tab-r2{
-	font-size: 14px*0.5;
+	font-size: 14px;
 	color: #a1a1a1;
 }
 .spike-tab-c2{
-	font-size: 40px*0.5;
+	font-size: 40px;
 	color: #ff0064;
 	font-family: arial;
-	margin-left: 10px*0.5;
+	margin-left: 10px;
 }
 .spike-tab-c3 a{
-	width: 53px*0.5;
-	height: 43px*0.5;
-	line-height: 43px*0.5;
+	width: 53px;
+	height: 43px;
+	line-height: 43px;
 	text-align: center;
 	color: #fff;
-	font-size: 22px*0.5;
+	font-size: 22px;
 	font-weight: bold;
 	background: #d0155c;
 	display: inline-block;
@@ -287,45 +289,38 @@ img{
 .spike-tab-c3 a:before{
 	content: '';
 	border-style: solid;
-	border-width: 9px*0.5;
+	border-width: 9px;
 	border-color: transparent #d0155c transparent transparent;
 	position: absolute;
-	left: -18px*0.5;
-	top: 14px*0.5;
+	left: -18px;
+	top: 14px;
+}
+.spike-r1 .mask {
+  position: absolute;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+.spike-r1 span {
+  font-size: 36px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 122px;
+  width: 100%;
+  z-index: 1;
 }
 .spike{
     background: #ffbf00;
-}
-.young-nav-fixed ul{
-	position: fixed;
-	left:0;
-	right: 0;
-	top: 0;
-	z-index: 999;
-}
-.young-nav{
-	height: 80px*0.5;
-}
-.young-nav ul{
-	display: flex;
-	padding: 13px*0.5 0;
-	background: #181515;
-	height: 80px*0.5;
-	position: sticky;
-}
-.young-nav li{
-	flex:1;
-	font-size: 18px*0.5;
-	text-align: center;
-	border-right: 1px*0.5 solid #525051;
-	padding: 18px*0.5 0;
-}
-.young-nav li.active a{
-	color: #ff2481;
-}
-.young-nav li:last-child{
-	border-right: none;
-}
-.young-nav a{
-	color: #fff;
 }

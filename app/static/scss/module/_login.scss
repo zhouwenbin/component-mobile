@@ -14,8 +14,13 @@
   text-align: center;
 }
 .login-r1 a{
-  color: #888888;
   text-decoration: underline;
+}
+.login-r1 .fl{
+  color: #DC3334;
+}
+.login-r1 .fr{
+  color: #888888;
 }
 .login-r2{
   text-align: center;
@@ -58,4 +63,30 @@
   font-weight: bold;
   height: 44px;
   line-height: 44px;
+}
+.otherlogin{
+  margin:15px 13px;
+
+  & .line{
+    border-top: 1px solid #e3d3da;
+    border-bottom: 1px solid #fff;
+    margin:20px 0;
+    position:relative;
+
+    & span{
+      position:absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      background-color: #f0eff5;
+      padding: 0px 24px;
+      color: #888888;
+    }
+  }
+
+  & .btn{
+    font-size:18px;
+    font-weight:bold;
+    height:44px;
+    line-height:44px;
+  }
 }

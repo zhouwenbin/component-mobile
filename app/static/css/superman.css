@@ -291,7 +291,7 @@ a[title="站长统计"] {
 .icon {
   display: inline-block;
   vertical-align: middle;
-  background: url(../img/icon.png) no-repeat;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/icon.png) no-repeat;
   -webkit-background-size: 450px 450px;
           background-size: 450px 450px;
   text-indent: -999em;
@@ -708,7 +708,7 @@ a[title="站长统计"] {
 }
 
 .superman {
-  background: url(../img/superman.jpg) no-repeat center top;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/superman.jpg) no-repeat center top;
   height: 604px;
   padding-top: 357px;
   -webkit-background-size: 320px 320px;
@@ -831,7 +831,7 @@ a[title="站长统计"] {
 .superman2-icon {
   display: inline-block;
   vertical-align: middle;
-  background: url(../img/superman2-icon.png) no-repeat;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/superman2-icon.png) no-repeat;
   width: 14px;
   height: 17px;
   -webkit-background-size: 14px 14px;
