@@ -36,6 +36,10 @@ define(
           $("#sharefriend")[0].style.visibility = "hidden";
         }
 
+        setInterval(function() {
+          $("#votenum")[0].style.color = "#fff";
+        }, 1000)
+
         var getVoteNum = new SFGetVoteNum({
           "voteType": "XXMAN"
         });
@@ -58,7 +62,7 @@ define(
               data.voteTotalNum = "0" + data.voteTotalNum;
             }
 
-            $("#votenum").html('<font color="#fff">0</font>' + data.voteTotalNum + '</font>');
+            $("#votenum").html(data.voteTotalNum);
 
           })
           .fail(function(error) {
