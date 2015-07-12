@@ -10,85 +10,38 @@
     <link rel="stylesheet" href="static/css/young-active.css">
     <!-- endbuild -->
     <style type="text/css">
-    .m617-top {
-        border: 3px solid #f61d4a;
-        padding: 1px;
-        text-align: center;
-        font-size: 15px;
+    <style type="text/css"> .young-nav-fixed {
         position: fixed;
-        left: 0px;
-        bottom: 0px;
-        z-index: 999;
-        background: #fff;
-        width: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 99;
     }
-
-    .m617-top a {
-        color: #fff;
-    }
-
-    .m617-top ul {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-    }
-
-    .m617-top li {
-        height: 28px;
-        line-height: 28px;
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
-    }
-
-    .m617-top a {
-        display: block;
-    }
-
-    .m617-top li:nth-child(even) {
-        background-color: #800a2d;
-    }
-
-    .m617-top li:nth-child(odd) {
-        background-color: #f61d4a;
-    }
-
-    .m617-top li:last-child .icon {
-        vertical-align: 2px;
-        margin-left: 5px;
-        width: 0;
-        height: 0;
-        background: none;
-        border-style: solid;
-        border-width: 5px;
-        border-color: transparent;
-        border-bottom-color: #fff;
-    }
+    </style>
     </style>
 </head>
 
 <body>
-    <div class="young-banner">
-        <img src="http://img.sfht.com/sfhth5/1.1.146/img/young-active/young-banner.jpg">
-    </div>
-
+    <div class="young-banner" style="background: url(http://img.sfht.com/sfhth5/1.1.146/img/young-active/young-banner.jpg) no-repeat"></div>
     <div class="young-time">
         <h2>当前扒衣总数</h2>
-        <p id="votenum" style="color:#fff">0</p><a href="javascript:;" class="btn" id="sharefriend">召唤闺蜜</a></div>
+        <p id="votenum" style="color: rgb(255, 255, 255);">0000737</p><a href="javascript:;" class="btn" id="sharefriend" style="visibility: hidden;">召唤闺蜜</a></div>
     <h2 class="young-h2">活动优惠</h2>
     <div class="young-coupon">
-        <a href="http://m.sfht.com/ouba.html" id="ouba">
-            <img src="http://img.sfht.com/sfhth5/1.1.142/img/young-active/young-coupon1.jpg" alt="">
-        </a>
-        <a id="gotoapp" href="javascript:;" name="cms-fill-coupon" data-cms-couponbagid="277" data-cms-coupontype="CARD"><img src="http://img.sfht.com/sfhth5/1.1.150/img/young-active/young-coupon2.jpg" alt=""></a>
+        <a href="http://m.sfht.com/ouba.html"><img src="http://img.sfht.com/sfhth5/1.1.142/img/young-active/young-coupon1.jpg" alt=""></a>
+        <a id="gotoapp" href="javascript:;" data-cms-couponbagid="277" data-cms-coupontype="CARD"><img src="http://img.sfht.com/sfhth5/1.1.150/img/young-active/young-coupon2.jpg" alt=""></a>
     </div>
-
-    <ul class="young-nav"><li class="active"><a href="">专场优惠</a></li><li><a href="">裸价秒杀</a></li><li><a href="">美妆个护</a></li><li><a href="">食品保健</a></li><li><a href="">母婴专场</a></li><li><a href="">原汁原味</a></li><li><a href="">欧巴花絮</a></li></ul>
-
+    <ul class="young-nav" id="young-nav">
+        <li class="active"><a href="">专场优惠</a></li>
+        <li><a href="">裸价秒杀</a></li>
+        <li><a href="">美妆个护</a></li>
+        <li><a href="">食品保健</a></li>
+        <li><a href="">母婴专场</a></li>
+        <li><a href="">原汁原味</a></li>
+        <li><a href="">欧巴花絮</a></li>
+    </ul>
     <div id="sharearea" style="display:none">
-        <div class="mask" style="background: #000; opacity: 0.8;"></div>
+        <div class="mask" style="background: #000; opacity: 0.8"></div>
         <div class="share" style="z-index:999"></div>
     </div>
     <!-- build:js(.) scripts/require.min.js -->
@@ -103,6 +56,19 @@
     require(['sf.b2c.mall.page.freshactive']);
     </script>
     <!-- endbuild -->
+    <script type="text/javascript">
+    $(function() {
+        $(window).scroll(function() {
+            setTimeout(function() {
+                if ($(window).scrollTop() > 1204) {
+                    $("#young-nav").addClass("young-nav").addClass("young-nav-fixed");
+                } else {
+                    $("#young-nav").addClass("young-nav").removeClass("young-nav-fixed");
+                }
+            }, 200);
+        })
+    });
+    </script>
 </body>
 
 </html>
