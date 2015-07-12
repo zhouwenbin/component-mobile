@@ -87,18 +87,21 @@ define(
 
     var callback = function() {
 
-      $('#gotoapp').attr('href', "http://m.sfht.com/app.html");
-      $('#gotoapp').removeAttr('data-cms-couponbagid')
-      $('#gotoapp').removeAttr('data-cms-coupontype')
-      $('#gotoapp').removeAttr('name')
+
+
+      // $('#gotoapp').attr('href', "http://m.sfht.com/app.html");
+      // $('#gotoapp').removeAttr('data-cms-couponbagid')
+      // $('#gotoapp').removeAttr('data-cms-coupontype')
+      // $('#gotoapp').removeAttr('name')
 
       // loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
 
-      // $("#gotoapp").click(function(e) {
-      //   e && e.preventDefault();
-      //   window.location.href = "http://m.sfht.com/app.html";
-      // })
+      $('body').off('click', '#gotoapp', function () {})
+      $("#gotoapp").click(function(e) {
+        e && e.preventDefault();
+        window.location.href = "http://m.sfht.com/app.html";
+      })
 
       // loadingCtrl.hide();
     }
@@ -122,12 +125,25 @@ define(
         $('#getcoupon').attr('data-cms-couponbagid', arr[pos - 13]);
       }
 
+      $('#gotoapp').hide();
+      $('#gotoappinapp').show();
+
       new fresh(".sf-b2c-mall-fresh");
 
       loadingCtrl.hide();
     });
 
     switcher.go();
+
+    $(window).scroll(function() {
+        setTimeout(function() {
+            if ($(window).scrollTop() > 1204) {
+                $("#young-nav").addClass("young-nav").addClass("young-nav-fixed");
+            } else {
+                $("#young-nav").addClass("young-nav").removeClass("young-nav-fixed");
+            }
+        }, 200);
+    })
 
 
   });
