@@ -92,12 +92,16 @@ define(
         window.location.href = "http://m.sfht.com/app.html";
       })
 
+
+
       // loadingCtrl.hide();
     });
 
     switcher.register('onlineapp', function() {
       loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
+
+      $('#ouba').attr('href', 'http://m.sfht.com/ouba2.html');
 
       loadingCtrl.hide();
     });
