@@ -21,9 +21,10 @@ define(
         'sf.b2c.mall.api.coupon.rcvCouponByMobile',
         'sf.env.switcher',
         'jweixin',
-        'sf.hybrid'
+        'sf.hybrid',
+        'vendor.page.response'
     ],
-    function(can, $, cookie, touch,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,jweixin,SFHybrid){
+    function(can, $, cookie, touch,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,jweixin,SFHybrid, PageResponse){
         Fastclick.attach(document.body);
         SFComm.register(3);
         SFWeixin.shareYoung();
@@ -57,6 +58,13 @@ define(
 
                 $('.wp-inner').fullpage();
                 $.fn.fullpage.stop();
+
+                new PageResponse({
+                    class : 'page',     //模块的类名，使用class来控制页面上的模块(1个或多个)
+                    mode : 'auto',     // auto || contain || cover
+                    width : '640',      //输入页面的宽度，只支持输入数值，默认宽度为320px
+                    height : '1008'      //输入页面的高度，只支持输入数值，默认高度为504px
+                })
 
                 $("#nextPage").css("display","none");
                 this.getTicketList();
@@ -556,7 +564,5 @@ define(
             }
         });
 
-
-        
-         new young("body");
+        new young("body");
     });
