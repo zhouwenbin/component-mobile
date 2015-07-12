@@ -7,8 +7,18 @@
 	<script type="text/javascript" src="../js/mobile-util.js"></script>
 	<link rel="stylesheet" href="../css/young.css">
 	<link rel="stylesheet" href="../lib/zepto.fullpage/src/zepto.fullPage.css">
+
 </head>
 <body>
+	
+	<audio preload="preload" id="audio" src="../audio/young.mp3" loop></audio>
+	<div class="young-loading">
+		<div class="center">
+			== Slim::Template.new('../img/young/loading.svg').render
+		</div>
+		
+	</div>
+	<div class="icon-audio"></div>
 	<div class="wp">
 		<div class="wp-inner">
 			<section class="page page1">
@@ -19,7 +29,7 @@
 						<span class="s2">脱</span>
 						<span class="s3">脱</span>
 					</h2>
-					<h3>警报！欧巴中有顺丰海淘员工乱入......</h3>
+					<h3>警报！欧巴中有<span>顺丰海淘</span>员工乱入......</h3>
 					<h4>《原汁原味》第二站</h4>
 				</header>
 				<section>
@@ -32,7 +42,7 @@
 						<li class="back">
 							<span class="photo-label">“裸”照</span>
 							<img src="../img/young/page1-photo2.jpg">
-							<h5>扒得越多,脱的越多<br>一<br><span>裸价等你来扒</span></h5>
+							<h5>扒得越多,脱的越多<br><span>裸价等你来扒</span></h5>
 						</li>
 						
 						
@@ -40,6 +50,7 @@
 					<a href="javascript:" class="icon1 center">扒<i></i></a>
 				</section>
 				<footer>穿衣显帅 扒衣显肉， 一起来扒他</footer>
+				<span class="start"><b></b></span>
 			</section>
 			<section class="page page2">
 				<header>
@@ -49,20 +60,21 @@
 				<section>
 					<ul>
 						- for i in 1..9 do
-							<li><a href=""><img src="../img/young/logo/#{i}.jpg" alt=""></a></li>
+							<li><img src="../img/young/logo/#{i}.jpg" alt=""></li>
 					</ul>
 				</section>
 				<footer>马上去扒欧巴（少儿不宜）</footer>
+				<span class="start"><b></b></span>
 			</section>
 			<section class="page page3">
 				<section>
 					<ul class="people">
-						- for i in 1..11 do
+						- for i in 1..15 do
 							<li>
 								<h2>瑞奇马丁</h2>
 								<h3>顺丰海淘商务拓展</h3>
 								<a href=""><img src="../img/young/photo/#{i}/1.jpg" alt=""></a>
-								<div class="num"><span>#{i}</span>/11</div>
+								<div class="num"><span>#{i}</span>/15</div>
 								<div class="mask people-lock">
 									<div class="icon-lock"></div>
 									<p>被扒1,000,00次就看到啦！</p>
@@ -89,7 +101,7 @@
 						<a href="javascript:" class="a2"><div>领20元现金券</div><span>每日更新</span></a>
 					</div>
 				</footer>
-
+				<span class="start"><b></b></span>
 			</section>
 			<section class="page page4">
 				<header>
@@ -102,8 +114,7 @@
 					<p>还可以看首尔活捉欧巴花絮哦！</p>
 				</section>
 				<footer>
-					<a class="share" href="">分享</a>
-					<p>这么大尺度叫上闺蜜一起扒</p>
+					<button class="btn btn3 share"><span class="icon-weixin"></span>叫上闺蜜一起扒!</button>
 				</footer>
 				<div class="line1"></div>
 				<div class="line2"></div>
@@ -127,11 +138,11 @@
 				<button class="btn">继续扒欧巴</button>
 				<button class="btn btn2">去裸价场血拼</button>
 			</div>
-			<button class="btn btn3">这么大尺度叫上闺蜜一起扒！赶紧分享~</button>
+			<button class="btn btn3"><span class="icon-weixin"></span>叫上闺蜜一起扒!</button>
 		</div>
 		
 	</div>
-	<span class="start"><b></b></span>
+	
 
 	<script src="../js/zepto.min.js"></script>
 	<script type="text/javascript" src="../lib/zepto.fullpage/src/zepto.fullPage.js"></script>

@@ -2,12 +2,58 @@
 @import 'base/reset';
 @import 'base/base';
 @import 'base/helper';
-
+$people-num:15;
 body{
 	width: 640px;
 }
 img{
 	width: 100%;
+}
+.icon1{
+	width: 88px;
+	height: 88px;
+	line-height: 88px;
+	text-align: center;
+	color: #ea4392;
+	font-size: 30px;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.8);
+	
+	z-index: 1;
+	box-shadow: 0 0 12px rgba(115,115,115,0.45);
+}
+.icon1 i{
+	content: '';
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%,-50%);
+	border:6px solid rgba(255,255,255,0.8);
+	box-shadow: 0 0 16px rgba(174,174,174,0.45),
+				inset 0 0 16px rgba(174,174,174,0.45);
+	animation: icon1-i 1s infinite linear;
+}
+@keyframes icon1-i{
+	50%{
+		width: 150px;
+		height: 150px;
+	}
+}
+.icon-audio {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 999;
+  width: 50px;
+  height: 42px;
+  background:rgba(0,0,0,0.5) url(#{$bg-url}young/icon-audio.png) no-repeat 0 -138px;
+  border-radius: 5px;
+}
+.icon-audio.active{
+	background-position: 0 -194px;
 }
 .wp{
     overflow: hidden; 
@@ -89,6 +135,9 @@ img{
 	transform:rotate(10deg) scale(2);
 	white-space: nowrap;
 }
+.page1 h3 span{
+	color: #333;
+}
 @keyframes page1-h3{
 	0%{
 		transform:rotate(10deg) scale(2);
@@ -122,6 +171,7 @@ img{
 	left:50%;
 	margin-left: -75px;
 	top: 399px;
+	line-height: 60px;
 	text-align: center;
 	opacity: 0;
 	transition:all 0.5s 1.7s;
@@ -139,9 +189,9 @@ img{
 .page1>footer{
 	color: #fff;
 	text-align: center;
-	height: 85px;
+	height: 70px;
+	line-height: 70px;
 	font-size: 23px;
-	padding-top: 13px;
 	position: absolute;
 	left: 0;
 	bottom:0;
@@ -158,6 +208,7 @@ img{
 	background: #fff;
 	overflow: hidden;
 	padding: 9px 0;
+	margin: 0 2px;
 }
 
 .page1 .photo{
@@ -168,9 +219,8 @@ img{
 	transform-style: preserve-3d;
 	transition:all 0.5s;
 	position: relative;
-	width: 476px;
-	height: 606px;
-	//animation: page1-front 3s linear forwards;
+	width: 620px;
+	height: 632px;
 }
 .page1 .photo-label{
 	font-size: 23px;
@@ -185,6 +235,7 @@ img{
 	z-index: 2;
 	top: 24px;
 	right: 20px;
+	display: none;
 }
 .page1 .photo li{	
 	border-radius: 8px;
@@ -194,9 +245,7 @@ img{
 	top: 0;
 }
 .page1 .photo li img{
-	width: 476px;
-	height: 606px;
-	border: 14px solid #333;
+	width: 100%;
 }
 .page1 .photo li.back{
 	transform:rotateY(180deg);
@@ -223,39 +272,10 @@ img{
 		transform:rotateY(0 - 360deg);
 	}
 }
-.icon1{
-	width: 88px;
-	height: 88px;
-	line-height: 88px;
-	text-align: center;
-	color: #ea4392;
-	font-size: 30px;
-	border-radius: 50%;
-	background: rgba(255,255,255,0.8);
-	
-	z-index: 1;
-	box-shadow: 0 0 12px rgba(115,115,115,0.45);
+.page1 .start{
+	display: none;
 }
-.icon1 i{
-	content: '';
-	width: 110px;
-	height: 110px;
-	border-radius: 50%;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform:translate(-50%,-50%);
-	border:6px solid rgba(255,255,255,0.8);
-	box-shadow: 0 0 16px rgba(174,174,174,0.45),
-				inset 0 0 16px rgba(174,174,174,0.45);
-	animation: icon1-i 1s infinite linear;
-}
-@keyframes icon1-i{
-	50%{
-		width: 150px;
-		height: 150px;
-	}
-}
+
 .page2{
 	border: 8px solid #333;
 	background: #fff url(#{$bg-url}young/page2-bg.jpg) no-repeat center bottom;
@@ -334,6 +354,7 @@ img{
 	height: 706px;
 	position: relative;
 }
+
 .people:before,
 .people:after{
 	width: 100%;
@@ -363,7 +384,7 @@ img{
 .people-lock{
 	text-align: center;
 	padding-top: 227px;
-	background: rgba(0,0,0,0.8);
+	background: rgba(0,0,0,0.96);
 	display: none;
 	border-radius: 10px;
 }
@@ -382,9 +403,12 @@ img{
 	background: url(#{$bg-url}young/icon-lock.png) no-repeat;
 	display: inline-block;
 }
+.page3.active section .people>li{
+	transition-delay:0s;
+}
 .page3 section .people>li.active{
 	transform:translate(-640px,0);
-	transition-delay:0s;
+	
 }
 .cur .people>li{
 	opacity: 1;
@@ -395,13 +419,14 @@ img{
 	border-radius: 8px;
 	box-shadow: 0 0 1px rgba(53,53,53,0.61);
 }
-@for $i from 6 through 11{
+
+@for $i from $people-num - 6 through $people-num{
 	.cur .people>li:nth-child(#{$i}){
 		transform:rotateZ(0deg) scale(1) translate(0,0);
-		transition-delay:0.2s * ($i - 6);
+		transition-delay:0.2s * ($i - $people-num + 6);
 	}
 }
-@for $i from 1 through 5{
+@for $i from 1 through $people-num - 7{
 	.people>li:nth-child(#{$i}){
 		transform:rotateZ(0deg) scale(1) translate(0,0);
 	}
@@ -432,10 +457,22 @@ img{
 .page3 .prev{
 	background: url(#{$bg-url}young/prev.png) no-repeat;
 	left: 27px;
+	animation:prev 1s ease-in-out infinite;
 }
 .page3 .next{
 	background: url(#{$bg-url}young/next.png) no-repeat;
 	right: 27px;
+	animation:next 1s ease-in-out infinite;
+}
+@keyframes prev{
+	100%{
+		transform:translate(-20px,0);
+	}
+}
+@keyframes next{
+	100%{
+		transform:translate(20px,0);
+	}
 }
 .page3 .tab{
 	display: flex;
@@ -562,12 +599,13 @@ img{
 	bottom:0;
 }
 .start{
-    position: fixed;
+    position: absolute;
     left: 50%;
     margin-left: -25px;
-    top: 95%;
+    bottom:30px;
     width: 51px;
     height: 42px;
+    z-index: 99;
 }
 .start b{
     position: absolute;
@@ -579,19 +617,20 @@ img{
     background: url(#{$bg-url}young/arrow.png);
     background-size: 100% 100%;
     animation: start 1.5s infinite ease-in-out;
+    transform:rotate(180deg);
 }
 @keyframes start {
     0%,30% {
         opacity: 0.2;
-        transform: translate(0,-5px);
+        transform:rotate(180deg) translate(0,-5px);
     }
     60% {
         opacity: 1;
-        transform: translate(0,0);
+        transform:rotate(180deg) translate(0,0);
     }
     100% {
         opacity: 0.2;
-        transform: translate(0, 10px);
+        transform:rotate(180deg) translate(0, 10px);
     }
 }
 .page4{
@@ -715,12 +754,7 @@ img{
 }
 
 .page4 .share{
-	font-size: 29px;
-	color: #e84792;
 	margin-top: 200px;
-	text-decoration: underline;
-	margin-bottom: 15px;
-	display: block;
 }
 
 .page4 .icon1{
@@ -763,11 +797,17 @@ img{
 	background: #f6b645;
 }
 .btn3{
-	background: #45cc5b;
-	line-height: 32px;
-	text-align: left;
-	padding-left: 88px;
-	padding-right: 44px;
+	background: #f2f2f2;
+	color: #333;
+	width: 338px;
+}
+.icon-weixin{
+	display: inline-block;
+	vertical-align: middle;
+	background: url(#{$bg-url}young/icon-weixin.png) no-repeat;
+	width: 41px;
+	height: 39px;
+	margin-right: 18px;
 }
 .dialog-success{
 	text-align: center;
@@ -797,6 +837,26 @@ img{
 	display: inline-block;
 	background: url(#{$bg-url}young/icon-success.png) no-repeat;
 }
+.young-loading{
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: #fff;
+	z-index: 999;
+	display: none;
+}
+.loading{
+	stroke-dasharray: 770;
+	stroke-dashoffset: 770;
+	animation:loading 10s linear forwards;
+}
+@keyframes loading{
+	100%{
+		stroke-dashoffset: 0;
+	}
+}
 @media (max-height: 832px) {
 	.page1 header{
 		padding-top: 7px;
@@ -804,15 +864,12 @@ img{
 		background-image:url(#{$bg-url}young/page1-bg-4s.jpg);
 	}
     .page1 .photo{
-    	width: 404px;
+    	width: 560px;
     	height: 535px;
     }
-    .page1 .photo li img{
-		width: 404px;
-    	height: 535px;
-	}
     .page1 h5{
     	top: 366px;
+    	line-height: 40px;
     }
     .page1 h4{
     	margin-top: 20px;
