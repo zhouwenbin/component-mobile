@@ -158,7 +158,7 @@ define(
                         var tab_index=$('.tab li').index(this);
                         var people_index=freshNum-index;
                         var photo_index=tab_index+1;
-                        $('.people>li').eq(freshNum-1-index).find('img').attr('src','img/young/photo/'+people_index+'/'+photo_index+'.jpg');
+                        $('.people>li').eq(freshNum-1-index).find('img').attr('src','http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+people_index+'/'+photo_index+'.jpg');
                         $(this).addClass('active').siblings().removeClass('active');
                         if($(this).hasClass('tab-lock')){
                             $('.people>li').eq(freshNum-1-index).find('.people-lock').show();

@@ -33,7 +33,7 @@ define(
       init: function(element, options) {
 
         if (!SFFn.isMobile.WeChat()) {
-          $("#sharefriend")[0].disabled = true;
+          $("#sharefriend").css("background", "http://img.sfht.com/sfhth5/1.1.149/img/young-active/young-btn1-disabled.png");
         }
 
         var getVoteNum = new SFGetVoteNum({
