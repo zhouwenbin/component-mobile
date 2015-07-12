@@ -33,7 +33,7 @@ define(
       init: function(element, options) {
 
         if (!SFFn.isMobile.WeChat()) {
-          $("#sharefriend")[0].style.visibility = "hidden";
+          $("#sharefriend")[0].disabled = true;
         }
 
         var getVoteNum = new SFGetVoteNum({
