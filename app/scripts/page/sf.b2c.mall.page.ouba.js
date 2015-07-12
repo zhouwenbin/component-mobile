@@ -256,6 +256,7 @@ define(
             },
 
             "#goActive click":function(){
+                $('#audio')[0].pause();
                 window.location.href = "http://m.sfht.com/activity/439.html";
             },
 
@@ -290,6 +291,7 @@ define(
             //进入活动页面
             "#huodong click":function(){
                 $('#success').addClass('hide');
+                $('#audio')[0].pause();
                 window.location.href = "http://m.sfht.com/activity/439.html";
             },
 
