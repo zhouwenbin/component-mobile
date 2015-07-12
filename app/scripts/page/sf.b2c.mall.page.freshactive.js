@@ -33,8 +33,12 @@ define(
       init: function(element, options) {
 
         if (!SFFn.isMobile.WeChat()) {
-           $("#sharefriend")[0].style.visibility = "hidden";
+          $("#sharefriend")[0].style.visibility = "hidden";
         }
+
+        setInterval(function() {
+          $("#votenum")[0].style.color = "#fff";
+        }, 1000)
 
         var getVoteNum = new SFGetVoteNum({
           "voteType": "XXMAN"
@@ -60,9 +64,6 @@ define(
 
             $("#votenum").html(data.voteTotalNum);
 
-            setInterval(function(){
-              $("#votenum")[0].style.color = "#fff";
-            }, 1000)
           })
           .fail(function(error) {
             console.error(error)
