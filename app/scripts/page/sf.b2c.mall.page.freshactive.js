@@ -33,7 +33,7 @@ define(
       init: function(element, options) {
 
         if (!SFFn.isMobile.WeChat()) {
-          $("#sharefriend").css("background", "http://img.sfht.com/sfhth5/1.1.149/img/young-active/young-btn1-disabled.png");
+           $("#sharefriend")[0].style.visibility = "hidden";
         }
 
         var getVoteNum = new SFGetVoteNum({
@@ -59,6 +59,10 @@ define(
             }
 
             $("#votenum").html(data.voteTotalNum);
+
+            setInterval(function(){
+              $("#votenum")[0].style.color = "#fff";
+            }, 1000)
           })
           .fail(function(error) {
             console.error(error)
