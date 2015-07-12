@@ -345,10 +345,10 @@ define(
                 var voteTicket = new Vote(params);
                 voteTicket.sendRequest()
                     .done(function(data) {
-                        ticketList = data.infos;
-                        var tickets = that.getTicketsByNo(ticketList, freshNum-index);
-                        $("#clickNum").text(tickets);
-                        that.tabUnlock(tickets);
+//                        ticketList = data.infos;
+//                        var tickets = that.getTicketsByNo(ticketList, freshNum-index);
+                        $("#clickNum").text(data.infos[0].voteNum);
+                        that.tabUnlock(data.infos[0].voteNum);
                    //     that.popNotice();
 //                        that.initActiveTab(tickets, freshNum-num, index);
                     })
