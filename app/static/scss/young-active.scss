@@ -47,13 +47,13 @@ body{
 .young-time h2{
 	width: 63px*0.5;
 	height: 48px*0.5;
-	background: url(http://img.sfht.com/sfhth5/1.1.166/img/young-active/young-time-h2.png) no-repeat center;
+	background: url(#{$bg-url}young-active/young-time-h2.png) no-repeat center;
 	background-size: contain;
 	text-indent: -100%;
 	overflow: hidden;
 }
 .young-time p{
-	background: url(http://img.sfht.com/sfhth5/1.1.166/img/young-active/young-time.jpg) no-repeat center;
+	background: url(#{$bg-url}young-active/young-time.jpg) no-repeat center;
 	background-size: contain;
 	width: 267px*0.5;
 	height: 59px*0.5;
@@ -70,13 +70,13 @@ body{
 	display: block;
 	width: 205px*0.5;
 	height: 71px*0.5;
-	background: url(http://img.sfht.com/sfhth5/1.1.166/img/young-active/young-btn1.png) no-repeat center;
+	background: url(#{$bg-url}young-active/young-btn1.png) no-repeat center;
 	background-size: contain;
 	text-indent: -100%;
 	overflow: hidden;
 }
 .young-time .btn.disabled{
-	background: url(http://img.sfht.com/sfhth5/1.1.166/img/young-active/young-btn1-disabled.png) no-repeat center;
+	background: url(#{$bg-url}young-active/young-btn1-disabled.png) no-repeat center;
 	background-size: contain;
 }
 
@@ -143,7 +143,7 @@ body{
 	text-align: center;
 }
 .young-tab-b{
-
+	
 }
 .young-tab-b>li{
 	display: none;
@@ -155,7 +155,7 @@ body{
 	background: #fff;
 	display: block;
 	width: 100%;
-
+	
 }
 .young-tab-b>li.active{
 	display: block;
