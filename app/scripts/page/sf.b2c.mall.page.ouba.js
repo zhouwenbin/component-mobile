@@ -85,26 +85,8 @@ define(
                 })
 
                 this.hideShare();
-                //初始化每日可以扒衣的次数
-                var obj = $.fn.cookie('clickTimes');
-                var currentDate = new Date();
-                if(typeof obj == "undefined" || obj == null){
-                    var obj =  currentDate.getDate() + "-" + 10;
-                    $.fn.cookie('clickTimes', obj);
-                }
-                else{
-                    if(parseInt(obj.split("-")[0]) != currentDate.getDate()){
-                        $.fn.cookie('clickTimes',  currentDate.getDate() + "-" + 10);
-                    }
-                    else{
-                        $("#clickTimes").text( parseInt(obj.split("-")[1]));
-
-                        if(parseInt(obj.split("-")[1]) < 1){
-                            $(".page3-r2  .a1").css("background","grey");
-                            $(".page3-r2  .a1 div").html("小主，明天再来扒衣啊");
-                        }
-                    }
-                }
+                this.getCoupon(); //初始化是否领取过优惠券
+                this.bayiTimes(); //初始化每日扒衣的次数
 
                 //进入页面初始化随机出现的欧巴
                 this.getRandomFresh();
@@ -186,11 +168,77 @@ define(
                         }
                     })
 
-                    $('.page3 .a2').click(function(){
-                        $('.dialog-phone').removeClass('hide');
-                        $("#username-error-tips").text("");
-                        $("#phoneNum").val("");
-                    })
+            },
+
+            ".page3 .a2 click":function(){
+                var obj = $.fn.cookie('coupon20');
+                var currentDate = new Date();
+                if(obj && obj.split("-").length > 1){
+                    if(parseInt(obj.split("-")[1]) == 1){
+                        $.fn.cookie('coupon20',  currentDate.getDate() + "-" + 0);
+                        $(".page3-r2  .a2").css("background","grey");
+                        $(".page3-r2  .a2 div").html("已领20元现金卷");
+                        $(".page3-r2  .a2 span").html("小主，明天还有！");
+                    }
+                    else{
+                        return ;
+                    }
+                }
+
+                $('.dialog-phone').removeClass('hide');
+                $("#username-error-tips").text("");
+                $("#phoneNum").val("");
+            },
+
+            bayiTimes:function(){
+                //初始化每日可以扒衣的次数
+                var obj = $.fn.cookie('clickTimes');
+                var currentDate = new Date();
+                var flag = true;
+                var times = 10;
+                if(typeof obj == "undefined" || obj == null){
+                    var obj =  currentDate.getDate() + "-" + 10;
+                    $.fn.cookie('clickTimes', obj);
+                }
+                else{
+                    if(parseInt(obj.split("-")[0]) != currentDate.getDate()){
+                        $.fn.cookie('clickTimes',  currentDate.getDate() + "-" + 10);
+                    }
+                    else{
+                        times =  parseInt(obj.split("-")[1]);
+                        if(parseInt(obj.split("-")[1]) < 1){
+                            flag = false;
+                            $(".page3-r2  .a1").css("background","grey");
+                            $(".page3-r2  .a1 span").html("小主，明天再来扒衣啊");
+                        }
+                    }
+                }
+                $("#clickTimes").text( parseInt(obj.split("-")[1]));
+                return flag;
+            },
+            //优惠券的领取与否
+            getCoupon:function(){
+                var flag = true;
+                var obj = $.fn.cookie('coupon20');
+                var currentDate = new Date();
+                if(typeof obj == "undefined" || obj == null){
+                    var obj =  currentDate.getDate() + "-" + 1;
+                    $.fn.cookie('coupon20', obj);
+                }
+                else{
+                    if(parseInt(obj.split("-")[0]) != currentDate.getDate()){
+                        $.fn.cookie('coupon20',  currentDate.getDate() + "-" + 1);
+                    }
+                    else{
+                        if(parseInt(obj.split("-")[1]) < 1){
+                            flag = false;
+                            $(".page3-r2  .a2").css("background","grey");
+                            $(".page3-r2  .a2 div").html("已领20元现金卷");
+                            $(".page3-r2  .a2 span").html("小主，明天还有！");
+                        }
+                    }
+                }
+                return flag;
             },
 
             //首页点击过后才可以下拉查看
@@ -278,22 +326,20 @@ define(
             ".page3-r2  .a1 click": function(){
                 var that = this;
                 var clickTimes = $.fn.cookie('clickTimes');
-
-                if(clickTimes && clickTimes.split("-")[1] > 0){
-                    $.fn.cookie('clickTimes',  clickTimes.split("-")[0] + "-" + (parseInt(clickTimes.split("-")[1]) -1));
+                if(clickTimes && clickTimes.split("-").length > 1){
                     var times = parseInt(clickTimes.split("-")[1]) -1;
+                    if(times < 0){
+                        return ;
+                    }
+                    $.fn.cookie('clickTimes',  clickTimes.split("-")[0] + "-" + times);
+
                     if(times < 1){
                         $(".page3-r2  .a1").css("background","grey");
                         $(".page3-r2  .a1 div").html("小主，明天再来扒衣啊");
                     }
-                   else{
-                        $("#clickTimes").text( times);
-                    }
+                    $("#clickTimes").text( times);
                 }
-                else if(clickTimes && clickTimes.split("-")[1] < 1){
-                    $(".page3-r2  .a1").css("background","grey");
-                    return;
-                }
+
 
                 //扒小鲜肉的文案提示
 //                $("#textMap").text(that.getRandomAlertInfo());
@@ -330,6 +376,7 @@ define(
             //领优惠券
             ".dialog-phone .btn click":function(){
                 var that = this;
+
                 if(!((/^1[0-9]{9}/).test($("#phoneNum").val()) && $("#phoneNum").val().length == 11)){
                     $("#username-error-tips").text('号码格式不正确！');
                     return ;
