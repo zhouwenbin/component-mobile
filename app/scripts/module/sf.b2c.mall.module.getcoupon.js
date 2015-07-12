@@ -61,11 +61,11 @@ define('sf.b2c.mall.module.getcoupon', [
           } else {
             that.isPromptSuccess = true;
           }
-          
+
           that.receiveCpCodeData(params);
         });
 
-        $("[name='cms-fill-coupon']").one(this.action);
+        // $("[name='cms-fill-coupon']").one(this.action);
         return false;
       },
 
@@ -94,7 +94,7 @@ define('sf.b2c.mall.module.getcoupon', [
                 'type': 'success'
               });
             }
-            
+
 
             // 定制代码
             that.customized();

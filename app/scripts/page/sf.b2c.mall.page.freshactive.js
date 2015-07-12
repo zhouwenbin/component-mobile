@@ -86,13 +86,19 @@ define(
     var loadingCtrl = new SFLoading();
 
     var callback = function() {
+
+      $('#gotoapp').attr('href', "http://m.sfht.com/app.html");
+      $('#gotoapp').removeAttr('data-cms-couponbagid')
+      $('#gotoapp').removeAttr('data-cms-coupontype')
+      $('#gotoapp').removeAttr('name')
+
       // loadingCtrl.show();
       new fresh(".sf-b2c-mall-fresh");
 
-      $("#gotoapp").click(function(e) {
-        e && e.preventDefault();
-        window.location.href = "http://m.sfht.com/app.html";
-      })
+      // $("#gotoapp").click(function(e) {
+      //   e && e.preventDefault();
+      //   window.location.href = "http://m.sfht.com/app.html";
+      // })
 
       // loadingCtrl.hide();
     }
