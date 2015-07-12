@@ -335,7 +335,7 @@ define(
 
                     if(times < 1){
                         $(".page3-r2  .a1").css("background","grey");
-                        $(".page3-r2  .a1 div").html("小主，明天再来扒衣啊");
+                        $(".page3-r2  .a1 span").html("小主，明天再来扒衣啊");
                     }
                     $("#clickTimes").text( times);
                 }
