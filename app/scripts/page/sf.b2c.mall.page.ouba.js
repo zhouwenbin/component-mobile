@@ -52,8 +52,8 @@ define(
              */
             init: function(element, options) {
 
-                var ratio = $(window).width() / 640;
-                $('head').append('<meta content="tariget-densitydpi=device-dpi,width=640,initial-scale='+ ratio.toFixed(2) +'" name=viewport>');
+                // var ratio = $(window).width() / 640;
+                // $('head').append('<meta content="tariget-densitydpi=device-dpi,width=640,initial-scale='+ ratio.toFixed(2) +'" name=viewport>');
 
                 $('.wp-inner').fullpage();
                 $.fn.fullpage.stop();
