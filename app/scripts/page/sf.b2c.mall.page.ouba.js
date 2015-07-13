@@ -27,7 +27,7 @@ define(
     function(can, $, cookie, touch,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,jweixin,SFHybrid, PageResponse){
         Fastclick.attach(document.body);
         SFComm.register(3);
-//        SFWeixin.shareYoung();
+        SFWeixin.shareYoung();
 
         var xingNan = 1000;
         var xiaoXiu = 100000;

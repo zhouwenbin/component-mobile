@@ -388,7 +388,7 @@ define('sf.weixin', [
       shareYoung: function(title,desc,link,imgUrl) {
           var defaulttitle = "美好肉体集中营！送钱让你扒衣服！";
           var defaultdesc = "有肉看，有券领，不要白不要！";
-          var defaultlink ="http://m.sfht.com/activity/439.html";
+          var defaultlink ="http://m.sfht.com/ouba.html";
           var defaultimgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+'12/'+'2.jpg';
           if (SFUtil.isMobile.WeChat()) {
               //进行微信设置
