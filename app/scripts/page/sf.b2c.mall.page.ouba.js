@@ -286,7 +286,7 @@ define(
 //                var link ="http://m.sfht.com/activity/439.html";
 //                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+'12/'+'1.jpg'
 //                SFWeixin.shareYoung(title,desc,link, imgUrl);
-                SFWeixin.shareYoung();
+                //SFWeixin.shareYoung();
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
