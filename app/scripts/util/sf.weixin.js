@@ -385,8 +385,11 @@ define('sf.weixin', [
 
 
       /** [shareYoung 分享小鲜肉] */
-      shareYoung: function() {
-
+      shareYoung: function(title,desc,link,imgUrl) {
+          var defaulttitle = "美好肉体集中营！送钱让你扒衣服！";
+          var defaultdesc = "有肉看，有券领，不要白不要！";
+          var defaultlink ="http://m.sfht.com/activity/439.html";
+          var defaultimgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+'12/'+'1.jpg';
           if (SFUtil.isMobile.WeChat()) {
               //进行微信设置
               configWeixin();
@@ -396,10 +399,10 @@ define('sf.weixin', [
           jweixin.ready(function() {
 
               jweixin.onMenuShareTimeline({
-                  title: '顺丰海淘疯了~COO带头脱光揽生意，是！真！脱！',
-                  desc: '',
-                  link: 'http://m.sfht.com/ouba.html',
-                  imgUrl: 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/1/1.jpg',
+                  title: title||defaulttitle,
+                  desc: desc||defaultdesc,
+                  link: link||defaultlink,
+                  imgUrl: imgUrl||defaultimgUrl,
                   trigger: function(res) {
                       // alert('用户点击发送给朋友');
                   },
@@ -415,10 +418,10 @@ define('sf.weixin', [
               });
 
               jweixin.onMenuShareAppMessage({
-                  title: '顺丰海淘疯了~COO带头脱光揽生意，是！真！脱！',
-                  desc: '裸价狂欢进口美妆休食专场 4个字—划算到爆',
-                  link: 'http://m.sfht.com/ouba.html',
-                  imgUrl: 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/1/1.jpg',
+                  title: title||defaulttitle,
+                  desc: desc||defaultdesc,
+                  link: link||defaultlink,
+                  imgUrl: imgUrl||defaultimgUrl,
                   trigger: function(res) {
                       // alert('用户点击发送给朋友');
                   },

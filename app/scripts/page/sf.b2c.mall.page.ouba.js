@@ -27,7 +27,7 @@ define(
     function(can, $, cookie, touch,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,jweixin,SFHybrid, PageResponse){
         Fastclick.attach(document.body);
         SFComm.register(3);
-        SFWeixin.shareYoung();
+//        SFWeixin.shareYoung();
 
         var xingNan = 1000;
         var xiaoXiu = 100000;
@@ -96,7 +96,6 @@ define(
                         $(this).addClass('active');
                         audio.addClass('active');
                     }
-
                 })
 
                 this.hideShare();
@@ -277,6 +276,12 @@ define(
 
             "#shareWeixin click":function(){
                 //微信分享
+//                var title = "美好肉体集中营！送钱让你扒衣服！";
+//                var desc = "有肉看，有券领，不要白不要！";
+//                var link ="http://m.sfht.com/activity/439.html";
+//                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+'12/'+'1.jpg'
+//                SFWeixin.shareYoung(title,desc,link, imgUrl);
+                SFWeixin.shareYoung();
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
@@ -319,6 +324,11 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
+                var title = "姐妹们，一起帮忙扒" + (index+1) + "号~";
+                var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
+                var link ="http://m.sfht.com/activity/439.html";
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+(freshNum-index)+'/'+'1.jpg'
+                SFWeixin.shareYoung(title,desc,link, imgUrl);
             },
 
             //取消分享按钮
@@ -494,7 +504,6 @@ define(
                         }
                     }
                 }
-
                 return tickets;
             },
 
