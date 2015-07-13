@@ -27,7 +27,7 @@ define(
           if (isHideAd) {
             this.element.find('.downloadapp').hide();
           }else{
-            this.element.find('.downloadapp').show();
+            this.element.find('.downloadapp').hide();
           }
         }, this));
 
