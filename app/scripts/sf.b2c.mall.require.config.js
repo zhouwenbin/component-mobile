@@ -126,6 +126,7 @@ requirejs.config({
         "sf.b2c.mall.api.search.searchItem": "scripts/api/sf.b2c.mall.api.search.searchItem",
         "sf.b2c.mall.api.search.suggestKeyword": "scripts/api/sf.b2c.mall.api.search.suggestKeyword",
         "sf.b2c.mall.api.search.searchItemAggregation": "scripts/api/sf.b2c.mall.api.search.searchItemAggregation",
+        "sf.b2c.mall.api.search.hotKeywords": "scripts/api/sf.b2c.mall.api.search.hotKeywords",
         "sf.b2c.mall.api.user.partnerBind": "scripts/api/sf.b2c.mall.api.user.partnerBind",
         "sf.b2c.mall.api.user.setPswdAndLogin": "scripts/api/sf.b2c.mall.api.user.setPswdAndLogin",
         "sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM": "scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM",
@@ -237,10 +238,12 @@ requirejs.config({
         "sf.b2c.mall.component.shoppingcart": "scripts/component/sf.b2c.mall.component.shoppingcart",
         "sf.b2c.mall.page.search": "scripts/page/sf.b2c.mall.page.search",
         "sf.b2c.mall.component.search": "scripts/component/sf.b2c.mall.component.search",
+        "sf.b2c.mall.page.searchinput": "scripts/page/sf.b2c.mall.page.searchinput",
         "sf.b2c.mall.page.shop": "scripts/page/sf.b2c.mall.page.shop",
         "sf.b2c.mall.page.invitationshare": "scripts/page/sf.b2c.mall.page.invitationshare",
         "sf.b2c.mall.page.app": "scripts/page/sf.b2c.mall.page.app",
         "sf.b2c.mall.page.aboutus": "scripts/page/sf.b2c.mall.page.aboutus",
+        "sf.b2c.mall.search.searchinput": "scripts/search/sf.b2c.mall.search.searchinput",
         "template_widget_header_ad": "templates/widget/sf.b2c.mall.widget.ad.mustache",
         "template_component_nav": "templates/component/sf.b2c.mall.component.nav.mustache",
         "template_product_detailcontent": "templates/product/sf.b2c.mall.product.detailcontent.mustache",
@@ -287,6 +290,7 @@ requirejs.config({
         "sf.b2c.mall.component.addrcreate": "scripts/component/sf.b2c.mall.component.addrcreate",
         "template_component_addrcreate": "templates/component/sf.b2c.mall.component.addrcreate.mustache",
         "template_component_addrdetail": "templates/component/sf.b2c.mall.component.addrdetail.mustache",
+        "template_search_searchinput": "templates/search/sf.b2c.mall.search.searchinput.mustache",
         "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache",
         "vendor.page.response": "scripts/vendor/vendor.page.response"
     }

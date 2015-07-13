@@ -17,15 +17,15 @@ var API_MUSTACHE = ROOT_PATH + '/mustache/api.mustache';
 var SOURCE = [
   // {
   //   name: 'liulian',
-  //   src: 'http://115.28.11.229/info.api?json',
+  //   src: 'http://10.32.156.47/info.api?json',
   //   filename: 'liulian.json',
   //   filterGroup: []
   // },
   {
     name: 'haitao',
-    src: 'http://10.32.156.141/info.api?json',
+    src: 'http://10.32.156.141//info.api?json',
     filename: 'haitao.json',
-    filterGroup: ['integral','order', 'minicart', 'user', 'logistics', 'product', 'shopcart', 'b2cmall', 'sc', 'supplychain', 'coupon', 'cp', 'promotion', 'payment']
+    filterGroup: ['integral','order', 'minicart', 'user', 'logistics', 'product', 'shopcart', 'b2cmall', 'sc', 'supplychain', 'coupon', 'cp', 'promotion', 'payment', 'search']
   }
 ];
 
