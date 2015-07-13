@@ -45,6 +45,11 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
+                var title = "姐妹们，一起帮忙扒" + (index+1) + "号~";
+                var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
+                var link ="http://m.sfht.com/activity/439.html";
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+(freshNum-index)+'/'+'1.jpg'
+                SFWeixin.shareYoung(title,desc,link, imgUrl);
             }  ,
             /**
              * @description 初始化方法，当调用new时会执行init方法
@@ -455,7 +460,7 @@ define(
             // 获得随机信息
             getRandomAlertInfo: function() {
                 var map = {
-                    "0": "哎呀，欧巴还差一点就脱了，继续扒！",
+                    "0": "哎呀，欧巴还差一点就脱了，继续扒！今天还有*次扒衣机会哦",
                     "1": "欧巴就要脱了！叫上闺蜜一起来！人多扒的快",
                     "2": "欧巴的衣服很脆弱，继续扒！根本停不下来！"
                 };
