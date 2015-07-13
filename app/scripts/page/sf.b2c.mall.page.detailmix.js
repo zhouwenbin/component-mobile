@@ -169,7 +169,7 @@ define(
         });
 
         if (!SFFrameworkComm.prototype.checkUserLogin.call(that)) {
-          window.location.href = 'http://m.sfht.com/login.html' + '?from=' + window.location.href;
+          window.location.href = 'http://m.sfht.com/login.html' + '?from=' + encodeURIComponent(window.location.href);
         } else {
           addItemToCart.sendRequest()
             .done(function(data) {

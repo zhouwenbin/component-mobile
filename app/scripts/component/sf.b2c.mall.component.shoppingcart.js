@@ -215,9 +215,6 @@ define(
           } else {
             return options.inverse(options.contexts || this);
           }
-        },
-        'totalSavePrice': function(goodItemList,options) {
-          var info = goodItemList();
         }
       },
 
@@ -570,6 +567,20 @@ define(
         _.each(this.options.data.attr('partScopeGroups'), function(partScopeItem) {
           partScopeItem.attr('firstGoodItem', partScopeItem.goodItemList[0]);
         });
+
+        _.each(this.options.data.attr('partScopeGroups'), function(partScopeItem) {
+          var total = 0;
+          _.each(partScopeItem.goodItemList, function(items) {
+            if (items.canUseActivityPrice == 1) {
+              total += items.activityPrice;
+            } else {
+              total += items.price;
+            }
+            //console.log(total);
+          });
+          partScopeItem.firstGoodItem.attr('totalSavePrice', total);
+        });
+
         var renderFn = can.mustache(template_order_shoppingcart);
         var html = renderFn(this.options.data, this.helpers);
 
