@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @author zhang.ke
+ */
+
 define('sf.b2c.mall.search.searchinput', [
     'zepto',
     'can',
@@ -47,13 +51,14 @@ define('sf.b2c.mall.search.searchinput', [
     	var that = this;
     	var sfHotKeywords = new SFHotKeywords({"size": KEYWORD_SIZE});
     	return sfHotKeywords.sendRequest()
-    		.done(function(hotKeywords) {
-    			that.renderData.attr("hotKeywordList", hotKeywords);
+    		.done(function(result) {
+    			that.renderData.attr("hotKeywordList", result.value);
     		});
     },
 
 		/**
-     * @description 从服务器端获取数据
+     * @author zhang.ke
+     * @description 获取store中history数据
      * @param searchData
      */
     initHistories: function() {
@@ -65,8 +70,6 @@ define('sf.b2c.mall.search.searchinput', [
       var that = this;
       
       this.initHistories();
-      that.renderHtml();
-      return;
       can.when(this.initHotKeywords())
         .done(function() {
           that.renderHtml();
@@ -79,6 +82,7 @@ define('sf.b2c.mall.search.searchinput', [
     }, 
 
     /**
+     * @author zhang.ke
      * @description 渲染html
      * @param data
      */
@@ -89,6 +93,10 @@ define('sf.b2c.mall.search.searchinput', [
       this.element.html(html);
     },
 
+    /**
+     * @author zhang.ke
+     * @description 开始搜索
+     */
     "#searchInput keydown": function(element, event) {
       if (event.keyCode != 13) {
         return;
@@ -99,10 +107,40 @@ define('sf.b2c.mall.search.searchinput', [
       this.gotoSearchPage(keyword);
     },
 
+    /**
+     * @author zhang.ke
+     * @description 取消按钮即返回上一页
+     */
+    "#searchCancelLink click": function(element, event) {
+      window.history.back();
+    },
+
+    /**
+     * @author zhang.ke
+     * @description 跳转到搜索结果页
+     */
+    "[role=gotoSearch] click": function(element, event) {
+      var keyword = $(element).text();
+      this.gotoSearchPage(keyword);
+    },
+
+    "#clearHistoriesBtn click": function(element, event) {
+      store.remove(STORE_HISTORY_LIST);
+      this.renderData.attr("historyList", null);
+    },
+
+    /**
+     * @author zhang.ke
+     * @description 跳转到搜索结果页
+     */
     gotoSearchPage: function(keyword) {
       window.location.href = "/search.html?keyword=" + keyword;
     },
 
+    /**
+     * @author zhang.ke
+     * @description 将关键字添加到store中的搜索历史
+     */
     saveHistories: function(keyword) {
       var histories;
       if (!this.renderData.historyList) {

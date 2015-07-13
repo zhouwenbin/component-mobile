@@ -1,20 +1,27 @@
+<div class="searchInputWrap">
+	<div><input type="text" placeholder="尽情的搜索吧" id="searchInput" /></div>
+	<a class="searchCancelLink" href="javascript:" id="searchCancelLink">取消</a>
+</div>
 
 
-<input type="text" placeholder="尽情的搜索吧" id="searchInput" />
 
-<a href="javascript:" id="searchCancelLink">取消</a>
+
 
 热门搜索
 <ul>
 	{{#each hotKeywordList}}
-	<li>{{.}}</li>
+	<li role="gotoSearch">{{.}}</li>
 	{{/each}}
 </ul>
 
+{{#if historyList}}
 历史记录
 <ul>
 	{{#each historyList}}
 	<li>{{.}}</li>
 	{{/each}}
 </ul>
-</ul>
+
+<a href="javascript:" id="clearHistoriesBtn">清除搜索记录</a>
+{{/if}}
+

@@ -22,13 +22,15 @@ define('sf.b2c.mall.component.search', [
   'sf.b2c.mall.api.search.searchItem',
   'sf.b2c.mall.api.search.searchItemAggregation',
   'sf.b2c.mall.api.b2cmall.getProductHotDataList',
+  'sf.b2c.mall.api.product.findRecommendProducts',
   'sf.b2c.mall.api.shopcart.addItemsToCart',
   'sf.b2c.mall.api.shopcart.isShowCart',
   'sf.b2c.mall.api.minicart.getTotalCount',
   'text!template_component_search',
   'sf.b2c.mall.widget.cartnumber',
 ], function(text, $, cookie, can, _, md5, store, helpers, SFFrameworkComm, SFConfig, SFFn, SFMessage, SFLoading,
-  SFSearchItem, SFSearchItemAggregation, SFGetProductHotDataList, SFAddItemToCart, SFIsShowCart, SFGetTotalCount,
+  SFSearchItem, SFSearchItemAggregation, SFGetProductHotDataList, SFFindRecommendProducts,
+  SFAddItemToCart, SFIsShowCart, SFGetTotalCount,
   template_component_search, SFWidgetCartNumber) {
 
   return can.Control.extend({
@@ -291,7 +293,7 @@ define('sf.b2c.mall.component.search', [
      * @param  {Map} options 传递的参数
      */
     init: function(element, options) {
-
+      this.loading.show();
       var that = this;
 
       this.addRenderDataBind();
@@ -522,7 +524,16 @@ define('sf.b2c.mall.component.search', [
       var that = this;
 
       can.when(this.initSearchItem(), this.initSearchItemAggregation())
-          .always(function() {
+          .done(function(searchItem){
+            if (searchItem.totalHits == 0) {
+              var findRecommendProducts = new SFFindRecommendProducts({
+                'itemId': -1,
+                'size': 4
+              });
+            }
+
+          })
+          .always(function(searchItem) {
             that.loading.hide();
             //渲染页面
             that.renderHtml(data);
