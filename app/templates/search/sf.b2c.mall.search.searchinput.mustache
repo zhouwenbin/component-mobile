@@ -1,1 +1,20 @@
-sf.b2c.mall.search.searchinput.mustache
+
+
+<input type="text" placeholder="尽情的搜索吧" id="searchInput" />
+
+<a href="javascript:" id="searchCancelLink">取消</a>
+
+热门搜索
+<ul>
+	{{#each hotKeywordList}}
+	<li>{{.}}</li>
+	{{/each}}
+</ul>
+
+历史记录
+<ul>
+	{{#each historyList}}
+	<li>{{.}}</li>
+	{{/each}}
+</ul>
+</ul>
