@@ -23,8 +23,6 @@
 		{{/if}}
 		<h4 class="{{#if hotKeywordList.show}}{{#if historyList.data}}active{{/if}}{{/if}}" {{#if historyList.data}}can-click="changeList"{{/if}}><span>热门搜索</span></h4>
 	</div>
-</div>
-<div class="searchShortcut">
 	{{#if historyList.data}}{{#if historyList.show}}
 		<ul class="historyList">
 			{{#each historyList.data}}
