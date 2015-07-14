@@ -51,7 +51,7 @@
         }
         .mask{background:rgba(0,0,0,10.95)}
     </style>
-    <script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
+
 </head>
 <body>
 <audio preload="preload" id="audio" src="http://img.sfht.com/media/young.mp3" loop></audio>
@@ -68,7 +68,8 @@
 </div>
 <script type="text/javascript">
     if (window.navigator.userAgent.indexOf('Android')  > -1) {
-        $('.young-loading').show();
+        var tag = document.querySelector('.young-loading');
+        tag.style.display = 'block'
     };
 </script>
 <div class="icon-audio"></div>
@@ -413,7 +414,7 @@
     require(['sf.b2c.mall.page.ouba']);
 </script>
 <!-- endbuild -->
-
+<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
 <script type="text/javascript">
     if (window.navigator.userAgent.indexOf('Android')  > -1) {
         var ratio = window.width / 640;
