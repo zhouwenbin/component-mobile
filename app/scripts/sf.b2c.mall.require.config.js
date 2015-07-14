@@ -280,7 +280,6 @@ requirejs.config({
         "sf.b2c.mall.page.520": "scripts/page/sf.b2c.mall.page.520",
         "template_header_520": "templates/sf.b2c.mall.520.mustache",
         "sf.mediav": "scripts/util/sf.mediav",
-        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
         "sf.b2c.mall.widget.region": "scripts/widget/sf.b2c.mall.widget.region",
         "sf.b2c.mall.widget.bubble": "scripts/widget/sf.b2c.mall.widget.bubble",
         "sf.b2c.mall.component.addrdetail": "scripts/component/sf.b2c.mall.component.addrdetail",
@@ -288,8 +287,13 @@ requirejs.config({
         "template_component_addrcreate": "templates/component/sf.b2c.mall.component.addrcreate.mustache",
         "template_component_addrdetail": "templates/component/sf.b2c.mall.component.addrdetail.mustache",
         "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache",
-        "vendor.page.response": "scripts/vendor/vendor.page.response"
+        "vendor.page.response": "scripts/vendor/vendor.page.response",
         "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
-        "template_category_navigate": "templates/category/sf.b2c.mall.category.page.navigate.mustache"
+        "template_category_navigate": "templates/category/sf.b2c.mall.category.page.navigate.mustache",
+        "sf.b2c.mall.category.fn": "scripts/category/sf.b2c.mall.category.fn",
+        "sf.b2c.mall.category.pagenavigatelistcontent": "scripts/category/sf.b2c.mall.category.pagenavigatelistcontent",
+        "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
+        "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages"
+
     }
 });
