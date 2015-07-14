@@ -10,10 +10,11 @@ define('sf.b2c.mall.search.searchinput', [
     'underscore',
     'store',
     'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.widget.bubble',
     'sf.b2c.mall.api.search.hotKeywords',
     "text!template_search_searchinput"
   ],
-  function($, can, _, store, SFLoading, SFHotKeywords, template_search_searchinput) {
+  function($, can, _, store, SFLoading, SFBubble, SFHotKeywords, template_search_searchinput) {
 
   var STORE_HISTORY_LIST = "searchhistories";
   var HISTORY_SIZE = 10;
@@ -118,7 +119,6 @@ define('sf.b2c.mall.search.searchinput', [
      * @description 开始搜索
      */
     "#searchInput keydown": function(element, event) {
-      alert(event.keyCode);
       if (event.keyCode != 13) {
         return;
       }
@@ -131,11 +131,9 @@ define('sf.b2c.mall.search.searchinput', [
      * @author zhang.ke
      * @description 取消按钮即返回上一页
      */
-    "#searchCancelLink click": function(element, event) {
-
+    "#startSearchLink click": function(element, event) {
       var keyword = $("#searchInput").val();
       this.search(keyword);
-      //window.history.back();
     },
 
     /**
@@ -152,7 +150,10 @@ define('sf.b2c.mall.search.searchinput', [
       this.renderData.attr("historyList.data", null);
     },
 
-    search: function(search) {
+    search: function(keyword) {
+      if (!keyword) {
+        return false;
+      }
       this.saveHistories(keyword);
       this.gotoSearchPage(keyword);
     },
