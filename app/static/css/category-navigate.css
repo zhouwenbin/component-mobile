@@ -156,3 +156,13 @@
   border-top: 2px solid #ff0000;
   display: block;
 }
+.category-content li{
+  transition:opacity 0.5s,
+            transform 0.5s,
+            height 0.1s 0.5s;
+}
+.category-content li.active{
+  opacity: 0;
+  transform:rotateX(90deg);
+  height: 0;
+}
