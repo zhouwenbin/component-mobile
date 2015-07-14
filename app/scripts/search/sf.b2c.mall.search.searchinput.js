@@ -155,7 +155,7 @@ define('sf.b2c.mall.search.searchinput', [
     search: function(search) {
       this.saveHistories(keyword);
       this.gotoSearchPage(keyword);
-    }
+    },
 
     /**
      * @author zhang.ke
