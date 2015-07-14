@@ -45,6 +45,11 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
+                var title = "姐妹们，一起帮忙扒" + (index+1) + "号~";
+                var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
+                var link ="http://m.sfht.com/ouba.html";
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+(freshNum-index)+'/'+'1.jpg'
+                SFWeixin.shareYoung(title,desc,link, imgUrl);
             }  ,
             /**
              * @description 初始化方法，当调用new时会执行init方法
@@ -96,7 +101,6 @@ define(
                         $(this).addClass('active');
                         audio.addClass('active');
                     }
-
                 })
 
                 this.hideShare();
@@ -277,6 +281,12 @@ define(
 
             "#shareWeixin click":function(){
                 //微信分享
+//                var title = "美好肉体集中营！送钱让你扒衣服！";
+//                var desc = "有肉看，有券领，不要白不要！";
+//                var link ="http://m.sfht.com/activity/439.html";
+//                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+'12/'+'1.jpg'
+//                SFWeixin.shareYoung(title,desc,link, imgUrl);
+                //SFWeixin.shareYoung();
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
@@ -311,6 +321,10 @@ define(
                 $('.dialog-phone').addClass('hide');
             },
 
+            "#share0 .btn-close click": function(){
+                $('#share0').addClass('hide');
+            },
+
             //点击分享
             "#share click": function(){
                 $('#success').addClass('hide');
@@ -319,8 +333,25 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
+                var title = "姐妹们，一起帮忙扒" + (index+1) + "号~";
+                var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
+                var link ="http://m.sfht.com/ouba.html";
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+(freshNum-index)+'/'+'1.jpg'
+                SFWeixin.shareYoung(title,desc,link, imgUrl);
             },
 
+            "#share1 click":function(){
+                $('#share0').addClass('hide');
+                //微信分享
+                if (SFFn.isMobile.WeChat()) {
+                    $("#sharearea").show();
+                }
+                var title = "姐妹们，一起帮忙扒" + (index+1) + "号~";
+                var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
+                var link ="http://m.sfht.com/ouba.html";
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+(freshNum-index)+'/'+'1.jpg'
+                SFWeixin.shareYoung(title,desc,link, imgUrl);
+            },
             //取消分享按钮
             "#sharearea click": function(){
                 $("#sharearea").hide();
@@ -340,16 +371,23 @@ define(
                     if(times < 1){
                         $(".page3-r2  .a1").css("background","grey");
                         $(".page3-r2  .a1 span").html("小主，明天再来扒衣啊");
+                        if (SFFn.isMobile.WeChat()) {
+                            $("#share0").removeClass("hide");
+                        }
+                        else{
+                            $("#randomText").text( "今天的扒衣机会用完啦，明天再来呀! " );
+                            $("#random").css("display","block");
+                            setTimeout(' $("#random").css("display","none")',2000);
+                        }
+                    }
+                    else{
+                        //扒小鲜肉的文案提示
+                        $("#randomText").text(that.getRandomAlertInfo() + "今天还有" + times +  "次扒衣机会哦");
+                        $("#random").css("display","block");
+                        setTimeout(' $("#random").css("display","none")',2000);
                     }
                     $("#clickTimes").text( times);
                 }
-
-
-                //扒小鲜肉的文案提示
-//                $("#textMap").text(that.getRandomAlertInfo());
-//                $("#notice").removeClass("hide");
-//                setTimeout(' $("#notice").addClass("hide")',1000);
-
                 var params = {
                     'voteType': 'XXMAN'
                 };
@@ -494,7 +532,6 @@ define(
                         }
                     }
                 }
-
                 return tickets;
             },
 
