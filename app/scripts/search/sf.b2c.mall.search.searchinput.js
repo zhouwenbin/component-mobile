@@ -118,13 +118,13 @@ define('sf.b2c.mall.search.searchinput', [
      * @description 开始搜索
      */
     "#searchInput keydown": function(element, event) {
+      alert(event.keyCode);
       if (event.keyCode != 13) {
         return;
       }
 
       var keyword = $(element).val();
-      this.saveHistories(keyword);
-      this.gotoSearchPage(keyword);
+      this.search(keyword);
     },
 
     /**
@@ -132,7 +132,10 @@ define('sf.b2c.mall.search.searchinput', [
      * @description 取消按钮即返回上一页
      */
     "#searchCancelLink click": function(element, event) {
-      window.history.back();
+
+      var keyword = $("#searchInput").val();
+      this.search(keyword);
+      //window.history.back();
     },
 
     /**
@@ -148,6 +151,11 @@ define('sf.b2c.mall.search.searchinput', [
       store.remove(STORE_HISTORY_LIST);
       this.renderData.attr("historyList.data", null);
     },
+
+    search: function(search) {
+      this.saveHistories(keyword);
+      this.gotoSearchPage(keyword);
+    }
 
     /**
      * @author zhang.ke
