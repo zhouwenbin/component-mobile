@@ -196,6 +196,8 @@ define('sf.b2c.mall.component.search', [
       filterOrigins: [],
       filterShopNations: [],
       filters: [],
+
+      recommendProducts: null,
       //定制过滤条件
       filterCustom: {
         showCrumbs: false,
@@ -524,16 +526,12 @@ define('sf.b2c.mall.component.search', [
       var that = this;
 
       can.when(this.initSearchItem(), this.initSearchItemAggregation())
-          .done(function(searchItem){
+          .then(function(searchItem){
             if (searchItem.totalHits == 0) {
-              var findRecommendProducts = new SFFindRecommendProducts({
-                'itemId': -1,
-                'size': 4
-              });
+              return that.initFindRecommendProducts(-1);
             }
-
           })
-          .always(function(searchItem) {
+          .always(function() {
             that.loading.hide();
             //渲染页面
             that.renderHtml(data);
@@ -594,6 +592,19 @@ define('sf.b2c.mall.component.search', [
       return searchItem.sendRequest()
           .done(function(itemSearchData) {
           });
+    },
+
+    initFindRecommendProducts: function(itemid) {
+      var that = this;
+
+      var findRecommendProducts = new SFFindRecommendProducts({
+        'itemId': itemid,
+        'size': 4
+      });
+      return findRecommendProducts.sendRequest()
+        .done(function(recommendProducts) {
+          that.renderData.attr("recommendProducts", recommendProducts.value)
+        });
     },
     /**
      * @description 从服务器端获取数据

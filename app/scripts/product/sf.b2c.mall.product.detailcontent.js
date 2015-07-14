@@ -502,15 +502,6 @@ define('sf.b2c.mall.product.detailcontent', [
       render: function() {
         var that = this;
 
-        var getProductHotData = new SFGetProductHotData({
-          'itemId': that.itemid
-        });
-
-        var findRecommendProducts = new SFFindRecommendProducts({
-          'itemId': that.itemid,
-          'size': 4
-        });
-
         that.options.detailContentInfo = {};
         that.options.detailContentInfo.showFirstStep = true;
         that.options.detailContentInfo.showSecondStep = false;
