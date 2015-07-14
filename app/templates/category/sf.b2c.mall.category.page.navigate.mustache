@@ -1,0 +1,91 @@
+<section class="category-tab">
+    <ul>
+        {{#if cates}}
+        {{#each cates}}
+        <li data-tab="{{id}}" class="getCate" cate-p1-id="{{id}}">
+            <a href="javascript:">{{name}}</a>
+            <!--<i><hr /></i>-->
+        </li>
+        <!--<li can-click="" data-tab="brand" class="">-->
+            <!--<a href="javascript:">美妆个护</a><i><hr /></i>-->
+        <!--</li>-->
+        <!--<li can-click="" data-tab="brand" class="">-->
+            <!--<a href="javascript:">健康生活</a><i><hr /></i>-->
+        <!--</li>-->
+        <!--<li can-click="" data-tab="brand" class="">-->
+            <!--<a href="javascript:">原汁原味</a><i><hr /></i>-->
+        <!--</li>-->
+        {{/each}}
+        {{else}}
+        <li class="">
+            <p>没有记录</p>
+        </li>
+        {{/if}}
+    </ul>
+</section>
+<section class="category-content">
+    <ul>
+        {{#if catesCont}}
+        {{#each catesCont}}
+        <li data-item-id="{{id}}"  pid="{{pid}}">
+            <div class='category-content-p1 getSecondCate' data-item-id="{{id}}" >
+                <div class="category-content-c1">
+                        <!--<img src="http://img0.sfht.com/sf/cate_1436770598118/5058e44ee1571a733b0825186747b2f0.jpg">-->
+                        <img src="{{iconUrl}}">
+                </div>
+                <div class="category-content-c2">
+                        <div class="category-content-c2-r1">
+                            <div><span>{{name}}</span></div>
+                            <span  class="category-iconarrow-close "></span>
+                        </div>
+                </div>
+            </div>
+            <!--<div class="category-content-p2">-->
+                <!--<ul>-->
+                    <!--<li data-item-id="3154">-->
+                        <!--<div class="category-content-c2">-->
+                            <!--<a href="http://m.sfht.com/detail/3154.html">-->
+                                <!--<div class="category-content-c2-r1">-->
+                                    <!--<div><span class="text-disable">人气品牌</span></div>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li data-item-id="3154" class="category-content-final-li">-->
+                        <!--<div class="category-content-c2">-->
+                            <!--<a href="http://m.sfht.com/detail/3154.html">-->
+                                <!--<div class="category-content-c2-r1">-->
+                                    <!--<div><span class="text-disable">人气品牌</span></div>-->
+                                <!--</div>-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        </li>
+        {{/each}}
+        {{else}}
+        <li class="">
+            <p>没有记录</p>
+        </li>
+        {{/if}}
+
+        <!--<li data-item-id="3154">-->
+            <!--<div class="category-content-p1">-->
+                <!--<div class="category-content-c1">-->
+                    <!--<a href="http://m.sfht.com/detail/3154.html">-->
+                        <!--<img src="http://img0.sfht.com/sf/cate_1436770598118/5058e44ee1571a733b0825186747b2f0.jpg">-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="category-content-c2">-->
+                    <!--<a href="http://m.sfht.com/detail/3154.html">-->
+                        <!--<div class="category-content-c2-r1">-->
+                            <!--<div><span class="text-disable">人气品牌</span></div>-->
+                            <!--<span data-role="addtocart" class="category-iconarrow-close "></span>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</li>-->
+    </ul>
+</section>

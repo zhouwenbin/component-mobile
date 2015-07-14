@@ -21,6 +21,7 @@ define(
 
 
       init:function(){
+
         this.component = {};
         this.render();
       },

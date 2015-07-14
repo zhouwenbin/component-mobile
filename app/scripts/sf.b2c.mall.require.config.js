@@ -236,6 +236,10 @@ requirejs.config({
         "sf.b2c.mall.page.invitationshare": "scripts/page/sf.b2c.mall.page.invitationshare",
         "sf.b2c.mall.page.app": "scripts/page/sf.b2c.mall.page.app",
         "sf.b2c.mall.page.aboutus": "scripts/page/sf.b2c.mall.page.aboutus",
+        "sf.b2c.mall.category.fn": "scripts/category/sf.b2c.mall.category.fn",
+        "sf.b2c.mall.category.pagenavigatelistcontent": "scripts/category/sf.b2c.mall.category.pagenavigatelistcontent",
+        "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
+        "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages",
         "template_widget_header_ad": "templates/widget/sf.b2c.mall.widget.ad.mustache",
         "template_component_nav": "templates/component/sf.b2c.mall.component.nav.mustache",
         "template_product_detailcontent": "templates/product/sf.b2c.mall.product.detailcontent.mustache",
@@ -275,6 +279,7 @@ requirejs.config({
         "sf.b2c.mall.page.520": "scripts/page/sf.b2c.mall.page.520",
         "template_header_520": "templates/sf.b2c.mall.520.mustache",
         "sf.mediav": "scripts/util/sf.mediav",
-        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache"
+        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
+        "template_category_navigate": "templates/category/sf.b2c.mall.category.page.navigate.mustache"
     }
 });
