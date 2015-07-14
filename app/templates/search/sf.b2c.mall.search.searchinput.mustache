@@ -1,27 +1,49 @@
 <div class="searchInputWrap">
-	<div><input type="text" placeholder="尽情的搜索吧" id="searchInput" /></div>
+	<input type="text" placeholder="搜索商品、品牌" id="searchInput" />
 	<a class="searchCancelLink" href="javascript:" id="searchCancelLink">取消</a>
+	<div class="zoomIcon">
+		<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+		<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+		    <title>icon_search</title>
+		    <desc>Created with Sketch.</desc>
+		    <defs></defs>
+		    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+		        <g id="筛选搜索-78-copy-2" sketch:type="MSArtboardGroup" transform="translate(-24.835938, -81.000000)" fill="#8A8C8C">
+		            <path d="M39.4792,93.9867 L35.6014,90.1089 C36.2485,89.1717 36.6298,88.0377 36.6298,86.8149 C36.6298,83.6088 34.0213,81 30.8149,81 C27.6088,81 25,83.6088 25,86.8149 C25,90.0213 27.6088,92.6298 30.8149,92.6298 C32.0374,92.6298 33.1717,92.2485 34.1089,91.6014 L37.9867,95.4795 C38.1925,95.685 38.4628,95.7876 38.7331,95.7876 C39.0031,95.7876 39.2734,95.685 39.4792,95.4792 C39.8908,95.0676 39.8908,94.3983 39.4792,93.9867 L39.4792,93.9867 Z M30.8149,92.0298 C27.9394,92.0298 25.6,89.6904 25.6,86.8149 C25.6,83.9394 27.9394,81.6 30.8149,81.6 C33.6904,81.6 36.0298,83.9394 36.0298,86.8149 C36.0298,89.6904 33.6904,92.0298 30.8149,92.0298 L30.8149,92.0298 Z M39.055,95.055 C38.8774,95.2323 38.5885,95.2323 38.4109,95.055 L34.5874,91.2312 C34.8184,91.0335 35.0335,90.8184 35.2312,90.5874 L39.055,94.4112 C39.2326,94.5885 39.2326,94.8774 39.055,95.055 L39.055,95.055 Z" id="icon_search" sketch:type="MSShapeGroup"></path>
+		        </g>
+		    </g>
+		</svg>
+	</div>
+</div>
+
+<div class="searchShortcut">
+	<div class="tab" role="tab">
+		{{#if historyList.data}}
+			<h4 class="{{#if historyList.show}}active{{/if}}" can-click="changeList"><span>历史记录</span></h4>
+		{{/if}}
+		<h4 class="{{#if hotKeywordList.show}}{{#if historyList.data}}active{{/if}}{{/if}}" {{#if historyList.data}}can-click="changeList"{{/if}}><span>热门搜索</span></h4>
+	</div>
+</div>
+<div class="searchShortcut">
+	{{#if historyList.data}}{{#if historyList.show}}
+		<ul class="historyList">
+			{{#each historyList.data}}
+			<li class="ellipsis" role="gotoSearch">{{.}}</li>
+			{{/each}}
+		</ul>
+		<a href="javascript:" id="clearHistoriesBtn" class="clearHistories">清除搜索记录</a>
+	{{/if}}{{/if}}
+	{{#if hotKeywordList.show}}
+		<ul class="hotKeywordList">
+			{{#each hotKeywordList.data}}
+			<li class="ellipsis" role="gotoSearch">{{.}}</li>
+			{{/each}}
+		</ul>
+	{{/if}}
 </div>
 
 
 
 
 
-热门搜索
-<ul>
-	{{#each hotKeywordList}}
-	<li role="gotoSearch">{{.}}</li>
-	{{/each}}
-</ul>
-
-{{#if historyList}}
-历史记录
-<ul>
-	{{#each historyList}}
-	<li>{{.}}</li>
-	{{/each}}
-</ul>
-
-<a href="javascript:" id="clearHistoriesBtn">清除搜索记录</a>
-{{/if}}
 

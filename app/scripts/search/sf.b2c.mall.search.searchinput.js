@@ -29,8 +29,24 @@ define('sf.b2c.mall.search.searchinput', [
     },
 
     renderData: new can.Map({
-      historyList: null,
-      hotKeywordList: null
+      historyList: {
+        data: null,
+        show: true
+      },
+      hotKeywordList: {
+        data: null,
+        show: true
+      },
+      changeList: function(context, targetElement, event) {
+        if ($(targetElement).text() == "历史记录") {
+          context.attr("historyList.show", true);
+          context.attr("hotKeywordList.show", false);
+        } else {
+          context.attr("historyList.show", false);
+          context.attr("hotKeywordList.show", true);
+        }
+        $(targetElement).addClass("active");
+      }
     }),
 
     /**
@@ -52,7 +68,7 @@ define('sf.b2c.mall.search.searchinput', [
     	var sfHotKeywords = new SFHotKeywords({"size": KEYWORD_SIZE});
     	return sfHotKeywords.sendRequest()
     		.done(function(result) {
-    			that.renderData.attr("hotKeywordList", result.value);
+    			that.renderData.attr("hotKeywordList.data", result.value);
     		});
     },
 
@@ -63,13 +79,17 @@ define('sf.b2c.mall.search.searchinput', [
      */
     initHistories: function() {
     	var that = this;
-			that.renderData.attr("historyList", store.get(STORE_HISTORY_LIST));
+			that.renderData.attr("historyList.data", store.get(STORE_HISTORY_LIST));
     },
 
     render: function() {
       var that = this;
       
       this.initHistories();
+      if (that.renderData.historyList.data) {
+        this.renderData.attr("hotKeywordList.show", false);
+      }
+      
       can.when(this.initHotKeywords())
         .done(function() {
           that.renderHtml();
@@ -126,7 +146,7 @@ define('sf.b2c.mall.search.searchinput', [
 
     "#clearHistoriesBtn click": function(element, event) {
       store.remove(STORE_HISTORY_LIST);
-      this.renderData.attr("historyList", null);
+      this.renderData.attr("historyList.data", null);
     },
 
     /**
@@ -143,10 +163,10 @@ define('sf.b2c.mall.search.searchinput', [
      */
     saveHistories: function(keyword) {
       var histories;
-      if (!this.renderData.historyList) {
+      if (!this.renderData.historyList.data) {
         histories = [];
       } else {
-        histories = this.renderData.historyList.serialize();
+        histories = this.renderData.historyList.data.serialize();
       }
       histories.splice(0, 0, keyword);
       if (histories.length > HISTORY_SIZE) {
