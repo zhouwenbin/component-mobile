@@ -67,9 +67,10 @@
     </div>
 </div>
 <script type="text/javascript">
-    if (window.navigator.userAgent.indexOf('Android')  > -1) {
-        var tag = document.querySelector('.young-loading');
-        tag.style.display = 'block'
+    if (window.navigator.userAgent.indexOf('Android' > -1) && window.navigator.userAgent.indexOf("SFHT") > -1) {
+        document.querySelector('.young-loading').style.display = 'block';
+        var ratio = window.screen.width / 640;
+        document.querySelector("meta[name=viewport]").setAttribute('content', 'tariget-densitydpi=device-dpi, width=640, initial-scale='+ratio+', maximum-scale='+ratio+', user-scalable='+ratio+'');
     };
 </script>
 <div class="icon-audio"></div>
@@ -414,13 +415,6 @@
     require(['sf.b2c.mall.page.ouba']);
 </script>
 <!-- endbuild -->
-<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
-<script type="text/javascript">
-    if (window.navigator.userAgent.indexOf('Android')  > -1) {
-        var ratio = window.width / 640;
-        $('head').append('<meta content="width=640,user-scalable=no,initial-scale='+ratio.toFixed(2) +'" name="viewport">');
-    }
-</script>
 
 </body>
 </html>
