@@ -137,22 +137,10 @@ define('sf.b2c.mall.category.pagenavigatelistcontent', [
         var parentLi=$element.parent();
         var spanStatus=$element.find(".category-iconarrow-close");
         var status=spanStatus.length;
-        if(status==1){
-          spanStatus.removeClass("category-iconarrow-close");
-          spanStatus.addClass("category-iconarrow-open");
-          parentLi.addClass("boder-li");
-        }else{
-          spanStatus=$element.find(".category-iconarrow-open");
-          spanStatus.removeClass("category-iconarrow-open");
-          spanStatus.addClass("category-iconarrow-close");
-          parentLi.removeClass("boder-li");
-        }
+          spanStatus.toggleClass("active");
+          parentLi.toggleClass("boder-li");
         if($.inArray(id, exSencondIds)>-1){
-          if(status==1){
-            parentLi.find(".category-content-p2").show();
-          }else{
-            parentLi.find(".category-content-p2").hide();
-          }
+            parentLi.find(".category-content-p2").toggle();
           return;
         }
         var success = function() {

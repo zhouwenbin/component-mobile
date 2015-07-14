@@ -142,16 +142,11 @@
   -webkit-background-size: 17px 10px;
   background-size: 17px 10px;
   text-indent: -999em;
+  -webkit-transition:all 0.5s;
+  transition:all 0.5s;
 }
-.category-iconarrow-open{
-  width: 17px;
-  height: 10px;
-  display: inline-block;
-  vertical-align: middle;
-  background: url(http://img0.sfht.com/sf/cate_1436770652481/4922a61e26d514b589f33e291e41196e.jpg) ;
-  -webkit-background-size: 17px 10px;
-  background-size: 17px 10px;
-  text-indent: -999em;
+.category-iconarrow-close.active{
+  transform:rotate(180deg);
 }
 .category-tab hr{
   margin-top: -4px;
