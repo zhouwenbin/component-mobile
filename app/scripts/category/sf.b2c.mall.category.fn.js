@@ -79,7 +79,7 @@ define(
           _.each(data.value, function(item) {
             var everItem=" <li>"+
             " <div class='category-content-c2'>"+
-            " <a href='http://www.sfht.com/search.html?categoryIds="+item.id+"'>"+
+            " <a href='/search.html?categoryIds="+item.id+"'>"+
                 " <div class='category-content-c2-r1'>"+
             " <div><span >"+item.name+"</span></div>"+
             " </div>"+
@@ -89,7 +89,7 @@ define(
             if(i==maxle-1){
               everItem=" <li class='category-content-final-li'>"+
               " <div class='category-content-c2'>"+
-              " <a href='http://www.sfht.com/search.html?categoryIds="+item.id+"'>"+
+              " <a href='/search.html?categoryIds="+item.id+"'>"+
               " <div class='category-content-c2-r1'>"+
               " <div><span >"+item.name+"</span></div>"+
               " </div>"+
