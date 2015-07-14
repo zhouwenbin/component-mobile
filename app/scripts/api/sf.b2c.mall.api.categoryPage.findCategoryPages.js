@@ -25,7 +25,7 @@ function($, can, _, Comm, SecurityType) {
       METHOD_NAME: 'categoryPage.findCategoryPages',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'pId': 'long'
+        'pId': 'long',
       },
       OPTIONAL: {
         'limit': 'int'

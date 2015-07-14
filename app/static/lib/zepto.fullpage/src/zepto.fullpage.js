@@ -101,7 +101,7 @@
                 }
 
                 var sub = that.o.dir === 'v' ? e.changedTouches[0].pageY - that.startY : e.changedTouches[0].pageX - that.startX;
-                var der = (sub > 30 || sub < -30) ? sub > 0 ? -1 : 1 : 0;
+                var der = (sub > 180 || sub < -180) ? sub > 0 ? -1 : 1 : 0;
 
                 that.moveTo(that.curIndex + der, true);
             });

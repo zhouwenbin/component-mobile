@@ -7,14 +7,14 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
   'sf.b2c.mall.api.user.getRecAddressList',
   'sf.b2c.mall.api.user.webLogin',
   'sf.b2c.mall.adapter.address.list',
-  'sf.b2c.mall.component.addreditor',
+  'sf.b2c.mall.component.addrcreate',
   'sf.b2c.mall.business.config',
   'sf.b2c.mall.order.iteminfo',
   'sf.b2c.mall.widget.message',
   'text!template_order_selectrecaddr',
   'sf.env.switcher'
 ], function(can, $, SFGetIDCardUrlList, SFGetRecAddressList, SFUserWebLogin,
-  AddressAdapter, SFAddressEditor, SFConfig, SFItemInfo, SFMessage, template_order_selectrecaddr, SFSwitcher) {
+  AddressAdapter, SFAddressCreate, SFConfig, SFItemInfo, SFMessage, template_order_selectrecaddr, SFSwitcher) {
 
   return can.Control.extend({
 
@@ -71,7 +71,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
           that.render(that.adapter4List.addrs);
 
           //初始化进行回调绑定
-          that.component.addressEditor = new SFAddressEditor('.sf-b2c-mall-order-addAdrArea', {
+          that.component.addressCreate = new SFAddressCreate('.sf-b2c-mall-order-addAdrArea', {
             onSuccess: _.bind(that.paint, that)
           });
 
@@ -212,7 +212,7 @@ define('sf.b2c.mall.order.selectreceiveaddr', [
       $(".nav-c1, .nav-c2").hide();
       $(".sf-b2c-mall-order-itemInfo").hide();
       $(".sf-b2c-mall-order-addAdrArea").show();
-      this.component.addressEditor.show("create", null, $(".sf-b2c-mall-order-addAdrArea"));
+      this.component.addressCreate.show("create", null, $(".sf-b2c-mall-order-addAdrArea"));
 
       return false;
     }
