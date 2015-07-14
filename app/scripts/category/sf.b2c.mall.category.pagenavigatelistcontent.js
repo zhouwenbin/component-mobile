@@ -1,10 +1,6 @@
 'use strict';
 
 
-/**
- * @author Michael.Lee (lichunmin@sf-express.com)
- * @description 订单列表业务component
- */
 define('sf.b2c.mall.category.pagenavigatelistcontent', [
     'can',
     'zepto',
