@@ -27,7 +27,7 @@ define(
     function(can, $, cookie, touch,  store, Fastclick, _, md5, SFComm, SFConfig, SFFn, SFMessage, ZfullPage, VoteNum, Vote,SFWeixin,SFReceiveCoupon,  SFSwitcher,jweixin,SFHybrid, PageResponse){
         Fastclick.attach(document.body);
         SFComm.register(3);
-//        SFWeixin.shareYoung();
+        SFWeixin.shareYoung();
 
         var xingNan = 1000;
         var xiaoXiu = 100000;
@@ -47,7 +47,7 @@ define(
                 }
                 var title = "姐妹们，一起帮忙扒" + (index+1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
-                var link ="http://m.sfht.com/activity/439.html";
+                var link ="http://m.sfht.com/ouba.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+(freshNum-index)+'/'+'1.jpg'
                 SFWeixin.shareYoung(title,desc,link, imgUrl);
             }  ,
@@ -286,7 +286,7 @@ define(
 //                var link ="http://m.sfht.com/activity/439.html";
 //                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+'12/'+'1.jpg'
 //                SFWeixin.shareYoung(title,desc,link, imgUrl);
-                SFWeixin.shareYoung();
+                //SFWeixin.shareYoung();
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
@@ -335,7 +335,7 @@ define(
                 }
                 var title = "姐妹们，一起帮忙扒" + (index+1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
-                var link ="http://m.sfht.com/activity/439.html";
+                var link ="http://m.sfht.com/ouba.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+(freshNum-index)+'/'+'1.jpg'
                 SFWeixin.shareYoung(title,desc,link, imgUrl);
             },
@@ -348,7 +348,7 @@ define(
                 }
                 var title = "姐妹们，一起帮忙扒" + (index+1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
-                var link ="http://m.sfht.com/activity/439.html";
+                var link ="http://m.sfht.com/ouba.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/'+(freshNum-index)+'/'+'1.jpg'
                 SFWeixin.shareYoung(title,desc,link, imgUrl);
             },
