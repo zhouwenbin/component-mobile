@@ -68,9 +68,11 @@
 </div>
 <script type="text/javascript">
     // if (window.navigator.userAgent.indexOf('Android' > -1) && window.navigator.userAgent.indexOf("SFHT") > -1) {
-    document.querySelector('.young-loading').style.display = 'block';
-    var ratio = window.screen.width / 640;
-    document.querySelector("meta[name=viewport]").setAttribute('content', 'tariget-densitydpi=device-dpi, width=640, initial-scale='+ratio+', maximum-scale='+ratio+', user-scalable='+ratio+'');
+    if (window.screen.width < 640) {
+        document.querySelector('.young-loading').style.display = 'block';
+        var ratio = window.screen.width / 640;
+        document.querySelector("meta[name=viewport]").setAttribute('content', 'tariget-densitydpi=device-dpi, width=640, initial-scale='+ratio+', maximum-scale='+ratio+'');
+    }
 </script>
 <div class="icon-audio"></div>
 <div class="wp">
