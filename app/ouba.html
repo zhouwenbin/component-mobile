@@ -52,14 +52,6 @@
         .mask{background:rgba(0,0,0,10.95)}
     </style>
 
-    <script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
-    <script type="text/javascript">
-        if (window.navigator.userAgent.indexOf('Android' > -1)) {
-            $('.young-loading').show();
-            var ratio = window.width / 640;
-            $('head').append('<meta content="width=640,user-scalable=no,initial-scale='+ratio.toFixed(2) +'" name="viewport">');
-        };
-    </script>
 </head>
 <body>
 <audio preload="preload" id="audio" src="http://img.sfht.com/media/young.mp3" loop></audio>
@@ -74,6 +66,13 @@
         </svg>
     </div>
 </div>
+<script type="text/javascript">
+    if (window.navigator.userAgent.indexOf('Android' > -1) && window.navigator.userAgent.indexOf("SFHT") > -1) {
+        document.querySelector('.young-loading').style.display = 'block';
+        var ratio = window.screen.width / 640;
+        document.querySelector("meta[name=viewport]").setAttribute('content', 'tariget-densitydpi=device-dpi, width=640, initial-scale='+ratio+', maximum-scale='+ratio+', user-scalable='+ratio+'');
+    };
+</script>
 <div class="icon-audio"></div>
 <div class="wp">
 <div class="wp-inner">
