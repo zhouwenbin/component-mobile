@@ -91,11 +91,12 @@
               <span class="text-important">最高省{{sf.price mixDiscount.totalSavePrice}}元<i class="icon icon-arrow"></i></span>
           </div>
       </div>
-      <ul class="detail-mix-b clearfix">
+      <ul class="detail-mix-b">
           {{#each mixDiscount.goods}}
           <li>
-             <a target="_blank" href="http://m.sfht.com/detail/{{itemId}}.html"><img src="{{imageName}}" alt=""></a> 
+             <a target="_blank" href="http://m.sfht.com/detail/{{itemId}}.html"><img src="{{imageName}}" alt=""></a>
           </li>
+          <li>+</li>
           {{/each}}          
       </ul>
   </section>
