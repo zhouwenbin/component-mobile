@@ -288,6 +288,9 @@ requirejs.config({
         "template_component_addrcreate": "templates/component/sf.b2c.mall.component.addrcreate.mustache",
         "template_component_addrdetail": "templates/component/sf.b2c.mall.component.addrdetail.mustache",
         "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache",
-        "vendor.page.response": "scripts/vendor/vendor.page.response"
+        "vendor.page.response": "scripts/vendor/vendor.page.response",
+
+        //81
+        "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81"
     }
 });

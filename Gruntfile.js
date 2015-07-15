@@ -1146,6 +1146,24 @@ module.exports = function (grunt) {
             }
         },
 
+        81: {
+            options: {
+                optimize: 'none',
+                preserveLicenseComments: false,
+                baseUrl: './app/',
+                out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.81.js',
+                mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+                paths: {
+                    'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+                },
+                include: [
+                    "sf.b2c.mall.business.config",
+                    'sf.b2c.mall.page.81'
+                ],
+                insertRequire: ['sf.b2c.mall.page.81']
+            }
+        },
+
         signrule: {
             options: {
                 optimize: 'none',
