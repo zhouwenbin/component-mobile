@@ -141,6 +141,7 @@ define('sf.b2c.mall.category.pagenavigatelistcontent', [
           spanStatus.toggleClass("active");
           parentLi.toggleClass("boder-li");
         parentLi.find(".category-content-p2").toggleClass('active');
+        //parentLi.find(".category-content-p2").toggleClass('active');
         if($.inArray(id, exSencondIds)>-1){
           return;
         }

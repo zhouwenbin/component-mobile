@@ -79,27 +79,28 @@ define(
     switcher.register('app', function() {
       var app = {
         initialize: function() {
-          this.bindEvents();
+          //this.bindEvents();
+          new SFCateList('#cateList');
         },
 
         bindEvents: function() {
-          document.addEventListener('deviceready', this.onDeviceReady, false);
+          //document.addEventListener('deviceready', this.onDeviceReady, false);
         },
 
         onDeviceReady: function() {
-          app.receivedEvent('deviceready');
+          //app.receivedEvent('deviceready');
         },
 
         receivedEvent: function(id) {
 
-          SFHybrid.sfnavigator.setLeftButton(function () {
-            SFHybrid.sfnavigator.popToIdentifier('maintab');
-          });
-
-          SFHybrid.setNetworkListener();
-          SFHybrid.isLogin().done(function () {
-            new SFCateList('#cateList');
-          });
+          //SFHybrid.sfnavigator.setLeftButton(function () {
+          //  SFHybrid.sfnavigator.popToIdentifier('maintab');
+          //});
+          //
+          //SFHybrid.setNetworkListener();
+          //SFHybrid.isLogin().done(function () {
+          //  new SFCateList('#cateList');
+          //});
         }
       };
 
