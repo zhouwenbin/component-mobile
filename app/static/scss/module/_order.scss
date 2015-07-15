@@ -58,3 +58,28 @@
 .order .box-link{
   font-size: 14px;
 }
+.order-error{
+  position: fixed;
+  left: 0;
+  bottom: 55px;
+  width: 100%;
+  line-height: 1.5;
+  padding: 5px 13px 5px 34px;
+  border-bottom: 1px solid #f6d7b8;
+  border-top: 1px solid #f6d7b8;
+  background: #fff0e1;
+  color: #ff9000;
+}
+.order-error span{
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  background: #ff9000;
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  float: left;
+  margin-left: -21px;
+}
