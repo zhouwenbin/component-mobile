@@ -70,7 +70,8 @@ define('sf.b2c.mall.category.pagenavigatelistcontent', [
         this.element.html(html);
         var firstLi=$(".category-tab ul li").get(0);
         if(firstLi){
-          $(firstLi).append("<i class='cat-tab-hr'><hr /></i>");
+          //$(firstLi).append("<i class='cat-tab-hr'><hr /></i>");
+          $(firstLi).addClass("active");
         }
         loadingCtrl.hide();
       },
@@ -140,7 +141,7 @@ define('sf.b2c.mall.category.pagenavigatelistcontent', [
           spanStatus.toggleClass("active");
           parentLi.toggleClass("boder-li");
         if($.inArray(id, exSencondIds)>-1){
-            parentLi.find(".category-content-p2").toggle();
+            parentLi.find(".category-content-p2").toggleClass('active');
           return;
         }
         var success = function() {

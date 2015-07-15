@@ -29,7 +29,8 @@ define(
         var extabi=$(".category-tab li[cate-p1-id=\""+exId+"\"] i");
         extabi.remove();
         var currenttab=$(".category-tab li[cate-p1-id=\""+id+"\"]");
-        currenttab.append("<i class='cat-tab-hr'><hr /></i>");
+        //currenttab.append("<i class='cat-tab-hr'><hr /></i>");
+        currenttab.addClass("active").siblings().removeClass('active');
         if(sobj.length>0){
           $(sobj).removeClass('active');
         }
