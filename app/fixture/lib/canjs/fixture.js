@@ -7,7 +7,7 @@
  * Includes: CanJS default build
  * Download from: http://canjs.us/
  *
- * edit by jiyanliang
+ * edit by jiyanliang at 2015.07.15
  * 1 add zepto for ajax
  * 2 add if (!settings.fixture){
  * 3 edit deferred.resolve(response[2].json);
