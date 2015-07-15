@@ -51,7 +51,7 @@ define(
         var switcher = new SFSwitcher();
 
         switcher.register('web', function () {
-          new SFNav('.sf-nav');
+          //new SFNav('.sf-nav');
         });
 
         switcher.register('app', function () {
