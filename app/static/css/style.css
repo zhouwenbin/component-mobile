@@ -1957,6 +1957,11 @@ a[title="站长统计"] {
           border-radius: 9px;
 }
 
+.seckill-text-bg-gray {
+  background: #dcdcdc;
+  color: #999;
+}
+
 /*推荐商品*/
 .recommend {
   padding: 14px 0 0;
@@ -4971,19 +4976,4 @@ a[title="站长统计"] {
 }
 .address-detail .last .switch {
   display: block;
-}
-
-.seckill-text-bg {
-  display: inline-block;
-  margin-left: 10px;
-  padding: 0 5px;
-  height: 18px;
-  line-height: 18px;
-  text-align: center;
-  font-size: 12px;
-  background: #ff5b54;
-  color: #fff;
-  vertical-align: 0;
-  -webkit-border-radius: 9px;
-          border-radius: 9px;
 }
