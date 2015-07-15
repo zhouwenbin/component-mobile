@@ -125,6 +125,7 @@ define('sf.b2c.mall.search.searchinput', [
 
       var keyword = $(element).val();
       this.search(keyword);
+      return false;
     },
 
     /**
