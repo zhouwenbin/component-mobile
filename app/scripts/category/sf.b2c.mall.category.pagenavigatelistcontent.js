@@ -140,8 +140,8 @@ define('sf.b2c.mall.category.pagenavigatelistcontent', [
         var status=spanStatus.length;
           spanStatus.toggleClass("active");
           parentLi.toggleClass("boder-li");
+        parentLi.find(".category-content-p2").toggleClass('active');
         if($.inArray(id, exSencondIds)>-1){
-            parentLi.find(".category-content-p2").toggleClass('active');
           return;
         }
         var success = function() {
@@ -151,7 +151,8 @@ define('sf.b2c.mall.category.pagenavigatelistcontent', [
         var error = function() {
           // @todo 错误提示
         }
-        CategoryFn.getSecondCate(exSencondIds,id, success, error);
+        CategoryFn.getSecondCate(parentLi,exSencondIds,id, success, error);
+
       }
     });
   });

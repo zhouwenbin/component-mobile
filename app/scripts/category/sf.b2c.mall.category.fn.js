@@ -64,7 +64,7 @@ define(
         }
       },
 
-      getSecondCate: function(exSencondIds,id, success, error){
+      getSecondCate: function(parentLi,exSencondIds,id, success, error){
         var currentObj=$(".category-content li[data-item-id=\""+id+"\"]");
         params = {
           "pId": id
