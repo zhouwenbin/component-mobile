@@ -17,11 +17,14 @@ define('sf.b2c.mall.order.iteminfo', [
     'sf.util',
     'sf.env.switcher',
     'sf.b2c.mall.widget.message',
+    'sf.b2c.mall.widget.bubble',
     'sf.b2c.mall.business.config',
     'text!template_order_iteminfo',
     'sf.b2c.mall.widget.loading',
     'sf.mediav'
-], function (text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher, SFMessage, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
+], function (text, can, $, 
+  SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, 
+  helpers, SFUtil, SFSwitcher, SFMessage, SFBubble, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
 
     can.route.ready();
 
@@ -169,6 +172,10 @@ define('sf.b2c.mall.order.iteminfo', [
             });
             receiveExCode.sendRequest()
                 .done(function (userCouponInfo) {
+                    new SFBubble("", {
+                      "message": "兑换成功!",
+                      "tick": 3000
+                    })
                     can.when(that.initCoupons())
                         .then(function () {
                             $("#selectCoupon option[data-code='" + exCode + "']").first().attr('selected', 'true');
