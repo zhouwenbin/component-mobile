@@ -94,7 +94,7 @@ define('sf.b2c.mall.search.searchinput', [
       can.when(this.initHotKeywords())
         .done(function() {
           that.renderHtml();
-          $("#searchInput").focus();
+          $("#searchInput").focus().click();
         })
         .always(function() {
           that.loading.hide();
