@@ -1,8 +1,8 @@
  @import 'utils/variables';
  body { background-color: #fff;}
-.searchInputWrap {   position: relative;display: flex; background-color: #fff; height: 50px; width: 100%; padding: 10px 0 10px 15px;}
+.searchInputWrap { position: relative;display: flex; background-color: #fff; height: 50px; width: 100%; padding: 10px 0 10px 15px;}
 .searchInputWrap .searchCancelLink { width: 60px; height: 30px; line-height: 30px; text-align: center; color: #333;}
-.searchInputWrap input { padding: 7px; text-indent: 22px; border: none; background-color: #f2f2f2; border-radius: 4px; flex:1;}
+.searchInputWrap input { height:30px; padding: 7px; text-indent: 22px; border: none; background-color: #f2f2f2; border-radius: 4px; flex:1;}
 .searchInputWrap .zoomIcon { position: absolute; left: 22px; top: 18px;}
 .searchShortcut {border-top: 1px solid #dcdcdc; min-height: 666px;}
 .searchShortcut h4 { height: 44px;  text-align: center; color:#333; font-size:14px; font-weight: normal; border-bottom: 1px solid #e8e8e8; flex:1;}

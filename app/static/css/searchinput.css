@@ -23,6 +23,7 @@ body {
 }
 
 .searchInputWrap input {
+  height: 30px;
   padding: 7px;
   text-indent: 22px;
   border: none;
