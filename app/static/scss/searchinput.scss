@@ -5,10 +5,10 @@
 .searchInputWrap input { height:30px; padding: 7px; text-indent: 22px; border: none; background-color: #f2f2f2; border-radius: 4px; flex:1;}
 .searchInputWrap .zoomIcon { position: absolute; left: 22px; top: 18px;}
 .searchShortcut {border-top: 1px solid #dcdcdc; min-height: 666px;}
-.searchShortcut h4 { height: 44px;  text-align: center; color:#333; font-size:14px; font-weight: normal; border-bottom: 1px solid #e8e8e8; flex:1;}
+.searchShortcut h4 { padding: 0 10px; height: 44px;  text-align: center; color:#333; font-size:14px; font-weight: normal; border-bottom: 1px solid #e8e8e8; flex:1;}
 .searchShortcut .tab {display: flex;}  
-.searchShortcut .tab span { padding: 0 20px; border-bottom: 2px solid transparent;line-height: 44px; height: 44px; display: inline-block;}
-.searchShortcut .tab .active span {color:#ff5e57; border-bottom-color: #ff5e57;}  
+.searchShortcut .tab span { width: 100%; border-bottom: 2px solid transparent;line-height: 44px; height: 44px; display: inline-block;}
+.searchShortcut .tab .active span {color:#ff5e57; border-bottom-color: #ff5e57; font-weight: bold;}  
 .searchShortcut ul {border-top: 1px solid #f6f6f6;}
-.searchShortcut li { height: 49px; line-height: 49px; border-bottom: 1px solid #dcdcdc; margin: 0 14px; color:#999;}
-.searchShortcut .clearHistories { font-size: 16px; color:#333; padding: 18px 0; text-align: center; display: block;}
+.searchShortcut li { font-size: 14px; height: 49px; line-height: 49px; border-bottom: 1px solid #dcdcdc; margin: 0 14px; color:#333;}
+.searchShortcut .clearHistories { font-size: 14px; color:#333; padding: 18px 0; text-align: center; display: block;}
