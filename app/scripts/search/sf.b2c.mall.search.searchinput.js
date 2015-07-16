@@ -129,6 +129,14 @@ define('sf.b2c.mall.search.searchinput', [
       return false;
     },
 
+    "#searchInput focus": function(element, event) {
+      $("#startSearchLink").text("搜索");
+    },
+
+    "#searchInput blur": function(element, event) {
+      $("#startSearchLink").text("取消");
+    },
+
     /**
      * @author zhang.ke
      * @description 取消按钮即返回上一页
