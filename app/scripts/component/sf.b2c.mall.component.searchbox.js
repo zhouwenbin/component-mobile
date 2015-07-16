@@ -51,6 +51,10 @@ define('sf.b2c.mall.component.searchbox', [
     },
 
     renderMain: function() {
+      if(!this.renderData.hotKeywordList.data) {
+        return;
+      }
+
       var that = this;
       
       this.initHistories();
@@ -109,6 +113,7 @@ define('sf.b2c.mall.component.searchbox', [
 
     hideMain: function() {
       $(".search-box-main").removeClass("active");
+      $("#searchInput").blur();
       $(this.options.existDom).show();
     },
 
@@ -136,7 +141,6 @@ define('sf.b2c.mall.component.searchbox', [
      * @description 取消按钮
      */
     "#search-cancel-btn click": function(element, event) {
-      $(".search-box-main").hide();
       this.hideMain();
     },
 
