@@ -48,7 +48,9 @@ define(
         this.data = {};
         this.data.bagid = bagid;
 
-        SFWeixin.shareInvitation("［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", "［运气爆棚］他抢到了1000元现金红包，看看你的手气呢？", this.data.bagid);
+        SFWeixin.shareInvitation(
+          "［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！", 
+          "［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！", this.data.bagid);
 
         can.when(that.initHasReceivedCp(bagid))
           .then(function() {

@@ -1,30 +1,65 @@
-$('.wp-inner').fullpage({
-  loop:true
-});
+$('.wp-inner').fullpage();
 $(function(){
-	$('.icon1').click(function(){
-		$('.page1 .photo').addClass('active');
+	//翻牌
+	$('.page1 .icon1').click(function(){
+		$('.page1').addClass('active');
 		$(this).hide();
 	})
+	//图片切换
 	var index = 0;
 	$('.next').click(function(){
-		if(index<11){
-			$('.people>li').eq(11-index).addClass('active');
+		if(index<10){
+			$('.people>li').eq(10-index).addClass('active');
 			index++;
-			console.log(index)
 		}
 		
 		
 	})
 	$('.prev').click(function(){
 		if(index>0){
-			$('.people>li').eq(12-index).removeClass('active');		
+			$('.people>li').eq(11-index).removeClass('active');		
 			index--;
-			console.log(index)
 		}
 			
 	})
-	$('.tab li').click(function(){
-		$(this).addClass('active').siblings().removeClass('active');
+	$('.people').swipeLeft(function(){
+		if(index<10){
+			$('.people>li').eq(10-index).addClass('active');
+			index++;
+		}
 	})
+	$('.people').swipeRight(function(){
+		if(index>0){
+			$('.people>li').eq(11-index).removeClass('active');		
+			index--;
+		}
+	})
+	//tab切换
+	$('.tab li').click(function(){
+		var tab_index=$('.tab li').index(this);
+		var people_index=11-index;
+		var photo_index=tab_index+1;
+		$('.people>li').eq(10-index).find('img').attr('src','../img/young/photo/'+people_index+'/'+photo_index+'.jpg');
+		$(this).addClass('active').siblings().removeClass('active');
+		if($(this).hasClass('tab-lock')){
+			$('.people>li').eq(10-index).find('.people-lock').show();
+		}else{
+			$('.people>li').eq(10-index).find('.people-lock').hide();
+		}
+	})
+	//弹窗
+	$('.page3 .a2').click(function(){
+		$('.dialog-phone').removeClass('hide');
+	})
+	$('.dialog-phone .btn').click(function(){
+		$('.dialog-phone').addClass('hide');
+		$('.dialog-success').removeClass('hide');
+	})
+	$('.dialog-success .btn').click(function(){
+		$('.dialog-success').addClass('hide');
+	})
+
+
+	
+	
 })

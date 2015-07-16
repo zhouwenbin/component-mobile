@@ -43,11 +43,11 @@ define('sf.b2c.mall.module.getcoupon', [
           }
 
           var params = {
-            bagId: $(targetElement.target).data('cms-couponbagid'),
-            type: $(targetElement.target).data('cms-coupontype')
+            bagId: $(this).data('cms-couponbagid'),
+            type: $(this).data('cms-coupontype')
           }
-          var needSms = $(targetElement.target).data('needsms');
-          var smsCon = $(targetElement.target).data('smscon');
+          var needSms = $(this).data('needsms');
+          var smsCon = $(this).data('smscon');
           if (needSms) {
             params.needSms = needSms;
           }
@@ -55,17 +55,17 @@ define('sf.b2c.mall.module.getcoupon', [
             params.smsCon = smsCon;
           }
 
-          var isPromptSuccess = $(targetElement.target).data('isPromptSuccess');
+          var isPromptSuccess = $(this).data('isPromptSuccess');
           if ((typeof isPromptSuccess != "undefined") && isPromptSuccess === false)  {
             that.isPromptSuccess = false;
           } else {
             that.isPromptSuccess = true;
           }
-          
+
           that.receiveCpCodeData(params);
         });
 
-        $("[name='cms-fill-coupon']").one(this.action);
+        // $("[name='cms-fill-coupon']").one(this.action);
         return false;
       },
 
@@ -94,7 +94,7 @@ define('sf.b2c.mall.module.getcoupon', [
                 'type': 'success'
               });
             }
-            
+
 
             // 定制代码
             that.customized();

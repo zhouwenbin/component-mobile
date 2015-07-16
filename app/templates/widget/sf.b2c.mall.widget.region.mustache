@@ -1,0 +1,66 @@
+<ul>
+{{#if provinces.selected.data}}
+	{{#provinces.selected}}
+		<li can-click="tapItem" style="
+		height: 44px; 
+		line-height: 44px;
+		background: #ccc;
+	  border-bottom: 1px solid #dcdcdc;
+	  padding: 0 15px;
+	  font-size: 16px;">{{data.name}}</li>
+	{{/provinces.selected}}
+{{else}}
+	{{^if cities.data}}{{^if regions.data}}
+		{{#provinces}}
+			{{#each provinces.data}}
+				<li can-click="tapItem" style="
+				height: 44px; 
+				line-height: 44px;
+				background: #fff;
+			  border-bottom: 1px solid #dcdcdc;
+			  padding: 0 15px;
+			  font-size: 16px;">{{name}}</li>
+			{{/each}}
+		{{/provinces}}
+	{{/if}}{{/if}}
+{{/if}}
+
+
+{{#if cities.selected.data}}
+	{{#cities.selected}}
+		<li can-click="tapItem" style="
+		height: 44px; 
+		line-height: 44px;
+		background: #e5e5e5;
+	  border-bottom: 1px solid #dcdcdc;
+	  padding: 0 15px;
+	  font-size: 16px;">{{data.name}}</li>
+	{{/cities.selected}}
+{{else}}
+	{{^if regions.data}}
+		{{#cities}}
+			{{#each cities.data}}
+				<li can-click="tapItem" style="
+				height: 44px; 
+				line-height: 44px;
+				background: #fff;
+			  border-bottom: 1px solid #dcdcdc;
+			  padding: 0 15px;
+			  font-size: 16px;">{{name}}</li>
+			{{/each}}
+		{{/cities}}
+	{{/if}}
+{{/if}}
+
+{{#regions}}
+	{{#each regions.data}}
+		<li can-click="tapItem" style="
+		height: 44px; 
+		line-height: 44px;
+		background: #fff;
+	  border-bottom: 1px solid #dcdcdc;
+	  padding: 0 15px;
+	  font-size: 16px;">{{name}}</li>
+	{{/each}}
+{{/regions}}
+<ul>

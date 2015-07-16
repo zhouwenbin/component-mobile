@@ -81,8 +81,7 @@ input, select {
 /* 默认 */
 * {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -180,7 +179,8 @@ a[title="站长统计"] {
 /*两端对齐*/
 .justify {
   text-align: justify;
-  text-align-last: justify;
+  -moz-text-align-last: justify;
+       text-align-last: justify;
   display: inline-block;
   vertical-align: middle;
 }
@@ -608,9 +608,8 @@ a[title="站长统计"] {
 .icon {
   display: inline-block;
   vertical-align: middle;
-  background: url(http://img.sfht.com/sfhth5/1.1.130/img/icon.png) no-repeat;
-  -webkit-background-size: 450px 450px;
-          background-size: 450px 450px;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/icon.png) no-repeat;
+  background-size: 450px 450px;
   text-indent: -999em;
 }
 
@@ -1351,9 +1350,8 @@ a[title="站长统计"] {
 .loading {
   width: 25px;
   height: 25px;
-  background: url(http://img.sfht.com/sfhth5/1.1.130/img/loading.png) no-repeat;
-  -webkit-background-size: 25px 25px;
-          background-size: 25px;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/loading.png) no-repeat;
+  background-size: 25px;
   position: fixed;
   -webkit-animation: loading 1s linear infinite;
           animation: loading 1s linear infinite;
@@ -1604,9 +1602,8 @@ a[title="站长统计"] {
 .banner-dialog-b {
   width: 230px;
   height: 313px;
-  background: url(http://img.sfht.com/sfhth5/1.1.130/img/banner-dialog.jpg) no-repeat;
-  -webkit-background-size: 230px 230px;
-          background-size: 230px;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/banner-dialog.jpg) no-repeat;
+  background-size: 230px;
   position: fixed;
   z-index: 999;
   padding-top: 119px;
@@ -1707,6 +1704,7 @@ a[title="站长统计"] {
   -webkit-border-radius: 5px;
           border-radius: 5px;
   line-height: 18px;
+  z-index: 99999;
 }
 
 .switch {

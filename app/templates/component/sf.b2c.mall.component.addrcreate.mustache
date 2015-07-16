@@ -1,0 +1,31 @@
+<section class="address-detail">
+    <h2 class="address-title">添加收货地址</h2>
+    <ul>
+      <ul>
+        <li><input type="text" placeholder="收货人姓名（需与身份证的姓名一致）" can-value="addr.input.recName"></li>
+        <li><input type="text" placeholder="手机号码" can-value="addr.input.cellphone"></li>
+        <li><input type="text" placeholder="身份证号" can-value="addr.input.credtNum"></li>
+        <li id="selectRegion">
+          {{^if addr.input.provinceName}}
+            <span style="color:#A9A9A9">所在地区</span>
+          {{else}}
+            <span>{{addr.input.provinceName}}</span>
+            <span>{{addr.input.cityName}}</span>
+            <span>{{addr.input.regionName}}</span>
+          {{/if}}
+        </li>
+        <li><input type="text" placeholder="详细地址" can-value="addr.input.detail"></li>
+        <li class="last"><label>设置为默认收货地址</label><a id="setDefaultCreate" href="javascript:" class="switch"></a></li>
+      </ul>
+    </ul>
+</section>
+
+<section class="address-region"></section>
+
+<section class="nav">
+  <div class="nav-r1">
+    <div class="nav-c2">
+      <a href="detail-select.html" class="btn btn-danger btn-big" id="addressSaveCreate">保存</a>
+    </div>
+  </div>    
+</section>
