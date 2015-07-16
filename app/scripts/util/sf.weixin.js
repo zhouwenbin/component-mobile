@@ -5,9 +5,10 @@ define('sf.weixin', [
   'can',
   'jweixin',
   'sf.util',
+  'store',
   'sf.b2c.mall.api.user.getWeChatJsApiSig'
 
-], function($, can, jweixin, SFUtil, SFGetWeChatJsApiSig) {
+], function($, can, jweixin, SFUtil, store, SFGetWeChatJsApiSig) {
 
   var createNonceStr = function() {
     return Math.random().toString(36).substr(2, 15);
@@ -407,7 +408,12 @@ define('sf.weixin', [
                       // alert('用户点击发送给朋友');
                   },
                   success: function(res) {
-                      // alert('已分享');
+                    var num = store.get("totalVoteNum81");
+                    if (num && num >= 3) {
+                      store.set("totalVoteNum81", num -3);
+                    } else {
+                      store.set("totalVoteNum81", 0);
+                    }
                   },
                   cancel: function(res) {
                       // alert('已取消');
