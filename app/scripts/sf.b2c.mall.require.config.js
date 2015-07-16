@@ -291,6 +291,9 @@ requirejs.config({
         "vendor.page.response": "scripts/vendor/vendor.page.response",
 
         //81
-        "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81"
+        "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81",
+
+        //states
+        "Stats": "scripts/vendor/Stats"
     }
 });
