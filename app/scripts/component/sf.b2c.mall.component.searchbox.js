@@ -102,8 +102,14 @@ define('sf.b2c.mall.component.searchbox', [
       this.element.html(html);
     },
 
-    "[for=searchInput] click": function() {
-      this.renderMain();
+    showMain: function() {
+      $(".search-box-main").addClass("active");
+      $(this.options.existDom).hide();
+    },
+
+    hideMain: function() {
+      $(".search-box-main").removeClass("active");
+      $(this.options.existDom).show();
     },
 
     /**
@@ -122,6 +128,7 @@ define('sf.b2c.mall.component.searchbox', [
 
     "#searchInput focus": function(element, event) {
       this.renderMain();
+      this.showMain();
     },
 
     /**
@@ -130,6 +137,7 @@ define('sf.b2c.mall.component.searchbox', [
      */
     "#search-cancel-btn click": function(element, event) {
       $(".search-box-main").hide();
+      this.hideMain();
     },
 
     /**

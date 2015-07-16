@@ -38,7 +38,16 @@ body {
 }
 
 .search-box-main {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+}
+
+.search-box-main.active {
+  opacity: 1;
+  z-index: 1;
 }
 
 .search-box-header {

@@ -32,7 +32,9 @@ define(
        */
       render: function() {
         var that = this;
-        new SFSearchBox('#sf-b2c-mall-search-box');
+        new SFSearchBox('#sf-b2c-mall-search-box', {
+          existDom: "#sf-b2c-mall-search"
+        });
         new SFSearch('#sf-b2c-mall-search');
       }
 
