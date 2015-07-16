@@ -525,8 +525,28 @@ define('sf.b2c.mall.product.detailcontent', [
         this.options.detailContentInfo.activityInfo = new can.Map({});
         this.options.detailContentInfo.priceInfo = new can.Map({});
 
-        can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initActivityInfo(that.itemid), that.initFindRecommendProducts(that.itemid))
-          .done(function() {
+        // can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initActivityInfo(that.itemid), that.initFindRecommendProducts(that.itemid))
+
+        that.initGetItemInfo(that.itemid)
+          .then(function(){
+            return that.initGetProductHotData(that.itemid)
+          })
+          .then(function(){
+            console.log(that.options.detailContentInfo);
+          })
+          .then(function(){
+            return that.initFindRecommendProducts(that.itemid)
+          })
+          .then(function(){
+            console.log(that.options.detailContentInfo);
+          })
+          .then(function(){
+            return that.initActivityInfo(that.itemid)
+          })
+          .then(function(){
+            console.log(that.options.detailContentInfo);
+          })
+          .then(function() {
             document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
 
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
@@ -549,76 +569,144 @@ define('sf.b2c.mall.product.detailcontent', [
             var activityId = that.options.detailContentInfo.activityInfo.attr('activityId');
             var activityType = that.options.detailContentInfo.activityInfo.attr('activityType');
             if (activityType == 'MIX_DISCOUNT') {
-              can.when(that.initMixDiscountProduct(that.itemid, activityId))
-                .done(function() {
-                  var renderFn = can.mustache(template_product_detailcontent);
-                  var html = renderFn(that.options.detailContentInfo, that.helpers);
-                  that.element.html(html);
-                })
+              // can.when(that.initMixDiscountProduct(that.itemid, activityId))
+              //   .done(function() {
+              //     var renderFn = can.mustache(template_product_detailcontent);
+              //     var html = renderFn(that.options.detailContentInfo, that.helpers);
+              //     console.log(that.options.detailContentInfo);
+              //     that.element.html(html);
+              //   })  
+              return that.initMixDiscountProduct(that.itemid, activityId)
+
             } else {
               var renderFn = can.mustache(template_product_detailcontent);
               var html = renderFn(that.options.detailContentInfo, that.helpers);
               that.element.html(html);
+              that.supplement.call(that)
             }
 
+            // that.controlCart();
 
+            // //滚动效果
+            // new Swipe($('#slider')[0], {
+            //   startSlide: 0,
+            //   speed: 400,
+            //   auto: 0,
+            //   continuous: true,
+            //   disableScroll: false,
+            //   stopPropagation: false,
+            //   callback: function(index, elem) {
+            //     $('.swipe-dot span').eq(index).addClass('active').siblings().removeClass('active');
+            //   },
+            //   transitionEnd: function(index, elem) {}
+            // });
+            // //第一个选中
+            // $('.swipe-dot span').eq(0).addClass('active');
 
-            that.controlCart();
+            // $('#detailTab').click(function() {
+            //   that.switchTab($(this), 'detailTab');
+            // })
 
-            //滚动效果
-            new Swipe($('#slider')[0], {
-              startSlide: 0,
-              speed: 400,
-              auto: 0,
-              continuous: true,
-              disableScroll: false,
-              stopPropagation: false,
-              callback: function(index, elem) {
-                $('.swipe-dot span').eq(index).addClass('active').siblings().removeClass('active');
-              },
-              transitionEnd: function(index, elem) {}
-            });
-            //第一个选中
-            $('.swipe-dot span').eq(0).addClass('active');
+            // $('#itemInfoTab').click(function() {
+            //   that.switchTab($(this), 'itemInfoTab');
+            // })
 
-            $('#detailTab').click(function() {
-              that.switchTab($(this), 'detailTab');
-            })
+            // var switcher = new SFSwitcher();
 
-            $('#itemInfoTab').click(function() {
-              that.switchTab($(this), 'itemInfoTab');
-            })
+            // switcher.register('wechat', function() {
+            //   //微信分享
+            //   that.weixinShare(that.itemid, that.options.detailContentInfo);
+            // });
 
-            var switcher = new SFSwitcher();
+            // switcher.register('app', function() {
+            //   that.setShareBtn(that.itemid, that.options.detailContentInfo);
+            // });
 
-            switcher.register('wechat', function() {
-              //微信分享
-              that.weixinShare(that.itemid, that.options.detailContentInfo);
-            });
+            // switcher.go();
 
-            switcher.register('app', function() {
-              that.setShareBtn(that.itemid, that.options.detailContentInfo);
-            });
+            // loadingCtrl.hide();
 
-            switcher.go();
+            // $(document).ready(function() {
+            //   if (SFFn.isMobile.Android()) {
+            //     that.fixedTab();
+            //   }
+            // });
 
-            loadingCtrl.hide();
-
-            $(document).ready(function() {
-              if (SFFn.isMobile.Android()) {
-                that.fixedTab();
-              }
-            });
-
-            // @author Michael.Lee
-            // 判断用户是否登陆，请求minicart
-            that.updateCart();
+            // // @author Michael.Lee
+            // // 判断用户是否登陆，请求minicart
+            // that.updateCart();
 
           })
           .fail(function(error) {
             console.error(error);
             loadingCtrl.hide();
           })
+          .then(function(){
+                var renderFn = can.mustache(template_product_detailcontent);
+                  var html = renderFn(that.options.detailContentInfo, that.helpers);
+                  console.log(that.options.detailContentInfo);
+                  that.element.html(html);
+
+                  that.supplement.call(that)
+
+
+
+          })
+
+      },
+
+      supplement: function () {
+        var that = this;
+        that.controlCart();
+
+        //滚动效果
+        new Swipe($('#slider')[0], {
+          startSlide: 0,
+          speed: 400,
+          auto: 0,
+          continuous: true,
+          disableScroll: false,
+          stopPropagation: false,
+          callback: function(index, elem) {
+            $('.swipe-dot span').eq(index).addClass('active').siblings().removeClass('active');
+          },
+          transitionEnd: function(index, elem) {}
+        });
+        //第一个选中
+        $('.swipe-dot span').eq(0).addClass('active');
+
+        $('#detailTab').click(function() {
+          that.switchTab($(this), 'detailTab');
+        })
+
+        $('#itemInfoTab').click(function() {
+          that.switchTab($(this), 'itemInfoTab');
+        })
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('wechat', function() {
+          //微信分享
+          that.weixinShare(that.itemid, that.options.detailContentInfo);
+        });
+
+        switcher.register('app', function() {
+          that.setShareBtn(that.itemid, that.options.detailContentInfo);
+        });
+
+        switcher.go();
+
+        loadingCtrl.hide();
+
+        $(document).ready(function() {
+          if (SFFn.isMobile.Android()) {
+            that.fixedTab();
+          }
+        });
+
+        // @author Michael.Lee
+        // 判断用户是否登陆，请求minicart
+        that.updateCart();
       },
 
       '.addcart click': function() {
@@ -733,7 +821,7 @@ define('sf.b2c.mall.product.detailcontent', [
           'itemId': itemId,
           'activityId': activityId
         });
-        findMixDiscountProducts.sendRequest()
+        return findMixDiscountProducts.sendRequest()
           .done(function(data) {
 
             var totalSellingPrice = 0;
@@ -754,11 +842,14 @@ define('sf.b2c.mall.product.detailcontent', [
               totalSellingPrice += item.sellingPrice;
               totalOriginPrice += item.originPrice;
             });
-            that.options.detailContentInfo.mixDiscount = new can.Map();
-            that.options.detailContentInfo.mixDiscount.attr({
-              goods: mixProductItems,
-              totalSavePrice: totalOriginPrice - totalSellingPrice,
-            })
+            // that.options.detailContentInfo.mixDiscount = new can.Map({});
+            that.options.detailContentInfo.attr('mixDiscount', {});
+            that.options.detailContentInfo.mixDiscount.attr('goods', mixProductItems);
+            that.options.detailContentInfo.mixDiscount.attr('totalSavePrice', totalOriginPrice - totalSellingPrice)
+            // that.options.detailContentInfo.mixDiscount.attr({
+            //   goods: mixProductItems,
+            //   totalSavePrice: totalOriginPrice - totalSellingPrice,
+            // })
           });
       },
       '#link-to-mixdiscount click': function(element, event) {
