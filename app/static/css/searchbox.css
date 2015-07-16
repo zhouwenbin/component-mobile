@@ -16,7 +16,6 @@ body {
 
 .search-box-gate label {
   font-size: 14px;
-  letter-spacing: 1px;
   line-height: 30px;
   text-indent: 30px;
   background-color: #f2f2f2;
@@ -24,7 +23,7 @@ body {
           border-radius: 4px;
   height: 30px;
   width: 100%;
-  color: #b2b2b2;
+  color: #b6b6b6;
 }
 
 .search-box-gate .zoomIcon {
