@@ -385,71 +385,79 @@ define('sf.weixin', [
     },
 
 
-      /** [shareYoung 分享小鲜肉] */
-      shareYoung: function(title,desc,link,imgUrl) {
-          var defaulttitle = "美好肉体集中营！送钱让你扒衣服！";
-          var defaultdesc = "有肉看，有券领，不要白不要！";
-          var defaultlink ="http://m.sfht.com/ouba.html";
-          var defaultimgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/1/2.jpg';
-          if (SFUtil.isMobile.WeChat()) {
-              //进行微信设置
-              configWeixin();
-          }
-
-          // 定义微信分享的数据
-          jweixin.ready(function() {
-
-              jweixin.onMenuShareTimeline({
-                  title: title||defaulttitle,
-                  desc: desc||defaultdesc,
-                  link: link||defaultlink,
-                  imgUrl: imgUrl||defaultimgUrl,
-                  trigger: function(res) {
-                      // alert('用户点击发送给朋友');
-                  },
-                  success: function(res) {
-                    var num = store.get("totalVoteNum81");
-
-                    alert(num);
-                    if (num && parseInt(num, 10) >= 3) {
-                      store.set("totalVoteNum81", parseInt(num, 10) -3);
-                    } else {
-                      store.set("totalVoteNum81", 0);
-                    }
-                    alert(num);
-                  },
-                  cancel: function(res) {
-                      // alert('已取消');
-                  },
-                  fail: function(res) {
-                      //alert(JSON.stringify(res));
-                  }
-              });
-
-              jweixin.onMenuShareAppMessage({
-                  title: title||defaulttitle,
-                  desc: desc||defaultdesc,
-                  link: link||defaultlink,
-                  imgUrl: imgUrl||defaultimgUrl,
-                  trigger: function(res) {
-                      // alert('用户点击发送给朋友');
-                  },
-                  success: function(res) {
-                      // alert('已分享');
-                  },
-                  cancel: function(res) {
-                      // alert('已取消');
-                  },
-                  fail: function(res) {
-                      //alert(JSON.stringify(res));
-                  }
-              });
-
-              jweixin.showMenuItems({
-                  menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage', 'imagePreview']
-              });
-          })
+    /** [shareYoung 分享小鲜肉] */
+    shareYoung: function(title, desc, link, imgUrl) {
+      var defaulttitle = "美好肉体集中营！送钱让你扒衣服！";
+      var defaultdesc = "有肉看，有券领，不要白不要！";
+      var defaultlink = "http://m.sfht.com/ouba.html";
+      var defaultimgUrl = 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/1/2.jpg';
+      if (SFUtil.isMobile.WeChat()) {
+        //进行微信设置
+        configWeixin();
       }
+
+      // 定义微信分享的数据
+      jweixin.ready(function() {
+
+        jweixin.onMenuShareTimeline({
+          title: title || defaulttitle,
+          desc: desc || defaultdesc,
+          link: link || defaultlink,
+          imgUrl: imgUrl || defaultimgUrl,
+          trigger: function(res) {
+            // alert('用户点击发送给朋友');
+          },
+          success: function(res) {
+            var num = store.get("totalVoteNum81");
+
+            alert(num);
+            if (num && parseInt(num, 10) >= 3) {
+              store.set("totalVoteNum81", parseInt(num, 10) - 3);
+            } else {
+              store.set("totalVoteNum81", 0);
+            }
+            alert(num);
+          },
+          cancel: function(res) {
+            // alert('已取消');
+          },
+          fail: function(res) {
+            //alert(JSON.stringify(res));
+          }
+        });
+
+        jweixin.onMenuShareAppMessage({
+          title: title || defaulttitle,
+          desc: desc || defaultdesc,
+          link: link || defaultlink,
+          imgUrl: imgUrl || defaultimgUrl,
+          trigger: function(res) {
+            // alert('用户点击发送给朋友');
+          },
+          success: function(res) {
+            var num = store.get("totalVoteNum81");
+
+            alert(num);
+            if (num && parseInt(num, 10) >= 3) {
+              store.set("totalVoteNum81", parseInt(num, 10) - 3);
+            } else {
+              store.set("totalVoteNum81", 0);
+            }
+            alert(num);
+          },
+          cancel: function(res) {
+            // alert('已取消');
+          },
+          fail: function(res) {
+            //alert(JSON.stringify(res));
+          }
+        });
+
+        jweixin.showMenuItems({
+          menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage', 'imagePreview']
+        });
+      })
+    }
 
   };
 
