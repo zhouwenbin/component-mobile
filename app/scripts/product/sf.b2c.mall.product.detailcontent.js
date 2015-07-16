@@ -28,7 +28,6 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.cartnumber',
     'sf.b2c.mall.api.product.findMixDiscountProducts'
-
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,

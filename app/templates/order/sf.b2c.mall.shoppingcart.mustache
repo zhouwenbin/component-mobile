@@ -49,7 +49,7 @@
             </div>
 
             {{^sf-is-empty limitDescList}}
-            <div class="text-orange">{{#limitDescList}}{{desc}} {{/limitDescList}}</div>
+            <div class="text-orange" style="padding-left: 52px;">{{#limitDescList}}{{desc}} {{/limitDescList}}</div>
             {{/sf-is-empty}}
 
             {{#if promotionInfo}}
@@ -143,7 +143,7 @@
         {{else}}
         <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
-                <span class="label label-disabled">已售罄</span>
+                <span class="label label-disabled" style="margin: 0 4px;">已售罄</span>
 
                 <a href="http://m.sfht.com/detail/{{itemId}}.html">
                     <img src="{{sf-show-img images}}" alt="">
@@ -186,7 +186,7 @@
             <div class="cart-footer-save">已省：¥{{sf.price cartFeeItem.discountFee}}</div>
         </div>
 
-        <button class="btn {{^sf-is-allow-pay scopeGroups cartFeeItem}}btn-disable{{/sf-is-allow-pay}} gotopay" {{#sf-is-allow-pay scopeGroups cartFeeItem}}style="background:#dc3334;"{{/sf-is-allow-pay}} >去结算</button>
+        <button class="btn {{^sf-is-allow-pay scopeGroups cartFeeItem}}btn-disable{{/sf-is-allow-pay}} gotopay" style="{{#sf-is-allow-pay scopeGroups cartFeeItem}}background:#dc3334;{{/sf-is-allow-pay}}background: #ff5b54;border: 1px solid #ff5b54;" >去结算</button>
     </div>
 </section>
 

@@ -17,11 +17,14 @@ define('sf.b2c.mall.order.iteminfo', [
     'sf.util',
     'sf.env.switcher',
     'sf.b2c.mall.widget.message',
+    'sf.b2c.mall.widget.bubble',
     'sf.b2c.mall.business.config',
     'text!template_order_iteminfo',
     'sf.b2c.mall.widget.loading',
     'sf.mediav'
-], function(text, can, $, SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink, helpers, SFUtil, SFSwitcher, SFMessage, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
+], function (text, can, $,
+  SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink,
+  helpers, SFUtil, SFSwitcher, SFMessage, SFBubble, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
 
     can.route.ready();
 
@@ -169,7 +172,11 @@ define('sf.b2c.mall.order.iteminfo', [
                 exCode: exCode
             });
             receiveExCode.sendRequest()
-                .done(function(userCouponInfo) {
+                .done(function (userCouponInfo) {
+                    new SFBubble("", {
+                      "message": "兑换成功!",
+                      "tick": 3000
+                    })
                     can.when(that.initCoupons())
                         .then(function() {
                             $("#selectCoupon option[data-code='" + exCode + "']").first().attr('selected', 'true');
@@ -403,11 +410,11 @@ define('sf.b2c.mall.order.iteminfo', [
             var that = this;
 
             //防止重复提交
-            if (element.hasClass("disable")) {
+            if (element.hasClass("btn-disable")) {
                 return false;
             }
 
-            element.addClass("disable");
+            element.addClass("btn-disable");
 
             var selectAddr = that.options.selectReceiveAddr.getSelectedAddr();
             var isDetailInvalid = /[<>'"]/.test($.trim(selectAddr.detail));
@@ -420,7 +427,7 @@ define('sf.b2c.mall.order.iteminfo', [
                     'type': 'error'
                 });
 
-                element.removeClass("disable");
+                element.removeClass("btn-disable");
                 return false;
             } else if (isReceiverName) {
                 new SFMessage(null, {
@@ -428,7 +435,7 @@ define('sf.b2c.mall.order.iteminfo', [
                     'type': 'error'
                 });
 
-                element.removeClass("disable");
+                element.removeClass("btn-disable");
                 return false;
             } else if (isDetailInvalid) {
                 new SFMessage(null, {
@@ -436,7 +443,7 @@ define('sf.b2c.mall.order.iteminfo', [
                     'type': 'error'
                 });
 
-                element.removeClass("disable");
+                element.removeClass("btn-disable");
                 return false;
             }
             //校验提交金额不能为负值
@@ -445,7 +452,7 @@ define('sf.b2c.mall.order.iteminfo', [
                     'tip': '订单金额不能小于0！',
                     'type': 'error'
                 });
-                element.removeClass("disable");
+                element.removeClass("btn-disable");
                 return false;
             }
 
@@ -531,8 +538,8 @@ define('sf.b2c.mall.order.iteminfo', [
                         params.couponCodes = JSON.stringify(that.itemObj.orderCoupon.selectCoupons);
                     }
                 })
-                .fail(function(error) {
-                    element.removeClass("disable");
+                .fail(function (error) {
+                    element.removeClass("btn-disable");
                 })
                 .then(function() {
                     var submitOrderForAllSys = new SFSubmitOrderForAllSys(params);
@@ -576,8 +583,8 @@ define('sf.b2c.mall.order.iteminfo', [
 
                     that.watchSubmit.call(that);
                 })
-                .fail(function(error) {
-                    element.removeClass("disable");
+                .fail(function (error) {
+                    element.removeClass("btn-disable");
                     // new SFMessage(null, {
                     //   'tip': that.errorMap[error] || '下单失败',
                     //   'type': 'error'

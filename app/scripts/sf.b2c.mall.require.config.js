@@ -136,6 +136,8 @@ requirejs.config({
         'sf.b2c.mall.api.shopcart.updateItemNumForCart': 'scripts/api/sf.b2c.mall.api.shopcart.updateItemNumForCart',
 
 
+        "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
+        "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
 
         "placeholders": "bower_components/Placeholders/build/placeholders",
         "moment": "bower_components/momentjs/min/moment.min",
@@ -170,6 +172,7 @@ requirejs.config({
         "sf.b2c.mall.module.nataralSelect": "scripts/module/sf.b2c.mall.module.nataralSelect",
         "sf.b2c.mall.module.fixtab": "scripts/module/sf.b2c.mall.module.fixtab",
         "sf.b2c.mall.module.exchangecode": "scripts/module/sf.b2c.mall.module.exchangecode",
+        "sf.b2c.mall.module.secondkill": "scripts/module/sf.b2c.mall.module.secondkill",
         "sf.b2c.mall.page.main": "scripts/page/sf.b2c.mall.page.main",
         "sf.b2c.mall.component.price": "scripts/component/sf.b2c.mall.component.price",
         "sf.b2c.mall.page.detail": "scripts/page/sf.b2c.mall.page.detail",
@@ -185,6 +188,7 @@ requirejs.config({
         "sf.b2c.mall.adapter.regions": "scripts/adapter/sf.b2c.mall.adapter.regions",
         "sf.b2c.mall.adapter.order": "scripts/adapter/sf.b2c.mall.adapter.order",
         "sf.b2c.mall.page.mypoint": "scripts/page/sf.b2c.mall.page.mypoint",
+        "sf.b2c.mall.page.ouba": "scripts/page/sf.b2c.mall.page.ouba",
         "sf.b2c.mall.component.mypoint": "scripts/component/sf.b2c.mall.component.mypoint",
         "sf.b2c.mall.page.pointexplain": "scripts/page/sf.b2c.mall.page.pointexplain",
         "sf.b2c.mall.page.signrule": "scripts/page/sf.b2c.mall.page.signrule",
@@ -220,6 +224,7 @@ requirejs.config({
         "sf.b2c.mall.page.bindaccount": "scripts/page/sf.b2c.mall.page.bindaccount",
         "sf.b2c.mall.component.bindaccount": "scripts/component/sf.b2c.mall.component.bindaccount",
         "sf.b2c.mall.page.setpassword": "scripts/page/sf.b2c.mall.page.setpassword",
+        "sf.b2c.mall.page.freshactive": "scripts/page/sf.b2c.mall.page.freshactive",
         "sf.b2c.mall.component.setpassword": "scripts/component/sf.b2c.mall.component.setpassword",
         "sf.b2c.mall.page.getalipaycoupon": "scripts/page/sf.b2c.mall.page.getalipaycoupon",
         "sf.b2c.mall.page.receivedividents": "scripts/page/sf.b2c.mall.page.receivedividents",
@@ -289,7 +294,14 @@ requirejs.config({
         "template_header_520": "templates/sf.b2c.mall.520.mustache",
         "sf.mediav": "scripts/util/sf.mediav",
         "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
-
-        'template_detail_mix': 'templates/product/sf.b2c.mall.product.detailmix.mustache'
+        'template_detail_mix': 'templates/product/sf.b2c.mall.product.detailmix.mustache',
+        "sf.b2c.mall.widget.region": "scripts/widget/sf.b2c.mall.widget.region",
+        "sf.b2c.mall.widget.bubble": "scripts/widget/sf.b2c.mall.widget.bubble",
+        "sf.b2c.mall.component.addrdetail": "scripts/component/sf.b2c.mall.component.addrdetail",
+        "sf.b2c.mall.component.addrcreate": "scripts/component/sf.b2c.mall.component.addrcreate",
+        "template_component_addrcreate": "templates/component/sf.b2c.mall.component.addrcreate.mustache",
+        "template_component_addrdetail": "templates/component/sf.b2c.mall.component.addrdetail.mustache",
+        "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache",
+        "vendor.page.response": "scripts/vendor/vendor.page.response"
     }
 });
