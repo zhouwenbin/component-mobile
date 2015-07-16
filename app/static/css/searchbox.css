@@ -15,6 +15,7 @@ body {
 }
 
 .search-box-gate label {
+  font-size: 14px;
   letter-spacing: 1px;
   line-height: 30px;
   text-indent: 30px;
@@ -79,6 +80,7 @@ body {
 }
 
 .search-box-header input {
+  font-size: 14px;
   padding: 7px;
   text-indent: 22px;
   border: none;
