@@ -24,9 +24,24 @@
     <img src="http://img.sfht.com/sfhth5/1.1.165/img/fresh_getcoupon.jpg" alt="">
   </a>
 
-  <script src="http://img.sfht.com/sfhth5/1.1.187/scripts/require.min.js"></script>
-  <script src="http://img.sfht.com/sfhth5/1.1.187/scripts/sf.h5.base.js"></script>
-  <script src="http://img.sfht.com/cms/408/scripts/dcf6a048b1308180b6b119daca929a24.js"></script>
+  <!-- build:js(.) scripts/require.min.js -->
+  <script src="bower_components/requirejs/require.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+  <script src="/scripts/base/sf.h5.base.ver.1.0.3.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+  <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.module.getcoupon.js -->
+  <script src="scripts/sf.b2c.mall.require.config.js"></script>
+  <script type="text/javascript">
+      require(['sf.b2c.mall.module.getcoupon']);
+  </script>
+  <!-- endbuild -->
 
 </body>
 </html>
