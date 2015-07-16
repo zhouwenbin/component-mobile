@@ -171,7 +171,16 @@ define('sf.b2c.mall.component.searchbox', [
      * @description 跳转到搜索结果页
      */
     gotoSearchPage: function(keyword) {
-      window.location.href = "/search.html?keyword=" + keyword;
+      var params = can.deparam(window.location.search.substr(1));
+      var href = ["/search.html?keyword=", keyword]
+      //获取存储页数
+      var pfs = params.pfs;
+      if (pfs) {
+        href.push("&pfs=");
+        href.push(pfs);
+      }
+
+      window.location.href = href.join("");
     },
 
     /**
