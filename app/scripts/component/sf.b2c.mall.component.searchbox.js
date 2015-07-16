@@ -51,7 +51,7 @@ define('sf.b2c.mall.component.searchbox', [
     },
 
     renderMain: function() {
-      if(!this.renderData.hotKeywordList.data) {
+      if(this.renderData.hotKeywordList.data) {
         return;
       }
 
