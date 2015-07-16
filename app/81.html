@@ -284,8 +284,8 @@
     <a class="next" href="javascript:"></a>
     <footer>
         <div class="page3-r2">
-            <a href="javascript:" class="a2">
-                <div>领20元现金券</div>
+            <a href="javascript:" class="a2" style="text-indent:0">
+                <div style="text-align: right; margin-right: 10px; margin-top: -10px; " id="couponnum">0</div>
             </a>
             <a href="javascript:" class="a1">
                 <div>扒下他（10）</div><span>每日更新</span></a>
@@ -304,14 +304,26 @@
 </div>
 
 <section class="tooltip center overflow-num" id="random" style="display:none;"><div id="randomText" style="font-size:20px;"></div></section>
-<div class="dialog-success mask hide" id="notice">
+
+<div class="dialog-success mask hide" id="gotoshare">
     <div class="dialog-b center">
-        <h2 id="textMap">哎呀，欧巴还差一点就脱了，继续扒！</h2>
-    </div></div>
+    <div class="register-h"  id="closeButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">
+            <a class="btn btn-close" href="#" style="background-color: white; color: black;font-size: 40px;">X</a>
+        </div>
+        <h2 style="margin: 69px 0;">您已经投票三次，分享给好友还能继续扒</h2>
+        <button class="btn btn3" id="share">
+            <span class="icon-weixin"></span>
+            叫上闺蜜一起扒!
+        </button>
+    </div>
+</div>
+
 <div id="sharearea" style="display:none">
     <div class="mask" style="background: rgba(0,0,0,0.8);"></div>
     <div class="share1" style="z-index:999;"></div>
 </div>
+
+
 <!--<script type="text/javascript" src="../lib/zepto.fullpage/src/zepto.fullPage.js"></script>-->
 
 <!-- build:js(.) scripts/require.min.js -->
