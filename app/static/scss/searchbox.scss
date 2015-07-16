@@ -1,6 +1,6 @@
  @import 'utils/variables';
  body { background-color: #fff;}
-.search-box-gate { position: relative;display: flex; background-color: #fff; height: 50px; width: 100%; padding: 10px 0 10px 15px;}
+.search-box-gate { border-bottom: 1px solid #f2f2f2; position: relative;display: flex; background-color: #fff; height: 50px; width: 100%; padding: 10px 0 10px 15px;}
 .search-box-gate label { font-size:14px; line-height: 30px; text-indent: 29px;background-color: #f2f2f2; border-radius: 4px; height:30px; width: 100%;color: #b6b6b6;}
 .search-box-gate .zoomIcon { position: absolute; left: 22px; top: 18px;}
 .search-box-gate .homeIcon { width: 72px; padding-top:4px; text-align: center;}
@@ -13,7 +13,7 @@
 .search-box-header input { font-size:14px; padding: 7px; text-indent: 22px; border: none; background-color: #f2f2f2; border-radius: 4px; height:30px; width: 100%;color: #b2b2b2;}
 .search-box-header .zoomIcon { position: absolute; left: 22px; top: 18px;}
 
-.search-shortcut {border-top: 1px solid #dcdcdc; min-height: 666px;}
+.search-shortcut {border-top: 1px solid #dcdcdc; }
 .search-shortcut h4 { padding: 0 10px; height: 44px;  text-align: center; color:#333; font-size:14px; font-weight: normal; border-bottom: 1px solid #e8e8e8; flex:1;}
 .search-shortcut .tab {display: flex;}  
 .search-shortcut .tab span { width: 100%; border-bottom: 2px solid transparent;line-height: 44px; height: 44px; display: inline-block;}

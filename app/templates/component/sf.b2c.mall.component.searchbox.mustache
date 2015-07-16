@@ -1,3 +1,4 @@
+{{#if showGate}}
 <div class="search-box-gate">
 	<label for="searchInput">搜索商品、品牌</label>
 	<a class="homeIcon" href="http://m.sfht.com">
@@ -25,8 +26,9 @@
 		</svg>
 	</div>
 </div>
+{{/if}}
 
-<div class="search-box-main">
+<div class="search-box-main {{^if showGate}}active{{/if}}">
 	<div class="search-box-header">
 		<form action="" method="get" autocomplete="off">
 			<input placeholder="搜索商品、品牌" id="searchInput" />

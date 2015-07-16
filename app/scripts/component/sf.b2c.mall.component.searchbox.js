@@ -22,6 +22,7 @@ define('sf.b2c.mall.component.searchbox', [
     helpers: {},
 
     renderData: new can.Map({
+      showGate: false,
       historyList: {
         data: null,
         show: true
@@ -43,7 +44,14 @@ define('sf.b2c.mall.component.searchbox', [
     }),
 
     init: function() {
-      this.render()
+      if(typeof this.options.showGate !== 'undefine') {
+        this.renderData.attr("showGate", this.options.showGate);
+      }
+
+      if (!this.options.showGate) {
+        this.renderMain();
+      }
+      this.render();
     },
 
     render: function() {
@@ -112,9 +120,14 @@ define('sf.b2c.mall.component.searchbox', [
     },
 
     hideMain: function() {
-      $(".search-box-main").removeClass("active");
-      $("#searchInput").blur();
-      $(this.options.existDom).show();
+      if (this.renderData.showGate) {
+        $(".search-box-main").removeClass("active");
+        $("#searchInput").blur();
+        $(this.options.existDom).show();
+      } else {
+        window.history.back();
+      }
+      
     },
 
     /**

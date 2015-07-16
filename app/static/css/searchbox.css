@@ -3,6 +3,7 @@ body {
 }
 
 .search-box-gate {
+  border-bottom: 1px solid #f2f2f2;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -99,7 +100,6 @@ body {
 
 .search-shortcut {
   border-top: 1px solid #dcdcdc;
-  min-height: 666px;
 }
 
 .search-shortcut h4 {

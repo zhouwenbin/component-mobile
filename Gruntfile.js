@@ -1676,12 +1676,12 @@ module.exports = function (grunt) {
         }
       },
 
-      searchinput: {
+      searchgate: {
         options: {
           optimize: 'none',
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.searchinput.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.searchgate.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             // 'touch': '../bower_components/zeptojs/src/touch',
@@ -1690,9 +1690,9 @@ module.exports = function (grunt) {
           },
           include: [
             "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.searchinput'
+            'sf.b2c.mall.page.searchgate'
           ],
-          insertRequire: ['sf.b2c.mall.page.searchinput']
+          insertRequire: ['sf.b2c.mall.page.searchgate']
         }
       },
 
