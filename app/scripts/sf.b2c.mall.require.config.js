@@ -238,6 +238,7 @@ requirejs.config({
         "sf.b2c.mall.component.shoppingcart": "scripts/component/sf.b2c.mall.component.shoppingcart",
         "sf.b2c.mall.page.search": "scripts/page/sf.b2c.mall.page.search",
         "sf.b2c.mall.component.search": "scripts/component/sf.b2c.mall.component.search",
+        "sf.b2c.mall.component.searchbox": "scripts/component/sf.b2c.mall.component.searchbox",
         "sf.b2c.mall.page.searchinput": "scripts/page/sf.b2c.mall.page.searchinput",
         "sf.b2c.mall.page.shop": "scripts/page/sf.b2c.mall.page.shop",
         "sf.b2c.mall.page.invitationshare": "scripts/page/sf.b2c.mall.page.invitationshare",
@@ -291,6 +292,7 @@ requirejs.config({
         "template_component_addrcreate": "templates/component/sf.b2c.mall.component.addrcreate.mustache",
         "template_component_addrdetail": "templates/component/sf.b2c.mall.component.addrdetail.mustache",
         "template_search_searchinput": "templates/search/sf.b2c.mall.search.searchinput.mustache",
+        "template_component_searchbox": "templates/component/sf.b2c.mall.component.searchbox.mustache",
         "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache",
         "vendor.page.response": "scripts/vendor/vendor.page.response"
     }

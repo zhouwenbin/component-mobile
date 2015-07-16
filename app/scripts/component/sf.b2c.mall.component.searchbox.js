@@ -1,20 +1,15 @@
 'use strict';
 
-/**
- * @author zhang.ke
- */
-
-define('sf.b2c.mall.search.searchinput', [
-    'zepto',
-    'can',
-    'underscore',
-    'store',
-    'sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.widget.bubble',
-    'sf.b2c.mall.api.search.hotKeywords',
-    "text!template_search_searchinput"
-  ],
-  function($, can, _, store, SFLoading, SFBubble, SFHotKeywords, template_search_searchinput) {
+define('sf.b2c.mall.component.searchbox', [
+  'can',
+  'zepto',
+  'underscore',
+  'store',
+  'sf.b2c.mall.widget.loading',
+  'sf.b2c.mall.widget.bubble',
+  'sf.b2c.mall.api.search.hotKeywords',
+  'text!template_component_searchbox'
+], function(can, $, _, store, SFLoading, SFBubble, SFHotKeywords, template_component_searchbox) {
 
   var STORE_HISTORY_LIST = "searchhistories";
   var HISTORY_SIZE = 10;
@@ -22,12 +17,9 @@ define('sf.b2c.mall.search.searchinput', [
 
   return can.Control.extend({
 
-  	loading: new SFLoading(),
+    loading: new SFLoading(),
 
-    helpers: {
-      'sf-firstImg': function(imageList, options) {
-      }
-    },
+    helpers: {},
 
     renderData: new can.Map({
       historyList: {
@@ -50,40 +42,15 @@ define('sf.b2c.mall.search.searchinput', [
       }
     }),
 
-    /**
-     * 初始化
-     * @param  {DOM} element 容器element
-     * @param  {Object} options 传递的参数
-     */
-    init: function(element, options) {
-      this.loading.show();
-      this.render();
-    },
-
-		/**
-     * @description 从服务器端获取数据
-     * @param searchData
-     */
-    initHotKeywords: function() {
-    	var that = this;
-    	var sfHotKeywords = new SFHotKeywords({"size": KEYWORD_SIZE});
-    	return sfHotKeywords.sendRequest()
-    		.done(function(result) {
-    			that.renderData.attr("hotKeywordList.data", result.value);
-    		});
-    },
-
-		/**
-     * @author zhang.ke
-     * @description 获取store中history数据
-     * @param searchData
-     */
-    initHistories: function() {
-    	var that = this;
-			that.renderData.attr("historyList.data", store.get(STORE_HISTORY_LIST));
+    init: function() {
+      this.render()
     },
 
     render: function() {
+      this.renderHtml();
+    },
+
+    renderMain: function() {
       var that = this;
       
       this.initHistories();
@@ -93,14 +60,35 @@ define('sf.b2c.mall.search.searchinput', [
       
       can.when(this.initHotKeywords())
         .done(function() {
-          that.renderHtml();
+          $(".search-box-main").show();
         })
         .always(function() {
           that.loading.hide();
         });
+    },
 
+    /**
+     * @description 从服务器端获取数据
+     * @param searchData
+     */
+    initHotKeywords: function() {
+      var that = this;
+      var sfHotKeywords = new SFHotKeywords({"size": KEYWORD_SIZE});
+      return sfHotKeywords.sendRequest()
+        .done(function(result) {
+          that.renderData.attr("hotKeywordList.data", result.value);
+        });
+    },
 
-    }, 
+    /**
+     * @author zhang.ke
+     * @description 获取store中history数据
+     * @param searchData
+     */
+    initHistories: function() {
+      var that = this;
+      that.renderData.attr("historyList.data", store.get(STORE_HISTORY_LIST));
+    },
 
     /**
      * @author zhang.ke
@@ -109,9 +97,13 @@ define('sf.b2c.mall.search.searchinput', [
      */
     renderHtml: function(data) {
       //渲染页面
-      var renderFn = can.mustache(template_search_searchinput);
+      var renderFn = can.mustache(template_component_searchbox);
       var html = renderFn(data || this.renderData, this.helpers);
       this.element.html(html);
+    },
+
+    "[for=searchInput] click": function() {
+      this.renderMain();
     },
 
     /**
@@ -129,20 +121,15 @@ define('sf.b2c.mall.search.searchinput', [
     },
 
     "#searchInput focus": function(element, event) {
-      $("#startSearchLink").text("搜索");
-    },
-
-    "#searchInput blur": function(element, event) {
-      $("#startSearchLink").text("取消");
+      this.renderMain();
     },
 
     /**
      * @author zhang.ke
-     * @description 取消按钮即返回上一页
+     * @description 取消按钮
      */
-    "#startSearchLink click": function(element, event) {
-      var keyword = $("#searchInput").val();
-      this.search(keyword);
+    "#search-cancel-btn click": function(element, event) {
+      $(".search-box-main").hide();
     },
 
     /**
@@ -192,5 +179,6 @@ define('sf.b2c.mall.search.searchinput', [
       }
       store.set(STORE_HISTORY_LIST, histories);
     }
+
   });
-})
+});
