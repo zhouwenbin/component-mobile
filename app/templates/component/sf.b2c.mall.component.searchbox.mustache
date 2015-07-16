@@ -50,12 +50,12 @@
 	</div>
 	
 	<div class="search-shortcut">
-		<div class="tab" role="tab">
-			{{#if historyList.data}}
+		{{#if historyList.data}}
+			<div class="tab" role="tab">
 				<h4 class="{{#if historyList.show}}active{{/if}}" can-click="changeList"><span>历史记录</span></h4>
 				<h4 class="{{#if hotKeywordList.show}}active{{/if}}" can-click="changeList"><span>热门搜索</span></h4>
-			{{/if}}
-		</div>
+			</div>
+		{{/if}}
 		{{#if historyList.data}}{{#if historyList.show}}
 			<ul class="historyList">
 				{{#each historyList.data}}

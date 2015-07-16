@@ -39,7 +39,6 @@ define('sf.b2c.mall.component.searchbox', [
           context.attr("historyList.show", false);
           context.attr("hotKeywordList.show", true);
         }
-        $(targetElement).addClass("active");
       }
     }),
 
@@ -163,15 +162,17 @@ define('sf.b2c.mall.component.searchbox', [
      */
     "[role=gotoSearch] click": function(element, event) {
       var keyword = $(element).text();
-      this.gotoSearchPage(keyword);
+      this.search(keyword);
     },
 
     "#clearHistoriesBtn click": function(element, event) {
       store.remove(STORE_HISTORY_LIST);
       this.renderData.attr("historyList.data", null);
+      this.renderData.attr("hotKeywordList.show", true);
     },
 
     search: function(keyword) {
+      keyword = keyword.replace(/(^\s*)|(\s*$)/g, "")
       if (!keyword) {
         return false;
       }

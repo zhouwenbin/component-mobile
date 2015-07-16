@@ -32,7 +32,7 @@ define(
         var that = this;
         new SFSearchBox('#sf-b2c-mall-search-box', {
           showGate: false,
-          existDom: "#sf-b2c-mall-search, .sf-b2c-mall-footer"
+          existDom: ".sf-b2c-mall-footer"
         });
       }
 

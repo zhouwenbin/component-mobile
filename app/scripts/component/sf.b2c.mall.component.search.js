@@ -377,6 +377,13 @@ define('sf.b2c.mall.component.search', [
       this.render(this.renderData, element);
     },
 
+    supplement: function(element, options) {
+      //默认展开第一个二级分类
+      if (!this.renderData.filterCategories.length && !this.renderData.filterSecondCategories.length) {
+        $("[can-click='h5SecondCategory.show']")[0].click();
+      }
+    },
+
     /**
      * @description 初始化tab固定事件
      */
@@ -535,6 +542,7 @@ define('sf.b2c.mall.component.search', [
             that.loading.hide();
             //渲染页面
             that.renderHtml(data);
+            that.supplement();
           })
           .fail(function() {
             that.searchFail();
