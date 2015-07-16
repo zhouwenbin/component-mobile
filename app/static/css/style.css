@@ -78,6 +78,10 @@ input, select {
   vertical-align: middle;
 }
 
+em {
+  font-style: normal;
+}
+
 /* 默认 */
 * {
   -webkit-box-sizing: border-box;
@@ -2415,6 +2419,14 @@ a[title="站长统计"] {
   font-size: 15px;
 }
 
+.seckill-title-countdown {
+  margin-left: 13px;
+}
+
+.seckill-title-countdown .text-important {
+  margin-left: 0;
+}
+
 /*orderdetail*/
 .orderdetail {
   background: #f6f8f9;
@@ -4553,6 +4565,20 @@ a[title="站长统计"] {
 
 .goodslist h3 {
   font-weight: normal;
+  line-height: 1.5;
+}
+
+.goods-seckill {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0 6px;
+  height: 16px;
+  line-height: 16px;
+  color: #fff;
+  background: #ff5b54;
+  -webkit-border-radius: 16px;
+          border-radius: 16px;
+  font-size: 12px;
 }
 
 .downloadapp {
