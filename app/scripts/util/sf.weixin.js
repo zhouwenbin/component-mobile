@@ -409,11 +409,14 @@ define('sf.weixin', [
                   },
                   success: function(res) {
                     var num = store.get("totalVoteNum81");
-                    if (num && num >= 3) {
-                      store.set("totalVoteNum81", num -3);
+
+                    alert(num);
+                    if (num && parseInt(num, 10) >= 3) {
+                      store.set("totalVoteNum81", parseInt(num, 10) -3);
                     } else {
                       store.set("totalVoteNum81", 0);
                     }
+                    alert(num);
                   },
                   cancel: function(res) {
                       // alert('已取消');

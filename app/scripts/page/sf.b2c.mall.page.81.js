@@ -338,7 +338,9 @@ define(
             ".page3-r2  .a1 click": function() {
                 // stats.begin();
 
-                if (this.totalVoteNum81 && this.totalVoteNum81 >= 3) {
+                var totalVoteNum81 = store.get("totalVoteNum81");
+
+                if (totalVoteNum81 && totalVoteNum81 >= 3) {
                     $("#gotoshare").removeClass("hide");
                     $("#gotoshare").addClass("show");
                     return false;
@@ -364,8 +366,6 @@ define(
                 } else {
                     store.set("totalVoteNum81", 1);
                 }
-
-                this.totalVoteNum81 = store.get("totalVoteNum81");
 
                 $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
 
