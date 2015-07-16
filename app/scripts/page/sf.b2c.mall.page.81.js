@@ -9,6 +9,7 @@ define(
         'fastclick',
         'underscore',
         'md5',
+        'Stats',
         'sf.b2c.mall.framework.comm',
         'sf.b2c.mall.business.config',
         'sf.util',
@@ -20,7 +21,7 @@ define(
         'sf.hybrid',
         'vendor.page.response'
     ],
-    function(can, $, cookie, touch, store, Fastclick, _, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFReceiveCoupon, SFSwitcher, jweixin, SFHybrid, PageResponse) {
+    function(can, $, cookie, touch, store, Fastclick, _, md5, Stats, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFReceiveCoupon, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
         SFWeixin.shareYoung();
@@ -36,9 +37,9 @@ define(
         var index = 0;
         var MESSAGE_CLOSE_TIME = 3000;
 
-        // var stats = new Stats();
-        // // stats.setMode(1);
-        // document.body.appendChild(stats.domElement);
+        var stats = new Stats();
+        // stats.setMode(1);
+        document.body.appendChild(stats.domElement);
 
         var young = can.Control.extend({
             ".people .btn click": function() {
@@ -61,7 +62,7 @@ define(
                 debugger;
 
 
-                // stats.begin();
+                stats.begin();
 
                 $('.wp-inner').fullpage();
                 $.fn.fullpage.stop();
@@ -184,13 +185,13 @@ define(
                     $(this).addClass('active').siblings().removeClass('active');
                     if ($(this).hasClass('tab-lock')) {
                         $('.people>li').eq(freshNum - 1 - index).find('.people-lock').show();
-                        $('.people>li').eq(freshNum - 1 - index).find('.people-lock').find("p").html(that.textMap[tab_index]);
+                        // $('.people>li').eq(freshNum - 1 - index).find('.people-lock').find("p").html(that.textMap[tab_index]);
                     } else {
                         $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide();
                     }
                 })
 
-                // stats.end();
+                stats.end();
 
             },
 
@@ -338,7 +339,7 @@ define(
 
             //进行投票，并且刷新页面上的票数
             ".page3-r2  .a1 click": function() {
-                // stats.begin();
+                stats.begin();
 
                 if (this.totalVoteNum81 && this.totalVoteNum81 >= 3) {
                     $("#gotoshare").removeClass("hide");
@@ -373,7 +374,7 @@ define(
 
                 $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.143/img/young/photo/' + voteNo + '/' + tabIndex + '.jpg');
 
-                // stats.end();
+                stats.end();
             },
 
             //领优惠券
