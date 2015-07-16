@@ -546,19 +546,22 @@ define('sf.b2c.mall.product.detailcontent', [
             if (sellingPrice == originPrice) {
               $('.originPrice').hide();
             }
+            var activityId = that.options.detailContentInfo.activityInfo.attr('activityId');
+            var activityType = that.options.detailContentInfo.activityInfo.attr('activityType');
+            if (activityType == 'MIX_DISCOUNT') {
+              can.when(that.initMixDiscountProduct(that.itemid, activityId))
+                .done(function() {
+                  var renderFn = can.mustache(template_product_detailcontent);
+                  var html = renderFn(that.options.detailContentInfo, that.helpers);
+                  that.element.html(html);
+                })
+            } else {
+              var renderFn = can.mustache(template_product_detailcontent);
+              var html = renderFn(that.options.detailContentInfo, that.helpers);
+              that.element.html(html);
+            }
 
-            // @deprecated 不再需要展示notice
-            //
-            // if (_.contains(FILTER_ARRAY, that.itemid) && Date.now() < new Date(LIMITIED_DATE)) {
-            //   that.options.detailContentInfo.attr({
-            //     notice: NOTICE_WORD
-            //   });
-            // }
 
-            var renderFn = can.mustache(template_product_detailcontent);
-            var html = renderFn(that.options.detailContentInfo, that.helpers);
-
-            that.element.html(html);
 
             that.controlCart();
 
@@ -715,7 +718,7 @@ define('sf.b2c.mall.product.detailcontent', [
                 if (element.activityType == "MIX_DISCOUNT") {
                   that.options.detailContentInfo.activityInfo.attr("activityType", element.activityType);
                   that.options.detailContentInfo.activityInfo.attr("activityId", element.activityId);
-                  that.initMixDiscountProduct(itemid, that.options.detailContentInfo.activityInfo.attr('activityId'));
+                  //that.initMixDiscountProduct(itemid, that.options.detailContentInfo.activityInfo.attr('activityId'));
                 }
               });
             }

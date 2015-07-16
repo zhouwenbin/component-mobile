@@ -78,7 +78,7 @@ define(
             });
             that.options.data.attr({
               goods: mixProductItems,
-              totalcount: 4,
+              totalcount: data.value.length,
               totalSavePrice: totalOriginPrice - totalSellingPrice,
               totalSellingPrice: totalSellingPrice,
               totalOriginPrice: totalOriginPrice
