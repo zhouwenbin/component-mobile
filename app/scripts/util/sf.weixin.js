@@ -443,7 +443,7 @@ define('sf.weixin', [
             } else {
               store.set("totalVoteNum81", 0);
             }
-            alert(num);
+            alert(store.set("totalVoteNum81"));
           },
           cancel: function(res) {
             // alert('已取消');

@@ -106,8 +106,6 @@ define(
                     }
                 })
 
-                this.totalVoteNum81 = store.get("totalVoteNum81");
-
                 this.hideShare();
 
                 // this.bayiTimes(); //初始化每日扒衣的次数
@@ -361,8 +359,8 @@ define(
                 }
 
                 // 计算总票数
-                if (this.totalVoteNum81) {
-                    store.set("totalVoteNum81", parseInt(this.totalVoteNum81, 10) + 1);
+                if (totalVoteNum81) {
+                    store.set("totalVoteNum81", parseInt(totalVoteNum81, 10) + 1);
                 } else {
                     store.set("totalVoteNum81", 1);
                 }
