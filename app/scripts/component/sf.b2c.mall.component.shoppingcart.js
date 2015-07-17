@@ -386,7 +386,7 @@ define(
         return {
           itemId: item.itemId,
           num: item.quantity,
-          mainItemId: item.mainItemId || ''
+          mainItemId: item.groupKey || ''
         };
       },
 
