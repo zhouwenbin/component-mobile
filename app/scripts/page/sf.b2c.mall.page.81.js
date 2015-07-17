@@ -15,13 +15,14 @@ define(
         'sf.util',
         'zepto.fullpage',
         'sf.weixin',
-        'sf.b2c.mall.api.coupon.rcvCouponByMobile',
+        "sf.b2c.mall.api.coupon.randomCard",
+        "sf.b2c.mall.api.coupon.bindCard",
         'sf.env.switcher',
         'jweixin',
         'sf.hybrid',
         'vendor.page.response'
     ],
-    function(can, $, cookie, touch, store, Fastclick, _, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFReceiveCoupon, SFSwitcher, jweixin, SFHybrid, PageResponse) {
+    function(can, $, cookie, touch, store, Fastclick, _, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
         SFWeixin.shareYoung();
@@ -50,7 +51,7 @@ define(
                 var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
                 var link = "http://m.sfht.com/ouba.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + (freshNum - index) + '/' + '1.jpg'
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.shareYoung(title, desc, link, imgUrl);
             },
             /**
@@ -106,7 +107,16 @@ define(
                     }
                 })
 
-                this.totalVoteNum81 = store.get("totalVoteNum81");
+                var alreadyVoteNum = store.get("totalVoteNum81");
+                if (alreadyVoteNum) {
+                    $("#footerNum").text(10 - parseInt(alreadyVoteNum));
+                }
+
+                var notGetcoupon81 = store.get("notGetcoupon81");
+                if (notGetcoupon81) {
+                    var notGetcoupon81Num = notGetcoupon81.split(",");
+                    $("#couponnum").text(notGetcoupon81Num.length);
+                }
 
                 this.hideShare();
 
@@ -178,7 +188,7 @@ define(
                     var tab_index = $('.tab li').index(this);
                     var people_index = freshNum - index;
                     var photo_index = tab_index + 1;
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + people_index + '/' + photo_index + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + people_index + '/' + photo_index + '.jpg');
                     $(this).addClass('active').siblings().removeClass('active');
                     if ($(this).hasClass('tab-lock')) {
                         $('.people>li').eq(freshNum - 1 - index).find('.people-lock').show();
@@ -192,20 +202,6 @@ define(
 
             },
 
-            ".page3 .a2 click": function() {
-                var obj = $.fn.cookie('coupon20');
-                var currentDate = new Date();
-                if (obj && obj.split("-").length > 1) {
-                    if (parseInt(obj.split("-")[1]) != 1) {
-                        return;
-                    }
-                }
-
-                $('.dialog-phone').removeClass('hide');
-                $("#username-error-tips").text("");
-                $("#phoneNum").val("");
-            },
-
             bayiTimes: function() {
                 var voteNo = freshNum - index;
 
@@ -216,27 +212,99 @@ define(
 
                 return voteTimes;
             },
-            //优惠券的领取与否
-            getCoupon: function() {
-                var flag = true;
-                var obj = $.fn.cookie('coupon20');
-                var currentDate = new Date();
-                if (typeof obj == "undefined" || obj == null) {
-                    var obj = currentDate.getDate() + "-" + 1;
-                    $.fn.cookie('coupon20', obj);
-                } else {
-                    if (parseInt(obj.split("-")[0]) != currentDate.getDate()) {
-                        $.fn.cookie('coupon20', currentDate.getDate() + "-" + 1);
-                    } else {
-                        if (parseInt(obj.split("-")[1]) < 1) {
-                            flag = false;
-                            $(".page3-r2  .a2").css("background", "grey");
-                            $(".page3-r2  .a2 div").html("已领20元现金卷");
-                            $(".page3-r2  .a2 span").html("小主，明天还有！");
-                        }
+
+
+            '#getcoupon click': function() {
+                var result = "";
+
+                var notGetcoupon81 = store.get("notGetcoupon81");
+                if (notGetcoupon81) {
+
+                    $("#couponlistmask").addClass("hide");
+                    $("#couponlistmask").removeClass("show");
+
+                    $("#getcouponmask").removeClass("hide");
+                    $("#getcouponmask").addClass("show");
+
+                    var mobile = store.get("mobile81");
+                    if (store.get("mobile81")) {
+                        $("#phoneNum").text(mobile);
                     }
+
+
+                } else {
+                    var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
+                    $("#getcouponmask").removeClass("show");
+                    $("#getcouponmask").addClass("hide");
+
+                    $("#couponlistmask").removeClass("hide");
+                    $("#couponlistmask").addClass("show");
+                    var alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
+                    var result = "";
+                    _.each(alreadyGetcoupon81, function(item) {
+                        var coupon = store.get("notGetcoupon81" + item);
+                        var couponArr = coupon.split("|");
+                        result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis">' + couponArr[2] + '</h2><p class="ellipsis">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
+                    })
+
+                    $("#couponlist").html(result);
                 }
-                return flag;
+
+            },
+
+            '#getcouponmask .btn click': function() {
+                var that = this;
+
+                store.set("mobile81", $("#phoneNum").val());
+                var notGetcoupon81 = store.get("notGetcoupon81");
+                // var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
+
+                var bindCard = new SFBindCard({
+                    "name": "pro727",
+                    "mobile": $("#phoneNum").val(),
+                    "ids": notGetcoupon81
+                });
+
+                bindCard
+                    .sendRequest()
+                    .done(function(data) {
+                        if (data.value) {
+                            //转换数据：未领取为已领取
+                            var notGetcoupon81 = store.get("notGetcoupon81");
+                            store.set("alreadyGetcoupon81", notGetcoupon81);
+                            store.remove("notGetcoupon81");
+
+                            // 清空未领取为零
+                            $("#couponnum").text(0);
+
+                            // 弹出新层
+                            var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
+                            $("#getcouponmask").removeClass("show");
+                            $("#getcouponmask").addClass("hide");
+
+                            $("#couponlistmask").removeClass("hide");
+                            $("#couponlistmask").addClass("show");
+                            var alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
+
+                            var result = "";
+                            _.each(alreadyGetcoupon81, function(item) {
+                                var coupon = store.get("notGetcoupon81" + item);
+                                var couponArr = coupon.split("|");
+                                result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis">' + couponArr[2] + '</h2><p class="ellipsis">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
+                            })
+
+                            $("#couponlist").html(result);
+                        }
+                    })
+                    .fail(function(error) {
+                        $("#username-error-tips").html(that.errorMap[error] || '领取失败');
+                    })
+            },
+
+            errorMap: {
+                "11000240": "用户今天的券已经领完了",
+                "11000250": "用户已经领完该活动期间所有的券",
+                "11000260": "用户输入手机号有误"
             },
 
             //首页点击过后才可以下拉查看
@@ -312,7 +380,7 @@ define(
                 var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
                 var link = "http://m.sfht.com/ouba.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + (freshNum - index) + '/' + '1.jpg'
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.shareYoung(title, desc, link, imgUrl);
             },
 
@@ -325,7 +393,7 @@ define(
                 var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
                 var link = "http://m.sfht.com/ouba.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + (freshNum - index) + '/' + '1.jpg'
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.shareYoung(title, desc, link, imgUrl);
             },
 
@@ -338,116 +406,117 @@ define(
             ".page3-r2  .a1 click": function() {
                 // stats.begin();
 
+                var currentDateVote = store.get("voteDate" + new Date().getDate());
                 var totalVoteNum81 = store.get("totalVoteNum81");
 
-                if (totalVoteNum81 && totalVoteNum81 >= 3) {
+                // 每天只能扒五次
+                if (currentDateVote >= 5 && totalVoteNum81 < 10) {
+                    $("#randomText").text("每天只能扒五次哦,请明天再来~");
+                    $("#random").css("display", "block");
+                    setTimeout(' $("#random").css("display","none")', 2000);
+                    return false;
+                }
+
+                // 提示去分享  如果分享过，则要加2次
+                var weixinsharetime81 = store.get("weixinsharedate81");
+                var threshold = 0;
+                if (weixinsharetime81 == new Date().getDate()) {
+                    threshold = 2;
+                }
+
+                if (currentDateVote >= (3 + threshold)) {
                     $("#gotoshare").removeClass("hide");
                     $("#gotoshare").addClass("show");
+
+                    $("#gotoshare").find("#gotoshareh2").text("您已经投票三次，分享给好友还能继续扒两次哦~");
+                    $("#gotoshare").find("#share").show();
+                    return false;
+                }
+
+                // 只能把十次
+                if (totalVoteNum81 && totalVoteNum81 >= 11) {
+                    $("#randomText").text("只能扒十次哦~");
+                    $("#random").css("display", "block");
+                    setTimeout(' $("#random").css("display","none")', 2000);
                     return false;
                 }
 
                 var voteNo = freshNum - index;
                 var clickTimes = store.get("81vote" + voteNo);
 
+                if (store.get("81vote" + voteNo) && store.get("81vote" + voteNo) == 3) {
+                    $("#randomText").text("您已经扒光该明星了，换个明星继续扒吧~");
+                    $("#random").css("display", "block");
+                    setTimeout(' $("#random").css("display","none")', 2000);
+                    return false;
+                }
+
+                var that = this;
+
                 // 计算每个模特的票数
                 var tabIndex = 0;
+                var mobile = store.get("mobile81");
+                var randomCard = new SFRandomCard({
+                    "name": "pro727",
+                    "mobile": mobile
+                });
+                randomCard
+                    .sendRequest()
+                    .done(function(data) {
+                        if (clickTimes) {
+                            store.set("81vote" + voteNo, parseInt(store.get("81vote" + voteNo), 10) + 1);
+                            tabIndex = that.tabUnlock(store.get("81vote" + voteNo));
+                        } else {
+                            store.set("81vote" + voteNo, 1);
+                            tabIndex = that.tabUnlock(store.get("81vote" + voteNo));
+                        }
 
-                if (clickTimes) {
-                    store.set("81vote" + voteNo, parseInt(store.get("81vote" + voteNo), 10) + 1);
-                    tabIndex = this.tabUnlock(store.get("81vote" + voteNo));
-                } else {
-                    store.set("81vote" + voteNo, 1);
-                    tabIndex = this.tabUnlock(store.get("81vote" + voteNo));
-                }
+                        // 计算总票数
+                        if (totalVoteNum81) {
+                            store.set("totalVoteNum81", parseInt(totalVoteNum81, 10) + 1);
+                        } else {
+                            store.set("totalVoteNum81", 1);
+                        }
 
-                // 计算总票数
-                if (this.totalVoteNum81) {
-                    store.set("totalVoteNum81", parseInt(this.totalVoteNum81, 10) + 1);
-                } else {
-                    store.set("totalVoteNum81", 1);
-                }
+                        var currentDateVote = store.get("voteDate" + new Date().getDate());
+                        if (currentDateVote) {
+                            store.set("voteDate" + new Date().getDate(), parseInt(currentDateVote) + 1);
+                        } else {
+                            store.set("voteDate" + new Date().getDate(), 1);
+                        }
 
-                $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
 
-                $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + voteNo + '/' + tabIndex + '.jpg');
+                        var couponid = data.promotionId;
+
+                        if (store.get("notGetcoupon81")) {
+                            store.set("notGetcoupon81", store.get("notGetcoupon81") + "," + couponid)
+                        } else {
+                            store.set("notGetcoupon81", couponid);
+                        }
+
+                        store.set("notGetcoupon81" + couponid, data.reduceCost + "|" + data.leastCost + "|" + data.title + "|" + (data.startTime == 0) ? "" : data.startTime + "|" + (data.endTime == 0) ? "" : data.endTime + "|" + data.useNotice ? data.useNotice : "")
+
+                        $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
+                        $("#footerNum").text(parseInt($("#footerNum").text(), 10) - 1);
+
+                        $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + voteNo + '/' + tabIndex + '.jpg');
+
+                    })
+                    .fail(function(error) {
+
+                        $("#randomText").text(that.randomErrorMap[error]);
+                        $("#random").css("display", "block");
+                        setTimeout(' $("#random").css("display","none")', 2000);
+                    })
+
 
                 // stats.end();
             },
 
-            //领优惠券
-            ".dialog-phone .btn click": function() {
-                var that = this;
-
-                if (!((/^1[0-9]{9}/).test($("#phoneNum").val()) && $("#phoneNum").val().length == 11)) {
-                    $("#username-error-tips").text('号码格式不正确！');
-                    return;
-                }
-
-                var day = (new Date()).getDate();
-                var coupon1id = this.coupon1Map[day] || defaultCouponid;
-
-                var receiveShareCoupon = new SFReceiveCoupon({
-                    bagId: coupon1id,
-                    mobile: $("#phoneNum").val(),
-                    type: "CARD",
-                    receiveChannel: 'B2C',
-                    receiveWay: 'ZTLQ'
-                });
-                receiveShareCoupon.sendRequest()
-                    .done(function(data) {
-                        $('.dialog-phone').addClass('hide');
-                        $('#success').removeClass('hide');
-
-                        var currentDate = new Date();
-                        $.fn.cookie('coupon20', currentDate.getDate() + "-" + 0);
-                        $(".page3-r2  .a2").css("background", "grey");
-                        $(".page3-r2  .a2 div").html("已领20元现金卷");
-                        $(".page3-r2  .a2 span").html("小主，明天还有！");
-                    })
-                    .fail(function(error) {
-                        $("#username-error-tips").text(that.errorMap[error] || '领取失败');
-                        return false;
-                    });
-            },
-
-            //每天的优惠券id
-            coupon1Map: {
-                "13": '289',
-                "14": '290',
-                "15": '291',
-                "16": '292',
-                "17": '293',
-                "18": '294',
-                "19": '295',
-                "20": '296'
-            },
-
-            //领取优惠券失败的id
-            errorMap: {
-                "11000020": "卡券不存在",
-                "11000030": "卡券已作废",
-                "11000050": "卡券已领完",
-                "11000100": "您已领过该券",
-                "11000130": "卡包不存在",
-                "11000140": "卡包已作废"
-            },
-
-            //锁的文案
-            textMap: {
-                "1": "被扒100,000次就看到啦！",
-                "2": "被扒150,000次就看到啦！",
-                "3": "被扒300,000次就看到啦！"
-            },
-
-            // 获得随机信息
-            getRandomAlertInfo: function() {
-                var map = {
-                    "0": "哎呀，欧巴还差一点就脱了，继续扒！",
-                    "1": "欧巴就要脱了！叫上闺蜜一起来！人多扒的快",
-                    "2": "欧巴的衣服很脆弱，继续扒！根本停不下来！"
-                };
-                var random = Math.random().toString(3).substr(2, 1);
-                return map[random];
+            randomErrorMap: {
+                "11000240": "今天的券已经领完了",
+                "11000250": "用户已经领完该活动期间所有的券",
+                "11000260": "用户输入手机号有误"
             },
 
             //每次进入页面时，随机出现欧巴
@@ -493,19 +562,19 @@ define(
             initActiveTab: function(tickets, Num, index) {
                 if (tickets >= mi) {
                     $(".tab li").eq(3).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + Num + '/' + 4 + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + Num + '/' + 4 + '.jpg');
                     $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide(); //去掉蒙层
                 } else if (tickets >= banLuo) {
                     $(".tab li").eq(2).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + Num + '/' + 3 + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + Num + '/' + 3 + '.jpg');
                     $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide(); //去掉蒙层
                 } else if (tickets >= xiaoXiu) {
                     $(".tab li").eq(1).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + Num + '/' + 2 + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + Num + '/' + 2 + '.jpg');
                     $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide(); //去掉蒙层
                 } else {
                     $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + Num + '/' + 1 + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + Num + '/' + 1 + '.jpg');
                     $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide(); //去掉蒙层
                 }
             },
