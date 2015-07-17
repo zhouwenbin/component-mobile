@@ -450,7 +450,10 @@ define(
         var ask = $element.val();
         var good = $element.closest('li').data('good');
 
-        if (ask <= good.limitQuantity) {
+        if (ask == 0) {
+          $element.val(1);
+          this.showAlert($element, good);
+        }else if (ask <= good.limitQuantity) {
           good.quantity = $element.val();
           this.requestFactory('updatenum', good);
         } else {
