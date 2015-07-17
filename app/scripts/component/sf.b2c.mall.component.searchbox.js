@@ -23,6 +23,7 @@ define('sf.b2c.mall.component.searchbox', [
 
     renderData: new can.Map({
       showGate: false,
+      publicGate: true,
       historyList: {
         data: null,
         show: true
@@ -42,6 +43,8 @@ define('sf.b2c.mall.component.searchbox', [
       }
     }),
 
+    controlDoms: [],
+
     init: function() {
       if(typeof this.options.showGate !== 'undefine') {
         this.renderData.attr("showGate", this.options.showGate);
@@ -49,6 +52,11 @@ define('sf.b2c.mall.component.searchbox', [
 
       if (!this.options.showGate) {
         this.renderMain();
+      }
+
+      //有自己的label
+      if($("label[for=searchInput]").length == 1) {
+        this.renderData.attr("publicGate", false);
       }
       this.render();
     },
@@ -114,8 +122,22 @@ define('sf.b2c.mall.component.searchbox', [
     },
 
     showMain: function() {
+      var that = this;
       $(".search-box-main").addClass("active");
+      var doms = [];
+      if(this.options.existDom == "all") {
+        _.each($("body > *"), _.bind(function(item, index, list) {
+          if ($(item).css("display") !== 'none'
+            && $(item).css("opacity") != 0
+            && this.element[0] !== item){
+              doms.push(item);
+          }
+        }, this))
+        this.controlDoms = doms;
+      }
+
       $(this.options.existDom).hide();
+      $(this.controlDoms).hide();
     },
 
     hideMain: function() {
@@ -123,6 +145,7 @@ define('sf.b2c.mall.component.searchbox', [
         $(".search-box-main").removeClass("active");
         $("#searchInput").blur();
         $(this.options.existDom).show();
+        $(this.controlDoms).show();
       } else {
         window.history.back();
       }

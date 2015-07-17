@@ -12,9 +12,9 @@ define('sf.b2c.mall.search.searchgate', [
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.widget.bubble',
     'sf.b2c.mall.api.search.hotKeywords',
-    "text!template_search_searchinput"
+    "text!template_search_searchgate"
   ],
-  function($, can, _, store, SFLoading, SFBubble, SFHotKeywords, template_search_searchinput) {
+  function($, can, _, store, SFLoading, SFBubble, SFHotKeywords, template_search_searchgate) {
 
   return can.Control.extend({
 

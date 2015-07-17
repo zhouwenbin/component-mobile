@@ -1,4 +1,4 @@
-{{#if showGate}}
+{{#if showGate}}{{#if publicGate}}
 <div class="search-box-gate">
 	<label for="searchInput">搜索商品、品牌</label>
 	<a class="homeIcon" href="http://m.sfht.com">
@@ -26,7 +26,7 @@
 		</svg>
 	</div>
 </div>
-{{/if}}
+{{/if}}{{/if}}
 
 <div class="search-box-main {{^if showGate}}active{{/if}}">
 	<div class="search-box-header">
