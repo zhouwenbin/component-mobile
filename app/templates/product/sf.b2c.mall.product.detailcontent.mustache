@@ -78,9 +78,9 @@
 		    {{/sf-showActivity}}
 		  {{/each}}
 	  </ul>
-    {{^isShowMixDiscount activityInfo.activityType priceInfo.soldOut}}
+    {{^isShowMoreInfo activityInfo.activityType}}
 	  <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
-    {{/isShowMixDiscount}}
+    {{/isShowMoreInfo}}
 	</section>
 	{{/activityInfo.isShow}}
   <!--促销信息-->
