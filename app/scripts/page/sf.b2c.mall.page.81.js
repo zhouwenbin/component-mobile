@@ -31,7 +31,7 @@ define(
         var banLuo = 2;
         var mi = 3;
         var ticketList = null;
-        var freshNum = 15;
+        var freshNum = 8;
         var defaultCouponid = 100;
         var startFlag = false;
         var index = 0;
