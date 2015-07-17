@@ -1776,6 +1776,7 @@ body {
 }
 
 .search-box-gate label {
+  display: block;
   font-size: 14px;
   line-height: 30px;
   text-indent: 29px;
@@ -1825,6 +1826,7 @@ body {
 }
 
 .search-box-header .search-cancel-btn {
+  display: block;
   width: 60px;
   height: 30px;
   line-height: 30px;
@@ -1837,19 +1839,18 @@ body {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  display: block;
 }
 
 .search-box-header input {
   font-size: 14px;
-  padding: 7px;
-  text-indent: 22px;
+  padding: 7px 7px 7px 29px;
   border: none;
   background-color: #f2f2f2;
   -webkit-border-radius: 4px;
           border-radius: 4px;
   height: 30px;
   width: 100%;
-  color: #b2b2b2;
 }
 
 .search-box-header .zoomIcon {
@@ -1898,6 +1899,7 @@ body {
 }
 
 .search-shortcut ul {
+  padding-left: 14px;
   border-top: 1px solid #f6f6f6;
 }
 
@@ -1906,7 +1908,6 @@ body {
   height: 49px;
   line-height: 49px;
   border-bottom: 1px solid #dcdcdc;
-  margin: 0 14px;
   color: #333;
 }
 
