@@ -420,6 +420,15 @@ a[title="站长统计"] {
 
 .header-shoppingcart {
   position: relative;
+  display: block;
+}
+
+.header-user {
+  display: block;
+}
+
+.header-search-icon {
+  display: block;
 }
 
 /*尾部*/

@@ -380,7 +380,10 @@ define('sf.b2c.mall.component.search', [
     supplement: function(element, options) {
       //默认展开第一个二级分类
       if (!this.renderData.filterCategories.length && !this.renderData.filterSecondCategories.length) {
-        $("[can-click='h5SecondCategory.show']")[0].click();
+        var tempSecondCategories = $("[can-click='h5SecondCategory.show']")[0];
+        if (tempSecondCategories) {
+          tempSecondCategories.click();
+        }
       }
     },
 
