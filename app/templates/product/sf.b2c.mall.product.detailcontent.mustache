@@ -86,17 +86,17 @@
   <!--促销信息-->
   <!-- 搭配购买 -->
   {{#isShowMixDiscount activityInfo.activityType}} 
-  <section class="detail-mix">
+  <section class="detail-mix" id="link-to-mixdiscount">
       <div class="detail-mix-h box box1">
-          <a href="#" class="box-link" id="link-to-mixdiscount">精选搭配<span>（任选搭配即享优惠）</span></a>
-          <div id="link-to-mixdiscount" class="detail-mix-h-c1">
+          <a href="#" class="box-link">精选搭配<span>（任选搭配即享优惠）</span></a>
+          <div class="detail-mix-h-c1">
               <span class="text-important">最高省{{sf.price mixDiscount.totalSavePrice}}元<i class="icon icon-arrow"></i></span>
           </div>
       </div>
       <ul class="detail-mix-b">
           {{#each mixDiscount.goods}}
           <li>
-             <a target="_blank" href="http://m.sfht.com/detail/{{itemId}}.html"><img src="{{imageName}}" alt=""></a>
+             <a href="javascript:void(0)"><img src="{{imageName}}" alt=""></a>
           </li>
           <li>+</li>
           {{/each}}          
