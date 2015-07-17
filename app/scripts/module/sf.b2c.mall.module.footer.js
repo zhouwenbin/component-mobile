@@ -38,6 +38,11 @@ define(
         switcher.go();
       },
 
+      '.downloadapp-r1 click': function ($element, event) {
+        event && event.preventDefault();
+        window.location.href = 'http://m.sfht.com/app.html?from='+ window.location.href
+      },
+
       '.downloadapp-close click': function ($element, event) {
         store.set('IS_HIDE_AD', Date.now());
         this.element.find('.downloadapp').hide();
