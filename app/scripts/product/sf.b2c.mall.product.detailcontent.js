@@ -102,6 +102,7 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.inverse(options.contexts || this);
           }
         },
+
         //促销展示类型
         'sf-showActivityType': function(activityType, options) {
           var activityType = activityType();

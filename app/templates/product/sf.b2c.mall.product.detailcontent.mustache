@@ -78,7 +78,9 @@
 		    {{/sf-showActivity}}
 		  {{/each}}
 	  </ul>
+    {{^isShowMixDiscount activityInfo.activityType}}
 	  <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
+    {{/isShowMixDiscount}}
 	</section>
 	{{/activityInfo.isShow}}
   <!--促销信息-->
@@ -87,7 +89,7 @@
   <section class="detail-mix">
       <div class="detail-mix-h box box1">
           <a href="#" class="box-link" id="link-to-mixdiscount">精选搭配<span>（任选搭配即享优惠）</span></a>
-          <div class="detail-mix-h-c1">
+          <div id="link-to-mixdiscount" class="detail-mix-h-c1">
               <span class="text-important">最高省{{sf.price mixDiscount.totalSavePrice}}元<i class="icon icon-arrow"></i></span>
           </div>
       </div>
