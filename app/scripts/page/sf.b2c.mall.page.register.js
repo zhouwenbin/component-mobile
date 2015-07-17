@@ -15,6 +15,6 @@ define(
 
     SFWeixin.shareIndex();
 
-    var login = new SFRegister('body');
+    var login = new SFRegister('.container');
   });
 
