@@ -113,8 +113,8 @@ define('sf.b2c.mall.product.detailcontent', [
           };
           return map[activityType];
         },
-        'isShowMixDiscount': function(goods, options) {
-          if (goods() == 'MIX_DISCOUNT') {
+        'isShowMixDiscount': function(goods, isSoldOut, options) {
+          if (goods() == 'MIX_DISCOUNT' && !isSoldOut()) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
