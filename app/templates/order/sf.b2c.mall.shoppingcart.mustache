@@ -95,7 +95,7 @@
         </li>
         {{/firstGoodItem}}
         {{#goodItemList}}
-        <li class="single-goods cart-match cart-match1" {{data 'good'}}>
+        <li class="cart-match cart-match1" {{data 'good'}}>
             <div class="cart-inner">            
                 <a href="javascript:void(0)" class="select-item" style="padding:20px 0;">
                     <span class="icon icon49" style="margin: 0 15px;"></span>
@@ -141,7 +141,7 @@
         {{#if isValid}}
 
         {{else}}
-        <li class="{{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
+        <li class="single-goods {{#isSelected}}active{{/isSelected}}" {{data 'good'}}>
             <div class="cart-inner">
                 <span class="label label-disabled" style="margin: 0 4px;">已售罄</span>
 
