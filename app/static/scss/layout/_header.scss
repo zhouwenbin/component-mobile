@@ -8,7 +8,11 @@
   padding-top: 13px;
 }
 .header-c2{
+  display: flex;
   padding-top: 12px;
+  align-items: center;
+  width: 100px;
+  justify-content: space-between;
 }
 .header-c3{
   font-size: 14px;
@@ -26,13 +30,12 @@
 .header .dot{
   position: absolute;
   right: -3px;
-  top: -3px;
+  top: -15px;
 }
 .header-shoppingcart {
-  
+  position: relative;
 }
 .header-user {
-  
 }
 .header-search-icon {
   
