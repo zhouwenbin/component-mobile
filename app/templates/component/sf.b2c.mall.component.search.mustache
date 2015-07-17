@@ -151,9 +151,9 @@
 {{/sf-isHasAggregation}}
 
 {{^sf-isHasResults itemSearch.totalHits itemSearch.results}}
-  <div style="text-align:center; height:44px; line-height:44px;">
-    <p style="display:inline-block; height:32px; line-height:32px; text-indent:54px; background-size:30px 40px;background: url(http://img.sfht.com/sfhth5/1.1.189/img/icon_empty2x.png) no-repeat">未能搜索到相关商品
-  {{#if recommendProducts}}，以下为推荐商品{{/if}}</p>
+  <div class="nataral-none">
+    <p>您喜欢的商品暂时还没有 但您的喜好我们会记下{{#if recommendProducts}}<br />下面是给您推荐大家都喜欢的商品：{{/if}}</p>
+    <p style="display:none;">未能搜索到相关商品{{#if recommendProducts}}，以下为推荐商品{{/if}}</p>
   </div>
   {{#if recommendProducts}}
   <section class="recommend" style="padding:0px;">
