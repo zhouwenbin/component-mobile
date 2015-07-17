@@ -277,6 +277,7 @@
 }
 
 .nataral-tab li.active i {
+  vertical-align: 0;
   border-color: #ff5b54;
   -webkit-transform: rotate(-225deg);
       -ms-transform: rotate(-225deg);
@@ -416,8 +417,7 @@
   margin: 0 auto;
   background-repeat: no-repeat;
   background-position: center;
-  -webkit-background-size: 50px 50px;
-          background-size: 50px;
+  background-size: 50px;
   -webkit-box-shadow: 0 0 0 1px #efefef;
           box-shadow: 0 0 0 1px #efefef;
 }
@@ -602,8 +602,7 @@
 
 .nataral-classify-none {
   background: url(http://img.sfht.com/sfhth5/1.1.142/img/nataral-classify-none.png) no-repeat center 150px;
-  -webkit-background-size: 111px 81px;
-          background-size: 111px 81px;
+  background-size: 111px 81px;
   color: #999;
   text-align: center;
   padding: 250px 0;
@@ -630,12 +629,24 @@
 
 .nataral-code {
   background: url(http://img.sfht.com/sfhth5/1.1.142/img/nataral-code.png) no-repeat center;
-  -webkit-background-size: 320px 320px;
-          background-size: 320px;
+  background-size: 320px;
   height: 75px;
   padding-left: 170px;
   padding-top: 30px;
   font-family: arial;
   font-weight: bold;
   font-size: 24px;
+}
+
+.nataral-none {
+  text-align: center;
+}
+
+.nataral-none p {
+  display: inline-block;
+  line-height: 22px;
+  padding-left: 54px;
+  background-size: 30px 40px;
+  background: url(http://img.sfht.com/sfhth5/1.1.189/img/icon_empty2x.png) no-repeat left center;
+  margin: 10px 0;
 }

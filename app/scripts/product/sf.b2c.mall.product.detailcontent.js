@@ -468,24 +468,13 @@ define('sf.b2c.mall.product.detailcontent', [
       render: function() {
         var that = this;
 
-        var getProductHotData = new SFGetProductHotData({
-          'itemId': that.itemid
-        });
-
-        var findRecommendProducts = new SFFindRecommendProducts({
-          'itemId': that.itemid,
-          'size': 4
-        });
-
         this.options.detailContentInfo = {};
         this.options.detailContentInfo.showFirstStep = true;
         this.options.detailContentInfo.showSecondStep = false;
         this.options.detailContentInfo.activityInfo = new can.Map({});
         this.options.detailContentInfo.priceInfo = new can.Map({});
 
-        // can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initActivityInfo(that.itemid), that.initFindRecommendProducts(that.itemid))
-
-        that.initGetItemInfo(that.itemid)
+        this.initGetItemInfo(this.itemid)
           .then(function() {
             return that.initGetProductHotData(that.itemid)
           })

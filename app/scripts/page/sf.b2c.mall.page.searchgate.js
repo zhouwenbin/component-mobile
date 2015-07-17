@@ -1,5 +1,5 @@
 define(
-  'sf.b2c.mall.page.search',
+  'sf.b2c.mall.page.searchgate',
   [
     'can',
     'zepto',
@@ -7,11 +7,10 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.util',
     'sf.b2c.mall.business.config',
-    'sf.b2c.mall.component.search',
     'sf.b2c.mall.component.searchbox'
   ],
   function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness,
-           SFSearch, SFSearchBox) {
+           SFSearchBox) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -21,6 +20,8 @@ define(
        * [init 初始化]
        */
       init: function() {
+        //删除header中原汁原味信息
+        //$(".header-c3").remove();
         this.render();
       },
 
@@ -30,13 +31,12 @@ define(
       render: function() {
         var that = this;
         new SFSearchBox('#sf-b2c-mall-search-box', {
-          showGate: true,
-          existDom: "#sf-b2c-mall-search, .sf-b2c-mall-footer"
+          showGate: false,
+          existDom: ".sf-b2c-mall-footer"
         });
-        new SFSearch('#sf-b2c-mall-search');
       }
 
     });
 
-    new searchPage();
+    new searchPage('#sf-b2c-mall-search');
   })
