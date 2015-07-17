@@ -520,13 +520,11 @@ define('sf.b2c.mall.product.detailcontent', [
             }
           })
           .fail(function(error) {
-            console.error(error);
             loadingCtrl.hide();
           })
           .then(function() {
             var renderFn = can.mustache(template_product_detailcontent);
             var html = renderFn(that.options.detailContentInfo, that.helpers);
-            console.log(that.options.detailContentInfo);
             that.element.html(html);
 
             that.supplement.call(that);
