@@ -245,12 +245,12 @@ img{
 	z-index: 99
 }
 .page3 .prev{
-	background: url(#{$bg-url}young/prev.png) no-repeat;
+	background: url(#{$bg-url}81/prev.png) no-repeat;
 	left: 27px;
 	animation:prev 1s ease-in-out infinite;
 }
 .page3 .next{
-	background: url(#{$bg-url}young/next.png) no-repeat;
+	background: url(#{$bg-url}81/next.png) no-repeat;
 	right: 27px;
 	animation:next 1s ease-in-out infinite;
 }
@@ -295,7 +295,7 @@ img{
 	margin-right: 9px;
 }
 .unlock{
-	background: url(#{$bg-url}young/unlock.png) no-repeat;
+	background: url(#{$bg-url}81/unlock.png) no-repeat;
 	width: 30px;
 	height: 27px;
 	display: inline-block;
@@ -381,7 +381,7 @@ img{
     margin-left: -9px;
     width: 51px;
     height: 42px;
-    background: url(#{$bg-url}young/arrow.png);
+    background: url(#{$bg-url}81/arrow.png);
     background-size: 100% 100%;
     animation: start 1.5s infinite ease-in-out;
     transform:rotate3d(0,0,1,180deg);
