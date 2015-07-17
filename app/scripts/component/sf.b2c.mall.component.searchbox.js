@@ -50,14 +50,15 @@ define('sf.b2c.mall.component.searchbox', [
         this.renderData.attr("showGate", this.options.showGate);
       }
 
-      if (!this.options.showGate) {
-        this.renderMain();
-      }
-
       //有自己的label
       if($("label[for=searchInput]").length == 1) {
         this.renderData.attr("publicGate", false);
       }
+
+      if (!this.options.showGate) {
+        this.renderMain();
+      }
+
       this.render();
     },
 
@@ -230,6 +231,9 @@ define('sf.b2c.mall.component.searchbox', [
         histories = [];
       } else {
         histories = this.renderData.historyList.data.serialize();
+      }
+      if (_.indexOf(histories, keyword) !== -1) {
+        return;
       }
       histories.splice(0, 0, keyword);
       if (histories.length > HISTORY_SIZE) {

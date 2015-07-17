@@ -8,8 +8,7 @@ define(
     'sf.util',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.component.search',
-    'sf.b2c.mall.component.searchbox',
-    'sf.b2c.mall.module.header'
+    'sf.b2c.mall.component.searchbox'
   ],
   function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness,
            SFSearch, SFSearchBox) {
@@ -22,8 +21,6 @@ define(
        * [init 初始化]
        */
       init: function() {
-        //删除header中原汁原味信息
-        //$(".header-c3").remove();
         this.render();
       },
 
@@ -41,5 +38,5 @@ define(
 
     });
 
-    new searchPage('#sf-b2c-mall-search');
+    new searchPage();
   })
