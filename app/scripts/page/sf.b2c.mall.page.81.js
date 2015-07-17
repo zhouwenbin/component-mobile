@@ -50,7 +50,7 @@ define(
                 var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
                 var link = "http://m.sfht.com/ouba.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + (freshNum - index) + '/' + '1.jpg'
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.shareYoung(title, desc, link, imgUrl);
             },
             /**
@@ -178,7 +178,7 @@ define(
                     var tab_index = $('.tab li').index(this);
                     var people_index = freshNum - index;
                     var photo_index = tab_index + 1;
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + people_index + '/' + photo_index + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + people_index + '/' + photo_index + '.jpg');
                     $(this).addClass('active').siblings().removeClass('active');
                     if ($(this).hasClass('tab-lock')) {
                         $('.people>li').eq(freshNum - 1 - index).find('.people-lock').show();
@@ -312,7 +312,7 @@ define(
                 var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
                 var link = "http://m.sfht.com/ouba.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + (freshNum - index) + '/' + '1.jpg'
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.shareYoung(title, desc, link, imgUrl);
             },
 
@@ -325,7 +325,7 @@ define(
                 var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
                 var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
                 var link = "http://m.sfht.com/ouba.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + (freshNum - index) + '/' + '1.jpg'
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.shareYoung(title, desc, link, imgUrl);
             },
 
@@ -369,7 +369,7 @@ define(
 
                 $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
 
-                $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + voteNo + '/' + tabIndex + '.jpg');
+                $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + voteNo + '/' + tabIndex + '.jpg');
 
                 // stats.end();
             },
@@ -493,19 +493,19 @@ define(
             initActiveTab: function(tickets, Num, index) {
                 if (tickets >= mi) {
                     $(".tab li").eq(3).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + Num + '/' + 4 + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + Num + '/' + 4 + '.jpg');
                     $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide(); //去掉蒙层
                 } else if (tickets >= banLuo) {
                     $(".tab li").eq(2).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + Num + '/' + 3 + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + Num + '/' + 3 + '.jpg');
                     $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide(); //去掉蒙层
                 } else if (tickets >= xiaoXiu) {
                     $(".tab li").eq(1).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + Num + '/' + 2 + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + Num + '/' + 2 + '.jpg');
                     $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide(); //去掉蒙层
                 } else {
                     $(".tab li").eq(0).addClass('active').siblings().removeClass('active');
-                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.198/img/81/photo/' + Num + '/' + 1 + '.jpg');
+                    $('.people>li').eq(freshNum - 1 - index).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + Num + '/' + 1 + '.jpg');
                     $('.people>li').eq(freshNum - 1 - index).find('.people-lock').hide(); //去掉蒙层
                 }
             },
