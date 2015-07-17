@@ -1,0 +1,59 @@
+@import 'utils/variables';
+body{
+	width: 320px *2;
+}
+.m81{
+    position: relative;
+}
+.m81 img{
+	width: 100%;
+}
+.m81-play {
+    width: 49px *2;
+    height: 50px *2;
+    background: url(http://img0.sfht.com/img/2f5c475831ed7345879052b170088f91.jpg) no-repeat center;
+    background-size: 49px *2 50px *2;
+    display: block;
+    text-indent: -999em;
+    position: absolute;
+    top: 935px *2;
+    left:50%;
+    transform:translate(-50%,0);
+}
+
+.m81-play:hover {
+    opacity: 0.8
+}
+.m81-btn {
+    background: #b300f5;
+    color: #fff;
+    width: 200px *2;
+    height: 45px *2;
+    line-height: 45px *2;
+    text-align: center;
+    font-size: 14px *2;
+    -webkit-border-radius: 5px *2;
+    border-radius: 5px *2;
+    display: block;
+    position: absolute;
+    top: 458px *2;
+    left:50%;
+    transform:translate(-50%,0);
+}
+.m81-btn2{
+	top: 753px *2;
+}
+
+.m81-btn:hover {
+    color: #fff;
+    opacity: 0.8;
+}
+.m81-video{
+	position: absolute;
+	width: 290px *2;
+	height: 168px *2;
+	left: 50%;
+	top: 872px *2;
+	margin-left: -145px *2;
+	display: none;
+}
