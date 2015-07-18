@@ -241,7 +241,7 @@ define(
                     $("#couponlistmask").addClass("show");
                     var result = "";
 
-                    if (alreadyGetcoupon81.length > 0) {
+                    if (alreadyGetcoupon81) {
                         var alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
                         _.each(alreadyGetcoupon81, function(item) {
                             var coupon = store.get("notGetcoupon81" + item);
