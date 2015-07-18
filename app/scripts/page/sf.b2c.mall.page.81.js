@@ -424,7 +424,7 @@ define(
                     threshold = 2;
                 }
 
-                if (currentDateVote >= 3 + threshold) {
+                if (currentDateVote >= (3 + threshold)) {
                     $("#gotoshare").removeClass("hide");
                     $("#gotoshare").addClass("show");
 
