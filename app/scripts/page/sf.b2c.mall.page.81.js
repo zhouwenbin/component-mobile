@@ -238,7 +238,7 @@ define(
 
                     var mobile = store.get("mobile81");
                     if (mobile) {
-                        $("#phoneNum").text(mobile);
+                        $("#phoneNum").val(mobile);
                     }
 
                     var notGetcoupon81 = store.get("notGetcoupon81");
