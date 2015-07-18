@@ -52,7 +52,7 @@ define(
                 var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
                 var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
                 var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                var link = "http://m.sfht.com/ouba.html";
+                var link = "http://m.sfht.com/81.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.share81(title, desc, desc2, link, imgUrl);
             },
@@ -111,7 +111,7 @@ define(
 
                 // 每天进来是五个
                 var currentDateVote = store.get("voteDate" + new Date().getDate());
-                if(!currentDateVote) {
+                if (!currentDateVote) {
 
                     //用于存储总个数
                     var totalVoteNum81notclear = store.get("totalVoteNum81notclear");
@@ -314,7 +314,7 @@ define(
                 bindCard
                     .sendRequest()
                     .done(function(data) {
-                        if (data.value) {
+                        if (data.value != null && data.value != "") {
                             //转换数据：未领取为已领取
                             var notGetcoupon81 = store.get("notGetcoupon81");
 
@@ -361,6 +361,10 @@ define(
             },
 
             errorMap: {
+                "11000020": "卡券id不存在",
+                "11000030": "卡券已作废",
+                "11000050": "卡券已领完",
+                "11000100": "用户已领过该券",
                 "11000240": "用户今天的券已经领完了",
                 "11000250": "用户已经领完该活动期间所有的券",
                 "11000260": "用户输入手机号有误"
@@ -440,7 +444,7 @@ define(
                 var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
                 var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
                 var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                var link = "http://m.sfht.com/ouba.html";
+                var link = "http://m.sfht.com/81.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.share81(title, desc, desc2, link, imgUrl);
             },
@@ -454,7 +458,7 @@ define(
                 var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
                 var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
                 var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                var link = "http://m.sfht.com/ouba.html";
+                var link = "http://m.sfht.com/81.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.share81(title, desc, desc2, link, imgUrl);
             },
@@ -540,28 +544,6 @@ define(
                 randomCard
                     .sendRequest()
                     .done(function(data) {
-                        if (clickTimes) {
-                            store.set("81vote" + voteNo, parseInt(store.get("81vote" + voteNo), 10) + 1);
-                            tabIndex = that.tabUnlock(store.get("81vote" + voteNo));
-                        } else {
-                            store.set("81vote" + voteNo, 1);
-                            tabIndex = that.tabUnlock(store.get("81vote" + voteNo));
-                        }
-
-                        // 计算总票数
-                        if (totalVoteNum81) {
-                            store.set("totalVoteNum81", parseInt(totalVoteNum81, 10) + 1);
-                        } else {
-                            store.set("totalVoteNum81", 1);
-                        }
-
-                        var currentDateVote = store.get("voteDate" + new Date().getDate());
-                        if (currentDateVote) {
-                            store.set("voteDate" + new Date().getDate(), parseInt(currentDateVote) + 1);
-                        } else {
-                            store.set("voteDate" + new Date().getDate(), 1);
-                        }
-
 
                         var couponid = data.cardId;
 
@@ -583,9 +565,6 @@ define(
                         $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
                         $("#footerNum").text(parseInt($("#footerNum").text(), 10) - 1);
 
-                        $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + voteNo + '/' + tabIndex + '.jpg');
-
-                        element.removeClass("disable");
                     })
                     .fail(function(error) {
 
@@ -597,6 +576,32 @@ define(
                     })
 
 
+                if (clickTimes) {
+                    store.set("81vote" + voteNo, parseInt(store.get("81vote" + voteNo), 10) + 1);
+                    tabIndex = that.tabUnlock(store.get("81vote" + voteNo));
+                } else {
+                    store.set("81vote" + voteNo, 1);
+                    tabIndex = that.tabUnlock(store.get("81vote" + voteNo));
+                }
+
+                // 计算总票数
+                if (totalVoteNum81) {
+                    store.set("totalVoteNum81", parseInt(totalVoteNum81, 10) + 1);
+                } else {
+                    store.set("totalVoteNum81", 1);
+                }
+
+                var currentDateVote = store.get("voteDate" + new Date().getDate());
+                if (currentDateVote) {
+                    store.set("voteDate" + new Date().getDate(), parseInt(currentDateVote) + 1);
+                } else {
+                    store.set("voteDate" + new Date().getDate(), 1);
+                }
+
+
+                $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + voteNo + '/' + tabIndex + '.jpg');
+
+                element.removeClass("disable");
                 // stats.end();
             },
 
