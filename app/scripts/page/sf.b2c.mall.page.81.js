@@ -239,10 +239,10 @@ define(
 
                     $("#couponlistmask").removeClass("hide");
                     $("#couponlistmask").addClass("show");
-                    var alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
                     var result = "";
 
                     if (alreadyGetcoupon81.length > 0) {
+                        var alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
                         _.each(alreadyGetcoupon81, function(item) {
                             var coupon = store.get("notGetcoupon81" + item);
                             var couponArr = coupon.split("|");
