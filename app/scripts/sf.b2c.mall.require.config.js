@@ -293,6 +293,10 @@ requirejs.config({
         //81
         "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81",
 
+        //81活动
+        "sf.b2c.mall.api.coupon.randomCard": "scripts/api/sf.b2c.mall.api.coupon.randomCard",
+        "sf.b2c.mall.api.coupon.bindCard": "scripts/api/sf.b2c.mall.api.coupon.bindCard",
+
         //states
         "Stats": "scripts/vendor/Stats"
     }
