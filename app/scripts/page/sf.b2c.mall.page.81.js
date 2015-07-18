@@ -504,7 +504,7 @@ define(
                     })
                     .fail(function(error) {
 
-                        $("#randomText").text(that.randomErrorMap[error]);
+                        $("#randomText").text(that.randomErrorMap[error] || "生成礼品失败");
                         $("#random").css("display", "block");
                         setTimeout(' $("#random").css("display","none")', 2000);
                     })
