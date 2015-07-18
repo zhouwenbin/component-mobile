@@ -446,12 +446,25 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
-            var num = store.get("totalVoteNum81");
+            // 每天分享后可以多投票两次, 最多两次
+            if (new Date().getDate() != store.set("weixinsharedate81")  && (parseInt(store.get("weixinshareTimes81")) <= 2)) {
+              var day = new Date().getDate();
+              var num = store.get("voteDate" + day.getDate());
+              if (num && parseInt(num, 10) >= 2) {
+                store.set("voteDate" + day.getDate(), parseInt(num, 10) - 2);
+              } else {
+                store.set("voteDate" + day.getDate(), 0);
+              }
+            }
 
-            if (num && parseInt(num, 10) >= 3) {
-              store.set("totalVoteNum81", parseInt(num, 10) - 3);
+            // 设定时间和次数
+            var weixinsharetime81 = store.get("weixinsharedate81");
+            store.set("weixinsharedate81", new Date().getDate());
+            var weixinshareTimes81 = store.get("weixinshareTimes81");
+            if (weixinshareTimes81) {
+              store.set("weixinshareTimes81", parseInt(weixinshareTimes81) + 1)
             } else {
-              store.set("totalVoteNum81", 0);
+              store.set("weixinshareTimes81", 1)
             }
           },
           cancel: function(res) {
@@ -511,13 +524,7 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
-            var num = store.get("totalVoteNum81");
 
-            if (num && parseInt(num, 10) >= 3) {
-              store.set("totalVoteNum81", parseInt(num, 10) - 3);
-            } else {
-              store.set("totalVoteNum81", 0);
-            }
           },
           cancel: function(res) {
             // alert('已取消');
