@@ -241,11 +241,16 @@ define(
                     $("#couponlistmask").addClass("show");
                     var alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
                     var result = "";
-                    _.each(alreadyGetcoupon81, function(item) {
-                        var coupon = store.get("notGetcoupon81" + item);
-                        var couponArr = coupon.split("|");
-                        result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis">' + couponArr[2] + '</h2><p class="ellipsis">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
-                    })
+
+                    if (alreadyGetcoupon81.length > 0) {
+                        _.each(alreadyGetcoupon81, function(item) {
+                            var coupon = store.get("notGetcoupon81" + item);
+                            var couponArr = coupon.split("|");
+                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis">' + couponArr[2] + '</h2><p class="ellipsis">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
+                        })
+                    } else {
+                        result += ('<p style="font-size:26px">暂无奖品哦，赶紧去扒吧~</p>');
+                    }
 
                     $("#couponlist").html(result);
                 }
@@ -294,6 +299,8 @@ define(
                             })
 
                             $("#couponlist").html(result);
+                        } else {
+                            $("#username-error-tips").html('领取失败');
                         }
                     })
                     .fail(function(error) {
