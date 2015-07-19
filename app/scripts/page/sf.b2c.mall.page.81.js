@@ -240,7 +240,7 @@ define(
                     $("#couponlistmask").removeClass("hide");
                     $("#couponlistmask").addClass("show");
                     var result = "";
-debugger;
+
                     if (alreadyGetcoupon81) {
                         $("#couponlisttitle").html("抽到的现金券已放到手机号(" + store.get('mobile81') + ")账户中，请使用该账号登陆顺丰海淘(sfht.com)使用吧!");
 
