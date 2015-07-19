@@ -232,6 +232,19 @@ define(
                         $("#phoneNum").text(mobile);
                     }
 
+                    var notGetcoupon81 = store.get("notGetcoupon81");
+                    if (notGetcoupon81) {
+
+                        var notGetcoupon81 = notGetcoupon81.toString().split(",");
+                        _.each(notGetcoupon81, function(item) {
+                            var coupon = store.get("notGetcoupon81" + item);
+                            var couponArr = coupon.split("|");
+                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
+                        })
+
+                        $("#couponlistnotget").html(result);
+                    }
+
                 } else {
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
                     $("#getcouponmask").removeClass("show");
@@ -271,15 +284,14 @@ define(
                     return false;
                 }
 
-
                 store.set("mobile81", mobile);
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 // var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
 
                 var bindCard = new SFBindCard({
                     "name": "pro727",
-                    "mobile": $("#phoneNum").val(),
-                    "ids": mobile
+                    "mobile": mobile,
+                    "ids": notGetcoupon81
                 });
 
                 bindCard
