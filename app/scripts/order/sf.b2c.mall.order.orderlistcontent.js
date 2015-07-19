@@ -139,6 +139,15 @@ define('sf.b2c.mall.order.orderlistcontent', [
             return options.inverse(options.contexts || this);
           }
         },
+        //秒杀商品不展示再次购买按钮
+        'isShowRebuyBtn': function(orderPackageItemList, options) {
+          var array = orderPackageItemList().attr();
+          if (array[0].orderGoodsItemList[0].goodsType == "SECKILL") {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
         'sf-package-status': OrderFn.helpers['sf-package-status']
       },
 

@@ -109,10 +109,12 @@ define('sf.b2c.mall.product.detailcontent', [
           var map = {
             'REDUCE': "满减",
             'DISCOUNT': "满折",
-            'MIX_DISCOUNT': "搭配折扣"
+            'MIX_DISCOUNT': "搭配折扣",
+            'SECKILL': "秒杀"
           };
           return map[activityType];
         },
+        //是否展示搭配购买商品
         'isShowMixDiscount': function(goods, isSoldOut, options) {
           if (goods() == 'MIX_DISCOUNT' && !isSoldOut()) {
             return options.fn(options.contexts || this);
@@ -120,8 +122,25 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.inverse(options.contexts || this);
           }
         },
+        //如果促销信息为搭配折扣和秒杀，不展示更多
         'isShowMoreInfo': function(goods, options) {
-          if (goods() == 'MIX_DISCOUNT') {
+          if (goods() == 'MIX_DISCOUNT' || goods() == 'SECKILL') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        //是否展示秒杀商品标示
+        'isShowSeckillIcon': function(activityType, options) {
+          if (activityType() == 'SECKILL') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        'isShowGrayClass': function(soldOut, options) {
+          var activitySoldOut = soldOut();
+          if (activitySoldOut) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -667,6 +686,8 @@ define('sf.b2c.mall.product.detailcontent', [
                 that.options.detailContentInfo.priceInfo = new can.Map(that.options.detailContentInfo.priceInfo || {});
                 that.options.detailContentInfo.activityInfo = new can.Map(that.options.detailContentInfo.activityInfo || {});
 
+                that.options.detailContentInfo.activityInfo.attr("activityType", element.activityType);
+                that.options.detailContentInfo.activityInfo.attr("activityId", element.activityId);
                 //处理限时促销
                 if (element.activityType == "FLASH") {
                   that.options.detailContentInfo.priceInfo.attr("activityTitle", element.activityTitle);
@@ -675,11 +696,6 @@ define('sf.b2c.mall.product.detailcontent', [
                   that.options.detailContentInfo.activityInfo.attr("isShow", true);
                 }
 
-                //如果活动类型是搭配折扣，展示搭配购买区域
-                if (element.activityType == "MIX_DISCOUNT") {
-                  that.options.detailContentInfo.activityInfo.attr("activityType", element.activityType);
-                  that.options.detailContentInfo.activityInfo.attr("activityId", element.activityId);
-                }
               });
             }
 
