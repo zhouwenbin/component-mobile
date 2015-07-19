@@ -22,9 +22,9 @@ define('sf.b2c.mall.order.iteminfo', [
     'text!template_order_iteminfo',
     'sf.b2c.mall.widget.loading',
     'sf.mediav'
-], function (text, can, $,
-  SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink,
-  helpers, SFUtil, SFSwitcher, SFMessage, SFBubble, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
+], function(text, can, $,
+    SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink,
+    helpers, SFUtil, SFSwitcher, SFMessage, SFBubble, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
 
     can.route.ready();
 
@@ -37,6 +37,13 @@ define('sf.b2c.mall.order.iteminfo', [
             'sf-get-img': function(imgs) {
                 if (imgs()) {
                     return imgs().thumbImgUrl;
+                }
+            },
+            'isShowSeckill': function(goodsType, options) {
+                if (goodsType() == "SECKILL") {
+                    return options.fn(options.contexts || this);
+                } else {
+                    return options.inverse(options.contexts || this);
                 }
             }
         },
@@ -172,10 +179,10 @@ define('sf.b2c.mall.order.iteminfo', [
                 exCode: exCode
             });
             receiveExCode.sendRequest()
-                .done(function (userCouponInfo) {
+                .done(function(userCouponInfo) {
                     new SFBubble("", {
-                      "message": "兑换成功!",
-                      "tick": 3000
+                        "message": "兑换成功!",
+                        "tick": 3000
                     })
                     can.when(that.initCoupons())
                         .then(function() {
@@ -299,9 +306,9 @@ define('sf.b2c.mall.order.iteminfo', [
             this.itemObj.attr('orderPackageItemList', item.orderPackageItemList);
             this.itemObj.attr('invariableGoodsItemList', item.invariableGoodsItemList);
             _.each(this.itemObj.attr('orderPackageItemList'), function(packageItem) {
-                _.each(packageItem.orderGoodsItemList,function(goodItem) {
+                _.each(packageItem.orderGoodsItemList, function(goodItem) {
                     arr.push(goodItem);
-                });                            
+                });
             });
             that.itemObj.attr("orderGoodsItemList", arr);
         },
@@ -538,7 +545,7 @@ define('sf.b2c.mall.order.iteminfo', [
                         params.couponCodes = JSON.stringify(that.itemObj.orderCoupon.selectCoupons);
                     }
                 })
-                .fail(function (error) {
+                .fail(function(error) {
                     element.removeClass("btn-disable");
                 })
                 .then(function() {
@@ -583,7 +590,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
                     that.watchSubmit.call(that);
                 })
-                .fail(function (error) {
+                .fail(function(error) {
                     element.removeClass("btn-disable");
                     // new SFMessage(null, {
                     //   'tip': that.errorMap[error] || '下单失败',

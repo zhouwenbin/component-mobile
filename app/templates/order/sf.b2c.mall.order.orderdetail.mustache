@@ -66,7 +66,7 @@
             {{! 倒计时 }}
 
             {{#sf-timmer orderItem.paymentStatus orderItem.orderStatus}}
-            <p>
+            <p style="margin-bottom:12px;">
               {{! <span class="text-important">!</span> }}请在
               <span class="text-important" id="pay-timmer">orderItem.gmtCreate</span>内付款
             </p>
@@ -148,6 +148,7 @@
 
                     <div class="goodslist-c2">
                       <h3 class="ellipsis2">
+                        {{#isShowSeckill goodsType}}<span class="goods-seckill">秒杀商品</span>{{/isShowSeckill}}
                         <a href="http://m.sfht.com/detail/{{itemId}}.html">{{goodsName}}</a>
                       </h3>
                     </div>
