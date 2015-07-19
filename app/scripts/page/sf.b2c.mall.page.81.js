@@ -427,8 +427,15 @@ define(
             },
 
             //进行投票，并且刷新页面上的票数
-            ".page3-r2  .a1 click": function() {
+            ".page3-r2  .a1 click": function(element, event) {
                 // stats.begin();
+
+                if (element.hasClass("disable")){
+                    return false;
+                }
+
+
+                element.addClass("disable");
 
                 var currentDateVote = store.get("voteDate" + new Date().getDate());
                 var totalVoteNum81 = store.get("totalVoteNum81");
@@ -438,6 +445,8 @@ define(
                     $("#randomText").text("每天只能扒五次哦,请明天再来~");
                     $("#random").css("display", "block");
                     setTimeout(' $("#random").css("display","none")', 2000);
+
+                    element.removeClass("disable");
                     return false;
                 }
 
@@ -454,6 +463,8 @@ define(
 
                     $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
                     $("#gotoshare").find("#share").show();
+
+                    element.removeClass("disable");
                     return false;
                 }
 
@@ -462,6 +473,8 @@ define(
                     $("#randomText").text("只能扒十次哦~");
                     $("#random").css("display", "block");
                     setTimeout(' $("#random").css("display","none")', 2000);
+
+                    element.removeClass("disable");
                     return false;
                 }
 
@@ -472,6 +485,7 @@ define(
                     $("#randomText").text("您已经扒光该明星了，换个明星继续扒吧~");
                     $("#random").css("display", "block");
                     setTimeout(' $("#random").css("display","none")', 2000);
+                    element.removeClass("disable");
                     return false;
                 }
 
@@ -532,12 +546,15 @@ define(
 
                         $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + voteNo + '/' + tabIndex + '.jpg');
 
+                        element.removeClass("disable");
                     })
                     .fail(function(error) {
 
                         $("#randomText").text(that.randomErrorMap[error] || "生成礼品失败");
                         $("#random").css("display", "block");
                         setTimeout(' $("#random").css("display","none")', 2000);
+
+                        element.removeClass("disable");
                     })
 
 
