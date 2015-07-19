@@ -78,6 +78,10 @@ input, select {
   vertical-align: middle;
 }
 
+em {
+  font-style: normal;
+}
+
 /* 默认 */
 * {
   -webkit-box-sizing: border-box;
@@ -2139,6 +2143,26 @@ body {
   text-align: center;
 }
 
+.seckill-text-bg {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 0 5px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 12px;
+  background: #ff5b54;
+  color: #fff;
+  vertical-align: 0;
+  -webkit-border-radius: 9px;
+          border-radius: 9px;
+}
+
+.seckill-text-bg-gray {
+  background: #dcdcdc;
+  color: #999;
+}
+
 /*推荐商品*/
 .recommend {
   padding: 14px 0 0;
@@ -2590,6 +2614,14 @@ body {
 .orderlist-none p {
   margin-bottom: 35px;
   font-size: 15px;
+}
+
+.seckill-title-countdown {
+  margin-left: 13px;
+}
+
+.seckill-title-countdown .text-important {
+  margin-left: 0;
 }
 
 /*orderdetail*/
@@ -4745,6 +4777,20 @@ body {
 
 .goodslist h3 {
   font-weight: normal;
+  line-height: 1.5;
+}
+
+.goods-seckill {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0 6px;
+  height: 16px;
+  line-height: 16px;
+  color: #fff;
+  background: #ff5b54;
+  -webkit-border-radius: 16px;
+          border-radius: 16px;
+  font-size: 12px;
 }
 
 .downloadapp {
