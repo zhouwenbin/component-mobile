@@ -1654,6 +1654,24 @@ module.exports = function (grunt) {
         }
       },
 
+      detailmix: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.detailmix.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.detailmix'
+          ],
+          insertRequire: ['sf.b2c.mall.page.detailmix']
+        }
+      },
+      
       shoppingcart: {
         options: {
           optimize: 'none',
@@ -1691,6 +1709,26 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.search'
           ],
           insertRequire: ['sf.b2c.mall.page.search']
+        }
+      },
+
+      searchgate: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.searchgate.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.searchgate'
+          ],
+          insertRequire: ['sf.b2c.mall.page.searchgate']
         }
       },
 
