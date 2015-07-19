@@ -452,7 +452,7 @@ define(
                     $("#gotoshare").removeClass("hide");
                     $("#gotoshare").addClass("show");
 
-                    $("#gotoshare").find("#gotoshareh2").text("您已经投票三次，分享给好友还能继续扒两次哦~");
+                    $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
                     $("#gotoshare").find("#share").show();
                     return false;
                 }
