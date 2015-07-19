@@ -428,6 +428,10 @@ define('sf.weixin', [
               store.set("weixinshareTimes81", 1)
             }
 
+            $("#sharearea").hide();
+            $("#gotoshare").removeClass("show");
+            $("#gotoshare").addClass("hide");
+
           },
           cancel: function(res) {
             // alert('已取消');
@@ -466,6 +470,10 @@ define('sf.weixin', [
             } else {
               store.set("weixinshareTimes81", 1)
             }
+
+            $("#sharearea").hide();
+            $("#gotoshare").removeClass("show");
+            $("#gotoshare").addClass("hide");
           },
           cancel: function(res) {
             // alert('已取消');
