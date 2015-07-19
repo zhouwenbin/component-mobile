@@ -315,7 +315,7 @@ requirejs.config({
         "sf.b2c.mall.api.coupon.bindCard": "scripts/api/sf.b2c.mall.api.coupon.bindCard",
 
         //states
-        "Stats": "scripts/vendor/Stats"
+        "Stats": "scripts/vendor/Stats",
 
         // fixture功能
         'fixture': 'fixture/lib/canjs/fixture',
