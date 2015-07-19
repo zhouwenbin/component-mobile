@@ -316,5 +316,11 @@ requirejs.config({
 
         //states
         "Stats": "scripts/vendor/Stats"
+
+        // fixture功能
+        'fixture': 'fixture/lib/canjs/fixture',
+        'can.object': 'fixture/lib/canjs/can.object',
+        'sf.b2c.mall.fixture.framework.common': 'fixture/framework/sf.b2c.mall.fixture.framework.common',
+        'sf.b2c.mall.fixture.case.center.invitation': 'fixture/case/center/sf.b2c.mall.fixture.case.center.invitation'
     }
 });

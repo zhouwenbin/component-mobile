@@ -82,7 +82,6 @@ define('sf.b2c.mall.center.invitationcontent', [
       render: function() {
         this.data = {};
         var that = this;
-
         var getCashActInfo = new SFGetCashActInfo();
         var getCashActTransList = new SFGetCashActTransList({
           "pgIndex": 0,
