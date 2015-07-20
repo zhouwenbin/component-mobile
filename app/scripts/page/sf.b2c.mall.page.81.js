@@ -112,9 +112,17 @@ define(
                 // 每天进来是五个
                 var currentDateVote = store.get("voteDate" + new Date().getDate());
                 if(!currentDateVote) {
+
+                    //用于存储总个数
+                    var totalVoteNum81notclear = store.get("totalVoteNum81notclear");
+                    if (totalVoteNum81notclear) {
+                        store.set("totalVoteNum81notclear", parseInt(totalVoteNum81notclear) + parseInt(store.get("totalVoteNum81")));
+                    } else {
+                        store.set("totalVoteNum81notclear", store.get("totalVoteNum81"));
+                    }
+
                     store.remove("totalVoteNum81");
                     store.remove("notGetcoupon81");
-
                 }
 
                 var alreadyVoteNum = store.get("totalVoteNum81");
@@ -499,7 +507,8 @@ define(
                 }
 
                 // 只能把十次
-                if (totalVoteNum81 && totalVoteNum81 >= 11) {
+                var totalVoteNum81notclear = store.get("totalVoteNum81notclear");
+                if (totalVoteNum81notclear && totalVoteNum81notclear >= 11) {
                     $("#randomText").text("只能扒十次哦~");
                     $("#random").css("display", "block");
                     setTimeout(' $("#random").css("display","none")', 2000);
