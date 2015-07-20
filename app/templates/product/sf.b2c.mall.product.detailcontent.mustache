@@ -33,12 +33,16 @@
     <div class="goods-b">
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
       <div class="goods-r4">
+        {{!  如果该商品在促销中且有活动库存展示活动价，否则展示原价}}
         {{#sf-showSellingPrice priceInfo.isPromotion priceInfo.activitySoldOut}}
-        <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>
-        {{else}}
+        {{! 如果该商品活动类型为秒杀，活动价格则从activityInfo中取展示价格 }}
+        <strong class="goods-price"><small>¥</small>{{sf-isSecKill activityInfo.activityType activityInfo.activityPrice priceInfo.sellingPrice}}</strong>
+        {{/sf-showSellingPrice}}
+
+        {{^sf-showSellingPrice priceInfo.isPromotion priceInfo.activitySoldOut}}
         <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.originPrice}}</strong>
         {{/sf-showSellingPrice}}
-        （含税）{{#sf-showOriginPrice priceInfo.isPromotion priceInfo.activitySoldOut priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>
+        （含税）{{#sf-showOriginPrice priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>
         {{/sf-showOriginPrice}}
         {{#sf-isYZYW priceInfo.productShape}}约{{priceInfo.currencySymbol}}{{sf.price priceInfo.localSellingPrice}}{{/sf-isYZYW}}
 
