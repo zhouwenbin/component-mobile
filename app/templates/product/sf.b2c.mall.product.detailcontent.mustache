@@ -163,9 +163,18 @@
 
   {{! 如果是秒杀商品不应该有加入购物车 }}
   {{#isShowSeckillIcon activityInfo.activityType}}
-  <section class="nav-cart">
-    <div class="nav-cart-r1"><a href="http://m.sfht.com/detail/{{priceInfo.referItemId}}.html" class="btn btn-danger">立即购买</a></div>
-  </section>
+  {{! 活动未开始，和商品已抢完，活动已经结束直接原价购买 }}
+    {{#isBegin activityInfo.startTime activityInfo.endTime priceInfo.activitySoldOut}}
+    <section class="nav-cart">
+      <div class="nav-cart-r1"><a href="http://m.sfht.com/detail/{{priceInfo.referItemId}}.html" class="btn btn-danger">原价购</a></div>
+    </section>
+    {{/isBegin}}
+    {{! 活动进行中，立即抢购，直接去订单确认页 }}
+    {{^isBegin activityInfo.startTime activityInfo.endTime priceInfo.activitySoldOut}}
+    <section class="nav-cart">
+      <div class="nav-cart-r1"><button id="btn-seckill" class="btn btn-danger">立即购买</button></div>
+    </section>
+    {{/isBegin}}
   {{/isShowSeckillIcon}}
   {{^isShowSeckillIcon activityInfo.activityType}}
   <!--立即购买-->

@@ -39,6 +39,8 @@ define('sf.b2c.mall.product.detailcontent', [
 
     var DEFAULT_INIT_TAG = 'init';
 
+    var DISTANCE = 0; //服务器时间和本地时间差值
+
     var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
@@ -152,7 +154,20 @@ define('sf.b2c.mall.product.detailcontent', [
           } else {
             return sellingPrice() / 100;
           }
-        }
+        },
+        //活动未开始，和商品已抢完，活动已经结束直接原价购买
+        'isBegin': function(startTime, endTime, activitySoldOut, options) {
+          var currentClientTime = new Date().getTime() + DISTANCE; //服务器时间
+          var startTime = startTime();
+          var endTime = endTime();
+          var activitySoldOut = activitySoldOut();
+          //new Date().getTime() + distance < startTime
+          if (startTime > currentClientTime || activitySoldOut || endTime - currentClientTime < 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
       },
 
       /**
@@ -618,7 +633,10 @@ define('sf.b2c.mall.product.detailcontent', [
           target: 'pay'
         });
       },
-
+      'btn-seckill click': function() {
+        var params = can.deparam(window.location.search.substr(1));
+        window.location.href = 'http://m.sfht.com/order.html?itemid=' + params.itemid + '&amount=1'
+      },
       initGetItemInfo: function(itemid) {
         var that = this;
 
@@ -641,6 +659,8 @@ define('sf.b2c.mall.product.detailcontent', [
             if (priceData.endTime) {
               //获得服务器时间
               var currentServerTime = getProductHotData.getServerTime();
+              var currentClientTime = new Date().getTime();
+              DISTANCE = currentServerTime - currentClientTime;
               that.initCountDown(0, currentServerTime, priceData.endTime);
             }
 
@@ -693,6 +713,7 @@ define('sf.b2c.mall.product.detailcontent', [
                 if (element.activityType == "SECKILL") {
                   that.options.detailContentInfo.activityInfo.attr("activityPrice", element.itemActivityInfo.activityPrice);
                   that.options.detailContentInfo.activityInfo.attr("startTime", element.startTime);
+                  that.options.detailContentInfo.activityInfo.attr("endTime", element.endTime);
                   if (element.endTime) {
                     //获得服务器时间
                     var startTime = element.startTime || 0;
