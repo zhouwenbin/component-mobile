@@ -1326,7 +1326,7 @@ define('sf.b2c.mall.product.detailcontent', [
         });
       },
 
-
+      //活动进行中
       initCountDown: function(currentServerTime, endTime) {
         var that = this;
         //endTime = 1445044886397
@@ -1354,7 +1354,7 @@ define('sf.b2c.mall.product.detailcontent', [
             }
           }, '1000')
         } else {
-          that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+          this.options.detailContentInfo.priceInfo.attr("timeIcon", "");
         }
       },
 

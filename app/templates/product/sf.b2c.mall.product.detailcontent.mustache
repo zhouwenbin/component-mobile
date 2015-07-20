@@ -160,7 +160,7 @@
   {{! 如果是秒杀商品不应该有加入购物车 }}
   {{#isShowSeckillIcon activityInfo.activityType}}
   <section class="nav-cart">
-    <div class="nav-cart-r1"><button class="btn btn-danger">立即购买</button></div>
+    <div class="nav-cart-r1"><a href="http://m.sfht.com/detail/{{priceInfo.referItemId}}.html" class="btn btn-danger">立即购买</a></div>
   </section>
   {{/isShowSeckillIcon}}
   {{^isShowSeckillIcon activityInfo.activityType}}
