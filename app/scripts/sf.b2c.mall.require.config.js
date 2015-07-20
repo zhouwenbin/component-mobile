@@ -166,6 +166,7 @@ requirejs.config({
         "sf.b2c.mall.module.fixtab": "scripts/module/sf.b2c.mall.module.fixtab",
         "sf.b2c.mall.module.exchangecode": "scripts/module/sf.b2c.mall.module.exchangecode",
         "sf.b2c.mall.module.secondkill": "scripts/module/sf.b2c.mall.module.secondkill",
+        "sf.b2c.mall.module.spike": "scripts/module/sf.b2c.mall.module.spike",
         "sf.b2c.mall.page.main": "scripts/page/sf.b2c.mall.page.main",
         "sf.b2c.mall.component.price": "scripts/component/sf.b2c.mall.component.price",
         "sf.b2c.mall.page.detail": "scripts/page/sf.b2c.mall.page.detail",
