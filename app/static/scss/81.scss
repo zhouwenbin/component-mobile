@@ -51,8 +51,7 @@ img{
 	position: relative;
 }
 .page1{
-	padding: 8px;
-	
+	background: #fff;
 }
 .page1 header{
 	background: url(#{$bg-url}81/page1-header.jpg) no-repeat center top;
@@ -62,8 +61,8 @@ img{
 .page1>footer{
 	color: #fff;
 	text-align: center;
-	height: 70px;
-	line-height: 70px;
+	height: 84px;
+	padding-top: 15px;
 	font-size: 23px;
 	position: absolute;
 	left: 0;
@@ -310,6 +309,8 @@ img{
 .page3-r2{
 	display: flex;
 	justify-content:space-between;
+	margin-top: 66px;
+	padding: 0 17px;
 }
 .page3-r2 a{
 	display: block;
