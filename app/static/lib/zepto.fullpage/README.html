@@ -1,0 +1,76 @@
+<h1 id="zepto-fullpage">zepto.fullpage</h1>
+<p><a href="https://github.com/yanhaijing/zepto.fullpage/releases"><img src="https://img.shields.io/badge/release-v0.3.1-orange.svg" alt="release"></a> <a href="https://github.com/yanhaijing/zepto.fullpage/issues"><img src="https://img.shields.io/github/issues/yanhaijing/zepto.fullpage.svg" alt="issues"></a> <a href="https://github.com/yanhaijing/zepto.fullpage/network"><img src="https://img.shields.io/github/forks/yanhaijing/zepto.fullpage.svg" alt="forks"></a> <a href="https://github.com/yanhaijing/zepto.fullpage/stargazers"><img src="https://img.shields.io/github/stars/yanhaijing/zepto.fullpage.svg" alt="stars"></a> <a href="https://github.com/yanhaijing/zepto.fullpage/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="license"></a></p>
+<p>专注于移动端的fullPage.js，依赖Zepto。</p>
+<h2 id="-">功能概述</h2>
+<p>可实现移动端的单页滚动效果，可自定义参数，提供回调接口，和公开接口。</p>
+<h2 id="-">兼容性</h2>
+<ul>
+<li>Ios4+</li>
+<li>Andriod2.3+（未全部覆盖）</li>
+</ul>
+<h2 id="-">快速上手</h2>
+<h3 id="html">HTML</h3>
+<pre><code>&lt;div class=&quot;wp&quot;&gt;
+    &lt;div class=&quot;wp-inner&quot;&gt;
+        &lt;div class=&quot;page page1&quot;&gt;1&lt;/div&gt;
+        &lt;div class=&quot;page page2&quot;&gt;2&lt;/div&gt;
+        &lt;div class=&quot;page page3&quot;&gt;3&lt;/div&gt;
+        &lt;div class=&quot;page page4&quot;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h3 id="css">CSS</h3>
+<p>父容器需是固定高度，并且溢出为隐藏，fullpage会使用父元素的宽度和高度。</p>
+<pre><code>.wp{
+    overflow: hidden;            
+}
+</code></pre><h2 id="js">js</h2>
+<p>一行代码即可完成，如此简单：</p>
+<pre><code>$(&#39;.wp-inner&#39;).fullpage();
+</code></pre><p><strong>注意：是在.wp-inner上调用的。</strong></p>
+<p>更多例子，请移步<a href="demo">这里</a>。</p>
+<h2 id="-">文档</h2>
+<p><a href="doc/api.md">API</a></p>
+<h2 id="-">贡献指南</h2>
+<p>如果你想为zepto.fullpage贡献代码，请采用fork + pull request 方式，并在发起pr前先将master上超前的代码rebase到自己的分支上。</p>
+<h3 id="-bower">发布Bower</h3>
+<pre><code>$ bower register zepto.fullpage git://github.com/yanhaijing/zepto.fullpage.git
+</code></pre><h2 id="-">贡献者</h2>
+<p><strong>yanhaijing</strong></p>
+<ul>
+<li><a href="http://weibo.com/yanhaijing1234" title="yanhaijing&#39;s Weibo">Weibo</a></li>
+<li><a href="mailto:yanhaijing@yeah.net" title="yanhaijing&#39;s Email">Email</a></li>
+<li><a href="http://yanhaijing.com" title="yanhaijing&#39;s Blog">Blog</a></li>
+</ul>
+<p><strong>YuyingWu</strong></p>
+<ul>
+<li><a href="http://blog.wuyuying.com/">Blog</a></li>
+</ul>
+<h2 id="-">为什么会有这个项目</h2>
+<p>最近单页滚动的效果非常流行，这种效果的视觉冲击感很强烈，特别是对于活动页面，因为需求的迫切，在pc端诞生了 fullPage.js和onepage-scroll这样的库，在移动的浪潮下，我们自然需要把这种效果搬到移动设备上，但当我在想实现类似效果时，却找不到一个这样的库（fullpage.js对于移动端来说太大了，还要依赖jquery），所以我就开发了一个，先是用于自己项目中，后来抽了出来，就有了这个项目。</p>
+<h2 id="-">更新日志</h2>
+<p><a href="CHANGELOG.md">更新日志</a></p>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>横向滚屏 v0.3.0 [√]</li>
+<li>循环滚动 v0.2.0 [√]</li>
+</ul>
+<h2 id="-">谁在使用</h2>
+<p><strong>注:如果您也在使用，欢迎<a href="https://github.com/yanhaijing/zepto.fullpage/issues/9">反馈给我</a></strong></p>
+<ul>
+<li><a href="http://zhidao.baidu.com/">百度知道</a></li>
+<li><a href="http://jingyan.baidu.com/">百度经验</a></li>
+</ul>
+<h2 id="-">成功案例</h2>
+<ul>
+<li><a href="http://zhidao.baidu.com/s/5_0-page/index.html">百度知道-APP5.0落地页</a></li>
+<li><a href="http://d.cqhxfk.com/game/0505/">重庆华西妇产医院-妈妈我来啦</a></li>
+<li><a href="http://jingyan.baidu.com/z/2015-520/index.html">百度经验-关于表白这事儿</a></li>
+</ul>
+<h2 id="-">相关链接</h2>
+<ul>
+<li><a href="https://github.com/alvarotrigo/fullPage.js">fullPage.js</a></li>
+<li><a href="https://github.com/peachananr/onepage-scroll">onepage-scroll</a></li>
+<li><a href="https://github.com/peachananr/zepto-onepage-scroll">zepto-onepage-scroll</a></li>
+<li><a href="https://github.com/hahnzhu/parallax.js">parallax.js</a></li>
+<li><a href="https://github.com/lvming6816077/H5FullscreenPage">H5FullscreenPage</a></li>
+</ul>

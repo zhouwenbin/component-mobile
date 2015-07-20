@@ -1,0 +1,13 @@
+/*=============================Use==================================
+.backgroundtransparent{
+  @include backgroundTransparent(#f36,.5);
+}
+===============================Output==============================
+.backgroundtransparent {
+  background-color: rgba(255, 51, 102, 0.5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#80FF3366,endColorstr=#80FF3366);
+}
+:root .backgroundtransparent {
+  filter: none;
+}
+===================================================================*/
