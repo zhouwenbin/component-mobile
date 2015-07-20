@@ -553,13 +553,23 @@ define('sf.b2c.mall.order.iteminfo', [
                     return submitOrderForAllSys.sendRequest();
                 })
                 .done(function(message) {
-
-                    var url = SFConfig.setting.link.gotopay + '&' +
-                        $.param({
-                            "orderid": message.value,
-                            "recid": selectAddr.recId,
-                            "showordersuccess": true
-                        });
+                    var goodsType = that.itemObj.orderGoodsItemList[0].attr('goodsType');
+                    if (goodsType == 'SECKILL') {
+                        var url = SFConfig.setting.link.gotopay + '&' +
+                            $.param({
+                                "orderid": message.value,
+                                "recid": selectAddr.recId,
+                                "showordersuccess": true,
+                                "goodsType": goodsType
+                            });
+                    } else {
+                        var url = SFConfig.setting.link.gotopay + '&' +
+                            $.param({
+                                "orderid": message.value,
+                                "recid": selectAddr.recId,
+                                "showordersuccess": true
+                            });
+                    }
 
                     var switcher = new SFSwitcher();
 

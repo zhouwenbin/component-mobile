@@ -633,9 +633,15 @@ define('sf.b2c.mall.product.detailcontent', [
           target: 'pay'
         });
       },
-      'btn-seckill click': function() {
-        var params = can.deparam(window.location.search.substr(1));
-        window.location.href = 'http://m.sfht.com/order.html?itemid=' + params.itemid + '&amount=1'
+      //秒杀去购买
+      '#btn-seckill click': function() {
+        var itemid = this.options.detailContentInfo.priceInfo.attr('itemId');
+        var paramUrl = 'http://m.sfht.com/order.html?itemid=' + itemid + '&amount=1'
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = paramUrl;
+        } else {
+          window.location.href = 'http://m.sfht.com/login.html?from=' + encodeURIComponent(paramUrl);
+        }
       },
       initGetItemInfo: function(itemid) {
         var that = this;

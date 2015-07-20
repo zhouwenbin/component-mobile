@@ -33,6 +33,16 @@ define(
 
     var SFGotoPay = can.Control.extend({
 
+      helpers: {
+        'showSecKillPayTime': function(goodsType, options) {
+          if (goodsType() == 'SECKILL') {
+            return "15分钟";
+          } else {
+            return "2小时";
+          }
+        }
+      },
+
       init: function(element, options) {
 
         this.options.data = new can.Map({});
@@ -55,6 +65,7 @@ define(
         this.options.code = params.code;
 
         this.options.data.attr("showordersuccess", params.showordersuccess);
+        this.options.data.attr("goodsType", params.goodsType);
 
         // 如果是在微信环境和APP下 显示微信支付和支付宝，其他时候只展示支付宝
         if (SFUtil.isMobile.WeChat() || (SFUtil.isMobile.APP() && SFHybrid.getInfo.getAppInfo() != '1.0.0')) {
@@ -91,7 +102,7 @@ define(
       render: function(data) {
         // var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache', data);
         var renderFn = can.mustache(template_order_gotopay);
-        var html = renderFn(data);
+        var html = renderFn(data, this.helpers);
         this.element.html(html);
       },
 
@@ -143,7 +154,7 @@ define(
        * [getAppPayType 针对APP应用做的支付类型定制]
        * @return {[type]} [description]
        */
-      getAppPayType: function(){
+      getAppPayType: function() {
         var result = "";
 
         var paytypelist = $(".gotopaymethodlist").find("li");
@@ -189,21 +200,25 @@ define(
 
         var switcher = new SFSwitcher()
 
-        switcher.register('app', function () {
+        switcher.register('app', function() {
           SFHybrid.pay(that.options.orderid, that.getAppPayType())
-            .done(function () {
+            .done(function() {
               SFHybrid.toast.dismiss();
               var link = SFConfig.setting.link.paysuccess;
 
               if (link.indexOf('?') > -1) {
-                link = link + '&' + $.param({orderid: that.options.orderid});
-              }else{
-                link = link + '?' + $.param({orderid: that.options.orderid});
+                link = link + '&' + $.param({
+                  orderid: that.options.orderid
+                });
+              } else {
+                link = link + '?' + $.param({
+                  orderid: that.options.orderid
+                });
               }
 
               window.location.href = link;
             })
-            .fail(function (errorInfo) {
+            .fail(function(errorInfo) {
               SFHybrid.toast.dismiss();
 
               var defaultMsg = '订单支付失败！';
@@ -223,7 +238,7 @@ define(
             });
         })
 
-        switcher.register('web', function () {
+        switcher.register('web', function() {
           SFOrderFn.payV2({
             orderid: that.options.orderid,
             payType: that.getPayType(),
