@@ -5,11 +5,12 @@ define('sf.b2c.mall.component.searchbox', [
   'zepto',
   'underscore',
   'store',
+  'sf.env.switcher',
   'sf.b2c.mall.widget.loading',
   'sf.b2c.mall.widget.bubble',
   'sf.b2c.mall.api.search.hotKeywords',
   'text!template_component_searchbox'
-], function(can, $, _, store, SFLoading, SFBubble, SFHotKeywords, template_component_searchbox) {
+], function(can, $, _, store, SFSwitcher, SFLoading, SFBubble, SFHotKeywords, template_component_searchbox) {
 
   var STORE_HISTORY_LIST = "searchhistories";
   var HISTORY_SIZE = 10;
@@ -23,6 +24,7 @@ define('sf.b2c.mall.component.searchbox', [
 
     renderData: new can.Map({
       keyword: null,
+      isApp: false,
       showGate: false,
       publicGate: true,
       historyList: {
@@ -47,6 +49,18 @@ define('sf.b2c.mall.component.searchbox', [
     controlDoms: [],
 
     init: function() {
+      var switcher = new SFSwitcher();
+
+      switcher.register('web', _.bind(function() {
+      }, this));
+
+      switcher.register('app', _.bind(function() {
+        this.renderData.attr("isApp", true);
+      }, this));
+
+      // 根据逻辑环境进行执行
+      switcher.go();
+
       var params = can.deparam(window.location.search.substr(1));
       this.renderData.attr("keyword", this.trim(params.keyword || ""));
 
@@ -169,6 +183,7 @@ define('sf.b2c.mall.component.searchbox', [
      * @author zhang.ke
      * @description 开始搜索
      */
+    /*
     "#searchInput keydown": function(element, event) {
       if (event.keyCode != 13) {
         return;
@@ -178,6 +193,7 @@ define('sf.b2c.mall.component.searchbox', [
       this.search(keyword);
       return false;
     },
+    */
 
     /**
      * @author zhang.ke

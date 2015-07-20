@@ -1781,7 +1781,7 @@ body {
   background-color: #fff;
   height: 50px;
   width: 100%;
-  padding: 10px 0 10px 15px;
+  padding: 10px 15px;
 }
 
 .search-box-gate label {
@@ -1808,8 +1808,9 @@ body {
 }
 
 .search-box-gate .homeIcon {
+  margin-left: 15px;
   display: block;
-  width: 60px;
+  width: 30px;
   padding-top: 4px;
   text-align: center;
 }
@@ -2180,6 +2181,7 @@ body {
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 5px;
+  font-weight: normal;
 }
 
 .recommend strong {
