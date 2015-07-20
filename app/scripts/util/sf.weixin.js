@@ -384,6 +384,111 @@ define('sf.weixin', [
       })
     },
 
+    share81: function(title, desc, desc2, link, imgUrl) {
+      var defaulttitle = "美好肉体集中营！送钱让你扒衣服！";
+      var defaultdesc = "有肉看，有券领，不要白不要！";
+      var defaultlink = "http://m.sfht.com/81.html";
+      var defaultimgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/1/2.jpg';
+      if (SFUtil.isMobile.WeChat()) {
+        //进行微信设置
+        configWeixin();
+      }
+
+      // 定义微信分享的数据
+      jweixin.ready(function() {
+
+        jweixin.onMenuShareTimeline({
+          title: title || defaulttitle,
+          desc: desc || defaultdesc,
+          link: link || defaultlink,
+          imgUrl: imgUrl || defaultimgUrl,
+          trigger: function(res) {
+            // alert('用户点击发送给朋友');
+          },
+          success: function(res) {
+
+            // 每天分享后可以多投票两次, 最多两次
+            // if (new Date().getDate() != store.set("weixinsharedate81") ) {
+            //   var day = new Date();
+            //   var num = store.get("voteDate" + day.getDate());
+            //   if (num && parseInt(num, 10) >= 2) {
+            //     store.set("voteDate" + day.getDate(), parseInt(num, 10) - 2);
+            //   } else {
+            //     store.set("voteDate" + day.getDate(), 0);
+            //   }
+            // }
+
+            // 设定时间和次数
+            var weixinsharetime81 = store.get("weixinsharedate81");
+            store.set("weixinsharedate81", new Date().getDate());
+            // var weixinshareTimes81 = store.get("weixinshareTimes81");
+            // if (weixinshareTimes81) {
+            //   store.set("weixinshareTimes81", parseInt(weixinshareTimes81) + 1)
+            // } else {
+            //   store.set("weixinshareTimes81", 1)
+            // }
+
+            $("#sharearea").hide();
+            $("#gotoshare").removeClass("show");
+            $("#gotoshare").addClass("hide");
+
+          },
+          cancel: function(res) {
+            // alert('已取消');
+          },
+          fail: function(res) {
+            //alert(JSON.stringify(res));
+          }
+        });
+
+        jweixin.onMenuShareAppMessage({
+          title: title || defaulttitle,
+          desc: desc2 || defaultdesc,
+          link: link || defaultlink,
+          imgUrl: imgUrl || defaultimgUrl,
+          trigger: function(res) {
+            // alert('用户点击发送给朋友');
+          },
+          success: function(res) {
+            // 每天分享后可以多投票两次, 最多两次
+            // if (new Date().getDate() != store.set("weixinsharedate81")  && (parseInt(store.get("weixinshareTimes81")) <= 2)) {
+            //   var day = new Date();
+            //   var num = store.get("voteDate" + day.getDate());
+            //   if (num && parseInt(num, 10) >= 2) {
+            //     store.set("voteDate" + day.getDate(), parseInt(num, 10) - 2);
+            //   } else {
+            //     store.set("voteDate" + day.getDate(), 0);
+            //   }
+            // }
+
+            // 设定时间和次数
+            var weixinsharetime81 = store.get("weixinsharedate81");
+            store.set("weixinsharedate81", new Date().getDate());
+            // var weixinshareTimes81 = store.get("weixinshareTimes81");
+            // if (weixinshareTimes81) {
+            //   store.set("weixinshareTimes81", parseInt(weixinshareTimes81) + 1)
+            // } else {
+            //   store.set("weixinshareTimes81", 1)
+            // }
+
+            $("#sharearea").hide();
+            $("#gotoshare").removeClass("show");
+            $("#gotoshare").addClass("hide");
+          },
+          cancel: function(res) {
+            // alert('已取消');
+          },
+          fail: function(res) {
+            //alert(JSON.stringify(res));
+          }
+        });
+
+        jweixin.showMenuItems({
+          menuList: ['menuItem:share:timeline', 'menuItem:share:appmessage', 'imagePreview']
+        });
+      })
+    },
+
 
     /** [shareYoung 分享小鲜肉] */
     shareYoung: function(title, desc, link, imgUrl) {
@@ -409,27 +514,6 @@ define('sf.weixin', [
           },
           success: function(res) {
 
-            // 每天分享后可以多投票两次, 最多两次
-            if (new Date().getDate() != store.set("weixinsharedate81")  && (parseInt(store.get("weixinshareTimes81")) <= 2)) {
-              var day = new Date().getDate();
-              var num = store.get("voteDate" + day.getDate());
-              if (num && parseInt(num, 10) >= 2) {
-                store.set("voteDate" + day.getDate(), parseInt(num, 10) - 2);
-              } else {
-                store.set("voteDate" + day.getDate(), 0);
-              }
-            }
-
-            // 设定时间和次数
-            var weixinsharetime81 = store.get("weixinsharedate81");
-            store.set("weixinsharedate81", new Date().getDate());
-            var weixinshareTimes81 = store.get("weixinshareTimes81");
-            if (weixinshareTimes81) {
-              store.set("weixinshareTimes81", parseInt(weixinshareTimes81) + 1)
-            } else {
-              store.set("weixinshareTimes81", 1)
-            }
-
           },
           cancel: function(res) {
             // alert('已取消');
@@ -448,13 +532,7 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
-            var num = store.get("totalVoteNum81");
 
-            if (num && parseInt(num, 10) >= 3) {
-              store.set("totalVoteNum81", parseInt(num, 10) - 3);
-            } else {
-              store.set("totalVoteNum81", 0);
-            }
           },
           cancel: function(res) {
             // alert('已取消');

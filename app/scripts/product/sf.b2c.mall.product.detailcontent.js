@@ -14,7 +14,6 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.b2c.mall.api.user.getWeChatJsApiSig',
     'sf.helpers',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.message',
     'sf.weixin',
@@ -26,13 +25,15 @@ define('sf.b2c.mall.product.detailcontent', [
     'sf.env.switcher',
     'sf.hybrid',
     'animate',
-    'sf.b2c.mall.widget.cartnumber'
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.widget.cartnumber',
+    'sf.b2c.mall.api.product.findMixDiscountProducts'
   ],
   function(can, $, Swipe, Fastclick,
     SFDetailcontentAdapter, SFGetItemInfo, SFGetProductHotData, SFGetSKUInfo, SFGetActivityInfo,
-    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFLoading, SFConfig, SFMessage, SFWeixin,
+    SFFindRecommendProducts, SFGetWeChatJsApiSig, helpers, SFComm, SFConfig, SFMessage, SFWeixin,
     SFFn, SFGetTotalCount, SFAddItemToCart, SFIsShowCart,
-    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFWidgetCartNumber) {
+    template_product_detailcontent, SFSwitcher, SFHybrid, animate, SFLoading, SFWidgetCartNumber, SFFindMixDiscountProducts) {
 
     Fastclick.attach(document.body);
 
@@ -101,12 +102,29 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.inverse(options.contexts || this);
           }
         },
+
         //促销展示类型
         'sf-showActivityType': function(activityType, options) {
-          if (activityType() == 'REDUCE') {
-            return "满减";
+          var activityType = activityType();
+          var map = {
+            'REDUCE': "满减",
+            'DISCOUNT': "满折",
+            'MIX_DISCOUNT': "搭配折扣"
+          };
+          return map[activityType];
+        },
+        'isShowMixDiscount': function(goods, isSoldOut, options) {
+          if (goods() == 'MIX_DISCOUNT' && !isSoldOut()) {
+            return options.fn(options.contexts || this);
           } else {
-            return "满折";
+            return options.inverse(options.contexts || this);
+          }
+        },
+        'isShowMoreInfo': function(goods, options) {
+          if (goods() == 'MIX_DISCOUNT') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
           }
         }
       },
@@ -368,34 +386,6 @@ define('sf.b2c.mall.product.detailcontent', [
                 });
               }, 1000);
 
-              // var carticon = $('.detail-cart-r img');
-              // var target=$('.icon47').offset()
-              // var targetX=target.left,
-              //     targetY=target.top,
-              //     current=carticon.offset(),
-              //     currentX=current.left,
-              //     currentY=current.top,
-              //     cart_num=$('.dot-error').text();
-              // carticon.clone().appendTo(carticon.parent());
-              // carticon.css({
-              //   left:targetX-currentX-50,
-              //   top:targetY-currentY,
-              //   transform:'rotate(360deg) scale(0.1)',
-              //   zIndex:1000,
-              //   visibility:'hidden'
-              // })
-
-              // setTimeout(function() {
-              //   can.route.attr({tag: 'back', target: 'empty'});
-
-              //   // 更新mini购物车
-              //   can.trigger(window, 'updateCart');
-              // }, 1000);
-
-              // $('#firststep').show();
-              // $('#secondstep').hide();
-
-              // can.route.attr({tag: 'init', target: 'empty'});
             } else {
               can.route.attr({
                 tag: 'back',
@@ -408,15 +398,7 @@ define('sf.b2c.mall.product.detailcontent', [
               }, 10000);
             }
           })
-          .fail(function(data) {
-            // if (data == 15000800) {
-            //   var $el = $('<section class="tooltip center overflow-num"><div>您的购物车已满，赶紧去买单哦～</div></section>');
-            //   $(document.body).append($el);
-            //   setTimeout(function() {
-            //     $el.remove();
-            //   }, 10000);
-            // }
-          })
+          .fail(function(data) {})
       },
 
       /**
@@ -431,7 +413,7 @@ define('sf.b2c.mall.product.detailcontent', [
         if (SFComm.prototype.checkUserLogin.call(this)) {
           this.element.find('.mini-cart-num').show();
 
-          var success = function (data) {
+          var success = function(data) {
             // @description 将返回数字显示在头部导航栏
             // 需要跳动的效果
             that.element.find('.mini-cart-num').text(data.value)
@@ -442,27 +424,11 @@ define('sf.b2c.mall.product.detailcontent', [
             }, 500);
           };
 
-          var error = function () {
+          var error = function() {
             // 更新mini cart失败，不做任何显示
           };
 
           new SFWidgetCartNumber(success, error);
-
-          // var getTotalCount = new SFGetTotalCount();
-          // getTotalCount.sendRequest()
-          //   .done(function(data) {
-          //     // @description 将返回数字显示在头部导航栏
-          //     // 需要跳动的效果
-          //     that.element.find('.mini-cart-num').text(data.value)
-          //     that.element.find('.mini-cart-num').addClass('animated bounce');
-
-          //     setTimeout(function() {
-          //       that.element.find('.mini-cart-num').removeClass('animated bounce');
-          //     }, 500);
-          //   })
-          //   .fail(function(data) {
-          //     // 更新mini cart失败，不做任何显示
-          //   });
         }
       },
 
@@ -502,23 +468,23 @@ define('sf.b2c.mall.product.detailcontent', [
       render: function() {
         var that = this;
 
-        var getProductHotData = new SFGetProductHotData({
-          'itemId': that.itemid
-        });
+        this.options.detailContentInfo = {};
+        this.options.detailContentInfo.showFirstStep = true;
+        this.options.detailContentInfo.showSecondStep = false;
+        this.options.detailContentInfo.activityInfo = new can.Map({});
+        this.options.detailContentInfo.priceInfo = new can.Map({});
 
-        var findRecommendProducts = new SFFindRecommendProducts({
-          'itemId': that.itemid,
-          'size': 4
-        });
-
-        that.options.detailContentInfo = {};
-        that.options.detailContentInfo.showFirstStep = true;
-        that.options.detailContentInfo.showSecondStep = false;
-        that.options.detailContentInfo.activityInfo = new can.Map({});
-        that.options.detailContentInfo.priceInfo = new can.Map({});
-
-        can.when(that.initGetItemInfo(that.itemid), that.initGetProductHotData(that.itemid), that.initActivityInfo(that.itemid), that.initFindRecommendProducts(that.itemid))
-          .done(function() {
+        this.initGetItemInfo(this.itemid)
+          .then(function() {
+            return that.initGetProductHotData(that.itemid)
+          })
+          .then(function() {
+            return that.initFindRecommendProducts(that.itemid)
+          })
+          .then(function() {
+            return that.initActivityInfo(that.itemid)
+          })
+          .then(function() {
             document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
 
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
@@ -538,76 +504,82 @@ define('sf.b2c.mall.product.detailcontent', [
             if (sellingPrice == originPrice) {
               $('.originPrice').hide();
             }
-
-            // @deprecated 不再需要展示notice
-            //
-            // if (_.contains(FILTER_ARRAY, that.itemid) && Date.now() < new Date(LIMITIED_DATE)) {
-            //   that.options.detailContentInfo.attr({
-            //     notice: NOTICE_WORD
-            //   });
-            // }
-
-            var renderFn = can.mustache(template_product_detailcontent);
-            var html = renderFn(that.options.detailContentInfo, that.helpers);
-
-            that.element.html(html);
-
-            that.controlCart();
-
-            //滚动效果
-            new Swipe($('#slider')[0], {
-              startSlide: 0,
-              speed: 400,
-              auto: 0,
-              continuous: true,
-              disableScroll: false,
-              stopPropagation: false,
-              callback: function(index, elem) {
-                $('.swipe-dot span').eq(index).addClass('active').siblings().removeClass('active');
-              },
-              transitionEnd: function(index, elem) {}
-            });
-            //第一个选中
-            $('.swipe-dot span').eq(0).addClass('active');
-
-            $('#detailTab').click(function() {
-              that.switchTab($(this), 'detailTab');
-            })
-
-            $('#itemInfoTab').click(function() {
-              that.switchTab($(this), 'itemInfoTab');
-            })
-
-            var switcher = new SFSwitcher();
-
-            switcher.register('wechat', function() {
-              //微信分享
-              that.weixinShare(that.itemid, that.options.detailContentInfo);
-            });
-
-            switcher.register('app', function() {
-              that.setShareBtn(that.itemid, that.options.detailContentInfo);
-            });
-
-            switcher.go();
-
-            loadingCtrl.hide();
-
-            $(document).ready(function() {
-              if (SFFn.isMobile.Android()) {
-                that.fixedTab();
-              }
-            });
-
-            // @author Michael.Lee
-            // 判断用户是否登陆，请求minicart
-            that.updateCart();
-
+            var activityId = that.options.detailContentInfo.activityInfo.attr('activityId');
+            var activityType = that.options.detailContentInfo.activityInfo.attr('activityType');
+            if (activityType == 'MIX_DISCOUNT') {
+              return that.initMixDiscountProduct(that.itemid, activityId)
+            } else {
+              var renderFn = can.mustache(template_product_detailcontent);
+              var html = renderFn(that.options.detailContentInfo, that.helpers);
+              that.element.html(html);
+              that.supplement.call(that)
+            }
           })
           .fail(function(error) {
-            console.error(error);
             loadingCtrl.hide();
           })
+          .then(function() {
+            var renderFn = can.mustache(template_product_detailcontent);
+            var html = renderFn(that.options.detailContentInfo, that.helpers);
+            that.element.html(html);
+
+            that.supplement.call(that);
+          })
+
+      },
+
+      supplement: function() {
+        var that = this;
+        that.controlCart();
+
+        //滚动效果
+        new Swipe($('#slider')[0], {
+          startSlide: 0,
+          speed: 400,
+          auto: 0,
+          continuous: true,
+          disableScroll: false,
+          stopPropagation: false,
+          callback: function(index, elem) {
+            $('.swipe-dot span').eq(index).addClass('active').siblings().removeClass('active');
+          },
+          transitionEnd: function(index, elem) {}
+        });
+        //第一个选中
+        $('.swipe-dot span').eq(0).addClass('active');
+
+        $('#detailTab').click(function() {
+          that.switchTab($(this), 'detailTab');
+        })
+
+        $('#itemInfoTab').click(function() {
+          that.switchTab($(this), 'itemInfoTab');
+        })
+
+        var switcher = new SFSwitcher();
+
+        switcher.register('wechat', function() {
+          //微信分享
+          that.weixinShare(that.itemid, that.options.detailContentInfo);
+        });
+
+        switcher.register('app', function() {
+          that.setShareBtn(that.itemid, that.options.detailContentInfo);
+        });
+
+        switcher.go();
+
+        loadingCtrl.hide();
+
+        $(document).ready(function() {
+          if (SFFn.isMobile.Android()) {
+            that.fixedTab();
+          }
+        });
+
+        // @author Michael.Lee
+        // 判断用户是否登陆，请求minicart
+        that.updateCart();
       },
 
       '.addcart click': function() {
@@ -700,13 +672,57 @@ define('sf.b2c.mall.product.detailcontent', [
                   that.options.detailContentInfo.priceInfo.attr("activityTitle", element.activityTitle);
                   that.options.detailContentInfo.priceInfo.attr("h5ActivityLink", element.h5ActivityLink);
                 } else {
-                  that.options.detailContentInfo.activityInfo.attr("isShow", true)
+                  that.options.detailContentInfo.activityInfo.attr("isShow", true);
+                }
+
+                //如果活动类型是搭配折扣，展示搭配购买区域
+                if (element.activityType == "MIX_DISCOUNT") {
+                  that.options.detailContentInfo.activityInfo.attr("activityType", element.activityType);
+                  that.options.detailContentInfo.activityInfo.attr("activityId", element.activityId);
                 }
               });
             }
 
             that.options.detailContentInfo.activityInfo.attr("datas", data.value);
           });
+      },
+      // 搭配购买
+      initMixDiscountProduct: function(itemId, activityId) {
+        var that = this;
+        var findMixDiscountProducts = new SFFindMixDiscountProducts({
+          'itemId': itemId,
+          'activityId': activityId
+        });
+        return findMixDiscountProducts.sendRequest()
+          .done(function(data) {
+
+            var totalSellingPrice = 0;
+            var totalOriginPrice = 0;
+
+            //找到主商品
+            var mainProductItem = _.find(data.value, function(item) {
+              return item.isMixDiscountMasterItem == true
+            });
+            //剩余搭配商品
+            var mixProductItems = _.reject(data.value, function(item) {
+              return item.isMixDiscountMasterItem == true
+            });
+            //将主商品放在第一位
+            mixProductItems.splice(0, 0, mainProductItem);
+            //获取总原价和总活动价
+            _.each(data.value, function(item) {
+              totalSellingPrice += item.sellingPrice;
+              totalOriginPrice += item.originPrice;
+            });
+            that.options.detailContentInfo.attr('mixDiscount', {});
+            that.options.detailContentInfo.mixDiscount.attr('goods', mixProductItems);
+            that.options.detailContentInfo.mixDiscount.attr('totalSavePrice', totalOriginPrice - totalSellingPrice)
+          });
+      },
+      '#link-to-mixdiscount click': function(element, event) {
+        var itemid = this.options.detailContentInfo.priceInfo.attr('itemId');
+        var activityId = this.options.detailContentInfo.activityInfo.attr("activityId");
+        window.location.href = 'http://m.sfht.com/detail-mix.html?itemid=' + itemid + '&activityId=' + activityId;
       },
       /**
        * [weixinShare 微信分享]
