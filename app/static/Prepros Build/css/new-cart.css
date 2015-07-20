@@ -1,0 +1,42 @@
+
+.cart li.cart-match{
+	background: #fff8f8;
+}
+.cart li.cart-match .icon49{
+	visibility: hidden;
+}
+.cart li.cart-match:first-child{
+	background: #fff;
+}
+.cart li.cart-match:first-child .icon49{
+	visibility: visible;
+}
+.cart-c3-c1,.cart-c3-c2{
+	font-size: 14px;
+}
+.cart-c3-c2{
+	margin-top: 8px;
+}
+.cart li.cart-match:first-child .cart-c1{
+	margin-left: 20px;
+}
+.icon-deleted{
+	background: url(http://img0.sfht.com/img/d0b71524f1483fdd69e06f402f13167d.jpg) no-repeat;
+	background-size: 100% 100%;
+	width: 18px;
+	height: 18px;
+}
+.cart .text-orange{
+	padding-left: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -481,12 +481,14 @@
 }
 .nataral-none {
 	text-align:center; 
+	background-color: #f2f2f2;
+    border-top: 1px solid #cfcfcf;
 }
 .nataral-none p {
 	display: inline-block;
 	line-height: 22px;
 	padding-left: 54px;
 	background-size: 30px 40px;
-	background: url(http://img.sfht.com/sfhth5/1.1.189/img/icon_empty2x.png) no-repeat left center;
+	background: url(#{$bg-url}icon_empty2x.png) no-repeat left center;
 	margin: 10px 0;
 }

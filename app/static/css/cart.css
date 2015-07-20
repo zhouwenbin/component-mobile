@@ -178,8 +178,7 @@
   padding-top: 190px;
   text-align: center;
   background: #fff url(../img/cart-none.png) no-repeat center 87px;
-  -webkit-background-size: 92px 92px;
-          background-size: 92px;
+  background-size: 92px;
 }
 
 .cart-none p {

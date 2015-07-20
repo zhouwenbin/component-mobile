@@ -601,14 +601,8 @@
 }
 
 .nataral-classify-none {
-<<<<<<< HEAD
   background: url(../img/nataral-classify-none.png) no-repeat center 150px;
-  -webkit-background-size: 111px 81px;
-          background-size: 111px 81px;
-=======
-  background: url(http://img.sfht.com/sfhth5/1.1.142/img/nataral-classify-none.png) no-repeat center 150px;
   background-size: 111px 81px;
->>>>>>> master
   color: #999;
   text-align: center;
   padding: 250px 0;
@@ -634,7 +628,7 @@
 }
 
 .nataral-code {
-  background: url(http://img.sfht.com/sfhth5/1.1.142/img/nataral-code.png) no-repeat center;
+  background: url(../img/nataral-code.png) no-repeat center;
   background-size: 320px;
   height: 75px;
   padding-left: 170px;
@@ -646,6 +640,8 @@
 
 .nataral-none {
   text-align: center;
+  background-color: #f2f2f2;
+  border-top: 1px solid #cfcfcf;
 }
 
 .nataral-none p {
@@ -653,6 +649,6 @@
   line-height: 22px;
   padding-left: 54px;
   background-size: 30px 40px;
-  background: url(http://img.sfht.com/sfhth5/1.1.189/img/icon_empty2x.png) no-repeat left center;
+  background: url(../img/icon_empty2x.png) no-repeat left center;
   margin: 10px 0;
 }
