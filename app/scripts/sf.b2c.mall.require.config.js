@@ -126,12 +126,20 @@ requirejs.config({
         "sf.b2c.mall.api.search.searchItem": "scripts/api/sf.b2c.mall.api.search.searchItem",
         "sf.b2c.mall.api.search.suggestKeyword": "scripts/api/sf.b2c.mall.api.search.suggestKeyword",
         "sf.b2c.mall.api.search.searchItemAggregation": "scripts/api/sf.b2c.mall.api.search.searchItemAggregation",
+        "sf.b2c.mall.api.search.hotKeywords": "scripts/api/sf.b2c.mall.api.search.hotKeywords",
         "sf.b2c.mall.api.user.partnerBind": "scripts/api/sf.b2c.mall.api.user.partnerBind",
         "sf.b2c.mall.api.user.setPswdAndLogin": "scripts/api/sf.b2c.mall.api.user.setPswdAndLogin",
         "sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM": "scripts/api/sf.b2c.mall.api.cp.generateSubjectUrlWidthSCM",
         "sf.b2c.mall.api.integral.getUserIntegralLog": "scripts/api/sf.b2c.mall.api.integral.getUserIntegralLog",
+
+        'sf.b2c.mall.api.product.findMixDiscountProducts': 'scripts/api/sf.b2c.mall.api.product.findMixDiscountProducts',
+        'sf.b2c.mall.api.shopcart.removeItemsForCart': 'scripts/api/sf.b2c.mall.api.shopcart.removeItemsForCart',
+        'sf.b2c.mall.api.shopcart.updateItemNumForCart': 'scripts/api/sf.b2c.mall.api.shopcart.updateItemNumForCart',
+
+
         "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
         "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
+
         "placeholders": "bower_components/Placeholders/build/placeholders",
         "moment": "bower_components/momentjs/min/moment.min",
         "moment-zh-cn": "bower_components/momentjs/locale/zh-cn",
@@ -237,10 +245,17 @@ requirejs.config({
         "sf.b2c.mall.component.shoppingcart": "scripts/component/sf.b2c.mall.component.shoppingcart",
         "sf.b2c.mall.page.search": "scripts/page/sf.b2c.mall.page.search",
         "sf.b2c.mall.component.search": "scripts/component/sf.b2c.mall.component.search",
+        "sf.b2c.mall.component.searchbox": "scripts/component/sf.b2c.mall.component.searchbox",
+        "sf.b2c.mall.page.searchgate": "scripts/page/sf.b2c.mall.page.searchgate",
         "sf.b2c.mall.page.shop": "scripts/page/sf.b2c.mall.page.shop",
         "sf.b2c.mall.page.invitationshare": "scripts/page/sf.b2c.mall.page.invitationshare",
         "sf.b2c.mall.page.app": "scripts/page/sf.b2c.mall.page.app",
         "sf.b2c.mall.page.aboutus": "scripts/page/sf.b2c.mall.page.aboutus",
+
+
+        //商品详情搭配购买
+        'sf.b2c.mall.page.detailmix': 'scripts/page/sf.b2c.mall.page.detailmix',
+        "sf.b2c.mall.search.searchgate": "scripts/search/sf.b2c.mall.search.searchgate",
         "template_widget_header_ad": "templates/widget/sf.b2c.mall.widget.ad.mustache",
         "template_component_nav": "templates/component/sf.b2c.mall.component.nav.mustache",
         "template_product_detailcontent": "templates/product/sf.b2c.mall.product.detailcontent.mustache",
@@ -280,12 +295,14 @@ requirejs.config({
         "sf.b2c.mall.page.520": "scripts/page/sf.b2c.mall.page.520",
         "template_header_520": "templates/sf.b2c.mall.520.mustache",
         "sf.mediav": "scripts/util/sf.mediav",
+        'template_detail_mix': 'templates/product/sf.b2c.mall.product.detailmix.mustache',
         "sf.b2c.mall.widget.region": "scripts/widget/sf.b2c.mall.widget.region",
         "sf.b2c.mall.widget.bubble": "scripts/widget/sf.b2c.mall.widget.bubble",
         "sf.b2c.mall.component.addrdetail": "scripts/component/sf.b2c.mall.component.addrdetail",
         "sf.b2c.mall.component.addrcreate": "scripts/component/sf.b2c.mall.component.addrcreate",
         "template_component_addrcreate": "templates/component/sf.b2c.mall.component.addrcreate.mustache",
         "template_component_addrdetail": "templates/component/sf.b2c.mall.component.addrdetail.mustache",
+        "template_component_searchbox": "templates/component/sf.b2c.mall.component.searchbox.mustache",
         "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache",
         "vendor.page.response": "scripts/vendor/vendor.page.response",
         "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
@@ -293,7 +310,22 @@ requirejs.config({
         "sf.b2c.mall.category.fn": "scripts/category/sf.b2c.mall.category.fn",
         "sf.b2c.mall.category.pagenavigatelistcontent": "scripts/category/sf.b2c.mall.category.pagenavigatelistcontent",
         "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
-        "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages"
+        "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages",
 
+        //81
+        "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81",
+
+        //81活动
+        "sf.b2c.mall.api.coupon.randomCard": "scripts/api/sf.b2c.mall.api.coupon.randomCard",
+        "sf.b2c.mall.api.coupon.bindCard": "scripts/api/sf.b2c.mall.api.coupon.bindCard",
+
+        //states
+        "Stats": "scripts/vendor/Stats",
+
+        // fixture功能
+        'fixture': 'fixture/lib/canjs/fixture',
+        'can.object': 'fixture/lib/canjs/can.object',
+        'sf.b2c.mall.fixture.framework.common': 'fixture/framework/sf.b2c.mall.fixture.framework.common',
+        'sf.b2c.mall.fixture.case.center.invitation': 'fixture/case/center/sf.b2c.mall.fixture.case.center.invitation'
     }
 });
