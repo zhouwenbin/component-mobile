@@ -309,20 +309,27 @@ define(
                         if (data.value) {
                             //转换数据：未领取为已领取
                             var notGetcoupon81 = store.get("notGetcoupon81");
-                            store.set("alreadyGetcoupon81", notGetcoupon81);
+
+                            var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
+                            if (alreadyGetcoupon81) {
+                                store.set("alreadyGetcoupon81", alreadyGetcoupon81 + "," + notGetcoupon81);
+                            } else {
+                                store.set("alreadyGetcoupon81", notGetcoupon81);
+                            }
+
                             store.remove("notGetcoupon81");
 
                             // 清空未领取为零
                             $("#couponnum").text(0);
 
                             // 弹出新层
-                            var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
+                            alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
                             $("#getcouponmask").removeClass("show");
                             $("#getcouponmask").addClass("hide");
 
                             $("#couponlistmask").removeClass("hide");
                             $("#couponlistmask").addClass("show");
-                            var alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
+                            alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
 
                             $("#couponlisttitle").html("抽到的现金券已放到手机号(" + store.get('mobile81') + ")账户中，请使用该账号登陆顺丰海淘(sfht.com)使用吧!");
 
