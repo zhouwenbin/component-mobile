@@ -116,7 +116,7 @@ define(
 
                 var alreadyVoteNum = store.get("totalVoteNum81");
                 if (alreadyVoteNum) {
-                    $("#footerNum").text(5 - parseInt(alreadyVoteNum));
+                    $("#footerNum").text(10 - parseInt(alreadyVoteNum));
                 }
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
@@ -346,6 +346,12 @@ define(
                     '<span class="text-error" id="username-error-tips"></span>' +
                     '<button class="btn" id="getcouponbymobile">确定</button>' +
                     '<ul id="couponlistnotget" class="coupons">';
+            },
+
+            getTooltipHTML: function() {
+                return '<section class="tooltip center overflow-num" id="random">' +
+                    '<div id="randomText" style="font-size:20px;">{0}</div>' +
+                    '</section>'
             },
 
             getcouponmaskHTMLAfter: function() {
@@ -614,8 +620,9 @@ define(
                 var totalVoteNum81 = store.get("totalVoteNum81");
 
                 // 每天只能扒五次
-                if (currentDateVote >= 5 && totalVoteNum81 < 10) {
-                    $("#randomText").text("每天只能扒五次哦,请明天再来~");
+                // if (currentDateVote >= 5 && totalVoteNum81 < 10) {
+                if (currentDateVote >= 11) {
+                    $("#randomText").text("每天只能扒十次哦,请明天再来~");
                     $("#random").css("display", "block");
                     setTimeout(' $("#random").css("display","none")', 2000);
 
@@ -624,28 +631,28 @@ define(
                 }
 
                 // 提示去分享  如果分享过，则要加2次
-                var weixinsharetime81 = store.get("weixinsharedate81");
-                var threshold = 0;
-                if (weixinsharetime81 == new Date().getDate()) {
-                    threshold = 3;
-                }
+                // var weixinsharetime81 = store.get("weixinsharedate81");
+                // var threshold = 0;
+                // if (weixinsharetime81 == new Date().getDate()) {
+                //     threshold = 3;
+                // }
 
-                if (currentDateVote >= (2 + threshold)) {
-                    $("#gotoshare").removeClass("hide");
-                    $("#gotoshare").addClass("show");
+                // if (currentDateVote >= (2 + threshold)) {
+                //     $("#gotoshare").removeClass("hide");
+                //     $("#gotoshare").addClass("show");
 
 
-                    if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
-                        $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
-                        $("#gotoshare").find("#share").show();
-                    } else {
-                        $("#gotoshare").find("#gotoshareh2").text("分享活动至朋友圈或者微信好友，拉上闺蜜一起来！ 727上顺丰海淘， 扒光了等你来抢！");
-                        $("#gotoshare").find("#share").hide();
-                    }
+                //     if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
+                //         $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
+                //         $("#gotoshare").find("#share").show();
+                //     } else {
+                //         $("#gotoshare").find("#gotoshareh2").text("分享活动至朋友圈或者微信好友，拉上闺蜜一起来！ 727上顺丰海淘， 扒光了等你来抢！");
+                //         $("#gotoshare").find("#share").hide();
+                //     }
 
-                    element.removeClass("disable");
-                    return false;
-                }
+                //     element.removeClass("disable");
+                //     return false;
+                // }
 
                 // 只能把十次
                 // var totalVoteNum81notclear = store.get("totalVoteNum81notclear");
@@ -662,9 +669,17 @@ define(
                 var clickTimes = store.get("81vote" + voteNo);
 
                 if (store.get("81vote" + voteNo) && store.get("81vote" + voteNo) == 3) {
-                    $("#randomText").text("您已经扒光该明星了，换个明星继续扒吧~");
-                    $("#random").css("display", "block");
-                    setTimeout(' $("#random").css("display","none")', 2000);
+
+                    var result = $(this.getTooltipHTML().replace("{0}", "您已经扒光该明星了，换个明星继续扒吧~"));
+                    result.css({
+                        "opacity": 1
+                    });
+
+                    $('body').append(result);
+                    setTimeout(function() {
+                        result.remove();
+                    }, 2000);
+
                     element.removeClass("disable");
                     return false;
                 }
@@ -699,13 +714,31 @@ define(
 
                         $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
 
+
+                        var result = $(that.getTooltipHTML().replace("{0}", desc.split(",")[0] + " Get√"));
+                        setTimeout(function() {
+                            result.addClass("active");
+                        }, 200)
+
+                        $('body').append(result);
+                        setTimeout(function() {
+                            result.remove();
+                        }, 2000)
+
                     })
                     .fail(function(error) {
 
                         if (!that.isGenerateCouponFail) {
-                            $("#randomText").text(that.randomErrorMap[error] || "生成礼品失败");
-                            $("#random").css("display", "block");
-                            setTimeout(' $("#random").css("display","none")', 2000);
+                            var result = $(that.getTooltipHTML().replace("{0}", that.randomErrorMap[error] || "生成礼品失败"));
+
+                            result.css({
+                                "opacity": 1
+                            });
+
+                            $('body').append(result);
+                            setTimeout(function() {
+                                result.remove();
+                            }, 2000);
                         }
 
                         that.isGenerateCouponFail = true;
