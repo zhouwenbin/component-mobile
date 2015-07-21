@@ -26,7 +26,6 @@ define(
     function(can, $, cookie, touch, store, Fastclick, _, moment, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
-        SFWeixin.share81();
 
         var xingNan = 1000;
         var xiaoXiu = 1;
@@ -44,18 +43,7 @@ define(
         // document.body.appendChild(stats.domElement);
 
         var young = can.Control.extend({
-            ".people .btn click": function() {
-                //微信分享
-                if (SFFn.isMobile.WeChat()) {
-                    $("#sharearea").show();
-                }
-                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                var link = "http://m.sfht.com/81.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                SFWeixin.share81(title, desc, desc2, link, imgUrl);
-            },
+
             /**
              * @description 初始化方法，当调用new时会执行init方法
              * @param  {Dom} element 当前dom元素
@@ -63,6 +51,7 @@ define(
              */
             init: function(element, options) {
                 // stats.begin();
+                this.weixinShare();
 
                 $('.wp-inner').fullpage();
                 $.fn.fullpage.stop();
@@ -94,7 +83,7 @@ define(
                 //loading效果
                 setTimeout(function() {
                     $('.young-loading').hide();
-                }, 3000);
+                }, 6000);
 
                 //播放/关闭音乐
                 $('.icon-audio').click(function() {
@@ -231,12 +220,31 @@ define(
                 return voteTimes;
             },
 
+            ".people .btn click": function() {
+                //微信分享
+                if (SFFn.isMobile.WeChat()) {
+                    $("#sharearea").show();
+                }
+                this.weixinShare();
+            },
+
+            weixinShare: function() {
+                var title = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc2 = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var link = "http://m.sfht.com/81.html";
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
+                SFWeixin.share81(title, desc, desc2, link, imgUrl);
+            },
+
+
 
             '#getcoupon click': function() {
                 var result = "";
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
+                    result = this.getcouponmaskHTMLBefore();
 
                     $("#couponlistmask").addClass("hide");
                     $("#couponlistmask").removeClass("show");
@@ -270,8 +278,9 @@ define(
 
                     })
 
-                    $('body').append($(this.getcouponmaskHTML()));
-                    $("#couponlistnotget").html(result);
+                    result += this.getcouponmaskHTMLAfter();
+
+                    $('body').append($(result));
 
                     var mobile = store.get("mobile81");
                     if (mobile) {
@@ -326,19 +335,21 @@ define(
                 }
             },
 
-            getcouponmaskHTML: function() {
+            getcouponmaskHTMLBefore: function() {
                 return '<div class="dialog-phone mask" id="getcouponmask">' +
                     '<div class="dialog-b center">' +
                     '<div class="register-h" id="getcouponmaskcloseButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">' +
                     '<a class="btn btn-close dialog-close" href="#">X</a>' +
                     '</div>' +
                     '<h2>输入您的手机号码领取现金券</h2>' +
-                    '<input value="" id="phoneNum">' +
+                    '<input type="text" value="" id="phoneNum">' +
                     '<span class="text-error" id="username-error-tips"></span>' +
                     '<button class="btn" id="getcouponbymobile">确定</button>' +
-                    '<ul id="couponlistnotget" class="coupons">' +
-                    '<li></li>' +
-                    '</ul>' +
+                    '<ul id="couponlistnotget" class="coupons">';
+            },
+
+            getcouponmaskHTMLAfter: function() {
+                return '</ul>' +
                     '</div>' +
                     '</div>'
             },
@@ -357,7 +368,7 @@ define(
 
                 // 如果当前手机号和之前输入的不一致，则要清空之前的手机号领取的历史券
                 var historyMobile81 = store.get("mobile81");
-                if (mobile != mobile) {
+                if (mobile != historyMobile81) {
                     store.remove("alreadyGetcoupon81");
                 }
 
@@ -393,8 +404,7 @@ define(
 
                             // 弹出新层
                             alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
-                            $("#getcouponmask").removeClass("show");
-                            $("#getcouponmask").addClass("hide");
+                            $("#getcouponmask").remove();
 
                             $("#couponlistmask").removeClass("hide");
                             $("#couponlistmask").addClass("show");
@@ -500,22 +510,15 @@ define(
 
             },
 
-            //进入活动页面
-            "#huodong click": function() {
-
-                $('#success').addClass('hide');
-                $('#audio')[0].pause();
-                window.location.href = "http://m.sfht.com/activity/439.html";
-            },
-
             //继续扒小鲜肉
             "#goOn click": function() {
                 $('#success').addClass('hide');
             },
 
-            ".gotosee click": function() {
+            ".gotosee click": function(element, event) {
+                event && event.preventDefault();
                 $('#audio')[0].pause();
-                window.location.href = "http://m.sfht.com/activity/439.html";
+                window.location.href = "http://m.sfht.com/activity/494.html";
             },
 
             "#closeButton click": function(element, event) {
@@ -533,7 +536,7 @@ define(
             },
 
             ".continue click": function() {
-                $('#gotoshare').addClass('hide');
+                $('#couponlistmask').addClass('hide');
             },
 
             //点击分享
@@ -569,12 +572,7 @@ define(
 
                 } else if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
-                    var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                    var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                    var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                    var link = "http://m.sfht.com/81.html";
-                    var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                    SFWeixin.share81(title, desc, desc2, link, imgUrl);
+                    this.weixinShare();
                 }
 
             },
@@ -589,12 +587,7 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
-                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                var link = "http://m.sfht.com/81.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                SFWeixin.share81(title, desc, desc2, link, imgUrl);
+                this.weixinShare();
             },
 
             //取消分享按钮
@@ -641,8 +634,14 @@ define(
                     $("#gotoshare").removeClass("hide");
                     $("#gotoshare").addClass("show");
 
-                    $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
-                    $("#gotoshare").find("#share").show();
+
+                    if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
+                        $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
+                        $("#gotoshare").find("#share").show();
+                    } else {
+                        $("#gotoshare").find("#gotoshareh2").text("分享活动至朋友圈或者微信好友，拉上闺蜜一起来！ 727上顺丰海淘， 扒光了等你来抢！");
+                        $("#gotoshare").find("#share").hide();
+                    }
 
                     element.removeClass("disable");
                     return false;
