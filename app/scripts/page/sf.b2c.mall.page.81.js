@@ -123,6 +123,7 @@ define(
                 if (notGetcoupon81) {
                     var notGetcoupon81Num = notGetcoupon81.toString().split(",");
                     $("#couponnum").text(notGetcoupon81Num.length);
+                    $("#getcoupon").removeClass("disabled");
                 }
 
                 this.hideShare();
@@ -720,9 +721,6 @@ define(
 
                         store.set("notGetcoupon81" + couponid, startTime + "|" + endTime + "|" + desc)
 
-                        $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
-
-
                         var result = $(that.getTooltipHTML().replace("{0}", desc.split(",")[0] + " Get√"));
                         setTimeout(function() {
                             result.addClass("active");
@@ -731,6 +729,11 @@ define(
                         $('body').append(result);
                         setTimeout(function() {
                             result.remove();
+                            if ($("#getcoupon").hasClass("disabled")) {
+                                $("#getcoupon").removeClass("disabled");
+                            }
+
+                            $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
                         }, 2000)
 
                     })
