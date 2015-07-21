@@ -85,15 +85,6 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.fn(options.contexts || this);
           }
         },
-        'sf-showSellingPrice': function(isPromotion, activitySoldOut, options) {
-          var isPromotion = isPromotion();
-          var activitySoldOut = activitySoldOut();
-          if (isPromotion && !activitySoldOut) {
-            return options.fn(options.contexts || this);
-          } else {
-            return options.inverse(options.contexts || this);
-          }
-        },
         //促销展示
         'sf-showActivity': function(activityType, options) {
           if (activityType() != 'FLASH') {
@@ -131,17 +122,18 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
         //是否展示秒杀商品标示
-        'isShowSeckillIcon': function(activityType, options) {
+        'isSeckillActivity': function(activityType, options) {
           if (activityType() == 'SECKILL') {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
           }
         },
-        //秒杀商品活动结束标示
-        'isShowGrayClass': function(soldOut, options) {
+        //秒杀活动结束和商品售完，标示变灰
+        'isShowGrayClass': function(soldOut, endTime, options) {
+          var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
           var activitySoldOut = soldOut();
-          if (activitySoldOut) {
+          if (activitySoldOut || endTime() - currentServerTime < 0) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -156,18 +148,33 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
         //活动未开始，和商品已抢完，活动已经结束直接原价购买
-        'isBegin': function(startTime, endTime, activitySoldOut, options) {
-          var currentClientTime = new Date().getTime() + DISTANCE; //服务器时间
+        'isBegin': function(startTime, endTime, soldOut, options) {
+          var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
           var startTime = startTime();
           var endTime = endTime();
-          var activitySoldOut = activitySoldOut();
+          var soldOut = soldOut();
           //new Date().getTime() + distance < startTime
-          if (startTime > currentClientTime || activitySoldOut || endTime - currentClientTime < 0) {
+          if (startTime > currentServerTime || soldOut || endTime - currentServerTime < 0) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
           }
         },
+        //展示活动结束蒙层
+        'isOverTime': function(endTime, options) {
+          var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
+          if (endTime() - currentServerTime < 0) {
+            return options.fn(options.contexts || this);
+          }
+        },
+        'isShowText': function(startTime, endTime, options) {
+          var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
+          if (startTime() > currentServerTime) {
+            return '距开始：'
+          } else if (endTime() - currentServerTime > 0) {
+            return '距结束：'
+          }
+        }
       },
 
       /**
@@ -529,8 +536,8 @@ define('sf.b2c.mall.product.detailcontent', [
             document.title = that.options.detailContentInfo.itemInfo.basicInfo.title + ",顺丰海淘！";
 
             that.options.detailContentInfo = that.adapter.format(that.options.detailContentInfo);
-            // that.options.detailContentInfo.activityInfo = new can.Map(that.options.detailContentInfo.activityInfo || {});
-            // that.options.detailContentInfo.priceInfo = new can.Map(that.options.detailContentInfo.priceInfo || {});
+            that.options.detailContentInfo.activityInfo = new can.Map(that.options.detailContentInfo.activityInfo || {});
+            that.options.detailContentInfo.priceInfo = new can.Map(that.options.detailContentInfo.priceInfo || {});
 
             //存放起来用于微信的图片浏览和放大效果
             that.options.sliderImgs = [];
@@ -709,8 +716,8 @@ define('sf.b2c.mall.product.detailcontent', [
                 //处理活动链接
                 element.h5ActivityLink = element.h5ActivityLink || "javascript:void(0);";
 
-                // that.options.detailContentInfo.priceInfo = new can.Map(that.options.detailContentInfo.priceInfo || {});
-                // that.options.detailContentInfo.activityInfo = new can.Map(that.options.detailContentInfo.activityInfo || {});
+                that.options.detailContentInfo.priceInfo = new can.Map(that.options.detailContentInfo.priceInfo || {});
+                that.options.detailContentInfo.activityInfo = new can.Map(that.options.detailContentInfo.activityInfo || {});
 
                 that.options.detailContentInfo.activityInfo.attr("activityType", element.activityType);
                 that.options.detailContentInfo.activityInfo.attr("activityId", element.activityId);
