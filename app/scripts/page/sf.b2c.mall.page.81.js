@@ -337,8 +337,8 @@ define(
             },
 
             getcouponmaskHTMLBefore: function() {
-                return '<div class="dialog-phone mask" id="getcouponmask">' +
-                    '<div class="dialog-b center">' +
+                return '<div class="dialog-phone mask" id="getcouponmask" style="position: absolute;height: 150%;">' +
+                    '<div class="dialog-b center" style="top: 0;-webkit-transform: translate(-50%, 32px);">' +
                     '<div class="register-h" id="getcouponmaskcloseButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">' +
                     '<a class="btn btn-close dialog-close" href="#">X</a>' +
                     '</div>' +
