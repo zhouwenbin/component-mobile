@@ -342,6 +342,9 @@ define(
                     $("#couponlist").html(result);
 
                 }
+                setInterval(function(){
+                    $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
+                },1000);
             },
 
             getcouponmaskHTMLBefore: function() {

@@ -535,8 +535,10 @@ img{
 }
 .coupons{
 		height: 400px;
-		overflow-y: auto;
-		-webkit-overflow-scroll:touch;
+		overflow-y: hidden;
+	}
+	.coupons li{
+		position: relative;
 	}
 @media (max-height: 832px) {
     .page1 .photo{
