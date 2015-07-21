@@ -26,7 +26,6 @@ define(
     function(can, $, cookie, touch, store, Fastclick, _, moment, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
-        SFWeixin.share81();
 
         var xingNan = 1000;
         var xiaoXiu = 1;
@@ -44,18 +43,7 @@ define(
         // document.body.appendChild(stats.domElement);
 
         var young = can.Control.extend({
-            ".people .btn click": function() {
-                //微信分享
-                if (SFFn.isMobile.WeChat()) {
-                    $("#sharearea").show();
-                }
-                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                var link = "http://m.sfht.com/81.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                SFWeixin.share81(title, desc, desc2, link, imgUrl);
-            },
+
             /**
              * @description 初始化方法，当调用new时会执行init方法
              * @param  {Dom} element 当前dom元素
@@ -63,6 +51,7 @@ define(
              */
             init: function(element, options) {
                 // stats.begin();
+                this.weixinShare();
 
                 $('.wp-inner').fullpage();
                 $.fn.fullpage.stop();
@@ -94,7 +83,7 @@ define(
                 //loading效果
                 setTimeout(function() {
                     $('.young-loading').hide();
-                }, 3000);
+                }, 6000);
 
                 //播放/关闭音乐
                 $('.icon-audio').click(function() {
@@ -231,57 +220,112 @@ define(
                 return voteTimes;
             },
 
+            ".people .btn click": function() {
+                //微信分享
+                if (SFFn.isMobile.WeChat()) {
+                    $("#sharearea").show();
+                }
+                this.weixinShare();
+            },
+
+            weixinShare: function() {
+                var title = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc2 = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var link = "http://m.sfht.com/81.html";
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
+                SFWeixin.share81(title, desc, desc2, link, imgUrl);
+            },
+
+
 
             '#getcoupon click': function() {
                 var result = "";
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
+                    result = this.getcouponmaskHTMLBefore();
 
                     $("#couponlistmask").addClass("hide");
                     $("#couponlistmask").removeClass("show");
 
-                    $("#getcouponmask").removeClass("hide");
-                    $("#getcouponmask").addClass("show");
+                    var notGetcoupon81 = notGetcoupon81.toString().split(",");
+                    _.each(notGetcoupon81, function(item) {
+                        var coupon = store.get("notGetcoupon81" + item);
+                        var couponArr = coupon.split("|");
+                        var startTime = couponArr[0];
+                        var endTime = couponArr[1];
+                        var desc = couponArr[2];
+                        var title = "",
+                            price = "",
+                            tip = "";
+                        if (desc != "") {
+                            var descArr = desc.split(",");
+                            if (descArr[0]) {
+                                title = descArr[0];
+                            }
+
+                            if (descArr[1]) {
+                                price = descArr[1] / 100;
+                            }
+
+                            if (descArr[2]) {
+                                tip = descArr[2];
+                            }
+                        }
+
+                        result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + price + '</span></div><div class="coupons-c2r2">' + tip + '</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + title + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + startTime + '-' + endTime + '</p></div></li>');
+
+                    })
+
+                    result += this.getcouponmaskHTMLAfter();
+
+                    $('body').append($(result));
 
                     var mobile = store.get("mobile81");
                     if (mobile) {
                         $("#phoneNum").val(mobile);
                     }
 
-                    var notGetcoupon81 = store.get("notGetcoupon81");
-                    if (notGetcoupon81) {
-
-                        var notGetcoupon81 = notGetcoupon81.toString().split(",");
-                        _.each(notGetcoupon81, function(item) {
-                            var coupon = store.get("notGetcoupon81" + item);
-                            var couponArr = coupon.split("|");
-                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
-                        })
-
-                        $("#couponlistnotget").html(result);
-                    }
-
-
-                    $("#phoneNum")[0].focus();
+                    $("#getcouponbymobile")[0].focus();
 
                 } else {
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
-                    $("#getcouponmask").removeClass("show");
-                    $("#getcouponmask").addClass("hide");
 
                     $("#couponlistmask").removeClass("hide");
                     $("#couponlistmask").addClass("show");
                     var result = "";
 
                     if (alreadyGetcoupon81) {
-                        $("#couponlisttitle").html("抽到的现金券已放到手机号(" + store.get('mobile81') + ")账户中，请使用该账号登陆顺丰海淘(sfht.com)使用吧!");
+                        $(".buttonarea").hide();
+                        $("#couponlisttitle").html("礼品券已放入账号:" + store.get('mobile81'));
 
                         var alreadyGetcoupon81 = alreadyGetcoupon81.toString().split(",");
                         _.each(alreadyGetcoupon81, function(item) {
                             var coupon = store.get("notGetcoupon81" + item);
                             var couponArr = coupon.split("|");
-                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
+                            var startTime = couponArr[0];
+                            var endTime = couponArr[1];
+                            var desc = couponArr[2];
+                            var title = "",
+                                price = "",
+                                tip = "";
+                            if (desc != "") {
+                                var descArr = desc.split(",");
+                                if (descArr[0]) {
+                                    title = descArr[0];
+                                }
+
+                                if (descArr[1]) {
+                                    price = descArr[1] / 100;
+                                }
+
+                                if (descArr[2]) {
+                                    tip = descArr[2];
+                                }
+                            }
+
+                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + price + '</span></div><div class="coupons-c2r2">' + tip + '</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + title + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + startTime + '-' + endTime + '</p></div></li>');
                         })
                     } else {
                         result += ('<p style="font-size:26px">暂无奖品哦，赶紧去扒吧~</p>');
@@ -289,7 +333,25 @@ define(
 
                     $("#couponlist").html(result);
                 }
+            },
 
+            getcouponmaskHTMLBefore: function() {
+                return '<div class="dialog-phone mask" id="getcouponmask">' +
+                    '<div class="dialog-b center">' +
+                    '<div class="register-h" id="getcouponmaskcloseButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">' +
+                    '<a class="btn btn-close dialog-close" href="#">X</a>' +
+                    '</div>' +
+                    '<h2>输入您的手机号码领取现金券</h2>' +
+                    '<input type="text" value="" id="phoneNum">' +
+                    '<span class="text-error" id="username-error-tips"></span>' +
+                    '<button class="btn" id="getcouponbymobile">确定</button>' +
+                    '<ul id="couponlistnotget" class="coupons">';
+            },
+
+            getcouponmaskHTMLAfter: function() {
+                return '</ul>' +
+                    '</div>' +
+                    '</div>'
             },
 
             '#getcouponbymobile click': function(element, event) {
@@ -302,6 +364,12 @@ define(
                 if (!isTelNum) {
                     $("#username-error-tips").html('请输入正确手机号码~');
                     return false;
+                }
+
+                // 如果当前手机号和之前输入的不一致，则要清空之前的手机号领取的历史券
+                var historyMobile81 = store.get("mobile81");
+                if (mobile != historyMobile81) {
+                    store.remove("alreadyGetcoupon81");
                 }
 
                 store.set("mobile81", mobile);
@@ -331,32 +399,57 @@ define(
                                 store.set("alreadyGetcoupon81", notGetcoupon81);
                             }
 
-                            store.remove("notGetcoupon81");
-
                             // 清空未领取为零
                             $("#couponnum").text(0);
 
                             // 弹出新层
                             alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
-                            $("#getcouponmask").removeClass("show");
-                            $("#getcouponmask").addClass("hide");
+                            $("#getcouponmask").remove();
 
                             $("#couponlistmask").removeClass("hide");
                             $("#couponlistmask").addClass("show");
                             alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
 
-                            $("#couponlisttitle").html("抽到的现金券已放到手机号(" + store.get('mobile81') + ")账户中，请使用该账号登陆顺丰海淘(sfht.com)使用吧!");
+                            $("#couponlisttitle").html("礼品券已放入账号:" + store.get('mobile81'));
 
                             var result = "";
-                            _.each(alreadyGetcoupon81, function(item) {
-                                var coupon = store.get("notGetcoupon81" + item);
+                            notGetcoupon81 = notGetcoupon81.split(",");
+                            _.each(notGetcoupon81, function(couponItem) {
+                                var coupon = store.get("notGetcoupon81" + couponItem);
+
                                 var couponArr = coupon.split("|");
-                                result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '</p></div></li>');
+                                var startTime = couponArr[0];
+                                var endTime = couponArr[1];
+                                var desc = couponArr[2];
+                                var title = "",
+                                    price = "",
+                                    tip = "";
+                                if (desc != "") {
+                                    var descArr = desc.split(",");
+                                    if (descArr[0]) {
+                                        title = descArr[0];
+                                    }
+
+                                    if (descArr[1]) {
+                                        price = descArr[1] / 100;
+                                    }
+
+                                    if (descArr[2]) {
+                                        tip = descArr[2];
+                                    }
+                                }
+
+                                result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + price + '</span></div><div class="coupons-c2r2">' + tip + '</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + title + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + startTime + '-' + endTime + '</p></div></li>');
+
                             })
 
                             $("#account").text(mobile);
 
                             $("#couponlist").html(result);
+
+                            $(".buttonarea").show();
+
+                            store.remove("notGetcoupon81");
                         } else {
                             $("#username-error-tips").html('领取失败');
                         }
@@ -417,17 +510,15 @@ define(
 
             },
 
-            //进入活动页面
-            "#huodong click": function() {
-                window.location.href = "http://m.sfht.com/activity/439.html";
-
-                $('#success').addClass('hide');
-                $('#audio')[0].pause();
-            },
-
             //继续扒小鲜肉
             "#goOn click": function() {
                 $('#success').addClass('hide');
+            },
+
+            ".gotosee click": function(element, event) {
+                event && event.preventDefault();
+                $('#audio')[0].pause();
+                window.location.href = "http://m.sfht.com/activity/494.html";
             },
 
             "#closeButton click": function(element, event) {
@@ -435,8 +526,17 @@ define(
                 $('.dialog-phone').addClass('hide');
             },
 
+            "#getcouponmaskcloseButton click": function(element, event) {
+                event && event.preventDefault();
+                $('#getcouponmask').remove();
+            },
+
             "#gotoshare .btn-close click": function() {
                 $('#gotoshare').addClass('hide');
+            },
+
+            ".continue click": function() {
+                $('#couponlistmask').addClass('hide');
             },
 
             //点击分享
@@ -472,12 +572,7 @@ define(
 
                 } else if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
-                    var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                    var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                    var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                    var link = "http://m.sfht.com/81.html";
-                    var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                    SFWeixin.share81(title, desc, desc2, link, imgUrl);
+                    this.weixinShare();
                 }
 
             },
@@ -492,12 +587,7 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
-                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                var link = "http://m.sfht.com/81.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                SFWeixin.share81(title, desc, desc2, link, imgUrl);
+                this.weixinShare();
             },
 
             //取消分享按钮
@@ -544,8 +634,14 @@ define(
                     $("#gotoshare").removeClass("hide");
                     $("#gotoshare").addClass("show");
 
-                    $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
-                    $("#gotoshare").find("#share").show();
+
+                    if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
+                        $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
+                        $("#gotoshare").find("#share").show();
+                    } else {
+                        $("#gotoshare").find("#gotoshareh2").text("分享活动至朋友圈或者微信好友，拉上闺蜜一起来！ 727上顺丰海淘， 扒光了等你来抢！");
+                        $("#gotoshare").find("#share").hide();
+                    }
 
                     element.removeClass("disable");
                     return false;
@@ -594,14 +690,12 @@ define(
                             store.set("notGetcoupon81", couponid);
                         }
 
-                        var format = 'YYYY-MM-DD HH:mm';
+                        var format = 'YYYY-MM-DD';
                         var startTime = moment(data.startTime).format(format);
                         var endTime = moment(data.endTime).format(format);
-                        var useNotice = data.useNotice ? data.useNotice : "";
-                        var reduceCost = data.reduceCost / 100;
-                        var leastCost = data.leastCost / 100;
+                        var desc = data.useInstruction ? data.useInstruction : "";
 
-                        store.set("notGetcoupon81" + couponid, reduceCost + "|" + leastCost + "|" + data.title + "|" + startTime + "|" + endTime + "|" + useNotice)
+                        store.set("notGetcoupon81" + couponid, startTime + "|" + endTime + "|" + desc)
 
                         $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
 
@@ -644,7 +738,6 @@ define(
 
 
                 $("#footerNum").text(parseInt($("#footerNum").text(), 10) - 1);
-
 
                 $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + voteNo + '/' + tabIndex + '.jpg');
 
