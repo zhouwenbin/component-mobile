@@ -120,9 +120,14 @@ define(
                 }
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
+                var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
                 if (notGetcoupon81) {
                     var notGetcoupon81Num = notGetcoupon81.toString().split(",");
                     $("#couponnum").text(notGetcoupon81Num.length);
+                    $("#getcoupon").removeClass("disabled");
+                }
+
+                if (alreadyGetcoupon81) {
                     $("#getcoupon").removeClass("disabled");
                 }
 
@@ -242,6 +247,7 @@ define(
 
             '#getcoupon click': function() {
                 var result = "";
+                $('body').css("height","150%");
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
@@ -531,11 +537,14 @@ define(
             "#closeButton click": function(element, event) {
                 event && event.preventDefault();
                 $('.dialog-phone').addClass('hide');
+                $('body').css("height","100%");
             },
 
             "#getcouponmaskcloseButton click": function(element, event) {
                 event && event.preventDefault();
                 $('#getcouponmask').remove();
+
+                $('body').css("height","100%");
             },
 
             "#gotoshare .btn-close click": function() {
@@ -544,6 +553,7 @@ define(
 
             ".continue click": function() {
                 $('#couponlistmask').addClass('hide');
+                $('body').css("height","100%");
             },
 
             //点击分享
