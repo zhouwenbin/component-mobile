@@ -7,8 +7,8 @@
 
 .search-box-main { opacity: 0; position: absolute; top: 0; z-index: -1; width: 100%;}
 .search-box-main.active { opacity: 1;z-index: 1; }
-.search-box-header { position: relative;display: flex; background-color: #fff; height: 50px; width: 100%; padding: 10px 0 10px 15px;}
-.search-box-header .search-cancel-btn { display:block; width: 60px; height: 30px; line-height: 30px; text-align: center; color: #333;}
+.search-box-header { position: relative;display: flex; background-color: #fff; height: 50px; width: 100%; padding: 10px 15px;}
+.search-box-header .search-cancel-btn { display:block;  margin-left:15px; width: 30px; height: 30px; line-height: 30px; text-align: center; color: #333;}
 .search-box-header form {flex:1; display: block;;}
 .search-box-header input { font-size:14px; padding: 7px 7px 7px 29px; border: none; background-color: #f2f2f2; border-radius: 4px; height:30px; width: 100%;}
 .search-box-header .zoomIcon { position: absolute; left: 22px; top: 18px;}
