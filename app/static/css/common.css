@@ -1837,12 +1837,13 @@ body {
   background-color: #fff;
   height: 50px;
   width: 100%;
-  padding: 10px 0 10px 15px;
+  padding: 10px 15px;
 }
 
 .search-box-header .search-cancel-btn {
   display: block;
-  width: 60px;
+  margin-left: 15px;
+  width: 30px;
   height: 30px;
   line-height: 30px;
   text-align: center;
