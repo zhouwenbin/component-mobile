@@ -14,10 +14,11 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
-    'sf.b2c.mall.widget.loading'
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.module.header'
   ],
   function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode,
-    template_center_coupon, SFSwitcher, SFHybrid, SFNav, SFLoading) {
+    template_center_coupon, SFSwitcher, SFHybrid, SFNav, SFLoading, SFHeader) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -205,7 +206,7 @@ define(
 
     switcher.register('web', function() {
       new coupon('.sf-b2c-mall-coupon');
-      new SFNav('.sf-b2c-mall-nav');
+      //new SFNav('.sf-b2c-mall-nav');
     });
 
     switcher.register('app', function() {

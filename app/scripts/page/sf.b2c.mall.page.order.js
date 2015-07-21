@@ -53,7 +53,7 @@ define(
       loadingCtrl.show();
 
       new SFOrder('#order');
-      new SFNav('.sf-b2c-mall-nav');
+      //new SFNav('.sf-b2c-mall-nav');
     });
 
     switcher.register('app', function() {

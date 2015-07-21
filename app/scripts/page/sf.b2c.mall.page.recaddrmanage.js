@@ -9,9 +9,10 @@ define(
     'sf.weixin',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.module.header'
   ],
 
-  function(can, $, SFFrameworkComm, SFRecaddrmanage, SFWeixin, SFConfig, SFLoading) {
+  function(can, $, SFFrameworkComm, SFRecaddrmanage, SFWeixin, SFConfig, SFLoading, SFHeader) {
 
     SFFrameworkComm.register(3);
 
