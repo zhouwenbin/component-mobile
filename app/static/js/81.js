@@ -59,7 +59,10 @@ $(function(){
 	$('.dialog-success .btn').click(function(){
 		$('.dialog-success').addClass('hide');
 	})
-
+	//扒衣
+	$('.page3-r2 .a1').click(function(){
+		$('.tooltip').addClass('active');
+	})
 
 	
 	

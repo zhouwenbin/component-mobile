@@ -1,7 +1,4 @@
 @import 'utils/variables';
-@import 'base/reset';
-@import 'base/base';
-@import 'base/helper';
 $people-num:15;
 body{
 	width: 640px;
@@ -318,6 +315,7 @@ img{
 	border-radius: 5px;
 	text-align: center;
 	padding-top: 22px;
+	width: 290px;
 }
 .page3-r2 div{
 	font-size: 24px;
@@ -329,13 +327,31 @@ img{
 	color: rgba(255,255,255,0.5);
 }
 .page3-r2 .a1{
-	width: 380px;
 	background: #dd3f45;
 }
 .page3-r2 .a2{
-	width: 196px;
-	background: #fdab2c url(#{$bg-url}81/icon-coupon.png) no-repeat center;
-	text-indent: -999em;
+	background: #fdab2c url(#{$bg-url}81/icon-coupon.png) no-repeat 102px center;
+	padding-left: 143px;
+	color: #fff;
+	font-size: 24px;
+	text-align: left;
+	padding-top: 35px;
+	position: relative;
+}
+.page3-r2 .a2.disabled{
+	background-color: #aaa;
+}
+.page3 .bubble{
+	background:  url(#{$bg-url}81/bubble.png) no-repeat;
+	width: 55px;
+	height: 57px;
+	line-height: 57px;
+	text-align: center;
+	color: #fff;
+	font-size: 24px;
+	position: absolute;
+	left: -10px;
+	top: -14px;
 }
 .page3 h2{
 	font-size: 27px;
@@ -461,7 +477,7 @@ img{
 }
 .dialog-success h2{
 	font-size: 28px;
-	color: #e54588;
+	color: #dd3f45;
 	margin-bottom: 10px;
 	margin-top: 24px;
 }
@@ -503,6 +519,17 @@ img{
 	100%{
 		stroke-dashoffset: 0;
 	}
+}
+.tooltip{
+	opacity: 0;
+	transform:translate(-50%,-50%) scale(1);
+	transition:opacity 0.5s,
+				transform 0.5s 1s;
+}
+.tooltip.active{
+	opacity: 1;
+	transform:translate(-80px,260px) scale(0);
+	
 }
 @media (max-height: 832px) {
     .page1 .photo{
