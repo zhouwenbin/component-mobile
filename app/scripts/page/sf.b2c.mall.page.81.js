@@ -247,7 +247,6 @@ define(
 
             '#getcoupon click': function() {
                 var result = "";
-                $('body').css("height","150%");
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
@@ -296,6 +295,8 @@ define(
 
                     $("#getcouponbymobile")[0].focus();
 
+                    $("#couponlist").css("maxHeight", (window.screen.height - 150));
+
                 } else {
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
 
@@ -339,12 +340,13 @@ define(
                     }
 
                     $("#couponlist").html(result);
+
                 }
             },
 
             getcouponmaskHTMLBefore: function() {
-                return '<div class="dialog-phone mask" id="getcouponmask" style="position: absolute;height: 150%;">' +
-                    '<div class="dialog-b center" style="top: 0;-webkit-transform: translate(-50%, 32px);">' +
+                return '<div class="dialog-phone mask" id="getcouponmask">' +
+                    '<div class="dialog-b center" >' +
                     '<div class="register-h" id="getcouponmaskcloseButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">' +
                     '<a class="btn btn-close dialog-close" href="#">X</a>' +
                     '</div>' +
@@ -352,7 +354,7 @@ define(
                     '<input type="text" value="" id="phoneNum">' +
                     '<span class="text-error" id="username-error-tips"></span>' +
                     '<button class="btn" id="getcouponbymobile">确定</button>' +
-                    '<ul id="couponlistnotget" class="coupons">';
+                    '<ul id="couponlistnotget" class="coupons" style="overflow:auto">';
             },
 
             getTooltipHTML: function() {
@@ -537,14 +539,12 @@ define(
             "#closeButton click": function(element, event) {
                 event && event.preventDefault();
                 $('.dialog-phone').addClass('hide');
-                $('body').css("height","100%");
             },
 
             "#getcouponmaskcloseButton click": function(element, event) {
                 event && event.preventDefault();
                 $('#getcouponmask').remove();
 
-                $('body').css("height","100%");
             },
 
             "#gotoshare .btn-close click": function() {
@@ -553,7 +553,6 @@ define(
 
             ".continue click": function() {
                 $('#couponlistmask').addClass('hide');
-                $('body').css("height","100%");
             },
 
             //点击分享
