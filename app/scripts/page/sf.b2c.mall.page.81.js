@@ -26,7 +26,7 @@ define(
     function(can, $, cookie, touch, store, Fastclick, _, moment, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
-        SFWeixin.shareYoung();
+        SFWeixin.share81();
 
         var xingNan = 1000;
         var xiaoXiu = 1;
@@ -49,11 +49,12 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
-                var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
-                var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
+                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
                 var link = "http://m.sfht.com/ouba.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                SFWeixin.shareYoung(title, desc, link, imgUrl);
+                SFWeixin.share81(title, desc, desc2, link, imgUrl);
             },
             /**
              * @description 初始化方法，当调用new时会执行init方法
@@ -107,6 +108,14 @@ define(
                         audio.addClass('active');
                     }
                 })
+
+                // 每天进来是五个
+                var currentDateVote = store.get("voteDate" + new Date().getDate());
+                if(!currentDateVote) {
+                    store.remove("totalVoteNum81");
+                    store.remove("notGetcoupon81");
+
+                }
 
                 var alreadyVoteNum = store.get("totalVoteNum81");
                 if (alreadyVoteNum) {
@@ -413,11 +422,12 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
-                var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
-                var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
+                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
                 var link = "http://m.sfht.com/ouba.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                SFWeixin.shareYoung(title, desc, link, imgUrl);
+                SFWeixin.share81(title, desc, desc2, link, imgUrl);
             },
 
             "#share1 click": function() {
@@ -426,11 +436,12 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
-                var title = "姐妹们，一起帮忙扒" + (index + 1) + "号~";
-                var desc = "顺丰海淘裸价狂欢，4个字——划算到爆。";
+                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
                 var link = "http://m.sfht.com/ouba.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                SFWeixin.shareYoung(title, desc, link, imgUrl);
+                SFWeixin.share81(title, desc, desc2, link, imgUrl);
             },
 
             //取消分享按钮
