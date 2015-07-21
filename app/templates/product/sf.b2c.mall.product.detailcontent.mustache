@@ -42,7 +42,7 @@
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
       <div class="goods-r4">
         {{! 如果是秒杀活动活动价格展示秒杀价，从activityInfo中取展示价格 }}
-        <strong class="goods-price"><small>¥</small>{{sf-isSecKill activityInfo.activityType activityInfo.activityPrice priceInfo.sellingPrice}}</strong>
+        <strong class="goods-price" {{#sellPriceIsGray activityInfo.activityType priceInfo.soldOut activityInfo.endTime}}style="color:#999;"{{/sellPriceIsGray}}><small>¥</small>{{sf-isSecKill activityInfo.activityType activityInfo.activityPrice priceInfo.sellingPrice}}</strong>
         （含税）{{#sf-showOriginPrice activityInfo.activityType priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>
         {{/sf-showOriginPrice}}
 

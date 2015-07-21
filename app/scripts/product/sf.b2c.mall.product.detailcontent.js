@@ -135,8 +135,13 @@ define('sf.b2c.mall.product.detailcontent', [
           var activitySoldOut = soldOut();
           if (activitySoldOut || endTime() - currentServerTime < 0) {
             return options.fn(options.contexts || this);
-          } else {
-            return options.inverse(options.contexts || this);
+          }
+        },
+        'sellPriceIsGray': function(activityType, soldOut, endTime, options) {
+          var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
+          var activitySoldOut = soldOut();
+          if (activityType() == 'SECKILL' && (activitySoldOut || endTime() - currentServerTime < 0)) {
+            return options.fn(options.contexts || this);
           }
         },
         //如果该商品活动类型为秒杀，活动价格则从activityInfo中取展示价格
@@ -1410,7 +1415,10 @@ define('sf.b2c.mall.product.detailcontent', [
           this.options.detailContentInfo.priceInfo.attr("timeIcon", "");
         }
       },
-
+      refreshPage: function() {
+        clearInterval(this.interval);
+        this.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+      },
       /**
        * [showCountDown 参考倒计时]
        * @param  {[type]} currentTime
