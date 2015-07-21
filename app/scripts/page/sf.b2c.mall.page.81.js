@@ -295,7 +295,9 @@ define(
 
                     $("#getcouponbymobile")[0].focus();
 
-                    $("#couponlist").css("maxHeight", (window.screen.height - 150));
+                    setInterval(function(){
+                        $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
+                    },1000);
 
                 } else {
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
@@ -341,10 +343,12 @@ define(
 
                     $("#couponlist").html(result);
 
+                    setInterval(function(){
+                        $('#couponlist li:first-child').appendTo('#couponlist');
+                    },1000);
+
                 }
-                setInterval(function(){
-                    $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
-                },1000);
+
             },
 
             getcouponmaskHTMLBefore: function() {
@@ -357,7 +361,7 @@ define(
                     '<input type="text" value="" id="phoneNum">' +
                     '<span class="text-error" id="username-error-tips"></span>' +
                     '<button class="btn" id="getcouponbymobile">确定</button>' +
-                    '<ul id="couponlistnotget" class="coupons" style="overflow:auto">';
+                    '<ul id="couponlistnotget" class="coupons" style="overflow:hidden">';
             },
 
             getTooltipHTML: function() {
@@ -466,6 +470,10 @@ define(
                             $("#couponlist").html(result);
 
                             $(".buttonarea").show();
+
+                            setInterval(function(){
+                                $('#couponlist li:first-child').appendTo('#couponlist');
+                            },1000);
 
                             store.remove("notGetcoupon81");
                         } else {
