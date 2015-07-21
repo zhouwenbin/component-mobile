@@ -154,6 +154,6 @@ define(
     });
 
     // render导航
-    new SFNav('.sf-b2c-mall-nav');
+    //new SFNav('.sf-b2c-mall-nav');
     new center('.sf-b2c-mall-center');
   })

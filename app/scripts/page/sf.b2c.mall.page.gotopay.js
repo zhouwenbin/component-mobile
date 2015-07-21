@@ -16,11 +16,12 @@ define(
     'text!template_order_gotopay',
     'sf.env.switcher',
     'sf.hybrid',
-    'sf.b2c.mall.component.nav'
+    'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.module.header'
   ],
 
   function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn,
-    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid, SFNav) {
+    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid, SFNav, SFHeader) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -244,7 +245,7 @@ define(
 
     switcher.register('web', function() {
       new SFGotoPay('.sf-b2c-mall-gotopay');
-      new SFNav('.sf-b2c-mall-nav');
+      //new SFNav('.sf-b2c-mall-nav');
     });
 
     switcher.register('app', function() {

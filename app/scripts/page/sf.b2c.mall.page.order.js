@@ -12,10 +12,11 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
-    'sf.b2c.mall.widget.loading'
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.module.header'
   ],
   function(can, $, Fastclick, SFFrameworkComm, SelectReceiveAddr, SFWeixin, SFConfig,
-    SFSwitcher, SFHybrid, SFNav, SFLoading) {
+    SFSwitcher, SFHybrid, SFNav, SFLoading, SFHeader) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);

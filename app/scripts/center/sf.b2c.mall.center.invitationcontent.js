@@ -17,12 +17,16 @@ define('sf.b2c.mall.center.invitationcontent', [
     'sf.b2c.mall.api.user.getCashActInfo',
     'sf.b2c.mall.api.user.getCashActTransList',
     'sf.b2c.mall.api.user.rqCash',
+    'sf.b2c.mall.widget.loading',
     'sf.hybrid'
   ],
-  function(can, $, cookie, Fastclick, helpers, SFFn, moment, SFWeixin, SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, chart, SFGetCashActInfo, SFGetCashActTransList, SFRqCash, SFHybrid) {
+  function(can, $, cookie, Fastclick, helpers, SFFn, moment, SFWeixin, 
+    SFMessage, SFConfig, SFGetUserInfo, template_center_invitationcontent, chart, 
+    SFGetCashActInfo, SFGetCashActTransList, SFRqCash, SFLoading, SFHybrid) {
 
     Fastclick.attach(document.body);
 
+    var loadingCtrl = new SFLoading();
     var bagid = "286";
     var userid = null;
 
@@ -115,6 +119,7 @@ define('sf.b2c.mall.center.invitationcontent', [
             var renderFn = can.mustache(template_center_invitationcontent);
             that.options.html = renderFn(that.data, that.helpers);
             that.element.html(that.options.html);
+            loadingCtrl.hide();
             that.supplement();
           })
           .fail(function(error) {
