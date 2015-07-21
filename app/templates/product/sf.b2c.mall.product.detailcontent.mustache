@@ -43,7 +43,7 @@
       <div class="goods-r4">
         {{! 如果是秒杀活动活动价格展示秒杀价，从activityInfo中取展示价格 }}
         <strong class="goods-price"><small>¥</small>{{sf-isSecKill activityInfo.activityType activityInfo.activityPrice priceInfo.sellingPrice}}</strong>
-        （含税）{{#sf-showOriginPrice priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>
+        （含税）{{#sf-showOriginPrice activityInfo.activityType priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>
         {{/sf-showOriginPrice}}
 
         {{#sf-isYZYW priceInfo.productShape}}约{{priceInfo.currencySymbol}}{{sf.price priceInfo.localSellingPrice}}{{/sf-isYZYW}}
@@ -180,7 +180,7 @@
   {{! 活动未开始，和商品已抢完，活动已经结束直接原价购买 }}
     {{#isBegin activityInfo.startTime activityInfo.endTime priceInfo.soldOut}}
     <section class="nav-cart">
-      <div class="nav-cart-r1"><a href="http://m.sfht.com/detail/{{priceInfo.referItemId}}.html" class="btn btn-danger">原价购</a></div>
+      <div class="nav-cart-r1"><a href="http://m.sfht.com/detail/{{activityInfo.referItemId}}.html" class="btn btn-danger">原价购</a></div>
     </section>
     {{/isBegin}}
     {{! 活动进行中，立即抢购，直接去订单确认页 }}

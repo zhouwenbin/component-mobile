@@ -80,8 +80,8 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
 
-        'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
-          if (sellingPrice() < originPrice() || originPrice() == 0) {
+        'sf-showOriginPrice': function(activityType, sellingPrice, originPrice, options) {
+          if (sellingPrice() < originPrice() || originPrice() == 0 || activityType() == 'SECKILL') {
             return options.fn(options.contexts || this);
           }
         },
@@ -724,6 +724,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
                 //获取活动价格
                 if (element.activityType == "SECKILL") {
+                  that.options.detailContentInfo.activityInfo.attr("referItemId", element.itemActivityInfo.referItemId);
                   that.options.detailContentInfo.activityInfo.attr("activityPrice", element.itemActivityInfo.activityPrice);
                   that.options.detailContentInfo.activityInfo.attr("startTime", element.startTime);
                   that.options.detailContentInfo.activityInfo.attr("endTime", element.endTime);
