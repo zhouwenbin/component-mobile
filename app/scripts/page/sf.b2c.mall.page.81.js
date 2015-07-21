@@ -315,6 +315,9 @@ define(
                     .sendRequest()
                     .done(function(data) {
                         if (data.value != null && data.value != "") {
+
+                            store.set("notGetcoupon81", data.value);
+
                             //转换数据：未领取为已领取
                             var notGetcoupon81 = store.get("notGetcoupon81");
 
@@ -472,7 +475,7 @@ define(
             ".page3-r2  .a1 click": function(element, event) {
                 // stats.begin();
 
-                if (element.hasClass("disable")){
+                if (element.hasClass("disable")) {
                     return false;
                 }
 
@@ -511,15 +514,15 @@ define(
                 }
 
                 // 只能把十次
-                var totalVoteNum81notclear = store.get("totalVoteNum81notclear");
-                if (totalVoteNum81notclear && totalVoteNum81notclear >= 11) {
-                    $("#randomText").text("只能扒十次哦~");
-                    $("#random").css("display", "block");
-                    setTimeout(' $("#random").css("display","none")', 2000);
+                // var totalVoteNum81notclear = store.get("totalVoteNum81notclear");
+                // if (totalVoteNum81notclear && totalVoteNum81notclear >= 11) {
+                //     $("#randomText").text("只能扒十次哦~");
+                //     $("#random").css("display", "block");
+                //     setTimeout(' $("#random").css("display","none")', 2000);
 
-                    element.removeClass("disable");
-                    return false;
-                }
+                //     element.removeClass("disable");
+                //     return false;
+                // }
 
                 var voteNo = freshNum - index;
                 var clickTimes = store.get("81vote" + voteNo);
@@ -568,9 +571,13 @@ define(
                     })
                     .fail(function(error) {
 
-                        $("#randomText").text(that.randomErrorMap[error] || "生成礼品失败");
-                        $("#random").css("display", "block");
-                        setTimeout(' $("#random").css("display","none")', 2000);
+                        if (!that.isGenerateCouponFail) {
+                            $("#randomText").text(that.randomErrorMap[error] || "生成礼品失败");
+                            $("#random").css("display", "block");
+                            setTimeout(' $("#random").css("display","none")', 2000);
+                        }
+
+                        that.isGenerateCouponFail = true;
 
                         element.removeClass("disable");
                     })
@@ -606,6 +613,7 @@ define(
             },
 
             randomErrorMap: {
+                "11000050": "卡券已领完",
                 "11000240": "今天的券已经领完了",
                 "11000250": "用户已经领完该活动期间所有的券",
                 "11000260": "用户输入手机号有误"

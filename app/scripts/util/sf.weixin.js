@@ -408,7 +408,7 @@ define('sf.weixin', [
           success: function(res) {
 
             // 每天分享后可以多投票两次, 最多两次
-            if (new Date().getDate() != store.set("weixinsharedate81")  && (parseInt(store.get("weixinshareTimes81")) <= 2)) {
+            if (new Date().getDate() != store.set("weixinsharedate81") ) {
               var day = new Date().getDate();
               var num = store.get("voteDate" + day.getDate());
               if (num && parseInt(num, 10) >= 2) {
@@ -421,12 +421,12 @@ define('sf.weixin', [
             // 设定时间和次数
             var weixinsharetime81 = store.get("weixinsharedate81");
             store.set("weixinsharedate81", new Date().getDate());
-            var weixinshareTimes81 = store.get("weixinshareTimes81");
-            if (weixinshareTimes81) {
-              store.set("weixinshareTimes81", parseInt(weixinshareTimes81) + 1)
-            } else {
-              store.set("weixinshareTimes81", 1)
-            }
+            // var weixinshareTimes81 = store.get("weixinshareTimes81");
+            // if (weixinshareTimes81) {
+            //   store.set("weixinshareTimes81", parseInt(weixinshareTimes81) + 1)
+            // } else {
+            //   store.set("weixinshareTimes81", 1)
+            // }
 
             $("#sharearea").hide();
             $("#gotoshare").removeClass("show");
