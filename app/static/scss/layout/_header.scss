@@ -1,18 +1,35 @@
 /*header*/
 .header{
-  padding: 0 19px 11px;
+  padding: 0 0 11px;
   background: #fff;
-  border-bottom:1px solid #cfcfcf
+  border-bottom:1px solid #cfcfcf;
+  position: relative;
+  height: 49px;
 }
 .header-c1{
   padding-top: 13px;
+  position:absolute;
+  left: 20px;
 }
 .header-c2{
+  position: absolute;
+  right: 20px;
+  top: 0;
   display: flex;
   padding-top: 12px;
   align-items: center;
-  width: 120px;
+  width: 74px;
   justify-content: space-between;
+}
+.header-c4{
+  position: absolute;
+  right: 20px;
+  top: 0;
+  display: flex;
+  padding-top: 12px;
+  align-items: center;
+  width: 74px;
+  justify-content: flex-end;
 }
 .header-c3{
   font-size: 14px;
@@ -41,4 +58,11 @@
 }
 .header-search-icon {
   display: block;
+}
+.header-title {
+  display:block;
+  margin-top:15px;
+  color:#ff5e57 !important;
+  font-size:18px;
+  text-align: center;;
 }

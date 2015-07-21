@@ -284,6 +284,19 @@ define(
       },
 
       /**
+       * @author zhangke
+       * @description 用户点击返回之后的动作变化
+       * @param  {element}  $el   点击对象的jquery对象
+       * @param  {event}    event 绑定在点击对象的event对象
+       * @return
+       */
+      '[data-header-id=back] click': function($el, event) {
+        event && event.preventDefault();
+
+        window.history.back();
+      },
+
+      /**
        * @description 点击广告跳转具体页面
        * @param  {element}  $el   点击对象的jquery对象
        * @param  {event}    event 绑定在点击对象的event对象
