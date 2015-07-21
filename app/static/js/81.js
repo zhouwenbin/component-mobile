@@ -62,6 +62,12 @@ $(function(){
 	//扒衣
 	$('.page3-r2 .a1').click(function(){
 		$('.tooltip').addClass('active');
+		setTimeout(function(){
+			$('.page3-r2 .a2').removeClass('disabled');
+			$('.bubble').show();
+			$('.tooltip').removeClass('active');
+		},2000)
+			
 	})
 
 	
