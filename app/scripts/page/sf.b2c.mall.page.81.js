@@ -622,9 +622,17 @@ define(
                 // 每天只能扒五次
                 // if (currentDateVote >= 5 && totalVoteNum81 < 10) {
                 if (currentDateVote >= 11) {
-                    $("#randomText").text("每天只能扒十次哦,请明天再来~");
-                    $("#random").css("display", "block");
-                    setTimeout(' $("#random").css("display","none")', 2000);
+
+                    var result = $(this.getTooltipHTML().replace("{0}", "每天只能扒十次哦,请明天再来~"));
+                    result.css({
+                        "opacity": 1
+                    });
+
+                    $('body').append(result);
+                    setTimeout(function() {
+                        result.remove();
+                    }, 2000);
+
 
                     element.removeClass("disable");
                     return false;
