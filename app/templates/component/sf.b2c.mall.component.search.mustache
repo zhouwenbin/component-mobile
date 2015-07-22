@@ -151,7 +151,31 @@
 {{/sf-isHasAggregation}}
 
 {{^sf-isHasResults itemSearch.totalHits itemSearch.results}}
-  <section class="nataral-classify-none"><p>哎呦！这里空空如也~</p></section>
+  <div class="nataral-none">
+    <p>您喜欢的商品暂时还没有 但您的喜好我们会记下{{#if recommendProducts}}<br />下面是给您推荐大家都喜欢的商品：{{/if}}</p>
+    <p style="display:none;">未能搜索到相关商品{{#if recommendProducts}}，以下为推荐商品{{/if}}</p>
+  </div>
+  {{#if recommendProducts}}
+  <section class="recommend" style="padding:0px;">
+    <ul>
+      {{#each recommendProducts}}
+      <li class="clearfix">
+        <a href="http://m.sfht.com/detail/{{itemId}}.html">
+        <div class="recommend-c1 fl vertical-middle">
+          <img src="{{imageName}}@102h_102w_80Q_1x.jpg" alt="">
+        </div>
+        <div class="recommend-c2">
+          <h3 class="ellipsis2">{{productName}}</h3>
+          <div class="recommend-c2r1">
+            <strong>¥{{sf.price sellingPrice}}</strong>
+          </div>
+        </div>
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+  </section>
+  {{/if}}
 {{/sf-isHasResults}}
 
 {{#sf-isHasResults itemSearch.totalHits itemSearch.results}}

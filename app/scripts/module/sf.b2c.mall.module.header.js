@@ -10,6 +10,7 @@ define(
     'sf.env.switcher',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.component.searchbox',
     'text!template_widget_header_ad',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
     'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
@@ -18,7 +19,7 @@ define(
     'sf.b2c.mall.widget.cartnumber',
   ],
 
-  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm,
+  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, SFSearchBox, 
     template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
@@ -41,6 +42,10 @@ define(
         switcher.register('web', _.bind(function() {
           // this.element.fadeIn();
           this.element.find('.header').show();
+          new SFSearchBox('#sf-b2c-mall-search-box', {
+            showGate: true,
+            existDom: "all"
+          });
         }, this));
 
         // app环境内隐藏头部

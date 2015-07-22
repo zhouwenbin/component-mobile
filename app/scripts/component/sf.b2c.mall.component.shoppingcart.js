@@ -16,8 +16,8 @@ define(
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.api.shopcart.getCart',
     'sf.b2c.mall.api.shopcart.refreshCart',
-    'sf.b2c.mall.api.shopcart.removeItemsInCart',
-    'sf.b2c.mall.api.shopcart.updateItemNumInCart',
+    'sf.b2c.mall.api.shopcart.removeItemsForCart',
+    'sf.b2c.mall.api.shopcart.updateItemNumForCart',
     'sf.b2c.mall.widget.message',
     'text!template_order_shoppingcart',
     'sf.b2c.mall.api.shopcart.isShowCart',
@@ -196,7 +196,7 @@ define(
           var info = list();
           var isAllow = false;
 
-          _.each(info, function(item){
+          _.each(info, function(item) {
             isAllow = isAllow || item.useRuleDesc
           })
 
@@ -226,11 +226,11 @@ define(
 
         var switcher = new SFSwitcher();
 
-        switcher.register('app', function () {
+        switcher.register('app', function() {
 
         });
 
-        switcher.register('web', _.bind(function(){
+        switcher.register('web', _.bind(function() {
           this.controlCart();
         }, this));
 
@@ -241,7 +241,7 @@ define(
 
       controlCart: function() {
         if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          this.getUserInfo(_.bind(function(uinfo){
+          this.getUserInfo(_.bind(function(uinfo) {
 
             var arr = [];
             if (uinfo) {
@@ -253,11 +253,11 @@ define(
             // 如果判断开关关闭，使用dom操作不显示购物车
             if (typeof flag == 'undefined' || flag == '2') {
               window.location.href = 'http://m.sfht.com/index.html';
-            }else if (flag == '0') {
+            } else if (flag == '0') {
               // 请求总开关进行判断
               this.requestIsShowCart();
 
-            }else{
+            } else {
               $(".mini-cart-container-parent").show();
             }
           }, this));
@@ -267,22 +267,22 @@ define(
         }
       },
 
-      getUserInfo: function (callback) {
+      getUserInfo: function(callback) {
 
         var that = this;
         var switcher = new SFSwitcher();
 
-        switcher.register('web', function () {
+        switcher.register('web', function() {
           var uinfo = $.fn.cookie('3_uinfo');
           callback.call(that, uinfo);
         });
 
-        switcher.register('app', function () {
+        switcher.register('app', function() {
           SFHybrid.getTokenInfo()
-            .done(function (data) {
+            .done(function(data) {
               callback.call(that, data && data.cookie);
             })
-            .fail(function () {
+            .fail(function() {
 
             });
         });
@@ -291,7 +291,7 @@ define(
 
       },
 
-      requestIsShowCart: function () {
+      requestIsShowCart: function() {
         // @todo 暂时全局关闭购物车按钮
         var isShowCart = new SFIsShowCart();
         isShowCart
@@ -331,7 +331,7 @@ define(
           'removeitem': function(items) {
             var removeitem = new SFShopcartRemoveItem();
             var params = {
-              itemIds: JSON.stringify(this.getItemIds(items))
+              items: JSON.stringify(this.getItemIds(items))
             }
 
             removeitem.setData(params);
@@ -362,7 +362,8 @@ define(
         _.each(items, function(item) {
           array.push({
             isSelected: item.isSelected,
-            itemId: item.itemId
+            itemId: item.itemId,
+            mainItemId: item.groupKey || ''
           });
         });
 
@@ -370,18 +371,22 @@ define(
       },
 
       getItemIds: function(items) {
-        var array = [];
-        _.each(items, function(item) {
-          array.push(item.itemId);
-        });
 
+        var array = [];
+        var obj = {
+          itemId: items[0].itemId,
+          mainItemId: items[0].groupKey || ''
+        };
+        array.push(obj);
         return array;
       },
 
       getItemInfo: function(item) {
+
         return {
           itemId: item.itemId,
-          num: item.quantity
+          num: item.quantity,
+          mainItemId: item.groupKey || ''
         };
       },
 
@@ -445,7 +450,10 @@ define(
         var ask = $element.val();
         var good = $element.closest('li').data('good');
 
-        if (ask <= good.limitQuantity) {
+        if (ask == 0) {
+          $element.val(1);
+          this.showAlert($element, good);
+        }else if (ask <= good.limitQuantity) {
           good.quantity = $element.val();
           this.requestFactory('updatenum', good);
         } else {
@@ -478,7 +486,7 @@ define(
         var array = [];
         var isSelectedAll = true;
         $('.sf-h5-avail-cart li').each(function(index, element) {
-          var good = $(this).data('good');
+          var good = can.$(element).data('good');
           isSelectedAll = isSelectedAll && good.isSelected;
           array.push(good);
         });
@@ -496,13 +504,13 @@ define(
         this.requestFactory('refreshcart', array);
       },
 
-      'li swipeLeft': function($element) {
+      'li.single-goods swipeLeft': function($element) {
         $element.css({
           left: -61
         });
       },
 
-      'li swipeRight': function($element) {
+      'li.single-goods swipeRight': function($element) {
         $element.css({
           left: 0
         });
@@ -527,21 +535,68 @@ define(
       },
 
       paint: function(data) {
+        var singleScope = [];
+        var partScopeGroups = [];
+        var mainItem = [];
+        //取出单个商品和组合商品
+        _.each(data.scopeGroups, function(cartItem) {
+          if (cartItem.scope == 'SINGLE') {
+            singleScope.push(cartItem);
+          } else {
+            partScopeGroups.push(cartItem);
+          }
+        });
+        //将主商品排在第一位
+        _.each(partScopeGroups, function(partItem) {
+          var found = _.find(partItem.goodItemList, function(goodsItem) {
+            return goodsItem.itemId == goodsItem.mainItemId;
+          });
+          if (found) {
+            mainItem.push(found);
+            partItem.goodItemList = _.reject(partItem.goodItemList, function(goodsItem) {
+              return goodsItem.itemId == goodsItem.mainItemId;
+            });
+            partItem.goodItemList.splice(0, 0, found);
+          }
+        })
+
 
         this.options.data = new can.Map(data);
+        this.options.data.attr({
+          singleScope: singleScope,
+          partScopeGroups: partScopeGroups
+        });
+
+        _.each(this.options.data.attr('partScopeGroups'), function(partScopeItem) {
+          partScopeItem.attr('firstGoodItem', partScopeItem.goodItemList[0]);
+        });
+
+        _.each(this.options.data.attr('partScopeGroups'), function(partScopeItem) {
+          var total = 0;
+          _.each(partScopeItem.goodItemList, function(items) {
+            if (items.canUseActivityPrice == 1) {
+              total += items.activityPrice;
+            } else {
+              total += items.price;
+            }
+            //console.log(total);
+          });
+          partScopeItem.firstGoodItem.attr('totalSavePrice', total);
+        });
+
         var renderFn = can.mustache(template_order_shoppingcart);
         var html = renderFn(this.options.data, this.helpers);
 
         var switcher = new SFSwitcher();
 
-        switcher.register('web', _.bind(function(){
+        switcher.register('web', _.bind(function() {
           this.element.html(html);
           can.trigger(window, 'updateCart');
           new SFWidgetCartNumber();
           loadingCtrl.hide();
         }, this));
 
-        switcher.register('app', _.bind(function(){
+        switcher.register('app', _.bind(function() {
 
           if (this.options.data.scopeGroups.length > 0 && SFFn.isMobile.Android()) {
             this.element.html(html);
