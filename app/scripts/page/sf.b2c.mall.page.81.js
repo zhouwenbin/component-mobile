@@ -440,16 +440,43 @@ define(
             "#share click": function() {
                 $('#success').addClass('hide');
 
-                //微信分享
-                if (SFFn.isMobile.WeChat()) {
+                if (SFFn.isMobile.APP()) {
+                    var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                    var desp = "数千进口好货赔本赚吆喝，错过就再等一年!";
+                    var link = "http://m.sfht.com/81.html";
+                    var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
+
+                    SFHybrid.h5share(title, desp, imgUrl, link);
+
+
+                    // 每天分享后可以多投票两次, 最多两次
+                    // if (new Date().getDate() != store.set("weixinsharedate81")) {
+                    //     var day = new Date();
+                    //     var num = store.get("voteDate" + day.getDate());
+                    //     if (num && parseInt(num, 10) >= 2) {
+                    //         store.set("voteDate" + day.getDate(), parseInt(num, 10) - 2);
+                    //     } else {
+                    //         store.set("voteDate" + day.getDate(), 0);
+                    //     }
+                    // }
+
+                    // 设定时间和次数
+                    var weixinsharetime81 = store.get("weixinsharedate81");
+                    store.set("weixinsharedate81", new Date().getDate());
+
+                    $("#gotoshare").removeClass("show");
+                    $("#gotoshare").addClass("hide");
+
+                } else if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
+                    var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                    var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
+                    var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
+                    var link = "http://m.sfht.com/81.html";
+                    var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
+                    SFWeixin.share81(title, desc, desc2, link, imgUrl);
                 }
-                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
-                var link = "http://m.sfht.com/81.html";
-                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
-                SFWeixin.share81(title, desc, desc2, link, imgUrl);
+
             },
 
             "#share1 click": function() {
