@@ -1400,7 +1400,8 @@ define('sf.b2c.mall.product.detailcontent', [
         if (startTime - new Date().getTime() + distance > 0) {
           that.interval = setInterval(function() {
             if (startTime - new Date().getTime() + distance <= 0) {
-              that.refreshPage();
+              //that.refreshPage();
+              window.location.reload();
             } else {
               that.setCountDown(distance, startTime);
             }
@@ -1410,7 +1411,8 @@ define('sf.b2c.mall.product.detailcontent', [
 
             //走倒计时过程中 如果发现活动时间已经结束了，则去刷新下当前页面
             if (endTime - new Date().getTime() + distance <= 0) {
-              that.refreshPage();
+              //that.refreshPage();
+              window.location.reload();
             } else {
               that.setCountDown(distance, endTime);
             }
