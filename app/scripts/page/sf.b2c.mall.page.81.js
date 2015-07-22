@@ -247,6 +247,7 @@ define(
 
             '#getcoupon click': function() {
                 var result = "";
+                var shouldRolling = false;
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
@@ -256,6 +257,9 @@ define(
                     $("#couponlistmask").removeClass("show");
 
                     var notGetcoupon81 = notGetcoupon81.toString().split(",");
+                    if (notGetcoupon81.length > 5) {
+                        shouldRolling = true;
+                    }
                     _.each(notGetcoupon81, function(item) {
                         var coupon = store.get("notGetcoupon81" + item);
                         var couponArr = coupon.split("|");
@@ -295,9 +299,11 @@ define(
 
                     $("#getcouponbymobile")[0].focus();
 
-                    setInterval(function(){
-                        $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
-                    },1000);
+                    if (shouldRolling) {
+                        setInterval(function() {
+                            $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
+                        }, 1000);
+                    }
 
                 } else {
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
@@ -311,6 +317,11 @@ define(
                         $("#couponlisttitle").html("礼品券已放入账号:" + store.get('mobile81'));
 
                         var alreadyGetcoupon81 = alreadyGetcoupon81.toString().split(",");
+
+                        if (alreadyGetcoupon81.length > 5) {
+                            shouldRolling = true;
+                        }
+
                         _.each(alreadyGetcoupon81, function(item) {
                             var coupon = store.get("notGetcoupon81" + item);
                             var couponArr = coupon.split("|");
@@ -343,10 +354,11 @@ define(
 
                     $("#couponlist").html(result);
 
-                    setInterval(function(){
-                        $('#couponlist li:first-child').appendTo('#couponlist');
-                    },1000);
-
+                    if (shouldRolling) {
+                        setInterval(function() {
+                            $('#couponlist li:first-child').appendTo('#couponlist');
+                        }, 1000);
+                    }
                 }
 
             },
@@ -380,6 +392,7 @@ define(
                 event && event.preventDefault();
 
                 var that = this;
+                var shouldRolling = false;
 
                 var mobile = $("#phoneNum").val();
                 var isTelNum = /^1\d{10}$/.test(mobile);
@@ -436,6 +449,9 @@ define(
 
                             var result = "";
                             notGetcoupon81 = notGetcoupon81.split(",");
+                            if (notGetcoupon81.length > 5) {
+                                shouldRolling = true;
+                            }
                             _.each(notGetcoupon81, function(couponItem) {
                                 var coupon = store.get("notGetcoupon81" + couponItem);
 
@@ -471,9 +487,11 @@ define(
 
                             $(".buttonarea").show();
 
-                            setInterval(function(){
-                                $('#couponlist li:first-child').appendTo('#couponlist');
-                            },1000);
+                            if (shouldRolling) {
+                                setInterval(function() {
+                                    $('#couponlist li:first-child').appendTo('#couponlist');
+                                }, 1000);
+                            }
 
                             store.remove("notGetcoupon81");
                         } else {
