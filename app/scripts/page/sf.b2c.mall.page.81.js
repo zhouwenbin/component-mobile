@@ -86,10 +86,10 @@ define(
                 var audio = $('#audio');
 
                 //一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以
-                audio[0].play();
+                // audio[0].play();
                 //必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效
                 document.addEventListener("WeixinJSBridgeReady", function() {
-                    audio[0].play();
+                    // audio[0].play();
                 }, false);
                 //loading效果
                 setTimeout(function() {
@@ -261,6 +261,9 @@ define(
 
                         $("#couponlistnotget").html(result);
                     }
+
+
+                    $("#phoneNum")[0].focus();
 
                 } else {
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
@@ -479,7 +482,7 @@ define(
 
             },
 
-            "#gotohome click": function(){
+            "#gotohome click": function() {
                 window.location.href = "http://m.sfht.com/activity/494.html";
             },
 
@@ -597,7 +600,6 @@ define(
                         store.set("notGetcoupon81" + couponid, reduceCost + "|" + leastCost + "|" + data.title + "|" + startTime + "|" + endTime + "|" + useNotice)
 
                         $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
-                        $("#footerNum").text(parseInt($("#footerNum").text(), 10) - 1);
 
                     })
                     .fail(function(error) {
@@ -635,6 +637,9 @@ define(
                 } else {
                     store.set("voteDate" + new Date().getDate(), 1);
                 }
+
+
+                $("#footerNum").text(parseInt($("#footerNum").text(), 10) - 1);
 
 
                 $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + voteNo + '/' + tabIndex + '.jpg');
