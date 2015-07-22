@@ -302,7 +302,7 @@ define(
                     if (shouldRolling) {
                         setInterval(function() {
                             $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
-                        }, 1000);
+                        }, 1500);
                     }
 
                 } else {
@@ -357,7 +357,7 @@ define(
                     if (shouldRolling) {
                         setInterval(function() {
                             $('#couponlist li:first-child').appendTo('#couponlist');
-                        }, 1000);
+                        }, 1500);
                     }
                 }
 
@@ -496,7 +496,7 @@ define(
                             if (shouldRolling) {
                                 setInterval(function() {
                                     $('#couponlist li:first-child').appendTo('#couponlist');
-                                }, 1000);
+                                }, 1500);
                             }
 
                             store.remove("notGetcoupon81");
