@@ -513,6 +513,10 @@ define(
                     return false;
                 }
 
+                if (parseInt($("#footerNum").text(), 10) == 0) {
+                    return false;
+                }
+
 
                 element.addClass("disable");
 
