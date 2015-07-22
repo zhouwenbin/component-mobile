@@ -207,6 +207,15 @@ define(
 
                 // stats.end();
 
+                var switcher = new SFSwitcher();
+
+                switcher.register('web', function(){});
+
+                switcher.register('app', _.bind(function(){
+                  this.setShareBtn();
+                }, this));
+
+                switcher.go();
             },
 
             bayiTimes: function() {
@@ -237,7 +246,26 @@ define(
                 SFWeixin.share81(title, desc, desc2, link, imgUrl);
             },
 
+            setShareBtn: function() {
+              SFHybrid.sfnavigator.setRightButton('分享', null, function() {
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg';
 
+                var message = {
+                  subject: "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！",
+                  description: "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！",
+                  url: 'http://m.sfht.com/81.html',
+                  imageUrl: imgUrl
+                };
+
+                SFHybrid.share(message)
+                  .done(function() {
+                    alert('感谢分享');
+                  })
+                  .fail(function() {
+
+                  })
+              });
+            },
 
             '#getcoupon click': function() {
                 var result = "";
