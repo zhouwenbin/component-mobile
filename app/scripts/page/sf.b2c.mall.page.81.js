@@ -479,6 +479,10 @@ define(
 
             },
 
+            "#gotohome click": function(){
+                window.location.href = "http://m.sfht.com/activity/494.html";
+            },
+
             "#share1 click": function() {
                 $('#share0').addClass('hide');
                 //微信分享
