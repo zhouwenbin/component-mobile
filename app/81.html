@@ -583,12 +583,16 @@
                 </ul>
                 <a class="prev" href="javascript:"></a>
                 <a class="next" href="javascript:"></a>
-                <div class="page3-r2">
+                <!-- <div class="page3-r2">
                     <a href="javascript:" class="a2" style="text-indent:0;position: relative;" id="getcoupon">
                         <div style="text-align: right; /* margin-right: 10px; */ /* margin-top: -10px; */ position: absolute;right: -10px;top: -10px;background: red;width: 35px;border-radius: 50%;line-height: 35px;height: 35px;text-align: center;" id="couponnum">0</div>
                     </a>
                     <a href="javascript:" class="a1">
                         <div>扒下他（<span id="footerNum">5</span>）</div><span>扒衣有奖，每天刷新</span></a>
+                </div> -->
+                <div class="page3-r2">
+                    <a href="javascript:" class="a1">
+                        <div>扒下他（<span id="footerNum">10</span>）</div><span>每日更新</span></a><a href="javascript:;" class="a2 disabled" id="getcoupon">礼品<span class="bubble" style="display: inline; -webkit-transform-origin: 0px 0px 0px; opacity: 1; -webkit-transform: scale(1, 1);" id="couponnum">0</span></a>
                 </div>
                 <!-- <footer>
                 </footer> -->
@@ -598,10 +602,8 @@
             </section>
         </div>
     </div>
-    <section class="tooltip center overflow-num" id="random" style="display:none;">
-        <div id="randomText" style="font-size:20px;"></div>
-    </section>
-<!--     <div class="dialog-phone mask hide" id="getcouponmask">
+
+    <!--     <div class="dialog-phone mask hide" id="getcouponmask">
         <div class="dialog-b center">
             <div class="register-h" id="closeButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">
                 <a class="btn btn-close dialog-close" href="#">X</a>
@@ -621,7 +623,7 @@
                 <a class="btn btn-close dialog-close" href="#">X</a>
             </div>
             <h2 id="couponlisttitle" class="couponlisttitle"></h2>
-            <ul id="couponlist" class="coupons">
+            <ul id="couponlist" class="coupons" style="overflow:hidden">
                 <li></li>
             </ul>
             <div id="buttonarea" class="buttonarea" style="display:none">
@@ -641,9 +643,12 @@
             </button>
         </div>
     </div>
-    <section class="tooltip center overflow-num" id="random" style="display:none;">
+    <section class="tooltip center overflow-num" id="random">
         <div id="randomText" style="font-size:20px;"></div>
     </section>
+    <!-- <section class="tooltip center overflow-num" id="random">
+        <div id="randomText" style="font-size:20px;"></div>
+    </section> -->
     <div id="sharearea" style="display:none">
         <div class="mask" style="background: rgba(0,0,0,0.8);"></div>
         <div class="share1" style="z-index:999;"></div>

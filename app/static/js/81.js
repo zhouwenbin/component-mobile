@@ -59,7 +59,20 @@ $(function(){
 	$('.dialog-success .btn').click(function(){
 		$('.dialog-success').addClass('hide');
 	})
+	//扒衣
+	$('.page3-r2 .a1').click(function(){
+		var text=$('.bubble').text();
+		text++;
 
+		$('.tooltip').addClass('active');
+		setTimeout(function(){
+			$('.page3-r2 .a2').removeClass('disabled');
+			$('.bubble').show();
+			$('.tooltip').removeClass('active');
+			$('.bubble').text(text);
+		},2000)
+			
+	})
 
 	
 	

@@ -19,7 +19,7 @@ define(
     'sf.b2c.mall.widget.cartnumber',
   ],
 
-  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, SFSearchBox, 
+  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, SFSearchBox,
     template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
@@ -71,7 +71,7 @@ define(
         // 其他地方添加需要更新mini购物车的时候调用can.trigger('updateCart')
         can.on.call(window, 'updateCart', _.bind(this.updateCart, this));
 
-        this.setCookie();
+        // this.setCookie();
       },
 
       setCookie: function() {

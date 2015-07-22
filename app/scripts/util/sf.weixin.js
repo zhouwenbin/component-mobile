@@ -419,8 +419,8 @@ define('sf.weixin', [
             // }
 
             // 设定时间和次数
-            var weixinsharetime81 = store.get("weixinsharedate81");
-            store.set("weixinsharedate81", new Date().getDate());
+            // var weixinsharetime81 = store.get("weixinsharedate81");
+            // store.set("weixinsharedate81", new Date().getDate());
             // var weixinshareTimes81 = store.get("weixinshareTimes81");
             // if (weixinshareTimes81) {
             //   store.set("weixinshareTimes81", parseInt(weixinshareTimes81) + 1)
@@ -428,9 +428,9 @@ define('sf.weixin', [
             //   store.set("weixinshareTimes81", 1)
             // }
 
-            $("#sharearea").hide();
-            $("#gotoshare").removeClass("show");
-            $("#gotoshare").addClass("hide");
+            // $("#sharearea").hide();
+            // $("#gotoshare").removeClass("show");
+            // $("#gotoshare").addClass("hide");
 
           },
           cancel: function(res) {
@@ -461,9 +461,9 @@ define('sf.weixin', [
             //   }
             // }
 
-            // 设定时间和次数
-            var weixinsharetime81 = store.get("weixinsharedate81");
-            store.set("weixinsharedate81", new Date().getDate());
+            // // 设定时间和次数
+            // var weixinsharetime81 = store.get("weixinsharedate81");
+            // store.set("weixinsharedate81", new Date().getDate());
             // var weixinshareTimes81 = store.get("weixinshareTimes81");
             // if (weixinshareTimes81) {
             //   store.set("weixinshareTimes81", parseInt(weixinshareTimes81) + 1)
@@ -471,9 +471,9 @@ define('sf.weixin', [
             //   store.set("weixinshareTimes81", 1)
             // }
 
-            $("#sharearea").hide();
-            $("#gotoshare").removeClass("show");
-            $("#gotoshare").addClass("hide");
+            // $("#sharearea").hide();
+            // $("#gotoshare").removeClass("show");
+            // $("#gotoshare").addClass("hide");
           },
           cancel: function(res) {
             // alert('已取消');
