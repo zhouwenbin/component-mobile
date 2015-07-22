@@ -302,7 +302,7 @@ define(
                     if (shouldRolling) {
                         setInterval(function() {
                             $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
-                        }, 1000);
+                        }, 1500);
                     }
 
                 } else {
@@ -357,7 +357,7 @@ define(
                     if (shouldRolling) {
                         setInterval(function() {
                             $('#couponlist li:first-child').appendTo('#couponlist');
-                        }, 1000);
+                        }, 1500);
                     }
                 }
 
@@ -390,6 +390,12 @@ define(
 
             '#getcouponbymobile click': function(element, event) {
                 event && event.preventDefault();
+
+                if (element.hasClass("disable")) {
+                    return false;
+                }
+
+                element.addClass("disable");
 
                 var that = this;
                 var shouldRolling = false;
@@ -490,16 +496,19 @@ define(
                             if (shouldRolling) {
                                 setInterval(function() {
                                     $('#couponlist li:first-child').appendTo('#couponlist');
-                                }, 1000);
+                                }, 1500);
                             }
 
                             store.remove("notGetcoupon81");
                         } else {
                             $("#username-error-tips").html('领取失败');
                         }
+
+                        element.removeClass("disable");
                     })
                     .fail(function(error) {
                         $("#username-error-tips").html(that.errorMap[error] || '领取失败');
+                        element.removeClass("disable");
                     })
             },
 
