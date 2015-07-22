@@ -41,7 +41,7 @@ define(
         // 一般环境显示头部
         switcher.register('web', _.bind(function() {
           // this.element.fadeIn();
-          this.element.find('.header').show();
+          this.element.find('header').show();
           new SFSearchBox('#sf-b2c-mall-search-box', {
             showGate: true,
             existDom: "all"

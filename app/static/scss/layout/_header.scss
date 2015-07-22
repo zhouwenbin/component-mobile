@@ -65,7 +65,22 @@
 .header-title {
   display:block;
   margin-top:15px;
-  color:#ff5e57 !important;
   font-size:18px;
   text-align: center;;
+}
+.header .dot-error {
+  background: #fff;
+  color: #FF5B54;
+}
+.header .header-title {
+  color:#fff !important;
+}
+
+.header-detail {
+  padding: 0 0 11px;
+  position: absolute;
+  height: 49px;
+  top: 0;
+  z-index: 10;
+  width:100%;
 }
