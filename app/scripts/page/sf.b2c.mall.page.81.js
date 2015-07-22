@@ -251,6 +251,8 @@ define(
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
+                    var couponlistnotgetScroll;
+                    
                     result = this.getcouponmaskHTMLBefore();
 
                     $("#couponlistmask").addClass("hide");
@@ -300,16 +302,23 @@ define(
                     $("#getcouponbymobile")[0].focus();
 
                     if (shouldRolling) {
-                        setInterval(function() {
+                        couponlistnotgetScroll = setInterval(function() {
                             $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
                         }, 1500);
                     }
+                    //清除定时器
+                    $('#getcouponmask .btn-close').click(function(){
+                        clearInterval(couponlistnotgetScroll);
+                    })
 
                 } else {
+                    var couponlistScroll;
+                    
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
 
                     $("#couponlistmask").removeClass("hide");
                     $("#couponlistmask").addClass("show");
+
                     var result = "";
 
                     if (alreadyGetcoupon81) {
@@ -355,10 +364,14 @@ define(
                     $("#couponlist").html(result);
 
                     if (shouldRolling) {
-                        setInterval(function() {
+                        couponlistScroll=setInterval(function() {
                             $('#couponlist li:first-child').appendTo('#couponlist');
                         }, 1500);
                     }
+                    //清除定时器
+                    $('#couponlistmask .btn-close').click(function(){
+                        clearInterval(couponlistScroll);
+                    })
                 }
 
             },
