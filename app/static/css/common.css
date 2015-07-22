@@ -372,10 +372,14 @@ a[title="站长统计"] {
 /*header*/
 .header {
   padding: 0 0 11px;
-  background: #fff;
+  background: #FF5B54;
   border-bottom: 1px solid #cfcfcf;
   position: relative;
   height: 49px;
+}
+
+.header-white {
+  background: #fff;
 }
 
 .header-c1 {

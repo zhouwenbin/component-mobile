@@ -372,10 +372,14 @@ a[title="站长统计"] {
 /*header*/
 .header {
   padding: 0 0 11px;
-  background: #fff;
+  background: #FF5B54;
   border-bottom: 1px solid #cfcfcf;
   position: relative;
   height: 49px;
+}
+
+.header-white {
+  background: #fff;
 }
 
 .header-c1 {
@@ -1872,12 +1876,13 @@ body {
   background-color: #fff;
   height: 50px;
   width: 100%;
-  padding: 10px 0 10px 15px;
+  padding: 10px 15px;
 }
 
 .search-box-header .search-cancel-btn {
   display: block;
-  width: 60px;
+  margin-left: 15px;
+  width: 30px;
   height: 30px;
   line-height: 30px;
   text-align: center;
