@@ -391,6 +391,12 @@ define(
             '#getcouponbymobile click': function(element, event) {
                 event && event.preventDefault();
 
+                if (element.hasClass("disable")) {
+                    return false;
+                }
+
+                element.addClass("disable");
+
                 var that = this;
                 var shouldRolling = false;
 
@@ -497,9 +503,12 @@ define(
                         } else {
                             $("#username-error-tips").html('领取失败');
                         }
+
+                        element.removeClass("disable");
                     })
                     .fail(function(error) {
                         $("#username-error-tips").html(that.errorMap[error] || '领取失败');
+                        element.removeClass("disable");
                     })
             },
 
