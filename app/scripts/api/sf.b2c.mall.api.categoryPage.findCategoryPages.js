@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.integral.checkIn
+  * @class sf.b2c.mall.api.categoryPage.findCategoryPages
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.integral.checkIn',
+'sf.b2c.mall.api.categoryPage.findCategoryPages',
 [
   'zepto',
   'can',
@@ -22,19 +22,18 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'integral.checkIn',
-      SECURITY_TYPE: SecurityType.UserLogin.name,
+      METHOD_NAME: 'categoryPage.findCategoryPages',
+      SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'channel': 'string'
+        'pId': 'long',
       },
       OPTIONAL: {
+        'limit': 'int'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '16000001': '超过每日限制次数',
-        '16000012': '没有在线的签到活动',
-        '16000099': '系统未知异常'
+        '5029000': '获取前台类目数据错误'
       }
     }
   });

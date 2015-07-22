@@ -1225,6 +1225,22 @@ module.exports = function (grunt) {
         }
       },
 
+      spike: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.spike.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.spike"],
+          insertRequire:  ['sf.b2c.mall.module.spike']
+        }
+      },
+
       tab: {
         options: {
           preserveLicenseComments: false,
@@ -1790,6 +1806,26 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.aboutus'
           ],
           insertRequire: ['sf.b2c.mall.page.aboutus']
+        }
+      },
+
+      categorynavigatelist: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.categorynavigatelist.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.categorynavigatelist'
+          ],
+          insertRequire: ['sf.b2c.mall.page.categorynavigatelist']
         }
       },
 

@@ -174,6 +174,7 @@ requirejs.config({
         "sf.b2c.mall.module.fixtab": "scripts/module/sf.b2c.mall.module.fixtab",
         "sf.b2c.mall.module.exchangecode": "scripts/module/sf.b2c.mall.module.exchangecode",
         "sf.b2c.mall.module.secondkill": "scripts/module/sf.b2c.mall.module.secondkill",
+        "sf.b2c.mall.module.spike": "scripts/module/sf.b2c.mall.module.spike",
         "sf.b2c.mall.page.main": "scripts/page/sf.b2c.mall.page.main",
         "sf.b2c.mall.component.price": "scripts/component/sf.b2c.mall.component.price",
         "sf.b2c.mall.page.detail": "scripts/page/sf.b2c.mall.page.detail",
@@ -295,7 +296,6 @@ requirejs.config({
         "sf.b2c.mall.page.520": "scripts/page/sf.b2c.mall.page.520",
         "template_header_520": "templates/sf.b2c.mall.520.mustache",
         "sf.mediav": "scripts/util/sf.mediav",
-        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
         'template_detail_mix': 'templates/product/sf.b2c.mall.product.detailmix.mustache',
         "sf.b2c.mall.widget.region": "scripts/widget/sf.b2c.mall.widget.region",
         "sf.b2c.mall.widget.bubble": "scripts/widget/sf.b2c.mall.widget.bubble",
@@ -306,6 +306,12 @@ requirejs.config({
         "template_component_searchbox": "templates/component/sf.b2c.mall.component.searchbox.mustache",
         "template_widget_region": "templates/widget/sf.b2c.mall.widget.region.mustache",
         "vendor.page.response": "scripts/vendor/vendor.page.response",
+        "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
+        "template_category_navigate": "templates/category/sf.b2c.mall.category.page.navigate.mustache",
+        "sf.b2c.mall.category.fn": "scripts/category/sf.b2c.mall.category.fn",
+        "sf.b2c.mall.category.pagenavigatelistcontent": "scripts/category/sf.b2c.mall.category.pagenavigatelistcontent",
+        "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
+        "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages",
 
         //81
         "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81",

@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.integral.checkIn
+  * @class sf.b2c.mall.api.integral.checkInV2
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.integral.checkIn',
+'sf.b2c.mall.api.integral.checkInV2',
 [
   'zepto',
   'can',
@@ -22,7 +22,7 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'integral.checkIn',
+      METHOD_NAME: 'integral.checkInV2',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
         'channel': 'string'
