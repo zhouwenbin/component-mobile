@@ -1385,22 +1385,24 @@ define('sf.b2c.mall.product.detailcontent', [
         var that = this;
         //endTime = 1445044886397
         if (!endTime || !startTime) {
-          that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+          this.options.detailContentInfo.priceInfo.attr("timeIcon", "");
         }
 
         var currentClientTime = new Date().getTime();
         var distance = currentServerTime - currentClientTime;
 
-        if (that.interval) {
+        if (this.interval) {
           clearInterval(that.interval);
         }
         //活动开始前
         //设置倒计时
         //如果当前时间活动已经结束了 就不要走倒计时设定了
         if (startTime - new Date().getTime() + distance > 0) {
-          that.interval = setInterval(function() {
+          this.interval = setInterval(function() {
             if (startTime - new Date().getTime() + distance <= 0) {
               //that.refreshPage();
+              clearInterval(that.interval);
+              that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
               window.location.reload();
             } else {
               that.setCountDown(distance, startTime);
@@ -1412,6 +1414,8 @@ define('sf.b2c.mall.product.detailcontent', [
             //走倒计时过程中 如果发现活动时间已经结束了，则去刷新下当前页面
             if (endTime - new Date().getTime() + distance <= 0) {
               //that.refreshPage();
+              clearInterval(that.interval);
+              that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
               window.location.reload();
             } else {
               that.setCountDown(distance, endTime);
