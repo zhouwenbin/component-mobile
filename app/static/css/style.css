@@ -1859,7 +1859,7 @@ a[title="站长统计"] {
 .goods-r1 .corner-icon {
   position: absolute;
   right: 15px;
-  bottom: 10px;
+  bottom: 15px;
   width: 60px;
   height: 60px;
   background-size: 60px 60px;
@@ -1868,19 +1868,17 @@ a[title="站长统计"] {
 }
 
 .corner-icon01 {
-  background: url(../img/corner-01.png) 0 0 no-repeat;
+  background: url(http://img0.sfht.com/img/8f016642e40404b528ec23dff6d516fc.jpg) 0 0 no-repeat;
 }
 
-.corner-icon02 {
-  background: url(../img/corner-02.png) 0 0 no-repeat;
+/*.corner-icon02{
+  background:  url(../img/corner-02.png) 0 0 no-repeat;
 }
-
-.corner-icon03 {
-  background: url(../img/corner-03.png) 0 0 no-repeat;
-}
-
+.corner-icon03{
+  background:  url(../img/corner-03.png) 0 0 no-repeat;
+}*/
 .corner-icon04 {
-  background: url(../img/corner-04.png) 0 0 no-repeat;
+  background: url(http://img0.sfht.com/img/520235946454a96e657b73268e6541a5.jpg) 0 0 no-repeat;
 }
 
 /*商品详情*/
