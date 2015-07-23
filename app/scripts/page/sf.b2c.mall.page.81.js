@@ -529,7 +529,7 @@ define(
                             if (shouldRolling) {
                                 that.couponlistScroll();
                                 that.interval = setInterval(function() {
-                                    this.couponlistScroll();
+                                    that.couponlistScroll();
                                 }, 1500);
                             }
 
