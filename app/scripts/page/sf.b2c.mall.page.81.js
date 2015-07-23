@@ -424,6 +424,10 @@ define(
             '#getcouponbymobile click': function(element, event) {
                 event && event.preventDefault();
 
+                if (this.interval) {
+                    clearInterval(this.interval)
+                }
+
                 if (element.hasClass("disable")) {
                     return false;
                 }
