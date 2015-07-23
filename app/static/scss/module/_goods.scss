@@ -82,3 +82,25 @@
   color:rgba(0,0,0,0.5);
   margin-right: 15px;
 }
+.goods-r1 .corner-icon{
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  width: 60px;
+  height: 60px;
+  background-size: 60px 60px;
+  font: 0/0 a;
+  z-index: 20;
+}
+.corner-icon01{
+  background:  url(../img/corner-01.png) 0 0 no-repeat;
+}
+.corner-icon02{
+  background:  url(../img/corner-02.png) 0 0 no-repeat;
+}
+.corner-icon03{
+  background:  url(../img/corner-03.png) 0 0 no-repeat;
+}
+.corner-icon04{
+  background:  url(../img/corner-04.png) 0 0 no-repeat;
+}
