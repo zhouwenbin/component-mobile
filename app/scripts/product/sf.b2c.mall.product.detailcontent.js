@@ -1394,31 +1394,43 @@ define('sf.b2c.mall.product.detailcontent', [
         if (this.interval) {
           clearInterval(that.interval);
         }
+
+        // @author lichunmin6@sf-express.com
+        // @description 一开始就获取剩余时间
+        this.leftTime = startTime - currentClientTime - distance;
+        this.endTime = endTime - currentClientTime - distance;
+
         //活动开始前
         //设置倒计时
         //如果当前时间活动已经结束了 就不要走倒计时设定了
-        if (startTime - new Date().getTime() + distance > 0) {
+        // if (startTime - new Date().getTime() + distance > 0) {
+        if(this.leftTime > 0) {
           this.interval = setInterval(function() {
-            if (startTime - new Date().getTime() + distance <= 0) {
+            // if (startTime - new Date().getTime() + distance <= 0) {
+            if (that.leftTime <= 0) {
               //that.refreshPage();
               clearInterval(that.interval);
               that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
               window.location.reload();
             } else {
-              that.setCountDown(distance, startTime);
+              that.leftTime = that.leftTime - 1000;
+              that.setCountDown(that.leftTime, distance, startTime);
             }
           }, 1000)
-        } else if (endTime - new Date().getTime() + distance > 0) {
+        // } else if (endTime - new Date().getTime() + distance > 0) {
+        } else if(this.endTime > 0) {
           that.interval = setInterval(function() {
 
             //走倒计时过程中 如果发现活动时间已经结束了，则去刷新下当前页面
-            if (endTime - new Date().getTime() + distance <= 0) {
+            // if (endTime - new Date().getTime() + distance <= 0) {
+            if (that.endTime <= 0 ) {
               //that.refreshPage();
               clearInterval(that.interval);
               that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
               window.location.reload();
             } else {
-              that.setCountDown(distance, endTime);
+              that.endTime = that.endTime - 1000;
+              that.setCountDown(that.endTime, distance, endTime);
             }
           }, 1000)
         } else {
@@ -1435,8 +1447,8 @@ define('sf.b2c.mall.product.detailcontent', [
        * @param  {[type]} destTime
        * @return {[type]}
        */
-      setCountDown: function(distance, endDate) {
-        var leftTime = endDate - new Date().getTime() + distance;
+      setCountDown: function(leftTime, distance, endDate) {
+        // var leftTime = endDate - new Date().getTime() + distance;
         var leftsecond = parseInt(leftTime / 1000);
         var day1 = Math.floor(leftsecond / (60 * 60 * 24));
         var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);
