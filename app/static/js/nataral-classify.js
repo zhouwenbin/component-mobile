@@ -43,4 +43,12 @@ $(function(){
       $('.nataral-tab ul').removeClass('nataral-tab-fixed');
     }
   })
+  //导航滚动
+  var myScroll;
+
+  function loaded () {
+    myScroll = new IScroll('.nataral-tab', { scrollX: true });
+  }
+
+  loaded();
 })
