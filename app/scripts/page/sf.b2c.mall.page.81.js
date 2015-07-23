@@ -302,7 +302,15 @@ define(
 
                     if (shouldRolling) {
                         this.interval = setInterval(function() {
-                            $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
+                            $('#couponlistnotget li').animate({
+                                'top':-70
+                            },300,function(){
+                                $('#couponlistnotget li').css({
+                                    'top':0
+                                })
+                                $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
+                            })
+                            
                         }, 1500);
                     }
 
