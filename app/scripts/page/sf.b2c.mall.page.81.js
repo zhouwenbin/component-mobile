@@ -249,6 +249,7 @@ define(
             '#getcoupon click': function() {
                 var result = "";
                 var shouldRolling = false;
+                var that = this;
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
@@ -302,15 +303,9 @@ define(
                     $("#getcouponbymobile")[0].focus();
 
                     if (shouldRolling) {
+                        that.couponlistnotgetScroll();
                         this.interval = setInterval(function() {
-                            $('#couponlistnotget li').animate({
-                                'top':-80
-                            },300,function(){
-                                $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
-                                $('#couponlistnotget li').css({
-                                    'top':0
-                                })
-                            })   
+                             that.couponlistnotgetScroll();
                         }, 1500);
                     }
 
@@ -366,19 +361,37 @@ define(
                     $("#couponlist").html(result);
 
                     if (shouldRolling) {
+                        that.couponlistScroll();
                         this.interval = setInterval(function() {
-                            $('#couponlist li').animate({
-                                'top':-80
-                            },300,function(){
-                                $('#couponlist li:first-child').appendTo('#couponlist');
-                                $('#couponlist li').css({
-                                    'top':0
-                                })
-                            })   
+                            that.couponlistScroll();
+                            
                         }, 1500);
                     }
                 }
 
+            },
+
+            couponlistnotgetScroll: function(){
+                $('#couponlistnotget').animate({
+                    'top':-80
+                },300,function(){
+                    $('#couponlistnotget li').eq(0).appendTo('#couponlistnotget');
+                    $('#couponlistnotget').css({
+                        'top':0
+                    })
+                })  
+            },
+                
+
+            couponlistScroll: function(){
+                $('#couponlist').animate({
+                    'top':-80
+                },300,function(){
+                    $('#couponlist li').eq(0).appendTo('#couponlist');
+                    $('#couponlist').css({
+                        'top':0
+                    })
+                })   
             },
 
             getcouponmaskHTMLBefore: function() {
@@ -391,7 +404,8 @@ define(
                     '<input type="text" value="" id="phoneNum">' +
                     '<span class="text-error" id="username-error-tips"></span>' +
                     '<button class="btn" id="getcouponbymobile">确定</button>' +
-                    '<ul id="couponlistnotget" class="coupons" style="overflow:hidden">';
+                    '<div class="coupons-b">' +
+                    '<ul id="couponlistnotget" class="coupons">';
             },
 
             getTooltipHTML: function() {
@@ -402,6 +416,7 @@ define(
 
             getcouponmaskHTMLAfter: function() {
                 return '</ul>' +
+                    '</div>' +
                     '</div>' +
                     '</div>'
             },
@@ -512,8 +527,9 @@ define(
                             $(".buttonarea").show();
 
                             if (shouldRolling) {
+                                this.couponlistScroll();
                                 that.interval = setInterval(function() {
-                                    $('#couponlist li:first-child').appendTo('#couponlist');
+                                    this.couponlistScroll();
                                 }, 1500);
                             }
 
