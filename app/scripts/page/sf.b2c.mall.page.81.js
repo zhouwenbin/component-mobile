@@ -304,14 +304,13 @@ define(
                     if (shouldRolling) {
                         this.interval = setInterval(function() {
                             $('#couponlistnotget li').animate({
-                                'top':-70
+                                'top':-80
                             },300,function(){
+                                $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
                                 $('#couponlistnotget li').css({
                                     'top':0
                                 })
-                                $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
-                            })
-                            
+                            })   
                         }, 1500);
                     }
 
@@ -368,7 +367,14 @@ define(
 
                     if (shouldRolling) {
                         this.interval = setInterval(function() {
-                            $('#couponlist li:first-child').appendTo('#couponlist');
+                            $('#couponlist li').animate({
+                                'top':-80
+                            },300,function(){
+                                $('#couponlist li:first-child').appendTo('#couponlist');
+                                $('#couponlist li').css({
+                                    'top':0
+                                })
+                            })   
                         }, 1500);
                     }
                 }
