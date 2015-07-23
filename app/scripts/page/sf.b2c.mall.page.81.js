@@ -364,7 +364,7 @@ define(
                         that.couponlistScroll();
                         this.interval = setInterval(function() {
                             that.couponlistScroll();
-                            
+
                         }, 1500);
                     }
                 }
@@ -379,9 +379,9 @@ define(
                     $('#couponlistnotget').css({
                         'top':0
                     })
-                })  
+                })
             },
-                
+
 
             couponlistScroll: function(){
                 $('#couponlist').animate({
@@ -391,7 +391,7 @@ define(
                     $('#couponlist').css({
                         'top':0
                     })
-                })   
+                })
             },
 
             getcouponmaskHTMLBefore: function() {
@@ -527,7 +527,7 @@ define(
                             $(".buttonarea").show();
 
                             if (shouldRolling) {
-                                this.couponlistScroll();
+                                that.couponlistScroll();
                                 that.interval = setInterval(function() {
                                     this.couponlistScroll();
                                 }, 1500);
