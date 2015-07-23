@@ -195,12 +195,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       var timeStr = null;
 
-      if (time._data.hours) {
+      if (time._data.hours && time._data.hours > 0) {
         timeStr = time._data.hours + '小时' + time._data.minutes + '分钟' + time._data.seconds + '秒'
-      } else if (time._data.minutes) {
+      } else if (time._data.minutes && time._data.minutes > 0) {
         timeStr = time._data.minutes + '分钟' + time._data.seconds + '秒'
-      } else {
+      } else if (time._data.seconds && time._data.seconds > 0) {
         timeStr = time._data.seconds + '秒'
+      } else {
+        timeStr = '0秒'
       }
 
       this.element.find('#pay-timmer').text(timeStr);
