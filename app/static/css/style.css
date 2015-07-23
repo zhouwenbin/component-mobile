@@ -1857,9 +1857,6 @@ a[title="站长统计"] {
 }
 
 .goods-r1 .corner-icon {
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
   width: 60px;
   height: 60px;
   background-size: 60px 60px;
