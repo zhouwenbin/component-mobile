@@ -192,14 +192,12 @@ body{
 	font-weight: 700;
 	border-left: 1px solid #9521c0;
 }
-.m727-nav .current{
+.m727-nav .active{
 	position: relative;
 	background-color: #9521c0;	
-}
-.m727-nav .today{
 	color: #f8de00;
 }
-.m727-nav .current::after{
+.m727-nav .active::after{
 	content: "";
 	position: absolute;
 	bottom: -10px;
