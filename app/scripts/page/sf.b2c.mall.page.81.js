@@ -10,6 +10,7 @@ define(
         'underscore',
         'moment',
         'md5',
+        'animate',
         // 'Stats',
         'sf.b2c.mall.framework.comm',
         'sf.b2c.mall.business.config',
@@ -23,7 +24,7 @@ define(
         'sf.hybrid',
         'vendor.page.response'
     ],
-    function(can, $, cookie, touch, store, Fastclick, _, moment, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
+    function(can, $, cookie, touch, store, Fastclick, _, moment, md5, animate, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
 
@@ -116,13 +117,19 @@ define(
 
                 var alreadyVoteNum = store.get("totalVoteNum81");
                 if (alreadyVoteNum) {
-                    $("#footerNum").text(5 - parseInt(alreadyVoteNum));
+                    $("#footerNum").text(10 - parseInt(alreadyVoteNum));
                 }
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
+                var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
                 if (notGetcoupon81) {
                     var notGetcoupon81Num = notGetcoupon81.toString().split(",");
                     $("#couponnum").text(notGetcoupon81Num.length);
+                    $("#getcoupon").removeClass("disabled");
+                }
+
+                if (alreadyGetcoupon81) {
+                    $("#getcoupon").removeClass("disabled");
                 }
 
                 this.hideShare();
@@ -241,15 +248,21 @@ define(
 
             '#getcoupon click': function() {
                 var result = "";
+                var shouldRolling = false;
+                var that = this;
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
+
                     result = this.getcouponmaskHTMLBefore();
 
                     $("#couponlistmask").addClass("hide");
                     $("#couponlistmask").removeClass("show");
 
                     var notGetcoupon81 = notGetcoupon81.toString().split(",");
+                    if (notGetcoupon81.length > 5) {
+                        shouldRolling = true;
+                    }
                     _.each(notGetcoupon81, function(item) {
                         var coupon = store.get("notGetcoupon81" + item);
                         var couponArr = coupon.split("|");
@@ -289,11 +302,20 @@ define(
 
                     $("#getcouponbymobile")[0].focus();
 
+                    if (shouldRolling) {
+                        that.couponlistnotgetScroll();
+                        this.interval = setInterval(function() {
+                             that.couponlistnotgetScroll();
+                        }, 1500);
+                    }
+
                 } else {
+
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
 
                     $("#couponlistmask").removeClass("hide");
                     $("#couponlistmask").addClass("show");
+
                     var result = "";
 
                     if (alreadyGetcoupon81) {
@@ -301,6 +323,11 @@ define(
                         $("#couponlisttitle").html("礼品券已放入账号:" + store.get('mobile81'));
 
                         var alreadyGetcoupon81 = alreadyGetcoupon81.toString().split(",");
+
+                        if (alreadyGetcoupon81.length > 5) {
+                            shouldRolling = true;
+                        }
+
                         _.each(alreadyGetcoupon81, function(item) {
                             var coupon = store.get("notGetcoupon81" + item);
                             var couponArr = coupon.split("|");
@@ -332,24 +359,64 @@ define(
                     }
 
                     $("#couponlist").html(result);
+
+                    if (shouldRolling) {
+                        that.couponlistScroll();
+                        this.interval = setInterval(function() {
+                            that.couponlistScroll();
+
+                        }, 1500);
+                    }
                 }
+
+            },
+
+            couponlistnotgetScroll: function(){
+                $('#couponlistnotget').animate({
+                    'top':-80
+                },300,function(){
+                    $('#couponlistnotget li').eq(0).appendTo('#couponlistnotget');
+                    $('#couponlistnotget').css({
+                        'top':0
+                    })
+                })
+            },
+
+
+            couponlistScroll: function(){
+                $('#couponlist').animate({
+                    'top':-80
+                },300,function(){
+                    $('#couponlist li').eq(0).appendTo('#couponlist');
+                    $('#couponlist').css({
+                        'top':0
+                    })
+                })
             },
 
             getcouponmaskHTMLBefore: function() {
                 return '<div class="dialog-phone mask" id="getcouponmask">' +
-                    '<div class="dialog-b center">' +
+                    '<div class="dialog-b center" >' +
                     '<div class="register-h" id="getcouponmaskcloseButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">' +
-                    '<a class="btn btn-close dialog-close" href="#">X</a>' +
+                    '<a class="btn btn-close dialog-close" style="color:#333" href="#">X</a>' +
                     '</div>' +
                     '<h2>输入您的手机号码领取现金券</h2>' +
                     '<input type="text" value="" id="phoneNum">' +
                     '<span class="text-error" id="username-error-tips"></span>' +
                     '<button class="btn" id="getcouponbymobile">确定</button>' +
+                    '<div class="coupons-b">' +
                     '<ul id="couponlistnotget" class="coupons">';
+            },
+
+            getTooltipHTML: function() {
+                return '<section class="tooltip center overflow-num" id="random">' +
+                    '<div id="randomText" style="font-size:20px;">{0}</div>' +
+                    '</section>'
             },
 
             getcouponmaskHTMLAfter: function() {
                 return '</ul>' +
+                    '</div>' +
                     '</div>' +
                     '</div>'
             },
@@ -357,7 +424,18 @@ define(
             '#getcouponbymobile click': function(element, event) {
                 event && event.preventDefault();
 
+                if (this.interval) {
+                    clearInterval(this.interval)
+                }
+
+                if (element.hasClass("disable")) {
+                    return false;
+                }
+
+                element.addClass("disable");
+
                 var that = this;
+                var shouldRolling = false;
 
                 var mobile = $("#phoneNum").val();
                 var isTelNum = /^1\d{10}$/.test(mobile);
@@ -414,6 +492,9 @@ define(
 
                             var result = "";
                             notGetcoupon81 = notGetcoupon81.split(",");
+                            if (notGetcoupon81.length > 5) {
+                                shouldRolling = true;
+                            }
                             _.each(notGetcoupon81, function(couponItem) {
                                 var coupon = store.get("notGetcoupon81" + couponItem);
 
@@ -449,13 +530,23 @@ define(
 
                             $(".buttonarea").show();
 
+                            if (shouldRolling) {
+                                that.couponlistScroll();
+                                that.interval = setInterval(function() {
+                                    that.couponlistScroll();
+                                }, 1500);
+                            }
+
                             store.remove("notGetcoupon81");
                         } else {
                             $("#username-error-tips").html('领取失败');
                         }
+
+                        element.removeClass("disable");
                     })
                     .fail(function(error) {
                         $("#username-error-tips").html(that.errorMap[error] || '领取失败');
+                        element.removeClass("disable");
                     })
             },
 
@@ -523,12 +614,20 @@ define(
 
             "#closeButton click": function(element, event) {
                 event && event.preventDefault();
+
+                if (this.interval) {
+                    clearInterval(this.interval);
+                }
                 $('.dialog-phone').addClass('hide');
             },
 
             "#getcouponmaskcloseButton click": function(element, event) {
                 event && event.preventDefault();
+                if (this.interval) {
+                    clearInterval(this.interval);
+                }
                 $('#getcouponmask').remove();
+
             },
 
             "#gotoshare .btn-close click": function() {
@@ -536,6 +635,9 @@ define(
             },
 
             ".continue click": function() {
+                if (this.interval) {
+                    clearInterval(this.interval);
+                }
                 $('#couponlistmask').addClass('hide');
             },
 
@@ -614,38 +716,47 @@ define(
                 var totalVoteNum81 = store.get("totalVoteNum81");
 
                 // 每天只能扒五次
-                if (currentDateVote >= 5 && totalVoteNum81 < 10) {
-                    $("#randomText").text("每天只能扒五次哦,请明天再来~");
-                    $("#random").css("display", "block");
-                    setTimeout(' $("#random").css("display","none")', 2000);
+                // if (currentDateVote >= 5 && totalVoteNum81 < 10) {
+                if (currentDateVote >= 11) {
+
+                    var result = $(this.getTooltipHTML().replace("{0}", "每天只能扒十次哦,请明天再来~"));
+                    result.css({
+                        "opacity": 1
+                    });
+
+                    $('body').append(result);
+                    setTimeout(function() {
+                        result.remove();
+                    }, 2000);
+
 
                     element.removeClass("disable");
                     return false;
                 }
 
                 // 提示去分享  如果分享过，则要加2次
-                var weixinsharetime81 = store.get("weixinsharedate81");
-                var threshold = 0;
-                if (weixinsharetime81 == new Date().getDate()) {
-                    threshold = 3;
-                }
+                // var weixinsharetime81 = store.get("weixinsharedate81");
+                // var threshold = 0;
+                // if (weixinsharetime81 == new Date().getDate()) {
+                //     threshold = 3;
+                // }
 
-                if (currentDateVote >= (2 + threshold)) {
-                    $("#gotoshare").removeClass("hide");
-                    $("#gotoshare").addClass("show");
+                // if (currentDateVote >= (2 + threshold)) {
+                //     $("#gotoshare").removeClass("hide");
+                //     $("#gotoshare").addClass("show");
 
 
-                    if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
-                        $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
-                        $("#gotoshare").find("#share").show();
-                    } else {
-                        $("#gotoshare").find("#gotoshareh2").text("分享活动至朋友圈或者微信好友，拉上闺蜜一起来！ 727上顺丰海淘， 扒光了等你来抢！");
-                        $("#gotoshare").find("#share").hide();
-                    }
+                //     if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
+                //         $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
+                //         $("#gotoshare").find("#share").show();
+                //     } else {
+                //         $("#gotoshare").find("#gotoshareh2").text("分享活动至朋友圈或者微信好友，拉上闺蜜一起来！ 727上顺丰海淘， 扒光了等你来抢！");
+                //         $("#gotoshare").find("#share").hide();
+                //     }
 
-                    element.removeClass("disable");
-                    return false;
-                }
+                //     element.removeClass("disable");
+                //     return false;
+                // }
 
                 // 只能把十次
                 // var totalVoteNum81notclear = store.get("totalVoteNum81notclear");
@@ -662,9 +773,17 @@ define(
                 var clickTimes = store.get("81vote" + voteNo);
 
                 if (store.get("81vote" + voteNo) && store.get("81vote" + voteNo) == 3) {
-                    $("#randomText").text("您已经扒光该明星了，换个明星继续扒吧~");
-                    $("#random").css("display", "block");
-                    setTimeout(' $("#random").css("display","none")', 2000);
+
+                    var result = $(this.getTooltipHTML().replace("{0}", "您已经扒光该明星了，换个明星继续扒吧~"));
+                    result.css({
+                        "opacity": 1
+                    });
+
+                    $('body').append(result);
+                    setTimeout(function() {
+                        result.remove();
+                    }, 2000);
+
                     element.removeClass("disable");
                     return false;
                 }
@@ -697,15 +816,35 @@ define(
 
                         store.set("notGetcoupon81" + couponid, startTime + "|" + endTime + "|" + desc)
 
-                        $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
+                        var result = $(that.getTooltipHTML().replace("{0}", desc.split(",")[0] + " Get√"));
+                        setTimeout(function() {
+                            result.addClass("active");
+                        }, 200)
+
+                        $('body').append(result);
+                        setTimeout(function() {
+                            result.remove();
+                            if ($("#getcoupon").hasClass("disabled")) {
+                                $("#getcoupon").removeClass("disabled");
+                            }
+
+                            $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
+                        }, 2000)
 
                     })
                     .fail(function(error) {
 
                         if (!that.isGenerateCouponFail) {
-                            $("#randomText").text(that.randomErrorMap[error] || "生成礼品失败");
-                            $("#random").css("display", "block");
-                            setTimeout(' $("#random").css("display","none")', 2000);
+                            var result = $(that.getTooltipHTML().replace("{0}", that.randomErrorMap[error] || "生成礼品失败"));
+
+                            result.css({
+                                "opacity": 1
+                            });
+
+                            $('body').append(result);
+                            setTimeout(function() {
+                                result.remove();
+                            }, 2000);
                         }
 
                         that.isGenerateCouponFail = true;

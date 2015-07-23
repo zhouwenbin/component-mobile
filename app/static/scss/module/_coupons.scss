@@ -46,7 +46,17 @@
   padding-bottom:5px;
   margin-bottom: 3px;
   border-bottom: 1px solid #e7e7e7;
+  padding-right: 50px;
 
+}
+.coupons-title{
+  position: relative;
+}
+.coupons-title a{
+  position: absolute;
+  right: 0;
+  top: 7px;
+  color: #3b86c4;
 }
 .coupons p{
   color: #999;
