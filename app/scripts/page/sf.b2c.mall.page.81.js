@@ -364,7 +364,7 @@ define(
                         that.couponlistScroll();
                         this.interval = setInterval(function() {
                             that.couponlistScroll();
-                            
+
                         }, 1500);
                     }
                 }
@@ -379,9 +379,9 @@ define(
                     $('#couponlistnotget').css({
                         'top':0
                     })
-                })  
+                })
             },
-                
+
 
             couponlistScroll: function(){
                 $('#couponlist').animate({
@@ -391,14 +391,14 @@ define(
                     $('#couponlist').css({
                         'top':0
                     })
-                })   
+                })
             },
 
             getcouponmaskHTMLBefore: function() {
                 return '<div class="dialog-phone mask" id="getcouponmask">' +
                     '<div class="dialog-b center" >' +
                     '<div class="register-h" id="getcouponmaskcloseButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">' +
-                    '<a class="btn btn-close dialog-close" href="#">X</a>' +
+                    '<a class="btn btn-close dialog-close" style="color:#333" href="#">X</a>' +
                     '</div>' +
                     '<h2>输入您的手机号码领取现金券</h2>' +
                     '<input type="text" value="" id="phoneNum">' +
@@ -423,6 +423,10 @@ define(
 
             '#getcouponbymobile click': function(element, event) {
                 event && event.preventDefault();
+
+                if (this.interval) {
+                    clearInterval(this.interval)
+                }
 
                 if (element.hasClass("disable")) {
                     return false;
