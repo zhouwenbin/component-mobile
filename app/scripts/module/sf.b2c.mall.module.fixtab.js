@@ -15,8 +15,9 @@ function(can, $, _,Fastclick,IScroll) {
       this.initSidelip();
       var tabNum=$('.nataral-tab li').length;
       if(tabNum>5){
+        $('.nataral-tab-icon').show();
         $('.nataral-tab ul').css({
-          'width':100 * parseInt(tabNum / 5 +1) +'%'
+          'width':100 * Math.ceil(tabNum / 5) +'%'
         });
         new window.IScroll('.nataral-tab', { scrollX: true });
       }
