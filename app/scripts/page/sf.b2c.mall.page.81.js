@@ -527,7 +527,7 @@ define(
                             $(".buttonarea").show();
 
                             if (shouldRolling) {
-                                this.couponlistScroll();
+                                that.couponlistScroll();
                                 that.interval = setInterval(function() {
                                     this.couponlistScroll();
                                 }, 1500);
