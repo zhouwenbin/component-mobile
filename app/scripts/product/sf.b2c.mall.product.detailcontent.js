@@ -738,6 +738,14 @@ define('sf.b2c.mall.product.detailcontent', [
                     var startTime = element.startTime || 0;
                     var currentServerTime = getActivityInfo.getServerTime();
                     that.initCountDown(startTime, currentServerTime, element.endTime);
+
+                    if (that.checkActivityInfo) {
+                      clearTimeout(that.checkActivityInfo);
+                    }
+
+                    that.checkActivityInfo = setTimeout(function() {
+                      that.initActivityInfo(that.itemid);
+                    }, 60*1000);
                   }
                 }
 
