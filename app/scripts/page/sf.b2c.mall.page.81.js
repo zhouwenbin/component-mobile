@@ -10,6 +10,7 @@ define(
         'underscore',
         'moment',
         'md5',
+        'animate',
         // 'Stats',
         'sf.b2c.mall.framework.comm',
         'sf.b2c.mall.business.config',
@@ -23,7 +24,7 @@ define(
         'sf.hybrid',
         'vendor.page.response'
     ],
-    function(can, $, cookie, touch, store, Fastclick, _, moment, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
+    function(can, $, cookie, touch, store, Fastclick, _, moment, md5, animate, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
 
