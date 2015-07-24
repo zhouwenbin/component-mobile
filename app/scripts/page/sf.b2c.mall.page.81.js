@@ -248,7 +248,9 @@ define(
                         var startTime = couponArr[0];
                         var endTime = couponArr[1];
                         var desc = couponArr[2];
-                        var title = "", price = "", tip = "";
+                        var title = "",
+                            price = "",
+                            tip = "";
                         if (desc != "") {
                             var descArr = desc.split(",");
                             if (descArr[0]) {
@@ -296,7 +298,9 @@ define(
                             var startTime = couponArr[0];
                             var endTime = couponArr[1];
                             var desc = couponArr[2];
-                            var title = "", price = "", tip = "";
+                            var title = "",
+                                price = "",
+                                tip = "";
                             if (desc != "") {
                                 var descArr = desc.split(",");
                                 if (descArr[0]) {
@@ -399,10 +403,34 @@ define(
                             $("#couponlisttitle").html("礼品券已放入账号:" + store.get('mobile81'));
 
                             var result = "";
-                            _.each(notGetcoupon81, function(item) {
-                                var coupon = store.get("notGetcoupon81" + item);
+                            notGetcoupon81 = notGetcoupon81.split(",");
+                            _.each(notGetcoupon81, function(couponItem) {
+                                var coupon = store.get("notGetcoupon81" + couponItem);
+
                                 var couponArr = coupon.split("|");
-                                result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '</p></div></li>');
+                                var startTime = couponArr[0];
+                                var endTime = couponArr[1];
+                                var desc = couponArr[2];
+                                var title = "",
+                                    price = "",
+                                    tip = "";
+                                if (desc != "") {
+                                    var descArr = desc.split(",");
+                                    if (descArr[0]) {
+                                        title = descArr[0];
+                                    }
+
+                                    if (descArr[1]) {
+                                        price = descArr[1] / 100;
+                                    }
+
+                                    if (descArr[2]) {
+                                        tip = descArr[2];
+                                    }
+                                }
+
+                                result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + price + '</span></div><div class="coupons-c2r2">' + tip + '</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + title + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + startTime + '-' + endTime + '</p></div></li>');
+
                             })
 
                             $("#account").text(mobile);
@@ -711,7 +739,6 @@ define(
 
 
                 $("#footerNum").text(parseInt($("#footerNum").text(), 10) - 1);
-
 
                 $('.people>li').eq(voteNo - 1).find('img').attr('src', 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + voteNo + '/' + tabIndex + '.jpg');
 
