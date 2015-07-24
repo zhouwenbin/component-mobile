@@ -63,6 +63,12 @@ define(
 
         this.render(this.options.data);
 
+        //活动期间 微信要放到第一个位置
+        if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015,6,27,0,0,0).getTime()) {
+          $('.gotopaymethodlist li').eq(0).appendTo('.gotopaymethodlist');
+          $("#weixintip").text("微信（7.27-8.2首次下单减2元）");
+        }
+
         // 微信环境下 要把微信设为默认
         if (SFUtil.isMobile.WeChat()) {
           this.activeWeixinpay();
@@ -143,7 +149,7 @@ define(
        * [getAppPayType 针对APP应用做的支付类型定制]
        * @return {[type]} [description]
        */
-      getAppPayType: function(){
+      getAppPayType: function() {
         var result = "";
 
         var paytypelist = $(".gotopaymethodlist").find("li");
@@ -189,21 +195,25 @@ define(
 
         var switcher = new SFSwitcher()
 
-        switcher.register('app', function () {
+        switcher.register('app', function() {
           SFHybrid.pay(that.options.orderid, that.getAppPayType())
-            .done(function () {
+            .done(function() {
               SFHybrid.toast.dismiss();
               var link = SFConfig.setting.link.paysuccess;
 
               if (link.indexOf('?') > -1) {
-                link = link + '&' + $.param({orderid: that.options.orderid});
-              }else{
-                link = link + '?' + $.param({orderid: that.options.orderid});
+                link = link + '&' + $.param({
+                  orderid: that.options.orderid
+                });
+              } else {
+                link = link + '?' + $.param({
+                  orderid: that.options.orderid
+                });
               }
 
               window.location.href = link;
             })
-            .fail(function (errorInfo) {
+            .fail(function(errorInfo) {
               SFHybrid.toast.dismiss();
 
               var defaultMsg = '订单支付失败！';
@@ -223,7 +233,7 @@ define(
             });
         })
 
-        switcher.register('web', function () {
+        switcher.register('web', function() {
           SFOrderFn.payV2({
             orderid: that.options.orderid,
             payType: that.getPayType(),
