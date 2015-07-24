@@ -24,12 +24,13 @@
         <span class="corner-icon corner-icon04 center">活动结束</span>
       {{/isOverTime}}
       {{! 售完 }}
+	  {{^isNotBegin}}
       {{^isOverTime activityInfo.endTime}}
       {{#if priceInfo.soldOut}}
         <span class="corner-icon corner-icon01 center">已抢光</span>
       {{/if}}
       {{/isOverTime}}
-      
+      {{/isNotBegin}}
       {{#sf-isYZYW priceInfo.productShape}}
         {{#if itemInfo.basicInfo.originRetailPrice}}
           <div class="goods-price2">
@@ -44,13 +45,13 @@
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
       <div class="goods-r4">
         {{! 如果是秒杀活动活动价格展示秒杀价，从activityInfo中取展示价格 }}
-        <strong class="goods-price" {{#sellPriceIsGray activityInfo.activityType priceInfo.soldOut activityInfo.endTime}}style="color:#999;"{{/sellPriceIsGray}}><small>¥</small>{{sf-isSecKill activityInfo.activityType activityInfo.activityPrice priceInfo.sellingPrice}}</strong>
+        <strong class="goods-price" {{^isNotBegin}}{{#sellPriceIsGray activityInfo.activityType priceInfo.soldOut activityInfo.endTime}}style="color:#999;"{{/sellPriceIsGray}}{{/isNotBegin}}><small>¥</small>{{sf-isSecKill activityInfo.activityType activityInfo.activityPrice priceInfo.sellingPrice}}</strong>
         （含税）{{#sf-showOriginPrice activityInfo.activityType priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>
         {{/sf-showOriginPrice}}
 
         {{#sf-isYZYW priceInfo.productShape}}约{{priceInfo.currencySymbol}}{{sf.price priceInfo.localSellingPrice}}{{/sf-isYZYW}}
 
-        {{#isSeckillActivity activityInfo.activityType}}<span class="seckill-text-bg {{#isShowGrayClass priceInfo.soldOut activityInfo.endTime}}seckill-text-bg-gray{{/isShowGrayClass}}">限时秒杀</span>{{/isSeckillActivity}}
+        {{#isSeckillActivity activityInfo.activityType}}<span class="seckill-text-bg {{^isNotBegin}}{{#isShowGrayClass priceInfo.soldOut activityInfo.endTime}}seckill-text-bg-gray{{/isShowGrayClass}}{{/isNotBegin}}">限时秒杀</span>{{/isSeckillActivity}}
       </div>
 
       {{#isSeckillActivity activityInfo.activityType}}

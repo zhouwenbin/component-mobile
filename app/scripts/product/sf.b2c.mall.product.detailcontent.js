@@ -170,6 +170,13 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.inverse(options.contexts || this);
           }
         },
+		'isNotBegin': function(options) {
+          if (LEFTBEGINTIME > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
         //展示活动结束蒙层
         'isOverTime': function(endTime, options) {
           //var leftTime = endTime - new Date().getTime() - DISTANCE;
