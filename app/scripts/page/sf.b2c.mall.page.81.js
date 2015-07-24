@@ -515,7 +515,8 @@ define(
                 $('#success').addClass('hide');
             },
 
-            ".gotosee click": function() {
+            ".gotosee click": function(element, event) {
+                event && event.preventDefault();
                 $('#audio')[0].pause();
                 window.location.href = "http://m.sfht.com/activity/494.html";
             },
