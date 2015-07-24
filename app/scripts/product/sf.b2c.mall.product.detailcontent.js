@@ -176,6 +176,8 @@ define('sf.b2c.mall.product.detailcontent', [
           //var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
           if (LEFTENDTIME < 0) {
             return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
           }
         },
         'isShowText': function(startTime, endTime, options) {
