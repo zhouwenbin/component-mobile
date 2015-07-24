@@ -83,7 +83,7 @@ define(
                 //loading效果
                 setTimeout(function() {
                     $('.young-loading').hide();
-                }, 3000);
+                }, 6000);
 
                 //播放/关闭音乐
                 $('.icon-audio').click(function() {
@@ -641,8 +641,14 @@ define(
                     $("#gotoshare").removeClass("hide");
                     $("#gotoshare").addClass("show");
 
-                    $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
-                    $("#gotoshare").find("#share").show();
+
+                    if (SFFn.isMobile.WeChat() || SFFn.isMobile.APP()) {
+                        $("#gotoshare").find("#gotoshareh2").text("您已经扒两次，分享给好友还能继续扒三次哦~");
+                        $("#gotoshare").find("#share").show();
+                    } else {
+                        $("#gotoshare").find("#gotoshareh2").text("分享活动至朋友圈或者微信好友，拉上闺蜜一起来！ 727上顺丰海淘， 扒光了等你来抢！");
+                        $("#gotoshare").find("#share").hide();
+                    }
 
                     element.removeClass("disable");
                     return false;
