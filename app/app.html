@@ -8,7 +8,33 @@
     <!-- build:css({app, .tmp}) styles/sf.b2c.app.css -->
     <link rel="stylesheet" href="static/css/common.css">
     <link rel="stylesheet" href="static/css/app.css">
+    <link rel="stylesheet" type="text/css" href="static/lib/zepto.fullpage/src/zepto.fullPage.css">
     <!-- endbuild -->
+
+    <style type="text/css">
+        .fullPage-wp{
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+        .fullPage-wp:after {
+            display: block;
+            content: ' ';
+            height: 0;
+            clear: both;
+        }
+        .fullPage-wp.anim{
+            -webkit-transition: all 500ms ease-out 0s;
+            transition: all 500ms ease-out 0s;
+        }
+        .fullPage-page{
+            display: block;
+            overflow: hidden;
+        }
+
+        .fullPage-dir-h {
+            float: left;
+        }
+    </style>
 </head>
 
 <body class="body1">
