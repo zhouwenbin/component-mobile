@@ -2,13 +2,9 @@ define(
 'sf.b2c.mall.module.timecount', [
   'can',
   'zepto',
-  'fastclick',
-  'sf.b2c.mall.business.config',
-  'sf.b2c.mall.framework.comm'
+  'underscore'
 ],
-function(can, $,Fastclick, SFConfig, SFFrameworkComm) {
-  Fastclick.attach(document.body);
-  SFFrameworkComm.register(3);
+function(can, $, _) {
   var deadTime = can.Control.extend({
       init: function(element, options) {
         var timecountsrc = element.find(".cms-src-timecount");
