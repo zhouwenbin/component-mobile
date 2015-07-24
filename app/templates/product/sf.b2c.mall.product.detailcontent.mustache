@@ -176,7 +176,7 @@
   <!--推荐商品-->
 
   {{! 如果是秒杀商品不应该有加入购物车 }}
-  {{#isShowSeckillIcon activityInfo.activityType}}
+  {{#isSeckillActivity activityInfo.activityType}}
   {{! 活动未开始，和商品已抢完，活动已经结束直接原价购买 }}
     {{#isBegin activityInfo.startTime activityInfo.endTime priceInfo.soldOut}}
     <section class="nav-cart">
@@ -189,8 +189,8 @@
       <div class="nav-cart-r1"><button id="btn-seckill" class="btn btn-danger">立即购买</button></div>
     </section>
     {{/isBegin}}
-  {{/isShowSeckillIcon}}
-  {{^isShowSeckillIcon activityInfo.activityType}}
+  {{/isSeckillActivity}}
+  {{^isSeckillActivity activityInfo.activityType}}
   <!--立即购买-->
   <section class="nav-cart">
     <div class="nav-cart-r1">
@@ -201,7 +201,7 @@
       <button class="btn btn-danger gotobuy">立即购买</button>
     </div>
   </section>
-  {{/isShowSeckillIcon}}
+  {{/isSeckillActivity}}
   <!--立即购买-->
 
 </div>
