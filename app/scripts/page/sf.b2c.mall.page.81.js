@@ -342,7 +342,7 @@ define(
                     '<a class="btn btn-close dialog-close" href="#">X</a>' +
                     '</div>' +
                     '<h2>输入您的手机号码领取现金券</h2>' +
-                    '<input value="" id="phoneNum">' +
+                    '<input type="text" value="" id="phoneNum">' +
                     '<span class="text-error" id="username-error-tips"></span>' +
                     '<button class="btn" id="getcouponbymobile">确定</button>' +
                     '<ul id="couponlistnotget" class="coupons">';
@@ -368,7 +368,7 @@ define(
 
                 // 如果当前手机号和之前输入的不一致，则要清空之前的手机号领取的历史券
                 var historyMobile81 = store.get("mobile81");
-                if (mobile != mobile) {
+                if (mobile != historyMobile81) {
                     store.remove("alreadyGetcoupon81");
                 }
 
@@ -404,8 +404,7 @@ define(
 
                             // 弹出新层
                             alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
-                            $("#getcouponmask").removeClass("show");
-                            $("#getcouponmask").addClass("hide");
+                            $("#getcouponmask").remove();
 
                             $("#couponlistmask").removeClass("hide");
                             $("#couponlistmask").addClass("show");
