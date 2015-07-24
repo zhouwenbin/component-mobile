@@ -14,10 +14,10 @@ function(can, $, _,Fastclick,IScroll) {
       this.initFix();
       this.initSidelip();
       var tabNum=$('.nataral-tab li').length;
-      if(tabNum>5){
+      if(tabNum>4){
         $('.nataral-tab-icon').show();
         $('.nataral-tab ul').css({
-          'width':100 * Math.ceil(tabNum / 5) +'%'
+          'width':25 * tabNum +'%'
         });
         new window.IScroll('.nataral-tab', { scrollX: true });
       }
@@ -63,7 +63,8 @@ function(can, $, _,Fastclick,IScroll) {
 
       var nataral_pruduct_offset=[];
       for(i=0;i<num;i++){
-        nataral_pruduct_offset[i]=$(nataral_pruduct[i]).offset().top-nav_height;
+          nataral_pruduct_offset[i]=$(nataral_pruduct[i]).offset().top-nav_height;
+        
       }
       $(window).scroll(function(){
         var that = this;

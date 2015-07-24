@@ -16,7 +16,7 @@ body{
     display: block;
     text-indent: -999em;
     position: absolute;
-    top: 935px *2;
+    top: 210px;
     left:50%;
     transform:translate(-50%,0);
 }
@@ -53,9 +53,13 @@ body{
 	width: 290px *2;
 	height: 168px *2;
 	left: 50%;
-	top: 872px *2;
+	top: 92px;
 	margin-left: -145px *2;
 	display: none;
+}
+
+.m81-video-outer{
+    position: relative;
 }
 
 
@@ -110,6 +114,13 @@ body{
     top: 20px * 2;
     z-index: 3;
     display: none;
+}
+.nataral-tab-icon:before{
+    position: absolute;
+    left: -10px;
+    right: -10px;
+    top: -10px;
+    bottom: -10px;
 }
 .nataral-tab-fixed ul{
     position: fixed;
