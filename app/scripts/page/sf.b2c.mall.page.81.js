@@ -437,7 +437,7 @@ define(
                 var that = this;
                 var shouldRolling = false;
 
-                var mobile = $("#phoneNum").val();
+                var mobile = can.$.trim($("#phoneNum").val());
                 var isTelNum = /^1\d{10}$/.test(mobile);
                 if (!isTelNum) {
                     $("#username-error-tips").html('请输入正确手机号码~');
