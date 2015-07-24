@@ -1397,10 +1397,14 @@ define('sf.b2c.mall.product.detailcontent', [
         //活动开始前
         //设置倒计时
         //如果当前时间活动已经结束了 就不要走倒计时设定了
-        if (new Date().getTime() + distance < startTime) {
+        if (startTime - new Date().getTime() + distance > 0) {
           that.interval = setInterval(function() {
-            that.setCountDown(distance, startTime);
-          }, '1000')
+            if (startTime - new Date().getTime() + distance <= 0) {
+              that.refreshPage();
+            } else {
+              that.setCountDown(distance, startTime);
+            }
+          }, 1000)
         } else if (endTime - new Date().getTime() + distance > 0) {
           that.interval = setInterval(function() {
 
@@ -1410,7 +1414,7 @@ define('sf.b2c.mall.product.detailcontent', [
             } else {
               that.setCountDown(distance, endTime);
             }
-          }, '1000')
+          }, 1000)
         } else {
           this.options.detailContentInfo.priceInfo.attr("timeIcon", "");
         }
