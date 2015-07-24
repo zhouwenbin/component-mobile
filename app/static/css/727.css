@@ -224,10 +224,10 @@ body {
 }
 
 .m727-nav li {
-  -webkit-box-flex: 2px;
-  -webkit-flex: 2px;
-      -ms-flex: 2px;
-          flex: 2px;
+  -webkit-box-flex: 1px;
+  -webkit-flex: 1px;
+      -ms-flex: 1px;
+          flex: 1px;
   height: 60px;
   line-height: 60px;
   text-align: center;

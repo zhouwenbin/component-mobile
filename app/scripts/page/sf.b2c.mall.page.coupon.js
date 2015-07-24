@@ -85,6 +85,9 @@ define(
             that.itemObj.attr("totalCount", data.totalCount || 0);
             var couponStatusMap = {
               "UNUSED": function() {
+                if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.showButton = true;
+                }
                 that.itemObj.unUsed.count++;
                 that.itemObj.unUsed.items.push(tmpCoupon);
               },
