@@ -26,7 +26,6 @@ define(
     function(can, $, cookie, touch, store, Fastclick, _, moment, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
-        SFWeixin.share81();
 
         var xingNan = 1000;
         var xiaoXiu = 1;
@@ -49,9 +48,9 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
-                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
+                var title = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc2 = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
                 var link = "http://m.sfht.com/81.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.share81(title, desc, desc2, link, imgUrl);
@@ -63,6 +62,12 @@ define(
              */
             init: function(element, options) {
                 // stats.begin();
+                var title = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc2 = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var link = "http://m.sfht.com/81.html";
+                var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
+                SFWeixin.share81(title, desc, desc2, link, imgUrl);
 
                 $('.wp-inner').fullpage();
                 $.fn.fullpage.stop();
@@ -569,9 +574,9 @@ define(
 
                 } else if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
-                    var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                    var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                    var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
+                    var title = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                    var desc = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                    var desc2 = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
                     var link = "http://m.sfht.com/81.html";
                     var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                     SFWeixin.share81(title, desc, desc2, link, imgUrl);
@@ -589,9 +594,9 @@ define(
                 if (SFFn.isMobile.WeChat()) {
                     $("#sharearea").show();
                 }
-                var title = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc = "扒衣见君节听过么？这个活动已经刷赢99%公司下限!";
-                var desc2 = "数千进口好货赔本赚吆喝，错过就再等一年!";
+                var title = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
+                var desc2 = "扒光的不止小鲜肉，还有价格！727上顺丰海淘， 扒光了等你来抢！";
                 var link = "http://m.sfht.com/81.html";
                 var imgUrl = 'http://img.sfht.com/sfhth5/1.1.199/img/81/photo1/' + (freshNum - index) + '/' + '1.jpg'
                 SFWeixin.share81(title, desc, desc2, link, imgUrl);
