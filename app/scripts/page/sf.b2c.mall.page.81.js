@@ -256,7 +256,22 @@ define(
                         _.each(notGetcoupon81, function(item) {
                             var coupon = store.get("notGetcoupon81" + item);
                             var couponArr = coupon.split("|");
-                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
+                            var startTime = couponArr[0];
+                            var endTime = couponArr[1];
+                            var desc = couponArr[2];
+                            var title, price, tip;
+                            if (desc != "") {
+                                var descArr = desc.split(",");
+                                if (descArr.length == 3) {
+                                    title = descArr[0];
+                                    price = descArr[1] / 100;
+                                    tip = descArr[2];
+                                }
+                            }
+
+                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + price + '</span></div><div class="coupons-c2r2">' + tip + '</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + title + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + startTime + '-' + endTime + '</p></div></li>');
+
+                            // result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
                         })
 
                         $("#couponlistnotget").html(result);
@@ -275,13 +290,27 @@ define(
                     var result = "";
 
                     if (alreadyGetcoupon81) {
-                        $("#couponlisttitle").html("抽到的现金券已放到手机号(" + store.get('mobile81') + ")账户中，请使用该账号登陆顺丰海淘(sfht.com)使用吧!");
+                        $(".buttonarea").show();
+                        $("#couponlisttitle").html("礼品券已放入账号:" + store.get('mobile81'));
 
                         var alreadyGetcoupon81 = alreadyGetcoupon81.toString().split(",");
                         _.each(alreadyGetcoupon81, function(item) {
                             var coupon = store.get("notGetcoupon81" + item);
                             var couponArr = coupon.split("|");
-                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '<br>' + couponArr[5] + '</p></div></li>');
+                            var startTime = couponArr[0];
+                            var endTime = couponArr[1];
+                            var desc = couponArr[2];
+                            var title, price, tip;
+                            if (desc != "") {
+                                var descArr = desc.split(",");
+                                if (descArr.length == 3) {
+                                    title = descArr[0];
+                                    price = descArr[1] / 100;
+                                    tip = descArr[1];
+                                }
+                            }
+
+                            result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + price + '</span></div><div class="coupons-c2r2">' + tip + '</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + title + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + startTime + '-' + endTime + '</p></div></li>');
                         })
                     } else {
                         result += ('<p style="font-size:26px">暂无奖品哦，赶紧去扒吧~</p>');
@@ -302,6 +331,12 @@ define(
                 if (!isTelNum) {
                     $("#username-error-tips").html('请输入正确手机号码~');
                     return false;
+                }
+
+                // 如果当前手机号和之前输入的不一致，则要清空之前的手机号领取的历史券
+                var historyMobile81 = store.get("mobile81");
+                if (mobile != mobile) {
+                    store.remove("alreadyGetcoupon81");
                 }
 
                 store.set("mobile81", mobile);
@@ -331,8 +366,6 @@ define(
                                 store.set("alreadyGetcoupon81", notGetcoupon81);
                             }
 
-                            store.remove("notGetcoupon81");
-
                             // 清空未领取为零
                             $("#couponnum").text(0);
 
@@ -345,10 +378,10 @@ define(
                             $("#couponlistmask").addClass("show");
                             alreadyGetcoupon81 = alreadyGetcoupon81.split(",");
 
-                            $("#couponlisttitle").html("抽到的现金券已放到手机号(" + store.get('mobile81') + ")账户中，请使用该账号登陆顺丰海淘(sfht.com)使用吧!");
+                            $("#couponlisttitle").html("礼品券已放入账号:" + store.get('mobile81'));
 
                             var result = "";
-                            _.each(alreadyGetcoupon81, function(item) {
+                            _.each(notGetcoupon81, function(item) {
                                 var coupon = store.get("notGetcoupon81" + item);
                                 var couponArr = coupon.split("|");
                                 result += ('<li><div class="coupons-c2 fr"><div class="coupons-c2r1">￥<span>' + couponArr[0] + '</span></div><div class="coupons-c2r2">满' + couponArr[1] + '元立减</div></div><div class="coupons-c1"><h2 class="ellipsis" style="font-size:21px">' + couponArr[2] + " " + couponArr[5] + '</h2><p class="ellipsis" style="font-size: 21px;">有效期：' + couponArr[3] + '-' + couponArr[4] + '</p></div></li>');
@@ -357,6 +390,10 @@ define(
                             $("#account").text(mobile);
 
                             $("#couponlist").html(result);
+
+                            $(".buttonarea").show();
+
+                            store.remove("notGetcoupon81");
                         } else {
                             $("#username-error-tips").html('领取失败');
                         }
@@ -419,15 +456,20 @@ define(
 
             //进入活动页面
             "#huodong click": function() {
-                window.location.href = "http://m.sfht.com/activity/439.html";
 
                 $('#success').addClass('hide');
                 $('#audio')[0].pause();
+                window.location.href = "http://m.sfht.com/activity/439.html";
             },
 
             //继续扒小鲜肉
             "#goOn click": function() {
                 $('#success').addClass('hide');
+            },
+
+            ".gotosee click" : function() {
+                $('#audio')[0].pause();
+                window.location.href = "http://m.sfht.com/activity/439.html";
             },
 
             "#closeButton click": function(element, event) {
@@ -436,6 +478,10 @@ define(
             },
 
             "#gotoshare .btn-close click": function() {
+                $('#gotoshare').addClass('hide');
+            },
+
+            ".continue click": function() {
                 $('#gotoshare').addClass('hide');
             },
 
@@ -594,14 +640,12 @@ define(
                             store.set("notGetcoupon81", couponid);
                         }
 
-                        var format = 'YYYY-MM-DD HH:mm';
+                        var format = 'YYYY-MM-DD';
                         var startTime = moment(data.startTime).format(format);
                         var endTime = moment(data.endTime).format(format);
-                        var useNotice = data.useNotice ? data.useNotice : "";
-                        var reduceCost = data.reduceCost / 100;
-                        var leastCost = data.leastCost / 100;
+                        var desc = data.useInstruction ? data.useInstruction : "";
 
-                        store.set("notGetcoupon81" + couponid, reduceCost + "|" + leastCost + "|" + data.title + "|" + startTime + "|" + endTime + "|" + useNotice)
+                        store.set("notGetcoupon81" + couponid, startTime + "|" + endTime + "|" + desc)
 
                         $("#couponnum").text(parseInt($("#couponnum").text(), 10) + 1);
 
