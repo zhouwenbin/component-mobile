@@ -264,10 +264,19 @@ define('sf.b2c.mall.order.orderlistcontent', [
         event && event.preventDefault();
 
         var order = $element.closest('li').data('order');
-        var url = SFConfig.setting.link.gotopay + '&' + $.param({
-          "orderid": order.orderId,
-          "showordersuccess": true
-        });
+        var goodsType = $element.closest('li').data('order').orderPackageItemList[0].orderGoodsItemList[0].goodsType;
+        if (goodsType == 'SECKILL') {
+          var url = SFConfig.setting.link.gotopay + '&' + $.param({
+            "orderid": order.orderId,
+            "showordersuccess": true,
+            "goodsType": goodsType
+          });         
+        } else {
+          var url = SFConfig.setting.link.gotopay + '&' + $.param({
+            "orderid": order.orderId,
+            "showordersuccess": true
+          });
+        }
 
         // －－－－－－－－－－－－－－－－－－
         // 不同环境切换不同的支付页面
