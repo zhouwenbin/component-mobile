@@ -75,3 +75,21 @@
 .detail-b:last-child h3{
   text-align: center;
 }
+.seckill-text-bg{
+  display: inline-block;
+  margin-left: 10px;
+  padding: 0 5px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 12px;
+  background: #ff5b54;
+  color: #fff;
+  vertical-align: 0;
+  border-radius: 9px;
+}
+
+.seckill-text-bg-gray{
+  background: #dcdcdc;
+  color: #999;
+}

@@ -78,6 +78,10 @@ input, select {
   vertical-align: middle;
 }
 
+em {
+  font-style: normal;
+}
+
 /* 默认 */
 * {
   -webkit-box-sizing: border-box;
@@ -2049,6 +2053,29 @@ body {
   margin-right: 15px;
 }
 
+.goods-r1 .corner-icon {
+  width: 60px;
+  height: 60px;
+  -webkit-background-size: 60px 60px;
+          background-size: 60px 60px;
+  font: 0/0 a;
+  z-index: 20;
+}
+
+.corner-icon01 {
+  background: url(http://img0.sfht.com/img/8f016642e40404b528ec23dff6d516fc.jpg) 0 0 no-repeat;
+}
+
+/*.corner-icon02{
+  background:  url(../img/corner-02.png) 0 0 no-repeat;
+}
+.corner-icon03{
+  background:  url(../img/corner-03.png) 0 0 no-repeat;
+}*/
+.corner-icon04 {
+  background: url(http://img0.sfht.com/img/520235946454a96e657b73268e6541a5.jpg) 0 0 no-repeat;
+}
+
 /*商品详情*/
 .detail {
   background: #fff;
@@ -2137,6 +2164,26 @@ body {
 
 .detail-b:last-child h3 {
   text-align: center;
+}
+
+.seckill-text-bg {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 0 5px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 12px;
+  background: #ff5b54;
+  color: #fff;
+  vertical-align: 0;
+  -webkit-border-radius: 9px;
+          border-radius: 9px;
+}
+
+.seckill-text-bg-gray {
+  background: #dcdcdc;
+  color: #999;
 }
 
 /*推荐商品*/
@@ -2590,6 +2637,14 @@ body {
 .orderlist-none p {
   margin-bottom: 35px;
   font-size: 15px;
+}
+
+.seckill-title-countdown {
+  margin-left: 13px;
+}
+
+.seckill-title-countdown .text-important {
+  margin-left: 0;
 }
 
 /*orderdetail*/
@@ -4757,6 +4812,20 @@ body {
 
 .goodslist h3 {
   font-weight: normal;
+  line-height: 1.5;
+}
+
+.goods-seckill {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0 6px;
+  height: 16px;
+  line-height: 16px;
+  color: #fff;
+  background: #ff5b54;
+  -webkit-border-radius: 16px;
+          border-radius: 16px;
+  font-size: 12px;
 }
 
 .downloadapp {

@@ -1,0 +1,12 @@
+/*=======================Use=======================
+.label{
+  @include label-variant(#f33);
+}
+========================Output=====================
+.label {
+  background-color: #ff3333;
+}
+.label[href]:hover, .label[href]:focus {
+  background-color: red;
+}
+==================================================*/

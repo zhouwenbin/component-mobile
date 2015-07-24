@@ -33,6 +33,16 @@ define(
 
     var SFGotoPay = can.Control.extend({
 
+      helpers: {
+        'showSecKillPayTime': function(goodsType, options) {
+          if (goodsType() == 'SECKILL') {
+            return "15分钟";
+          } else {
+            return "2小时";
+          }
+        }
+      },
+
       init: function(element, options) {
 
         this.options.data = new can.Map({});
@@ -55,6 +65,7 @@ define(
         this.options.code = params.code;
 
         this.options.data.attr("showordersuccess", params.showordersuccess);
+        this.options.data.attr("goodsType", params.goodsType);
 
         // 如果是在微信环境和APP下 显示微信支付和支付宝，其他时候只展示支付宝
         if (SFUtil.isMobile.WeChat() || (SFUtil.isMobile.APP() && SFHybrid.getInfo.getAppInfo() != '1.0.0')) {
@@ -64,7 +75,7 @@ define(
         this.render(this.options.data);
 
         //活动期间 微信要放到第一个位置
-        if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015,6,27,0,0,0).getTime()) {
+        if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015, 6, 27, 0, 0, 0).getTime()) {
           $('.gotopaymethodlist li').eq(0).appendTo('.gotopaymethodlist');
           $("#weixintip").text("微信（7.27-8.2首次下单减2元）");
         }
@@ -97,7 +108,7 @@ define(
       render: function(data) {
         // var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache', data);
         var renderFn = can.mustache(template_order_gotopay);
-        var html = renderFn(data);
+        var html = renderFn(data, this.helpers);
         this.element.html(html);
       },
 
