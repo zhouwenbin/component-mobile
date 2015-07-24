@@ -33,7 +33,7 @@
   display: flex;
   padding-top: 12px;
   align-items: center;
-  width: 68px;
+  width: 60px;
   justify-content: flex-end;
 }
 .header-c3{
@@ -88,4 +88,7 @@
   top: 0;
   z-index: 1000;
   width:100%;
+}
+.header-detail .header-c2 {
+  width:68px;
 }
