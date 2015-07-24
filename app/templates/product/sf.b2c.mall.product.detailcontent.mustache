@@ -16,22 +16,20 @@
           {{/each}}
         </div>
       </div>
-      {{! 售完 }}
-      {{#if priceInfo.soldOut}}
-        {{! <div class="mask"></div>
-        <span class="icon icon20 center">售完</span> }}
-        {{! corner-icon01 抢光 售完 活动下架 活动结束 }}
-        <span class="corner-icon corner-icon01 center">已抢光</span>
-      {{/if}}
-
+      
       {{! 活动结束 }}
       {{#isOverTime activityInfo.endTime}}
         {{! <div class="mask"></div>
         <span class="icon icon20 center">活动结束</span> }}
-
         <span class="corner-icon corner-icon04 center">活动结束</span>
       {{/isOverTime}}
-
+      {{! 售完 }}
+      {{^isOverTime activityInfo.endTime}}
+      {{#if priceInfo.soldOut}}
+        <span class="corner-icon corner-icon01 center">已抢光</span>
+      {{/if}}
+      {{/isOverTime}}
+      
       {{#sf-isYZYW priceInfo.productShape}}
         {{#if itemInfo.basicInfo.originRetailPrice}}
           <div class="goods-price2">
