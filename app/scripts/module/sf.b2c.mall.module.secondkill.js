@@ -63,6 +63,7 @@ define(
           //  1、隐藏其他天的产品
           // $(".daylinetarget*").hide();
           $("[class*='daylinetarget']").hide();
+          $("[class*='hourlinetarget']").hide();
 
           //  2、显示该天的产品
           activeDay = $(srcElement).attr('data-daylinestart');
@@ -128,6 +129,7 @@ define(
           _.each(dayList, function(item) {
             if ($(item).attr('data-daylinestart') <= day && day < $(item).attr('data-daylineend')) {
               $(item).addClass('active');
+              $(item).addClass('today');
               hasActived = true;
               activeDay = $(item).attr('data-daylinestart');
 
