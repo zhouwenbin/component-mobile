@@ -387,7 +387,7 @@ a[title="站长统计"] {
 }
 
 .header-c1 {
-  padding-top: 13px;
+  height: 49px;
   position: absolute;
   left: 15px;
   display: -webkit-box;
@@ -408,7 +408,7 @@ a[title="站长统计"] {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 12px;
+  height: 49px;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -428,7 +428,7 @@ a[title="站长统计"] {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 12px;
+  height: 49px;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
@@ -2127,8 +2127,7 @@ body {
 .goods-r1 .corner-icon {
   width: 60px;
   height: 60px;
-  -webkit-background-size: 60px 60px;
-          background-size: 60px 60px;
+  background-size: 60px 60px;
   font: 0/0 a;
   z-index: 20;
 }
