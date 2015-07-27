@@ -74,6 +74,12 @@ define(
 
         this.render(this.options.data);
 
+        //活动期间 微信要放到第一个位置
+        if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015, 6, 27, 0, 0, 0).getTime()) {
+          $('.gotopaymethodlist li').eq(0).appendTo('.gotopaymethodlist');
+          $("#weixintip").text("微信（7.27-8.2首次下单减2元）");
+        }
+
         // 微信环境下 要把微信设为默认
         if (SFUtil.isMobile.WeChat()) {
           this.activeWeixinpay();
