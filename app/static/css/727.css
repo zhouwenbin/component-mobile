@@ -8,11 +8,11 @@ body {
 }
 
 .m727-banner {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .m727-r1 {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -29,13 +29,13 @@ body {
 
 .m727-time {
   font-family: arial;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   position: relative;
 }
 
 .m727-time span {
-  margin-right: 11px;
-  letter-spacing: 6px;
+  margin-right: 22px;
+  letter-spacing: 12px;
 }
 
 .m727-time-r1 {
@@ -46,38 +46,38 @@ body {
 
 .m727-tab-h {
   float: left;
-  width: 24px;
-  padding-top: 6px;
-  padding-left: 2px;
+  width: 48px;
+  padding-top: 12px;
+  padding-left: 4px;
 }
 
 .m727-tab-h li {
-  width: 22px;
-  padding-top: 8px;
+  width: 44px;
+  padding-top: 16px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  height: 79px;
+  height: 158px;
   background: #f63c3f;
   text-align: center;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
-  margin-bottom: 40px;
-  line-height: 20px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  margin-bottom: 80px;
+  line-height: 40px;
   position: relative;
 }
 
 .m727-tab-h li:before {
   content: '';
-  width: 11px;
-  height: 11px;
+  width: 22px;
+  height: 22px;
   background: #f63c3f;
   -webkit-border-radius: 50%;
           border-radius: 50%;
   position: absolute;
-  right: -31px;
-  border: 4px solid #ffc5c2;
+  right: -62px;
+  border: 8px solid #ffc5c2;
   top: 50%;
-  margin-top: -9px;
+  margin-top: -18px;
 }
 
 .m727-tab-h li.active {
@@ -94,13 +94,13 @@ body {
   height: 0;
   background: none;
   border-style: solid;
-  border-width: 5px 5px;
+  border-width: 10px 10px;
   border-color: transparent transparent transparent #e03d40;
   position: absolute;
-  right: -15px;
+  right: -30px;
   top: 50%;
-  margin-top: -8px;
-  border-width: 8px;
+  margin-top: -16px;
+  border-width: 16px;
 }
 
 .m727-tab-h li.active .icon {
@@ -108,14 +108,15 @@ body {
 }
 
 .m727-tab-h a {
+  font-size: 24px;
   color: #fff;
 }
 
 .m727-tab-b {
-  margin-left: 48px;
-  border-left: 1px dashed #800a2d;
-  padding-left: 15px;
-  padding-top: 12px;
+  margin-left: 96px;
+  border-left: 2px dashed #800a2d;
+  padding-left: 30px;
+  padding-top: 24px;
   display: none;
 }
 
@@ -124,14 +125,14 @@ body {
 }
 
 .m727-tab-b ul {
-  margin-left: -4px;
+  margin-left: -8px;
 }
 
 .m727-tab-b li {
   display: inline-block;
   width: 48%;
-  margin-left: 4px;
-  margin-bottom: 20px;
+  margin-left: 8px;
+  margin-bottom: 40px;
   position: relative;
 }
 
@@ -143,22 +144,22 @@ body {
 }
 
 .m727-tab-b li span {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 36px;
+  line-height: 40px;
   text-align: center;
   color: #fff;
   position: absolute;
   left: 0;
-  top: 60px;
+  top: 120px;
   width: 100%;
   z-index: 999;
 }
 
 .m727-top {
-  border: 3px solid #f61d4a;
-  padding: 1px;
+  border: 6px solid #f61d4a;
+  padding: 2px;
   text-align: center;
-  font-size: 15px;
+  font-size: 30px;
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -179,8 +180,8 @@ body {
 }
 
 .m727-top li {
-  height: 28px;
-  line-height: 28px;
+  height: 56px;
+  line-height: 56px;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
@@ -200,13 +201,13 @@ body {
 }
 
 .m727-top li:last-child .icon {
-  vertical-align: 2px;
-  margin-left: 5px;
+  vertical-align: 4px;
+  margin-left: 10px;
   width: 0;
   height: 0;
   background: none;
   border-style: solid;
-  border-width: 5px;
+  border-width: 10px;
   border-color: transparent;
   border-bottom-color: #fff;
 }
@@ -227,29 +228,33 @@ body {
   -webkit-flex: 1px;
       -ms-flex: 1px;
           flex: 1px;
-  height: 30px;
-  line-height: 30px;
+  height: 60px;
+  line-height: 60px;
   text-align: center;
   background-color: #b300f5;
   color: #fff;
   font-weight: 700;
-  border-left: 1px solid #9521c0;
+  border-left: 2px solid #9521c0;
+  font-size: 24px;
 }
 
 .m727-nav .active {
   position: relative;
   background-color: #9521c0;
+}
+
+.m727-nav .today {
   color: #f8de00;
 }
 
 .m727-nav .active::after {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -20px;
   left: 50%;
-  margin-left: -5px;
+  margin-left: -10px;
   border-style: solid;
-  border-width: 5px;
+  border-width: 10px;
   border-color: transparent;
   border-top-color: #9521c0;
 }
