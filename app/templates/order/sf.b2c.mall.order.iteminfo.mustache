@@ -98,7 +98,7 @@
 
 <section class="nav-cart">
   <div class="nav-cart-r1 order-submit">
-  	<p class="order-submit-c1">实际应付款: <span class="text-important">¥{{sf.price orderFeeItem.shouldPay}}</span></p>
+  	<p class="order-submit-c1">实际应付款: <span class="text-important">¥{{sf-show-shouldPay orderFeeItem.shouldPay}}</span></p>
   	<a class="btn btn-danger{{^flag}} btn-disable{{/flag}}" id="submitOrder" href="javascript:void(0);">提交订单</a>
   </div>
 </section>
