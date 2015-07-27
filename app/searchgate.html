@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <title>顺丰海淘</title>
-    <!-- build:css({app, .tmp}) styles/sf.b2c.searchgate.css -->
+
+    <!-- build:css({app, .tmp}) styles/sf.b2c.categorynavigate.css -->
     <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/category-navigate.css">
     <!-- endbuild -->
+
+    <!-- build:js({app, tmp}) ../cordova.js-->
+    <!--<script src="../cordova.js"></script>-->
+    <!-- endbuild -->
+
 </head>
-
 <body class="body1">
-
 <div id="sf-b2c-mall-search-box"></div>
+<article class="sf-b2c-mall-cate-pagenavigatelist"></article>
 
+<!--立即购买-->
+<article class="sf-nav"></article>
+<!--立即购买-->
 
 <div id="version" data-version="{version}"></div>
+
 <!-- build:js(.) scripts/require.min.js -->
 <script src="bower_components/requirejs/require.js"></script>
 <!-- endbuild -->
+
 <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
-<script src="scripts/base/sf.h5.base.ver.1.0.5.js"></script>
+<script src="/scripts/base/sf.h5.base.ver.1.0.5.js"></script>
 <!-- endbuild -->
+
 <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
 <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
 <!-- endbuild -->
+
 <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.searchgate.js -->
 <script src="scripts/sf.b2c.mall.require.config.js"></script>
 <script type="text/javascript">
-    require(['sf.b2c.mall.page.searchgate']);
+    require(['sf.b2c.mall.page.categorynavigatelist']);
 </script>
 <!-- endbuild -->
 </body>
-
 </html>
