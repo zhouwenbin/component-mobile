@@ -29,9 +29,9 @@ define(
         getTotalCount.sendRequest()
           .done(function (data) {
 
-            if (SFFn.isMobile.iOS()) {
+            // if (SFFn.isMobile.iOS()) {
               SFHybrid.run('updateCartNumber', {amount: data.value});
-            }
+            // }
 
             if (_.isFunction(success)) {
               success(data);

@@ -8,11 +8,9 @@ define(
     'underscore',
     'underscore.string',
     'sf.b2c.mall.api.b2cmall.getProductHotDataList',
-    'sf.b2c.mall.business.config',
     'sf.b2c.mall.framework.comm'
   ],
-  function(can, $, moment, _, _str, SFGetProductHotDataList, SFConfig, SFFrameworkComm) {
-
+  function(can, $, moment, _, _str, SFGetProductHotDataList, SFFrameworkComm) {
     SFFrameworkComm.register(3);
 
     // 选中的天和时间
@@ -127,6 +125,7 @@ define(
           _.each(dayList, function(item) {
             if ($(item).attr('data-daylinestart') <= day && day < $(item).attr('data-daylineend')) {
               $(item).addClass('active');
+              $(item).addClass('today');
               hasActived = true;
               activeDay = $(item).attr('data-daylinestart');
 

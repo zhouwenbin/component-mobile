@@ -1,0 +1,75 @@
+<h1 id="zepto-fullpage-">zepto.fullpage文档</h1>
+<p>专注于移动端的fullPage.js。fullPage主张将动画交给css或js去做，主动权交给作者。</p>
+<h2 id="-">参数</h2>
+<p>fullPage支持无参数的调用，每个参数都会有默认值，如果想实现自定义的功能，可以使用自定义参数。一个典型的自定义参数如下：</p>
+<pre><code>$(&#39;*&#39;).fullpage({
+    page: &#39;.page&#39;,
+    start: 0,
+    duration: 500,
+    drag: false,
+    loop: false,
+    dir: &#39;v&#39;,
+    change: function () {},
+    beforeChange: function () {},
+    afterChange: function () {},
+    orientationchange: function () {}
+});
+</code></pre><ul>
+<li><a href="../demo/param.html">属性例子</a></li>
+<li><a href="../demo/event.html">事件例子</a></li>
+</ul>
+<h3 id="page">page</h3>
+<p>每屏的选择符，默认是 <code>.page</code>。</p>
+<h3 id="start">start</h3>
+<p>从第几屏开始，默认是第一屏。</p>
+<h3 id="duration">duration</h3>
+<p>每屏动画切换的时间，这段时间内，不能重复切换，默认是500ms，这里只是js限制，css动画时间需要更改css文件。</p>
+<h3 id="drag">drag</h3>
+<p>是否开启拖动功能，默认关闭。</p>
+<h3 id="loop">loop</h3>
+<p>是否开启循环滚动，默认false。</p>
+<h3 id="dir">dir</h3>
+<p>切换方向，默认垂直方向(v|h)。</p>
+<h3 id="change-beforechange-afterchange">change/beforeChange/afterChange</h3>
+<p>当切换屏幕时会触发的事件。剩下两个顾名思义吗。</p>
+<ul>
+<li>e {Object} 事件的参数</li>
+</ul>
+<p>e包含两个属性next和cur，表示切换到的屏幕和当前屏幕。</p>
+<h3 id="orientationchange">orientationchange</h3>
+<p>当屏幕发生旋转时的回调。</p>
+<ul>
+<li>dir {String} 当前屏幕的方向 portrait 竖屏 landscape 横屏。</li>
+</ul>
+<h2 id="-">方法</h2>
+<p>通过方法，可以改变fullPage内部的状态，fullPage的方法列表如下：</p>
+<ul>
+<li>update</li>
+<li>moveTo</li>
+<li>movePrev</li>
+<li>moveNext</li>
+<li>start</li>
+<li>stop</li>
+</ul>
+<p>典型调用方法的例子如下：</p>
+<pre><code>$.fn.fullpage.update();
+</code></pre><p><a href="../demo/method.html">更多例子</a>。</p>
+<h3 id="update">update</h3>
+<p>此方法会重新计算和渲染每屏的高度，当你发现如果每屏的高度有问题时，手动调用下此方法就可以了。</p>
+<h3 id="moveto">moveTo</h3>
+<p>切换到指定屏，如果指定的屏数大于屏总数或小于0，都会做修正处理。</p>
+<ul>
+<li>next {Number} 必须 要切换到的屏索引</li>
+<li>anim {Bollean} 可省略 是否有动画 默认为没有动画效果</li>
+</ul>
+<h3 id="moveprev">movePrev</h3>
+<p>向前一屏，是对moveTo的封装</p>
+<p>-anim {Bollean} 可省略 是否有动画 默认为没有动画效果</p>
+<h3 id="movenext">moveNext</h3>
+<p>向后一屏，是对moveTo的封装</p>
+<p>-anim {Bollean} 可省略 是否有动画 默认为没有动画效果</p>
+<h3 id="start">start</h3>
+<p>开启切换功能，和stop配合使用。</p>
+<p>丰富页面功能，比如到了某页需要点击某个元素后才能到下一页的时候 这个就有用了～～</p>
+<h3 id="stop">stop</h3>
+<p>关闭切换功能，和start配合使用</p>

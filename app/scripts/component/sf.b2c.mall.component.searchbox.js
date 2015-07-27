@@ -5,11 +5,12 @@ define('sf.b2c.mall.component.searchbox', [
   'zepto',
   'underscore',
   'store',
+  'sf.env.switcher',
   'sf.b2c.mall.widget.loading',
   'sf.b2c.mall.widget.bubble',
   'sf.b2c.mall.api.search.hotKeywords',
   'text!template_component_searchbox'
-], function(can, $, _, store, SFLoading, SFBubble, SFHotKeywords, template_component_searchbox) {
+], function(can, $, _, store, SFSwitcher, SFLoading, SFBubble, SFHotKeywords, template_component_searchbox) {
 
   var STORE_HISTORY_LIST = "searchhistories";
   var HISTORY_SIZE = 10;
@@ -22,6 +23,8 @@ define('sf.b2c.mall.component.searchbox', [
     helpers: {},
 
     renderData: new can.Map({
+      keyword: null,
+      isApp: false,
       showGate: false,
       publicGate: true,
       historyList: {
@@ -46,6 +49,21 @@ define('sf.b2c.mall.component.searchbox', [
     controlDoms: [],
 
     init: function() {
+      var switcher = new SFSwitcher();
+
+      switcher.register('web', _.bind(function() {
+      }, this));
+
+      switcher.register('app', _.bind(function() {
+        this.renderData.attr("isApp", true);
+      }, this));
+
+      // 根据逻辑环境进行执行
+      switcher.go();
+
+      var params = can.deparam(window.location.search.substr(1));
+      this.renderData.attr("keyword", this.trim(params.keyword || ""));
+
       if(typeof this.options.showGate !== 'undefine') {
         this.renderData.attr("showGate", this.options.showGate);
       }
@@ -88,8 +106,8 @@ define('sf.b2c.mall.component.searchbox', [
     },
 
     /**
+     * @author zhang.ke
      * @description 从服务器端获取数据
-     * @param searchData
      */
     initHotKeywords: function() {
       var that = this;
@@ -103,7 +121,6 @@ define('sf.b2c.mall.component.searchbox', [
     /**
      * @author zhang.ke
      * @description 获取store中history数据
-     * @param searchData
      */
     initHistories: function() {
       var that = this;
@@ -122,6 +139,11 @@ define('sf.b2c.mall.component.searchbox', [
       this.element.html(html);
     },
 
+
+    /**
+     * @author zhang.ke
+     * @description 显示搜索框
+     */
     showMain: function() {
       var that = this;
       $(".search-box-main").addClass("active");
@@ -141,6 +163,10 @@ define('sf.b2c.mall.component.searchbox', [
       $(this.controlDoms).hide();
     },
 
+    /**
+     * @author zhang.ke
+     * @description 隐藏搜索框
+     */
     hideMain: function() {
       if (this.renderData.showGate) {
         $(".search-box-main").removeClass("active");
@@ -157,6 +183,7 @@ define('sf.b2c.mall.component.searchbox', [
      * @author zhang.ke
      * @description 开始搜索
      */
+    /*
     "#searchInput keydown": function(element, event) {
       if (event.keyCode != 13) {
         return;
@@ -166,7 +193,12 @@ define('sf.b2c.mall.component.searchbox', [
       this.search(keyword);
       return false;
     },
+    */
 
+    /**
+     * @author zhang.ke
+     * @description 显示搜索框事件
+     */
     "#searchInput focus": function(element, event) {
       this.renderMain();
       this.showMain();
@@ -189,19 +221,32 @@ define('sf.b2c.mall.component.searchbox', [
       this.search(keyword);
     },
 
+
+    /**
+     * @author zhang.ke
+     * @description 清空搜索历史
+     */
     "#clearHistoriesBtn click": function(element, event) {
       store.remove(STORE_HISTORY_LIST);
       this.renderData.attr("historyList.data", null);
       this.renderData.attr("hotKeywordList.show", true);
     },
 
+    /**
+     * @author zhang.ke
+     * @description 搜素
+     */
     search: function(keyword) {
-      keyword = keyword.replace(/(^\s*)|(\s*$)/g, "")
+      keyword = this.trim(keyword)
       if (!keyword) {
         return false;
       }
       this.saveHistories(keyword);
       this.gotoSearchPage(keyword);
+    },
+
+    trim: function(str) {
+      return str.replace(/(^\s*)|(\s*$)/g, "");
     },
 
     /**
@@ -211,12 +256,14 @@ define('sf.b2c.mall.component.searchbox', [
     gotoSearchPage: function(keyword) {
       var params = can.deparam(window.location.search.substr(1));
       var href = ["/search.html?keyword=", keyword]
-      //获取存储页数
+      /*
+      //获取产品形态
       var pfs = params.pfs;
       if (pfs) {
         href.push("&pfs=");
         href.push(pfs);
       }
+      */
 
       window.location.href = href.join("");
     },

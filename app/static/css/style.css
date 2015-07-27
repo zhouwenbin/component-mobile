@@ -78,11 +78,14 @@ input, select {
   vertical-align: middle;
 }
 
+em {
+  font-style: normal;
+}
+
 /* 默认 */
 * {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -180,7 +183,8 @@ a[title="站长统计"] {
 /*两端对齐*/
 .justify {
   text-align: justify;
-  text-align-last: justify;
+  -moz-text-align-last: justify;
+       text-align-last: justify;
   display: inline-block;
   vertical-align: middle;
 }
@@ -371,30 +375,69 @@ a[title="站长统计"] {
 
 /*header*/
 .header {
-  padding: 0 19px 11px;
-  background: #fff;
+  padding: 0 0 11px;
+  background: #FF5B54;
   border-bottom: 1px solid #cfcfcf;
+  position: relative;
+  height: 49px;
+}
+
+.header-white {
+  background: #fff;
 }
 
 .header-c1 {
-  padding-top: 13px;
-}
-
-.header-c2 {
+  height: 49px;
+  position: absolute;
+  left: 15px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 12px;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 120px;
+}
+
+.header-c2 {
+  position: absolute;
+  right: 15px;
+  top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 49px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 56px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.header-c4 {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 49px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60px;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .header-c3 {
@@ -427,8 +470,41 @@ a[title="站长统计"] {
   display: block;
 }
 
+.header-back {
+  display: block;
+}
+
 .header-search-icon {
   display: block;
+}
+
+.header-title {
+  display: block;
+  margin-top: 15px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.header .dot-error {
+  background: #fff;
+  color: #FF5B54;
+}
+
+.header .header-title {
+  color: #fff !important;
+}
+
+.header-detail {
+  padding: 0 0 11px;
+  position: absolute;
+  height: 49px;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.header-detail .header-c2 {
+  width: 68px;
 }
 
 /*尾部*/
@@ -635,8 +711,7 @@ a[title="站长统计"] {
   display: inline-block;
   vertical-align: middle;
   background: url(../img/icon.png) no-repeat;
-  -webkit-background-size: 450px 450px;
-          background-size: 450px 450px;
+  background-size: 450px 450px;
   text-indent: -999em;
 }
 
@@ -1378,8 +1453,7 @@ a[title="站长统计"] {
   width: 25px;
   height: 25px;
   background: url(../img/loading.png) no-repeat;
-  -webkit-background-size: 25px 25px;
-          background-size: 25px;
+  background-size: 25px;
   position: fixed;
   -webkit-animation: loading 1s linear infinite;
           animation: loading 1s linear infinite;
@@ -1631,8 +1705,7 @@ a[title="站长统计"] {
   width: 230px;
   height: 313px;
   background: url(../img/banner-dialog.jpg) no-repeat;
-  -webkit-background-size: 230px 230px;
-          background-size: 230px;
+  background-size: 230px;
   position: fixed;
   z-index: 999;
   padding-top: 119px;
@@ -1784,7 +1857,7 @@ body {
   background-color: #fff;
   height: 50px;
   width: 100%;
-  padding: 10px 0 10px 15px;
+  padding: 10px 15px;
 }
 
 .search-box-gate label {
@@ -1811,8 +1884,9 @@ body {
 }
 
 .search-box-gate .homeIcon {
+  margin-left: 15px;
   display: block;
-  width: 60px;
+  width: 30px;
   padding-top: 4px;
   text-align: center;
 }
@@ -1839,12 +1913,13 @@ body {
   background-color: #fff;
   height: 50px;
   width: 100%;
-  padding: 10px 0 10px 15px;
+  padding: 10px 15px;
 }
 
 .search-box-header .search-cancel-btn {
   display: block;
-  width: 60px;
+  margin-left: 15px;
+  width: 30px;
   height: 30px;
   line-height: 30px;
   text-align: center;
@@ -2049,6 +2124,28 @@ body {
   margin-right: 15px;
 }
 
+.goods-r1 .corner-icon {
+  width: 60px;
+  height: 60px;
+  background-size: 60px 60px;
+  font: 0/0 a;
+  z-index: 20;
+}
+
+.corner-icon01 {
+  background: url(http://img0.sfht.com/img/8f016642e40404b528ec23dff6d516fc.jpg) 0 0 no-repeat;
+}
+
+/*.corner-icon02{
+  background:  url(../img/corner-02.png) 0 0 no-repeat;
+}
+.corner-icon03{
+  background:  url(../img/corner-03.png) 0 0 no-repeat;
+}*/
+.corner-icon04 {
+  background: url(http://img0.sfht.com/img/520235946454a96e657b73268e6541a5.jpg) 0 0 no-repeat;
+}
+
 /*商品详情*/
 .detail {
   background: #fff;
@@ -2139,6 +2236,26 @@ body {
   text-align: center;
 }
 
+.seckill-text-bg {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 0 5px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  font-size: 12px;
+  background: #ff5b54;
+  color: #fff;
+  vertical-align: 0;
+  -webkit-border-radius: 9px;
+          border-radius: 9px;
+}
+
+.seckill-text-bg-gray {
+  background: #dcdcdc;
+  color: #999;
+}
+
 /*推荐商品*/
 .recommend {
   padding: 14px 0 0;
@@ -2183,6 +2300,7 @@ body {
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 5px;
+  font-weight: normal;
 }
 
 .recommend strong {
@@ -2592,6 +2710,14 @@ body {
   font-size: 15px;
 }
 
+.seckill-title-countdown {
+  margin-left: 13px;
+}
+
+.seckill-title-countdown .text-important {
+  margin-left: 0;
+}
+
 /*orderdetail*/
 .orderdetail {
   background: #f6f8f9;
@@ -2768,7 +2894,6 @@ body {
   top: 0;
   padding: 1px;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
@@ -3176,7 +3301,6 @@ body {
   background-image: url(../img/person.png);
   background-position: center bottom;
   background-repeat: no-repeat;
-  -webkit-background-size: 250px;
   background-size: 250px;
   padding-top: 24px;
   margin-bottom: 10px;
@@ -3358,8 +3482,7 @@ body {
 
 .coupons-c1 {
   background: url(../img/coupons-c1.png) no-repeat;
-  -webkit-background-size: 320px 320px;
-          background-size: 320px;
+  background-size: 320px;
   height: 70px;
   padding-left: 15px;
   padding-right: 15px;
@@ -3368,8 +3491,7 @@ body {
 
 .coupons-c2 {
   background: url(../img/coupons.png) no-repeat;
-  -webkit-background-size: 90px 70px;
-          background-size: 90px 70px;
+  background-size: 90px 70px;
   height: 70px;
   width: 90px;
   text-align: center;
@@ -3407,6 +3529,18 @@ body {
   padding-bottom: 5px;
   margin-bottom: 3px;
   border-bottom: 1px solid #e7e7e7;
+  padding-right: 50px;
+}
+
+.coupons-title {
+  position: relative;
+}
+
+.coupons-title a {
+  position: absolute;
+  right: 0;
+  top: 7px;
+  color: #3b86c4;
 }
 
 .coupons p {
@@ -3448,8 +3582,7 @@ body {
 
 .coupon-b {
   background: url(../img/coupon.png) no-repeat;
-  -webkit-background-size: 100% 100%;
-          background-size: 100%;
+  background-size: 100%;
   width: 169px;
   padding-left: 36px;
   height: 69px;
@@ -3473,8 +3606,7 @@ body {
 
 .coupon-gift .coupon-b {
   background-image: url("../img/gift.png");
-  -webkit-background-size: 165px 85px;
-          background-size: 165px 85px;
+  background-size: 165px 85px;
   width: 165px;
   height: 85px;
 }
@@ -3562,8 +3694,7 @@ body {
 
 .nav1-icon1, .nav1-icon2, .nav1-icon3, .nav1-icon4 {
   background: url(../img/nav1.png) no-repeat;
-  -webkit-background-size: 274px 274px;
-          background-size: 274px;
+  background-size: 274px;
   display: block;
   margin: 0 auto 7px;
   width: 40px;
@@ -3772,8 +3903,7 @@ body {
   padding-top: 14px;
   text-align: center;
   background: #fff url(../img/sharepocket.jpg) no-repeat center top;
-  -webkit-background-size: 320px 320px;
-          background-size: 320px;
+  background-size: 320px;
   height: 354px;
 }
 
@@ -3810,8 +3940,7 @@ body {
   padding-top: 14px;
   height: 388px;
   background: #fff url(../img/getpocket.jpg) no-repeat center top;
-  -webkit-background-size: 320px 320px;
-          background-size: 320px;
+  background-size: 320px;
 }
 
 .getpocket-btn {
@@ -3894,8 +4023,7 @@ body {
 
 .share {
   background: url(../img/share.png) no-repeat;
-  -webkit-background-size: 235px 235px;
-          background-size: 235px;
+  background-size: 235px;
   width: 235px;
   height: 154px;
   position: absolute;
@@ -3924,8 +4052,7 @@ body {
   color: #fff;
   background: url(../img/share-topic.jpg) no-repeat center;
   height: 120px;
-  -webkit-background-size: 320px 120px;
-          background-size: 320px 120px;
+  background-size: 320px 120px;
   padding-top: 59px;
   text-align: center;
 }
@@ -4149,8 +4276,7 @@ body {
   height: 47px;
   float: left;
   background: url(../img/gift-icon.png) no-repeat;
-  -webkit-background-size: 39px 39px;
-          background-size: 39px;
+  background-size: 39px;
   margin-left: -51px;
 }
 
@@ -4222,8 +4348,7 @@ body {
   width: 82px;
   height: 115px;
   background: url(../img/gift-c1.png) no-repeat;
-  -webkit-background-size: 82px 82px;
-          background-size: 82px;
+  background-size: 82px;
   margin-right: 16px;
   color: #fff;
   text-align: center;
@@ -4361,8 +4486,7 @@ body {
   padding-left: 91px;
   background: url(../img/foretaste.jpg) no-repeat;
   height: 125px;
-  -webkit-background-size: cover;
-          background-size: cover;
+  background-size: cover;
   padding-top: 42px;
 }
 
@@ -4471,8 +4595,7 @@ body {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-image: url(../img/gift-coupon-dialog.png);
-  -webkit-background-size: 43px 43px;
-          background-size: 43px;
+  background-size: 43px;
   background-repeat: no-repeat;
   background-position: 47px 41px;
 }
@@ -4745,6 +4868,20 @@ body {
 
 .goodslist h3 {
   font-weight: normal;
+  line-height: 1.5;
+}
+
+.goods-seckill {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0 6px;
+  height: 16px;
+  line-height: 16px;
+  color: #fff;
+  background: #ff5b54;
+  -webkit-border-radius: 16px;
+          border-radius: 16px;
+  font-size: 12px;
 }
 
 .downloadapp {
@@ -4773,8 +4910,7 @@ body {
   padding: 0 11px;
   z-index: 999;
   background: #ec6b5f url(../img/downloadapp-logo.png) no-repeat 19px bottom;
-  -webkit-background-size: 216px 44px;
-          background-size: 216px 44px;
+  background-size: 216px 44px;
 }
 
 .downloadapp-logo {
@@ -4786,8 +4922,7 @@ body {
   width: 16px;
   height: 16px;
   background: url(../img/downloadapp-close.png) no-repeat;
-  -webkit-background-size: 16px 16px;
-          background-size: 16px;
+  background-size: 16px;
   text-indent: -999em;
   position: absolute;
   left: 0;
