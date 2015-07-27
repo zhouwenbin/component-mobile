@@ -43,6 +43,13 @@ define('sf.b2c.mall.order.iteminfo', [
                 } else {
                     return options.inverse(options.contexts || this);
                 }
+            },
+            'sf-show-shouldPay': function(shouldPay, options) {
+                if (shouldPay() >= 0) {
+                    return shouldPay() / 100;
+                } else {
+                    return '0';
+                }
             }
         },
 
