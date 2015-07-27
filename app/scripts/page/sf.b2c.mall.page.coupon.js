@@ -86,6 +86,10 @@ define(
             that.itemObj.attr("totalCount", data.totalCount || 0);
             var couponStatusMap = {
               "UNUSED": function() {
+                if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
+                  tmpCoupon.showButton = true;
+                }
                 that.itemObj.unUsed.count++;
                 that.itemObj.unUsed.items.push(tmpCoupon);
               },
@@ -106,6 +110,7 @@ define(
             var thirdpartyMap = {
               "EXT_MOVIETICKET": function() {
                 if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
                   tmpCoupon.showButton = true;
                 }
                 that.itemObj.thirdparty.count++;
@@ -114,6 +119,7 @@ define(
 
               "EXT_TAXICOUPON": function() {
                 if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
                   tmpCoupon.showButton = true;
                 }
                 that.itemObj.thirdparty.count++;
@@ -140,6 +146,14 @@ define(
               }
             }
           });
+      },
+
+      addUrlPrefix: function(url){
+        if (url.indexOf("http://m.sfht.com")) {
+          url = "http://m.sfht.com" + url;
+        }
+
+        return url
       },
 
       //优惠券兑换相关事件

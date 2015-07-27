@@ -2,13 +2,13 @@
 .app-anywhere {
   text-align: center;
   color: #4a4a4a;
-  background: #f1f2e7 url(../img/app/app-anywhere-map.png) repeat-x left 235px;
+  background: #f1f2e7 url(http://img.sfht.com/sfhth5/1.1.142/img/app/app-anywhere-map.png) repeat-x left 235px;
   background-size: 320px;
   position: relative;
 }
 
 .app-anywhere-bg {
-  background: url(../img/app/app-anywhere-bg.png) repeat-x left 314px;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/app/app-anywhere-bg.png) repeat-x left 314px;
   background-size: 800px;
   -webkit-animation: app-anywhere-bg 20s linear forwards infinite;
           animation: app-anywhere-bg 20s linear forwards infinite;
@@ -79,7 +79,7 @@
 }
 
 .app-logistics {
-  background: #f1f2e7 url(../img/app/app-logistics-bg2.png) no-repeat center 260px;
+  background: #f1f2e7 url(http://img.sfht.com/sfhth5/1.1.142/img/app/app-logistics-bg2.png) no-repeat center 260px;
   background-size: 200px;
   text-align: center;
   color: #4a4a4a;
@@ -87,7 +87,7 @@
 }
 
 .app-logistics-bg {
-  background: url(../img/app/app-logistics-bg.png) repeat-x left 362px;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/app/app-logistics-bg.png) repeat-x left 362px;
   background-size: 320px;
   -webkit-animation: app-logistics-bg 5s linear forwards infinite;
           animation: app-logistics-bg 5s linear forwards infinite;
@@ -290,7 +290,7 @@
 .app-favorable {
   padding-top: 40px;
   padding-bottom: 27px;
-  background: url(../img/app/app-favorable.png) no-repeat 24px 116px;
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/app/app-favorable.png) no-repeat 24px 116px;
   background-size: 78px;
 }
 
@@ -313,7 +313,7 @@
 }
 
 .app-banner {
-  background: #ec6b5f url(../img/app/app-banner.jpg) no-repeat center top;
+  background: #ec6b5f url(http://img.sfht.com/sfhth5/1.1.142/img/app/app-banner.jpg) no-repeat center top;
   background-size: 320px;
   height: 568px;
   position: relative;
@@ -389,7 +389,7 @@
   margin-left: -9px;
   width: 19px;
   height: 12px;
-  background: url(../img/arrow.png);
+  background: url(http://img.sfht.com/sfhth5/1.1.142/img/arrow.png);
   background-size: 100% 100%;
   -webkit-animation: start 1.5s infinite ease-in-out;
           animation: start 1.5s infinite ease-in-out;

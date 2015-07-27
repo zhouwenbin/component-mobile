@@ -1,3 +1,4 @@
+//废弃
 'use strict';
 
 define(

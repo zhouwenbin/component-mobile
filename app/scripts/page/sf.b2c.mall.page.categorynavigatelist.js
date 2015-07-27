@@ -18,10 +18,11 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.component.searchbox'
   ],
 
   function(can, $, Fastclick, jweixin, SFWeixin, util, SFFrameworkComm, SFCateListContent, SFMessage,
-    SFNav, SFConfig, SFSwitcher, SFHybrid, SFLoading) {
+    SFNav, SFConfig, SFSwitcher, SFHybrid, SFLoading, SFSearchBox) {
 
     SFFrameworkComm.register(3);
     Fastclick.attach(document.body);
@@ -47,6 +48,10 @@ define(
       render: function() {
         // 列表区域
         this.cateListContent = new SFCateListContent('.sf-b2c-mall-cate-pagenavigatelist');
+
+        new SFSearchBox('#sf-b2c-mall-search-box', {
+          showGate: true
+        });
 
         var switcher = new SFSwitcher();
 

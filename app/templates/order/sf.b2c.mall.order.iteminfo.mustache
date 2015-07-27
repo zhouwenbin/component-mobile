@@ -13,6 +13,7 @@
 
           <div class="goodslist-c2">
             <h3 class="ellipsis2">
+              {{#isShowSeckill goodsType}}<span class="goods-seckill">秒杀商品</span>{{/isShowSeckill}}
               {{goodsName}}
             </h3>
           </div>
@@ -72,7 +73,7 @@
 <section class="integral-use">
     <div class="integral-use-r1">
         <div>可用积分：<span class="text-important">{{totalPoint}}</span>点</div>
-        <div>抵<span class="text-important">- ¥{{sf.price totalPointPrice}}</span></div>
+        <div>抵<span class="text-important">¥{{sf.price totalPointPrice}}</span></div>
         <a href="javascript:" class="switch"></a>
     </div>
     <div class="integral-use-r2" style="display: none;">使用<input type="text" class="input" value="0" id="pointUsed">点，抵<span class="text-important" id="pointToMoney">- ¥0.0</span></div>
@@ -87,7 +88,7 @@
   <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
     <li>积分抵扣：-￥{{pointForUsed}}</li>
   <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
-   <li>可获得海淘积分：{{sf.price getpoint}}</li>
+   {{! <li>可获得海淘积分：{{sf.price getpoint}}{{! </li> }}
 </ul>
 
 {{^flag}}

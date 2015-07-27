@@ -61,8 +61,13 @@
     }
 
     .coupons {
-        padding-top: 10px;
+
+        position: relative;
+    }
+    .coupons-b{
         margin-top: 10px;
+        height: 400px;
+        overflow: hidden;
     }
 
     .coupons li {
@@ -286,6 +291,7 @@
         top: -25px;
         font-size: 30px;
         padding: 11px 0;
+        color:#333;
     }
 
     .gotosee {
@@ -623,9 +629,12 @@
                 <a class="btn btn-close dialog-close" href="#">X</a>
             </div>
             <h2 id="couponlisttitle" class="couponlisttitle"></h2>
-            <ul id="couponlist" class="coupons" style="overflow:hidden">
-                <li></li>
-            </ul>
+            <div class="coupons-b">
+                <ul id="couponlist" class="coupons" style="overflow:hidden">
+                    <li></li>
+                </ul>
+            </div>
+
             <div id="buttonarea" class="buttonarea" style="display:none">
                 <button class="btn btn-normal gotosee">去看看</button>
                 <button class="btn btn-normal continue">继续扒</button>

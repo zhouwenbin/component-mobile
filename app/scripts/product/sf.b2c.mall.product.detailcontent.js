@@ -39,6 +39,11 @@ define('sf.b2c.mall.product.detailcontent', [
 
     var DEFAULT_INIT_TAG = 'init';
 
+    var DISTANCE = 0; //服务器时间和本地时间差值
+
+    var LEFTBEGINTIME = 0;//剩余活动开始时间
+    var LEFTENDTIME = 0;//剩余活动结束时间
+
     var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
@@ -78,20 +83,9 @@ define('sf.b2c.mall.product.detailcontent', [
           }
         },
 
-        'sf-showOriginPrice': function(isPromotion, activitySoldOut, sellingPrice, originPrice, options) {
-          // 'sf-showOriginPrice': function(sellingPrice, originPrice, options) {
-          var oPrice = originPrice();
-          if (sellingPrice() < oPrice || oPrice == 0) {
+        'sf-showOriginPrice': function(activityType, sellingPrice, originPrice, options) {
+          if (sellingPrice() < originPrice() || originPrice() == 0 || activityType() == 'SECKILL') {
             return options.fn(options.contexts || this);
-          }
-        },
-        'sf-showSellingPrice': function(isPromotion, activitySoldOut, options) {
-          var isPromotion = isPromotion();
-          var activitySoldOut = activitySoldOut();
-          if (isPromotion && !activitySoldOut) {
-            return options.fn(options.contexts || this);
-          } else {
-            return options.inverse(options.contexts || this);
           }
         },
         //促销展示
@@ -109,10 +103,12 @@ define('sf.b2c.mall.product.detailcontent', [
           var map = {
             'REDUCE': "满减",
             'DISCOUNT': "满折",
-            'MIX_DISCOUNT': "搭配折扣"
+            'MIX_DISCOUNT': "搭配折扣",
+            'SECKILL': "秒杀"
           };
           return map[activityType];
         },
+        //是否展示搭配购买商品
         'isShowMixDiscount': function(goods, isSoldOut, options) {
           if (goods() == 'MIX_DISCOUNT' && !isSoldOut()) {
             return options.fn(options.contexts || this);
@@ -120,11 +116,83 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.inverse(options.contexts || this);
           }
         },
+        //如果促销信息为搭配折扣和秒杀，不展示更多
         'isShowMoreInfo': function(goods, options) {
-          if (goods() == 'MIX_DISCOUNT') {
+          if (goods() == 'MIX_DISCOUNT' || goods() == 'SECKILL') {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
+          }
+        },
+        //是否展示秒杀商品标示
+        'isSeckillActivity': function(activityType, options) {
+          if (activityType() == 'SECKILL') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        //秒杀活动结束和商品售完，标示变灰
+        'isShowGrayClass': function(soldOut, endTime, options) {
+          //       var LEFTBEGINTIME = 0;//剩余活动开始时间
+          // var LEFTENDTIME = 0;//剩余活动结束时间
+          //var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
+          var activitySoldOut = soldOut();
+          if (activitySoldOut || LEFTENDTIME < 0) {
+            return options.fn(options.contexts || this);
+          }
+        },
+        'sellPriceIsGray': function(activityType, soldOut, endTime, options) {
+          //var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
+          var activitySoldOut = soldOut();
+          if (activityType() == 'SECKILL' && (activitySoldOut || LEFTENDTIME < 0)) {
+            return options.fn(options.contexts || this);
+          }
+        },
+        //如果该商品活动类型为秒杀，活动价格则从activityInfo中取展示价格
+        'sf-isSecKill': function(activityType, activityPrice, sellingPrice, options) {
+          if (activityType() == 'SECKILL') {
+            return activityPrice() / 100;
+          } else {
+            return sellingPrice() / 100;
+          }
+        },
+        //活动未开始，和商品已抢完，活动已经结束直接原价购买
+        'isBegin': function(startTime, endTime, soldOut, options) {
+          //var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
+          var startTime = startTime();
+          var endTime = endTime();
+          var soldOut = soldOut();
+          //new Date().getTime() + distance < startTime
+          if (LEFTBEGINTIME > 0 || soldOut || LEFTENDTIME < 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+		'isNotBegin': function(options) {
+          if (LEFTBEGINTIME > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        //展示活动结束蒙层
+        'isOverTime': function(endTime, options) {
+          //var leftTime = endTime - new Date().getTime() - DISTANCE;
+          //var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
+          if (LEFTENDTIME < 0) {
+            return options.fn(options.contexts || this);
+          }else{
+            return options.inverse(options.contexts || this);
+          }
+        },
+        'isShowText': function(startTime, endTime, options) {
+          //var currentServerTime = new Date().getTime() + DISTANCE; //服务器时间
+          if (LEFTBEGINTIME > 0) {
+            return '距开始：'
+          } else if (LEFTENDTIME > 0) {
+            return '距结束：'
           }
         }
       },
@@ -497,13 +565,6 @@ define('sf.b2c.mall.product.detailcontent', [
               that.options.sliderImgs.push(item.bigImgUrl);
             });
 
-            //that.options.detailContentInfo.priceInfo.attr("soldOut", true);
-            var sellingPrice = that.options.detailContentInfo.priceInfo.attr('sellingPrice');
-            var originPrice = that.options.detailContentInfo.priceInfo.attr('originPrice');
-
-            if (sellingPrice == originPrice) {
-              $('.originPrice').hide();
-            }
             var activityId = that.options.detailContentInfo.activityInfo.attr('activityId');
             var activityType = that.options.detailContentInfo.activityInfo.attr('activityType');
             if (activityType == 'MIX_DISCOUNT') {
@@ -599,7 +660,16 @@ define('sf.b2c.mall.product.detailcontent', [
           target: 'pay'
         });
       },
-
+      //秒杀去购买
+      '#btn-seckill click': function() {
+        var itemid = this.options.detailContentInfo.priceInfo.attr('itemId');
+        var paramUrl = 'http://m.sfht.com/order.html?itemid=' + itemid + '&amount=1'
+        if (SFComm.prototype.checkUserLogin.call(this)) {
+          window.location.href = paramUrl;
+        } else {
+          window.location.href = 'http://m.sfht.com/login.html?from=' + encodeURIComponent(paramUrl);
+        }
+      },
       initGetItemInfo: function(itemid) {
         var that = this;
 
@@ -622,7 +692,9 @@ define('sf.b2c.mall.product.detailcontent', [
             if (priceData.endTime) {
               //获得服务器时间
               var currentServerTime = getProductHotData.getServerTime();
-              that.initCountDown(currentServerTime, priceData.endTime);
+              var currentClientTime = new Date().getTime();
+              DISTANCE = currentServerTime - currentClientTime;
+              that.initCountDown(0, currentServerTime, priceData.endTime);
             }
 
             that.adapter.formatPrice(that.options.detailContentInfo, priceData);
@@ -667,6 +739,31 @@ define('sf.b2c.mall.product.detailcontent', [
                 that.options.detailContentInfo.priceInfo = new can.Map(that.options.detailContentInfo.priceInfo || {});
                 that.options.detailContentInfo.activityInfo = new can.Map(that.options.detailContentInfo.activityInfo || {});
 
+                that.options.detailContentInfo.activityInfo.attr("activityType", element.activityType);
+                that.options.detailContentInfo.activityInfo.attr("activityId", element.activityId);
+
+                //获取活动价格
+                if (element.activityType == "SECKILL") {
+                  that.options.detailContentInfo.activityInfo.attr("referItemId", element.itemActivityInfo.referItemId);
+                  that.options.detailContentInfo.activityInfo.attr("activityPrice", element.itemActivityInfo.activityPrice);
+                  that.options.detailContentInfo.activityInfo.attr("startTime", element.startTime);
+                  that.options.detailContentInfo.activityInfo.attr("endTime", element.endTime);
+                  if (element.endTime) {
+                    //获得服务器时间
+                    var startTime = element.startTime || 0;
+                    var currentServerTime = getActivityInfo.getServerTime();
+                    that.initCountDown(startTime, currentServerTime, element.endTime);
+
+                    if (that.checkActivityInfo) {
+                      clearTimeout(that.checkActivityInfo);
+                    }
+
+                    that.checkActivityInfo = setTimeout(function() {
+                      that.initActivityInfo(that.itemid);
+                    }, 60*1000);
+                  }
+                }
+
                 //处理限时促销
                 if (element.activityType == "FLASH") {
                   that.options.detailContentInfo.priceInfo.attr("activityTitle", element.activityTitle);
@@ -675,11 +772,6 @@ define('sf.b2c.mall.product.detailcontent', [
                   that.options.detailContentInfo.activityInfo.attr("isShow", true);
                 }
 
-                //如果活动类型是搭配折扣，展示搭配购买区域
-                if (element.activityType == "MIX_DISCOUNT") {
-                  that.options.detailContentInfo.activityInfo.attr("activityType", element.activityType);
-                  that.options.detailContentInfo.activityInfo.attr("activityId", element.activityId);
-                }
               });
             }
 
@@ -1261,7 +1353,8 @@ define('sf.b2c.mall.product.detailcontent', [
             //获得服务器时间
             if (priceData.endTime) {
               var currentServerTime = getProductHotData.getServerTime();
-              that.initCountDown(currentServerTime, priceData.endTime);
+              var startTime = this.options.detailContentInfo.activityInfo.attr("startTime");
+              that.initCountDown(startTime, currentServerTime, priceData.endTime);
             }
           })
           .fail(function(error) {
@@ -1310,46 +1403,78 @@ define('sf.b2c.mall.product.detailcontent', [
         });
       },
 
-
-      initCountDown: function(currentServerTime, endTime) {
+      //活动进行中
+      initCountDown: function(startTime, currentServerTime, endTime) {
         var that = this;
         //endTime = 1445044886397
-        if (!endTime) {
-          that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+        if (!endTime || !startTime) {
+          this.options.detailContentInfo.priceInfo.attr("timeIcon", "");
         }
 
         var currentClientTime = new Date().getTime();
         var distance = currentServerTime - currentClientTime;
 
-        if (that.interval) {
+        if (this.interval) {
           clearInterval(that.interval);
         }
 
+        // @author lichunmin6@sf-express.com
+        // @description 一开始就获取剩余时间
+        this.activityBeginTime = startTime - currentClientTime - distance;
+        this.activityEndTime = endTime - currentClientTime - distance;
+
+        LEFTBEGINTIME = this.activityBeginTime;
+        LEFTENDTIME = this.activityEndTime;
+
+        //活动开始前
         //设置倒计时
         //如果当前时间活动已经结束了 就不要走倒计时设定了
-        if (endTime - new Date().getTime() + distance > 0) {
+        // if (startTime - new Date().getTime() + distance > 0) {
+        if(this.activityBeginTime > 0) {
+          this.interval = setInterval(function() {
+            // if (startTime - new Date().getTime() + distance <= 0) {
+            if (that.activityBeginTime <= 0) {
+              //that.refreshPage();
+              clearInterval(that.interval);
+              that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+              window.location.reload();
+            } else {
+              that.activityBeginTime = that.activityBeginTime - 1000;
+              that.setCountDown(that.activityBeginTime, distance, startTime);
+            }
+          }, 1000)
+        // } else if (endTime - new Date().getTime() + distance > 0) {
+        } else if(this.activityEndTime > 0) {
           that.interval = setInterval(function() {
 
             //走倒计时过程中 如果发现活动时间已经结束了，则去刷新下当前页面
-            if (endTime - new Date().getTime() + distance <= 0) {
-              that.refreshPage();
+            // if (endTime - new Date().getTime() + distance <= 0) {
+            if (that.activityEndTime <= 0 ) {
+              //that.refreshPage();
+              clearInterval(that.interval);
+              that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+              window.location.reload();
             } else {
-              that.setCountDown(that.options.detailContentInfo.priceInfo, distance, endTime);
+              that.activityEndTime = that.activityEndTime - 1000;
+              that.setCountDown(that.activityEndTime, distance, endTime);
             }
-          }, '1000')
+          }, 1000)
         } else {
-          that.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+          this.options.detailContentInfo.priceInfo.attr("timeIcon", "");
         }
       },
-
+      refreshPage: function() {
+        clearInterval(this.interval);
+        this.options.detailContentInfo.priceInfo.attr("timeIcon", "");
+      },
       /**
        * [showCountDown 参考倒计时]
        * @param  {[type]} currentTime
        * @param  {[type]} destTime
        * @return {[type]}
        */
-      setCountDown: function(item, distance, endDate) {
-        var leftTime = endDate - new Date().getTime() + distance;
+      setCountDown: function(leftTime, distance, endDate) {
+        // var leftTime = endDate - new Date().getTime() + distance;
         var leftsecond = parseInt(leftTime / 1000);
         var day1 = Math.floor(leftsecond / (60 * 60 * 24));
         var hour = Math.floor((leftsecond - day1 * 24 * 60 * 60) / 3600);

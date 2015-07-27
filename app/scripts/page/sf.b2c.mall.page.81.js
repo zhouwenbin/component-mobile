@@ -10,6 +10,7 @@ define(
         'underscore',
         'moment',
         'md5',
+        'animate',
         // 'Stats',
         'sf.b2c.mall.framework.comm',
         'sf.b2c.mall.business.config',
@@ -23,7 +24,7 @@ define(
         'sf.hybrid',
         'vendor.page.response'
     ],
-    function(can, $, cookie, touch, store, Fastclick, _, moment, md5, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
+    function(can, $, cookie, touch, store, Fastclick, _, moment, md5, animate, SFComm, SFConfig, SFFn, ZfullPage, SFWeixin, SFRandomCard, SFBindCard, SFSwitcher, jweixin, SFHybrid, PageResponse) {
         Fastclick.attach(document.body);
         SFComm.register(3);
 
@@ -248,9 +249,11 @@ define(
             '#getcoupon click': function() {
                 var result = "";
                 var shouldRolling = false;
+                var that = this;
 
                 var notGetcoupon81 = store.get("notGetcoupon81");
                 if (notGetcoupon81) {
+
                     result = this.getcouponmaskHTMLBefore();
 
                     $("#couponlistmask").addClass("hide");
@@ -300,16 +303,19 @@ define(
                     $("#getcouponbymobile")[0].focus();
 
                     if (shouldRolling) {
-                        setInterval(function() {
-                            $('#couponlistnotget li:first-child').appendTo('#couponlistnotget');
+                        that.couponlistnotgetScroll();
+                        this.interval = setInterval(function() {
+                             that.couponlistnotgetScroll();
                         }, 1500);
                     }
 
                 } else {
+
                     var alreadyGetcoupon81 = store.get("alreadyGetcoupon81");
 
                     $("#couponlistmask").removeClass("hide");
                     $("#couponlistmask").addClass("show");
+
                     var result = "";
 
                     if (alreadyGetcoupon81) {
@@ -355,25 +361,51 @@ define(
                     $("#couponlist").html(result);
 
                     if (shouldRolling) {
-                        setInterval(function() {
-                            $('#couponlist li:first-child').appendTo('#couponlist');
+                        that.couponlistScroll();
+                        this.interval = setInterval(function() {
+                            that.couponlistScroll();
+
                         }, 1500);
                     }
                 }
 
             },
 
+            couponlistnotgetScroll: function(){
+                $('#couponlistnotget').animate({
+                    'top':-80
+                },300,function(){
+                    $('#couponlistnotget li').eq(0).appendTo('#couponlistnotget');
+                    $('#couponlistnotget').css({
+                        'top':0
+                    })
+                })
+            },
+
+
+            couponlistScroll: function(){
+                $('#couponlist').animate({
+                    'top':-80
+                },300,function(){
+                    $('#couponlist li').eq(0).appendTo('#couponlist');
+                    $('#couponlist').css({
+                        'top':0
+                    })
+                })
+            },
+
             getcouponmaskHTMLBefore: function() {
                 return '<div class="dialog-phone mask" id="getcouponmask">' +
                     '<div class="dialog-b center" >' +
                     '<div class="register-h" id="getcouponmaskcloseButton" style=" position: absolute;right: 6px; top: 0px;bottom: 2px;">' +
-                    '<a class="btn btn-close dialog-close" href="#">X</a>' +
+                    '<a class="btn btn-close dialog-close" style="color:#333" href="#">X</a>' +
                     '</div>' +
                     '<h2>输入您的手机号码领取现金券</h2>' +
                     '<input type="text" value="" id="phoneNum">' +
                     '<span class="text-error" id="username-error-tips"></span>' +
                     '<button class="btn" id="getcouponbymobile">确定</button>' +
-                    '<ul id="couponlistnotget" class="coupons" style="overflow:hidden">';
+                    '<div class="coupons-b">' +
+                    '<ul id="couponlistnotget" class="coupons">';
             },
 
             getTooltipHTML: function() {
@@ -385,11 +417,16 @@ define(
             getcouponmaskHTMLAfter: function() {
                 return '</ul>' +
                     '</div>' +
+                    '</div>' +
                     '</div>'
             },
 
             '#getcouponbymobile click': function(element, event) {
                 event && event.preventDefault();
+
+                if (this.interval) {
+                    clearInterval(this.interval)
+                }
 
                 if (element.hasClass("disable")) {
                     return false;
@@ -400,7 +437,7 @@ define(
                 var that = this;
                 var shouldRolling = false;
 
-                var mobile = $("#phoneNum").val();
+                var mobile = can.$.trim($("#phoneNum").val());
                 var isTelNum = /^1\d{10}$/.test(mobile);
                 if (!isTelNum) {
                     $("#username-error-tips").html('请输入正确手机号码~');
@@ -494,8 +531,9 @@ define(
                             $(".buttonarea").show();
 
                             if (shouldRolling) {
-                                setInterval(function() {
-                                    $('#couponlist li:first-child').appendTo('#couponlist');
+                                that.couponlistScroll();
+                                that.interval = setInterval(function() {
+                                    that.couponlistScroll();
                                 }, 1500);
                             }
 
@@ -576,11 +614,18 @@ define(
 
             "#closeButton click": function(element, event) {
                 event && event.preventDefault();
+
+                if (this.interval) {
+                    clearInterval(this.interval);
+                }
                 $('.dialog-phone').addClass('hide');
             },
 
             "#getcouponmaskcloseButton click": function(element, event) {
                 event && event.preventDefault();
+                if (this.interval) {
+                    clearInterval(this.interval);
+                }
                 $('#getcouponmask').remove();
 
             },
@@ -590,6 +635,9 @@ define(
             },
 
             ".continue click": function() {
+                if (this.interval) {
+                    clearInterval(this.interval);
+                }
                 $('#couponlistmask').addClass('hide');
             },
 

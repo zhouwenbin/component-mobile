@@ -17,7 +17,13 @@
         <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
+        <div class="coupons-title">
+          <h2 class="ellipsis">{{title}}</h2>
+          {{#customUrl}}
+            <a href="{{customUrl}}">去看看</a>
+          {{/customUrl}}
+        </div>
+
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>
@@ -48,7 +54,11 @@
         <div class="coupons-c2r3">已使用</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
+
+        <div class="coupons-title">
+          <h2 class="ellipsis">{{title}}</h2>
+        </div>
+
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>
@@ -63,7 +73,11 @@
         <div class="coupons-c2r3">已过期</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
+
+        <div class="coupons-title">
+          <h2 class="ellipsis">{{title}}</h2>
+        </div>
+
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>
@@ -78,7 +92,11 @@
         <div class="coupons-c2r3">已作废</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
+
+        <div class="coupons-title">
+          <h2 class="ellipsis">{{title}}</h2>
+        </div>
+
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>

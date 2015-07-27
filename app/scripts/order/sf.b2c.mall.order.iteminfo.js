@@ -10,8 +10,6 @@ define('sf.b2c.mall.order.iteminfo', [
     'sf.b2c.mall.api.coupon.receiveExCode',
     'sf.b2c.mall.api.user.getRecAddressList',
     'sf.b2c.mall.api.user.getIDCardUrlList',
-    'sf.b2c.mall.api.user.setDefaultAddr',
-    'sf.b2c.mall.api.user.setDefaultRecv',
     'sf.b2c.mall.api.payment.queryPtnAuthLink',
     'sf.helpers',
     'sf.util',
@@ -22,9 +20,9 @@ define('sf.b2c.mall.order.iteminfo', [
     'text!template_order_iteminfo',
     'sf.b2c.mall.widget.loading',
     'sf.mediav'
-], function (text, can, $,
-  SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFSetDefaultAddr, SFSetDefaultRecv, SFQueryPtnAuthLink,
-  helpers, SFUtil, SFSwitcher, SFMessage, SFBubble, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
+], function(text, can, $,
+    SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFQueryPtnAuthLink,
+    helpers, SFUtil, SFSwitcher, SFMessage, SFBubble, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
 
     can.route.ready();
 
@@ -37,6 +35,13 @@ define('sf.b2c.mall.order.iteminfo', [
             'sf-get-img': function(imgs) {
                 if (imgs()) {
                     return imgs().thumbImgUrl;
+                }
+            },
+            'isShowSeckill': function(goodsType, options) {
+                if (goodsType() == "SECKILL") {
+                    return options.fn(options.contexts || this);
+                } else {
+                    return options.inverse(options.contexts || this);
                 }
             }
         },
@@ -73,7 +78,9 @@ define('sf.b2c.mall.order.iteminfo', [
                         $("#selectCoupon option[data-price='" + price + "']").first().attr('selected', 'true');
                         $("#selectCoupon").trigger("change");
                     }
-
+                    var shouldPay = that.itemObj.attr('orderFeeItem.shouldPay');
+                    //shouldPay = shouldPay > 0 ? shouldPay : 1;
+                    //that.itemObj.attr('orderFeeItem.shouldPay', shouldPay);
                     // $('.loadingDIV').hide();
                     loadingCtrl.hide();
                     $("#submitOrder").click(function() {
@@ -172,10 +179,10 @@ define('sf.b2c.mall.order.iteminfo', [
                 exCode: exCode
             });
             receiveExCode.sendRequest()
-                .done(function (userCouponInfo) {
+                .done(function(userCouponInfo) {
                     new SFBubble("", {
-                      "message": "兑换成功!",
-                      "tick": 3000
+                        "message": "兑换成功!",
+                        "tick": 3000
                     })
                     can.when(that.initCoupons())
                         .then(function() {
@@ -299,9 +306,9 @@ define('sf.b2c.mall.order.iteminfo', [
             this.itemObj.attr('orderPackageItemList', item.orderPackageItemList);
             this.itemObj.attr('invariableGoodsItemList', item.invariableGoodsItemList);
             _.each(this.itemObj.attr('orderPackageItemList'), function(packageItem) {
-                _.each(packageItem.orderGoodsItemList,function(goodItem) {
+                _.each(packageItem.orderGoodsItemList, function(goodItem) {
                     arr.push(goodItem);
-                });                            
+                });
             });
             that.itemObj.attr("orderGoodsItemList", arr);
         },
@@ -371,6 +378,7 @@ define('sf.b2c.mall.order.iteminfo', [
                             $("#pointUsed").val(shouldPayValue / 100 * this.attr('proportion'));
                         }
                     }
+                    //payValue = payValue > 0 ? payValue : 1;
                     this.attr("orderFeeItem.shouldPay", payValue);
                 }
                 this.attr("getpoint", Math.floor((payValue) / 100) * 100);
@@ -457,102 +465,99 @@ define('sf.b2c.mall.order.iteminfo', [
             }
 
             //实例化接口
-            var setDefaultRecv = new SFSetDefaultRecv({
-                "recId": selectAddr.recId
-            });
+            // var setDefaultRecv = new SFSetDefaultRecv({
+            //     "recId": selectAddr.recId
+            // });
 
-            var setDefaultAddr = new SFSetDefaultAddr({
-                "addrId": selectAddr.addrId
-            });
+            // var setDefaultAddr = new SFSetDefaultAddr({
+            //     "addrId": selectAddr.addrId
+            // });
 
-            var params = {};
+            var params = {
+                "address": JSON.stringify({
+                    "addrId": selectAddr.addrId,
+                    "nationName": selectAddr.nationName,
+                    "provinceName": selectAddr.provinceName,
+                    "cityName": selectAddr.cityName,
+                    "regionName": selectAddr.regionName,
+                    "detail": selectAddr.detail,
+                    "recName": selectAddr.recName,
+                    "mobile": selectAddr.cellphone,
+                    "telephone": selectAddr.cellphone,
+                    "zipCode": selectAddr.zipCode,
+                    "recId": selectAddr.recId,
+                    "certType": "ID",
+                    "certNo": selectAddr.credtNum2
+                }),
+                "userMsg": "",
+                "integral": $("#pointUsed").val(),
+                "items": JSON.stringify([{
+                    "itemId": this.itemObj.itemid,
+                    "num": this.itemObj.amount,
+                    "price": this.itemObj.orderFeeItem.actualTotalFee
+                }]),
+                "sysType": that.getSysType(),
+                "couponCodes": JSON.stringify(this.itemObj.orderCoupon.selectCoupons),
+                "submitKey": this.itemObj.submitKey
+            }
+            var goodItems = [];
+            var itemStr;
+            var paramsUrl = can.deparam(window.location.search.substr(1));
+            //搭配商品下单传入参数
+            if (paramsUrl.mixproduct) {
+                var mainItemId = JSON.parse(paramsUrl.mixproduct)[0].itemId;
+                var mainProductPrice = this.itemObj.orderGoodsItemList[0].price;
+                _.each(this.itemObj.orderGoodsItemList, function(goodItem) {
+                    goodItems.push({
+                        "itemId": goodItem.itemId,
+                        "num": 1,
+                        "price": goodItem.price,
+                        "groupKey": "group:immediately"
+                    });
+                });
+                goodItems.splice(0, 1);
+                var mixObj = [{
+                    "itemId": mainItemId,
+                    "num": 1,
+                    "price": mainProductPrice,
+                    "saleItemList": goodItems
+                }];
+                itemStr = JSON.stringify(mixObj);
+            } else {
+                _.each(this.itemObj.orderGoodsItemList, function(goodItem) {
+                    goodItems.push({
+                        "itemId": goodItem.itemId,
+                        "num": goodItem.quantity,
+                        "price": goodItem.price
+                    });
+                });
+                itemStr = JSON.stringify(goodItems);
+            }
+            params.items = itemStr;
 
-            can.when(setDefaultAddr.sendRequest(), setDefaultRecv.sendRequest())
-                .done(function(addrDefault, personDefault) {
-
-                    params = {
-                        "address": JSON.stringify({
-                            "addrId": selectAddr.addrId,
-                            "nationName": selectAddr.nationName,
-                            "provinceName": selectAddr.provinceName,
-                            "cityName": selectAddr.cityName,
-                            "regionName": selectAddr.regionName,
-                            "detail": selectAddr.detail,
-                            "recName": selectAddr.recName,
-                            "mobile": selectAddr.cellphone,
-                            "telephone": selectAddr.cellphone,
-                            "zipCode": selectAddr.zipCode,
-                            "recId": selectAddr.recId,
-                            certType: "ID",
-                            certNo: selectAddr.credtNum2
-                        }),
-                        "userMsg": "",
-                        "integral": $("#pointUsed").val(),
-                        "items": JSON.stringify([{
-                            "itemId": that.itemObj.itemid,
-                            "num": that.itemObj.amount,
-                            "price": that.itemObj.orderFeeItem.actualTotalFee
-                        }]),
-                        "sysType": that.getSysType(),
-                        "couponCodes": JSON.stringify(that.itemObj.orderCoupon.selectCoupons),
-                        submitKey: that.itemObj.submitKey
-                    }
-
-                    var goodItems = [];
-                    var itemStr;
-                    var paramsUrl = can.deparam(window.location.search.substr(1));
-                    //搭配商品下单传入参数
-                    if (paramsUrl.mixproduct) {
-                        var mainItemId = JSON.parse(paramsUrl.mixproduct)[0].itemId;
-                        var mainProductPrice = that.itemObj.orderGoodsItemList[0].price;
-                        _.each(that.itemObj.orderGoodsItemList, function(goodItem) {
-                            goodItems.push({
-                                "itemId": goodItem.itemId,
-                                "num": 1,
-                                "price": goodItem.price,
-                                "groupKey": "group:immediately"
-                            });
-                        });
-                        goodItems.splice(0, 1);
-                        var mixObj = [{
-                            "itemId": mainItemId,
-                            "num": 1,
-                            "price": mainProductPrice,
-                            "saleItemList": goodItems
-                        }];
-                        itemStr = JSON.stringify(mixObj);
-                    } else {
-                        _.each(that.itemObj.orderGoodsItemList, function(goodItem) {
-                            goodItems.push({
-                                "itemId": goodItem.itemId,
-                                "num": goodItem.quantity,
-                                "price": goodItem.price
-                            });
-                        });
-                        itemStr = JSON.stringify(goodItems);
-                    }
-
-                    params.items = itemStr;
-
-                    if (that.itemObj.orderCoupon.selectCoupons && that.itemObj.orderCoupon.selectCoupons.length > 0) {
-                        params.couponCodes = JSON.stringify(that.itemObj.orderCoupon.selectCoupons);
-                    }
-                })
-                .fail(function (error) {
-                    element.removeClass("btn-disable");
-                })
-                .then(function() {
-                    var submitOrderForAllSys = new SFSubmitOrderForAllSys(params);
-                    return submitOrderForAllSys.sendRequest();
-                })
+            if (this.itemObj.orderCoupon.selectCoupons && this.itemObj.orderCoupon.selectCoupons.length > 0) {
+                params.couponCodes = JSON.stringify(this.itemObj.orderCoupon.selectCoupons);
+            }
+            var submitOrderForAllSys = new SFSubmitOrderForAllSys(params);
+            can.when(submitOrderForAllSys.sendRequest())
                 .done(function(message) {
-
-                    var url = SFConfig.setting.link.gotopay + '&' +
-                        $.param({
-                            "orderid": message.value,
-                            "recid": selectAddr.recId,
-                            "showordersuccess": true
-                        });
+                    var goodsType = that.itemObj.orderGoodsItemList[0].attr('goodsType');
+                    if (goodsType == 'SECKILL') {
+                        var url = SFConfig.setting.link.gotopay + '&' +
+                            $.param({
+                                "orderid": message.value,
+                                "recid": selectAddr.recId,
+                                "showordersuccess": true,
+                                "goodsType": goodsType
+                            });
+                    } else {
+                        var url = SFConfig.setting.link.gotopay + '&' +
+                            $.param({
+                                "orderid": message.value,
+                                "recid": selectAddr.recId,
+                                "showordersuccess": true
+                            });
+                    }
 
                     var switcher = new SFSwitcher();
 
@@ -583,7 +588,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
                     that.watchSubmit.call(that);
                 })
-                .fail(function (error) {
+                .fail(function(error) {
                     element.removeClass("btn-disable");
                     // new SFMessage(null, {
                     //   'tip': that.errorMap[error] || '下单失败',

@@ -78,6 +78,10 @@ input, select {
   vertical-align: middle;
 }
 
+em {
+  font-style: normal;
+}
+
 /* 默认 */
 * {
   -webkit-box-sizing: border-box;

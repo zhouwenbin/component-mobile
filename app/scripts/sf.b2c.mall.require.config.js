@@ -155,6 +155,7 @@ requirejs.config({
         "canvasjs": "scripts/vendor/canvasjs",
         "chart": "scripts/vendor/Chart",
         "zepto.fullpage": "scripts/vendor/zepto.fullpage",
+        "iscroll": "scripts/vendor/iscroll",
         "sf.b2c.mall.widget.message": "scripts/widget/sf.b2c.mall.widget.message",
         "sf.b2c.mall.widget.loading": "scripts/widget/sf.b2c.mall.widget.loading",
         "sf.b2c.mall.widget.login": "scripts/widget/sf.b2c.mall.widget.login",
