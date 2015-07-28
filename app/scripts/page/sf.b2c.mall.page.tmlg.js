@@ -1,5 +1,5 @@
 define(
-  'sf.b2c.mall.page.promoterorder',
+  'sf.b2c.mall.page.tmlg',
   [
     'can',
     'zepto',
@@ -19,16 +19,13 @@ define(
     	"1000470": "邀请人并非推广员"
     };
 
-    var promoterorderPage = can.Control.extend({
+    var tmlgPage = can.Control.extend({
 
       /**
        * [init 初始化]
        */
       init: function() {
       	var that = this;
-      	$("#submit-form-btn").on("click", function() {
-      		that.submitForm();
-      	});
         this.render();
       },
 
@@ -39,9 +36,9 @@ define(
       },
 
       /**
-	     * @author zhang.ke
-	     * @description 从服务器端获取数据
-	     */
+       * @author zhang.ke
+       * @description 从服务器端获取数据
+       */
 	    initRegstAocart4Pmter: function(inviterMobile, inviteeMobile, itemIds) {
 	      var that = this;
 	      var regstAocart4Pmter = new SFRegstAocart4Pmter({
@@ -70,48 +67,6 @@ define(
       	var customerPhone = $("[name=customerPhone]").val();
       	var itemIds = $("[name=itemIds]").val();
 
-      	if (!promoterPhone) {
-      		new SFMessage(null, {
-	          'tip': '请填写推广员手机号码！',
-	          'type': 'error'
-	        });
-	        return;
-      	}
-      	if (!customerPhone) {
-      		new SFMessage(null, {
-	          'tip': '请填写用户手机号码！',
-	          'type': 'error'
-	        });
-	        return;
-      	}
-      	if (!itemIds) {
-      		new SFMessage(null, {
-	          'tip': '请填写itemId手机号码！',
-	          'type': 'error'
-	        });
-	        return;
-      	}
-
-      	promoterPhone = this.trim(promoterPhone);
-      	customerPhone = this.trim(customerPhone);
-      	itemIds = this.trim(itemIds);
-
-      	if (!this.validCellphone(promoterPhone)) {
-					new SFMessage(null, {
-	          'tip': '推广员手机号码填写有误!',
-	          'type': 'error'
-	        });
-	        return;
-      	}
-      	if (!this.validCellphone(customerPhone)) {
-					new SFMessage(null, {
-	          'tip': '用户手机号码填写有误!',
-	          'type': 'error'
-	        });
-	        return;
-      	}
-
-
       	can.when(this.initRegstAocart4Pmter(promoterPhone, customerPhone, itemIds))
       		.done(function(result) {
       			if (result.value) {
@@ -128,19 +83,11 @@ define(
       		})
       },
 
-      validCellphone: function(cellphone) {
-      	if (!/^1\d{10}$/.test(cellphone)) {
-        	return false;
-      	} else {
-      		return true;
-      	}
-      },
-
 	    trim: function(str) {
 	      return str.replace(/(^\s*)|(\s*$)/g, "");
 	    }
 
     });
 
-    new promoterorderPage();
+    new tmlgrPage();
   })

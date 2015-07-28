@@ -257,6 +257,7 @@ requirejs.config({
         "sf.b2c.mall.page.aboutus": "scripts/page/sf.b2c.mall.page.aboutus",
 
         "sf.b2c.mall.page.promoterorder": "scripts/page/sf.b2c.mall.page.promoterorder",
+        "sf.b2c.mall.page.tmlg": "scripts/page/sf.b2c.mall.page.tmlg",
 
 
         //商品详情搭配购买
