@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.getRecAddressList
+  * @class sf.b2c.mall.api.user.getResource
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.getRecAddressList',
+'sf.b2c.mall.api.user.getResource',
 [
   'zepto',
   'can',
@@ -22,12 +22,13 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.getRecAddressList',
-      SECURITY_TYPE: SecurityType.UserLogin.name,
+      METHOD_NAME: 'user.getResource',
+      SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
+        'appVersion': 'string',
+        'keyList': 'string'
       },
       OPTIONAL: {
-        'isDefault': 'int'
       },
       VERIFY:{
       },
