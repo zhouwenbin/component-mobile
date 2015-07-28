@@ -1743,9 +1743,9 @@ module.exports = function (grunt) {
           },
           include: [
             "sf.b2c.mall.business.config",
-            'sf.b2c.mall.page.searchgate'
+            'sf.b2c.mall.page.categorynavigatelist'
           ],
-          insertRequire: ['sf.b2c.mall.page.searchgate']
+          insertRequire: ['sf.b2c.mall.page.categorynavigatelist']
         }
       },
 

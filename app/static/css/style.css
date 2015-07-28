@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* html5doctor.com Reset v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/) - http://cssreset.com */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, .her, hgroup, menu, nav, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -505,6 +505,27 @@ a[title="站长统计"] {
 
 .header-detail .header-c2 {
   width: 68px;
+}
+
+@media screen and (min-width:640px){
+  .header {
+    padding: 11px 0 11px;
+    height: 70px;
+  }
+
+  .header-back svg{
+    width: 15px;
+    height: 25px;
+  }
+
+  .header-c2{
+    top: 10px;
+    right: 60px;
+  }
+
+  .header-c2 svg {
+    margin: 0 12px;
+  }
 }
 
 /*尾部*/
