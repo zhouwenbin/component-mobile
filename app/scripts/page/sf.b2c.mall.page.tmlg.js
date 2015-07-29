@@ -6,11 +6,12 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.util',
+    'store',
     'sf.b2c.mall.business.config',
   	'sf.b2c.mall.widget.message',
   	'sf.b2c.mall.api.user.exchangeToken'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness, SFMessage, SFExchangeToken) {
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, store, SFBusiness, SFMessage, SFExchangeToken) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -41,6 +42,9 @@ define(
 	      });
 	      return exchangeToken.sendRequest()
 	        .done(function(result) {
+            store.set('nickname', '海淘会员');
+            store.set('csrfToken', result.csrfToken);
+
             window.location.href = "/shoppingcart.html";
 	        })
 	        .fail(function(error) {
