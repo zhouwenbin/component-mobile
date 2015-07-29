@@ -4,13 +4,14 @@ define(
     'can',
     'zepto',
     'fastclick',
+    'store',
     'sf.b2c.mall.framework.comm',
     'sf.util',
     'sf.b2c.mall.business.config',
   	'sf.b2c.mall.widget.message',
   	'sf.b2c.mall.api.user.regstAocart4Pmter'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness, SFMessage, SFRegstAocart4Pmter) {
+  function(can, $, Fastclick, store, SFFrameworkComm, SFFn, SFBusiness, SFMessage, SFRegstAocart4Pmter) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -26,6 +27,10 @@ define(
        */
       init: function() {
       	var that = this;
+        var sf_promoter_phone = store.get('sf_promoter_phone');
+        if (sf_promoter_phone) {
+          $("[name=promoterPhone]").val(sf_promoter_phone);
+        }
       	$("#submit-form-btn").on("click", function() {
       		that.submitForm();
       	});
@@ -68,8 +73,29 @@ define(
 
       	var promoterPhone = $("[name=promoterPhone]").val();
       	var customerPhone = $("[name=customerPhone]").val();
-      	var itemIds = $("[name=itemIds]").val();
+        var itemIds = [];
+        var itemId1 = this.trim($("[name=itemId1]").val() || "");
+        var itemId2 = this.trim($("[name=itemId2]").val() || "");
+        var itemId3 = this.trim($("[name=itemId3]").val() || "");
+        var itemId4 = this.trim($("[name=itemId4]").val() || "");
+        var itemId5 = this.trim($("[name=itemId5]").val() || "");
+        if (itemId1) {
+          itemIds.push(itemId1);
+        }
+        if (itemId2) {
+          itemIds.push(itemId2);
+        }
+        if (itemId3) {
+          itemIds.push(itemId3);
+        }
+        if (itemId4) {
+          itemIds.push(itemId4);
+        }
+        if (itemId5) {
+          itemIds.push(itemId5);
+        }
 
+        itemIds = itemIds.join(",");
       	if (!promoterPhone) {
       		new SFMessage(null, {
 	          'tip': '请填写推广员手机号码！',
@@ -86,7 +112,7 @@ define(
       	}
       	if (!itemIds) {
       		new SFMessage(null, {
-	          'tip': '请填写itemId手机号码！',
+	          'tip': '至少填写一个itemId',
 	          'type': 'error'
 	        });
 	        return;
@@ -111,6 +137,7 @@ define(
 	        return;
       	}
 
+        store.set('sf_promoter_phone', promoterPhone);
 
       	can.when(this.initRegstAocart4Pmter(promoterPhone, customerPhone, itemIds))
       		.done(function(result) {
