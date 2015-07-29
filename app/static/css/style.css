@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* html5doctor.com Reset v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/) - http://cssreset.com */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, .her, hgroup, menu, nav, section, summary, time, mark, audio, video {
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -507,18 +507,18 @@ a[title="站长统计"] {
   width: 68px;
 }
 
-@media screen and (min-width:640px){
+@media screen and (min-width: 640px) {
   .header {
     padding: 11px 0 11px;
     height: 70px;
   }
 
-  .header-back svg{
+  .header-back svg {
     width: 15px;
     height: 25px;
   }
 
-  .header-c2{
+  .header-c2 {
     top: 10px;
     right: 60px;
   }
@@ -527,7 +527,6 @@ a[title="站长统计"] {
     margin: 0 12px;
   }
 }
-
 /*尾部*/
 .footer-r1 {
   border-top: 1px solid #d9d9d9;
@@ -2167,6 +2166,26 @@ body {
   background: url(http://img0.sfht.com/img/520235946454a96e657b73268e6541a5.jpg) 0 0 no-repeat;
 }
 
+.firt-buy-discount {
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  color: #ff5b54;
+  height: 44px;
+  line-height: 44px;
+}
+.firt-buy-discount span {
+  background-color: #df3c3a;
+  color: #fff;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  margin-left: 14px;
+  margin-right: 10px;
+  padding: 3px 4px;
+}
+.firt-buy-discount em {
+  padding: 0 2px;
+}
+
 /*商品详情*/
 .detail {
   background: #fff;
@@ -2510,6 +2529,13 @@ body {
   margin-left: -21px;
 }
 
+.order-first-buy-tips {
+  color: #ff5b54;
+}
+.order-first-buy-tips em {
+  padding: 0 2px;
+}
+
 .order-manage {
   font-size: 15px;
   text-decoration: underline;
@@ -2602,6 +2628,11 @@ body {
 .order-success h2 {
   border-top: 1px solid #ccc;
   padding: 17px 10px;
+}
+
+.first-pay-tips {
+  color: #ff5b54;
+  margin-left: 10px;
 }
 
 /*orderlist*/
