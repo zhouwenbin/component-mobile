@@ -700,11 +700,13 @@
   border-top: 1px solid #cfcfcf;
 }
 
+.nataral-none-svg {
+  margin: 44px 0 32px 0;
+}
+
 .nataral-none p {
   display: inline-block;
-  line-height: 22px;
-  padding-left: 54px;
-  background-size: 30px 40px;
-  background: url(../img/icon_empty2x.png) no-repeat left center;
-  margin: 10px 0;
+  color: #9999a4;
+  font-size: 14px;
+  margin-bottom: 44px;
 }
