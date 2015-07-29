@@ -110,13 +110,6 @@ define(
 	        });
 	        return;
       	}
-      	if (!itemIds) {
-      		new SFMessage(null, {
-	          'tip': '至少填写一个itemId',
-	          'type': 'error'
-	        });
-	        return;
-      	}
 
       	promoterPhone = this.trim(promoterPhone);
       	customerPhone = this.trim(customerPhone);

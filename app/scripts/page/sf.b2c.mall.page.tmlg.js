@@ -17,6 +17,7 @@ define(
 
     var tmlgPage = can.Control.extend({
 
+      tempToken: "",
       /**
        * [init 初始化]
        */
@@ -25,8 +26,11 @@ define(
 
         var params = can.deparam(window.location.search.substr(1));
         var tempToken = params.tt;
-        if (tempToken) {
+        if (tempToken && (store.get('sfTt') != this.tempToken)) {
           this.initExchangeToken(tempToken);
+          this.tempToken = tempToken;
+        } else {
+          window.location.href = "/shoppingcart.html";
         }
       },
 
@@ -42,6 +46,7 @@ define(
 	      });
 	      return exchangeToken.sendRequest()
 	        .done(function(result) {
+            store.set('sfTt', that.tempToken);
             store.set('nickname', '海淘会员');
             store.set('csrfToken', result.csrfToken);
 
