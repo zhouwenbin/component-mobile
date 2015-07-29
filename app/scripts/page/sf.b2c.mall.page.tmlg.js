@@ -26,7 +26,7 @@ define(
 
         var params = can.deparam(window.location.search.substr(1));
         var tempToken = params.tt;
-        if (tempToken && (store.get('sfTt') != this.tempToken)) {
+        if (tempToken && (store.get('sfTt') != tempToken)) {
           this.initExchangeToken(tempToken);
           this.tempToken = tempToken;
         } else {
