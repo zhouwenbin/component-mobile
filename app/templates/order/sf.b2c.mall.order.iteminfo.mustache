@@ -5,7 +5,11 @@
 
   <!--正常商品-->
   {{#orderPackageItemList}}
-  <div class="goodinfo-stowage">{{shippingWarehouse}}</div>
+  <div class="goodinfo-stowage">
+  
+    <span class="goodinfo-stowage-c1">{{shippingWarehouse}}</span>
+    {{#sf-show-etk transporterName}}<span class="goodinfo-stowage-c2">EMS配送</span>{{/sf-show-etk}}
+  </div>
   <ul class="goodslist">
       {{#orderGoodsItemList}}
       <li>
