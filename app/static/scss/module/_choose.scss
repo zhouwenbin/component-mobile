@@ -1,30 +1,37 @@
-.choose{
-	background: #fff;
-	margin-bottom: 9px * 2;
+@mixin choose($i){ 
+	.choose{
+		background: #fff;
+		margin-bottom: 9px * $i;
+	}
+	.choose h2{
+	  height: 34px * $i;
+	  line-height: 34px * $i;
+	  border-left: 3px * $i solid #5dc9c9;
+	  padding-left: 5px * $i;
+	  border-top: 1px solid #f0eff5;
+	  border-bottom: 1px solid #f0eff5;
+	  font-size: 14px * $i;
+	  color: #4a4a4a;
+	}
+	.choose ul{
+		overflow: hidden;
+	}
+	.choose li{
+		float: left;
+		width: 25%;
+		text-align: center;
+		border-right: 1px solid #f0eff5;
+		border-bottom: 1px solid #f0eff5;
+		padding: 7px * $i;
+	}
+	.choose li img{
+		margin-bottom: 7px * $i;
+		width: 100%;
+		vertical-align: middle;
+	}
 }
-.choose h2{
-  height: 34px * 2;
-  line-height: 34px * 2;
-  border-left: 3px * 2 solid #5dc9c9;
-  padding-left: 5px * 2;
-  border-top: 1px solid #f0eff5;
-  border-bottom: 1px solid #f0eff5;
-  font-size: 14px * 2;
-  color: #4a4a4a;
-}
-.choose ul{
-	overflow: hidden;
-}
-.choose li{
-	float: left;
-	width: 25%;
-	text-align: center;
-	border-right: 1px solid #f0eff5;
-	border-bottom: 1px solid #f0eff5;
-	padding: 7px * 2;
-}
-.choose li img{
-	margin-bottom: 7px * 2;
-	width: 100%;
-	vertical-align: middle;
+
+@include choose(1);
+@media screen and (min-width:640px){
+  @include choose(2);
 }

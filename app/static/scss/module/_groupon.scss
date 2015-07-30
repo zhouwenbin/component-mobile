@@ -1,15 +1,22 @@
-.groupon{
-  background: #fff;
-  padding: 8px;
-  margin-bottom: 8px;
+@mixin groupon($i){ 
+	.groupon{
+	  background: #fff;
+	  padding: 8px * $i;
+	  margin-bottom: 8px * $i;
+	}
+	.groupon img{
+	  width: 100%;
+	}
+	.groupon li{
+	  margin-bottom: 10px * $i;
+	  font-size:0;
+	}
+	.groupon li:last-child{
+	  margin-bottom: 0;
+	}
 }
-.groupon img{
-  width: 100%;
-}
-.groupon li{
-  margin-bottom: 10px;
-  font-size:0;
-}
-.groupon li:last-child{
-  margin-bottom: 0;
+
+@include groupon(1);
+@media screen and (min-width:640px){
+  @include groupon(2);
 }
