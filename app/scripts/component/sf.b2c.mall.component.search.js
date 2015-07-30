@@ -143,11 +143,11 @@ define('sf.b2c.mall.component.search', [
         }
       },
       'sf-isHasAggregation': function(brands, categories, secondCategories, origins, shopNations, options) {
-        if (brands().buckets.length
-         || categories().buckets.length 
-         || secondCategories().buckets.length 
-         || origins().buckets.length 
-         || shopNations().buckets.length) {
+        if ((brands().buckets && brands().buckets.length)
+         || (categories().buckets && categories().buckets.length) 
+         || (secondCategories().buckets && secondCategories().buckets.length) 
+         || (origins().buckets && origins().buckets.length) 
+         || (shopNations().buckets && shopNations().buckets.length)) {
           return options.fn(options.contexts || this);
         } else {
           return options.inverse(options.contexts || this);
@@ -535,17 +535,23 @@ define('sf.b2c.mall.component.search', [
     render: function(data, element) {
       var that = this;
 
+      if (!this.renderData.attr("shopId") && !this.renderData.attr("keyword")) {
+        this.searchFail();
+        this.renderHtml(data);
+        return;
+      }
+
       can.when(this.initSearchItem(), this.initSearchItemAggregation())
-          .then(function(searchItem){
-            if (searchItem.totalHits == 0) {
-              return that.initFindRecommendProducts(-1);
-            }
-          })
           .always(function() {
             that.loading.hide();
             //渲染页面
             that.renderHtml(data);
             that.supplement();
+          })
+          .then(function(searchItem){
+            if (searchItem.totalHits == 0) {
+              that.searchFail();
+            }
           })
           .fail(function() {
             that.searchFail();
@@ -570,6 +576,7 @@ define('sf.b2c.mall.component.search', [
      * 搜索失败
      */
     searchFail: function() {
+      this.initFindRecommendProducts(-1);
     },
     /**
      * @description 渲染html
@@ -580,6 +587,9 @@ define('sf.b2c.mall.component.search', [
       var renderFn = can.mustache(template_component_search);
       var html = renderFn(data || this.renderData, this.helpers);
       this.element.html(html);
+
+      this.loading.hide();
+      this.supplement();
     },
     /**
      * @description 从服务器端获取数据
@@ -610,7 +620,7 @@ define('sf.b2c.mall.component.search', [
 
       var findRecommendProducts = new SFFindRecommendProducts({
         'itemId': itemid,
-        'size': 4
+        'size': 10
       });
       return findRecommendProducts.sendRequest()
         .done(function(recommendProducts) {

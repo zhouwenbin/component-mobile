@@ -14,10 +14,11 @@ define(
     'sf.b2c.mall.business.config',
     'text!template_center_content',
     'sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.component.nav'
+    'sf.b2c.mall.component.nav',
+    'sf.b2c.mall.module.header'
   ],
   function(can, $, store, Fastclick, SFGetUserInfo, SFFrameworkComm, SFMessage, SFLogout, SFWeixin,
-    SFConfig, template_center_content, SFLoading, SFNav) {
+    SFConfig, template_center_content, SFLoading, SFNav, SFHeader) {
 
     Fastclick.attach(document.body);
 
@@ -153,6 +154,6 @@ define(
     });
 
     // render导航
-    new SFNav('.sf-b2c-mall-nav');
+    //new SFNav('.sf-b2c-mall-nav');
     new center('.sf-b2c-mall-center');
   })

@@ -85,8 +85,7 @@ em {
 /* 默认 */
 * {
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -184,7 +183,8 @@ a[title="站长统计"] {
 /*两端对齐*/
 .justify {
   text-align: justify;
-  text-align-last: justify;
+  -moz-text-align-last: justify;
+       text-align-last: justify;
   display: inline-block;
   vertical-align: middle;
 }
@@ -296,8 +296,7 @@ a[title="站长统计"] {
   display: inline-block;
   vertical-align: middle;
   background: url(../img/icon.png) no-repeat;
-  -webkit-background-size: 450px 450px;
-          background-size: 450px 450px;
+  background-size: 450px 450px;
   text-indent: -999em;
 }
 
@@ -715,15 +714,13 @@ a[title="站长统计"] {
   background: url(../img/superman.jpg) no-repeat center top;
   height: 604px;
   padding-top: 357px;
-  -webkit-background-size: 320px 320px;
-          background-size: 320px;
+  background-size: 320px;
   text-align: center;
 }
 
 @media screen and (max-width: 375px) {
   .superman {
-    -webkit-background-size: 375px 375px;
-            background-size: 375px;
+    background-size: 375px;
     height: 706px;
     padding-top: 417px;
   }
@@ -734,8 +731,7 @@ a[title="站长统计"] {
 }
 @media screen and (max-width: 414px) {
   .superman {
-    -webkit-background-size: 414px 414px;
-            background-size: 414px;
+    background-size: 414px;
     height: 780px;
     padding-top: 462px;
   }
@@ -838,8 +834,7 @@ a[title="站长统计"] {
   background: url(../img/superman2-icon.png) no-repeat;
   width: 14px;
   height: 17px;
-  -webkit-background-size: 14px 14px;
-          background-size: 14px;
+  background-size: 14px;
   margin-right: 4px;
 }
 
