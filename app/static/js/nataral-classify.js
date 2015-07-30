@@ -43,4 +43,21 @@ $(function(){
       $('.nataral-tab ul').removeClass('nataral-tab-fixed');
     }
   })
+  //导航滚动
+  var tabNum=$('.nataral-tab li').length;
+      if(tabNum>4){
+        $('.nataral-tab-icon').show();
+        $('.nataral-tab ul').css({
+          'width':25 * tabNum +'%'
+        });
+        new window.IScroll('.nataral-tab', { scrollX: true });
+      }
+      $('.nataral-tab-icon').click(function(){
+        $(this).parents('.nataral-tab').toggleClass('active');
+        if($('.nataral-tab').hasClass('active')){
+          new window.IScroll('.nataral-tab', { scrollX: false });
+        }else{
+          new window.IScroll('.nataral-tab', { scrollX: true });
+        }
+      })
 })

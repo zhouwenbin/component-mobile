@@ -6,6 +6,7 @@ define(
     'zepto',
     'fastclick',
     'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.business.config',
     'sf.b2c.mall.center.invitationcontent',
     'sf.b2c.mall.component.nav',
     'sf.b2c.mall.module.header',
@@ -15,7 +16,8 @@ define(
     'sf.b2c.mall.widget.loading'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFInvitationcontent, SFNav, SFHeader, SFBusiness, SFSwitcher, SFHybrid, SFLoading) {
+  function(can, $, Fastclick, SFFrameworkComm, SFConfig,
+    SFInvitationcontent, SFNav, SFHeader, SFBusiness, SFSwitcher, SFHybrid, SFLoading) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -29,7 +31,7 @@ define(
        */
       init: function(element, options) {
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          window.location.href = SFConfig.setting.link.login;
+          window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
           return false;
         }
 
@@ -53,7 +55,7 @@ define(
     switcher.register('web', function() {
       loadingCtrl.show();
       new myInvitation('.sf-b2c-mall-invitation');
-      new SFNav('.sf-b2c-mall-nav');
+      //new SFNav('.sf-b2c-mall-nav');
     });
 
     switcher.register('onlineapp', function () {

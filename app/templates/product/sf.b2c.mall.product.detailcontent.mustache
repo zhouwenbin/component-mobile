@@ -16,11 +16,21 @@
           {{/each}}
         </div>
       </div>
-
+      
+      {{! 活动结束 }}
+      {{#isOverTime activityInfo.endTime}}
+        {{! <div class="mask"></div>
+        <span class="icon icon20 center">活动结束</span> }}
+        <span class="corner-icon corner-icon04 center">活动结束</span>
+      {{/isOverTime}}
+      {{! 售完 }}
+	  {{^isNotBegin}}
+      {{^isOverTime activityInfo.endTime}}
       {{#if priceInfo.soldOut}}
-        <div class="mask"></div>
-        <span class="icon icon20 center">售完</span>
+        <span class="corner-icon corner-icon01 center">已抢光</span>
       {{/if}}
+      {{/isOverTime}}
+      {{/isNotBegin}}
       {{#sf-isYZYW priceInfo.productShape}}
         {{#if itemInfo.basicInfo.originRetailPrice}}
           <div class="goods-price2">
@@ -30,21 +40,32 @@
         {{/if}}
       {{/sf-isYZYW}}
     </div>
+
     <div class="goods-b">
       <h1 class="ellipsis2">{{itemInfo.basicInfo.title}}</h1>
       <div class="goods-r4">
-        {{#sf-showSellingPrice priceInfo.isPromotion priceInfo.activitySoldOut}}
-        <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.sellingPrice}}</strong>
-        {{else}}
-        <strong class="goods-price"><small>¥</small>{{sf.price priceInfo.originPrice}}</strong>
-        {{/sf-showSellingPrice}}
-        （含税）{{#sf-showOriginPrice priceInfo.isPromotion priceInfo.activitySoldOut priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>
+        {{! 如果是秒杀活动活动价格展示秒杀价，从activityInfo中取展示价格 }}
+        <strong class="goods-price" {{^isNotBegin}}{{#sellPriceIsGray activityInfo.activityType priceInfo.soldOut activityInfo.endTime}}style="color:#999;"{{/sellPriceIsGray}}{{/isNotBegin}}><small>¥</small>{{sf-isSecKill activityInfo.activityType activityInfo.activityPrice priceInfo.sellingPrice}}</strong>
+        （含税）{{#sf-showOriginPrice activityInfo.activityType priceInfo.sellingPrice priceInfo.originPrice}}<del>¥{{sf.price priceInfo.originPrice}}</del>
         {{/sf-showOriginPrice}}
+
         {{#sf-isYZYW priceInfo.productShape}}约{{priceInfo.currencySymbol}}{{sf.price priceInfo.localSellingPrice}}{{/sf-isYZYW}}
+
+        {{#isSeckillActivity activityInfo.activityType}}<span class="seckill-text-bg {{^isNotBegin}}{{#isShowGrayClass priceInfo.soldOut activityInfo.endTime}}seckill-text-bg-gray{{/isShowGrayClass}}{{/isNotBegin}}">限时秒杀</span>{{/isSeckillActivity}}
       </div>
+
+      {{#isSeckillActivity activityInfo.activityType}}
       {{#if priceInfo.timeIcon}}
-        <div class="goods-r2">剩余：<span class="text-important">{{priceInfo.time.day}}</span>天<span class="text-important">{{priceInfo.time.hour}}</span>小时<span class="text-important">{{priceInfo.time.minute}}</span>分<span class="text-important">{{priceInfo.time.second}}</span>秒</div>
+        <div class="goods-r2">{{isShowText activityInfo.startTime activityInfo.endTime}}<span class="text-important">{{priceInfo.time.day}}</span>天<span class="text-important">{{priceInfo.time.hour}}</span>小时<span class="text-important">{{priceInfo.time.minute}}</span>分<span class="text-important">{{priceInfo.time.second}}</span>秒</div>
       {{/if}}
+      {{/isSeckillActivity}}
+
+      {{^isSeckillActivity activityInfo.activityType}}
+      {{#if priceInfo.timeIcon}}
+        <div class="goods-r2">距结束：<span class="text-important">{{priceInfo.time.day}}</span>天<span class="text-important">{{priceInfo.time.hour}}</span>小时<span class="text-important">{{priceInfo.time.minute}}</span>分<span class="text-important">{{priceInfo.time.second}}</span>秒</div>
+      {{/if}}
+      {{/isSeckillActivity}}
+
 
       <div class="goods-r3">
         {{^sf-isYZYW priceInfo.productShape}}
@@ -59,6 +80,7 @@
   <!--商品-->
 
   <!--促销信息-->
+  {{^isSeckillActivity activityInfo.activityType}}
 	{{#activityInfo.isShow}}
   <section class="coupon-discount">
 	  <ul class="box box1">
@@ -78,11 +100,33 @@
 		    {{/sf-showActivity}}
 		  {{/each}}
 	  </ul>
+    {{^isShowMoreInfo activityInfo.activityType}}
 	  <div class="box coupon-discount-more"><a href="javascript:">更多优惠</a></div>
+    {{/isShowMoreInfo}}
 	</section>
 	{{/activityInfo.isShow}}
+  {{/isSeckillActivity}}
   <!--促销信息-->
-
+  <!-- 搭配购买 -->
+  {{#isShowMixDiscount activityInfo.activityType priceInfo.soldOut}} 
+  <section class="detail-mix" id="link-to-mixdiscount">
+      <div class="detail-mix-h box box1">
+          <a href="#" class="box-link">精选搭配<span>（任选搭配即享优惠）</span></a>
+          <div class="detail-mix-h-c1">
+              <span class="text-important">最高省{{sf.price mixDiscount.totalSavePrice}}元<i class="icon icon-arrow"></i></span>
+          </div>
+      </div>
+      <ul class="detail-mix-b">
+          {{#each mixDiscount.goods}}
+          <li>
+             <a href="javascript:void(0)"><img src="{{imageName}}" alt=""></a>
+          </li>
+          <li>+</li>
+          {{/each}}          
+      </ul>
+  </section>
+  {{/isShowMixDiscount}}
+    <!-- end 搭配购买 -->
   <!--商品详情-->
   <section class="detail">
     <div class="detail-h" >
@@ -109,6 +153,7 @@
     </div>
   </section>
   <!--商品详情-->
+
   <!--推荐商品-->
   <section class="recommend" id="recommendProducts">
     <h2>推荐商品</h2>
@@ -133,7 +178,22 @@
   </section>
   <!--推荐商品-->
 
-
+  {{! 如果是秒杀商品不应该有加入购物车 }}
+  {{#isSeckillActivity activityInfo.activityType}}
+  {{! 活动未开始，和商品已抢完，活动已经结束直接原价购买 }}
+    {{#isBegin activityInfo.startTime activityInfo.endTime priceInfo.soldOut}}
+    <section class="nav-cart">
+      <div class="nav-cart-r1"><a href="http://m.sfht.com/detail/{{activityInfo.referItemId}}.html" class="btn btn-danger">原价购</a></div>
+    </section>
+    {{/isBegin}}
+    {{! 活动进行中，立即抢购，直接去订单确认页 }}
+    {{^isBegin activityInfo.startTime activityInfo.endTime priceInfo.soldOut}}
+    <section class="nav-cart">
+      <div class="nav-cart-r1"><button id="btn-seckill" class="btn btn-danger">立即购买</button></div>
+    </section>
+    {{/isBegin}}
+  {{/isSeckillActivity}}
+  {{^isSeckillActivity activityInfo.activityType}}
   <!--立即购买-->
   <section class="nav-cart">
     <div class="nav-cart-r1">
@@ -144,6 +204,7 @@
       <button class="btn btn-danger gotobuy">立即购买</button>
     </div>
   </section>
+  {{/isSeckillActivity}}
   <!--立即购买-->
 
 </div>
@@ -160,7 +221,7 @@
               </a>
             </div>
             <div class="detail-cart-c1">
-                <h2 class="ellipsis2">{{itemInfo.basicInfo.title}}</h2>
+                <h2 class="ellipsis2" style="font-weight:normal">{{itemInfo.basicInfo.title}}</h2>
 
                 <span class="text-error">¥ {{sf.price priceInfo.sellingPrice}}</span>
                 <del>¥{{sf.price priceInfo.originPrice}}</del>

@@ -23,7 +23,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
     template_order_orderlist, SFAddItemToCart, SFLoading) {
 
     var DEFAULT_PAGE_NUM = 1;
-    var DEFAULT_PAGE_SIZE = 50;
+    var DEFAULT_PAGE_SIZE = 10;
 
     var EMPTY_IMG = "http://m.sfht.com/static/img/no.png";
     var PREFIX = 'http://img0.sfht.com';
@@ -69,7 +69,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
           var count = 0;
           var array = items().attr();
           _.each(array, function(item) {
-            _.each(item.orderGoodsItemList, function(good){
+            _.each(item.orderGoodsItemList, function(good) {
               count = good.quantity + count;
             });
           });
@@ -112,7 +112,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         'sf-is-active': function(status, cstatus) {
           if (status() == cstatus) {
             return 'active';
-          }else if (!status() && cstatus == '') {
+          } else if (!status() && cstatus == '') {
             return 'active';
           }
         },
@@ -126,6 +126,23 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
         'sf-show-route': function(status, options) {
           if (status() != 'SUBMITED' && status() != 'AUDITING' && status() != 'AUTO_CANCEL' && status() != 'USER_CANCEL' && status() != 'OPERATION_CANCEL' && status() != 'CLOSED') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        //是否展示秒杀活动标示
+        'isShowSeckill': function(goodsType, options) {
+          if (goodsType() == "SECKILL") {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        //秒杀商品不展示再次购买按钮
+        'isShowRebuyBtn': function(orderPackageItemList, options) {
+          var array = orderPackageItemList().attr();
+          if (array[0].orderGoodsItemList[0].goodsType == "SECKILL") {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -176,16 +193,16 @@ define('sf.b2c.mall.order.orderlistcontent', [
         params = _.extend(params, can.route.attr());
         var renderFn = can.view.mustache(template_order_orderlist);
 
-        data.supplement = {onLoadingData: false};
+        data.supplement = {
+          onLoadingData: false
+        };
         this.options.data = new can.Map(data);
         this.options.data.attr('status', params.status || DEFAULT_STATUS);
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
 
         loadingCtrl.hide();
-
-        // can.$('.loadingDIV').hide();
-        // this.initLoadDataEvent();
+        this.initLoadDataEvent();
       },
 
       /**
@@ -196,7 +213,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
         var that = this;
         var renderData = this.options.data;
         //节流阀
-        var loadingDatas = function(){
+        var loadingDatas = function() {
           if (renderData.page.pageNum * renderData.page.pageSize > renderData.page.totalNum) {
             return;
           }
@@ -204,7 +221,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
           var windowHeight = $(window).height(); //窗口的高度
           var dbHiht = $(".sf-b2c-mall-order-orderlist").height(); //整个页面文件的高度
 
-          if((windowHeight + srollPos + 100) >= (dbHiht)){
+          if ((windowHeight + srollPos + 200) >= (dbHiht)) {
 
             that.loadingData();
           }
@@ -247,10 +264,19 @@ define('sf.b2c.mall.order.orderlistcontent', [
         event && event.preventDefault();
 
         var order = $element.closest('li').data('order');
-        var url = SFConfig.setting.link.gotopay + '&' + $.param({
-          "orderid": order.orderId,
-          "showordersuccess": true
-        });
+        var goodsType = $element.closest('li').data('order').orderPackageItemList[0].orderGoodsItemList[0].goodsType;
+        if (goodsType == 'SECKILL') {
+          var url = SFConfig.setting.link.gotopay + '&' + $.param({
+            "orderid": order.orderId,
+            "showordersuccess": true,
+            "goodsType": goodsType
+          });         
+        } else {
+          var url = SFConfig.setting.link.gotopay + '&' + $.param({
+            "orderid": order.orderId,
+            "showordersuccess": true
+          });
+        }
 
         // －－－－－－－－－－－－－－－－－－
         // 不同环境切换不同的支付页面
@@ -347,12 +373,12 @@ define('sf.b2c.mall.order.orderlistcontent', [
 
         var switcher = new SFSwitcher();
 
-        switcher.register('web', function () {
+        switcher.register('web', function() {
           var link = SFConfig.setting.link.orderlist;
 
           if (link.indexOf('?') > -1) {
             link = link + '&' + $.param(params);
-          }else{
+          } else {
             link = link + '?' + $.param(params);
           }
 
@@ -360,7 +386,7 @@ define('sf.b2c.mall.order.orderlistcontent', [
           // window.location = SFConfig.setting.link.orderlist + '?' + $.param(params)
         });
 
-        switcher.register('app', function () {
+        switcher.register('app', function() {
           can.route.attr('status', status);
         });
 
@@ -401,9 +427,9 @@ define('sf.b2c.mall.order.orderlistcontent', [
             if (data.isSuccess) {
               // can.trigger(window, 'updateCart');
               window.location.href = 'http://m.sfht.com/shoppingcart.html'
-            }else{
+            } else {
 
-              var $el = $('<section class="tooltip center overflow-num"><div>'+data.resultMsg+'</div></section>');
+              var $el = $('<section class="tooltip center overflow-num"><div>' + data.resultMsg + '</div></section>');
               $(document.body).append($el);
               setTimeout(function() {
                 $el.remove();

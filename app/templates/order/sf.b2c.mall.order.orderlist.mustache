@@ -21,7 +21,7 @@
 
         {{else}}
 
-          {{#orders}}
+          {{#each orders}}
           <li {{data 'order'}}>
               <div class="box box1">
                 <a href="http://m.sfht.com/orderdetail.html?orderid={{orderId}}" class="box-link">订单号: {{orderId}}</a>
@@ -40,14 +40,15 @@
 
                   </div>
                   <ul class="goodslist">
-                      {{#orderGoodsItemList}}
+                      {{#each orderGoodsItemList}}
                       <li>
-                          <a href="http://m.sfht.com/detail/{{itemId}}.html">
+                          <a {{^isShowSeckill goodsType}}href="http://m.sfht.com/detail/{{itemId}}.html"{{/isShowSeckill}}>
                             <img src="{{sf-image imageUrl}}">
                           </a>
                           <div class="goodslist-c2">
                             <h3 class="ellipsis2">
-                              <a href="http://m.sfht.com/detail/{{itemId}}.html">{{goodsName}}</a>
+                              {{#isShowSeckill goodsType}}<span class="goods-seckill">秒杀商品</span>{{/isShowSeckill}}
+                              <a {{^isShowSeckill goodsType}}href="http://m.sfht.com/detail/{{itemId}}.html"{{/isShowSeckill}}>{{goodsName}}</a>
                             </h3>
                           </div>
                           <div class="goodslist-c1">
@@ -55,7 +56,7 @@
                               <div class="text-important">¥{{sf.price price}}</div>
                           </div>
                       </li>
-                      {{/orderGoodsItemList}}
+                      {{/each}}
                   </ul>
               </div>
               {{/each}}
@@ -82,10 +83,12 @@
                 {{#sf-status-show-case orderStatus 'RECEIVED'}}
                 <button class="btn btn-normal success received">确认收货</button>
                 {{/sf-status-show-case}}
-
+                
+                {{^isShowRebuyBtn orderPackageItemList}}
                 {{#sf-status-show-case orderStatus 'REBUY'}}
                 <button class="btn btn-normal rebuy">再次购买</button>
                 {{/sf-status-show-case}}
+                {{/isShowRebuyBtn}}
 
                 {{#orderCouponItemList}}
                   {{#sf-coupon-type orderAction couponType 'SHAREBAG'}}
@@ -94,7 +97,7 @@
                 {{/orderCouponItemList}}
               </div>
           </li>
-          {{/orders}}
+          {{/each}}
           {{#if supplement.onLoadingData}}
             <div style="text-align: center;padding: 10px 0;"><span class="loading"></span>正在加载，请稍等...</div>
           {{/if}}

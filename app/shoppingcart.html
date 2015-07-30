@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 <title>顺丰海淘</title>
 
-<!-- build:css({app, .tmp}) styles/sf.b2c.h5.cart.css -->
+<!-- build:css({app, .tmp}) styles/sf.b2c.h5.new.cart.css -->
 <link rel="stylesheet" href="static/css/style.css">
 <link rel="stylesheet" href="static/css/cart.css">
+<link rel="stylesheet" href="static/css/new-cart.css">
 <!-- endbuild -->
 
 <!-- build:js({app, tmp}) ../cordova.js-->
 <script src="../cordova.js"></script>
 <!-- endbuild -->
+
+<style type="text/css">
+  .cart li { border-bottom: none;}
+</style>
 
 </head>
 <body>
@@ -23,16 +28,19 @@
     }
   </style>
 
-  <!--# include file="/header/header.h5.index.html" -->
+  <!--# include file="/header/header.h5.order.html" -->
 
   <article class="sf-h5-shoppingcart" style="height:100%;"></article>
+
+
+<div class="loadingDIV loading center"></div>
 
   <!-- build:js(.) scripts/require.min.js -->
   <script src="bower_components/requirejs/require.js"></script>
   <!-- endbuild -->
 
   <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
-  <script src="/scripts/base/sf.h5.base.ver.1.0.3.js"></script>
+  <script src="/scripts/base/sf.h5.base.ver.1.0.5.js"></script>
   <!-- endbuild -->
 
   <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->

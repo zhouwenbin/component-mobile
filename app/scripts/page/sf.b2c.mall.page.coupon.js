@@ -14,10 +14,11 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
-    'sf.b2c.mall.widget.loading'
+    'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.module.header'
   ],
   function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode,
-    template_center_coupon, SFSwitcher, SFHybrid, SFNav, SFLoading) {
+    template_center_coupon, SFSwitcher, SFHybrid, SFNav, SFLoading, SFHeader) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -85,6 +86,10 @@ define(
             that.itemObj.attr("totalCount", data.totalCount || 0);
             var couponStatusMap = {
               "UNUSED": function() {
+                if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
+                  tmpCoupon.showButton = true;
+                }
                 that.itemObj.unUsed.count++;
                 that.itemObj.unUsed.items.push(tmpCoupon);
               },
@@ -105,6 +110,7 @@ define(
             var thirdpartyMap = {
               "EXT_MOVIETICKET": function() {
                 if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
                   tmpCoupon.showButton = true;
                 }
                 that.itemObj.thirdparty.count++;
@@ -113,6 +119,7 @@ define(
 
               "EXT_TAXICOUPON": function() {
                 if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                  tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
                   tmpCoupon.showButton = true;
                 }
                 that.itemObj.thirdparty.count++;
@@ -139,6 +146,14 @@ define(
               }
             }
           });
+      },
+
+      addUrlPrefix: function(url){
+        if (url.indexOf("http://m.sfht.com")) {
+          url = "http://m.sfht.com" + url;
+        }
+
+        return url
       },
 
       //优惠券兑换相关事件
@@ -205,7 +220,7 @@ define(
 
     switcher.register('web', function() {
       new coupon('.sf-b2c-mall-coupon');
-      new SFNav('.sf-b2c-mall-nav');
+      //new SFNav('.sf-b2c-mall-nav');
     });
 
     switcher.register('app', function() {

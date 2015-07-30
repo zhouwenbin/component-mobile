@@ -458,6 +458,9 @@ module.exports = function (grunt) {
         dest: '<%= config.dist %>',
         src: [
           'img/{,*/}*.*',
+          'img/*/{,*/}*.*',
+          'img/*/*/{,*/}*.*',
+          'img/*/*/*/{,*/}*.*',
         ]
       },
 
@@ -1060,6 +1063,24 @@ module.exports = function (grunt) {
           insertRequire: ['sf.b2c.mall.page.paysuccess']
         }
       },
+
+      bridge: {
+        options: {
+          optimize:'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.bridge.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.bridge'
+          ],
+          insertRequire: ['sf.b2c.mall.page.bridge']
+        }
+      },
       // agreement: {
       //   options: {
       //     preserveLicenseComments: false,
@@ -1124,6 +1145,44 @@ module.exports = function (grunt) {
                 insertRequire: ['sf.b2c.mall.page.pointexplain']
             }
         },
+
+        ouba: {
+            options: {
+                optimize: 'none',
+                preserveLicenseComments: false,
+                baseUrl: './app/',
+                out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.ouba.js',
+                mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+                paths: {
+                    'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+                },
+                include: [
+                    "sf.b2c.mall.business.config",
+                    'sf.b2c.mall.page.ouba'
+                ],
+                insertRequire: ['sf.b2c.mall.page.ouba']
+            }
+        },
+
+        81: {
+            options: {
+                optimize: 'none',
+                preserveLicenseComments: false,
+                baseUrl: './app/',
+                out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.81.js',
+                mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+                paths: {
+                    'moment': '../bower_components/momentjs/min/moment.min',
+                    'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+                },
+                include: [
+                    "sf.b2c.mall.business.config",
+                    'sf.b2c.mall.page.81'
+                ],
+                insertRequire: ['sf.b2c.mall.page.81']
+            }
+        },
+
         signrule: {
             options: {
                 optimize: 'none',
@@ -1166,6 +1225,37 @@ module.exports = function (grunt) {
           },
           include:        ["sf.b2c.mall.module.getcoupon"],
           insertRequire:  ['sf.b2c.mall.module.getcoupon']
+        }
+      },
+
+      secondkill: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.secondkill.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.secondkill"],
+          insertRequire:  ['sf.b2c.mall.module.secondkill']
+        }
+      },
+
+      spike: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl:        './app/',
+          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.spike.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include:        ["sf.b2c.mall.module.spike"],
+          insertRequire:  ['sf.b2c.mall.module.spike']
         }
       },
 
@@ -1599,6 +1689,24 @@ module.exports = function (grunt) {
         }
       },
 
+      detailmix: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.detailmix.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.detailmix'
+          ],
+          insertRequire: ['sf.b2c.mall.page.detailmix']
+        }
+      },
+
       shoppingcart: {
         options: {
           optimize: 'none',
@@ -1639,6 +1747,26 @@ module.exports = function (grunt) {
         }
       },
 
+      searchgate: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.searchgate.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.categorynavigatelist'
+          ],
+          insertRequire: ['sf.b2c.mall.page.categorynavigatelist']
+        }
+      },
+
       shop: {
         options: {
           optimize: 'none',
@@ -1659,6 +1787,26 @@ module.exports = function (grunt) {
         }
       },
 
+      freshactive: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.freshactive.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.freshactive'
+          ],
+          insertRequire: ['sf.b2c.mall.page.freshactive']
+        }
+      },
+
       aboutus: {
         options: {
           optimize: 'none',
@@ -1676,6 +1824,26 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.aboutus'
           ],
           insertRequire: ['sf.b2c.mall.page.aboutus']
+        }
+      },
+
+      categorynavigatelist: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.categorynavigatelist.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.categorynavigatelist'
+          ],
+          insertRequire: ['sf.b2c.mall.page.categorynavigatelist']
         }
       },
 
@@ -1804,7 +1972,7 @@ module.exports = function (grunt) {
         'copy:image',
         'copy:templates',
         'usemin',
-        'htmlmin',
+        // 'htmlmin',
         'copy:styles',
         'clean:extra',
         'clean:publish',
@@ -1833,7 +2001,7 @@ module.exports = function (grunt) {
         'copy:image',
         'copy:templates',
         'usemin',
-        'htmlmin',
+        // 'htmlmin',
         'copy:styles',
         'clean:extra',
         'clean:publish',
@@ -1866,7 +2034,7 @@ module.exports = function (grunt) {
         'copy:image',
         'copy:templates',
         'usemin',
-        'htmlmin',
+        // 'htmlmin',
         'copy:styles',
         'clean:extra',
         'clean:publish',

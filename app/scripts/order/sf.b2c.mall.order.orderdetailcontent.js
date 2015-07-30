@@ -80,14 +80,21 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         });
       },
 
-      'sf-timmer': function (pay, order, options) {
-        if (pay()== 'WAITPAY' && order() == 'SUBMITED') {
+      'sf-timmer': function(pay, order, options) {
+        if (pay() == 'WAITPAY' && order() == 'SUBMITED') {
           return options.fn(options.contexts || this);
         } else {
           return options.inverse(options.contexts || this);
         }
       },
-
+      //是否展示秒杀活动标示
+      'isShowSeckill': function(goodsType, options) {
+        if (goodsType() == "SECKILL") {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
+      },
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case'],
       'sf-package-status': SFOrderFn.helpers['sf-package-status'],
       'sf-coupon-type': SFOrderFn.helpers['sf-coupon-type']
@@ -120,21 +127,21 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       this.serverTime = this.getOrder.getServerTime();
 
       this.options.data = new can.Map(data);
-        this.options.data.attr("totalPoint", data.presentIntegral);
-        var that = this;
-        //this.options.data.attr("pointPrice", (data.orderItem.totalPrice- data.orderItem.discount-data.couponReducePrice-data.totalPrice));
-        _.each(data.orderItem.orderCouponItemList, function(item) {
-            if(item.couponType == "INTRGAL" && item.orderAction == "COST"){
-                that.options.data.attr("pointPrice",item.price);
-            }
-        });
-//       this.options.data.totalPoint =data.presentIntegral;
-        if(typeof this.options.data.attr("pointPrice") == "undefined" || this.options.data.attr("pointPrice") == ""){
-            this.options.data.attr("pointPrice","0");
+      this.options.data.attr("totalPoint", data.presentIntegral);
+      var that = this;
+      //this.options.data.attr("pointPrice", (data.orderItem.totalPrice- data.orderItem.discount-data.couponReducePrice-data.totalPrice));
+      _.each(data.orderItem.orderCouponItemList, function(item) {
+        if (item.couponType == "INTRGAL" && item.orderAction == "COST") {
+          that.options.data.attr("pointPrice", item.price);
         }
-        if(typeof this.options.data.attr("totalPoint") == "undefined" || this.options.data.attr("totalPoint") == ""){
-            this.options.data.attr("totalPoint","0");
-        }
+      });
+      //       this.options.data.totalPoint =data.presentIntegral;
+      if (typeof this.options.data.attr("pointPrice") == "undefined" || this.options.data.attr("pointPrice") == "") {
+        this.options.data.attr("pointPrice", "0");
+      }
+      if (typeof this.options.data.attr("totalPoint") == "undefined" || this.options.data.attr("totalPoint") == "") {
+        this.options.data.attr("totalPoint", "0");
+      }
 
       var renderFn = can.mustache(template_order_orderdetail);
       var html = renderFn(this.options.data, this.helpers);
@@ -149,7 +156,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       this.watchDetail.call(this, data);
     },
 
-    watchDetail: function (data) {
+    watchDetail: function(data) {
       var uinfo = $.fn.cookie('3_uinfo');
       var arr = [];
       if (uinfo) {
@@ -157,7 +164,12 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       }
 
       var name = arr[0];
-      SFMediav.watchOrderDetail({name: name}, {id: (new Date()).valueOf(), amount: data.totalPrice});
+      SFMediav.watchOrderDetail({
+        name: name
+      }, {
+        id: (new Date()).valueOf(),
+        amount: data.totalPrice
+      });
     },
 
     // 倒计时
@@ -173,16 +185,24 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
     drawTime: function() {
       var date = new Date();
-      var time = moment.duration(this.options.data.orderItem.gmtCreate + 2 * 60 * 60 * 1000 - this.serverTime);
+      var goodsType = this.options.data.orderItem.orderPackageItemList[0].orderGoodsItemList[0].goodsType;
+      if (goodsType == 'SECKILL') {
+        var time = moment.duration(this.options.data.orderItem.gmtCreate + 15 * 60 * 1000 - this.serverTime);
+      } else {
+        var time = moment.duration(this.options.data.orderItem.gmtCreate + 2 * 60 * 60 * 1000 - this.serverTime);
+
+      }
 
       var timeStr = null;
 
-      if (time._data.hours) {
+      if (time._data.hours && time._data.hours > 0) {
         timeStr = time._data.hours + '小时' + time._data.minutes + '分钟' + time._data.seconds + '秒'
-      } else if (time._data.minutes) {
+      } else if (time._data.minutes && time._data.minutes > 0) {
         timeStr = time._data.minutes + '分钟' + time._data.seconds + '秒'
-      } else {
+      } else if (time._data.seconds && time._data.seconds > 0) {
         timeStr = time._data.seconds + '秒'
+      } else {
+        timeStr = '0秒'
       }
 
       this.element.find('#pay-timmer').text(timeStr);
@@ -211,7 +231,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         this.element.find('.orderdetail').hide();
 
         var that = this;
-        setTimeout(function(){
+        setTimeout(function() {
           that.element.find('.logistics-' + params.packageNo).show().scrollTop();
         }, 0);
 
@@ -221,19 +241,19 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       }
     },
 
-    setBackButton: function () {
+    setBackButton: function() {
       var switcher = new SFSwitcher();
 
-      switcher.register('web', function () {
+      switcher.register('web', function() {
 
       });
 
-      switcher.register('app', function () {
-        SFHybrid.sfnavigator.setLeftButton(function () {
+      switcher.register('app', function() {
+        SFHybrid.sfnavigator.setLeftButton(function() {
           var params = can.route.attr();
           if (params.packageNo || params.packageNo == '0') {
             SFHybrid.sfnavigator.popToIdentifier('history');
-          }else{
+          } else {
             SFHybrid.sfnavigator.popToIdentifier();
           }
         });
@@ -243,10 +263,20 @@ define('sf.b2c.mall.order.orderdetailcontent', [
     },
 
     '.gotopay click': function($element, event) {
-      var url = SFConfig.setting.link.gotopay + '&' + $.param({
-        "orderid": this.options.data.orderItem.orderId,
-        "showordersuccess": true
-      });
+      var goodsType = this.options.data.orderItem.orderPackageItemList[0].orderGoodsItemList[0].goodsType;
+
+      if (goodsType == 'SECKILL') {
+        var url = SFConfig.setting.link.gotopay + '&' + $.param({
+          "orderid": this.options.data.orderItem.orderId,
+          "showordersuccess": true,
+          "goodsType": goodsType
+        });         
+      } else {
+        var url = SFConfig.setting.link.gotopay + '&' + $.param({
+          "orderid": this.options.data.orderItem.orderId,
+          "showordersuccess": true
+        });
+      }
 
       // －－－－－－－－－－－－－－－－－－
       // 不同环境切换不同的支付页面
@@ -260,8 +290,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         window.location.href = url;
       });
 
-      switcher.register('app', function () {
-        SFHybrid.notification.post('NotificationOrderRefresh', function(){});
+      switcher.register('app', function() {
+        SFHybrid.notification.post('NotificationOrderRefresh', function() {});
         window.location.href = url;
       });
 
@@ -270,7 +300,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       // －－－－－－－－－－－－－－－－－－－
     },
 
-    '.ordercancel click': function ($element, event) {
+    '.ordercancel click': function($element, event) {
       event && event.preventDefault();
 
       var that = this;
@@ -282,8 +312,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             var switcher = new SFSwitcher();
 
-            switcher.register('app', function () {
-              SFHybrid.notification.post('NotificationOrderRefresh', function(){});
+            switcher.register('app', function() {
+              SFHybrid.notification.post('NotificationOrderRefresh', function() {});
             });
 
             switcher.go();
@@ -312,8 +342,8 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
             var switcher = new SFSwitcher();
 
-            switcher.register('app', function () {
-              SFHybrid.notification.post('NotificationOrderRefresh', function(){});
+            switcher.register('app', function() {
+              SFHybrid.notification.post('NotificationOrderRefresh', function() {});
             });
 
             switcher.go();

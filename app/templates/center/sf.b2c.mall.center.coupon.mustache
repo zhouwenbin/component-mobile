@@ -1,4 +1,5 @@
 <a href="javascript:" class="btn btn-big btn-normal coupons-btn" id="inputCouponCode">优惠券兑换</a>
+<a href="http://m.sfht.com/activity/476.html" class="btn btn-big btn-normal coupons-btn">第三方兑换区</a>
 {{^totalCount}}
 <div class="coupons-none">
   <span class="icon icon39"></span>
@@ -16,7 +17,13 @@
         <div class="coupons-c2r2">满{{sf.price leastCost}}元立减</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
+        <div class="coupons-title">
+          <h2 class="ellipsis">{{title}}</h2>
+          {{#customUrl}}
+            <a href="{{customUrl}}">去看看</a>
+          {{/customUrl}}
+        </div>
+
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>
@@ -47,7 +54,11 @@
         <div class="coupons-c2r3">已使用</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
+
+        <div class="coupons-title">
+          <h2 class="ellipsis">{{title}}</h2>
+        </div>
+
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>
@@ -62,7 +73,11 @@
         <div class="coupons-c2r3">已过期</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
+
+        <div class="coupons-title">
+          <h2 class="ellipsis">{{title}}</h2>
+        </div>
+
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>
@@ -77,7 +92,11 @@
         <div class="coupons-c2r3">已作废</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{title}}</h2>
+
+        <div class="coupons-title">
+          <h2 class="ellipsis">{{title}}</h2>
+        </div>
+
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>

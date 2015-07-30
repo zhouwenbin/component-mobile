@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="target-densitydpi=device-dpi,width=640" name="viewport">
+    <title>顺丰海淘</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.freshactive.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/young-active.css">
+    <!-- endbuild -->
+    <style type="text/css">
+    <style type="text/css"> .young-nav-fixed {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 99;
+    }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div class="young-banner" style="background: url(http://img.sfht.com/sfhth5/1.1.146/img/young-active/young-banner.jpg) no-repeat"></div>
+    <div class="young-time">
+        <h2>当前扒衣总数</h2>
+        <p id="votenum" style="color: rgb(255, 255, 255);">0000737</p><a href="javascript:;" class="btn" id="sharefriend" style="visibility: hidden;">召唤闺蜜</a></div>
+    <h2 class="young-h2">活动优惠</h2>
+    <div class="young-coupon">
+
+        <a href="http://m.sfht.com/ouba.html" id="ouba">
+            <img src="http://img.sfht.com/sfhth5/1.1.142/img/young-active/young-coupon1.jpg" alt="">
+        </a>
+        <a id="getcoupon" href="javascript:;" name="cms-fill-coupon" data-cms-couponbagid="277" data-cms-coupontype="CARD" style="display:none;">
+            <img src="http://img.sfht.com/sfhth5/1.1.165/img/fresh_getcoupon.jpg" alt="">
+        </a>
+
+        <a id="gotoapp" href="http://m.sfht.com/app.html" >
+            <img src="http://img.sfht.com/sfhth5/1.1.150/img/young-active/young-coupon2.jpg" alt="">
+        </a>
+        <a id="gotoappinapp" href="#" name="cms-fill-coupon" data-cms-couponbagid="277" data-cms-coupontype="CARD" style="display:none;">
+            <img src="http://img.sfht.com/sfhth5/1.1.150/img/young-active/young-coupon2.jpg" alt="">
+        </a>
+
+
+    </div>
+    <ul class="young-nav" id="young-nav">
+        <!-- <li class="active"><a href="">专场优惠</a></li> -->
+        <li><a href="#h5-spike_1_44">裸价秒杀</a></li>
+        <li><a href="#h5banner_1_31">美妆个护</a></li>
+        <li><a href="#h5banner_1_34">食品保健</a></li>
+        <li><a href="#h5banner_1_26">母婴专场</a></li>
+        <li><a href="#h5banner_1_39">原汁原味</a></li>
+        <!-- <li><a href="#h5html_1_47">欧巴花絮</a></li> -->
+    </ul>
+    <div id="sharearea" style="display:none">
+        <div class="mask" style="background: #000; opacity: 0.8"></div>
+        <div class="share" style="z-index:999"></div>
+    </div>
+    <!-- build:js(.) scripts/require.min.js -->
+    <script src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) scripts/sf.h5.base.js-->
+    <script src="scripts/base/sf.h5.base.ver.1.0.5.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.freshactive.js -->
+    <script src="scripts/sf.b2c.mall.require.config.js"></script>
+    <script type="text/javascript">
+    require(['sf.b2c.mall.page.freshactive']);
+    </script>
+    <!-- endbuild -->
+    <script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
+    <script type="text/javascript">
+        var ratio = window.width / 640;
+        $('head').append('<meta content="width=640,user-scalable=no,initial-scale='+ratio.toFixed(2) +'" name="viewport">');
+    </script>
+
+</body>
+</html>

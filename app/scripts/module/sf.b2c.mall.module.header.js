@@ -10,6 +10,7 @@ define(
     'sf.env.switcher',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.component.searchbox',
     'text!template_widget_header_ad',
     'sf.b2c.mall.api.minicart.getTotalCount', // 获得mini cart的数量接口
     'sf.b2c.mall.api.shopcart.addItemsToCart', // 添加购物车接口
@@ -18,7 +19,7 @@ define(
     'sf.b2c.mall.widget.cartnumber',
   ],
 
-  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm,
+  function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, SFSearchBox,
     template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid, SFWidgetCartNumber) {
 
     Fastclick.attach(document.body);
@@ -40,7 +41,11 @@ define(
         // 一般环境显示头部
         switcher.register('web', _.bind(function() {
           // this.element.fadeIn();
-          this.element.find('.header').show();
+          this.element.find('header').show();
+          new SFSearchBox('#sf-b2c-mall-search-box', {
+            showGate: true,
+            existDom: "all"
+          });
         }, this));
 
         // app环境内隐藏头部
@@ -66,7 +71,7 @@ define(
         // 其他地方添加需要更新mini购物车的时候调用can.trigger('updateCart')
         can.on.call(window, 'updateCart', _.bind(this.updateCart, this));
 
-        this.setCookie();
+        // this.setCookie();
       },
 
       setCookie: function() {
@@ -276,6 +281,20 @@ define(
       "#closebutton click": function($el, event) {
         event && event.stopPropagation();
         $(".banner-dialog").hide();
+      },
+
+      /**
+       * @author zhangke
+       * @description 用户点击返回之后的动作变化
+       * @param  {element}  $el   点击对象的jquery对象
+       * @param  {event}    event 绑定在点击对象的event对象
+       * @return
+       */
+      '[data-header-id=back] click': function($el, event) {
+        event && event.preventDefault();
+
+        window.location.href = document.referrer;
+        //window.history.back();
       },
 
       /**
