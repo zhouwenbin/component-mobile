@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32px" height="36px" viewBox="0 0 16 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_blue</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="iPhone-5/5S/5C" sketch:type="MSArtboardGroup" transform="translate(-249.000000, -210.000000)">
+            <g id="icon_blue" sketch:type="MSLayerGroup" transform="translate(247.000000, 210.000000)">
+                <polygon id="Polygon-1-Copy-3" fill="#6E8DCD" sketch:type="MSShapeGroup" points="9.98837209 0 17.7826007 4.5 17.7826007 13.5 9.98837209 18 2.19414346 13.5 2.19414346 4.5 "></polygon>
+                <text id="7" sketch:type="MSTextLayer" font-family="Heiti SC" font-size="10" font-weight="260" fill="#FFFFFF">
+                    <tspan x="7.98837209" y="13.0752733">7</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

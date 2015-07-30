@@ -1,0 +1,80 @@
+.daily{
+	background: #fff;
+	margin-bottom: 9px * 2;
+}
+.daily h2{
+  height: 34px * 2;
+  line-height: 34px * 2;
+  border-left: 3px * 2 solid #ff8991;
+  padding-left: 5px * 2;
+  border-top: 1px solid #f0eff5;
+  border-bottom: 1px solid #f0eff5;
+  font-size: 14px * 2;
+  color: #4a4a4a;
+}
+.daily li{
+	padding: 8px * 2;
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	border-bottom: 1px solid #f0eff5;
+}
+.daily-c1{
+	margin-right: 8px * 2;
+	width: 240px;
+	height: 240px;
+}
+.daily-c1 img{
+	width: 240px;
+	height: 240px;
+}
+.daily-c2{
+	flex:1;
+}
+.daily h3{
+	margin-bottom: 30px * 2;
+	font-size: 14px * 2;
+	line-height: 18px * 2;
+	font-weight: normal;
+}
+.daily h3 img{
+	width: 19px * 2;
+	height: 13px * 2;
+	margin-right: 4px * 2;
+}
+.daily .label{
+	padding: 0 5px * 2;
+	margin-bottom: 5px * 2;
+}
+.daily-c2-r1{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+}
+.daily-icon-cart{
+	width: 34px * 2;
+	height: 34px * 2;
+	text-align: center;
+	background: #f2f2f2;
+	border-radius: 50%;
+}
+.daily-icon-cart:after{
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+.daily-icon-cart svg{
+	vertical-align: middle;	
+	width: 42px;
+	height: 42px;
+}
+.daily strong{
+	margin-left: 5px * 2;
+	margin-right: 5px * 2;
+	font-size: 14px * 2;
+	font-weight: normal;
+}
+.daily del{
+	color: #b3b3b3;
+}

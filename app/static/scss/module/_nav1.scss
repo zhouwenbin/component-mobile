@@ -11,7 +11,10 @@
     flex:1;
     text-align: center;
   }
-  %nav1-icon{
+  .nav1-icon1,
+  .nav1-icon2,
+  .nav1-icon3,
+  .nav1-icon4{
     background:url(#{$bg-url}nav1.png) no-repeat;
     background-size:274px * $i;
     display: block;
@@ -19,19 +22,13 @@
     width:40px * $i;
     height: 39px * $i;
   }
-  .nav1-icon1{
-    @extend %nav1-icon;
-  }
   .nav1-icon2{
-    @extend %nav1-icon;
     background-position: -78px * $i 0;
   }
   .nav1-icon3{
-    @extend %nav1-icon;
     background-position: -157px * $i 0;
   }
   .nav1-icon4{
-    @extend %nav1-icon;
     background-position: right 0;
   }
 }

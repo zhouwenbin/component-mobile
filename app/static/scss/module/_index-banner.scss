@@ -1,0 +1,17 @@
+.index-banner{
+	padding: 4px * 2;
+	background: #fff;
+	margin-bottom: 9px * 2;
+	border-top: 1px solid #f0eff5;
+	border-bottom: 1px solid #f0eff5;
+	display: flex;
+	justify-content:space-between;
+	font-size:0;
+}
+.index-banner>div{
+	flex:1;
+}
+.index-banner img{
+	padding: 4px * 2;
+	width: 100%;
+}
