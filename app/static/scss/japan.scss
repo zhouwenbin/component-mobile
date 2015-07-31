@@ -175,6 +175,7 @@ header h3{
 	position: relative;
 	border: 1px solid #fff;
 	padding: 10px 10px 15px 40px;
+	background: url(../img/japan/text-bg.jpg) right bottom no-repeat;
 	.mjapan-flag{
 		position: absolute;
 		top: 0;
@@ -203,6 +204,7 @@ header h3{
 	p{
 		font-size: 24px;
 		opacity: 0.6;
+		text-transform: uppercase;
 	}
 }
 .mjapan-intro-text-ct{
@@ -297,6 +299,7 @@ header h3{
 	font-size: 22px;
 	line-height: 1.2;
 	margin-top: 27px;
+	white-space: nowrap;
 	.pink{
 			font-size: 38px;
 		em{
@@ -305,7 +308,7 @@ header h3{
 		}
 	}
 	del{
-		font-size: 16px;
+		font-size: 14px;
 		color: #727272;
 	}
 }
