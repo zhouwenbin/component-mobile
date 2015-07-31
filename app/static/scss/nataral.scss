@@ -191,9 +191,9 @@
 	.nataral-tab:before{
 		content: '';
 		position: absolute;
-		width: 68px * $i;
+		width: 38px * $i;
 		height: 45px * $i;
-		background: linear-gradient(90deg,transparent 0%,#fff 70%,#fff 100%);
+		background: linear-gradient(90deg,rgba(255,255,255,0) 0%,#fff 70%,#fff 100%);
 		right: 0;
 		top: 0;
 		z-index: 3;

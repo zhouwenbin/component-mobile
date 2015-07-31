@@ -7,11 +7,10 @@
 
   .spike-tab-h li {
       width: 27px * 0.5 * $i;
-      padding-top: 8px * 0.5 * $i;
+      padding: 8px * 0.5 * $i 0;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      height: 79px * 0.5 * $i;
       background: #f63c3f;
       text-align: center;
       -webkit-border-radius: 4px * 0.5 * $i;
@@ -80,7 +79,7 @@
   .spike-tab-b li {
       display: inline-block;
       vertical-align: top;
-      width: 48%;
+      width: 47%;
       margin-bottom: 20px * 0.5 * $i;
       position: relative;
       margin-left: 10px * 0.5 * $i
