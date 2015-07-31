@@ -1,0 +1,140 @@
+@import 'utils/variables';
+body{
+	width: 640px;
+	background: #4f0991 url(../img/japan/body-bg.jpg) 0 0 no-repeat;
+	background-size: 640px 460px;
+}
+header h1,
+header h2,
+header h3{
+	font: 0/0 a; 
+}
+header{
+	padding-top: 42px;
+}
+header h1{
+	background: url(../img/japan/h1-bg.png) center 0 no-repeat;
+	height: 110px;
+}
+header h2{
+	background: url(../img/japan/h2-bg.png) center 0 no-repeat;
+	height: 86px;
+	margin-top: 12px;
+}
+header h3{
+	background: url(../img/japan/h3-bg.png) center 0 no-repeat;
+	height: 88px;
+	margin-top: -23px;
+}
+.mjapan-wp{
+	margin: 0 10px;
+}
+.mjapan-list{
+	display: flex;
+	margin-top: 40px;
+	padding: 10px 0;
+	background: rgba(0,0,0,.3);
+	li{
+		position: relative;
+		margin-left: 10px;
+	}
+	.open{
+		.mjapan-mask{
+			background: none;
+		}
+	}
+}
+.mjapan-mask,
+.mjapan-video-pic li::after{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,.65);
+	color: #fff;
+	text-align: center;
+}
+.mjapan-mask h2{
+	margin-top: 22px;
+	font-size: 34px;
+	font-weight: 700;
+}
+.mjapan-mask p{
+	margin-top: 7px;
+	font-size: 23px;
+}
+.mjapan-video-list{
+	margin-top: 20px;
+	height: 298px;
+	overflow: hidden;
+	li{
+		position: relative;
+		display: none;
+	}
+	.mjapan-mask a{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%,-50%);
+		font-size: 16px;
+		color: #fff;
+	}
+	.mjapan-mask i{
+		display: inline-block;
+		font: 0/0 a;
+		background: url(../img/japan/play-icon.png) 0 0 no-repeat;
+		width: 63px;
+		height: 63px;
+		margin-bottom: 12px;
+	}
+}
+.mjapan-video-pic{
+	width: 620px;
+	overflow: hidden;
+	display: flex;
+	margin-top: 5px;
+	ul{	
+		width: 564px;
+		height: 97px;
+		overflow: hidden;
+		white-space: nowrap;
+		margin-right: 4px;
+		li{
+			float: left;
+			position: relative;
+			margin-left: 4px;
+			&::after{
+				content: "";
+			}
+		}
+		.active::after{
+			background: none;
+		}
+	}
+	.mjapan-before,
+	.mjapan-after{
+		position: relative;
+		font: 0/0 a;
+		background-color: #544c61;
+		height: 97px;
+		width: 26px;
+	}
+	.mjapan-before::after,
+	.mjapan-after::after{
+		position: absolute;
+		top: 50%;
+		margin-top: -3px;
+		content: "";
+		border: 8px dashed transparent;
+	}
+	.mjapan-before::after{
+		border-right-style: solid;
+		border-right-color: #000;
+	}
+	.mjapan-after::after{
+		border-left-style: solid;
+		border-left-color: #000;
+		left: 10px;
+	}
+}
