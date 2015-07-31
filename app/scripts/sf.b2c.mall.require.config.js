@@ -314,6 +314,9 @@ requirejs.config({
         "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
         "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages",
 
+        "sf.b2c.mall.page.japanpre": "scripts/page/sf.b2c.mall.page.japanpre",
+        "sf.b2c.mall.national.japanpre": "scripts/national/sf.b2c.mall.national.japanpre",
+
         //81
         "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81",
 
