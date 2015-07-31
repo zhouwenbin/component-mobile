@@ -15,6 +15,7 @@ function(can, $, _,Fastclick,IScroll) {
       this.initSidelip();
       var tabNum=$('.nataral-tab li').length;
       if(tabNum>4){
+        $('.nataral-tab:before').show();
         $('.nataral-tab-icon').show();
         $('.nataral-tab ul').css({
           'width':25 * tabNum +'%'

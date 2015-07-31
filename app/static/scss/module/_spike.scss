@@ -1,0 +1,172 @@
+@mixin spike($i){
+  .spike-tab-h {
+      float: left;
+      width: 48px * 0.5 * $i;
+      padding-top: 12px * 0.5 * $i
+  }
+
+  .spike-tab-h li {
+      width: 27px * 0.5 * $i;
+      padding-top: 8px * 0.5 * $i;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      height: 79px * 0.5 * $i;
+      background: #f63c3f;
+      text-align: center;
+      -webkit-border-radius: 4px * 0.5 * $i;
+      border-radius: 4px * 0.5 * $i;
+      font-size: 24px * 0.5 * $i;
+      margin-bottom: 40px * 0.5 * $i;
+      line-height: 28px * 0.5 * $i;
+      position: relative
+  }
+
+  .spike-tab-h li:before {
+      content: '';
+      width: 11px * 0.5 * $i;
+      height: 11px * 0.5 * $i;
+      background: #f63c3f;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      position: absolute;
+      right: -31px * 0.5 * $i;
+      border: 4px * 0.5 * $i solid #ffc5c2;
+      top: 50%;
+      margin-top: -9px * 0.5 * $i
+  }
+
+  .spike-tab-h li.active {
+      background: #800a2d
+  }
+
+  .spike-tab-h li.active:before {
+      background: #800a2d;
+      border-color: #cd7d88
+  }
+
+  .spike-tab-h li .icon {
+      position: absolute;
+      right: -16px * 0.5 * $i;
+      top: 50%;
+      margin-top: -8px * 0.5 * $i;
+      border-width: 8px * 0.5 * $i
+  }
+
+  .spike-tab-h li.active .icon {
+      border-color: transparent transparent transparent #800a2d
+  }
+
+  .spike-tab-h a {
+      color: #fff
+  }
+
+  .spike-tab-b {
+      margin-left: 48px * 0.5 * $i;
+      border-left: 1px dashed #800a2d;
+      padding-left: 15px * 0.5 * $i;
+      padding-top: 12px * 0.5 * $i;
+      display: none
+  }
+
+  .spike-tab-b.active {
+      display: block
+  }
+
+  .spike-tab-b ul {
+      margin-left: -4px * 0.5 * $i
+  }
+
+  .spike-tab-b li {
+      display: inline-block;
+      vertical-align: top;
+      width: 48%;
+      margin-bottom: 20px * 0.5 * $i;
+      position: relative;
+      margin-left: 10px * 0.5 * $i
+  }
+
+  .spike-tab-b img {
+      width: 100%
+  }
+  .spike-r2{
+    background: #f3f3f3;
+    padding: 10px * 0.5 * $i 12px * 0.5 * $i;
+  }
+  .spike-tab h3{
+    font-size: 18px * 0.5 * $i;
+    color: #7a7a7a;
+    font-weight: normal;
+    line-height: 24px * 0.5 * $i;
+    margin-bottom: 16px * 0.5 * $i;
+  }
+  .spike-tab-r1{
+    font-size: 19px * 0.5 * $i;
+    color: #7a7a7a;
+  }
+  .spike-tab-r2{
+    font-size: 14px * 0.5 * $i;
+    color: #a1a1a1;
+  }
+  .spike-tab-c2{
+    font-size: 40px * 0.5 * $i;
+    color: #ff0064;
+    font-family: arial;
+    margin-left: 10px * 0.5 * $i;
+  }
+  .spike-tab-c3 a{
+    width: 53px * 0.5 * $i;
+    height: 43px * 0.5 * $i;
+    line-height: 43px * 0.5 * $i;
+    text-align: center;
+    color: #fff;
+    font-size: 22px * 0.5 * $i;
+    font-weight: bold;
+    background: #d0155c;
+    display: inline-block;
+    position: relative;
+  }
+  .spike-tab-c3 a:before{
+    content: '';
+    border-style: solid;
+    border-width: 9px * 0.5 * $i;
+    border-color: transparent #d0155c transparent transparent;
+    position: absolute;
+    left: -18px * 0.5 * $i;
+    top: 14px * 0.5 * $i;
+  }
+  .spike-r1 .mask {
+    position: absolute;
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+  }
+  .spike-r1 span {
+    font-size: 36px * 0.5 * $i;
+    line-height: 40px * 0.5 * $i;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 122px * 0.5 * $i;
+    width: 100%;
+    z-index: 1;
+  }
+  .spike{
+      background: #ffbf00;
+  }
+}
+@include spike(1);
+
+@media screen and (min-width:640px){
+  @include spike(2);
+}
