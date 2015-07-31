@@ -362,6 +362,7 @@ header h3 {
   font-size: 22px;
   line-height: 1.2;
   margin-top: 27px;
+  white-space: nowrap;
 }
 
 .japan-goods-item .japan-price .pink {
@@ -374,7 +375,7 @@ header h3 {
 }
 
 .japan-goods-item .japan-price del {
-  font-size: 16px;
+  font-size: 14px;
   color: #727272;
 }
 
