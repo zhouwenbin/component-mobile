@@ -76,6 +76,9 @@ define(
           $(this).find(".mjapan-video-box").show();
           $(this).find("video")[0].play();
         });
+
+
+        
       }
 
     });
