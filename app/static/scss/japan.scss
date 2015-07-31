@@ -89,29 +89,20 @@ header h3{
 		margin-bottom: 12px;
 	}
 }
+.mjapan-video-box{
+	position: absolute;
+	width: 100%;
+	height: 100px;
+	left: 0;
+	top: 0;
+	z-index: 3;
+	display: none;
+}
 .mjapan-video-pic{
 	width: 620px;
 	overflow: hidden;
 	display: flex;
 	margin-top: 5px;
-	ul{	
-		width: 564px;
-		height: 97px;
-		overflow: hidden;
-		white-space: nowrap;
-		margin-right: 4px;
-		li{
-			float: left;
-			position: relative;
-			margin-left: 4px;
-			&::after{
-				content: "";
-			}
-		}
-		.active::after{
-			background: none;
-		}
-	}
 	.mjapan-before,
 	.mjapan-after{
 		position: relative;
@@ -136,5 +127,77 @@ header h3{
 		border-left-style: solid;
 		border-left-color: #000;
 		left: 10px;
+	}
+}
+.mjapan-video-pic-list{
+	width: 564px;
+	height: 97px;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-right: 4px;
+	ul{
+		white-space: nowrap;
+		width: 300%;
+	}
+	li{
+		float: left;
+		position: relative;
+		margin-left: 4px;
+		&::after{
+			content: "";
+		}
+	}
+	.active::after{
+		background: none;
+	}
+}
+.mjapan-intro-text{
+	background-color: #6c67dd;
+	color: #fff;
+	padding: 10px;
+}
+.mjapan-intro-text-inner{
+	position: relative;
+	border: 1px solid #fff;
+	.mjapan-flag{
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 73px;
+		height: 50px;
+		background-color: #fff;
+		&::after{
+			position:absolute;
+			content: "";
+			width: 30px;
+			height: 30px;
+			background-color: #a61e20;
+			border-radius: 50%;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+}
+.mjapan-intro-text-title{
+	h2{
+		font-size: 34px;
+		font-weight: 700;
+	}
+	p{
+		font-size: 24px;
+		opacity: 0.6;
+	}
+}
+.mjapan-intro-text-ct{
+	font-size: 27px;
+	line-height: 1.2;
+	.bg{
+		display: inline-block;
+		color: #6c67dd;
+		padding: 0 6px;
+		height: 32px;
+		line-height: 32px;
+		background-color: #fff;
 	}
 }
