@@ -2,7 +2,8 @@
   .spike-tab-h {
       float: left;
       width: 48px * 0.5 * $i;
-      padding-top: 12px * 0.5 * $i
+      padding-top: 12px * 0.5 * $i;
+      padding-left: 10px;
   }
 
   .spike-tab-h li {
@@ -64,7 +65,7 @@
   }
 
   .spike-tab-b {
-      margin-left: 48px * 0.5 * $i;
+      margin-left: 68px * 0.5 * $i;
       border-left: 1px dashed #800a2d;
       padding-left: 15px * 0.5 * $i;
       padding-top: 12px * 0.5 * $i;
