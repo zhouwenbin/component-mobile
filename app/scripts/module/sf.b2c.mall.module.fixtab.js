@@ -99,27 +99,37 @@ function(can, $, _,Fastclick,IScroll) {
             $('.nataral-tab li').removeClass('active');
           }
         }, 200);
-
-
       })
-      $('.nataral-tab li').click(function(){
-        nataral_pruduct = [];
 
-        _.each($(".nataral-tab a"), function(item) {
-          nataral_pruduct.push($(item).attr("href"));
-        });
+      var lock = false;
+      var fn = function (index) {
+        lock = true;
+        setTimeout(function() {
+          nataral_pruduct = [];
 
-        for(i=0;i<num;i++){
-          nataral_pruduct_offset[i]=$(nataral_pruduct[i]).offset().top-nav_height;
-        }
+          _.each($(".nataral-tab a"), function(item) {
+            nataral_pruduct.push($(item).attr("href"));
+          });
 
+          for(i=0;i<num;i++){
+            nataral_pruduct_offset[i]=$(nataral_pruduct[i]).offset().top-nav_height;
+          }
+
+          $(window).scrollTop(nataral_pruduct_offset[index]);
+
+          $('.nataral-tab li').removeClass('active')
+          $(this).addClass('active')
+
+          lock = false;
+        }, 300);
+      }
+
+      $('.nataral-tab li').on('touchstart', function(){
         var index=$('.nataral-tab li').index(this);
-        $(window).scrollTop(nataral_pruduct_offset[index]);
-
-        $('.nataral-tab li').removeClass('active')
-        $(this).addClass('active')
-
-        return false;
+        if (!lock) {
+          fn(index)
+        }
+        // return false;
       })
     }
   })
