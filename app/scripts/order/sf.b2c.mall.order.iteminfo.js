@@ -654,7 +654,7 @@ define('sf.b2c.mall.order.iteminfo', [
                 .done(function(orderCoupon) {
                     that.itemObj.attr("isShowCouponArea", true);
                     that.itemObj.attr("orderFeeItem.shouldPay", that.itemObj.orderFeeItem.actualTotalFee);
-                    this.itemObj.attr("getpoint", Math.floor(that.itemObj.orderFeeItem.actualTotalFee / 100) * 100);
+                    that.itemObj.attr("getpoint", Math.floor(that.itemObj.orderFeeItem.actualTotalFee / 100) * 100);
                     can.extend(orderCoupon, {
                         isHaveAvaliable: orderCoupon.avaliableAmount != 0,
                         isHaveDisable: orderCoupon.disableAmount != 0,
