@@ -1,50 +1,56 @@
-/*input*/
-.input{
-  border: 1px solid #e3e3e3;
-  font-size: 14px;
-  padding: 10px;
-  width: 100%;
+@mixin form($i){
+  .input{
+    border: 1px solid #e3e3e3;
+    font-size: 14px * $i;
+    padding: 10px * $i;
+    width: 100%;
+  }
+  .input-num{
+    display: inline-block;
+    font-size: 0;
+  }
+  .input-num .btn{
+    display: inline-block;
+    width: 30px * $i;
+    height: 26px * $i;
+    line-height: 24px * $i;
+    padding: 0;
+    background:#fafafa;
+    border: 1px solid #ccc;
+    font-size: 18px * $i;
+  }
+  .input-num input{
+    width: 51px * $i;
+    height: 26px * $i;
+    line-height: 26px * $i;
+    text-align: center;
+    margin: 0 -1px * $i;
+    border:1px solid #ccc;
+    background: #fafafa;
+    font-size: 12px * $i;
+  }
+  /*select*/
+  .select{
+    height: 30px * $i;
+    line-height: 30px * $i;
+    padding-left: 10px * $i;
+    font-size: 15px * $i;
+    border-color:#ccc;
+    border-radius:0;
+  }
+  /*textarea*/
+  .textarea{
+    padding: 10px * $i;
+    width: 100%;
+    font-size: 14px * $i;
+    line-height: 1.5;
+    height: 5.5em;
+    border-color:#ccc;
+    background:#fff;
+  }
 }
-.input-num{
-  display: inline-block;
-  font-size: 0;
-}
-.input-num .btn{
-  display: inline-block;
-  width: 30px;
-  height: 26px;
-  line-height: 24px;
-  padding: 0;
-  background:#fafafa;
-  border: 1px solid #ccc;
-  font-size: 18px;
-}
-.input-num input{
-  width: 51px;
-  height: 26px;
-  line-height: 26px;
-  text-align: center;
-  margin: 0 -1px;
-  border:1px solid #ccc;
-  background: #fafafa;
-  font-size: 12px;
-}
-/*select*/
-.select{
-  height: 30px;
-  line-height: 30px;
-  padding-left: 10px;
-  font-size: 15px;
-  border-color:#ccc;
-  border-radius:0;
-}
-/*textarea*/
-.textarea{
-  padding: 10px;
-  width: 100%;
-  font-size: 14px;
-  line-height: 1.5;
-  height: 5.5em;
-  border-color:#ccc;
-  background:#fff;
+@include form(1);
+
+@media screen and (min-width:640px){
+  @include form(2);
 }

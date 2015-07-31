@@ -1,0 +1,87 @@
+@mixin daily($i){ 
+	.daily{
+		background: #fff;
+		margin-bottom: 9px * $i;
+	}
+	.daily h2{
+	  height: 34px * $i;
+	  line-height: 34px * $i;
+	  border-left: 3px * $i solid #ff8991;
+	  padding-left: 5px * $i;
+	  border-top: 1px solid #f0eff5;
+	  border-bottom: 1px solid #f0eff5;
+	  font-size: 14px * $i;
+	  color: #4a4a4a;
+	}
+	.daily li{
+		padding: 8px * $i;
+		display: flex;
+		justify-content:space-between;
+		align-items:center;
+		border-bottom: 1px solid #f0eff5;
+	}
+	.daily-c1{
+		margin-right: 8px * $i;
+		width: 120px * $i;
+		height: 120px * $i;
+	}
+	.daily-c1 img{
+		width: 120px * $i;
+		height: 120px * $i;
+	}
+	.daily-c2{
+		flex:1;
+	}
+	.daily h3{
+		margin-bottom: 30px * $i;
+		font-size: 14px * $i;
+		line-height: 18px * $i;
+		font-weight: normal;
+	}
+	.daily h3 img{
+		width: 19px * $i;
+		height: 13px * $i;
+		margin-right: 4px * $i;
+	}
+	.daily .label{
+		padding: 0 5px * $i;
+		margin-bottom: 5px * $i;
+	}
+	.daily-c2-r1{
+		display: flex;
+		justify-content:space-between;
+		align-items:center;
+	}
+	.daily-icon-cart{
+		width: 34px * $i;
+		height: 34px * $i;
+		text-align: center;
+		background: #f2f2f2;
+		border-radius: 50%;
+	}
+	.daily-icon-cart:after{
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+	}
+	.daily-icon-cart svg{
+		vertical-align: middle;	
+		width: 21px * $i;
+		height: 21px * $i;
+	}
+	.daily strong{
+		margin-left: 5px * $i;
+		margin-right: 5px * $i;
+		font-size: 14px * $i;
+		font-weight: normal;
+	}
+	.daily del{
+		color: #b3b3b3;
+	}
+}
+
+@include daily(1);
+@media screen and (min-width:640px){
+  @include daily(2);
+}

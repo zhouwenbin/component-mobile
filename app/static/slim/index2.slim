@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi,width=640">
+	<title>顺丰海淘详情页</title>
+	<link rel="stylesheet" href="../css/swiper.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/index2.css">
+
+</head>
+<body class="body1">
+	<!--头部-->
+	== Slim::Template.new('module/header.slim').render
+	<!--头部-->
+	<!--导航-->
+	== Slim::Template.new('module/nav2.slim').render
+	<!--导航-->
+	<!--幻灯-->
+	== Slim::Template.new('module/swipe.slim').render
+	<!--幻灯-->
+	<section class="safeguard">
+		<ul>
+			<li>
+				== Slim::Template.new('../svg/icon-safeguard1.svg').render
+				<span>正品保障</span>
+			</li>
+			<li>
+				== Slim::Template.new('../svg/icon-safeguard2.svg').render
+				<span>含税包邮</span>
+			</li>
+			<li>
+				== Slim::Template.new('../svg/icon-safeguard3.svg').render
+				<span>顶尖物流</span>
+			</li>
+			<li>
+				== Slim::Template.new('../svg/icon-safeguard4.svg').render
+				<span>7天无忧</span>
+			</li>
+		</ul>
+	</section>
+	<div class="index-banner">
+		<div class="index-banner-c1">
+			<a href=""><img src="http://placehold.it/148x174"></a>
+		</div>
+		<div class="index-banner-c2">
+			<a href=""><img src="http://placehold.it/148x83"></a>
+			<a href=""><img src="http://placehold.it/148x83"></a>
+		</div>
+	</div>
+	== Slim::Template.new('module/flashsale2.slim').render
+	<section class="groupon">
+		<ul>
+			-for i in 1..3
+				<li><a href=""><img src="http://placehold.it/605x253"></a></li>
+		</ul>
+	</section>
+	<section class="choose">
+		<h2>精挑细选</h2>
+		<ul>
+			-for i in 1..12
+				<li>
+					<figure>
+						<img src="http://placehold.it/70x70">
+						<figcaption>001</figcaption>
+					</figure>
+				</li>
+		</ul>
+	</section>
+	<section class="daily">
+		<h2>每日必看</h2>
+		<ul>
+			-for i in 1..3
+				<li>
+					<div class="daily-c1">
+						<img src="http://placehold.it/120x120">
+					</div>
+					<div class="daily-c2">
+						<h3 class="ellipsis2"><img src="http://img0.sfht.com/img/0f7837ba46481f369fe7ad81ae9176d7.jpg" alt="国旗">标题标题标题标题标题标题标题标题标题</h3>
+						<div class="daily-c2-r1">
+							<div>
+								<span class="label label-error">7.5折</span><strong>¥183</strong><del>¥183</del>
+
+								<div>
+									<span class="label label-disabled">日本直采 海外仓发货</span>
+								</div>
+							</div>
+							<div class="daily-icon-cart">
+								== Slim::Template.new('../svg/icon-cart2.svg').render
+							</div>
+						</div>
+					</div>
+				</li>
+		</ul>
+	</section>
+	<div class="downloadapp">
+		<div class="downloadapp-r1">
+			<div class="downloadapp-logo"></div>
+			<button class="btn btn-danger">立即下载</button>
+			<a class="downloadapp-close">关闭</a>
+		</div>
+			
+		
+	</div>
+	<script src="../js/zepto.min.js"></script>
+	<script src="../js/swiper.js"></script>
+	<script src="../js/slider.js"></script>
+</body>
+</html>
