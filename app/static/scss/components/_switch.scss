@@ -1,20 +1,20 @@
 @mixin switch($i){
 	.switch{
-		width: 46px * 2;
-		height: 24px * 2;
-		border-radius: 24px * 2;
+		width: 46px * $i;
+		height: 24px * $i;
+		border-radius: 24px * $i;
 		background: #ccc;
 		display: inline-block;
 		position: relative;
 		transition:all 0.3s;
 	}
 	.switch:before{
-		width: 22px * 2;
-		height: 22px * 2;
+		width: 22px * $i;
+		height: 22px * $i;
 		content: '';
 		position: absolute;
-		left: 1px * 2;
-		top: 1px * 2;
+		left: 1px * $i;
+		top: 1px * $i;
 		background: #fff;
 		border-radius: 50%;
 		transition:all 0.3s ease-in;
@@ -23,7 +23,7 @@
 		background: #df3c3a;
 	}
 	.switch.active:before{
-		left: 23px * 2;
+		left: 23px * $i;
 	}
 }
 @include switch(1);
