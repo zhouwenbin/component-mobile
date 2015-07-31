@@ -3,9 +3,10 @@
 define('sf.b2c.mall.national.japanpre', 
   [
   	'text', 
-  	'can'
+  	'can',
+  	'underscore',
 	], 
-	function(text, can) {
+	function(text, can, _) {
 	  return can.Control.extend({
 
 	    init: function(element, options) {
@@ -18,65 +19,67 @@ define('sf.b2c.mall.national.japanpre',
 	    },
 
 	    initCarousel: function() {
-	    	var thumbList = $(".japan-video-list-pic-list");
+	    	var thumbList = $(".mjapan-video-pic-list");
 
-	    	$(".japan-video-box").on("click", ".up", function() {
-	    		var top = getTop();
-	    		if (top === 0) {
+	    	$(".japan-video-box").on("click", ".mjapan-before", function() {
+	    		var left = getLeft();
+	    		if (left === 0) {
 	    			return;
 	    		}
 	    		thumbList.animate({
-	    			top: top - 66
+	    			left: left - 141
 	    		})
 	    		return false;
 	    	})
-	    	.on("click", ".down", function() {
+	    	.on("click", ".mjapan-after", function() {
 
-	    		var top = getTop();
-	    		if (top === 0) {
+	    		var left = getLeft();
+	    		if (left === 0) {
 	    			return;
 	    		}
 	    		thumbList.animate({
-	    			top: top + 66
+	    			left: left + 141
 	    		})
 	    		return false;
 	    	});
 
-	    	$(".japan-video-box .japan-video-list-pic-list").on("click", "li", function() {
+	    	$(".mjapan-video-pic-list").on("click", "li", function() {
 	    		$(this).siblings(".active").removeClass("active");
 	    		$(this).addClass("active");
+	    		var videoLis = $(".mjapan-video-list li");
 
 	    		var index = thumbList.find("li").index($(this));
-
-					$(".japan-video-list li:visible").hide();
-					var destination = $(".japan-video-list li").eq(index);
-					destination.show();
-					var videoSrc = destination.data("video");
-					$(".japan-video video").attr("src", videoSrc);
+	    		var hideDest;
+	    		_.each(videoLis, function(item, index, list) {
+	    			if ($(item).css("display") != "none") {
+	    				hideDest = $(item);
+	    			}
+	    		})
+				hideDest.hide();
+				hideDest.find(".mjapan-video-box").hide();
+				hideDest.find("video")[0].pause();
+				var destination = $(".mjapan-video-list li").eq(index);
+				destination.show();
 	    	});
 
 
-	    	var getTop = function() {
-					var top = thumbList.css("top");
-	    		if (top == "auto") {
-	    			top = 0;
+	    	var getLeft = function() {
+				var left = thumbList.css("left");
+	    		if (left == "auto") {
+	    			left = 0;
 	    		} else {
-	    			top = top.substr(0, top.length - 2);
+	    			left = left.substr(0, left.length - 2);
 	    		}
 	    		
-	    		return Number.parseInt(top, 10);
+	    		return Number.parseInt(left, 10);
 	    	};
 	    },
 
 	    initEvent: function() {
-	    	$(".japan-video-list li").on("click", function() {
-	    		$(".japan-video").show();
+	    	$(".mjapan-video-list li").on("click", function() {
+	    		$(this).find(".mjapan-video-box").show();
+	    		$(this).find("video")[0].play();
 	    	});
-
-	    	$(".japan-video-close").on("click", function() {
-	    		$(".japan-video").hide();
-	    		$('video')[0].pause();
-	    	})
 	    }
   	});
 });

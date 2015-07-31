@@ -28,7 +28,7 @@ define(
        */
       render: function() {
         var that = this;
-        new SFSearch('#sf-b2c-mall-search');
+        new SFJapanpre('#sf-b2c-mall-search');
       }
 
     });
