@@ -6,7 +6,7 @@
   }
 
   .spike-tab-h li {
-      width: 27px * 0.5 * $i;
+      width: 36px * 0.5 * $i;
       padding: 8px * 0.5 * $i 0;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -45,6 +45,9 @@
   }
 
   .spike-tab-h li .icon {
+      border-style: solid;
+      border-width: 10px;
+      border-color: transparent transparent transparent #f63c3f;
       position: absolute;
       right: -16px * 0.5 * $i;
       top: 50%;

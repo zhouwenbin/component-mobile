@@ -217,12 +217,20 @@
 		z-index: 3;
 		display: none;
 	}
+	.nataral-tab-icon:before{
+		content: '';
+		position: absolute;
+		left: -10px;
+		right: -10px;
+		top: -10px;
+		bottom: -10px;
+	}
 	.nataral-tab-fixed ul{
 		position: fixed;
 		right: 0;
 		left: 0;
 		top: 0;
-		z-index: 2;
+		z-index: 999;
 	}
 	.nataral-tab-fixed:before,
 	.nataral-tab-fixed .nataral-tab-icon{
