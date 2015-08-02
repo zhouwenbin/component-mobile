@@ -1,36 +1,41 @@
-/*alert*/
-.alert{
-	padding: 14px 0 14px 17px;
-	color: #fff;
-	position: relative;
-	font-size:14px;
+@mixin alert($i){
+	.alert,
+	.alert-warning,
+	.alert-error,
+	.alert-success,
+	.alert-disabled,
+	.alert-info{
+		padding: 14px * $i 0 14px * $i 17px * $i;
+		color: #fff;
+		position: relative;
+		font-size:14px * $i;
+	}
+	.alert a{
+		display:block;
+	}
+	.alert .icon{
+		position:absolute;
+		right:13px * $i;
+	}
+	.alert-warning {
+		background: #1376ce;
+		margin-bottom:5px * $i;
+	}
+	.alert-error{
+		background: #ff5b54;
+	}
+	.alert-success{
+		background: #67b222;
+	}
+	.alert-disabled{
+		background:#ccc;
+	}
+	.alert-info{
+		background: #fffddd;
+		color:#666;
+	}
 }
-.alert a{
-	display:block;
-}
-.alert .icon{
-	position:absolute;
-	right:13px;
-}
-.alert-warning {
-	@extend .alert;
-	background: #1376ce;
-	margin-bottom:5px;
-}
-.alert-error{
-	@extend .alert;
-	background: #ff5b54;
-}
-.alert-success{
-	@extend .alert;
-	background: #67b222;
-}
-.alert-disabled{
-	@extend .alert;
-	background:#ccc;
-}
-.alert-info{
-	@extend .alert;
-	background: #fffddd;
-	color:#666;
+@include alert(1);
+@media screen and (min-width:640px){
+  @include alert(2);
 }

@@ -1,27 +1,33 @@
-/*text*/
-.text-error,
-.text-important{
-  color:#ff5b54;
-  font-size: 12px;
-  vertical-align: middle;
-}
-.text-success{
-  color: #67b222;
-}
-.text-warnning,
-.text-link{
-  color: #3b86c4;
-}
-.text-disable{
-  color: #999;
-}
-.text-orange{
-  color:#ff9000;
+@mixin text($i){
+  .text-error,
+  .text-important{
+    color:#ff5b54;
+    font-size: 12px * $i;
+    vertical-align: middle;
+  }
+  .text-success{
+    color: #67b222;
+  }
+  .text-warnning,
+  .text-link{
+    color: #3b86c4;
+  }
+  .text-disable{
+    color: #999;
+  }
+  .text-orange{
+    color:#ff9000;
+  }
+
+  .text-h2{
+  	padding:21px * $i 0 7px * $i 12px * $i;
+  	font-size:14px * $i;
+  	color:#666;
+  	font-weight:normal;
+  }
 }
 
-.text-h2{
-	padding:21px 0 7px 12px;
-	font-size:14px;
-	color:#666;
-	font-weight:normal;
+@include text(1);
+@media screen and (min-width:640px){
+  @include text(2);
 }
