@@ -80,7 +80,7 @@ define(
           _.each(data.value, function(item) {
             var everItem=" <li>"+
             " <div class='category-content-c2'>"+
-            " <a href='/search.html?categoryIds="+item.id+"&keyword="+item.name+"&_spm=1. 90"+parentLi.attr("data-tab")+"."+id+"."+item.id+"'>"+
+            " <a href='/search.html?categoryIds="+item.id+"&keyword="+item.name+"&_spm=1. 90"+parentLi.attr("pid")+"."+id+"."+item.id+"'>"+
                 " <div class='category-content-c2-r1'>"+
             " <div><span >"+item.name+"</span></div>"+
             " </div>"+
@@ -90,7 +90,7 @@ define(
             if(i==maxle-1){
               everItem=" <li class='category-content-final-li'>"+
               " <div class='category-content-c2'>"+
-              " <a href='/search.html?categoryIds="+item.id+"&keyword="+item.name+"&_spm=1. 90"+parentLi.attr("data-tab")+"."+id+"."+item.id+"'>"+
+              " <a href='/search.html?categoryIds="+item.id+"&keyword="+item.name+"&_spm=1. 90"+parentLi.attr("pid")+"."+id+"."+item.id+"'>"+
               " <div class='category-content-c2-r1'>"+
               " <div><span >"+item.name+"</span></div>"+
               " </div>"+
