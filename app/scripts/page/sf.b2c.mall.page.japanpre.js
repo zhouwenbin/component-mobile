@@ -73,7 +73,7 @@ define(
           return Number.parseInt(left, 10);
         };
         $(".mjapan-video-list li").on("click", function() {
-          $(this).find(".mjapan-video-box").show();
+          //$(this).find(".mjapan-video-box").show();
           $(this).find("video")[0].play();
         });
 
