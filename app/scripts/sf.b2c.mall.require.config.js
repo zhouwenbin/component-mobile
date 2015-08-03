@@ -90,6 +90,8 @@ requirejs.config({
         "sf.b2c.mall.api.user.rqCash": "scripts/api/sf.b2c.mall.api.user.rqCash",
         "sf.b2c.mall.api.user.getCashActInfo": "scripts/api/sf.b2c.mall.api.user.getCashActInfo",
         "sf.b2c.mall.api.user.bindAliAct": "scripts/api/sf.b2c.mall.api.user.bindAliAct",
+        "sf.b2c.mall.api.user.exchangeToken": "scripts/api/sf.b2c.mall.api.user.exchangeToken",
+        "sf.b2c.mall.api.user.regstAocart4Pmter": "scripts/api/sf.b2c.mall.api.user.regstAocart4Pmter",
         "sf.b2c.mall.api.minicart.getTotalCount": "scripts/api/sf.b2c.mall.api.minicart.getTotalCount",
         "sf.b2c.mall.api.shopcart.addItemToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemToCart",
         "sf.b2c.mall.api.shopcart.addItemsToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemsToCart",
@@ -254,6 +256,9 @@ requirejs.config({
         "sf.b2c.mall.page.app": "scripts/page/sf.b2c.mall.page.app",
         "sf.b2c.mall.page.aboutus": "scripts/page/sf.b2c.mall.page.aboutus",
 
+        "sf.b2c.mall.page.promoterorder": "scripts/page/sf.b2c.mall.page.promoterorder",
+        "sf.b2c.mall.page.tmlg": "scripts/page/sf.b2c.mall.page.tmlg",
+
 
         //商品详情搭配购买
         'sf.b2c.mall.page.detailmix': 'scripts/page/sf.b2c.mall.page.detailmix',
@@ -313,6 +318,8 @@ requirejs.config({
         "sf.b2c.mall.category.pagenavigatelistcontent": "scripts/category/sf.b2c.mall.category.pagenavigatelistcontent",
         "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
         "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages",
+
+        "sf.b2c.mall.page.japanpre": "scripts/page/sf.b2c.mall.page.japanpre",
 
         //81
         "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81",
