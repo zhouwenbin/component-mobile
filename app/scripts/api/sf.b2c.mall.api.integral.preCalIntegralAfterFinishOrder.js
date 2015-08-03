@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.getRecAddressList
+  * @class sf.b2c.mall.api.integral.preCalIntegralAfterFinishOrder
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.getRecAddressList',
+'sf.b2c.mall.api.integral.preCalIntegralAfterFinishOrder',
 [
   'zepto',
   'can',
@@ -22,12 +22,14 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.getRecAddressList',
+      METHOD_NAME: 'integral.preCalIntegralAfterFinishOrder',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
+        'channel': 'string',
+        'orderAmount': 'long',
+        'isFirst': 'boolean'
       },
       OPTIONAL: {
-        'isDefault': 'int'
       },
       VERIFY:{
       },

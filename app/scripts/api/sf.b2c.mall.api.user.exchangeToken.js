@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.getRecAddressList
+  * @class sf.b2c.mall.api.user.exchangeToken
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.getRecAddressList',
+'sf.b2c.mall.api.user.exchangeToken',
 [
   'zepto',
   'can',
@@ -22,16 +22,17 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.getRecAddressList',
-      SECURITY_TYPE: SecurityType.UserLogin.name,
+      METHOD_NAME: 'user.exchangeToken',
+      SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
+        'tempToken': 'string'
       },
       OPTIONAL: {
-        'isDefault': 'int'
       },
       VERIFY:{
       },
       ERROR_CODE: {
+        '1000350': '验证临时token失败,请重新登录'
       }
     }
   });
