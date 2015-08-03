@@ -27,9 +27,9 @@ function($, can, _, Comm, SecurityType) {
       REQUIRED: {
         'inviterMobile': 'string',
         'inviteeMobile': 'string',
-        'itemIds': 'string'
       },
       OPTIONAL: {
+        'itemIds': 'string'
       },
       VERIFY:{
       },
