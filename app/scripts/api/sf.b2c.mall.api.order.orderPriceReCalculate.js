@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.getRecAddressList
+  * @class sf.b2c.mall.api.order.orderPriceReCalculate
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.getRecAddressList',
+'sf.b2c.mall.api.order.orderPriceReCalculate',
 [
   'zepto',
   'can',
@@ -22,16 +22,18 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.getRecAddressList',
+      METHOD_NAME: 'order.orderPriceReCalculate',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
       },
       OPTIONAL: {
-        'isDefault': 'int'
+        'request': 'json'
       },
       VERIFY:{
       },
       ERROR_CODE: {
+        '4000100': 'order unkown error',
+        '4001651': '缓存失效，请重新刷新页面'
       }
     }
   });

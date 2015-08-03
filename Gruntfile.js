@@ -1867,6 +1867,43 @@ module.exports = function (grunt) {
           ],
           insertRequire: ['sf.b2c.mall.page.japanpre']
         }
+      },
+
+      promoterorder: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.promoterorder.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.promoterorder'
+          ],
+          insertRequire: ['sf.b2c.mall.page.promoterorder']
+        }
+      },
+
+
+      tmlg: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.tmlg.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.tmlg'
+          ],
+          insertRequire: ['sf.b2c.mall.page.tmlg']
+        }
       }
     }
   });
