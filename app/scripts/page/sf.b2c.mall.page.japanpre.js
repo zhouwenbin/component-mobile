@@ -6,9 +6,10 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.util',
+    'sf.weixin',
     'sf.b2c.mall.business.config'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness) {
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFWeixin, SFBusiness) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -18,6 +19,8 @@ define(
        * [init 初始化]
        */
       init: function() {
+        SFWeixin.shareDetail(title, desc, link, imgUrl);
+
         var thumbList = $(".mjapan-video-pic-list");
 
         $(".japan-video-box").on("click", ".mjapan-before", function() {
@@ -73,7 +76,7 @@ define(
           return Number.parseInt(left, 10);
         };
         $(".mjapan-video-list li").on("click", function() {
-          //$(this).find(".mjapan-video-box").show();
+          $(this).find(".mjapan-video-box").show();
           $(this).find("video")[0].play();
         });
 
