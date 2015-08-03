@@ -1,0 +1,27 @@
+@mixin safeguard($i){ 
+  .safeguard{
+    background: #fff;
+    margin-bottom:9px * $i;
+  }
+  .safeguard ul{
+    display: flex;
+  }
+  .safeguard li{
+    flex:1;
+    height: 42px * $i;
+    line-height: 42px * $i;
+    color: #999;
+    text-align: center;
+  }
+  .safeguard svg{
+  	vertical-align: middle;
+  	margin-right: 5px * $i;
+    width:16px * $i;
+    height: 18px * $i;
+  }
+}
+
+@include safeguard(1);
+@media screen and (min-width:640px){
+  @include safeguard(2);
+}

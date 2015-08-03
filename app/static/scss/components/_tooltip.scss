@@ -1,9 +1,16 @@
-.tooltip{
-  position: fixed;
-  background: rgba(0,0,0,0.7);
-  padding: 34px 15px;
-  color: #fff;
-  border-radius: 5px;
-  line-height: 18px;
-  z-index:99999;
+@mixin tooltip($i){
+	.tooltip{
+	  position: fixed;
+	  background: rgba(0,0,0,0.7);
+	  padding: 34px * $i 15px * $i;
+	  color: #fff;
+	  border-radius: 5px * $i;
+	  line-height: 18px * $i;
+	  z-index:99999;
+	}
+}
+
+@include tooltip(1);
+@media screen and (min-width:640px){
+  @include tooltip(2);
 }

@@ -183,17 +183,16 @@ define('sf.b2c.mall.component.searchbox', [
      * @author zhang.ke
      * @description 开始搜索
      */
-    /*
     "#searchInput keydown": function(element, event) {
       if (event.keyCode != 13) {
         return;
       }
 
       var keyword = $(element).val();
-      this.search(keyword);
-      return false;
+      keyword = this.trim(keyword)
+      this.saveHistories(keyword);
     },
-    */
+    
 
     /**
      * @author zhang.ke
