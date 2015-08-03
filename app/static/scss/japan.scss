@@ -290,7 +290,7 @@ header h3{
 .japan-goods-item{
 	flex: 1;
 }
-.japan-goods-img{
+.japan-goods-img{ 
 	position: relative;
 	margin-left: 29px;
 	margin-right: 22px;
@@ -350,4 +350,8 @@ header h3{
 	li{
 		padding-left: 25px;
 	}
+}
+.footer{
+	overflow-x: hidden;
+	background-color: #fff;
 }

@@ -19,7 +19,7 @@ define(
        * [init 初始化]
        */
       init: function() {
-        SFWeixin.shareDetail(title, desc, link, imgUrl);
+        SFWeixin.shareDetail(title, desc, window.location.href, "http://img0.sfht.com/app/SFHT_1024.png");
 
         var thumbList = $(".mjapan-video-pic-list");
 
