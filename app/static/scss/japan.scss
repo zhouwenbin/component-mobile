@@ -296,6 +296,7 @@ header h3{
 	width: 204px;
 	.mask{
 		position: absolute;
+		z-index: 1;
 	}
 }
 .japan-goods-list li{

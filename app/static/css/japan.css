@@ -363,6 +363,7 @@ header h3 {
 
 .japan-goods-img .mask {
   position: absolute;
+  z-index: 1;
 }
 
 .japan-goods-list li {
