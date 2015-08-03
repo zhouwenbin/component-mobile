@@ -498,6 +498,9 @@ define('sf.b2c.mall.product.detailcontent', [
 
           new SFWidgetCartNumber(success, error);
         }
+        else{
+          $("#secondstep .mini-cart-num").css("display","none");
+        }
       },
 
       renderMap: {
