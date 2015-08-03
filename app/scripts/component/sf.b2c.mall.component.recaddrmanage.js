@@ -16,9 +16,9 @@ define('sf.b2c.mall.component.recaddrmanage', [
   'sf.b2c.mall.component.addrdetail',
   'text!template_component_recaddrmanage'
 ], function(can, $, Fastclick, SFConfig,
-  SFGetIDCardUrlList, SFGetRecAddressList, 
-  RegionsAdapter, AddressAdapter, SFMessage, SFLoading, 
-  SFAddressEditor, SFAddressCreate, SFAddressDetail, 
+  SFGetIDCardUrlList, SFGetRecAddressList,
+  RegionsAdapter, AddressAdapter, SFMessage, SFLoading,
+  SFAddressEditor, SFAddressCreate, SFAddressDetail,
   template_component_recaddrmanage) {
 
   can.route.ready();
@@ -46,7 +46,7 @@ define('sf.b2c.mall.component.recaddrmanage', [
     render: function(tag) {
       var that = this;
 
-      var getRecAddressList = new SFGetRecAddressList();
+      var getRecAddressList = new SFGetRecAddressList({});
       var getIDCardUrlList = new SFGetIDCardUrlList();
 
       can.when(getRecAddressList.sendRequest(), getIDCardUrlList.sendRequest())

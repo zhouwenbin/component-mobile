@@ -1,43 +1,49 @@
-.downloadapp{
-	position: relative;
-	height: 50px;
-	
+@mixin downloadapp($i){
+	.downloadapp{
+		position: relative;
+		height: 50px * $i;
+		
+	}
+	.downloadapp-r1{
+		height: 50px * $i;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		display: flex;
+		justify-content:space-between;
+		align-items:center;
+		padding: 0 11px * $i;
+		z-index: 999;
+		background:#ec6b5f url(#{$bg-url}downloadapp-logo.png) no-repeat 19px * $i bottom;
+		background-size: 216px * $i 44px * $i;
+	}
+	.downloadapp-logo{
+		width: 226px * $i;
+		height: 44px * $i;
+		
+	}
+	.downloadapp-close{
+		width: 16px * $i;
+		height: 16px * $i;
+		background: url(#{$bg-url}downloadapp-close.png) no-repeat;
+		background-size: 16px * $i;
+		text-indent: -999em;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.downloadapp .btn{
+		height: 35px * $i;
+		line-height: 35px * $i;
+		flex:1;
+		margin-left: 10px * $i;
+		background: #46cfdf;
+		border-color: #46cfdf;
+		padding: 0;
+	}
 }
-.downloadapp-r1{
-	height: 50px;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	display: flex;
-	justify-content:space-between;
-	align-items:center;
-	padding: 0 11px;
-	z-index: 999;
-	background:#ec6b5f url(#{$bg-url}downloadapp-logo.png) no-repeat 19px bottom;
-	background-size: 216px 44px;
-}
-.downloadapp-logo{
-	width: 226px;
-	height: 44px;
-	
-}
-.downloadapp-close{
-	width: 16px;
-	height: 16px;
-	background: url(#{$bg-url}downloadapp-close.png) no-repeat;
-	background-size: 16px;
-	text-indent: -999em;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-.downloadapp .btn{
-	height: 35px;
-	line-height: 35px;
-	flex:1;
-	margin-left: 10px;
-	background: #46cfdf;
-	border-color: #46cfdf;
-	padding: 0;
+@include downloadapp(1);
+@media screen and (min-width:640px){
+  @include downloadapp(2);
 }
