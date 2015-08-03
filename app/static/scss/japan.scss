@@ -291,9 +291,15 @@ header h3{
 	max-height: 42px;
 	overflow: hidden;
 }
+.japan-goods-item{
+	flex: 1;
+}
 .japan-goods-list li{
 	padding-right: 34px;
 	margin-bottom: 10px;
+	img{
+		display: block;
+	}
 }
 .japan-goods-item .japan-price{
 	font-size: 22px;

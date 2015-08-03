@@ -353,9 +353,20 @@ header h3 {
   overflow: hidden;
 }
 
+.japan-goods-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .japan-goods-list li {
   padding-right: 34px;
   margin-bottom: 10px;
+}
+
+.japan-goods-list li img {
+  display: block;
 }
 
 .japan-goods-item .japan-price {
