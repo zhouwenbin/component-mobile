@@ -231,11 +231,6 @@ header h3{
 		display: flex;
 		background-color: #fff;
 	}
-	img{
-		margin-left: 29px;
-		margin-right: 22px;
-		width: 204px;
-	}
 	button{
 		background-color: #510492;
 		color: #fff;
@@ -294,12 +289,18 @@ header h3{
 .japan-goods-item{
 	flex: 1;
 }
+.japan-goods-img{
+	position: relative;
+	margin-left: 29px;
+	margin-right: 22px;
+	width: 204px;
+	.mask{
+		position: absolute;
+	}
+}
 .japan-goods-list li{
 	padding-right: 34px;
 	margin-bottom: 10px;
-	img{
-		display: block;
-	}
 }
 .japan-goods-item .japan-price{
 	font-size: 22px;
