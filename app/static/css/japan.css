@@ -427,3 +427,8 @@ header h3 {
 .mjapan-active-rule-list li {
   padding-left: 25px;
 }
+
+.footer {
+  overflow-x: hidden;
+  background-color: #fff;
+}
