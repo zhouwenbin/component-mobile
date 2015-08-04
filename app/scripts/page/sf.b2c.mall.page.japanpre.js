@@ -28,9 +28,10 @@ define(
 
         var thumbList = $(".mjapan-video-pic-list ul");
 
-        $(".mjapan-video-pic").on("click", ".mjapan-after", function() {
+        $(".mjapan-after").on("click", function() {
           var left = getLeft();
-          if (left === -282) {
+          //282
+          if (left === -0) {
             return;
           }
 
@@ -39,8 +40,8 @@ define(
 
           });
           return false;
-        })
-        .on("click", ".mjapan-before", function() {
+        });
+        $(".mjapan-before").on("click", function() {
 
           var left = getLeft();
           if (left === 0) {
@@ -78,7 +79,7 @@ define(
             left = left.substr(0, left.length - 2);
           }
           
-          return Number.parseInt(left, 10);
+          return +left;
         };
         $(".mjapan-video-list li").on("click", function() {
           $(this).find(".mjapan-video-box").show();
