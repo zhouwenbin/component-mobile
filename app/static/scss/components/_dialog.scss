@@ -1,143 +1,147 @@
-/*弹窗*/
-.dialog .center{
-  width: 292px;
-  background: #fff;
-  text-align: center;
-  padding-top: 39px;
-  padding-bottom: 21px;
-  border-radius: 2px;
-}
-.dialog h2{
-  font-size: 16px;
-  font-weight: normal;
-  margin-bottom: 12px;
-}
-.dialog p{
-  margin-bottom: 13px;
-  color: #999;
-}
-.dialog-r1{
-  margin-top:4px 
-}
-.dialog .icon15{
-  position: absolute;
-  right: 15px;
-  top: 15px;
-}
-.dialog .icon15:after{
-  content: '';
-  position:absolute;
-  left: -15px;
-  right:-15px;
-  top:-15px;
-  bottom:-15px;
-}
-.dialog1 .center{
-  padding-top: 22px;
-  padding-bottom: 29px;
-}
-.dialog1 h2{
-  font-size: 14px;
-  line-height: 24px;
-  margin-top: 5px;
-  margin-bottom: 7px;
-  
-}
-.dialog1 p{
-  margin-bottom: 6px;
-}
-.dialog1 .btn{
-  margin-top: 11px;
-  padding: 0 45px;
-}
-.dialog1-r1{
-  margin-top: 22px;
-}
-.dialog1-r1 .btn{
-  padding: 0 27px;
-  margin: 0 8px;
-}
+@mixin dialog($i){
+  .dialog .center{
+    width: 292px * $i;
+    background: #fff;
+    text-align: center;
+    padding-top: 39px * $i;
+    padding-bottom: 21px * $i;
+    border-radius: 2px * $i;
+  }
+  .dialog h2{
+    font-size: 16px * $i;
+    font-weight: normal;
+    margin-bottom: 12px * $i;
+  }
+  .dialog p{
+    margin-bottom: 13px * $i;
+    color: #999;
+  }
+  .dialog-r1{
+    margin-top:4px * $i 
+  }
+  .dialog .icon15{
+    position: absolute;
+    right: 15px * $i;
+    top: 15px * $i;
+  }
+  .dialog .icon15:after{
+    content: '';
+    position:absolute;
+    left: -15px * $i;
+    right:-15px * $i;
+    top:-15px * $i;
+    bottom:-15px * $i;
+  }
+  .dialog1 .center{
+    padding-top: 22px * $i;
+    padding-bottom: 29px * $i;
+  }
+  .dialog1 h2{
+    font-size: 14px * $i;
+    line-height: 24px * $i;
+    margin-top: 5px * $i;
+    margin-bottom: 7px * $i;
+    
+  }
+  .dialog1 p{
+    margin-bottom: 6px * $i;
+  }
+  .dialog1 .btn{
+    margin-top: 11px * $i;
+    padding: 0 45px * $i;
+  }
+  .dialog1-r1{
+    margin-top: 22px * $i;
+  }
+  .dialog1-r1 .btn{
+    padding: 0 27px * $i;
+    margin: 0 8px * $i;
+  }
 
-.dialog-spring .center{
-  width: 90%;
-  font-size: 14px;
-  text-align: left;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-.dialog-spring h2{
-  color: #dc3334;
-  margin-bottom: 15px;
-  font-size: 14px;
-}
-.dialog-spring p{
-  line-height: 24px;
-  margin-bottom: 0;
-  font-size: 14px;
-}
-.dialog-nataral .center{
-  text-align:left;
-  padding-bottom:0;
+  .dialog-spring .center{
+    width: 90%;
+    font-size: 14px * $i;
+    text-align: left;
+    padding-left: 30px * $i;
+    padding-right: 30px * $i;
+  }
+  .dialog-spring h2{
+    color: #dc3334;
+    margin-bottom: 15px * $i;
+    font-size: 14px * $i;
+  }
+  .dialog-spring p{
+    line-height: 24px * $i;
+    margin-bottom: 0;
+    font-size: 14px * $i;
+  }
+  .dialog-nataral .center{
+    text-align:left;
+    padding-bottom:0;
 
+  }
+  .dialog-nataral ul{
+    padding:10px * $i;
+    max-height: 400px * $i;
+    overflow-y: auto;
+  }
+  .dialog-nataral li{
+    border-bottom:1px solid #eaeaea;
+    margin-bottom: 13px * $i;
+  }
+  .dialog-nataral li:last-child{
+    border:none;
+    margin-bottom: 0;
+  }
+  .dialog-nataral h2{
+    font-size: 14px * $i;
+    padding-left:17px * $i;
+  }
+  .dialog-nataral p{
+    line-height: 18px * $i;
+    color: #666;
+    padding-left:17px * $i;
+  }
+  .dialog-nataral .icon39{
+    margin-left: -17px * $i;
+    float:left;
+  }
+  .dialog-active .center{
+    padding:0;
+  }
+  .dialog-active h2{
+    font-size: 14px * $i;
+    color: #f78e55;
+    background:#f9f9f9;
+    height: 43px * $i;
+    line-height: 43px * $i;
+    text-align: left;
+    padding-left:15px * $i;
+    margin-bottom: 0;
+    border-bottom:1px solid #e5e5e5 
+  }
+  .dialog-active-b{
+    padding:10px * $i 15px * $i;
+  }
+  .dialog-active .input{
+    text-align: center;
+    margin-bottom: 10px * $i;
+  }
+  .dialog-active .btn{
+    height: 44px * $i;
+    line-height: 44px * $i;
+  }
+  .dialog-active li{
+    line-height: 21px * $i;
+    font-size: 14px * $i;
+    text-align: left;
+    margin-bottom: 10px * $i;
+  }
+  .dialog-active .text-error{
+    margin-top: 10px * $i;
+  }
 }
-.dialog-nataral ul{
-  padding:10px;
-  max-height: 400px;
-  overflow-y: auto;
+@include dialog(1);
+@media screen and (min-width:640px){
+  @include dialog(2);
 }
-.dialog-nataral li{
-  border-bottom:1px solid #eaeaea;
-  margin-bottom: 13px;
-}
-.dialog-nataral li:last-child{
-  border:none;
-  margin-bottom: 0;
-}
-.dialog-nataral h2{
-  font-size: 14px;
-  padding-left:17px;
-}
-.dialog-nataral p{
-  line-height: 18px;
-  color: #666;
-  padding-left:17px;
-}
-.dialog-nataral .icon39{
-  margin-left: -17px;
-  float:left;
-}
-.dialog-active .center{
-  padding:0;
-}
-.dialog-active h2{
-  font-size: 14px;
-  color: #f78e55;
-  background:#f9f9f9;
-  height: 43px;
-  line-height: 43px;
-  text-align: left;
-  padding-left:15px;
-  margin-bottom: 0;
-  border-bottom:1px solid #e5e5e5 
-}
-.dialog-active-b{
-  padding:10px 15px;
-}
-.dialog-active .input{
-  text-align: center;
-  margin-bottom: 10px;
-}
-.dialog-active .btn{
-  height: 44px;
-  line-height: 44px;
-}
-.dialog-active li{
-  line-height: 21px;
-  font-size: 14px;
-  text-align: left;
-  margin-bottom: 10px;
-}
-.dialog-active .text-error{
-  margin-top: 10px;
-}
-

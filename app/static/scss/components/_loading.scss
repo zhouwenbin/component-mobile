@@ -1,18 +1,25 @@
-.logout.center{
-	  border-radius: 10px;
-	  padding: 33px 35px;
-}
-.loading{
-  width: 25px;
-  height: 25px;
-  background: url(#{$bg-url}loading.png) no-repeat;
-  background-size: 25px;
-  position: fixed;
-  animation:loading 1s linear infinite;
-  transform:rotateZ(0deg);
-}
-@keyframes loading{
-  100%{
-    transform:rotateZ(360deg);
+@mixin loading($i){
+  .logout.center{
+  	  border-radius: 10px * $i;
+  	  padding: 33px * $i 35px * $i;
   }
+  .loading{
+    width: 25px * $i;
+    height: 25px * $i;
+    background: url(#{$bg-url}loading.png) no-repeat;
+    background-size: 25px * $i;
+    position: fixed;
+    animation:loading 1s linear infinite;
+    transform:rotateZ(0deg);
+  }
+  @keyframes loading{
+    100%{
+      transform:rotateZ(360deg);
+    }
+  }
+}
+@include loading(1);
+
+@media screen and (min-width:640px){
+  @include loading(2);
 }

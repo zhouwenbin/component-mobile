@@ -336,9 +336,11 @@ define(
        */
       '[data-header-id=back] click': function($el, event) {
         event && event.preventDefault();
-
-        window.location.href = document.referrer;
-        //window.history.back();
+        if (!document.referrer) {
+          window.location.href = "http://m.sfht.com";
+        } else {
+          window.history.back();
+        }
       },
 
       /**

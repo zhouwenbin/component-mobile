@@ -52,16 +52,23 @@ define(
 
     window.sfhtcallback = function (callbackId, status, json, keep) {
 
-      if (bridge.troops && bridge.troops[callbackId]) {
+      var map = {
+        0: 'error',
+        1: 'success'
+      }
 
-        var fn = bridge.troops[callbackId][status];
+      var type = map[status];
+
+      if (window.bridge.troops && window.bridge.troops[callbackId]) {
+
+        var fn = window.bridge.troops[callbackId][type];
 
         if (_.isFunction(fn)) {
-          fn.call(bridge, json);
+          fn.call(window.bridge, json);
         }
 
         if (!keep) {
-          delete bridge.troops[callbackId]
+          delete window.bridge.troops[callbackId]
         }
 
         return true;
@@ -70,4 +77,4 @@ define(
       }
     }
 
-  })
+  });
