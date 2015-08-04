@@ -19,18 +19,20 @@ define(
        * [init 初始化]
        */
       init: function() {
-        SFWeixin.shareDetail(title, desc, window.location.href, "http://img0.sfht.com/app/SFHT_1024.png");
+        SFWeixin.shareDetail("明星们都去国外扫货，那里到底有什么？免税，包邮，正品，一定满足你…", "", window.location.href, "http://img0.sfht.com/app/SFHT_1024.png");
 
-        var thumbList = $(".mjapan-video-pic-list");
+        var thumbList = $(".mjapan-video-pic-list ul");
 
-        $(".japan-video-box").on("click", ".mjapan-before", function() {
+        $(".mjapan-video-pic").on("click", ".mjapan-before", function() {
           var left = getLeft();
-          if (left === 0) {
+          if (left === -282) {
             return;
           }
-          thumbList.animate({
-            left: left - 141
-          })
+
+          thumbList.css({
+            "left": left - 141,
+
+          });
           return false;
         })
         .on("click", ".mjapan-after", function() {
@@ -39,9 +41,7 @@ define(
           if (left === 0) {
             return;
           }
-          thumbList.animate({
-            left: left + 141
-          })
+          thumbList.css("left", left + 141);
           return false;
         });
 
@@ -77,6 +77,7 @@ define(
         };
         $(".mjapan-video-list li").on("click", function() {
           $(this).find(".mjapan-video-box").show();
+          $(this).find("video")[0].webkitRequestFullScreen();
           $(this).find("video")[0].play();
         });
 
