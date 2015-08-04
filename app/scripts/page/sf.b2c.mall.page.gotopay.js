@@ -149,7 +149,8 @@ define(
           if (typeof window.AlipayJSBridge != "undefined") {
             result = "alipay_intl_wap";
           } else {
-            result = 'alipay_forex_wap';
+            // result = 'alipay_forex_wap';
+            result = 'alipay_intl_wap';
           }
 
         }
