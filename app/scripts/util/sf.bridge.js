@@ -33,7 +33,7 @@ define(
 
       run: function (plugin, method, params, success, error) {
         var callbackId = this.register(success, error);
-        var urlscheme = 'sfhtBridge://service/pluginHelper?plugin='+ plugin +'&method='+ method +'&params='+ encodeURIComponent('[' + JSON.stringify(params) + ']')+ '&callbackId='+callbackId;
+        var urlscheme = 'sfhtbridge://service/pluginHelper?plugin='+ plugin +'&method='+ method +'&params='+ encodeURIComponent('[' + JSON.stringify(params) + ']')+ '&callbackId='+callbackId;
 
         if ($('#apprunner').length == 0) {
 
@@ -50,7 +50,7 @@ define(
 
     window.bridge = new Bridge();
 
-    window.callback = function (callbackId, status, json, keep) {
+    window.sfhtcallback = function (callbackId, status, json, keep) {
 
       if (bridge.troops && bridge.troops[callbackId]) {
 
