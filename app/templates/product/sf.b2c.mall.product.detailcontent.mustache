@@ -7,7 +7,10 @@
       <div id='slider' class='swipe'>
         <div class='swipe-wrap'>
           {{#each itemInfo.basicInfo.images}}
-            <div><img src="{{sf.img bigImgUrl}}" alt=""></div>
+            <div>
+              <img src="{{sf.img bigImgUrl}}" alt="">
+              {{#sf-mediaType mediaType}}{{/sf-mediaType}}
+            </div>
           {{/each}}
         </div>
         <div class="swipe-dot">
@@ -265,7 +268,7 @@
           <span class="icon icon47 mini-cart-container" data-href="http://m.sfht.com/shoppingcart.html" data-login="http://m.sfht.com/login.html">
             <span class="dot dot-error mini-cart-num"></span>
           </span>
-          <button class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}}" id="buyEnter">
+          <button class="btn {{#sf-canBuy priceInfo.soldOut}} btn-danger {{else}} btn-disable {{/sf-canBuy}}" id="buyEnter" style="white-space:nowrap;">
             {{#sf-canBuy priceInfo.soldOut}}确定{{else}}缺货{{/sf-canBuy}}
           </button>
       </div>

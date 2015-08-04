@@ -50,7 +50,8 @@ define(
         this.cateListContent = new SFCateListContent('.sf-b2c-mall-cate-pagenavigatelist');
 
         new SFSearchBox('#sf-b2c-mall-search-box', {
-          showGate: true
+          showGate: true,
+          existDom: "all"
         });
 
         var switcher = new SFSwitcher();

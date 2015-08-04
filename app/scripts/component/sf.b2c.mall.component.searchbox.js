@@ -20,7 +20,16 @@ define('sf.b2c.mall.component.searchbox', [
 
     loading: new SFLoading(),
 
-    helpers: {},
+    helpers: {
+      "sf-placeholder": function(keyword, options) {
+        var tt = keyword().split("|");
+        if (keyword() && tt.length < 2) {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
+      }
+    },
 
     renderData: new can.Map({
       keyword: null,
@@ -183,17 +192,16 @@ define('sf.b2c.mall.component.searchbox', [
      * @author zhang.ke
      * @description 开始搜索
      */
-    /*
     "#searchInput keydown": function(element, event) {
       if (event.keyCode != 13) {
         return;
       }
 
       var keyword = $(element).val();
-      this.search(keyword);
-      return false;
+      keyword = this.trim(keyword)
+      this.saveHistories(keyword);
     },
-    */
+    
 
     /**
      * @author zhang.ke

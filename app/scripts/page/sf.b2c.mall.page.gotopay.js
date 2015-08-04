@@ -76,9 +76,9 @@ define(
         this.render(this.options.data);
 
         //活动期间 微信要放到第一个位置
-        if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015, 6, 27, 0, 0, 0).getTime()) {
+        if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015, 6, 27, 0, 0, 0).getTime() && new Date().getTime() < new Date(2015, 7, 3, 0, 0, 0).getTime()) {
           $('.gotopaymethodlist li').eq(0).appendTo('.gotopaymethodlist');
-          $("#weixintip").text("微信（7.27-8.2首次下单减2元）");
+          // $("#weixintip").text("微信（7.27-8.2首次下单减2元）");
         }
 
         // 微信环境下 要把微信设为默认
@@ -149,7 +149,9 @@ define(
           if (typeof window.AlipayJSBridge != "undefined") {
             result = "alipay_intl_wap";
           } else {
-            result = 'alipay_forex_wap';
+            // h5和微信浏览器中的支付宝外卡收款 切到alipay_intl_wap 先保留分支
+            // result = 'alipay_forex_wap';
+            result = 'alipay_intl_wap';
           }
 
         }

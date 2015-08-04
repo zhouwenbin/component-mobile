@@ -1,4 +1,3 @@
-'use strict';
 define(
 'sf.b2c.mall.module.fixtab', [
   'can',
@@ -15,6 +14,7 @@ function(can, $, _,Fastclick,IScroll) {
       this.initSidelip();
       var tabNum=$('.nataral-tab li').length;
       if(tabNum>4){
+        $('.nataral-tab:before').show();
         $('.nataral-tab-icon').show();
         $('.nataral-tab ul').css({
           'width':25 * tabNum +'%'
@@ -29,7 +29,7 @@ function(can, $, _,Fastclick,IScroll) {
           new window.IScroll('.nataral-tab', { scrollX: true });
         }
       })
-      
+
     },
 
     initFix: function() {
@@ -42,7 +42,7 @@ function(can, $, _,Fastclick,IScroll) {
           $('.nataral-tab').removeClass('nataral-tab-fixed');
         }
       })
-        
+
     },
 
     "form:first submit": function(){
@@ -62,26 +62,77 @@ function(can, $, _,Fastclick,IScroll) {
       });
 
       var nataral_pruduct_offset=[];
-      for(i=0;i<num;i++){
-          nataral_pruduct_offset[i]=$(nataral_pruduct[i]).offset().top-nav_height;
-        
-      }
-      $(window).scroll(function(){
-        var that = this;
+      // setTimeout(function(){
         for(i=0;i<num;i++){
-          if($(window).scrollTop()>nataral_pruduct_offset[i]-10){
-            $('.nataral-tab li').eq(i).addClass('active').siblings().removeClass('active');
+            nataral_pruduct_offset[i]=$(nataral_pruduct[i]).offset().top-nav_height;
+        }
+      // },500);
+
+      // console.log(nataral_pruduct_offset)
+
+      var handler = null;
+      $(window).scroll(function(){
+
+        var that = this;
+        clearTimeout(handler);
+
+        handler = setTimeout(function() {
+          nataral_pruduct = [];
+
+          _.each($(".nataral-tab a"), function(item) {
+            nataral_pruduct.push($(item).attr("href"));
+          });
+
+          for(i=0;i<num;i++){
+            nataral_pruduct_offset[i]=$(nataral_pruduct[i]).offset().top-nav_height;
           }
-        }
-        if($(window).scrollTop()<nataral_pruduct_offset[0]){
-          $('.nataral-tab li').removeClass('active');
-        }
+
+          for(i=0;i<num;i++){
+            if($(window).scrollTop()>(nataral_pruduct_offset[i]-10)){
+              $('.nataral-tab li').removeClass('active')
+              $('.nataral-tab li').eq(i).addClass('active')
+              // .siblings().removeClass('active');
+            }
+          }
+
+          if($(window).scrollTop()<nataral_pruduct_offset[0]){
+            $('.nataral-tab li').removeClass('active');
+          }
+        }, 200);
       })
-      $('.nataral-tab li').click(function(){
+
+      var lock = false;
+      var fn = function (index) {
+        lock = true;
+        setTimeout(function() {
+          nataral_pruduct = [];
+
+          _.each($(".nataral-tab a"), function(item) {
+            nataral_pruduct.push($(item).attr("href"));
+          });
+
+          for(i=0;i<num;i++){
+            nataral_pruduct_offset[i]=$(nataral_pruduct[i]).offset().top-nav_height;
+          }
+
+          $(window).scrollTop(nataral_pruduct_offset[index]);
+
+          $('.nataral-tab li').removeClass('active')
+          $(this).addClass('active')
+
+          lock = false;
+        }, 300);
+      }
+
+      $('.nataral-tab li').on('touchstart', function(){
         var index=$('.nataral-tab li').index(this);
+        if (!lock) {
+          fn(index)
+        }
+        // return false;
       })
     }
   })
   new fixtab();
 }
-)
+);

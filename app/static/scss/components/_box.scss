@@ -1,81 +1,86 @@
-/*box*/
-.box{
-  padding: 16px 14px;
-  border-width: 1px 0 1px 0;
-  border-image: url(#{$border}) 2 0 round;
-  background: #fff;
-  position: relative;
-  margin-top: -1px;
-}
-.box .icon8,
-.box .icon49{
-  position: absolute;
-  left: 12px;
-  top:50%;
-  transform: translate(0,-50%);
-}
+@mixin box($i){
+  .box{
+    padding: 16px * $i 14px * $i;
+    border-width: 1px * $i 0 1px * $i 0;
+    border-image: url(#{$border}) 2 0 round;
+    background: #fff;
+    position: relative;
+    margin-top: -1px * $i;
+  }
+  .box .icon8,
+  .box .icon49{
+    position: absolute;
+    left: 12px * $i;
+    top:50%;
+    transform: translate(0,-50%);
+  }
 
-.box.active .icon8{
-  background-position: -253px -167px;
+  .box.active .icon8{
+    background-position: -253px * $i -167px * $i;
+  }
+  .box.active .icon49{
+    background-position: -255px * $i -249px * $i;
+  }
+  .box-link{
+    display: block;
+    position: relative;
+  }
+  .box-arrow{
+    right: 14px * $i;
+  }
+  .box1{
+    padding: 0;
+  }
+  .box1 .box-link{
+    padding: 16px * $i 14px * $i;
+  }
+  /*box-address*/
+  .box-address{
+    font-size: 14px * $i;
+    line-height: 1.5;
+    padding-left:47px * $i;
+    color: #666;
+  }
+  .box-address h3{
+    font-size: 14px * $i;
+    margin-bottom: 8px * $i;
+  }
+  .box-address span{
+    margin-right: 5px * $i;
+  }
+  .box-address p{
+    color: #666;
+  }
+  .box-address-r1 span{
+    margin-right: 33px * $i;
+  }
+  .box-address-c1{
+    width: 46px * $i;
+    height: 100%;
+    position: absolute;
+    border: 1px * $i solid #ececec;
+    right: 0;
+    margin-top: -16px * $i;
+  }
+  .box-address-c1:active{
+    background:#b1b1b1;
+  }
+  .box-address-c2{
+    overflow: hidden;
+    margin-right: 31px * $i;
+  }
+  .box-address-r2{
+    text-align: right;
+  }
+  .box-address-r3{
+    display: flex;
+    justify-content:space-between;
+  }
+  .box-check{
+    padding-left: 50px * $i;
+  }
 }
-.box.active .icon49{
-  background-position: -255px -249px;
-}
-.box-link{
-  display: block;
-  position: relative;
-}
-.box-arrow{
-  right: 14px;
-}
-.box1{
-  padding: 0;
-}
-.box1 .box-link{
-  padding: 16px 14px;
-}
-/*box-address*/
-.box-address{
-  font-size: 14px;
-  line-height: 1.5;
-  padding-left:47px;
-  color: #666;
-}
-.box-address h3{
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-.box-address span{
-  margin-right: 5px;
-}
-.box-address p{
-  color: #666;
-}
-.box-address-r1 span{
-  margin-right: 33px;
-}
-.box-address-c1{
-  width: 46px;
-  height: 100%;
-  position: absolute;
-  border: 1px solid #ececec;
-  right: 0;
-  margin-top: -16px;
-}
-.box-address-c1:active{
-  background:#b1b1b1;
-}
-.box-address-c2{
-  overflow: hidden;
-  margin-right: 31px;
-}
-.box-address-r2{
-  text-align: right;
-}
-.box-address-r3{
-  display: flex;
-  justify-content:space-between;
-}
-.box-check{
-  padding-left: 50px;
+@include box(1);
+@media screen and (min-width:640px){
+  @include box(2);
 }
