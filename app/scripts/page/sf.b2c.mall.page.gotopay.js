@@ -149,6 +149,7 @@ define(
           if (typeof window.AlipayJSBridge != "undefined") {
             result = "alipay_intl_wap";
           } else {
+            // h5和微信浏览器中的支付宝外卡收款 切到alipay_intl_wap 先保留分支
             // result = 'alipay_forex_wap';
             result = 'alipay_intl_wap';
           }
