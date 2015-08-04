@@ -104,7 +104,8 @@ define('sf.b2c.mall.product.detailcontent', [
             'REDUCE': "满减",
             'DISCOUNT': "满折",
             'MIX_DISCOUNT': "搭配折扣",
-            'SECKILL': "秒杀"
+            'SECKILL': "秒杀",
+            'FIRST_ORDER': '首单减'
           };
           return map[activityType];
         },
