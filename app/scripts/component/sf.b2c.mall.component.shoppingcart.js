@@ -215,6 +215,13 @@ define(
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+        'sf-show-firstOrderTips': function(firstOrderInfos, options) {
+          if (typeof firstOrderInfos() !== 'undefined' && firstOrderInfos().length > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
         }
       },
 
@@ -453,7 +460,7 @@ define(
         if (ask == 0) {
           $element.val(1);
           this.showAlert($element, good);
-        }else if (ask <= good.limitQuantity) {
+        } else if (ask <= good.limitQuantity) {
           good.quantity = $element.val();
           this.requestFactory('updatenum', good);
         } else {

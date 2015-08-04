@@ -10,6 +10,12 @@
 {{/sf-is-empty}}
 
 {{^sf-is-empty scopeGroups}}
+{{! 首单减标示 }}
+{{#sf-show-firstOrderTips cartFeeItem.firstOrderInfos}}
+{{#each cartFeeItem.firstOrderInfos}}
+<p class="firt-buy-discount"><span>首单减</span>{{useRule.ruleDesc}}</p>
+{{/each}}
+{{/sf-show-firstOrderTips}}
 
 <article class="cart">
 <section class="sf-h5-avail-cart">
