@@ -186,7 +186,7 @@
             <div class="cart-footer-save">已省：¥{{sf.price cartFeeItem.discountFee}}</div>
         </div>
 
-        <button class="btn {{^sf-is-allow-pay scopeGroups cartFeeItem}}btn-disable{{/sf-is-allow-pay}} gotopay" style="{{#sf-is-allow-pay scopeGroups cartFeeItem}}background:#dc3334;{{/sf-is-allow-pay}}background: #ff5b54;border: 1px solid #ff5b54;" >去结算</button>
+        <button class="btn {{^sf-is-allow-pay canOrder}}btn-disable{{/sf-is-allow-pay}} gotopay" style="{{#sf-is-allow-pay canOrder}}background:#dc3334;{{/sf-is-allow-pay}}" >去结算</button>
     </div>
 </section>
 
