@@ -17,11 +17,12 @@ define(
     'sf.env.switcher',
     'sf.hybrid',
     'sf.b2c.mall.component.nav',
-    'sf.b2c.mall.module.header'
+    'sf.b2c.mall.module.header',
+    'sf.b2c.mall.api.order.getOrderConfirmInfo'
   ],
 
   function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn,
-    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid, SFNav, SFHeader) {
+    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid, SFNav, SFHeader,SFGetOrderConfirmInfo) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
