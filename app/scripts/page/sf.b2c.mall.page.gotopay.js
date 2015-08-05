@@ -22,7 +22,7 @@ define(
   ],
 
   function(can, $, Fastclick, SFFrameworkComm, SFRequestPayV2, SFLoading, SFOrderFn,
-    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid, SFNav, SFHeader,SFGetOrderConfirmInfo) {
+    SFMessage, SFWeixin, SFUtil, SFConfig, template_order_gotopay, SFSwitcher, SFHybrid, SFNav, SFHeader, SFGetOrderConfirmInfo) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -47,6 +47,7 @@ define(
 
       init: function(element, options) {
 
+        var that = this;
         this.options.data = new can.Map({});
 
         // 判断是否登陆
@@ -66,6 +67,8 @@ define(
         this.options.alltotalamount = params.amount;
         this.options.code = params.code;
 
+        
+
         this.options.data.attr("showordersuccess", params.showordersuccess);
         this.options.data.attr("goodsType", params.goodsType);
 
@@ -74,8 +77,15 @@ define(
           this.options.data.attr("showWeixinPay", true);
         }
 
-        this.render(this.options.data);
-
+        var getOrder = new SFGetOrderConfirmInfo({
+          "orderId": orderid
+        });
+        getOrder.sendRequest()
+          .done(function(data){
+            data.optionalPayTypeList = eval(data.optionalPayTypeList);
+            that.options.data.attr(data);
+            that.render(this.options.data);
+          });     
         //活动期间 微信要放到第一个位置
         if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015, 6, 27, 0, 0, 0).getTime() && new Date().getTime() < new Date(2015, 7, 3, 0, 0, 0).getTime()) {
           $('.gotopaymethodlist li').eq(0).appendTo('.gotopaymethodlist');
