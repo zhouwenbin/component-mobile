@@ -95,7 +95,6 @@ define('sf.b2c.mall.module.getcoupon', [
               });
             }
 
-
             // 定制代码
             that.customized();
 
