@@ -301,7 +301,7 @@ define('sf.b2c.mall.product.detailcontent', [
 
         var videoDom = $(el).siblings("video");
         if (videoDom.length > 0) {
-          videoDom.show();
+          //videoDom.show();
           var videoa = videoDom[0];
           if (SFFn.isMobile["Android"]()) {
             videoa.webkitRequestFullScreen();
