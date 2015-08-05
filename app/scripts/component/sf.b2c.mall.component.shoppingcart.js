@@ -112,11 +112,15 @@ define(
           }
         },
 
-        'sf-is-over-pay': function(total, limit, options) {
-          if (total() < limit()) {
+        'sf-is-over-pay': function(total, limit, canOrder, options) {
+          if (canOrder() == 1) {
             return options.inverse(options.contexts || this);
           } else {
-            return options.fn(options.contexts || this);
+            if (total() < limit()) {
+              return options.inverse(options.contexts || this);
+            } else {
+              return options.fn(options.contexts || this);
+            }
           }
         },
 
