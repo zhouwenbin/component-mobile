@@ -198,7 +198,7 @@ define('sf.b2c.mall.product.detailcontent', [
         'sf-mediaType': function(mediaType, options) {
           if (mediaType() == "VIDEO") {
             //return options.fn(options.contexts || this);
-            return '<video src="http://img.sfht.com/video/SF-02-0705-final.mp4" controls="controls" width="auto" height="auto"></video>';
+            return '<div class="cover"></div><video src="http://img.sfht.com/video/SF-02-0705-final.mp4" controls="controls" width="auto" height="auto"></video>';
           }
         }
       },
@@ -296,7 +296,7 @@ define('sf.b2c.mall.product.detailcontent', [
        * @description 播放视频
        * @param  {element} el
        */
-      '.goods img click': function(el, event) {
+      '.goods .cover click': function(el, event) {
         event && event.preventDefault();
 
         var videoDom = $(el).siblings("video");
