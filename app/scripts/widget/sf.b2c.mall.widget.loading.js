@@ -30,9 +30,9 @@ define(
       },
 
       show: function() {
-        if ($('.loadingDIV').length == 0) {
-          this.render();
-        }
+        // if ($('.loadingDIV').length == 0) {
+        //   this.render();
+        // }
 
         var switcher = new SFSwitcher();
 

@@ -141,6 +141,7 @@ requirejs.config({
 
         "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
         "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
+        "sf.bridge": "scripts/util/sf.bridge",
 
         "placeholders": "bower_components/Placeholders/build/placeholders",
         "moment": "bower_components/momentjs/min/moment.min",
@@ -255,6 +256,7 @@ requirejs.config({
         "sf.b2c.mall.page.invitationshare": "scripts/page/sf.b2c.mall.page.invitationshare",
         "sf.b2c.mall.page.app": "scripts/page/sf.b2c.mall.page.app",
         "sf.b2c.mall.page.aboutus": "scripts/page/sf.b2c.mall.page.aboutus",
+        "sf.b2c.mall.page.bridge": "scripts/page/sf.b2c.mall.page.bridge",
 
         "sf.b2c.mall.page.promoterorder": "scripts/page/sf.b2c.mall.page.promoterorder",
         "sf.b2c.mall.page.tmlg": "scripts/page/sf.b2c.mall.page.tmlg",
