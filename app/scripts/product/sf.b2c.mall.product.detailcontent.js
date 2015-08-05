@@ -198,7 +198,7 @@ define('sf.b2c.mall.product.detailcontent', [
         'sf-mediaType': function(mediaType, options) {
           if (mediaType() == "VIDEO") {
             //return options.fn(options.contexts || this);
-            return '<video src="http://img.sfht.com/video/SF-02-0705-final.mp4" controls="controls"></video>';
+            return '<video src="http://img.sfht.com/video/SF-02-0705-final.mp4" controls="controls" width="auto" height="auto"></video>';
           }
         }
       },
@@ -301,7 +301,13 @@ define('sf.b2c.mall.product.detailcontent', [
 
         var videoDom = $(el).siblings("video");
         if (videoDom.length > 0) {
-          videoDom[0].play();
+          videoDom.show();
+          var videoa = videoDom[0];
+          if (SFFn.isMobile["Android"]()) {
+            videoa.webkitRequestFullScreen();
+          }
+
+          videoa.play();
         }
       },
 
