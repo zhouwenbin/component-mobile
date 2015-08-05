@@ -171,7 +171,7 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.inverse(options.contexts || this);
           }
         },
-		'isNotBegin': function(options) {
+		    'isNotBegin': function(options) {
           if (LEFTBEGINTIME > 0) {
             return options.fn(options.contexts || this);
           } else {
@@ -194,6 +194,12 @@ define('sf.b2c.mall.product.detailcontent', [
             return '距开始：'
           } else if (LEFTENDTIME > 0) {
             return '距结束：'
+          }
+        },
+        'sf-mediaType': function(mediaType, options) {
+          if (mediaType() == "VIDEO") {
+            //return options.fn(options.contexts || this);
+            return '<video src="http://img.sfht.com/video/SF-02-0705-final.mp4" controls="controls"></video>';
           }
         }
       },
@@ -282,6 +288,21 @@ define('sf.b2c.mall.product.detailcontent', [
             itemId: itemId
           });
           can.trigger(window, 'showLogin', [window.location.href]);
+        }
+      },
+
+
+      /**
+       * @author zhangke
+       * @description 播放视频
+       * @param  {element} el
+       */
+      '.goods img click': function(el, event) {
+        event && event.preventDefault();
+
+        var videoDom = $(el).siblings("video");
+        if (videoDom.length > 0) {
+          videoDom[0].play();
         }
       },
 
@@ -498,6 +519,9 @@ define('sf.b2c.mall.product.detailcontent', [
           };
 
           new SFWidgetCartNumber(success, error);
+        }
+        else{
+          $("#secondstep .mini-cart-num").css("display","none");
         }
       },
 
