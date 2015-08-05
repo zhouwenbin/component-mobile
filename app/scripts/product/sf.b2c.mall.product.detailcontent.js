@@ -197,8 +197,7 @@ define('sf.b2c.mall.product.detailcontent', [
         },
         'sf-mediaType': function(mediaType, options) {
           if (mediaType() == "VIDEO") {
-            //return options.fn(options.contexts || this);
-            return '<div class="cover"></div><video src="http://img.sfht.com/video/SF-02-0705-final.mp4" controls="controls" width="auto" height="auto"></video>';
+            return options.fn(options.contexts || this);
           }
         }
       },
