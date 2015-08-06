@@ -36,7 +36,7 @@ define(
         var paramsJs = JSON.stringify(params);
         var msg;
         try{
-          msg = window.sfhtandroidbridge.runner(plugin, method, paramsJs, callbackId);
+          msg = window.sfhtandroidbridge.runner(plugin, method, '[' + paramsJs + ']', callbackId);
         }
         catch(e) {
           console.log(e.name + ":" + e.message)
