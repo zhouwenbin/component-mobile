@@ -11,12 +11,12 @@ define(
   function ($) {
 
     // setTimeout(function() {
-      // var params = {
-      //   "subject": '哈哈哈哈',
-      //   "description": '哈哈哈哈哈',
-      //   "imageUrl": 'https://ss0.bdstatic.com/k4oZeXSm1A5BphGlnYG/icon/10256.png',
-      //   "url": 'https://www.baidu.com/'
-      // }
+      var params = {
+        "subject": '哈哈哈哈',
+        "description": '哈哈哈哈哈',
+        "imageUrl": 'https://ss0.bdstatic.com/k4oZeXSm1A5BphGlnYG/icon/10256.png',
+        "url": 'https://www.baidu.com/'
+      }
 
       var success =function (data) {
         alert('success')
@@ -29,16 +29,17 @@ define(
       }
 
       $('#runner').on('click', function () {
-        var plugin = $('#pluginName').val()
-        var method = $('#methodName').val()
+        // var plugin = $('#pluginName').val()
+        // var method = $('#methodName').val()
 
-        var paramsStr = $('#params').val()
-        var params = JSON.parse(paramsStr);
+        // var paramsStr = $('#params').val()
+        // var params = JSON.parse(paramsStr);
 
-        window.bridge.run(plugin, method, params, success, error)
+        // window.bridge.run(plugin, method, params, success, error)
+        window.bridge.run('SocialSharing', 'share', params, success, error)
       });
 
-      // window.bridge.run('SocialSharing', 'share', params, success, error)
+      
     // }, 2000);
 
   });

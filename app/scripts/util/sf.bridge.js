@@ -33,16 +33,17 @@ define(
 
       run: function (plugin, method, params, success, error) {
         var callbackId = this.register(success, error);
+        var paramsJs = JSON.stringify(params);
         var msg;
         try{
-          msg = window.sfhtandroidbridge.runner(plugin, method, params, callbackId);
+          msg = window.sfhtandroidbridge.runner(plugin, method, paramsJs, callbackId);
         }
         catch(e) {
           console.log(e.name + ":" + e.message)
         }
         //if not android
         if (!msg) {
-          var urlscheme = 'sfhtbridge://service/pluginHelper?plugin='+ plugin +'&method='+ method +'&params='+ encodeURIComponent('[' + JSON.stringify(params) + ']')+ '&callbackId='+callbackId;
+          var urlscheme = 'sfhtbridge://service/pluginHelper?plugin='+ plugin +'&method='+ method +'&params='+ encodeURIComponent('[' + paramsJs + ']')+ '&callbackId='+callbackId;
 
           if ($('#apprunner').length == 0) {
 
