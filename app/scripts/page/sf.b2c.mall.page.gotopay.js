@@ -142,7 +142,7 @@ define(
         if (selectPayType) {
           $("[data-paytype=" + selectPayType + "]").addClass('active');
         } else {
-          this.element.find('.gotopay li').first().addClass('active');
+          this.element.find('li.gotopaymethod').first().addClass('active');
         }
       },
 
@@ -151,7 +151,8 @@ define(
         element.addClass("active").siblings('li').removeClass('active');
         // element.parent().find("li.gotopaymethod").removeClass("active");
         // element.addClass("active");
-        this.options.payType = element.eq(0).attr('data-payType');
+        this.options.data.attr('selectPayType', element.eq(0).attr('data-payType'));
+        //this.options.payType = element.eq(0).attr('data-payType');
       },
 
       payErrorMap: {
@@ -165,30 +166,28 @@ define(
        * @return {[type]} [description]
        */
       getPayType: function() {
-        var result = "";
-
+        var result = '';
         var paytypelist = $(".gotopaymethodlist").find("li");
         _.each(paytypelist, function(item) {
-          if ($(item).hasClass("active")) {
-            result = $(item).attr("data-payType");
-          }
-        })
+            if ($(item).hasClass("active")) {
+              result = $(item).attr("data-payType");
+            }
+          })
+          // 针对支付方式概要，做定制处理
+          // if (result == "weixinpay") {
+          //   result = "wechat_intl_mp";
+          // } else if (result == "alipay") {
 
-        // 针对支付方式概要，做定制处理
-        if (result == "weixinpay") {
-          result = "wechat_intl_mp";
-        } else if (result == "alipay") {
+        //   //如果在支付宝服务窗中打开，则使用内卡，否则使用外卡
+        //   if (typeof window.AlipayJSBridge != "undefined") {
+        //     result = "alipay_intl_wap";
+        //   } else {
+        //     // h5和微信浏览器中的支付宝外卡收款 切到alipay_intl_wap 先保留分支
+        //     // result = 'alipay_forex_wap';
+        //     result = 'alipay_intl_wap';
+        //   }
 
-          //如果在支付宝服务窗中打开，则使用内卡，否则使用外卡
-          if (typeof window.AlipayJSBridge != "undefined") {
-            result = "alipay_intl_wap";
-          } else {
-            // h5和微信浏览器中的支付宝外卡收款 切到alipay_intl_wap 先保留分支
-            // result = 'alipay_forex_wap';
-            result = 'alipay_intl_wap';
-          }
-
-        }
+        // }
 
         return result;
       },

@@ -11,14 +11,14 @@
   <ul class="gotopaymethodlist">
      
     {{#sf-paytype-list optionalPayTypeList 'alipay_intl_wap'}}
-      <li data-payType="alipay" class="box active gotopaymethod">
+      <li data-payType="alipay_intl_wap" class="box gotopaymethod">
         <a href="javascript:;" class="icon icon6">支付宝</a><span class="icon icon8"></span>
         {{#sf-show-desc discount 'alipay_intl_wap'}}<span class="first-pay-tips">{{desc}}</span>{{/sf-show-desc}}
       </li>
     {{/sf-paytype-list}}
     
     {{#sf-paytype-list optionalPayTypeList 'alipay_forex_wap'}}
-      <li data-payType="alipay" class="box active gotopaymethod">
+      <li data-payType="alipay_forex_wap" class="box gotopaymethod">
         <a href="javascript:;" class="icon icon6">支付宝</a><span class="icon icon8"></span>
         {{#sf-show-desc discount 'alipay_forex_wap'}}<span class="first-pay-tips">{{desc}}</span>{{/sf-show-desc}}
       </li>
@@ -26,7 +26,7 @@
 
     {{#if showWeixinPay}}
     {{#sf-paytype-list optionalPayTypeList 'wechat_intl_mp'}}
-      <li data-payType="alipay" class="box active gotopaymethod">
+      <li data-payType="wechat_intl_mp" class="box gotopaymethod">
            <a href="javascript:;" class="icon icon43">微信</a><span class="icon icon8"></span>
            {{#sf-show-desc discount 'wechat_intl_mp'}}<span class="first-pay-tips">{{desc}}</span>{{/sf-show-desc}}
       </li>
