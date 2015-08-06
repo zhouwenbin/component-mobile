@@ -42,7 +42,22 @@ define(
           } else {
             return "2小时";
           }
-        }
+        },
+        'sf-paytype-list': function(optionalPayTypeList, payType, options) {
+          if (_.contains(optionalPayTypeList(), payType)) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        'sf-show-desc': function(discount, payType, options) {
+          var discountInfo = JSON.parse(discount().value);
+          if (typeof discountInfo[payType] !== 'undefined') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
       },
 
       init: function(element, options) {
@@ -67,7 +82,7 @@ define(
         this.options.alltotalamount = params.amount;
         this.options.code = params.code;
 
-        
+
 
         this.options.data.attr("showordersuccess", params.showordersuccess);
         this.options.data.attr("goodsType", params.goodsType);
@@ -78,14 +93,16 @@ define(
         }
 
         var getOrder = new SFGetOrderConfirmInfo({
-          "orderId": orderid
+          "orderId": params.orderid
         });
         getOrder.sendRequest()
-          .done(function(data){
+          .done(function(data) {
             data.optionalPayTypeList = eval(data.optionalPayTypeList);
             that.options.data.attr(data);
-            that.render(this.options.data);
-          });     
+            that.render(that.options.data);
+            var discountInfo = _.keys(JSON.parse(data.discount.value));
+            that.options.data.attr('selectPayType', discountInfo[0]);
+          });
         //活动期间 微信要放到第一个位置
         if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015, 6, 27, 0, 0, 0).getTime() && new Date().getTime() < new Date(2015, 7, 3, 0, 0, 0).getTime()) {
           $('.gotopaymethodlist li').eq(0).appendTo('.gotopaymethodlist');
@@ -94,10 +111,9 @@ define(
 
         // 微信环境下 要把微信设为默认
         if (SFUtil.isMobile.WeChat()) {
-          this.activeWeixinpay();
+          $("[data-paytype=weixinpay]").addClass('active');
         }
 
-        var that = this;
         $('#gotopayBtn').click(function() {
           that.gotopayBtnClick($(this));
         })
@@ -105,29 +121,36 @@ define(
         loadingCtrl.hide();
       },
 
-      activeWeixinpay: function() {
-        var paytypelist = $(".gotopaymethodlist").find("li");
-        _.each(paytypelist, function(item) {
-          var result = $(item).attr("data-payType");
-          if (result == 'weixinpay') {
-            $(item).addClass("active");
-          } else {
-            $(item).removeClass("active");
-          }
-        })
-      },
+      // activeWeixinpay: function() {
+      //   var paytypelist = $(".gotopaymethodlist").find("li");
+      //   _.each(paytypelist, function(item) {
+      //     var result = $(item).attr("data-payType");
+      //     if (result == 'weixinpay') {
+      //       $(item).addClass("active");
+      //     } else {
+      //       $(item).removeClass("active");
+      //     }
+      //   })
+      // },
 
       render: function(data) {
         // var html = can.view('/templates/order/sf.b2c.mall.order.gotopay.mustache', data);
         var renderFn = can.mustache(template_order_gotopay);
         var html = renderFn(data, this.helpers);
         this.element.html(html);
+        var selectPayType = this.options.data.attr('selectPayType');
+        if (selectPayType) {
+          $("[data-paytype=" + selectPayType + "]").addClass('active');
+        } else {
+          this.element.find('.gotopay li').first().addClass('active');
+        }
       },
 
       ".gotopaymethod click": function(element, event) {
         event && event.preventDefault();
-        element.parent().find("li.gotopaymethod").removeClass("active");
-        element.addClass("active");
+        element.addClass("active").siblings('li').removeClass('active');
+        // element.parent().find("li.gotopaymethod").removeClass("active");
+        // element.addClass("active");
         this.options.payType = element.eq(0).attr('data-payType');
       },
 

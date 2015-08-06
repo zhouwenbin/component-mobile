@@ -9,13 +9,29 @@
 
   <h2>支付方式</h2>
   <ul class="gotopaymethodlist">
-
-    <li data-payType="alipay" class="box active gotopaymethod"><a href="javascript:;" class="icon icon6">支付宝</a><span class="icon icon8"></span></li>
+     
+    {{#sf-paytype-list optionalPayTypeList 'alipay_intl_wap'}}
+      <li data-payType="alipay" class="box active gotopaymethod">
+        <a href="javascript:;" class="icon icon6">支付宝</a><span class="icon icon8"></span>
+        {{#sf-show-desc discount 'alipay_intl_wap'}}<span class="first-pay-tips">{{desc}}</span>{{/sf-show-desc}}
+      </li>
+    {{/sf-paytype-list}}
+    
+    {{#sf-paytype-list optionalPayTypeList 'alipay_forex_wap'}}
+      <li data-payType="alipay" class="box active gotopaymethod">
+        <a href="javascript:;" class="icon icon6">支付宝</a><span class="icon icon8"></span>
+        {{#sf-show-desc discount 'alipay_forex_wap'}}<span class="first-pay-tips">{{desc}}</span>{{/sf-show-desc}}
+      </li>
+    {{/sf-paytype-list}}
 
     {{#if showWeixinPay}}
-      <li data-payType="weixinpay" class="box gotopaymethod"><a href="javascript:;" class="icon icon43">微信</a><span id="weixintip">微信</span><span class="icon icon8"></span></li>
+    {{#sf-paytype-list optionalPayTypeList 'wechat_intl_mp'}}
+      <li data-payType="alipay" class="box active gotopaymethod">
+           <a href="javascript:;" class="icon icon43">微信</a><span class="icon icon8"></span>
+           {{#sf-show-desc discount 'wechat_intl_mp'}}<span class="first-pay-tips">{{desc}}</span>{{/sf-show-desc}}
+      </li>
+    {{/sf-paytype-list}}
     {{/if}}
-
   </ul>
 
 </section>
