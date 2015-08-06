@@ -197,7 +197,10 @@ define('sf.b2c.mall.product.detailcontent', [
         },
         'sf-mediaType': function(mediaType, options) {
           if (mediaType() == "VIDEO") {
-            return options.fn(options.contexts || this);
+            if (SFFn.isMobile["Android"]() && SFFn.isMobile["AlipayChat"]()) {
+            } else {
+              return options.fn(options.contexts || this);
+            }
           }
         }
       },
