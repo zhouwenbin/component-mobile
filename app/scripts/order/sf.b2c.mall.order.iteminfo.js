@@ -50,6 +50,14 @@ define('sf.b2c.mall.order.iteminfo', [
                 } else {
                     return '0';
                 }
+            },
+            //是否展示ETK标示
+            'sf-show-etk': function(transporterName, options) {
+                if (typeof transporterName() !== "undefined" && transporterName() == 'ETK') {
+                    return options.fn(options.contexts || this);
+                } else {
+                    return options.inverse(options.contexts || this);
+                }
             }
         },
 
