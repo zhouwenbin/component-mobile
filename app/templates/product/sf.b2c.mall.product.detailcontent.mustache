@@ -7,7 +7,10 @@
       <div id='slider' class='swipe'>
         <div class='swipe-wrap'>
           {{#each itemInfo.basicInfo.images}}
-            <div><img src="{{sf.img bigImgUrl}}" alt=""></div>
+            <div>
+              <img src="{{sf.img bigImgUrl}}" alt="">
+              {{#sf-mediaType mediaType}}{{/sf-mediaType}}
+            </div>
           {{/each}}
         </div>
         <div class="swipe-dot">

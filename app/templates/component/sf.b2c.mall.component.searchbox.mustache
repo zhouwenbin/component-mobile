@@ -1,6 +1,6 @@
 {{#if showGate}}{{#if publicGate}}
 <div class="search-box-gate">
-	<label for="searchInput" class="ellipsis" search-box>{{#if keyword}}{{keyword}}{{else}}搜索商品、品牌{{/if}}</label>
+	<label for="searchInput" class="ellipsis" search-box>{{#sf-placeholder keyword}}{{keyword}}{{/sf-placeholder}}{{^sf-placeholder keyword}}搜索商品、品牌{{/sf-placeholder}}</label>
 	{{^if isApp}}
 	<a class="homeIcon" href="http://m.sfht.com">
 		<?xml version="1.0" encoding="UTF-8" standalone="no"?>

@@ -6,9 +6,10 @@ define(
     'fastclick',
     'sf.b2c.mall.framework.comm',
     'sf.util',
+    'sf.weixin',
     'sf.b2c.mall.business.config'
   ],
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness) {
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFWeixin, SFBusiness) {
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -18,27 +19,34 @@ define(
        * [init 初始化]
        */
       init: function() {
-        var thumbList = $(".mjapan-video-pic-list");
+        SFWeixin.shareDetail(
+          "明星们都去国外扫货，那里到底有什么？免税，包邮，正品，一定满足你…", 
+          "明星们都去国外扫货，那里到底有什么？免税，包邮，正品，一定满足你…", 
+          window.location.href, 
+          "http://img0.sfht.com/app/SFHT_1024.png"
+        );
 
-        $(".japan-video-box").on("click", ".mjapan-before", function() {
+        var thumbList = $(".mjapan-video-pic-list ul");
+
+        $(".mjapan-video-pic").on("click", ".mjapan-after", function() {
           var left = getLeft();
-          if (left === 0) {
+          if (left === -282) {
             return;
           }
-          thumbList.animate({
-            left: left - 141
-          })
+
+          thumbList.css({
+            "left": left - 141,
+
+          });
           return false;
         })
-        .on("click", ".mjapan-after", function() {
+        .on("click", ".mjapan-before", function() {
 
           var left = getLeft();
           if (left === 0) {
             return;
           }
-          thumbList.animate({
-            left: left + 141
-          })
+          thumbList.css("left", left + 141);
           return false;
         });
 
@@ -74,6 +82,10 @@ define(
         };
         $(".mjapan-video-list li").on("click", function() {
           $(this).find(".mjapan-video-box").show();
+          if (SFFn.isMobile["Android"]()) {
+            $(this).find("video")[0].webkitRequestFullScreen();
+          }
+          
           $(this).find("video")[0].play();
         });
 
