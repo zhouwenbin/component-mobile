@@ -197,10 +197,14 @@ define('sf.b2c.mall.product.detailcontent', [
         },
         'sf-mediaType': function(mediaType, options) {
           if (mediaType() == "VIDEO") {
-            if (SFFn.isMobile["Android"]() && SFFn.isMobile["AlipayChat"]()) {
-            } else {
-              return options.fn(options.contexts || this);
-            }
+            return options.fn(options.contexts || this);
+          }
+        },
+        'sf-isAlipayAndAndroid': function(mediaType, options) {
+          if (SFFn.isMobile["Android"]() && SFFn.isMobile["AlipayChat"]() && (mediaType() == "VIDEO")) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
           }
         }
       },
