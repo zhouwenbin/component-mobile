@@ -90,7 +90,6 @@ define(
           $(this).find("video")[0].play();
         });
 
-
         
       }
 
