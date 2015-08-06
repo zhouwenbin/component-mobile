@@ -58,6 +58,33 @@ define(
             return options.inverse(options.contexts || this);
           }
         },
+        'sf-totalprice': function(selectPayType, price, discount) {
+          var discountInfo = JSON.parse(discount().value);
+          if (typeof discountInfo != 'undefined' &&
+            !can.isEmptyObject(discountInfo) &&
+            typeof discountInfo[selectPayType()] != 'undefined'
+          ) {
+            if (price() - discountInfo[selectPayType()] <= 0) {
+              return 0.01;
+            } else {
+              return (price() - discountInfo[selectPayType()]) / 100
+            }
+          } else {
+            return price() / 100
+          }
+        },
+        'sf-show-save': function(selectPayType, discount, options) {
+          var discountInfo = JSON.parse(discount().value);
+          if (typeof discountInfo[selectPayType()] !== 'undefined') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        'sf-totalsave': function(selectPayType, discount, options) {
+          var discountInfo = JSON.parse(discount().value);
+          return discountInfo[selectPayType()] / 100;
+        }
       },
 
       init: function(element, options) {

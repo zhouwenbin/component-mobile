@@ -6,6 +6,16 @@
 	    <p>请您在订单提交后<span class="text-important">{{showSecKillPayTime goodsType}}</span>内完成支付,否则订单会自动取消。</p>
     </div>
   {{/if}}
+  
+  <div class="order-success-r3">
+    <div class="order-success-r3-c1">应付金额：<span class="text-important">￥{{sf-totalprice selectPayType price discount}}</span></div>
+    {{#sf-show-save selectPayType discount}}
+      <div class="order-success-r3-c2">
+        <span>原应付：￥{{sf.price price}}</span><span>首单减优惠：￥{{sf-totalsave selectPayType discount}}</span>
+      </div>
+    {{/sf-show-save}}
+    
+  </div>
 
   <h2>支付方式</h2>
   <ul class="gotopaymethodlist">
