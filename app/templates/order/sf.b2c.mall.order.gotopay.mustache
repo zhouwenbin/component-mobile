@@ -11,7 +11,7 @@
     <div class="order-success-r3-c1">应付金额：<span class="text-important">￥{{sf-totalprice selectPayType price discount}}</span></div>
     {{#sf-show-save selectPayType discount}}
       <div class="order-success-r3-c2">
-        <span>原应付：￥{{sf.price price}}</span><span>首单减优惠：￥{{sf-totalsave selectPayType discount}}</span>
+        <span>原应付：￥{{sf-show-orderPrice orderGoodsItemList}}</span><span>首单减优惠：￥{{sf-totalsave selectPayType discount}}</span>
       </div>
     {{/sf-show-save}}
     

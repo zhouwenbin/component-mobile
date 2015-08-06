@@ -84,6 +84,10 @@ define(
         'sf-totalsave': function(selectPayType, discount, options) {
           var discountInfo = JSON.parse(discount().value);
           return discountInfo[selectPayType()] / 100;
+        },
+        'sf-show-orderPrice': function(orderGoodsItemList, options) {
+          var price = orderGoodsItemList()[0].price;
+          return price / 100;
         }
       },
 
