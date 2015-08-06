@@ -120,7 +120,7 @@ define(
             var pushCoupon = function(couponType, status) {
               var fn;
 
-              if (_string.startsWith(couponType, 'EXT_') !== -1) {
+              if (_string.startsWith(couponType, 'EXT_')) {
                 fn = thirdpartyMap;
               } else {
                 fn = couponStatusMap[status];
