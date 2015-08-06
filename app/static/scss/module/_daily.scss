@@ -33,10 +33,11 @@
 		flex:1;
 	}
 	.daily h3{
-		margin-bottom: 30px * $i;
+		margin-bottom: 13px * $i;
 		font-size: 14px * $i;
 		line-height: 18px * $i;
 		font-weight: normal;
+		margin-top: 4px * $i;
 	}
 	.daily h3 img{
 		width: 19px * $i;
@@ -44,8 +45,22 @@
 		margin-right: 4px * $i;
 	}
 	.daily .label{
-		padding: 0 5px * $i;
+		padding: 0 3px * $i;
 		margin-bottom: 5px * $i;
+		height: 18px * $i;
+		line-height: 18px * $i;
+		
+	}
+	.daily .label-disabled{
+		background: #f2f2f2;
+		color: #b3b3b3;
+	}
+	.daily .label img{
+		width: 18px * $i;
+		height: 12px * $i;
+
+		vertical-align: -2px * $i;
+		margin-right: 3px * $i;
 	}
 	.daily-c2-r1{
 		display: flex;
@@ -56,8 +71,6 @@
 		width: 34px * $i;
 		height: 34px * $i;
 		text-align: center;
-		background: #f2f2f2;
-		border-radius: 50%;
 	}
 	.daily-icon-cart:after{
 		content: '';

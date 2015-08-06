@@ -2,12 +2,21 @@
   .nav2{
     background: #fff;
     height: 40px * $i;
-    box-shadow: 0 0 2px * $i rgba(0,0,0,0.32);
+    
   } 
   .nav2 ul{
     display:flex;
     justify-content:space-between;
     padding: 0 10px * $i;
+    background: #fff;
+    box-shadow: 0 0 2px * $i rgba(0,0,0,0.32);
+  }
+  .nav2-fixed ul{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 999;
   }
   .nav2 li{
     text-align: center;
