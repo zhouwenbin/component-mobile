@@ -302,16 +302,18 @@ define('sf.b2c.mall.product.detailcontent', [
         if (videoDom.length > 0) {
           //videoDom.show();
           var videoa = videoDom[0];
-          //if (SFFn.isMobile["Android"]()) {
+          if (SFFn.isMobile["Android"]()) {
             videoa.webkitRequestFullScreen();
-          //}
+          }
 
           videoa.play();
         }
       },
 
-      '.goods video webkitfullscreenchange': function() {
-        alert("a")
+      '.goods video webkitfullscreenchange': function(ele, event) {
+        if (!ele[0].webkitDisplayingFullscreen) {
+          ele[0].pause();
+        }
       },
 
       /**
