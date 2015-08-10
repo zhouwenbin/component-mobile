@@ -1073,7 +1073,6 @@ define('sf.b2c.mall.component.search', [
     '[data-role=addtocart] click': function(el, event) {
       event && event.preventDefault();
       var that = this;
-
       var itemId = el.parents("li[data-item-id]").data("itemId");
       if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           //向服务器端发送加入购物车的请求
@@ -1090,6 +1089,7 @@ define('sf.b2c.mall.component.search', [
                     currentY=current.top;
                 thata.clone().appendTo(thata.parent());
                 thata.css({
+                  borderRadius:'50%',
                   left:targetX-currentX,
                   top:targetY-currentY,
                   transform:'rotate(360deg) scale(0.1)',
