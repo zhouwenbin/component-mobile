@@ -142,7 +142,7 @@ define(
 
         // 微信环境下 要把微信设为默认
         if (SFUtil.isMobile.WeChat()) {
-          $("[data-paytype=weixinpay]").addClass('active');
+          $("[data-paytype=wechat_intl_mp]").addClass('active');
         }
 
         $('#gotopayBtn').click(function() {
