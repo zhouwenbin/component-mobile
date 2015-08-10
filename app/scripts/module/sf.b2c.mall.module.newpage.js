@@ -15,6 +15,20 @@ define(
                         $(this).removeClass("active").addClass("active");
                     }
                 });
+                this.render();
+            },
+            render: function() {
+                var params = can.route.attr();
+                var version = params.version;
+                version = version ? version  : '1.0.0';
+                var verArr = version.split('.');
+                var verTwo = verArr[0] + '.' + verArr[1];
+                var verInt = parseFloat(verTwo);
+                if( verInt >= 1.3){
+                    $(".cms-fill-nav").hide();
+                }else{
+                    console.log('get-version-fail');
+                }
             }
         })
         new pageSwitch();
