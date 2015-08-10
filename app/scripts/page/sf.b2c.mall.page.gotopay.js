@@ -132,8 +132,15 @@ define(
             that.options.data.attr(data);
             var discountInfo = _.keys(JSON.parse(data.discount.value));
             var array = _.intersection(discountInfo, data.optionalPayTypeList);
+
             if (array[0]) {
               that.options.data.attr('selectPayType', array[0]);
+            } else {
+              if (this.options.data.attr("showWeixinPay")) {
+                that.options.data.attr('selectPayType', data.optionalPayTypeList[1]);
+              } else {
+                that.options.data.attr('selectPayType', data.optionalPayTypeList[0]);
+              }
             }
             that.render(that.options.data);
           });
@@ -167,16 +174,13 @@ define(
         var html = renderFn(data, this.helpers);
         this.element.html(html);
         var selectPayType = this.options.data.attr('selectPayType');
+        $("[data-paytype=" + selectPayType + "]").addClass('active');
         //如果在微信环境中
-        if (this.options.data.attr("showWeixinPay")) {
-          if (selectPayType) {
-            $("[data-paytype=" + selectPayType + "]").addClass('active');
-          } else {
-            this.element.find('li.gotopaymethod').last().addClass('active');
-          }
-        } else {
-          this.element.find('li.gotopaymethod').first().addClass('active');
-        }        
+        // if (this.options.data.attr("showWeixinPay")) {
+          
+        // } else {
+        //   this.element.find('li.gotopaymethod').first().addClass('active');
+        // }
       },
 
       ".gotopaymethod click": function(element, event) {
