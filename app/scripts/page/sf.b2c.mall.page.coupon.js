@@ -5,6 +5,7 @@ define(
     'zepto',
     'store',
     'fastclick',
+    'underscore.string',
     'sf.b2c.mall.framework.comm',
     'sf.helpers',
     'sf.b2c.mall.business.config',
@@ -17,7 +18,7 @@ define(
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.module.header'
   ],
-  function(can, $, store, Fastclick, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode,
+  function(can, $, store, Fastclick, _string, SFFrameworkComm, helpers, SFConfig, SFGetUserCouponList, SFReceiveExCode,
     template_center_coupon, SFSwitcher, SFHybrid, SFNav, SFLoading, SFHeader) {
 
     Fastclick.attach(document.body);
@@ -107,31 +108,20 @@ define(
               }
             }
 
-            var thirdpartyMap = {
-              "EXT_MOVIETICKET": function() {
-                if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
-                  tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
-                  tmpCoupon.showButton = true;
-                }
-                that.itemObj.thirdparty.count++;
-                that.itemObj.thirdparty.items.push(tmpCoupon);
-              },
-
-              "EXT_TAXICOUPON": function() {
-                if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
-                  tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
-                  tmpCoupon.showButton = true;
-                }
-                that.itemObj.thirdparty.count++;
-                that.itemObj.thirdparty.items.push(tmpCoupon);
+            var thirdpartyMap = function() {
+              if (tmpCoupon.customUrl != null && tmpCoupon.customUrl != "") {
+                tmpCoupon.customUrl = that.addUrlPrefix(tmpCoupon.customUrl);
+                tmpCoupon.showButton = true;
               }
+              that.itemObj.thirdparty.count++;
+              that.itemObj.thirdparty.items.push(tmpCoupon);
             }
 
             var pushCoupon = function(couponType, status) {
               var fn;
 
-              if (couponType == "EXT_MOVIETICKET" || couponType == "EXT_TAXICOUPON") {
-                fn = thirdpartyMap[couponType];
+              if (_string.startsWith(couponType, 'EXT_')) {
+                fn = thirdpartyMap;
               } else {
                 fn = couponStatusMap[status];
               }
@@ -148,7 +138,7 @@ define(
           });
       },
 
-      addUrlPrefix: function(url){
+      addUrlPrefix: function(url) {
         if (url.indexOf("http://m.sfht.com")) {
           url = "http://m.sfht.com" + url;
         }
@@ -240,7 +230,7 @@ define(
         receivedEvent: function(id) {
 
           SFHybrid.setNetworkListener();
-          SFHybrid.isLogin().done(function () {
+          SFHybrid.isLogin().done(function() {
             new coupon('.sf-b2c-mall-coupon');
           });
         }
