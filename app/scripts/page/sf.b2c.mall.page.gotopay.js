@@ -136,7 +136,7 @@ define(
             if (array[0]) {
               that.options.data.attr('selectPayType', array[0]);
             } else {
-              if (this.options.data.attr("showWeixinPay")) {
+              if (that.options.data.attr("showWeixinPay")) {
                 that.options.data.attr('selectPayType', data.optionalPayTypeList[1]);
               } else {
                 that.options.data.attr('selectPayType', data.optionalPayTypeList[0]);
