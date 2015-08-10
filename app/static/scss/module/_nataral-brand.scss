@@ -55,7 +55,7 @@
   }
   .nataral-brand-select ul{
     position: absolute;
-    z-index: 2;
+    z-index: map-get($z-index,nataral-brand-select-ul);
     width: 100%;
     overflow: hidden;
     transform:rotateX(-90deg);

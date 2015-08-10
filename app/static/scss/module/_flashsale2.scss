@@ -83,6 +83,10 @@
     width: 80px * $i;
     height: 80px * $i;
   }
+  .flashsale2 .mask{
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+  }
 }
 
 @include flashsale2(1);

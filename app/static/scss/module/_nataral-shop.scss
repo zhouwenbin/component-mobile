@@ -10,7 +10,7 @@
     padding: 0 10px * $i;
     margin-top: -30px * $i;
     position: relative;
-    z-index: 1;
+    z-index: map-get($z-index,nataral-shop-figcaption);
   }
   .nataral-shop figcaption .icon{
     margin-right: 6px * $i;

@@ -232,7 +232,7 @@
 }
 .invite-bag-dialog{
 	width: 205px;
-	z-index: 999;
+	z-index: map-get($z-index,invite-bag-dialog);
 }
 .mask{
 	background: rgba(0,0,0,0.8)

@@ -24,6 +24,7 @@
 		margin-right: 8px * $i;
 		width: 120px * $i;
 		height: 120px * $i;
+	  position: relative;
 	}
 	.daily-c1 img{
 		width: 120px * $i;
@@ -91,6 +92,10 @@
 	}
 	.daily del{
 		color: #b3b3b3;
+	}
+  	.daily .mask{
+	  background: rgba(255,255,255,0.5);
+	  position: absolute;
 	}
 }
 

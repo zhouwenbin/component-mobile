@@ -8,7 +8,7 @@
   bottom:0;
   width: 100%;
   background: #f3f3f3;
-  z-index: 1;
+  z-index: map-get($z-index,nav-r1);
   border-top: 1px solid #ccc;
 }
 .nav-c1{
@@ -55,7 +55,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  z-index:999;
+  z-index:map-get($z-index,nav-cart-r1);
   background: #f3f3f3;
   padding: 6px 12px;
   height: 58px;

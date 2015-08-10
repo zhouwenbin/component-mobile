@@ -87,7 +87,7 @@
     position: absolute;
     height: 49px * $i;
     top: 0;
-    z-index: 1000;
+    z-index: map-get($z-index,header-detail);
     width:100%;
   }
   .header-detail .header-c2 {

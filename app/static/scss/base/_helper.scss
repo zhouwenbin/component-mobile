@@ -86,7 +86,7 @@
   position: fixed;
   top: 0;
   left:0;
-  z-index: 999;
+  z-index: map-get($z-index,mask);
 }
 
 /*fixed*/
@@ -94,7 +94,7 @@
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: map-get($z-index,fixed);
 }
 
 .show{

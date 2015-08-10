@@ -5,7 +5,7 @@
   }
   .nataral-tab ul{
     position: relative;
-    z-index: 2;
+    z-index: map-get($z-index,nataral-tab-ul);
     display: flex;
     border-bottom: 1px solid #e5e5e5;
     background: #f9f9f9;
@@ -32,7 +32,7 @@
     background: linear-gradient(90deg,rgba(255,255,255,0) 0%,#fff 70%,#fff 100%);
     right: 0;
     top: 0;
-    z-index: 3;
+    z-index: map-get($z-index,nataral-tab-before);
     display: none;
   }
   .nataral-tab.active .nataral-tab-icon{
@@ -50,7 +50,7 @@
     position: absolute;
     right: 10px * $i;
     top: 20px * $i;
-    z-index: 999;
+    z-index: map-get($z-index,nataral-tab-icon);
     display: none;
   }
   .nataral-tab-icon:before{
@@ -66,7 +66,7 @@
     right: 0;
     left: 0;
     top: 0;
-    z-index: 1000;
+    z-index: map-get($z-index,nataral-tab-fixed-ul);
     
   }
   .nataral-tab-fixed:before,

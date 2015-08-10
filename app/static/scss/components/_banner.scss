@@ -10,7 +10,7 @@
 	background: url(#{$bg-url}banner-dialog.jpg) no-repeat;
 	background-size: 230px;
 	position: fixed;
-	z-index: 999;
+	z-index: map-get($z-index,banner-dialog-b);
 	padding-top: 119px;
 	padding-left: 29px;
 }
