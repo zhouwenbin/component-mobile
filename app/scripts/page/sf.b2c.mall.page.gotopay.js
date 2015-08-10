@@ -134,8 +134,6 @@ define(
             var array = _.intersection(discountInfo, data.optionalPayTypeList);
             if (array[0]) {
               that.options.data.attr('selectPayType', array[0]);
-            } else {
-              that.options.data.attr('selectPayType', data.optionalPayTypeList[0]);
             }
             that.render(that.options.data);
           });
