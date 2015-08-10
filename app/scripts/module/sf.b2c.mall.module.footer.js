@@ -19,7 +19,7 @@ define(
         switcher.register('web', _.bind(function () {
           var isHideAd = store.get('IS_HIDE_AD');
           // 过期
-          if (isHideAd && (isHideAd - Date().now() > 1*24*60*60*1000)) {
+          if (isHideAd && (isHideAd - Date.now() > 1*24*60*60*1000)) {
             store.remove('IS_HIDE_AD');
             isHideAd = null;
           }
