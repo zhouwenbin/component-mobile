@@ -150,6 +150,7 @@ requirejs.config({
         "swipe": "scripts/vendor/swipe",
         "swiper": "scripts/vendor/swiper",
         "jweixin": "scripts/vendor/jweixin-1.0.0",
+        "lazyload": "scripts/vendor/lazyload",
         "sf.weixin": "scripts/util/sf.weixin",
         "sf.helpers": "scripts/util/sf.helpers",
         "sf.util": "scripts/util/sf.util.fn",
