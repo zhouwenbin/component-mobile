@@ -151,6 +151,7 @@ requirejs.config({
         "swiper": "scripts/vendor/swiper",
         "jweixin": "scripts/vendor/jweixin-1.0.0",
         "lazyload": "scripts/vendor/lazyload",
+        "sf.b2c.mall.module.imagelazyload": "scripts/module/sf.b2c.mall.module.imagelazyload",
         "sf.weixin": "scripts/util/sf.weixin",
         "sf.helpers": "scripts/util/sf.helpers",
         "sf.util": "scripts/util/sf.util.fn",

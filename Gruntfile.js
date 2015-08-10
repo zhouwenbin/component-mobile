@@ -1401,7 +1401,7 @@ module.exports = function (grunt) {
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
           },
-          include:        ["sf.b2c.mall.module.header"],
+          include:        ["sf.b2c.mall.module.header","sf.b2c.mall.module.imagelazyload"],
           insertRequire:  ['sf.b2c.mall.module.header']
         }
       },
