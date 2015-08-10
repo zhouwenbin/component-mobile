@@ -87,7 +87,7 @@
 	<li>-促销活动立减￥{{sf.price orderFeeItem.discount}} - 优惠券￥{{sf.price orderCoupon.discountPrice}}</li>
 </ul> -->
 <ul class="order-r3 box">
-  {{#sf-show-firstOrderTips activityDescription}}<li class="order-first-buy-tips">{{sf-show-description activityDescription}}</li>{{/sf-show-firstOrderTips}}
+  {{#sf-show-firstOrderTips activityDescription}}<li class="order-first-buy-tips">若符合【{{sf-show-description activityDescription}}】的优惠条件，活动优惠将在提交订单后实现减免</li>{{/sf-show-firstOrderTips}}
   <li>免运费</li>
   <li>优惠券折扣：-￥{{sf.price orderCoupon.discountPrice}}</li>
   <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
