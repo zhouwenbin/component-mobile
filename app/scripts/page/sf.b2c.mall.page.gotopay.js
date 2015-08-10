@@ -133,8 +133,12 @@ define(
             var discountInfo = _.keys(JSON.parse(data.discount.value));
             var array = _.intersection(discountInfo, data.optionalPayTypeList);
 
-            if (array[0]) {
-              that.options.data.attr('selectPayType', array[0]);
+            if (array.length > 1) {
+              if (that.options.data.attr("showWeixinPay")) {
+                that.options.data.attr('selectPayType', array[1]);
+              } else {
+                that.options.data.attr('selectPayType', array[0]);
+              }
             } else {
               if (that.options.data.attr("showWeixinPay")) {
                 that.options.data.attr('selectPayType', data.optionalPayTypeList[1]);
