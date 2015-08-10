@@ -7,10 +7,16 @@
       <div id='slider' class='swipe'>
         <div class='swipe-wrap'>
           {{#each itemInfo.basicInfo.images}}
-            <div>
-              <img src="{{sf.img bigImgUrl}}" alt="">
-              {{#sf-mediaType mediaType}}{{/sf-mediaType}}
-            </div>
+            {{^sf-isAlipayAndAndroid mediaType}}
+              <div>
+                <img src="{{sf.img bigImgUrl}}" alt="">
+                {{#sf-mediaType mediaType}}
+                  <div class="cover"></div>
+                  <div class="playBtn center"></div>
+                  <video src="{{videoUrl}}" controls="controls" width="auto" height="auto"></video>
+                {{/sf-mediaType}}
+              </div>
+            {{/sf-isAlipayAndAndroid}}
           {{/each}}
         </div>
         <div class="swipe-dot">

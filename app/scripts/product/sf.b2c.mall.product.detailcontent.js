@@ -197,8 +197,14 @@ define('sf.b2c.mall.product.detailcontent', [
         },
         'sf-mediaType': function(mediaType, options) {
           if (mediaType() == "VIDEO") {
-            //return options.fn(options.contexts || this);
-            return '<video src="http://img.sfht.com/video/SF-02-0705-final.mp4" controls="controls"></video>';
+            return options.fn(options.contexts || this);
+          }
+        },
+        'sf-isAlipayAndAndroid': function(mediaType, options) {
+          if (SFFn.isMobile["Android"]() && SFFn.isMobile["AlipayChat"]() && (mediaType() == "VIDEO")) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
           }
         }
       },
@@ -296,12 +302,24 @@ define('sf.b2c.mall.product.detailcontent', [
        * @description 播放视频
        * @param  {element} el
        */
-      '.goods img click': function(el, event) {
+      '.goods .cover click': function(el, event) {
         event && event.preventDefault();
 
         var videoDom = $(el).siblings("video");
         if (videoDom.length > 0) {
-          videoDom[0].play();
+          //videoDom.show();
+          var videoa = videoDom[0];
+          if (SFFn.isMobile["Android"]()) {
+            videoa.webkitRequestFullScreen();
+          }
+
+          videoa.play();
+        }
+      },
+
+      '.goods video webkitfullscreenchange': function(ele, event) {
+        if (!ele[0].webkitDisplayingFullscreen) {
+          ele[0].pause();
         }
       },
 
