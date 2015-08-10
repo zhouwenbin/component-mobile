@@ -35,6 +35,13 @@
   .swipe img{
     width: 100%;
   }
+  .swipe video{
+    width: 100%;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
   .swiper-container {
       width: 100%;
   }  

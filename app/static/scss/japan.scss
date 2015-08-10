@@ -95,11 +95,12 @@ header h3{
 .mjapan-video-box{
 	position: absolute;
 	width: 100%;
-	height: 100px;
+	height: 300px;
 	left: 0;
 	top: 0;
 	z-index: 3;
 	display: none;
+	background:#000;
 }
 .mjapan-video-pic{
 	width: 620px;
@@ -144,6 +145,7 @@ header h3{
 		width: 300%;
 		position: absolute;
 		left: 0;
+		transition: transform 0.5s ease-in-out, left 0.5s linear, top 0.5s ease-in, visibility 0.1s linear 0.5s;
 	}
 	li{
 		float: left;
@@ -289,13 +291,14 @@ header h3{
 .japan-goods-item{
 	flex: 1;
 }
-.japan-goods-img{
+.japan-goods-img{ 
 	position: relative;
 	margin-left: 29px;
 	margin-right: 22px;
 	width: 204px;
 	.mask{
 		position: absolute;
+		z-index: 1;
 	}
 }
 .japan-goods-list li{
@@ -348,4 +351,8 @@ header h3{
 	li{
 		padding-left: 25px;
 	}
+}
+.footer{
+	overflow-x: hidden;
+	background-color: #fff;
 }

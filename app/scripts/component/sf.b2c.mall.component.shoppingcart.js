@@ -112,11 +112,15 @@ define(
           }
         },
 
-        'sf-is-over-pay': function(total, limit, options) {
-          if (total() < limit()) {
+        'sf-is-over-pay': function(total, limit, canOrder, options) {
+          if (canOrder() == 1) {
             return options.inverse(options.contexts || this);
           } else {
-            return options.fn(options.contexts || this);
+            if (total() < limit()) {
+              return options.inverse(options.contexts || this);
+            } else {
+              return options.fn(options.contexts || this);
+            }
           }
         },
 
@@ -155,23 +159,27 @@ define(
          * @param  {array} groups  不同goods的分组列表
          * @return {function} 是否展示
          */
-        'sf-is-allow-pay': function(groups, fee, options) {
-          var isAllow = false;
-          var array = groups();
-
+        'sf-is-allow-pay': function(canOrder, options) {
+          // var isAllow = false;
+          // var array = groups();
+          //canOrder=1 可下单，为0 不可下单
+          var canOrder = canOrder();
           // 如果没有任何商品选中，不允许提交
-          _.each(array, function(item) {
-            _.each(item.goodItemList, function(good) {
-              isAllow = isAllow || good.isSelected;
-            });
-          });
+          // _.each(array, function(item) {
+          //   _.each(item.goodItemList, function(good) {
+          //     isAllow = isAllow || good.isSelected;
+          //   });
+          // });
 
           // 如果超过支付限额，不允许提交
-          if (fee().actualTotalFee > LIMITED_PRICE) {
-            isAllow = false;
-          }
+          // if (fee().actualTotalFee > LIMITED_PRICE) {
+          //   isAllow = false;
+          // }
+          // if (canOrder === 0) {
+          //   isAllow = false;
+          // }
 
-          if (isAllow) {
+          if (canOrder === 1) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -453,7 +461,7 @@ define(
         if (ask == 0) {
           $element.val(1);
           this.showAlert($element, good);
-        }else if (ask <= good.limitQuantity) {
+        } else if (ask <= good.limitQuantity) {
           good.quantity = $element.val();
           this.requestFactory('updatenum', good);
         } else {
