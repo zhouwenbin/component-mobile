@@ -169,11 +169,12 @@ define(
         var html = renderFn(data, this.helpers);
         this.element.html(html);
         var selectPayType = this.options.data.attr('selectPayType');
+        //如果在微信环境中
         if (this.options.data.attr("showWeixinPay")) {
           if (selectPayType) {
             $("[data-paytype=" + selectPayType + "]").addClass('active');
           } else {
-            this.element.find('li.gotopaymethod').first().addClass('active');
+            this.element.find('li.gotopaymethod').last().addClass('active');
           }
         } else {
           this.element.find('li.gotopaymethod').first().addClass('active');
