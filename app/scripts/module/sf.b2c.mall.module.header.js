@@ -17,7 +17,7 @@ define(
     'sf.b2c.mall.api.shopcart.isShowCart',
     'sf.hybrid',
     'sf.b2c.mall.widget.cartnumber',
-    'sf.b2c.mall.page.bridge'
+    'sf.bridge'
   ],
 
   function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, SFSearchBox,
