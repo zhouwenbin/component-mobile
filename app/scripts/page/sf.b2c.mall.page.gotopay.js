@@ -85,8 +85,8 @@ define(
           var discountInfo = JSON.parse(discount().value);
           return discountInfo[selectPayType()] / 100;
         },
-        'sf-show-orderPrice': function(orderGoodsItemList, options) {
-          var price = orderGoodsItemList()[0].price;
+        'sf-show-orderPrice': function(price, options) {
+          var price = price();
           return price / 100;
         }
       },
@@ -130,21 +130,20 @@ define(
           .done(function(data) {
             data.optionalPayTypeList = eval(data.optionalPayTypeList);
             that.options.data.attr(data);
-            that.render(that.options.data);
             var discountInfo = _.keys(JSON.parse(data.discount.value));
-            that.options.data.attr('selectPayType', discountInfo[0]);
+            var array = _.intersection(discountInfo, data.optionalPayTypeList);
+            if (array[0]) {
+              that.options.data.attr('selectPayType', array[0]);
+            } else {
+              that.options.data.attr('selectPayType', data.optionalPayTypeList[0]);
+            }
+            that.render(that.options.data);
           });
         //活动期间 微信要放到第一个位置
         if (this.options.data.attr("showWeixinPay") && new Date().getTime() > new Date(2015, 6, 27, 0, 0, 0).getTime() && new Date().getTime() < new Date(2015, 7, 3, 0, 0, 0).getTime()) {
           $('.gotopaymethodlist li').eq(0).appendTo('.gotopaymethodlist');
           // $("#weixintip").text("微信（7.27-8.2首次下单减2元）");
         }
-
-        // 微信环境下 要把微信设为默认
-        if (SFUtil.isMobile.WeChat()) {
-          $("[data-paytype=wechat_intl_mp]").addClass('active');
-        }
-
         $('#gotopayBtn').click(function() {
           that.gotopayBtnClick($(this));
         })
@@ -170,11 +169,15 @@ define(
         var html = renderFn(data, this.helpers);
         this.element.html(html);
         var selectPayType = this.options.data.attr('selectPayType');
-        if (selectPayType) {
-          $("[data-paytype=" + selectPayType + "]").addClass('active');
+        if (this.options.data.attr("showWeixinPay")) {
+          if (selectPayType) {
+            $("[data-paytype=" + selectPayType + "]").addClass('active');
+          } else {
+            this.element.find('li.gotopaymethod').first().addClass('active');
+          }
         } else {
           this.element.find('li.gotopaymethod').first().addClass('active');
-        }
+        }        
       },
 
       ".gotopaymethod click": function(element, event) {
