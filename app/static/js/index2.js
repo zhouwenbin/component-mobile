@@ -7,4 +7,14 @@ $(function(){
 			$('.nav2').removeClass('nav2-fixed')
 		}
 	})
+
+	echo.init({
+	  callback: function(element, op) {
+	    if(op === 'load') {
+	      element.classList.add('loaded');
+	    } else {
+	      element.classList.remove('loaded');
+	    }
+	  }
+	});
 })

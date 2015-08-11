@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.getRecAddressList
+  * @class sf.b2c.mall.api.user.regstAocart4Pmter
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.getRecAddressList',
+'sf.b2c.mall.api.user.regstAocart4Pmter',
 [
   'zepto',
   'can',
@@ -22,16 +22,20 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.getRecAddressList',
-      SECURITY_TYPE: SecurityType.UserLogin.name,
+      METHOD_NAME: 'user.regstAocart4Pmter',
+      SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
+        'inviterMobile': 'string',
+        'inviteeMobile': 'string',
       },
       OPTIONAL: {
-        'isDefault': 'int'
+        'itemIds': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
+        '1000020': '账户已注册',
+        '1000470': '邀请人并非推广员'
       }
     }
   });
