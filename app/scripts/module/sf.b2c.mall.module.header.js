@@ -17,7 +17,8 @@ define(
     'sf.b2c.mall.api.shopcart.isShowCart',
     'sf.hybrid',
     'sf.b2c.mall.widget.cartnumber',
-    'sf.bridge'
+    'sf.bridge',
+    'sf.b2c.mall.module.imagelazyload'
   ],
 
   function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, SFSearchBox,
