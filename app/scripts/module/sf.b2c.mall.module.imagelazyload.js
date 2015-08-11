@@ -6,7 +6,7 @@ define(
     'lazyload'
   ],
 
-  function(can, $, _, lazyload) {
+  function(can, $, _) {
       $("img.imgLazyload").show().lazyload({
           placeholder : "http://img.sfht.com/sfht/1.1.7/img/loading.gif",
            // 设置下张图片到达前200px加载,逐个加载

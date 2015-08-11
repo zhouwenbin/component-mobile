@@ -14,7 +14,7 @@
  *test:Zepto from wangfeng
  */
 
-(function($, window, document, undefined) {
+define('lazyload',['zepto'],  function ($) {
     var $window = $(window);
 
     $.fn.lazyload = function(options) {
@@ -222,7 +222,7 @@
     $.inviewport = function(element, settings) {
          return !$.rightoffold(element, settings) && !$.leftofbegin(element, settings) &&
                 !$.belowthefold(element, settings) && !$.abovethetop(element, settings);
-     };
+    };
 
     /* Custom selectors for your convenience.   */
     /* Use as $("img:below-the-fold").something() or */
@@ -239,5 +239,4 @@
     //     "right-of-fold"  : function(a) { return $.rightoffold(a, {threshold : 0}); },
     //     "left-of-fold"   : function(a) { return !$.rightoffold(a, {threshold : 0}); }
     // });
-
-})(Zepto, window, document);
+})
