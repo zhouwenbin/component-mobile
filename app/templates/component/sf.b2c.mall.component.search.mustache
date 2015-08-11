@@ -42,11 +42,11 @@
   {{#if filterCustom.brandName}}
   <section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.brand}}active{{/h5ShowFilter.map.brand}}" data-role="selectBrand">
     <ul>
-      <li class="{{^brandIds}}active{{/brandIds}}" data-id="">
+      <li class="{{^brandIds}}active{{/brandIds}}" data-id="" data-spm="0.sear7.0.-1">
         <a href="javascript:">全部品牌</a><div class="icon icon61"></div>
       </li>
       {{#each brands.buckets}}
-      <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
+      <li class="{{#selected}}active{{/selected}}" data-id="{{id}}" data-spm="0.sear7.{{id}}.{{@index}}">
         <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
       </li>
       {{/each}}
@@ -73,7 +73,7 @@
       <section class="nataral-classify">
         <div class="nataral-classify-b">
           <ul>
-            <li data-id=""><div class="nataral-classify-icon" style="background-image:url(http://img.sfht.com/sfhth5/1.1.107/img/nataral-classify-all.png);background-size: 37px;"></div><h3>全部</h3></a></li>
+            <li data-id="" data-spm="0.sear8.0.-1"><div class="nataral-classify-icon" style="background-image:url(http://img.sfht.com/sfhth5/1.1.107/img/nataral-classify-all.png);background-size: 37px;"></div><h3>全部</h3></a></li>
           </ul>
         </div>
       </section>
@@ -89,11 +89,11 @@
           <div class="nataral-classify-b">
             <ul>
               {{#each innerSecondCategories}}
-                <li class="{{#if selected}}active{{/if}}" data-second-id="{{id}}">
+                <li class="{{#if selected}}active{{/if}}" data-second-id="{{id}}" data-spm="0.sear9.{{id}}.{{@index}}">
                   <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>{{key}}</h3>
                 </li>
               {{/each}} 
-              <li class="{{#if selected}}active{{/if}}" data-id="{{id}}">
+              <li class="{{#if selected}}active{{/if}}" data-id="{{id}}" data-spm="0.sear8.{{id}}.{{@index}}">
                 <div class="nataral-classify-icon" style="background-image:url({{pic}})"></div><h3>全部</h3>
               </li>
             </ul>
@@ -107,11 +107,11 @@
   {{#if filterCustom.originName}}
   <section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.origin}}active{{/h5ShowFilter.map.origin}}" data-role="selectOrigin">
     <ul>
-      <li class="{{^originIds}}active{{/originIds}}" data-id="">
+      <li class="{{^originIds}}active{{/originIds}}" data-id="" data-spm="0.sear10.0.-1">
         <a href="javascript:">全部货源地</a><div class="icon icon61"></div>
       </li>
       {{#each origins.buckets}}
-      <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
+      <li class="{{#selected}}active{{/selected}}" data-id="{{id}}" data-spm="0.sear10.{{id}}.{{@index}}">
         <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
       </li>
       {{/each}}
@@ -121,11 +121,11 @@
   {{#if filterCustom.shopNationName}}
   <section class="nataral-brand nataral-tab-b {{#h5ShowFilter.map.shopNation}}active{{/h5ShowFilter.map.shopNation}}" data-role="selectShopNation">
     <ul>
-      <li class="{{^shopNationIds}}active{{/shopNationIds}}" data-id="">
+      <li class="{{^shopNationIds}}active{{/shopNationIds}}" data-id="" data-spm="0.sear11.0.-1">
         <a href="javascript:">全部货源地</a><div class="icon icon61"></div>
       </li>
       {{#each shopNations.buckets}}
-      <li class="{{#selected}}active{{/selected}}" data-id="{{id}}">
+      <li class="{{#selected}}active{{/selected}}" data-id="{{id}}" data-spm="0.sear11.{{id}}.{{@index}}">
         <a href="javascript:">{{key}}</a><div class="icon icon61"></div>
       </li>
       {{/each}}
@@ -222,7 +222,7 @@
       {{#each itemSearch.results}}
         <li data-item-id="{{itemId}}">
           <div class="nataral-product-c1">
-            <a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">
+            <a href="http://m.sfht.com/detail/{{itemId}}.html?_spm=0.sere0.0.{{@index}}" title="{{title}}">
               <img src="{{itemImage.bigImgUrl}}@150W_150h.jpg">
               {{#sf-isSoldOut soldOut}}
                 <div class="mask"></div>
@@ -231,7 +231,7 @@
             </a>
           </div>
           <div class="nataral-product-c2">
-            <a href="http://m.sfht.com/detail/{{itemId}}.html" title="{{title}}">
+            <a href="http://m.sfht.com/detail/{{itemId}}.html?_spm=0.sere0.0.{{@index}}" title="{{title}}">
               {{^sf-isYZYW productForm}}
                 <h3 class="ellipsis2">{{title}}</h3>
                 <div class="nataral-product-r1">
