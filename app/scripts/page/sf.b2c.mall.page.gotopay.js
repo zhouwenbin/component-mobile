@@ -243,18 +243,18 @@ define(
        * [getAppPayType 针对APP应用做的支付类型定制]
        * @return {[type]} [description]
        */
-      getAppPayType: function() {
-        var result = "";
+      // getAppPayType: function() {
+      //   var result = "";
 
-        var paytypelist = $(".gotopaymethodlist").find("li");
-        _.each(paytypelist, function(item) {
-          if ($(item).hasClass("active")) {
-            result = $(item).attr("data-payType");
-          }
-        })
+      //   var paytypelist = $(".gotopaymethodlist").find("li");
+      //   _.each(paytypelist, function(item) {
+      //     if ($(item).hasClass("active")) {
+      //       result = $(item).attr("data-payType");
+      //     }
+      //   })
 
-        return result.toUpperCase();
-      },
+      //   return result.toUpperCase();
+      // },
 
       gotopayBtnClick: function() {
 
@@ -290,7 +290,7 @@ define(
         var switcher = new SFSwitcher()
 
         switcher.register('app', function() {
-          SFHybrid.pay(that.options.orderid, that.getAppPayType())
+          SFHybrid.pay(that.options.orderid, that.getPayType())
             .done(function() {
               SFHybrid.toast.dismiss();
               var link = SFConfig.setting.link.paysuccess;
