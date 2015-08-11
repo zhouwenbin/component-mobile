@@ -1,5 +1,5 @@
 define(
-  'sf.b2c.mall.module.tab', [
+  'sf.b2c.mall.module.imagelazyload', [
     'can',
     'zepto',
     'underscore',
