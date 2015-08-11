@@ -139,6 +139,12 @@ define(
               } else {
                 that.options.data.attr('selectPayType', array[0]);
               }
+            } else if (array.length = 1) {
+              if (that.options.data.attr("showWeixinPay")) {
+                that.options.data.attr('selectPayType', array[0]);
+              } else {
+                that.options.data.attr('selectPayType', data.optionalPayTypeList[0]);
+              }
             } else {
               if (that.options.data.attr("showWeixinPay")) {
                 that.options.data.attr('selectPayType', data.optionalPayTypeList[1]);
