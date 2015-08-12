@@ -1,6 +1,8 @@
 @import 'utils/variables';
-body{
+.new-box{
 	width: 640px;
+	margin: 0 auto;
+	overflow: hidden;
 	background: #407339 url(../img/country/new-bg.jpg) center 0 no-repeat;
 }
 img{
