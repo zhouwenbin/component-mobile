@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>顺丰海淘</title>
-
-    <!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
-    <link rel="stylesheet" href="static/css/style.css">
-    <!-- endbuild -->
-
-    <!-- build:js({app, tmp}) ../cordova.js-->
-    <script src="../cordova.js"></script>
-    <!-- endbuild -->
 </head>
-<body class="body1">
-<!--头部-->
-<!--# include file="/header/header.h5.user.html" -->
-<!--头部-->
 
-    
-    <div id="mypoint"></div>
-    <div class="sf-b2c-mall-nav"></div>
+<body class="body1">
+
+    <div>
+        <label>plugin name</label>
+        <input type="text" id="pluginName" value="">
+    </div>
+
+    <div>
+        <label>method name</label>
+        <input type="text" id="methodName" value="">
+    </div>
+
+    <div>
+        <label>params</label>
+        <textarea id="params"></textarea>
+    </div>
+
+    <button id="runner">执行</button>
+
 
     <div id="version" data-version="{version}"></div>
 
@@ -31,15 +36,18 @@
     <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
     <script src="scripts/base/sf.h5.base.ver.1.0.5.js"></script>
     <!-- endbuild -->
+
     <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
     <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
     <!-- endbuild -->
 
-    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.mypoint.js -->
+    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.bridge.js -->
     <script src="scripts/sf.b2c.mall.require.config.js"></script>
     <script type="text/javascript">
-      require(['sf.b2c.mall.page.mypoint']);
+        require(['sf.b2c.mall.page.bridge']);
     </script>
     <!-- endbuild -->
+
 </body>
+
 </html>

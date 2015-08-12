@@ -265,6 +265,7 @@ define('sf.b2c.mall.component.search', [
     sortMap: {
       "DEFAULT": {
         value: "DEFAULT",
+        _spm: "0.sear12.0.0",
         name: "综合"
       },
       "SCORE":  {
@@ -273,18 +274,22 @@ define('sf.b2c.mall.component.search', [
       },
       "PRICE_DESC":  {
         value: "PRICE_DESC",
+        _spm: "0.sear12.2.0",
         name: "价格由高到低"
       },
       "PRICE_ASC":  {
         value: "PRICE_ASC",
+        _spm: "0.sear12.2.1",
         name: "价格由低到高"
       },
       "SALE_DESC":  {
         value: "SALE_DESC",
+        _spm: "0.sear12.1.0",
         name: "人气"
       },
       "SALE_ASC":  {
         value: "SALE_ASC",
+        _spm: "0.sear12.1.1",
         name: "人气"
       }
     },
@@ -843,7 +848,14 @@ define('sf.b2c.mall.component.search', [
     "[data-role=selectBrand] li click": function(targetElement) {
       var searchDataTemp = _.clone(this.searchData);
       delete searchDataTemp.page;
-      searchDataTemp.brandIds = [targetElement.data("id")];
+
+      var brandId = targetElement.data("id");
+      var spm = targetElement.data("spm");
+      searchDataTemp.brandIds = [brandId];
+      if (spm) {
+        searchDataTemp._spm = targetElement.data("spm");
+      }
+
       this.gotoNewPage(searchDataTemp);
     },
     /**
@@ -861,9 +873,14 @@ define('sf.b2c.mall.component.search', [
       delete searchDataTemp.page;
       delete searchDataTemp.catg2ndIds;
       delete searchDataTemp.categoryIds;
+
+      var spm = targetElement.data("spm");
       if (targetElement.data("id")) {
-        searchDataTemp.categoryIds = [targetElement.data("id")];
+        var categoryId = targetElement.data("id");
       }
+      searchDataTemp.categoryIds = [categoryId];
+      searchDataTemp._spm = spm;
+
       this.gotoNewPage(searchDataTemp);
     },
     /**
@@ -874,7 +891,11 @@ define('sf.b2c.mall.component.search', [
       var searchDataTemp = _.clone(this.searchData);
       delete searchDataTemp.page;
       delete searchDataTemp.categoryIds;
+
+      var spm = targetElement.data("spm");
       searchDataTemp.catg2ndIds = [targetElement.data("secondId")];
+      searchDataTemp._spm = spm;
+
       this.gotoNewPage(searchDataTemp);
     },
     /**
@@ -884,7 +905,11 @@ define('sf.b2c.mall.component.search', [
     "[data-role=selectOrigin] li click": function(targetElement) {
       var searchDataTemp = _.clone(this.searchData);
       delete searchDataTemp.page;
+
+      var spm = targetElement.data("spm");
       searchDataTemp.originIds = [targetElement.data("id")];
+      searchDataTemp._spm = spm;
+
       this.gotoNewPage(searchDataTemp);
     },
     /**
@@ -894,7 +919,11 @@ define('sf.b2c.mall.component.search', [
     "[data-role=selectShopNation] li click": function(targetElement) {
       var searchDataTemp = _.clone(this.searchData);
       delete searchDataTemp.page;
+
+      var spm = targetElement.data("spm");
       searchDataTemp.snIds = [targetElement.data("id")];
+      searchDataTemp._spm = spm;
+
       this.gotoNewPage(searchDataTemp);
     },
     /**
@@ -962,6 +991,7 @@ define('sf.b2c.mall.component.search', [
       var searchDataTemp = _.clone(this.searchData);
       delete searchDataTemp.page;
       searchDataTemp.sort = selectSort.value;
+      searchDataTemp._spm = selectSort._spm;
       this.gotoNewPage(searchDataTemp);
     },
 
@@ -1073,7 +1103,6 @@ define('sf.b2c.mall.component.search', [
     '[data-role=addtocart] click': function(el, event) {
       event && event.preventDefault();
       var that = this;
-
       var itemId = el.parents("li[data-item-id]").data("itemId");
       if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           //向服务器端发送加入购物车的请求
@@ -1090,6 +1119,7 @@ define('sf.b2c.mall.component.search', [
                     currentY=current.top;
                 thata.clone().appendTo(thata.parent());
                 thata.css({
+                  borderRadius:'50%',
                   left:targetX-currentX,
                   top:targetY-currentY,
                   transform:'rotate(360deg) scale(0.1)',

@@ -17,10 +17,12 @@ define(
     'sf.b2c.mall.api.shopcart.isShowCart',
     'sf.hybrid',
     'sf.b2c.mall.widget.cartnumber',
+    'sf.bridge',
+    'sf.b2c.mall.module.imagelazyload'
   ],
 
   function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, SFSearchBox,
-    template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid, SFWidgetCartNumber) {
+    template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid, SFWidgetCartNumber, SFBridge) {
 
     Fastclick.attach(document.body);
     SFComm.register(3);
@@ -48,8 +50,51 @@ define(
           });
         }, this));
 
-        // app环境内隐藏头部
-        switcher.register('app', _.bind(function() {
+        // onlineapp环境内隐藏头部
+        switcher.register('onlineapp', _.bind(function() {
+          this.element.hide();
+
+          var pcode = can.route.attr('platform');
+          var map = {
+            android: 5,
+            ios: 4
+          }
+          var _aid = map[pcode];
+
+          $.fn.cookie('_aid', _aid, { path: '/', domain: '.sfht.com' });
+
+          // 通过bridge获取token
+          var success = function (data) {
+            var json = data;
+            if (_.isString(data)) {
+              json = JSON.parse(data);
+            }
+
+            if (json.token) {
+              if (json.token.webToken) {
+                $.fn.cookie(_aid + '_ct', 1, { path: '/', domain: '.sfht.com' });
+                $.fn.cookie(_aid + '_tk', _aid, { path: '/', domain: '.sfht.com' });
+              }
+
+              if (json.token.webCsrfToken) {
+                store.set('csrfToken', json.token.webCsrfToken);
+              }
+            }
+
+            if (json.device && json.device.deviceId) {
+              $.fn.cookie('__da', json.device.deviceId, { path: '/', domain: '.sfht.com' });
+            }
+          };
+
+          var error = function (data) {
+            console.error(data);
+          }
+
+          window.bridge.run('SFUserAPI', 'getTokenInfo', {}, success, error);
+        }, this));
+
+        // localapp环境内隐藏头部
+        switcher.register('localapp', _.bind(function() {
           this.element.hide();
           // this.setShareBtn();
         }, this));
