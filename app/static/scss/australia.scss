@@ -1,7 +1,10 @@
 @import 'utils/variables';
-.australia-box{
+body{
 	width: 640px;
 	margin: 0 auto;
+	background-color: #224f80;
+}
+.australia-box{
 	background: #224f80 url(http://img0.sfht.com/img/29cc8e0486d6796030eea1be61509331.jpg) center 0 no-repeat;
 	overflow: hidden;
 }
