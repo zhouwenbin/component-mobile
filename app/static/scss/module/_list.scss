@@ -76,6 +76,22 @@
   .list a:visited{
     color:#333;
   }
+  .list .product-new,
+  .list .product-hot{
+    width:26px * $i;
+    height:30px * $i;
+    left:6px * $i;
+    top:1px * $i;
+    position: absolute;
+  }
+  .list .product-new{
+    background:url(http://img0.sfht.com/img/32dc9ea87d4c33e9e56b4ee272015afe.jpg) no-repeat;
+    background-size: 26px * $i;
+  }
+  .list .product-hot{
+    background:url(http://img0.sfht.com/img/582b13aa9c0e3c943ae3ac8260410ebf.jpg) no-repeat;
+    background-size: 26px * $i;
+  }
 }
 
 @include list(1);

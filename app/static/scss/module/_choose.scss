@@ -29,6 +29,9 @@
 		width: 100%;
 		vertical-align: middle;
 	}
+  .choose figcaption{
+	font-weight: bold;
+  }
 }
 
 @include choose(1);
