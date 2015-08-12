@@ -41,14 +41,49 @@ header h3{
 	padding: 10px 0;
 	background: rgba(0,0,0,.3);
 	li{
+		position: relative;
 		width: 144px;
 		height: 112px;
 		position: relative;
 		margin-left: 10px;
 	}
-	.active{
+	.mjapan-mask{
+		background: none;
+	}
+	li:hover{	
 		.mjapan-mask{
-			background: rgba(0,0,0,.2);
+			cursor: pointer;
+			border-bottom: 2px solid #dd3e3f;
+		}	
+	}
+	.active::after{
+		content: "";
+		position: absolute;
+		bottom: -34px;
+		left: 55px;
+		border-width: 12px;
+		border-style: dashed;
+		border-color: transparent;
+		border-top: 12px solid #000;
+		opacity: 0.25;
+	}
+	.active:hover{
+		.mjapan-mask{
+			border: 0 none;
+		}
+	}
+	.no-open{
+		.mjapan-mask{
+			background: rgba(0,0,0,.65);
+		}
+		span{
+			font-size: 14px;
+		}
+	}
+	.no-open:hover{
+		.mjapan-mask{
+			cursor: default;
+			border: 0 none;
 		}
 	}
 }
