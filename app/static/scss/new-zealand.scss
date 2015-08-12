@@ -1,8 +1,10 @@
 @import 'utils/variables';
-.new-box{
+body{
+	background-color: #407339;
 	width: 640px;
 	margin: 0 auto;
-	overflow: hidden;
+}
+.new-box{
 	background: #407339 url(http://img0.sfht.com/img/f640d8aa144c65498bff6e45fb4fa96b.jpg) center 0 no-repeat;
 }
 img{
