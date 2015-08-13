@@ -103,7 +103,7 @@ define(
         var that = this;
 
         if(SFFn.isMobile.APP()){
-          $('#ifIsApp').text('App可签到领积分');
+          $('#ifIsApp').text('App可签到领积分，下单抵用直减');
         }
 
         $("[data-name='cms-fill-coupon']").click(function(targetElement) {
