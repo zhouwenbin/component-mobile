@@ -223,6 +223,13 @@ define(
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+        'sf-show-firstOrderTips': function(firstOrderInfos, options) {
+          if (typeof firstOrderInfos() !== 'undefined' && firstOrderInfos().length > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
         }
       },
 
