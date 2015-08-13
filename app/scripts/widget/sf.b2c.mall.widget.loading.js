@@ -56,9 +56,7 @@ define(
         });
 
         switcher.register('localapp', function () {
-          alert(1,$('.loadingDIV'));
           $('.loadingDIV').remove();
-          alert($('.loadingDIV'));
           SFHybrid.toast.dismiss();
         });
 
