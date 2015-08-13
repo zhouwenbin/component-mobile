@@ -161,7 +161,7 @@ define(
           window.location.href = "http://img.sfht.com/ios/sfht_sfhaitao.apk";
           // $("#downloadAppBtn").attr("href", "http://img.sfht.com/ios/sfht_sfhaitao.apk");
         } else if (SFFn.isMobile.APP()){
-          window.location.href = "http://m.sfht.com/";
+          window.location.href = "http://m.sfht.com/index.html";
         }
 
       },
