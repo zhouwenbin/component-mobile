@@ -1,0 +1,57 @@
+/*申请*/
+.refundtax-box{
+	height: 100%;
+	background-color: #f2f2f2;
+}
+.refundtax-list{
+	li{
+		width: 100%;
+		border-top: 1px solid #eee;
+		border-bottom: 1px solid #eee;
+		margin-bottom: 10px;
+		background-color: #fff;
+		padding: 6px 0 6px 113px;
+		span{
+			display: inline-block;
+			text-align: center;
+			margin-left: -113px;
+			width: 113px;
+			color: #9b9b9b;
+		}
+		&:last-child{
+			padding: 0 0 0 113px;
+			height: 115px;
+			display: table;	
+		}
+	}
+	.upload-box{
+		text-align: center;
+		display: table-cell;
+		vertical-align: middle;
+		border-left: 1px solid #dcdcdc;
+		height: 100%;
+		svg{
+			vertical-align: -1px;
+			margin-right: 2px;
+		}
+	}
+	.icon-paper{
+		position: relative;
+		height: 100%;
+		.img-box{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+	}
+	.text{
+		padding: 10px;
+		border: 0 none;
+		border-left: 1px solid #dcdcdc;
+		width: 100%;
+	}
+}
+.refundtax-btn-box{
+	padding: 10px 15px;
+}

@@ -7,6 +7,31 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-	
+	<div class="refundtax-box">
+		<ul class="refundtax-list">
+			<li>
+				<span>支付宝账号</span>
+				<input type="text" class="text">
+			</li>
+			<li>
+				<span>支付宝账号名</span>
+				<input type="text" class="text">
+			</li>
+			<li>
+				<span class="icon-paper">
+					<em class="img-box">
+						== Slim::Template.new('../svg/icon-paper.svg').render
+					</em>
+				</span>
+				<div class="upload-box">
+					== Slim::Template.new('../svg/icon-upload.svg').render	
+					<label class="comment-add-img-add" id="pickbutton">上传清晰缴纳证明照片<input type="file" class="visuallyhidden" /></label>
+				</div>
+			</li>
+		</ul>
+		<div class="refundtax-btn-box">
+			<button class="btn btn-danger btn-big">确认提交申请</button>
+		</div>
+	</div>
 </body>
 </html>
