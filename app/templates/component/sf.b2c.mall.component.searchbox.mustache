@@ -34,6 +34,7 @@
 	<div class="search-box-header">
 		<form action="//m.sfht.com/search.html" method="get" autocomplete="off">
 			<input name="keyword" placeholder="搜索商品、品牌" id="searchInput" />
+			<input name="_spm" type="hidden" value="0.sear1.0.0" />
 		</form>
 		<a class="search-cancel-btn" href="javascript:" id="search-cancel-btn">取消</a>
 		<div class="zoomIcon">
@@ -61,7 +62,7 @@
 		{{#if historyList.data}}{{#if historyList.show}}
 			<ul class="historyList">
 				{{#each historyList.data}}
-				<li class="ellipsis" role="gotoSearch">{{.}}</li>
+				<li class="ellipsis" role="gotoSearch" data-spm="0.sear0.0.{{@index}}">{{.}}</li>
 				{{/each}}
 			</ul>
 			<a href="javascript:" id="clearHistoriesBtn" class="clearHistories">清除搜索记录</a>
@@ -69,7 +70,7 @@
 		{{#if hotKeywordList.show}}
 			<ul class="hotKeywordList">
 				{{#each hotKeywordList.data}}
-				<li class="ellipsis" role="gotoSearch">{{.}}</li>
+				<li class="ellipsis" role="gotoSearch" data-spm="0.sear0.14.{{@index}}">{{.}}</li>
 				{{/each}}
 			</ul>
 		{{/if}}

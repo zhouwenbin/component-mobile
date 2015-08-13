@@ -10,3 +10,5 @@ h5-static
 
 .DS_Store
 **/.DS_Store
+cordova.js
+.iml
