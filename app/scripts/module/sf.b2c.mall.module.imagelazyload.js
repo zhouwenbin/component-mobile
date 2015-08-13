@@ -7,5 +7,13 @@ define(
   ],
 
   function(can, $, _, lazyload) {
-      lazyload.init();
+      lazyload.init({
+          callback: function(element, op) {
+            if(op === 'load') {
+              element.classList.add('lazyloaded');
+            } else {
+              element.classList.remove('lazyloaded');
+            }
+          }
+      })
   });

@@ -5,11 +5,12 @@ define(
 
   [
     'zepto',
+    'zepto.cookie',
     'can',
     'underscore',
   ],
 
-  function ($, can, _) {
+  function ($, cookies, can, _) {
 
     var emptyFn = function(){};
 
@@ -17,6 +18,14 @@ define(
 
       init: function () {
         this.troops = {};
+        var tmp = can.route.attr('version') || $.fn.cookie('version');
+
+        if (tmp) {
+          var arr = tmp.split('.');
+          this.version = arr.join('');
+          $.fn.cookie('version', this.version);
+        }
+        
       },
 
       register: function (success, error) {
@@ -32,6 +41,7 @@ define(
       },
 
       run: function (plugin, method, params, success, error) {
+
         var callbackId = this.register(success, error);
         var paramsJs = JSON.stringify(params);
         var msg;
@@ -42,7 +52,7 @@ define(
           console.log(e.name + ":" + e.message)
         }
         //if not android
-        if (!msg) {
+        if (!msg && this.version && this.version >= 130) {
           var urlscheme = 'sfhtbridge://service/pluginHelper?plugin='+ plugin +'&method='+ method +'&params='+ encodeURIComponent('[' + paramsJs + ']')+ '&callbackId='+callbackId;
 
           if ($('#apprunner').length == 0) {
