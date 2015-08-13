@@ -32,7 +32,6 @@ define(
         this.initFullPage();
         this.render();
         var that = this;
-
         //$("#openAddLink").click();
 
         // that.openApp('sfht://');
@@ -103,6 +102,10 @@ define(
       init: function() {
         var that = this;
 
+        if(SFFn.isMobile.APP()){
+          $('#ifIsApp').text('App可签到领积分');
+        }
+
         $("[data-name='cms-fill-coupon']").click(function(targetElement) {
           if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
             new SFMessage(null, {
@@ -144,6 +147,7 @@ define(
       },
 
       download: function () {
+      
         if (SFFn.isMobile.WeChat()) {
 
           window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
@@ -156,7 +160,10 @@ define(
 
           window.location.href = "http://img.sfht.com/ios/sfht_sfhaitao.apk";
           // $("#downloadAppBtn").attr("href", "http://img.sfht.com/ios/sfht_sfhaitao.apk");
+        } else if (SFFn.isMobile.APP()){
+          window.location.href = "http://m.sfht.com/";
         }
+
       },
 
       receiveCpCodeData: function(params) {
