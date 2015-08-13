@@ -1,7 +1,7 @@
 @import 'utils/variables';
 body{
 	width: 640px;
-	background: #462c88 url(http://img0.sfht.com/img/724010118d9328b960fff3a5f23751f2.jpg) center 0 no-repeat;
+	background: #462c88 url(http://img0.sfht.com/img/3219a4811a0d341b20c130516f1a79ce.jpg) center 0 no-repeat;
 }
 img{
 	width: 100%;
@@ -15,16 +15,13 @@ header{
 	padding-top: 42px;
 }
 header h1{
-	background: url(http://img0.sfht.com/img/ad2d858b0b8ea8ad15a23a9d15796453.jpg) center 0 no-repeat;
 	height: 110px;
 }
 header h2{
-	background: url(http://img0.sfht.com/img/ebf51de2fe2643d866cc42d7491a55ee.jpg) center 0 no-repeat;
 	height: 86px;
 	margin-top: 12px;
 }
 header h3{
-	background: url(http://img0.sfht.com/img/0e67f6ef250194291e8ea94d9a642e85.jpg) center 0 no-repeat;
 	height: 88px;
 	margin-top: -23px;
 }
@@ -37,13 +34,37 @@ header h3{
 	padding: 10px 0;
 	background: rgba(0,0,0,.3);
 	li{
-		width: 193px;
+		position: relative;
+		width: 144px;
+		height: 112px;
 		position: relative;
 		margin-left: 10px;
 	}
-	.open{
+	.mjapan-mask{
+		background: none;
+	}
+	.active::after{
+		content: "";
+		position: absolute;
+		bottom: -34px;
+		left: 55px;
+		border-width: 12px;
+		border-style: dashed;
+		border-color: transparent;
+		border-top: 12px solid #000;
+		opacity: 0.25;
+	}
+	.active:hover{
 		.mjapan-mask{
-			background: none;
+			border: 0 none;
+		}
+	}
+	.no-open{
+		.mjapan-mask{
+			background: rgba(0,0,0,.65);
+		}
+		span{
+			font-size: 14px;
 		}
 	}
 }
