@@ -158,7 +158,7 @@ define(
           // $("#downloadAppBtn").attr("href", "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8");
         } else if (SFFn.isMobile.Android()) {
 
-          window.location.href = "http://img.sfht.com/ios/sfht_sfhaitao.apk";
+          window.location.href = "http://dl.sfht.com/app/sfht_sfhaitao.apk";
           // $("#downloadAppBtn").attr("href", "http://img.sfht.com/ios/sfht_sfhaitao.apk");
         }
         if (SFFn.isMobile.APP()){
