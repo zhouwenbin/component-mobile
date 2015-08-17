@@ -24,7 +24,7 @@ define('sf.b2c.mall.component.login', [
 
     SFFrameworkComm.register(3);
 
-    Fastclick.attach(document.body);
+    // Fastclick.attach(document.body);
 
     var DEFAULT_CAPTCHA_LINK = 'http://checkcode.sfht.com/captcha/';
     var DEFAULT_CAPTCHA_ID = 'haitaob2c';
