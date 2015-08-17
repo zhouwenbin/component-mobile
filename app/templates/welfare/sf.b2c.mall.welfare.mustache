@@ -1,0 +1,49 @@
+<section class="welfare-list">
+	<h2 class="title">推荐任务</h2>
+	<ul class="stopList">
+	{{#if recommendTaskList}}
+        {{#each recommendTaskList}}
+		<li data-tab="{{task.id}}" class="clearfix stopList-li margin-bottom-10">
+			<div class="listLi-1 fl">
+				<img class="stepImage" src="{{task.awardPic}}">
+				<p class="red">{{task.awardValue}}</p>
+			</div>
+			<div class="listLi-2 fl grey">
+				<p class="font16 dark margin-bottom-10 clearfix">
+					<span class="sfhdtitle ellipsis inline fl fb">{{task.title}}</span><a href="javascript:;" class="inline ruleToshow font12 white fl">?</a>
+				</p>
+				{{#if task.endDate}}
+				<p class="ellipsis">{{task.awardTypeDesc}}</p>
+				<p class="font12 ellipsis">{{task.endDate}}</p>
+				{{else}}
+				<p class="ellipsis2">{{task.awardTypeDesc}}</p>
+				{{/if}}
+			</div>
+			<div class="listLi-3 font12">
+				<a href="javascript:;" class="inline joinBtns white"><span class="inline">立即参与</span></a>
+			</div>
+		</li>
+		{{/each}}
+        {{else}}
+        <li class="clearfix stopList-li margin-bottom-10">
+            <p>没有记录</p>
+        </li>
+	{{/if}}
+	</ul>
+	<h2 class="title">日常任务</h2>
+	<ul class="stopList">
+		<li class="clearfix stopList-li margin-bottom-10">
+			<div class="listLi-1 fl">
+				<img class="stepImage" src="../img/invite-share-icon.png">
+				<p class="red">+90元红包</p>
+			</div>
+			<div class="listLi-2 fl grey">
+				<p class="font16 dark fb margin-bottom-10">满300送加倍积分</p>
+				<p class="ellipsis2">韩国it's skin 伊思 蜗牛洗面奶 150ml韩国it's skin 伊思 蜗牛洗面奶 150ml</p>
+			</div>
+			<div class="listLi-3 font12">
+				<a href="javascript:;" class="inline joinBtns white"><span class="inline">立即参与</span></a>
+			</div>
+		</li>
+	</ul>
+</section>

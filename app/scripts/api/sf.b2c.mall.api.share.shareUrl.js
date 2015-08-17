@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.order.requestPayV2
+  * @class sf.b2c.mall.api.share.shareUrl
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.order.requestPayV2',
+'sf.b2c.mall.api.share.shareUrl',
 [
   'zepto',
   'can',
@@ -22,22 +22,21 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'order.requestPayV2',
-      SECURITY_TYPE: SecurityType.UserLogin.name,
+      METHOD_NAME: 'share.shareUrl',
+      SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
-        'orderId': 'string',
-        'payType': 'string',
+        'url': 'string',
+        'target': 'string'
       },
       OPTIONAL: {
-        'extInfo': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '4000100': 'order unkown error',
-        '4001500': '请求支付系统失败',
-        '4001504': '订单当前状态不允许支付',
-        '4001700': '满足查询条件的订单不存在'
+        '18000001': '没有分享活动',
+        '18000002': '用户已获取过奖励',
+        '18000003': '用户未登录',
+        '18000004': 'Url不满足任何规则'
       }
     }
   });
