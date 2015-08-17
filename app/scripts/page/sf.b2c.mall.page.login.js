@@ -27,7 +27,7 @@ define(
       },
 
       render:function(){
-        new SFLogin('body');
+        new SFLogin('#container');
       }
 
     });
