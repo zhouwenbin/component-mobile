@@ -20,7 +20,7 @@ define('sf.b2c.mall.order.iteminfo', [
     'text!template_order_iteminfo',
     'sf.b2c.mall.widget.loading',
     'sf.mediav'
-], function(text, can, $,
+    ], function(text, can, $,
     SFSubmitOrderForAllSys, SFQueryOrderCoupon, SFOrderRender, SFReceiveExCode, SFGetRecAddressList, SFGetIDCardUrlList, SFQueryPtnAuthLink,
     helpers, SFUtil, SFSwitcher, SFMessage, SFBubble, SFConfig, template_order_iteminfo, SFLoading, SFMediav) {
 
@@ -58,6 +58,18 @@ define('sf.b2c.mall.order.iteminfo', [
                 } else {
                     return options.inverse(options.contexts || this);
                 }
+            },
+            'sf-show-firstOrderTips': function(activityDescription, options) {
+                var activityDescription = activityDescription();
+                if (activityDescription && activityDescription['FIRST_ORDER']) {
+                    return options.fn(options.contexts || this);
+                }
+            },
+            'sf-show-description':function(activityDescription,options){
+                var activityDescription = activityDescription();
+				if(activityDescription){
+					return activityDescription['FIRST_ORDER'];
+				}             
             }
         },
 
@@ -280,6 +292,11 @@ define('sf.b2c.mall.order.iteminfo', [
             });
             return orderRender.sendRequest()
                 .done(function(orderRenderItem) {
+					if (typeof orderRenderItem.activityDescription !== 'undefined' && !can.isEmptyObject(orderRenderItem.activityDescription)) {
+						orderRenderItem.activityDescription = JSON.parse(orderRenderItem.activityDescription.value);
+						that.itemObj.attr('activityDescription', orderRenderItem.activityDescription);
+					}
+                    
                     that.processFoundation(orderRenderItem);
                     // that.processProducts(orderRenderItem.orderGoodsItemList);
                     that.processPackages(orderRenderItem);
@@ -783,4 +800,4 @@ define('sf.b2c.mall.order.iteminfo', [
             this.itemObj.attr("getpoint", Math.floor(shouldPay / 100) * 100);
         }
     });
-})
+  })

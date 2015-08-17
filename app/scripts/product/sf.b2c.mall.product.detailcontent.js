@@ -104,7 +104,8 @@ define('sf.b2c.mall.product.detailcontent', [
             'REDUCE': "满减",
             'DISCOUNT': "满折",
             'MIX_DISCOUNT': "搭配折扣",
-            'SECKILL': "秒杀"
+            'SECKILL': "秒杀",
+            'FIRST_ORDER': '首单减'
           };
           return map[activityType];
         },
@@ -881,12 +882,12 @@ define('sf.b2c.mall.product.detailcontent', [
             getUserInfo
               .sendRequest()
               .done(function(data) {
-                link = "http://m.sfht.com/detail/" + itemid + ".html?_src=" + data.userId;
+                link = "http://m.sfht.com/detail/" + itemid + ".html?_ruser=" + data.userId;
                 SFWeixin.shareDetail(title, desc, link, imgUrl)
               })
               .fail()
           } else {
-            link = "http://m.sfht.com/detail/" + itemid + ".html?_src=" + $.fn.cookie('userId');
+            link = "http://m.sfht.com/detail/" + itemid + ".html?_ruser=" + $.fn.cookie('userId');
             SFWeixin.shareDetail(title, desc, link, imgUrl)
           }
         } else {
