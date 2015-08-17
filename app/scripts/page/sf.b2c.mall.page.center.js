@@ -96,7 +96,7 @@ define(
       },
 
       '.myinvitation click': function() {
-        window.location.href = "http://m.sfht.com/invitation.html?_src=" + this.userId;
+        window.location.href = "http://m.sfht.com/invitation.html?_ruser=" + this.userId;
       },
 
       '.mypoint click': function(element, event) {

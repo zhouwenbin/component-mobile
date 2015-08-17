@@ -882,12 +882,12 @@ define('sf.b2c.mall.product.detailcontent', [
             getUserInfo
               .sendRequest()
               .done(function(data) {
-                link = "http://m.sfht.com/detail/" + itemid + ".html?_src=" + data.userId;
+                link = "http://m.sfht.com/detail/" + itemid + ".html?_ruser=" + data.userId;
                 SFWeixin.shareDetail(title, desc, link, imgUrl)
               })
               .fail()
           } else {
-            link = "http://m.sfht.com/detail/" + itemid + ".html?_src=" + $.fn.cookie('userId');
+            link = "http://m.sfht.com/detail/" + itemid + ".html?_ruser=" + $.fn.cookie('userId');
             SFWeixin.shareDetail(title, desc, link, imgUrl)
           }
         } else {
