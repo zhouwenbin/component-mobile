@@ -403,7 +403,9 @@ define('sf.b2c.mall.component.login', [
        * @param  {event} event event对象
        */
       '#gotoLogin click': function(element, event) {
-        event && event.preventDefault();
+        // event && event.preventDefault();
+
+        alert('click')
 
         try {
           // 如果是无痕模式 则要提示用户
