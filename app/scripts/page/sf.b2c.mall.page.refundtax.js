@@ -3,17 +3,16 @@ define(
 		'can',
 		'zepto',
 		'underscore',
-		'fastclick'
+		'fastclick',
 		'sf.b2c.mall.framework.comm',
 		'sf.util',
 		'sf.b2c.mall.business.config',
 		'sf.b2c.mall.api.finance.createRefundTax',
 		'sf.b2c.mall.api.order.getOrderV2',
 		'plupload',
-		'livequery',
 		'sf.b2c.mall.widget.loading'
 	],
-	function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFBizConf, SFCreateRefundTax, SFGetOrderV2, plupload, livequery, SFLoading) {
+	function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFBizConf, SFCreateRefundTax, SFGetOrderV2, plupload, SFLoading) {
 
 		// 在页面上使用fastclick
 		Fastclick.attach(document.body);
@@ -29,12 +28,12 @@ define(
 			init: function(options) {
 
 				var that = this;
-				
+
 				loadingCtrl.show();
 
-				if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-					window.location.href = 'index.html';
-				}
+				// if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+				// 	window.location.href = 'index.html';
+				// }
 
 				
 				this.imgPrefix = "http://img0.sfht.com/";
