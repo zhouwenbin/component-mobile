@@ -2,34 +2,34 @@
 .refundtax-box{
 	height: 100%;
 	background-color: #f2f2f2;
+	font-size: 14px;
 }
 .refundtax-list{
 	li{
 		width: 100%;
 		border-top: 1px solid #eee;
 		border-bottom: 1px solid #eee;
-		margin-bottom: 10px;
-		background-color: #fff;
-		padding: 6px 0 6px 113px;
-		span{
-			display: inline-block;
-			text-align: center;
-			margin-left: -113px;
-			width: 113px;
-			color: #9b9b9b;
-		}
-		&:last-child{
+		&:last-child .refundtax-inner{
 			padding: 0 0 0 113px;
 			height: 115px;
 			display: table;	
+		}
+
+		.text-important{
+			font-size: 14px;
+			padding-left: 15px;
+			height: 22px;
+			line-height: 16px;
 		}
 	}
 	.upload-box{
 		text-align: center;
 		display: table-cell;
 		vertical-align: middle;
-		border-left: 1px solid #dcdcdc;
-		height: 100%;
+		.comment-add-img-add{
+			display: block;
+			line-height: 115px;
+		}
 		svg{
 			vertical-align: -1px;
 			margin-right: 2px;
@@ -48,10 +48,33 @@
 	.text{
 		padding: 10px;
 		border: 0 none;
-		border-left: 1px solid #dcdcdc;
 		width: 100%;
+		font-size: 14px;
+	}
+}
+.refundtax-inner{
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 10px;
+	padding: 6px 0 6px 113px;
+	span{
+		display: inline-block;
+		text-align: left;
+		padding-left: 15px;
+		margin-left: -113px;
+		width: 113px;
+		color: #9b9b9b;
+		border-right: 1px solid #dcdcdc;
+		height: 35px;
+		line-height: 35px;
 	}
 }
 .refundtax-btn-box{
 	padding: 10px 15px;
+	.btn{
+		height: 44px;
+		line-height: 44px;
+		font-size: 14px;
+
+	}
 }
