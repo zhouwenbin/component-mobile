@@ -13,7 +13,7 @@ body{
 }
 .coffee-banner{
 	background-color: #fff;
-	padding: 20px 30px;
+	padding: 20px 0;
 	font-size: 18px;
 	color: #e47f13;
 	line-height: 1.5;
@@ -78,9 +78,21 @@ body{
 .btn-box{
 	padding-bottom: 30px;
 	text-align: center;
+	margin: 0 10px;
 	.btn{
 		height: 40px;
 		line-height: 40px;
 		font-size: 15px;
+		width: 100%;
 	}
+}
+.coffee-text-tips{
+	text-align: center;
+	color: #666;
+}
+.coffee-tips{
+	margin: 25px 0 30px;
+	text-align: center;
+	color: #E47F13;
+	font-size: 14px;
 }
