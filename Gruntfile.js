@@ -1707,6 +1707,24 @@ module.exports = function (grunt) {
         }
       },
 
+      refundtax: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.refundtax.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.refundtax'
+          ],
+          insertRequire: ['sf.b2c.mall.page.refundtax']
+        }
+      },
+      
       shoppingcart: {
         options: {
           optimize: 'none',

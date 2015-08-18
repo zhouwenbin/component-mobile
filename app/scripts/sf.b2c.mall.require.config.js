@@ -32,7 +32,7 @@ requirejs.config({
         "sf.b2c.mall.api.order.requestPayV2": "scripts/api/sf.b2c.mall.api.order.requestPayV2",
         "sf.b2c.mall.api.order.submitOrderForAllSys": "scripts/api/sf.b2c.mall.api.order.submitOrderForAllSys",
         "sf.b2c.mall.api.order.queryOrderCoupon": "scripts/api/sf.b2c.mall.api.order.queryOrderCoupon",
-        "sf.b2c.mall.api.order.orderRender": "scripts/api/sf.b2c.mall.api.order.orderRender",     
+        "sf.b2c.mall.api.order.orderRender": "scripts/api/sf.b2c.mall.api.order.orderRender",
         "sf.b2c.mall.api.order.getOrderConfirmInfo": "scripts/api/sf.b2c.mall.api.order.getOrderConfirmInfo",
 
         "sf.b2c.mall.api.products.getSKUBaseList": "scripts/api/sf.b2c.mall.api.product.getSKUBaseList",
@@ -140,6 +140,9 @@ requirejs.config({
         'sf.b2c.mall.api.shopcart.removeItemsForCart': 'scripts/api/sf.b2c.mall.api.shopcart.removeItemsForCart',
         'sf.b2c.mall.api.shopcart.updateItemNumForCart': 'scripts/api/sf.b2c.mall.api.shopcart.updateItemNumForCart',
 
+        //退税接口
+        'sf.b2c.mall.api.finance.createRefundTax': 'scripts/api/sf.b2c.mall.api.finance.createRefundTax',
+        'sf.b2c.mall.api.finance.getRefundTax': 'scripts/api/sf.b2c.mall.api.finance.getRefundTax',
 
         "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
         "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
@@ -341,6 +344,12 @@ requirejs.config({
         'fixture': 'fixture/lib/canjs/fixture',
         'can.object': 'fixture/lib/canjs/can.object',
         'sf.b2c.mall.fixture.framework.common': 'fixture/framework/sf.b2c.mall.fixture.framework.common',
-        'sf.b2c.mall.fixture.case.center.invitation': 'fixture/case/center/sf.b2c.mall.fixture.case.center.invitation'
+        'sf.b2c.mall.fixture.case.center.invitation': 'fixture/case/center/sf.b2c.mall.fixture.case.center.invitation',
+
+        //图片上传
+        'plupload': 'scripts/vendor/plupload',
+        'livequery': 'scripts/vendor/jquery.livequery',
+        //退税
+        'sf.b2c.mall.page.refundtax': 'scripts/page/sf.b2c.mall.page.refundtax'
     }
 });
