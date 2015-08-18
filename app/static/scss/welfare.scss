@@ -74,6 +74,19 @@
 				background-color: #66C8B7;
 			}
 		}
+		&.completed{
+			border-color: #dcdcdc;
+			.joinBtns{
+				span{
+					width: 36px;
+					margin: 8px 5px;
+				}
+				background-color: #dcdcdc;
+			}
+		}
+		.joinBtns{
+			&.disable{background-color: #bbbbbb;}
+		}
 	}
 	.ruleToshow,.rulbeToshow:focus{
 		width: 16px;
@@ -93,13 +106,14 @@
 		width: 50%;
 		min-height: 66px;
 		.sfhdtitle{
-			width: 60%;
+			max-width: 70%;
 		}
 		.font16{
 			line-height: 1;
 		}
 		line-height: 1.4;
-		.font12{
+		p.font12{
+			padding-top: 2px;
 			line-height: 1.6;
 		}
 	}
@@ -110,6 +124,8 @@
 		border-radius: 50%;
 		background-color: #e76363;
 		text-align: center;
+		display: table-cell;
+		vertical-align: middle;
 		span{
 			width: 30px;
 			margin: 8px;

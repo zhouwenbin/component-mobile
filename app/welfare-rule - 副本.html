@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no" name="viewport">
+	<title>活动规则</title>
+	<!-- build:css({app, .tmp}) /styles/sf.b2c.h5welfare.css -->
+	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="/static/css/welfare.css">
+	<!-- endbuild -->
+
+</head>
+<body>
+	<section class="welfare-rule">
+		<ul class="block dark">
+			<h2 class="title font16"><span class="inline">活动规则</span></h2>
+			<li class="clearfix" id="welfare-ruleCn">活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则规则
+			</li>
+		</ul>
+	</section>
+	<script type="text/javascript">
+		window.onload = function(){
+			function getURLParameter(name) {
+    			return decodeURIComponent((new RegExp('[#!]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(window.location.hash)||[,""])[1].replace(/\+/g, '%20'))||null;
+			}
+			var rule = getURLParameter('flsRule');
+			document.getElementById('welfare-ruleCn').innerHTML = rule;
+		}
+		//console.log(window.location.hash);
+	</script>
+</body>
+</html>

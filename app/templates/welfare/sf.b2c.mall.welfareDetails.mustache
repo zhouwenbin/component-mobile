@@ -48,18 +48,8 @@
 				<p class="red">{{task.awardValue}}</p>
 			</div>
 			<div class="listLi-2 fl grey">
-				<p class="font16 dark margin-bottom-10 clearfix">
-					<span class="sfhdtitle ellipsis inline fl fb">{{task.title}}</span>
-					{{#if task.description}}
-					<a href="http://m.sfht.com/welfare-rule.html#!flsRule={{task.description}}" class="inline ruleToshow font12 white fl" id="SFFLSruleToshow">?</a>
-					{{/if}}
-				</p>
-				{{#if task.endDate}}
-				<p class="ellipsis">{{task.subTitle}}</p>
-				<p class="font12 ellipsis">截止于：{{task.endDate}}</p>
-				{{else}}
+				<p class="font16 dark fb margin-bottom-10 ellipsis">{{task.title}}</p>
 				<p class="ellipsis2">{{task.subTitle}}</p>
-				{{/if}}
 			</div>
 			<div class="listLi-3 font12">
 				{{#if isCompleted}}
