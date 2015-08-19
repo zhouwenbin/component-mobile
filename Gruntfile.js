@@ -640,6 +640,7 @@ module.exports = function (grunt) {
               'scripts/sf.b2c.mall.h5.page.order.detail.js',
               'scripts/sf.b2c.mall.h5.page.order.list.js',
               'scripts/sf.b2c.mall.h5.page.mypoint.js',
+              'scripts/sf.b2c.mall.h5.page.refundtax.js',
               'img/**',
               'styles/**',
               'order.html',
@@ -647,7 +648,8 @@ module.exports = function (grunt) {
               'pay-success.html',
               'orderdetail.html',
               'orderlist.html',
-              'mypoint.html'
+              'mypoint.html',
+              'refundtax.html'
             ],
             dest: 'order'
           }
@@ -1710,7 +1712,7 @@ module.exports = function (grunt) {
           insertRequire: ['sf.b2c.mall.page.refundtax']
         }
       },
-      
+
       shoppingcart: {
         options: {
           optimize: 'none',
