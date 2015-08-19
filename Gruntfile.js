@@ -1904,7 +1904,7 @@ module.exports = function (grunt) {
           include: [
             "sf.b2c.mall.business.config"
           ],
-          insertRequire: ['sf.b2c.mall.page.welfare']
+          insertRequire: ['sf.b2c.mall.h5.page.welfare']
         }
       },
 
