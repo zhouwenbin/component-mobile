@@ -165,20 +165,20 @@
 
               {{^sf-refundtax refundtax}}
               <div class="refund-tax-wrap-r1"></div>
-              <button class="btn btn-disable btn-refundtax">申请返还税金</button>
+              <button data-tag={{@index}} class="btn btn-disable btn-refundtax">申请返还税金</button>
               {{/sf-refundtax}}
 
               {{#sf-refundtax refundtax}}
-              {{#refundTaxStatus refundTax 'AUDITING'}}
+              {{#refundTaxStatus refundtax 'AUDITING'}}
               <div class="refund-tax-wrap-r1">退税申请：<span class="text-important">资料已上传 —— 审核中</span></div>
               {{/refundTaxStatus}}
   
-              {{#refundTaxStatus refundTax 'AUDIT_FAIL'}}
+              {{#refundTaxStatus refundtax 'AUDIT_FAIL'}}
               <div class="refund-tax-wrap-r1">退税申请：<span class="text-important">审核失败（refundTax.failReason）</span></div>
-              <button class="btn btn-disable btn-refundtax">重新申请</button>
+              <button data-tag={{@index}} class="btn btn-disable btn-refundtax">重新申请</button>
               {{/refundTaxStatus}}
 
-              {{#refundTaxStatus refundTax 'REFUND_SUCCESS'}}
+              {{#refundTaxStatus refundtax 'REFUND_SUCCESS'}}
               <div class="refund-tax-wrap-r1">退税申请：<span class="text-important">税金返还完成</span></div>
               {{/refundTaxStatus}}           
               {{/sf-refundtax}}

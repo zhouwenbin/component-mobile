@@ -105,12 +105,6 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           return options.inverse(options.contexts || this);
         }
       },
-      'refundTaxStatus': function(refundTax, stateText, options) {
-        var refundTax = refundTax();
-        if (refundTax.state == stateText) {
-          return options.fn(options.contexts || this);
-        }
-      },
       'sf-refundtax': function(refundTax, options) {
         var refundTax = refundTax();
         if (typeof refundTax == 'undefined') {
@@ -121,6 +115,12 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           } else {
             return options.inverse(options.contexts || this);
           }
+        }
+      },
+      'refundTaxStatus': function(refundTax, stateText, options) {
+        var refundTax = refundTax();
+        if (refundTax.state == stateText) {
+          return options.fn(options.contexts || this);
         }
       },
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case'],
@@ -209,7 +209,16 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       loadingCtrl.hide();
       this.watchDetail.call(this, data);
     },
-
+    '.btn-refundtax click': function(element, event) {
+      event && event.preventDefault();
+      var params = can.deparam(window.location.search.substr(1));
+      var tag = $(element).attr('data-tag');
+      var gotoUrl = 'http://m.sfht.com/refund-tax.html' + '?' + $.param({
+        "tag": tag,
+        "orderid": params.orderid
+      });
+      window.location.href = gotoUrl;
+    },
     watchDetail: function(data) {
       var uinfo = $.fn.cookie('3_uinfo');
       var arr = [];
