@@ -1891,6 +1891,23 @@ module.exports = function (grunt) {
         }
       },
 
+      welfare: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.welfare.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config"
+          ],
+          insertRequire: ['sf.b2c.mall.page.welfare']
+        }
+      },
+
 
       tmlg: {
         options: {
