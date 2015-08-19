@@ -9,12 +9,15 @@ define(
 		'sf.b2c.mall.business.config',
 		'sf.b2c.mall.api.finance.createRefundTax',
 		'sf.b2c.mall.api.order.getOrderV2',
-		'plupload'
+		'plupload',
+		'sf.b2c.mall.widget.loading'
 	],
-	function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFBizConf, SFCreateRefundTax, SFGetOrderV2, plupload) {
+	function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFBizConf, SFCreateRefundTax, SFGetOrderV2, plupload, SFLoading) {
 
 		// 在页面上使用fastclick
 		Fastclick.attach(document.body);
+
+		var loadingCtrl = new SFLoading();
 
 		// 注册服务端的appid
 		SFFrameworkComm.register(3);
@@ -224,6 +227,7 @@ define(
 
 				plupload.bind("QueueChanged", function(a) {
 					plupload.start();
+					loadingCtrl.show();
 					$('#svg01').hide();
 					$('#btn-refundtax-text').text('重新上传清晰缴纳证明照片');
 				});
@@ -238,6 +242,7 @@ define(
 						$("#" + file.id).remove();
 						plupload.stop();
 						$('#svg01').show();
+						loadingCtrl.hide();
 					};
 
 					if (file.size <= 0) {
@@ -281,6 +286,7 @@ define(
 				if (imgIndex != "") {
 					$("#" + id).attr('src', imgURL);
 					++this.imgCount;
+					loadingCtrl.hide();
 				}
 			}
 		});
