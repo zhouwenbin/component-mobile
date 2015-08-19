@@ -19,10 +19,13 @@
 	</section>
 	<script type="text/javascript">
 		window.onload = function(){
-			function getURLParameter(name) {
-    			return decodeURIComponent((new RegExp('[#!]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(window.location.hash)||[,""])[1].replace(/\+/g, '%20'))||null;
+			String.prototype.getURLParameter = function(name) {
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var str = this.substr(this.indexOf("\?")+1).substr(2,hash.length).match(reg);
+				if (str!=null) return unescape(str[2]); return null;
 			}
-			var rule = getURLParameter('flsRule')||'暂无规则';
+			var hash = window.location.hash;
+			var rule = hash.getURLParameter('flsRule')||'暂无规则';
 			document.getElementById('welfare-ruleCn').innerHTML = rule;
 		}
 	</script>

@@ -35,13 +35,12 @@ define(
         },
 
         render: function() {
+          this.request();
           this.initLoadDataEvent();
         },
 
         request: function(cparams) {
-          var that = this;
           loadingCtrl.show();
-          this.paint();
         },
 
         stepCates: function(data) {
@@ -51,11 +50,9 @@ define(
           loadingCtrl.hide();
         },
 
-        instaceCatesCont: function(data) {
-        },
-
         initLoadDataEvent: function() {
           this.loadingData();
+          loadingCtrl.hide();
         },
 
         loadingData: function(cparams) {
