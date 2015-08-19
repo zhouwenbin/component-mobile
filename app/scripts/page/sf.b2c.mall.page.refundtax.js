@@ -9,10 +9,9 @@ define(
 		'sf.b2c.mall.business.config',
 		'sf.b2c.mall.api.finance.createRefundTax',
 		'sf.b2c.mall.api.order.getOrderV2',
-		'plupload',
-		'sf.b2c.mall.widget.loading'
+		'plupload'
 	],
-	function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFBizConf, SFCreateRefundTax, SFGetOrderV2, plupload, SFLoading) {
+	function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFBizConf, SFCreateRefundTax, SFGetOrderV2, plupload) {
 
 		// 在页面上使用fastclick
 		Fastclick.attach(document.body);
@@ -20,16 +19,12 @@ define(
 		// 注册服务端的appid
 		SFFrameworkComm.register(3);
 
-		var loadingCtrl = new SFLoading();
-
 		var refundtax = can.Control.extend({
 
 
 			init: function(options) {
 
 				var that = this;
-
-				loadingCtrl.show();
 
 				// if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
 				// 	window.location.href = 'index.html';
