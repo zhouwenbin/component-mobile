@@ -231,6 +231,7 @@ define(
 
 				plupload.bind("FileUploaded", function(a, file, result) {
 					var response = result.response;
+					alert(result.response);
 					if ("" != response) {
 						var filename = JSON.parse(response).content[0]["CPRODUCT_IMG.jpg"];
 						var imgURL = that.imgPrefix + filename;
