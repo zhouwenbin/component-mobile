@@ -191,14 +191,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
               })
               .always(function() {
-                _.bind(this.renderHtml, this);
+                that.renderHtml();
               });
           } else {
-            _.bind(this.renderHtml, this);
+            that.renderHtml();
           }
         });
       } else {
-        _.bind(this.renderHtml, this);
+        this.renderHtml();
       }
 
       this.timmer();
