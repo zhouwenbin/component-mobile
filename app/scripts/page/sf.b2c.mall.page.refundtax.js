@@ -48,7 +48,7 @@ define(
 					.done(function(data) {
 						that.options.attr(data);
 					}).fail(function(errorCode) {
-						//window.location.href = 'index.html';
+						window.location.href = 'index.html';
 					})
 
 			},
@@ -226,17 +226,14 @@ define(
 					plupload.start();
 					$('#svg01').hide();
 					$('#btn-refundtax-text').text('重新上传清晰缴纳证明照片');
-					alert(1);
 				});
 
 				plupload.bind("FileUploaded", function(a, file, result) {
 					var response = result.response;
-					alert(result.response);
 					if ("" != response) {
 						var filename = JSON.parse(response).content[0]["CPRODUCT_IMG.jpg"];
 						var imgURL = that.imgPrefix + filename;
 						that.setValue(file.id, imgURL);
-						alert(imgURL);
 					} else {
 						$("#" + file.id).remove();
 						plupload.stop();
@@ -282,7 +279,6 @@ define(
 
 				// 进行图片展示
 				if (imgIndex != "") {
-					alert(imgURL);
 					$("#" + id).attr('src', imgURL);
 					++this.imgCount;
 				}
