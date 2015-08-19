@@ -35,8 +35,10 @@ define(
 				// 	window.location.href = 'index.html';
 				// }
 
-				
-				this.imgPrefix = "http://img0.sfht.com/";
+
+				//this.imgPrefix = "http://img0.sfht.com/";
+				this.imgPrefix = "http://testimg.sfht.com/";
+
 				this.initPic();
 				$('#errorNoPicTips').hide();
 				$('#errorAlipayAccount').hide();
@@ -51,7 +53,7 @@ define(
 					.done(function(data) {
 						that.options.attr(data);
 					}).fail(function(errorCode) {
-						window.location.href = 'index.html';
+						//window.location.href = 'index.html';
 					})
 
 			},
@@ -148,7 +150,6 @@ define(
 
 			//初始化图片上传控件
 			initPic: function() {
-
 				// 如果没有照片，则可以上传图片
 				var that = this;
 
@@ -180,37 +181,34 @@ define(
 				});
 
 				plupload.bind("FilesAdded", function(a, uploadingFiles) {
-					var imglistUl = $(".img-list-ul");
-					var imglistLi = $("li", imglistUl);
+					$('#img-tax-box').find('img').remove();
+					var imgList = $('#img-tax-box').find('img');
 					var uploadBtn = $(".upload-btn");
-					if (imglistLi.length + uploadingFiles.length > 1) {
+					if (imgList.length + uploadingFiles.length > 1) {
 						return false;
 					}
 
-					_.each(uploadingFiles, function(item) {
-						var itemHTML = '<li id="' + item.id + '"><span>0%</span><a href="javascript:" class="comment-add-img-del">X</a></li>';
-						$(itemHTML).appendTo(imglistUl);
-					})
+					var itemHTML = '<img width="80" height="80" id="' + uploadingFiles[0].id + '" src="" alt="" />'
+					$(itemHTML).appendTo($('#img-tax-box'));
 				});
 
-				plupload.bind("UploadProgress", function(a, uploadingFile) {
-					var delHTML = "";
-					if (100 == uploadingFile.percent) {
-						// delHTML = '<em value="删除">X</em>';
-						delHTML = '<span>0%</span>';
-					} else {
-						// delHTML = "<span>" + uploadingFile.percent + "%</span>";
-						delHTML = '<a href="javascript:" class="comment-add-img-del">X</a>';
-					}
-
-					$("#" + uploadingFile.id + " .del").html(delHTML);
-				});
+				// plupload.bind("UploadProgress", function(a, uploadingFile) {
+				// 	var delHTML = "";
+				// 	if (100 == uploadingFile.percent) {
+				// 		// delHTML = '<em value="删除">X</em>';
+				// 		delHTML = '';
+				// 	}else{	
+				// 		delHTML = '正在上传中';
+				// 	}
+				// 	$('#img-tax-box').append(delHTML)
+				// 	//$("#" + uploadingFile.id + " .del").html(delHTML);
+				// });
 
 				plupload.bind("UploadFile", function() {});
 
-				plupload.bind("UploadComplete", function() {
-					$("#divFileProgressStatus").slideUp(1500)
-				});
+				// plupload.bind("UploadComplete", function() {
+				// 	$("#divFileProgressStatus").slideUp(1500)
+				// });
 
 				plupload.bind("Error", function(a, b) {
 					var c = {
@@ -230,7 +228,9 @@ define(
 				});
 
 				plupload.bind("QueueChanged", function(a) {
-					plupload.start()
+					plupload.start();
+					$('#svg01').hide();
+					$('#btn-refundtax-text').text('重新上传清晰缴纳证明照片');
 				});
 
 				plupload.bind("FileUploaded", function(a, file, result) {
@@ -242,20 +242,19 @@ define(
 					} else {
 						$("#" + file.id).remove();
 						plupload.stop();
+						$('#svg01').show();
 					};
 
-					if (file.size > 0) {
-						$("#" + file.id).children("b").html("<em>X</em>")
-					} else {
+					if (file.size <= 0) {
 						$("#" + file.id).remove();
-					}
+					};
 				})
 
 				plupload.init();
 			},
-			'.comment-add-img li click': function(element, event) {
+			'#img-tax-box img click': function(element, event) {
 				$('.dialog-big-img').html('');
-				var src = $(element).find('img').attr('src');
+				var src = $(element).attr('src');
 				var imgHtml = '<img src="' + src + '" alt="" />'
 				$('.mask').show();
 				$('.dialog-big-img').append(imgHtml).show();
@@ -274,6 +273,8 @@ define(
 			},
 
 			setValue: function(id, imgURL) {
+				$("#" + id).attr('src', '');
+				$("input[name=imgs1]").attr("value", '');
 				var imgIndex = "";
 				var value = $("input[name=imgs1]").val();
 				if ("" == value) {
@@ -283,29 +284,9 @@ define(
 
 				// 进行图片展示
 				if (imgIndex != "") {
-					$("#" + id).html('<img width="80px" height="80px" alt="" src="' + imgURL + '"><a href="javascript:" class="comment-add-img-del">X</a>');
+					$("#" + id).attr('src', imgURL);
 					++this.imgCount;
-
-					$("#" + id).hover(function() {
-						$(".comment-add-img-del", this).removeClass("hide")
-					}, function() {
-						$(".comment-add-img-del", this).addClass("hide")
-					});
-
-					var that = this;
-
-					// 绑定删除事件
-					$("#" + id + " .comment-add-img-del").livequery("click", function() {
-						that.del(imgIndex, id);
-					});
 				}
-			},
-
-			del: function(index, id) {
-				$("input[name=imgs" + index + "]").attr("value", "");
-				$("li#" + id).remove();
-				--this.imgCount;
-				$(".comment-add-img-add").show();
 			}
 		});
 		new refundtax('body');

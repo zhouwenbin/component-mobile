@@ -48,7 +48,7 @@
 	.text{
 		padding: 10px;
 		border: 0 none;
-		width: 100%;
+		width: 98%;
 		font-size: 14px;
 	}
 }
@@ -77,4 +77,21 @@
 		font-size: 14px;
 
 	}
+	p{
+		line-height: 16px;
+		color: #999;
+		margin-bottom: 15px;
+	}
+}
+.dialog-big-img{
+  z-index: 999;
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#errorNoPicTips{
+	font-size:14px;
+	margin-top: 10px;
 }
