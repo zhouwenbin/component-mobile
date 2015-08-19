@@ -255,7 +255,7 @@ define(
 			'#img-tax-box img click': function(element, event) {
 				$('.dialog-big-img').html('');
 				var src = $(element).attr('src');
-				var imgHtml = '<img src="' + src + '" alt="" />'
+				var imgHtml = '<img width="100%" height="100%" src="' + src + '" alt="" />'
 				$('.mask').show();
 				$('.dialog-big-img').append(imgHtml).show();
 			},
