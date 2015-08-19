@@ -1,69 +1,12 @@
-<section class="welfare-list">
-	<h2 class="title">推荐任务</h2>
-	<ul class="stopList">
-	{{#if recommendTaskList}}
-        {{#each recommendTaskList}}
-		<li data-tab="{{task.id}}"{{#if isCompleted}}class="clearfix stopList-li margin-bottom-10
-		  completed"{{else}}class="clearfix stopList-li margin-bottom-10"{{/if}}>
-			<div class="listLi-1 fl">
-				<img class="stepImage" src="{{task.awardPic}}">
-				<p class="red">{{task.awardValue}}{{statusOrder}}</p>
-			</div>
-			<div class="listLi-2 fl grey">
-				<p class="font16 dark margin-bottom-10 clearfix">
-					<span class="sfhdtitle ellipsis inline fl fb">{{task.title}}</span>
-					{{#if task.description}}
-					<a href="http://m.sfht.com/welfare-rule.html#!flsRule={{task.description}}" class="inline ruleToshow font12 white fl" id="SFFLSruleToshow">?</a>
-					{{/if}}
-				</p>
-				{{#if task.endDate}}
-				<p class="ellipsis">{{task.subTitle}}</p>
-				<p class="font12 ellipsis">截止于：{{task.endDate}}</p>
-				{{else}}
-				<p class="ellipsis2">{{task.subTitle}}</p>
-				{{/if}}
-			</div>
-			<div class="listLi-3 font12">
-				{{#if isCompleted}}
-				<a href="javascript:;" class="inline joinBtns white {{task.taskActionType}}"><span class="inline">{{task.completeButtonText}}</span></a>
-				{{else}}
-				<a href="{{task.url}}" class="inline joinBtns white {{task.taskActionType}}"><span class="inline">{{task.buttonText}}</span></a>
-				{{/if}}
-			</div>
-		</li>
-		{{/each}}
-        {{else}}
-        <li class="clearfix stopList-li margin-bottom-10">
-            <p>暂无没有记录</p>
-        </li>
-	{{/if}}
-	</ul>
-	<h2 class="title">日常任务</h2>
-	<ul class="stopList">
-	{{#if dailyTaskList}}
-        {{#each dailyTaskList}}
-		<li class="clearfix stopList-li margin-bottom-10">
-			<div class="listLi-1 fl">
-				<img class="stepImage" src="{{task.awardPic}}">
-				<p class="red">{{task.awardValue}}</p>
-			</div>
-			<div class="listLi-2 fl grey">
-				<p class="font16 dark fb margin-bottom-10 ellipsis">{{task.title}}</p>
-				<p class="ellipsis2">{{task.subTitle}}</p>
-			</div>
-			<div class="listLi-3 font12">
-				{{#if isCompleted}}
-				<a href="javascript:;" class="inline joinBtns white {{task.taskActionType}}"><span class="inline">{{task.completeButtonText}}</span></a>
-				{{else}}
-				<a href="{{task.url}}" class="inline joinBtns white {{task.taskActionType}}"><span class="inline">{{task.buttonText}}</span></a>
-				{{/if}}
-			</div>
-		</li>
-		{{/each}}
-        {{else}}
-		<li class="clearfix stopList-li margin-bottom-10">
-            <p>暂无没有记录</p>
-        </li>
-	{{/if}}
-	</ul>
+<section class="welfare-detail">
+	<img class="imageBig" src="../img/temp_02.jpg" alt="">
+	<div class="footerCn">
+		<p class="old-price">售价：89元</p>
+		<p class="new-price">领红包购买只需19元</p>
+		<div class="btnsOut shareBtn">
+			<input type="text" placeholder="请输入手机号码">
+			<a href="javascript:;" class="btn">领红包</a>
+		</div>
+		<a href="javascript:;" class="toRuleBtn">活动规则</a>
+	</div>
 </section>

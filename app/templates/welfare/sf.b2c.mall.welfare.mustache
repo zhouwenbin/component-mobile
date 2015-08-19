@@ -3,8 +3,7 @@
 	<ul class="stopList">
 	{{#if recommendTaskList}}
         {{#each recommendTaskList}}
-		<li data-tab="{{task.id}}"{{#if isCompleted}}class="clearfix stopList-li margin-bottom-10
-		  completed"{{else}}class="clearfix stopList-li margin-bottom-10"{{/if}}>
+		<li data-tab="{{task.id}}" class="clearfix stopList-li margin-bottom-10	{{#if isCompleted}}completed{{/if}}">
 			<div class="listLi-1 fl">
 				<img class="stepImage" src="{{task.awardPic}}">
 				<p class="red">{{task.awardValue}}{{statusOrder}}</p>
@@ -42,7 +41,7 @@
 	<ul class="stopList">
 	{{#if dailyTaskList}}
         {{#each dailyTaskList}}
-		<li class="clearfix stopList-li margin-bottom-10">
+		<li data-tab="{{task.id}}" class="clearfix stopList-li margin-bottom-10 {{#if isCompleted}}completed{{/if}}">
 			<div class="listLi-1 fl">
 				<img class="stepImage" src="{{task.awardPic}}">
 				<p class="red">{{task.awardValue}}</p>

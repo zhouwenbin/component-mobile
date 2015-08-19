@@ -1,19 +1,19 @@
 'use strict';
 
 define(
-  'sf.b2c.mall.page.welfare',
+  'sf.b2c.mall.page.welfareDetails',
   [
     'can',
     'zepto',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.share.shareUrl',
-    'sf.b2c.mall.api.task.directReceiveAward',
-    'sf.b2c.mall.api.task.getUserTaskList',
-    'text!template_welfare_list',
+    // 'sf.b2c.mall.api.task.directReceiveAward',
+    // 'sf.b2c.mall.api.task.getUserTaskList',
+    'text!template_welfare_details',
     'sf.b2c.mall.widget.loading'
   ],
 
-  function(can, $, SFFrameworkComm, SFshareUrl, SFdirectReceiveAward ,SFgetUserTaskList, template_welfare_list, SFLoading) {
+  function(can, $, SFFrameworkComm, SFshareUrl, template_welfare_details, SFLoading) {
       SFFrameworkComm.register(3);
       var loadingCtrl = new SFLoading();
       can.route.ready();
@@ -44,7 +44,7 @@ define(
         },
 
         stepCates: function(data) {
-          var renderFn = can.view.mustache(template_welfare_list);
+          var renderFn = can.view.mustache(template_welfare_details);
           var html = renderFn(data);
           this.element.html(html);
           loadingCtrl.hide();
@@ -58,8 +58,8 @@ define(
         loadingData: function(cparams) {
           var that = this;
           var params = {};
-          var sFgetUserTaskList =new SFgetUserTaskList(params);
-          can.when(sFgetUserTaskList.sendRequest()).done(function(data) {
+          var sFshareUrl =new SFshareUrl(params);
+          can.when(sFshareUrl.sendRequest()).done(function(data) {
             that.itemObj.attr(data);
             that.stepCates(that.itemObj);
           }) .fail(function(error) {
@@ -67,25 +67,25 @@ define(
           });
         },
 
-        '.joinBtns click': function($element, event) {
-          if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-            window.location.href ="http://m.sfht.com/login.html";
-            return false;
-          }
-          if($element.hasClass('direct')){
-            $element.attr({
-              href: 'javascript:;'
-            });
+        // '.joinBtns click': function($element, event) {
+        //   if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+        //     window.location.href ="http://m.sfht.com/login.html";
+        //     return false;
+        //   }
+        //   if($element.hasClass('direct')){
+        //     $element.attr({
+        //       href: 'javascript:;'
+        //     });
 
-            var taskId = $element.closest('li').attr('data-tab');
-            var sFdirectReceiveAward = new SFdirectReceiveAward({taskId: taskId});
-            sFdirectReceiveAward.sendRequest().done(function(taskId){
-              alert(taskId.text)
-            }) .fail(function(error){
-              console.log(error)
-            })
-          }
-        },
+        //     var taskId = $element.closest('li').attr('data-tab');
+        //     var sFdirectReceiveAward = new SFdirectReceiveAward({taskId: taskId});
+        //     sFdirectReceiveAward.sendRequest().done(function(taskId){
+        //       alert(taskId.text)
+        //     }) .fail(function(error){
+        //       console.log(error)
+        //     })
+        //   }
+        // },
        });
       new welfareList('body');
   });

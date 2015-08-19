@@ -322,12 +322,14 @@ requirejs.config({
         "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
         "template_category_navigate": "templates/category/sf.b2c.mall.category.page.navigate.mustache",
         "template_welfare_list": "templates/welfare/sf.b2c.mall.welfare.mustache",
+        "template_welfare_details": "templates/welfare/sf.b2c.mall.welfareDetails.mustache",
         "sf.b2c.mall.category.fn": "scripts/category/sf.b2c.mall.category.fn",
         "sf.b2c.mall.category.pagenavigatelistcontent": "scripts/category/sf.b2c.mall.category.pagenavigatelistcontent",
         "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
         "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages",
 
         "sf.b2c.mall.page.welfare": "scripts/page/sf.b2c.mall.page.welfare",
+        "sf.b2c.mall.page.welfareDetails": "scripts/page/sf.b2c.mall.page.welfareDetails",
         "sf.b2c.mall.page.japanpre": "scripts/page/sf.b2c.mall.page.japanpre",
 
         //81
