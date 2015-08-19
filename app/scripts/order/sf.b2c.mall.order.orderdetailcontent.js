@@ -213,7 +213,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       event && event.preventDefault();
       var params = can.deparam(window.location.search.substr(1));
       var tag = $(element).attr('data-tag');
-      var gotoUrl = 'http://m.sfht.com/refund-tax.html' + '?' + $.param({
+      var gotoUrl = 'http://m.sfht.com/refundtax.html' + '?' + $.param({
         "tag": tag,
         "orderid": params.orderid
       });
