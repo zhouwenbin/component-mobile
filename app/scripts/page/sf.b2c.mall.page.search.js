@@ -8,7 +8,8 @@ define(
     'sf.util',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.component.search',
-    'sf.b2c.mall.component.searchbox'
+    'sf.b2c.mall.component.searchbox',
+    'sf.b2c.mall.module.imagelazyload'
   ],
   function(can, $, Fastclick, SFFrameworkComm, SFFn, SFBusiness,
            SFSearch, SFSearchBox) {

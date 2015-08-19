@@ -265,7 +265,7 @@ define('sf.b2c.mall.component.search', [
     sortMap: {
       "DEFAULT": {
         value: "DEFAULT",
-        _spm: "0.sear12.0.0",
+        _spm: "1.sear12.0.0",
         name: "综合"
       },
       "SCORE":  {
@@ -274,22 +274,22 @@ define('sf.b2c.mall.component.search', [
       },
       "PRICE_DESC":  {
         value: "PRICE_DESC",
-        _spm: "0.sear12.2.0",
+        _spm: "1.sear12.2.0",
         name: "价格由高到低"
       },
       "PRICE_ASC":  {
         value: "PRICE_ASC",
-        _spm: "0.sear12.2.1",
+        _spm: "1.sear12.2.1",
         name: "价格由低到高"
       },
       "SALE_DESC":  {
         value: "SALE_DESC",
-        _spm: "0.sear12.1.0",
+        _spm: "1.sear12.1.0",
         name: "人气"
       },
       "SALE_ASC":  {
         value: "SALE_ASC",
-        _spm: "0.sear12.1.1",
+        _spm: "1.sear12.1.1",
         name: "人气"
       }
     },

@@ -1,9 +1,11 @@
 @import 'utils/variables';
 body{
 	width: 640px;
+	margin: 0 auto;
+	background-color: #224f80;
 }
-.japan-box{
-	background: #462c88 url(http://img0.sfht.com/img/3219a4811a0d341b20c130516f1a79ce.jpg) center 0 no-repeat;
+.australia-box{
+	background: #224f80 url(http://img0.sfht.com/img/29cc8e0486d6796030eea1be61509331.jpg) center 0 no-repeat;
 }
 img{
 	width: 100%;
@@ -17,13 +19,16 @@ header{
 	padding-top: 42px;
 }
 header h1{
+	/*background: url(http://img0.sfht.com/img/ad2d858b0b8ea8ad15a23a9d15796453.jpg) center 0 no-repeat;*/
 	height: 110px;
 }
 header h2{
+	/*background: url(http://img0.sfht.com/img/ebf51de2fe2643d866cc42d7491a55ee.jpg) center 0 no-repeat;*/
 	height: 86px;
 	margin-top: 12px;
 }
 header h3{
+	/*background: url(http://img0.sfht.com/img/0e67f6ef250194291e8ea94d9a642e85.jpg) center 0 no-repeat;*/
 	height: 88px;
 	margin-top: -23px;
 }
@@ -302,7 +307,7 @@ header h3{
 	top: -38px;
 	padding: 0 20px;
 	display: inline-block;
-	background: #6d6bd9 url(http://img0.sfht.com/img/7dd0c410e8ae4f27e6b8c443ede85542.jpg) center center no-repeat;
+	background: #6d6bd9 url(http://img0.sfht.com/img/f9a2219779b13c1ab77c258431a9b951.jpg) center center no-repeat;
 	width: 409px;
 	height: 40px;
 	font: 0/0 a;
@@ -384,4 +389,21 @@ header h3{
 	overflow-x: hidden;
 	background-color: #fff;
 	margin-top: 35px;
+}
+/*new*/
+.australia-intro{
+	background-color: transparent;
+	width: 616px;
+	padding: 0;
+}
+.australia-goods{
+	background-color: #568dc2;
+	.text-icon{
+		background: #568dc2 url(http://img0.sfht.com/img/2015a253f170c2ca018b3e05f89a4449.jpg) center center no-repeat;
+		width: 444px;
+		height: 35px;
+	}
+}
+.australia-active h2 span{
+	background-color: #224f80;
 }
