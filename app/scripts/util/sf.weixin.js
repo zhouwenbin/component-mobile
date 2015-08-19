@@ -192,7 +192,7 @@ define('sf.weixin', [
 
       var that = this;
 
-      var shareUrl = "http://m.sfht.com/invitation-bag.html?_src=" + userid + "&bagid=" + bagid;
+      var shareUrl = "http://m.sfht.com/invitation-bag.html?_ruser=" + userid + "&bagid=" + bagid;
 
       if (SFUtil.isMobile.WeChat()) {
         //进行微信设置

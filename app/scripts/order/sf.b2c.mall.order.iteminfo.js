@@ -61,13 +61,15 @@ define('sf.b2c.mall.order.iteminfo', [
             },
             'sf-show-firstOrderTips': function(activityDescription, options) {
                 var activityDescription = activityDescription();
-                if (activityDescription['FIRST_ORDER']) {
+                if (activityDescription && activityDescription['FIRST_ORDER']) {
                     return options.fn(options.contexts || this);
                 }
             },
             'sf-show-description':function(activityDescription,options){
                 var activityDescription = activityDescription();
-                return activityDescription['FIRST_ORDER'];
+				if(activityDescription){
+					return activityDescription['FIRST_ORDER'];
+				}             
             }
         },
 
@@ -290,8 +292,11 @@ define('sf.b2c.mall.order.iteminfo', [
             });
             return orderRender.sendRequest()
                 .done(function(orderRenderItem) {
-                    orderRenderItem.activityDescription = JSON.parse(orderRenderItem.activityDescription.value);
-                    that.itemObj.attr('activityDescription', orderRenderItem.activityDescription);
+					if (typeof orderRenderItem.activityDescription !== 'undefined' && !can.isEmptyObject(orderRenderItem.activityDescription)) {
+						orderRenderItem.activityDescription = JSON.parse(orderRenderItem.activityDescription.value);
+						that.itemObj.attr('activityDescription', orderRenderItem.activityDescription);
+					}
+                    
                     that.processFoundation(orderRenderItem);
                     // that.processProducts(orderRenderItem.orderGoodsItemList);
                     that.processPackages(orderRenderItem);
