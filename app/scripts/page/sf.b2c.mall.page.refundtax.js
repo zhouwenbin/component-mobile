@@ -161,7 +161,7 @@ define(
 					multipart_params: {
 						fileVal: 'CPRODUCT_IMG' + filename.substring(filename.lastIndexOf("."), filename.length)
 					},
-					url: SFBizConf.setting.api.fileurl + "?_aid=1",
+					url: SFBizConf.setting.api.fileurl + "?_aid=3",
 					flash_swf_url: "../img/plupload.flash.swf?r=" + Math.random(),
 					silverlight_xap_url: "../img/plupload.silverlight.xap",
 					filters: [{
