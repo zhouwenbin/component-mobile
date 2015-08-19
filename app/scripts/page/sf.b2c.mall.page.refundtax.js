@@ -26,9 +26,9 @@ define(
 
 				var that = this;
 
-				// if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-				// 	window.location.href = 'index.html';
-				// }
+				if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+					window.location.href = 'index.html';
+				}
 
 
 				//this.imgPrefix = "http://img0.sfht.com/";
