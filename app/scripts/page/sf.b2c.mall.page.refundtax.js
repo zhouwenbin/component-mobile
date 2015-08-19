@@ -233,7 +233,8 @@ define(
 					if ("" != response) {
 						var filename = JSON.parse(response).content[0]["CPRODUCT_IMG.jpg"];
 						var imgURL = that.imgPrefix + filename;
-						that.setValue(file.id, imgURL)
+						that.setValue(file.id, imgURL);
+						console.log(imgURL);
 					} else {
 						$("#" + file.id).remove();
 						plupload.stop();
@@ -279,6 +280,7 @@ define(
 
 				// 进行图片展示
 				if (imgIndex != "") {
+					console.log(imgURL);
 					$("#" + id).attr('src', imgURL);
 					++this.imgCount;
 				}
