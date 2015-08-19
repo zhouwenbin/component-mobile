@@ -24,10 +24,6 @@ define(
           this.render();
         },
 
-        helpers: function() {
-
-        },
-
         init: function() {
           this.itemObj.recommendTaskList =[];
           this.itemObj.dailyTaskList =[];

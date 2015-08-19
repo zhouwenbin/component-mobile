@@ -343,6 +343,7 @@ requirejs.config({
         "sf.b2c.mall.api.share.shareUrl": "scripts/api/sf.b2c.mall.api.share.shareUrl",
         "sf.b2c.mall.api.task.directReceiveAward": "scripts/api/sf.b2c.mall.api.task.directReceiveAward",
         "sf.b2c.mall.api.task.getUserTaskList": "scripts/api/sf.b2c.mall.api.task.getUserTaskList",
+        "sf.b2c.mall.api.task.getShareBuyDetail": "scripts/api/sf.b2c.mall.api.task.getShareBuyDetail",
 
         //states
         "Stats": "scripts/vendor/Stats",

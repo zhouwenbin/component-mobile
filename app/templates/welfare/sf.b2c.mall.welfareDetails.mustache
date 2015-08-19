@@ -1,12 +1,15 @@
 <section class="welfare-detail">
-	<img class="imageBig" src="../img/temp_02.jpg" alt="">
+	<img class="imageBig" src="{{pic}}" alt="">
 	<div class="footerCn">
-		<p class="old-price">售价：89元</p>
-		<p class="new-price">领红包购买只需19元</p>
-		<div class="btnsOut shareBtn">
-			<input type="text" placeholder="请输入手机号码">
-			<a href="javascript:;" class="btn">领红包</a>
+		<p class="old-price">售价：{{originPrice}}元</p>
+		<p class="new-price">领红包购买只需{{salePrice}}元</p>
+		<div class="btnsOut" id="isToShare">
+			<a href="javascript:;" class="btn toShareBtn">领红包</a>
 		</div>
-		<a href="javascript:;" class="toRuleBtn">活动规则</a>
+		<div class="btnsOut shareBtn" id="isShare">
+			<input type="text" placeholder="请输入手机号码">
+			<a href="javascript:;" class="btn toShareBtn">领红包</a>
+		</div>
+		<a href="http://m.sfht.com/welfare-rule.html#!flsRule={{description}}" class="toRuleBtn">活动规则</a>
 	</div>
 </section>
