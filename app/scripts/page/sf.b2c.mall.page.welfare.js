@@ -19,7 +19,12 @@ define(
       can.route.ready();
 
       var welfareList = can.Control.extend({
-        
+        helpers: {
+          'sf-uni': function(description){
+            return decodeURIComponent(description())
+          }
+        },
+
         itemObj: new can.Map({}),
         '{can.route} change': function() {
           this.render();
@@ -42,7 +47,7 @@ define(
 
         stepCates: function(data) {
           var renderFn = can.view.mustache(template_welfare_list);
-          var html = renderFn(data);
+          var html = renderFn(data, this.helpers);
           this.element.html(html);
           loadingCtrl.hide();
         },
