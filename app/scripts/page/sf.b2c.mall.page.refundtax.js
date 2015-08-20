@@ -125,11 +125,13 @@ define(
 
 					createRefundTax.sendRequest()
 						.done(function(data) {
+							console.log(1);
 							$('.dialog-refundtax').show();
 							setTimeout(function() {
 								window.location.href = 'http://m.sfht.com/orderdetail.html?orderid=' + params.orderid
 							}, 2000);
 						}).fail(function(errorCode) {
+							console.log(2);
 							if (errorCode == '-140') {
 								return false;
 							};
