@@ -21,6 +21,12 @@ define(
       can.route.ready();
 
       var welfareDetails = can.Control.extend({
+        helpers: {
+          'sf-uni': function(description){
+            return escape(description())
+          }
+        },
+        
         itemObj: new can.Map({}),
         '{can.route} change': function() {
           this.render();
@@ -42,7 +48,7 @@ define(
 
         stepCates: function(data) {
           var renderFn = can.view.mustache(template_welfare_details);
-          var html = renderFn(data);
+          var html = renderFn(data, this.helpers);
           this.element.html(html);
           var taskId = can.route.attr('taskId');
           var ifHasIsId = can.route.attr('isTaskId');
