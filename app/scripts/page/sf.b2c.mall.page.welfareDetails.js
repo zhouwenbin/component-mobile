@@ -12,9 +12,10 @@ define(
     'sf.b2c.mall.widget.loading',
     "sf.bridge",
     'sf.b2c.mall.widget.message',
+    'sf.b2c.mall.api.coupon.rcvCouponByMobile'
   ],
 
-  function(can, $, SFFrameworkComm, SFshareUrl, SFgetShareBuyDetail, template_welfare_details, SFLoading, SFbridge, SFmessage) {
+  function(can, $, SFFrameworkComm, SFshareUrl, SFgetShareBuyDetail, template_welfare_details, SFLoading, SFbridge, SFmessage, SFReceiveCoupon) {
       SFFrameworkComm.register(3);
       var loadingCtrl = new SFLoading();
       can.route.ready();
@@ -47,6 +48,7 @@ define(
           var ifHasIsId = can.route.attr('isTaskId');
           if(ifHasIsId == 'isTaskId'){
            $('#isToShare').css('display', 'none');
+           can.route.attr('couponId',data.couponId);
           }else{
             $('#isShare').css('display', 'none');
           }
@@ -73,15 +75,15 @@ define(
 
         '.toShareBtn1 click': function($element, event) {
           var ifHasIsId = can.route.attr('isTaskId');
-          var url = window.location.href;
+          var taskId = can.route.attr('taskId');
+          var url = window.location.hostname + window.location.pathname+ '#!'+ $.param({taskId: taskId});
           if(ifHasIsId != 'isTaskId'){
             if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-              window.location.href ="http://m.sfht.com/login.html?from="+window.encodeURIComponent(url);
+              window.location.href ="http://m.sfht.com/login.html?from="+wiosndow.encodeURIComponent(url);
               return false;
             }
           }
           var pic = $('.imageBig').attr('src');
-          var taskId = can.route.attr('taskId');
           var urlId = url+'&isTaskId=isTaskId';
 
           var params = {
@@ -111,13 +113,55 @@ define(
             }) .fail(function(error) {
               console.error(error);
             });
-          }
+          };
           var error = function (data) {
             alert('data.error');
             alert(JSON.stringify(data))
-          }
+          };
           window.bridge.run('SocialSharing', 'share', params, success, error)
         },
+
+        '.toShareBtn2 click': function($element, event) {
+            event && event.preventDefault();
+            var couponId =  can.route.attr('couponId');
+            var mobile = $('.mobileNum').val();
+            if(!/^1[0-9]{10}$/.test(mobile)){
+              alert('你填写的手机号格式有误,请重新填写')
+            }
+            var that = this;
+            var rcvCouponByMobile = new SFReceiveCoupon({
+              bagId: couponId,
+              mobile: mobile,
+              type: "CARD",
+              receiveChannel: 'B2C_H5',
+              receiveWay: 'FLS'
+            });
+
+            rcvCouponByMobile.sendRequest()
+              .done(function(data) {
+                console.log('已经发送')
+              })
+              .fail(function(errorCode) {
+                if (_.isNumber(errorCode)) {
+                  var codeMap = {
+                    '11000020':'卡券id不存在',
+                    '11000030': '卡券已作废',
+                    '11000050': '卡券已领完',
+                    '11000100': '用户已领过该券',
+                    '11000130': '卡包不存在',
+                    '11000140': '卡包已作废'
+                  }
+                  var defaultText = '领取失败';
+                  var errorText = codeMap[errorCode.toString()] || defaultText;
+                  new SFmessage(null, {
+                    'tip': errorText,
+                    'type': 'error'
+                  });
+                  return;
+                }
+
+              })
+          }
        });
       new welfareDetails('body');
   });
