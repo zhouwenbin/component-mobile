@@ -84,11 +84,11 @@ define(
           var url = 'http://' + window.location.hostname + window.location.pathname+ '#!'+ $.param({taskId: taskId});
           if(ifHasIsId != 'isTaskId'){
             if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-              window.location.href ="http://m.sfht.com/login.html?from="+wiosndow.encodeURIComponent(url);
+              window.location.href ="http://m.sfht.com/login.html?from="+window.encodeURIComponent(url);
               return false;
             }
           }
-          var pic = $('.imageBig').attr('src');
+          var pic = $('.imageBig').attr('data-samllPic');
           var urlId = url+'&isTaskId=isTaskId';
 
           var params = {

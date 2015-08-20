@@ -31,5 +31,14 @@
 		require(['sf.b2c.mall.page.welfare']);
 	</script>
 	<!-- endbuild -->
+	<script type="text/javascript">
+		window.onload = function () {
+			window.cordova = {
+				fireDocumentEvent: function (target){
+					window.location.reload();
+				}
+			}
+		}
+	</script>
 </body>
 </html>
