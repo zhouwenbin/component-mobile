@@ -96,7 +96,8 @@ define(
 			},
 			'.btn-refer-tax click': function(element, event) {
 				event && event.preventDefault();
-
+				// 显示蒙层
+				loadingCtrl.show();
 				$('#errorNoPicTips').hide();
 				$('#errorAlipayAccount').hide();
 				$('#errorAlipayName').hide();
@@ -139,6 +140,8 @@ define(
 								'12110000': '该订单已提交过退税申请'
 							}
 							$('#errorNoPicTips').text(map[errorCode]).show();
+						}).always(function() {
+							loadingCtrl.hide();
 						})
 				};
 			},
@@ -278,9 +281,6 @@ define(
 
 		switcher.register('web', function() {
 
-			// 显示蒙层
-			loadingCtrl.show();
-
 			new refundtax('body');
 			//new SFNav('.sf-b2c-mall-nav');
 		});
@@ -315,11 +315,6 @@ define(
 					var callback = function() {
 						window.location.reload();
 					}
-
-					SFHybrid.notification.add('NotificationAddressDidDelete', callback);
-					SFHybrid.notification.add('NotificationAddressDidEdit', callback);
-					SFHybrid.notification.add('NotificationAddressDidAdd', callback);
-					SFHybrid.notification.add('NotificationAddressDidSetDefault', callback);
 				}
 			};
 
@@ -328,5 +323,5 @@ define(
 
 		switcher.go();
 		// －－－－－－－－－－－－－－－－－－－－－－
-		
+
 	})
