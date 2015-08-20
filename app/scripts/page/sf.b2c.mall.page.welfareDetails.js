@@ -10,10 +10,11 @@ define(
     'sf.b2c.mall.api.task.getShareBuyDetail',
     'text!template_welfare_details',
     'sf.b2c.mall.widget.loading',
-    "sf.bridge"
+    "sf.bridge",
+    'sf.b2c.mall.widget.message',
   ],
 
-  function(can, $, SFFrameworkComm, SFshareUrl, SFgetShareBuyDetail, template_welfare_details, SFLoading, SFbridge) {
+  function(can, $, SFFrameworkComm, SFshareUrl, SFgetShareBuyDetail, template_welfare_details, SFLoading, SFbridge, SFmessage) {
       SFFrameworkComm.register(3);
       var loadingCtrl = new SFLoading();
       can.route.ready();
@@ -49,6 +50,7 @@ define(
           }else{
             $('#isShare').css('display', 'none');
           }
+          console.log()
           loadingCtrl.hide();
         },
 
@@ -69,35 +71,46 @@ define(
           });
         },
 
-        '.toShareBtn click': function($element, event) {
-          if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-            window.location.href ="http://m.sfht.com/login.html";
-            return false;
+        '.toShareBtn1 click': function($element, event) {
+          var ifHasIsId = can.route.attr('isTaskId');
+          var url = window.location.href;
+          if(ifHasIsId != 'isTaskId'){
+            if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+              window.location.href ="http://m.sfht.com/login.html?from="+window.encodeURIComponent(url);
+              return false;
+            }
           }
           var pic = $('.imageBig').attr('src');
-          var url = window.location.href;
+          var taskId = can.route.attr('taskId');
+          var urlId = url+'&isTaskId=isTaskId';
+
           var params = {
-              "subject": 'fhduoh',
-              "description": 'g3rwgr',
+              "subject": 'fulishe',
+              "description": 'fulishe',
               "imageUrl": pic,
-              "url": url
+              "url": urlId
           }
-          // var ifHasIsId = can.route.attr('isTaskId');
-          // if(ifHasIsId != 'isTaskId'){
-          //  can.route.attr('isTaskId','isTaskId');
-          // }
           var success =function (data) {
             alert('data.text');
             alert(JSON.stringify(data))
             console.log(url);
-            // var url = can.route.attr();
-            // var target = '微信朋友圈';
-            // var sFshareUrl =new SFshareUrl({url:url,target:target});
-            // can.when(sFshareUrl.sendRequest()).done(function(data) {
-
-            // }) .fail(function(error) {
-            //   console.error(error);
-            // });
+            var url = urlId;
+            var target = 'WeChat';
+            var sFshareUrl =new SFshareUrl({url:url,target:target});
+            can.when(sFshareUrl.sendRequest()).done(function(data) {
+              setTimeout(function(){
+                var message = new SFmessage(null, {
+                  'tip': data.text,
+                  'type': 'success',
+                  'okFunction': function() {
+                      window.location.href= data.buttonLink;
+                  },
+                });
+                $('#ok').text(data.buttonText);
+              },10);
+            }) .fail(function(error) {
+              console.error(error);
+            });
           }
           var error = function (data) {
             alert('data.error');

@@ -64,10 +64,12 @@ define(
         },
 
         '.joinBtns click': function($element, event) {
+          var url = window.location.href;
           if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-            window.location.href ="http://m.sfht.com/login.html";
-            return false;
+              window.location.href ="http://m.sfht.com/login.html?from="+window.encodeURIComponent(url);
+              return false;
           }
+          
           if($element.hasClass('direct')){
             $element.attr({
               href: 'javascript:;'
