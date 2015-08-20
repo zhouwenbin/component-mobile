@@ -112,7 +112,6 @@ define(
 				var mailNo = this.options.orderItem.orderPackageItemList[tag].logisticsNo;
 				if (this.checkAlipayAccount(alipayAccount) && this.checkAlipayName(alipayname)) {
 					var params = can.deparam(window.location.search.substr(1));
-					alert(3);
 					var createRefundTax = new SFCreateRefundTax({
 						'bizId': bizId,
 						'masterBizId': params.orderid,
@@ -123,16 +122,14 @@ define(
 						'alipayUserName': $.trim(alipayname),
 						'url': this.getValue()
 					});
-
+					
 					createRefundTax.sendRequest()
 						.done(function(data) {
-							alert(1);
 							$('.dialog-refundtax').show();
 							setTimeout(function() {
 								window.location.href = 'http://m.sfht.com/orderdetail.html?orderid=' + params.orderid
 							}, 2000);
 						}).fail(function(errorCode) {
-							alert(2);
 							if (errorCode == '-140') {
 								return false;
 							};
