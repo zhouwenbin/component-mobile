@@ -85,7 +85,7 @@ define(
           var taskId = can.route.attr('taskId');
           var ifHasIsId = can.route.attr('isTaskId');
           if(ifHasIsId != 'isTaskId'){
-           can.route.attr('taskId','isTaskId');
+           can.route.attr('isTaskId','isTaskId');
           }
           console.log(url);
           var success =function (data) {
