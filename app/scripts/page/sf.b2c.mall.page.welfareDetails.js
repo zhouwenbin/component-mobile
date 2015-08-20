@@ -23,7 +23,7 @@ define(
       var welfareDetails = can.Control.extend({
         helpers: {
           'sf-uni': function(description){
-            return encodeURIComponent(description())
+            return escape(description())
           }
         },
 
@@ -58,7 +58,6 @@ define(
           }else{
             $('#isShare').css('display', 'none');
           }
-          console.log(can.route.attr('couponId'));
           loadingCtrl.hide();
         },
 
