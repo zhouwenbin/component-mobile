@@ -75,19 +75,17 @@ define(
             return false;
           }
           var pic = $('.imageBig').attr('src');
-          var url = can.route.attr();
+          var url = window.location.href;
           var params = {
               "subject": 'fhduoh',
               "description": 'g3rwgr',
               "imageUrl": pic,
               "url": url
           }
-          var taskId = can.route.attr('taskId');
-          var ifHasIsId = can.route.attr('isTaskId');
-          if(ifHasIsId != 'isTaskId'){
-           can.route.attr('isTaskId','isTaskId');
-          }
-          console.log(url);
+          // var ifHasIsId = can.route.attr('isTaskId');
+          // if(ifHasIsId != 'isTaskId'){
+          //  can.route.attr('isTaskId','isTaskId');
+          // }
           var success =function (data) {
             alert('data.text');
             alert(JSON.stringify(data))
