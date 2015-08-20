@@ -21,7 +21,7 @@
 			String.prototype.getURLParameter = function(name) {
 				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
 				var str = this.substr(this.indexOf("\?")+1).substr(2,hash.length).match(reg);
-				if (str!=null) return str[2]; return null;
+				if (str!=null) return decodeURIComponent(str[2]); return null;
 			}
 			var hash = window.location.hash;
 			var rule = hash.getURLParameter('flsRule')||'暂无规则';
