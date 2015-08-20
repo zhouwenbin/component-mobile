@@ -10,9 +10,11 @@ define(
 		'sf.b2c.mall.api.finance.createRefundTax',
 		'sf.b2c.mall.api.order.getOrderV2',
 		'plupload',
-		'sf.b2c.mall.widget.loading'
+		'sf.b2c.mall.widget.loading',
+		'sf.env.switcher',
+		'sf.hybrid'
 	],
-	function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFBizConf, SFCreateRefundTax, SFGetOrderV2, plupload, SFLoading) {
+	function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFBizConf, SFCreateRefundTax, SFGetOrderV2, plupload, SFLoading, SFSwitcher, SFHybrid) {
 
 		// 在页面上使用fastclick
 		Fastclick.attach(document.body);
@@ -269,5 +271,62 @@ define(
 				}
 			}
 		});
-		new refundtax('body');
+
+		// －－－－－－－－－－－－－－－－－－－－－－
+		// 启动分支逻辑
+		var switcher = new SFSwitcher();
+
+		switcher.register('web', function() {
+
+			// 显示蒙层
+			loadingCtrl.show();
+
+			new refundtax('body');
+			//new SFNav('.sf-b2c-mall-nav');
+		});
+
+		switcher.register('app', function() {
+			var app = {
+				initialize: function() {
+					this.bindEvents();
+				},
+
+				bindEvents: function() {
+					document.addEventListener('deviceready', this.onDeviceReady, false);
+					// document.addEventListener('resume', this.onResume, false);
+				},
+
+				onResume: function() {
+					// 粗暴的重刷页面获取新数据
+					window.location.reload();
+				},
+
+				onDeviceReady: function() {
+					app.receivedEvent('deviceready');
+				},
+
+				receivedEvent: function(id) {
+
+					SFHybrid.setNetworkListener();
+					SFHybrid.isLogin().done(function() {
+						new refundtax('body');
+					});
+
+					var callback = function() {
+						window.location.reload();
+					}
+
+					SFHybrid.notification.add('NotificationAddressDidDelete', callback);
+					SFHybrid.notification.add('NotificationAddressDidEdit', callback);
+					SFHybrid.notification.add('NotificationAddressDidAdd', callback);
+					SFHybrid.notification.add('NotificationAddressDidSetDefault', callback);
+				}
+			};
+
+			app.initialize();
+		});
+
+		switcher.go();
+		// －－－－－－－－－－－－－－－－－－－－－－
+		
 	})
