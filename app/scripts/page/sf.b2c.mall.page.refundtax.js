@@ -125,15 +125,10 @@ define(
 
 					createRefundTax.sendRequest()
 						.done(function(data) {
-							$('.mask').show();
-							$('.dialog-success-refertax').show();
-							$('.back-to-orderdetail').click(function() {
-								window.history.back();
-							});
-							$('.btn-close').click(function() {
-								$('.mask').hide();
-								$('.dialog-success-refertax').hide();
-							})
+							$('.dialog-refundtax').show();
+							setTimeout(function() {
+								window.location.href = 'http://m.sfht.com/orderdetail.html?orderid=' + params.orderid
+							}, 2000);
 						}).fail(function(errorCode) {
 							if (errorCode == '-140') {
 								return false;
@@ -190,23 +185,7 @@ define(
 					$(itemHTML).appendTo($('#img-tax-box'));
 				});
 
-				// plupload.bind("UploadProgress", function(a, uploadingFile) {
-				// 	var delHTML = "";
-				// 	if (100 == uploadingFile.percent) {
-				// 		// delHTML = '<em value="删除">X</em>';
-				// 		delHTML = '';
-				// 	}else{	
-				// 		delHTML = '正在上传中';
-				// 	}
-				// 	$('#img-tax-box').append(delHTML)
-				// 	//$("#" + uploadingFile.id + " .del").html(delHTML);
-				// });
-
 				plupload.bind("UploadFile", function() {});
-
-				// plupload.bind("UploadComplete", function() {
-				// 	$("#divFileProgressStatus").slideUp(1500)
-				// });
 
 				plupload.bind("Error", function(a, b) {
 					var c = {

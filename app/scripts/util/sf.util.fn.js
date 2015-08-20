@@ -12,7 +12,7 @@ define('sf.util', [
   //$(window).hashchange();
   can.route.ready();
 
-  window.getShareIcon = function () {
+  window.getShareIcon = function() {
     var src = $('#icon').attr('data-src');
     return src || 'false';
   }
@@ -64,7 +64,7 @@ define('sf.util', [
 
         if (isApp) {
           return isApp;
-        }else if (whole.indexOf('platform=android') > -1) {
+        } else if (whole.indexOf('platform=android') > -1) {
           store.set('IS_APP', 'android');
           return 'android';
         } else if (whole.indexOf('platform=ios') > -1) {
@@ -75,18 +75,18 @@ define('sf.util', [
         }
       },
 
-      onlineApp: function () {
+      onlineApp: function() {
         if (this.APP() && !window.cordova) {
           return true;
-        }else{
+        } else {
           return false;
         }
       },
 
-      localApp: function () {
+      localApp: function() {
         if (this.APP() && window.cordova) {
           return true;
-        }else{
+        } else {
           return false;
         }
       },
@@ -151,6 +151,20 @@ define('sf.util', [
       str = str + word;
 
       return md5(str);
+    },
+
+    tip: function(message, time) {
+      var $el = $('<div class="dialog-cart" style="z-index:9999;"><div class="dialog-cart-inner" style="width:242px;padding:20px 60px;"><p style="margin-bottom:10px;">' + message + '</p></div><a href="javascript:" class="icon icon108 closeDialog">关闭</a></div>');
+      if ($('.dialog-cart').length > 0) {
+        return false;
+      };
+      $(document.body).append($el);
+      $('.closeDialog').click(function(event) {
+        $el.remove();
+      });
+      setTimeout(function() {
+        $el.remove();
+      }, time || "3000");
     },
 
     sign: function(params, isForce) {
