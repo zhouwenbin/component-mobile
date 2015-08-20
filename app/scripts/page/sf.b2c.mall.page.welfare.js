@@ -21,7 +21,7 @@ define(
       var welfareList = can.Control.extend({
         helpers: {
           'sf-uni': function(description){
-            return escape(description())
+            return encodeURIComponent(description())
           }
         },
         
