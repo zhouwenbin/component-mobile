@@ -30,7 +30,7 @@ define(
 				var that = this;
 
 				if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-					window.location.href = 'index.html';
+					window.location.href = 'http://m.sfht.com/login.html';
 				}
 
 
@@ -51,7 +51,7 @@ define(
 					.done(function(data) {
 						that.options.attr(data);
 					}).fail(function(errorCode) {
-						window.location.href = 'index.html';
+						window.location.href = 'http://m.sfht.com/index.html';
 					})
 
 			},
@@ -122,7 +122,7 @@ define(
 						'alipayUserName': $.trim(alipayname),
 						'url': this.getValue()
 					});
-					
+
 					createRefundTax.sendRequest()
 						.done(function(data) {
 							$('.dialog-refundtax').show();
