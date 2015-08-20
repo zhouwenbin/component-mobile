@@ -94,6 +94,7 @@ define(
 			},
 			'.btn-refer-tax click': function(element, event) {
 				event && event.preventDefault();
+
 				$('#errorNoPicTips').hide();
 				$('#errorAlipayAccount').hide();
 				$('#errorAlipayName').hide();
@@ -111,7 +112,7 @@ define(
 				var mailNo = this.options.orderItem.orderPackageItemList[tag].logisticsNo;
 				if (this.checkAlipayAccount(alipayAccount) && this.checkAlipayName(alipayname)) {
 					var params = can.deparam(window.location.search.substr(1));
-
+					alert(3);
 					var createRefundTax = new SFCreateRefundTax({
 						'bizId': bizId,
 						'masterBizId': params.orderid,
@@ -125,13 +126,13 @@ define(
 
 					createRefundTax.sendRequest()
 						.done(function(data) {
-							console.log(1);
+							alert(1);
 							$('.dialog-refundtax').show();
 							setTimeout(function() {
 								window.location.href = 'http://m.sfht.com/orderdetail.html?orderid=' + params.orderid
 							}, 2000);
 						}).fail(function(errorCode) {
-							console.log(2);
+							alert(2);
 							if (errorCode == '-140') {
 								return false;
 							};
