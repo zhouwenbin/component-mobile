@@ -76,7 +76,7 @@ define(
         '.toShareBtn1 click': function($element, event) {
           var ifHasIsId = can.route.attr('isTaskId');
           var taskId = can.route.attr('taskId');
-          var url = window.location.hostname + window.location.pathname+ '#!'+ $.param({taskId: taskId});
+          var url = 'http://' + window.location.hostname + window.location.pathname+ '#!'+ $.param({taskId: taskId});
           if(ifHasIsId != 'isTaskId'){
             if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
               window.location.href ="http://m.sfht.com/login.html?from="+wiosndow.encodeURIComponent(url);
