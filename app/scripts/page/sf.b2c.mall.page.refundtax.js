@@ -84,8 +84,11 @@ define(
 				var isTelNum = /^1\d{10}$/.test(account);
 				var isMail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(account);
 				if (account == '') {
+					loadingCtrl.hide();
 					$('#errorAlipayAccount').text('请输入支付宝账号').show();
+					return false;
 				} else if (!isTelNum && !isMail) {
+					loadingCtrl.hide();
 					$('#errorAlipayAccount').text('请输入正确的支付宝账号').show();
 					return false;
 				} else {
@@ -97,6 +100,7 @@ define(
 				var name = $.trim(name);
 				if (name == '') {
 					$('#errorAlipayName').show();
+					loadingCtrl.hide();
 					return false;
 				} else {
 					return true;
@@ -110,6 +114,7 @@ define(
 				$('#errorAlipayAccount').hide();
 				$('#errorAlipayName').hide();
 				if (this.getValue() == '') {
+					loadingCtrl.hide();
 					$('#errorNoPicTips').text('请上传缴税证明照片').show();
 					return false;
 				};
