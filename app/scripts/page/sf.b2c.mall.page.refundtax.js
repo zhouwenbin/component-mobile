@@ -43,7 +43,16 @@ define(
 				$('#errorNoPicTips').hide();
 				$('#errorAlipayAccount').hide();
 				$('#errorAlipayName').hide();
-				var params = can.deparam(window.location.search.substr(1));
+				// var params = can.deparam(window.location.search.substr(1));
+
+				var params = null;
+
+				if (SFFn.isMobile.APP()) {
+					params = can.route.attr();
+				}else{
+					params = can.deparam(window.location.search.substr(1));
+				}
+
 				this.options = new can.Map({});
 				var getOrder = new SFGetOrderV2({
 					"orderId": params.orderid
@@ -114,7 +123,14 @@ define(
 				var bizId = this.options.orderItem.orderPackageItemList[tag].packageNo;
 				var mailNo = this.options.orderItem.orderPackageItemList[tag].logisticsNo;
 				if (this.checkAlipayAccount(alipayAccount) && this.checkAlipayName(alipayname)) {
-					var params = can.deparam(window.location.search.substr(1));
+					var params = null;
+
+					if (SFFn.isMobile.APP()) {
+						params = can.route.attr();
+					}else{
+						params = can.deparam(window.location.search.substr(1));
+					}
+
 					var createRefundTax = new SFCreateRefundTax({
 						'bizId': bizId,
 						'masterBizId': params.orderid,
@@ -129,9 +145,27 @@ define(
 					createRefundTax.sendRequest()
 						.done(function(data) {
 							$('.dialog-refundtax').show();
-							setTimeout(function() {
-								window.location.href = 'http://m.sfht.com/orderdetail.html?orderid=' + params.orderid
-							}, 2000);
+
+							var switcher = new SFSwitcher();
+							switcher.register('web', function() {
+								setTimeout(function() {
+									window.location.href = 'http://m.sfht.com/orderdetail.html?orderid=' + params.orderid
+								}, 2000);
+				      });
+
+				      switcher.register('app', function() {
+
+				      	SFHybrid.notification.post('NotificationOrderReturnTax');
+
+				      	setTimeout(function() {
+				      		SFHybrid.sfnavigator.pop();
+				      	}, 2000);
+
+				        // SFHybrid.sfnavigator.popToIdentifier('orderReturnTax');
+				      });
+
+				      switcher.go();
+
 						}).fail(function(errorCode) {
 							if (errorCode == '-140') {
 								return false;
@@ -230,8 +264,6 @@ define(
 
 				plupload.bind("FileUploaded", function(a, file, result) {
 					var response = result.response;
-
-					alert(JSON.stringify(response));
 
 					if ("" != response) {
 						var filename = JSON.parse(response).content[0]["CPRODUCT_IMG.jpg"];
