@@ -28,7 +28,6 @@ define(
 
 
 			init: function(options) {
-				alert('init');
 				var that = this;
 
 				if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
@@ -36,8 +35,8 @@ define(
 				}
 
 
-				//this.imgPrefix = "http://img0.sfht.com/";
-				this.imgPrefix = "http://testimg.sfht.com/";
+				this.imgPrefix = "http://img0.sfht.com/";
+				//this.imgPrefix = "http://testimg.sfht.com/";
 
 				this.initPic();
 				$('#errorNoPicTips').hide();
@@ -205,7 +204,6 @@ define(
 				plupload.bind("UploadFile", function() {});
 
 				plupload.bind("Error", function(a, b) {
-					alert('error');
 					var c = {
 						e100: "\u51fa\u73b0\u901a\u7528\u9519\u8bef\u3002",
 						e200: "\u51fa\u73b0Http\u9519\u8bef\u3002",
@@ -224,7 +222,6 @@ define(
 
 				plupload.bind("QueueChanged", function(a) {
 					plupload.start();
-					alert('start');
 					loadingCtrl.show();
 					$('#svg01').hide();
 					$('#btn-refundtax-text').text('重新上传清晰缴纳证明照片');
@@ -232,7 +229,6 @@ define(
 
 				plupload.bind("FileUploaded", function(a, file, result) {
 					var response = result.response;
-					alert(JSON.stringify(response));
 					if ("" != response) {
 						var filename = JSON.parse(response).content[0]["CPRODUCT_IMG.jpg"];
 						var imgURL = that.imgPrefix + filename;
