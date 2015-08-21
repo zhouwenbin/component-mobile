@@ -89,9 +89,9 @@ define(
                   'tip': taskId.text,
                   'type': 'success',
                   'okFunction': function() {
-                    // if(taskId.code == ''){
-                    //   $element.closest('li').addClass('completed');
-                    // }
+                    if(taskId.success){
+                      $element.closest('li').addClass('completed');
+                    }
                   },
               });
             }) .fail(function(error){
