@@ -228,18 +228,18 @@
 		&.shareBtn{
 			position: relative;
 			.btn{
-				width: 25%;
+				width: 27%;
 				position: absolute;
 				top: 0;
 				right: 0;
 				display: block;
 			}
 			input{
-				height: 44px;
-				width: 73%;
-				padding: 0 2%;
+				// height: 44px;
+				width: 70%;
+				padding: 14px 2%;
 				font-size: 14px;
-				line-height: 44px;
+				line-height: 16px;
 				&::-webkit-input-placeholder{
 					color:#999999;
 					text-indent: 0
