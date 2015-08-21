@@ -90,23 +90,23 @@ define(
           }
           var pic = $('.imageBig').attr('data-samllPic');
           var urlId = url+'&isTaskId=isTaskId';
-
+          alert('123456');
           var params = {
               "subject": 'fulishe',
               "description": 'fulishe',
-              "imageUrl": 'http://img0.sfht.com/app/SFHT_1024.png',
+              "imageUrl": 'http://img0.sfht.com/sf/bundefined/1e75ba3c60edfc0c756e2ceb0390d5e6.jpg@102h_102w_80Q_1x.jpg',
               "url": urlId
           }
           var success =function (data) {
             alert('123');
-            alert('success:'+data);
+            alert('success:',data);
             alert(JSON.stringify(data))
             var url = urlId;
             var target = 'WeChat';
             var sFshareUrl =new SFshareUrl({url:url,target:target});
-            alert('urlId:'+url);
+            alert('urlId:',url);
             can.when(sFshareUrl.sendRequest()).done(function(data) {
-              alert('Share-data:'+url);
+              alert('Share-data:',url,data,data.buttonText);
               setTimeout(function(){
                 var message = new SFmessage(null, {
                   'tip': data.text,
