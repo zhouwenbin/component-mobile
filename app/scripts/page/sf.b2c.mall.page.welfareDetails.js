@@ -98,7 +98,7 @@ define(
               "url": urlId
           }
           var success =function (data) {
-            alert('success':data);
+            alert('success:'+data);
             alert(JSON.stringify(data))
             var url = urlId;
             var target = 'WeChat';
