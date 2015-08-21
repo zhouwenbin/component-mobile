@@ -98,13 +98,14 @@ define(
               "url": urlId
           }
           var success =function (data) {
-            alert('data.text');
+            alert(data);
             alert(JSON.stringify(data))
-            console.log(url);
             var url = urlId;
             var target = 'WeChat';
             var sFshareUrl =new SFshareUrl({url:url,target:target});
+            alert('urlId':url);
             can.when(sFshareUrl.sendRequest()).done(function(data) {
+              alert('Share-data':url);
               setTimeout(function(){
                 var message = new SFmessage(null, {
                   'tip': data.text,
