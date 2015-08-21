@@ -98,6 +98,8 @@ define(
               "url": urlId
           }
           var success =function (data) {
+            alert(data);
+            alert(456);
             switch(data){
               case 0:
                 target='WeChat';
