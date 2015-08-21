@@ -36,7 +36,7 @@ define(
 
 
 				this.imgPrefix = "http://img0.sfht.com/";
-				//this.imgPrefix = "http://testimg.sfht.com/";
+				// this.imgPrefix = "http://testimg.sfht.com/";
 
 				this.initPic();
 				$('#errorNoPicTips').hide();
@@ -176,7 +176,9 @@ define(
 						}).always(function() {
 							loadingCtrl.hide();
 						})
-				};
+				}else{
+					loadingCtrl.hide();
+				}
 			},
 
 			//初始化图片上传控件
