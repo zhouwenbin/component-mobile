@@ -147,8 +147,8 @@ define(
       },
 
       download: function () {
-      
-        if (SFFn.isMobile.WeChat()) {
+
+        if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
 
           window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
           // $("#downloadAppBtn").attr("href", "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m");

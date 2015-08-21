@@ -49,6 +49,9 @@ define('sf.util', [
       Firefox: function() {
         return (navigator.userAgent.indexOf("Firefox") > -1)
       },
+      QQ: function () {
+        return (navigator.userAgent.indexOf('QQBrowser') > -1);
+      },
       WeChat: function() {
         return navigator.userAgent.match(/MicroMessenger/i);
       },
