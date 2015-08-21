@@ -94,7 +94,7 @@ define(
           var params = {
               "subject": 'fulishe',
               "description": 'fulishe',
-              "imageUrl": pic,
+              "imageUrl": 'http://img0.sfht.com/app/SFHT_1024.png',
               "url": urlId
           }
           var success =function (data) {
