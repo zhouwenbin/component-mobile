@@ -81,7 +81,7 @@ define(
         '.toShareBtn1 click': function($element, event) {
           var ifHasIsId = can.route.attr('isTaskId');
           var taskId = can.route.attr('taskId');
-          var url = 'http://' + window.location.hostname + window.location.pathname+ '#!'+ $.param({taskId: taskId});
+          var url = 'http://' + window.location.hostname + window.location.pathname+ '#!&'+ $.param({taskId: taskId});
           if(ifHasIsId != 'isTaskId'){
             if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
               window.location.href ="http://m.sfht.com/login.html?from="+window.encodeURIComponent(url);
@@ -98,15 +98,23 @@ define(
               "url": urlId
           }
           var success =function (data) {
-            alert('123');
-            alert('success:'+data);
-            alert(JSON.stringify(data))
+            switch(data){
+              {
+              case 0:
+                target='WeChat';
+                break;
+              case 1:
+                target='MOMENTS';
+                break;
+              case 2:
+                target='QQ';
+                break;
+            }
             var url = urlId;
-            var target = 'WeChat';
+            var target = target||'WeChat';
             var sFshareUrl =new SFshareUrl({url:url,target:target});
-            alert('urlId:'+url+sFshareUrl);
             can.when(sFshareUrl.sendRequest()).done(function(data) {
-              //alert('Share-data:',url,data,data.buttonText);
+              alert(data,data.buttonText);
               setTimeout(function(){
                 var message = new SFmessage(null, {
                   'tip': data.text,
