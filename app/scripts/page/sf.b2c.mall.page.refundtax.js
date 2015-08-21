@@ -28,7 +28,6 @@ define(
 
 
 			init: function(options) {
-
 				var that = this;
 
 				if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
@@ -36,8 +35,8 @@ define(
 				}
 
 
-				//this.imgPrefix = "http://img0.sfht.com/";
-				this.imgPrefix = "http://testimg.sfht.com/";
+				this.imgPrefix = "http://img0.sfht.com/";
+				//this.imgPrefix = "http://testimg.sfht.com/";
 
 				this.initPic();
 				$('#errorNoPicTips').hide();
@@ -264,7 +263,6 @@ define(
 
 				plupload.bind("FileUploaded", function(a, file, result) {
 					var response = result.response;
-
 					if ("" != response) {
 						var filename = JSON.parse(response).content[0]["CPRODUCT_IMG.jpg"];
 						var imgURL = that.imgPrefix + filename;
