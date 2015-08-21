@@ -99,7 +99,6 @@ define(
           }
           var success =function (data) {
             switch(data){
-              {
               case 0:
                 target='WeChat';
                 break;

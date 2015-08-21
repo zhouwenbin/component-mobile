@@ -236,12 +236,13 @@
 			}
 			input{
 				outline:none;
-				border: 0;
+				border: 1px solid transparent;
 				// height: 44px;
 				width: 70%;
 				padding: 14px 2%;
 				font-size: 14px;
-				line-height: 16px;
+				height: 16px;
+				line-height: 14px;
 				&::-webkit-input-placeholder{
 					color:#999999;
 					text-indent: 0
