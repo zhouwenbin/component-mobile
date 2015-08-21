@@ -99,14 +99,14 @@ define(
           }
           var success =function (data) {
             alert('123');
-            alert('success:',data);
+            alert('success:'+data);
             alert(JSON.stringify(data))
             var url = urlId;
             var target = 'WeChat';
             var sFshareUrl =new SFshareUrl({url:url,target:target});
-            alert('urlId:',url);
+            alert('urlId:'+url+sFshareUrl);
             can.when(sFshareUrl.sendRequest()).done(function(data) {
-              alert('Share-data:',url,data,data.buttonText);
+              //alert('Share-data:',url,data,data.buttonText);
               setTimeout(function(){
                 var message = new SFmessage(null, {
                   'tip': data.text,
@@ -116,7 +116,7 @@ define(
                   },
                 });
                 $('#ok').text(data.buttonText);
-              },10);
+              },300);
             }) .fail(function(error) {
               console.error(error);
             });
