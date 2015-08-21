@@ -153,6 +153,18 @@ define(
 
 				that.imgCount = 0;
 				var filename = "1.jpg";
+
+				var params = can.route.attr();
+				var word = null;
+				if (params.platform) {
+					var _aid = params.appId;
+					var _tk = params.token;
+
+					word = $.param({_aid: _aid, _tk: _tk})
+				}else{
+					word = $.param({_aid: 3});
+				}
+
 				// 上传组件
 				var plupload = new window.plupload.Uploader({
 					runtimes: "gears,html5,flash",
@@ -164,7 +176,7 @@ define(
 					multipart_params: {
 						fileVal: 'CPRODUCT_IMG' + filename.substring(filename.lastIndexOf("."), filename.length)
 					},
-					url: SFBizConf.setting.api.fileurl + "?_aid=3",
+					url: SFBizConf.setting.api.fileurl + "?"+ word,
 					flash_swf_url: "../img/plupload.flash.swf?r=" + Math.random(),
 					silverlight_xap_url: "../img/plupload.silverlight.xap",
 					filters: [{
@@ -220,7 +232,7 @@ define(
 
 				plupload.bind("FileUploaded", function(a, file, result) {
 					var response = result.response;
-					alert(response);
+					alert(JSON.stringify(response));
 					if ("" != response) {
 						var filename = JSON.parse(response).content[0]["CPRODUCT_IMG.jpg"];
 						var imgURL = that.imgPrefix + filename;
