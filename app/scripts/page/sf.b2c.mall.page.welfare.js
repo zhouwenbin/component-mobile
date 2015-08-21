@@ -10,10 +10,11 @@ define(
     'sf.b2c.mall.api.task.directReceiveAward',
     'sf.b2c.mall.api.task.getUserTaskList',
     'text!template_welfare_list',
+    'sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading'
   ],
 
-  function(can, $, SFFrameworkComm, SFshareUrl, SFdirectReceiveAward ,SFgetUserTaskList, template_welfare_list, SFLoading) {
+  function(can, $, SFFrameworkComm, SFshareUrl, SFdirectReceiveAward ,SFgetUserTaskList, template_welfare_list, SFmessage, SFLoading) {
       SFFrameworkComm.register(3);
       var loadingCtrl = new SFLoading();
       can.route.ready();
@@ -84,7 +85,13 @@ define(
             var taskId = $element.closest('li').attr('data-tab');
             var sFdirectReceiveAward = new SFdirectReceiveAward({taskId: taskId});
             sFdirectReceiveAward.sendRequest().done(function(taskId){
-              alert(taskId.text)
+              var message = new SFmessage(null, {
+                  'tip': taskId.text,
+                  'type': 'success',
+                  'okFunction': function() {
+                    window.location.reload();
+                  },
+              });
             }) .fail(function(error){
               console.log(error)
             })
