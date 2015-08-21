@@ -98,6 +98,7 @@ define(
               "url": urlId
           }
           var success =function (data) {
+            alert('123');
             alert('success:'+data);
             alert(JSON.stringify(data))
             var url = urlId;

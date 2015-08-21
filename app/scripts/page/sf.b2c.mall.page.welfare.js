@@ -91,6 +91,7 @@ define(
                   'okFunction': function() {
                     if(taskId.success){
                       $element.closest('li').addClass('completed');
+                      $element.text('已领取');
                     }
                   },
               });
