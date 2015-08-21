@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>申请</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+	<div class="refundtax-box">
+		<ul class="refundtax-list">
+			<li>
+				<div class="refundtax-inner">
+					<span>支付宝账号</span>
+					<input type="text" class="text">
+				</div>
+				<div class="text-important">错误提示</div>
+			</li>
+			
+			<li>
+				<div class="refundtax-inner">
+					<span>支付宝账号名</span>
+					<input type="text" class="text">
+				</div>
+			</li>
+
+			<li>
+				<div class="refundtax-inner">
+					<span class="icon-paper">
+						<em class="img-box">
+							== Slim::Template.new('../svg/icon-paper.svg').render
+						</em>
+					</span>
+					<div class="upload-box">
+							
+						<label class="comment-add-img-add" id="pickbutton">
+						== Slim::Template.new('../svg/icon-upload.svg').render
+						<em>上传清晰缴纳证明照片</em>
+						<input type="file" class="visuallyhidden" /></label>
+					</div>
+				</div>
+			</li>
+
+		</ul>
+		<div class="refundtax-btn-box">
+			<button class="btn btn-danger btn-big">确认提交申请</button>
+		</div>
+	</div>
+</body>
+</html>

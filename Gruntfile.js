@@ -640,6 +640,7 @@ module.exports = function (grunt) {
               'scripts/sf.b2c.mall.h5.page.order.detail.js',
               'scripts/sf.b2c.mall.h5.page.order.list.js',
               'scripts/sf.b2c.mall.h5.page.mypoint.js',
+              'scripts/sf.b2c.mall.h5.page.refundtax.js',
               'img/**',
               'styles/**',
               'order.html',
@@ -647,7 +648,8 @@ module.exports = function (grunt) {
               'pay-success.html',
               'orderdetail.html',
               'orderlist.html',
-              'mypoint.html'
+              'mypoint.html',
+              'refundtax.html'
             ],
             dest: 'order'
           }
@@ -1690,6 +1692,24 @@ module.exports = function (grunt) {
             'sf.b2c.mall.page.detailmix'
           ],
           insertRequire: ['sf.b2c.mall.page.detailmix']
+        }
+      },
+
+      refundtax: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.refundtax.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.refundtax'
+          ],
+          insertRequire: ['sf.b2c.mall.page.refundtax']
         }
       },
 

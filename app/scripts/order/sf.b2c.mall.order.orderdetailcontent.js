@@ -15,9 +15,10 @@ define('sf.b2c.mall.order.orderdetailcontent', [
   'sf.b2c.mall.widget.message',
   'sf.hybrid',
   'sf.b2c.mall.widget.loading',
-  'sf.mediav'
+  'sf.mediav',
+  'sf.b2c.mall.api.finance.getRefundTax'
 ], function(can, $, SFHelpers, Fastclick, _, moment, SFGetOrder, template_order_orderdetail,
-  SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid, SFLoading, SFMediav) {
+  SFOrderFn, SFConfig, SFSwitcher, SFMessage, SFHybrid, SFLoading, SFMediav, SFGetRefundTax) {
 
   Fastclick.attach(document.body);
 
@@ -95,6 +96,33 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           return options.inverse(options.contexts || this);
         }
       },
+      //退税
+      'sf-show-refundtax': function(transporterName, status, options) {
+        var status = status();
+        if (transporterName() == 'ETK' && (status == "CONSIGNED" || status == 'COMPLETED' || status == 'AUTO_COMPLETED' || status == 'RECEIPTED')) {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
+      },
+      'sf-refundtax': function(refundTax, options) {
+        var refundTax = refundTax();
+        if (typeof refundTax == 'undefined') {
+          return options.inverse(options.contexts || this);
+        } else {
+          if (typeof refundTax.state !== 'undefined') {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        }
+      },
+      'refundTaxStatus': function(refundTax, stateText, options) {
+        var refundTax = refundTax();
+        if (refundTax.state == stateText) {
+          return options.fn(options.contexts || this);
+        }
+      },
       'sf-status-show-case': SFOrderFn.helpers['sf-status-show-case'],
       'sf-package-status': SFOrderFn.helpers['sf-package-status'],
       'sf-coupon-type': SFOrderFn.helpers['sf-coupon-type']
@@ -112,7 +140,11 @@ define('sf.b2c.mall.order.orderdetailcontent', [
 
       this.setBackButton();
     },
-
+    renderHtml: function() {
+      var renderFn = can.mustache(template_order_orderdetail);
+      var html = renderFn(this.options.data, this.helpers);
+      this.element.html(html);
+    },
     request: function(params) {
       loadingCtrl.hide();
 
@@ -143,10 +175,32 @@ define('sf.b2c.mall.order.orderdetailcontent', [
         this.options.data.attr("totalPoint", "0");
       }
 
-      var renderFn = can.mustache(template_order_orderdetail);
-      var html = renderFn(this.options.data, this.helpers);
+      //退税
+      var orderPackageItemList = this.options.data.orderItem.orderPackageItemList;
+      if (orderPackageItemList && orderPackageItemList.length > 0) {
+        _.each(orderPackageItemList, function(packItem) {
+          if (packItem && packItem.transporterName == 'ETK' && (packItem.status == "CONSIGNED" || packItem.status == 'COMPLETED' || packItem.status == 'AUTO_COMPLETED' || packItem.status == 'RECEIPTED')) {
+            var getRefundTax = new SFGetRefundTax({
+              bizId: packItem.packageNo
+            });
+            getRefundTax.sendRequest()
+              .done(function(data) {
+                packItem.attr('refundtax', data);
+              })
+              .fail(function(error) {
 
-      this.element.html(html);
+              })
+              .always(function() {
+                that.renderHtml();
+              });
+          } else {
+            that.renderHtml();
+          }
+        });
+      } else {
+        this.renderHtml();
+      }
+
       this.timmer();
 
       var params = can.route.attr();
@@ -155,7 +209,16 @@ define('sf.b2c.mall.order.orderdetailcontent', [
       loadingCtrl.hide();
       this.watchDetail.call(this, data);
     },
-
+    '.btn-refundtax click': function(element, event) {
+      event && event.preventDefault();
+      var params = can.deparam(window.location.search.substr(1));
+      var tag = $(element).attr('data-tag');
+      var gotoUrl = 'http://m.sfht.com/refundtax.html' + '?' + $.param({
+        "tag": tag,
+        "orderid": params.orderid
+      });
+      window.location.href = gotoUrl;
+    },
     watchDetail: function(data) {
       var uinfo = $.fn.cookie('3_uinfo');
       var arr = [];
@@ -270,7 +333,7 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           "orderid": this.options.data.orderItem.orderId,
           "showordersuccess": true,
           "goodsType": goodsType
-        });         
+        });
       } else {
         var url = SFConfig.setting.link.gotopay + '&' + $.param({
           "orderid": this.options.data.orderItem.orderId,
