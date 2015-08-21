@@ -94,7 +94,7 @@ define(
           var params = {
               "subject": 'fulishe',
               "description": 'fulishe',
-              "imageUrl": 'http://img0.sfht.com/sf/bundefined/1e75ba3c60edfc0c756e2ceb0390d5e6.jpg@102h_102w_80Q_1x.jpg',
+              "imageUrl": pic,
               "url": urlId
           }
           var success =function (data) {

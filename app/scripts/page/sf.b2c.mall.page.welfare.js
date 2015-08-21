@@ -64,7 +64,6 @@ define(
           var sFgetUserTaskList =new SFgetUserTaskList(params);
           can.when(sFgetUserTaskList.sendRequest()).done(function(data) {
             that.itemObj.attr(data);
-            console.log(data);
             that.stepCates(that.itemObj);
           }) .fail(function(error) {
             console.error(error);
@@ -86,7 +85,6 @@ define(
             var taskId = $element.closest('li').attr('data-tab');
             var sFdirectReceiveAward = new SFdirectReceiveAward({taskId: taskId});
             sFdirectReceiveAward.sendRequest().done(function(taskId){
-              console.log(taskId);
               var message = new SFmessage(null, {
                   'tip': taskId.text,
                   'type': 'success',
