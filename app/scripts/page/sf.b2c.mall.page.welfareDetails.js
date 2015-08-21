@@ -131,7 +131,11 @@ define(
             var couponId =  can.route.attr('couponId');
             var mobile = $('.mobileNum').val();
             if(!/^1[0-9]{10}$/.test(mobile)){
-              alert('你填写的手机号格式有误,请重新填写')
+              var message = new SFmessage(null, {
+                    'tip': '你填写的手机号格式有误,请重新填写',
+                    'type': 'success',
+                    'okFunction': function() {},
+                });
             }
             var that = this;
             var rcvCouponByMobile = new SFReceiveCoupon({
@@ -141,10 +145,14 @@ define(
               receiveChannel: 'B2C_H5',
               receiveWay: 'FLS'
             });
-
             rcvCouponByMobile.sendRequest()
               .done(function(data) {
-                console.log('已经发送')
+                console.log(data);
+                // var message = new SFmessage(null, {
+                //     'tip': data.text,
+                //     'type': 'success',
+                //     'okFunction': function() {},
+                // });
               })
               .fail(function(errorCode) {
                 if (_.isNumber(errorCode)) {
@@ -164,7 +172,6 @@ define(
                   });
                   return;
                 }
-
               })
           }
        });

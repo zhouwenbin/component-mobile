@@ -89,7 +89,9 @@ define(
                   'tip': taskId.text,
                   'type': 'success',
                   'okFunction': function() {
-                    window.location.reload();
+                    // if(taskId.code == ''){
+                    //   $element.closest('li').addClass('completed');
+                    // }
                   },
               });
             }) .fail(function(error){
