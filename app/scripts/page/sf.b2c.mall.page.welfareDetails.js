@@ -98,7 +98,7 @@ define(
               "url": urlId
           }
           var success =function (data) {
-            alert(data);
+            alert(JSON.stringify(data));
             alert(456);
             switch(data){
               case 0:
