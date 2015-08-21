@@ -103,9 +103,9 @@ define(
             var url = urlId;
             var target = 'WeChat';
             var sFshareUrl =new SFshareUrl({url:url,target:target});
-            alert('urlId':url);
+            alert('urlId:'+url);
             can.when(sFshareUrl.sendRequest()).done(function(data) {
-              alert('Share-data':url);
+              alert('Share-data:'+url);
               setTimeout(function(){
                 var message = new SFmessage(null, {
                   'tip': data.text,
