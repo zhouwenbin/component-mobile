@@ -148,6 +148,11 @@ define(
 
       download: function () {
 
+        if (SFFn.isMobile.APP()){
+          window.location.href = "http://m.sfht.com/index.html";
+          return false;
+        }
+
         if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
 
           window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
@@ -161,10 +166,6 @@ define(
           window.location.href = "http://dl.sfht.com/app/sfht_sfhaitao.apk";
           // $("#downloadAppBtn").attr("href", "http://img.sfht.com/ios/sfht_sfhaitao.apk");
         }
-        if (SFFn.isMobile.APP()){
-          window.location.href = "http://m.sfht.com/index.html";
-        }
-
       },
 
       receiveCpCodeData: function(params) {
