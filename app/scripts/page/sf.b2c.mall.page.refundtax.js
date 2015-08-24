@@ -42,15 +42,9 @@ define(
 				$('#errorNoPicTips').hide();
 				$('#errorAlipayAccount').hide();
 				$('#errorAlipayName').hide();
-				// var params = can.deparam(window.location.search.substr(1));
 
-				var params = null;
-
-				if (SFFn.isMobile.APP()) {
-					params = can.route.attr();
-				} else {
-					params = can.deparam(window.location.search.substr(1));
-				}
+				var params = can.deparam(window.location.search.substr(1));
+				params = _.extend(params, can.route.attr());
 
 				this.options = new can.Map({});
 				var getOrder = new SFGetOrderV2({
@@ -118,11 +112,8 @@ define(
 					$('#errorNoPicTips').text('请上传缴税证明照片').show();
 					return false;
 				};
-				if (SFFn.isMobile.APP()) {
-					var params = can.route.attr();
-				} else {
-					var params = can.deparam(window.location.search.substr(1));
-				}
+				var params = can.deparam(window.location.search.substr(1));
+				params = _.extend(params, can.route.attr());
 
 				var tag = params.tag;
 				var alipayAccount = $('#alipayaccount').val();
@@ -133,6 +124,7 @@ define(
 				var mailNo = this.options.orderItem.orderPackageItemList[tag].logisticsNo;
 
 				if (this.checkAlipayAccount(alipayAccount) && this.checkAlipayName(alipayname)) {
+
 					var createRefundTax = new SFCreateRefundTax({
 						'bizId': bizId,
 						'masterBizId': params.orderid,
@@ -146,7 +138,6 @@ define(
 
 					createRefundTax.sendRequest()
 						.done(function(data) {
-							alert('success');
 							$('.dialog-refundtax').show();
 
 							var switcher = new SFSwitcher();
@@ -170,7 +161,6 @@ define(
 							switcher.go();
 
 						}).fail(function(errorCode) {
-							alert('error');
 							if (errorCode == '-140') {
 								return false;
 							};
@@ -179,7 +169,6 @@ define(
 							}
 							$('#errorNoPicTips').text(map[errorCode]).show();
 						}).always(function() {
-							alert('always');
 							loadingCtrl.hide();
 						})
 				} else {
