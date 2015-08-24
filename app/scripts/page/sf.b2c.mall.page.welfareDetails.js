@@ -158,9 +158,10 @@ define(
               rcvCouponByMobile.sendRequest()
                 .done(function(data) {
                   if(data.cardInfo.status == 'UNUSED'){
+                    var reduceCost = data.cardInfo.reduceCost/100;
                      setTimeout(function(){
                        var message = new SFmessage(null, {
-                          'tip': '恭喜你获得'+data.cardInfo.reduceCost+data.cardInfo.title+'，有效期：'+data.cardInfo.endTime,
+                          'tip': '恭喜你获得'+reduceCost+'元'+data.cardInfo.title+'，有效期：'+data.cardInfo.endTime,
                           'type': 'success',
                           'okFunction': function() {
                             window.location.href= url;
