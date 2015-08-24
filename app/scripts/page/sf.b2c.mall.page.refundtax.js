@@ -108,6 +108,7 @@ define(
 			},
 			'.btn-refer-tax click': function(element, event) {
 				event && event.preventDefault();
+				alert('begin');
 				// 显示蒙层
 				loadingCtrl.show();
 				$('#errorNoPicTips').hide();
@@ -134,7 +135,7 @@ define(
 					}else{
 						params = can.deparam(window.location.search.substr(1));
 					}
-
+					alert('beginning');
 					var createRefundTax = new SFCreateRefundTax({
 						'bizId': bizId,
 						'masterBizId': params.orderid,
@@ -148,6 +149,7 @@ define(
 
 					createRefundTax.sendRequest()
 						.done(function(data) {
+							alert('success');
 							$('.dialog-refundtax').show();
 
 							var switcher = new SFSwitcher();
@@ -171,6 +173,7 @@ define(
 				      switcher.go();
 
 						}).fail(function(errorCode) {
+							alert('error');
 							if (errorCode == '-140') {
 								return false;
 							};
@@ -179,6 +182,7 @@ define(
 							}
 							$('#errorNoPicTips').text(map[errorCode]).show();
 						}).always(function() {
+							alert('always');
 							loadingCtrl.hide();
 						})
 				}else{
