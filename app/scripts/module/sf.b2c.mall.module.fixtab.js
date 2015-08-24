@@ -117,19 +117,16 @@ function(can, $, _,Fastclick,IScroll) {
 
           $(window).scrollTop(nataral_pruduct_offset[index]);
 
-          $('.nataral-tab li').removeClass('active')
-          $(this).addClass('active')
-
           lock = false;
         }, 300);
       }
 
-      $('.nataral-tab li').on('touchstart', function(){
+      $('.nataral-tab li').on('touchstart', function(event){
         var index=$('.nataral-tab li').index(this);
         if (!lock) {
           fn(index)
         }
-        // return false;
+        return false;
       })
     }
   })

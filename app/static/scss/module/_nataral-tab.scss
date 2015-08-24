@@ -2,6 +2,16 @@
   .nataral-tab{
     height: 46px * $i;
     position: relative;
+    background: #f9f9f9;
+  }
+  .nataral-tab-inner{
+    display: flex;
+    background: #f9f9f9;
+    position: relative;
+  }
+  .nataral-tab-item{
+    flex:1;
+    overflow: hidden;
   }
   .nataral-tab ul{
     position: relative;
@@ -47,11 +57,11 @@
     border-width: 1px * $i 1px * $i 0 0;
     transform:rotate(45deg);
     transition:all 0.3s;
-    position: absolute;
-    right: 10px * $i;
-    top: 20px * $i;
     z-index: map-get($z-index,nataral-tab-icon);
     display: none;
+    margin-top: 20px * $i;
+    margin-right: 10px * $i;
+    margin-left: 10px * $i;
   }
   .nataral-tab-icon:before{
     content: '';
@@ -61,17 +71,13 @@
     top: -10px;
     bottom: -10px;
   }
-  .nataral-tab-fixed ul{
+  .nataral-tab-fixed .nataral-tab-inner{
     position: fixed;
     right: 0;
     left: 0;
     top: 0;
     z-index: map-get($z-index,nataral-tab-fixed-ul);
     
-  }
-  .nataral-tab-fixed:before,
-  .nataral-tab-fixed .nataral-tab-icon{
-    position: fixed;
   }
 
   .nataral-tab li{  
@@ -107,17 +113,6 @@
   }
   .nataral-tab li.active a{
     color: #ff5b54;
-  }
-  .nataral-tab-b{
-    position: absolute;
-    width: 100%;
-    transform:rotateX(90deg);
-    transform-origin:center top;
-    transition:all 0.3s;
-  }
-  .nataral-tab-b.active{
-    z-index: 1;
-    transform:rotateX(0deg);
   }
 }
 @include nataral-tab(1);
