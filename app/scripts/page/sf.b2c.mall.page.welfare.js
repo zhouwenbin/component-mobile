@@ -76,12 +76,10 @@ define(
               window.location.href ="http://m.sfht.com/login.html?from="+window.encodeURIComponent(url);
               return false;
           }
-
           if($element.hasClass('direct')){
             $element.attr({
               href: 'javascript:;'
             });
-
             var taskId = $element.closest('li').attr('data-tab');
             var sFdirectReceiveAward = new SFdirectReceiveAward({taskId: taskId});
             sFdirectReceiveAward.sendRequest().done(function(taskId){

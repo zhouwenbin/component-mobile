@@ -90,7 +90,7 @@ define(
           }
           var pic = $('.imageBig').attr('data-samllPic');
           var urlId = url+'&isTaskId=isTaskId';
-          alert('123456');
+          alert('ceshi');
           var params = {
               "subject": 'fulishe',
               "description": 'fulishe',
@@ -99,8 +99,7 @@ define(
           }
           var success =function (data) {
             alert(JSON.stringify(data));
-            alert(456);
-            switch(data){
+            switch(data.type){
               case 0:
                 target='WeChat';
                 break;
@@ -112,11 +111,9 @@ define(
                 break;
             }
             var url = urlId;
-            var target = target||'WeChat';
-            var sFshareUrl =new SFshareUrl({url:url,target:target});
-            can.when(sFshareUrl.sendRequest()).done(function(data) {
-              alert(data,data.buttonText);
-              setTimeout(function(){
+            var target = target||'MOMENTS';
+            if(data.isReceiveAward){
+               setTimeout(function(){
                 var message = new SFmessage(null, {
                   'tip': data.text,
                   'type': 'success',
@@ -126,9 +123,15 @@ define(
                 });
                 $('#ok').text(data.buttonText);
               },300);
-            }) .fail(function(error) {
-              console.error(error);
-            });
+            }else{
+              var message = new SFmessage(null, {
+                  'tip': '分享领取失败',
+                  'type': 'success',
+                  'okFunction': function() {
+                      window.location.href= data.buttonLink;
+                  },
+              });
+            }
           };
           var error = function (data) {
             alert('data.error');
@@ -158,12 +161,20 @@ define(
                 });
                 rcvCouponByMobile.sendRequest()
                   .done(function(data) {
-                    alert('isTaskId'+data);
-                    var message = new SFmessage(null, {
-                        'tip': data.text,
-                        'type': 'success',
-                        'okFunction': function() {},
-                    });
+                    alert(JSON.stringify(data))
+                    if(data.cardInfo.status == 'UNUSED'){
+                       var message = new SFmessage(null, {
+                          'tip': data.cardInfo.title,
+                          'type': 'success',
+                          'okFunction': function() {},
+                      });
+                    }else{
+                       var message = new SFmessage(null, {
+                          'tip': '领取失败',
+                          'type': 'success',
+                          'okFunction': function() {},
+                      });
+                    }
                   })
                   .fail(function(errorCode) {
                     if (_.isNumber(errorCode)) {
