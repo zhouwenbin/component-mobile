@@ -119,6 +119,8 @@ define(
 					$('#errorNoPicTips').text('请上传缴税证明照片').show();
 					return false;
 				};
+
+				alert('1');
 				var params = can.deparam(window.location.search.substr(1));
 				var tag = params.tag;
 				var alipayAccount = $('#alipayaccount').val();
@@ -127,7 +129,9 @@ define(
 				var buyerTelephone = this.options.orderItem.orderAddressItem.telephone;
 				var bizId = this.options.orderItem.orderPackageItemList[tag].packageNo;
 				var mailNo = this.options.orderItem.orderPackageItemList[tag].logisticsNo;
+				alert('2');
 				if (this.checkAlipayAccount(alipayAccount) && this.checkAlipayName(alipayname)) {
+					alert('3')
 					var params = null;
 
 					if (SFFn.isMobile.APP()) {
