@@ -160,7 +160,7 @@ define(
                   if(data.cardInfo.status == 'UNUSED'){
                      setTimeout(function(){
                        var message = new SFmessage(null, {
-                          'tip': '恭喜你获得'+data.cardInfo.title+'，有效期：'+data.cardInfo.endTime,
+                          'tip': '恭喜你获得'+data.cardInfo.reduceCost+data.cardInfo.title+'，有效期：'+data.cardInfo.endTime,
                           'type': 'success',
                           'okFunction': function() {
                             window.location.href= url;
