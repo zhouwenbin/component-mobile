@@ -87,9 +87,9 @@ define(
                   'tip': taskId.text,
                   'type': 'success',
                   'okFunction': function() {
-                    if(taskId.success){
+                    if(complete){
                       $element.closest('li').addClass('completed');
-                      $element.text('已领取');
+                      $element.text(completeButtonText);
                     }
                   },
               });

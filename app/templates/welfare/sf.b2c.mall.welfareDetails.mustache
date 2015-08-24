@@ -1,8 +1,8 @@
 <section class="welfare-detail">
-	<img class="imageBig" src="{{pic}}" alt="" data-samllPic="{{smallPic}}" >
+	<img class="imageBig" src="{{pic}}" alt="" data-samllPic="{{smallPic}}" data-subject="{{subject}}" data-desc="{{desc}}">
 	<div class="footerCn">
-		<p class="old-price">售价：{{originPrice}}元</p>
-		<p class="new-price">领红包购买只需{{salePrice}}元</p>
+		<p class="old-price">售价：{{sf.price originPrice}}元</p>
+		<p class="new-price">领红包购买只需{{sf.price salePrice}}元</p>
 		<div class="btnsOut" id="isToShare">
 			<a href="javascript:;" class="btn toShareBtn1">分享领红包</a>
 		</div>

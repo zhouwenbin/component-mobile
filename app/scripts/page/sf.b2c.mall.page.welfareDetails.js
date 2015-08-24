@@ -6,16 +6,16 @@ define(
     'can',
     'zepto',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.api.share.shareUrl',
     'sf.b2c.mall.api.task.getShareBuyDetail',
     'text!template_welfare_details',
     'sf.b2c.mall.widget.loading',
     "sf.bridge",
+    'sf.helpers',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.api.coupon.rcvCouponByMobile'
   ],
 
-  function(can, $, SFFrameworkComm, SFshareUrl, SFgetShareBuyDetail, template_welfare_details, SFLoading, SFbridge, SFmessage, SFReceiveCoupon) {
+  function(can, $, SFFrameworkComm, SFgetShareBuyDetail, template_welfare_details, SFLoading, SFbridge, SFHelpers, SFmessage, SFReceiveCoupon) {
       SFFrameworkComm.register(3);
       var loadingCtrl = new SFLoading();
       can.route.ready();
@@ -89,59 +89,55 @@ define(
             }
           }
           var pic = $('.imageBig').attr('data-samllPic');
+          var subject = $('.imageBig').attr('data-subject');
+          var desc = $('.imageBig').attr('data-desc');
           var urlId = url+'&isTaskId=isTaskId';
-          alert('ceshi');
           var params = {
-              "subject": 'fulishe',
-              "description": 'fulishe',
-              "imageUrl": 'http://img0.sfht.com/sf/bundefined/8441f2472bcdbf228af06ffc9fb86005.jpg@282w_282h.jpg',
+              "subject": subject,
+              "description": desc,
+              "imageUrl": pic,
               "url": urlId
           }
           var success =function (data) {
             alert(JSON.stringify(data));
             switch(data.type){
               case 0:
-                target='WeChat';
+                target = 'WeChat';
                 break;
               case 1:
-                target='MOMENTS';
+                target = 'MOMENTS';
                 break;
               case 2:
-                target='QQ';
+                target = 'QQ';
                 break;
             }
             var url = urlId;
             var target = target||'MOMENTS';
-            if(data.isReceiveAward){
-               setTimeout(function(){
-                var message = new SFmessage(null, {
-                  'tip': data.text,
-                  'type': 'success',
-                  'okFunction': function() {
-                      window.location.href= data.buttonLink;
-                  },
-                });
-                $('#ok').text(data.buttonText);
-              },300);
-            }else{
+            setTimeout(function(){
               var message = new SFmessage(null, {
-                  'tip': '分享领取失败',
-                  'type': 'success',
-                  'okFunction': function() {
-                      window.location.href= data.buttonLink;
-                  },
+                'tip': data.text,
+                'type': 'success',
+                'okFunction': function() {
+                  if(data.buttonLink){
+                     window.location.href= data.buttonLink;
+                  }
+                },
               });
-            }
+              if(data.buttonText){
+                 $('#ok').text(data.buttonText);
+              }
+            },300);
           };
           var error = function (data) {
-            alert('data.error');
-            alert(JSON.stringify(data))
+            console.log('data.error');
           };
           window.bridge.run('SocialSharing', 'share', params, success, error)
         },
 
         '.toShareBtn2 click': function($element, event) {
             event && event.preventDefault();
+            var taskId = can.route.attr('taskId');
+            var url = 'http://' + window.location.hostname + window.location.pathname+ '#!&'+ $.param({taskId: taskId});
             var couponId =  can.route.attr('couponId');
             var mobile = $('.mobileNum').val();
             var that = this;
@@ -152,49 +148,53 @@ define(
                     'okFunction': function() {},
                 });
             }else{
-                var rcvCouponByMobile = new SFReceiveCoupon({
-                  bagId: couponId,
-                  mobile: mobile,
-                  type: "CARD",
-                  receiveChannel: 'B2C_H5',
-                  receiveWay: 'FLS'
-                });
-                rcvCouponByMobile.sendRequest()
-                  .done(function(data) {
-                    alert(JSON.stringify(data))
-                    if(data.cardInfo.status == 'UNUSED'){
+              var rcvCouponByMobile = new SFReceiveCoupon({
+                bagId: couponId,
+                mobile: mobile,
+                type: "CARD",
+                receiveChannel: 'B2C_H5',
+                receiveWay: 'FLS'
+              });
+              rcvCouponByMobile.sendRequest()
+                .done(function(data) {
+                  if(data.cardInfo.status == 'UNUSED'){
+                     setTimeout(function(){
                        var message = new SFmessage(null, {
-                          'tip': data.cardInfo.title,
+                          'tip': '恭喜你获得'+data.cardInfo.title+'，有效期：'+data.cardInfo.endTime,
                           'type': 'success',
-                          'okFunction': function() {},
+                          'okFunction': function() {
+                            window.location.href= url;
+                          },
                       });
-                    }else{
-                       var message = new SFmessage(null, {
-                          'tip': '领取失败',
-                          'type': 'success',
-                          'okFunction': function() {},
-                      });
+                      $('#ok').text('用掉它');
+                    },300);
+                  }else{
+                     var message = new SFmessage(null, {
+                        'tip': '领取失败',
+                        'type': 'success',
+                        'okFunction': function() {},
+                    });
+                  }
+                })
+                .fail(function(errorCode) {
+                  if (_.isNumber(errorCode)) {
+                    var codeMap = {
+                      '11000020':'卡券id不存在',
+                      '11000030': '卡券已作废',
+                      '11000050': '卡券已领完',
+                      '11000100': '用户已领过该券',
+                      '11000130': '卡包不存在',
+                      '11000140': '卡包已作废'
                     }
-                  })
-                  .fail(function(errorCode) {
-                    if (_.isNumber(errorCode)) {
-                      var codeMap = {
-                        '11000020':'卡券id不存在',
-                        '11000030': '卡券已作废',
-                        '11000050': '卡券已领完',
-                        '11000100': '用户已领过该券',
-                        '11000130': '卡包不存在',
-                        '11000140': '卡包已作废'
-                      }
-                      var defaultText = '领取失败';
-                      var errorText = codeMap[errorCode.toString()] || defaultText;
-                      new SFmessage(null, {
-                        'tip': errorText,
-                        'type': 'error'
-                      });
-                      return;
-                    }
-                  })
+                    var defaultText = '领取失败';
+                    var errorText = codeMap[errorCode.toString()] || defaultText;
+                    new SFmessage(null, {
+                      'tip': errorText,
+                      'type': 'error'
+                    });
+                    return;
+                  }
+                })
             }
           }
 
