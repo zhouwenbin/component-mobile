@@ -153,7 +153,7 @@ define(
           "url": urlId
         },1];
         var success = function(data) {
-          alert(data);
+          alert(stringify(data));
           $('.welFare-mask').hide();
           $('.welFareShare').removeClass('animationTop');
           setTimeout(function() {
