@@ -1158,6 +1158,7 @@ define('sf.b2c.mall.product.detailcontent', [
             });
 
             if (!SFComm.prototype.checkUserLogin.call(this)) {
+              element.removeClass('btn-disable');
               window.location.href = 'http://m.sfht.com/login.html?from=' + escape(gotoUrl);
               return false;
             }
