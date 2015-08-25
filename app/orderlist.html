@@ -26,7 +26,9 @@
 
   <article class="sf-b2c-mall-order-orderlist"></article>
 
-
+  <!--尾部-->
+  <!--# include file="/footer/footer.h5.index.html" -->
+  <!--尾部-->
 
   <div id="version" data-version="{version}"></div>
 
@@ -53,6 +55,13 @@
   <script src="scripts/sf.b2c.mall.require.config.js"></script>
   <script type="text/javascript">
     require(['sf.b2c.mall.page.orderlist']);
+  </script>
+  <!-- endbuild -->
+
+  <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.module.footer.js -->
+  <script src="scripts/sf.b2c.mall.require.config.js"></script>
+  <script type="text/javascript">
+      require(['sf.b2c.mall.module.footer']);
   </script>
   <!-- endbuild -->
 </body>
