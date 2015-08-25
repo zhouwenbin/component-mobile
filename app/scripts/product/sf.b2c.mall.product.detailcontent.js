@@ -1162,6 +1162,7 @@ define('sf.b2c.mall.product.detailcontent', [
               return false;
             }
 
+            element.removeClass('btn-disable');
             window.location.href = gotoUrl;
           }, this),
 
