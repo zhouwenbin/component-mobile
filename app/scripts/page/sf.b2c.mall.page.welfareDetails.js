@@ -100,8 +100,9 @@ define(
         var verInt = verArr[0] + verArr[1] + verArr[2];
         alert(version+verInt);
         alert("verInt >= 140 =" + (verInt >= 140 ));
-        varInt = varInt / 1 ;
+        verInt = verInt / 1 ;
          alert("verInt >= 140 =" + (verInt >= 140 ));
+         alert (  typeof(SFFn.isMobile.iOS())  ) ;
         alert(SFFn.isMobile.APP()+SFFn.isMobile.iOS()+SFFn.isMobile.Android());
         alert("SFFn.isMobile.iOS() && verInt >= 140" + (SFFn.isMobile.iOS() && verInt >= 140));
         alert(SFFn.isMobile.iOS() && verInt < 140);
