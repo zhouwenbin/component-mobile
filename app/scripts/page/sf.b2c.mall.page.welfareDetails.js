@@ -100,15 +100,15 @@ define(
         var verInt = verArr[0] + verArr[1] + verArr[2];
         alert(version+verInt);
         alert(SFFn.isMobile.APP()+SFFn.isMobile.iOS()+SFFn.isMobile.Android());
-        alert(SFFn.isMobile.iOS() && version >= 140);
-        alert(SFFn.isMobile.iOS() && version < 140);
-        alert(SFFn.isMobile.Android() && version >= 135);
-        alert(SFFn.isMobile.Android() && version < 135);
+        alert(SFFn.isMobile.iOS() && verInt >= 140);
+        alert(SFFn.isMobile.iOS() && verInt < 140);
+        alert(SFFn.isMobile.Android() && verInt >= 135);
+        alert(SFFn.isMobile.Android() && verInt < 135);
         if(SFFn.isMobile.APP()){
-          if (SFFn.isMobile.iOS() && version >= 140 ) {
+          if (SFFn.isMobile.iOS() && verInt >= 140 ) {
             $('.welFare-mask').show();
             $('.welFareShare').addClass('animationTop');
-          }else if(SFFn.isMobile.iOS() && version < 140 ){
+          }else if(SFFn.isMobile.iOS() && verInt < 140 ){
             setTimeout(function() {
               var message = new SFmessage(null, {
                 'tip': '当前版本不支持该活动，请下载新版本',
@@ -123,10 +123,10 @@ define(
             }, 300);
           };
 
-          if (SFFn.isMobile.Android() && version >= 135 ) {
+          if (SFFn.isMobile.Android() && verInt >= 135 ) {
             $('.welFare-mask').show();
             $('.welFareShare').addClass('animationTop');
-          }else if(SFFn.isMobile.Android() && version < 135 ){
+          }else if(SFFn.isMobile.Android() && verInt < 135 ){
             setTimeout(function() {
               var message = new SFmessage(null, {
                 'tip': '当前版本不支持该活动，请下载新版本',
