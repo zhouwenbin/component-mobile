@@ -93,7 +93,6 @@ define(
             return false;
           }
         }
-        alert('test');
         var version = can.route.attr('version');
         version = version ? version  : '1.4.0';
         var verArr = version.split('.');
@@ -154,6 +153,7 @@ define(
           "url": urlId
         },1];
         var success = function(data) {
+          alert(data);
           $('.welFare-mask').hide();
           $('.welFareShare').removeClass('animationTop');
           setTimeout(function() {
@@ -180,7 +180,6 @@ define(
       },
 
       '.welFare-mask click': function($element ,event){
-        alert('mask'+$element);
         $('.welFare-mask').hide();
         $('.welFareShare').removeClass('animationTop');
       },
