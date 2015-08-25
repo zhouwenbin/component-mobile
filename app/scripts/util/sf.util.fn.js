@@ -87,7 +87,7 @@ define('sf.util', [
       },
 
       localApp: function() {
-        if (this.APP() && window.cordova) {
+        if (this.APP() && window.cordova && window.sf) {
           return true;
         } else {
           return false;

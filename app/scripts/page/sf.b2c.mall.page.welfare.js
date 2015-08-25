@@ -5,7 +5,6 @@ define(
     'can',
     'zepto',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.api.share.shareUrl',
     'sf.b2c.mall.api.task.directReceiveAward',
     'sf.b2c.mall.api.task.getUserTaskList',
     'text!template_welfare_list',
@@ -13,7 +12,7 @@ define(
     'sf.b2c.mall.widget.loading'
   ],
 
-  function(can, $, SFFrameworkComm, SFshareUrl, SFdirectReceiveAward, SFgetUserTaskList, template_welfare_list, SFmessage, SFLoading) {
+  function(can, $, SFFrameworkComm, SFdirectReceiveAward, SFgetUserTaskList, template_welfare_list, SFmessage, SFLoading) {
     SFFrameworkComm.register(3);
     var loadingCtrl = new SFLoading();
     can.route.ready();
@@ -94,7 +93,6 @@ define(
               taskId: taskId
             });
             sFdirectReceiveAward.sendRequest().done(function(data) {
-              console.log(data);
               setTimeout(function() {
                 var message = new SFmessage(null, {
                   'tip': data.richText,
