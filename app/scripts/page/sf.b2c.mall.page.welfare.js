@@ -100,7 +100,7 @@ define(
                   'okFunction': function() {
                     if (data.complete) {
                       $element.closest('li').addClass('completed');
-                      $element.text(completeButtonText);
+                      $element.text(data.completeButtonText);
                     }
                   },
                 });
