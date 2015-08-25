@@ -22,7 +22,7 @@ define(
   function(can, $, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFConfig,
     SFShoppingCart, SFHeaderModule, SFSwitcher, SFHybrid, SFLoading) {
     // 在页面上使用fastclick
-    Fastclick.attach(document.body);
+    // Fastclick.attach(document.body);
 
     // 注册服务端的appid
     SFFrameworkComm.register(3);
