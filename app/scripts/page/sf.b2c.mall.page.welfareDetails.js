@@ -98,18 +98,6 @@ define(
         version = version ? version  : '1.4.0';
         var verArr = version.split('.');
         var verInt = verArr[0] + verArr[1] + verArr[2];
-        alert(version+verInt);
-        alert("verInt >= 140 =" + (verInt >= 140 ));
-         alert("SFFn.isMobile.iOS() && verInt >= 140" + (SFFn.isMobile.iOS() && verInt >= 140));
-         alert ( typeof(verInt));
-        verInt = verInt / 1 ;
-         alert("verInt >= 140 =" + (verInt >= 140 ));
-         alert (  typeof(SFFn.isMobile.iOS())  ) ;
-        alert(SFFn.isMobile.APP()+SFFn.isMobile.iOS()+SFFn.isMobile.Android());
-        alert("SFFn.isMobile.iOS() && verInt >= 140" + (SFFn.isMobile.iOS() && verInt >= 140));
-        alert(SFFn.isMobile.iOS() && verInt < 140);
-        alert(SFFn.isMobile.Android() && verInt >= 135);
-        alert(SFFn.isMobile.Android() && verInt < 135);
         if(SFFn.isMobile.APP()){
           if (SFFn.isMobile.iOS() && verInt >= 140 ) {
             $('.welFare-mask').show();
@@ -164,7 +152,7 @@ define(
           "description": desc,
           "imageUrl": pic,
           "url": urlId
-        },1]
+        },1];
         var success = function(data) {
           $('.welFare-mask').hide();
           $('.welFareShare').removeClass('animationTop');
@@ -192,6 +180,7 @@ define(
       },
 
       '.welFare-mask click': function($element ,event){
+        alert('mask'+$element);
         $('.welFare-mask').hide();
         $('.welFareShare').removeClass('animationTop');
       },
