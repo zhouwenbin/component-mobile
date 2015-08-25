@@ -605,9 +605,7 @@ define(
         var switcher = new SFSwitcher();
 
         switcher.register('web', _.bind(function() {
-          this.element.empty(html);
-          this.element.append(html);
-
+          this.element.html(html);
           can.trigger(window, 'updateCart');
           new SFWidgetCartNumber();
           loadingCtrl.hide();
@@ -616,8 +614,7 @@ define(
         switcher.register('app', _.bind(function() {
 
           if (this.options.data.scopeGroups.length > 0 || SFFn.isMobile.Android()) {
-            this.element.empty(html);
-            this.element.append(html);
+            this.element.html(html);
           }
 
           can.trigger(window, 'updateCart');
