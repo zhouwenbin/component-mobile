@@ -30,7 +30,7 @@ define(
   function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart,
     SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid, SFLoading, SFWidgetCartNumber) {
     // 在页面上使用fastclick
-    Fastclick.attach(document.body);
+    // Fastclick.attach(document.body);
 
     // 注册服务端的appid
     SFFrameworkComm.register(3);
