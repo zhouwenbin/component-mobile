@@ -411,7 +411,7 @@ define(
        * @param  {event}  event    事件对象
        * @return
        */
-      '.remove-item-btn click': function($element, event) {
+      'li .remove-item-btn click': function($element, event) {
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
         this.requestFactory('removeitem', [good]);
@@ -423,7 +423,7 @@ define(
        * @param  {event}  event    事件对象
        * @return boolean
        */
-      '.minus-num click': function($element, event) {
+      'li .minus-num click': function($element, event) {
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
 
@@ -441,7 +441,7 @@ define(
        * @param  {event}  event    事件对象
        * @return boolean
        */
-      '.plus-num click': function($element, event) {
+      'li .plus-num click': function($element, event) {
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
 
