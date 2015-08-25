@@ -84,6 +84,10 @@
   .nataral-tab li a{
     display: inline-block;
     vertical-align: middle;
+    max-width: 5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .nataral-tab li i{
     content: '';
