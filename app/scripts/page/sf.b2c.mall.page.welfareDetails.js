@@ -99,9 +99,11 @@ define(
         var verArr = version.split('.');
         var verInt = verArr[0] + verArr[1] + verArr[2];
         alert(version+verInt);
-        alert(SFFn.isMobile.APP()+SFFn.isMobile.iOverIntS()+SFFn.isMobile.Android());
-        alert('ios'+(SFFn.isMobile.iOverIntS() && version >= 140));
-        alert('and'+(SFFn.isMobile.Android() && version >= 135));
+        alert(SFFn.isMobile.APP()+SFFn.isMobile.iOS()+SFFn.isMobile.Android());
+        alert(SFFn.isMobile.iOS() && version >= 140);
+        alert(SFFn.isMobile.iOS() && version < 140);
+        alert(SFFn.isMobile.Android() && version >= 135);
+        alert(SFFn.isMobile.Android() && version < 135);
         if(SFFn.isMobile.APP()){
           if (SFFn.isMobile.iOS() && version >= 140 ) {
             $('.welFare-mask').show();
