@@ -412,7 +412,6 @@ define(
        * @return
        */
       '.remove-item-btn click': function($element, event) {
-        console.log('.remove-item-btn click')
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
         this.requestFactory('removeitem', [good]);
@@ -425,7 +424,6 @@ define(
        * @return boolean
        */
       '.minus-num click': function($element, event) {
-        console.log('.minus-num click')
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
 
@@ -444,7 +442,6 @@ define(
        * @return boolean
        */
       '.plus-num click': function($element, event) {
-        console.log('.plus-num click')
         // 从上层dom中获取good信息
         var good = $element.closest('li').data('good');
 
