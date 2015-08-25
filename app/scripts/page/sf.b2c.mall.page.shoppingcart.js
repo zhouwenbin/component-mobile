@@ -45,45 +45,47 @@ define(
 
     // －－－－－－－－－－－－－－－－－－－－－－
     // 启动分支逻辑
-    var switcher = new SFSwitcher();
+    $(function () {
+      var switcher = new SFSwitcher();
 
-    switcher.register('web', function() {
-      // 显示蒙层
-      new PageShoppingCart();
-    });
+      switcher.register('web', function() {
+        // 显示蒙层
+        new PageShoppingCart();
+      });
 
-    switcher.register('app', function() {
-      var app = {
-        initialize: function() {
-          this.bindEvents();
-        },
+      switcher.register('app', function() {
+        var app = {
+          initialize: function() {
+            this.bindEvents();
+          },
 
-        bindEvents: function() {
-          document.addEventListener('deviceready', this.onDeviceReady, false);
-          document.addEventListener('resume', this.onResume, false);
-        },
+          bindEvents: function() {
+            document.addEventListener('deviceready', this.onDeviceReady, false);
+            document.addEventListener('resume', this.onResume, false);
+          },
 
-        onResume: function () {
-          // 粗暴的重刷页面获取新数据
-          window.location.reload();
-        },
+          onResume: function () {
+            // 粗暴的重刷页面获取新数据
+            window.location.reload();
+          },
 
-        onDeviceReady: function() {
-          app.receivedEvent('deviceready');
-        },
+          onDeviceReady: function() {
+            app.receivedEvent('deviceready');
+          },
 
-        receivedEvent: function(id) {
-          SFHybrid.setNetworkListener();
-          SFHybrid.isLogin().done(function () {
-            new PageShoppingCart();
-          });
-        }
-      };
+          receivedEvent: function(id) {
+            SFHybrid.setNetworkListener();
+            SFHybrid.isLogin().done(function () {
+              new PageShoppingCart();
+            });
+          }
+        };
 
-      app.initialize();
-    });
+        app.initialize();
+      });
 
-    switcher.go();
+      switcher.go();
+    })
     // －－－－－－－－－－－－－－－－－－－－－－
 
   });
