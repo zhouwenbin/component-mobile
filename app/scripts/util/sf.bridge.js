@@ -45,10 +45,12 @@ define(
         var callbackId = this.register(success, error);
         var msg;
         if(_.isArray(params)){
-          msg = window.sfhtandroidbridge.runner(plugin, method, params, callbackId);
+          alert(JSON.stringify(params))
+          msg = window.sfhtandroidbridge.runner(plugin, method, JSON.stringify(params), callbackId);
         }else{
           var paramsJs = JSON.stringify(params);
-           msg = window.sfhtandroidbridge.runner(plugin, method, '[' + paramsJs + ']', callbackId);
+          alert('[' + paramsJs + ']')
+          msg = window.sfhtandroidbridge.runner(plugin, method, '[' + paramsJs + ']', callbackId);
         }
         try{
           msg;
