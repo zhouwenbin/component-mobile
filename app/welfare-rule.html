@@ -24,7 +24,7 @@
 				if (str!=null) return decodeURI(str[2]); return null;
 			}
 			var hash = window.location.hash;
-			var rule = hash.getURLParameter('flsRule')||'暂无规则';
+			var rule = hash.getURLParameter('flsRule').replace('+',' ')||'暂无规则';
 			document.getElementById('welfare-ruleCn').innerHTML = rule;
 		}
 	</script>

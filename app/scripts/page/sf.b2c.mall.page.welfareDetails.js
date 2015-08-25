@@ -12,10 +12,11 @@ define(
     "sf.bridge",
     'sf.helpers',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.coupon.rcvCouponByMobile'
+    'sf.b2c.mall.api.coupon.rcvCouponByMobile',
+    'moment'
   ],
 
-  function(can, $, SFFrameworkComm, SFgetShareBuyDetail, template_welfare_details, SFLoading, SFbridge, SFHelpers, SFmessage, SFReceiveCoupon) {
+  function(can, $, SFFrameworkComm, SFgetShareBuyDetail, template_welfare_details, SFLoading, SFbridge, SFHelpers, SFmessage, SFReceiveCoupon, moment) {
       SFFrameworkComm.register(3);
       var loadingCtrl = new SFLoading();
       can.route.ready();
@@ -99,7 +100,6 @@ define(
               "url": urlId
           }
           var success =function (data) {
-            alert(JSON.stringify(data));
             switch(data.type){
               case 0:
                 target = 'WeChat';
@@ -136,8 +136,8 @@ define(
 
         '.toShareBtn2 click': function($element, event) {
             event && event.preventDefault();
-            var taskId = can.route.attr('taskId');
-            var url = 'http://' + window.location.hostname + window.location.pathname+ '#!&'+ $.param({taskId: taskId});
+            var itemId = $('.imageBig').attr('data-itemId');
+            var url = 'http://' + window.location.hostname +'/detail/'+itemId+'.html';
             var couponId =  can.route.attr('couponId');
             var mobile = $('.mobileNum').val();
             var that = this;
@@ -157,24 +157,31 @@ define(
               });
               rcvCouponByMobile.sendRequest()
                 .done(function(data) {
+                  console.log(data);
+                  var getImage = '<img class="stepImage" src="http://img0.sfht.com/img/af94081093b7e45b80fa1628b6bbcb10.jpg">'
                   if(data.cardInfo.status == 'UNUSED'){
                     var reduceCost = data.cardInfo.reduceCost/100;
                      setTimeout(function(){
                        var message = new SFmessage(null, {
-                          'tip': '恭喜你获得'+reduceCost+'元'+data.cardInfo.title+'，有效期：'+data.cardInfo.endTime,
+                          'tip': '<p class="couponTitle">恭喜你获得'+reduceCost+'元'+data.cardInfo.title+'</p><p class="couponDate">有效期：'+moment(data.cardInfo.startTime).format('YYYY:MM:DD')+'-'+moment(data.cardInfo.endTime).format('YYYY:MM:DD')+'</p>',
                           'type': 'success',
                           'okFunction': function() {
                             window.location.href= url;
                           },
                       });
-                      $('#ok').text('用掉它');
+                      $('#messagedialog').addClass('addWelFareStyle');
+                      $(getImage).insertBefore('.addWelFareStyle .center h2');
+                      $('#ok').addClass('addWelFareBtn').text('用掉它');
                     },300);
                   }else{
-                     var message = new SFmessage(null, {
-                        'tip': '领取失败',
-                        'type': 'success',
-                        'okFunction': function() {},
-                    });
+                    setTimeout(function(){
+                      var message = new SFmessage(null, {
+                          'tip':'你未能领取成功',
+                          'type': 'success',
+                          'okFunction': function() {},
+                      });
+                      $('#ok').addClass('addWelFareBtn');
+                    },300);
                   }
                 })
                 .fail(function(errorCode) {

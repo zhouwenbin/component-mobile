@@ -51,6 +51,12 @@ define(
           var html = renderFn(data, this.helpers);
           this.element.html(html);
           loadingCtrl.hide();
+          $('.welfare-list li .joinBtns').each(function(index, el) {
+            var thisBtn = $('.welfare-list li .joinBtns').eq(index);
+            if(thisBtn.hasClass('direct') && !thisBtn.closest('li').hasClass('completed')){
+              thisBtn.closest('li').addClass('direct');
+            }
+          });
         },
 
         initLoadDataEvent: function() {
@@ -71,32 +77,43 @@ define(
         },
 
         '.joinBtns click': function($element, event) {
-          var url = window.location.href;
-          if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-              window.location.href ="http://m.sfht.com/login.html?from="+window.encodeURIComponent(url);
-              return false;
-          }
-          if($element.hasClass('direct')){
-            $element.attr({
-              href: 'javascript:;'
-            });
-            var taskId = $element.closest('li').attr('data-tab');
-            var sFdirectReceiveAward = new SFdirectReceiveAward({taskId: taskId});
-            sFdirectReceiveAward.sendRequest().done(function(taskId){
-              var message = new SFmessage(null, {
-                  'tip': taskId.text,
-                  'type': 'success',
-                  'okFunction': function() {
-                    if(complete){
-                      $element.closest('li').addClass('completed');
-                      $element.text(completeButtonText);
-                    }
-                  },
-              });
-            }) .fail(function(error){
-              console.log(error)
-            })
-          }
+            if($element.hasClass('direct') && $element.closest('li').hasClass('completed')){
+                event.preventDefault();
+            }else{
+                var url = window.location.href;
+                if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+                    window.location.href ="http://m.sfht.com/login.html?from="+window.encodeURIComponent(url);
+                    return false;
+                }
+                if($element.hasClass('direct')){
+                  $element.attr({
+                    href: 'javascript:;'
+                  });
+                  var taskId = $element.closest('li').attr('data-tab');
+                  var getImage = $element.closest('li').find('.stepImage').clone();
+                  var sFdirectReceiveAward = new SFdirectReceiveAward({taskId: taskId});
+                  sFdirectReceiveAward.sendRequest().done(function(data){
+                    console.log(data);
+                    setTimeout(function(){
+                       var message = new SFmessage(null, {
+                          'tip': data.richText,
+                          'type': 'success',
+                          'okFunction': function() {
+                            if(data.complete){
+                              $element.closest('li').addClass('completed');
+                              $element.text(completeButtonText);
+                            }
+                          },
+                      });
+                      $('#messagedialog').addClass('addWelFareStyle');
+                      getImage.insertBefore('.addWelFareStyle .center h2');
+                      $('#ok').addClass('addWelFareBtn');
+                    },300)
+                  }) .fail(function(error){
+                    console.log(error)
+                  })
+                }
+            }
         },
        });
       new welfareList('body');

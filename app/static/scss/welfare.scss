@@ -31,6 +31,27 @@
 		display: inline-block;
 	}
 }
+.addWelFareStyle{
+	.couponTitle{
+		font-size: 14px;
+	}
+	.couponDate{
+		font-size: 12px;
+	}
+	.stepImage{
+		width: 80px;
+	}
+}
+.btn-warnning.addWelFareBtn,.btn.warnning.addWelFareBtn{
+	background-color: #ffffff;
+	border: 1px solid #ff5e57;
+	color:#ff5e57!important;
+	&:focus,&:hover{
+		background-color: #ffffff;
+		border: 1px solid #ff5e57;
+		color:#ff5e57!important;
+	}
+}
 .welfare-list{
 	.title{
 		font-size: 14px;
@@ -68,7 +89,7 @@
 		border:1px solid #E76363;
 		border-left-width: 7px;
 		position: relative;
-		&.disable{
+		&.direct{
 			border-color: #66C8B7;
 			.joinBtns{
 				background-color: #66C8B7;
