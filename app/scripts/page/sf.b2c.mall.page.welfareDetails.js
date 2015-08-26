@@ -189,9 +189,10 @@ define(
           var b = data[0];
           $('.welFare-mask').hide();
           $('.welFareShare').removeClass('animationTop');
+          var getImage = '<img class="stepImage" src="http://img0.sfht.com/img/af94081093b7e45b80fa1628b6bbcb10.jpg">'
           setTimeout(function() {
             var message = new SFmessage(null, {
-              'tip': b.text,
+              'tip': b.text || '未能领取成功',
               'type': 'success',
               'okFunction': function() {
                 if (b.buttonLink) {
@@ -199,9 +200,12 @@ define(
                 }
               },
             });
-            $('#messagedialog').addClass('addWelFareStyle');
             if (b.buttonText) {
-              $('#ok').text(b.buttonText);
+              $('#messagedialog').addClass('addWelFareStyle');
+              $(getImage).insertBefore('.addWelFareStyle .center h2');
+              $('#ok').addClass('addWelFareBtn').text(b.buttonText);
+            }else{
+               $('#ok').addClass('addWelFareBtn');
             }
           }, 300);
         };
@@ -296,7 +300,13 @@ define(
           taskId: taskId
         });
         window.location.href = url;
-      }
+      },
+
+      '.welFaretoMyDetails click': function($element , event){
+        var itemId = $('.imageBig').attr('data-itemId');
+        var url = 'http://' + window.location.hostname + '/detail/' + itemId + '.html';
+        window.location.href = url;
+      },
 
     });
     new welfareDetails('body');
