@@ -60,6 +60,8 @@ define(
           $('#isShare').css('display', 'none');
         }
         loadingCtrl.hide();
+        var cHeight = document.body.clientHeight;
+        $('.welfare-detail').css('height', cHeight+'px');
       },
 
       initLoadDataEvent: function() {
