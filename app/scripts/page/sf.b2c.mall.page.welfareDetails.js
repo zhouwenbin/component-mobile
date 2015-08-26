@@ -60,9 +60,6 @@ define(
           $('#isShare').css('display', 'none');
         }
         loadingCtrl.hide();
-        //在微信中输入框会上滑动的问题
-        var cHeight = document.body.clientHeight;
-        $('.welfare-detail').css('height', cHeight+'px');
       },
 
       initLoadDataEvent: function() {
