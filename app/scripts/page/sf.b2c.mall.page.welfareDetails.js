@@ -186,11 +186,7 @@ define(
           "url": urlId
         },1];
         var success = function(data) {
-          //old vision 
-          var a = JSON.stringify(data)
-          var b = a.slice(1,a.length-1);
-          alert(a);
-          alert(b);
+          var b = data[0];
           $('.welFare-mask').hide();
           $('.welFareShare').removeClass('animationTop');
           setTimeout(function() {
