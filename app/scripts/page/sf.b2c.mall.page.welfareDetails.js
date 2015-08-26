@@ -154,7 +154,7 @@ define(
           var getImage = '<img class="stepImage" src="http://img0.sfht.com/img/af94081093b7e45b80fa1628b6bbcb10.jpg">'
           setTimeout(function() {
             var message = new SFmessage(null, {
-              'tip': data.text,
+              'tip': data.richText,
               'type': 'success',
               'okFunction': function() {
                 if (data.buttonLink) {
