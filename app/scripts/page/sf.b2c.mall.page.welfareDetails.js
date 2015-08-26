@@ -151,7 +151,6 @@ define(
           "url": urlId
         };
         var success = function(data) {
-          alert(JSON.stringify(data));
           var getImage = '<img class="stepImage" src="http://img0.sfht.com/img/af94081093b7e45b80fa1628b6bbcb10.jpg">'
           setTimeout(function() {
             var message = new SFmessage(null, {

@@ -218,7 +218,15 @@
 		display: block;
 		margin: 6% 0;
 		color: #383838;
-		text-decoration: underline;
+		.white{
+			width: 14px;
+			height: 14px;
+			line-height: 14px;
+			text-align: center;
+			border: 1px solid #333333;
+			border-radius: 50%;
+			color: #333333;
+		}
 	}
 	.old-price{
 		color: #999999;
