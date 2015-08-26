@@ -60,6 +60,7 @@ define(
           $('#isShare').css('display', 'none');
         }
         loadingCtrl.hide();
+        //在微信中输入框会上滑动的问题
         var cHeight = document.body.clientHeight;
         $('.welfare-detail').css('height', cHeight+'px');
       },
@@ -150,6 +151,8 @@ define(
           "url": urlId
         };
         var success = function(data) {
+          alert(JSON.stringify(data));
+          var getImage = '<img class="stepImage" src="http://img0.sfht.com/img/af94081093b7e45b80fa1628b6bbcb10.jpg">'
           setTimeout(function() {
             var message = new SFmessage(null, {
               'tip': data.text,
@@ -160,9 +163,12 @@ define(
                 }
               },
             });
-            $('#messagedialog').addClass('addWelFareStyle');
             if (data.buttonText) {
-              $('#ok').text(data.buttonText);
+              $('#messagedialog').addClass('addWelFareStyle');
+              $(getImage).insertBefore('.addWelFareStyle .center h2');
+              $('#ok').addClass('addWelFareBtn').text(data.buttonText);
+            }else{
+               $('#ok').addClass('addWelFareBtn');
             }
           }, 300);
         };
