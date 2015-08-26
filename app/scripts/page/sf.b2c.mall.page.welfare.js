@@ -120,6 +120,7 @@ define(
         var url = "http://m.sfht.com/welfare-rule.html#!&"+$.param({
           taskId: taskId
         });
+        console.log(url);
         window.location.href = url;
       }
 

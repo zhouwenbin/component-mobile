@@ -1947,6 +1947,24 @@ module.exports = function (grunt) {
         }
       },
 
+      welfareRule: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.welfareRule.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.welfareRule'
+          ],
+          insertRequire: ['sf.b2c.mall.page.welfareRule']
+        }
+      },
+
 
       tmlg: {
         options: {

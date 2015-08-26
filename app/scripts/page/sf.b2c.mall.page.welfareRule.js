@@ -55,7 +55,6 @@ define(
         can.when(sFgetTaskDetail.sendRequest()).done(function(data) {
           that.itemObj.attr(data);
           that.stepCates(that.itemObj);
-          console.log(data);
         }).fail(function(error) {
           console.error(error);
         });
