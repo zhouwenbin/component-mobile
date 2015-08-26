@@ -80,7 +80,7 @@ define(
           console.error(error);
         });
       },
-
+      //android shrare
       '.toShareBtn1 click': function($element, event) {
         var ifHasIsId = can.route.attr('isTaskId');
         var taskId = can.route.attr('taskId');
@@ -123,11 +123,9 @@ define(
               var message = new SFmessage(null, {
                 'tip': '当前版本不支持该活动，请下载新版本',
                 'type': 'success',
-                'okFunction': function() {
-                    window.location.href = "http://dl.sfht.com/app/sfht_sfhaitao.apk";
-                },
+                'okFunction': function() {},
               });
-              $('#ok').addClass('addWelFareBtn').text('马上下载');
+              $('#ok').addClass('addWelFareBtn');
             }, 300);
           };
 
@@ -188,23 +186,26 @@ define(
           "url": urlId
         },1];
         var success = function(data) {
-          alert(data);
-          alert(JSON.stringify(data));
+          //old vision 
+          var a = JSON.stringify(data)
+          var b = a.slice(1,a.length-1);
+          alert(a);
+          alert(b);
           $('.welFare-mask').hide();
           $('.welFareShare').removeClass('animationTop');
           setTimeout(function() {
             var message = new SFmessage(null, {
-              'tip': data.text,
+              'tip': b.text,
               'type': 'success',
               'okFunction': function() {
-                if (data.buttonLink) {
-                  window.location.href = data.buttonLink;
+                if (b.buttonLink) {
+                  window.location.href = b.buttonLink;
                 }
               },
             });
             $('#messagedialog').addClass('addWelFareStyle');
-            if (data.buttonText) {
-              $('#ok').text(data.buttonText);
+            if (b.buttonText) {
+              $('#ok').text(b.buttonText);
             }
           }, 300);
         };
