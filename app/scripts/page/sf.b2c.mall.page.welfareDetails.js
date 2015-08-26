@@ -99,15 +99,16 @@ define(
         var verInt = verArr[0] + verArr[1] + verArr[2];
         if(SFFn.isMobile.APP()){
           if (SFFn.isMobile.iOS() && verInt >= 140 ) {
-            $('.welFare-mask').show();
-            $('.welFareShare').addClass('animationTop');
+            // $('.welFare-mask').show();
+            // $('.welFareShare').addClass('animationTop');
+            this.iosBridge();
           }else if(SFFn.isMobile.iOS() && verInt < 140 ){
             setTimeout(function() {
               var message = new SFmessage(null, {
                 'tip': '当前版本不支持该活动，请下载新版本',
                 'type': 'success',
                 'okFunction': function() {
-                    window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8"
+                    window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
                 },
               });
               $('#ok').addClass('addWelFareBtn').text('马上下载');
@@ -123,7 +124,7 @@ define(
                 'tip': '当前版本不支持该活动，请下载新版本',
                 'type': 'success',
                 'okFunction': function() {
-                    window.location.href = "http://dl.sfht.com/app/sfht_sfhaitao.apk"
+                    window.location.href = "http://dl.sfht.com/app/sfht_sfhaitao.apk";
                 },
               });
               $('#ok').addClass('addWelFareBtn').text('马上下载');
@@ -131,6 +132,44 @@ define(
           };
 
         }
+      },
+
+      iosBridge: function(){
+        var taskId = can.route.attr('taskId');
+        var url = 'http://' + window.location.hostname + window.location.pathname + '#!&' + $.param({
+          taskId: taskId
+        });
+        var pic = $('.imageBig').attr('data-samllPic');
+        var subject = $('.imageBig').attr('data-subject');
+        var desc = $('.imageBig').attr('data-desc');
+        var urlId = url + '&isTaskId=isTaskId';
+        var params = {
+          "subject": subject,
+          "description": desc,
+          "imageUrl": pic,
+          "url": urlId
+        };
+        var success = function(data) {
+          setTimeout(function() {
+            var message = new SFmessage(null, {
+              'tip': data.text,
+              'type': 'success',
+              'okFunction': function() {
+                if (data.buttonLink) {
+                  window.location.href = data.buttonLink;
+                }
+              },
+            });
+            $('#messagedialog').addClass('addWelFareStyle');
+            if (data.buttonText) {
+              $('#ok').text(data.buttonText);
+            }
+          }, 300);
+        };
+        var error = function(data) {
+          console.log('data.error');
+        };
+        window.bridge.run('SocialSharing', 'share', params, success, error);
       },
 
       '.shareViaWechat click': function($element, event) {
@@ -148,7 +187,6 @@ define(
           "imageUrl": pic,
           "url": urlId
         },1];
-        alert('give'+params);
         var success = function(data) {
           alert(data);
           alert(JSON.stringify(data));
