@@ -110,9 +110,7 @@ define(
                     window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8"
                 },
               });
-              if (data.buttonText) {
-                $('#ok').text('马上下载');
-              }
+              $('#ok').addClass('addWelFareBtn').text('马上下载');
             }, 300);
           };
 
@@ -128,9 +126,7 @@ define(
                     window.location.href = "http://dl.sfht.com/app/sfht_sfhaitao.apk"
                 },
               });
-              if (data.buttonText) {
-                $('#ok').text('马上下载');
-              }
+              $('#ok').addClass('addWelFareBtn').text('马上下载');
             }, 300);
           };
 
@@ -152,6 +148,7 @@ define(
           "imageUrl": pic,
           "url": urlId
         },1];
+        alert('give'+params);
         var success = function(data) {
           alert(data);
           alert(JSON.stringify(data));
@@ -167,6 +164,7 @@ define(
                 }
               },
             });
+            $('#messagedialog').addClass('addWelFareStyle');
             if (data.buttonText) {
               $('#ok').text(data.buttonText);
             }

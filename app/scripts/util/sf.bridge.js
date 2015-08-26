@@ -58,7 +58,10 @@ define(
           console.log(e.name + ":" + e.message)
         }
         //if not android
+        alert(params);
+        alert(paramsJs);
         if (!msg && this.version && this.version >= 130) {
+          alert('test1');
           var urlscheme = 'sfhtbridge://service/pluginHelper?plugin='+ plugin +'&method='+ method +'&params='+ encodeURIComponent(paramsJs)+ '&callbackId='+callbackId;
 
           if ($('#apprunner').length == 0) {
@@ -68,6 +71,7 @@ define(
 
             $('body').append($el);
           }else{
+            alert('test2');
             $('#apprunner').attr('src', urlscheme);
           }
         }
