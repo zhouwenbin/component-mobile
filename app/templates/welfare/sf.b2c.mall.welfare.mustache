@@ -11,8 +11,8 @@
 			<div class="listLi-2 fl grey">
 				<p class="font16 dark margin-bottom-10 clearfix">
 					<span class="sfhdtitle ellipsis inline fl fb">{{task.title}}</span>
-					{{#if task.description}}
-					<a href="http://m.sfht.com/welfare-rule.html#!&flsRule={{sf-uni task.description}}" class="inline ruleToshow font12 white fl" id="SFFLSruleToshow">?</a>
+					{{#if task.isHaveDescription}}
+					<a href="javascript:;" class="inline ruleToshow font12 white fl"  id="SFFLSruleToshow">?</a>
 					{{/if}}
 				</p>
 				{{#if task.endDate}}
@@ -49,8 +49,8 @@
 			<div class="listLi-2 fl grey">
 				<p class="font16 dark margin-bottom-10 clearfix">
 					<span class="sfhdtitle ellipsis inline fl fb">{{task.title}}</span>
-					{{#if task.description}}
-					<a href="http://m.sfht.com/welfare-rule.html#!&flsRule={{sf-uni task.description}}" class="inline ruleToshow font12 white fl"  id="SFFLSruleToshow">?</a>
+					{{#if task.isHaveDescription}}
+					<a href="javascript:;" class="inline ruleToshow font12 white fl"  id="SFFLSruleToshow">?</a>
 					{{/if}}
 				</p>
 				{{#if task.endDate}}

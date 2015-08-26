@@ -153,7 +153,8 @@ define(
           "url": urlId
         },1];
         var success = function(data) {
-          alert(stringify(data));
+          alert(data);
+          alert(JSON.stringify(data));
           $('.welFare-mask').hide();
           $('.welFareShare').removeClass('animationTop');
           setTimeout(function() {
@@ -254,6 +255,14 @@ define(
               }
             })
         }
+      },
+
+      '.welFareToRule click':function($element , event){
+        var taskId = can.route.attr('taskId');
+        var url = "http://m.sfht.com/welfare-rule.html#!&"+$.param({
+          taskId: taskId
+        });
+        window.location.href = url;
       }
 
     });

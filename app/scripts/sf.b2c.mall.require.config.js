@@ -326,6 +326,7 @@ requirejs.config({
         "template_category_navigate": "templates/category/sf.b2c.mall.category.page.navigate.mustache",
         "template_welfare_list": "templates/welfare/sf.b2c.mall.welfare.mustache",
         "template_welfare_details": "templates/welfare/sf.b2c.mall.welfareDetails.mustache",
+        "template_welfare_rule": "templates/welfare/sf.b2c.mall.welfareRule.mustache",
         "sf.b2c.mall.category.fn": "scripts/category/sf.b2c.mall.category.fn",
         "sf.b2c.mall.category.pagenavigatelistcontent": "scripts/category/sf.b2c.mall.category.pagenavigatelistcontent",
         "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
@@ -333,6 +334,7 @@ requirejs.config({
 
         "sf.b2c.mall.page.welfare": "scripts/page/sf.b2c.mall.page.welfare",
         "sf.b2c.mall.page.welfareDetails": "scripts/page/sf.b2c.mall.page.welfareDetails",
+        "sf.b2c.mall.page.welfareRule": "scripts/page/sf.b2c.mall.page.welfareRule",
         "sf.b2c.mall.page.japanpre": "scripts/page/sf.b2c.mall.page.japanpre",
 
         //81
@@ -347,6 +349,7 @@ requirejs.config({
         "sf.b2c.mall.api.task.directReceiveAward": "scripts/api/sf.b2c.mall.api.task.directReceiveAward",
         "sf.b2c.mall.api.task.getUserTaskList": "scripts/api/sf.b2c.mall.api.task.getUserTaskList",
         "sf.b2c.mall.api.task.getShareBuyDetail": "scripts/api/sf.b2c.mall.api.task.getShareBuyDetail",
+        "sf.b2c.mall.api.task.getTaskDetail": "scripts/api/sf.b2c.mall.api.task.getTaskDetail",
 
         //states
         "Stats": "scripts/vendor/Stats",

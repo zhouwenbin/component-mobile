@@ -2,8 +2,9 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0, user-scalable=no" name="viewport">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>活动规则</title>
+
 	<!-- build:css({app, .tmp}) /styles/sf.b2c.h5welfare.css -->
 	<link rel="stylesheet" href="/static/css/style.css">
 	<link rel="stylesheet" href="/static/css/welfare.css">
@@ -11,22 +12,24 @@
 
 </head>
 <body>
-	<section class="welfare-rule">
-		<ul class="block dark">
-			<li class="clearfix" id="welfare-ruleCn"></li>
-		</ul>
-	</section>
+
+	<div class="sf-b2c-mall-welfareRule-content"></div>
+
+	<div id="version" data-version="{version}"></div>
+
+	<!-- build:js(.) /scripts/require.min.js -->
+	<script src="/bower_components/requirejs/require.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+	<script src="/scripts/base/sf.h5.base.ver.1.0.7.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js({app, .tmp}) /scripts/sf.b2c.mall.h5.page.welfareRule.js -->
+	<script src="/scripts/sf.b2c.mall.require.config.js"></script>
 	<script type="text/javascript">
-		window.onload = function(){
-			String.prototype.getURLParameter = function(name) {
-				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-				var str = this.substr(this.indexOf("\?")+1).substr(2,hash.length).match(reg);
-				if (str!=null) return decodeURI(str[2]); return null;
-			}
-			var hash = window.location.hash;
-			var rule = hash.getURLParameter('flsRule').replace('+',' ')||'暂无规则';
-			document.getElementById('welfare-ruleCn').innerHTML = rule;
-		}
+		require(['sf.b2c.mall.page.welfareRule']);
 	</script>
+	<!-- endbuild -->
 </body>
 </html>

@@ -114,6 +114,15 @@ define(
           }
         }
       },
+
+      '.ruleToshow click': function($element, event) {
+        var taskId = $element.closest('li').attr('data-tab');;
+        var url = "http://m.sfht.com/welfare-rule.html#!&"+$.param({
+          taskId: taskId
+        });
+        window.location.href = url;
+      }
+
     });
     new welfareList('body');
   });
