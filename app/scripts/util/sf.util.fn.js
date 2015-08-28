@@ -17,6 +17,28 @@ define('sf.util', [
     return src || 'false';
   }
 
+  // @note 请求存在跨域问题，需要外部支持
+  window.onerror = function(msg, url, line) {
+    var params = $.param({
+      msg: msg,
+      url: url,
+      line: line
+    });
+    var code = window.btoa(params);
+    var link = 'http://stat.t.sfht.com/jserror.gif?' + code;
+
+    var img = new Image();
+    img.width = 1;
+    img.height = 1;
+    img.onload = function() {
+      img = img.onerror = img.onload = null;
+    }
+    img.onerror = function() {
+      img = img.onerror = img.onload = null;
+    };
+    img.src = link;
+  }
+
 
   return {
     checkEmail: function(data) {
