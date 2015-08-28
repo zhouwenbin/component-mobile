@@ -91,7 +91,6 @@ define('sf.util', [
       },
       APP: function() {
         var isApp = config.setting['is_app'] || store.get('IS_APP');
-        alert(1)
 
         var hash = window.location.hash;
         var search = window.location.search;
