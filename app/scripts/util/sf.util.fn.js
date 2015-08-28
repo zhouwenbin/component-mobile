@@ -75,13 +75,23 @@ define('sf.util', [
         return (navigator.userAgent.indexOf('QQBrowser') > -1);
       },
       WeChat: function() {
-        return navigator.userAgent.match(/MicroMessenger/i);
+        var isWeChat = navigator.userAgent.match(/MicroMessenger/i);
+        if (isWeChat) {
+          store.remove('IS_APP');
+        }
+        return isWeChat
       },
       AlipayChat: function() {
-        return navigator.userAgent.match(/AlipayClient/i);
+        var isAlipayChat = navigator.userAgent.match(/AlipayClient/i);
+        if (isAlipayChat) {
+          store.remove('IS_APP');
+        }
+
+        return isAlipayChat
       },
       APP: function() {
         var isApp = config.setting['is_app'] || store.get('IS_APP');
+        alert(1)
 
         var hash = window.location.hash;
         var search = window.location.search;
