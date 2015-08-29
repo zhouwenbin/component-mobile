@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>领取红包页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+	<div class="partner-bags-bg">
+		== Slim::Template.new('module/header.slim').render
+		<div class="center partner-bags">
+			== Slim::Template.new('../svg/icon-bags.svg').render
+			<div class="btn-box">
+				<a href="" class="btn btn-danger">领取红包</a>
+				<p>仅限顺丰海淘新用户领取</p>
+			</div>
+			<a href="" class="partner-bags-rules box-link">
+				== Slim::Template.new('../svg/icon-tips.svg').render
+				<span>活动规则</span>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

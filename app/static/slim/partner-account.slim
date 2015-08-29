@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>1.已登录无收入</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body class="partent-account-main">
+	== Slim::Template.new('module/header.slim').render
+	== Slim::Template.new('module/partner-account.slim').render
+	== Slim::Template.new('module/partner-nologin.slim').render
+	== Slim::Template.new('module/partner-list.slim').render
+</body>
+</html>
