@@ -145,6 +145,10 @@ requirejs.config({
         'sf.b2c.mall.api.finance.createRefundTax': 'scripts/api/sf.b2c.mall.api.finance.createRefundTax',
         'sf.b2c.mall.api.finance.getRefundTax': 'scripts/api/sf.b2c.mall.api.finance.getRefundTax',
 
+        //重新计算价格
+        'sf.b2c.mall.api.order.orderPriceReCalculate': 'scripts/api/sf.b2c.mall.api.order.orderPriceReCalculate',
+
+        
         "sf.b2c.mall.api.user.getVoteNum": "scripts/api/sf.b2c.mall.api.user.getVoteNum",
         "sf.b2c.mall.api.user.vote": "scripts/api/sf.b2c.mall.api.user.vote",
         "sf.bridge": "scripts/util/sf.bridge",
