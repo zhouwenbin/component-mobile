@@ -213,8 +213,8 @@ define('sf.b2c.mall.adapter.detailcontent', ['can'], function(can) {
      */
     formatRecommendProducts: function(detailUrl, detailContentInfo, recommendProducts) {
       detailContentInfo.recommendProducts = recommendProducts.value;
-      _.each(detailContentInfo.recommendProducts, function(item) {
-        item.linkUrl = detailUrl + "/detail/" + item.itemId + ".html";
+      _.each(detailContentInfo.recommendProducts, function(item, index) {
+        item.linkUrl = detailUrl + "/detail/" + item.itemId + ".html?_spm=1.rec0918." + item.itemId + "." + (index + 1);
         item.imageName = item.imageName + "@102h_102w_80Q_1x.jpg";
       })
     }
