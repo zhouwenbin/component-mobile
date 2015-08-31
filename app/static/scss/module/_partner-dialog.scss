@@ -4,15 +4,15 @@
 	font-size: 16px;
 }
 .partner-dialog .center{
-	display: flex;
+	/*display: flex;
 	flex-direction: column;
 	text-align: left;
 	align-items: center;
-	justify-content: center;
+	justify-content: center;*/
 	width: 280px;
 	height: 310px;
 	border-radius: 8px;
-	padding: 0 35px;
+	padding: 60px 35px 0;
 }
 .partner-dialog .partner-text{
 	line-height: 1.5;
@@ -48,6 +48,7 @@
 .partner-settings .partner-text{
 	font-size: 14px;
 	color: #666;
+	margin-bottom: 10px;
 }
 .partner-settings .box-link{
 	width: 100%;
@@ -56,17 +57,19 @@
 	padding: 10px 0;
 	text-align: center;
 }
+.partner-dialog .partner-bags-small,
+.partner-bags-big .money-number{
+	color: #FF5B54;
+}
 .partner-dialog .partner-bags-small{
-	margin-top: 10px;
-	margin-bottom: 8px;
-	text-indent: -99em;
+	margin: 25px auto 20px;
+	padding-top: 28px;
 	background: url(../img/icon-bags-small.png) 0 0 no-repeat;
 	background-size: 125px 103px;
 	width: 125px;
 	height: 103px;
-	/*svg{
-		border-bottom-left-radius: 5px;
-		border-bottom-right-radius: 5px;
-	}*/
-	
+	font-size: 18px;	
+}
+.partner-dialog .partner-olduser{
+	padding-top: 80px;
 }

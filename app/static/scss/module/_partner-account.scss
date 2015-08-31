@@ -5,6 +5,11 @@
 	color: #fff;
 	text-align: center;
 }
+.partent-account-main{
+	.header{
+		border-bottom: 1px solid #fff;
+	}
+}
 .partner-nologin{
 	position: relative;
 	height: 141px;
@@ -147,6 +152,7 @@ a.partner-account-btn{
 .partner-tab{
 	display: flex;
 	border-bottom: 1px solid #E1E1E1;
+	background: #fff;
 	li{
 		padding: 7px 0;
 		flex: 1;
@@ -170,6 +176,9 @@ a.partner-account-btn{
 }
 .partner-user-inner{
 	background: #f0eff5;
+	.partner-no{
+		font-size: 14px;
+	}
 }
 .partner-user-tab{
 	.active{
@@ -356,4 +365,24 @@ a.partner-bags-rules{
 }
 .btn-box.partner-login-btn{
 	margin-top: 30px;
+}
+
+.partner-bags-big{
+	margin: 0 auto;
+	width: 210px;
+	height: 224px;
+	background: url(../img/icon-bags-big.png) 0 0 no-repeat;
+	background-size: 210px 224px;
+	color: #966300;
+	font-size: 24px;
+	padding-top: 38px;
+	h2{
+		font-size: 14px;
+		opacity: 0.5;
+		color: #fff;
+		margin-top: 62px;
+	}
+}
+.partner-bags-big .money-number{
+	font-size: 36px;
 }
