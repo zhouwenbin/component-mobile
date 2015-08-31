@@ -12,3 +12,4 @@ h5-static
 **/.DS_Store
 cordova.js
 .iml
+app/static/prepros.cfg

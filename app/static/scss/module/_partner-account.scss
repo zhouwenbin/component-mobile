@@ -5,11 +5,6 @@
 	color: #fff;
 	text-align: center;
 }
-.partent-account-main{
-	.header{
-		border-bottom: 1px solid #fff;
-	}
-}
 .partner-nologin{
 	position: relative;
 	height: 141px;
@@ -85,10 +80,16 @@ a.partner-account-btn{
 .partner-list{
 	margin-top: 13px;
 	background: #fff;
-	border-bottom: 1px solid #E1E1E1;
+	border-top: 1px solid #E1E1E1;
+	background: #f0eff5;
 	li{
 		position: relative;
+		border-bottom: 1px solid #E1E1E1;
+		background: #fff;
+	}
+	.partner-rules-li{
 		border-top: 1px solid #E1E1E1;
+		margin-top: 14px;
 	}
 	.box-link{
 		padding: 15px;
@@ -177,7 +178,11 @@ a.partner-account-btn{
 .partner-user-inner{
 	background: #f0eff5;
 	.partner-no{
-		font-size: 14px;
+		font-size: 14px;	
+	}
+	.link{
+		color: #FF5B54;
+		text-decoration: underline;
 	}
 }
 .partner-user-tab{
@@ -385,4 +390,7 @@ a.partner-bags-rules{
 }
 .partner-bags-big .money-number{
 	font-size: 36px;
+}
+.header-white .header-title{
+	color: #FF5B54 !important;
 }
