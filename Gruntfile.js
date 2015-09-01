@@ -288,15 +288,15 @@ module.exports = function (grunt) {
 
             if (config.version) {
               if (block.dest[0] != '/') {
-                return '<script src="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'"></script>';
+                return '<script src="'+ OSS_HOST + '/' + config.version + '/' + block.dest + '?' + config.timestamp +'"></script>';
               }else{
-                return '<script src="'+ OSS_HOST + '/' + config.version +  block.dest +'"></script>';
+                return '<script src="'+ OSS_HOST + '/' + config.version +  block.dest +'?' + config.timestamp +'"></script>';
               }
             }else{
               if (block.dest[0] != '/') {
-                return '<script src="' + '/' + block.dest +'"></script>';
+                return '<script src="' + '/' + block.dest +'?' + config.timestamp +'"></script>';
               }else{
-                return '<script src="' + block.dest +'"></script>';
+                return '<script src="' + block.dest +'?' + config.timestamp +'"></script>';
               }
             }
           },
@@ -315,15 +315,15 @@ module.exports = function (grunt) {
 
             if (config.version) {
               if (block.dest[0] !='/') {
-                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'">';
+                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'?' + config.timestamp +'">';
               }else{
-                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version  + block.dest +'">';
+                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version  + block.dest +'?' + config.timestamp +'">';
               }
             }else{
               if (block.dest[0] != '/') {
-                return '<link rel="stylesheet" href="'+ '/' + block.dest +'">';
+                return '<link rel="stylesheet" href="'+ '/' + block.dest +'?' + config.timestamp +'">';
               }else{
-                return '<link rel="stylesheet" href="'+ block.dest +'">';
+                return '<link rel="stylesheet" href="'+ block.dest +'?' + config.timestamp +'">';
               }
             }
           }
