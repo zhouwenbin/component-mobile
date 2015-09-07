@@ -1,0 +1,74 @@
+<div class="partner-user-inner hide" id="isHasaccount">
+    <div class="partner-tips-box" id="partner-tips-box">
+      <div class="center">
+        <p>有小伙伴注册了未下单，赶紧让他们下单吧！</p>
+        <span>（注册后15日内下单有效）</span>
+        </div>
+    </div>
+    <div class="partner-user-box" id="partner-user-box">
+      <ul class="partner-tab">
+          {{#finishStatus}}
+          <li class="active">
+              {{#if totalCount}}
+                <a href="javascript:void(0);" class="box-link" id="unfinishList">已注册未完成（{{totalCount}}）</a>
+              {{else}}
+                <a href="javascript:void(0);" class="box-link" id="unfinishList">已注册未完成（0）</a>
+              {{/if}}
+          </li>
+          <li>
+            <a href="javascript:void(0);" class="box-link" id="finishedList">已完成任务（<span class="total">0</span>）</a>
+          </li>
+          {{else}}
+          <li>
+            <a href="javascript:void(0);" class="box-link" id="unfinishList">已注册未完成（<span class="total">0</span>）</a>
+          </li>
+          <li class="active">
+              {{#if totalCount}}
+                <a href="javascript:void(0);" class="box-link" id="finishedList">已完成任务（{{totalCount}}）</a>
+              {{else}}
+                <a href="javascript:void(0);" class="box-link">已完成任务（0）</a>
+              {{/if}}
+          </li>
+          {{/finishStatus}}
+      </ul>
+      <section class="partner-user-tab">
+      {{#if infos}}
+        <ul class="partner-user-list goods-list active">
+          {{#each infos}}
+            <li><img src="{{headImgUrl}}" alt="">
+              <div class="partner-user-info">
+                {{#if nick}}
+                <h3 class="ellipsis">{{nick}}</h3>
+                {{/if}}
+                <p>{{mobile}}</p>
+              </div>
+              <div class="goodslist-c1">{{sf-time regstTime}} {{#finishStatus}}注册{{else}}完成{{/finishStatus}}</div>
+            </li>
+            {{/each}}
+        </ul>
+        {{else}}
+        <div class="partner-no center">
+            {{#finishStatus}}
+            <p>还没有已注册未完成任务的小伙伴</p><p>去邀请更多好友吧！</p>
+            <div class="btn-box">
+                <a href="javascript:void(0);" class="btn btn-danger" id="toAskfriend">给好友发红包</a>
+            </div>
+            {{else}}
+            <div class="partner-no center">
+                <p>还没有已完成任务的小伙伴</p>
+                <p><a href="javascript:void(0);" class="link" id="goTohome">去首页</a>挑选商品分享给他们吧~</p>
+            </div>
+            {{/finishStatus}}
+        </div>
+        {{/if}}
+      </section>
+    </div>
+</div>
+<div id="noHasaccount" class="hide">
+  <div class="partner-no center">
+      <p>还没有用户通过你的链接注册</p><p>赶紧去邀请好友吧！</p>
+      <div class="btn-box">
+          <a href="javascript:void(0);" class="btn btn-danger" id="toAskfriend">马上邀请好友</a>
+      </div>
+  </div>
+</div>

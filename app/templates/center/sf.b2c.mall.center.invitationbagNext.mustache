@@ -1,0 +1,79 @@
+<div class="partner-bags-bg">
+	<div class="partner-form center">
+		<div class="partner-phone">
+			{{#isWechart}}
+			<h2>注册领红包</h2>
+			<ul class="partner-form-list">
+				<li>
+					<input type="text" class="input" placeholder="输入您的手机号" id="getMbile">
+					<p class="text-error text-errorme hide" id="text-error1">错误提示</p>
+				</li>
+				<li>
+					<input type="text" class="input input-code" placeholder="输入验证码" id="codeNum">
+					<a href="javascript:void(0);" class="code-btn" style="top:0" id="getCode">
+						<span class="text-error">获取验证码</span>
+					</a>
+					<p class="text-error text-errorme hide" id="text-error2">错误提示</p>
+				</li>
+				<li>
+					<input type="password" class="input" placeholder="设置您的账户密码" id="getPassword">
+					<p class="text-error text-errorme hide" id="text-error3">密码必须为6-18位数字字母组合</p>
+					<p>密码为6-18位数字字母组合</p>
+				</li>
+			</ul>
+			<div class="btn-box partner-login-btn">
+				<a href="javascript:void(0);" class="btn btn-danger" id="noDitectGetBtn">注册并领取红包</a>
+			</div>
+			{{else}}
+			<h2>输入手机号领红包</h2>
+			<ul class="partner-form-list">
+				<li>
+					<input type="text" class="input" placeholder="输入您的手机号" id="getMbile">
+					<p class="text-error text-errorme hide" id="text-error1">错误提示</p>
+				</li>
+				<li>
+					<input type="text" class="input input-code" placeholder="输入验证码" id="codeNum">
+					<a href="javascript:void(0);" class="code-btn" style="top:0" id="getCode">
+						<span class="text-error">获取验证码</span>
+					</a>
+					<p class="text-error text-errorme hide" id="text-error2">错误提示</p>
+				</li>
+			</ul>
+			<div class="btn-box partner-login-btn">
+				<a href="javascript:void(0);" class="btn btn-danger" id="ditectGetBtn">领取红包</a>
+			</div>
+			{{/isWechart}}
+		</div>
+	</div>
+</div>
+{{#isWechart}}
+<div class="mask hide" id="ohSuccessSet">
+	<div class="dialog partner-dialog">
+		<div class="center">
+			<h2>恭喜你，成功领取20元红包</h2>
+			<div class="partner-bags-small money-num">20元</div>
+			<div class="btn-box">
+				<a href="javascript:void(0);" class="btn btn-danger" id="goTohome">去使用</a>
+			</div>
+			<a href="javascript:void(0);" class="close" id="closeBtn"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg width="14px" height="13px" viewBox="0 0 14 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch --><title>Rectangle-27-+-Rectangle-27-Copy</title><desc>Created with Sketch.</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="Rectangle-27-+-Rectangle-27-Copy" sketch:type="MSLayerGroup" transform="translate(0.625000, 0.000000)" fill="#999999"><path d="M0.0516240161,12.0746949 L12.012335,0.0942793212 L12.6133757,0.696310268 L0.65266478,12.6767259 L0.0516240161,12.0746949 L0.0516240161,12.0746949 Z" id="Rectangle-27" sketch:type="MSShapeGroup"></path><path d="M12.0123352,12.6767259 L0.0516242565,0.696310268 L0.652665021,0.0942793212 L12.613376,12.0746949 L12.0123352,12.6767259 L12.0123352,12.6767259 Z" id="Rectangle-27-Copy" sketch:type="MSShapeGroup"></path></g></g></svg>
+			</a>
+		</div>
+	</div>
+</div>
+{{else}}
+<div class="mask hide" id="toSuccessSet">
+	<div class="dialog partner-dialog">
+		<div class="center partner-settings">
+			<h2>恭喜你，成功领取20元红包</h2><p class="partner-text">现在设置账户密码可马上使用</p>
+			<input type="password" class="input" placeholder="密码为6-18位数字字母组合"
+			id="setPassword">
+			<p style="color:#FF5B54;font-size:12px; padding-top:10px;" class="hide" id="setWrongFont">错误</p>
+			<div class="btn-box">
+				<a href="javascript:void(0);" class="btn btn-danger" id="commitSubmit2">确定设置</a>
+			</div>
+			<a href="javascript:void(0);" class="close" id="closeBtn"><!--?xml version="1.0" encoding="UTF-8" standalone="no"?--><svg width="14px" height="13px" viewBox="0 0 14 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch --><title>Rectangle-27-+-Rectangle-27-Copy</title><desc>Created with Sketch.</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage"><g id="Rectangle-27-+-Rectangle-27-Copy" sketch:type="MSLayerGroup" transform="translate(0.625000, 0.000000)" fill="#999999"><path d="M0.0516240161,12.0746949 L12.012335,0.0942793212 L12.6133757,0.696310268 L0.65266478,12.6767259 L0.0516240161,12.0746949 L0.0516240161,12.0746949 Z" id="Rectangle-27" sketch:type="MSShapeGroup"></path><path d="M12.0123352,12.6767259 L0.0516242565,0.696310268 L0.652665021,0.0942793212 L12.613376,12.0746949 L12.0123352,12.6767259 L12.0123352,12.6767259 Z" id="Rectangle-27-Copy" sketch:type="MSShapeGroup"></path></g></g></svg></a>
+			<a href="javascript:void(0);" class="box-link" id="closeSuccessSet">以后再说</a>
+		</div>
+	</div>
+</div>
+{{/isWechart}}
