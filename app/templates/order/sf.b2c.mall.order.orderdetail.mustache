@@ -198,11 +198,15 @@
 
 {{#each orderItem.orderPackageItemList}}
 <section class="order logistics logistics-{{@index}}" style="display:none">
-    {{! <h2>物流跟踪</h2> }}
+    {{#sf-show-logisticsinfo status}}
     <div class="order-logistics-info">
       <span>物流公司：<i>{{transporterDesc}}</i></span>
       <span>承运单号：<i>{{logisticsNo}}</i></span>
     </div>
+    {{/sf-show-logisticsinfo}}
+    {{^sf-show-logisticsinfo status}}
+    <h2>物流跟踪</h2>
+    {{/sf-show-logisticsinfo}}
     <ul>
     {{#sf-reverse actionTraceItemList}}
       {{#each group}}
