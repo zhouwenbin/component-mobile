@@ -23,13 +23,12 @@ define(
     var myInvitation = can.Control.extend({
 
       init: function(element, options) {
-
         this.render();
       },
 
       render: function() {
         var that = this;
-        this.data = {};
+        that.data = {};
         var renderFn = can.mustache(template_center_invitationbag);
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
@@ -38,19 +37,6 @@ define(
           var userid = $.fn.cookie('userId');
           SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
         }
-      },
-
-      initHasReceivedCp: function(bagId) {
-        var that = this;
-        var params = {
-          "bagId": bagId,
-          "bagType": "CARD"
-        };
-        var hasReceivedCp = new SFHasReceivedCp(params);
-        return hasReceivedCp.sendRequest()
-          .done(function(boolResp) {
-            that.data.isHasReceived = boolResp.value;
-          })
       },
 
       '#getRedpackBtn click': function(element, event) {
