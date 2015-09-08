@@ -21,7 +21,37 @@ define(
     SFFrameworkComm.register(3);
     var bagid = 286;
 
-    alert(-1)
+    if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
+      if (SFFn.isMobile.WeChat()) {
+        alert(1)
+        alert(window.location.search.substr(1))
+        var params = can.deparam(window.location.search.substr(1));
+        var srcUid = can.route.attr('_ruser');
+        var authResp = "code=" + params.code;
+        alert('已经授权登录params：'+params+'用户Id：'+srcUid+'code信息：'+authResp);
+        var partnerLogin = new SFPartnerLogin({
+          "partnerId": 'wechat_svm',
+          "srcUid": srcUid,
+          "authResp": authResp
+        });
+        partnerLogin.sendRequest().done(function(data) {
+          if (data.tempToken) {
+            alert(data.tempToken);
+            store.set('tempToken', data.tempToken);
+            var srcUid = srcUid;
+            window.location.href = 'http://' + window.location.hostname + '/invitation-bagNext.html&#!' + $.param({
+              tempToken: data.tempToken || null,
+              srcUid: srcUid
+            });
+          } else {
+            $('#hasGetpack').show();
+          }
+        });
+      } else {
+        $('#hasGetpack').show();
+      }
+    };
+
     var myInvitation = can.Control.extend({
 
       init: function(element, options) {
@@ -46,36 +76,6 @@ define(
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()) {
             alert('授权')
             wechatLogin.blogin(window.location.href);
-        } else if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
-          if (SFFn.isMobile.WeChat()) {
-            alert(1)
-            alert(window.location.search.substr(1))
-            var params = can.deparam(window.location.search.substr(1));
-            
-            var srcUid = can.route.attr('_ruser');
-            var authResp = "code=" + params.code;
-            alert('已经授权登录params：'+params+'用户Id：'+srcUid+'code信息：'+authResp);
-            var partnerLogin = new SFPartnerLogin({
-              "partnerId": 'wechat_svm',
-              "srcUid": srcUid,
-              "authResp": authResp
-            });
-            partnerLogin.sendRequest().done(function(data) {
-              if (data.tempToken) {
-                alert(data.tempToken);
-                store.set('tempToken', data.tempToken);
-                var srcUid = srcUid;
-                window.location.href = 'http://' + window.location.hostname + '/invitation-bagNext.html&#!' + $.param({
-                  tempToken: data.tempToken || null,
-                  srcUid: srcUid
-                });
-              } else {
-                $('#hasGetpack').show();
-              }
-            });
-          } else {
-            $('#hasGetpack').show();
-          }
         } else {
           var srcUid = can.route.attr('_ruser');
           window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html'+$.param({

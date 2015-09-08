@@ -51,14 +51,15 @@ define(
           window.location.href = 'http://' + window.location.hostname + '/login.html?from=' + window.encodeURIComponent(url);
           return false;
         }
-        alert(0.2)
-        if(SFFn.isMobile.WeChat()){
-          var url = window.location.href;
-          var userid = $.fn.cookie('userId');
-          SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧','顺丰海淘客户把好东西分享给新伙伴就可以赚现金',286,userid)
-        }
+        alert(0.15)
+        // if(SFFn.isMobile.WeChat()){
+        //   var url = window.location.href;
+        //   var userid = $.fn.cookie('userId');
+        //   SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧','顺丰海淘客户把好东西分享给新伙伴就可以赚现金',286,userid)
+        // }
         alert(0.3)
         this.render();
+        alert(0.4)
       },
 
       render: function() {
