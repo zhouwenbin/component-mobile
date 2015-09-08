@@ -47,15 +47,9 @@ define(
         var that = this;
         this.data = {};
         this.data.bagid = bagid;
-
-        can.when(that.initHasReceivedCp(bagid))
-          .then(function() {
-            var renderFn = can.mustache(template_center_invitationbagNext);
-            that.options.html = renderFn(that.data, that.helpers);
-            that.element.html(that.options.html);
-
-            requirejs(['sf.b2c.mall.module.getcoupon']);
-        });
+        var renderFn = can.mustache(template_center_invitationbagNext);
+        that.options.html = renderFn(that.data, that.helpers);
+        that.element.html(that.options.html);
 
         // if (SFFn.isMobile.WeChat()) {
         //   var url = window.location.href;
@@ -65,18 +59,18 @@ define(
 
       },
 
-      initHasReceivedCp: function(bagId) {
-        var that = this;
-        var params = {
-          "bagId": bagId,
-          "bagType": "CARD"
-        };
-        var hasReceivedCp = new SFHasReceivedCp(params);
-        return hasReceivedCp.sendRequest()
-          .done(function(boolResp) {
-            that.data.isHasReceived = boolResp.value;
-          })
-      },
+      // initHasReceivedCp: function(bagId) {
+      //   var that = this;
+      //   var params = {
+      //     "bagId": bagId,
+      //     "bagType": "CARD"
+      //   };
+      //   var hasReceivedCp = new SFHasReceivedCp(params);
+      //   return hasReceivedCp.sendRequest()
+      //     .done(function(boolResp) {
+      //       that.data.isHasReceived = boolResp.value;
+      //   })
+      // },
 
       '#getCode click': function(element, event) {
         var Reg = /^1\d{10}$/;

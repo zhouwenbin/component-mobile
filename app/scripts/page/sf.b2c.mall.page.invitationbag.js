@@ -45,7 +45,6 @@ define(
           var params = can.deparam(window.location.search.substr(1));
           if (SFFn.isMobile.WeChat() && params.code) {
             var srcUid = params._ruser;
-            alert(srcUid);
             var authResp = "code=" + params.code;
             var partnerLogin = new SFPartnerLogin({
               "partnerId": 'wechat_svm',
@@ -54,9 +53,9 @@ define(
             });
             partnerLogin.sendRequest().done(function(data) {
               if (data.tempToken) {
+                var srcUid = params._ruser;
                 store.set('tempToken', data.tempToken);
-                var srcUid = srcUid;
-                window.location.href = 'http://' + window.location.hostname + '/invitation-bagNext.html#!' + $.param({
+                window.location.href = 'http://' + window.location.hostname + '/invitation-bagNext.html#!&' + $.param({
                   tempToken: data.tempToken || null,
                   srcUid: srcUid
                 });
@@ -77,7 +76,8 @@ define(
         }else if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
             $('#hasGetpack').show();
         } else {
-          var srcUid = can.route.attr('_ruser');
+          var params = can.deparam(window.location.search.substr(1));
+          var srcUid = params._ruser;
           window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html#!&'+$.param({
             tempToken: null,
             srcUid: srcUid
