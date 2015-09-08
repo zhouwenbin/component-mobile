@@ -40,10 +40,11 @@ define(
       sfBridge: function() {
         //var params = can.deparam(window.location.search.substr(1));
         var hparams = can.route.attr();
-        var ruser = hparams._ruser || $.cookie();
-        alert(ruser);
+        var ruser = hparams._ruser || $.fn.cookie('userId');
+        alert(ruser) = hparams
+        var hparamsf = JSON.stringify(hparams);
         alert($.fn.cookie('userId'));
-        alert(JSON.stringify(hparams)+'用户id：' + hparams.cookieInfo.cookieInfo.split(',')[3]);
+        alert(JSON.stringify(hparams)+'用户id：' + hparamsf.cookieInfo.split(',')[3]);
         var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
           _ruser: ruser
         });

@@ -15,11 +15,10 @@ define(
     'sf.b2c.mall.widget.message',
     "sf.b2c.mall.api.user.getRegstedCount",
     'sf.b2c.mall.widget.loading',
-    'sf.weixin',
     'sf.b2c.mall.module.header'
   ],
 
-  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading, SFweixin ,SFheader) {
+  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading ,SFheader) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -50,11 +49,6 @@ define(
           var url = window.location.href;
           window.location.href = 'http://' + window.location.hostname + '/login.html?from=' + window.encodeURIComponent(url);
           return false;
-        }
-        if(SFFn.isMobile.WeChat()){
-          var url = window.location.href;
-          var userid = $.fn.cookie('userId');
-          SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧','顺丰海淘客户把好东西分享给新伙伴就可以赚现金',286,userid)
         }
         this.render();
       },
@@ -89,7 +83,6 @@ define(
       },
 
       loadingData: function(params) {
-        alert(0)
         var that = this;
         var status = can.route.attr('status') || 'UNFINISH';
         pgIndex++;
@@ -99,7 +92,6 @@ define(
           pgSize: 20
         });
         can.when(getRegstedList.sendRequest()).done(function(data) {
-          alert(1)
           // that.itemObj.attr(data);
           // that.inToAccount(that.itemObj);
           that.inToAccount(data);
@@ -108,7 +100,6 @@ define(
             $('#partner-user-box').css('margin-top', '0');
           }
         }).fail(function(error) {
-          alert(2)
           console.error(error);
         }).then(function() {
           that.loadSupplement(status);

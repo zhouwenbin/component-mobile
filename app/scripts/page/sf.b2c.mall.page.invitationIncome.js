@@ -15,11 +15,10 @@ define(
     "sf.bridge",
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading',
-    'sf.weixin',
     'sf.b2c.mall.module.header'
   ],
 
-  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading, SFweixin ,SFheader) {
+  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading ,SFheader) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -51,11 +50,6 @@ define(
           var url = window.location.href;
           window.location.href = 'http://' + window.location.hostname + '/login.html?from=' + window.encodeURIComponent(url);
           return false;
-        }
-        if (SFFn.isMobile.WeChat()) {
-          var url = window.location.href;
-          var userid = $.fn.cookie('userId');
-          SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
         }
         this.render();
       },
