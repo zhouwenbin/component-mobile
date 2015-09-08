@@ -13,10 +13,11 @@ define(
     'sf.b2c.mall.widget.login',
     'sf.b2c.mall.api.user.partnerLogin',
     'sf.b2c.mall.api.user.ptnBindAndRcvCp',
-    'sf.weixin'
+    'sf.weixin',
+    'zepto.cookie',
   ],
 
-  function(can, $, Fastclick, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFweixin) {
+  function(can, $, Fastclick, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFweixin , $cookie) {
 
     SFFrameworkComm.register(3);
     var bagid = 286;
@@ -33,11 +34,12 @@ define(
         var renderFn = can.mustache(template_center_invitationbag);
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
-        if (SFFn.isMobile.WeChat()) {
-          var url = window.location.href;
-          var userid = $.fn.cookie('userId');
-          SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
-        };
+        // if (SFFn.isMobile.WeChat()) {
+        //   var url = window.location.href;
+        //   var userid = $.fn.cookie('userId');
+        //   SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
+        // };
+        alert('123');
         if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
           if (SFFn.isMobile.WeChat()) {
             alert(1)

@@ -7,6 +7,7 @@ define(
     'fastclick',
     'sf.util',
     'store',
+    'zepto.cookie',
     'sf.b2c.mall.api.coupon.hasReceivedCp',
     'sf.b2c.mall.framework.comm',
     'text!template_center_invitationbagNext',
@@ -19,7 +20,7 @@ define(
     'sf.weixin'
   ],
 
-  function(can, $, Fastclick, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbagNext, SFcheckUserExist, SFcheckSmsCode, SFdownSmsCode, SFptnBindAndRcvCp, SFsetPassword, SFmobileRegstAndRcvCp, SFweixin) {
+  function(can, $, Fastclick, SFFn, store, $cookie, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbagNext, SFcheckUserExist, SFcheckSmsCode, SFdownSmsCode, SFptnBindAndRcvCp, SFsetPassword, SFmobileRegstAndRcvCp, SFweixin) {
 
     SFFrameworkComm.register(3);
     var bagid = 286;
