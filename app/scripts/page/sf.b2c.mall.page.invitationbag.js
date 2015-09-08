@@ -21,6 +21,7 @@ define(
     SFFrameworkComm.register(3);
     var bagid = 286;
 
+    alert(-1)
     var myInvitation = can.Control.extend({
 
       init: function(element, options) {
