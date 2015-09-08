@@ -13,15 +13,15 @@ define(
     'sf.b2c.mall.widget.login',
     'sf.b2c.mall.api.user.partnerLogin',
     'sf.b2c.mall.api.user.ptnBindAndRcvCp',
+    'sf.b2c.mall.widget.message',
     'sf.weixin',
     'zepto.cookie',
   ],
 
-  function(can, $, Fastclick, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFweixin , $cookie) {
+  function(can, $, Fastclick, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFmessage, SFweixin , $cookie) {
 
     SFFrameworkComm.register(3);
     var bagid = 286;
-  console.log(window.location.hostname);
     var myInvitation = can.Control.extend({
 
       init: function(element, options) {
@@ -35,15 +35,16 @@ define(
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
         // if (SFFn.isMobile.WeChat()) {
+        //   var params = can.deparam(window.location.search.substr(1));
         //   var url = window.location.href;
-        //   var userid = $.fn.cookie('userId');
+        //   var userid = params._ruser;
         //   SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
         // };
-        if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
+        if(SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()){
           $('#hasGetpack').show();
-        }else{
+        }else if(SFFn.isMobile.WeChat()){
           var params = can.deparam(window.location.search.substr(1));
-          if (SFFn.isMobile.WeChat() && params.code) {
+          if (params.code) {
             var srcUid = params._ruser;
             var authResp = "code=" + params.code;
             var partnerLogin = new SFPartnerLogin({
@@ -60,8 +61,15 @@ define(
                   srcUid: srcUid
                 });
               } else {
-                $('#hasGetpack').show();
+                 var message = new SFmessage(null, {
+                  'tip': '新用户微信授权出错，请重试。',
+                  'type': 'success',
+                  'okFunction': function() {},
+                });
               }
+            })
+            .fail(function(error) {
+              console.log(error);
             });
           } else {
             $('#hasGetpack').show();
@@ -73,9 +81,7 @@ define(
         var wechatLogin = new SFWeChatLogin();
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()) {
             wechatLogin.blogin(window.location.href);
-        }else if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
-            $('#hasGetpack').show();
-        } else {
+        } else if(!SFFn.isMobile.WeChat()) {
           var params = can.deparam(window.location.search.substr(1));
           var srcUid = params._ruser;
           window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html#!&'+$.param({
@@ -90,7 +96,6 @@ define(
       },
 
       '#noSuccessBtn click': function(element, event) {
-        //window.location.href = 'http://' + window.location.hostname + '/app.html';
         var that = this;
         that.openApp('sfht://');
 

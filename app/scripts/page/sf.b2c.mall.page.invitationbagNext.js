@@ -17,10 +17,11 @@ define(
     'sf.b2c.mall.api.user.ptnBindAndRcvCp',
     'sf.b2c.mall.api.user.setPassword',
     'sf.b2c.mall.api.user.mobileRegstAndRcvCp',
+    'sf.b2c.mall.widget.message',
     'sf.weixin'
   ],
 
-  function(can, $, Fastclick, SFFn, store, $cookie, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbagNext, SFcheckUserExist, SFcheckSmsCode, SFdownSmsCode, SFptnBindAndRcvCp, SFsetPassword, SFmobileRegstAndRcvCp, SFweixin) {
+  function(can, $, Fastclick, SFFn, store, $cookie, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbagNext, SFcheckUserExist, SFcheckSmsCode, SFdownSmsCode, SFptnBindAndRcvCp, SFsetPassword, SFmobileRegstAndRcvCp, SFmessage, SFweixin) {
 
     SFFrameworkComm.register(3);
     var bagid = 286;
@@ -29,7 +30,8 @@ define(
       helpers: {
 
         isWechart: function(options) {
-          if (SFFn.isMobile.WeChat()) {
+          var tempToken = store.get('tempToken') || can.route.attr('tempToken');
+          if (SFFn.isMobile.WeChat() && tempToken) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -58,19 +60,6 @@ define(
         // }
 
       },
-
-      // initHasReceivedCp: function(bagId) {
-      //   var that = this;
-      //   var params = {
-      //     "bagId": bagId,
-      //     "bagType": "CARD"
-      //   };
-      //   var hasReceivedCp = new SFHasReceivedCp(params);
-      //   return hasReceivedCp.sendRequest()
-      //     .done(function(boolResp) {
-      //       that.data.isHasReceived = boolResp.value;
-      //   })
-      // },
 
       '#getCode click': function(element, event) {
         var Reg = /^1\d{10}$/;
@@ -123,9 +112,9 @@ define(
                       $('#text-error2').show().text('验证码获取失败')
                     }
                   })
-                    .fail(function(error) {
-                      console.log(error);
-                    });
+                  .fail(function(error) {
+                    console.log(error);
+                  });
                 }
               });
           }
@@ -151,7 +140,7 @@ define(
         var checkSmsCode = new SFcheckSmsCode(params);
         checkSmsCode.sendRequest().done(function(data) {
           if (data.value) {
-            var srcUid = can.route.attr('_ruser')
+            var srcUid = can.route.attr('srcUid')
             var params = {
               tempToken: tempToken,
               type: 'MOBILE',
@@ -164,9 +153,13 @@ define(
             };
             var ptnBindAndRcvCp = new SFptnBindAndRcvCp(params);
             ptnBindAndRcvCp.sendRequest().done(function(data) {
+              console.log(data);
               if (data.hasCoupon) {
                 $('#toSuccessSet').show();
               }
+            })
+            .fail(function(error) {
+              console.log(error);
             });
           } else {
             $('#text-error2').show().text('验证码错误');
@@ -262,6 +255,9 @@ define(
           } else {
             $('#text-error2').show().text('验证码错误');
           }
+        })
+        .fail(function(error) {
+          console.log(error);
         });
 
       },
