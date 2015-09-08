@@ -41,7 +41,7 @@ define(
         //var params = can.deparam(window.location.search.substr(1));
         var hparams = can.route.attr();
         var ruser = hparams._ruser || $.fn.cookie('userId');
-        alert(ruser) = hparams
+        alert(ruser);
         var hparamsf = JSON.stringify(hparams);
         alert($.fn.cookie('userId'));
         alert(JSON.stringify(hparams)+'用户id：' + hparamsf.cookieInfo.split(',')[3]);
