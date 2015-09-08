@@ -40,6 +40,7 @@ define(
         //   SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
         // };
         alert('123');
+        alert(SFFrameworkComm.prototype.checkUserLogin.call(this))
         if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
           if (SFFn.isMobile.WeChat()) {
             alert(1)
