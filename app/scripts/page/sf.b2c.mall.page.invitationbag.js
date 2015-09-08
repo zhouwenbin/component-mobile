@@ -79,7 +79,6 @@ define(
       '#getRedpackBtn click': function(element, event) {
         var wechatLogin = new SFWeChatLogin();
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()) {
-            alert('授权')
             wechatLogin.blogin(window.location.href);
         } else {
           var srcUid = can.route.attr('_ruser');
