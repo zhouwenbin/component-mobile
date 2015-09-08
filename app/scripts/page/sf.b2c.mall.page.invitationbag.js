@@ -21,7 +21,7 @@ define(
 
     SFFrameworkComm.register(3);
     var bagid = 286;
-
+  console.log(window.location.hostname);
     var myInvitation = can.Control.extend({
 
       init: function(element, options) {
@@ -49,6 +49,7 @@ define(
             alert(window.location.search.substr(1))
             
             var srcUid = can.route.attr('_ruser');
+            alert(srcUid);
             var authResp = "code=" + params.code;
             alert('已经授权登录params：'+params+'用户Id：'+srcUid+'code信息：'+authResp);
             var partnerLogin = new SFPartnerLogin({

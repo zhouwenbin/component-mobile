@@ -42,6 +42,8 @@ define(
         var hparams = can.route.attr();
         var ruser = params._ruser || hparams._ruser;
         alert(ruser);
+        alert(params);
+        alert(hparams);
         var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
           _ruser: ruser
         });
