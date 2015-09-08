@@ -81,6 +81,12 @@ define(
             tempToken: null,
             srcUid: srcUid
           });
+        } else {
+          var message = new SFmessage(null, {
+            'tip': '你是老用户不能参加此活动，所以点击无法进行下一步，谢谢',
+            'type': 'success',
+            'okFunction': function() {},
+          });
         }
       },
 

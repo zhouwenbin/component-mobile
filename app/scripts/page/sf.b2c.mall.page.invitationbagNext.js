@@ -234,6 +234,7 @@ define(
       },
 
       '#commitSubmit2 click': function(element, event) {
+        alert(0)
         var setPassword = $('#setPassword').val();
         if (setPassword == '') {
           $('#setWrongFont').show().text('密码不能设置为空')
@@ -242,10 +243,14 @@ define(
           if (!reg.test(setPassword) || setPassword.length < 6 || setPassword.length > 15) {
             $('#setWrongFont').show().text('密码必须为6-15位数字字母组合');
           } else {
-            var setPassword = new SFsetPassword({
+            alert(1)
+            var sfsetpassword = new SFsetPassword({
               pswd: md5(setPassword + SFBizConf.setting.md5_key)
             });
-            setPassword.sendRequest().done(function(data) {
+
+            alert(2)
+            sfsetpassword.sendRequest().done(function(data) {
+              alert(JSON.stringify(data))
               if (data.value) {
                 window.location.href = 'http://' + window.location.hostname + '/'
               } else {
