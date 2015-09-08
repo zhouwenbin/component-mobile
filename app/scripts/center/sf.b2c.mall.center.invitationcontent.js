@@ -13,8 +13,9 @@ define('sf.b2c.mall.center.invitationcontent', [
     'sf.b2c.mall.api.user.rqCash',
     "sf.b2c.mall.api.user.getRegstedCount",
     'sf.b2c.mall.widget.loading',
+    'sf.b2c.mall.module.header'
   ],
-  function(can, $, Fastclick, moment, SFFrameworkComm, SFMessage, SFGetUserInfo, template_center_invitationcontent, SFGetCashActInfo, SFRqCash, SFgetRegstedCount, SFLoading) {
+  function(can, $, Fastclick, moment, SFFrameworkComm, SFMessage, SFGetUserInfo, template_center_invitationcontent, SFGetCashActInfo, SFRqCash, SFgetRegstedCount, SFLoading ,SFheader) {
 
     Fastclick.attach(document.body);
 

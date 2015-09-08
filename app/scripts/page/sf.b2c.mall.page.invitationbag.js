@@ -43,12 +43,14 @@ define(
       '#getRedpackBtn click': function(element, event) {
         var wechatLogin = new SFWeChatLogin();
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()) {
+            alert('授权')
             wechatLogin.blogin(window.location.href);
         } else if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
           if (SFFn.isMobile.WeChat()) {
             var params = can.deparam(window.location.search.substr(1));
             var srcUid = can.route.attr('_ruser');
             var authResp = "code=" + params.code;
+            alert('已经授权登录params：'+params+'用户Id：'+srcUid+'code信息：'+authResp);
             var partnerLogin = new SFPartnerLogin({
               "partnerId": 'wechat_svm',
               "srcUid": srcUid,
@@ -56,6 +58,7 @@ define(
             });
             partnerLogin.sendRequest().done(function(data) {
               if (data.tempToken) {
+                alert(data.tempToken);
                 store.set('tempToken', data.tempToken);
                 var srcUid = srcUid;
                 window.location.href = 'http://' + window.location.hostname + '/invitation-bagNext.html&#!' + $.param({
@@ -70,7 +73,11 @@ define(
             $('#hasGetpack').show();
           }
         } else {
-          window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html'
+          var srcUid = can.route.attr('_ruser');
+          window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html'+$.param({
+            tempToken: null,
+            srcUid: srcUid
+          });
         }
       },
 
@@ -82,13 +89,6 @@ define(
         //window.location.href = 'http://' + window.location.hostname + '/app.html';
         var that = this;
         that.openApp('sfht://');
-        if (SFFn.isMobile.WeChat()) {
-          $("#noSuccessBtn").attr("href", "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m");
-        } else if (SFFn.isMobile.iOS()) {
-          $("#noSuccessBtn").attr("href", "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8");
-        } else if (SFFn.isMobile.Android()) {
-          $("#noSuccessBtn").attr("href", "http://dl.sfht.com/app/sfht_sfhaitao.apk");
-        }
 
         setTimeout(function() {
           window.location.href = 'http://' + window.location.hostname + '/app.html';

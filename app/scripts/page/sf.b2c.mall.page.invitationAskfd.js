@@ -10,9 +10,10 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.weixin',
     "sf.bridge",
+    'sf.b2c.mall.module.header'
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFmessage, SFweixin, SFbridge){
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFmessage, SFweixin, SFbridge ,SFheader){
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);

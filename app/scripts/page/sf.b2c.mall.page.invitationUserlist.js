@@ -14,10 +14,11 @@ define(
     'sf.b2c.mall.widget.message',
     "sf.b2c.mall.api.user.getRegstedCount",
     'sf.b2c.mall.widget.loading',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.module.header'
   ],
 
-  function(can, $, Fastclick, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading, SFweixin) {
+  function(can, $, Fastclick, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading, SFweixin ,SFheader) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);

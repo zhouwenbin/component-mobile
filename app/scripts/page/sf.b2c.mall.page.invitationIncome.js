@@ -16,9 +16,10 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.widget.loading',
     'sf.weixin',
+    'sf.b2c.mall.module.header'
   ],
 
-  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading, SFweixin) {
+  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading, SFweixin ,SFheader) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
