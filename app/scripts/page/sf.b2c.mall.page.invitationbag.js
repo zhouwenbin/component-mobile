@@ -71,8 +71,6 @@ define(
             .fail(function(error) {
               console.log(error);
             });
-          } else {
-            $('#hasGetpack').show();
           }
         }
       },

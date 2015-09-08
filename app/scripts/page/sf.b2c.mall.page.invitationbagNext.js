@@ -121,6 +121,66 @@ define(
         }
       },
 
+      '#getCodeRegBtn click': function(element, event) {
+        var Reg = /^1\d{10}$/;
+        var mobile = $('#getMbile').val();
+        if (element.hasClass('disabled')) {
+          event && event.preventDefault();
+        } else {
+          if (!Reg.test(mobile)) {
+            if (mobile == '') {
+              $('#text-error1').show().text('手机号不能为空');
+            } else {
+              $('#text-error1').show().text('手机号格式错误');
+            }
+          } else {
+            var countdown = 60;
+
+            function setTimeOutBtn(element) {
+              if (countdown == 0) {
+                element.find('.text-error').css('color', '#ff5b54').text('获取验证码');
+                countdown = 60;
+                clearInterval(tims);
+                element.removeClass('disabled');
+              } else {
+                element.addClass('disabled');
+                element.find('.text-error').css('color', '#dddddd').text(+countdown + 's后重新获取');
+                countdown--;
+              }
+            };
+            var tims = setInterval(function() {
+              setTimeOutBtn(element);
+            }, 1000);
+            var params = {
+              accountId: mobile,
+              type: 'MOBILE',
+              tempToken: store.get('tempToken')
+            };
+            var checkUserExist = new SFcheckUserExist(params);
+            checkUserExist.sendRequest()
+              .done(function(data) {
+                if (data.value) {
+                  $('#text-error1').show().text('手机号已被注册')
+                } else {
+                  $('#text-error1').hide();
+                  var downSmsCode = new SFdownSmsCode({
+                    mobile: mobile,
+                    askType: 'REGISTER'
+                  });
+                  downSmsCode.sendRequest().done(function(data) {
+                    if (!data) {
+                      $('#text-error2').show().text('验证码获取失败')
+                    }
+                  })
+                  .fail(function(error) {
+                    console.log(error);
+                  });
+                }
+              });
+          }
+        }
+      },
+
       '#closePopGetinfo click': function(element, event) {
         $('#hasGetpack').hide();
       },
@@ -153,7 +213,7 @@ define(
             };
             var ptnBindAndRcvCp = new SFptnBindAndRcvCp(params);
             ptnBindAndRcvCp.sendRequest().done(function(data) {
-              console.log(data);
+              store.set('csrfToken', data.csrfToken);
               if (data.hasCoupon) {
                 $('#toSuccessSet').show();
               }
@@ -248,6 +308,7 @@ define(
             };
             var mobileRegstAndRcvCp = new SFmobileRegstAndRcvCp(params);
             mobileRegstAndRcvCp.sendRequest().done(function(data) {
+              store.set('csrfToken', data.csrfToken);
               if (data.hasCoupon) {
                 $('#ohSuccessSet').show();
               }
