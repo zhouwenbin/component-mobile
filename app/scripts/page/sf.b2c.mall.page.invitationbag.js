@@ -80,6 +80,8 @@ define(
         var wechatLogin = new SFWeChatLogin();
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()) {
             wechatLogin.blogin(window.location.href);
+        }else if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
+            $('#hasGetpack').show();
         } else {
           var srcUid = can.route.attr('_ruser');
           window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html#!&'+$.param({

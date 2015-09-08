@@ -43,7 +43,7 @@ define(
         var ruser = hparams._ruser || $.cookie();
         alert(ruser);
         alert($.fn.cookie('userId'));
-        alert(JSON.stringify(hparams)+'用户id：'hparams.cookieInfo.cookieInfo.split(',')[3]);
+        alert(JSON.stringify(hparams)+'用户id：' + hparams.cookieInfo.cookieInfo.split(',')[3]);
         var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
           _ruser: ruser
         });
