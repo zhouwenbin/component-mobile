@@ -133,7 +133,7 @@
                     {{#sf-first actionTraceItemList}}
                     <time>{{sf.time gmtHappened}}</time>
                     {{#if takePlace}}
-                    <p>[{{takePlace}}]:{{status}}</p>
+                    <p>【{{takePlace}}】{{status}}</p>
                     {{else}}
                     <p>{{status}}</p>
                     {{/if}}
@@ -213,7 +213,7 @@
       <li>
         <time>{{gmtHappened}}</time>
         {{#if takePlace}}
-        [{{takePlace}}]:{{status}}
+        【{{takePlace}}】{{status}}
         {{else}}
         {{status}}
         {{/if}}
