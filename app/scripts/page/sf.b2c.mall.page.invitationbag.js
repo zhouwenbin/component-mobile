@@ -4,7 +4,6 @@ define(
   'sf.b2c.mall.page.invitationbag', [
     'can',
     'zepto',
-    'fastclick',
     'sf.util',
     'store',
     'sf.b2c.mall.api.coupon.hasReceivedCp',
@@ -18,7 +17,7 @@ define(
     'zepto.cookie',
   ],
 
-  function(can, $, Fastclick, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFmessage, SFweixin , $cookie) {
+  function(can, $, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFmessage, SFweixin , $cookie) {
 
     SFFrameworkComm.register(3);
     var bagid = 286;
@@ -61,11 +60,7 @@ define(
                   srcUid: srcUid
                 });
               } else {
-                 var message = new SFmessage(null, {
-                  'tip': '新用户微信授权出错，请重试。',
-                  'type': 'success',
-                  'okFunction': function() {},
-                });
+                 $('#hasGetpack').show();
               }
             })
             .fail(function(error) {

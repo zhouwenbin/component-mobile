@@ -4,7 +4,6 @@ define(
   'sf.b2c.mall.page.invitationbagNext', [
     'can',
     'zepto',
-    'fastclick',
     'sf.util',
     'store',
     'zepto.cookie',
@@ -18,10 +17,11 @@ define(
     'sf.b2c.mall.api.user.setPassword',
     'sf.b2c.mall.api.user.mobileRegstAndRcvCp',
     'sf.b2c.mall.widget.message',
-    'sf.weixin'
+    'sf.weixin',
+    'sf.b2c.mall.business.config',
   ],
 
-  function(can, $, Fastclick, SFFn, store, $cookie, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbagNext, SFcheckUserExist, SFcheckSmsCode, SFdownSmsCode, SFptnBindAndRcvCp, SFsetPassword, SFmobileRegstAndRcvCp, SFmessage, SFweixin) {
+  function(can, $, SFFn, store, $cookie, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbagNext, SFcheckUserExist, SFcheckSmsCode, SFdownSmsCode, SFptnBindAndRcvCp, SFsetPassword, SFmobileRegstAndRcvCp, SFmessage, SFweixin, SFBizConf) {
 
     SFFrameworkComm.register(3);
     var bagid = 286;
@@ -243,7 +243,7 @@ define(
             $('#setWrongFont').show().text('密码必须为6-15位数字字母组合');
           } else {
             var setPassword = new SFsetPassword({
-              pswd: setPassword
+              pswd: md5(setPassword + SFBizConf.setting.md5_key)
             });
             setPassword.sendRequest().done(function(data) {
               if (data.value) {
@@ -300,7 +300,7 @@ define(
             var params = {
               mobile: mobile,
               smsCode: codeNum,
-              password: password,
+              password: md5(password + SFBizConf.setting.md5_key),
               srcUid: srcUid,
               bagType: 'CARD',
               bagId: 286,
