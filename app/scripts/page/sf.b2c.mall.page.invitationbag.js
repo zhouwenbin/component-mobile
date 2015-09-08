@@ -44,7 +44,7 @@ define(
         }else{
           var params = can.deparam(window.location.search.substr(1));
           if (SFFn.isMobile.WeChat() && params.code) {
-            var srcUid = can.route.attr('_ruser');
+            var srcUid = params._ruser;
             alert(srcUid);
             var authResp = "code=" + params.code;
             var partnerLogin = new SFPartnerLogin({

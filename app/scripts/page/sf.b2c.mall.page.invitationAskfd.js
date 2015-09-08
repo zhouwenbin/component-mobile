@@ -38,19 +38,7 @@ define(
       },
 
       sfBridge: function() {
-        var params = can.deparam(window.location.search.substr(1));
-        alert(JSON.stringify(params));
-        var hparams = can.route.attr();
-        var ruser = hparams._ruser || $.fn.cookie('userId');
-        alert(ruser);
-        var hparamsf = JSON.stringify(hparams);
-        alert($.fn.cookie('userId'));
-        alert(JSON.stringify(hparams));
-        alert(hparamsf.cookieInfo);
-        alert(JSON.stringify(hparams)+ hparamsf.cookieInfo.split(',')[3]);
-        var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
-          _ruser: ruser
-        });
+        var url = 'http://' + window.location.hostname + '/invitation-bag.html';
         var params = {
           "subject": '顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿',
           "description": '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',

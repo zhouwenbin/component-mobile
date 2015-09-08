@@ -156,11 +156,7 @@ define(
       },
 
       sfBridge: function() {
-        var params = can.deparam(window.location.search.substr(1));
-        var ruser = params._ruser;
-        var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
-          _ruser: ruser
-        });
+        var url = 'http://' + window.location.hostname + '/invitation-bag.html';
         var params = {
           "subject": '顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿',
           "description": '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',
