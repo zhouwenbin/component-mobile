@@ -19,9 +19,10 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.weixin',
     'sf.b2c.mall.business.config',
+    'md5',
   ],
 
-  function(can, $, SFFn, store, $cookie, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbagNext, SFcheckUserExist, SFcheckSmsCode, SFdownSmsCode, SFptnBindAndRcvCp, SFsetPassword, SFmobileRegstAndRcvCp, SFmessage, SFweixin, SFBizConf) {
+  function(can, $, SFFn, store, $cookie, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbagNext, SFcheckUserExist, SFcheckSmsCode, SFdownSmsCode, SFptnBindAndRcvCp, SFsetPassword, SFmobileRegstAndRcvCp, SFmessage, SFweixin, SFBizConf, md5) {
 
     SFFrameworkComm.register(3);
     var bagid = 286;
@@ -234,7 +235,6 @@ define(
       },
 
       '#commitSubmit2 click': function(element, event) {
-        alert(0)
         var setPassword = $('#setPassword').val();
         if (setPassword == '') {
           $('#setWrongFont').show().text('密码不能设置为空')
@@ -243,12 +243,9 @@ define(
           if (!reg.test(setPassword) || setPassword.length < 6 || setPassword.length > 15) {
             $('#setWrongFont').show().text('密码必须为6-15位数字字母组合');
           } else {
-            alert(1)
             var sfsetpassword = new SFsetPassword({
               pswd: md5(setPassword + SFBizConf.setting.md5_key)
             });
-
-            alert(2)
             sfsetpassword.sendRequest().done(function(data) {
               alert(JSON.stringify(data))
               if (data.value) {
