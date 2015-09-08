@@ -42,11 +42,9 @@ define(
 
       '#getRedpackBtn click': function(element, event) {
         var wechatLogin = new SFWeChatLogin();
-        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          if (SFFn.isMobile.WeChat()) {
-            wechatLogin.login(window.location.href);
-          }
-        } else {
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()) {
+            wechatLogin.blogin(window.location.href);
+        } else if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
           if (SFFn.isMobile.WeChat()) {
             var params = can.deparam(window.location.search.substr(1));
             var srcUid = can.route.attr('_ruser');
@@ -71,6 +69,8 @@ define(
           } else {
             $('#hasGetpack').show();
           }
+        } else {
+          window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html'
         }
       },
 
