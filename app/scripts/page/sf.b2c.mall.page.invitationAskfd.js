@@ -39,7 +39,8 @@ define(
 
       sfBridge: function() {
         var params = can.deparam(window.location.search.substr(1));
-        var ruser = params._ruser;
+        var hparams = can.route.attr();
+        var ruser = params._ruser || hparams._ruser;
         alert(ruser);
         var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
           _ruser: ruser
