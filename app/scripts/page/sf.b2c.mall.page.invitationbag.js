@@ -40,37 +40,37 @@ define(
         //   SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
         // };
         alert('123');
-        // alert(SFFrameworkComm.prototype.checkUserLogin.call(this))
-        // if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
-          if (SFFn.isMobile.WeChat()) {
-            alert(1)
-            alert(window.location.search.substr(1))
-            var params = can.deparam(window.location.search.substr(1));
-            var srcUid = can.route.attr('_ruser');
-            var authResp = "code=" + params.code;
-            alert('已经授权登录params：'+params+'用户Id：'+srcUid+'code信息：'+authResp);
-            var partnerLogin = new SFPartnerLogin({
-              "partnerId": 'wechat_svm',
-              "srcUid": srcUid,
-              "authResp": authResp
-            });
-            partnerLogin.sendRequest().done(function(data) {
-              if (data.tempToken) {
-                alert(data.tempToken);
-                store.set('tempToken', data.tempToken);
-                var srcUid = srcUid;
-                window.location.href = 'http://' + window.location.hostname + '/invitation-bagNext.html&#!' + $.param({
-                  tempToken: data.tempToken || null,
-                  srcUid: srcUid
-                });
-              } else {
-                $('#hasGetpack').show();
-              }
-            });
-          } else {
-            $('#hasGetpack').show();
-          }
-        // };
+        if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
+          $('#hasGetpack').show();
+        }
+        if (SFFn.isMobile.WeChat()) {
+          alert(1)
+          alert(window.location.search.substr(1))
+          var params = can.deparam(window.location.search.substr(1));
+          var srcUid = can.route.attr('_ruser');
+          var authResp = "code=" + params.code;
+          alert('已经授权登录params：'+params+'用户Id：'+srcUid+'code信息：'+authResp);
+          var partnerLogin = new SFPartnerLogin({
+            "partnerId": 'wechat_svm',
+            "srcUid": srcUid,
+            "authResp": authResp
+          });
+          partnerLogin.sendRequest().done(function(data) {
+            if (data.tempToken) {
+              alert(data.tempToken);
+              store.set('tempToken', data.tempToken);
+              var srcUid = srcUid;
+              window.location.href = 'http://' + window.location.hostname + '/invitation-bagNext.html&#!' + $.param({
+                tempToken: data.tempToken || null,
+                srcUid: srcUid
+              });
+            } else {
+              $('#hasGetpack').show();
+            }
+          });
+        } else {
+          $('#hasGetpack').show();
+        }
       },
 
       '#getRedpackBtn click': function(element, event) {
