@@ -80,7 +80,14 @@ define('sf.b2c.mall.order.orderdetailcontent', [
           group: group
         });
       },
-
+      'sf-show-logisticsinfo': function(status, options) {
+        var status = status();
+        if (status == "CONSIGNED" || status == 'COMPLETED' || status == 'AUTO_COMPLETED' || status == 'RECEIPTED') {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
+      },
       'sf-timmer': function(pay, order, options) {
         if (pay() == 'WAITPAY' && order() == 'SUBMITED') {
           return options.fn(options.contexts || this);
