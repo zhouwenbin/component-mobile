@@ -47,7 +47,10 @@ define(
             wechatLogin.blogin(window.location.href);
         } else if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
           if (SFFn.isMobile.WeChat()) {
+            alert(1)
+            alert(window.location.search.substr(1))
             var params = can.deparam(window.location.search.substr(1));
+            
             var srcUid = can.route.attr('_ruser');
             var authResp = "code=" + params.code;
             alert('已经授权登录params：'+params+'用户Id：'+srcUid+'code信息：'+authResp);

@@ -88,6 +88,7 @@ define(
       },
 
       loadingData: function(params) {
+        alert(0)
         var that = this;
         var status = can.route.attr('status') || 'UNFINISH';
         pgIndex++;
@@ -97,6 +98,7 @@ define(
           pgSize: 20
         });
         can.when(getRegstedList.sendRequest()).done(function(data) {
+          alert(1)
           // that.itemObj.attr(data);
           // that.inToAccount(that.itemObj);
           that.inToAccount(data);
@@ -105,6 +107,7 @@ define(
             $('#partner-user-box').css('margin-top', '0');
           }
         }).fail(function(error) {
+          alert(2)
           console.error(error);
         }).then(function() {
           that.loadSupplement(status);
