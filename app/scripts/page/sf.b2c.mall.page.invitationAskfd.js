@@ -9,9 +9,10 @@ define(
     'sf.util',
     'sf.b2c.mall.widget.message',
     'sf.weixin',
+    "sf.bridge",
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFmessage, SFweixin){
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFmessage, SFweixin, SFbridge){
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -91,13 +92,6 @@ define(
         } else {
           var that = this;
           that.openApp('sfht://');
-          if (SFFn.isMobile.WeChat()) {
-            $("#noSuccessBtn").attr("href", "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m");
-          } else if (SFFn.isMobile.iOS()) {
-            $("#noSuccessBtn").attr("href", "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8");
-          } else if (SFFn.isMobile.Android()) {
-            $("#noSuccessBtn").attr("href", "http://dl.sfht.com/app/sfht_sfhaitao.apk");
-          }
 
           setTimeout(function(){
             window.location.href='http://' + window.location.hostname + '/app.html';
@@ -128,7 +122,12 @@ define(
       },
 
       '#invitationAskfdBtn click': function(element,event){
-          this.isToShareFn();
+        if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          var url = window.location.href;
+          window.location.href = 'http://' + window.location.hostname + '/login.html?from=' + window.encodeURIComponent(url);
+          return false;
+        }
+        this.isToShareFn();
       },
 
     });

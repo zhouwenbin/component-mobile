@@ -12,10 +12,11 @@ define(
     'text!template_center_invitationbag',
     'sf.b2c.mall.widget.login',
     'sf.b2c.mall.api.user.partnerLogin',
-    'sf.b2c.mall.api.user.ptnBindAndRcvCp'
+    'sf.b2c.mall.api.user.ptnBindAndRcvCp',
+    'sf.weixin'
   ],
 
-  function(can, $, Fastclick, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp) {
+  function(can, $, Fastclick, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFweixin) {
 
     SFFrameworkComm.register(3);
     var bagid = 286;

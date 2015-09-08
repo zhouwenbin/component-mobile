@@ -260,13 +260,6 @@ define(
         } else {
           var that = this;
           that.openApp('sfht://');
-          if (SFFn.isMobile.WeChat()) {
-            $("#noSuccessBtn").attr("href", "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m");
-          } else if (SFFn.isMobile.iOS()) {
-            $("#noSuccessBtn").attr("href", "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8");
-          } else if (SFFn.isMobile.Android()) {
-            $("#noSuccessBtn").attr("href", "http://dl.sfht.com/app/sfht_sfhaitao.apk");
-          }
 
           setTimeout(function() {
             window.location.href = 'http://' + window.location.hostname + '/app.html';
