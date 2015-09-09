@@ -40,7 +40,7 @@ define(
 
       '#goToHome click': function(element,event){
         if(SFFn.isMobile.APP()){
-            var params = {};
+          var params = 'true';
           var success = function(data) {
             console.log('success');
           };

@@ -106,6 +106,7 @@ define(
           // that.itemObj.attr(data);
           // that.inToAccount(that.itemObj);
           that.inToAccount(data);
+          console.log(JSON.stringify(data));
           if (status == 'UNFINISH' && data.totalCount == 0) {
             $('#partner-tips-box').hide();
             $('#partner-user-box').css('margin-top', '0');
