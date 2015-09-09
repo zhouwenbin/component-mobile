@@ -20,14 +20,9 @@ define(
     SFFrameworkComm.register(3);
 
     if(SFFn.isMobile.WeChat()){
-      alert(0);
       var _ruser = $.fn.cookie('userId') || null;
-      alert(_ruser);
       var url = window.location.href;
-      alert(url);
       var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-      alert(imgUrl);
-
       SFweixin.shareDetail(
           '顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿',
           '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',
