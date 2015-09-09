@@ -33,15 +33,7 @@ define(
         var renderFn = can.mustache(template_center_invitationbag);
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
-        // if (SFFn.isMobile.WeChat()) {
-        //   var params = can.deparam(window.location.search.substr(1));
-        //   var url = window.location.href;
-        //   var userid = params._ruser;
-        //   SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
-        // };
-        if(SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()){
-          $('#hasGetpack').show();
-        }else if(SFFn.isMobile.WeChat()){
+        if(SFFn.isMobile.WeChat()){
           var params = can.deparam(window.location.search.substr(1));
           if (params.code) {
             var srcUid = params._ruser;
@@ -67,6 +59,13 @@ define(
               console.log(error);
             });
           }
+          var params = can.deparam(window.location.search.substr(1));
+          var srcUid = params._ruser;
+          var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
+            srcUid: srcUid
+          });
+          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', url, imgUrl);
         }
       },
 
@@ -74,24 +73,22 @@ define(
         var wechatLogin = new SFWeChatLogin();
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()) {
             wechatLogin.blogin(window.location.href);
-        } else if(!SFFn.isMobile.WeChat()) {
+        }else if(SFFrameworkComm.prototype.checkUserLogin.call(this) && SFFn.isMobile.WeChat()){
+          $('#hasGetpack').show();
+        }else if(SFFrameworkComm.prototype.checkUserLogin.call(this) && !SFFn.isMobile.WeChat()){
+          $('#hasGetpack').show();
+        }else if(!SFFrameworkComm.prototype.checkUserLogin.call(this) && !SFFn.isMobile.WeChat()) {
           var params = can.deparam(window.location.search.substr(1));
           var srcUid = params._ruser;
           window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html#!&'+$.param({
             tempToken: null,
             srcUid: srcUid
           });
-        } else {
-          var message = new SFmessage(null, {
-            'tip': '你是老用户不能参加此活动，所以点击无法进行下一步，谢谢',
-            'type': 'success',
-            'okFunction': function() {},
-          });
         }
       },
 
       '#closePopGetinfo click': function(element, event) {
-        $('#hasGetpack').hide();
+        window.location.href = 'http://' + window.location.hostname + '/';
       },
 
       '#noSuccessBtn click': function(element, event) {

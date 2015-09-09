@@ -53,12 +53,17 @@ define(
         var renderFn = can.mustache(template_center_invitationbagNext);
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
-
-        // if (SFFn.isMobile.WeChat()) {
-        //   var url = window.location.href;
-        //   var userid = $.fn.cookie('userId');
-        //   SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', 286, userid)
-        // }
+        var srcUid = can.route.attr('srcUid');
+        if(!srcUid){
+          window.location.href = 'http://' + window.location.hostname + '/';
+        }
+        if (SFFn.isMobile.WeChat() && srcUid) {
+          var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
+            srcUid: srcUid
+          });
+          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', url, imgUrl);
+        }
 
       },
 
@@ -247,7 +252,6 @@ define(
               pswd: md5(setPassword + SFBizConf.setting.md5_key)
             });
             sfsetpassword.sendRequest().done(function(data) {
-              alert(JSON.stringify(data))
               if (data.value) {
                 window.location.href = 'http://' + window.location.hostname + '/'
               } else {
