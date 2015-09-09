@@ -58,11 +58,16 @@ define(
           window.location.href = 'http://' + window.location.hostname + '/';
         }
         if (SFFn.isMobile.WeChat()) {
-          var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
-            srcUid: srcUid
+          var url = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
+            _ruser: srcUid
           });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFWeixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
+        }
+        if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
+          window.location.href = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
+            _ruser: srcUid
+          });;
         }
 
       },
@@ -80,23 +85,6 @@ define(
               $('#text-error1').show().text('手机号格式错误');
             }
           } else {
-            var countdown = 60;
-
-            function setTimeOutBtn(element) {
-              if (countdown == 0) {
-                element.find('.text-error').css('color', '#ff5b54').text('获取验证码');
-                countdown = 60;
-                clearInterval(tims);
-                element.removeClass('disabled');
-              } else {
-                element.addClass('disabled');
-                element.find('.text-error').css('color', '#dddddd').text(+countdown + 's后重新获取');
-                countdown--;
-              }
-            };
-            var tims = setInterval(function() {
-              setTimeOutBtn(element);
-            }, 1000);
             var params = {
               accountId: mobile,
               type: 'MOBILE',
@@ -109,6 +97,22 @@ define(
                   $('#text-error1').show().text('手机号已被注册')
                 } else {
                   $('#text-error1').hide();
+                  var countdown = 60;
+                  function setTimeOutBtn(element) {
+                    if (countdown == 0) {
+                      element.find('.text-error').css('color', '#ff5b54').text('获取验证码');
+                      countdown = 60;
+                      clearInterval(tims);
+                      element.removeClass('disabled');
+                    } else {
+                      element.addClass('disabled');
+                      element.find('.text-error').css('color', '#dddddd').text(+countdown + 's后重新获取');
+                      countdown--;
+                    }
+                  };
+                  var tims = setInterval(function() {
+                    setTimeOutBtn(element);
+                  }, 1000);
                   var downSmsCode = new SFdownSmsCode({
                     mobile: mobile,
                     askType: 'BINDING'
@@ -122,6 +126,11 @@ define(
                     console.log(error);
                   });
                 }
+              })
+              .fail(function(error) {
+                 if (error === 1000340) {
+                  $('#text-error1').show().text('手机已被注册但还没有密码')
+                 }
               });
           }
         }
