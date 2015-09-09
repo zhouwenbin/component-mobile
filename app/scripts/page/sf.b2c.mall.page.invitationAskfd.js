@@ -20,14 +20,21 @@ define(
     SFFrameworkComm.register(3);
 
     if(SFFn.isMobile.WeChat()){
-      var _ruser = $.fn.cookie('userId') || null;
+      // var _ruser = $.fn.cookie('userId') || null;
       var url = window.location.href;
       var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+      // SFweixin.shareDetail(
+      //     '顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿',
+      //     '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',
+      //     url,
+      //     imgUrl
+      // );
+
       SFweixin.shareDetail(
-          '顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿',
-          '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',
-          url,
-          imgUrl
+        "明星们都去国外扫货，那里到底有什么？免税，包邮，正品，一定满足你…",
+        "明星们都去国外扫货，那里到底有什么？免税，包邮，正品，一定满足你…",
+        window.location.href,
+        "http://img0.sfht.com/app/SFHT_1024.png"
       );
     }
 
@@ -48,7 +55,7 @@ define(
           window.location.href = 'http://' + window.location.hostname + '/login.html?from=' + window.encodeURIComponent(url);
           return false;
         }
-        
+
       },
 
       sfBridge: function() {
