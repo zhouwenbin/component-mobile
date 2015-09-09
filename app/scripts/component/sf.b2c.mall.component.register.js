@@ -24,7 +24,7 @@ define('sf.b2c.mall.component.register', [
   function($, cookie, can, md5, _, store, Fastclick, SFApiUserDownSmsCode, SFApiUserMobileRegister, SFReqLoginAuth, SFBizConf,
     SFFn, SFReceivePro, SFReceiveCoupon, SFMessage, SFCheckUserExist, template_component_register_fillinfo, SFMediav) {
 
-    Fastclick.attach(document.body);
+    // Fastclick.attach(document.body);
 
     var DEFAULT_FILLINFO_TAG = 'fillinfo';
 
