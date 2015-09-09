@@ -39,7 +39,18 @@ define(
       },
 
       '#goToHome click': function(element,event){
-        window.location.href = 'http://' + window.location.hostname + '/';
+        if(SFFn.isMobile.APP()){
+            var params = {};
+          var success = function(data) {
+            console.log('success');
+          };
+          var error = function(data) {
+            console.log('error');
+          };
+          window.bridge.run('SFNavigation', 'popToRoot', params, success, error);
+        }else{
+           window.location.href = 'http://' + window.location.hostname + '/';
+        }
       },
 
     });
