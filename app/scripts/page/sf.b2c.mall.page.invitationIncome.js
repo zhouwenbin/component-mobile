@@ -60,7 +60,7 @@ define(
         //     _ruser: _ruser
         //   });
         //   var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-        //   SFWeixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
+        //   SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
         // }
         this.render();
       },

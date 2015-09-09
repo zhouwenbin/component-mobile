@@ -23,9 +23,7 @@ define(
       alert(0);
       var _ruser = $.fn.cookie('userId') || null;
       alert(_ruser);
-      var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
-        _ruser: _ruser
-      });
+      var url = window.location.href;
       alert(url);
       var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
       alert(imgUrl);
