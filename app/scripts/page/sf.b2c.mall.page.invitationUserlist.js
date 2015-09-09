@@ -15,10 +15,12 @@ define(
     'sf.b2c.mall.widget.message',
     "sf.b2c.mall.api.user.getRegstedCount",
     'sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.module.header'
+    'sf.b2c.mall.module.header',
+    'sf.weixin',
+    'zepto.cookie',
   ],
 
-  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading ,SFheader) {
+  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading ,SFheader , SFweixin, $cookie) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -50,6 +52,16 @@ define(
           window.location.href = 'http://' + window.location.hostname + '/login.html?from=' + window.encodeURIComponent(url);
           return false;
         }
+
+        if(SFFn.isMobile.WeChat()){
+          var _ruser = $.fn.cookie('userId') || null;
+          var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
+            _ruser: _ruser
+          });
+          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          SFWeixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
+        }
+
         this.render();
       },
 

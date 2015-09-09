@@ -271,6 +271,7 @@ requirejs.config({
         "sf.b2c.mall.page.invitationUserlist": "scripts/page/sf.b2c.mall.page.invitationUserlist",
         "sf.b2c.mall.page.invitationIncome": "scripts/page/sf.b2c.mall.page.invitationIncome",
         "sf.b2c.mall.page.invitationAskfd": "scripts/page/sf.b2c.mall.page.invitationAskfd",
+        "sf.b2c.mall.page.invitationGetfmy": "scripts/page/sf.b2c.mall.page.invitationGetfmy",
         "sf.b2c.mall.page.app": "scripts/page/sf.b2c.mall.page.app",
         "sf.b2c.mall.page.aboutus": "scripts/page/sf.b2c.mall.page.aboutus",
         "sf.b2c.mall.page.bridge": "scripts/page/sf.b2c.mall.page.bridge",

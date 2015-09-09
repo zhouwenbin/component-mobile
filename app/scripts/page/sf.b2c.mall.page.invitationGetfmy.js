@@ -1,0 +1,48 @@
+'use strict';
+
+define(
+  'sf.b2c.mall.page.invitationGetfmy', [
+    'can',
+    'zepto',
+    'fastclick',
+    'sf.b2c.mall.framework.comm',
+    'sf.util',
+    'sf.b2c.mall.widget.message',
+    'sf.weixin',
+    "sf.bridge",
+    'sf.b2c.mall.module.header',
+    'zepto.cookie',
+  ],
+
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFmessage, SFweixin, SFbridge ,SFheader, $cookie){
+
+    Fastclick.attach(document.body);
+    SFFrameworkComm.register(3);
+
+    var myInvitationAskfd = can.Control.extend({
+
+      itemObj: new can.Map({}),
+      '{can.route} change': function() {
+        this.render();
+      },
+
+      init: function(element, options) {
+        this.render();
+      },
+      render: function() {
+        var that = this;
+        if(SFFn.isMobile.WeChat()){
+          var url = window.location.href;
+          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', url, imgUrl);
+        }
+      },
+
+      '#goToHome click': function(element,event){
+        window.location.href = 'http://' + window.location.hostname + '/';
+      },
+
+    });
+    new myInvitationAskfd('body');
+
+  });

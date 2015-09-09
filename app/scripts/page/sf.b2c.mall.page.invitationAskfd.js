@@ -10,10 +10,11 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.weixin',
     "sf.bridge",
-    'sf.b2c.mall.module.header'
+    'sf.b2c.mall.module.header',
+    'zepto.cookie',
   ],
 
-  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFmessage, SFweixin, SFbridge ,SFheader){
+  function(can, $, Fastclick, SFFrameworkComm, SFFn, SFmessage, SFweixin, SFbridge ,SFheader, $cookie){
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -36,7 +37,10 @@ define(
           return false;
         }
         if(SFFn.isMobile.WeChat()){
-          var url = window.location.hostname;
+          var _ruser = $.fn.cookie('userId') || null;
+          var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
+            _ruser: _ruser
+          });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFWeixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
         }
@@ -92,7 +96,9 @@ define(
               'okFunction': function() {},
             });
           };
-        } else {
+        }else if(SFFn.isMobile.WeChat()){
+          $('#shareZindex').show();
+        }else {
           var that = this;
           that.openApp('sfht://');
 
@@ -131,6 +137,10 @@ define(
           return false;
         };
         this.isToShareFn();
+      },
+
+      '#maskIdiv click': function(element,event){
+        $('#shareZindex').hide();
       },
 
     });

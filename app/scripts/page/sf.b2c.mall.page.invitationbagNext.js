@@ -57,12 +57,12 @@ define(
         if(!srcUid){
           window.location.href = 'http://' + window.location.hostname + '/';
         }
-        if (SFFn.isMobile.WeChat() && srcUid) {
+        if (SFFn.isMobile.WeChat()) {
           var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
             srcUid: srcUid
           });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-          SFWeixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', url, imgUrl);
+          SFWeixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
         }
 
       },

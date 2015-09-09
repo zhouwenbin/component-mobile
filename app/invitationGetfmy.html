@@ -15,7 +15,7 @@
     <!--# include file="/header/header.h5.user.white.html" -->
     <!--头部-->
 
-    <div class="partner-share"><img src="../img/partner/partner-share.jpg" alt=""><img src="../img/partner/partner-share01.jpg" alt=""><img src="../img/partner/partner-share02.jpg" alt=""><img src="../img/partner/partner-share03.jpg" alt=""><img src="../img/partner/partner-share04.jpg" alt=""><img src="../img/partner/partner-share05.jpg" alt=""><a href="javascript:;" class="parnter-goto-index" id="goToHome" onclick="goHome()">马上去首页逛逛</a></div>
+    <div class="partner-share"><img src="../img/partner/partner-share.jpg" alt=""><img src="../img/partner/partner-share01.jpg" alt=""><img src="../img/partner/partner-share02.jpg" alt=""><img src="../img/partner/partner-share03.jpg" alt=""><img src="../img/partner/partner-share04.jpg" alt=""><img src="../img/partner/partner-share05.jpg" alt=""><a href="javascript:;" class="parnter-goto-index" id="goToHome">马上去首页逛逛</a></div>
 
     <div id="version" data-version="{version}"></div>
     <!-- build:js(.) scripts/require.min.js -->
@@ -24,10 +24,11 @@
     <!-- build:js({app, tmp}) scripts/sf.h5.base.js-->
     <script src="scripts/base/sf.h5.base.ver.1.0.7.js"></script>
     <!-- endbuild -->
+    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.invitationGetfmy.js -->
+    <script src="scripts/sf.b2c.mall.require.config.js"></script>
+    <script type="text/javascript">
+    require(['sf.b2c.mall.page.invitationGetfmy']);
+    </script>
+    <!-- endbuild -->
 </body>
-<script type="text/javascript">
-    function goHome(){
-        window.location.href = 'http://' + window.location.hostname + '/';
-    };
-</script>
 </html>
