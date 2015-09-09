@@ -417,7 +417,7 @@ define('sf.b2c.mall.order.iteminfo', [
 
                 return false;
             }
-
+            var couponCodeValue = $('#selectCoupon').val();
             var params = {
                 "address": JSON.stringify({
                     "addrId": selectAddr.addrId,
@@ -438,10 +438,10 @@ define('sf.b2c.mall.order.iteminfo', [
                 "integral": $("#pointUsed").val(),
                 "items": this.initItemsParam(),
                 "sysType": that.getSysType(),
-                "couponCodes": JSON.stringify([$('#selectCoupon').val()]),
+                "couponCodes": null,
                 "submitKey": this.itemObj.submitKey
-            }
-
+            };
+            params.couponCodes = (couponCodeValue == '') ? null : JSON.stringify([couponCodeValue]);
             var submitOrderForAllSys = new SFSubmitOrderForAllSys(params);
             can.when(submitOrderForAllSys.sendRequest())
                 .done(function(message) {
