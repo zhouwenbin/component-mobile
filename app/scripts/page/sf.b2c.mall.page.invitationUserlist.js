@@ -16,11 +16,10 @@ define(
     "sf.b2c.mall.api.user.getRegstedCount",
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.module.header',
-    'sf.weixin',
-    'zepto.cookie',
+    'sf.weixin'
   ],
 
-  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading ,SFheader , SFweixin, $cookie) {
+  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading ,SFheader , SFweixin) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
