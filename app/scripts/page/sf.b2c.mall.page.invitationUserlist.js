@@ -16,7 +16,7 @@ define(
     "sf.b2c.mall.api.user.getRegstedCount",
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.module.header',
-    'sf.weixin'
+    'sf.weixin',
   ],
 
   function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading ,SFheader , SFweixin) {
@@ -106,7 +106,6 @@ define(
           // that.itemObj.attr(data);
           // that.inToAccount(that.itemObj);
           that.inToAccount(data);
-          console.log(JSON.stringify(data));
           if (status == 'UNFINISH' && data.totalCount == 0) {
             $('#partner-tips-box').hide();
             $('#partner-user-box').css('margin-top', '0');

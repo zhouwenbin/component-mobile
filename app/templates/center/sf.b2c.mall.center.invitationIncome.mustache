@@ -12,7 +12,13 @@
         <li>
             <div class="partner-icome-text">
                 <p>{{{reason}}}</p>
-                <span class="dateShow">{{sf-time gmtCreate}}</span>
+                <span class="dateShow">
+                {{#if gmtOrder}}
+                    {{sf-time gmtOrder}}
+                {{else}}
+                {{sf-time gmtCreate}}
+                {{/if}}
+                </span>
             </div>
             <div class="partner-icome-num">
               {{#isIncome income}}
