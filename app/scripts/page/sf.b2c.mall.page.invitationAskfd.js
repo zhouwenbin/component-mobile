@@ -34,7 +34,6 @@ define(
           url,
           imgUrl
       );
-      alert(2);
     }
 
     var myInvitationAskfd = can.Control.extend({
