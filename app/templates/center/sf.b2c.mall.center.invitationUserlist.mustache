@@ -35,7 +35,7 @@
       {{#if infos}}
         <ul class="partner-user-list goods-list active">
           {{#each infos}}
-            <li><img src="{{headImgUrl}}" alt="">
+            <li>{{#if headImgUrl}}<img src="{{headImgUrl}}" alt="">{{else}}<img src="../img/user.png" alt="">{{/if}}
               <div class="partner-user-info">
                 {{#if nick}}
                 <h3 class="ellipsis">{{nick}}</h3>

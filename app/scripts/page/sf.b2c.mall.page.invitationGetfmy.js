@@ -40,14 +40,15 @@ define(
 
       '#goToHome click': function(element,event){
         if(SFFn.isMobile.APP()){
-          var params = 'true';
-          var success = function(data) {
-            console.log('success');
-          };
-          var error = function(data) {
-            console.log('error');
-          };
-          window.bridge.run('SFNavigation', 'popToRoot', params, success, error);
+          // var params = 'true';
+          // var success = function(data) {
+          //   console.log('success');
+          // };
+          // var error = function(data) {
+          //   console.log('error');
+          // };
+          // window.bridge.run('SFNavigation', 'popToRoot', params, success, error);
+          window.location.href = 'http://' + window.location.hostname + '/index.html'
         }else{
            window.location.href = 'http://' + window.location.hostname + '/';
         }
