@@ -125,7 +125,11 @@ define(
         var day7 = this.serverDay(6);
         // 按天进行统计
         _.each(this.itemObj.infoList, function(item) {
-          item.gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
+          if(item.gmtOrder){
+            item.gmtCreate = moment(item.gmtOrder).format('YYYY-MM-DD HH:mm:ss');
+          }else{
+            item.gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
+          }
           var month = parseInt(item.gmtCreate.substring(5, 7), 10);
           var day = item.gmtCreate.substring(8, 10);
           if (month < 10) {

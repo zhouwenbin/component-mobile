@@ -53,7 +53,7 @@ define(
         var renderFn = can.mustache(template_center_invitationbagNext);
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
-        var srcUid = can.route.attr('srcUid');
+        var srcUid = can.route.attr('srcUid') || $.fn.cookie('userId') || null;
         if(!srcUid){
           window.location.href = 'http://' + window.location.hostname + '/';
         }
@@ -130,6 +130,8 @@ define(
               .fail(function(error) {
                  if (error === 1000340) {
                   $('#text-error1').show().text('手机已被注册但还没有密码')
+                 }else if(error === 1000380){
+                  $('#text-error1').show().text('已绑定过账户故无法参与')
                  }
               });
           }
@@ -280,6 +282,7 @@ define(
       },
 
       '#noDitectGetBtn click': function(element, event) {
+        var Reg = /^1\d{10}$/;
         var mobile = $('#getMbile').val();
         var codeNum = $('#codeNum').val();
         if (codeNum == '') {
@@ -312,28 +315,43 @@ define(
         var checkSmsCode = new SFcheckSmsCode(params);
         checkSmsCode.sendRequest().done(function(data) {
           if (data.value) {
-            var params = {
-              mobile: mobile,
-              smsCode: codeNum,
-              password: md5(password + SFBizConf.setting.md5_key),
-              srcUid: srcUid,
-              bagType: 'CARD',
-              bagId: 286,
-              envDesc: envDesc
-            };
-            var mobileRegstAndRcvCp = new SFmobileRegstAndRcvCp(params);
-            mobileRegstAndRcvCp.sendRequest().done(function(data) {
-              store.set('csrfToken', data.csrfToken);
-              if (data.hasCoupon) {
-                $('#ohSuccessSet').show();
+            if (password == '') {
+              $('#setWrongFont').show().text('密码不能设置为空')
+            } else {
+              var reg = /^[A-Za-z0-9]+$/;
+              if (!reg.test(password) || password.length < 6 || password.length > 15) {
+                $('#setWrongFont').show().text('密码必须为6-15位数字字母组合');
+              }else{
+                var params = {
+                  mobile: mobile,
+                  smsCode: codeNum,
+                  password: md5(password + SFBizConf.setting.md5_key),
+                  srcUid: srcUid,
+                  bagType: 'CARD',
+                  bagId: 286,
+                  envDesc: envDesc
+                };
+                var mobileRegstAndRcvCp = new SFmobileRegstAndRcvCp(params);
+                mobileRegstAndRcvCp.sendRequest().done(function(data) {
+                  store.set('csrfToken', data.csrfToken);
+                  if (data.hasCoupon) {
+                    $('#ohSuccessSet').show();
+                  }
+                });
               }
-            });
+            }
           } else {
             $('#text-error2').show().text('验证码错误');
           }
         })
         .fail(function(error) {
-          console.log(error);
+          if (!Reg.test(mobile)) {
+              if (mobile == '') {
+                $('#text-error1').show().text('手机号不能为空');
+              } else {
+                $('#text-error1').show().text('手机号格式错误');
+              }
+          }
         });
 
       },
