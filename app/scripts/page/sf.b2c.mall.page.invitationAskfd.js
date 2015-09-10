@@ -19,17 +19,6 @@ define(
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
-    if(SFFn.isMobile.WeChat()){
-      var _ruser = $.fn.cookie('userId') || null;
-      var url = window.location.href;
-      var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-      SFweixin.shareInvitation(
-          '顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿',
-          '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',
-          286
-      );
-    }
-
     var myInvitationAskfd = can.Control.extend({
 
       itemObj: new can.Map({}),
@@ -47,7 +36,19 @@ define(
           window.location.href = 'http://' + window.location.hostname + '/login.html?from=' + window.encodeURIComponent(url);
           return false;
         }
-
+        if(SFFn.isMobile.WeChat()){
+          var _ruser = $.fn.cookie('userId') || null;
+          var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
+            srcUid: srcUid
+          });
+          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          SFweixin.shareDetail(
+              '顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿',
+              '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',
+              url,
+              imgUrl
+          );
+        }
       },
 
       sfBridge: function() {
