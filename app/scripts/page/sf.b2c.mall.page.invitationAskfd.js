@@ -39,7 +39,7 @@ define(
         if(SFFn.isMobile.WeChat()){
           var _ruser = $.fn.cookie('userId') || null;
           var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
-            srcUid: srcUid
+            _ruser: _ruser
           });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFweixin.shareDetail(

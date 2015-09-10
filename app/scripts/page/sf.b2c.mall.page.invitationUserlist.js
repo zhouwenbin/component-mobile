@@ -58,7 +58,7 @@ define(
         this.request();
         this.loadingData();
         loadingCtrl.hide();
-        
+
         if(SFFn.isMobile.WeChat()){
           var _ruser = $.fn.cookie('userId') || null;
           var url = 'http://' + window.location.hostname + '/invitation-bag.html#!&' + $.param({
