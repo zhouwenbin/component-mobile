@@ -364,6 +364,10 @@ requirejs.config({
         'plupload': 'scripts/vendor/plupload',
         'livequery': 'scripts/vendor/jquery.livequery',
         //退税
-        'sf.b2c.mall.page.refundtax': 'scripts/page/sf.b2c.mall.page.refundtax'
+        'sf.b2c.mall.page.refundtax': 'scripts/page/sf.b2c.mall.page.refundtax',
+
+        //摇一摇
+        'sf.shake': 'scripts/util/sf.shake',
+        'sf.b2c.mall.page.shake': 'scripts/page/sf.b2c.mall.page.shake'
     }
 });
