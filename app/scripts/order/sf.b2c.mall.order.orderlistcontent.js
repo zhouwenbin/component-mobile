@@ -120,9 +120,9 @@ define('sf.b2c.mall.order.orderlistcontent', [
         'sf-status-show-case': OrderFn.helpers['sf-status-show-case'],
         'sf-coupon-type': OrderFn.helpers['sf-coupon-type'],
 
-        'sf-real-price': function(total, discount) {
-          return (total() - discount()) / 100;
-        },
+        // 'sf-real-price': function(total, discount) {
+        //   return (total() - discount()) / 100;
+        // },
 
         'sf-show-route': function(status, options) {
           if (status() != 'SUBMITED' && status() != 'AUDITING' && status() != 'AUTO_CANCEL' && status() != 'USER_CANCEL' && status() != 'OPERATION_CANCEL' && status() != 'CLOSED') {
