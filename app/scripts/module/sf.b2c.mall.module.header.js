@@ -24,7 +24,7 @@ define(
   function(can, $, $cookie, store, _, Fastclick, SFFn, SFSwitcher, SFConfig, SFComm, SFSearchBox,
     template_widget_header_ad, SFGetTotalCount, SFAddItemToCart, SFIsShowCart, SFHybrid, SFWidgetCartNumber, SFBridge) {
 
-    Fastclick.attach(document.body);
+    // Fastclick.attach(document.body);
     SFComm.register(3);
 
     var header = can.Control.extend({

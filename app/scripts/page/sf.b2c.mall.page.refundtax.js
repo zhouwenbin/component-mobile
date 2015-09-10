@@ -42,15 +42,9 @@ define(
 				$('#errorNoPicTips').hide();
 				$('#errorAlipayAccount').hide();
 				$('#errorAlipayName').hide();
-				// var params = can.deparam(window.location.search.substr(1));
 
-				var params = null;
-
-				if (SFFn.isMobile.APP()) {
-					params = can.route.attr();
-				}else{
-					params = can.deparam(window.location.search.substr(1));
-				}
+				var params = can.deparam(window.location.search.substr(1));
+				params = _.extend(params, can.route.attr());
 
 				this.options = new can.Map({});
 				var getOrder = new SFGetOrderV2({
@@ -119,6 +113,8 @@ define(
 					return false;
 				};
 				var params = can.deparam(window.location.search.substr(1));
+				params = _.extend(params, can.route.attr());
+
 				var tag = params.tag;
 				var alipayAccount = $('#alipayaccount').val();
 				var alipayname = $('#alipayname').val();
@@ -126,14 +122,8 @@ define(
 				var buyerTelephone = this.options.orderItem.orderAddressItem.telephone;
 				var bizId = this.options.orderItem.orderPackageItemList[tag].packageNo;
 				var mailNo = this.options.orderItem.orderPackageItemList[tag].logisticsNo;
-				if (this.checkAlipayAccount(alipayAccount) && this.checkAlipayName(alipayname)) {
-					var params = null;
 
-					if (SFFn.isMobile.APP()) {
-						params = can.route.attr();
-					}else{
-						params = can.deparam(window.location.search.substr(1));
-					}
+				if (this.checkAlipayAccount(alipayAccount) && this.checkAlipayName(alipayname)) {
 
 					var createRefundTax = new SFCreateRefundTax({
 						'bizId': bizId,
@@ -155,20 +145,20 @@ define(
 								setTimeout(function() {
 									window.location.href = 'http://m.sfht.com/orderdetail.html?orderid=' + params.orderid
 								}, 2000);
-				      });
+							});
 
-				      switcher.register('app', function() {
+							switcher.register('app', function() {
 
-				      	SFHybrid.notification.post('NotificationOrderReturnTax');
+								SFHybrid.notification.post('NotificationOrderReturnTax');
 
-				      	setTimeout(function() {
-				      		SFHybrid.sfnavigator.pop();
-				      	}, 2000);
+								setTimeout(function() {
+									SFHybrid.sfnavigator.pop();
+								}, 2000);
 
-				        // SFHybrid.sfnavigator.popToIdentifier('orderReturnTax');
-				      });
+								// SFHybrid.sfnavigator.popToIdentifier('orderReturnTax');
+							});
 
-				      switcher.go();
+							switcher.go();
 
 						}).fail(function(errorCode) {
 							if (errorCode == '-140') {
@@ -181,7 +171,7 @@ define(
 						}).always(function() {
 							loadingCtrl.hide();
 						})
-				}else{
+				} else {
 					loadingCtrl.hide();
 				}
 			},
@@ -200,9 +190,14 @@ define(
 					var _aid = params.appId;
 					var _tk = params.token;
 
-					word = $.param({_aid: _aid, _tk: _tk})
-				}else{
-					word = $.param({_aid: 3});
+					word = $.param({
+						_aid: _aid,
+						_tk: _tk
+					})
+				} else {
+					word = $.param({
+						_aid: 3
+					});
 				}
 
 				// 上传组件
@@ -216,7 +211,7 @@ define(
 					multipart_params: {
 						fileVal: 'CPRODUCT_IMG' + filename.substring(filename.lastIndexOf("."), filename.length)
 					},
-					url: SFBizConf.setting.api.fileurl + "?"+ word,
+					url: SFBizConf.setting.api.fileurl + "?" + word,
 					flash_swf_url: "../img/plupload.flash.swf?r=" + Math.random(),
 					silverlight_xap_url: "../img/plupload.silverlight.xap",
 					filters: [{
