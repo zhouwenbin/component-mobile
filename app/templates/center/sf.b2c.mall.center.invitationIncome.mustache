@@ -14,9 +14,9 @@
                 <p>{{{reason}}}</p>
                 <span class="dateShow">
                 {{#if gmtOrder}}
-                    {{sf-time gmtOrder}}
+                    {{sf.timeYMD gmtOrder}}
                 {{else}}
-                {{sf-time gmtCreate}}
+                {{sf.timeYMD gmtCreate}}
                 {{/if}}
                 </span>
             </div>

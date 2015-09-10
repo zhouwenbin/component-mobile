@@ -384,7 +384,7 @@ define(
               }else if(error === 1000340){
                 $('#text-error2').show().text('手机已注册')
               }
-            };
+            });
           } else {
             $('#text-error2').show().text('验证码错误');
           }

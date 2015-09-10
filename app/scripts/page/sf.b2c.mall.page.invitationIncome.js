@@ -20,17 +20,17 @@ define(
     'zepto.cookie',
   ],
 
-  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading, SFheader, SFweixin, $cookie) {
+  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading, SFheader, SFweixin, $cookie ) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
     var loadingCtrl = new SFLoading();
     var pgIndex = 1;
     var myInvitationIncome = can.Control.extend({
-      helpers: {
-        'sf-time': function(time, options) {
-          return moment(time).format('YYYY-MM-DD');
-        },
+       helpers: {
+        // 'sf-time': function(time, options) {
+        //   return moment(time).format('YYYY-MM-DD');
+        // },
 
         isIncome: function(income, options) {
           var income = parseInt(income);
@@ -58,7 +58,7 @@ define(
 
       render: function() {
         var that = this;
-        this.loadingData();
+        loadingCtrl.hide();
         if (SFFn.isMobile.WeChat()) {
           var _ruser = $.fn.cookie('userId') || null;
           var url = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
@@ -89,13 +89,13 @@ define(
           pgSize: 20
         });
         var renderFn = can.view.mustache(template_center_invitationIncome);
-        var html = renderFn(data, this.helpers);
+        var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
         loadingCtrl.hide();
         this.initLoadDataEvent();
       },
 
-       initLoadDataEvent: function() {
+      initLoadDataEvent: function() {
         var that = this;
         var renderData = this.options.data;
         //节流阀
@@ -105,7 +105,7 @@ define(
           }
           var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
           var windowHeight = $(window).height(); //窗口的高度
-          var dbHiht = $(".sf-b2c-mall-invitationUserlist").height(); //整个页面文件的高度
+          var dbHiht = $(".sf-b2c-mall-invitationIncome").height(); //整个页面文件的高度
 
           if ((windowHeight + srollPos + 200) >= (dbHiht)) {
 
@@ -123,16 +123,13 @@ define(
           pgIndex: pgIndex,
           pgSize: 20
         });
-        can.when(getCashActTransList.sendRequest()).done(function(infoList) {
-          console.log(infoList);
-           _.each(infoList.infos, function(item) {
+        can.when(getCashActTransList.sendRequest()).done(function(data) {
+          //console.log(infoList.infos);
+           _.each(data.infos, function(item) {
             that.options.data.infos.push(item);
           });
         }).fail(function(error) {
           console.error(error);
-        }).then(function() {
-          that.supplement();
-          $('.invite-account-b').hide();
         })
       },
 

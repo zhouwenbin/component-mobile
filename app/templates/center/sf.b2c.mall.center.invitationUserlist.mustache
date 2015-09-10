@@ -42,7 +42,7 @@
                 {{/if}}
                 <p>{{mobile}}</p>
               </div>
-              <div class="goodslist-c1">{{#finishStatus}}{{sf-time regstTime}} 注册{{else}}{{sf-time finishTime}} 完成{{/finishStatus}}</div>
+              <div class="goodslist-c1">{{#finishStatus}}{{sf.timeYMD regstTime}} 注册{{else}}{{sf.timeYMD finishTime}} 完成{{/finishStatus}}</div>
             </li>
             {{/each}}
         </ul>

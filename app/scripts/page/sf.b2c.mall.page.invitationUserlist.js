@@ -17,9 +17,10 @@ define(
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.module.header',
     'sf.weixin',
+    'sf.helpers'
   ],
 
-  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading, SFheader, SFweixin) {
+  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading, SFheader, SFweixin, helpers) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
@@ -27,9 +28,9 @@ define(
     var pgIndex = 1;
     var myInvitationUserlist = can.Control.extend({
       helpers: {
-        'sf-time': function(time, options) {
-          return moment(time).format('YYYY-MM-DD');
-        },
+        // 'sf-time': function(time) {
+        //   return moment(time).format('YYYY-MM-DD');
+        // },
         'finishStatus': function(options) {
           var status = can.route.attr('status');
           if (status == 'UNFINISH') {
@@ -140,14 +141,14 @@ define(
             that.options.data.infos.push(item);
           });
 
-          //that.options.data.attr("page", data.page);
+          // that.options.data.attr("page", data.page);
           // that.itemObj.attr(data);
           // that.inToAccount(that.itemObj);
           // that.inToAccount(data);
-          // if (status == 'UNFINISH' && data.totalCount == 0) {
-          //   $('#partner-tips-box').hide();
-          //   $('#partner-user-box').css('margin-top', '0');
-          // }
+          if (status == 'UNFINISH' && data.totalCount == 0) {
+            $('#partner-tips-box').hide();
+            $('#partner-user-box').css('margin-top', '0');
+          }
         }).fail(function(error) {
           console.error(error);
         }).then(function() {

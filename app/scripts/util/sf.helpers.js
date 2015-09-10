@@ -35,6 +35,14 @@ define('sf.helpers', [
     return moment(time).format('M月D日H点');
   });
 
+  can.Mustache.registerHelper('sf.timeYMD', function(time) {
+    if (_.isFunction(time)) {
+      time = time();
+    }
+
+    return moment(time).format('YYYY-MM-DD');
+  });
+
   can.Mustache.registerHelper('sf.split', function(str) {
     if (_.isFunction(str)) {
       str = str();
