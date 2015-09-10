@@ -20,12 +20,12 @@ define(
     'zepto.cookie',
   ],
 
-  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading , SFheader, SFweixin, $cookie) {
+  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading, SFheader, SFweixin, $cookie) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
     var loadingCtrl = new SFLoading();
-    var pgIndex = 0;
+    var pgIndex = 1;
     var myInvitationIncome = can.Control.extend({
       helpers: {
         'sf-time': function(time, options) {
@@ -57,10 +57,9 @@ define(
       },
 
       render: function() {
-        this.request();
+        var that = this;
         this.loadingData();
-        loadingCtrl.hide();
-        if(SFFn.isMobile.WeChat()){
+        if (SFFn.isMobile.WeChat()) {
           var _ruser = $.fn.cookie('userId') || null;
           var url = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
             _ruser: _ruser
@@ -68,29 +67,67 @@ define(
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
         }
-      },
-
-      request: function(params) {
-        loadingCtrl.show();
-      },
-
-      inToAccount: function(data) {
-        var renderFn = can.view.mustache(template_center_invitationIncome);
-        var html = renderFn(data, this.helpers);
-        this.element.html(html);
-        loadingCtrl.hide();
-      },
-
-      loadingData: function(params) {
-        var that = this;
-        pgIndex++;
         var getCashActTransList = new SFgetCashActTransList({
-          pgIndex: pgIndex,
+          pgIndex: 1,
           pgSize: 20
         });
         can.when(getCashActTransList.sendRequest()).done(function(infoList) {
           that.itemObj.infoList = infoList.infos;
           that.inToAccount(infoList);
+        }).fail(function(error) {
+          console.error(error);
+        }).then(function() {
+          that.supplement();
+          $('.invite-account-b').hide();
+        })
+      },
+
+      inToAccount: function(data) {
+        this.options.data = new can.Map(data);
+        this.options.data.attr({
+          pgIndex: 1,
+          pgSize: 20
+        });
+        var renderFn = can.view.mustache(template_center_invitationIncome);
+        var html = renderFn(data, this.helpers);
+        this.element.html(html);
+        loadingCtrl.hide();
+        this.initLoadDataEvent();
+      },
+
+       initLoadDataEvent: function() {
+        var that = this;
+        var renderData = this.options.data;
+        //节流阀
+        var loadingDatas = function() {
+          if (pgIndex * renderData.pgSize > renderData.totalCount) {
+            return;
+          }
+          var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
+          var windowHeight = $(window).height(); //窗口的高度
+          var dbHiht = $(".sf-b2c-mall-invitationUserlist").height(); //整个页面文件的高度
+
+          if ((windowHeight + srollPos + 200) >= (dbHiht)) {
+
+            that.loadingData();
+          }
+        };
+
+        $(window).scroll(_.throttle(loadingDatas, 200));
+      },
+
+      loadingData: function(params) {
+        var that = this;
+        pgIndex = pgIndex + 1;
+        var getCashActTransList = new SFgetCashActTransList({
+          pgIndex: pgIndex,
+          pgSize: 20
+        });
+        can.when(getCashActTransList.sendRequest()).done(function(infoList) {
+          console.log(infoList);
+           _.each(infoList.infos, function(item) {
+            that.options.data.infos.push(item);
+          });
         }).fail(function(error) {
           console.error(error);
         }).then(function() {
@@ -126,34 +163,34 @@ define(
         // 按天进行统计
         _.each(this.itemObj.infoList, function(item) {
           // if (monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7) {
-            if (item.income > 0) {
-               if(item.gmtOrder){
-                var gmtCreate = moment(item.gmtOrder).format('YYYY-MM-DD HH:mm:ss');
-              }else{
-                var gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
-              }
-              var month = parseInt(gmtCreate.substring(5, 7), 10);
-              var day = gmtCreate.substring(8, 10);
-              if (month < 10) {
-                month = '0' + month;
-              }
-              var monthDay = month + '-' + day;
-              var label = month + '.' + day;
-              if(monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7){
-                if (dataMap[label]) {
-                  $('#canvas').hide();
-                  $('#noAnyserven').show();
-                  // dataMap[label] = dataMap[label] + item.income / 100;
-                  // console.log(dataMap[label])
-                } else {
-                  dataMap[label] = item.income / 100
-                }
-              }
-              // else if(monthDay != day1 || monthDay != day2 || monthDay != day3 || monthDay != day4 || monthDay != day5 || monthDay != day6 || monthDay != day7){
-              //   $('#canvas').hide();
-              //   $('#noAnyserven').show();
-              // }
+          if (item.income > 0) {
+            if (item.gmtOrder) {
+              var gmtCreate = moment(item.gmtOrder).format('YYYY-MM-DD HH:mm:ss');
+            } else {
+              var gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
             }
+            var month = parseInt(gmtCreate.substring(5, 7), 10);
+            var day = gmtCreate.substring(8, 10);
+            if (month < 10) {
+              month = '0' + month;
+            }
+            var monthDay = month + '-' + day;
+            var label = month + '.' + day;
+            if (monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7) {
+              if (dataMap[label]) {
+                $('#canvas').hide();
+                $('#noAnyserven').show();
+                // dataMap[label] = dataMap[label] + item.income / 100;
+                // console.log(dataMap[label])
+              } else {
+                dataMap[label] = item.income / 100
+              }
+            }
+            // else if(monthDay != day1 || monthDay != day2 || monthDay != day3 || monthDay != day4 || monthDay != day5 || monthDay != day6 || monthDay != day7){
+            //   $('#canvas').hide();
+            //   $('#noAnyserven').show();
+            // }
+          }
           // } else {
           //   $('#canvas').hide();
           //   $('#noAnyserven').show();
@@ -273,7 +310,7 @@ define(
             });
           };
         } else {
-          window.location.href='http://' + window.location.hostname + '/invitationAskfd.html';
+          window.location.href = 'http://' + window.location.hostname + '/invitationAskfd.html';
         }
       },
 

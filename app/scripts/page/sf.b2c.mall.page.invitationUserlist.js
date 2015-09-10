@@ -19,12 +19,12 @@ define(
     'sf.weixin',
   ],
 
-  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading ,SFheader , SFweixin) {
+  function(can, $, Fastclick, $cookie, SFFn, SFFrameworkComm, template_center_invitationUserlist, SFgetRegstedList, moment, SFbridge, SFmessage, SFgetRegstedCount, SFLoading, SFheader, SFweixin) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
     var loadingCtrl = new SFLoading();
-    var pgIndex = 0;
+    var pgIndex = 1;
     var myInvitationUserlist = can.Control.extend({
       helpers: {
         'sf-time': function(time, options) {
@@ -40,7 +40,7 @@ define(
         },
       },
 
-      itemObj: new can.Map({}),
+      //itemObj: new can.Map({}),
       '{can.route} change': function() {
         this.render();
       },
@@ -55,11 +55,10 @@ define(
       },
 
       render: function() {
-        this.request();
-        this.loadingData();
-        loadingCtrl.hide();
 
-        if(SFFn.isMobile.WeChat()){
+        loadingCtrl.hide();
+        var that = this;
+        if (SFFn.isMobile.WeChat()) {
           var _ruser = $.fn.cookie('userId') || null;
           var url = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
             _ruser: _ruser
@@ -67,52 +66,92 @@ define(
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
         }
-      },
-
-      request: function(params) {
-        loadingCtrl.show();
+        var status = can.route.attr('status') || 'UNFINISH';
+        var getRegstedList = new SFgetRegstedList({
+          status: status,
+          pgIndex: 1,
+          pgSize: 20
+        });
+        getRegstedList.sendRequest()
+          .done(function(data) {
+            that.inToAccount(data);
+          }).then(function() {
+          that.loadSupplement(status);
+        });
       },
 
       inToAccount: function(data) {
+        this.options.data = new can.Map(data);
+        this.options.data.attr({
+          pgIndex: 1,
+          pgSize: 20
+        });
         var renderFn = can.view.mustache(template_center_invitationUserlist);
-        var html = renderFn(data, this.helpers);
+        var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
         loadingCtrl.hide();
         var getRegstedCount = new SFgetRegstedCount();
         can.when(getRegstedCount.sendRequest()).done(function(data) {
-          if(data.value){
+          if (data.value) {
             $('#isHasaccount').show();
             $('#noHasaccount').hide();
-          }else{
+          } else {
             $('#isHasaccount').hide();
             $('#noHasaccount').show();
           }
         }).fail(function(error) {
           console.error(error);
         });
+        this.initLoadDataEvent();
+      },
+
+      initLoadDataEvent: function() {
+        var that = this;
+        var renderData = this.options.data;
+        //节流阀
+        var loadingDatas = function() {
+          if (pgIndex * renderData.pgSize > renderData.totalCount) {
+            return;
+          }
+          var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
+          var windowHeight = $(window).height(); //窗口的高度
+          var dbHiht = $(".sf-b2c-mall-invitationUserlist").height(); //整个页面文件的高度
+
+          if ((windowHeight + srollPos + 200) >= (dbHiht)) {
+
+            that.loadingData();
+          }
+        };
+
+        $(window).scroll(_.throttle(loadingDatas, 200));
       },
 
       loadingData: function(params) {
         var that = this;
         var status = can.route.attr('status') || 'UNFINISH';
-        pgIndex++;
+        pgIndex = pgIndex + 1
         var getRegstedList = new SFgetRegstedList({
           status: status,
           pgIndex: pgIndex,
           pgSize: 20
         });
         can.when(getRegstedList.sendRequest()).done(function(data) {
+          _.each(data.infos, function(item) {
+            that.options.data.infos.push(item);
+          });
+
+          //that.options.data.attr("page", data.page);
           // that.itemObj.attr(data);
           // that.inToAccount(that.itemObj);
-          that.inToAccount(data);
-          if (status == 'UNFINISH' && data.totalCount == 0) {
-            $('#partner-tips-box').hide();
-            $('#partner-user-box').css('margin-top', '0');
-          }
+          // that.inToAccount(data);
+          // if (status == 'UNFINISH' && data.totalCount == 0) {
+          //   $('#partner-tips-box').hide();
+          //   $('#partner-user-box').css('margin-top', '0');
+          // }
         }).fail(function(error) {
           console.error(error);
         }).then(function() {
-          that.loadSupplement(status);
+          //that.loadSupplement(status);
         });
       },
 
@@ -215,8 +254,8 @@ define(
               'okFunction': function() {},
             });
           };
-        }else{
-            window.location.href='http://' + window.location.hostname + '/invitationAskfd.html';
+        } else {
+          window.location.href = 'http://' + window.location.hostname + '/invitationAskfd.html';
         }
       },
 
