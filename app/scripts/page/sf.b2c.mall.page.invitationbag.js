@@ -33,9 +33,10 @@ define(
         var renderFn = can.mustache(template_center_invitationbag);
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
+        var tempToken = store.get('tempToken');
         if(SFFn.isMobile.WeChat()){
           var params = can.deparam(window.location.search.substr(1));
-          if (params.code) {
+          if (params.code && !tempToken) {
             var srcUid = params._ruser;
             var authResp = "code=" + params.code;
             var partnerLogin = new SFPartnerLogin({
@@ -58,6 +59,8 @@ define(
             .fail(function(error) {
               console.log(error);
             });
+          }else{
+            $('#hastempToken').show();
           }
           var params = can.deparam(window.location.search.substr(1));
           var srcUid = params._ruser;
@@ -91,6 +94,10 @@ define(
         window.location.href = 'http://' + window.location.hostname + '/';
       },
 
+      '#closehastempTokenBtn click': function(element, event) {
+        window.location.href = 'http://' + window.location.hostname + '/';
+      },
+
       '#noSuccessBtn click': function(element, event) {
         var that = this;
         that.openApp('sfht://');
@@ -99,6 +106,16 @@ define(
           window.location.href = 'http://' + window.location.hostname + '/app.html';
         }, 600);
       },
+
+      '#hastempTokenBtn click': function(element, event) {
+        var tempToken = store.get('tempToken');
+        var params = can.deparam(window.location.search.substr(1));
+        var srcUid = params._ruser;
+        window.location.href = 'http://' + window.location.hostname +'/invitation-bagNext.html#!&'+$.param({
+          tempToken: tempToken || null,
+          srcUid: srcUid
+        });
+      }
 
       openApp: function(appUrl) {
         var u = navigator.userAgent ? navigator.userAgent.toLocaleLowerCase() : "";

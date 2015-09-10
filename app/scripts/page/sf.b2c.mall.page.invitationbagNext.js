@@ -129,9 +129,9 @@ define(
               })
               .fail(function(error) {
                  if (error === 1000340) {
-                  $('#text-error1').show().text('手机已被注册但还没有密码')
+                  $('#text-error1').show().text('用户已存在')
                  }else if(error === 1000380){
-                  $('#text-error1').show().text('已绑定过账户故无法参与')
+                  $('#text-error1').show().text('用户已存在')
                  }
               });
           }
@@ -288,7 +288,10 @@ define(
         if (codeNum == '') {
           $('#text-error2').show().text('验证码不能为空')
         }
-
+        var reg = /^[A-Za-z0-9]+$/;
+        if (!reg.test(password) || password.length < 6 || password.length > 15) {
+          $('#setWrongFont').show().text('密码必须为6-15位数字字母组合');
+        }
         if (SFFn.isMobile.QQ()) {
           var envDesc = 'QQ';
         } else if (SFFn.isMobile.Opera()) {
@@ -306,6 +309,14 @@ define(
         }
 
         var password = $('#getPassword').val();
+        if (password == '') {
+            $('#text-error3').show().text('密码不能设置为空')
+          } else {
+            var reg = /^[A-Za-z0-9]+$/;
+            if (!reg.test(password) || password.length < 6 || password.length > 15) {
+              $('#text-error3').show().text('密码必须为6-15位数字字母组合');
+            }
+        }
         var srcUid = can.route.attr('srcUid');
         var params = {
           mobile: mobile,
@@ -315,31 +326,22 @@ define(
         var checkSmsCode = new SFcheckSmsCode(params);
         checkSmsCode.sendRequest().done(function(data) {
           if (data.value) {
-            if (password == '') {
-              $('#setWrongFont').show().text('密码不能设置为空')
-            } else {
-              var reg = /^[A-Za-z0-9]+$/;
-              if (!reg.test(password) || password.length < 6 || password.length > 15) {
-                $('#setWrongFont').show().text('密码必须为6-15位数字字母组合');
-              }else{
-                var params = {
-                  mobile: mobile,
-                  smsCode: codeNum,
-                  password: md5(password + SFBizConf.setting.md5_key),
-                  srcUid: srcUid,
-                  bagType: 'CARD',
-                  bagId: 286,
-                  envDesc: envDesc
-                };
-                var mobileRegstAndRcvCp = new SFmobileRegstAndRcvCp(params);
-                mobileRegstAndRcvCp.sendRequest().done(function(data) {
-                  store.set('csrfToken', data.csrfToken);
-                  if (data.hasCoupon) {
-                    $('#ohSuccessSet').show();
-                  }
-                });
+            var params = {
+              mobile: mobile,
+              smsCode: codeNum,
+              password: md5(password + SFBizConf.setting.md5_key),
+              srcUid: srcUid,
+              bagType: 'CARD',
+              bagId: 286,
+              envDesc: envDesc
+            };
+            var mobileRegstAndRcvCp = new SFmobileRegstAndRcvCp(params);
+            mobileRegstAndRcvCp.sendRequest().done(function(data) {
+              store.set('csrfToken', data.csrfToken);
+              if (data.hasCoupon) {
+                $('#ohSuccessSet').show();
               }
-            }
+            });
           } else {
             $('#text-error2').show().text('验证码错误');
           }
