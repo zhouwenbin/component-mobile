@@ -175,10 +175,7 @@ define(
             var label = month + '.' + day;
             if (monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7) {
               if (dataMap[label]) {
-                $('#canvas').hide();
-                $('#noAnyserven').show();
-                // dataMap[label] = dataMap[label] + item.income / 100;
-                // console.log(dataMap[label])
+                dataMap[label] = dataMap[label] + item.income / 100;
               } else {
                 dataMap[label] = item.income / 100
               }
