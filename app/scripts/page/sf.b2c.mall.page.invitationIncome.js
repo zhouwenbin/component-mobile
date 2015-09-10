@@ -125,30 +125,39 @@ define(
         var day7 = this.serverDay(6);
         // 按天进行统计
         _.each(this.itemObj.infoList, function(item) {
-          if(item.gmtOrder){
-            item.gmtCreate = moment(item.gmtOrder).format('YYYY-MM-DD HH:mm:ss');
-          }else{
-            item.gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
-          }
-          var month = parseInt(item.gmtCreate.substring(5, 7), 10);
-          var day = item.gmtCreate.substring(8, 10);
-          if (month < 10) {
-            month = '0' + month;
-          }
-          var monthDay = month + '-' + day;
-          if (monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7) {
+          // if (monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7) {
             if (item.income > 0) {
-              var label = month + '.' + day;
-              if (dataMap[label]) {
-                dataMap[label] = dataMap[label] + item.income / 100
-              } else {
-                dataMap[label] = item.income / 100
+               if(item.gmtOrder){
+                var gmtCreate = moment(item.gmtOrder).format('YYYY-MM-DD HH:mm:ss');
+              }else{
+                var gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
               }
+              var month = parseInt(gmtCreate.substring(5, 7), 10);
+              var day = gmtCreate.substring(8, 10);
+              if (month < 10) {
+                month = '0' + month;
+              }
+              var monthDay = month + '-' + day;
+              var label = month + '.' + day;
+              if(monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7){
+                if (dataMap[label]) {
+                  $('#canvas').hide();
+                  $('#noAnyserven').show();
+                  // dataMap[label] = dataMap[label] + item.income / 100;
+                  // console.log(dataMap[label])
+                } else {
+                  dataMap[label] = item.income / 100
+                }
+              }
+              // else if(monthDay != day1 || monthDay != day2 || monthDay != day3 || monthDay != day4 || monthDay != day5 || monthDay != day6 || monthDay != day7){
+              //   $('#canvas').hide();
+              //   $('#noAnyserven').show();
+              // }
             }
-          } else {
-            $('#canvas').hide();
-            $('#noAnyserven').show();
-          }
+          // } else {
+          //   $('#canvas').hide();
+          //   $('#noAnyserven').show();
+          // }
         })
 
         _.map(dataMap, function(num, key) {

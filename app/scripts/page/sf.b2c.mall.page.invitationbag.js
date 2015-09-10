@@ -59,7 +59,7 @@ define(
             .fail(function(error) {
               console.log(error);
             });
-          }else{
+          }else if(tempToken){
             $('#hastempToken').show();
           }
           var params = can.deparam(window.location.search.substr(1));
