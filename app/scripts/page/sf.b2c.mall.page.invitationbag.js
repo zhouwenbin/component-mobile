@@ -115,7 +115,7 @@ define(
           tempToken: tempToken || null,
           srcUid: srcUid
         });
-      }
+      },
 
       openApp: function(appUrl) {
         var u = navigator.userAgent ? navigator.userAgent.toLocaleLowerCase() : "";
