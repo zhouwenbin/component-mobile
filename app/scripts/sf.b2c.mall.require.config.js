@@ -22,7 +22,7 @@ requirejs.config({
         "sf.b2c.mall.api.order.submitOrder": "scripts/api/sf.b2c.mall.api.order.submitOrder",
         "sf.b2c.mall.api.order.submitOrderV2": "scripts/api/sf.b2c.mall.api.order.submitOrderV2",
         "sf.b2c.mall.api.order.cancelOrder": "scripts/api/sf.b2c.mall.api.order.cancelOrder",
-        "sf.b2c.mall.api.order.confirmReceive": "scripts/api/sf.b2c.mall.api.order.confirmReceive",
+        "sf.b2c.mall.api.order.confirmreReceive": "scripts/api/sf.b2c.mall.api.order.confirmReceive",
         "sf.b2c.mall.api.order.deleteOrder": "scripts/api/sf.b2c.mall.api.order.deleteOrder",
         "sf.b2c.mall.api.order.getOrder": "scripts/api/sf.b2c.mall.api.order.getOrder",
         "sf.b2c.mall.api.order.getOrderV2": "scripts/api/sf.b2c.mall.api.order.getOrderV2",
@@ -34,6 +34,7 @@ requirejs.config({
         "sf.b2c.mall.api.order.queryOrderCoupon": "scripts/api/sf.b2c.mall.api.order.queryOrderCoupon",
         "sf.b2c.mall.api.order.orderRender": "scripts/api/sf.b2c.mall.api.order.orderRender",
         "sf.b2c.mall.api.order.getOrderConfirmInfo": "scripts/api/sf.b2c.mall.api.order.getOrderConfirmInfo",
+        "sf.b2c.mall.api.order.confirmReceive": "scripts/api/sf.b2c.mall.api.order.confirmReceive",
 
         "sf.b2c.mall.api.products.getSKUBaseList": "scripts/api/sf.b2c.mall.api.product.getSKUBaseList",
         "sf.b2c.mall.api.products.getSKUInfo": "scripts/api/sf.b2c.mall.api.product.getSKUInfo",
@@ -323,11 +324,17 @@ requirejs.config({
         "vendor.page.response": "scripts/vendor/vendor.page.response",
         "template_shop_detail": "templates/shop/sf.b2c.mall.shop.detail.mustache",
         "template_category_navigate": "templates/category/sf.b2c.mall.category.page.navigate.mustache",
+        "template_welfare_list": "templates/welfare/sf.b2c.mall.welfare.mustache",
+        "template_welfare_details": "templates/welfare/sf.b2c.mall.welfareDetails.mustache",
+        "template_welfare_rule": "templates/welfare/sf.b2c.mall.welfareRule.mustache",
         "sf.b2c.mall.category.fn": "scripts/category/sf.b2c.mall.category.fn",
         "sf.b2c.mall.category.pagenavigatelistcontent": "scripts/category/sf.b2c.mall.category.pagenavigatelistcontent",
         "sf.b2c.mall.page.categorynavigatelist": "scripts/page/sf.b2c.mall.page.categorynavigatelist",
         "sf.b2c.mall.api.categoryPage.findCategoryPages": "scripts/api/sf.b2c.mall.api.categoryPage.findCategoryPages",
 
+        "sf.b2c.mall.page.welfare": "scripts/page/sf.b2c.mall.page.welfare",
+        "sf.b2c.mall.page.welfareDetails": "scripts/page/sf.b2c.mall.page.welfareDetails",
+        "sf.b2c.mall.page.welfareRule": "scripts/page/sf.b2c.mall.page.welfareRule",
         "sf.b2c.mall.page.japanpre": "scripts/page/sf.b2c.mall.page.japanpre",
 
         //81
@@ -336,6 +343,13 @@ requirejs.config({
         //81活动
         "sf.b2c.mall.api.coupon.randomCard": "scripts/api/sf.b2c.mall.api.coupon.randomCard",
         "sf.b2c.mall.api.coupon.bindCard": "scripts/api/sf.b2c.mall.api.coupon.bindCard",
+
+        //福利社
+        "sf.b2c.mall.api.share.shareUrl": "scripts/api/sf.b2c.mall.api.share.shareUrl",
+        "sf.b2c.mall.api.task.directReceiveAward": "scripts/api/sf.b2c.mall.api.task.directReceiveAward",
+        "sf.b2c.mall.api.task.getUserTaskList": "scripts/api/sf.b2c.mall.api.task.getUserTaskList",
+        "sf.b2c.mall.api.task.getShareBuyDetail": "scripts/api/sf.b2c.mall.api.task.getShareBuyDetail",
+        "sf.b2c.mall.api.task.getTaskDetail": "scripts/api/sf.b2c.mall.api.task.getTaskDetail",
 
         //states
         "Stats": "scripts/vendor/Stats",

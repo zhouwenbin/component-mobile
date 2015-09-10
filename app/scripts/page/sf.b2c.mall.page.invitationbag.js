@@ -30,7 +30,7 @@ define(
       init: function(element, options) {
 
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          window.location.href = SFBusiness.setting.link.login + '&from=' + escape(window.location.pathname);
+          window.location.href = SFBusiness.setting.link.login + '&from=' + escape(window.location.href);
           return false;
         }
 
@@ -49,7 +49,7 @@ define(
         this.data.bagid = bagid;
 
         SFWeixin.shareInvitation(
-          "［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！", 
+          "［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！",
           "［雷锋来了］他奋力抢到了一波现金红包撒向了朋友圈，赶紧来抢！", this.data.bagid);
 
         can.when(that.initHasReceivedCp(bagid))

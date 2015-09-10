@@ -9,10 +9,11 @@ define(
     'sf.b2c.mall.module.header',
     'sf.b2c.mall.component.nav',
     'sf.env.switcher',
-    'sf.hybrid'
+    'sf.hybrid',
+    'sf.util'
   ],
 
-  function(can, $, SFFrameworkComm, DetailContent, SFHeader, SFNav, SFSwitcher, SFHybrid) {
+  function(can, $, SFFrameworkComm, DetailContent, SFHeader, SFNav, SFSwitcher, SFHybrid, SFFn) {
     SFFrameworkComm.register(3);
 
     var SFContent = can.Control.extend({

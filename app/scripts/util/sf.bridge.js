@@ -43,17 +43,22 @@ define(
       run: function (plugin, method, params, success, error) {
 
         var callbackId = this.register(success, error);
-        var paramsJs = JSON.stringify(params);
         var msg;
+        var paramsJs = JSON.stringify(params);
         try{
-          msg = window.sfhtandroidbridge.runner(plugin, method, '[' + paramsJs + ']', callbackId);
+          if(_.isArray(params)){
+            msg = window.sfhtandroidbridge.runner(plugin, method, paramsJs, callbackId);
+          }else{
+            paramsJs = '[' +paramsJs+ ']';
+            msg = window.sfhtandroidbridge.runner(plugin, method, '[' + paramsJs + ']', callbackId);
+          }
         }
         catch(e) {
           console.log(e.name + ":" + e.message)
         }
         //if not android
         if (!msg && this.version && this.version >= 130) {
-          var urlscheme = 'sfhtbridge://service/pluginHelper?plugin='+ plugin +'&method='+ method +'&params='+ encodeURIComponent('[' + paramsJs + ']')+ '&callbackId='+callbackId;
+          var urlscheme = 'sfhtbridge://service/pluginHelper?plugin='+ plugin +'&method='+ method +'&params='+ encodeURIComponent(paramsJs)+ '&callbackId='+callbackId;
 
           if ($('#apprunner').length == 0) {
 

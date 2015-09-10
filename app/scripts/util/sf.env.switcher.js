@@ -62,9 +62,18 @@ define(
         return env.length > 0 ? env : [defaultEnv];
       },
 
-      register: function(env, callback) {
-        if (_.contains(setting, env)) {
-          this.options.group[env] = callback;
+      register: function(envs, callback) {
+
+        var fn = function (env) {
+          if (_.contains(setting, env)) {
+            this.options.group[env] = callback;
+          }
+        }
+
+        if (_.isArray(envs)) {
+          _.each(envs, _.bind(fn, this));
+        }else{
+          fn.call(this, envs);
         }
       },
 
