@@ -193,6 +193,13 @@ define(
                     console.log(error);
                   });
                 }
+              })
+              .fail(function(error) {
+                 if (error === 1000340) {
+                  $('#text-error1').show().text('用户已存在')
+                 }else if(error === 1000380){
+                  $('#text-error1').show().text('用户已存在')
+                 }
               });
           }
         }
@@ -236,10 +243,33 @@ define(
               }
             })
             .fail(function(error) {
-              console.log(error);
+              if(error == 1000020){
+                $('#text-error1').show().text('手机已注册');
+              }else if(error == 1000240){
+                $('#text-error2').show().text('验证码错误');
+              }else if(error == 1000250){
+                $('#text-error2').show().text('验证码已过期');
+              }else if(error == 1000350){
+                $('#text-error1').show().text('临时token失败');
+              }else if(error == 1000360){
+                $('#text-error1').show().text('手机已注册');
+              }else if(error == 1000380){
+                $('#text-error1').show().text('手机已注册');
+              }else if(error == 1000410){
+                $('#text-error2').show().text('请输入短信验证码');
+              }else if(error == 1000480){
+                $('#text-error2').show().text('账户被冻结');
+              }
             });
           } else {
             $('#text-error2').show().text('验证码错误');
+          }
+        })
+        .fail(function(error) {
+          if (error === 1000230) {
+            $('#text-error1').show().text('请输入正确的手机号')
+          }else if(error === 1000250){
+            $('#text-error2').show().text('验证码已过期')
           }
         });
 
@@ -341,18 +371,29 @@ define(
               if (data.hasCoupon) {
                 $('#ohSuccessSet').show();
               }
-            });
+            })
+            .fail(function(error) {
+              if (error === 1000020) {
+                $('#text-error1').show().text('手机已注册')
+              }else if(error === 1000230){
+                $('#text-error1').show().text('手机号错误')
+              }else if(error === 1000240){
+                $('#text-error2').show().text('验证码错误')
+              }else if(error === 1000250){
+                $('#text-error2').show().text('验证码已过期')
+              }else if(error === 1000340){
+                $('#text-error2').show().text('手机已注册')
+              }
+            };
           } else {
             $('#text-error2').show().text('验证码错误');
           }
         })
         .fail(function(error) {
-          if (!Reg.test(mobile)) {
-              if (mobile == '') {
-                $('#text-error1').show().text('手机号不能为空');
-              } else {
-                $('#text-error1').show().text('手机号格式错误');
-              }
+          if (error === 1000230) {
+            $('#text-error1').show().text('请输入正确的手机号')
+          }else if(error === 1000250){
+            $('#text-error2').show().text('验证码已过期')
           }
         });
 
