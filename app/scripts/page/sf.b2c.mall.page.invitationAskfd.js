@@ -41,11 +41,16 @@ define(
             _ruser: _ruser
           });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          var success = function(data) {
+            $('#maskIdiv').hide();
+            $('#shareZindex').hide();
+          }
           SFweixin.shareDetail(
               '顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿',
               '顺丰海淘为了拉客也是拼了，买海外商品比国内商品还便宜',
               url,
-              imgUrl
+              imgUrl,
+              success
           );
         }
       },
