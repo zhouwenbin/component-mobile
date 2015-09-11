@@ -368,6 +368,8 @@ requirejs.config({
 
         //摇一摇
         'sf.shake': 'scripts/util/sf.shake',
-        'sf.b2c.mall.page.shake': 'scripts/page/sf.b2c.mall.page.shake'
+        'sf.b2c.mall.page.shake': 'scripts/page/sf.b2c.mall.page.shake',
+        //模拟api
+        'sf.b2c.mall.fixture.case.shake.one': 'app/fixture/case/shake/sf.b2c.mall.fixture.case.shake.one'
     }
 });
