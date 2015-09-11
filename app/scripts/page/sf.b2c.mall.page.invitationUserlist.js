@@ -128,7 +128,10 @@ define(
           }
         };
 
-        $(window).scroll(_.throttle(loadingDatas, 200));
+        //$(window).scroll(_.throttle(loadingDatas, 200));
+        setIimeout(function(){
+          $(window).scroll(_.throttle(loadingDatas, 200));
+        },300);
       },
 
       loadingData: function(params) {
