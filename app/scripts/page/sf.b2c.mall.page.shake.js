@@ -14,11 +14,9 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.business.config',
     'sf.shake',
-    'sf.b2c.mall.widget.loading',
-    'sf.b2c.mall.api.user.getCashActTransList',
-    'sf.b2c.mall.fixture.case.shake.one'
+    'sf.b2c.mall.widget.loading'
   ],
-  function (can, $, Faskclick, _, store, SFFrameworkComm, SFConfig, shake, SFLoading, SFGetCashActTransList, MnApiOne) {
+  function (can, $, Faskclick, _, store, SFFrameworkComm, SFConfig, shake, SFLoading) {
     'use strict';
     Faskclick.attach(document.body);
 
