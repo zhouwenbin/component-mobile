@@ -126,7 +126,7 @@ define('sf.weixin', [
      * @param  {[type]} link   [链接]
      * @param  {[type]} imgUrl [图片链接]
      */
-    shareDetail: function(title, desc, link, imgUrl) {
+    shareDetail: function(title, desc, link, imgUrl, successCallback) {
       var that = this;
 
       if (SFUtil.isMobile.WeChat()) {
@@ -147,6 +147,10 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
+            alert(2);
+            if (typeof successCallback != 'undefined') {
+              successCallback.call(this);
+            }
             // alert('已分享');
           },
           cancel: function(res) {
