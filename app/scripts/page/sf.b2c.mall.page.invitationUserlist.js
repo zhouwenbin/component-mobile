@@ -113,32 +113,33 @@ define(
         }).fail(function(error) {
           console.error(error);
         });
-        this.initLoadDataEvent();
+        // this.initLoadDataEvent();
         loadingCtrl.hide();
       },
 
-      initLoadDataEvent: function() {
+      '.getMoreAccount click': function() {
         var that = this;
-        var renderData = this.options.data;
-        //节流阀
-        var loadingDatas = function() {
-          if (pgIndex * renderData.pgSize > renderData.totalCount) {
-            return;
-          }
-          var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
-          var windowHeight = $(window).height(); //窗口的高度
-          var dbHiht = $(".sf-b2c-mall-invitationUserlist").height(); //整个页面文件的高度
+        that.loadingData()
+        // var renderData = this.options.data;
+        // //节流阀
+        // var loadingDatas = function() {
+        //   if (pgIndex * renderData.pgSize > renderData.totalCount) {
+        //     return;
+        //   }
+        //   var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
+        //   var windowHeight = $(window).height(); //窗口的高度
+        //   var dbHiht = $(".sf-b2c-mall-invitationUserlist").height(); //整个页面文件的高度
 
-          if ((windowHeight + srollPos + 200) >= (dbHiht)) {
+        //   if ((windowHeight + srollPos + 200) >= (dbHiht)) {
 
-            that.loadingData();
-          }
-        };
+        //     that.loadingData();
+        //   }
+        // };
 
         //$(window).scroll(_.throttle(loadingDatas, 200));
-        setTimeout(function(){
-          $(window).scroll(_.throttle(loadingDatas, 200));
-        },300);
+        // setTimeout(function(){
+        //   $(window).scroll(_.throttle(loadingDatas, 200));
+        // },300);
       },
 
       loadingData: function(params) {

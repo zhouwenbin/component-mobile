@@ -92,29 +92,33 @@ define(
         var renderFn = can.view.mustache(template_center_invitationIncome);
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
-        this.initLoadDataEvent();
+        // this.initLoadDataEvent();
         loadingCtrl.hide();
       },
 
-      initLoadDataEvent: function() {
+      '.getMoreAccount click': function() {
         var that = this;
-        var renderData = this.options.data;
-        //节流阀
-        var loadingDatas = function() {
-          if (pgIndex * renderData.pgSize > renderData.totalCount) {
-            return;
-          }
-          var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
-          var windowHeight = $(window).height(); //窗口的高度
-          var dbHiht = $(".sf-b2c-mall-invitationIncome").height(); //整个页面文件的高度
-
-          if ((windowHeight + srollPos + 200) >= (dbHiht)) {
-            that.loadingData();
-          }
-        };
-
-        $(window).scroll(_.throttle(loadingDatas, 200));
+        that.loadingData()
       },
+      // initLoadDataEvent: function() {
+      //   var that = this;
+      //   var renderData = this.options.data;
+      //   //节流阀
+      //   var loadingDatas = function() {
+      //     if (pgIndex * renderData.pgSize > renderData.totalCount) {
+      //       return;
+      //     }
+      //     var srollPos = $(window).scrollTop(); //滚动条距离顶部的高度
+      //     var windowHeight = $(window).height(); //窗口的高度
+      //     var dbHiht = $(".sf-b2c-mall-invitationIncome").height(); //整个页面文件的高度
+
+      //     if ((windowHeight + srollPos + 200) >= (dbHiht)) {
+      //       that.loadingData();
+      //     }
+      //   };
+
+      //   $(window).scroll(_.throttle(loadingDatas, 200));
+      // },
 
       loadingData: function(params) {
         loadingCtrl.show();
@@ -146,77 +150,63 @@ define(
       },
 
       renderChart: function() {
+        var that = this;
         var labels = [];
         var data = [];
-        var needDay = this.serverDay(7);
-        var needDaySt = this.serverDay(7).split('-');
-        var needDaySd = needDaySt[2];
-        var needDaySm = needDaySt[1];
         var dataMap = {};
-        var day1 = this.serverDay(0);
-        var day2 = this.serverDay(1);
-        var day3 = this.serverDay(2);
-        var day4 = this.serverDay(3);
-        var day5 = this.serverDay(4);
-        var day6 = this.serverDay(5);
-        var day7 = this.serverDay(6);
-        // 按天进行统计
-        _.each(this.itemObj.infoList, function(item) {
-          // if (monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7) {
-          if (item.income > 0) {
-            if (item.gmtOrder) {
-              var gmtCreate = moment(item.gmtOrder).format('YYYY-MM-DD HH:mm:ss');
-            } else {
-              var gmtCreate = moment(item.gmtCreate).format('YYYY-MM-DD HH:mm:ss');
-            }
-            var month = parseInt(gmtCreate.substring(5, 7), 10);
-            var day = gmtCreate.substring(8, 10);
-            if (month < 10) {
-              month = '0' + month;
-            }
-            var monthDay = month + '-' + day;
-            var label = month + '.' + day;
-            if (monthDay == day1 || monthDay == day2 || monthDay == day3 || monthDay == day4 || monthDay == day5 || monthDay == day6 || monthDay == day7) {
-              if (dataMap[label]) {
-                dataMap[label] = dataMap[label] + item.income / 100;
-              } else {
-                dataMap[label] = item.income / 100
+        var getLatestCashProfit = new SFgetLatestCashProfit({days:7});
+        can.when(getLatestCashProfit.sendRequest()).done(function(items) {
+             console.log(items)
+             that.itemObj.attr('cashProfits',items.cashProfits);
+          }).fail(function(error) {
+          console.error(error);
+        });
+
+        var timevs = setInterval(function(){
+          if ( that.itemObj.attr('cashProfits') ){
+            console.log(that.itemObj.attr('cashProfits'));
+            clearInterval(timevs);
+           // setTimeout(funthat.itemObj.attr('cashProfits')tion(){
+            _.each(that.itemObj.attr('cashProfits'), function(item) {
+            // if (data.income > 0) {
+              //item.cashProfit = '' + item.cashProfit;
+              // console.log(item.date+'/'+item.date);
+              item.date = moment(item.date).format('YYYY-MM-DD HH:mm:ss');
+              var month = parseInt(item.date.substring(5, 7), 10);
+              var day = item.date.substring(8, 10);
+              if (month < 10) {
+                month = '0' + month;
               }
-            }
-            // else if(monthDay != day1 || monthDay != day2 || monthDay != day3 || monthDay != day4 || monthDay != day5 || monthDay != day6 || monthDay != day7){
-            //   $('#canvas').hide();
-            //   $('#noAnyserven').show();
-            // }
+              var label = month + '.' + day;
+              dataMap[label] = item.cashProfit / 100
+              //console.log(dataMap[label])
+          });
+           _.map(dataMap, function(num, key) {
+            labels.push(key);
+            data.push(num);
+          });
+
+          var lineChartData = {
+            labels: labels,
+            datasets: [{
+              label: "My Second dataset",
+              fillColor: "rgba(151,187,205,0.2)",
+              strokeColor: "rgba(151,187,205,1)",
+              pointColor: "rgba(151,187,205,1)",
+              pointStrokeColor: "#fff",
+              pointHighlightFill: "#fff",
+              pointHighlightStroke: "rgba(151,187,205,1)",
+              data: data
+            }]
           }
-          // } else {
-          //   $('#canvas').hide();
-          //   $('#noAnyserven').show();
-          // }
-        })
+          console.log(lineChartData);
+          var ctx = document.getElementById("canvas").getContext("2d");
+          window.myLine = new Chart(ctx).Line(lineChartData, {
+            responsive: true
+          });
+          }
+        },5000)
 
-        _.map(dataMap, function(num, key) {
-          labels.push(key);
-          data.push(num);
-        });
-
-        var lineChartData = {
-          labels: labels,
-          datasets: [{
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: data
-          }]
-        }
-
-        var ctx = document.getElementById("canvas").getContext("2d");
-        window.myLine = new Chart(ctx).Line(lineChartData, {
-          responsive: true
-        });
       },
 
       '#tabMyIncome click': function(element, event) {
