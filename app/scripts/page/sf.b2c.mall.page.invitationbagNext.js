@@ -54,7 +54,7 @@ define(
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
         var srcUid = can.route.attr('srcUid') || $.fn.cookie('userId') || null;
-        if(!srcUid){
+        if (!srcUid) {
           window.location.href = 'http://' + window.location.hostname + '/';
         }
         if (SFFn.isMobile.WeChat()) {
@@ -64,7 +64,7 @@ define(
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFweixin.shareDetail('顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，买海外商品比国内商品还便宜', url, imgUrl);
         }
-        if(SFFrameworkComm.prototype.checkUserLogin.call(this)){
+        if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           window.location.href = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
             _ruser: srcUid
           });;
@@ -98,6 +98,7 @@ define(
                 } else {
                   $('#text-error1').hide();
                   var countdown = 60;
+
                   function setTimeOutBtn(element) {
                     if (countdown == 0) {
                       element.find('.text-error').css('color', '#ff5b54').text('获取验证码');
@@ -122,17 +123,17 @@ define(
                       $('#text-error2').show().text('验证码获取失败')
                     }
                   })
-                  .fail(function(error) {
-                    console.log(error);
-                  });
+                    .fail(function(error) {
+                      console.log(error);
+                    });
                 }
               })
               .fail(function(error) {
-                 if (error === 1000340) {
+                if (error === 1000340) {
                   $('#text-error1').show().text('用户已注册')
-                 }else if(error === 1000380){
+                } else if (error === 1000380) {
                   $('#text-error1').show().text('用户已注册')
-                 }
+                }
               });
           }
         }
@@ -189,17 +190,17 @@ define(
                       $('#text-error2').show().text('验证码获取失败')
                     }
                   })
-                  .fail(function(error) {
-                    console.log(error);
-                  });
+                    .fail(function(error) {
+                      console.log(error);
+                    });
                 }
               })
               .fail(function(error) {
-                 if (error === 1000340) {
+                if (error === 1000340) {
                   $('#text-error1').show().text('用户已注册')
-                 }else if(error === 1000380){
+                } else if (error === 1000380) {
                   $('#text-error1').show().text('用户已注册')
-                 }
+                }
               });
           }
         }
@@ -242,36 +243,36 @@ define(
                 $('#toSuccessSet').show();
               }
             })
-            .fail(function(error) {
-              if(error == 1000020){
-                $('#text-error1').show().text('手机已注册');
-              }else if(error == 1000240){
-                $('#text-error2').show().text('验证码错误');
-              }else if(error == 1000250){
-                $('#text-error2').show().text('验证码已过期');
-              }else if(error == 1000350){
-                $('#text-error1').show().text('临时token失败');
-              }else if(error == 1000360){
-                $('#text-error1').show().text('手机已注册');
-              }else if(error == 1000380){
-                $('#text-error1').show().text('手机已注册');
-              }else if(error == 1000410){
-                $('#text-error2').show().text('请输入短信验证码');
-              }else if(error == 1000480){
-                $('#text-error2').show().text('账户被冻结');
-              }
-            });
+              .fail(function(error) {
+                if (error == 1000020) {
+                  $('#text-error1').show().text('手机已注册');
+                } else if (error == 1000240) {
+                  $('#text-error2').show().text('验证码错误');
+                } else if (error == 1000250) {
+                  $('#text-error2').show().text('验证码已过期');
+                } else if (error == 1000350) {
+                  $('#text-error1').show().text('临时token失败');
+                } else if (error == 1000360) {
+                  $('#text-error1').show().text('手机已注册');
+                } else if (error == 1000380) {
+                  $('#text-error1').show().text('手机已注册');
+                } else if (error == 1000410) {
+                  $('#text-error2').show().text('请输入短信验证码');
+                } else if (error == 1000480) {
+                  $('#text-error2').show().text('账户被冻结');
+                }
+              });
           } else {
             $('#text-error2').show().text('验证码错误');
           }
         })
-        .fail(function(error) {
-          if (error === 1000230) {
-            $('#text-error1').show().text('请输入正确的手机号')
-          }else if(error === 1000250){
-            $('#text-error2').show().text('验证码已过期')
-          }
-        });
+          .fail(function(error) {
+            if (error === 1000230) {
+              $('#text-error1').show().text('请输入正确的手机号')
+            } else if (error === 1000250) {
+              $('#text-error2').show().text('验证码已过期')
+            }
+          });
 
       },
 
@@ -315,6 +316,13 @@ define(
         var Reg = /^1\d{10}$/;
         var mobile = $('#getMbile').val();
         var codeNum = $('#codeNum').val();
+        if (!Reg.test(mobile)) {
+          if (mobile == '') {
+            $('#text-error1').show().text('手机号不能为空');
+          } else {
+            $('#text-error1').show().text('手机号格式错误');
+          }
+        }
         if (codeNum == '') {
           $('#text-error2').show().text('验证码不能为空')
         }
@@ -334,14 +342,6 @@ define(
           var envDesc = 'iOS';
         }
         var password = $('#getPassword').val();
-        if (password == '') {
-            $('#text-error3').show().text('密码不能设置为空')
-        } else {
-            var reg = /^[A-Za-z0-9]+$/;
-            if (!reg.test(password) || password.length < 6 || password.length > 15) {
-              $('#text-error3').show().text('密码必须为6-15位数字字母组合');
-            }
-        }
         var srcUid = can.route.attr('srcUid');
         var params = {
           mobile: mobile,
@@ -351,46 +351,55 @@ define(
         var checkSmsCode = new SFcheckSmsCode(params);
         checkSmsCode.sendRequest().done(function(data) {
           if (data.value) {
-            var params = {
-              mobile: mobile,
-              smsCode: codeNum,
-              password: md5(password + SFBizConf.setting.md5_key),
-              srcUid: srcUid,
-              bagType: 'CARD',
-              bagId: 286,
-              envDesc: envDesc
-            };
-            var mobileRegstAndRcvCp = new SFmobileRegstAndRcvCp(params);
-            mobileRegstAndRcvCp.sendRequest().done(function(data) {
-              store.set('csrfToken', data.csrfToken);
-              if (data.hasCoupon) {
-                $('#ohSuccessSet').show();
+            if (password == '') {
+              $('#text-error3').show().text('密码不能设置为空')
+            } else {
+              var reg = /^[A-Za-z0-9]+$/;
+              if (!reg.test(password) || password.length < 6 || password.length > 15) {
+                $('#text-error3').show().text('密码必须为6-15位数字字母组合');
+              } else {
+                var params = {
+                  mobile: mobile,
+                  smsCode: codeNum,
+                  password: md5(password + SFBizConf.setting.md5_key),
+                  srcUid: srcUid,
+                  bagType: 'CARD',
+                  bagId: 286,
+                  envDesc: envDesc
+                };
+                var mobileRegstAndRcvCp = new SFmobileRegstAndRcvCp(params);
+                mobileRegstAndRcvCp.sendRequest().done(function(data) {
+                  store.set('csrfToken', data.csrfToken);
+                  if (data.hasCoupon) {
+                    $('#ohSuccessSet').show();
+                  }
+                })
+                .fail(function(error) {
+                  if (error === 1000020) {
+                    $('#text-error1').show().text('手机已注册')
+                  } else if (error === 1000230) {
+                    $('#text-error1').show().text('手机号错误')
+                  } else if (error === 1000240) {
+                    $('#text-error2').show().text('验证码错误')
+                  } else if (error === 1000250) {
+                    $('#text-error2').show().text('验证码已过期')
+                  } else if (error === 1000340) {
+                    $('#text-error2').show().text('手机已注册')
+                  }
+                });
               }
-            })
-            .fail(function(error) {
-              if (error === 1000020) {
-                $('#text-error1').show().text('手机已注册')
-              }else if(error === 1000230){
-                $('#text-error1').show().text('手机号错误')
-              }else if(error === 1000240){
-                $('#text-error2').show().text('验证码错误')
-              }else if(error === 1000250){
-                $('#text-error2').show().text('验证码已过期')
-              }else if(error === 1000340){
-                $('#text-error2').show().text('手机已注册')
-              }
-            });
+            }
           } else {
             $('#text-error2').show().text('验证码错误');
           }
         })
-        .fail(function(error) {
-          if (error === 1000230) {
-            $('#text-error1').show().text('请输入正确的手机号')
-          }else if(error === 1000250){
-            $('#text-error2').show().text('验证码已过期')
-          }
-        });
+          .fail(function(error) {
+            if (error === 1000230) {
+              $('#text-error1').show().text('请输入正确的手机号')
+            } else if (error === 1000250) {
+              $('#text-error2').show().text('验证码已过期')
+            }
+          });
 
       },
 
