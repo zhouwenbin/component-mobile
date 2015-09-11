@@ -36,7 +36,7 @@ define(
         var tempToken = store.get('tempToken');
         if(SFFn.isMobile.WeChat()){
           var params = can.deparam(window.location.search.substr(1));
-          if (params.code && !tempToken) {
+          if (params.code) {
             var srcUid = params._ruser;
             var authResp = "code=" + params.code;
             var partnerLogin = new SFPartnerLogin({
@@ -59,8 +59,6 @@ define(
             .fail(function(error) {
               console.log(error);
             });
-          }else if(tempToken){
-            $('#hastempToken').show();
           }
           var params = can.deparam(window.location.search.substr(1));
           var srcUid = params._ruser;

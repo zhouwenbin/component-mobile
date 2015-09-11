@@ -103,6 +103,7 @@ define(
           };
         }else if(SFFn.isMobile.WeChat()){
           $('#shareZindex').show();
+          $('#maskIdiv').show();
         }else {
           var that = this;
           that.openApp('sfht://');
@@ -146,6 +147,7 @@ define(
 
       '#maskIdiv click': function(element,event){
         $('#shareZindex').hide();
+        $('#maskIdiv').hide();
       },
 
     });

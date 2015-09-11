@@ -33,7 +33,7 @@ define(
         // },
 
         isIncome: function(income, options) {
-          var income = parseInt(income);
+          var income = parseInt(income());
           if (income > 0) {
             return options.fn(options.contexts || this);
           } else {
@@ -74,6 +74,7 @@ define(
         can.when(getCashActTransList.sendRequest()).done(function(infoList) {
           that.itemObj.infoList = infoList.infos;
           that.inToAccount(infoList);
+          console.log(infoList);
         }).fail(function(error) {
           console.error(error);
         }).then(function() {
