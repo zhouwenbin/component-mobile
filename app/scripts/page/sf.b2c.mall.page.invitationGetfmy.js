@@ -34,7 +34,7 @@ define(
         if(SFFn.isMobile.WeChat()){
           var url = window.location.href;
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-          SFweixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘客户把好东西分享给新伙伴就可以赚现金', url, imgUrl);
+          SFweixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘给新客送红包，老客返现金，让新客老客都嗨皮', url, imgUrl);
         }
       },
 

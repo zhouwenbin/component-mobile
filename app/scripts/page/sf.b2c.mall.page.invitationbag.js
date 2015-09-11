@@ -15,11 +15,13 @@ define(
     'sf.b2c.mall.widget.message',
     'sf.weixin',
     'zepto.cookie',
+    'sf.b2c.mall.widget.loading',
   ],
 
-  function(can, $, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFmessage, SFweixin , $cookie) {
+  function(can, $, SFFn, store, SFHasReceivedCp, SFFrameworkComm, template_center_invitationbag, SFWeChatLogin, SFPartnerLogin, SFptnBindAndRcvCp, SFmessage, SFweixin , $cookie, SFLoading) {
 
     SFFrameworkComm.register(3);
+    var loadingCtrl = new SFLoading();
     var bagid = 286;
     var myInvitation = can.Control.extend({
 
@@ -30,6 +32,8 @@ define(
       render: function() {
         var that = this;
         that.data = {};
+        loadingCtrl.show();
+        alert('这是测试使用看到点击忽略');
         var renderFn = can.mustache(template_center_invitationbag);
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
@@ -66,8 +70,10 @@ define(
             _ruser: srcUid
           });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-          SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
+          SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿', '顺丰海淘为了拉客也是拼了，买海外商品比国内商品还便宜', url, imgUrl);
         }
+        alert('这是测试使用看到点击忽略2');
+        loadingCtrl.hide();
       },
 
       '#getRedpackBtn click': function(element, event) {

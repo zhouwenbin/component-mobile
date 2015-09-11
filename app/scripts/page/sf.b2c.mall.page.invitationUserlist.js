@@ -65,7 +65,7 @@ define(
             _ruser: _ruser
           });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-          SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
+          SFweixin.shareDetail('顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿', '顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿', url, imgUrl);
         }
         var status = can.route.attr('status') || 'UNFINISH';
         var getRegstedList = new SFgetRegstedList({
@@ -90,7 +90,6 @@ define(
         var renderFn = can.view.mustache(template_center_invitationUserlist);
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
-        loadingCtrl.hide();
         var getRegstedCount = new SFgetRegstedCount();
         can.when(getRegstedCount.sendRequest()).done(function(data) {
           if (data.value) {
@@ -104,6 +103,7 @@ define(
           console.error(error);
         });
         this.initLoadDataEvent();
+        loadingCtrl.hide();
       },
 
       initLoadDataEvent: function() {
@@ -128,6 +128,7 @@ define(
       },
 
       loadingData: function(params) {
+        loadingCtrl.show();
         var that = this;
         var status = can.route.attr('status') || 'UNFINISH';
         pgIndex = pgIndex + 1
@@ -151,8 +152,8 @@ define(
           }
         }).fail(function(error) {
           console.error(error);
-        }).then(function() {
-          //that.loadSupplement(status);
+        }).always(function(){
+          loadingCtrl.hide();
         });
       },
 
@@ -208,8 +209,8 @@ define(
       sfBridge: function() {
         var url = 'http://' + window.location.hostname + '/invitation-bag.html';
         var params = {
-          "subject": '顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿',
-          "description": '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',
+          "subject": '顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿',
+          "description": '顺丰海淘为了拉客也是拼了，买海外商品比国内商品还便宜',
           "imageUrl": 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           "url": url
         };

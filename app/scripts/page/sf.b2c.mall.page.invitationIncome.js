@@ -58,14 +58,14 @@ define(
 
       render: function() {
         var that = this;
-        loadingCtrl.hide();
+        loadingCtrl.show();
         if (SFFn.isMobile.WeChat()) {
           var _ruser = $.fn.cookie('userId') || null;
           var url = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
             _ruser: _ruser
           });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
-          SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20', url, imgUrl);
+          SFweixin.shareDetail('顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿', '顺丰海淘为了拉客也是拼了，买海外商品比国内商品还便宜', url, imgUrl);
         }
         var getCashActTransList = new SFgetCashActTransList({
           pgIndex: 1,
@@ -92,8 +92,8 @@ define(
         var renderFn = can.view.mustache(template_center_invitationIncome);
         var html = renderFn(this.options.data, this.helpers);
         this.element.html(html);
-        loadingCtrl.hide();
         this.initLoadDataEvent();
+        loadingCtrl.hide();
       },
 
       initLoadDataEvent: function() {
@@ -109,7 +109,6 @@ define(
           var dbHiht = $(".sf-b2c-mall-invitationIncome").height(); //整个页面文件的高度
 
           if ((windowHeight + srollPos + 200) >= (dbHiht)) {
-
             that.loadingData();
           }
         };
@@ -118,6 +117,7 @@ define(
       },
 
       loadingData: function(params) {
+        loadingCtrl.show();
         var that = this;
         pgIndex = pgIndex + 1;
         var getCashActTransList = new SFgetCashActTransList({
@@ -131,6 +131,8 @@ define(
           });
         }).fail(function(error) {
           console.error(error);
+        }).always(function(){
+          loadingCtrl.hide();
         })
       },
 
@@ -257,8 +259,8 @@ define(
       sfBridge: function() {
         var url = 'http://' + window.location.hostname + '/invitation-bag.html';
         var params = {
-          "subject": '顺丰海淘给新人派送20元红包，用来买国外好货，不拿白不拿',
-          "description": '顺丰海淘为了拉客也是拼了，这个20元的新人红包很给力，满100立减20',
+          "subject": '顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿',
+          "description": '顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿',
           "imageUrl": 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           "url": url
         };
