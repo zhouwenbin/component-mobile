@@ -1,7 +1,7 @@
 <div class="partner-user-inner hide" id="isHasaccount">
-    <div class="partner-tips-box" id="partner-tips-box">
+    <div class="partner-tips-box" id="partner-tips-box" style="line-height:1.5;height:150px">
       <div class="center">
-        <p>有小伙伴注册了未下单，赶紧让他们下单吧！</p>
+        <p style="padding:0 2px">第1步：发红包或者链接给好友; <br>第2步：好友领取你的红包或者通过你的链接注册;  <br>     第3步：好友支付满80元你便可获得30元现金</p>
         <span>（注册后15日内下单有效）</span>
         </div>
     </div>
@@ -49,13 +49,13 @@
         {{else}}
         <div class="partner-no center">
             {{#finishStatus}}
-            <p>还没有已注册未完成任务的小伙伴</p><p>去邀请更多好友吧！</p>
+            <p>还没有小伙伴们理你哦，给他们</p><p>发个红包吧！</p>
             <div class="btn-box">
                 <a href="javascript:void(0);" class="btn btn-danger" id="toAskfriend">给好友发红包</a>
             </div>
             {{else}}
             <div class="partner-no center">
-                <p>还没有已完成任务的小伙伴</p>
+                <p>还没有获得现金，去给小伙伴发个红包吧</p>
                 <p><a href="javascript:void(0);" class="link" id="goTohome">去首页</a>挑选商品分享给他们吧~</p>
             </div>
             {{/finishStatus}}
