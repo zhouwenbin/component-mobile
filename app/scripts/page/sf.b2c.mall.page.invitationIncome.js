@@ -49,12 +49,14 @@ define(
       },
 
       init: function() {
+        this.options.hasHeight = [];
         if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
           var url = window.location.href;
           window.location.href = 'http://' + window.location.hostname + '/login.html?from=' + window.encodeURIComponent(url);
           return false;
         }
         this.render();
+
       },
 
       render: function() {
@@ -78,7 +80,6 @@ define(
         }).fail(function(error) {
           console.error(error);
         }).then(function() {
-          that.supplement();
           $('.invite-account-b').hide();
         })
       },
@@ -154,23 +155,26 @@ define(
         var labels = [];
         var data = [];
         var dataMap = {};
+
+        //var hasHeight = [];
         var getLatestCashProfit = new SFgetLatestCashProfit({days:7});
         can.when(getLatestCashProfit.sendRequest()).done(function(items) {
-             console.log(items)
              that.itemObj.attr('cashProfits',items.cashProfits);
           }).fail(function(error) {
           console.error(error);
         });
 
+
         var timevs = setInterval(function(){
-          if ( that.itemObj.attr('cashProfits') ){
-            console.log(that.itemObj.attr('cashProfits'));
-            clearInterval(timevs);
-           // setTimeout(funthat.itemObj.attr('cashProfits')tion(){
-            _.each(that.itemObj.attr('cashProfits'), function(item) {
-            // if (data.income > 0) {
-              //item.cashProfit = '' + item.cashProfit;
-              // console.log(item.date+'/'+item.date);
+
+          if (that.options.hasHeight.length){
+            if ( that.options.hasHeight[that.options.hasHeight.length-1].scale.endPoint > 0 ){
+              clearInterval(timevs);
+              return;
+            }
+          }
+
+          _.each(that.itemObj.attr('cashProfits'), function(item) {
               item.date = moment(item.date).format('YYYY-MM-DD HH:mm:ss');
               var month = parseInt(item.date.substring(5, 7), 10);
               var day = item.date.substring(8, 10);
@@ -179,7 +183,6 @@ define(
               }
               var label = month + '.' + day;
               dataMap[label] = item.cashProfit / 100
-              //console.log(dataMap[label])
           });
            _.map(dataMap, function(num, key) {
             labels.push(key);
@@ -199,28 +202,35 @@ define(
               data: data
             }]
           }
-          console.log(lineChartData);
           var ctx = document.getElementById("canvas").getContext("2d");
           window.myLine = new Chart(ctx).Line(lineChartData, {
             responsive: true
           });
-          }
-        },5000)
+          that.options.hasHeight.push(window.myLine);
+        },1000);
 
       },
 
       '#tabMyIncome click': function(element, event) {
+        var that = this;
         var liArray = $('.partner-income-box li');
         if (element.hasClass('serverDay')) {
           element.removeClass('serverDay').text('切换至近7日收益');
           $('#incomeDetitle').text('收益明细');
           $('.partner-income-box').show();
-          $('.invite-account-b').hide();
+          $('.invite-account-b').css('display', 'none');
+          window.myLine = null;
         } else {
           element.addClass('serverDay').text('切换至收益明细');
-          $('#incomeDetitle').text('近7日收益');
-          $('.invite-account-b').show();
+          $('#incomeDetitle').text('近7日收益'); 
+          $('.invite-account-b').css('display', 'block');
           $('.partner-income-box').hide();
+          if (that.options.hasHeight.length){
+            if ( that.options.hasHeight[that.options.hasHeight.length-1].scale.endPoint > 0 ){
+              return;
+            }
+          }
+          that.supplement();
         }
       },
 

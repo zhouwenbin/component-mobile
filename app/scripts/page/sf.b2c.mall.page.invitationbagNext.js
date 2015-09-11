@@ -287,8 +287,8 @@ define(
           $('#setWrongFont').show().text('密码不能设置为空')
         } else {
           var reg = /^[A-Za-z0-9]+$/;
-          if (!reg.test(setPassword) || setPassword.length < 6 || setPassword.length > 15) {
-            $('#setWrongFont').show().text('密码必须为6-15位数字字母组合');
+          if (!reg.test(setPassword) || setPassword.length < 6 || setPassword.length > 18) {
+            $('#setWrongFont').show().text('密码必须为6-18位数字字母组合');
           } else {
             var sfsetpassword = new SFsetPassword({
               pswd: md5(setPassword + SFBizConf.setting.md5_key)
@@ -355,8 +355,8 @@ define(
               $('#text-error3').show().text('密码不能设置为空')
             } else {
               var reg = /^[A-Za-z0-9]+$/;
-              if (!reg.test(password) || password.length < 6 || password.length > 15) {
-                $('#text-error3').show().text('密码必须为6-15位数字字母组合');
+              if (!reg.test(password) || password.length < 6 || password.length > 18) {
+                $('#text-error3').show().text('密码必须为6-18位数字字母组合');
               } else {
                 var params = {
                   mobile: mobile,
