@@ -74,7 +74,6 @@ define(
         can.when(getCashActTransList.sendRequest()).done(function(infoList) {
           that.itemObj.infoList = infoList.infos;
           that.inToAccount(infoList);
-          console.log(infoList);
         }).fail(function(error) {
           console.error(error);
         }).then(function() {

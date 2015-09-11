@@ -33,7 +33,6 @@ define(
         var that = this;
         that.data = {};
         loadingCtrl.show();
-        alert('这是测试使用看到点击忽略');
         var renderFn = can.mustache(template_center_invitationbag);
         that.options.html = renderFn(that.data, that.helpers);
         that.element.html(that.options.html);
@@ -72,7 +71,6 @@ define(
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿', '顺丰海淘为了拉客也是拼了，买海外商品比国内商品还便宜', url, imgUrl);
         }
-        alert('这是测试使用看到点击忽略2');
         loadingCtrl.hide();
       },
 
