@@ -76,6 +76,10 @@ define(
         getRegstedList.sendRequest()
           .done(function(data) {
             that.inToAccount(data);
+            if (status == 'UNFINISH' && data.totalCount == 0) {
+              $('#partner-tips-box').hide();
+              $('#partner-user-box').css('margin-top', '0');
+            }
           }).then(function() {
           that.loadSupplement(status);
         });
