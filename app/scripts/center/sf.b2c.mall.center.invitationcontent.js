@@ -62,6 +62,7 @@ define('sf.b2c.mall.center.invitationcontent', [
       render: function() {
         this.data = {};
         var that = this;
+        loadingCtrl.show();
         var getCashActInfo = new SFGetCashActInfo();
         var getRegstedCount = new SFgetRegstedCount();
         can.when(getCashActInfo.sendRequest(), getRegstedCount.sendRequest())
@@ -72,12 +73,11 @@ define('sf.b2c.mall.center.invitationcontent', [
             that.options.html = renderFn(that.data, that.helpers);
             that.element.html(that.options.html);
             $('#hasMyTottle').text('（' + totle + '）');
-            loadingCtrl.hide();
           })
           .fail(function(error) {
-            loadingCtrl.hide();
             console.error(error);
           })
+          loadingCtrl.hide();
       },
 
       '#mustTologin click': function(element, event) {

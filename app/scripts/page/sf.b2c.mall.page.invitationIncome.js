@@ -263,18 +263,20 @@ define(
           "url": url
         };
         var success = function(data) {
-          var message = new SFmessage(null, {
-            'tip': '分享成功',
-            'type': 'success',
-            'okFunction': function() {},
-          });
+          // var message = new SFmessage(null, {
+          //   'tip': '分享成功',
+          //   'type': 'success',
+          //   'okFunction': function() {},
+          // });
+          console.log('success');
         };
         var error = function(data) {
-          var message = new SFmessage(null, {
-            'tip': '分享失败',
-            'type': 'error',
-            'okFunction': function() {},
-          });
+          // var message = new SFmessage(null, {
+          //   'tip': '分享失败',
+          //   'type': 'error',
+          //   'okFunction': function() {},
+          // });
+          console.log('error');
         };
         window.bridge.run('SocialSharing', 'share', params, success, error);
       },

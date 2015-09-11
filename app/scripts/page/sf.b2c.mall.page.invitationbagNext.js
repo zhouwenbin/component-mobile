@@ -129,9 +129,9 @@ define(
               })
               .fail(function(error) {
                  if (error === 1000340) {
-                  $('#text-error1').show().text('用户已存在')
+                  $('#text-error1').show().text('用户已注册')
                  }else if(error === 1000380){
-                  $('#text-error1').show().text('用户已存在')
+                  $('#text-error1').show().text('用户已注册')
                  }
               });
           }
@@ -196,9 +196,9 @@ define(
               })
               .fail(function(error) {
                  if (error === 1000340) {
-                  $('#text-error1').show().text('用户已存在')
+                  $('#text-error1').show().text('用户已注册')
                  }else if(error === 1000380){
-                  $('#text-error1').show().text('用户已存在')
+                  $('#text-error1').show().text('用户已注册')
                  }
               });
           }
@@ -318,10 +318,6 @@ define(
         if (codeNum == '') {
           $('#text-error2').show().text('验证码不能为空')
         }
-        var reg = /^[A-Za-z0-9]+$/;
-        if (!reg.test(password) || password.length < 6 || password.length > 15) {
-          $('#setWrongFont').show().text('密码必须为6-15位数字字母组合');
-        }
         if (SFFn.isMobile.QQ()) {
           var envDesc = 'QQ';
         } else if (SFFn.isMobile.Opera()) {
@@ -337,11 +333,10 @@ define(
         } else if (SFFn.isMobile.iOS()) {
           var envDesc = 'iOS';
         }
-
         var password = $('#getPassword').val();
         if (password == '') {
             $('#text-error3').show().text('密码不能设置为空')
-          } else {
+        } else {
             var reg = /^[A-Za-z0-9]+$/;
             if (!reg.test(password) || password.length < 6 || password.length > 15) {
               $('#text-error3').show().text('密码必须为6-15位数字字母组合');
