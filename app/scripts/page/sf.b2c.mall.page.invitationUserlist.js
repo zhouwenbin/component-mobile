@@ -26,6 +26,7 @@ define(
     SFFrameworkComm.register(3);
     var loadingCtrl = new SFLoading();
     var pgIndex = 1;
+    var totleALL,totleOther;
     var myInvitationUserlist = can.Control.extend({
       helpers: {
         // 'sf-time': function(time) {
@@ -75,11 +76,16 @@ define(
         });
         getRegstedList.sendRequest()
           .done(function(data) {
+            // totleOther =  data.totalCount;
             that.inToAccount(data);
             if (status == 'UNFINISH' && data.totalCount == 0) {
               $('#partner-tips-box').hide();
               $('#partner-user-box').css('margin-top', '0');
             }
+            // if(!$('partner-tab li').hasClass('active')){
+            //   var totleLast = totleALL - totleOther
+            //     $(this).text(totleLast)
+            // }
           }).then(function() {
           that.loadSupplement(status);
         });
@@ -96,6 +102,7 @@ define(
         this.element.html(html);
         var getRegstedCount = new SFgetRegstedCount();
         can.when(getRegstedCount.sendRequest()).done(function(data) {
+          // totleALL = data.value;
           if (data.value) {
             $('#isHasaccount').show();
             $('#noHasaccount').hide();
@@ -129,7 +136,7 @@ define(
         };
 
         //$(window).scroll(_.throttle(loadingDatas, 200));
-        setIimeout(function(){
+        setTimeout(function(){
           $(window).scroll(_.throttle(loadingDatas, 200));
         },300);
       },

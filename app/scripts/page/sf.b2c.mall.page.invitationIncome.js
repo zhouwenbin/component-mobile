@@ -10,6 +10,7 @@ define(
     'sf.b2c.mall.framework.comm',
     'text!template_center_invitationIncome',
     'sf.b2c.mall.api.user.getCashActTransList',
+    'sf.b2c.mall.api.user.getLatestCashProfit',
     'moment',
     'chart',
     "sf.bridge",
@@ -20,7 +21,7 @@ define(
     'zepto.cookie',
   ],
 
-  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, moment, chart, SFbridge, SFmessage, SFLoading, SFheader, SFweixin, $cookie ) {
+  function(can, $, Fastclick, SFFn, helpers, SFFrameworkComm, template_center_invitationIncome, SFgetCashActTransList, SFgetLatestCashProfit, moment, chart, SFbridge, SFmessage, SFLoading, SFheader, SFweixin, $cookie ) {
 
     Fastclick.attach(document.body);
     SFFrameworkComm.register(3);

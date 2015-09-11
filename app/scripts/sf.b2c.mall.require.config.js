@@ -100,6 +100,7 @@ requirejs.config({
         "sf.b2c.mall.api.user.ptnBindAndRcvCp": "scripts/api/sf.b2c.mall.api.user.ptnBindAndRcvCp",
         "sf.b2c.mall.api.user.setPassword": "scripts/api/sf.b2c.mall.api.user.setPassword",
         "sf.b2c.mall.api.user.getRegstedCount": "scripts/api/sf.b2c.mall.api.user.getRegstedCount",
+        "sf.b2c.mall.api.user.getLatestCashProfit": "scripts/api/sf.b2c.mall.api.user.getLatestCashProfit",
         "sf.b2c.mall.api.minicart.getTotalCount": "scripts/api/sf.b2c.mall.api.minicart.getTotalCount",
         "sf.b2c.mall.api.shopcart.addItemToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemToCart",
         "sf.b2c.mall.api.shopcart.addItemsToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemsToCart",
