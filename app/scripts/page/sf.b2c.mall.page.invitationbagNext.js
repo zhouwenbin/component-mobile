@@ -396,7 +396,11 @@ define(
 
       '#goTohome click': function(element, event) {
         window.location.href = 'http://' + window.location.hostname + '/'
-      }
+      },
+
+      '#goHomeTitle click': function(element, event) {
+        window.location.href = 'http://' + window.location.hostname + '/';
+      },
 
     });
 

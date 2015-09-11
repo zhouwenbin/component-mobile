@@ -100,6 +100,10 @@ define(
         window.location.href = 'http://' + window.location.hostname + '/';
       },
 
+      '#goHomeTitle click': function(element, event) {
+        window.location.href = 'http://' + window.location.hostname + '/';
+      },
+
       '#noSuccessBtn click': function(element, event) {
         var that = this;
         that.openApp('sfht://');
