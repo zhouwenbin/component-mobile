@@ -169,6 +169,9 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
+            if (typeof successCallback != 'undefined') {
+              successCallback.call(this);
+            }
             // alert('已分享');
           },
           cancel: function(res) {
