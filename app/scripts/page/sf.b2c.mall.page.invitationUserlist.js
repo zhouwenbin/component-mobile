@@ -105,7 +105,7 @@ define(
         this.element.html(html);
         var getRegstedCount = new SFgetRegstedCount();
         can.when(getRegstedCount.sendRequest()).done(function(data) {
-          // totleALL = data.value;
+          //totleALL = data.value;
           if (data.value) {
             $('#isHasaccount').show();
             $('#noHasaccount').hide();
@@ -164,7 +164,7 @@ define(
           // that.itemObj.attr(data);
           // that.inToAccount(that.itemObj);
           // that.inToAccount(data);
-          if(data.totalCount < pgIndex*20){
+          if(data.totalCount < pgIndex*20 || pgIndex*20 == data.totalCount){
             $('.getMoreAccount').hide();
           }
           if (status == 'UNFINISH' && data.totalCount == 0) {

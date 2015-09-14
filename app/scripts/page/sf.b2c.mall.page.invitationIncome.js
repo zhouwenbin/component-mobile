@@ -134,7 +134,7 @@ define(
         });
         can.when(getCashActTransList.sendRequest()).done(function(data) {
           //console.log(infoList.infos);
-          if(data.totalCount < pgIndex*20){
+          if(data.totalCount < pgIndex*20 || pgIndex*20 == data.totalCount){
             $('.getMoreAccount').hide();
           }
            _.each(data.infos, function(item) {
