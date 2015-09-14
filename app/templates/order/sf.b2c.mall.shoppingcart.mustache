@@ -17,6 +17,13 @@
 {{/each}}
 {{/sf-show-firstOrderTips}}
 
+{{! 满额包邮 }}
+{{#sf-show-freePostage cartFeeItem.reductPostageInfos}}
+{{#each cartFeeItem.reductPostageInfos}}
+<p class="sign-for-freepostage">{{useRule.ruleDesc}}</p>
+{{/each}}
+{{/sf-show-freePostage}}
+
 <article class="cart">
 <section class="sf-h5-avail-cart">
     <ul>
