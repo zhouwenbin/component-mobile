@@ -42,7 +42,6 @@ define(
           });
           var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           var success = function(data) {
-            alert(1);
             $('#maskIdiv').hide();
             $('#shareZindex').hide();
           }

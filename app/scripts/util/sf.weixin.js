@@ -147,7 +147,6 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
-            alert(2);
             if (typeof successCallback != 'undefined') {
               successCallback.call(this);
             }

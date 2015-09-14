@@ -75,11 +75,11 @@ define(
           pgSize: 20
         });
         can.when(getCashActTransList.sendRequest()).done(function(infoList) {
+          that.itemObj.infoList = infoList.infos;
+          that.inToAccount(infoList);
           if(infoList.totalCount < 20){
             $('.getMoreAccount').hide();
           }
-          that.itemObj.infoList = infoList.infos;
-          that.inToAccount(infoList);
         }).fail(function(error) {
           console.error(error);
         }).then(function() {

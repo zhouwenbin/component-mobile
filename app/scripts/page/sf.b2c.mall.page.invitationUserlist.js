@@ -77,10 +77,10 @@ define(
         getRegstedList.sendRequest()
           .done(function(data) {
             // totleOther =  data.totalCount;
+            that.inToAccount(data);
             if(data.totalCount < 20){
               $('.getMoreAccount').hide();
             }
-            that.inToAccount(data);
             if (status == 'UNFINISH' && data.totalCount == 0) {
               $('#partner-tips-box').hide();
               $('#partner-user-box').css('margin-top', '0');
