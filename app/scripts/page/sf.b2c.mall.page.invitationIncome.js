@@ -75,6 +75,9 @@ define(
           pgSize: 20
         });
         can.when(getCashActTransList.sendRequest()).done(function(infoList) {
+          if(infoList.totalCount < 20){
+            $('.getMoreAccount').hide();
+          }
           that.itemObj.infoList = infoList.infos;
           that.inToAccount(infoList);
         }).fail(function(error) {
@@ -131,6 +134,9 @@ define(
         });
         can.when(getCashActTransList.sendRequest()).done(function(data) {
           //console.log(infoList.infos);
+          if(data.totalCount < pgIndex*20){
+            $('.getMoreAccount').hide();
+          }
            _.each(data.infos, function(item) {
             that.options.data.infos.push(item);
           });

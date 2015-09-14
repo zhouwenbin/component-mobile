@@ -77,6 +77,9 @@ define(
         getRegstedList.sendRequest()
           .done(function(data) {
             // totleOther =  data.totalCount;
+            if(data.totalCount < 20){
+              $('.getMoreAccount').hide();
+            }
             that.inToAccount(data);
             if (status == 'UNFINISH' && data.totalCount == 0) {
               $('#partner-tips-box').hide();
@@ -161,6 +164,9 @@ define(
           // that.itemObj.attr(data);
           // that.inToAccount(that.itemObj);
           // that.inToAccount(data);
+          if(data.totalCount < pgIndex*20){
+            $('.getMoreAccount').hide();
+          }
           if (status == 'UNFINISH' && data.totalCount == 0) {
             $('#partner-tips-box').hide();
             $('#partner-user-box').css('margin-top', '0');
