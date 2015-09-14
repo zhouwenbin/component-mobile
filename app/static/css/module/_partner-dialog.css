@@ -8,17 +8,17 @@ Error: File to import not found or unreadable: utils/variables.
          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bitters-1.0.0/app/assets/stylesheets
          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/compass-core-1.0.3/stylesheets
          Compass::SpriteImporter
-        on line 1 of _partner-account.scss
+        on line 1 of _partner-dialog.scss
 
 1: @import 'utils/variables';
-2: .partner-account{
-3: 	position: relative;
-4: 	height: 100px;
-5: 	background: #FF5B54;
-6: 	color: #fff;
+2: .partner-dialog{
+3: 	background: #fff;
+4: 	color: #666;
+5: 	font-size: 16px;
+6: }
 
 Backtrace:
-_partner-account.scss:1
+_partner-dialog.scss:1
 /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/import_node.rb:66:in `rescue in import'
 /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/import_node.rb:45:in `import'
 /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.13/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -55,4 +55,4 @@ _partner-account.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: utils/variables.\A        Load paths:\A          /Users/lijinhua/Documents/work/haitao-b2c-h5/app/static/scss/module\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bourbon-4.2.3/app/assets/stylesheets\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/neat-1.7.2/app/assets/stylesheets\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/susy-2.2.5/sass\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bitters-1.0.0/app/assets/stylesheets\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/compass-core-1.0.3/stylesheets\A          Compass::SpriteImporter\A         on line 1 of _partner-account.scss\A \A 1: @import 'utils/variables';\A 2: .partner-account{\A 3: 	position: relative;\A 4: 	height: 100px;\A 5: 	background: #FF5B54;\A 6: 	color: #fff;"; }
+  content: "Error: File to import not found or unreadable: utils/variables.\A        Load paths:\A          /Users/lijinhua/Documents/work/haitao-b2c-h5/app/static/scss/module\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bourbon-4.2.3/app/assets/stylesheets\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/neat-1.7.2/app/assets/stylesheets\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/susy-2.2.5/sass\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bitters-1.0.0/app/assets/stylesheets\A          /Applications/software/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/compass-core-1.0.3/stylesheets\A          Compass::SpriteImporter\A         on line 1 of _partner-dialog.scss\A \A 1: @import 'utils/variables';\A 2: .partner-dialog{\A 3: 	background: #fff;\A 4: 	color: #666;\A 5: 	font-size: 16px;\A 6: }"; }
