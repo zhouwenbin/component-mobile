@@ -1,3 +1,4 @@
+@import 'utils/variables';
 .partner-dialog{
 	background: #fff;
 	color: #666;
@@ -64,7 +65,7 @@
 .partner-dialog .partner-bags-small{
 	margin: 25px auto 20px;
 	padding-top: 28px;
-	background: url(../img/icon-bags-small.png) 0 0 no-repeat;
+	background: url(#{$bg-url}icon-bags-small.png) 0 0 no-repeat;
 	background-size: 125px 103px;
 	width: 125px;
 	height: 103px;
