@@ -210,6 +210,7 @@ define(
       },
 
       '#unfinishList click': function(element, event) {
+        pgIndex = 1;
         var status = can.route.attr('status');
         can.route.attr({
           status: 'UNFINISH'
@@ -217,6 +218,7 @@ define(
       },
 
       '#finishedList click': function(element, event) {
+        pgIndex = 1;
         var status = can.route.attr('status');
         can.route.attr({
           status: 'FINISHED'

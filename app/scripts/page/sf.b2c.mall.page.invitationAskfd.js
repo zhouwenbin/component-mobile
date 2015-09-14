@@ -44,6 +44,7 @@ define(
           var success = function(data) {
             $('#maskIdiv').hide();
             $('#shareZindex').hide();
+            window.location.reload();
           }
           SFweixin.shareDetail(
               '顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿',

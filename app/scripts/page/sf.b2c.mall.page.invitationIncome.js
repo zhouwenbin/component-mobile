@@ -218,6 +218,7 @@ define(
       },
 
       '#tabMyIncome click': function(element, event) {
+        pgIndex = 1;
         var that = this;
         var liArray = $('.partner-income-box li');
         if (element.hasClass('serverDay')) {
