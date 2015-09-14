@@ -72,6 +72,8 @@ define('sf.util', [
         return (navigator.userAgent.indexOf("Firefox") > -1)
       },
       QQ: function () {
+        alert('QQ for:'+navigator.userAgent);
+        alert('QQ indexOf:'+navigator.userAgent.indexOf('QQBrowser'))
         return (navigator.userAgent.indexOf('QQBrowser') > -1);
       },
       WeChat: function() {

@@ -152,7 +152,7 @@ define(
           window.location.href = "http://m.sfht.com/index.html";
           return false;
         }
-
+        alert('Ture or False:'+SFFn.isMobile.QQ())
         if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
 
           window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
