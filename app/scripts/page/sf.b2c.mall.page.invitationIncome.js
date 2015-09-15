@@ -165,7 +165,11 @@ define(
         //var hasHeight = [];
         var getLatestCashProfit = new SFgetLatestCashProfit({days:7});
         can.when(getLatestCashProfit.sendRequest()).done(function(items) {
-             that.itemObj.attr('cashProfits',items.cashProfits);
+            that.itemObj.attr('cashProfits',items.cashProfits);
+            if(!that.itemObj.attr('cashProfits').length){
+              $('#canvas').hide();
+              $('#noAnyserven').show();
+            }
           }).fail(function(error) {
           console.error(error);
         });
