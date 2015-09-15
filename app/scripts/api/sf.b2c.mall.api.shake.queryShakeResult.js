@@ -26,7 +26,9 @@ function($, can, _, Comm, SecurityType) {
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
         'userId': 'long',
-        'date': 'string'
+        'date': 'string',
+        'itemId': 'long',
+        'couponId': 'long'
       },
       OPTIONAL: {
       },

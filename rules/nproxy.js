@@ -81,5 +81,15 @@ module.exports = [
   {
     pattern: 'http://m.sfht.com/static',
     responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/static'
-  }
+  },
+  //分享页
+  {
+    pattern: 'http://m.sfht.com/shake-share.htm',
+    responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/shake-share.html'
+  },
+  //指定摇一摇入口js
+  {
+    pattern: 'http://m.sfht.com/script/page/sf.b2c.mall.page.shakeShare.js',
+    responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/scripts/page/sf.b2c.mall.page.shakeShare.js'
+  },
 ];

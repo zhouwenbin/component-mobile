@@ -22,11 +22,11 @@ define(
     'sf.b2c.mall.api.shake.queryShakeResult',
     'sf.b2c.mall.api.shake.startShake',
     'sf.b2c.mall.api.shake.finishShake',
+    'sf.b2c.mall.api.coupon.receiveCouponByYaoYiYao',
 
-    'text!template_shake',
-    'text!template_shake_end'
+    'text!template_shake'
   ],
-  function (can, $, $cookie, Faskclick, _, store, moment, SFFrameworkComm, SFConfig, shake, bridge, SFLoading, shakeQueryApi, shakeStarApi, shakeFinishApi, shakeTpl, shakeEndTpl) {
+  function (can, $, $cookie, Faskclick, _, store, moment, SFFrameworkComm, SFConfig, shake, bridge, SFLoading, shakeQueryApi, shakeStarApi, shakeFinishApi, YYYApi, shakeTpl) {
     'use strict';
 
     //注册环境是h5
@@ -40,17 +40,22 @@ define(
         helpers: {
           'sf-isReceiveCoupon': function(a, options){
             //alert(a());
-            return a() ? 'hide' : '';
+            return a() ? 'hide' : 'show';
+          },
+          'sf-notReceiveCoupon': function(a, options){
+            return a() ? 'show' : 'hide';
           },
           'sf-isCanReceiveCoupon': function(a, options){
             //alert(a());
-            return a() ? '' : 'hide';
+            return a() ? 'show' : 'hide';
           }
         },
         init: function(){
           shakeThis = this;
           this.options.ownData = {};    //用于存放js计算或获取的数据
           this.options.serverData = new can.Map({});  //用于存放从服务器获取的数据
+          //测试变量
+          //this.options.ownData.num = 0;
           //console.log(shakeThis);
           //判断是否登陆
           if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
@@ -99,25 +104,34 @@ define(
           options.ownData.formatDate = moment(nowTime).format('YYYY-MM-DD');
           //存放用户id
           //options.ownData.userId =  $.fn.cookie('userId');
-
+          //console.log(options);
           shakeQuery = new shakeQueryApi({
             date: options.ownData.formatDate,
-            userId: options.ownData.cookieInfo ? options.ownData.cookieInfo : $.fn.cookie('userId')
+            userId: options.ownData.cookieInfo ? options.ownData.cookieInfo : $.fn.cookie('userId'),
+            //userId: 12345,
+            couponId: options.ownData.couponId || 0,
+            itemId: options.ownData.itemId
           });
           shakeQuery.sendRequest()
             .done(function(data){
-              //alert(JSON.stringify(data));
-              options.serverData.attr('queryData',{
-                isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
-                //isReceiveCoupon: true,
-                maxFightingCapacity: data.maxFightingCapacity,  //当前最大战斗力
-                maxImpact: data.maxImpact,    //当天最大影响力
-                imageUrl: data.imageUrl,   //图片链接
+              alert(JSON.stringify(data));
+              console.log(data);
+              options.serverData.attr('shakeData',{
+                //isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
+                isReceiveCoupon: false,
+                fightingCapacity: data.maxFightingCapacity,  //当前最大战斗力
+                impact: data.maxImpact,    //当天最大影响力
+                imageUrl: data.itemImage,   //图片链接
                 couponTitle: data.couponTitle,   //优惠券标题
                 couponDateString: data.couponDateString,   //优惠券日期
                 couponUrl: data.couponUrl,     //优惠券链接
-                couponCondition: data.couponCondition //优惠券使用条件
+                couponCondition: data.couponCondition, //优惠券使用条件,
+                buyUrl: 'http://' + window.location.hostname + '/detail/'+ options.ownData.itemId + '.html',  //去购买url
+                itemTitle: data.itemTitle,     //商品标题
+                couponPrice: data.couponPrice    //优惠券价格
               });
+              //console.log(options);
+              //options.serverData.attr('shakeData.impact', '')
               //alert(JSON.stringify(options.serverData.queryData));
               //console.log(options);
              // console.log(shakeTpl);
@@ -128,6 +142,7 @@ define(
             .fail(function(err){
               alert(err);
               alert('查询失败');
+              alert('xxx');
             });
 
           loadingCtrl.hide();
@@ -191,6 +206,8 @@ define(
               };
               //alert(JSON.stringify(_this.options.location));
               //alert(_this.options.locationType);
+              //隐藏多余的结束摇dom
+              //$(_this.element).find('.shaked.help').addClass('hide');
               shakeStar = new shakeStarApi({
                 location: JSON.stringify(options.ownData.location),
                 locationType: options.ownData.locationType
@@ -247,11 +264,10 @@ define(
             yaoArr = store.get('Yao_arr'),
             yaoArrLen = yaoArr.length,
             total = 0,
+            coupon = Number(store.get('maxCoupon')) || 0,
             maxFightVal = store.get('maxFightVal') || 0,
           //初始化借口
-            shakeFinish,
-            finishHtml = '',
-            finishTp = can.mustache(shakeEndTpl)
+            shakeFinish
             ;
           for (var i = yaoArrLen; i > 0; i--){
             total += Math.abs(yaoArr[i-1]);
@@ -273,39 +289,72 @@ define(
           shakeFinish
             .sendRequest()
             .done(function(data){
+              //alert('abc');
               alert(JSON.stringify(data));
+              //alert(options.ownData.num);
 
-              options.serverData.attr('finishData', {
-                canReceiveCoupon: data.canReceiveCoupon,   //是否可以领券 true是可以领
-                impact: data.impact,     //影响力
-                fightingCapacity: options.ownData.fighting,
-                couponRank: data.couponRank,  //优惠券等级
-                couponId: data.couponId,     //如果可以领券，此为领券ID
-                text: '文案'
-              });
-
-              //alert(options.serverData.finishData.fightingCapacity);
-              if ( $(dom).find('#shakend').length === 1 ){
-                if (options.serverData.attr('finishData').canReceiveCoupon){
-                  $(dom).find('.shaked-btns').removeClass('hide');
-                }
-                options.serverData.attr('finishData', {
-                  canReceiveCoupon: true,
-                  //canReceiveCoupon: data.canReceiveCoupon,   //是否可以领券 true是可以领
-                  impact: data.impact,     //影响力
-                  fightingCapacity: options.ownData.fighting,
-                  couponRank: data.couponRank,  //优惠券等级
-                  couponId: data.couponId,     //如果可以领券，此为领券ID
-                  text: '文案'
-                });
-                //options.serverData.finishData.attr('')
-                return false;
+              //options.serverData.attr('shakeData', {
+              //  canReceiveCoupon: data.canReceiveCoupon,   //是否可以领券 true是可以领
+              //  impact: data.impact,     //影响力
+              //  fightingCapacity: options.ownData.fighting,
+              //  couponRank: data.couponRank,  //优惠券等级
+              //  couponId: data.couponId,     //如果可以领券，此为领券ID
+              //  text: '文案'
+              //});
+              options.serverData.attr('shakeData.impact', data.impact);
+              options.serverData.attr('shakeData.fightingCapacity', options.ownData.fighting);
+              if ( !options.serverData.attr('shakeData.isReceiveCoupon') ){
+                options.serverData.attr('shakeData.canReceiveCoupon', data.canReceiveCoupon);
+                options.serverData.attr('shakeData.maxImpact', data.maxImpact);
+                options.serverData.attr('shakeData.maxFightingCapacity', data.maxFightingCapacity);
+                options.serverData.attr('shakeData.couponRank', data.couponRank);
+                options.serverData.attr('shakeData.text', data.text);
+                options.serverData.attr('shakeData.couponId', data.couponId);
+                options.serverData.attr('shakeData.itemImage', data.itemImage);
+                options.serverData.attr('shakeData.itemTitle', data.itemTitle);
+                options.serverData.attr('shakeData.couponTitle', data.couponTitle);
+                options.serverData.attr('shakeData.couponPrice', data.couponPrice);
+                options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
+                options.serverData.attr('shakeData.couponUrl', data.couponUrl);
+                options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
               }
-              //alert(JSON.stringify(options.serverData.finishData));
-              finishHtml = finishTp(options.serverData, _this.helpers);
+
+              //options.serverData.attr('shakeData.itemTitle', data.itemTitle);
+
+              alert(JSON.stringify(options.serverData.attr('shakeData')));
+              //alert('执行1');
+              //判断当前的券是否相对大
+              if ( data.couponId >= coupon ){
+                store.set('maxCoupon', data.couponId);
+              }
+              //alert('执行2');
               $(dom).find('#shaking').addClass('hide');
-              //alert($(dom).find('#shaking').html());
-              $(dom).append(finishHtml);
+              $(dom).find('#shakend').removeClass('hide');
+              //alert(options.serverData.attr('finishData'));
+              if (options.serverData.attr('shakeData').canReceiveCoupon){
+                $(dom).find('.shaked-btns').removeClass('hide');
+              }
+              //alert('执行3');
+              //if (options.ownData.num > 0){
+              //  //alert('ling');
+              //  //options.serverData.attr('shakeData', {
+              //  //  canReceiveCoupon: data.canReceiveCoupon,   //是否可以领券 true是可以领
+              //  //  //canReceiveCoupon: true,
+              //  //  impact: data.impact,     //影响力
+              //  //  fightingCapacity: options.ownData.fighting,
+              //  //  couponRank: data.couponRank,  //优惠券等级
+              //  //  couponId: data.couponId,     //如果可以领券，此为领券ID
+              //  //  text: '文案',
+              //  //  isReceiveCoupon: true
+              //  //});
+              //  options.serverData.attr('shakeData.canReceiveCoupon', true);
+              //}
+             // alert('执行4');
+
+              //可以分享了
+              //options.ownData.num = 1;
+              //alert(options.ownData.num);
+              _this.sfBridge();
 
             })
             .fail(function(err){
@@ -314,21 +363,94 @@ define(
             });
         },
         //注册交互时间
-        '.shaked-btns a.btn-yellow click': function(){
+        '#reYao click': function(){
           //放弃重摇
-          $(this.element).find('.shaked-btns').addClass('hide');
+          var _this = this,
+            dom = _this.element;
+          $(dom).find('.shaked-btns').addClass('hide');
+          $(dom).find('#shakend').addClass('hide');
+          $(dom).find('#shaking').removeClass('hide');
           return false;
         },
-        '.shaked-btns a.btn-red click': function(){
-          //请求优惠券
-          var _thia = this;
-
-          $()
-
-
-
-          $(this.element).find('.shaked-btns.to-buy').removeClass('hide');
+        '#helpFriend click': function(){
+          //帮摇
+          var _this = this,
+            dom = _this.element;
+          //$(dom).find('.shaked-btns').addClass('hide');
+          $(dom).find('#shaking').removeClass('hide');
+          $(dom).find('#shakend').addClass('hide');
           return false;
+        },
+        '#imReceive click': function(){
+          //请求优惠券
+          var _this = this,
+            dom = _this.element,
+            couponId = Number(store.get('maxCoupon')),
+            yCoupon = new YYYApi({
+              couponId: couponId,
+              receiveChannel: 'B2C',
+              receiveWay: 'YYY',
+              needSms: 0,
+              smsCon: ''
+            });
+          //alert(store.get('maxCoupon'));
+          //alert(JSON.stringify({
+          //    couponId: couponId,
+          //    receiveChannel: 'B2C',
+          //    receiveWay: 'YYY',
+          //    needSms: 0,
+          //    smsCon: '1'
+          //));
+          yCoupon
+            .sendRequest()
+            .done(function(data){
+
+              $(dom).find('.tooltip.center')
+                .removeClass('hide');
+              setTimeout(function(){
+                $(dom).find('.tooltip.center').hide(500);
+              }, 1000);
+              $(this.element).find('.shaked-btns.to-buy').removeClass('hide');
+            })
+            .fail(function(err){
+              alert(err);
+              alert('优惠券已领完，请重试。')
+            });
+          //alert($(dom).find('.tooltip.center').html());
+
+          return false;
+        },
+        sfBridge: function() {
+          var _this = this,
+            options = _this.options,
+            url = 'http://' + window.location.hostname + '/shake-share.html#!'
+                 + 'userId=' + options.ownData.cookieInfo
+                 + '&date='+ options.ownData.formatDate
+                 + '&itemId='+ options.ownData.itemId
+                 + '&couponId='+ options.serverData.attr('shareData').couponId,
+            params = {
+              "subject": '摇一摇',
+              "description": '摇啊摇',
+              "imageUrl": 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
+              "url": url
+            },
+            success = function(data) {
+              // var message = new SFmessage(null, {
+              //   'tip': '分享成功',
+              //   'type': 'success',
+              //   'okFunction': function() {},
+              // });
+              console.log('success');
+            },
+            error = function(data) {
+              // var message = new SFmessage(null, {
+              //   'tip': '分享失败',
+              //   'type': 'error',
+              //   'okFunction': function() {},
+              // });
+              console.log('error');
+            };
+          window.bridge.run('SocialSharing', 'share', params, success, error);
         }
     });
     new shakeActivity('#sh-b2c-mall-shake');

@@ -1,13 +1,13 @@
 <!--可以或者开始摇的界面-->
-{{#if queryData}}
-    <div id="shaking" class="shaking {{#sf-isReceiveCoupon queryData.isReceiveCoupon}}{{/sf-isReceiveCoupon}}">
+{{#shakeData}}
+    <div id="shaking" class="shaking {{#sf-isReceiveCoupon isReceiveCoupon}}{{/sf-isReceiveCoupon}}">
         <div class="shaking-r1">
             <div>最大影响力</div>
             <div>手掌加速度</div>
         </div>
         <div class="shaking-point">
-            <div>{{queryData.maxImpact}}</div>
-            <div>{{queryData.maxFightingCapacity}}</div>
+            <div>{{impact}}</div>
+            <div>{{fightingCapacity}}</div>
         </div>
         <div class="shaking-img"><img src="http://img0.sfht.com/sf/bundefined/6f08491af313f159ee2db5c85b3f5fb8.jpg@162w_162h.jpg"></div>
         <div class="shaking-icon">
@@ -44,32 +44,42 @@
         </div>
         <p>每日限领一张，与更多小伙伴一起摇！</p>
     </div>
-    {{#if queryData.isReceiveCoupon}}
-        <div class="shaked help">
-            <dl>
-                <dt>最大影响力</dt>
-                <dd>{{queryData.maxImpact}}人</dd>
-                <dt>手掌加速度</dt>
-                <dd>{{queryData.maxFightingCapacity}}</dd>
-            </dl>
-            <div class="shaked-coupon">
-                <div class="shaked-coupon-c1"><img
-                    src="{{queryData.imageUrl}}"></div>
-                <div class="shaked-coupon-c2">
-                    <h2>{{queryData.couponTitle}}</h2>
-                    <p>专属优惠券</p>
-                    <div class="shaked-coupon-price">
-                        <small>¥</small>
-                        {{queryData.price}}
-                    </div>
+    <!--结束摇或者，帮摇-->
+    <div id="shakend" class="shaked end {{#sf-notReceiveCoupon isReceiveCoupon}}{{/sf-notReceiveCoupon}}">
+        <dl>
+            <dt>最大影响力</dt>
+            <dd>{{impact}}人</dd>
+            <dt>手掌加速度</dt>
+            <dd>{{fightingCapacity}}</dd>
+        </dl>
+        <div class="shaked-coupon">
+            <div class="shaked-coupon-c1">
+                <img src="{{imageUrl}}"></div>
+            <div class="shaked-coupon-c2"><h2>{{itemTitle}}</h2>
+                <p>{{couponTitle}}</p>
+                <div class="shaked-coupon-price">
+                    <small>¥</small>
+                    {{couponPrice}}
                 </div>
             </div>
-            <div class="shaked-btns">
-                <a href="{{queryData.couponUrl}}" class="btn-yellow btn-big">去购买</a>
-            </div>
         </div>
-    {{/if}}
-{{/if}}
+        <div class="shaked-btns buy {{#sf-isCanReceiveCoupon canReceiveCoupon}}{{/sf-isCanReceiveCoupon}}">
+            <a id="reYao" class="btn-yellow">放弃重摇</a>
+            <a id="imReceive" class="btn-red">立刻领取</a>
+        </div>
+        <div class="shaked-btns help {{#sf-notReceiveCoupon isReceiveCoupon}}{{/sf-notReceiveCoupon}}">
+            <a id="helpFriend" class="btn-yellow">帮朋友摇</a>
+            <a id="toBuy" href="{{buyUrl}}" class="btn-red">去购买</a>
+        </div>
+        <div class="shaked-btns to-buy hide">
+            <a href="" class="btn-yellow btn-big">去购买</a>
+        </div>
+        <p class="shaked-text">每日限领一张，与更多小伙伴一起摇！</p>
+    </div>
+    <div class="tooltip center hide">已成功放入我的优惠券</div>
+
+
+{{/shakeData}}
 
 
 

@@ -387,8 +387,11 @@ requirejs.config({
         'sf.b2c.mall.api.shake.queryShakeResult': 'scripts/api/sf.b2c.mall.api.shake.queryShakeResult',
         'sf.b2c.mall.api.shake.startShake': 'scripts/api/sf.b2c.mall.api.shake.startShake',
         'sf.b2c.mall.api.shake.finishShake': 'scripts/api/sf.b2c.mall.api.shake.finishShake',
+        'sf.b2c.mall.api.coupon.receiveCouponByYaoYiYao': 'scripts/api/sf.b2c.mall.api.coupon.receiveCouponByYaoYiYao',
         //模板
         'template_shake': 'templates/shake/sf.b2c.mall.shake.mustache',
-        'template_shake_end': 'templates/shake/sf.b2c.mall.shakeEnd.mustache'
+        //分享摇一摇
+        'sf.b2c.mall.page.shakeShare': 'scripts/page/sf.b2c.mall.page.shakeShare',
+        'template_shake_share': 'templates/shake/sf.b2c.mall.shakeShare.mustache'
     }
 });
