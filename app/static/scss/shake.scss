@@ -3,9 +3,9 @@ body{
 	background: #ffedd7 ;
 }
 .shakelist{
-	background: url(../img/shakelist-bg.jpg) no-repeat center top;
+	background: url(../img/shake-bg.png) no-repeat center top;
 	background-size: cover;
-	padding: 297px 11px 0;
+	padding: 146px 11px 0;
 }
 .shakelist li{
 	display: flex;
@@ -63,8 +63,7 @@ body{
 	color: #fff;
 	background: #ff5b54;
 	border-radius: 30px;
-	box-shadow: 0 4
-	px #bc2b25;
+	box-shadow: 0 2px #bc2b25;
 	font-size: 14px;
 	white-space: nowrap;
 }
@@ -244,7 +243,7 @@ a.btn-big{
 	text-align: center;
 	padding-top: 52px;
 	background: url(../img/shake-share-bg.png) no-repeat;
-	background-size: cover;
+	background-size: cover;         
 }
 .shake-share img{
 	width: 90px;
