@@ -114,11 +114,11 @@ define(
           });
           shakeQuery.sendRequest()
             .done(function(data){
-              alert(JSON.stringify(data));
-              console.log(data);
+              //alert(JSON.stringify(data));
+              //console.log(data);
               options.serverData.attr('shakeData',{
-                //isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
-                isReceiveCoupon: false,
+                isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
+                //isReceiveCoupon: false,
                 fightingCapacity: data.maxFightingCapacity,  //当前最大战斗力
                 impact: data.maxImpact,    //当天最大影响力
                 imageUrl: data.itemImage,   //图片链接
@@ -290,7 +290,7 @@ define(
             .sendRequest()
             .done(function(data){
               //alert('abc');
-              alert(JSON.stringify(data));
+              //alert(JSON.stringify(data));
               //alert(options.ownData.num);
 
               //options.serverData.attr('shakeData', {
@@ -321,7 +321,7 @@ define(
 
               //options.serverData.attr('shakeData.itemTitle', data.itemTitle);
 
-              alert(JSON.stringify(options.serverData.attr('shakeData')));
+              //alert(JSON.stringify(options.serverData.attr('shakeData')));
               //alert('执行1');
               //判断当前的券是否相对大
               if ( data.couponId >= coupon ){
