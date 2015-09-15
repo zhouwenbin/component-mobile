@@ -563,10 +563,10 @@ define('sf.b2c.mall.order.iteminfo', [
         //积分格式校验
         '#pointUsed keyup': function(element, event) {
             event && event.preventDefault();
-            var that = this;
-            var pointValue = $(element).val(); //输入使用积分数
-            var canUsePoints = this.itemObj.attr('useIntegral'); //本次订单可用积分数 
-            var rateValue = this.itemObj.attr('proportion'); //积分比例
+            var that = this,
+                pointValue = $(element).val(), //输入使用积分数
+                canUsePoints = this.itemObj.attr('useIntegral'), //本次订单可用积分数 
+                rateValue = this.itemObj.attr('proportion'); //积分比例
 
 
             if (rateValue == 0) {
@@ -574,6 +574,10 @@ define('sf.b2c.mall.order.iteminfo', [
                 $("#pointToMoney").text("-￥0");
                 return false;
             }
+            if (pointValue == 0) {
+                $("#pointToMoney").text("-￥0.0");
+                this.reCalculateOrderPrice();
+            };
             if ($(".integral-use-r1 a.active").length > 0) {
                 //输入非数字字符自动转为0
                 if (pointValue && !/^[1-9]+[0-9]*$/.test(pointValue)) {

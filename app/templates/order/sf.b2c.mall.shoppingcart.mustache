@@ -15,9 +15,11 @@
 {{! 首单减标示 }}
 {{#sf-show-firstOrderTips cartFeeItem.firstOrderInfos}}
 {{#each cartFeeItem.firstOrderInfos}}
-<span>首单减</span>{{useRule.ruleDesc}}
+<em>{{useRule.ruleDesc}}</em>
 {{/each}}
 {{/sf-show-firstOrderTips}}
+
+{{#sf-show-line cartFeeItem}}|{{/sf-show-line}}
 
 {{#sf-show-freePostage cartFeeItem.reductPostageInfos}}
 {{#each cartFeeItem.reductPostageInfos}}
