@@ -86,6 +86,7 @@ define(
       shakeStar: function (callback) {
         //摇晃开始回调
         //alert(callback);
+        //alert(1);
         callback();
       },
       shakeIng: function (callback) {
@@ -96,6 +97,7 @@ define(
       shakeEnd: function (star, end, ing, id) {
         //摇晃结束回调
         //alert(callback);
+        //alert(3);
         end();
         //return arrY;
         var _this = this;

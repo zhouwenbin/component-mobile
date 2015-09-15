@@ -54,5 +54,32 @@ module.exports = [
   {
     pattern: 'http://10.32.157.67/app/fixture/case/shake/sf.b2c.mall.fixture.case.shake.one.js',
     responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/fixture/case/shake/sf.b2c.mall.fixture.case.shake.one.js'
+  },
+  {
+    pattern: 'http://10.32.157.67/templates',
+    responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/templates'
+  },
+
+  //dev2
+  {
+    pattern: 'http://m.sfht.com/bower_components',
+    responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/bower_components'
+  },
+
+  {
+    pattern: 'http://m.sfht.com/scripts',
+    responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/scripts'
+  },
+  {
+    pattern: 'http://m.sfht.com/shake.html',
+    responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/shake.html'
+  },
+  {
+    pattern: 'http://m.sfht.com/templates',
+    responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/templates'
+  },
+  {
+    pattern: 'http://m.sfht.com/static',
+    responder: '/Users/huweijian/Documents/webServer/sfht/haitao-b2c-h5/app/static'
   }
 ];

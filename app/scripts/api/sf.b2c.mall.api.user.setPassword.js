@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.updateReceiverInfo
+  * @class sf.b2c.mall.api.user.setPassword
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.updateReceiverInfo',
+'sf.b2c.mall.api.user.setPassword',
 [
   'zepto',
   'can',
@@ -22,24 +22,17 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.updateReceiverInfo',
+      METHOD_NAME: 'user.setPassword',
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
-        'recId': 'long',
+        'pswd': 'string'
       },
       OPTIONAL: {
-        'recName': 'string',
-        'type': 'string',
-        'credtNum': 'string',
-        'credtImgUrl1': 'string',
-        'credtImgUrl2': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
-        '1000200': '收货人身份信息已存在，选择即可',
-        '1000280': '身份证号码错误',
-        '1000490': '海关发货需要实名制信息，请输入真实姓名'
+        '1000500': '用户手机号尚未验证，不允许设置密码'
       }
     }
   });
