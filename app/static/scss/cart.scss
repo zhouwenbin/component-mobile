@@ -21,10 +21,10 @@ body{
 	border-bottom: 1px solid #f5d6b9;
 }
 .firt-buy-discount{
-	background-color: #f2f2f2;
-	color: #ff5b54;
-	height: 44px;
+	background: #fef0e2;
+	color: #fe902c;
 	line-height: 44px;
+	font-size:14px;
 	span{
 		background-color: #df3c3a;
 		color: #fff;
@@ -34,12 +34,7 @@ body{
 		padding: 3px 4px;
 	}
 	em{
-    	padding: 0 2px;
-  	}
-}
-.sign-for-freepostage{
-	background-color: #fef0e2;
-	color: #fe902c;
-	line-height: 44px;
-	padding-left: 14px;
+		display: inline-block;
+		margin-left: 14px;
+	}
 }

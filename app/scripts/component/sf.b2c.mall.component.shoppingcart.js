@@ -236,6 +236,12 @@ define(
           } else {
             return options.inverse(options.contexts || this);
           }
+        },
+        'sf-show-activityTips': function(cartFeeItem, options) {
+          var cartFeeItem = cartFeeItem();
+          if ((typeof cartFeeItem.firstOrderInfos !== 'undefined' && cartFeeItem.firstOrderInfos.length > 0) || (typeof cartFeeItem.reductPostageInfos !== 'undefined' && cartFeeItem.reductPostageInfos.length > 0)) {
+            return options.fn(options.contexts || this);
+          }
         }
       },
 

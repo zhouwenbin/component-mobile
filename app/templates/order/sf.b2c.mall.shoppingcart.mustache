@@ -10,19 +10,22 @@
 {{/sf-is-empty}}
 
 {{^sf-is-empty scopeGroups}}
+{{#sf-show-activityTips cartFeeItem}}
+<p class="firt-buy-discount">
 {{! 首单减标示 }}
 {{#sf-show-firstOrderTips cartFeeItem.firstOrderInfos}}
 {{#each cartFeeItem.firstOrderInfos}}
-<p class="firt-buy-discount"><span>首单减</span>{{useRule.ruleDesc}}</p>
+<span>首单减</span>{{useRule.ruleDesc}}
 {{/each}}
 {{/sf-show-firstOrderTips}}
 
-{{! 满额包邮 }}
 {{#sf-show-freePostage cartFeeItem.reductPostageInfos}}
 {{#each cartFeeItem.reductPostageInfos}}
-<p class="sign-for-freepostage">{{useRule.ruleDesc}}</p>
+<em>{{useRule.ruleDesc}}</em>
 {{/each}}
 {{/sf-show-freePostage}}
+</p>
+{{/sf-show-activityTips}}
 
 <article class="cart">
 <section class="sf-h5-avail-cart">
