@@ -23,7 +23,7 @@ var SOURCE = [
   // },
   {
     name: 'haitao',
-    src: 'http://10.32.156.47/info.api?json',
+    src: 'http://10.32.156.168/info.api?json',
     filename: 'haitao.json',
     filterGroup: ['integral','order', 'share', 'task', 'minicart', 'user', 'logistics', 'product', 'shopcart', 'b2cmall', 'sc', 'supplychain', 'coupon', 'cp', 'promotion', 'payment','categoryPage','finance']
   }

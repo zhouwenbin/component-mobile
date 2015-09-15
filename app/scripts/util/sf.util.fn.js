@@ -72,7 +72,7 @@ define('sf.util', [
         return (navigator.userAgent.indexOf("Firefox") > -1)
       },
       QQ: function () {
-        return (navigator.userAgent.indexOf('QQBrowser') > -1);
+        return (navigator.userAgent.indexOf('QQ') > -1);
       },
       WeChat: function() {
         var isWeChat = navigator.userAgent.match(/MicroMessenger/i);
