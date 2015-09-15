@@ -166,7 +166,7 @@ define(
         var getLatestCashProfit = new SFgetLatestCashProfit({days:7});
         can.when(getLatestCashProfit.sendRequest()).done(function(items) {
             that.itemObj.attr('cashProfits',items.cashProfits);
-            if(!items.cashProfits.length){
+            if(!items.cashProfits){
               $('#canvas').hide();
               $('#noAnyserven').show();
             }
