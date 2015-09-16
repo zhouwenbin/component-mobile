@@ -107,31 +107,31 @@ define(
         }
 
         $("[data-name='cms-fill-coupon']").click(function(targetElement) {
-          if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-            new SFMessage(null, {
-              'tip': '抱歉！需要登录后才可以领取优惠券！',
-              'type': 'success',
-              'okFunction': function(){
-                window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
-              }
-            });
-            return false;
-          }
+          // if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          //   new SFMessage(null, {
+          //     'tip': '抱歉！需要登录后才可以领取优惠券！',
+          //     'type': 'success',
+          //     'okFunction': function(){
+          //       window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
+          //     }
+          //   });
+          //   return false;
+          // }
 
-          var params = {
-            bagId: $(targetElement.target).data('cms-couponbagid'),
-            type: $(targetElement.target).data('cms-coupontype')
-          }
-          var needSms = $(targetElement.target).data('needsms');
-          var smsCon = $(targetElement.target).data('smscon');
-          if (needSms) {
-            params.needSms = needSms;
-          }
-          if (smsCon) {
-            params.smsCon = smsCon;
-          }
-
-          that.receiveCpCodeData(params);
+          // var params = {
+          //   bagId: $(targetElement.target).data('cms-couponbagid'),
+          //   type: $(targetElement.target).data('cms-coupontype')
+          // }
+          // var needSms = $(targetElement.target).data('needsms');
+          // var smsCon = $(targetElement.target).data('smscon');
+          // if (needSms) {
+          //   params.needSms = needSms;
+          // }
+          // if (smsCon) {
+          //   params.smsCon = smsCon;
+          // }
+          that.download();
+          //that.receiveCpCodeData(params);
         });
 
         return false;
