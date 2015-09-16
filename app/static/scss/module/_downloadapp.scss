@@ -15,11 +15,11 @@
 		align-items:center;
 		padding: 0 11px * $i;
 		z-index: 999;
-		background:#ec6b5f url(#{$bg-url}downloadapp-logo.png) no-repeat 19px * $i bottom;
-		background-size: 216px * $i 44px * $i;
+		background:#ec6b5f url(#{$bg-url}downloadapp-logo.png) no-repeat 9px * $i bottom;
+		background-size: 201px * $i 44px * $i;
 	}
 	.downloadapp-logo{
-		width: 226px * $i;
+		width: 201px * $i;
 		height: 44px * $i;
 		
 	}
@@ -30,14 +30,15 @@
 		background-size: 16px * $i;
 		text-indent: -999em;
 		position: absolute;
-		left: 0;
+		right: 0;
 		top: 0;
 	}
 	.downloadapp .btn{
 		height: 35px * $i;
 		line-height: 35px * $i;
 		flex:1;
-		margin-left: 10px * $i;
+		margin-left: 6px* $i;
+		margin-right: 10px * $i;
 		background: #46cfdf;
 		border-color: #46cfdf;
 		padding: 0;
