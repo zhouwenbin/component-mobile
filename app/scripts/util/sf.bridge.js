@@ -50,7 +50,7 @@ define(
             msg = window.sfhtandroidbridge.runner(plugin, method, paramsJs, callbackId);
           }else{
             paramsJs = '[' +paramsJs+ ']';
-            msg = window.sfhtandroidbridge.runner(plugin, method, '[' + paramsJs + ']', callbackId);
+            msg = window.sfhtandroidbridge.runner(plugin, method, paramsJs, callbackId);
           }
         }
         catch(e) {

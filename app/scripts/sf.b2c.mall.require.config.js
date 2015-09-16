@@ -95,6 +95,12 @@ requirejs.config({
         "sf.b2c.mall.api.user.bindAliAct": "scripts/api/sf.b2c.mall.api.user.bindAliAct",
         "sf.b2c.mall.api.user.exchangeToken": "scripts/api/sf.b2c.mall.api.user.exchangeToken",
         "sf.b2c.mall.api.user.regstAocart4Pmter": "scripts/api/sf.b2c.mall.api.user.regstAocart4Pmter",
+        "sf.b2c.mall.api.user.getRegstedList": "scripts/api/sf.b2c.mall.api.user.getRegstedList",
+        "sf.b2c.mall.api.user.mobileRegstAndRcvCp": "scripts/api/sf.b2c.mall.api.user.mobileRegstAndRcvCp",
+        "sf.b2c.mall.api.user.ptnBindAndRcvCp": "scripts/api/sf.b2c.mall.api.user.ptnBindAndRcvCp",
+        "sf.b2c.mall.api.user.setPassword": "scripts/api/sf.b2c.mall.api.user.setPassword",
+        "sf.b2c.mall.api.user.getRegstedCount": "scripts/api/sf.b2c.mall.api.user.getRegstedCount",
+        "sf.b2c.mall.api.user.getLatestCashProfit": "scripts/api/sf.b2c.mall.api.user.getLatestCashProfit",
         "sf.b2c.mall.api.minicart.getTotalCount": "scripts/api/sf.b2c.mall.api.minicart.getTotalCount",
         "sf.b2c.mall.api.shopcart.addItemToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemToCart",
         "sf.b2c.mall.api.shopcart.addItemsToCart": "scripts/api/sf.b2c.mall.api.shopcart.addItemsToCart",
@@ -251,6 +257,7 @@ requirejs.config({
         "sf.b2c.mall.page.invitation": "scripts/page/sf.b2c.mall.page.invitation",
         "sf.b2c.mall.center.invitationcontent": "scripts/center/sf.b2c.mall.center.invitationcontent",
         "sf.b2c.mall.page.invitationbag": "scripts/page/sf.b2c.mall.page.invitationbag",
+        "sf.b2c.mall.page.invitationbagNext": "scripts/page/sf.b2c.mall.page.invitationbagNext",
         "sf.b2c.mall.page.bindalipay": "scripts/page/sf.b2c.mall.page.bindalipay",
         "sf.b2c.mall.component.nav": "scripts/component/sf.b2c.mall.component.nav",
         "sf.b2c.mall.api.shopcart.isShowCart": "scripts/api/sf.b2c.mall.api.shopcart.isShowCart.agency",
@@ -262,6 +269,10 @@ requirejs.config({
         "sf.b2c.mall.page.searchgate": "scripts/page/sf.b2c.mall.page.searchgate",
         "sf.b2c.mall.page.shop": "scripts/page/sf.b2c.mall.page.shop",
         "sf.b2c.mall.page.invitationshare": "scripts/page/sf.b2c.mall.page.invitationshare",
+        "sf.b2c.mall.page.invitationUserlist": "scripts/page/sf.b2c.mall.page.invitationUserlist",
+        "sf.b2c.mall.page.invitationIncome": "scripts/page/sf.b2c.mall.page.invitationIncome",
+        "sf.b2c.mall.page.invitationAskfd": "scripts/page/sf.b2c.mall.page.invitationAskfd",
+        "sf.b2c.mall.page.invitationGetfmy": "scripts/page/sf.b2c.mall.page.invitationGetfmy",
         "sf.b2c.mall.page.app": "scripts/page/sf.b2c.mall.page.app",
         "sf.b2c.mall.page.aboutus": "scripts/page/sf.b2c.mall.page.aboutus",
         "sf.b2c.mall.page.bridge": "scripts/page/sf.b2c.mall.page.bridge",
@@ -309,6 +320,9 @@ requirejs.config({
         "template_center_invitationshare": "templates/center/sf.b2c.mall.center.invitationshare.mustache",
         "template_center_invitationbag": "templates/center/sf.b2c.mall.center.invitationbag.mustache",
         "template_center_invitationcontent": "templates/center/sf.b2c.mall.center.invitationcontent.mustache",
+        "template_center_invitationIncome": "templates/center/sf.b2c.mall.center.invitationIncome.mustache",
+        "template_center_invitationbagNext": "templates/center/sf.b2c.mall.center.invitationbagNext.mustache",
+        "template_center_invitationUserlist": "templates/center/sf.b2c.mall.center.invitationUserlist.mustache",
         "sf.b2c.mall.page.520": "scripts/page/sf.b2c.mall.page.520",
         "template_header_520": "templates/sf.b2c.mall.520.mustache",
         "sf.mediav": "scripts/util/sf.mediav",
@@ -369,7 +383,15 @@ requirejs.config({
         //摇一摇
         'sf.shake': 'scripts/util/sf.shake',
         'sf.b2c.mall.page.shake': 'scripts/page/sf.b2c.mall.page.shake',
-        //模拟api
-        'sf.b2c.mall.fixture.case.shake.one': 'app/fixture/case/shake/sf.b2c.mall.fixture.case.shake.one'
+        //api
+        'sf.b2c.mall.api.shake.queryShakeResult': 'scripts/api/sf.b2c.mall.api.shake.queryShakeResult',
+        'sf.b2c.mall.api.shake.startShake': 'scripts/api/sf.b2c.mall.api.shake.startShake',
+        'sf.b2c.mall.api.shake.finishShake': 'scripts/api/sf.b2c.mall.api.shake.finishShake',
+        'sf.b2c.mall.api.coupon.receiveCouponByYaoYiYao': 'scripts/api/sf.b2c.mall.api.coupon.receiveCouponByYaoYiYao',
+        //模板
+        'template_shake': 'templates/shake/sf.b2c.mall.shake.mustache',
+        //分享摇一摇
+        'sf.b2c.mall.page.shakeShare': 'scripts/page/sf.b2c.mall.page.shakeShare',
+        'template_shake_share': 'templates/shake/sf.b2c.mall.shakeShare.mustache'
     }
 });

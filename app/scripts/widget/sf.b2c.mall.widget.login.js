@@ -17,6 +17,11 @@ define(
       link: SFConfig.setting.link,
       init: function() {},
 
+      blogin: function(redirectUrl){
+        redirectUrl = redirectUrl || window.location.href;
+        this.processReqLoginAuthBridge(redirectUrl, "wechat_svm");
+      },
+
       //微信登录
       login: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
@@ -37,6 +42,24 @@ define(
       alipayTmplLogin: function(redirectUrl) {
         redirectUrl = redirectUrl || window.location.href;
         this.processReqLoginAuth("tag=alipay_qklg&tmpl=true&redirectUrl=" + encodeURIComponent(redirectUrl), "alipay_qklg");
+      },
+
+      processReqLoginAuthBridge: function(redirectUrl, partnerId) {
+        var reqLoginAuth = new SFReqLoginAuth({
+          "partnerId": partnerId,
+          "redirectUrl": redirectUrl
+        });
+        reqLoginAuth
+          .sendRequest()
+          .done(function(data) {
+            window.location.href = data.loginAuthLink;
+
+            //代码打点
+            SFUtil.dotCode();
+          })
+          .fail(function(error) {
+            console.error(error);
+          });
       },
 
       processReqLoginAuth: function(redirectUrl, partnerId) {

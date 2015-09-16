@@ -165,7 +165,8 @@ body{
 	text-shadow:0 2px * 2 #EA9C37;
 	margin-bottom: 10px * 2
 }
-.shaked-coupon{
+.shaked-coupon,
+.shaked-note{
 	background: url(../svg/icon-shaked-coupon.svg) no-repeat;
 	width: 290px * 2;
 	height: 127px * 2;
@@ -183,6 +184,23 @@ body{
 	font-size: 14px * 2;
 	color: #fff;
 	margin-bottom: 5px * 2;
+}
+.shaked-note{
+	display: block;
+	padding-top: 30px;
+	line-height: 2;
+	text-align: center;
+	background: none;
+
+
+	p{
+		font-size: 18px;
+		color: #8B572A;
+	}
+	h3{
+		font-size: 24px;
+		color: #FFC70F;
+	}
 }
 .shaked-coupon p{
 	font-size: 14px * 2;
@@ -223,6 +241,10 @@ a.btn-red{
 	color: #fff;
 	background: #FF5B54;
 	box-shadow: 0 2px * 2 #BC2B25;
+}
+a.btn-red.grey{
+	background: #979DA9;
+	box-shadow: 0 2px #979DA9;
 }
 a.btn-big{
 	width: 192px * 2;
