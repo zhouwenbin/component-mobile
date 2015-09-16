@@ -223,6 +223,7 @@ define(
           //$('#sh-b2c-mall-shake').append('---->开始摇!<br>');
           var _this = shakeThis,
             options = _this.options,
+            //dom = _this.element,
             shakeStar,
             gps,
             clock = true,
@@ -260,6 +261,7 @@ define(
               shakeStar
                 .sendRequest()
                 .done(function(data){
+
                   //alert(JSON.stringify(data));
                   if (!data.value){
                     _this.shakeStar();
@@ -327,6 +329,7 @@ define(
             store.set('maxFightVal', options.ownData.fighting);
           }
           //alert(typeof Number(fighting));
+          $(dom).find('#matching').removeClass('hide');
           shakeFinish = new shakeFinishApi({
             location: JSON.stringify(options.ownData.location),
             locationType: options.ownData.locationType,
@@ -335,108 +338,114 @@ define(
           });
           //alert(options.ownData.itemId);
 
-          shakeFinish
-            .sendRequest()
-            .done(function(data){
-              //alert('abc');
-              //alert(JSON.stringify(data));
-              //alert(options.ownData.num);
 
-              //options.serverData.attr('shakeData', {
-              //  canReceiveCoupon: data.canReceiveCoupon,   //是否可以领券 true是可以领
-              //  impact: data.impact,     //影响力
-              //  fightingCapacity: options.ownData.fighting,
-              //  couponRank: data.couponRank,  //优惠券等级
-              //  couponId: data.couponId,     //如果可以领券，此为领券ID
-              //  text: '文案'
-              //});
+          setTimeout(function(){
+            shakeFinish
+              .sendRequest()
+              .done(function(data){
+                $(dom).find('#matching').addClass('hide');
+                //alert('abc');
+                //alert(JSON.stringify(data));
+                //alert(options.ownData.num);
 
-              if (data.impact  === 0){
-                ifOne = true;
-              }else {
-                if (options.serverData.attr('shakeData.isReceiveCoupon')){
-                  help = true;
+                //options.serverData.attr('shakeData', {
+                //  canReceiveCoupon: data.canReceiveCoupon,   //是否可以领券 true是可以领
+                //  impact: data.impact,     //影响力
+                //  fightingCapacity: options.ownData.fighting,
+                //  couponRank: data.couponRank,  //优惠券等级
+                //  couponId: data.couponId,     //如果可以领券，此为领券ID
+                //  text: '文案'
+                //});
+
+                if (data.impact  === 0){
+                  ifOne = true;
+                }else {
+                  if (options.serverData.attr('shakeData.isReceiveCoupon')){
+                    help = true;
+                  }
                 }
-              }
-              //alert(ifOne);
-              options.serverData.attr('shakeData.Yao', true);
-              options.serverData.attr('shakeData.impact', data.impact);
-              options.serverData.attr('shakeData.fightingCapacity', options.ownData.fighting);
-              options.serverData.attr('shakeData.ifOne', ifOne);
-              options.serverData.attr('shakeData.help', help);
-              if ( !options.serverData.attr('shakeData.isReceiveCoupon') ){
-                options.serverData.attr('shakeData.canReceiveCoupon', data.canReceiveCoupon);
-                options.serverData.attr('shakeData.maxImpact', data.maxImpact);
-                options.serverData.attr('shakeData.maxFightingCapacity', data.maxFightingCapacity);
-                options.serverData.attr('shakeData.couponRank', data.couponRank);
-                options.serverData.attr('shakeData.text', data.text);
-                options.serverData.attr('shakeData.couponId', data.couponId);
-                options.serverData.attr('shakeData.itemImage', data.itemImage);
-                options.serverData.attr('shakeData.itemTitle', data.itemTitle);
-                options.serverData.attr('shakeData.couponTitle', data.couponTitle);
-                options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.couponPrice);
-                options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
-                options.serverData.attr('shakeData.couponUrl', data.couponUrl);
-                options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
+                //alert(ifOne);
+                options.serverData.attr('shakeData.Yao', true);
+                options.serverData.attr('shakeData.impact', data.impact);
+                options.serverData.attr('shakeData.fightingCapacity', options.ownData.fighting);
+                options.serverData.attr('shakeData.ifOne', ifOne);
+                options.serverData.attr('shakeData.help', help);
+                if ( !options.serverData.attr('shakeData.isReceiveCoupon') ){
+                  options.serverData.attr('shakeData.canReceiveCoupon', data.canReceiveCoupon);
+                  options.serverData.attr('shakeData.maxImpact', data.maxImpact);
+                  options.serverData.attr('shakeData.maxFightingCapacity', data.maxFightingCapacity);
+                  options.serverData.attr('shakeData.couponRank', data.couponRank);
+                  options.serverData.attr('shakeData.text', data.text);
+                  options.serverData.attr('shakeData.couponId', data.couponId);
+                  options.serverData.attr('shakeData.itemImage', data.itemImage);
+                  options.serverData.attr('shakeData.itemTitle', data.itemTitle);
+                  options.serverData.attr('shakeData.couponTitle', data.couponTitle);
+                  options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.couponPrice);
+                  options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
+                  options.serverData.attr('shakeData.couponUrl', data.couponUrl);
+                  options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
 
-              }
+                }
 
-              //options.serverData.attr('shakeData.itemTitle', data.itemTitle);
+                //options.serverData.attr('shakeData.itemTitle', data.itemTitle);
 
-              //alert(JSON.stringify(options.serverData.attr('shakeData')));
-              //alert('执行1');
-              //判断当前的券是否相对大
-              if ( data.couponId >= coupon ){
-                store.set('maxCoupon', data.couponId);
-              }
-              //alert('执行2');
-              $(dom).find('#shaking').addClass('hide');
-              $(dom).find('#shakend').removeClass('hide');
-              //alert(ifOne);
-              //alert(help);
-              //alert(options.serverData.attr('finishData'));
-              //if (!ifOne || !help){
-              //  if (options.serverData.attr('shakeData').canReceiveCoupon){
-              //    $(dom).find('.shaked-btns').removeClass('hide');
-              //  }
-              //}
+                //alert(JSON.stringify(options.serverData.attr('shakeData')));
+                //alert('执行1');
+                //判断当前的券是否相对大
+                if ( data.couponId >= coupon ){
+                  store.set('maxCoupon', data.couponId);
+                }
+                //alert('执行2');
+                $(dom).find('#shaking').addClass('hide');
+                $(dom).find('#shakend').removeClass('hide');
+                //alert(ifOne);
+                //alert(help);
+                //alert(options.serverData.attr('finishData'));
+                //if (!ifOne || !help){
+                //  if (options.serverData.attr('shakeData').canReceiveCoupon){
+                //    $(dom).find('.shaked-btns').removeClass('hide');
+                //  }
+                //}
 
-              //alert('执行3');
-              //if (options.ownData.num > 0){
-              //  //alert('ling');
-              //  //options.serverData.attr('shakeData', {
-              //  //  canReceiveCoupon: data.canReceiveCoupon,   //是否可以领券 true是可以领
-              //  //  //canReceiveCoupon: true,
-              //  //  impact: data.impact,     //影响力
-              //  //  fightingCapacity: options.ownData.fighting,
-              //  //  couponRank: data.couponRank,  //优惠券等级
-              //  //  couponId: data.couponId,     //如果可以领券，此为领券ID
-              //  //  text: '文案',
-              //  //  isReceiveCoupon: true
-              //  //});
-              //  options.serverData.attr('shakeData.canReceiveCoupon', true);
-              //}
-             // alert('执行4');
+                //alert('执行3');
+                //if (options.ownData.num > 0){
+                //  //alert('ling');
+                //  //options.serverData.attr('shakeData', {
+                //  //  canReceiveCoupon: data.canReceiveCoupon,   //是否可以领券 true是可以领
+                //  //  //canReceiveCoupon: true,
+                //  //  impact: data.impact,     //影响力
+                //  //  fightingCapacity: options.ownData.fighting,
+                //  //  couponRank: data.couponRank,  //优惠券等级
+                //  //  couponId: data.couponId,     //如果可以领券，此为领券ID
+                //  //  text: '文案',
+                //  //  isReceiveCoupon: true
+                //  //});
+                //  options.serverData.attr('shakeData.canReceiveCoupon', true);
+                //}
+                // alert('执行4');
 
-              //可以分享了
-              //options.ownData.num = 1;
-              //alert(options.ownData.num);
-              setTimeout(function(){
-                _this.shakeControl();
-              }, 1000);
-              //alert('执行bridge前');
-             // _this.sfBridge();
-              //alert('执行bridge后');
-              window.bridge.run('SFNavigation', 'setRightButton', params, function(){}, function(){});
+                //可以分享了
+                //options.ownData.num = 1;
+                //alert(options.ownData.num);
+                setTimeout(function(){
+                  _this.shakeControl();
+                }, 1000);
+                //alert('执行bridge前');
+                // _this.sfBridge();
+                //alert('执行bridge后');
 
-            })
-            .fail(function(err){
-              //alert(err);
-              alert('结束失败');
-              setTimeout(function(){
-                _this.shakeControl();
-              }, 1000)
-            });
+                window.bridge.run('SFNavigation', 'setRightButton', params, function(){}, function(){});
+
+              })
+              .fail(function(err){
+                //alert(err);
+                $(dom).find('#matching').addClass('hide');
+                alert('结束失败');
+                setTimeout(function(){
+                  _this.shakeControl();
+                }, 1000)
+              });
+          }, 3000);
         },
         //注册交互时间
         '#reYao click': function(){

@@ -100,7 +100,7 @@ define(
         //alert(3);
         end();
         //return arrY;
-        var _this = this;
+        //var _this = this;
         //setTimeout(function () {
         //  _this.listenShake(star, end, ing, id);
         //}, 5000);
