@@ -52,28 +52,57 @@
             <dt>手掌加速度</dt>
             <dd>{{fightingCapacity}}</dd>
         </dl>
-        <div class="shaked-coupon">
-            <div class="shaked-coupon-c1">
-                <img src="{{imageUrl}}"></div>
-            <div class="shaked-coupon-c2"><h2>{{itemTitle}}</h2>
-                <p>{{couponTitle}}</p>
-                <div class="shaked-coupon-price">
-                    <small>¥</small>
-                    {{couponPrice}}
-                </div>
+        {{#if ifOne}}
+            <div class="shaked-note">
+                <p>一个人摇多无趣</p>
+                <h3>叫上小伙伴一起摇！</h3>
             </div>
-        </div>
-        <div class="shaked-btns buy {{#sf-isCanReceiveCoupon canReceiveCoupon}}{{/sf-isCanReceiveCoupon}}">
-            <a id="reYao" class="btn-yellow">放弃重摇</a>
-            <a id="imReceive" class="btn-red">立刻领取</a>
-        </div>
-        <div class="shaked-btns help {{#sf-notReceiveCoupon isReceiveCoupon}}{{/sf-notReceiveCoupon}}">
-            <a id="helpFriend" class="btn-yellow">帮朋友摇</a>
-            <a id="toBuy" href="{{buyUrl}}" class="btn-red">去购买</a>
-        </div>
-        <div class="shaked-btns to-buy hide">
-            <a href="" class="btn-yellow btn-big">去购买</a>
-        </div>
+        {{else}}
+            {{#if help}}
+                <div class="shaked-note">
+                    <p>小伙伴对你的无私奉献</p>
+                    <h3>感激涕零！！</h3>
+                </div>
+            {{else}}
+                <div class="shaked-coupon">
+                    <div class="shaked-coupon-c1">
+                        <img src="{{imageUrl}}">
+                    </div>
+                    <div class="shaked-coupon-c2">
+                        <h2>{{itemTitle}}</h2>
+                        <p>{{couponTitle}}</p>
+                        <div class="shaked-coupon-price">
+                            <small>¥</small>
+                            {{couponPrice}}
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        {{/if}}
+
+        {{#if ifOne}}
+            <div class="shaked-btns">
+                <a id="reYao" class="btn-red">重摇</a>
+            </div>
+        {{else}}
+            {{#if help}}
+                <a href="{{couponUrl}}" class="btn-red">查看我的优惠券</a>
+            {{/if}}
+            {{#if isReceiveCoupon}}
+
+            {{else}}
+                <div class="shaked-btns buy {{#sf-isCanReceiveCoupon canReceiveCoupon impact}}{{/sf-isCanReceiveCoupon}}">
+                    <a id="reYao" class="btn-yellow">放弃重摇</a>
+                    <a id="imReceive" class="btn-red">立刻领取</a>
+                </div>
+            {{/if}}
+
+            <div class="shaked-btns help {{#sf-notReceiveCoupon isReceiveCoupon}}{{/sf-notReceiveCoupon}}">
+                <a id="helpFriend" class="btn-yellow">帮朋友摇</a>
+                <a id="toBuy" href="{{buyUrl}}" class="btn-red">去购买</a>
+            </div>
+        {{/if}}
+
         <p class="shaked-text">每日限领一张，与更多小伙伴一起摇！</p>
     </div>
     <div class="tooltip center hide">已成功放入我的优惠券</div>

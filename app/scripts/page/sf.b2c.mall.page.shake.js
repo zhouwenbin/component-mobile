@@ -45,9 +45,38 @@ define(
           'sf-notReceiveCoupon': function(a, options){
             return a() ? 'show' : 'hide';
           },
-          'sf-isCanReceiveCoupon': function(a, options){
+          'sf-isCanReceiveCoupon': function(a, b, options){
             //alert(a());
+            var valA = a(),
+              valV = b();
+            if (valA){
+              return 'show';
+            }else{
+              if (!valV){
+                return 'show'
+              }else{
+                return 'hide';
+              }
+            }
+            //return a() ? 'show' : 'hide';
+          },
+          'sf-isBuy': function(a, options){
             return a() ? 'show' : 'hide';
+          },
+          'sf-isOne': function(a, options){
+            if ( a() === 0 ){
+              return 'show';
+            }else {
+              return 'hide';
+            }
+            //return a() ? 'show' : 'hide';
+          },
+          'sf-noOne': function(a, options){
+            if ( a() === 0 ){
+              return 'hide';
+            }else {
+              return 'show';
+            }
           }
         },
         init: function(){
@@ -128,7 +157,9 @@ define(
                 couponCondition: data.couponCondition, //优惠券使用条件,
                 buyUrl: 'http://' + window.location.hostname + '/detail/'+ options.ownData.itemId + '.html',  //去购买url
                 itemTitle: data.itemTitle,     //商品标题
-                couponPrice: data.couponPrice    //优惠券价格
+                couponPrice: data.couponPrice,    //优惠券价格
+                ifOne: false,
+                help: false
               });
               //console.log(options);
               //options.serverData.attr('shakeData.impact', '')
@@ -140,9 +171,9 @@ define(
               $(dom).append(html);
             })
             .fail(function(err){
-              alert(err);
+              //alert(err);
               alert('查询失败');
-              alert('xxx');
+             // alert('xxx');
             });
 
           loadingCtrl.hide();
@@ -225,7 +256,7 @@ define(
 
                 })
                 .fail(function(err){
-                  alert(err);
+                  //alert(err);
                   alert('网络不稳定，请在哟');
 
                 });
@@ -267,7 +298,9 @@ define(
             coupon = Number(store.get('maxCoupon')) || 0,
             maxFightVal = store.get('maxFightVal') || 0,
           //初始化借口
-            shakeFinish
+            shakeFinish,
+            ifOne = false,
+            help = false
             ;
           for (var i = yaoArrLen; i > 0; i--){
             total += Math.abs(yaoArr[i-1]);
@@ -301,8 +334,19 @@ define(
               //  couponId: data.couponId,     //如果可以领券，此为领券ID
               //  text: '文案'
               //});
+
+              if (data.impact  === 0){
+                ifOne = true;
+              }else {
+                if (!data.canReceiveCoupon){
+                  help = true;
+                }
+              }
+              //alert(ifOne);
               options.serverData.attr('shakeData.impact', data.impact);
               options.serverData.attr('shakeData.fightingCapacity', options.ownData.fighting);
+              options.serverData.attr('shakeData.ifOne', ifOne);
+              options.serverData.attr('shakeData.help', help);
               if ( !options.serverData.attr('shakeData.isReceiveCoupon') ){
                 options.serverData.attr('shakeData.canReceiveCoupon', data.canReceiveCoupon);
                 options.serverData.attr('shakeData.maxImpact', data.maxImpact);
@@ -330,10 +374,15 @@ define(
               //alert('执行2');
               $(dom).find('#shaking').addClass('hide');
               $(dom).find('#shakend').removeClass('hide');
+              //alert(ifOne);
+              //alert(help);
               //alert(options.serverData.attr('finishData'));
-              if (options.serverData.attr('shakeData').canReceiveCoupon){
-                $(dom).find('.shaked-btns').removeClass('hide');
-              }
+              //if (!ifOne || !help){
+              //  if (options.serverData.attr('shakeData').canReceiveCoupon){
+              //    $(dom).find('.shaked-btns').removeClass('hide');
+              //  }
+              //}
+
               //alert('执行3');
               //if (options.ownData.num > 0){
               //  //alert('ling');
@@ -358,7 +407,7 @@ define(
 
             })
             .fail(function(err){
-              alert(err);
+              //alert(err);
               alert('结束失败');
             });
         },
@@ -367,7 +416,7 @@ define(
           //放弃重摇
           var _this = this,
             dom = _this.element;
-          $(dom).find('.shaked-btns').addClass('hide');
+          //$(dom).find('.shaked-btns').addClass('hide');
           $(dom).find('#shakend').addClass('hide');
           $(dom).find('#shaking').removeClass('hide');
           return false;
@@ -413,7 +462,7 @@ define(
               $(this.element).find('.shaked-btns.to-buy').removeClass('hide');
             })
             .fail(function(err){
-              alert(err);
+              //alert(err);
               alert('优惠券已领完，请重试。')
             });
           //alert($(dom).find('.tooltip.center').html());

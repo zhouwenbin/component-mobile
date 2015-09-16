@@ -165,7 +165,8 @@ body{
 	text-shadow:0 2px #EA9C37;
 	margin-bottom: 10px
 }
-.shaked-coupon{
+.shaked-coupon,
+.shaked-note{
 	background: url(../svg/icon-shaked-coupon.svg) no-repeat;
 	width: 290px;
 	height: 127px;
@@ -183,6 +184,23 @@ body{
 	font-size: 14px;
 	color: #fff;
 	margin-bottom: 5px;
+}
+.shaked-note{
+	display: block;
+	padding-top: 30px;
+	line-height: 2;
+	text-align: center;
+	background: none;
+
+
+	p{
+		font-size: 18px;
+		color: #8B572A;
+	}
+	h3{
+		font-size: 24px;
+		color: #FFC70F;
+	}
 }
 .shaked-coupon p{
 	font-size: 14px;
