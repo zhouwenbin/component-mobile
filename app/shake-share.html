@@ -3,7 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="target-densitydpi=device-dpi,width=640">
+    <script>
+        if (window.screen.width < 640) {
+            var ratio = window.screen.width / 640;
+            var metas = document.querySelectorAll("meta[name=viewport]");
+            for (var i in metas) {
+                if (typeof metas[i].setAttribute == 'function') {
+                    metas[i].setAttribute('content', 'width=640, initial-scale='+ratio+', maximum-scale='+ratio+'');
+                }
+            }
+        }
+    </script>
     <title>顺丰海淘</title>
     <!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
     <link rel="stylesheet" href="static/css/style.css">
