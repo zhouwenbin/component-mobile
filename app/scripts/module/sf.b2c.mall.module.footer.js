@@ -38,7 +38,12 @@ define(
         switcher.go();
       },
 
-      '.downloadapp-r1 click': function ($element, event) {
+      '.downloadapp-logo click': function ($element, event) {
+        event && event.preventDefault();
+        window.location.href = 'http://m.sfht.com/app.html?from='+ window.location.href
+      },
+
+      '.btn.btn-danger click': function ($element, event) {
         event && event.preventDefault();
         window.location.href = 'http://m.sfht.com/app.html?from='+ window.location.href
       },
