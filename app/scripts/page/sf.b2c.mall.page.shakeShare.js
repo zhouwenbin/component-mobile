@@ -75,9 +75,9 @@ define(
               });
 
               html = shareTpl(options.serverData);
-              console.log(html);
+              //console.log(html);
               $(dom).append(html);
-              console.log(data);
+              //console.log(data);
 
             })
             .fail(function(err){
@@ -85,6 +85,35 @@ define(
             });
 
 
+        },
+        '#toYao click': function(){
+          var that = this;
+          that.openApp('sfht://');
+
+          setTimeout(function() {
+            window.location.href = 'http://' + window.location.hostname + '/app.html';
+          }, 600);
+        },
+        openApp: function(appUrl) {
+          var u = navigator.userAgent ? navigator.userAgent.toLocaleLowerCase() : "";
+          var isAndroid = (u.indexOf("android", 0) != -1) || (u.indexOf("adr", 0) != -1) ? 1 : 0,
+            isChrome = isAndroid && u.indexOf("chrome", 0) != -1 && u.indexOf("nexus", 0) == -1;
+          var ifr;
+          if (document.getElementById("iframe_wakeup")) {
+            ifr = document.getElementById("iframe_wakeup");
+            ifr.setAttribute("src", appUrl)
+          } else {
+            ifr = document.createElement("iframe");
+            ifr.id = "iframe_wakeup";
+            ifr.style.cssText = "display:none;";
+            ifr.setAttribute("src", appUrl)
+          }
+          document.getElementsByTagName("body")[0].appendChild(ifr);
+          if (isChrome) {
+            if (appUrl && appUrl.length > 0) {
+              window.location.href = appUrl
+            }
+          }
         }
       });
 

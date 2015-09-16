@@ -2098,7 +2098,7 @@ module.exports = function (grunt) {
         options: {
           preserveLicenseComments: false,
           baseUrl: './app/',
-          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.shake.js',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.shakeShare.js',
           mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
           paths: {
             //'moment': '../bower_components/momentjs/min/moment.min',

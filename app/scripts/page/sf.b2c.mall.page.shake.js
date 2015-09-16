@@ -60,6 +60,13 @@ define(
             }
             //return a() ? 'show' : 'hide';
           },
+          'sf-isUsed': function(user, url, options){
+            if (!user()){
+              return 'href="'+ url() + '" class="btn-red"';
+            }else {
+              return 'class="btn-red grey"';
+            }
+          },
           'sf-isBuy': function(a, options){
             return a() ? 'show' : 'hide';
           },
@@ -147,19 +154,22 @@ define(
               //console.log(data);
               options.serverData.attr('shakeData',{
                 isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
-                //isReceiveCoupon: false,
-                fightingCapacity: data.maxFightingCapacity,  //当前最大战斗力
+                //isReceiveCoupon: true,
+                maxFightingCapacity: data.maxFightingCapacity,  //当前最大战斗力
                 impact: data.maxImpact,    //当天最大影响力
                 imageUrl: data.itemImage,   //图片链接
                 couponTitle: data.couponTitle,   //优惠券标题
                 couponDateString: data.couponDateString,   //优惠券日期
                 couponUrl: data.couponUrl,     //优惠券链接
                 couponCondition: data.couponCondition, //优惠券使用条件,
-                buyUrl: 'http://' + window.location.hostname + '/detail/'+ options.ownData.itemId + '.html',  //去购买url
+                //buyUrl: 'http://' + window.location.hostname + '/detail/'+ options.ownData.itemId + '.html',  //去购买url
+                buyUrl: data.buyUrl,
                 itemTitle: data.itemTitle,     //商品标题
                 couponPrice: data.couponPrice,    //优惠券价格
+                isUsed: true,
                 ifOne: false,
-                help: false
+                help: false,
+                Yao: false
               });
               //console.log(options);
               //options.serverData.attr('shakeData.impact', '')
@@ -343,6 +353,7 @@ define(
                 }
               }
               //alert(ifOne);
+              options.serverData.attr('shakeData.Yao', true);
               options.serverData.attr('shakeData.impact', data.impact);
               options.serverData.attr('shakeData.fightingCapacity', options.ownData.fighting);
               options.serverData.attr('shakeData.ifOne', ifOne);

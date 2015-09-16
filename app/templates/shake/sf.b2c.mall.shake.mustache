@@ -2,12 +2,22 @@
 {{#shakeData}}
     <div id="shaking" class="shaking {{#sf-isReceiveCoupon isReceiveCoupon}}{{/sf-isReceiveCoupon}}">
         <div class="shaking-r1">
-            <div>最大影响力</div>
-            <div>手掌加速度</div>
+            {{#if Yao}}
+                <div>当前影响力</div>
+                <div>当前手速</div>
+            {{else}}
+                <div>最大影响力</div>
+                <div>最大手速</div>
+            {{/if}}
+
         </div>
         <div class="shaking-point">
             <div>{{impact}}</div>
-            <div>{{fightingCapacity}}</div>
+            {{#if Yao}}
+                <div>{{fightingCapacity}}</div>
+            {{else}}
+                <div>{{maxFightingCapacity}}</div>
+            {{/if}}
         </div>
         <div class="shaking-img"><img src="http://img0.sfht.com/sf/bundefined/6f08491af313f159ee2db5c85b3f5fb8.jpg@162w_162h.jpg"></div>
         <div class="shaking-icon">
@@ -47,10 +57,18 @@
     <!--结束摇或者，帮摇-->
     <div id="shakend" class="shaked end {{#sf-notReceiveCoupon isReceiveCoupon}}{{/sf-notReceiveCoupon}}">
         <dl>
-            <dt>最大影响力</dt>
-            <dd>{{impact}}人</dd>
-            <dt>手掌加速度</dt>
-            <dd>{{fightingCapacity}}</dd>
+            {{#if Yao}}
+                <dt>当前影响力</dt>
+                <dd>{{impact}}人</dd>
+                <dt>当前手速</dt>
+                <dd>{{fightingCapacity}}</dd>
+            {{else}}
+                <dt>最大影响力</dt>
+                <dd>{{impact}}人</dd>
+                <dt>最大手速</dt>
+                <dd>{{mxFightingCapacity}}</dd>
+            {{/if}}
+
         </dl>
         {{#if ifOne}}
             <div class="shaked-note">
@@ -86,7 +104,7 @@
             </div>
         {{else}}
             {{#if help}}
-                <a href="{{couponUrl}}" class="btn-red">查看我的优惠券</a>
+                <a id="helpFriend" class="btn-red">继续帮摇</a>
             {{/if}}
             {{#if isReceiveCoupon}}
 
@@ -99,7 +117,7 @@
 
             <div class="shaked-btns help {{#sf-notReceiveCoupon isReceiveCoupon}}{{/sf-notReceiveCoupon}}">
                 <a id="helpFriend" class="btn-yellow">帮朋友摇</a>
-                <a id="toBuy" href="{{buyUrl}}" class="btn-red">去购买</a>
+                <a id="toBuy" {{#sf-isUsed isUsed buyUrl}}{{/sf-isUsed}} >去购买</a>
             </div>
         {{/if}}
 
