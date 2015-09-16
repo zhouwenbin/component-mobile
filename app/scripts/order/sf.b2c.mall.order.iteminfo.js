@@ -159,15 +159,19 @@ define('sf.b2c.mall.order.iteminfo', [
                 request: JSON.stringify({
                     "couponCode": $('#selectCoupon').val(),
                     "integral": $("#pointUsed").val(),
+					"userIntegral": that.itemObj.attr('integral'),
                     "submitKey": that.itemObj.attr('submitKey')
                 })
             });
             if (this.itemObj.attr('submitKey') && (this.itemObj.attr('integral') > 0 || this.itemObj.attr('orderCouponItem.avaliableAmount') > 0)) {
                 return orderPriceReCalculate.sendRequest()
                     .done(function(data) {
-                        that.itemObj.attr('orderFeeItem', data.orderFeeItem);
-                        //输入框内的积分使用量
-                        that.itemObj.attr('usedIntegral', data.usedIntegral || 0);
+                        
+						that.itemObj.attr({
+							'orderFeeItem': data.orderFeeItem,
+							'usedIntegral': data.usedIntegral || 0,
+							'useIntegral': data.orderIntegral
+						  })
 
                     })
                     .fail(function(errorCode) {
