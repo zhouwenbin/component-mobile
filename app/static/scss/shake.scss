@@ -5,32 +5,32 @@ body{
 .shakelist{
 	background: url(../img/shake-bg.png) no-repeat center top;
 	background-size: cover;
-	padding: 146px 11px 0;
+	padding: 146px * 2 11px * 2 0;
 }
 .shakelist li{
 	display: flex;
 	background: #e3caad;
-	padding: 10px;
-	margin-bottom: 12px;
-	border-radius: 5px;
+	padding: 10px * 2;
+	margin-bottom: 12px * 2;
+	border-radius: 5px * 2;
 }
 .shakelist-c1{
 	background: #fff;
-	width: 80px;
-	height: 80px;
-	border-radius: 5px;
+	width: 80px * 2;
+	height: 80px * 2;
+	border-radius: 5px * 2;
 }
 .shakelist-c1 img{
-	max-width: 80px;
-	max-height: 80px;
-	border-radius: 5px;
+	max-width: 80px * 2;
+	max-height: 80px * 2;
+	border-radius: 5px * 2;
 }
 .shakelist-c2{
 	flex:1;
-	margin-left: 5px;
+	margin-left: 5px * 2;
 }
 .shakelist h2{
-	font-size: 14px;
+	font-size: 14px * 2;
 	color: #8d5d45;
 }
 .shakelist-c2r1{
@@ -40,15 +40,15 @@ body{
 }
 .shakelist-price,
 .shakelist-price2{
-	font-size: 10px;
-	height: 18px;
-	line-height: 18px;
+	font-size: 10px * 2;
+	height: 18px * 2;
+	line-height: 18px * 2;
 	background: #f7a934;
 	color: #9e231b;
 	text-align: center;
-	margin-top: 3px;
-	border-radius: 18px;
-	padding: 0 5px;
+	margin-top: 3px * 2;
+	border-radius: 18px * 2;
+	padding: 0 5px * 2;
 }
 .shakelist-price2{
 	background: #5e1f2d;
@@ -56,15 +56,15 @@ body{
 }
 .shakelist-btn{
 	display: inline-block;
-	width: 90px;
-	height: 30px;
-	line-height: 30px;
+	width: 90px * 2;
+	height: 30px * 2;
+	line-height: 30px * 2;
 	text-align: center;
 	color: #fff;
 	background: #ff5b54;
-	border-radius: 30px;
-	box-shadow: 0 2px #bc2b25;
-	font-size: 14px;
+	border-radius: 30px * 2;
+	box-shadow: 0 2px * 2 #bc2b25;
+	font-size: 14px * 2;
 	white-space: nowrap;
 }
 .shakelist-btn:visited{
@@ -72,9 +72,9 @@ body{
 }
 .shakelist-btn svg{
 	display: inline-block;
-	max-width: 25px;
-	max-height: 25px;
-	vertical-align: -7px;
+	max-width: 25px * 2;
+	max-height: 25px * 2;
+	vertical-align: -7px * 2;
 	fill: #fff;
 	transform:rotate(30deg);
 	animation: shake 2s infinite;
@@ -89,53 +89,53 @@ body{
 }
 
 .shaking{
-	padding-top: 25px;
+	padding-top: 25px * 2;
 }
 .shaking-r1{
 	display: flex;
 	justify-content:space-between;
-	font-size: 14px;
+	font-size: 14px * 2;
 	color: #8B572A;
-	margin: 0 30px 5px;
+	margin: 0 30px * 2 5px * 2;
 }
 .shaking-point{
 	display: flex;
 	justify-content:space-between;
-	height: 34px;
-	line-height: 34px;
+	height: 34px * 2;
+	line-height: 34px * 2;
 	background: #FFC70F;
-	border-radius: 34px;
+	border-radius: 34px * 2;
 	color: #fff;
-	box-shadow: 0 2px #EA9C37;
-	margin: 0 16px;
-	padding: 0 18px;
-	font-size: 24px;
-	text-shadow:0 2px #E89B42;
+	box-shadow: 0 2px * 2 #EA9C37;
+	margin: 0 16px * 2;
+	padding: 0 18px * 2;
+	font-size: 24px * 2;
+	text-shadow:0 2px * 2 #E89B42;
 }
 .shaking-img img{
-	width: 80px;
-	height: 80px;
+	width: 80px * 2;
+	height: 80px * 2;
 	position: absolute;
 	left: 50%;
 	transform:translate(-50%,0);
-	margin-top: -56px;
+	margin-top: -56px * 2;
 }
 .shaking-icon{
-	width: 190px;
-	height: 190px;
+	width: 190px * 2;
+	height: 190px * 2;
 	background: #F4DEC3;
 	border-radius: 50%;
 	position: relative;
-	margin: 72px auto 34px;
+	margin: 72px * 2 auto 34px * 2;
 }
 .shaking-icon svg{
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	width: 105px;
-	height: 138px;
-	margin-left: -53px;
-	margin-top: -69px;
+	width: 105px * 2;
+	height: 138px * 2;
+	margin-left: -53px * 2;
+	margin-top: -69px * 2;
 	fill: #fff;
 	transform:rotate(15deg);
 	animation: shake 2s infinite;
@@ -147,43 +147,43 @@ body{
 
 .shaked{
 	text-align: center;
-	padding-top: 40px;
+	padding-top: 40px * 2;
 	background: url(../img/shaked-bg.png) no-repeat;
 	background-size: cover;
 }
 .shaked dl{
-	margin-bottom: 15px;
+	margin-bottom: 15px * 2;
 }
 .shaked dt{
-	font-size: 14px;
+	font-size: 14px * 2;
 	color: #8B572A;
-	margin-bottom: 7px;
+	margin-bottom: 7px * 2;
 }
 .shaked dd{
-	font-size: 32px;
+	font-size: 32px * 2;
 	color: #FFC70F;
-	text-shadow:0 2px #EA9C37;
-	margin-bottom: 10px
+	text-shadow:0 2px * 2 #EA9C37;
+	margin-bottom: 10px * 2
 }
 .shaked-coupon,
 .shaked-note{
 	background: url(../svg/icon-shaked-coupon.svg) no-repeat;
-	width: 290px;
-	height: 127px;
+	width: 290px * 2;
+	height: 127px * 2;
 	display: flex;
 	align-items:center;
-	padding: 0 18px;
+	padding: 0 18px * 2;
 	text-align: left;
-	margin: 0 auto 67px;
+	margin: 0 auto 67px * 2;
 }
 .shaked-coupon-c2{
 	flex:1;
-	margin-left: 12px;
+	margin-left: 12px * 2;
 }
 .shaked-coupon h2{
-	font-size: 14px;
+	font-size: 14px * 2;
 	color: #fff;
-	margin-bottom: 5px;
+	margin-bottom: 5px * 2;
 }
 .shaked-note{
 	display: block;
@@ -203,99 +203,99 @@ body{
 	}
 }
 .shaked-coupon p{
-	font-size: 14px;
+	font-size: 14px * 2;
 	color: #AC2924;
 }
 .shaked-coupon-price{
 	text-align: right;
 	color: #fff;
-	font-size: 48px;
+	font-size: 48px * 2;
 }
 .shaked-coupon-price small{
-	font-size: 24px;
+	font-size: 24px * 2;
 	font-family: arial;
 }
 .shaked-coupon img{
-	width: 80px;
-	height: 80px;
+	width: 80px * 2;
+	height: 80px * 2;
 }
 .shaked-btns{
-	margin-bottom: 17px;
+	margin-bottom: 17px * 2;
 }
 a.btn-yellow,
 a.btn-red{
 	display: inline-block;
-	width: 125px;
-	height: 40px;
-	line-height: 40px;
-	border-radius: 40px;
-	font-size: 18px;
-	margin: 0 10px;
+	width: 125px * 2;
+	height: 40px * 2;
+	line-height: 40px * 2;
+	border-radius: 40px * 2;
+	font-size: 18px * 2;
+	margin: 0 10px * 2;
 }
 a.btn-yellow{
 	background: #FFC70F;
-	box-shadow: 0 2px #EB9D27;
+	box-shadow: 0 2px * 2 #EB9D27;
 	color: #BC6917;
 }
 a.btn-red{
 	color: #fff;
 	background: #FF5B54;
-	box-shadow: 0 2px #BC2B25;
+	box-shadow: 0 2px * 2 #BC2B25;
 }
 a.btn-red.grey{
 	background: #979DA9;
 	box-shadow: 0 2px #979DA9;
 }
 a.btn-big{
-	width: 192px;
+	width: 192px * 2;
 }
 .tooltip{
-	font-size: 16px;
+	font-size: 16px * 2;
 	color: #fff;
-	padding: 11px 23px;
-	border-radius: 8px;
+	padding: 11px * 2 23px * 2;
+	border-radius: 8px * 2;
 	white-space: nowrap;
 }
 .shaked-text{
-	font-size: 12px;
+	font-size: 12px * 2;
 	color: #8B572A;
 }
 
 .shake-share{
 	text-align: center;
-	padding-top: 52px;
+	padding-top: 52px * 2;
 	background: url(../img/shake-share-bg.png) no-repeat;
 	background-size: cover;         
 }
 .shake-share img{
-	width: 90px;
-	height: 90px;
+	width: 90px * 2;
+	height: 90px * 2;
 	border-radius: 50%;
 }
 .shake-share .btn-yellow{
-	font-size: 16px;
-	height: 30px;
-	line-height: 30px;
+	font-size: 16px * 2;
+	height: 30px * 2;
+	line-height: 30px * 2;
 	display: block;
-	width: 224px;
-	margin: -10px auto 39px;
+	width: 224px * 2;
+	margin: -10px * 2 auto 39px * 2;
 	position: relative;
 	z-index: 1;
 }
 .shake-share dl{
-	margin-bottom: 45px;
+	margin-bottom: 45px * 2;
 }
 .shake-share dt{
-	font-size: 14px;
+	font-size: 14px * 2;
 	color: #8B572A;
-	margin-bottom: 7px;
+	margin-bottom: 7px * 2;
 }
 .shake-share dd{
-	font-size: 32px;
+	font-size: 32px * 2;
 	color: #FFC70F;
-	text-shadow:0 2px #EA9C37;
-	margin-bottom: 10px
+	text-shadow:0 2px * 2 #EA9C37;
+	margin-bottom: 10px * 2
 }
 .shake-share p{
-	margin-top: 19px;
+	margin-top: 19px * 2;
 }
