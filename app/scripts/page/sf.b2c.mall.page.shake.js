@@ -163,7 +163,7 @@ define(
                 couponUrl: data.couponUrl,     //优惠券链接
                 couponCondition: data.couponCondition, //优惠券使用条件,
                 //buyUrl: 'http://' + window.location.hostname + '/detail/'+ options.ownData.itemId + '.html',  //去购买url
-                buyUrl: data.buyUrl,
+                buyUrl: data.couponUrl,
                 itemTitle: data.itemTitle,     //商品标题
                 couponPrice: data.couponPrice,    //优惠券价格
                 isUsed: data.isCouponAlreadyUsed,  //优惠券是否用过，true是用了 false是没用
@@ -370,6 +370,7 @@ define(
                 options.serverData.attr('shakeData.fightingCapacity', options.ownData.fighting);
                 options.serverData.attr('shakeData.ifOne', ifOne);
                 options.serverData.attr('shakeData.help', help);
+                options.serverData.attr('shakeData.buyUrl', data.couponUrl);
                 if ( !options.serverData.attr('shakeData.isReceiveCoupon') ){
                   options.serverData.attr('shakeData.canReceiveCoupon', data.canReceiveCoupon);
                   options.serverData.attr('shakeData.maxImpact', data.maxImpact);
@@ -477,6 +478,7 @@ define(
           var _this = this,
             dom = _this.element,
             couponId = Number(store.get('maxCoupon')),
+            options = _this.options,
             yCoupon = new YYYApi({
               couponId: couponId,
               receiveChannel: 'B2C',
@@ -486,7 +488,7 @@ define(
             });
           //alert(store.get('maxCoupon'));
           //alert(JSON.stringify({
-          //    couponId: couponId,
+          //    couponId: couponId,da
           //    receiveChannel: 'B2C',
           //    receiveWay: 'YYY',
           //    needSms: 0,
@@ -495,7 +497,7 @@ define(
           yCoupon
             .sendRequest()
             .done(function(data){
-
+              //
               $(dom).find('.tooltip.center')
                 .removeClass('hide');
               setTimeout(function(){
