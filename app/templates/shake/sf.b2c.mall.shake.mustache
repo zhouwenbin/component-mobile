@@ -2,22 +2,12 @@
 {{#shakeData}}
     <div id="shaking" class="shaking {{#sf-isReceiveCoupon isReceiveCoupon}}{{/sf-isReceiveCoupon}}">
         <div class="shaking-r1">
-            {{#if Yao}}
-                <div>当前影响力</div>
-                <div>当前手速</div>
-            {{else}}
-                <div>最大影响力</div>
-                <div>最大手速</div>
-            {{/if}}
-
+            <div>最大影响力</div>
+            <div>最大手速</div>
         </div>
         <div class="shaking-point">
-            <div>{{impact}}</div>
-            {{#if Yao}}
-                <div>{{fightingCapacity}}</div>
-            {{else}}
-                <div>{{maxFightingCapacity}}</div>
-            {{/if}}
+            <div>{{maxImpact}}</div>
+            <div>{{maxFightingCapacity}}</div>
         </div>
         <div class="shaking-img"><img src="http://img0.sfht.com/sf/bundefined/6f08491af313f159ee2db5c85b3f5fb8.jpg@162w_162h.jpg"></div>
         <div class="shaking-icon">
@@ -64,9 +54,9 @@
                 <dd>{{fightingCapacity}}</dd>
             {{else}}
                 <dt>最大影响力</dt>
-                <dd>{{impact}}人</dd>
+                <dd>{{maxImpact}}人</dd>
                 <dt>最大手速</dt>
-                <dd>{{mxFightingCapacity}}</dd>
+                <dd>{{maxFightingCapacity}}</dd>
             {{/if}}
 
         </dl>
@@ -91,7 +81,7 @@
                         <p>{{couponTitle}}</p>
                         <div class="shaked-coupon-price">
                             <small>¥</small>
-                            {{couponPrice}}
+                            {{itemSellPriceAfterCoupon}}
                         </div>
                     </div>
                 </div>
@@ -105,6 +95,7 @@
         {{else}}
             {{#if help}}
                 <a id="helpFriend" class="btn-red">继续帮摇</a>
+                <a id="lookCoupon" class="btn-yellow">查看我的券</a>
             {{/if}}
             {{#if isReceiveCoupon}}
 
@@ -124,7 +115,7 @@
         <p class="shaked-text">每日限领一张，与更多小伙伴一起摇！</p>
     </div>
     <div class="tooltip center hide">已成功放入我的优惠券</div>
-
+    <div id="noCoupon" class="tooltip center hide">优惠券已领完，请重试。</div>
 
 {{/shakeData}}
 

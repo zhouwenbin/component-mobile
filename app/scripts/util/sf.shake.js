@@ -101,9 +101,9 @@ define(
         end();
         //return arrY;
         var _this = this;
-        setTimeout(function () {
-          _this.listenShake(star, end, ing, id);
-        }, 5000);
+        //setTimeout(function () {
+        //  _this.listenShake(star, end, ing, id);
+        //}, 5000);
       }
     };
 
