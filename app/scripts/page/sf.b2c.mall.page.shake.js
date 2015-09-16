@@ -95,7 +95,7 @@ define(
           //console.log(shakeThis);
           //判断是否登陆
           if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-            window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.pathname);
+            window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.href);
             return false;
           }
 
@@ -151,12 +151,12 @@ define(
           shakeQuery.sendRequest()
             .done(function(data){
               //alert(JSON.stringify(data));
-              //console.log(data);
+              console.log(data);
               options.serverData.attr('shakeData',{
                 isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
                 //isReceiveCoupon: true,
-                maxFightingCapacity: data.maxFightingCapacity,  //当前最大战斗力
-                impact: data.maxImpact,    //当天最大影响力
+                maxFightingCapacity: data.maxFightingCapacity.toFixed(0),  //当前最大战斗力
+                maxImpact: data.maxImpact,    //当天最大影响力
                 imageUrl: data.itemImage,   //图片链接
                 couponTitle: data.couponTitle,   //优惠券标题
                 couponDateString: data.couponDateString,   //优惠券日期
@@ -166,7 +166,8 @@ define(
                 buyUrl: data.buyUrl,
                 itemTitle: data.itemTitle,     //商品标题
                 couponPrice: data.couponPrice,    //优惠券价格
-                isUsed: true,
+                isUsed: data.isCouponAlreadyUsed,  //优惠券是否用过，true是用了 false是没用
+                itemSellPriceAfterCoupon: data.itemSellPriceAfterCoupon / 100,
                 ifOne: false,
                 help: false,
                 Yao: false
@@ -181,7 +182,7 @@ define(
               $(dom).append(html);
             })
             .fail(function(err){
-              //alert(err);
+              alert(err);
               alert('查询失败');
              // alert('xxx');
             });
@@ -199,6 +200,7 @@ define(
 
         },
         shakeControl: function(){
+          //alert('让他摇');
           //开启摇晃监控
           var _this = this;
           if (shake.isSupport()){
@@ -310,12 +312,16 @@ define(
           //初始化借口
             shakeFinish,
             ifOne = false,
-            help = false
+            help = false,
+            para = {
+              title: '分享',
+              onclick: _this.sfBridge
+            }
             ;
           for (var i = yaoArrLen; i > 0; i--){
             total += Math.abs(yaoArr[i-1]);
           }
-          options.ownData.fighting = ((total / yaoArrLen) * 1000).toFixed(2);
+          options.ownData.fighting = ((total / yaoArrLen) * 1000).toFixed(0);
           //$('#store').empty().append(fighting);
           if ( options.ownData.fighting > maxFightVal ){
             store.set('maxFightVal', options.ownData.fighting);
@@ -348,7 +354,7 @@ define(
               if (data.impact  === 0){
                 ifOne = true;
               }else {
-                if (!data.canReceiveCoupon){
+                if (options.serverData.attr('shakeData.isReceiveCoupon')){
                   help = true;
                 }
               }
@@ -368,10 +374,11 @@ define(
                 options.serverData.attr('shakeData.itemImage', data.itemImage);
                 options.serverData.attr('shakeData.itemTitle', data.itemTitle);
                 options.serverData.attr('shakeData.couponTitle', data.couponTitle);
-                options.serverData.attr('shakeData.couponPrice', data.couponPrice);
+                options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.couponPrice);
                 options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
                 options.serverData.attr('shakeData.couponUrl', data.couponUrl);
                 options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
+
               }
 
               //options.serverData.attr('shakeData.itemTitle', data.itemTitle);
@@ -414,12 +421,21 @@ define(
               //可以分享了
               //options.ownData.num = 1;
               //alert(options.ownData.num);
-              _this.sfBridge();
+              setTimeout(function(){
+                _this.shakeControl();
+              }, 1000);
+              //alert('执行bridge前');
+             // _this.sfBridge();
+              //alert('执行bridge后');
+              window.bridge.run('SFNavigation', 'setRightButton', params, function(){}, function(){});
 
             })
             .fail(function(err){
               //alert(err);
               alert('结束失败');
+              setTimeout(function(){
+                _this.shakeControl();
+              }, 1000)
             });
         },
         //注册交互时间
@@ -440,6 +456,12 @@ define(
           $(dom).find('#shaking').removeClass('hide');
           $(dom).find('#shakend').addClass('hide');
           return false;
+        },
+        '#lookCoupon click':function(){
+          //查看我的券
+          var _this = this,
+            options = _this.options;
+          options.serverData.attr('shakeData.help', false);
         },
         '#imReceive click': function(){
           //请求优惠券
@@ -474,21 +496,26 @@ define(
             })
             .fail(function(err){
               //alert(err);
-              alert('优惠券已领完，请重试。')
+              $(dom).find('#noCoupon').removeClass('hide');
+              setTimeout(function(){
+                $(dom).find('#noCoupon').addClass('hide');
+              }, 1000);
             });
           //alert($(dom).find('.tooltip.center').html());
 
           return false;
         },
         sfBridge: function() {
+
           var _this = this,
             options = _this.options,
             url = 'http://' + window.location.hostname + '/shake-share.html#!'
                  + 'userId=' + options.ownData.cookieInfo
                  + '&date='+ options.ownData.formatDate
                  + '&itemId='+ options.ownData.itemId
-                 + '&couponId='+ options.serverData.attr('shareData').couponId,
-            params = {
+                 + '&couponId='+ options.serverData.attr('shareData.couponId');
+          alert(url);
+            var params = {
               "subject": '摇一摇',
               "description": '摇啊摇',
               "imageUrl": 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
@@ -510,6 +537,7 @@ define(
               // });
               console.log('error');
             };
+          alert(url);
           window.bridge.run('SocialSharing', 'share', params, success, error);
         }
     });
