@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>刮一刮 领奖页</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+	<!--头部-->
+	== Slim::Template.new('module/header.slim').render
+	<!--头部-->
+	<section class="scrape">
+		<div class="scrap-box">
+			<span class="text">刮开有惊喜</span>
+		</div>
+		<div class="scrape-times">
+			<p class="scrape-times-inner">你还有<span class="scrape-num">2</span>次刮奖机会</p>
+		</div>
+		<ul class="scrape-winner">
+			<li>小晓晓获得50元券</li>
+			<li>小YY获得500积分</li>
+			<li>小QQ获得100元券</li>
+		</ul>
+		<p class="scrape-tips">* 100%中奖，每天可刮3次</p>
+	</section>
+</body>
+</html>
