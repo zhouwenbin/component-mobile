@@ -80,7 +80,7 @@ define(
             }
           }
           yaoLen = arrYao.length;
-        }, 100);
+        }, 300);
         //return yaoData;
       },
       shakeStar: function (callback) {
