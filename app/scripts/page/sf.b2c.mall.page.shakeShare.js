@@ -28,30 +28,13 @@ define(
           var _this = this,
             dom = _this.element,
             options = _this.options,
-            href = window.location.href,
-            hrefNum = href.indexOf('#!'),
-            search = href.substring(hrefNum+3),
-            searchArr = search.split('&'),
-            searchVal,
             shareTpl = can.mustache(shakeShareTpl),
             html = '',
             Share;
-          for (var i = searchArr.length - 1; i >= 0; i--){
-            searchVal = searchArr[i].split('=');
-            if (searchVal[0] === 'userId'){
-              options.userData.userId = searchVal[1];
-            }
-            if (searchVal[0] === 'date'){
-              options.userData.date = searchVal[1];
-            }
-            if (searchVal[0] === 'itemId'){
-              options.userData.itemId = searchVal[1];
-            }
-            if (searchVal[0] === 'couponId'){
-              options.userData.couponId = searchVal[1];
-            }
-          }
-          console.log(options);
+          options.userData.userId = can.route.attr('userId');
+          options.userData.date = can.route.attr('date');
+          options.userData.itemId = can.route.attr('itemId');
+          //console.log(options);
           Share = new queryShakeApi({
             date: options.userData.date,
             userId: options.userData.userId ? options.userData.userId : 0,
@@ -66,7 +49,7 @@ define(
                 //isReceiveCoupon: true,
                 maxFightingCapacity: data.maxFightingCapacity,  //当前最大战斗力
                 maxImpact: data.maxImpact,    //当天最大影响力
-                imageUrl: data.imageUrl,   //图片链接
+                imageUrl: data.itemImage,   //图片链接
                 couponTitle: data.couponTitle,   //优惠券标题
                 couponDateString: data.couponDateString,   //优惠券日期
                 couponUrl: data.couponUrl,     //优惠券链接

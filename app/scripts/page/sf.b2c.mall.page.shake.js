@@ -18,6 +18,8 @@ define(
     'sf.shake',
     'sf.bridge',
     'sf.b2c.mall.widget.loading',
+    'sf.util',
+    'sf.b2c.mall.widget.message',
 
     'sf.b2c.mall.api.shake.queryShakeResult',
     'sf.b2c.mall.api.shake.startShake',
@@ -26,7 +28,7 @@ define(
 
     'text!template_shake'
   ],
-  function (can, $, $cookie, Faskclick, _, store, moment, SFFrameworkComm, SFConfig, shake, bridge, SFLoading, shakeQueryApi, shakeStarApi, shakeFinishApi, YYYApi, shakeTpl) {
+  function (can, $, $cookie, Faskclick, _, store, moment, SFFrameworkComm, SFConfig, shake, bridge, SFLoading, SFFn, SFmessage, shakeQueryApi, shakeStarApi, shakeFinishApi, YYYApi, shakeTpl) {
     'use strict';
 
     //注册环境是h5
@@ -194,7 +196,8 @@ define(
             });
 
           loadingCtrl.hide();
-          this.shakeControl();
+          _this.shakeControl();
+          _this.isToShareFn();
           //测试
           //var tpl = can.mustache(shakeTmp),
           //  data = new can.Map({
@@ -534,7 +537,7 @@ define(
                  + 'userId=' + options.ownData.cookieInfo
                  + '&date='+ options.ownData.formatDate
                  + '&itemId='+ options.ownData.itemId;
-         // alert(url);
+            alert(url);
             var params = {
               "subject": '摇一摇',
               "description": '摇啊摇',
@@ -559,6 +562,37 @@ define(
             };
           //alert(url);
           window.bridge.run('SocialSharing', 'share', params, success, error);
+        },
+        isToShareFn: function(element, event) {
+          //判断app版本
+          var version = can.route.attr('version');
+          version = version ? version : '1.4.0';
+          var verArr = version.split('.');
+          var verInt = verArr[0] + verArr[1] + verArr[2];
+          if (SFFn.isMobile.APP()) {
+            if (SFFn.isMobile.iOS() && verInt >= 150) {
+              alert(verInt);
+              //this.sfBridge();
+            } else if (SFFn.isMobile.iOS() && verInt < 150) {
+              var message = new SFmessage(null, {
+                'tip': '当前版本不支持该活动，请下载新版本',
+                'type': 'success',
+                'okFunction': function() {}
+              });
+            }
+
+            if (SFFn.isMobile.Android() && verInt >= 140) {
+              //this.sfBridge();
+              alert(verInt);
+            } else if (SFFn.isMobile.Android() && verInt < 140) {
+              var message = new SFmessage(null, {
+                'tip': '当前版本不支持该活动，请下载新版本',
+                'type': 'success',
+                'okFunction': function () {
+                }
+              });
+            }
+          }
         }
     });
     new shakeActivity('#sh-b2c-mall-shake');
