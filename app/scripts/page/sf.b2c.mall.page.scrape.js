@@ -8,14 +8,19 @@ define(
     'can',
     'underscore',
     'store',
-    'sf.b2c.mall.framework.comm'
+    'moment',
+    'sf.b2c.mall.framework.comm',
+    'sf.b2c.mall.api.coupon.isProCardRcved',
+    'sf.b2c.mall.api.coupon.randomRcvCard',
+    'sf.b2c.mall.api.b2cmall.getItemInfo'
   ],
 
-  function($, can, _, store, SFFrameworkComm) {
+  function($, can, _, store, moment, SFFrameworkComm, SFCouponIsProCardRcved, SFCouponRandomRcvCard, SFB2cMallGetItemInfo) {
     SFFrameworkComm.register(3);
 
-    var NO_CHANCE = '今天你已经没有机会了，明天再来吧';
+    var NO_CHANCE = '今天已经没有机会了，明天再来';
     var LIMIT_TIME = 3;
+    var ACTIVITY_NAME = '刮刮乐';
 
     var SFPage = can.Control.extend({
 
@@ -26,7 +31,7 @@ define(
         this.prepare();
 
         if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-          this.setTimeUI();
+          this.setUI();
         }else{
           window.location.href = '/login.html?from='+encodeURIComponent(window.location.href);
         }
@@ -42,13 +47,25 @@ define(
         store.set(userId + '_times', times);
       },
 
-      setTimeUI: function () {
+      setUI: function () {
+        this.times = this.getUserTimes();
         var times = LIMIT_TIME - this.getUserTimes();
         if (times > 0) {
           $('.scrape-num').text(times);
         }else{
           $('.scrape-times-inner').text(NO_CHANCE);
-          this.setResultImage('nochange');
+          this.result = this.setResultImage('nochange');
+        }
+      },
+
+      getItemid: function (url) {
+        var pathname = url;
+        var pathArr = /\d+/g.exec(pathname);
+
+        if (typeof pathArr != 'undefined' && null != pathArr && pathArr.length > 0) {
+          return pathArr[0];
+        } else {
+          return;
         }
       },
 
@@ -56,33 +73,86 @@ define(
         var map = {
           'success': function () {
 
+            var params = {};
+
+            var success = function (data) {
+              if (data && data.cardInfo) {
+                params.startTime = moment(data.cardInfo.startTime).format('YYYY-MM-DD');
+                params.endTime = moment(data.cardInfo.endTime).format('YYYY-MM-DD');
+                params.title = data.cardInfo.title;
+                params.url = data.cardInfo.customUrl;
+                params.itemid = this.getItemid(data.cardInfo.customUrl);
+              }
+            }
+
+            var anotherRequest = function () {
+              return this.requestHotData(params.itemid);
+            }
+
+            var paint = function (data) {
+              params.imgUrl = data.skuInfo.images[0].thumbImgUrl;
+              params.ptitle = data.skuInfo.title;
+
+              var templateText = '<div class="scrape-goods"><div class="scrape-goods-c1"><img src="{{imgUrl}}"></div><div class="scrape-goods-c2"><p class="scrape-ticket-goods">{{ptitle}}</p><p class="scrape-ticket">{{title}}</p><p class ="scrape-ticket-times">有效期{{startTime}}至{{endTime}}</p></div></div><div class="scrape-btn-box"><a href="{{url}}" class="btn">马上使用</a></div>';
+              var render = can.view.mustache(templateText);
+
+              $('.scrape-box').append(render(params))
+            }
+
+            this.requestGetUserPrice()
+              .done(_.bind(success, this))
+              .then(_.bind(anotherRequest, this))
+              .done(_.bind(paint, this))
+
+            return 'success';
           },
 
           'fail': function () {
-
+            if ($('.scrape-box .scrape-ticket-none-bg').length == 0 ) {
+              $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div><div class="scrape-btn-box"><a href="javascript:window.location.reload(true)" class="btn">再刮一次</a></div>').addClass('scrape-ticket-none')
+            }
+            return 'fail';
           },
 
           'nochange': function () {
-            $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div>').addClass('scrape-ticket-none')
+            if ($('.scrape-box .scrape-ticket-none-bg').length == 0 ) {
+              $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div><div class="scrape-btn-box"><a href="/index.html" class="btn">返回首页</a></div>').addClass('scrape-ticket-none')
+            }
+            return 'nochange';
           }
         }
 
         var fn = map[key];
 
         if (_.isFunction(fn)) {
-          fn();
+          return fn.call(this);
         }
 
       },
 
+      setResult: function () {
+
+        var success = function (data) {
+          var isSetPrice = this.getPriceResult(data.value);
+          this.result = isSetPrice ? this.setResultImage('success') :  this.setResultImage('fail');
+        };
+
+        var fail = function(){};
+
+        this.requestIsUserGetPrice()
+          .done(_.bind(success, this))
+          .fail(fail)
+      },
+
       getPriceResult: function (isGetPrice) {
-        var time = getUserTimes();
+        var time = this.times;
         if (isGetPrice) {
           return false;
         }else if (time == (LIMIT_TIME - 1) && !isGetPrice) {
           return true;
         }else{
-          return Math.random() < 0.5;
+          // return Math.random() < 0.5;
+          return true
         }
       },
 
@@ -90,7 +160,22 @@ define(
        * @todo  更新.scrape-winner-list下用户获奖信息
        */
       requestUserListForPrice: function () {
-        // 更新.scrape-winner-list下信息
+        // 更新.scrape-winner-list下用户获奖信息
+      },
+
+      requestHotData: function (itemid) {
+        var def = can.Deferred();
+
+        var request = new SFB2cMallGetItemInfo({itemId: itemid});
+        request.sendRequest()
+          .done(function (data) {
+            def.resolve(data);
+          })
+          .fail(function () {
+            def.reject();
+          })
+
+        return def;
       },
 
       /**
@@ -98,6 +183,32 @@ define(
        */
       requestIsUserGetPrice: function () {
         // 获取用户是否获奖的信息,并且设置背后图片
+        var def = can.Deferred();
+
+        var request = new SFCouponIsProCardRcved({proName: ACTIVITY_NAME});
+        request.sendRequest()
+          .done(function (data) {
+            def.resolve(data);
+          })
+          .fail(function () {
+            def.reject();
+          })
+
+        return def;
+      },
+
+      requestGetUserPrice: function () {
+        var def = can.Deferred();
+        var request = new SFCouponRandomRcvCard({proName: ACTIVITY_NAME});
+        request.sendRequest()
+          .done(function (data) {
+            def.resolve(data);
+          })
+          .fail(function () {
+            def.reject();
+          })
+
+        return def;
       },
 
       prepare: function() {
@@ -128,16 +239,18 @@ define(
         var offsetY = canvas.offsetTop;
 
         var mousedown = false;
+        var starttime = null;
 
         function eventDown(e) {
           e.preventDefault();
           mousedown = true;
 
           if (startlock) {
+            starttime = Date.now();
             startlock = !startlock;
-            var times = this.getUserTimes();
+            var times = this.times;
             this.setUserTimes(++times);
-            this.requestIsUserGetPrice();
+            this.setResult();
           }
         }
 
@@ -159,6 +272,10 @@ define(
             ctx.arc(posx / 2, posy / 2, 10, 0, Math.PI * 2);
             ctx.fill();
 
+            var current = Date.now();
+            if (current - starttime > 2000) {
+              $('canvas').hide();
+            }
           };
         }
 
@@ -166,7 +283,7 @@ define(
         canvas.addEventListener('touchend', _.bind(eventUp, this));
         canvas.addEventListener('touchmove', _.bind(eventMove, this));
       }
-    })
+    });
 
-
-  })
+    new SFPage('body');
+  });
