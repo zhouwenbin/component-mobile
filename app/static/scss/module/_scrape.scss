@@ -15,7 +15,7 @@ body{
 }
 .scrape-box{
 	background: url(#{$bg-url}scrape/scrape-box.png) center bottom no-repeat;
-	padding: 20px 22px 38px;
+	padding: 20px 22px 26px;
 	height: 332px;
 }
 .scrape-box .text{
@@ -125,7 +125,6 @@ body{
 	color: #FFF0B4;
 }
 .scrape-ticket-box{
-	padding: 10px 30px 26px;
 	color: #333;
 	.btn-box{
 		padding: 0 60px;
@@ -133,6 +132,7 @@ body{
 }
 .scrape-goods{
 	display: flex;
+	margin-top: -10px;
 }
 .scrape-goods-c1{
 	padding-top: 10px;
