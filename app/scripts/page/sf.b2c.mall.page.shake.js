@@ -315,7 +315,7 @@ define(
             shakeFinish,
             ifOne = false,
             help = false,
-            para = {
+            params = {
               title: '分享',
               onclick: _this.sfBridge
             }
