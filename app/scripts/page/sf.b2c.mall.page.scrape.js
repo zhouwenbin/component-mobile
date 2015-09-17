@@ -151,8 +151,7 @@ define(
         }else if (time == (LIMIT_TIME - 1) && !isGetPrice) {
           return true;
         }else{
-          // return Math.random() < 0.5;
-          return true
+          return Math.random() < 0.5;
         }
       },
 
