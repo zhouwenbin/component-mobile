@@ -192,8 +192,6 @@ body{
 	line-height: 2;
 	text-align: center;
 	background: none;
-
-
 	p{
 		font-size: 18px * 2;
 		color: #8B572A;
@@ -247,6 +245,11 @@ a.btn-red.grey{
 	background: #979DA9;
 	box-shadow: 0 2px #979DA9;
 }
+.login-yao a.btn-yellow{
+	text-align: center;
+	display: block;
+	margin: 35% auto 0;
+}
 a.btn-big{
 	width: 192px * 2;
 }
@@ -258,6 +261,7 @@ a.btn-big{
 	white-space: nowrap;
 }
 .shaked-text{
+	padding-top: 12px * 2;
 	font-size: 12px * 2;
 	color: #8B572A;
 }

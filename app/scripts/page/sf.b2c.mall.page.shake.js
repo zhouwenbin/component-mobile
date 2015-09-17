@@ -95,12 +95,14 @@ define(
           //console.log(shakeThis);
           //判断是否登陆
           if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+            $(this.element).append('<div class="shaked-btns login-yao"><a class="btn-yellow" href="'+ SFConfig.setting.link.login + '&from=' + escape(window.location.href) +'">去登录</a></div>');
             window.location.href = SFConfig.setting.link.login + '&from=' + escape(window.location.href);
             return false;
           }
 
           //alert(location.search);
           //显示蒙层
+          $(this.element).empty();
           loadingCtrl.show();
           this.render();
         },
@@ -148,9 +150,10 @@ define(
             couponId: options.ownData.couponId || 0,
             itemId: options.ownData.itemId
           });
+          alert(options.ownData.itemId);
           shakeQuery.sendRequest()
             .done(function(data){
-              //alert(JSON.stringify(data));
+              alert(JSON.stringify(data));
               console.log(data);
               options.serverData.attr('shakeData',{
                 isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
@@ -227,7 +230,8 @@ define(
             shakeStar,
             gps,
             clock = true,
-            clockFun = function(){
+            clockFun = function(err){
+              alert(err);
               clock = true;
             },
           //alert(_this);
@@ -236,7 +240,7 @@ define(
                 return;
               }
               clock = false;
-              //alert(JSON.stringify(data));
+              alert(JSON.stringify(data));
               if (_.isArray(data)){
                 options.ownData.locationType = 'GCJ';
                 gps  = data[0];
@@ -248,7 +252,7 @@ define(
                 longitude: gps.longitude,
                 latitude: gps.latitude
               };
-              //alert(JSON.stringify(_this.options.location));
+              //alert(JSON.stringify(_this.options.ownData.location));
               //alert(_this.options.locationType);
               //隐藏多余的结束摇dom
               //$(_this.element).find('.shaked.help').addClass('hide');
@@ -319,7 +323,7 @@ define(
           for (var i = yaoArrLen; i > 0; i--){
             total += Math.abs(yaoArr[i-1]);
           }
-          options.ownData.fighting = ((total / yaoArrLen) * 1000).toFixed(0);
+          options.ownData.fighting = ((total / yaoArrLen) * 100).toFixed(0);
           //$('#store').empty().append(fighting);
           if ( options.ownData.fighting > maxFightVal ){
             store.set('maxFightVal', options.ownData.fighting);
@@ -341,7 +345,7 @@ define(
               .done(function(data){
                 $(dom).find('#matching').addClass('hide');
                 //alert('abc');
-                //alert(JSON.stringify(data));
+                alert(JSON.stringify(data));
                 //alert(options.ownData.num);
 
                 //options.serverData.attr('shakeData', {
@@ -367,7 +371,7 @@ define(
                 options.serverData.attr('shakeData.ifOne', ifOne);
                 options.serverData.attr('shakeData.help', help);
                 options.serverData.attr('shakeData.buyUrl', data.couponUrl);
-                if ( !options.serverData.attr('shakeData.isReceiveCoupon') ){
+                if ( options.serverData.attr('shakeData.canReceiveCoupon') ){
                   options.serverData.attr('shakeData.canReceiveCoupon', data.canReceiveCoupon);
                   options.serverData.attr('shakeData.maxImpact', data.maxImpact);
                   options.serverData.attr('shakeData.maxFightingCapacity', data.maxFightingCapacity);
@@ -377,12 +381,13 @@ define(
                   options.serverData.attr('shakeData.itemImage', data.itemImage);
                   options.serverData.attr('shakeData.itemTitle', data.itemTitle);
                   options.serverData.attr('shakeData.couponTitle', data.couponTitle);
-                  options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.couponPrice);
+                  options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.itemSellPriceAfterCoupon);
                   options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
                   options.serverData.attr('shakeData.couponUrl', data.couponUrl);
                   options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
 
                 }
+               // alert();
 
                 //options.serverData.attr('shakeData.itemTitle', data.itemTitle);
 
@@ -431,7 +436,6 @@ define(
                 // _this.sfBridge();
                 //alert('执行bridge后');
 
-                window.bridge.run('SFNavigation', 'setRightButton', '分享', function(){_this.sfBridge();}, function(){});
 
               })
               .fail(function(err){
@@ -496,11 +500,13 @@ define(
             .sendRequest()
             .done(function(data){
               //
-              $(dom).find('.tooltip.center')
+              options.serverData.attr('shakeData.canReceiveCoupon', false);
+              $(dom).find('#getCoupon')
                 .removeClass('hide');
               setTimeout(function(){
-                $(dom).find('.tooltip.center').hide(500);
+                $(dom).find('#getCoupon').addClass('hide');
               }, 1000);
+              window.bridge.run('SFNavigation', 'setRightButton', '分享', function(){_this.sfBridge();}, function(){});
               $(this.element).find('.shaked-btns.to-buy').removeClass('hide');
             })
             .fail(function(err){
@@ -521,8 +527,7 @@ define(
             url = 'http://' + window.location.hostname + '/shake-share.html#!'
                  + 'userId=' + options.ownData.cookieInfo
                  + '&date='+ options.ownData.formatDate
-                 + '&itemId='+ options.ownData.itemId
-                 + '&couponId='+ options.serverData.attr('shareData.couponId');
+                 + '&itemId='+ options.ownData.itemId;
          // alert(url);
             var params = {
               "subject": '摇一摇',
