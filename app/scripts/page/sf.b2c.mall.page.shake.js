@@ -150,11 +150,11 @@ define(
             couponId: options.ownData.couponId || 0,
             itemId: options.ownData.itemId
           });
-          alert(options.ownData.itemId);
+          //alert(options.ownData.itemId);
           shakeQuery.sendRequest()
             .done(function(data){
-              alert(JSON.stringify(data));
-              console.log(data);
+              //alert(JSON.stringify(data));
+              //console.log(data);
               options.serverData.attr('shakeData',{
                 isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
                 //isReceiveCoupon: true,
@@ -185,7 +185,7 @@ define(
               $(dom).append(html);
             })
             .fail(function(err){
-              alert(err);
+              //alert(err);
               alert('查询失败');
              // alert('xxx');
             });
@@ -231,7 +231,7 @@ define(
             gps,
             clock = true,
             clockFun = function(err){
-              alert(err);
+              //alert(err);
               clock = true;
             },
           //alert(_this);
@@ -240,7 +240,7 @@ define(
                 return;
               }
               clock = false;
-              alert(JSON.stringify(data));
+              //alert(JSON.stringify(data));
               if (_.isArray(data)){
                 options.ownData.locationType = 'GCJ';
                 gps  = data[0];
@@ -275,14 +275,14 @@ define(
                 })
                 .fail(function(err){
                   //alert(err);
-                  alert('网络不稳定，请在哟');
+                  alert('网络不稳定，请在摇');
 
                 });
 
               window.bridge.run('SFLocation', 'stop', null, clockFun, clockFun);
             },
             gpsError = function(data){
-              console.log(data);
+              //console.log(data);
               window.bridge.run('SFLocation', 'stop', null, clockFun, clockFun);
             }
             ;
@@ -345,7 +345,7 @@ define(
               .done(function(data){
                 $(dom).find('#matching').addClass('hide');
                 //alert('abc');
-                alert(JSON.stringify(data));
+                //alert(JSON.stringify(data));
                 //alert(options.ownData.num);
 
                 //options.serverData.attr('shakeData', {
