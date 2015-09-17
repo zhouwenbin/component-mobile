@@ -7572,7 +7572,7 @@ body {
 }
 
 .scrape-ticket-none-bg .icon {
-    background: #fff url(http://img.sfht.com/sfhth5/1.1.336/img/scrape/cry.png) center 0 no-repeat;
+    background: #fff url(/img/scrape/cry.png) center 0 no-repeat;
     width: 118px;
     height: 144px
 }

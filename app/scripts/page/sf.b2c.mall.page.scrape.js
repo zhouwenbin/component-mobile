@@ -226,7 +226,7 @@ define(
           ctx.fillRect(0, 0, width * 2, height * 2);
 
           var image = new Image()
-          image.src = "static/img/scrape/sracpe-text.png"
+          image.src = "/img/scrape/sracpe-text.png"
           ctx.drawImage(image, 0, 0);
 
           ctx.globalCompositeOperation = 'destination-out';
