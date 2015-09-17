@@ -104,6 +104,7 @@ define(
 
           //alert(location.search);
           //显示蒙层
+          this.isToShareFn();
           $(this.element).empty();
           loadingCtrl.show();
           this.render();
@@ -153,6 +154,9 @@ define(
             itemId: options.ownData.itemId
           });
           //alert(options.ownData.itemId);
+          if( options.ownData.andriod ){
+            return;
+          }
           shakeQuery.sendRequest()
             .done(function(data){
               //alert(JSON.stringify(data));
@@ -197,7 +201,7 @@ define(
 
           loadingCtrl.hide();
           _this.shakeControl();
-          _this.isToShareFn();
+
           //测试
           //var tpl = can.mustache(shakeTmp),
           //  data = new can.Map({
@@ -281,7 +285,7 @@ define(
                 })
                 .fail(function(err){
                   //alert(err);
-                  alert('网络不稳定，请在摇');
+                  alert('网络不稳定，请再摇');
 
                 });
 
@@ -370,6 +374,7 @@ define(
                     help = true;
                   }
                 }
+                //alert(options.serverData.attr('shakeData.isReceiveCoupon');
                 //alert(help);
                 //alert(data.canReceiveCoupon);
                 options.serverData.attr('shakeData.Yao', true);
@@ -565,6 +570,8 @@ define(
         },
         isToShareFn: function(element, event) {
           //判断app版本
+          var _this = this,
+            options = _this.options;
           var version = can.route.attr('version');
           version = version ? version : '1.4.0';
           var verArr = version.split('.');
@@ -577,7 +584,9 @@ define(
               var message = new SFmessage(null, {
                 'tip': '当前版本不支持该活动，请下载新版本',
                 'type': 'success',
-                'okFunction': function() {}
+                'okFunction': function() {
+                  window.location.href='http://' + window.location.hostname + '/app.html';
+                }
               });
             }
 
@@ -585,10 +594,13 @@ define(
               //this.sfBridge();
               //alert(verInt);
             } else if (SFFn.isMobile.Android() && verInt < 140) {
+              options.ownData.andriod = true;
               var message = new SFmessage(null, {
                 'tip': '当前版本不支持该活动，请下载新版本',
                 'type': 'success',
                 'okFunction': function () {
+                  //alert(11);
+                  window.location.href='http://' + window.location.hostname + '/app.html';
                 }
               });
             }
