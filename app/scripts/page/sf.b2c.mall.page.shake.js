@@ -236,7 +236,7 @@ define(
                 return;
               }
               clock = false;
-              //alert(JSON.stringify(data));
+              alert(JSON.stringify(data));
               if (_.isArray(data)){
                 options.ownData.locationType = 'GCJ';
                 gps  = data[0];
@@ -431,7 +431,7 @@ define(
                 // _this.sfBridge();
                 //alert('执行bridge后');
 
-                window.bridge.run('SFNavigation', 'setRightButton', '分享', _this.sfBridge, function(){});
+                window.bridge.run('SFNavigation', 'setRightButton', '分享', function(){_this.sfBridge();}, function(){});
 
               })
               .fail(function(err){
@@ -447,6 +447,7 @@ define(
         //注册交互时间
         '#reYao click': function(){
           //放弃重摇
+          window.bridge.run('SFNavigation', 'setRightButton', '', function(){}, function(){});
           var _this = this,
             dom = _this.element;
           //$(dom).find('.shaked-btns').addClass('hide');
@@ -456,6 +457,7 @@ define(
         },
         '#helpFriend click': function(){
           //帮摇
+          window.bridge.run('SFNavigation', 'setRightButton', '', function(){}, function(){});
           var _this = this,
             dom = _this.element;
           //$(dom).find('.shaked-btns').addClass('hide');
@@ -521,7 +523,7 @@ define(
                  + '&date='+ options.ownData.formatDate
                  + '&itemId='+ options.ownData.itemId
                  + '&couponId='+ options.serverData.attr('shareData.couponId');
-          alert(url);
+         // alert(url);
             var params = {
               "subject": '摇一摇',
               "description": '摇啊摇',
@@ -544,7 +546,7 @@ define(
               // });
               console.log('error');
             };
-          alert(url);
+          //alert(url);
           window.bridge.run('SocialSharing', 'share', params, success, error);
         }
     });
