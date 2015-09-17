@@ -585,7 +585,7 @@ define(
                 'tip': '当前版本不支持该活动，请下载新版本',
                 'type': 'success',
                 'okFunction': function() {
-                  _this.openApp('sfht://');
+                  window.location.href='http://' + window.location.hostname + '/index.html';
                 }
               });
             }
@@ -599,8 +599,7 @@ define(
                 'tip': '当前版本不支持该活动，请下载新版本',
                 'type': 'success',
                 'okFunction': function () {
-                  //alert(11);
-                  _this.openApp('sfht://');
+                  window.location.href='http://' + window.location.hostname + '/index.html';
                 }
               });
             }
