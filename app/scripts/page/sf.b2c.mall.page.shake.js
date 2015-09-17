@@ -314,11 +314,7 @@ define(
           //初始化借口
             shakeFinish,
             ifOne = false,
-            help = false,
-            params = {
-              title: '分享',
-              onclick: _this.sfBridge
-            }
+            help = false
             ;
           for (var i = yaoArrLen; i > 0; i--){
             total += Math.abs(yaoArr[i-1]);
@@ -435,7 +431,7 @@ define(
                 // _this.sfBridge();
                 //alert('执行bridge后');
 
-                window.bridge.run('SFNavigation', 'setRightButton', params, function(){}, function(){});
+                window.bridge.run('SFNavigation', 'setRightButton', '分享', _this.sfBridge, function(){});
 
               })
               .fail(function(err){
