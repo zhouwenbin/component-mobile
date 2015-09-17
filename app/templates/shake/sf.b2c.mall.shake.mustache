@@ -98,17 +98,18 @@
                     <a id="helpFriend" class="btn-red">继续帮摇</a>
                     <a id="lookCoupon" class="btn-yellow">查看我的券</a>
                 </div>
-            {{/if}}
-            {{#if canReceiveCoupon}}
-                <div class="shaked-btns buy ">
-                    <a id="reYao" class="btn-yellow">放弃重摇</a>
-                    <a id="imReceive" class="btn-red">立刻领取</a>
-                </div>
             {{else}}
-                <div class="shaked-btns help">
-                    <a id="helpFriend" class="btn-yellow">帮朋友摇</a>
-                    <a id="toBuy" {{#sf-isUsed isUsed buyUrl}}{{/sf-isUsed}} >去购买</a>
-                </div>
+                {{#if canReceiveCoupon}}
+                    <div class="shaked-btns buy ">
+                        <a id="reYao" class="btn-yellow">放弃重摇</a>
+                        <a id="imReceive" class="btn-red">立刻领取</a>
+                    </div>
+                {{else}}
+                    <div class="shaked-btns help">
+                        <a id="helpFriend" class="btn-yellow">帮朋友摇</a>
+                        <a id="toBuy" {{#sf-isUsed isUsed buyUrl}}{{/sf-isUsed}} >去购买</a>
+                    </div>
+                {{/if}}
             {{/if}}
 
 
