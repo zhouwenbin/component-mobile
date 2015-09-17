@@ -54,7 +54,8 @@ define(
                 couponDateString: data.couponDateString,   //优惠券日期
                 couponUrl: data.couponUrl,     //优惠券链接
                 couponCondition: data.couponCondition, //优惠券使用条件
-                link: '摇啊摇'
+                link: '摇啊摇',
+                itemSellPriceAfterCoupon: data.itemSellPriceAfterCoupon / 100
               });
 
               html = shareTpl(options.serverData);

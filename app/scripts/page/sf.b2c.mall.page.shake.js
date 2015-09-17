@@ -537,7 +537,7 @@ define(
                  + 'userId=' + options.ownData.cookieInfo
                  + '&date='+ options.ownData.formatDate
                  + '&itemId='+ options.ownData.itemId;
-            alert(url);
+            //alert(url);
             var params = {
               "subject": '摇一摇',
               "description": '摇啊摇',
