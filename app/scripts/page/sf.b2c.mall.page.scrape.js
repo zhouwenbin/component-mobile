@@ -39,12 +39,12 @@ define(
 
       getUserTimes: function () {
         var userId = $.fn.cookie('userId');
-        return store.get(userId + '_times') || 0;
+        return store.get(moment(Date.now()).format('YYYY_MM_DD_')+userId + '_times') || 0;
       },
 
       setUserTimes: function (times) {
         var userId = $.fn.cookie('userId');
-        store.set(userId + '_times', times);
+        store.set(moment(Date.now()).format('YYYY_MM_DD_')+userId + '_times', times);
       },
 
       setUI: function () {
