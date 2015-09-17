@@ -183,6 +183,9 @@ define(
               html = shakeTp(options.serverData, _this.helpers);
               //alert(html);
               $(dom).append(html);
+              if (data.isReceiveCoupon){
+                window.bridge.run('SFNavigation', 'setRightButton', '分享', function(){_this.sfBridge();}, function(){});
+              }
             })
             .fail(function(err){
               //alert(err);
@@ -360,18 +363,20 @@ define(
                 if (data.impact  === 0){
                   ifOne = true;
                 }else {
-                  if (options.serverData.attr('shakeData.isReceiveCoupon')){
+                  if (!data.canReceiveCoupon){
                     help = true;
                   }
                 }
-                //alert(ifOne);
+                //alert(help);
+                //alert(data.canReceiveCoupon);
                 options.serverData.attr('shakeData.Yao', true);
                 options.serverData.attr('shakeData.impact', data.impact);
                 options.serverData.attr('shakeData.fightingCapacity', options.ownData.fighting);
                 options.serverData.attr('shakeData.ifOne', ifOne);
                 options.serverData.attr('shakeData.help', help);
-                options.serverData.attr('shakeData.buyUrl', data.couponUrl);
-                if ( options.serverData.attr('shakeData.canReceiveCoupon') ){
+
+                if ( data.canReceiveCoupon ){
+                  options.serverData.attr('shakeData.buyUrl', data.couponUrl);
                   options.serverData.attr('shakeData.canReceiveCoupon', data.canReceiveCoupon);
                   options.serverData.attr('shakeData.maxImpact', data.maxImpact);
                   options.serverData.attr('shakeData.maxFightingCapacity', data.maxFightingCapacity);
@@ -381,14 +386,14 @@ define(
                   options.serverData.attr('shakeData.itemImage', data.itemImage);
                   options.serverData.attr('shakeData.itemTitle', data.itemTitle);
                   options.serverData.attr('shakeData.couponTitle', data.couponTitle);
-                  options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.itemSellPriceAfterCoupon);
+                  options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.itemSellPriceAfterCoupon / 100);
                   options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
                   options.serverData.attr('shakeData.couponUrl', data.couponUrl);
                   options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
 
                 }
                // alert();
-
+                options.serverData.attr('shakeData.buyUrl');
                 //options.serverData.attr('shakeData.itemTitle', data.itemTitle);
 
                 //alert(JSON.stringify(options.serverData.attr('shakeData')));
@@ -474,6 +479,7 @@ define(
           var _this = this,
             options = _this.options;
           options.serverData.attr('shakeData.help', false);
+          window.bridge.run('SFNavigation', 'setRightButton', '分享', function(){_this.sfBridge();}, function(){});
         },
         '#imReceive click': function(){
           //请求优惠券
