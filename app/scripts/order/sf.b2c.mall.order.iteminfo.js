@@ -343,11 +343,8 @@ define('sf.b2c.mall.order.iteminfo', [
             });
             return orderRender.sendRequest()
                 .done(function(orderRenderItem) {
-                    alert(1);
                     that.itemObj.attr(orderRenderItem);
                     //积分抵扣多少钱
-                    alert(that.itemObj.attr('integral'));
-                    alert(that.itemObj.attr('proportion'));
                     that.itemObj.attr('equalMoney', that.itemObj.attr('integral') / that.itemObj.attr('proportion') || 0);
 
                 })
