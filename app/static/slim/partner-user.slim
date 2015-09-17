@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>未达标小伙伴</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+	<div class="partner-user-bg">
+		== Slim::Template.new('module/header.slim').render
+		<div class="partner-user-inner">
+			<div class="partner-tips-box">
+				<div class="center">
+					<p>有小伙伴注册了未下单，赶紧让他们下单吧！</p>
+					<span>（注册后15日内下单有效）</span>
+				</div>
+			</div>
+			== Slim::Template.new('module/partner-user.slim').render
+		</div>
+	</div>
+</body>
+</html>

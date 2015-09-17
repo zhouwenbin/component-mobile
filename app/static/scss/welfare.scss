@@ -285,9 +285,11 @@
 	text-align: center;
 	background-color: #efecec;
 	.shareViaWechat{
-		img{
-			width: 60px;
-		}
+		display: inline-block;
+		width: 60px;
+		height: 60px;
+		background: url(http://img0.sfht.com/img/12a78bd783af6d8680521d6f4a4909a2.jpg) no-repeat;
+		background-size: 60px auto;
 	}
 	z-index: 6;
 	position: fixed;

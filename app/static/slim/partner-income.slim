@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>收入明细</title>
+	<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+	== Slim::Template.new('module/header.slim').render
+	<div class="partner-income-tab">
+		<span>收入明细</span>
+		<span>
+			== Slim::Template.new('../svg/icon-switch.svg').render
+			<a href="">切换至近7日收益</a>
+		</span>
+	</div>
+	== Slim::Template.new('module/partner-income.slim').render
+</body>
+</html>
