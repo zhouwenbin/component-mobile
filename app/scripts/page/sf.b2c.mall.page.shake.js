@@ -571,7 +571,7 @@ define(
           var verInt = verArr[0] + verArr[1] + verArr[2];
           if (SFFn.isMobile.APP()) {
             if (SFFn.isMobile.iOS() && verInt >= 150) {
-              alert(verInt);
+              //alert(verInt);
               //this.sfBridge();
             } else if (SFFn.isMobile.iOS() && verInt < 150) {
               var message = new SFmessage(null, {
@@ -583,7 +583,7 @@ define(
 
             if (SFFn.isMobile.Android() && verInt >= 140) {
               //this.sfBridge();
-              alert(verInt);
+              //alert(verInt);
             } else if (SFFn.isMobile.Android() && verInt < 140) {
               var message = new SFmessage(null, {
                 'tip': '当前版本不支持该活动，请下载新版本',
