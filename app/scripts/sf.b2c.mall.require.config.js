@@ -336,6 +336,7 @@ requirejs.config({
         "sf.b2c.mall.page.welfareDetails": "scripts/page/sf.b2c.mall.page.welfareDetails",
         "sf.b2c.mall.page.welfareRule": "scripts/page/sf.b2c.mall.page.welfareRule",
         "sf.b2c.mall.page.japanpre": "scripts/page/sf.b2c.mall.page.japanpre",
+        "sf.b2c.mall.page.scrape": "scripts/page/sf.b2c.mall.page.scrape",
 
         //81
         "sf.b2c.mall.page.81": "scripts/page/sf.b2c.mall.page.81",
@@ -343,6 +344,9 @@ requirejs.config({
         //81活动
         "sf.b2c.mall.api.coupon.randomCard": "scripts/api/sf.b2c.mall.api.coupon.randomCard",
         "sf.b2c.mall.api.coupon.bindCard": "scripts/api/sf.b2c.mall.api.coupon.bindCard",
+
+        "sf.b2c.mall.api.coupon.isProCardRcved": "scripts/api/sf.b2c.mall.api.coupon.isProCardRcved",
+        "sf.b2c.mall.api.coupon.randomRcvCard": "scripts/api/sf.b2c.mall.api.coupon.randomRcvCard",
 
         //福利社
         "sf.b2c.mall.api.share.shareUrl": "scripts/api/sf.b2c.mall.api.share.shareUrl",

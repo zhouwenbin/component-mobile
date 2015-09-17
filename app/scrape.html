@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta content="target-densitydpi=device-dpi,width=640" name="viewport">
-    <script type="text/javascript" src="static/js/mobile-util.js"></script>
     <title>刮一刮 领奖页</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.scrape.css -->
     <link rel="stylesheet" href="static/css/style.css">
+    <!-- endbuild -->
     <style type="text/css">
     body{
       -moz-user-select:none;
@@ -32,6 +33,7 @@
               width: 556px;
               height: 274px;
               text-align: center;
+              z-index: 2;
             }
             </style>
             <canvas class=""></canvas>
@@ -47,18 +49,40 @@
               <span class="scrap-arrow-right"></span>
             </div>
 
+            <style type="text/css">
+                .scrape-winner-list li{
+                  width: 560px;
+                  vertical-align: middle;
+                  text-align: center;
+                }
+            </style>
             <div class="scrape-winner">
                 <ul class="scrape-winner-list clearfix">
-                    <!-- <li>小晓晓获得50元券</li>
-                    <li>小YY获得500积分</li>
-                    <li>小QQ获得100元券</li> -->
+                    <li>下一个就是你</li>
+                    <!-- <li>小YY获得500积分</li> -->
+                    <!-- <li>小QQ获得100元券</li> -->
                 </ul>
             </div>
             <p class="scrape-tips">* 100%中奖，每天可刮3次</p>
         </section>
-
-
     </div>
+
+    <div id="version" data-version="{version}"></div>
+    <!-- build:js(.) scripts/require.min.js -->
+    <script src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+    <script src="scripts/base/sf.h5.base.ver.1.0.7.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+    <!-- <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script> -->
+    <!-- endbuild -->
+    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.scrape.js -->
+    <script src="scripts/sf.b2c.mall.require.config.js"></script>
+    <script type="text/javascript">
+        require(['sf.b2c.mall.page.scrape']);
+    </script>
+    <!-- endbuild -->
 </body>
 
 </html>
