@@ -236,7 +236,7 @@ define(
                 return;
               }
               clock = false;
-              alert(JSON.stringify(data));
+              //alert(JSON.stringify(data));
               if (_.isArray(data)){
                 options.ownData.locationType = 'GCJ';
                 gps  = data[0];
