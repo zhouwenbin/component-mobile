@@ -290,7 +290,7 @@ define(
             var posy = step.pageY - offsetY || 0;
 
             ctx.beginPath()
-            ctx.arc(posx / 2, posy / 2, 15, 0, Math.PI * 2);
+            ctx.arc(posx / 2, posy / 2, 10, 0, Math.PI * 2);
             ctx.fill();
 
             // var current = Date.now();
@@ -300,7 +300,7 @@ define(
           };
         }
 
-        document.addEventListener('touchend', function (e) {
+        document.addEventListener('touchmove', function (e) {
           e.preventDefault();
 
           return false;
