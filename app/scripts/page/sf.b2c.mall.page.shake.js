@@ -367,7 +367,7 @@ define(
                 //  text: '文案'
                 //});
 
-                if (data.impact  === 0){
+                if (data.impact  < 3){
                   ifOne = true;
                 }else {
                   if (!data.canReceiveCoupon){
