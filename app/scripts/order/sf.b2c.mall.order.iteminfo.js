@@ -58,6 +58,17 @@ define('sf.b2c.mall.order.iteminfo', [
                 if (activityDescription && activityDescription.value && JSON.parse(activityDescription.value)['FIRST_ORDER']) {
                     return options.fn(options.contexts || this);
                 }
+            },
+            'sf-show-couponTips': function(orderFeeItem, options) {
+                var orderFeeItem = orderFeeItem(),
+                    logisticsFee = orderFeeItem.logisticsFee,
+                    goodsTotalFee = orderFeeItem.goodsTotalFee,
+                    discount = orderFeeItem.discount,
+                    couponReduce = orderFeeItem.couponReduce,
+                    integralReduce = orderFeeItem.integralReduce;
+                if (logisticsFee > 0 & goodsTotalFee - discount - couponReduce - integralReduce <= 0) {
+                    return options.fn(options.contexts || this);
+                }
             }
         },
 
@@ -159,19 +170,19 @@ define('sf.b2c.mall.order.iteminfo', [
                 request: JSON.stringify({
                     "couponCode": $('#selectCoupon').val(),
                     "integral": $("#pointUsed").val(),
-					"userIntegral": that.itemObj.attr('integral'),
+                    "userIntegral": that.itemObj.attr('integral'),
                     "submitKey": that.itemObj.attr('submitKey')
                 })
             });
             if (this.itemObj.attr('submitKey') && (this.itemObj.attr('integral') > 0 || this.itemObj.attr('orderCouponItem.avaliableAmount') > 0)) {
                 return orderPriceReCalculate.sendRequest()
                     .done(function(data) {
-                        
-						that.itemObj.attr({
-							'orderFeeItem': data.orderFeeItem,
-							'usedIntegral': data.usedIntegral || 0,
-							'useIntegral': data.orderIntegral
-						  })
+
+                        that.itemObj.attr({
+                            'orderFeeItem': data.orderFeeItem,
+                            'usedIntegral': data.usedIntegral || 0,
+                            'useIntegral': data.orderIntegral
+                        })
 
                     })
                     .fail(function(errorCode) {

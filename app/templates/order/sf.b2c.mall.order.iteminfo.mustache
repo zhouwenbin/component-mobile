@@ -90,7 +90,11 @@
   {{#sf-show-firstOrderTips activityDescription}}<li class="order-first-buy-tips">若符合首单减的活动条件，优惠金额将在支付时减免</li>{{/sf-show-firstOrderTips}}
   <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
   <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
-  <li>运费：+￥{{sf.price orderFeeItem.logisticsFee}}</li>
+  <li>运费：+￥{{sf.price orderFeeItem.logisticsFee}}
+  {{#sf-show-couponTips orderFeeItem}}
+  <span style="color:##ff5b54;margin-left:10px;">优惠券、积分不抵扣运费</span>
+  {{/sf-show-couponTips}}
+  </li>
   <li>优惠券折扣：-￥{{sf.price orderFeeItem.couponReduce}}</li>
   <li>积分抵扣：-￥{{sf.price orderFeeItem.integralReduce}}</li>
    {{! <li>可获得海淘积分：{{sf.price getpoint}}{{! </li> }}
