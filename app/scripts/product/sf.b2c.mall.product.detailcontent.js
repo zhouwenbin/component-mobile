@@ -106,7 +106,7 @@ define('sf.b2c.mall.product.detailcontent', [
             'MIX_DISCOUNT': "搭配折扣",
             'SECKILL': "秒杀",
             'FIRST_ORDER': '首单减',
-            'POSTAGE_FREE':'满额包邮'
+            'POSTAGE_FREE':'满额减邮'
           };
           return map[activityType];
         },
