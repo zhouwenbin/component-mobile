@@ -20,6 +20,7 @@ define(
     'sf.b2c.mall.widget.loading',
     'sf.util',
     'sf.b2c.mall.widget.message',
+    'sf.env.switcher',
 
     'sf.b2c.mall.api.shake.queryShakeResult',
     'sf.b2c.mall.api.shake.startShake',
@@ -28,7 +29,7 @@ define(
 
     'text!template_shake'
   ],
-  function (can, $, $cookie, Faskclick, _, store, moment, SFFrameworkComm, SFConfig, shake, bridge, SFLoading, SFFn, SFmessage, shakeQueryApi, shakeStarApi, shakeFinishApi, YYYApi, shakeTpl) {
+  function (can, $, $cookie, Faskclick, _, store, moment, SFFrameworkComm, SFConfig, shake, bridge, SFLoading, SFFn, SFmessage, SFSwitcher, shakeQueryApi, shakeStarApi, shakeFinishApi, YYYApi, shakeTpl) {
     'use strict';
 
     //注册环境是h5
@@ -89,6 +90,13 @@ define(
           }
         },
         init: function(){
+
+          var switcher = new SFSwitcher();
+
+          switcher.register('web', function() {
+            alert('只能在App里摇，请去下载App');
+          });
+          switcher.go();
           shakeThis = this;
           this.options.ownData = {};    //用于存放js计算或获取的数据
           this.options.serverData = new can.Map({});  //用于存放从服务器获取的数据
