@@ -12,6 +12,5 @@ bower_components
 **/.DS_Store
 cordova.js
 .iml
-rules
 app/static/prepros.cfg
-
+rules
