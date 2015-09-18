@@ -265,6 +265,10 @@ define(
             var times = this.times;
             this.setUserTimes(++times);
             this.setResult();
+
+            setTimeout(function() {
+              $('canvas').hide();
+            }, 5000);
           }
         }
 
@@ -286,10 +290,10 @@ define(
             ctx.arc(posx / 2, posy / 2, 10, 0, Math.PI * 2);
             ctx.fill();
 
-            var current = Date.now();
-            if (current - starttime > 2000) {
-              $('canvas').hide();
-            }
+            // var current = Date.now();
+            // if (current - starttime > 5000) {
+            //   $('canvas').hide();
+            // }
           };
         }
 
