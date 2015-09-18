@@ -206,13 +206,16 @@ body{
 	color: #AC2924;
 }
 .shaked-coupon-price{
-	text-align: right;
+
 	color: #fff;
-	font-size: 48px * 2;
+	font-size: 24px * 2;
 }
 .shaked-coupon-price small{
-	font-size: 24px * 2;
+	font-size: 14px * 2;
 	font-family: arial;
+}
+.shaked-coupon-price span{
+	font-size: 10px * 2;
 }
 .shaked-coupon img{
 	width: 80px * 2;

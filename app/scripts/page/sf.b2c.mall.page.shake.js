@@ -169,6 +169,8 @@ define(
                 imageUrl: data.itemImage,   //图片链接
                 couponTitle: data.couponTitle,   //优惠券标题
                 couponDateString: data.couponDateString,   //优惠券日期
+                couponStartDate: data.couponStartDate, //优惠券开始日期
+                couponEndDate: data.couponEndDate,    //优惠券结束日期
                 couponUrl: data.couponUrl,     //优惠券链接
                 couponCondition: data.couponCondition, //优惠券使用条件,
                 //buyUrl: 'http://' + window.location.hostname + '/detail/'+ options.ownData.itemId + '.html',  //去购买url
