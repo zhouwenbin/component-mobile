@@ -12,7 +12,8 @@ define(
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.coupon.isProCardRcved',
     'sf.b2c.mall.api.coupon.randomRcvCard',
-    'sf.b2c.mall.api.b2cmall.getItemInfo'
+    'sf.b2c.mall.api.b2cmall.getItemInfo',
+    'sf.b2c.mall.module.header'
   ],
 
   function($, can, _, store, moment, SFFrameworkComm, SFCouponIsProCardRcved, SFCouponRandomRcvCard, SFB2cMallGetItemInfo) {
@@ -296,6 +297,12 @@ define(
             // }
           };
         }
+
+        document.addEventListener('touchend', function (e) {
+          e.preventDefault();
+
+          return false;
+        })
 
         canvas.addEventListener('touchstart', _.bind(eventDown, this));
         canvas.addEventListener('touchend', _.bind(eventUp, this));
