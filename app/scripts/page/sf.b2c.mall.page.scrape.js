@@ -287,10 +287,10 @@ define(
 
             var step = e.changedTouches[e.changedTouches.length - 1];
             var posx = step.pageX - 30;
-            var posy = step.pageY - offsetY || 0;
+            var posy = step.pageY - offsetY + 10;
 
             ctx.beginPath()
-            ctx.arc(posx / 2, posy / 2, 10, 0, Math.PI * 2);
+            ctx.arc(posx / 2, posy / 2, 15, 0, Math.PI * 2);
             ctx.fill();
 
             // var current = Date.now();
@@ -300,13 +300,13 @@ define(
           };
         }
 
-        var stop = function (e) {
-          e.preventDefault();
-          return false;
-        }
+        // var stop = function (e) {
+        //   e.preventDefault();
+        //   return false;
+        // }
 
-        document.addEventListener('touchmove', stop);
-        document.addEventListener('mousemove', stop);
+        // document.addEventListener('touchmove', stop);
+        // document.addEventListener('mousemove', stop);
 
         canvas.addEventListener('touchstart', _.bind(eventDown, this));
         canvas.addEventListener('touchend', _.bind(eventUp, this));
