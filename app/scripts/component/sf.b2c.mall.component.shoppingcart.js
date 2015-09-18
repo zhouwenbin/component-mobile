@@ -35,7 +35,6 @@ define(
     // 注册服务端的appid
     SFFrameworkComm.register(3);
 
-    var LIMITED_PRICE = 1000 * 100;
     var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
@@ -229,6 +228,25 @@ define(
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
+          }
+        },
+        'sf-show-freePostage': function(reductPostageInfos, options) {
+          if (typeof reductPostageInfos() !== 'undefined' && reductPostageInfos().length > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        'sf-show-activityTips': function(cartFeeItem, options) {
+          var cartFeeItem = cartFeeItem();
+          if ((typeof cartFeeItem.firstOrderInfos !== 'undefined' && cartFeeItem.firstOrderInfos.length > 0) || (typeof cartFeeItem.reductPostageInfos !== 'undefined' && cartFeeItem.reductPostageInfos.length > 0)) {
+            return options.fn(options.contexts || this);
+          }
+        },
+        'sf-show-line': function(cartFeeItem, options) {
+          var cartFeeItem = cartFeeItem();
+          if ((typeof cartFeeItem.firstOrderInfos !== 'undefined' && cartFeeItem.firstOrderInfos.length > 0) && (typeof cartFeeItem.reductPostageInfos !== 'undefined' && cartFeeItem.reductPostageInfos.length > 0)) {
+            return options.fn(options.contexts || this);
           }
         }
       },

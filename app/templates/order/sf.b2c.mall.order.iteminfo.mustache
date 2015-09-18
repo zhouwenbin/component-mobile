@@ -68,7 +68,7 @@
 	<div class="coupon-use-b">
 		<select id="selectCoupon" class="select">
       <option value="" data-price="0" selected="selected">不使用优惠券</option>
-			{{#each orderCoupon.avaliableCoupons}}
+			{{#each orderCouponItem.avaliableCoupons}}
         <option value="{{couponCode}}" data-code="{{couponCode}}" data-price="{{price}}">{{couponDescription}}</option>
 			{{/each}}
 		</select>
@@ -76,8 +76,8 @@
 </div>
 <section class="integral-use">
     <div class="integral-use-r1">
-        <div>可用积分：<span class="text-important">{{totalPoint}}</span>点</div>
-        <div>抵<span class="text-important">¥{{sf.price totalPointPrice}}</span></div>
+        <div>可用积分：<span class="text-important">{{integral}}</span>点</div>
+        <div>抵<span class="text-important">¥{{equalMoney}}</span></div>
         <a href="javascript:" class="switch"></a>
     </div>
     <div class="integral-use-r2" style="display: none;">使用<input type="text" class="input" value="0" id="pointUsed">点，抵<span class="text-important" id="pointToMoney">- ¥0.0</span></div>
@@ -88,11 +88,15 @@
 </ul> -->
 <ul class="order-r3 box">
   {{#sf-show-firstOrderTips activityDescription}}<li class="order-first-buy-tips">若符合首单减的活动条件，优惠金额将在支付时减免</li>{{/sf-show-firstOrderTips}}
-  <li>免运费</li>
-  <li>优惠券折扣：-￥{{sf.price orderCoupon.discountPrice}}</li>
-  <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
-    <li>积分抵扣：-￥{{pointForUsed}}</li>
   <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
+  <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
+  <li>运费：+￥{{sf.price orderFeeItem.logisticsFee}}
+  {{#if sf-show-couponTips}}
+  <span style="color:#ff5b54;">【优惠券、积分不抵扣运费】</span>
+  {{/if}}
+  </li>
+  <li>优惠券折扣：-￥{{sf.price orderFeeItem.couponReduce}}</li>
+  <li>积分抵扣：-￥{{sf.price orderFeeItem.integralReduce}}</li>
    {{! <li>可获得海淘积分：{{sf.price getpoint}}{{! </li> }}
 </ul>
 
@@ -103,7 +107,7 @@
 
 <section class="nav-cart">
   <div class="nav-cart-r1 order-submit">
-  	<p class="order-submit-c1">实际应付款: <span class="text-important">¥{{sf-show-shouldPay orderFeeItem.shouldPay}}</span></p>
+  	<p class="order-submit-c1">实际应付款: <span class="text-important">¥{{sf.price orderFeeItem.actualTotalFee}}</span></p>
   	<a class="btn btn-danger{{^flag}} btn-disable{{/flag}}" id="submitOrder" href="javascript:void(0);">提交订单</a>
   </div>
 </section>
