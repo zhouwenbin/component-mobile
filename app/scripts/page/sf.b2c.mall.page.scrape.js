@@ -80,6 +80,7 @@ define(
           var arr = cookieInfo.split(',')
 
           $.fn.cookie(_aid + '_uinfo', cookieInfo);
+          alert(arr[4]);
           $.fn.cookie('userId', arr[4]);
         }
       },
@@ -242,7 +243,7 @@ define(
 
           var image = new Image()
           image.src = "/img/scrape/sracpe-text.png"
-          ctx.drawImage(image, 0, 0);
+          ctx.drawImage(image, (width - 244) , (height - 52));
 
           ctx.globalCompositeOperation = 'destination-out';
         }
