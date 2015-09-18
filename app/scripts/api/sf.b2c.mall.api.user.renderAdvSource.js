@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.isWxMpSubscribed
+  * @class sf.b2c.mall.api.user.renderAdvSource
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.isWxMpSubscribed',
+'sf.b2c.mall.api.user.renderAdvSource',
 [
   'zepto',
   'can',
@@ -22,12 +22,12 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.isWxMpSubscribed',
+      METHOD_NAME: 'user.renderAdvSource',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
+        'advRequest': 'json'
       },
       OPTIONAL: {
-        'authResp': 'string'
       },
       VERIFY:{
       },

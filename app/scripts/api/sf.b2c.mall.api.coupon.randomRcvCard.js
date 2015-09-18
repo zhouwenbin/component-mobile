@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.isWxMpSubscribed
+  * @class sf.b2c.mall.api.coupon.randomRcvCard
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.isWxMpSubscribed',
+'sf.b2c.mall.api.coupon.randomRcvCard',
 [
   'zepto',
   'can',
@@ -22,16 +22,21 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.isWxMpSubscribed',
-      SECURITY_TYPE: SecurityType.None.name,
+      METHOD_NAME: 'coupon.randomRcvCard',
+      SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
+        'proName': 'string'
       },
       OPTIONAL: {
-        'authResp': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
+        '11000020': '卡券id不存在',
+        '11000050': '卡券已领完',
+        '11000240': '用户今天的券已经领完了',
+        '11000250': '用户已经领完该活动期间所有的券',
+        '11000260': '用户输入手机号有误'
       }
     }
   });

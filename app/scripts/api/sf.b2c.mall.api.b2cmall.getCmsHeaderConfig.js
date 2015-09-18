@@ -1,6 +1,6 @@
 // Auto Generated.  DO NOT EDIT!
 /**
-  * @class sf.b2c.mall.api.user.isWxMpSubscribed
+  * @class sf.b2c.mall.api.b2cmall.getCmsHeaderConfig
   * @param  {Object} $
   * @param  {Object} can
   * @param  {Object} _
@@ -9,7 +9,7 @@
   * @return {can.Construct}
   */
 define(
-'sf.b2c.mall.api.user.isWxMpSubscribed',
+'sf.b2c.mall.api.b2cmall.getCmsHeaderConfig',
 [
   'zepto',
   'can',
@@ -22,16 +22,17 @@ function($, can, _, Comm, SecurityType) {
 
   return Comm.extend({
     api: {
-      METHOD_NAME: 'user.isWxMpSubscribed',
+      METHOD_NAME: 'b2cmall.getCmsHeaderConfig',
       SECURITY_TYPE: SecurityType.None.name,
       REQUIRED: {
+        'pageUrl': 'string'
       },
       OPTIONAL: {
-        'authResp': 'string'
       },
       VERIFY:{
       },
       ERROR_CODE: {
+        '9000005': 'url不合法'
       }
     }
   });

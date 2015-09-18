@@ -11,10 +11,12 @@ define(
     'store',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.coupon.receiveCoupon'
+    'sf.b2c.mall.api.coupon.receiveCoupon',
+    'sf.b2c.mall.api.user.renderAdvSource',
+
     // 'animate'
   ],
-  function(can, $, $cookie, SFFrameworkComm, SFFn, Fullpage, store, SFConfig, SFMessage, SFReceiveCoupon) {
+  function(can, $, $cookie, SFFrameworkComm, SFFn, Fullpage, store, SFConfig, SFMessage, SFReceiveCoupon, SFRenderAdvSource) {
     // Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -32,6 +34,28 @@ define(
         this.initFullPage();
         this.render();
         var that = this;
+         //渠道统计
+        var params = can.deparam(window.location.search.substr(1));
+        var idfa = params.idfa;
+        var source = params.source;
+        var appkey = params.appkey;
+        var pburl = params.pburl;
+        if(idfa && source){
+            var param = {
+              'idfa': idfa,
+              'source': source,
+              'appkey': appkey,
+              'pburl': pburl
+            };
+            var paremStr = JSON.stringify(param);
+            var renderAdvSource = new SFRenderAdvSource({advRequest:paremStr});
+            renderAdvSource.sendRequest().done(function(data) {
+              window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+            })
+            .fail(function(error) {
+               window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+            });
+        }
         //$("#openAddLink").click();
 
         // that.openApp('sfht://');
