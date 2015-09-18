@@ -52,14 +52,14 @@ define(
             renderAdvSource.sendRequest().done(function(data) {
               if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
                 window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
-              } else {
+              } else if (SFFn.isMobile.iOS()) {
                 window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
               }
             })
             .fail(function(error) {
               if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
                 window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
-              } else {
+              } else if (SFFn.isMobile.iOS()){
                 window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
               }
             });
