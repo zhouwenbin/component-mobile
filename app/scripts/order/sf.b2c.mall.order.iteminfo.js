@@ -58,17 +58,6 @@ define('sf.b2c.mall.order.iteminfo', [
                 if (activityDescription && activityDescription.value && JSON.parse(activityDescription.value)['FIRST_ORDER']) {
                     return options.fn(options.contexts || this);
                 }
-            },
-            'sf-show-couponTips': function(orderFeeItem, options) {
-                var orderFeeItem = orderFeeItem(),
-                    logisticsFee = orderFeeItem.logisticsFee,
-                    goodsTotalFee = orderFeeItem.goodsTotalFee,
-                    discount = orderFeeItem.discount,
-                    couponReduce = orderFeeItem.couponReduce,
-                    integralReduce = orderFeeItem.integralReduce;
-                if (logisticsFee > 0 & goodsTotalFee - discount - couponReduce - integralReduce <= 0) {
-                    return options.fn(options.contexts || this);
-                }
             }
         },
 
@@ -84,7 +73,8 @@ define('sf.b2c.mall.order.iteminfo', [
 
             this.itemObj.attr({
                 itemid: params.itemid,
-                amount: params.amount
+                amount: params.amount,
+                'sf-show-couponTips': false
             });
 
             var that = this;
@@ -182,7 +172,18 @@ define('sf.b2c.mall.order.iteminfo', [
                             'orderFeeItem': data.orderFeeItem,
                             'usedIntegral': data.usedIntegral || 0,
                             'useIntegral': data.orderIntegral
-                        })
+                        });
+
+                        var logisticsFee = data.orderFeeItem.logisticsFee,
+                            goodsTotalFee = data.orderFeeItem.goodsTotalFee,
+                            discount = data.orderFeeItem.discount,
+                            couponReduce = data.orderFeeItem.couponReduce,
+                            integralReduce = data.orderFeeItem.integralReduce;
+                        if (logisticsFee > 0 && goodsTotalFee - discount - couponReduce - integralReduce <= 0) {
+                            that.itemObj.attr('sf-show-couponTips', true);
+                        } else {
+                            that.itemObj.attr('sf-show-couponTips', false);
+                        }
 
                     })
                     .fail(function(errorCode) {
@@ -357,7 +358,16 @@ define('sf.b2c.mall.order.iteminfo', [
                     that.itemObj.attr(orderRenderItem);
                     //积分抵扣多少钱
                     that.itemObj.attr('equalMoney', that.itemObj.attr('integral') / that.itemObj.attr('proportion') || 0);
-
+                    var logisticsFee = orderRenderItem.orderFeeItem.logisticsFee,
+                        goodsTotalFee = orderRenderItem.orderFeeItem.goodsTotalFee,
+                        discount = orderRenderItem.orderFeeItem.discount,
+                        couponReduce = orderRenderItem.orderFeeItem.couponReduce,
+                        integralReduce = orderRenderItem.orderFeeItem.integralReduce;
+                    if (logisticsFee > 0 && goodsTotalFee - discount - couponReduce - integralReduce <= 0) {
+                        that.itemObj.attr('sf-show-couponTips', true);
+                    } else {
+                        that.itemObj.attr('sf-show-couponTips', false);
+                    }
                 })
                 .fail();
         },

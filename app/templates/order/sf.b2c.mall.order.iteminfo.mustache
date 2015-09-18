@@ -91,9 +91,9 @@
   <li>商品总金额：￥{{sf.price orderFeeItem.goodsTotalFee}}</li>
   <li>活动优惠：-￥{{sf.price orderFeeItem.discount}}</li>
   <li>运费：+￥{{sf.price orderFeeItem.logisticsFee}}
-  {{#sf-show-couponTips orderFeeItem}}
-  <span style="color:##ff5b54;margin-left:10px;">优惠券、积分不抵扣运费</span>
-  {{/sf-show-couponTips}}
+  {{#if sf-show-couponTips}}
+  <span style="color:#ff5b54;">【优惠券、积分不抵扣运费】</span>
+  {{/if}}
   </li>
   <li>优惠券折扣：-￥{{sf.price orderFeeItem.couponReduce}}</li>
   <li>积分抵扣：-￥{{sf.price orderFeeItem.integralReduce}}</li>
