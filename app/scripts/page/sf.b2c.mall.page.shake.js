@@ -177,6 +177,7 @@ define(
                 //couponPrice: data.couponPrice,    //优惠券价格
                 isUsed: data.isCouponAlreadyUsed,  //优惠券是否用过，true是用了 false是没用
                 itemSellPriceAfterCoupon: data.couponPrice / 100,
+                sharePrice: data.itemSellPriceAfterCoupon / 100,
                 ifOne: false,
                 help: false,
                 Yao: false
@@ -398,6 +399,7 @@ define(
                   options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
                   options.serverData.attr('shakeData.couponUrl', data.couponUrl);
                   options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
+                  options.serverData.attr('shakeData.sharePrice', data.itemSellPriceAfterCoupon / 100);
 
                 }
                // alert();
@@ -545,7 +547,7 @@ define(
                  + '&itemId='+ options.ownData.itemId;
             //alert(url);
             var params = {
-              "subject": '我轻松摇了摇就'+ options.serverData.attr('shakeData.itemSellPriceAfterCoupon') +'元，拿下了它，你要不也试试？',
+              "subject": '我轻松摇了摇就'+ options.serverData.attr('shakeData.sharePrice') +'元，拿下了它，你要不也试试？',
               "description": '敢来测试你的影响力吗？',
               "imageUrl": options.serverData.attr('shakeData.imageUrl')+'@144h_144w_50Q_1x.jpg',
               "url": url
