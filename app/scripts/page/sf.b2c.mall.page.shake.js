@@ -174,9 +174,9 @@ define(
                 //buyUrl: 'http://' + window.location.hostname + '/detail/'+ options.ownData.itemId + '.html',  //去购买url
                 buyUrl: data.couponUrl,
                 itemTitle: data.itemTitle,     //商品标题
-                couponPrice: data.couponPrice,    //优惠券价格
+                //couponPrice: data.couponPrice,    //优惠券价格
                 isUsed: data.isCouponAlreadyUsed,  //优惠券是否用过，true是用了 false是没用
-                itemSellPriceAfterCoupon: data.itemSellPriceAfterCoupon / 100,
+                itemSellPriceAfterCoupon: data.couponPrice / 100,
                 ifOne: false,
                 help: false,
                 Yao: false
@@ -394,7 +394,7 @@ define(
                   options.serverData.attr('shakeData.itemImage', data.itemImage);
                   options.serverData.attr('shakeData.itemTitle', data.itemTitle);
                   options.serverData.attr('shakeData.couponTitle', data.couponTitle);
-                  options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.itemSellPriceAfterCoupon / 100);
+                  options.serverData.attr('shakeData.itemSellPriceAfterCoupon', data.couponPrice / 100);
                   options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
                   options.serverData.attr('shakeData.couponUrl', data.couponUrl);
                   options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
