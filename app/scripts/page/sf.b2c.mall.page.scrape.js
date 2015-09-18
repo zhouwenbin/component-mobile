@@ -242,8 +242,10 @@ define(
           ctx.fillRect(0, 0, width * 2, height * 2);
 
           var image = new Image()
+          image.onload = function () {
+            ctx.drawImage(image, (width - 244) , (height - 52));
+          }
           image.src = "/img/scrape/sracpe-text.png"
-          ctx.drawImage(image, (width - 244) , (height - 52));
 
           ctx.globalCompositeOperation = 'destination-out';
         }
