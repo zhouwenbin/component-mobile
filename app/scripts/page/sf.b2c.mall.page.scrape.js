@@ -300,11 +300,13 @@ define(
           };
         }
 
-        document.addEventListener('touchmove', function (e) {
+        var stop = function (e) {
           e.preventDefault();
-
           return false;
-        })
+        }
+
+        document.addEventListener('touchmove', stop);
+        document.addEventListener('mousemove', stop);
 
         canvas.addEventListener('touchstart', _.bind(eventDown, this));
         canvas.addEventListener('touchend', _.bind(eventUp, this));
