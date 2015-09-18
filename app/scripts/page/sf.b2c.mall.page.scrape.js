@@ -80,8 +80,7 @@ define(
           var arr = cookieInfo.split(',')
 
           $.fn.cookie(_aid + '_uinfo', cookieInfo);
-          alert(arr[4]);
-          $.fn.cookie('userId', arr[4]);
+          $.fn.cookie('userId', arr[3]);
         }
       },
 
