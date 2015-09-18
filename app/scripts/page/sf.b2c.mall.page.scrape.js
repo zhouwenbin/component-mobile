@@ -13,10 +13,12 @@ define(
     'sf.b2c.mall.api.coupon.isProCardRcved',
     'sf.b2c.mall.api.coupon.randomRcvCard',
     'sf.b2c.mall.api.b2cmall.getItemInfo',
-    'sf.b2c.mall.module.header'
+    'sf.b2c.mall.module.header',
+    'sf.bridge',
+    'sf.env.switcher'
   ],
 
-  function($, can, _, store, moment, SFFrameworkComm, SFCouponIsProCardRcved, SFCouponRandomRcvCard, SFB2cMallGetItemInfo) {
+  function($, can, _, store, moment, SFFrameworkComm, SFCouponIsProCardRcved, SFCouponRandomRcvCard, SFB2cMallGetItemInfo, SFHeader, SFBridge, SFSwitcher) {
     SFFrameworkComm.register(3);
 
     var NO_CHANCE = '今天已经没有机会了，明天再来';
@@ -26,6 +28,16 @@ define(
     var SFPage = can.Control.extend({
 
       init: function() {
+
+        var switcher = new SFSwitcher();
+
+        var empty = function(){}
+        switcher.register('app', function () {
+          window.bridge.run('SFNavigation', 'disablePullRefresh', null, empty, empty);
+        });
+
+        switcher.register('web', empty);
+        switcher.go();
 
         // 在app中设置UserId
         this.setUserIdInApp();
@@ -241,9 +253,11 @@ define(
           ctx.fillStyle = '#DCDCDC';//'gray'
           ctx.fillRect(0, 0, width * 2, height * 2);
 
+
           var image = new Image()
           image.onload = function () {
-            ctx.drawImage(image, (width - 244) , (height - 52));
+            // 会出现透视问题
+            // ctx.drawImage(image, (width - 244*2 - 30*2)/2, (height - 52*2 - 60 * 2)/2)
           }
           image.src = "/img/scrape/sracpe-text.png"
 
