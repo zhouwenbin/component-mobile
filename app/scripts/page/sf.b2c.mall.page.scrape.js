@@ -26,6 +26,9 @@ define(
 
       init: function() {
 
+        // 在app中设置UserId
+        this.setUserIdInApp();
+
         this.requestUserListForPrice();
 
         this.prepare();
@@ -66,6 +69,18 @@ define(
           return pathArr[0];
         } else {
           return;
+        }
+      },
+
+      setUserIdInApp: function () {
+        var _aid = $.fn.cookie('_aid') || '3';
+
+        var cookieInfo = can.route.attr('cookieInfo');
+        if (cookieInfo) {
+          var arr = cookieInfo.split(',')
+
+          $.fn.cookie(_aid + '_uinfo', cookieInfo);
+          $.fn.cookie('userId', arr[4]);
         }
       },
 
