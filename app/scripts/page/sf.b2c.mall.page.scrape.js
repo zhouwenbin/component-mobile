@@ -67,6 +67,7 @@ define(
         this.times = this.getUserTimes();
         var times = LIMIT_TIME - this.getUserTimes();
         if (times > 0) {
+          this.result = this.setResultImage('noresult');
           $('.scrape-num').text(times);
         }else{
           $('.scrape-times-inner').text(NO_CHANCE);
@@ -124,6 +125,7 @@ define(
               var templateText = '<div class="scrape-goods"><div class="scrape-goods-c1"><img src="{{imgUrl}}"></div><div class="scrape-goods-c2"><p class="scrape-ticket-goods">{{ptitle}}</p><p class="scrape-ticket">{{title}}</p><p class ="scrape-ticket-times">有效期{{startTime}}至{{endTime}}</p></div></div><div class="scrape-btn-box"><a href="{{url}}" class="btn">马上使用</a></div>';
               var render = can.view.mustache(templateText);
 
+              $('#noresult').remove();
               $('.scrape-box').append(render(params))
             }
 
@@ -136,6 +138,7 @@ define(
           },
 
           'fail': function () {
+            $('#noresult').remove();
             if ($('.scrape-box .scrape-ticket-none-bg').length == 0 ) {
               $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div><div class="scrape-btn-box"><a href="javascript:window.location.reload(true)" class="btn">再刮一次</a></div>').addClass('scrape-ticket-none')
             }
@@ -143,8 +146,17 @@ define(
           },
 
           'nochange': function () {
+            $('#noresult').remove();
             if ($('.scrape-box .scrape-ticket-none-bg').length == 0 ) {
               $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div><div class="scrape-btn-box"><a href="/index.html" class="btn">返回首页</a></div>').addClass('scrape-ticket-none')
+            }
+            return 'nochange';
+          },
+
+          'noresult': function () {
+            $('#noresult').remove();
+            if ($('.scrape-box')) {
+              $('.scrape-box').append('<div id="noresult"><div class="scrape-ticket-none-bg"><h2 style="text-align: center;font-size: 50px;padding: 40px 0;">系统开小差了...</h2></div><div class="scrape-btn-box"><a href="javascript:window.location.reload(true)" class="btn">再刮一次</a></div></div>')
             }
             return 'nochange';
           }
@@ -253,7 +265,6 @@ define(
           ctx.fillStyle = '#DCDCDC';//'gray'
           ctx.fillRect(0, 0, width * 2, height * 2);
 
-
           var image = new Image()
           image.onload = function () {
             // 会出现透视问题
@@ -306,22 +317,8 @@ define(
             ctx.beginPath()
             ctx.arc(posx / 2, posy / 2, 15, 0, Math.PI * 2);
             ctx.fill();
-
-            // var current = Date.now();
-            // if (current - starttime > 5000) {
-            //   $('canvas').hide();
-            // }
           };
         }
-
-        // var stop = function (e) {
-        //   e.preventDefault();
-        //   return false;
-        // }
-
-        // document.addEventListener('touchmove', stop);
-        // document.addEventListener('mousemove', stop);
-
         canvas.addEventListener('touchstart', _.bind(eventDown, this));
         canvas.addEventListener('touchend', _.bind(eventUp, this));
         canvas.addEventListener('touchmove', _.bind(eventMove, this));
