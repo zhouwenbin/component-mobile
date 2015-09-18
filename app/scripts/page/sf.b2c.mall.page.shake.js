@@ -96,6 +96,8 @@ define(
           switcher.register('web', function() {
             alert('只能在App里摇，请去下载App');
           });
+          switcher.register('app', function() {
+          });
           switcher.go();
           shakeThis = this;
           this.options.ownData = {};    //用于存放js计算或获取的数据
