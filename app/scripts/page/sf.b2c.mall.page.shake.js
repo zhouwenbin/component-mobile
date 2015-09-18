@@ -454,7 +454,7 @@ define(
               .fail(function(err){
                 //alert(err);
                 $(dom).find('#matching').addClass('hide');
-                alert('结束失败');
+                alert('网络不稳定，请再摇');
                 setTimeout(function(){
                   _this.shakeControl();
                 }, 1000)
@@ -545,9 +545,9 @@ define(
                  + '&itemId='+ options.ownData.itemId;
             //alert(url);
             var params = {
-              "subject": '摇一摇',
-              "description": '摇啊摇',
-              "imageUrl": 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
+              "subject": '我轻松摇了摇就'+ options.serverData.attr('shakeData.itemSellPriceAfterCoupon') +'元，拿下了它，你要不也试试？',
+              "description": '敢来测试你的影响力吗？',
+              "imageUrl": options.serverData.attr('shakeData.imageUrl'),
               "url": url
             },
             success = function(data) {
