@@ -95,6 +95,7 @@ define(
 
           switcher.register('web', function() {
             alert('只能在App里摇，请去下载App');
+            window.location.href = 'http://m.sfht.com/app.html';
           });
           switcher.register('app', function() {
           });
