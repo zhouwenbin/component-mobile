@@ -50,10 +50,18 @@ define(
             var paremStr = JSON.stringify(param);
             var renderAdvSource = new SFRenderAdvSource({advRequest:paremStr});
             renderAdvSource.sendRequest().done(function(data) {
-              window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+              if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
+                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
+              } {
+                window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+              }
             })
             .fail(function(error) {
-               window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+              if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
+                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
+              } {
+                window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+              }
             });
         }
         //$("#openAddLink").click();
