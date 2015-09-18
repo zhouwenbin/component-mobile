@@ -26,6 +26,7 @@ function($, can, _, Comm, SecurityType) {
       SECURITY_TYPE: SecurityType.UserLogin.name,
       REQUIRED: {
         'couponId': 'long',
+        'itemId': 'long',
         'receiveChannel': 'string',
         'receiveWay': 'string',
       },

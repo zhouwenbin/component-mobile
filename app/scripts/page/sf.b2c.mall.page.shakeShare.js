@@ -65,7 +65,7 @@ define(
 
             })
             .fail(function(err){
-              console.log(err)
+              alert('网络不稳定，请重试');
             });
 
 

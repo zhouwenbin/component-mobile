@@ -195,7 +195,7 @@ define(
             })
             .fail(function(err){
               //alert(err);
-              alert('查询失败');
+              alert('网络不稳定，请重试。');
              // alert('xxx');
             });
 
@@ -497,6 +497,7 @@ define(
             options = _this.options,
             yCoupon = new YYYApi({
               couponId: couponId,
+              itemId: options.ownData.itemId,
               receiveChannel: 'B2C',
               receiveWay: 'YYY',
               needSms: 0,
