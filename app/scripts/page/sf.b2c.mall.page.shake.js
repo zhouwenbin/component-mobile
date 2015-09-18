@@ -547,7 +547,7 @@ define(
             var params = {
               "subject": '我轻松摇了摇就'+ options.serverData.attr('shakeData.itemSellPriceAfterCoupon') +'元，拿下了它，你要不也试试？',
               "description": '敢来测试你的影响力吗？',
-              "imageUrl": options.serverData.attr('shakeData.imageUrl'),
+              "imageUrl": options.serverData.attr('shakeData.imageUrl')+'@144h_144w_50Q_1x.jpg',
               "url": url
             },
             success = function(data) {
