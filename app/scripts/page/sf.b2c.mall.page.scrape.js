@@ -112,13 +112,19 @@ define(
                 params.url = data.cardInfo.customUrl;
                 params.itemid = this.getItemid(data.cardInfo.customUrl);
               }
+
+              if (params.itemid) {
+                this.requestHotData(params.itemid).done(_.bind(paintProductCoupon, this));
+              }else{
+                this.paintCoupon()
+              }
             }
 
             var anotherRequest = function () {
               return this.requestHotData(params.itemid);
             }
 
-            var paint = function (data) {
+            var paintProductCoupon = function (data) {
               params.imgUrl = data.skuInfo.images[0].thumbImgUrl;
               params.ptitle = data.skuInfo.title;
 
@@ -126,13 +132,21 @@ define(
               var render = can.view.mustache(templateText);
 
               $('#noresult').remove();
-              $('.scrape-box').append(render(params))
+              $('.scrape-box').append(render(params)).addClass('scrape-ticket-box');
             }
+
+            var paintCoupon = function () {
+              var templateText = '<div class="scrape-gift"><h2 class="scrape-ticket">{{title}}</h2><p class="scrape-ticket-tips">*部分特价商品除外</p><p class="scrape-ticket-times">有效期{{startTime}}至{{endTime}}</p></div><div class="scrape-btn-box"><a href="/index.html" class="btn">马上使用</a></div>';
+              var render = can.view.mustache(templateText);
+
+              $('#noresult').remove();
+              $('.scrape-box').append(render(params)).addClass('scrape-ticket-gift');
+            };
 
             this.requestGetUserPrice()
               .done(_.bind(success, this))
-              .then(_.bind(anotherRequest, this))
-              .done(_.bind(paint, this))
+              // .then(_.bind(anotherRequest, this))
+              // .done(_.bind(paintProductCoupon, this))
 
             return 'success';
           },
