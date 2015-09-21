@@ -270,7 +270,7 @@ define(
             // 会出现透视问题
             // ctx.drawImage(image, (width - 244*2 - 30*2)/2, (height - 52*2 - 60 * 2)/2)
           }
-          image.src = "/img/scrape/sracpe-text.png"
+          image.src = "http://img.sfht.com/sfhth5/1.1.363/img/scrape/sracpe-text.png"
 
           ctx.globalCompositeOperation = 'destination-out';
         }
