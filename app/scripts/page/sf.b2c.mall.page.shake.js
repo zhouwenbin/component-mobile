@@ -444,7 +444,13 @@ define(
                 //可以分享了
                 //options.ownData.num = 1;
                 //alert(options.ownData.num);
-                setTimeout(function(){
+                if (typeof options.ownData.location === 'undefined') {
+                  $(dom).find('#isGps').removeClass('hide');
+                  setTimeout(function () {
+                    $(dom).find('#isGps').addClass('hide');
+                  }, 1000)
+                }
+                  setTimeout(function(){
                   _this.shakeControl();
                 }, 1000);
                 //alert('执行bridge前');
