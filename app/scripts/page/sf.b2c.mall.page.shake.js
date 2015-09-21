@@ -79,10 +79,7 @@ define(
           var switcher = new SFSwitcher();
 
           switcher.register('web', function() {
-            alert('只能在App里摇，请去下载App');
-
-            var that = this;
-            var message = new SFMessage(null, {
+            var message = new SFmessage(null, {
               'tip': '只能在App里摇，请去下载App',
               'type': 'error',
               'okFunction': function(){
