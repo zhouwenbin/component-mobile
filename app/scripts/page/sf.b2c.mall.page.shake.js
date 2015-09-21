@@ -85,6 +85,7 @@ define(
           switcher.register('app', function() {
           });
           switcher.go();
+          if(!SFFn.isMobile.APP()) return false;
           shakeThis = this;
           this.options.ownData = {};    //用于存放js计算或获取的数据
           this.options.serverData = new can.Map({});  //用于存放从服务器获取的数据
