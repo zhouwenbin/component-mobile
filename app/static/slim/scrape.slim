@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="target-densitydpi=device-dpi,width=640" name="viewport">
+	<script type="text/javascript" src="../js/mobile-util.js"></script>	
+	<title>刮一刮 领奖页</title>
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/scrape.css">
+
+</head>
+<body>
+	<div class="scrape-pm">
+		<!--头部-->
+		== Slim::Template.new('module/header.slim').render
+		<!--头部-->
+		<!-- 刮一刮部分 -->
+		<section class="scrape">
+			<div class="scrape-box scrape-ticket-box">
+				<div class="scrape-goods">
+					<div class="scrape-goods-c1">
+						<img src="">
+					</div>
+					<div class="scrape-goods-c2">
+						<p class="scrape-ticket-goods">英国Tangle Teezer豪华便携款炫目紫美发梳</p>
+						<p class="scrape-ticket">40元专享券</p>
+						<p class="scrape-ticket-times">有效期2015.9.15至2015.9.20</p>
+					</div>
+				</div>
+				<div href="" class="scrape-btn-box"><a href="" class="btn">马上使用</a></div>
+			</div>
+		</section>
+		<!-- 刮一刮部分结束 -->
+		<section class="scrap-items">
+			<div class="scrape-times">
+				<span class="scrap-arrow-left"></span>
+				<span class="scrape-times-inner">你还有<span class="scrape-num">2</span>次刮奖机会</span>
+				<span class="scrap-arrow-right"></span>
+			</div>
+			<div class="scrape-winner">
+				<ul class="scrape-winner-list clearfix">
+					<li>小晓晓获得50元券</li>
+					<li>小YY获得500积分</li>
+					<li>小QQ获得100元券</li>
+				</ul>
+			</div>
+			<p class="scrape-tips">* 100%中奖，每天可刮3次</p>
+		</section>
+	</div>	
+</body>
+</html>

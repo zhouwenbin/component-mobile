@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="target-densitydpi=device-dpi,width=640" name="viewport">
+    <title>刮一刮 领奖页</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.scrape.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/scrape.css">
+    <!-- endbuild -->
+    <style type="text/css">
+    body{
+      -moz-user-select:none;
+      -webkit-user-select:none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="scrape-pm">
+        <!--头部-->
+        <!--# include file="/header/header.h5.index.html" -->
+        <!--头部-->
+
+        <!-- 刮一刮部分 -->
+        <section class="scrape">
+          <div class="scrape-box">
+            <style type="text/css">
+            canvas{
+              position: absolute;
+              background-color: transparent;
+              background-repeat: no-repeat;
+              width: 556px;
+              height: 290px;
+              text-align: center;
+              z-index: 2;
+            }
+            </style>
+            <canvas class=""></canvas>
+            <!-- <span class="text"><em class="text-bg center">刮开有惊喜</em></span> -->
+          </div>
+        </section>
+        <!-- 刮一刮部分结束 -->
+
+        <section class="scrap-items">
+            <div class="scrape-times">
+              <span class="scrap-arrow-left"></span>
+              <span class="scrape-times-inner">你还有<span class="scrape-num">?</span>次刮奖机会</span>
+              <span class="scrap-arrow-right"></span>
+            </div>
+
+            <style type="text/css">
+                .scrape-winner-list li{
+                  width: 560px;
+                  vertical-align: middle;
+                  text-align: center;
+                }
+            </style>
+            <div class="scrape-winner">
+                <ul class="scrape-winner-list clearfix">
+                    <li>下一个就是你</li>
+                    <!-- <li>小YY获得500积分</li> -->
+                    <!-- <li>小QQ获得100元券</li> -->
+                </ul>
+            </div>
+            <p class="scrape-tips">* 100%中奖，每天可刮3次</p>
+        </section>
+    </div>
+
+    <div id="version" data-version="{version}"></div>
+    <!-- build:js(.) scripts/require.min.js -->
+    <script src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+    <script src="scripts/base/sf.h5.base.ver.1.0.8.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+    <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.scrape.js -->
+    <script src="scripts/sf.b2c.mall.require.config.js"></script>
+    <script type="text/javascript">
+        require(['sf.b2c.mall.page.scrape']);
+    </script>
+    <!-- endbuild -->
+</body>
+
+</html>
