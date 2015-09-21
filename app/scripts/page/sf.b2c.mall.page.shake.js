@@ -422,9 +422,9 @@ define(
                 //alert(JSON.stringify(options.serverData.attr('shakeData')));
                 //alert('执行1');
                 //判断当前的券是否相对大
-                if ( data.couponId >= coupon ){
+                //if ( data.couponId >= coupon ){
                   store.set('maxCoupon', data.couponId);
-                }
+                //}
                 //alert('执行2');
                 $(dom).find('#shaking').addClass('hide');
                 $(dom).find('#shakend').removeClass('hide');
