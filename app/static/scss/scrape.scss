@@ -1,3 +1,4 @@
+@import 'utils/variables';
 body{
 	width: 640px;
 }
@@ -194,5 +195,21 @@ body{
 .scrape-ticket-none{
 	.scrape-btn-box{
 		margin-top: 34px;
+	}
+}
+.scrape-ticket-gift{
+	text-align: center;
+}
+.scrape-ticket-tips{
+	margin-top: 20px;
+	font-size: 24px;
+	color: #999;
+}
+.scrape-ticket-gift{
+	.scrape-btn-box{
+		margin-top: 22px;
+	}
+	.scrape-ticket-times{
+		margin-top: 32px;
 	}
 }
