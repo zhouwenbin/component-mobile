@@ -80,12 +80,22 @@ define(
 
           switcher.register('web', function() {
             alert('只能在App里摇，请去下载App');
-            window.location.href = 'http://m.sfht.com/app.html';
+
+            var that = this;
+            var message = new SFMessage(null, {
+              'tip': '只能在App里摇，请去下载App',
+              'type': 'error',
+              'okFunction': function(){
+                window.location.href = 'http://m.sfht.com/app.html';
+              }
+            });
           });
           switcher.register('app', function() {
           });
           switcher.go();
-          if(!SFFn.isMobile.APP()) return false;
+          if(!SFFn.isMobile.APP()) {
+            return false;
+          }
           shakeThis = this;
           this.options.ownData = {};    //用于存放js计算或获取的数据
           this.options.serverData = new can.Map({});  //用于存放从服务器获取的数据
