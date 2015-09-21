@@ -444,11 +444,12 @@ define(
                 //可以分享了
                 //options.ownData.num = 1;
                 //alert(options.ownData.num);
-                if (typeof options.ownData.location === 'undefined') {
+                //alert(typeof options.ownData.location);
+                if (typeof options.ownData.location.latitude === 'undefined') {
                   $(dom).find('#isGps').removeClass('hide');
                   setTimeout(function () {
                     $(dom).find('#isGps').addClass('hide');
-                  }, 1000)
+                  }, 3000)
                 }
                   setTimeout(function(){
                   _this.shakeControl();
@@ -466,7 +467,7 @@ define(
                   $(dom).find('#isGps').removeClass('hide');
                   setTimeout(function(){
                     $(dom).find('#isGps').addClass('hide');
-                  }, 1000)
+                  }, 3000)
                 }else{
                   alert('网络不稳定，请再摇');
                 }
