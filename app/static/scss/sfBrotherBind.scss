@@ -1,0 +1,66 @@
+@import 'utils/variables';
+.sfBrotherBindBn{
+	font-size: 14px;
+	background-color: #ffffff;
+	min-height: 100%;
+	max-width: 640px;
+	.text-center{
+		text-align: center;
+	}
+	.font14{
+		font-size: 14px;
+	}
+	.darkColor{
+		color:#333333;
+	}
+	.greyColor{
+		color: #999999;
+	}
+	p{
+		padding: 12px 4%;
+		line-height: 16px;
+	}
+	.border{
+      border-bottom: 1px solid #dcdcdc;
+	}
+	.padding-top-30{
+		padding-top: 30px;
+	}
+	padding-bottom: 16px;
+}
+.sfBrotherBind-image{
+	padding: 5% 0;
+	img{
+		width: 51%;
+	}
+}
+.centerBox{
+	margin-right: auto;
+	margin-left: auto;
+}
+.sfBrotherBind-ul{
+	li{
+		padding: 12px 4%;
+	}
+	input,input:focus{
+		border:0;
+		outline: none;
+	}
+	input::-webkit-input-placeholder{
+		color:#999999;
+		text-indent: 0
+	}
+}
+.sfBrotherBind-select{
+	width: 100%;
+	padding: 12px 4%;
+	line-height: 16px;
+	border:0;
+	outline: none;
+}
+.sfBrotherBind-btn{
+	margin: 28px 4% 0;
+	width: 92%;
+	height: 43px;
+    line-height: 43px;
+}
