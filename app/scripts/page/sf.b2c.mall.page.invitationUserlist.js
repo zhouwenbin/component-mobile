@@ -65,7 +65,7 @@ define(
           var url = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
             _ruser: _ruser
           });
-          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          var imgUrl = 'http://img0.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFweixin.shareDetail('顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿', '顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿', url, imgUrl);
         }
         var status = can.route.attr('status') || 'UNFINISH';
@@ -234,7 +234,7 @@ define(
         var params = {
           "subject": '顺丰海淘给新人撒红包了，用来买国外好货，不拿白不拿',
           "description": '顺丰海淘为了拉客也是拼了，买海外商品比国内商品还便宜',
-          "imageUrl": 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
+          "imageUrl": 'http://img0.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           "url": url
         };
         var success = function(data) {

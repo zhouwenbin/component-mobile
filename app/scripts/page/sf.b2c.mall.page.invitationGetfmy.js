@@ -33,7 +33,7 @@ define(
         var that = this;
         if(SFFn.isMobile.WeChat()){
           var url = window.location.href;
-          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          var imgUrl = 'http://img0.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFweixin.shareDetail('顺丰海淘的老友计，很有意思，进来看看吧', '顺丰海淘给新客送红包，老客返现金，让新客老客都嗨皮', url, imgUrl);
         }
       },

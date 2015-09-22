@@ -68,7 +68,7 @@ define(
           var url = 'http://' + window.location.hostname + '/invitation-bag.html?' + $.param({
             _ruser: srcUid
           });
-          var imgUrl = 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
+          var imgUrl = 'http://img0.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg';
           SFweixin.shareDetail('顺丰海淘给新人派送20元红包，用来买国外好物，不拿白不拿', '顺丰海淘为了拉客也是拼了，买海外商品比国内商品还便宜', url, imgUrl);
         }
         loadingCtrl.hide();
