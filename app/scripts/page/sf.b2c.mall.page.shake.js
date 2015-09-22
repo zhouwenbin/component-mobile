@@ -409,6 +409,7 @@ define(
                   options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
                   options.serverData.attr('shakeData.sharePrice', data.itemSellPriceAfterCoupon / 100);
                   options.serverData.attr('shakeData.itemSellPrice', data.itemSellPrice / 100);
+                  options.serverData.attr('shakeData.couponCondition', data.couponCondition);
 
                 }
                // alert();
