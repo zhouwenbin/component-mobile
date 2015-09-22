@@ -68,6 +68,7 @@ define(
         var sFgetUserTaskList = new SFgetUserTaskList(params);
         can.when(sFgetUserTaskList.sendRequest()).done(function(data) {
           that.itemObj.attr(data);
+          console.log(data);
           that.stepCates(that.itemObj);
         }).fail(function(error) {
           console.error(error);
