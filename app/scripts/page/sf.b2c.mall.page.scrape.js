@@ -136,11 +136,12 @@ define(
             }
 
             var paintCoupon = function () {
-              var templateText = '<div class="scrape-gift"><h2 class="scrape-ticket">{{title}}</h2><p class="scrape-ticket-tips">*部分特价商品除外</p><p class="scrape-ticket-times">有效期{{startTime}}至{{endTime}}</p></div><div class="scrape-btn-box"><a href="/index.html" class="btn">马上使用</a></div>';
+              var templateText = '<div class="scrape-gift" style="text-align: center;"><h2 class="scrape-ticket">{{title}}</h2><p class="scrape-ticket-tips">*部分特价商品除外</p><p class="scrape-ticket-times">有效期{{startTime}}至{{endTime}}</p></div><div class="scrape-btn-box"><a href="/index.html" class="btn">马上使用</a></div>';
               var render = can.view.mustache(templateText);
 
               $('#noresult').remove();
-              $('.scrape-box').append(render(params)).addClass('scrape-ticket-gift');
+              $('.scrape-box').append(render(params))
+                              // .addClass('scrape-ticket-gift');
             };
 
             this.requestGetUserPrice()
@@ -172,7 +173,7 @@ define(
             if ($('.scrape-box')) {
               $('.scrape-box').append('<div id="noresult"><div class="scrape-ticket-none-bg"><h2 style="text-align: center;font-size: 50px;padding: 40px 0;">系统开小差了...</h2></div><div class="scrape-btn-box"><a href="javascript:window.location.reload(true)" class="btn">再刮一次</a></div></div>')
             }
-            return 'nochange';
+            return 'noresult';
           }
         }
 
