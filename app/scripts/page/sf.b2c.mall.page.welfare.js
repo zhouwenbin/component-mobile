@@ -68,7 +68,6 @@ define(
         var sFgetUserTaskList = new SFgetUserTaskList(params);
         can.when(sFgetUserTaskList.sendRequest()).done(function(data) {
           that.itemObj.attr(data);
-          console.log(data);
           that.stepCates(that.itemObj);
         }).fail(function(error) {
           console.error(error);
@@ -76,9 +75,12 @@ define(
       },
 
       '.joinBtns click': function($element, event) {
+        alert(0);
         if ($element.hasClass('direct') && $element.closest('li').hasClass('completed')) {
+          alert(1);
           event.preventDefault();
         } else {
+          alert(2);
           var url = window.location.href;
           if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
             window.location.href = "http://m.sfht.com/login.html?from=" + window.encodeURIComponent(url);
@@ -88,6 +90,7 @@ define(
             $element.attr({
               href: 'javascript:;'
             });
+            alert(3);
             var taskId = $element.closest('li').attr('data-tab');
             var getImage = $element.closest('li').find('.stepImage').clone();
             var sFdirectReceiveAward = new SFdirectReceiveAward({
@@ -95,6 +98,7 @@ define(
             });
             sFdirectReceiveAward.sendRequest().done(function(data) {
               setTimeout(function() {
+                alert(4);
                 var message = new SFmessage(null, {
                   'tip': data.richText,
                   'type': 'success',
@@ -108,8 +112,10 @@ define(
                 $('#messagedialog').addClass('addWelFareStyle');
                 getImage.insertBefore('.addWelFareStyle .center h2');
                 $('#ok').addClass('addWelFareBtn');
+                alert(5);
               }, 300)
             }).fail(function(error) {
+              alert(error);
               console.log(error)
             })
           }
