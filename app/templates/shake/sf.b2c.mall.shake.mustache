@@ -77,12 +77,13 @@
                         <img src="{{imageUrl}}">
                     </div>
                     <div class="shaked-coupon-c2">
-                        <h2>{{itemTitle}}</h2>
                         <p>{{couponTitle}}</p>
                         <div class="shaked-coupon-price">
+                            <div class="price-right"><small>¥</small>{{itemSellPriceAfterCoupon}}</div>
+                            <p class="title">{{itemTitle}}</p>
                             <span>{{couponStartDate}}至{{couponEndDate}}</span>
-                            <small>¥</small>{{itemSellPriceAfterCoupon}}
                         </div>
+
                     </div>
                 </div>
             {{/if}}

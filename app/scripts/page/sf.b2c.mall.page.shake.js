@@ -374,6 +374,7 @@ define(
                 //  couponId: data.couponId,     //如果可以领券，此为领券ID
                 //  text: '文案'
                 //});
+                //console.log(data);
 
                 if (data.impact  < 3){
                   ifOne = true;
@@ -406,7 +407,7 @@ define(
                   options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
                   options.serverData.attr('shakeData.couponUrl', data.couponUrl);
                   options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
-                  options.serverData.attr('shakeData.sharePrice', data.itemSellPriceAfterCoupon / 100)
+                  options.serverData.attr('shakeData.sharePrice', data.itemSellPriceAfterCoupon / 100);
                   options.serverData.attr('shakeData.itemSellPrice', data.itemSellPrice / 100);
 
                 }
