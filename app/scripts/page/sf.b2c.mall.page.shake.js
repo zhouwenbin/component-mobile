@@ -374,6 +374,7 @@ define(
                 //  couponId: data.couponId,     //如果可以领券，此为领券ID
                 //  text: '文案'
                 //});
+                //console.log(data);
 
                 if (data.impact  < 3){
                   ifOne = true;
@@ -406,8 +407,9 @@ define(
                   options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
                   options.serverData.attr('shakeData.couponUrl', data.couponUrl);
                   options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
-                  options.serverData.attr('shakeData.sharePrice', data.itemSellPriceAfterCoupon / 100)
+                  options.serverData.attr('shakeData.sharePrice', data.itemSellPriceAfterCoupon / 100);
                   options.serverData.attr('shakeData.itemSellPrice', data.itemSellPrice / 100);
+                  options.serverData.attr('shakeData.couponCondition', data.couponCondition);
 
                 }
                // alert();
@@ -549,9 +551,11 @@ define(
               window.bridge.run('SFNavigation', 'setRightButton', '分享', function(){_this.sfBridge();}, function(){});
               $(this.element).find('.shaked-btns.to-buy').removeClass('hide');
             })
-            .fail(function(err){
+            .fail(function(err, msg){
               //alert(err);
+              options.serverData.attr('shakeData.msg', msg);
               $(dom).find('#noCoupon').removeClass('hide');
+
               setTimeout(function(){
                 $(dom).find('#noCoupon').addClass('hide');
               }, 1000);

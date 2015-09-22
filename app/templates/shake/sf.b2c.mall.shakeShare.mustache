@@ -1,7 +1,7 @@
 {{#shareData}}
     <div class="shake-share">
-        <img src="{{imageUrl}}">
-        <a class="btn-yellow btn-big">我摇一摇就{{itemSellPriceAfterCoupon}}元买下了它!</a>
+        <a id="share-link" href="{{couponUrl}}"><img src="{{imageUrl}}"></a>
+        <a class="btn-yellow btn-big">原价{{itemSellPrice}}元我摇一摇就只要{{itemSellPriceAfterCoupon}}元</a>
         <dl>
             <dt>最大影响力</dt>
             <dd>{{maxImpact}}人</dd>
