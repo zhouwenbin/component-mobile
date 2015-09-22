@@ -72,21 +72,6 @@ define(
           },
           'sf-isBuy': function(a, options){
             return a() ? 'show' : 'hide';
-          },
-          'sf-isOne': function(a, options){
-            if ( a() === 0 ){
-              return 'show';
-            }else {
-              return 'hide';
-            }
-            //return a() ? 'show' : 'hide';
-          },
-          'sf-noOne': function(a, options){
-            if ( a() === 0 ){
-              return 'hide';
-            }else {
-              return 'show';
-            }
           }
         },
         init: function(){
@@ -94,12 +79,20 @@ define(
           var switcher = new SFSwitcher();
 
           switcher.register('web', function() {
-            alert('只能在App里摇，请去下载App');
-            window.location.href = 'http://m.sfht.com/app.html';
+            var message = new SFmessage(null, {
+              'tip': '只能在App里摇，请去下载App',
+              'type': 'error',
+              'okFunction': function(){
+                window.location.href = 'http://m.sfht.com/app.html';
+              }
+            });
           });
           switcher.register('app', function() {
           });
           switcher.go();
+          if(!SFFn.isMobile.APP()) {
+            return false;
+          }
           shakeThis = this;
           this.options.ownData = {};    //用于存放js计算或获取的数据
           this.options.serverData = new can.Map({});  //用于存放从服务器获取的数据
@@ -191,6 +184,7 @@ define(
                 isUsed: data.isCouponAlreadyUsed,  //优惠券是否用过，true是用了 false是没用
                 itemSellPriceAfterCoupon: data.couponPrice / 100,
                 sharePrice: data.itemSellPriceAfterCoupon / 100,
+                itemSellPrice: data.itemSellPrice / 100,
                 ifOne: false,
                 help: false,
                 Yao: false
@@ -412,7 +406,8 @@ define(
                   options.serverData.attr('shakeData.couponStartDate', data.couponStartDate);
                   options.serverData.attr('shakeData.couponUrl', data.couponUrl);
                   options.serverData.attr('shakeData.couponEndDate', data.couponEndDate);
-                  options.serverData.attr('shakeData.sharePrice', data.itemSellPriceAfterCoupon / 100);
+                  options.serverData.attr('shakeData.sharePrice', data.itemSellPriceAfterCoupon / 100)
+                  options.serverData.attr('shakeData.itemSellPrice', data.itemSellPrice / 100);
 
                 }
                // alert();
@@ -457,7 +452,14 @@ define(
                 //可以分享了
                 //options.ownData.num = 1;
                 //alert(options.ownData.num);
-                setTimeout(function(){
+                //alert(typeof options.ownData.location);
+                if (typeof options.ownData.location.latitude === 'undefined') {
+                  $(dom).find('#isGps').removeClass('hide');
+                  setTimeout(function () {
+                    $(dom).find('#isGps').addClass('hide');
+                  }, 3000)
+                }
+                  setTimeout(function(){
                   _this.shakeControl();
                 }, 1000);
                 //alert('执行bridge前');
@@ -469,7 +471,15 @@ define(
               .fail(function(err){
                 //alert(err);
                 $(dom).find('#matching').addClass('hide');
-                alert('网络不稳定，请再摇');
+                if (typeof options.ownData.location === 'undefined'){
+                  $(dom).find('#isGps').removeClass('hide');
+                  setTimeout(function(){
+                    $(dom).find('#isGps').addClass('hide');
+                  }, 3000)
+                }else{
+                  alert('网络不稳定，请再摇');
+                }
+
                 setTimeout(function(){
                   _this.shakeControl();
                 }, 1000)
@@ -560,7 +570,7 @@ define(
                  + '&itemId='+ options.ownData.itemId;
             //alert(url);
             var params = {
-              "subject": '我轻松摇了摇就'+ options.serverData.attr('shakeData.sharePrice') +'元，拿下了它，你要不也试试？',
+              "subject": '原价'+ options.serverData.attr('shakeData.itemSellPrice') +'元的进口货被我摇到' + options.serverData.attr('shakeData.sharePrice') +'元，求超越',
               "description": '敢来测试你的影响力吗？',
               "imageUrl": options.serverData.attr('shakeData.imageUrl')+'@144h_144w_50Q_1x.jpg',
               "url": url
