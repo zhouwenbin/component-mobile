@@ -116,7 +116,7 @@ define(
               if (params.itemid) {
                 this.requestHotData(params.itemid).done(_.bind(paintProductCoupon, this));
               }else{
-                this.paintCoupon()
+                paintCoupon()
               }
             }
 
