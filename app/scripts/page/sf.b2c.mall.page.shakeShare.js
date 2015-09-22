@@ -41,6 +41,7 @@ define(
             itemId: options.userData.itemId ? options.userData.itemId : 0,
             couponId: options.userData.couponId ? options.userData.couponId : 0
           });
+          //can.when()
           Share
             .sendRequest()
             .done(function(data){
@@ -64,18 +65,18 @@ define(
               //console.log(html);
               $(dom).append(html);
               //console.log(data);
-              var url = window.location.href;
-              var imgUrl = options.serverData.attr('shareData.imageUrl') +'@144h_144w_50Q_1x.jpg';
-              var title = '原价'+ options.serverData.attr('shareData.itemSellPrice') +'元的进口货被我摇到' + options.serverData.attr('shareData.itemSellPriceAfterCoupon') +'元，求超越';
-              var description = '敢来测试你的影响力吗?';
-              SFweixin.shareDetail(title, description, url, imgUrl);
+
 
             })
             .fail(function(err){
               alert('网络不稳定，请重试');
             });
 
-
+          //var url = window.location.href;
+          //var imgUrl = options.serverData.attr('shareData.imageUrl') +'@144h_144w_50Q_1x.jpg';
+          //var title = '原价'+ options.serverData.attr('shareData.itemSellPrice') +'元的进口货被我摇到' + options.serverData.attr('shareData.itemSellPriceAfterCoupon') +'元，求超越';
+          //var description = '敢来测试你的影响力吗?';
+          //SFweixin.shareDetail(title, description, url, imgUrl);
 
 
         },

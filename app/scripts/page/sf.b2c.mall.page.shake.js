@@ -550,9 +550,11 @@ define(
               window.bridge.run('SFNavigation', 'setRightButton', '分享', function(){_this.sfBridge();}, function(){});
               $(this.element).find('.shaked-btns.to-buy').removeClass('hide');
             })
-            .fail(function(err){
+            .fail(function(err, msg){
               //alert(err);
+              options.serverData.attr('shakeData.msg', msg);
               $(dom).find('#noCoupon').removeClass('hide');
+
               setTimeout(function(){
                 $(dom).find('#noCoupon').addClass('hide');
               }, 1000);
