@@ -283,7 +283,10 @@ a.btn-big{
 	text-align: center;
 	padding-top: 52px * 2;
 	background: url(../img/shake-share-bg.png) no-repeat;
-	background-size: cover;         
+	background-size: cover;
+	a#share-link{
+		display: block;
+	}
 }
 .shake-share img{
 	width: 90px * 2;
@@ -295,7 +298,7 @@ a.btn-big{
 	height: 30px * 2;
 	line-height: 30px * 2;
 	display: block;
-	width: 224px * 2;
+	width: 295px * 2;
 	margin: -10px * 2 auto 39px * 2;
 	position: relative;
 	z-index: 1;

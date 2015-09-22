@@ -574,7 +574,7 @@ define(
                  + '&itemId='+ options.ownData.itemId;
             //alert(url);
             var params = {
-              "subject": '原价'+ options.serverData.attr('shakeData.itemSellPrice') +'元的进口货被我摇到' + options.serverData.attr('shakeData.sharePrice') +'元，求超越',
+              "subject": '原q价'+ options.serverData.attr('shakeData.itemSellPrice') +'元的进口货被我摇到' + options.serverData.attr('shakeData.sharePrice') +'元，求超越',
               "description": '敢来测试你的影响力吗？',
               "imageUrl": options.serverData.attr('shakeData.imageUrl')+'@144h_144w_50Q_1x.jpg',
               "url": url
