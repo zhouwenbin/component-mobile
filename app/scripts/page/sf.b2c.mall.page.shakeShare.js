@@ -44,6 +44,7 @@ define(
           Share
             .sendRequest()
             .done(function(data){
+              //console.log(data);
               options.serverData.attr('shareData', {
                 isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
                 //isReceiveCoupon: true,
