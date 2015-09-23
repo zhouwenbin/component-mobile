@@ -71,6 +71,7 @@ define(
           $('.scrape-num').text(times);
         }else{
           $('.scrape-times-inner').text(NO_CHANCE);
+          $('canvas').hide();
           this.result = this.setResultImage('nochange');
         }
       },
@@ -155,7 +156,7 @@ define(
           'fail': function () {
             $('#noresult').remove();
             if ($('.scrape-box .scrape-ticket-none-bg').length == 0 ) {
-              $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div><div class="scrape-btn-box"><a href="javascript:window.location.reload(true)" class="btn">再刮一次</a></div>').addClass('scrape-ticket-none')
+              $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div><div class="scrape-ticket-alert">运气不佳，再刮一次</div><div class="scrape-btn-box"><a href="javascript:window.location.reload(true)" class="btn">再刮一次</a></div>').addClass('scrape-ticket-none')
             }
             return 'fail';
           },
@@ -163,7 +164,7 @@ define(
           'nochange': function () {
             $('#noresult').remove();
             if ($('.scrape-box .scrape-ticket-none-bg').length == 0 ) {
-              $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div><div class="scrape-btn-box"><a href="/index.html" class="btn">返回首页</a></div>').addClass('scrape-ticket-none')
+              $('.scrape-box').append('<div class="scrape-ticket-none-bg"><span class="icon center"></span></div><div class="scrape-ticket-alert">今天机会已用完，明天不见不散～</div><div class="scrape-btn-box"><a href="/index.html" class="btn">返回首页</a></div>').addClass('scrape-ticket-none')
             }
             return 'nochange';
           },

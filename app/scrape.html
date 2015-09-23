@@ -44,11 +44,7 @@
         <!-- 刮一刮部分结束 -->
 
         <section class="scrap-items">
-            <div class="scrape-times">
-              <span class="scrap-arrow-left"></span>
-              <span class="scrape-times-inner">你还有<span class="scrape-num">?</span>次刮奖机会</span>
-              <span class="scrap-arrow-right"></span>
-            </div>
+
 
             <style type="text/css">
                 .scrape-winner-list li{
@@ -56,13 +52,48 @@
                   vertical-align: middle;
                   text-align: center;
                 }
+
+                .scrape-winner,.scrape-winner::after{
+                  line-height: 40px;
+                  padding: 15px 0 25px;
+                  background: #fcaa19;
+                }
+
+                .scrape-winner ul{
+                  padding-left: 30px;
+                }
+
+                .scrape-winner h4{
+                  text-align: center;
+                  padding: 15px 0;
+                  font-size: 30px;
+                }
+
+                .scrape-box .scrape-ticket-none-bg,
+                .scrape-box .scrape-ticket-alert{
+                  margin-top: 0px;
+                  text-align: center;
+                }
+
+                .scrape-box .scrape-ticket-alert{
+                  padding: 10px 0;
+                }
+
+                .scrape-box .scrape-btn-box{
+                  margin-top: 4px;
+                }
             </style>
-            <!-- <div class="scrape-winner">
-                <ul class="scrape-winner-list clearfix">
-                    <li>下一个就是你</li>
+            <div class="scrape-winner">
+                <h4>活动规则</h4>
+                <ul class="clearfix">
+                  <ol>1. 每天可以刮3次，至少可以中一次</ol>
+                  <ol>2. 通过刮一刮有机会获得以下礼物</ol>
+                  <ul>
+                    <ol>a. 顺丰海淘全场通用券</ol>
+                    <ol>b. 顺丰海淘单品折扣券</ol>
+                  </ul>
                 </ul>
-            </div> -->
-            <p class="scrape-tips">* 100%中奖，每天可刮3次</p>
+            </div>
         </section>
     </div>
 
