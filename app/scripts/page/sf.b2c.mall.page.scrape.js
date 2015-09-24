@@ -15,10 +15,11 @@ define(
     'sf.b2c.mall.api.b2cmall.getItemInfo',
     'sf.b2c.mall.module.header',
     'sf.bridge',
-    'sf.env.switcher'
+    'sf.env.switcher',
+    'sf.weixin'
   ],
 
-  function($, can, _, store, moment, SFFrameworkComm, SFCouponIsProCardRcved, SFCouponRandomRcvCard, SFB2cMallGetItemInfo, SFHeader, SFBridge, SFSwitcher) {
+  function($, can, _, store, moment, SFFrameworkComm, SFCouponIsProCardRcved, SFCouponRandomRcvCard, SFB2cMallGetItemInfo, SFHeader, SFBridge, SFSwitcher, SFWeixin) {
     SFFrameworkComm.register(3);
 
     var NO_CHANCE = '今天已经没有机会了，明天再来';
@@ -27,6 +28,9 @@ define(
 
     var SFPage = can.Control.extend({
 
+      /**
+       * 初始化动作
+       */
       init: function() {
 
         var switcher = new SFSwitcher();
@@ -47,22 +51,34 @@ define(
         this.prepare();
 
         if (SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          this.setRightBtnShareFn();
           this.setUI();
         }else{
           window.location.href = '/login.html?from='+encodeURIComponent(window.location.href);
         }
       },
 
+      /**
+       * 获取用户已经刮了的次数
+       * @return {int} 次数
+       */
       getUserTimes: function () {
         var userId = $.fn.cookie('userId');
         return store.get(moment(Date.now()).format('YYYY_MM_DD_')+userId + '_times') || 0;
       },
 
+      /**
+       * 设置用户已经刮过的次数
+       * @param {int} times 次数
+       */
       setUserTimes: function (times) {
         var userId = $.fn.cookie('userId');
         store.set(moment(Date.now()).format('YYYY_MM_DD_')+userId + '_times', times);
       },
 
+      /**
+       * 设置初始化UI
+       */
       setUI: function () {
         this.times = this.getUserTimes();
         var times = LIMIT_TIME - this.getUserTimes();
@@ -76,6 +92,11 @@ define(
         }
       },
 
+      /**
+       * 从customUrl中获取商品ItemID
+       * @param  {String} url customUrl
+       * @return {String}     ItemID
+       */
       getItemid: function (url) {
         var pathname = url;
         var pathArr = /\d+/g.exec(pathname);
@@ -87,6 +108,9 @@ define(
         }
       },
 
+      /**
+       * 在APP中设置用户ID
+       */
       setUserIdInApp: function () {
         var _aid = $.fn.cookie('_aid') || '3';
 
@@ -99,6 +123,46 @@ define(
         }
       },
 
+      /**
+       * @todo 设置在APP右上角的分享按钮，还未使用
+       */
+      setRightBtnShareFn: function () {
+
+        var params = {
+          "subject":  '每天刮一刮，每天拿个奖，每天心情乐一乐',
+          "description": '每天刮一刮，每天拿个奖，每天心情乐一乐',
+          "imageUrl": 'http://img0.sfht.com/cmsres/20150924/f2eedb82-7489-4e4f-8318-c45afee10a1d.png',
+          "url": window.location.host + window.location.pathname
+        };
+
+        var empty = function(){};
+
+        var shareInApp = function () {
+          window.bridge.run('SocialSharing', 'share', params, empty, empty);
+        };
+
+        var shareInWeixin = function () {
+          SFWeixin.shareDetail(params.subject, params.description, params.url, params.imageUrl, empty);
+        }
+
+        // 设置在app和微信中的分享
+        var switcher = new SFSwitcher();
+
+        switcher.register('app', function () {
+          window.bridge.run('SFNavigation', 'setRightButton', '分享', shareInApp, empty);
+        });
+
+        switcher.register('web', empty);
+
+        switcher.register('wechat', shareInWeixin);
+
+        switcher.go();
+      },
+
+      /**
+       * 根据不同的状态设置不同的结果页面
+       * @param {String} key 状态
+       */
       setResultImage: function (key) {
         var map = {
           'success': function () {
@@ -142,13 +206,10 @@ define(
 
               $('#noresult').remove();
               $('.scrape-box').append(render(params))
-                              // .addClass('scrape-ticket-gift');
             };
 
             this.requestGetUserPrice()
               .done(_.bind(success, this))
-              // .then(_.bind(anotherRequest, this))
-              // .done(_.bind(paintProductCoupon, this))
 
             return 'success';
           },
@@ -186,6 +247,9 @@ define(
 
       },
 
+      /**
+       * 设置刮刮乐的结果
+       */
       setResult: function () {
 
         var success = function (data) {
@@ -200,6 +264,11 @@ define(
           .fail(fail)
       },
 
+      /**
+       * 三次中保证用户可以有一次中奖，并进行随机算法
+       * @param  {Boolean} isGetPrice 用户是否已经获奖
+       * @return {Boolean}            是否给用户发优惠券
+       */
       getPriceResult: function (isGetPrice) {
         var time = this.times;
         if (isGetPrice) {
@@ -212,12 +281,17 @@ define(
       },
 
       /**
-       * @todo  更新.scrape-winner-list下用户获奖信息
+       * @todo  ［ajax]更新.scrape-winner-list下用户获奖信息
        */
       requestUserListForPrice: function () {
         // 更新.scrape-winner-list下用户获奖信息
+        // 后台没有接口取消
       },
 
+      /**
+       * [ajax]请求商品券的商品信息
+       * @param  {int} itemid 商品id
+       */
       requestHotData: function (itemid) {
         var def = can.Deferred();
 
@@ -234,7 +308,7 @@ define(
       },
 
       /**
-       * @todo  获取用户是否获奖的信息
+       * @todo  [ajax]获取用户是否获奖的信息
        */
       requestIsUserGetPrice: function () {
         // 获取用户是否获奖的信息,并且设置背后图片
@@ -252,6 +326,9 @@ define(
         return def;
       },
 
+      /**
+       * [ajax]获取用户当前活动的优惠券
+       */
       requestGetUserPrice: function () {
         var def = can.Deferred();
         var request = new SFCouponRandomRcvCard({proName: ACTIVITY_NAME});
@@ -266,6 +343,9 @@ define(
         return def;
       },
 
+      /**
+       * 用户开始刮之前做好准备工作，初始化canvas，设置canvas覆盖在结果面板之上
+       */
       prepare: function() {
         var startlock = true;
 
@@ -277,6 +357,7 @@ define(
 
         ctx.fillStyle = 'transparent';
 
+        // 原计划是实用图片覆盖在上面，由于在使用中出现透视问题，暂时取消绘制图片
         var initialize = function() {
           ctx.fillStyle = '#DCDCDC';//'gray'
           ctx.fillRect(0, 0, width * 2, height * 2);
