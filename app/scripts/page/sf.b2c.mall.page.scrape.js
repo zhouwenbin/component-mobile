@@ -132,7 +132,7 @@ define(
           "subject":  '每天刮一刮，每天拿个奖，每天心情乐一乐',
           "description": '每天刮一刮，每天拿个奖，每天心情乐一乐',
           "imageUrl": 'http://img0.sfht.com/cmsres/20150924/f2eedb82-7489-4e4f-8318-c45afee10a1d.png',
-          "url": window.location.host + window.location.pathname
+          "url": window.location.protocol + '//' + window.location.host + window.location.pathname
         };
 
         var empty = function(){};
