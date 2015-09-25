@@ -78,7 +78,7 @@ define(
           .done(function(data) {
             // totleOther =  data.totalCount;
             that.inToAccount(data);
-            if(data.totalCount < 20){
+            if(data.totalCount <= 20){
               $('.getMoreAccount').hide();
             }
             if (status == 'UNFINISH' && data.totalCount == 0) {
