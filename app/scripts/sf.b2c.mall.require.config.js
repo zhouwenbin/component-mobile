@@ -406,5 +406,6 @@ requirejs.config({
         "sf.b2c.mall.api.user.bindIdNumb": "scripts/api/sf.b2c.mall.api.user.bindIdNumb",
         "sf.b2c.mall.api.user.getBindedIdNumb": "scripts/api/sf.b2c.mall.api.user.getBindedIdNumb",
         'template_brother': 'templates/brother/sf.b2c.mall.brother.mustache',
+        "sf.b2c.mall.page.brother": "scripts/page/sf.b2c.mall.page.brother"
     }
 });
