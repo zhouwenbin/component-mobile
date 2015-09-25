@@ -397,6 +397,10 @@ requirejs.config({
         'template_shake': 'templates/shake/sf.b2c.mall.shake.mustache',
         //分享摇一摇
         'sf.b2c.mall.page.shakeShare': 'scripts/page/sf.b2c.mall.page.shakeShare',
-        'template_shake_share': 'templates/shake/sf.b2c.mall.shakeShare.mustache'
+        'template_shake_share': 'templates/shake/sf.b2c.mall.shakeShare.mustache',
+        //顺丰小哥地推
+        "sf.b2c.mall.api.user.bindIdNumb": "scripts/api/sf.b2c.mall.api.user.bindIdNumb",
+        "sf.b2c.mall.api.user.getBindedIdNumb": "scripts/api/sf.b2c.mall.api.user.getBindedIdNumb",
+        'template_brother': 'templates/brother/sf.b2c.mall.brother.mustache',
     }
 });
