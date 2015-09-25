@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>新会员大礼包领取</title>
+
+	<!-- build:css({app, .tmp}) /styles/sf.b2c.h5brother.css -->
+	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="/static/css/sfBrotherBind.css">
+	<!-- endbuild -->
+
+</head>
+<body>
+
+	<div class="sfBrotherBindBn sfBrotherDownCn centerBox">
+		<div class="sfBrotherDban">
+			<img src="../img/sfBrotherBind/brdBanner.png">
+		</div>
+		<div class="sfBrotherDcp text-center">
+			<img src="../img/sfBrotherBind/brands.png">
+			<div class="lineYellowColor"></div>
+			<a class="btn btn-danger btn-big centerBox font14" href="http://m.sfht.com/app.html">下载app领红包</a>
+		</div>
+		<div class="sfBrotherDTab clearfix">
+			<ul class="sfBrotherDTTb clearfix font14 text-center show">
+				<li class="fl">卡包优惠</li>
+				<li class="fl noFocus"><div class="inner">领取方式</div></li>
+				<li class="fl noFocus">活动规则</li>
+			</ul>
+			<ul class="show sfBrotherDTCn sfBrotherDTCn01">
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">50元<br>顺丰海淘现金券</div>
+					<p class="fontAlt center-vertical">顺丰海淘50元无门槛现金券<br>有效期至：2015.12.31</p>
+				</li>
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">100元<br>滴滴出行大礼包</div>
+					<p class="fontAlt center-vertical">最低100元！还有更多惊喜！<br>有效期至：领取后一周之内有效</p>
+				</li>
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">20元<br>格瓦拉现金券</div>
+					<p class="fontAlt center-vertical">格瓦拉现金券，还有电影免单机会！<br>有效期至：领取之后五天内有效</p>
+				</li>
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">30元<br>泰迪洗衣现金券</div>
+					<p class="fontAlt center-vertical">30元全场减免，无门槛<br>有效期至：领取之后五天内有效</p>
+				</li>
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">星巴克半价<br>邻趣现金券</div>
+					<p class="fontAlt center-vertical">格瓦拉现金券，还有电影免单机会！<br>有效期至：2015.11.30</p>
+				</li>
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">1980元<br>威尔士体验卡</div>
+					<p class="fontAlt center-vertical">威尔士双人份一周体验卡+私教课程，双人哦！<br>有效期至：2015.11.30</p>
+				</li>
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">150元<br>平安好医生问诊卡</div>
+					<p class="fontAlt center-vertical">平安家庭医生问诊卡，5次问诊<br>有效期至：2016.2.29</p>
+				</li>
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">100元<br>Enjoyshanghai</div>
+					<p class="fontAlt center-vertical">免费体验一个月，活动期入会即可享受老会员优惠价<br>有效期至：2015.11.30</p>
+				</li>
+				<li class="li01 clearfix">
+					<div class="imageShow fl text-center">30元<br>河狸家现金券</div>
+					<p class="fontAlt center-vertical">新用户30元优惠券，全场通用<br>有效期至：红包领取之后五天内有效</p>
+				</li>
+			</ul>
+			<div class="sfBrotherDTCn sfBrotherDTCn02 clearfix hide">大礼包领取方式<br>1.下载并安装顺丰海淘APP <br>2.在APP内找到"我的"-"优惠券"-"兑换优惠券"，输入海淘生活卡上的优惠码就可以兑换咯
+			</div>
+			<div class="sfBrotherDTCn sfBrotherDTCn03 clearfix hide">大礼包领取方式<br>1.下载并安装顺丰海淘APP <br>2.注册成为顺丰海淘会员
+				<br>3.在APP内找到 “我的” &gt; “优惠券” <br>4.在优惠券内找到 “兑换优惠券”，输入生活卡上的优惠码并兑换成功
+			</div>
+		</div>
+	</div>
+	<!-- build:js(.) /scripts/require.min.js -->
+	<script src="/bower_components/requirejs/require.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+	<script src="/scripts/base/sf.h5.base.ver.1.0.8.js"></script>
+	<!-- endbuild -->
+	<script type="text/javascript">
+		$(function() {
+		  $('.sfBrotherDTTb li').on('click', function(event) {
+		    var tabBtnIndex = $('.sfBrotherDTTb li').index(this);
+		    $('.sfBrotherDTTb li').eq(tabBtnIndex).removeClass('noFocus').siblings('.sfBrotherDTTb li').addClass('noFocus');
+		    $('.sfBrotherDTCn').eq(tabBtnIndex).removeClass('hide').siblings('.sfBrotherDTCn').addClass('hide')
+		  });
+		});
+	</script>
+</body>
+</html>
