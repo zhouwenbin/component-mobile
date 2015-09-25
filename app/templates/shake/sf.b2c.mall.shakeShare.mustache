@@ -1,15 +1,15 @@
 {{#shareData}}
     <div class="shake-share">
-        <img src="{{imageUrl}}">
-        <a class="btn-yellow btn-big">我摇一摇就{{itemSellPriceAfterCoupon}}元买下了它!</a>
+        <a id="share-link" href="{{couponUrl}}"><img src="{{imageUrl}}"></a>
+        <a class="btn-yellow btn-big">原价{{itemSellPrice}}元我摇一摇就只要{{itemSellPriceAfterCoupon}}元</a>
         <dl>
             <dt>最大影响力</dt>
             <dd>{{maxImpact}}人</dd>
             <dt>最快手速</dt>
             <dd>{{maxFightingCapacity}}</dd>
         </dl>
-        <a id="toYao" class="btn-red btn-big">我也要！摇！</a>
+        <a id="toYao" class="btn-red btn-big">下载APP一起摇！</a>
 
-        <p class="shaked-text">每日限领一张，与更多小伙伴一起摇！</p>
+        <p class="shaked-text">奖励每日限领一次，与更多小伙伴一起摇更优惠！</p>
     </div>
 {{/shareData}}

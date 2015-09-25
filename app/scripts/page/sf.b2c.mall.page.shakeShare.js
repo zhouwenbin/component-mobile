@@ -8,10 +8,10 @@ define(
     'sf.b2c.mall.widget.loading',
     'sf.b2c.mall.framework.comm',
     'sf.b2c.mall.api.shake.queryShakeResult',
-
+    'sf.weixin',
     'text!template_shake_share'
   ],
-  function (can, $, Faskclick, SFConfig, SFLoad, SFFrameworkComm, queryShakeApi, shakeShareTpl) {
+  function (can, $, Faskclick, SFConfig, SFLoad, SFFrameworkComm, queryShakeApi, SFweixin, shakeShareTpl) {
     //注册环境是h5
     SFFrameworkComm.register(3);
     //console.log($.fn.cookie('userId'));
@@ -41,9 +41,11 @@ define(
             itemId: options.userData.itemId ? options.userData.itemId : 0,
             couponId: options.userData.couponId ? options.userData.couponId : 0
           });
+          //can.when()
           Share
             .sendRequest()
             .done(function(data){
+              //console.log(data);
               options.serverData.attr('shareData', {
                 isReceiveCoupon: data.isReceiveCoupon,  //是否领券,true是领了
                 //isReceiveCoupon: true,
@@ -55,7 +57,8 @@ define(
                 couponUrl: data.couponUrl,     //优惠券链接
                 couponCondition: data.couponCondition, //优惠券使用条件
                 link: '摇啊摇',
-                itemSellPriceAfterCoupon: data.itemSellPriceAfterCoupon / 100
+                itemSellPriceAfterCoupon: data.itemSellPriceAfterCoupon / 100,
+                itemSellPrice: data.itemSellPrice / 100
               });
 
               html = shareTpl(options.serverData);
@@ -63,10 +66,17 @@ define(
               $(dom).append(html);
               //console.log(data);
 
+
             })
             .fail(function(err){
               alert('网络不稳定，请重试');
             });
+
+          //var url = window.location.href;
+          //var imgUrl = options.serverData.attr('shareData.imageUrl') +'@144h_144w_50Q_1x.jpg';
+          //var title = '原价'+ options.serverData.attr('shareData.itemSellPrice') +'元的进口货被我摇到' + options.serverData.attr('shareData.itemSellPriceAfterCoupon') +'元，求超越';
+          //var description = '敢来测试你的影响力吗?';
+          //SFweixin.shareDetail(title, description, url, imgUrl);
 
 
         },

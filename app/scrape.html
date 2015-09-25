@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="target-densitydpi=device-dpi,width=640" name="viewport">
+    <title>刮一刮 领奖页</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.scrape.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/scrape.css">
+    <!-- endbuild -->
+    <style type="text/css">
+    body{
+      -moz-user-select:none;
+      -webkit-user-select:none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="scrape-pm">
+        <!--头部-->
+        <!--# include file="/header/header.h5.index.html" -->
+        <!--头部-->
+
+        <!-- 刮一刮部分 -->
+        <section class="scrape">
+          <div class="scrape-box">
+            <style type="text/css">
+            canvas{
+              position: absolute;
+              background-color: transparent;
+              background-repeat: no-repeat;
+              width: 556px;
+              height: 290px;
+              text-align: center;
+              z-index: 2;
+            }
+            </style>
+            <canvas class=""></canvas>
+            <!-- <span class="text"><em class="text-bg center">刮开有惊喜</em></span> -->
+          </div>
+        </section>
+        <!-- 刮一刮部分结束 -->
+
+        <section class="scrap-items">
+
+
+            <style type="text/css">
+                .scrape-winner-list li{
+                  width: 560px;
+                  vertical-align: middle;
+                  text-align: center;
+                }
+
+                .scrape-winner,.scrape-winner::after{
+                  line-height: 40px;
+                  padding: 15px 0 25px;
+                  background: #fcaa19;
+                }
+
+                .scrape-winner ul{
+                  padding-left: 30px;
+                }
+
+                .scrape-winner h4{
+                  text-align: center;
+                  padding: 15px 0;
+                  font-size: 30px;
+                }
+
+                .scrape-box .scrape-ticket-none-bg,
+                .scrape-box .scrape-ticket-alert{
+                  margin-top: 0px;
+                  text-align: center;
+                }
+
+                .scrape-box .scrape-ticket-alert{
+                  padding: 10px 0;
+                }
+
+                .scrape-box .scrape-btn-box{
+                  margin-top: 4px;
+                }
+            </style>
+            <div class="scrape-winner">
+                <h4>活动规则</h4>
+                <ul class="clearfix">
+                  <ol>1. 每天可以刮3次，至少可以中一次</ol>
+                  <ol>2. 通过刮一刮有机会获得以下礼物</ol>
+                  <ul>
+                    <ol>a. 顺丰海淘全场通用券</ol>
+                    <ol>b. 顺丰海淘单品折扣券</ol>
+                  </ul>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div id="version" data-version="{version}"></div>
+    <!-- build:js(.) scripts/require.min.js -->
+    <script src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+    <script src="scripts/base/sf.h5.base.ver.1.0.8.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+    <script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.scrape.js -->
+    <script src="scripts/sf.b2c.mall.require.config.js"></script>
+    <script type="text/javascript">
+        require(['sf.b2c.mall.page.scrape']);
+    </script>
+    <!-- endbuild -->
+</body>
+
+</html>

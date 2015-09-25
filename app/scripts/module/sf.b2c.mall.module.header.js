@@ -79,6 +79,13 @@ define(
               if (json.token.webCsrfToken) {
                 store.set('csrfToken', json.token.webCsrfToken);
               }
+
+              if (json.token.cookieInfo) {
+                $.fn.cookie(_aid + '_uinfo', json.token.cookieInfo, { path: '/', domain: '.sfht.com' });
+
+                var arr = json.token.cookieInfo.split(',')
+                $.fn.cookie('userId', arr[3]);
+              }
             }
 
             if (json.device && json.device.deviceId) {

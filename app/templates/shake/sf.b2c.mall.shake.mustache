@@ -42,10 +42,10 @@
                 </g>
             </svg>
         </div>
-        <p>每日限领一张，与更多小伙伴一起摇！</p>
+        <p>奖励每日限领一次，与更多小伙伴一起摇更优惠！</p>
     </div>
     <!--结束摇或者，帮摇-->
-    <div id="shakend" class="shaked end {{#sf-notReceiveCoupon isReceiveCoupon}}{{/sf-notReceiveCoupon}}">
+        <div id="shakend" class="shaked end {{#sf-notReceiveCoupon isReceiveCoupon}}{{/sf-notReceiveCoupon}}">
         <dl>
             {{#if Yao}}
                 <dt>当前影响力</dt>
@@ -62,8 +62,8 @@
         </dl>
         {{#if ifOne}}
             <div class="shaked-note">
-                <p>人少摇多无趣</p>
-                <h3>叫上小伙伴一起摇！</h3>
+                <h3>啥都没摇到</h3>
+                <p>至少3个小伙伴一起摇<br>才有优惠哦</p>
             </div>
         {{else}}
             {{#if help}}
@@ -74,15 +74,16 @@
             {{else}}
                 <div class="shaked-coupon">
                     <div class="shaked-coupon-c1">
-                        <img src="{{imageUrl}}">
+                        <a href="{{buyUrl}}"><img src="{{imageUrl}}"></a>
                     </div>
                     <div class="shaked-coupon-c2">
-                        <h2>{{itemTitle}}</h2>
                         <p>{{couponTitle}}</p>
+                        <p class="title">仅限左侧商品使用</p>
                         <div class="shaked-coupon-price">
                             <span>{{couponStartDate}}至{{couponEndDate}}</span>
                             <small>¥</small>{{itemSellPriceAfterCoupon}}
                         </div>
+
                     </div>
                 </div>
             {{/if}}
@@ -111,16 +112,14 @@
                     </div>
                 {{/if}}
             {{/if}}
-
-
         {{/if}}
 
-        <p class="shaked-text">每日限领一张，与更多小伙伴一起摇！</p>
+        <p class="shaked-text">奖励每日限领一次，与更多小伙伴一起摇更优惠！</p>
     </div>
     <div id="getCoupon" class="tooltip center hide">已成功放入我的优惠券</div>
-    <div id="noCoupon" class="tooltip center hide">优惠券已领完，请重试。</div>
+    <div id="noCoupon" class="tooltip center hide">{{msg}}</div>
     <div id="matching" class="tooltip center hide">正在匹配，请稍等。。。</div>
-    <div id="isGps" class="tooltip center hide">您未开启gps定位，请先开启，在摇。</div>
+    <div id="isGps" class="tooltip center hide">没有获取到您的位置<br>请查看是否打开GPS定位。</div>
 {{/shakeData}}
 
 
