@@ -77,7 +77,7 @@ define(
         can.when(getCashActTransList.sendRequest()).done(function(infoList) {
           that.itemObj.infoList = infoList.infos;
           that.inToAccount(infoList);
-          if(infoList.totalCount < 20){
+          if(infoList.totalCount <= 20){
             $('.getMoreAccount').hide();
           }
         }).fail(function(error) {
