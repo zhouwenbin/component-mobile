@@ -81,8 +81,9 @@ define(
         } else {
           var params = {
             idNumb: isInputNum,
-            dept: valueSlt
+            dept: '上海-' + valueSlt2
           };
+          console.log(params);
           var bindIdNumb = new SFbindIdNumb(params);
           bindIdNumb.sendRequest().done(function(data) {
             if (data.value) {
