@@ -41,6 +41,9 @@
 .sfBrotherBind-ul{
 	li{
 		padding: 12px 4%;
+		label,input{
+			width: 100%;
+		}
 	}
 	input,input:focus{
 		border:0;
@@ -52,9 +55,10 @@
 	}
 }
 .sfBrotherBind-select{
-	width: 100%;
-	padding: 12px 4%;
-	line-height: 16px;
+	width: 48%;
+	padding: 0 4%;
+	line-height: 40px;
+	height: 40px;
 	border:0;
 	outline: none;
 }
