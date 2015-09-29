@@ -117,11 +117,14 @@ define(
           'tip': tip,
           'type': 'success',
           'okFunction': _.bind(function() {
-            window.location.href = 'http://' + window.location.hostname + '/invitation.html'
           })
         });
-        $('#ok').text('我知道了');
-        $('#close').on('click', function(event) {
+        $('#ok').addClass('okSfBrother').text('我知道了');
+        $('#close').addClass('closeSfBroter');
+        $('.okSfBrother').on('click', function(event) {
+          window.location.href = 'http://' + window.location.hostname + '/invitation.html';
+        });
+        $('.closeSfBroter').on('click', function(event) {
           window.location.href = 'http://' + window.location.hostname + '/index.html';
         })
       },
@@ -133,6 +136,7 @@ define(
           window.location.href = url;
         }
         var needSelect1Id = $('#needSelect1');
+        var needSelect2Id = $('#needSelect2');
         var inputNum = $('#inputNum').val();
         var isInputNum = $('#isInputNum').val();
         if (inputNum == 0) {
@@ -144,7 +148,10 @@ define(
         } else if (inputNum != isInputNum) {
           that.messageMe('亲~ 请输入一致的顺丰工号');
           needSelect1Id.attr('disabled', 'disabled');
+        } else {
+          needSelect2Id.removeAttr('disabled');
         }
+        needSelect1Id.removeAttr('disabled');
       },
 
       '#needSelect1 change': function(element, event) {
@@ -155,7 +162,8 @@ define(
           '嘉定分部': '嘉定分部',
           '江桥分部': '江桥分部',
           '娄塘分部': '娄塘分部',
-          '南翔分部': '南翔分部'
+          '南翔分部': '南翔分部',
+          '外冈分部': '外冈分部'
         }, {
           '宝山分部': '宝山分部',
           '罗店分部': '罗店分部',
@@ -191,7 +199,8 @@ define(
           '仓桥分部': '仓桥分部',
           '九亭分部': '九亭分部',
           '泗泾分部': '泗泾分部',
-          '松江分部': '松江分部'
+          '松江分部': '松江分部',
+          '新桥分部': '新桥分部'
         }, {
           '崇明分部': '崇明分部'
         }, {
@@ -249,6 +258,10 @@ define(
           '巨鹿分部': '巨鹿分部',
           '长寿分部': '长寿分部'
         }, {
+          '江湾分部': '江湾分部',
+          '五角场分部': '五角场分部',
+          '杨浦分部': '杨浦分部'
+        }, {
           '职能员工': '职能员工'
         }];
         for (var i = 0; i < valueList.length; i++) {
@@ -278,6 +291,7 @@ define(
           var url = 'http://' + window.location.hostname + '/login.html?from=' + encodeURIComponent(window.location.href);
           window.location.href = url;
         }
+        $('#needSelect1').removeAttr('disabled');
       },
 
       '#isInputNum focus': function(element, event) {
@@ -285,6 +299,7 @@ define(
           var url = 'http://' + window.location.hostname + '/login.html?from=' + encodeURIComponent(window.location.href);
           window.location.href = url;
         }
+        $('#needSelect1').removeAttr('disabled');
       },
 
       '#inputNum blur': function(element, event) {
