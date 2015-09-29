@@ -116,8 +116,7 @@ define(
         var message = new SFMessage(null, {
           'tip': tip,
           'type': 'success',
-          'okFunction': _.bind(function() {
-          })
+          'okFunction': _.bind(function() {})
         });
         $('#ok').addClass('okSfBrother').text('我知道了');
         $('#close').addClass('closeSfBroter');
@@ -269,9 +268,12 @@ define(
             var m = i - 1;
             var needThis = jsonranklist[m];
             var last = JSON.stringify(needThis);
+            var str0 = '<option value="请选择分部" class="option-0">请选择分部</option>';
+            $('#needSelect2 option').remove().append(str0);
+            $('#needSelect2').append(str0);
             for (var key in needThis) {
               var str = '<option value="' + key + '">' + key + '</option>';
-              $('#needSelect2').append(str)
+              $('#needSelect2').append(str);
             }
           }
         };
