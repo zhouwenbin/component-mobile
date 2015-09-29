@@ -70,8 +70,11 @@ define(
         var isInputNum = $('#isInputNum').val();
         var valueSlt1 = $('#needSelect1').val();
         var valueSlt2 = $('#needSelect2').val();
+        var Reg = /^\d{1,15}$/;
         if (inputNum.length == 0 || isInputNum.length == 0) {
           that.messageMe('亲~ 请输入并确认你的顺丰工号');
+        } else if (!Reg.test(inputNum) || !Reg.test(isInputNum)) {
+          that.messageMe('亲~ 请输入并确认为1-15位数字的顺丰工号');
         } else if (inputNum != isInputNum) {
           that.messageMe('亲~ 请输入一致的顺丰工号');
         } else if (valueSlt1 == '请选择区域') {
@@ -83,7 +86,6 @@ define(
             idNumb: isInputNum,
             dept: '上海-' + valueSlt2
           };
-          console.log(params);
           var bindIdNumb = new SFbindIdNumb(params);
           bindIdNumb.sendRequest().done(function(data) {
             if (data.value) {
@@ -130,14 +132,18 @@ define(
           var url = 'http://' + window.location.hostname + '/login.html?from=' + encodeURIComponent(window.location.href);
           window.location.href = url;
         }
+        var needSelect1Id = $('#needSelect1');
         var inputNum = $('#inputNum').val();
         var isInputNum = $('#isInputNum').val();
         if (inputNum == 0) {
           that.messageMe('亲~ 请输入顺丰工号');
+          needSelect1Id.attr('disabled', 'disabled');
         } else if (isInputNum == 0) {
           that.messageMe('亲~ 请确认顺丰工号');
+          needSelect1Id.attr('disabled', 'disabled');
         } else if (inputNum != isInputNum) {
           that.messageMe('亲~ 请输入一致的顺丰工号');
+          needSelect1Id.attr('disabled', 'disabled');
         }
       },
 
@@ -258,10 +264,11 @@ define(
         };
       },
 
-      '#needSelect2 focus': function(element, event) {
+      '#needSelect2 click': function(element, event) {
         var that = this;
         var valueSlt1 = $('#needSelect1').val();
         if (valueSlt1 == '请选择区域') {
+          $('#needSelect2').attr('disabled', 'disabled');
           that.messageMe('亲~ 请选择区域');
         }
       },
