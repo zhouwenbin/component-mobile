@@ -280,10 +280,12 @@ define(
       '#needSelect2 click': function(element, event) {
         var that = this;
         var valueSlt1 = $('#needSelect1').val();
+        var needSelect2 = $('#needSelect2');
         if (valueSlt1 == '请选择区域') {
-          $('#needSelect2').attr('disabled', 'disabled');
+          needSelect2.attr('disabled', 'disabled');
           that.messageMe('亲~ 请选择区域');
         }
+        needSelect2.removeAttr('disabled');
       },
 
       '#inputNum focus': function(element, event) {
