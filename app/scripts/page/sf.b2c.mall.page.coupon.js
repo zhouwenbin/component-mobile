@@ -139,11 +139,12 @@ define(
       },
 
       addUrlPrefix: function(url) {
-        if (url.indexOf("http://m.sfht.com")) {
-          url = "http://m.sfht.com" + url;
-        }
+        // if (url.indexOf("http://m.sfht.com")) {
+        //   url = "http://m.sfht.com" + url;
+        // }
 
-        return url
+        // return url
+        return url;
       },
 
       //优惠券兑换相关事件
