@@ -38,7 +38,10 @@
         <div class="coupons-c2r2">{{title}}</div>
       </div>
       <div class="coupons-c1">
-        <h2 class="ellipsis">{{extCode}}</h2>
+        <h2 class="ellipsis">{{#if extCode}}{{extCode}}{{else}}{{title}}{{#if}}</h2>
+        {{#customUrl}}
+          <a href="{{customUrl}}">去看看</a>
+        {{/customUrl}}
         <p class="ellipsis">有效期：{{sf.time startTime "YYYY.MM.DD"}}-{{sf.time endTime "YYYY.MM.DD"}}<br>{{useNotice}}</p>
       </div>
     </li>
