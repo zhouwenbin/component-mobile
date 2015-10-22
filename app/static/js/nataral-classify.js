@@ -60,6 +60,7 @@ $(function(){
   var nataralTabId = [];
   var nataralTabOffset = [];
   var nataralNavHeight = $('.nataral-tab').height();
+  var width = $('.nataral-tab li').width();
   $(window).scroll(function(){
     if($(window).scrollTop()>=nataral_tab_position){
       $('.nataral-tab').addClass('nataral-tab-fixed');
@@ -67,19 +68,33 @@ $(function(){
       $('.nataral-tab').removeClass('nataral-tab-fixed');
     }
 
-    for(var i=0;i<tabNum;i++){
+    for(var i = 0;i < tabNum;i ++){
       nataralTabId[i] = $('.nataral-tab li').eq(i).find('a').attr('href');
       nataralTabOffset[i] = $(nataralTabId[i]).offset().top - nataralNavHeight;
       if($(window).scrollTop() >= nataralTabOffset[i]){
         $('.nataral-tab li').eq(i).addClass('active').siblings().removeClass('active');
+        if(i > 3){
+          var translate = - width * (i - 3);
+          $('.nataral-tab ul').css({
+            "transform": "translate(" + translate + "px,0) translateZ(0)" 
+          })
+        }else{
+          $('.nataral-tab ul').css({
+            "transition-duration": "500ms",
+            "transform": "translate(0,0) translateZ(0)" 
+          })
+        }
       }
     }
   })
     
   //tab切换
-  $('.nataral-tab li').on('touchend',function(){
-    var index=$('.nataral-tab li').index(this);
+  $('.nataral-tab li').on('click',function(){
+    var index = $('.nataral-tab li').index(this);
     $(window).scrollTop(nataralTabOffset[index]);
+    $('.nataral-tab').removeClass('active');
+    new window.IScroll('.nataral-tab-item', { click:iScrollClick(), scrollX: true,scrollY: false });
+    return false;
   })
 
 })
