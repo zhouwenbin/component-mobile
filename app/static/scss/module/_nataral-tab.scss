@@ -20,18 +20,39 @@
     border-bottom: 1px solid #e5e5e5;
     background: #f9f9f9;
   }
-  .nataral-tab.active ul{
+  .nataral-tab-open{
+    height: 0;
+  }
+  .nataral-tab-open .mask{
+    display: none;
+  }
+  .nataral-tab-open .nataral-tab-inner{
+    position:fixed;
+    top: 0;
+    width: 100%;
+    transform:translate(0,-100%);
+    transition:all 0.5s;
+    z-index: 1000;
+  }
+  .nataral-tab-open.active .nataral-tab-inner{
+    transform:translate(0,0);
+
+  }
+  .nataral-tab-open.active .mask{
+    display: block;
+  }
+  .nataral-tab-open ul{
     display: block;
     width: 100% !important;
     font-size: 0;
     transform: translate(0px, 0px) translateZ(0px) !important;
   }
-  .nataral-tab.active li{
+  .nataral-tab-open li{
     width: 25%;
     display: inline-block;
     font-size: 14px * $i;
   }
-  .nataral-tab.active:before{
+  .nataral-tab-open:before{
     display: none;
   }
   .nataral-tab:before{

@@ -30,21 +30,19 @@ $(function(){
   })
   
   //导航滚动
-  var tabNum=$('.nataral-tab li').length;
+  var tabNum=$('.nataral-tab-scroll li').length;
   if(tabNum>4){
     $('.nataral-tab-icon').css({'display':'block'});
     $('.nataral-tab ul').css({
       'width':25 * tabNum +'%'
     });
-    new window.IScroll('.nataral-tab-item', { click:iScrollClick(), scrollX: true,scrollY: false });
+    new window.IScroll('.nataral-tab-scroll .nataral-tab-item', { click:iScrollClick(), scrollX: true,scrollY: false });
   }
-  $('.nataral-tab-icon').click(function(){
-    $(this).parents('.nataral-tab').toggleClass('active');
-    if($('.nataral-tab').hasClass('active')){
-      new window.IScroll('.nataral-tab-item', { click:iScrollClick(), scrollX: false });
-    }else{
-      new window.IScroll('.nataral-tab-item', { click:iScrollClick(), scrollX: true,scrollY: false });
-    }
+  $('.nataral-tab-scroll .nataral-tab-icon').click(function(){
+    $('.nataral-tab-open').addClass('active');
+  })
+  $('.nataral-tab-open .nataral-tab-icon').click(function(){
+    $('.nataral-tab-open').removeClass('active');
   })
   function iScrollClick(){
     if (/iPhone|iPad|iPod|Macintosh/i.test(navigator.userAgent)) return false;
@@ -56,30 +54,31 @@ $(function(){
       }
   }
   //tab置顶
-  var nataral_tab_position=$('.nataral-tab').offset().top;
+  var nataral_tab_position=$('.nataral-tab-scroll').offset().top;
   var nataralTabId = [];
   var nataralTabOffset = [];
-  var nataralNavHeight = $('.nataral-tab').height();
-  var width = $('.nataral-tab li').width();
+  var nataralNavHeight = $('.nataral-tab-scroll').height();
+  var width = $('.nataral-tab-scroll li').width();
   $(window).scroll(function(){
     if($(window).scrollTop()>=nataral_tab_position){
-      $('.nataral-tab').addClass('nataral-tab-fixed');
+      $('.nataral-tab-scroll').addClass('nataral-tab-fixed');
     }else{
-      $('.nataral-tab').removeClass('nataral-tab-fixed');
+      $('.nataral-tab-scroll').removeClass('nataral-tab-fixed');
     }
 
     for(var i = 0;i < tabNum;i ++){
-      nataralTabId[i] = $('.nataral-tab li').eq(i).find('a').attr('href');
+      nataralTabId[i] = $('.nataral-tab-scroll li').eq(i).find('a').attr('href');
       nataralTabOffset[i] = $(nataralTabId[i]).offset().top - nataralNavHeight;
       if($(window).scrollTop() >= nataralTabOffset[i]){
-        $('.nataral-tab li').eq(i).addClass('active').siblings().removeClass('active');
+        $('.nataral-tab-scroll li').eq(i).addClass('active').siblings().removeClass('active');
+        $('.nataral-tab-open li').eq(i).addClass('active').siblings().removeClass('active');
         if(i > 3){
           var translate = - width * (i - 3);
-          $('.nataral-tab ul').css({
+          $('.nataral-tab-scroll ul').css({
             "transform": "translate(" + translate + "px,0) translateZ(0)" 
           })
         }else{
-          $('.nataral-tab ul').css({
+          $('.nataral-tab-scroll ul').css({
             "transition-duration": "500ms",
             "transform": "translate(0,0) translateZ(0)" 
           })
@@ -89,12 +88,10 @@ $(function(){
   })
     
   //tab切换
-  $('.nataral-tab li').on('click',function(){
-    var index = $('.nataral-tab li').index(this);
+  $('.nataral-tab-open li').on('click',function(){
+    var index = $('.nataral-tab-open li').index(this);
     $(window).scrollTop(nataralTabOffset[index]);
-    $('.nataral-tab').removeClass('active');
-    new window.IScroll('.nataral-tab-item', { click:iScrollClick(), scrollX: true,scrollY: false });
-    return false;
+    $('.nataral-tab-open').removeClass('active');
   })
 
 })
