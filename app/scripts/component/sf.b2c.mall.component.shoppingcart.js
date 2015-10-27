@@ -30,12 +30,11 @@ define(
   function(can, $, touch, _, Fastclick, SFFrameworkComm, SFFn, SFHelpers, SFOrderFn, SFConfig, SFShopcartGetCart, SFShopcartFreshCart,
     SFShopcartRemoveItem, SFShopcartUpdateNumInCart, SFMessage, template_order_shoppingcart, SFIsShowCart, SFSwitcher, SFHybrid, SFLoading, SFWidgetCartNumber) {
     // 在页面上使用fastclick
-    Fastclick.attach(document.body);
+    // Fastclick.attach(document.body);
 
     // 注册服务端的appid
     SFFrameworkComm.register(3);
 
-    var LIMITED_PRICE = 1000 * 100;
     var loadingCtrl = new SFLoading();
 
     return can.Control.extend({
@@ -112,11 +111,15 @@ define(
           }
         },
 
-        'sf-is-over-pay': function(total, limit, options) {
-          if (total() < limit()) {
+        'sf-is-over-pay': function(total, limit, canOrder, options) {
+          if (canOrder() == 1) {
             return options.inverse(options.contexts || this);
           } else {
-            return options.fn(options.contexts || this);
+            if (total() < limit()) {
+              return options.inverse(options.contexts || this);
+            } else {
+              return options.fn(options.contexts || this);
+            }
           }
         },
 
@@ -155,23 +158,27 @@ define(
          * @param  {array} groups  不同goods的分组列表
          * @return {function} 是否展示
          */
-        'sf-is-allow-pay': function(groups, fee, options) {
-          var isAllow = false;
-          var array = groups();
-
+        'sf-is-allow-pay': function(canOrder, options) {
+          // var isAllow = false;
+          // var array = groups();
+          //canOrder=1 可下单，为0 不可下单
+          var canOrder = canOrder();
           // 如果没有任何商品选中，不允许提交
-          _.each(array, function(item) {
-            _.each(item.goodItemList, function(good) {
-              isAllow = isAllow || good.isSelected;
-            });
-          });
+          // _.each(array, function(item) {
+          //   _.each(item.goodItemList, function(good) {
+          //     isAllow = isAllow || good.isSelected;
+          //   });
+          // });
 
           // 如果超过支付限额，不允许提交
-          if (fee().actualTotalFee > LIMITED_PRICE) {
-            isAllow = false;
-          }
+          // if (fee().actualTotalFee > LIMITED_PRICE) {
+          //   isAllow = false;
+          // }
+          // if (canOrder === 0) {
+          //   isAllow = false;
+          // }
 
-          if (isAllow) {
+          if (canOrder === 1) {
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
@@ -214,6 +221,32 @@ define(
             return options.fn(options.contexts || this);
           } else {
             return options.inverse(options.contexts || this);
+          }
+        },
+        'sf-show-firstOrderTips': function(firstOrderInfos, options) {
+          if (typeof firstOrderInfos() !== 'undefined' && firstOrderInfos().length > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        'sf-show-freePostage': function(reductPostageInfos, options) {
+          if (typeof reductPostageInfos() !== 'undefined' && reductPostageInfos().length > 0) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
+          }
+        },
+        'sf-show-activityTips': function(cartFeeItem, options) {
+          var cartFeeItem = cartFeeItem();
+          if ((typeof cartFeeItem.firstOrderInfos !== 'undefined' && cartFeeItem.firstOrderInfos.length > 0) || (typeof cartFeeItem.reductPostageInfos !== 'undefined' && cartFeeItem.reductPostageInfos.length > 0)) {
+            return options.fn(options.contexts || this);
+          }
+        },
+        'sf-show-line': function(cartFeeItem, options) {
+          var cartFeeItem = cartFeeItem();
+          if ((typeof cartFeeItem.firstOrderInfos !== 'undefined' && cartFeeItem.firstOrderInfos.length > 0) && (typeof cartFeeItem.reductPostageInfos !== 'undefined' && cartFeeItem.reductPostageInfos.length > 0)) {
+            return options.fn(options.contexts || this);
           }
         }
       },
@@ -453,7 +486,7 @@ define(
         if (ask == 0) {
           $element.val(1);
           this.showAlert($element, good);
-        }else if (ask <= good.limitQuantity) {
+        } else if (ask <= good.limitQuantity) {
           good.quantity = $element.val();
           this.requestFactory('updatenum', good);
         } else {

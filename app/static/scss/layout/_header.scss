@@ -46,27 +46,43 @@
     line-height:20px * $i;
     margin-top:15px * $i;
   }
-  .header .icon{
-    margin-left: 10px * $i;
-    position: relative;
+  .header .icon {
+    width: 24px * $i; 
+    height: 24px * $i;
+    background: url(#{$bg-url}header/icons.png) no-repeat;
+    background-size: cover ;
   }
   .header .dot{
     position: absolute;
     right: -5px * $i;
     top: -6px * $i;
   }
-  .header-shoppingcart {
+  .header .header-shoppingcart {
     position: relative;
     display: block;
+    background-position: -24px * $i 0px;
   }
-  .header-user {
+  .header .header-user {
     display: block;
+    background-position: -120px * $i 0px;
   }
-  .header-back {
+  .header .header-back {
     display: block;
+    background-position: -72px * $i 0px;
   }
-  .header-search-icon {
+  .header .header-search-icon {
     display: block;
+    background-position: -264px * $i 0px;
+  }
+  .header .header-home {
+    display: block;
+    background-position: -168px * $i 0px;
+  }
+  .header-white .header-home {
+    background-position: -144px * $i 0px;
+  }
+  .header-white .header-back {
+    background-position: -48px * $i 0px;
   }
   .header-title {
     display:block;
@@ -90,8 +106,26 @@
     z-index: map-get($z-index,header-detail);
     width:100%;
   }
+  .header-detail .icon {
+    width: 34px * $i; 
+    height: 34px * $i;
+    background: url(#{$bg-url}header/detail.png) no-repeat;
+    background-size: cover ;
+  }
+  .header-detail .header-back {
+    display:block;
+    background-position: 0 * $i 0px;
+  }
+  .header-detail .header-search-icon {
+    display:block;
+    background-position: -68px * $i 0px;
+  }
+  .header-detail .header-home {
+    display:block;
+    background-position: -34px * $i 0px;
+  }
   .header-detail .header-c2 {
-    width:68px * $i;
+    width:78px * $i;
   }
 }
 @include header(1);

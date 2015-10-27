@@ -61,7 +61,7 @@
 
             {{/orderItem.orderCouponItemList}}
 
-            <li><span class="justify text-disable">运 费</span>：免运费</li>
+            <li><span class="justify text-disable">运 费</span>：{{sf.price orderItem.logisticsFee}}</li>
           </ul>
             {{! 倒计时 }}
 
@@ -132,7 +132,11 @@
                     <div>物流信息</div>
                     {{#sf-first actionTraceItemList}}
                     <time>{{sf.time gmtHappened}}</time>
+                    {{#if takePlace}}
+                    <p>【{{takePlace}}】{{status}}</p>
+                    {{else}}
                     <p>{{status}}</p>
+                    {{/if}}
                     {{/sf-first}}
                 </a>
 
@@ -160,8 +164,33 @@
                 </li>
                 {{/orderGoodsItemList}}
             </ul>
+            {{#sf-show-refundtax transporterName status}}           
+            <div class="refund-tax-wrap">
+
+              {{^sf-refundtax refundtax}}
+              <div class="refund-tax-wrap-r1"></div>
+              <button data-tag={{@index}} class="btn btn-disable btn-refundtax">申请返还税金</button>
+              {{/sf-refundtax}}
+
+              {{#sf-refundtax refundtax}}
+              {{#refundTaxStatus refundtax 'AUDITING'}}
+              <div class="refund-tax-wrap-r1">退税申请：<span class="text-important">资料已上传 —— 审核中</span></div>
+              {{/refundTaxStatus}}
+  
+              {{#refundTaxStatus refundtax 'AUDIT_FAIL'}}
+              <div class="refund-tax-wrap-r1">退税申请：<span class="text-important">审核失败（{{refundtax.failReason}}）</span></div>
+              <button data-tag={{@index}} class="btn btn-disable btn-refundtax">重新申请</button>
+              {{/refundTaxStatus}}
+
+              {{#refundTaxStatus refundtax 'REFUND_SUCCESS'}}
+              <div class="refund-tax-wrap-r1">退税申请：<span class="text-important">税金返还完成</span></div>
+              {{/refundTaxStatus}}           
+              {{/sf-refundtax}}
+            </div>
+            {{/sf-show-refundtax}}
         </li>
         {{/each}}
+
     </ul>
     <!--商品信息-->
 </section>
@@ -169,11 +198,26 @@
 
 {{#each orderItem.orderPackageItemList}}
 <section class="order logistics logistics-{{@index}}" style="display:none">
+    {{#sf-show-logisticsinfo status}}
+    <div class="order-logistics-info">
+      <span>物流公司：<i>{{transporterDesc}}</i></span>
+      <span>承运单号：<i>{{logisticsNo}}</i></span>
+    </div>
+    {{/sf-show-logisticsinfo}}
+    {{^sf-show-logisticsinfo status}}
     <h2>物流跟踪</h2>
+    {{/sf-show-logisticsinfo}}
     <ul>
     {{#sf-reverse actionTraceItemList}}
       {{#each group}}
-      <li><time>{{gmtHappened}}</time>{{status}}</li>
+      <li>
+        <time>{{gmtHappened}}</time>
+        {{#if takePlace}}
+        【{{takePlace}}】{{status}}
+        {{else}}
+        {{status}}
+        {{/if}}
+      </li>
       {{/each}}
     {{/sf-reverse}}
     </ul>

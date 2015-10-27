@@ -1,0 +1,98 @@
+body{
+	background-color: #f7f1ea;	
+}
+.header{
+	border-bottom: 0 none;
+}
+.coffee-header-title{
+	display: block;
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	line-height: 49px;
+}
+.coffee-banner{
+	background-color: #fff;
+	padding: 20px 0;
+	font-size: 18px;
+	color: #e47f13;
+	line-height: 1.5;
+	text-align: center;
+	h2{
+		margin-top: 19px;
+	}
+}
+.coffee-banner-inner{
+	display: inline-block;
+	h2{	
+		margin-top: 15px;
+		overflow: hidden;
+	}
+}
+.coffee-banner img{
+	width: 150px;
+	margin-right: 20px;
+	vertical-align: top;
+}
+.icon{
+	background-image: url(../img/coffee-num.png);
+	width: 16px;
+	height: 16px;
+	background-size: 16px auto;
+	vertical-align: -3px;
+	margin-left: 2px;
+}
+.coffee-01{
+	background-position: 0 0;
+}
+.coffee-02{
+	background-position: 0 -16px;
+}
+.coffee-03{
+	background-position: 0 -32px;
+}
+.coffee-list{
+	font-size: 15px;
+	color: #999;
+	padding: 25px 15px 0;
+	line-height: 1.5;
+	li{
+		margin-bottom: 22px;
+	}
+}
+.coffee-list-title{
+	color: #8b583d;
+	margin-bottom: 10px;
+	em{
+		color: #FF5B54;
+		margin-left: 15px;
+		margin-right: 23px;
+	}
+	svg{
+		width: 21px;
+		height: 15px;
+		vertical-align: -3px;
+		margin-left: 2px;
+	}
+}
+.btn-box{
+	padding-bottom: 30px;
+	text-align: center;
+	margin: 0 10px;
+	.btn{
+		height: 40px;
+		line-height: 40px;
+		font-size: 15px;
+		width: 100%;
+	}
+}
+.coffee-text-tips{
+	text-align: center;
+	color: #666;
+}
+.coffee-tips{
+	margin: 25px 0 30px;
+	text-align: center;
+	color: #E47F13;
+	font-size: 14px;
+}

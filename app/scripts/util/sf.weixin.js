@@ -126,7 +126,7 @@ define('sf.weixin', [
      * @param  {[type]} link   [链接]
      * @param  {[type]} imgUrl [图片链接]
      */
-    shareDetail: function(title, desc, link, imgUrl) {
+    shareDetail: function(title, desc, link, imgUrl, successCallback) {
       var that = this;
 
       if (SFUtil.isMobile.WeChat()) {
@@ -147,6 +147,9 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
+            if (typeof successCallback != 'undefined') {
+              successCallback.call(this);
+            }
             // alert('已分享');
           },
           cancel: function(res) {
@@ -166,6 +169,9 @@ define('sf.weixin', [
             // alert('用户点击发送给朋友');
           },
           success: function(res) {
+            if (typeof successCallback != 'undefined') {
+              successCallback.call(this);
+            }
             // alert('已分享');
           },
           cancel: function(res) {
@@ -192,7 +198,7 @@ define('sf.weixin', [
 
       var that = this;
 
-      var shareUrl = "http://m.sfht.com/invitation-bag.html?_src=" + userid + "&bagid=" + bagid;
+      var shareUrl = "http://m.sfht.com/invitation-bag.html?_ruser=" + userid + "&bagid=" + bagid;
 
       if (SFUtil.isMobile.WeChat()) {
         //进行微信设置
@@ -206,7 +212,7 @@ define('sf.weixin', [
           title: title,
           desc: desc,
           link: shareUrl,
-          imgUrl: 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
+          imgUrl: 'http://img0.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           trigger: function(res) {
             //alert('用户点击发送给朋友圈');
           },
@@ -225,7 +231,7 @@ define('sf.weixin', [
           title: title,
           desc: desc,
           link: shareUrl,
-          imgUrl: 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
+          imgUrl: 'http://img0.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           trigger: function(res) {
             //alert('用户点击发送给朋友');
           },
@@ -280,7 +286,7 @@ define('sf.weixin', [
           title: title,
           desc: desc,
           link: shareUrl,
-          imgUrl: 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
+          imgUrl: 'http://img0.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           trigger: function(res) {
             //alert('用户点击发送给朋友圈');
           },
@@ -299,7 +305,7 @@ define('sf.weixin', [
           title: title,
           desc: desc,
           link: shareUrl,
-          imgUrl: 'http://img.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
+          imgUrl: 'http://img0.sfht.com/sfhth5/1.1.2/img/luckymoneyshare.jpg',
           trigger: function(res) {
             //alert('用户点击发送给朋友');
           },

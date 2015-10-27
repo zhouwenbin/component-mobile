@@ -288,15 +288,15 @@ module.exports = function (grunt) {
 
             if (config.version) {
               if (block.dest[0] != '/') {
-                return '<script src="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'"></script>';
+                return '<script src="'+ OSS_HOST + '/' + config.version + '/' + block.dest + '?' + config.timestamp +'"></script>';
               }else{
-                return '<script src="'+ OSS_HOST + '/' + config.version +  block.dest +'"></script>';
+                return '<script src="'+ OSS_HOST + '/' + config.version +  block.dest +'?' + config.timestamp +'"></script>';
               }
             }else{
               if (block.dest[0] != '/') {
-                return '<script src="' + '/' + block.dest +'"></script>';
+                return '<script src="' + '/' + block.dest +'?' + config.timestamp +'"></script>';
               }else{
-                return '<script src="' + block.dest +'"></script>';
+                return '<script src="' + block.dest +'?' + config.timestamp +'"></script>';
               }
             }
           },
@@ -315,15 +315,15 @@ module.exports = function (grunt) {
 
             if (config.version) {
               if (block.dest[0] !='/') {
-                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'">';
+                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version + '/' + block.dest +'?' + config.timestamp +'">';
               }else{
-                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version  + block.dest +'">';
+                return '<link rel="stylesheet" href="'+ OSS_HOST + '/' + config.version  + block.dest +'?' + config.timestamp +'">';
               }
             }else{
               if (block.dest[0] != '/') {
-                return '<link rel="stylesheet" href="'+ '/' + block.dest +'">';
+                return '<link rel="stylesheet" href="'+ '/' + block.dest +'?' + config.timestamp +'">';
               }else{
-                return '<link rel="stylesheet" href="'+ block.dest +'">';
+                return '<link rel="stylesheet" href="'+ block.dest +'?' + config.timestamp +'">';
               }
             }
           }
@@ -640,6 +640,7 @@ module.exports = function (grunt) {
               'scripts/sf.b2c.mall.h5.page.order.detail.js',
               'scripts/sf.b2c.mall.h5.page.order.list.js',
               'scripts/sf.b2c.mall.h5.page.mypoint.js',
+              'scripts/sf.b2c.mall.h5.page.refundtax.js',
               'img/**',
               'styles/**',
               'order.html',
@@ -647,7 +648,8 @@ module.exports = function (grunt) {
               'pay-success.html',
               'orderdetail.html',
               'orderlist.html',
-              'mypoint.html'
+              'mypoint.html',
+              'refundtax.html'
             ],
             dest: 'order'
           }
@@ -1010,6 +1012,97 @@ module.exports = function (grunt) {
         }
       },
 
+      invitationbagNext: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.invitationbagNext.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.module.getcoupon',
+            'sf.b2c.mall.page.invitationbagNext'
+          ],
+          insertRequire: ['sf.b2c.mall.page.invitationbagNext']
+        }
+      },
+
+      invitationUserlist: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.invitationUserlist.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.invitationUserlist'
+          ],
+          insertRequire: ['sf.b2c.mall.page.invitationUserlist']
+        }
+      },
+
+      invitationIncome: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.invitationIncome.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.invitationIncome'
+          ],
+          insertRequire: ['sf.b2c.mall.page.invitationIncome']
+        }
+      },
+
+      invitationAskfd: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.invitationAskfd.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.invitationAskfd'
+          ],
+          insertRequire: ['sf.b2c.mall.page.invitationAskfd']
+        }
+      },
+
+      invitationGetfmy: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.invitationGetfmy.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+            'moment': '../bower_components/momentjs/min/moment.min'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.invitationGetfmy'
+          ],
+          insertRequire: ['sf.b2c.mall.page.invitationGetfmy']
+        }
+      },
+
       bindalipay: {
         options: {
           preserveLicenseComments: false,
@@ -1061,6 +1154,24 @@ module.exports = function (grunt) {
             'sf.helpers'
           ],
           insertRequire: ['sf.b2c.mall.page.paysuccess']
+        }
+      },
+
+      bridge: {
+        options: {
+          optimize:'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.bridge.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config',
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.bridge'
+          ],
+          insertRequire: ['sf.b2c.mall.page.bridge']
         }
       },
       // agreement: {
@@ -1210,20 +1321,6 @@ module.exports = function (grunt) {
         }
       },
 
-      secondkill: {
-        options: {
-          preserveLicenseComments: false,
-          baseUrl:        './app/',
-          out:            './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.module.secondkill.js',
-          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
-          paths: {
-            'moment': '../bower_components/momentjs/min/moment.min',
-            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
-          },
-          include:        ["sf.b2c.mall.module.secondkill"],
-          insertRequire:  ['sf.b2c.mall.module.secondkill']
-        }
-      },
 
       spike: {
         options: {
@@ -1383,7 +1480,7 @@ module.exports = function (grunt) {
           paths: {
             'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
           },
-          include:        ["sf.b2c.mall.module.header"],
+          include:        ["sf.b2c.mall.module.header","sf.b2c.mall.module.imagelazyload"],
           insertRequire:  ['sf.b2c.mall.module.header']
         }
       },
@@ -1689,6 +1786,24 @@ module.exports = function (grunt) {
         }
       },
 
+      refundtax: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.refundtax.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.refundtax'
+          ],
+          insertRequire: ['sf.b2c.mall.page.refundtax']
+        }
+      },
+
       shoppingcart: {
         options: {
           optimize: 'none',
@@ -1809,6 +1924,24 @@ module.exports = function (grunt) {
         }
       },
 
+      scrape: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.scrape.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.scrape'
+          ],
+          insertRequire: ['sf.b2c.mall.page.scrape']
+        }
+      },
+
       categorynavigatelist: {
         options: {
           optimize: 'none',
@@ -1847,7 +1980,174 @@ module.exports = function (grunt) {
           ],
           insertRequire: ['sf.b2c.mall.page.app']
         }
+      },
+
+      japanpre: {
+        options: {
+          optimize: 'none',
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.japanpre.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            // 'touch': '../bower_components/zeptojs/src/touch',
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.japanpre'
+          ],
+          insertRequire: ['sf.b2c.mall.page.japanpre']
+        }
+      },
+
+      promoterorder: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.promoterorder.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.promoterorder'
+          ],
+          insertRequire: ['sf.b2c.mall.page.promoterorder']
+        }
+      },
+
+      welfare: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.welfare.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.welfare'
+          ],
+          insertRequire: ['sf.b2c.mall.page.welfare']
+        }
+      },
+
+      welfareDetails: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.welfareDetails.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.welfareDetails'
+          ],
+          insertRequire: ['sf.b2c.mall.page.welfareDetails']
+        }
+      },
+
+      welfareRule: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.welfareRule.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.welfareRule'
+          ],
+          insertRequire: ['sf.b2c.mall.page.welfareRule']
+        }
+      },
+
+
+      tmlg: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.tmlg.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.tmlg'
+          ],
+          insertRequire: ['sf.b2c.mall.page.tmlg']
+        }
+      },
+
+      //摇一摇
+      shake: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.shake.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.shake'
+          ],
+          insertRequire: ['sf.b2c.mall.page.shake']
+        }
+      },
+
+      shakeShare: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.shakeShare.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            //'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.shakeShare'
+          ],
+          insertRequire: ['sf.b2c.mall.page.shakeShare']
+        }
+      },
+
+       brother: {
+        options: {
+          preserveLicenseComments: false,
+          baseUrl: './app/',
+          out: './<%= config.tmp %>/concat/scripts/sf.b2c.mall.h5.page.brother.js',
+          mainConfigFile: "./<%= config.app %>/scripts/sf.b2c.mall.require.config.js",
+          paths: {
+            'moment': '../bower_components/momentjs/min/moment.min',
+            'sf.b2c.mall.business.config': 'scripts/config/sf.b2c.mall.business.<%= config.target %>.config'
+          },
+          include: [
+            "sf.b2c.mall.business.config",
+            'sf.b2c.mall.page.brother'
+          ],
+          insertRequire: ['sf.b2c.mall.page.brother']
+        }
       }
+
     }
   });
 

@@ -7,6 +7,10 @@ app/__MACOSX
 publish
 h5-oss
 h5-static
-
+bower_components
 .DS_Store
 **/.DS_Store
+cordova.js
+.iml
+app/static/prepros.cfg
+rules

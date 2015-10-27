@@ -7,7 +7,16 @@
       <div id='slider' class='swipe'>
         <div class='swipe-wrap'>
           {{#each itemInfo.basicInfo.images}}
-            <div><img src="{{sf.img bigImgUrl}}" alt=""></div>
+            {{^sf-isAlipayAndAndroid mediaType}}
+              <div>
+                <img src="{{sf.img bigImgUrl}}" alt="">
+                {{#sf-mediaType mediaType}}
+                  <div class="cover"></div>
+                  <div class="playBtn center"></div>
+                  <video src="{{videoUrl}}" controls="controls" width="auto" height="auto" preload="none"></video>
+                {{/sf-mediaType}}
+              </div>
+            {{/sf-isAlipayAndAndroid}}
           {{/each}}
         </div>
         <div class="swipe-dot">
@@ -131,11 +140,11 @@
   <section class="detail">
     <div class="detail-h" >
       <ul class="clearfix" id="tabHeader">
-        <li class="active" id="itemInfoTab"><a href="javascript:void(0)">商品详情</a></li>
-        <li id="detailTab"><a href="javascript:void(0)">图文详情</a></li>
+        <li class="active" id="detailTab"><a href="javascript:void(0)">图文详情</a></li>
+        <li id="itemInfoTab"><a href="javascript:void(0)">产品参数</a></li>
       </ul>
     </div>
-    <div class="detail-b" id="specAndBrandInfo">
+    <div class="detail-b" id="specAndBrandInfo" style="display:none">
       <ul>
         <li><span class="justify">品 牌</span>： {{itemInfo.basicInfo.brand}}</li>
       </ul>
@@ -149,13 +158,18 @@
       {{/if}}
     </div>
     <div class="detail-b" id="detail">
-
+      <!--商品图文详情换位置2015/8/27-->
+      {{&itemInfo.basicInfo.description}}
+      <div id="viewPCDetailArea">
+        <button class="btn btn-normal btn-big" id="viewPCDetail">查看电脑版商品详情</button>
+        <h3 class="table-r1">（ 查看电脑版商品详情，可能会消耗较多流量 ）</h3>
+      </div>
     </div>
   </section>
   <!--商品详情-->
 
   <!--推荐商品-->
-  <section class="recommend" id="recommendProducts">
+  <section class="recommend" id="recommendProducts" style="display:none">
     <h2>推荐商品</h2>
     <ul>
 

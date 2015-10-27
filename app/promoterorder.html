@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>顺丰海淘</title>
+  <!-- build:css({app, .tmp}) styles/sf.b2c.promoterorder.css -->
+  <link rel="stylesheet" href="static/css/common.css">
+  <!-- endbuild -->
+
+  <style type="text/css">
+  	input, button { width: 90% !important; margin: 10px 5%;}
+  	#sf-b2c-mall-promoter { margin-top: 50px;}
+  </style>
+</head>
+
+<body class="body1">
+
+
+<div id="sf-b2c-mall-promoter"></div>
+<input type="text" class="input" placeholder="推广员手机" name="promoterPhone" />
+<input type="text" class="input" placeholder="用户手机" name="customerPhone" />
+<input type="text" class="input" placeholder="itemId 1" name="itemId1" />
+<input type="text" class="input" placeholder="itemId 2" name="itemId2" />
+<input type="text" class="input" placeholder="itemId 3" name="itemId3" />
+<input type="text" class="input" placeholder="itemId 4" name="itemId4" />
+<input type="text" class="input" placeholder="itemId 5" name="itemId5" />
+<button class="btn btn-danger btn-big" id="submit-form-btn">提交</button>
+
+
+<div id="version" data-version="{version}"></div>
+<!-- build:js(.) scripts/require.min.js -->
+<script src="bower_components/requirejs/require.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+<script src="scripts/base/sf.h5.base.ver.1.0.8.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+<script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.promoterorder.js -->
+<script src="scripts/sf.b2c.mall.require.config.js"></script>
+<script type="text/javascript">
+    require(['sf.b2c.mall.page.promoterorder']);
+</script>
+<!-- endbuild -->
+</body>
+
+</html>

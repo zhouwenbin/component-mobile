@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi,width=640">
+    <script>
+        if (window.screen.width < 640) {
+            var ratio = window.screen.width / 640;
+            var metas = document.querySelectorAll("meta[name=viewport]");
+            for (var i in metas) {
+                if (typeof metas[i].setAttribute == 'function') {
+                    metas[i].setAttribute('content', 'width=640, initial-scale='+ratio+', maximum-scale='+ratio+'');
+                }
+            }
+        }
+    </script>
+    <title>一起摇一摇</title>
+    <!-- build:css({app, .tmp}) styles/sf.b2c.h5.css -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- endbuild -->
+    <!-- build:css({app, .tmp}) styles/sf.b2c.shake.css -->
+    <link rel="stylesheet" href="static/css/shake.css">
+    <!-- endbuild -->
+</head>
+
+<body class="body1">
+
+
+<div id="sh-b2c-mall-shake-share">
+
+</div>
+
+
+<div id="version" data-version="{version}"></div>
+<!-- build:js(.) scripts/require.min.js -->
+<script src="bower_components/requirejs/require.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
+<script src="scripts/base/sf.h5.base.ver.1.0.8.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->
+<script src="/scripts/base/sf.hybrid.base.ver.1.0.3.js"></script>
+<!-- endbuild -->
+<!-- build:js({app, .tmp}) scripts/sf.b2c.mall.h5.page.shakeShare.js -->
+<script src="scripts/sf.b2c.mall.require.config.js"></script>
+<script type="text/javascript">
+    require(['sf.b2c.mall.page.shakeShare']);
+</script>
+<!-- endbuild -->
+</body>
+
+</html>

@@ -63,6 +63,9 @@ define(
         partnerLogin
           .sendRequest()
           .done(function(loginData) {
+            if(loginData.userId){
+              $.fn.cookie('userId', loginData.userId);
+            }
 
             if (loginData.csrfToken) {
               store.set('type', type);

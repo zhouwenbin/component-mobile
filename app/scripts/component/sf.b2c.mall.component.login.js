@@ -24,7 +24,7 @@ define('sf.b2c.mall.component.login', [
 
     SFFrameworkComm.register(3);
 
-    Fastclick.attach(document.body);
+    // Fastclick.attach(document.body);
 
     var DEFAULT_CAPTCHA_LINK = 'http://checkcode.sfht.com/captcha/';
     var DEFAULT_CAPTCHA_ID = 'haitaob2c';
@@ -98,10 +98,10 @@ define('sf.b2c.mall.component.login', [
         this.getVerifiedCode();
 
         // 如果当前是微信环境，直接到微信授权绑定页面
-        if (SFFn.isMobile.WeChat()) {
-          this.weinxinLogin();
-          return false;
-        }
+        // if (SFFn.isMobile.WeChat()) {
+        //   this.weinxinLogin();
+        //   return false;
+        // }
       },
 
       '#toRegist click': function(element, event) {
@@ -174,7 +174,7 @@ define('sf.b2c.mall.component.login', [
        */
       checkUserName: function(username) {
         var that = this;
-        var username = can.$.trim(username);
+        var username = $.trim(username);
         var isTelNum = /^1\d{10}$/.test(username);
         var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(username);
         //@note 手机号码输完11位时，验证该账号是否有密码
@@ -213,7 +213,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkPwd: function(password) {
-        var password = can.$.trim(password);
+        var password = $.trim(password);
         var isPwd = /^[0-9a-zA-Z~!@#\$%\^&\*\(\)_+=-\|~`,./<>\[\]\{\}]{6,18}$/.test(password)
         if (!password) {
           this.element.find('#pwd-error-tips').text(ERROR_NO_INPUT_PWD).show();
@@ -231,7 +231,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String}
        */
       checkVerCode: function(code) {
-        var code = can.$.trim(code);
+        var code = $.trim(code);
         var isCode = /^\d{6}$/.test(code);
         if (!code) {
           this.element.find('#code-error-tips').text(ERROR_NO_INPUT_VERCODE).show();
@@ -275,7 +275,7 @@ define('sf.b2c.mall.component.login', [
        * @return {String} 返回MAIL或者MOBILE
        */
       checkTypeOfAccount: function(account) {
-        var account = can.$.trim(account);
+        var account = $.trim(account);
 
         // 检查账号的类型返回MOBILE或者MAIL
         var isTelNum = /^1\d{10}$/.test(account);
@@ -334,15 +334,15 @@ define('sf.b2c.mall.component.login', [
       },
 
       '#user-name focus': function(element, event) {
-        can.$('#username-error-tips').hide();
+        $('#username-error-tips').hide();
       },
 
       '#user-pwd focus': function(element, event) {
-        can.$('#pwd-error-tips').hide();
+        $('#pwd-error-tips').hide();
       },
 
       '#verified-code focus': function(element, event) {
-        can.$('#code-error-tips').hide();
+        $('#code-error-tips').hide();
       },
 
       sendRequest: function(element) {
@@ -380,6 +380,7 @@ define('sf.b2c.mall.component.login', [
               '1000070': '账户名或登录密码错误，请重新输入',
               '1000100': '验证码错误',
               '1000110': '账户尚未激活',
+              '1000480': '用户账户被冻结，不允许登录',
               '1000300': '密码输入超过三次'
             };
 
@@ -403,7 +404,7 @@ define('sf.b2c.mall.component.login', [
        * @param  {event} event event对象
        */
       '#gotoLogin click': function(element, event) {
-        event && event.preventDefault();
+        // event && event.preventDefault();
 
         try {
           // 如果是无痕模式 则要提示用户
@@ -418,17 +419,17 @@ define('sf.b2c.mall.component.login', [
 
         var that = this;
 
-        can.$('#user-name').blur();
-        can.$('#user-pwd').blur();
-        can.$('#verified-code').blur();
+        $('#user-name').blur();
+        $('#user-pwd').blur();
+        $('#verified-code').blur();
 
-        var username = can.$('#user-name').val();
-        var password = can.$('#user-pwd').val();
-        var verCode = can.$('#verified-code').val();
+        var username = $('#user-name').val();
+        var password = $('#user-pwd').val();
+        var verCode = $('#verified-code').val();
 
-        can.$('#username-error-tips').hide();
-        can.$('#pwd-error-tips').hide();
-        can.$('#code-error-tips').hide();
+        $('#username-error-tips').hide();
+        $('#pwd-error-tips').hide();
+        $('#code-error-tips').hide();
         // @todo 检查用户名和密码是否符合规范
 
         element.text("登录中");
@@ -444,7 +445,7 @@ define('sf.b2c.mall.component.login', [
             });
 
             this.component.login.setData({
-              accountId: can.$.trim(this.data.attr('username')),
+              accountId: $.trim(this.data.attr('username')),
               type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key),
               vfCode: vfCode
@@ -457,7 +458,7 @@ define('sf.b2c.mall.component.login', [
         } else {
           if (this.checkUserName.call(this, username) && this.checkPwd.call(this, password)) {
             this.component.login.setData({
-              accountId: can.$.trim(this.data.attr('username')),
+              accountId: $.trim(this.data.attr('username')),
               type: that.checkTypeOfAccount(that.data.attr('username')),
               password: md5(this.data.attr('password') + SFConfig.setting.md5_key)
             });

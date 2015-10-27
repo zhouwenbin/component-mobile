@@ -106,3 +106,12 @@
   float: left;
   margin-left: -24px;
 }
+.refund-tax-wrap{
+  display: flex;
+  justify-content:space-between;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 10px;
+}
+.btn-refundtax{
+  cursor: pointer;
+}

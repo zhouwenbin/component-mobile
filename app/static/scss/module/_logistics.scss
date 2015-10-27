@@ -1,4 +1,21 @@
 /*物流*/
+.order-logistics-info{
+  padding:15px 20px 10px;
+  background: #fff;
+  border:{
+    top:1px solid #dcdcdc;
+    bottom:1px solid #dcdcdc;
+  }
+  span{
+    margin-bottom:5px;
+    color:#999;
+    display: block;
+    i{
+      font-style: normal;
+      color: #333;
+    }
+  }
+}
 .logistics{
   background: #fff;
 }

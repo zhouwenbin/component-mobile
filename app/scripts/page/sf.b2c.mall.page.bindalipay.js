@@ -12,9 +12,10 @@ define(
     'sf.util',
     'sf.b2c.mall.widget.message',
     'sf.b2c.mall.framework.comm',
-    'sf.b2c.mall.api.user.bindAliAct'
+    'sf.b2c.mall.api.user.bindAliAct',
+    'underscore.string'
   ],
-  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFMessage, SFFrameworkComm, SFBindAliAct) {
+  function($, can, store, Fastclick, md5, SFBizConf, SFFn, SFMessage, SFFrameworkComm, SFBindAliAct, _str) {
 
     SFFrameworkComm.register(3);
 
@@ -90,7 +91,8 @@ define(
 
       checkAccount: function(account){
         var isTelNum = /^1\d{10}$/.test(account);
-        var isEmail = /^([a-zA-Z0-9-_]*[-_\.]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\.][a-zA-Z]{2,3}([\.][a-zA-Z]{2})?$/.test(account);
+        var isEmail = _str.include(account, '@');
+
         if (!isTelNum && !isEmail) {
           return "账号不合法，必须为邮箱或者手机号"
         } else {

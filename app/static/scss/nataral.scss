@@ -57,19 +57,22 @@
 		font-weight: bold;
 		font-size: 24px * $i;
 	}
+	
 	.nataral-none {
 		text-align:center; 
 		background-color: #f2f2f2;
 	    border-top: 1px solid #cfcfcf;
 	}
+	.nataral-none-svg {
+		margin: 44px 0 32px 0;
+	}
 	.nataral-none p {
 		display: inline-block;
-		line-height: 22px * $i;
-		padding-left: 54px * $i;
-		background-size: 30px * $i 40px * $i;
-		background: url(#{$bg-url}icon_empty2x.png) no-repeat left center;
-		margin: 10px * $i 0;
+		color:#9999a4;
+		font-size: 14px;
+		margin-bottom: 44px;
 	}
+
 }
 @include nataral(1);
 @media screen and (min-width:640px){

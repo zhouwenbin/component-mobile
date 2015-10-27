@@ -20,7 +20,16 @@ define('sf.b2c.mall.component.searchbox', [
 
     loading: new SFLoading(),
 
-    helpers: {},
+    helpers: {
+      "sf-placeholder": function(keyword, options) {
+        var tt = keyword().split("|");
+        if (keyword() && tt.length < 2) {
+          return options.fn(options.contexts || this);
+        } else {
+          return options.inverse(options.contexts || this);
+        }
+      }
+    },
 
     renderData: new can.Map({
       keyword: null,
@@ -183,17 +192,16 @@ define('sf.b2c.mall.component.searchbox', [
      * @author zhang.ke
      * @description 开始搜索
      */
-    /*
     "#searchInput keydown": function(element, event) {
       if (event.keyCode != 13) {
         return;
       }
 
       var keyword = $(element).val();
-      this.search(keyword);
-      return false;
+      keyword = this.trim(keyword)
+      this.saveHistories(keyword);
     },
-    */
+    
 
     /**
      * @author zhang.ke
@@ -218,7 +226,8 @@ define('sf.b2c.mall.component.searchbox', [
      */
     "[role=gotoSearch] click": function(element, event) {
       var keyword = $(element).text();
-      this.search(keyword);
+      var spm = $(element).data("spm");
+      this.search(keyword, spm);
     },
 
 
@@ -236,13 +245,13 @@ define('sf.b2c.mall.component.searchbox', [
      * @author zhang.ke
      * @description 搜素
      */
-    search: function(keyword) {
+    search: function(keyword, spm) {
       keyword = this.trim(keyword)
       if (!keyword) {
         return false;
       }
       this.saveHistories(keyword);
-      this.gotoSearchPage(keyword);
+      this.gotoSearchPage(keyword, spm);
     },
 
     trim: function(str) {
@@ -253,9 +262,9 @@ define('sf.b2c.mall.component.searchbox', [
      * @author zhang.ke
      * @description 跳转到搜索结果页
      */
-    gotoSearchPage: function(keyword) {
+    gotoSearchPage: function(keyword, spm) {
       var params = can.deparam(window.location.search.substr(1));
-      var href = ["/search.html?keyword=", keyword]
+      var href = ["/search.html?keyword=", keyword, "&_spm=", spm];
       /*
       //获取产品形态
       var pfs = params.pfs;

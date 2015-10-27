@@ -14,6 +14,10 @@
 	<link rel="stylesheet" href="/static/css/animate.css">
 	<!-- endbuild -->
 
+	<!-- build:js(.) /scripts/require.min.js -->
+	<script src="/bower_components/requirejs/require.js"></script>
+	<!-- endbuild -->
+
 	<!-- build:js({app, tmp}) ../cordova.js-->
   <script src="../cordova.js"></script>
   <!-- endbuild -->
@@ -23,18 +27,12 @@
 
 	<!--# include file="/header/header.h5.detail.html" -->
 
-
 	<div class="sf-b2c-mall-detail-content"></div>
-	<div class="loadingDIV loading center"></div>
 
 	<div id="version" data-version="{version}"></div>
 
-	<!-- build:js(.) /scripts/require.min.js -->
-	<script src="/bower_components/requirejs/require.js"></script>
-	<!-- endbuild -->
-
 	<!-- build:js({app, tmp}) /scripts/sf.h5.base.js-->
-	<script src="/scripts/base/sf.h5.base.ver.1.0.5.js"></script>
+	<script src="/scripts/base/sf.h5.base.ver.1.0.8.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js({app, tmp}) /scripts/sf.h5.hybrid.base.js-->

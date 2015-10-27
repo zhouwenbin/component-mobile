@@ -104,7 +104,9 @@ define('sf.b2c.mall.product.detailcontent', [
             'REDUCE': "满减",
             'DISCOUNT': "满折",
             'MIX_DISCOUNT': "搭配折扣",
-            'SECKILL': "秒杀"
+            'SECKILL': "秒杀",
+            'FIRST_ORDER': '首单减',
+            'POSTAGE_FREE':'满额减邮'
           };
           return map[activityType];
         },
@@ -170,7 +172,7 @@ define('sf.b2c.mall.product.detailcontent', [
             return options.inverse(options.contexts || this);
           }
         },
-		'isNotBegin': function(options) {
+		    'isNotBegin': function(options) {
           if (LEFTBEGINTIME > 0) {
             return options.fn(options.contexts || this);
           } else {
@@ -193,6 +195,18 @@ define('sf.b2c.mall.product.detailcontent', [
             return '距开始：'
           } else if (LEFTENDTIME > 0) {
             return '距结束：'
+          }
+        },
+        'sf-mediaType': function(mediaType, options) {
+          if (mediaType() == "VIDEO") {
+            return options.fn(options.contexts || this);
+          }
+        },
+        'sf-isAlipayAndAndroid': function(mediaType, options) {
+          if (SFFn.isMobile["Android"]() && SFFn.isMobile["AlipayChat"]() && (mediaType() == "VIDEO")) {
+            return options.fn(options.contexts || this);
+          } else {
+            return options.inverse(options.contexts || this);
           }
         }
       },
@@ -281,6 +295,33 @@ define('sf.b2c.mall.product.detailcontent', [
             itemId: itemId
           });
           can.trigger(window, 'showLogin', [window.location.href]);
+        }
+      },
+
+
+      /**
+       * @author zhangke
+       * @description 播放视频
+       * @param  {element} el
+       */
+      '.goods .cover click': function(el, event) {
+        event && event.preventDefault();
+
+        var videoDom = $(el).siblings("video");
+        if (videoDom.length > 0) {
+          //videoDom.show();
+          var videoa = videoDom[0];
+          if (SFFn.isMobile["Android"]()) {
+            videoa.webkitRequestFullScreen();
+          }
+
+          videoa.play();
+        }
+      },
+
+      '.goods video webkitfullscreenchange': function(ele, event) {
+        if (!ele[0].webkitDisplayingFullscreen) {
+          ele[0].pause();
         }
       },
 
@@ -842,12 +883,12 @@ define('sf.b2c.mall.product.detailcontent', [
             getUserInfo
               .sendRequest()
               .done(function(data) {
-                link = "http://m.sfht.com/detail/" + itemid + ".html?_src=" + data.userId;
+                link = "http://m.sfht.com/detail/" + itemid + ".html?_ruser=" + data.userId;
                 SFWeixin.shareDetail(title, desc, link, imgUrl)
               })
               .fail()
           } else {
-            link = "http://m.sfht.com/detail/" + itemid + ".html?_src=" + $.fn.cookie('userId');
+            link = "http://m.sfht.com/detail/" + itemid + ".html?_ruser=" + $.fn.cookie('userId');
             SFWeixin.shareDetail(title, desc, link, imgUrl)
           }
         } else {
@@ -1118,10 +1159,12 @@ define('sf.b2c.mall.product.detailcontent', [
             });
 
             if (!SFComm.prototype.checkUserLogin.call(this)) {
+              element.removeClass('btn-disable');
               window.location.href = 'http://m.sfht.com/login.html?from=' + escape(gotoUrl);
               return false;
             }
 
+            element.removeClass('btn-disable');
             window.location.href = gotoUrl;
           }, this),
 

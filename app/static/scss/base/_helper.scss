@@ -106,14 +106,15 @@
 .m10{
   margin: 10px;
 }
-.loaded{
-  animation:loaded 0.5s forwards;
-}
-@keyframes loaded{
+//lazyimage
+@keyframes lazyloaded{
   0%{
     opacity: 0;
   }
   100%{
     opacity: 1;
   }
+}
+.lazyloaded{
+  animation:lazyloaded 0.5s forwards;
 }

@@ -10,6 +10,24 @@
 {{/sf-is-empty}}
 
 {{^sf-is-empty scopeGroups}}
+{{#sf-show-activityTips cartFeeItem}}
+<p class="firt-buy-discount">
+{{! 首单减标示 }}
+{{#sf-show-firstOrderTips cartFeeItem.firstOrderInfos}}
+{{#each cartFeeItem.firstOrderInfos}}
+<em>{{useRule.ruleDesc}}</em>
+{{/each}}
+{{/sf-show-firstOrderTips}}
+
+{{#sf-show-line cartFeeItem}}|{{/sf-show-line}}
+
+{{#sf-show-freePostage cartFeeItem.reductPostageInfos}}
+{{#each cartFeeItem.reductPostageInfos}}
+<em>{{useRule.ruleDesc}}</em>
+{{/each}}
+{{/sf-show-freePostage}}
+</p>
+{{/sf-show-activityTips}}
 
 <article class="cart">
 <section class="sf-h5-avail-cart">
@@ -170,7 +188,7 @@
 
 
 
-{{#sf-is-over-pay cartFeeItem.actualTotalFee limitAmount}}
+{{#sf-is-over-pay cartFeeItem.actualTotalFee limitAmount canOrder}}
 <div class="alert-error">亲，海关规定购买多个商品总价不能超过1000</div>
 {{/sf-is-over-pay}}
 
@@ -181,12 +199,12 @@
         </div>
         <div class="cart-footer-c2">
             <div>
-            总计：<span class="text-important">¥{{sf.price cartFeeItem.actualTotalFee}}</span>(含税)
+            总计：<span class="text-important">¥{{sf.price cartFeeItem.actualTotalFee}}</span>(不含运费)
             </div>
             <div class="cart-footer-save">已省：¥{{sf.price cartFeeItem.discountFee}}</div>
         </div>
 
-        <button class="btn {{^sf-is-allow-pay scopeGroups cartFeeItem}}btn-disable{{/sf-is-allow-pay}} gotopay" style="{{#sf-is-allow-pay scopeGroups cartFeeItem}}background:#dc3334;{{/sf-is-allow-pay}}background: #ff5b54;border: 1px solid #ff5b54;" >去结算</button>
+        <button class="btn {{^sf-is-allow-pay canOrder}}btn-disable{{/sf-is-allow-pay}} gotopay" style="{{#sf-is-allow-pay canOrder}}background:#dc3334;{{/sf-is-allow-pay}}" >去结算</button>
     </div>
 </section>
 

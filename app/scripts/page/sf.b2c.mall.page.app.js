@@ -11,10 +11,12 @@ define(
     'store',
     'sf.b2c.mall.business.config',
     'sf.b2c.mall.widget.message',
-    'sf.b2c.mall.api.coupon.receiveCoupon'
+    'sf.b2c.mall.api.coupon.receiveCoupon',
+    'sf.b2c.mall.api.user.renderAdvSource',
+
     // 'animate'
   ],
-  function(can, $, $cookie, SFFrameworkComm, SFFn, Fullpage, store, SFConfig, SFMessage, SFReceiveCoupon) {
+  function(can, $, $cookie, SFFrameworkComm, SFFn, Fullpage, store, SFConfig, SFMessage, SFReceiveCoupon, SFRenderAdvSource) {
     // Fastclick.attach(document.body);
     SFFrameworkComm.register(3);
 
@@ -32,7 +34,36 @@ define(
         this.initFullPage();
         this.render();
         var that = this;
-
+         //渠道统计
+        var params = can.deparam(window.location.search.substr(1));
+        var idfa = params.idfa;
+        var source = params.source;
+        var appkey = params.appkey;
+        var pburl = params.pburl;
+        if(idfa && source){
+            var param = {
+              'idfa': idfa,
+              'source': source,
+              'appkey': appkey,
+              'pburl': pburl
+            };
+            var paremStr = JSON.stringify(param);
+            var renderAdvSource = new SFRenderAdvSource({advRequest:paremStr});
+            renderAdvSource.sendRequest().done(function(data) {
+              if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
+                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
+              } else if (SFFn.isMobile.iOS()) {
+                window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+              }
+            })
+            .fail(function(error) {
+              if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
+                window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
+              } else if (SFFn.isMobile.iOS()){
+                window.location.href = "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8";
+              }
+            });
+        }
         //$("#openAddLink").click();
 
         // that.openApp('sfht://');
@@ -103,32 +134,36 @@ define(
       init: function() {
         var that = this;
 
+        if(SFFn.isMobile.APP()){
+          $('#ifIsApp').text('App可签到领积分，下单抵用直减');
+        }
+
         $("[data-name='cms-fill-coupon']").click(function(targetElement) {
-          if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
-            new SFMessage(null, {
-              'tip': '抱歉！需要登录后才可以领取优惠券！',
-              'type': 'success',
-              'okFunction': function(){
-                window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
-              }
-            });
-            return false;
-          }
+          // if (!SFFrameworkComm.prototype.checkUserLogin.call(this)) {
+          //   new SFMessage(null, {
+          //     'tip': '抱歉！需要登录后才可以领取优惠券！',
+          //     'type': 'success',
+          //     'okFunction': function(){
+          //       window.location.href = "http://m.sfht.com/login.html?from=" + escape(window.location.href);
+          //     }
+          //   });
+          //   return false;
+          // }
 
-          var params = {
-            bagId: $(targetElement.target).data('cms-couponbagid'),
-            type: $(targetElement.target).data('cms-coupontype')
-          }
-          var needSms = $(targetElement.target).data('needsms');
-          var smsCon = $(targetElement.target).data('smscon');
-          if (needSms) {
-            params.needSms = needSms;
-          }
-          if (smsCon) {
-            params.smsCon = smsCon;
-          }
-
-          that.receiveCpCodeData(params);
+          // var params = {
+          //   bagId: $(targetElement.target).data('cms-couponbagid'),
+          //   type: $(targetElement.target).data('cms-coupontype')
+          // }
+          // var needSms = $(targetElement.target).data('needsms');
+          // var smsCon = $(targetElement.target).data('smscon');
+          // if (needSms) {
+          //   params.needSms = needSms;
+          // }
+          // if (smsCon) {
+          //   params.smsCon = smsCon;
+          // }
+          that.download();
+          //that.receiveCpCodeData(params);
         });
 
         return false;
@@ -144,7 +179,13 @@ define(
       },
 
       download: function () {
-        if (SFFn.isMobile.WeChat()) {
+
+        if (SFFn.isMobile.APP()){
+          window.location.href = "http://m.sfht.com/index.html";
+          return false;
+        }
+
+        if (SFFn.isMobile.WeChat() || SFFn.isMobile.QQ()) {
 
           window.location.href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m";
           // $("#downloadAppBtn").attr("href", "http://a.app.qq.com/o/simple.jsp?pkgname=com.sfht.m");
@@ -154,7 +195,7 @@ define(
           // $("#downloadAppBtn").attr("href", "https://itunes.apple.com/us/app/hai-tao-fa-xian/id983956499?mt=8");
         } else if (SFFn.isMobile.Android()) {
 
-          window.location.href = "http://img.sfht.com/ios/sfht_sfhaitao.apk";
+          window.location.href = "http://dl.sfht.com/app/sfht_sfhaitao.apk";
           // $("#downloadAppBtn").attr("href", "http://img.sfht.com/ios/sfht_sfhaitao.apk");
         }
       },

@@ -12,9 +12,31 @@ define('sf.util', [
   //$(window).hashchange();
   can.route.ready();
 
-  window.getShareIcon = function () {
+  window.getShareIcon = function() {
     var src = $('#icon').attr('data-src');
     return src || 'false';
+  }
+
+  // @note 请求存在跨域问题，需要外部支持
+  window.onerror = function(msg, url, line) {
+    var params = $.param({
+      msg: msg,
+      url: url,
+      line: line
+    });
+    var code = window.btoa(params);
+    var link = 'http://stat.t.sfht.com/jserror.gif?' + code;
+
+    var img = new Image();
+    img.width = 1;
+    img.height = 1;
+    img.onload = function() {
+      img = img.onerror = img.onload = null;
+    }
+    img.onerror = function() {
+      img = img.onerror = img.onload = null;
+    };
+    img.src = link;
   }
 
 
@@ -49,11 +71,23 @@ define('sf.util', [
       Firefox: function() {
         return (navigator.userAgent.indexOf("Firefox") > -1)
       },
+      QQ: function () {
+        return (navigator.userAgent.indexOf('QQ') > -1);
+      },
       WeChat: function() {
-        return navigator.userAgent.match(/MicroMessenger/i);
+        var isWeChat = navigator.userAgent.match(/MicroMessenger/i);
+        if (isWeChat) {
+          store.remove('IS_APP');
+        }
+        return isWeChat
       },
       AlipayChat: function() {
-        return navigator.userAgent.match(/AlipayClient/i);
+        var isAlipayChat = navigator.userAgent.match(/AlipayClient/i);
+        if (isAlipayChat) {
+          store.remove('IS_APP');
+        }
+
+        return isAlipayChat
       },
       APP: function() {
         var isApp = config.setting['is_app'] || store.get('IS_APP');
@@ -64,7 +98,7 @@ define('sf.util', [
 
         if (isApp) {
           return isApp;
-        }else if (whole.indexOf('platform=android') > -1) {
+        } else if (whole.indexOf('platform=android') > -1) {
           store.set('IS_APP', 'android');
           return 'android';
         } else if (whole.indexOf('platform=ios') > -1) {
@@ -75,18 +109,18 @@ define('sf.util', [
         }
       },
 
-      onlineApp: function () {
-        if (this.APP() && !window.sf) {
+      onlineApp: function() {
+        if (this.APP() && !window.cordova) {
           return true;
-        }else{
+        } else {
           return false;
         }
       },
 
-      localApp: function () {
-        if (this.APP() && window.sf) {
+      localApp: function() {
+        if (this.APP() && window.cordova && window.sf) {
           return true;
-        }else{
+        } else {
           return false;
         }
       },
@@ -151,6 +185,20 @@ define('sf.util', [
       str = str + word;
 
       return md5(str);
+    },
+
+    tip: function(message, time) {
+      var $el = $('<div class="dialog-cart" style="z-index:9999;"><div class="dialog-cart-inner" style="width:242px;padding:20px 60px;"><p style="margin-bottom:10px;">' + message + '</p></div><a href="javascript:" class="icon icon108 closeDialog">关闭</a></div>');
+      if ($('.dialog-cart').length > 0) {
+        return false;
+      };
+      $(document.body).append($el);
+      $('.closeDialog').click(function(event) {
+        $el.remove();
+      });
+      setTimeout(function() {
+        $el.remove();
+      }, time || "3000");
     },
 
     sign: function(params, isForce) {

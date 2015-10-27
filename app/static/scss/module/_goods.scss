@@ -101,3 +101,21 @@
 .corner-icon04{
   background:  url(http://img0.sfht.com/img/520235946454a96e657b73268e6541a5.jpg) 0 0 no-repeat;
 }
+.firt-buy-discount{
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  color: #ff5b54;
+  height: 44px;
+  line-height: 44px;
+  span{
+    background-color: #df3c3a;
+    color: #fff;
+    border-radius: 4px;
+    margin-left: 14px;
+    margin-right: 10px;
+    padding: 3px 4px;
+  }
+  em{
+    padding: 0 2px;
+  }
+}

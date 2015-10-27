@@ -35,6 +35,30 @@
   .swipe img{
     width: 100%;
   }
+  .swipe video{
+    width: 100%;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index:100;
+  }
+  .swipe .cover{
+    width: 100%;
+    height:100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index:200;
+  }
+  .swipe .playBtn {
+    display: inline-block;
+    font: 0/0 a;
+    background: url(http://img0.sfht.com/img/fb9b286dfebad73d7cb864d820cbda63.jpg) 0 0 no-repeat;
+    width: 92px;
+    height: 92px;
+    z-index: 10;
+  }
   .swiper-container {
       width: 100%;
   }  

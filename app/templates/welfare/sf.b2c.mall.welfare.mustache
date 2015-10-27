@@ -1,0 +1,82 @@
+<section class="welfare-list">
+	<h2 class="title">推荐任务</h2>
+	<ul class="stopList">
+	{{#if recommendTaskList}}
+        {{#each recommendTaskList}}
+		<li data-tab="{{task.id}}" class="clearfix stopList-li margin-bottom-10	{{#if isCompleted}}completed{{/if}}">
+			<a href="{{#if task.url}}{{task.url}}{{else}}javascript:;{{/if}}" class="show">
+				<div class="listLi-1 fl">
+					<img class="stepImage" src="{{task.awardPic}}">
+					<p class="red">{{task.awardValue}}{{statusOrder}}</p>
+				</div>
+				<div class="listLi-2 fl grey">
+					<p class="font16 dark margin-bottom-10 clearfix">
+						<span class="sfhdtitle ellipsis inline fl fb">{{task.title}}</span>
+						{{#if task.isHaveDescription}}
+						<a href="javascript:;" class="inline ruleToshow font12 white fl">?</a>
+						{{/if}}
+					</p>
+					{{#if task.endDate}}
+					<p class="ellipsis">{{task.subTitle}}</p>
+					<p class="font12 ellipsis">截止于：{{task.endDate}}</p>
+					{{else}}
+					<p class="ellipsis2">{{task.subTitle}}</p>
+					{{/if}}
+				</div>
+				<div class="listLi-3 font12">
+					{{#if isCompleted}}
+					<a href="{{task.url}}" class="inline joinBtns white {{task.taskActionType}}"><span class="inline">{{task.completeButtonText}}</span></a>
+					{{else}}
+					<a href="{{task.url}}" class="inline joinBtns white {{task.taskActionType}}"><span class="inline">{{task.buttonText}}</span></a>
+					{{/if}}
+				</div>
+			</a>
+		</li>
+		{{/each}}
+        {{else}}
+        <li class="clearfix stopList-li margin-bottom-10">
+            <p>暂无没有记录</p>
+        </li>
+	{{/if}}
+	</ul>
+	<h2 class="title">日常任务</h2>
+	<ul class="stopList">
+	{{#if dailyTaskList}}
+        {{#each dailyTaskList}}
+		<li data-tab="{{task.id}}" class="clearfix stopList-li margin-bottom-10 {{#if isCompleted}}completed{{/if}}">
+			<a href="{{#if task.url}}{{task.url}}{{else}}javascript:;{{/if}}" class="show">
+				<div class="listLi-1 fl">
+					<img class="stepImage" src="{{task.awardPic}}">
+					<p class="red">{{task.awardValue}}</p>
+				</div>
+				<div class="listLi-2 fl grey">
+					<p class="font16 dark margin-bottom-10 clearfix">
+						<span class="sfhdtitle ellipsis inline fl fb">{{task.title}}</span>
+						{{#if task.isHaveDescription}}
+						<a href="javascript:;" class="inline ruleToshow font12 white fl">?</a>
+						{{/if}}
+					</p>
+					{{#if task.endDate}}
+					<p class="ellipsis">{{task.subTitle}}</p>
+					<p class="font12 ellipsis">截止于：{{task.endDate}}</p>
+					{{else}}
+					<p class="ellipsis2">{{task.subTitle}}</p>
+					{{/if}}
+				</div>
+				<div class="listLi-3 font12">
+					{{#if isCompleted}}
+					<a href="javascript:;" class="inline joinBtns white {{task.taskActionType}}"><span class="inline">{{task.completeButtonText}}</span></a>
+					{{else}}
+					<a href="{{task.url}}" class="inline joinBtns white {{task.taskActionType}}"><span class="inline">{{task.buttonText}}</span></a>
+					{{/if}}
+				</div>
+			</a>
+		</li>
+		{{/each}}
+        {{else}}
+		<li class="clearfix stopList-li margin-bottom-10">
+            <p>暂无没有记录</p>
+        </li>
+	{{/if}}
+	</ul>
+</section>
