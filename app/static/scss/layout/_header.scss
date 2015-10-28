@@ -3,7 +3,6 @@
   .header{
     padding: 0 0 11px * $i;
     background: #FF5B54;
-    border-bottom:1px * $i solid #cfcfcf;
     position: relative;
     height: 49px * $i;
   }
@@ -103,7 +102,7 @@
     position: absolute;
     height: 49px * $i;
     top: 0;
-    z-index: map-get($z-index,header-detail);
+    z-index: 1000;
     width:100%;
   }
   .header-detail .icon {

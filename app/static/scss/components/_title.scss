@@ -1,0 +1,39 @@
+/*title*/
+.com-title {
+  text-align: center;
+  position: relative;
+  height: 60px;
+  line-height: 56px;
+  font-size: 28px;
+}
+
+.com-title h2 {
+  display: inline-block;
+  border-bottom: 4px solid #FF5B54;
+  font-weight: 700;
+}
+
+.com-box {
+  background: #fff;
+  margin-top: 20px;
+}
+.com-count-down{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	line-height: 1;
+	padding: 8px 0;
+	text-align: center;
+	background: #4A4A4A;
+	font-size: 24px;
+	color: #FFF;
+	border-radius: 4px;
+	margin: 0 6px 0 8px;
+  vertical-align: 1px;
+}
+.com-title-time-count{
+  height: 60px;
+  text-align: center;
+  font-size: 28px;
+  padding-top: 10px;
+}

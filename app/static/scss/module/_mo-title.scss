@@ -1,0 +1,25 @@
+.com-title {
+    text-align: center;
+    position: relative;
+    height: 30px * 2;
+    line-height: 28px * 2;
+    font-size: 14px * 2
+}
+
+.com-title h2 {
+    display: inline-block;
+    border-bottom: 2px * 2 solid #FF5B54;
+    font-weight: 400
+}
+
+.com-title-tips {
+    position: absolute;
+    right: 10px * 2;
+    top: 2px * 2;
+    font-size: 12px * 2
+}
+
+.com-box {
+    background: #fff;
+    margin-top: 10px * 2
+}

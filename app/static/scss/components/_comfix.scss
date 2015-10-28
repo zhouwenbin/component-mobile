@@ -1,0 +1,73 @@
+/*综合区域*/
+.sales-price{
+	font-size: 16px * 2;
+	margin-right: 5px * 2;
+}
+.sales-price,
+.sales-price-out{
+	color: #F44740;
+}
+.original-price{
+	margin-top: 4px * 2;
+	color: #9B9B9B; 
+}
+img{
+	vertical-align: top;
+}
+.strong-color{
+	color: #FF5B54;
+}
+.icon-hot,
+.icon-new{
+	display: inline-block;
+	width: 34px * 2;
+	height: 34px * 2;
+	line-height: 34px * 2;
+	text-align: center;
+	border-radius: 50%;
+	i{
+		display: block;
+		font-style: normal;
+		font-size: 10px * 2;
+		-webkit-transform:scale(0.875);
+	}
+}
+.icon-new{
+	background: #F5F187;
+}
+.icon-hot{
+	background: #FF5B54;
+	color: #fff;
+}
+.icon-country{
+	width: 19px * 2;
+	height: 13px * 2;
+}
+.icon-addtocart{
+	display: inline-block;
+	width: 44px * 2;
+	height: 44px * 2;
+	padding-top: 22px * 2;
+	text-align: center;
+}
+.all-goods{
+	display: block;
+	border-top: 1px * 2 solid #F5F5F5;
+	height: 44px * 2;
+	line-height: 44px * 2;
+	text-align: center;
+	width: 100%;
+	.icon-arrow{
+		display: inline-block;
+		width: 6px * 2;
+		height: 6px * 2;
+		border-width: 1px * 2;
+		border-color: #FF5B54 #FF5B54 transparent transparent;
+		border-style: solid;
+		transform: rotate(45deg);
+		vertical-align: 1px * 2;
+	}
+}
+.fast-buy-salesbox{
+	display: block;
+}

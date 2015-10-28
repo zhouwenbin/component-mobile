@@ -1,0 +1,40 @@
+.fast-buy-goods{
+	display: flex;
+	align-items: center;
+	border-top: 1px * 2 solid #F5F5F5;
+	padding: 5px * 2 0;
+}
+.fast-buy-pic{
+	position: relative;
+	margin-left: 5%;
+	img{
+		width: 115px * 2;
+		height: 115px * 2;	
+	}
+}
+.fast-buy-text{
+	margin-left: 13px * 2;
+	flex: 1;
+	padding-right: 10px * 2;
+	h2{
+		font-size: 14px * 2;
+		font-weight: 400;
+		line-height: 1.2;
+	}
+	p{
+		color: #9B9B9B;
+	}
+}
+.fast-buy-from{
+	margin-bottom: 5px * 2;
+	.icon-country{
+		margin-right: 5px * 2;
+		vertical-align: -1px * 2;
+	}
+}
+.fast-buy-fix{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-top: 10px * 2;
+}

@@ -6,7 +6,7 @@
 	  color: #fff;
 	  border-radius: 5px * $i;
 	  line-height: 18px * $i;
-	  z-index:map-get($z-index,tooltip);
+	  z-index:99999;
 	}
 }
 

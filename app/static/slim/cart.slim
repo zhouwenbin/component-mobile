@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>顺丰海淘详情页</title>
-	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="http://localhost:8009//css/h5common.css">
 	<link rel="stylesheet" href="../css/cart.css">
 
 </head>
@@ -12,10 +12,10 @@
 	<!--头部-->
 	== Slim::Template.new('module/header.slim').render
 	<!--头部-->
-	<!-- 首单减 -->
-	<p class="firt-buy-discount"><span>首单减</span>活动期间全场用户首单减免<em>&yen;</em>15</p>
-	<!-- 首单减 -->
 	<section class="cart">
+		<div class="cart-choise">
+			<a href=""><span class="cart-choise-label">N元任选</span>已满足99元任选4件</a>
+		</div>
 		<ul>
 			<li>
 				<div class="cart-inner">
