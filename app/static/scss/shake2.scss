@@ -1,6 +1,7 @@
 @import 'utils/variables';
 body{
 	background: #ffedd7 ;
+	width:320px * 2;
 }
 
 @keyframes shake{
@@ -74,7 +75,8 @@ body{
 }
 .shaked-btn{
 	display:flex;
-
+	justify-content:space-between;
+	padding: 0 30px * 2;
 }
 .coupon{
 	background:url(http://img0.sfht.com/cmsres/20151029/7213ffce-ba05-405e-ba73-1c0105c71085.png) no-repeat;
@@ -111,7 +113,6 @@ a.btn-red{
 	line-height: 40px * 2;
 	border-radius: 40px * 2;
 	font-size: 18px * 2;
-	margin: 0 10px * 2;
 	text-align:center;
 }
 a.btn-yellow{
