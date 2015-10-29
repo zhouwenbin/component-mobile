@@ -154,3 +154,7 @@
 	register.slim              注册
 	share.slim                 分享到微信
 	sharepocket.slim           分享红包
+
+## 2015-10-29新增
+* [shaked2](html/shaked2.html)
+* [shaking2](html/shaking2.html)
