@@ -1,0 +1,131 @@
+@import '../../utils/variables';
+@import '../../components/swipe';
+
+body{
+  width: 640px;
+}
+.introduce1{
+	background: url(http://img0.sfht.com/img/f8156f8bfad22c47910c81bda660182f.jpg) no-repeat center top;
+	height: 963px;
+	
+}
+.introduce1 .pm{
+	position: relative;
+	height: 1056px;
+}
+.introduce1-plane{
+	background: url(http://img0.sfht.com/img/3defae5635df2edafdf91aafcb7a643a.jpg) no-repeat;
+	width: 270px;
+	height: 75px;
+	position: absolute;
+	top: 1170px;
+	left: 50%;
+	margin-top: -37px;
+	margin-left: -123px;
+	
+}
+.introduce-logistics{
+	background: url(http://img0.sfht.com/img/d3abfbae96b95796407cf7d10844be42.jpg) no-repeat center top;
+	height: 669px;
+	text-indent: -999em;
+}
+.introduce-logistics h2{
+	font-size: 50px;
+	font-weight: normal;
+	text-align: center;
+	margin-bottom: 33px;
+	padding-top: 86px;
+}
+.introduce-logistics p{
+	font-size: 21px;
+	text-align: center;
+}
+.introduce-vs{
+	background: url(http://img0.sfht.com/img/ac06115b995a99e9f5f66305a3b5e59a.jpg) no-repeat center top;
+	height: 865px;
+	padding-top: 604px;
+	box-sizing:border-box;
+	font-size: 22px;
+	line-height: 32px;
+	color: #777;
+	padding-left:10px;
+	padding-right: 10px;
+}
+.introduce-vs-c1{
+	text-align: right;
+	width: 292px;
+}
+.introduce-vs-c1 strong{
+	background: #f64f40;
+	color: #fff;
+}
+.introduce-vs-c2{
+	width: 292px;
+}
+.introduce-vs-c2 strong{
+	background: #555;
+	color: #fff;
+}
+.introduce-qa{
+	padding-left: 64px;
+	background: #fff;
+	padding-bottom: 120px;
+	padding-top: 60px;
+}
+.introduce-qa h2{
+	font-size: 60px;
+	text-align: center;
+	font-weight: normal;
+	height: 45px;
+	margin-bottom: 84px;
+	background: url(http://img0.sfht.com/img/fce75f36a1fb5ac420b36637c21d4bce.jpg) no-repeat center top;
+	text-indent: -999em;
+}
+.introduce-qa h3{
+	font-size: 24px;
+	color: #df3d40;
+	font-weight: normal;
+	margin-bottom: 23px;
+}
+.introduce-qa p{
+	font-size: 22px;
+	line-height: 32px;
+	margin-bottom: 23px;
+}
+.introduce-qa .p1{
+	color: #1d97b3;
+	margin-bottom: -160px;
+	position: relative;
+	z-index: 1;
+	padding-left: 47px;
+	padding-right: 77px;
+	padding-top: 20px;
+}
+.introduce-qa h3 span,
+.introduce-qa p span{
+	font-size: 21px;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	border-radius: 5px;
+	color: #fff;
+	display: inline-block;
+	vertical-align: middle;
+	float: left;
+	margin-left: -44px;
+	text-indent: -999em;
+}
+.introduce-qa h3 span{
+	background: url(http://img0.sfht.com/img/58945acd39529e7b211be5fcd886ff62.jpg) no-repeat center top;
+
+}
+.introduce-qa p span{
+	background: url(http://img0.sfht.com/img/6fbc87139141537bad8c386fc1f3daa4.jpg) no-repeat center top;
+}
+.introduce-qa img{
+	margin-bottom: 59px;
+}
+.introduce-video{
+	display: none;
+}
