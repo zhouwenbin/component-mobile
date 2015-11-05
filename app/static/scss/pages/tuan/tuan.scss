@@ -48,7 +48,7 @@ svg{
 	position:absolute;
 	bottom:0;
 	left:50%;
-	transform:tanslate(-50%,0);
+	transform:translate(-50%,0);
 }
 .tuantab-content{
 	display:none;
@@ -181,6 +181,30 @@ svg{
 	position: absolute;
 	bottom:15px;
 	right:0;
+}
+.tuanlist-none{
+	text-align:center;
+	padding-top:40px;
+}
+
+.tuanlist-none-icon{
+	padding:20px 24px;
+	background:#DCDCDC;
+	display:inline-block;
+	margin-bottom:10px;
+	border-radius:50%;
+}
+.tuanlist-none p{
+	color:#9B9B9B;
+	font-size:14px;
+	margin-bottom:15px;
+}
+.tuanlist-none .btn{
+	color:#F24E47;
+	font-size:14px;
+	width:200px;
+	height:44px;
+	line-height:44px;
 }
 
 //tuanhow
