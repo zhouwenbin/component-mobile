@@ -1,12 +1,26 @@
 @import '../../utils/variables';
-body{
-	background:#fff;
-}
 h2,h3,strong{
 	font-weight:normal;
 }
 svg{
 	vertical-align:middle;
+}
+.text-yellow{
+	color:#F5A623;
+}
+.text-gray{
+	color:#DCDCDC;
+}
+.btn-middle{
+	width:160px;
+}
+.btn-yellow{
+	background:#FFAD4F;
+	color:#fff;
+}
+.btn-disable{
+	background:#9B9B9B;
+	color:#fff !important;
 }
 
 //tuantab
@@ -74,12 +88,17 @@ svg{
 //tuanlist
 .tuanlist{
 	background:#fff;
+	position: relative;
 }
 .tuanlist li{
 	display:flex;
 	align-items:center;
 	padding:12px 15px;
 	border-bottom:1px solid #F5F5F5;
+}
+.tuanlist li a{
+	display:flex;
+	align-items:center;
 }
 .tuanlist-c1{
 	width:115px;
@@ -125,9 +144,6 @@ svg{
 	line-height:44px;
 	padding-left:5px;
 }
-.tuanlist-price2{
-	margin-bottom:10px;
-}
 .tuanlist strong{
 	color:#F13C34;
 	font-size:14px;
@@ -135,6 +151,14 @@ svg{
 }
 .tuanlist del{
 	color:#9B9B9B;
+}
+.tuanlist .btn{
+	margin-top:10px;
+}
+.tuanlist-time{
+	margin-top:15px;
+	color:#9B9B9B;
+	margin-bottom:2px;
 }
 .tuanlist li.disabled .tuanlist-price{
 	border-color:#9B9B9B;
@@ -153,3 +177,220 @@ svg{
 .tuanlist li.disabled .tuanlist-price2 strong{
 	color:#4A4A4A;
 }
+.tuanlist-success{
+	position: absolute;
+	bottom:15px;
+	right:0;
+}
+
+//tuanhow
+.tuanhow{
+	background:#fff;
+	margin:10px 0;
+}
+.tuanhow h2{
+	height:30px;
+	line-height:30px;
+	border-bottom:1px solid #F2F2F2;
+	text-align:center;
+}
+.tuanhow h2 span{
+	display:inline-block;
+	border-bottom:2px solid #F13C34;
+}
+.tuanhow ul{
+	display:flex;
+	padding-top:44px;
+}
+.tuanhow li{
+	flex:1;
+	color:#9B9B9B;
+	line-height:17px;
+	position:relative;
+	text-align:center
+}
+.tuanhow li:before{
+	content:'';
+	border-top:1px solid #DCDCDC;
+	width:100%;
+	position:absolute;
+	top:-25px;
+	left:50%;
+}
+.tuanhow li:last-child:before{
+	display:none;
+}
+
+.tuanhow-num{
+	position:absolute;
+	top:-33px;
+	left:50%;
+	transform:translate(-50%,0);
+	background:#F13C34;
+	width:18px;
+	height:18px;
+	line-height:18px;
+	text-align:center;
+	color:#fff;
+	border-radius:50%;
+}
+
+//tuanintroduce
+.tuanintroduce{
+	line-height:17px;
+	padding:12px 15px;
+	background:#fff;
+}
+
+//tuanrule
+.tuanrule{
+	padding:15px;
+	background:#fff;
+	
+}
+.tuanrule h2{
+	color:#F13C34;
+	margin-bottom:9px;
+	text-align:center;
+}
+.tuanrule p{
+	line-height:17px;
+}
+
+//tuanjoin
+.tuanimg{
+	height:79px;
+}
+.tuanimg-fixed{
+	position: fixed;
+	left:0;
+	right:0;
+	bottom:47px;
+	padding:19px 0;
+	background:#fff;
+	border-top:1px solid #F2F2F2;
+	text-align:center;
+}
+.tuanimg li{
+	display:inline-block;
+	vertical-align:middle;
+	margin:0 10px;
+	width:40px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	border-radius:50%;
+	font-size:14px;
+}
+.tuanimg img{
+	border-radius:50%;
+}
+.tuanimg-none{
+	border-radius:50%;
+	border:1px dashed #DCDCDC;
+}
+.tuanbtn{
+	height:47px;
+}
+.tuanbtn-fixed{
+	position: fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	background:#fff;
+	border-top:1px solid #DCDCDC;
+	padding:8px 0;
+	text-align:center;
+}
+.tuanbtn .btn{
+	height:40px;
+	line-height:40px;
+	padding:0 20px;
+	font-size:14px;
+	width:140px;
+	margin: 0 6px;
+}
+
+
+//tuandialog
+
+.tuandialog-inner{
+	width:238px;
+	height:248px;
+	background:#fff;
+	position: fixed;
+	text-align:center;
+	z-index:999;
+	padding:36px 19px 24px;
+}
+.tuandialog h2{
+	color:#F13C34;
+	font-size:18px;
+	margin-bottom:13px;
+}
+.tuandialog p{
+	color:#9B9B9B;
+	font-size:16px;
+	line-height:22px;
+	margin-bottom:24px;
+}
+.tuandialog .text-important{
+	margin-bottom:15px;
+}
+.tuandialog .btn{
+	font-size:16px;
+	height:40px;
+	line-height:40px;
+}
+.tuandialog .btn-danger{
+	margin-bottom:7px;
+	margin-top:33px;
+}
+
+//tuanshare
+.tuanshare-inner{
+	top:auto;
+	bottom:0;
+	height:120px;
+	background:#F3F3F3;
+	z-index:999;
+}
+.tuanshare ul{
+	height:120px;
+	padding-left:5px;
+}
+.tuanshare ul:before{
+	content:'';
+	height:100%;
+	display:inline-block;
+	vertical-align:middle;
+}
+.tuanshare li{
+	display:inline-block;
+	vertical-align:middle;
+	text-align:center;
+	margin:0 10px;
+}
+.tuanshare figcaption{
+	margin-top:10px;
+}
+
+//tuantitle
+.tuantitle{
+	display:flex;
+	height:40px;
+	line-height:40px;
+	background:#fff;
+	padding:0 14px;
+	box-shadow:inset 0 0 2px rgba(0,0,0,0.32);
+}
+.tuantitle h1{
+	flex:1;
+	text-align:center;
+	font-size:18px;
+}
+.tuantitle a{
+	color:#FF5B54;
+	font-size:16px;
+}
+
