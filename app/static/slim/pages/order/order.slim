@@ -4,16 +4,17 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>丰趣海淘详情页</title>
-	<link rel="stylesheet" href="http://localhost:8009//css/h5common.css">	<link rel="stylesheet" href="../css/order.css">
+	<link rel="stylesheet" href="../../../css/pages/common/common.css">	
+	<link rel="stylesheet" href="../../../css/pages/order/order.css">
 
 </head>
 <body class="body1">
-	== Slim::Template.new('module/header.slim').render	
+	== Slim::Template.new('../../module/header.slim').render	
 	<!--订单-->
-	== Slim::Template.new('module/order.slim').render
+	== Slim::Template.new('../../module/order.slim').render
 	<!--订单-->
 	<!--商品信息-->
-	== Slim::Template.new('module/goodsinfo.slim').render
+	== Slim::Template.new('../../module/goodsinfo.slim').render
 	<!--商品信息-->
 	<div class="coupon-use">
 		<div class="coupon-use-h">
@@ -65,7 +66,7 @@
 			</div>	
 		</div>
 	</section>
-	<script src="../js/zepto.min.js"></script>
-	<script src="../js/switch.js"></script>	
+	<script src="../../../js/zepto.min.js"></script>
+	<script src="../../../js/switch.js"></script>	
 </body>
 </html>
