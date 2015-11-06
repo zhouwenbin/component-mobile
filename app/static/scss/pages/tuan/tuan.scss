@@ -11,6 +11,9 @@ svg{
 .text-gray{
 	color:#DCDCDC;
 }
+.text-black{
+	color:#4A4A4A !important;
+}
 .btn-middle{
 	width:160px;
 }
@@ -18,9 +21,24 @@ svg{
 	background:#FFAD4F;
 	color:#fff;
 }
+.btn-black{
+	background:#4A4A4A;
+	color:#fff;
+}
 .btn-disable{
 	background:#9B9B9B;
 	color:#fff !important;
+}
+.label-black{
+	width:55px;
+	height:20px;
+	line-height:20px;
+	display:inline-block;
+	border:1px solid #4A4A4A;
+	border-radius:10px;
+	text-align:center;
+	margin-right:27px;
+	font-size:10px;
 }
 
 //tuantab
@@ -160,23 +178,16 @@ svg{
 	color:#9B9B9B;
 	margin-bottom:2px;
 }
-.tuanlist li.disabled .tuanlist-price{
+.tuanlist-price.disabled{
 	border-color:#9B9B9B;
 }
-.tuanlist li.disabled .tuanlist-price-c1{
+.tuanlist-price.disabled .tuanlist-price-c1{
 	background:#9B9B9B;
 }
-.tuanlist li.disabled strong{
+.tuanlist-price.disabled strong{
 	color:#9B9B9B;
 }
-.tuanlist li.disabled .btn-danger{
-	background:#DCDCDC;
-	border-color:#DCDCDC;
-	color:#4A4A4A !important;
-}
-.tuanlist li.disabled .tuanlist-price2 strong{
-	color:#4A4A4A;
-}
+
 .tuanlist-success{
 	position: absolute;
 	bottom:15px;
@@ -340,7 +351,6 @@ svg{
 
 .tuandialog-inner{
 	width:238px;
-	height:248px;
 	background:#fff;
 	position: fixed;
 	text-align:center;
@@ -369,6 +379,11 @@ svg{
 .tuandialog .btn-danger{
 	margin-bottom:7px;
 	margin-top:33px;
+}
+.tuandialog-img{
+	position: absolute;
+	top:69px;
+	right:32px;
 }
 
 //tuanshare
