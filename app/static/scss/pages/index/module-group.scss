@@ -4,3 +4,46 @@
 @import '../../module/mo-babytimes';
 @import '../../module/mo-seckillgoods';
 @import '../../module/mo-title';
+.popup-select{
+	width:45px * 2;
+	height:45px * 2;
+	border-radius:50%;
+	background:rgba(0,0,0,0.6);
+	position: fixed;
+	z-index:999;
+	right:17px * 2;
+	bottom:31px * 2;
+	color:#fff;
+	text-align:center;
+	padding:23px 0;
+}
+.popup-close{
+	width:26px * 2;
+	height:26px * 2;
+	position: absolute;
+	z-index:999;
+	top:10px * 2;
+	left:15px * 2;
+}
+.popup-main{
+	position: fixed;
+	z-index:999;
+	left:0;
+	bottom:-500px * 2;
+	transition:all 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+.popup .mask{
+	display:none;
+}
+#popup-select:checked ~ .popup-main{
+	bottom:0;
+}
+#popup-select:checked ~ .mask{
+	display:block;
+}
+#popup-close:checked ~ .popup-main{
+	bottom:-500px * 2;
+}
+#popup-close:checked ~ .mask{
+	display:none;
+}

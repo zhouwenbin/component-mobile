@@ -68,6 +68,16 @@
 		</div>
 		== Slim::Template.new('../../module/mo-seckillgoods.slim').render
 	</div>
+	<div class="popup">				
+		<input type="radio" name="popup-select" id="popup-select" class="visuallyhidden">		
+		<input type="radio" name="popup-select" id="popup-close" class="visuallyhidden">
+		<label for="popup-close" class="mask"></label>
+		<label for="popup-select" class="popup-select">分会场<br>&gt;&gt;</label>
+		<div class="popup-main">			
+			<img src="http://img0.sfht.com/cmsres/20151109/228ddc9b-4e77-4084-8c02-0771c0840823.png">
+			<label for="popup-close" class="popup-close"></label>
+		</div>
+	</div>
 	== Slim::Template.new('../../module/footer.slim').render
 	<script type="text/javascript" src="../../../js/zepto.min.js"></script>
 	<script type="text/javascript" src="../../../js/iscroll.js"></script>

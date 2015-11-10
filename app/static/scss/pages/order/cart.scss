@@ -29,10 +29,19 @@ body{
 		padding: 0 12px;
 	}
 }
-.label-orange{
+.cart-label{
+	display:inline-block;
+	font-size:10px;
+	width:45px;
+	height:15px;
+	line-height:15px;
+	border-radius:8px;
+	background:#e73736;
+	color:#fff;
+	text-align:center;
 	margin-left:34px;
 	margin-top:8px;
 }
-.label-orange ~ .cart-inner{
+.cart-label ~ .cart-inner{
 	margin-top:-16px;
 }

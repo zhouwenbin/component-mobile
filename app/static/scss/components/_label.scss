@@ -42,18 +42,7 @@ background: #ccc;
 background: #f78e55;
 @extend .label;
 }
-.label-orange{
-	display:inline-block;
-	font-size:10px;
-	width:45px;
-	height:15px;
-	line-height:15px;
-	border-radius:8px;
-	border:1px solid #ff9000;
-	color:#ff9000;
-	text-align:center;
-	
-}
+
 @include label(1);
 
 @media screen and (min-width:640px){
