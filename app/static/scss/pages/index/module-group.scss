@@ -5,8 +5,8 @@
 @import '../../module/mo-seckillgoods';
 @import '../../module/mo-title';
 .popup-select{
-	width:45px * 2;
-	height:45px * 2;
+	width:52px * 2;
+	height:52px * 2;
 	border-radius:50%;
 	background:rgba(0,0,0,0.6);
 	position: fixed;
@@ -15,7 +15,22 @@
 	bottom:31px * 2;
 	color:#fff;
 	text-align:center;
+}
+.popup-select:before{
+	content:'';
+	display:inline-block;
+	vertical-align:middle;
+	height:100%;
+}
+.popup-select span{
+	width:47px * 2;
+	height:47px * 2;
 	padding:23px 0;
+	display:inline-block;
+	vertical-align:middle;
+	background:rgba(0,0,0,0.6);
+	border-radius:50%;
+	z-index:998;
 }
 .popup-close{
 	width:26px * 2;
