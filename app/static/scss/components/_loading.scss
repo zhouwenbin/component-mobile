@@ -1,3 +1,14 @@
+/*
+@styleguide
+
+# 加载
+
+<div class="loading center" style="position:static"></div>
+
+    <div class="loading center"></div>
+
+*/
+
 @mixin loading($i){
   .logout.center{
   	  border-radius: 10px * $i;

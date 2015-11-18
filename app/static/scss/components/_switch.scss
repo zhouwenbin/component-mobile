@@ -1,3 +1,14 @@
+/*
+@styleguide
+
+# 切换按钮
+
+<a href="javascript:" class="switch"></a>
+
+    <a href="javascript:" class="switch"></a>
+
+*/
+
 @mixin switch($i){
 	.switch{
 		width: 46px * $i;

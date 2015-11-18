@@ -1,3 +1,15 @@
+/*
+@styleguide
+
+# 点
+
+<span class="dot dot-error">50</span>
+<span class="dot dot-important"></span>
+
+    <span class="dot dot-error">50</span>
+	<span class="dot dot-important"></span>
+
+*/
 @mixin dot($i){
 	.dot{
 		display:inline-block;

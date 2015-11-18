@@ -11,5 +11,9 @@
     "url": "http://gitlab.sfht-inc.com/sfhaitao/haitao-b2c-h5.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "highlight.js": "^8.9.1",
+    "postcss-style-guide": "^0.9.3"
+  }
 }

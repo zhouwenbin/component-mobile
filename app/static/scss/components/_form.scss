@@ -1,3 +1,31 @@
+/*
+@styleguide
+
+# 表单
+
+<div class="input-num">
+  <button class="btn">-</button>
+  <input type="text" value="1">
+  <button class="btn">+</button>
+</div>
+<input type="text" class="input">
+<select name="" id="" class="select">
+  <option value="">select</option>
+</select>
+<textarea name="" id="" class="textarea"></textarea>
+
+    <div class="input-num">
+      <button class="btn">-</button>
+      <input type="text" value="1">
+      <button class="btn">+</button>
+    </div>
+    <input type="text" class="input">
+    <select name="" id="" class="select">
+      <option value="">select</option>
+    </select>
+    <textarea name="" id="" class="textarea"></textarea>
+
+*/
 @mixin form($i){
   .input{
     border: 1px solid #e3e3e3;

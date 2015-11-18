@@ -1,3 +1,23 @@
+/*
+@styleguide
+
+# 选项卡
+
+<div class="tab-h">
+  <ul class="clearfix" style="position:relative">
+    <li class="active"><a href="">未完成(5)</a></li>
+    <li><a href="">完成</a></li>
+  </ul>
+</div>
+
+    <div class="tab-h">
+      <ul class="clearfix">
+        <li class="active"><a href="">未完成(5)</a></li>
+        <li><a href="">完成</a></li>
+      </ul>
+    </div>
+
+*/
 @mixin tab($i){
   .tab-h{
     height: 44px * $i;

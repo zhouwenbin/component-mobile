@@ -771,8 +771,6 @@ a[title="站长统计"] {
     width: 100%;
     text-align: center; } }
 /*
-@styleguide
-
 # btn 按钮
 
 <button class="btn btn-normal">btn-normal</button>
@@ -989,8 +987,6 @@ a[title="站长统计"] {
     display: block;
     width: 100%; } }
 /*
-@styleguide
-
 # 标签
 <span class="label label-error">label-error</span>
 <span class="label label-success">label-success</span>
@@ -1068,8 +1064,6 @@ a[title="站长统计"] {
     right: -12px;
     top: 14px; } }
 /*
-@styleguide
-
 # 图标
 
 已弃用，改成[svg](../app/static/icon/inlinesvg/symbols.html)
@@ -2025,8 +2019,6 @@ a[title="站长统计"] {
   background-position: -378px -25px; }
 
 /*
-@styleguide
-
 # 文字颜色
 
 <div class="text-error">text-error</div>
@@ -2091,8 +2083,6 @@ a[title="站长统计"] {
     color: #666;
     font-weight: normal; } }
 /*
-@styleguide
-
 # 表单
 
 <div class="input-num">
@@ -2219,8 +2209,6 @@ a[title="站长统计"] {
     border-color: #ccc;
     background: #fff; } }
 /*
-@styleguide
-
 # 盒子
 
 <div class="box">box</div>
@@ -2415,8 +2403,6 @@ a[title="站长统计"] {
   .box-check {
     padding-left: 100px; } }
 /*
-@styleguide
-
 # 表格
 
 <div class="table box">
@@ -2489,8 +2475,6 @@ a[title="站长统计"] {
   font-size: 14px; }
 
 /*
-@styleguide
-
 # 轮播
 
 <div class="swiper-container">    
@@ -2673,8 +2657,6 @@ a[title="站长统计"] {
   .swiper-time span {
     margin-right: 20px; } }
 /*
-@styleguide
-
 # 加载
 
 <div class="loading center" style="position:static"></div>
@@ -2734,8 +2716,6 @@ a[title="站长统计"] {
       -webkit-transform: rotateZ(360deg);
               transform: rotateZ(360deg); } } }
 /*
-@styleguide
-
 # 选项卡
 
 <div class="tab-h">
@@ -2842,8 +2822,6 @@ a[title="站长统计"] {
   .tab-b.active {
     display: block; } }
 /*
-@styleguide
-
 # 弹出窗
 
 <section class="mask dialog dialog1" style="position:static">
@@ -3177,8 +3155,6 @@ a[title="站长统计"] {
   position: absolute; }
 
 /*
-@styleguide
-
 # 提示
 <div class="alert-warning">alert-waining</div>
 <div class="alert-success">alert-success</div>
@@ -3264,8 +3240,6 @@ a[title="站长统计"] {
     background: #fffddd;
     color: #666; } }
 /*
-@styleguide
-
 # 点
 
 <span class="dot dot-error">50</span>
@@ -3348,8 +3322,6 @@ a[title="站长统计"] {
     line-height: 36px;
     z-index: 99999; } }
 /*
-@styleguide
-
 # 切换按钮
 
 <a href="javascript:" class="switch"></a>

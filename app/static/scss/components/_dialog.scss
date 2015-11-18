@@ -1,3 +1,32 @@
+/*
+@styleguide
+
+# 弹出窗
+
+<section class="mask dialog dialog1" style="position:static">
+  <div class=" center" style="position:static">
+    <h2>确定要退出登录吗？</h2>
+    <div class="dialog1-r1">
+      <button class="btn btn-normal">取消</button>
+      <button class="btn btn-normal warnning">确定</button>
+    </div>     
+    <a href="javascript:" class="icon icon15">关闭</a>
+  </div>
+</section>
+
+    <section class="mask dialog dialog1">
+      <div class=" center">
+        <h2>确定要退出登录吗？</h2>
+        <div class="dialog1-r1">
+          <button class="btn btn-normal">取消</button>
+          <button class="btn btn-normal warnning">确定</button>
+        </div>     
+        <a href="javascript:" class="icon icon15">关闭</a>
+      </div>
+    </section>
+
+*/
+
 @mixin dialog($i){
   .dialog .center{
     width: 292px * $i;
