@@ -1,1 +1,23 @@
-.top{padding:6px 8px;background:rgba(0,0,0,0.1);border-radius:4px;position:fixed;right:15px;bottom:15px}
+@charset "UTF-8";
+/*
+@styleguide
+
+# 回到顶部
+
+<div class="top">
+
+</div>
+
+    <div class="top">
+
+	</div>
+
+*/
+.top {
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}
