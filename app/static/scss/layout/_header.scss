@@ -46,7 +46,7 @@
     margin-top:15px * $i;
   }
   .header .icon {
-    width: 24px * $i; 
+    width: 24px * $i;
     height: 24px * $i;
     background: url(#{$bg-url}header/icons.png) no-repeat;
     background-size: cover ;
@@ -106,9 +106,21 @@
     width:100%;
   }
   .header-detail .icon {
-    width: 34px * $i; 
+    width: 34px * $i;
     height: 34px * $i;
     background: url(#{$bg-url}header/detail.png) no-repeat;
+    background-size: cover ;
+  }
+  .header-center {
+    width: 34px * $i;
+    height: 34px * $i;
+    background: url(http://img0.sfht.com/img/9f6f557e81a4cc60471c9673502c3728.jpg) no-repeat;
+    background-size: cover ;
+  }
+  .header-order {
+    width: 34px * $i;
+    height: 34px * $i;
+    background: url(http://img0.sfht.com/img/ad351a9239f12ecb5089d3a4c673f2af.jpg) no-repeat;
     background-size: cover ;
   }
   .header-detail .header-back {
