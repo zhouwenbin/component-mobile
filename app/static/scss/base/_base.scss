@@ -1,40 +1,44 @@
 /* 默认 */
 @mixin base($i){
-  *{
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; 
-  }
   body {
-    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
     font-size: 12px * $i;
-    color: #333;
     min-width: 320px * $i;
-    margin: 0 auto;
-    background:#f0eff5;
-  }
-
-  a{
-    text-decoration: none;
-    color:#333;
-    outline: none;
-  }
-  a:visited{
-    color: #333;
-  }
-  html, body {
-    -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
-    user-select: none;
-    height: 100%;
-  }
-  button{
-    border: none;
-    outline: none;
-  }
-   a[title="站长统计"]{
-    display: none;
   }
 }
+
+*{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; 
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  color: #333;
+  margin: 0 auto;
+  background:#f0eff5;
+}
+
+a{
+  text-decoration: none;
+  color:#333;
+  outline: none;
+}
+a:visited{
+  color: #333;
+}
+html, body {
+  -webkit-user-select: none;   /* 禁止选中文本（如无文本选中需求，此为必选项） */
+  user-select: none;
+  height: 100%;
+}
+button{
+  border: none;
+  outline: none;
+}
+ a[title="站长统计"]{
+  display: none;
+}
+
 @include base(1);
 
 @media screen and (min-width:640px){

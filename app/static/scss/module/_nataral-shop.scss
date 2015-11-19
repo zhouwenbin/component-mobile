@@ -1,21 +1,27 @@
 @mixin nataral-shop($i){
-  .nataral-shop img{
-    width: 100%;
-  }
   .nataral-shop figcaption{
     height: 30px * $i;
     line-height: 30px * $i;
-    background: rgba(0,0,0,0.6);
-    color: #fff;
     padding: 0 10px * $i;
     margin-top: -30px * $i;
-    position: relative;
-    z-index: map-get($z-index,nataral-shop-figcaption);
   }
   .nataral-shop figcaption .icon{
     margin-right: 6px * $i;
   }
 }
+
+
+.nataral-shop img{
+  width: 100%;
+}
+.nataral-shop figcaption{
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  position: relative;
+  z-index: map-get($z-index,nataral-shop-figcaption);
+}
+
+
 @include nataral-shop(1);
 @media screen and (min-width:640px){
   @include nataral-shop(2);

@@ -21,46 +21,60 @@
 @mixin tab($i){
   .tab-h{
     height: 44px * $i;
-    background: #fff;
     margin-bottom: 10px * $i;
 
   }
   .tab-h ul{
-    position: fixed;
-    width: 100%;
-    background: #fff;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    display: flex;
-    border-bottom: 1px solid #ccc;
     height: 44px * $i;
   }
   .tab-h li{
-    flex:1;
     font-size: 15px * $i;
-    border-bottom: 1px solid #f2f2f3;
-    
-    text-align: center;
   }
 
   .tab-h li a{
-    display: inline-block;
     height: 43px * $i;
     line-height: 43px * $i;
-    font-weight: bold;
   }
   .tab-h li.active a{
-    color: #ff5b54;
     border-bottom:2px * $i solid #ff5b54;
   }
-  .tab-b{
-    display: none;
-  }
-  .tab-b.active{
-    display: block;
-  }
 }
+
+.tab-h{
+  background: #fff;
+
+}
+.tab-h ul{
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+.tab-h li{
+  flex:1;
+  border-bottom: 1px solid #f2f2f3;
+  
+  text-align: center;
+}
+
+.tab-h li a{
+  display: inline-block;
+  font-weight: bold;
+}
+.tab-h li.active a{
+  color: #ff5b54;
+}
+.tab-b{
+  display: none;
+}
+.tab-b.active{
+  display: block;
+}
+
 @include tab(1);
 
 @media screen and (min-width:640px){

@@ -1,17 +1,9 @@
 @mixin flashsale2($i){ 
   .flashsale2{
     margin-bottom: 9px * $i;
-    border-bottom: 1px solid #f0eff5;
   }
   .flashsale2-h{
-    display: flex;
-    justify-content:space-between;
-    align-items:center;
-    border-top: 1px solid #f0eff5;
-    border-bottom: 1px solid #f0eff5;
-    background: #fff;
     font-size: 14px * $i;
-    color: #4a4a4a;
     padding-right: 10px * $i;
   }
   .flashsale2 h2{
@@ -20,61 +12,25 @@
     border-left: 3px * $i solid #ffa38a;
     padding-left: 4px * $i;
   }
-  .flashsale2 time{
-    display: block;
-    
-  }
   .flashsale2 time span{
     width: 20px * $i;
     height: 20px * $i;
-    background: #4a4a4a;
     border-radius: 2px * $i;
-    text-align: center;
     line-height: 20px * $i;
-    display: inline-block;
-    color:#fff;
     margin: 0 4px * $i;
   }
-  .flashsale2 ul{
-    overflow: hidden;
-    background: #fff;
-  }
   .flashsale2 li{
-    float: left;
-    width: 50%;
-    border-bottom: 1px solid #f0eff5;
-    border-right: 1px solid #f0eff5;
     padding: 8px * $i 9px * $i 15px * $i;
   }
 
-  .flashsale2 li:nth-child(even){
-    border-right: 0;
-  }
-  .flashsale2 li:nth-child(n+3){
-    border-bottom: 0;
-  }
   .flashsale2-r1{
-    display: flex;
-    align-items:center;
     margin-bottom: 8px * $i;
   }
-  .flashsale2-c2{
-    flex:1;
-    text-align:center
-  }
   .flashsale2-r1 strong{
-    font-weight: normal;
-    color:#fa5b5f;
-    display: block;
     font-size:16px * $i;
   }
   .flashsale2-r1 del{
-    color:#b3b3b3;
-    display: block;
     font-size:14px * $i;
-  }
-  .flashsale2 h3{
-    font-weight: normal;
   }
   .flashsale2-c1{
     width: 80px * $i;
@@ -84,10 +40,72 @@
     width: 80px * $i;
     height: 80px * $i;
   }
-  .flashsale2 .mask{
-    background: rgba(255,255,255,0.5);
-    position: absolute;
-  }
+}
+
+
+.flashsale2{
+  border-bottom: 1px solid #f0eff5;
+}
+.flashsale2-h{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top: 1px solid #f0eff5;
+  border-bottom: 1px solid #f0eff5;
+  background: #fff;
+  color: #4a4a4a;
+}
+
+.flashsale2 time{
+  display: block;
+  
+}
+.flashsale2 time span{
+  background: #4a4a4a;
+  text-align: center;
+  display: inline-block;
+  color:#fff;
+}
+.flashsale2 ul{
+  overflow: hidden;
+  background: #fff;
+}
+.flashsale2 li{
+  float: left;
+  width: 50%;
+  border-bottom: 1px solid #f0eff5;
+  border-right: 1px solid #f0eff5;
+}
+
+.flashsale2 li:nth-child(even){
+  border-right: 0;
+}
+.flashsale2 li:nth-child(n+3){
+  border-bottom: 0;
+}
+.flashsale2-r1{
+  display: flex;
+  align-items:center;
+}
+.flashsale2-c2{
+  flex:1;
+  text-align:center
+}
+.flashsale2-r1 strong{
+  font-weight: normal;
+  color:#fa5b5f;
+  display: block;
+}
+.flashsale2-r1 del{
+  color:#b3b3b3;
+  display: block;
+}
+.flashsale2 h3{
+  font-weight: normal;
+}
+.flashsale2 .mask{
+  background: rgba(255,255,255,0.5);
+  position: absolute;
 }
 
 @include flashsale2(1);

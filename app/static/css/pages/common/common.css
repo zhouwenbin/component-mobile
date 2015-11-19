@@ -75,9 +75,7 @@ em {
 
 body {
   font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
-  font-size: 12px;
   color: #333;
-  min-width: 320px;
   margin: 0 auto;
   background: #f0eff5; }
 
@@ -104,42 +102,14 @@ button {
 a[title="站长统计"] {
   display: none; }
 
+body {
+  font-size: 12px;
+  min-width: 320px; }
+
 @media screen and (min-width: 640px) {
-  * {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; }
-
   body {
-    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
     font-size: 24px;
-    color: #333;
-    min-width: 640px;
-    margin: 0 auto;
-    background: #f0eff5; }
-
-  a {
-    text-decoration: none;
-    color: #333;
-    outline: none; }
-
-  a:visited {
-    color: #333; }
-
-  html, body {
-    -webkit-user-select: none;
-    /* 禁止选中文本（如无文本选中需求，此为必选项） */
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
-    height: 100%; }
-
-  button {
-    border: none;
-    outline: none; }
-
-  a[title="站长统计"] {
-    display: none; } }
+    min-width: 640px; } }
 /*浮动*/
 .fl {
   float: left; }
@@ -368,18 +338,14 @@ a[title="站长统计"] {
 
 /*header*/
 .header {
-  padding: 0 0 11px;
   background: #FF5B54;
-  position: relative;
-  height: 49px; }
+  position: relative; }
 
 .header-white {
   background: #fff; }
 
 .header-c1 {
-  height: 49px;
   position: absolute;
-  left: 15px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -391,18 +357,15 @@ a[title="站长统计"] {
 
 .header-c2 {
   position: absolute;
-  right: 15px;
   top: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 49px;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 56px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
@@ -410,22 +373,98 @@ a[title="站长统计"] {
 
 .header-c4 {
   position: absolute;
-  right: 20px;
   top: 0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 49px;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 60px;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
+
+.header .icon {
+  background: url(http://img.sfht.com/sfhth5/1.1.393/img/header/icons.png) no-repeat;
+  background-size: cover; }
+
+.header .dot {
+  position: absolute; }
+
+.header .header-shoppingcart {
+  position: relative;
+  display: block; }
+
+.header .header-user {
+  display: block; }
+
+.header .header-back {
+  display: block; }
+
+.header .header-search-icon {
+  display: block; }
+
+.header .header-home {
+  display: block; }
+
+.header-title {
+  display: block;
+  text-align: center; }
+
+.header .dot-error {
+  background: #fff;
+  color: #FF5B54; }
+
+.header .header-title {
+  color: #fff !important; }
+
+.header-detail {
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  width: 100%; }
+
+.header-detail .icon {
+  background: url(http://img.sfht.com/sfhth5/1.1.393/img/header/detail.png) no-repeat;
+  background-size: cover; }
+
+.header-center {
+  background: url(http://img0.sfht.com/img/9f6f557e81a4cc60471c9673502c3728.jpg) no-repeat;
+  background-size: cover; }
+
+.header-order {
+  background: url(http://img0.sfht.com/img/ad351a9239f12ecb5089d3a4c673f2af.jpg) no-repeat;
+  background-size: cover; }
+
+.header-detail .header-back {
+  display: block; }
+
+.header-detail .header-search-icon {
+  display: block; }
+
+.header-detail .header-home {
+  display: block; }
+
+.header {
+  padding: 0 0 11px;
+  height: 49px; }
+
+.header-c1 {
+  height: 49px;
+  left: 15px; }
+
+.header-c2 {
+  right: 15px;
+  height: 49px;
+  width: 56px; }
+
+.header-c4 {
+  right: 20px;
+  height: 49px;
+  width: 60px; }
 
 .header-c3 {
   font-size: 14px;
@@ -438,34 +477,25 @@ a[title="站长统计"] {
 
 .header .icon {
   width: 24px;
-  height: 24px;
-  background: url(http://img.sfht.com/sfhth5/1.1.393/img/header/icons.png) no-repeat;
-  background-size: cover; }
+  height: 24px; }
 
 .header .dot {
-  position: absolute;
   right: -5px;
   top: -6px; }
 
 .header .header-shoppingcart {
-  position: relative;
-  display: block;
   background-position: -24px 0px; }
 
 .header .header-user {
-  display: block;
   background-position: -120px 0px; }
 
 .header .header-back {
-  display: block;
   background-position: -72px 0px; }
 
 .header .header-search-icon {
-  display: block;
   background-position: -264px 0px; }
 
 .header .header-home {
-  display: block;
   background-position: -168px 0px; }
 
 .header-white .header-home {
@@ -475,55 +505,30 @@ a[title="站长统计"] {
   background-position: -48px 0px; }
 
 .header-title {
-  display: block;
   margin-top: 15px;
-  font-size: 18px;
-  text-align: center; }
-
-.header .dot-error {
-  background: #fff;
-  color: #FF5B54; }
-
-.header .header-title {
-  color: #fff !important; }
+  font-size: 18px; }
 
 .header-detail {
   padding: 0 0 11px;
-  position: absolute;
-  height: 49px;
-  top: 0;
-  z-index: 1000;
-  width: 100%; }
+  height: 49px; }
 
 .header-detail .icon {
   width: 34px;
-  height: 34px;
-  background: url(http://img.sfht.com/sfhth5/1.1.393/img/header/detail.png) no-repeat;
-  background-size: cover; }
+  height: 34px; }
 
 .header-center {
   width: 34px;
-  height: 34px;
-  background: url(http://img0.sfht.com/img/9f6f557e81a4cc60471c9673502c3728.jpg) no-repeat;
-  background-size: cover; }
+  height: 34px; }
 
 .header-order {
   width: 34px;
-  height: 34px;
-  background: url(http://img0.sfht.com/img/ad351a9239f12ecb5089d3a4c673f2af.jpg) no-repeat;
-  background-size: cover; }
+  height: 34px; }
 
 .header-detail .header-back {
-  display: block;
   background-position: 0 0px; }
 
 .header-detail .header-search-icon {
-  display: block;
   background-position: -68px 0px; }
-
-.header-detail .header-home {
-  display: block;
-  background-position: -34px 0px; }
 
 .header-detail .header-c2 {
   width: 78px; }
@@ -531,63 +536,21 @@ a[title="站长统计"] {
 @media screen and (min-width: 640px) {
   .header {
     padding: 0 0 22px;
-    background: #FF5B54;
-    position: relative;
     height: 98px; }
-
-  .header-white {
-    background: #fff; }
 
   .header-c1 {
     height: 98px;
-    position: absolute;
-    left: 30px;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center; }
+    left: 30px; }
 
   .header-c2 {
-    position: absolute;
     right: 30px;
-    top: 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
     height: 98px;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    width: 112px;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between; }
+    width: 112px; }
 
   .header-c4 {
-    position: absolute;
     right: 40px;
-    top: 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
     height: 98px;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    width: 120px;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-            justify-content: flex-end; }
+    width: 120px; }
 
   .header-c3 {
     font-size: 28px;
@@ -600,34 +563,25 @@ a[title="站长统计"] {
 
   .header .icon {
     width: 48px;
-    height: 48px;
-    background: url(http://img.sfht.com/sfhth5/1.1.393/img/header/icons.png) no-repeat;
-    background-size: cover; }
+    height: 48px; }
 
   .header .dot {
-    position: absolute;
     right: -10px;
     top: -12px; }
 
   .header .header-shoppingcart {
-    position: relative;
-    display: block;
     background-position: -48px 0px; }
 
   .header .header-user {
-    display: block;
     background-position: -240px 0px; }
 
   .header .header-back {
-    display: block;
     background-position: -144px 0px; }
 
   .header .header-search-icon {
-    display: block;
     background-position: -528px 0px; }
 
   .header .header-home {
-    display: block;
     background-position: -336px 0px; }
 
   .header-white .header-home {
@@ -637,82 +591,77 @@ a[title="站长统计"] {
     background-position: -96px 0px; }
 
   .header-title {
-    display: block;
     margin-top: 30px;
-    font-size: 36px;
-    text-align: center; }
-
-  .header .dot-error {
-    background: #fff;
-    color: #FF5B54; }
-
-  .header .header-title {
-    color: #fff !important; }
+    font-size: 36px; }
 
   .header-detail {
     padding: 0 0 22px;
-    position: absolute;
-    height: 98px;
-    top: 0;
-    z-index: 1000;
-    width: 100%; }
+    height: 98px; }
 
   .header-detail .icon {
     width: 68px;
-    height: 68px;
-    background: url(http://img.sfht.com/sfhth5/1.1.393/img/header/detail.png) no-repeat;
-    background-size: cover; }
+    height: 68px; }
 
   .header-center {
     width: 68px;
-    height: 68px;
-    background: url(http://img0.sfht.com/img/9f6f557e81a4cc60471c9673502c3728.jpg) no-repeat;
-    background-size: cover; }
+    height: 68px; }
 
   .header-order {
     width: 68px;
-    height: 68px;
-    background: url(http://img0.sfht.com/img/ad351a9239f12ecb5089d3a4c673f2af.jpg) no-repeat;
-    background-size: cover; }
+    height: 68px; }
 
   .header-detail .header-back {
-    display: block;
     background-position: 0 0px; }
 
   .header-detail .header-search-icon {
-    display: block;
     background-position: -136px 0px; }
-
-  .header-detail .header-home {
-    display: block;
-    background-position: -68px 0px; }
 
   .header-detail .header-c2 {
     width: 156px; } }
 /*尾部*/
 .footer-r1 {
-  border-top: 1px solid #d9d9d9;
-  margin-left: -17px;
-  padding: 12px 0 12px 14px;
   background: #fff;
-  border-bottom: 1px solid #d9d9d9;
   text-align: center; }
 
 .footer ul {
   display: inline-block; }
 
 .footer-r1 li {
-  padding: 0 10px;
-  font-size: 12px;
   float: left;
   text-align: center; }
 
 .footer-r1 li .icon {
-  display: block;
-  margin: 0 auto 4px; }
+  display: block; }
 
 .footer-r1 h2 {
   font-weight: normal; }
+
+.footer-r2 {
+  text-align: center;
+  color: #666; }
+
+.footer-r3 {
+  color: rgba(0, 0, 0, 0.3);
+  text-align: center; }
+
+.footer1 {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  text-align: center; }
+
+.footer-r1 {
+  border-top: 1px solid #d9d9d9;
+  margin-left: -17px;
+  padding: 12px 0 12px 14px;
+  border-bottom: 1px solid #d9d9d9; }
+
+.footer-r1 li {
+  padding: 0 10px;
+  font-size: 12px; }
+
+.footer-r1 li .icon {
+  margin: 0 auto 4px; }
 
 .footer-r1 li:last-child {
   border-left: 1px solid #e5e5e5;
@@ -721,51 +670,32 @@ a[title="站长统计"] {
 
 .footer-r2 {
   height: 31px;
-  line-height: 31px;
-  text-align: center;
-  color: #666; }
+  line-height: 31px; }
 
 .footer-r2 a {
   margin: 0 12px; }
 
 .footer-r3 {
-  color: rgba(0, 0, 0, 0.3);
   font-size: 9px;
-  text-align: center;
   padding-top: 4px;
   padding-bottom: 17px; }
 
 .footer1 {
-  position: fixed;
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-  text-align: center; }
+  bottom: 10px; }
 
 @media screen and (min-width: 640px) {
   .footer-r1 {
     border-top: 2px solid #d9d9d9;
     margin-left: -34px;
     padding: 24px 0 24px 28px;
-    background: #fff;
-    border-bottom: 2px solid #d9d9d9;
-    text-align: center; }
-
-  .footer ul {
-    display: inline-block; }
+    border-bottom: 2px solid #d9d9d9; }
 
   .footer-r1 li {
     padding: 0 20px;
-    font-size: 24px;
-    float: left;
-    text-align: center; }
+    font-size: 24px; }
 
   .footer-r1 li .icon {
-    display: block;
     margin: 0 auto 8px; }
-
-  .footer-r1 h2 {
-    font-weight: normal; }
 
   .footer-r1 li:last-child {
     border-left: 2px solid #e5e5e5;
@@ -774,26 +704,18 @@ a[title="站长统计"] {
 
   .footer-r2 {
     height: 62px;
-    line-height: 62px;
-    text-align: center;
-    color: #666; }
+    line-height: 62px; }
 
   .footer-r2 a {
     margin: 0 24px; }
 
   .footer-r3 {
-    color: rgba(0, 0, 0, 0.3);
     font-size: 18px;
-    text-align: center;
     padding-top: 8px;
     padding-bottom: 34px; }
 
   .footer1 {
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
-    text-align: center; } }
+    bottom: 20px; } }
 /*
 @styleguide
 
@@ -867,13 +789,7 @@ a[title="站长统计"] {
 .btn {
   display: inline-block;
   vertical-align: middle;
-  font-size: 12px;
-  text-align: center;
-  -webkit-border-radius: 2px;
-          border-radius: 2px;
-  padding: 0px 12px;
-  height: 30px;
-  line-height: 30px; }
+  text-align: center; }
 
 .btn:active {
   -webkit-filter: brightness(0.9); }
@@ -885,7 +801,6 @@ a[title="站长统计"] {
 .btn-normal,
 .btn.normal {
   background: #fff;
-  border: 1px solid #c6c6c6;
   color: #666; }
 
 .btn.active {
@@ -895,7 +810,6 @@ a[title="站长统计"] {
 .btn-dashed,
 .btn.dashed {
   background: #fff;
-  border: 1px dotted #cfcfcf;
   color: #666; }
 
 .btn-danger {
@@ -930,88 +844,50 @@ a[title="站长统计"] {
   color: #e8e8e8 !important;
   border: 1px solid #e8e8e8; }
 
-.btn-radius {
-  -webkit-border-radius: 22px;
-          border-radius: 22px; }
-
 .btn-big {
   display: block;
   width: 100%; }
 
+.btn {
+  font-size: 12px;
+  -webkit-border-radius: 2px;
+          border-radius: 2px;
+  padding: 0px 12px;
+  height: 30px;
+  line-height: 30px; }
+
+.btn-normal,
+.btn.normal {
+  border: 1px solid #c6c6c6; }
+
+.btn-dashed,
+.btn.dashed {
+  border: 1px dotted #cfcfcf; }
+
+.btn-radius {
+  -webkit-border-radius: 22px;
+          border-radius: 22px; }
+
 @media screen and (min-width: 640px) {
   .btn {
-    display: inline-block;
-    vertical-align: middle;
     font-size: 24px;
-    text-align: center;
     -webkit-border-radius: 4px;
             border-radius: 4px;
     padding: 0px 24px;
     height: 60px;
     line-height: 60px; }
 
-  .btn:active {
-    -webkit-filter: brightness(0.9); }
-
-  .btn-disable:active,
-  .btn.disable:active {
-    -webkit-filter: none; }
-
   .btn-normal,
   .btn.normal {
-    background: #fff;
-    border: 2px solid #c6c6c6;
-    color: #666; }
-
-  .btn.active {
-    border-color: #ff5b54;
-    color: #ff5b54 !important; }
+    border: 2px solid #c6c6c6; }
 
   .btn-dashed,
   .btn.dashed {
-    background: #fff;
-    border: 2px dotted #cfcfcf;
-    color: #666; }
-
-  .btn-danger {
-    color: #fff !important;
-    background: #ff5b54;
-    border: 1px solid #ff5b54; }
-
-  .btn-warnning,
-  .btn.warnning {
-    background: #1376ce;
-    color: #fff !important;
-    border: 1px solid #1376ce; }
-
-  .btn-success,
-  .btn.success {
-    background: #67b222;
-    color: #fff !important;
-    border: 1px solid #67b222; }
-
-  .btn-soon,
-  .btn.soon {
-    background: #ff9000;
-    color: #fff !important;
-    border: 1px solid #ff9000; }
-
-  .btn-disable {
-    color: #888888 !important;
-    background: #e8e8e8;
-    border: 1px solid #e8e8e8; }
-
-  .btn.disable {
-    color: #e8e8e8 !important;
-    border: 1px solid #e8e8e8; }
+    border: 2px dotted #cfcfcf; }
 
   .btn-radius {
     -webkit-border-radius: 44px;
-            border-radius: 44px; }
-
-  .btn-big {
-    display: block;
-    width: 100%; } }
+            border-radius: 44px; } }
 /*
 @styleguide
 
@@ -1029,6 +905,20 @@ a[title="站长统计"] {
 	<span class="label label-soon">label-soon</span>
 
 */
+.label, .label-error,
+.label-danger, .label-success, .label-warning, .label-disabled, .label-soon {
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative; }
+
+.label i, .label-error i,
+.label-danger i, .label-success i, .label-warning i, .label-disabled i, .label-soon i {
+  border-style: solid;
+  border-color: transparent transparent transparent #f78e55;
+  position: absolute; }
+
 .label-error,
 .label-danger {
   background: #ff5b54; }
@@ -1049,22 +939,14 @@ a[title="站长统计"] {
 .label-danger, .label-success, .label-warning, .label-disabled, .label-soon {
   height: 21px;
   line-height: 21px;
-  color: #fff;
-  text-align: center;
   -webkit-border-radius: 2px;
           border-radius: 2px;
   padding: 0 15px;
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 12px;
-  position: relative; }
+  font-size: 12px; }
 
 .label i, .label-error i,
 .label-danger i, .label-success i, .label-warning i, .label-disabled i, .label-soon i {
   border-width: 3px 3px;
-  border-style: solid;
-  border-color: transparent transparent transparent #f78e55;
-  position: absolute;
   right: -6px;
   top: 7px; }
 
@@ -1073,22 +955,14 @@ a[title="站长统计"] {
   .label-danger, .label-success, .label-warning, .label-disabled, .label-soon {
     height: 42px;
     line-height: 42px;
-    color: #fff;
-    text-align: center;
     -webkit-border-radius: 4px;
             border-radius: 4px;
     padding: 0 30px;
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 24px;
-    position: relative; }
+    font-size: 24px; }
 
   .label i, .label-error i,
   .label-danger i, .label-success i, .label-warning i, .label-disabled i, .label-soon i {
     border-width: 6px 6px;
-    border-style: solid;
-    border-color: transparent transparent transparent #f78e55;
-    position: absolute;
     right: -12px;
     top: 14px; } }
 /*
@@ -1243,8 +1117,19 @@ a[title="站长统计"] {
   display: inline-block;
   vertical-align: middle;
   background: url(http://img.sfht.com/sfhth5/1.1.393/img/icon.png) no-repeat;
-  background-size: 450px 450px;
   text-indent: -999em; }
+
+.icon-star {
+  fill: #FFEE0C; }
+
+.icon-addtocart-normal {
+  fill: #4A4A4A; }
+
+.icon-addtocart-disabled {
+  fill: #B3B3B3; }
+
+.icon {
+  background-size: 450px 450px; }
 
 .icon1 {
   width: 18px;
@@ -1604,19 +1489,16 @@ a[title="站长统计"] {
   height: 17px; }
 
 .icon-star {
-  fill: #FFEE0C;
   width: 13px;
   height: 13px; }
 
 .icon-addtocart-normal {
   width: 30px;
-  height: 30px;
-  fill: #4A4A4A; }
+  height: 30px; }
 
 .icon-addtocart-disabled {
   width: 30px;
-  height: 30px;
-  fill: #B3B3B3; }
+  height: 30px; }
 
 .icon-cart-normal {
   width: 19px;
@@ -1624,11 +1506,7 @@ a[title="站长统计"] {
 
 @media screen and (min-width: 640px) {
   .icon {
-    display: inline-block;
-    vertical-align: middle;
-    background: url(http://img.sfht.com/sfhth5/1.1.393/img/icon.png) no-repeat;
-    background-size: 900px 900px;
-    text-indent: -999em; }
+    background-size: 900px 900px; }
 
   .icon1 {
     width: 36px;
@@ -1988,19 +1866,16 @@ a[title="站长统计"] {
     height: 34px; }
 
   .icon-star {
-    fill: #FFEE0C;
     width: 26px;
     height: 26px; }
 
   .icon-addtocart-normal {
     width: 60px;
-    height: 60px;
-    fill: #4A4A4A; }
+    height: 60px; }
 
   .icon-addtocart-disabled {
     width: 60px;
-    height: 60px;
-    fill: #B3B3B3; }
+    height: 60px; }
 
   .icon-cart-normal {
     width: 38px;
@@ -2067,7 +1942,6 @@ a[title="站长统计"] {
 .text-error,
 .text-important {
   color: #ff5b54;
-  font-size: 12px;
   vertical-align: middle; }
 
 .text-success {
@@ -2084,36 +1958,25 @@ a[title="站长统计"] {
   color: #ff9000; }
 
 .text-h2 {
-  padding: 21px 0 7px 12px;
-  font-size: 14px;
   color: #666;
   font-weight: normal; }
+
+.text-error,
+.text-important {
+  font-size: 12px; }
+
+.text-h2 {
+  padding: 21px 0 7px 12px;
+  font-size: 14px; }
 
 @media screen and (min-width: 640px) {
   .text-error,
   .text-important {
-    color: #ff5b54;
-    font-size: 24px;
-    vertical-align: middle; }
-
-  .text-success {
-    color: #67b222; }
-
-  .text-warnning,
-  .text-link {
-    color: #3b86c4; }
-
-  .text-disable {
-    color: #999; }
-
-  .text-orange {
-    color: #ff9000; }
+    font-size: 24px; }
 
   .text-h2 {
     padding: 42px 0 14px 24px;
-    font-size: 28px;
-    color: #666;
-    font-weight: normal; } }
+    font-size: 28px; } }
 /*
 @styleguide
 
@@ -2144,8 +2007,6 @@ a[title="站长统计"] {
 */
 .input {
   border: 1px solid #e3e3e3;
-  font-size: 14px;
-  padding: 10px;
   width: 100%; }
 
 .input-num {
@@ -2154,22 +2015,44 @@ a[title="站长统计"] {
 
 .input-num .btn {
   display: inline-block;
+  padding: 0;
+  background: #fafafa;
+  border: 1px solid #ccc; }
+
+.input-num input {
+  text-align: center;
+  border: 1px solid #ccc;
+  background: #fafafa; }
+
+/*select*/
+.select {
+  border-color: #ccc;
+  -webkit-border-radius: 0;
+          border-radius: 0; }
+
+/*textarea*/
+.textarea {
+  width: 100%;
+  line-height: 1.5;
+  height: 5.5em;
+  border-color: #ccc;
+  background: #fff; }
+
+.input {
+  font-size: 14px;
+  padding: 10px; }
+
+.input-num .btn {
   width: 30px;
   height: 26px;
   line-height: 24px;
-  padding: 0;
-  background: #fafafa;
-  border: 1px solid #ccc;
   font-size: 18px; }
 
 .input-num input {
   width: 51px;
   height: 26px;
   line-height: 26px;
-  text-align: center;
   margin: 0 -1px;
-  border: 1px solid #ccc;
-  background: #fafafa;
   font-size: 12px; }
 
 /*select*/
@@ -2177,50 +2060,29 @@ a[title="站长统计"] {
   height: 30px;
   line-height: 30px;
   padding-left: 10px;
-  font-size: 15px;
-  border-color: #ccc;
-  -webkit-border-radius: 0;
-          border-radius: 0; }
+  font-size: 15px; }
 
 /*textarea*/
 .textarea {
   padding: 10px;
-  width: 100%;
-  font-size: 14px;
-  line-height: 1.5;
-  height: 5.5em;
-  border-color: #ccc;
-  background: #fff; }
+  font-size: 14px; }
 
 @media screen and (min-width: 640px) {
   .input {
-    border: 1px solid #e3e3e3;
     font-size: 28px;
-    padding: 20px;
-    width: 100%; }
-
-  .input-num {
-    display: inline-block;
-    font-size: 0; }
+    padding: 20px; }
 
   .input-num .btn {
-    display: inline-block;
     width: 60px;
     height: 52px;
     line-height: 48px;
-    padding: 0;
-    background: #fafafa;
-    border: 1px solid #ccc;
     font-size: 36px; }
 
   .input-num input {
     width: 102px;
     height: 52px;
     line-height: 52px;
-    text-align: center;
     margin: 0 -2px;
-    border: 1px solid #ccc;
-    background: #fafafa;
     font-size: 24px; }
 
   /*select*/
@@ -2228,20 +2090,12 @@ a[title="站长统计"] {
     height: 60px;
     line-height: 60px;
     padding-left: 20px;
-    font-size: 30px;
-    border-color: #ccc;
-    -webkit-border-radius: 0;
-            border-radius: 0; }
+    font-size: 30px; }
 
   /*textarea*/
   .textarea {
     padding: 20px;
-    width: 100%;
-    font-size: 28px;
-    line-height: 1.5;
-    height: 5.5em;
-    border-color: #ccc;
-    background: #fff; } }
+    font-size: 28px; } }
 /*
 @styleguide
 
@@ -2263,76 +2117,44 @@ a[title="站长统计"] {
 
 */
 .box {
-  padding: 16px 14px;
-  border-width: 1px 0 1px 0;
   -webkit-border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
           border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
   background: #fff;
-  position: relative;
-  margin-top: -1px; }
+  position: relative; }
 
 .box .icon8,
 .box .icon49 {
   position: absolute;
-  left: 12px;
   top: 50%;
   -webkit-transform: translate(0, -50%);
       -ms-transform: translate(0, -50%);
           transform: translate(0, -50%); }
 
-.box.active .icon8 {
-  background-position: -253px -167px; }
-
-.box.active .icon49 {
-  background-position: -255px -249px; }
-
 .box-link {
   display: block;
   position: relative; }
 
-.box-arrow {
-  right: 14px; }
-
 .box1 {
   padding: 0; }
 
-.box1 .box-link {
-  padding: 16px 14px; }
-
 /*box-address*/
 .box-address {
-  font-size: 14px;
   line-height: 1.5;
-  padding-left: 47px;
   color: #666; }
-
-.box-address h3 {
-  font-size: 14px;
-  margin-bottom: 8px; }
-
-.box-address span {
-  margin-right: 5px; }
 
 .box-address p {
   color: #666; }
 
-.box-address-r1 span {
-  margin-right: 33px; }
-
 .box-address-c1 {
-  width: 46px;
   height: 100%;
   position: absolute;
-  border: 1px solid #ececec;
-  right: 0;
-  margin-top: -16px; }
+  right: 0; }
 
 .box-address-c1:active {
   background: #b1b1b1; }
 
 .box-address-c2 {
-  overflow: hidden;
-  margin-right: 31px; }
+  overflow: hidden; }
 
 .box-address-r2 {
   text-align: right; }
@@ -2347,6 +2169,50 @@ a[title="站长统计"] {
       -ms-flex-pack: justify;
           justify-content: space-between; }
 
+.box {
+  padding: 16px 14px;
+  border-width: 1px 0 1px 0;
+  margin-top: -1px; }
+
+.box .icon8,
+.box .icon49 {
+  left: 12px; }
+
+.box.active .icon8 {
+  background-position: -253px -167px; }
+
+.box.active .icon49 {
+  background-position: -255px -249px; }
+
+.box-arrow {
+  right: 14px; }
+
+.box1 .box-link {
+  padding: 16px 14px; }
+
+/*box-address*/
+.box-address {
+  font-size: 14px;
+  padding-left: 47px; }
+
+.box-address h3 {
+  font-size: 14px;
+  margin-bottom: 8px; }
+
+.box-address span {
+  margin-right: 5px; }
+
+.box-address-r1 span {
+  margin-right: 33px; }
+
+.box-address-c1 {
+  width: 46px;
+  border: 1px solid #ececec;
+  margin-top: -16px; }
+
+.box-address-c2 {
+  margin-right: 31px; }
+
 .box-check {
   padding-left: 50px; }
 
@@ -2354,20 +2220,11 @@ a[title="站长统计"] {
   .box {
     padding: 32px 28px;
     border-width: 2px 0 2px 0;
-    -webkit-border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
-            border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
-    background: #fff;
-    position: relative;
     margin-top: -2px; }
 
   .box .icon8,
   .box .icon49 {
-    position: absolute;
-    left: 24px;
-    top: 50%;
-    -webkit-transform: translate(0, -50%);
-        -ms-transform: translate(0, -50%);
-            transform: translate(0, -50%); }
+    left: 24px; }
 
   .box.active .icon8 {
     background-position: -506px -334px; }
@@ -2375,15 +2232,8 @@ a[title="站长统计"] {
   .box.active .icon49 {
     background-position: -510px -498px; }
 
-  .box-link {
-    display: block;
-    position: relative; }
-
   .box-arrow {
     right: 28px; }
-
-  .box1 {
-    padding: 0; }
 
   .box1 .box-link {
     padding: 32px 28px; }
@@ -2391,9 +2241,7 @@ a[title="站长统计"] {
   /*box-address*/
   .box-address {
     font-size: 28px;
-    line-height: 1.5;
-    padding-left: 94px;
-    color: #666; }
+    padding-left: 94px; }
 
   .box-address h3 {
     font-size: 28px;
@@ -2402,39 +2250,16 @@ a[title="站长统计"] {
   .box-address span {
     margin-right: 10px; }
 
-  .box-address p {
-    color: #666; }
-
   .box-address-r1 span {
     margin-right: 66px; }
 
   .box-address-c1 {
     width: 92px;
-    height: 100%;
-    position: absolute;
     border: 2px solid #ececec;
-    right: 0;
     margin-top: -32px; }
 
-  .box-address-c1:active {
-    background: #b1b1b1; }
-
   .box-address-c2 {
-    overflow: hidden;
     margin-right: 62px; }
-
-  .box-address-r2 {
-    text-align: right; }
-
-  .box-address-r3 {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between; }
 
   .box-check {
     padding-left: 100px; } }
@@ -2554,18 +2379,12 @@ a[title="站长统计"] {
 .swipe-dot {
   text-align: center;
   position: absolute;
-  bottom: 10px;
   width: 100%;
   font-size: 0; }
 
 .swipe-dot span {
   display: inline-block;
-  width: 7px;
-  height: 7px;
-  -webkit-border-radius: 7px;
-          border-radius: 7px;
-  background: rgba(0, 0, 0, 0.3);
-  margin: 0 7px; }
+  background: rgba(0, 0, 0, 0.3); }
 
 .swipe-dot span.active {
   background: #dc3334; }
@@ -2608,90 +2427,40 @@ a[title="站长统计"] {
 
 .swiper-time {
   position: absolute;
+  font-family: Impact; }
+
+.swipe-dot {
+  bottom: 10px; }
+
+.swipe-dot span {
+  width: 7px;
+  height: 7px;
+  -webkit-border-radius: 7px;
+          border-radius: 7px;
+  margin: 0 7px; }
+
+.swiper-time {
   top: 64px;
   left: 161px;
-  font-family: Impact;
   font-size: 13px; }
 
 .swiper-time span {
   margin-right: 10px; }
 
 @media screen and (min-width: 640px) {
-  .swipe {
-    overflow: hidden;
-    visibility: hidden;
-    position: relative;
-    text-align: center; }
-
-  .swipe-wrap {
-    overflow: hidden;
-    position: relative; }
-
-  .swipe-wrap > div {
-    float: left;
-    width: 100%;
-    position: relative; }
-
   .swipe-dot {
-    text-align: center;
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    font-size: 0; }
+    bottom: 20px; }
 
   .swipe-dot span {
-    display: inline-block;
     width: 14px;
     height: 14px;
     -webkit-border-radius: 14px;
             border-radius: 14px;
-    background: rgba(0, 0, 0, 0.3);
     margin: 0 14px; }
 
-  .swipe-dot span.active {
-    background: #dc3334; }
-
-  .swipe img {
-    width: 100%; }
-
-  .swipe video {
-    width: 100%;
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 100; }
-
-  .swipe .cover {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 200; }
-
-  .swipe .playBtn {
-    display: inline-block;
-    font: 0/0 a;
-    background: url(http://img0.sfht.com/img/fb9b286dfebad73d7cb864d820cbda63.jpg) 0 0 no-repeat;
-    width: 92px;
-    height: 92px;
-    z-index: 10; }
-
-  .swiper-container {
-    width: 100%; }
-
-  .swiper-container img {
-    width: 100%; }
-
-  .swiper-pagination-bullet-active {
-    background: #df3c3a; }
-
   .swiper-time {
-    position: absolute;
     top: 128px;
     left: 322px;
-    font-family: Impact;
     font-size: 26px; }
 
   .swiper-time span {
@@ -2706,16 +2475,8 @@ a[title="站长统计"] {
     <div class="loading center"></div>
 
 */
-.logout.center {
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
-  padding: 33px 35px; }
-
 .loading {
-  width: 25px;
-  height: 25px;
   background: url(http://img.sfht.com/sfhth5/1.1.393/img/loading.png) no-repeat;
-  background-size: 25px;
   position: fixed;
   -webkit-animation: loading 1s linear infinite;
           animation: loading 1s linear infinite;
@@ -2731,6 +2492,16 @@ a[title="站长统计"] {
   100% {
     -webkit-transform: rotateZ(360deg);
             transform: rotateZ(360deg); } }
+.logout.center {
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  padding: 33px 35px; }
+
+.loading {
+  width: 25px;
+  height: 25px;
+  background-size: 25px; }
+
 @media screen and (min-width: 640px) {
   .logout.center {
     -webkit-border-radius: 20px;
@@ -2740,23 +2511,7 @@ a[title="站长统计"] {
   .loading {
     width: 50px;
     height: 50px;
-    background: url(http://img.sfht.com/sfhth5/1.1.393/img/loading.png) no-repeat;
-    background-size: 50px;
-    position: fixed;
-    -webkit-animation: loading 1s linear infinite;
-            animation: loading 1s linear infinite;
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg); }
-
-  @-webkit-keyframes loading {
-    100% {
-      -webkit-transform: rotateZ(360deg);
-              transform: rotateZ(360deg); } }
-
-  @keyframes loading {
-    100% {
-      -webkit-transform: rotateZ(360deg);
-              transform: rotateZ(360deg); } } }
+    background-size: 50px; } }
 /*
 @styleguide
 
@@ -2778,9 +2533,7 @@ a[title="站长统计"] {
 
 */
 .tab-h {
-  height: 44px;
-  background: #fff;
-  margin-bottom: 10px; }
+  background: #fff; }
 
 .tab-h ul {
   position: fixed;
@@ -2793,27 +2546,22 @@ a[title="站长统计"] {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #ccc;
-  height: 44px; }
+  border-bottom: 1px solid #ccc; }
 
 .tab-h li {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-size: 15px;
   border-bottom: 1px solid #f2f2f3;
   text-align: center; }
 
 .tab-h li a {
   display: inline-block;
-  height: 43px;
-  line-height: 43px;
   font-weight: bold; }
 
 .tab-h li.active a {
-  color: #ff5b54;
-  border-bottom: 2px solid #ff5b54; }
+  color: #ff5b54; }
 
 .tab-b {
   display: none; }
@@ -2821,50 +2569,40 @@ a[title="站长统计"] {
 .tab-b.active {
   display: block; }
 
+.tab-h {
+  height: 44px;
+  margin-bottom: 10px; }
+
+.tab-h ul {
+  height: 44px; }
+
+.tab-h li {
+  font-size: 15px; }
+
+.tab-h li a {
+  height: 43px;
+  line-height: 43px; }
+
+.tab-h li.active a {
+  border-bottom: 2px solid #ff5b54; }
+
 @media screen and (min-width: 640px) {
   .tab-h {
     height: 88px;
-    background: #fff;
     margin-bottom: 20px; }
 
   .tab-h ul {
-    position: fixed;
-    width: 100%;
-    background: #fff;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    border-bottom: 1px solid #ccc;
     height: 88px; }
 
   .tab-h li {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
-    font-size: 30px;
-    border-bottom: 1px solid #f2f2f3;
-    text-align: center; }
+    font-size: 30px; }
 
   .tab-h li a {
-    display: inline-block;
     height: 86px;
-    line-height: 86px;
-    font-weight: bold; }
+    line-height: 86px; }
 
   .tab-h li.active a {
-    color: #ff5b54;
-    border-bottom: 4px solid #ff5b54; }
-
-  .tab-b {
-    display: none; }
-
-  .tab-b.active {
-    display: block; } }
+    border-bottom: 4px solid #ff5b54; } }
 /*
 @styleguide
 
@@ -2894,9 +2632,70 @@ a[title="站长统计"] {
 
 */
 .dialog .center {
-  width: 292px;
   background: #fff;
-  text-align: center;
+  text-align: center; }
+
+.dialog h2 {
+  font-weight: normal; }
+
+.dialog p {
+  color: #999; }
+
+.dialog .icon15 {
+  position: absolute; }
+
+.dialog .icon15:after {
+  content: '';
+  position: absolute; }
+
+.dialog-spring .center {
+  width: 90%;
+  text-align: left; }
+
+.dialog-spring h2 {
+  color: #dc3334; }
+
+.dialog-spring p {
+  margin-bottom: 0; }
+
+.dialog-nataral .center {
+  text-align: left;
+  padding-bottom: 0; }
+
+.dialog-nataral ul {
+  overflow-y: auto; }
+
+.dialog-nataral li {
+  border-bottom: 1px solid #eaeaea; }
+
+.dialog-nataral li:last-child {
+  border: none;
+  margin-bottom: 0; }
+
+.dialog-nataral p {
+  color: #666; }
+
+.dialog-nataral .icon39 {
+  float: left; }
+
+.dialog-active .center {
+  padding: 0; }
+
+.dialog-active h2 {
+  color: #f78e55;
+  background: #f9f9f9;
+  text-align: left;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e5e5e5; }
+
+.dialog-active .input {
+  text-align: center; }
+
+.dialog-active li {
+  text-align: left; }
+
+.dialog .center {
+  width: 292px;
   padding-top: 39px;
   padding-bottom: 21px;
   -webkit-border-radius: 2px;
@@ -2904,24 +2703,19 @@ a[title="站长统计"] {
 
 .dialog h2 {
   font-size: 16px;
-  font-weight: normal;
   margin-bottom: 12px; }
 
 .dialog p {
-  margin-bottom: 13px;
-  color: #999; }
+  margin-bottom: 13px; }
 
 .dialog-r1 {
   margin-top: 4px; }
 
 .dialog .icon15 {
-  position: absolute;
   right: 15px;
   top: 15px; }
 
 .dialog .icon15:after {
-  content: '';
-  position: absolute;
   left: -15px;
   right: -15px;
   top: -15px;
@@ -2952,38 +2746,24 @@ a[title="站长统计"] {
   margin: 0 8px; }
 
 .dialog-spring .center {
-  width: 90%;
   font-size: 14px;
-  text-align: left;
   padding-left: 30px;
   padding-right: 30px; }
 
 .dialog-spring h2 {
-  color: #dc3334;
   margin-bottom: 15px;
   font-size: 14px; }
 
 .dialog-spring p {
   line-height: 24px;
-  margin-bottom: 0;
   font-size: 14px; }
-
-.dialog-nataral .center {
-  text-align: left;
-  padding-bottom: 0; }
 
 .dialog-nataral ul {
   padding: 10px;
-  max-height: 400px;
-  overflow-y: auto; }
+  max-height: 400px; }
 
 .dialog-nataral li {
-  border-bottom: 1px solid #eaeaea;
   margin-bottom: 13px; }
-
-.dialog-nataral li:last-child {
-  border: none;
-  margin-bottom: 0; }
 
 .dialog-nataral h2 {
   font-size: 14px;
@@ -2991,32 +2771,21 @@ a[title="站长统计"] {
 
 .dialog-nataral p {
   line-height: 18px;
-  color: #666;
   padding-left: 17px; }
 
 .dialog-nataral .icon39 {
-  margin-left: -17px;
-  float: left; }
-
-.dialog-active .center {
-  padding: 0; }
+  margin-left: -17px; }
 
 .dialog-active h2 {
   font-size: 14px;
-  color: #f78e55;
-  background: #f9f9f9;
   height: 43px;
   line-height: 43px;
-  text-align: left;
-  padding-left: 15px;
-  margin-bottom: 0;
-  border-bottom: 1px solid #e5e5e5; }
+  padding-left: 15px; }
 
 .dialog-active-b {
   padding: 10px 15px; }
 
 .dialog-active .input {
-  text-align: center;
   margin-bottom: 10px; }
 
 .dialog-active .btn {
@@ -3026,7 +2795,6 @@ a[title="站长统计"] {
 .dialog-active li {
   line-height: 21px;
   font-size: 14px;
-  text-align: left;
   margin-bottom: 10px; }
 
 .dialog-active .text-error {
@@ -3035,8 +2803,6 @@ a[title="站长统计"] {
 @media screen and (min-width: 640px) {
   .dialog .center {
     width: 584px;
-    background: #fff;
-    text-align: center;
     padding-top: 78px;
     padding-bottom: 42px;
     -webkit-border-radius: 4px;
@@ -3044,24 +2810,19 @@ a[title="站长统计"] {
 
   .dialog h2 {
     font-size: 32px;
-    font-weight: normal;
     margin-bottom: 24px; }
 
   .dialog p {
-    margin-bottom: 26px;
-    color: #999; }
+    margin-bottom: 26px; }
 
   .dialog-r1 {
     margin-top: 8px; }
 
   .dialog .icon15 {
-    position: absolute;
     right: 30px;
     top: 30px; }
 
   .dialog .icon15:after {
-    content: '';
-    position: absolute;
     left: -30px;
     right: -30px;
     top: -30px;
@@ -3092,38 +2853,24 @@ a[title="站长统计"] {
     margin: 0 16px; }
 
   .dialog-spring .center {
-    width: 90%;
     font-size: 28px;
-    text-align: left;
     padding-left: 60px;
     padding-right: 60px; }
 
   .dialog-spring h2 {
-    color: #dc3334;
     margin-bottom: 30px;
     font-size: 28px; }
 
   .dialog-spring p {
     line-height: 48px;
-    margin-bottom: 0;
     font-size: 28px; }
-
-  .dialog-nataral .center {
-    text-align: left;
-    padding-bottom: 0; }
 
   .dialog-nataral ul {
     padding: 20px;
-    max-height: 800px;
-    overflow-y: auto; }
+    max-height: 800px; }
 
   .dialog-nataral li {
-    border-bottom: 1px solid #eaeaea;
     margin-bottom: 26px; }
-
-  .dialog-nataral li:last-child {
-    border: none;
-    margin-bottom: 0; }
 
   .dialog-nataral h2 {
     font-size: 28px;
@@ -3131,32 +2878,21 @@ a[title="站长统计"] {
 
   .dialog-nataral p {
     line-height: 36px;
-    color: #666;
     padding-left: 34px; }
 
   .dialog-nataral .icon39 {
-    margin-left: -34px;
-    float: left; }
-
-  .dialog-active .center {
-    padding: 0; }
+    margin-left: -34px; }
 
   .dialog-active h2 {
     font-size: 28px;
-    color: #f78e55;
-    background: #f9f9f9;
     height: 86px;
     line-height: 86px;
-    text-align: left;
-    padding-left: 30px;
-    margin-bottom: 0;
-    border-bottom: 1px solid #e5e5e5; }
+    padding-left: 30px; }
 
   .dialog-active-b {
     padding: 20px 30px; }
 
   .dialog-active .input {
-    text-align: center;
     margin-bottom: 20px; }
 
   .dialog-active .btn {
@@ -3166,7 +2902,6 @@ a[title="站长统计"] {
   .dialog-active li {
     line-height: 42px;
     font-size: 28px;
-    text-align: left;
     margin-bottom: 20px; }
 
   .dialog-active .text-error {
@@ -3222,21 +2957,17 @@ a[title="站长统计"] {
 .alert-success,
 .alert-disabled,
 .alert-info {
-  padding: 14px 0 14px 17px;
   color: #fff;
-  position: relative;
-  font-size: 14px; }
+  position: relative; }
 
 .alert a {
   display: block; }
 
 .alert .icon {
-  position: absolute;
-  right: 13px; }
+  position: absolute; }
 
 .alert-warning {
-  background: #1376ce;
-  margin-bottom: 5px; }
+  background: #1376ce; }
 
 .alert-error {
   background: #ff5b54; }
@@ -3251,6 +2982,21 @@ a[title="站长统计"] {
   background: #fffddd;
   color: #666; }
 
+.alert,
+.alert-warning,
+.alert-error,
+.alert-success,
+.alert-disabled,
+.alert-info {
+  padding: 14px 0 14px 17px;
+  font-size: 14px; }
+
+.alert .icon {
+  right: 13px; }
+
+.alert-warning {
+  margin-bottom: 5px; }
+
 @media screen and (min-width: 640px) {
   .alert,
   .alert-warning,
@@ -3259,33 +3005,13 @@ a[title="站长统计"] {
   .alert-disabled,
   .alert-info {
     padding: 28px 0 28px 34px;
-    color: #fff;
-    position: relative;
     font-size: 28px; }
 
-  .alert a {
-    display: block; }
-
   .alert .icon {
-    position: absolute;
     right: 26px; }
 
   .alert-warning {
-    background: #1376ce;
-    margin-bottom: 10px; }
-
-  .alert-error {
-    background: #ff5b54; }
-
-  .alert-success {
-    background: #67b222; }
-
-  .alert-disabled {
-    background: #ccc; }
-
-  .alert-info {
-    background: #fffddd;
-    color: #666; } }
+    margin-bottom: 10px; } }
 /*
 @styleguide
 
@@ -3301,8 +3027,6 @@ a[title="站长统计"] {
 .dot {
   display: inline-block;
   vertical-align: middle;
-  width: 8px;
-  height: 8px;
   -webkit-border-radius: 50%;
           border-radius: 50%; }
 
@@ -3310,12 +3034,7 @@ a[title="站长统计"] {
   background: #ff5b54; }
 
 .dot-error {
-  padding: 0 5px;
   width: auto;
-  height: 18px;
-  line-height: 18px;
-  -webkit-border-radius: 9px;
-          border-radius: 9px;
   text-align: center;
   background: #ff5b54;
   color: #fff;
@@ -3324,52 +3043,46 @@ a[title="站长统计"] {
       -ms-transform: scale(0.8);
           transform: scale(0.8); }
 
+.dot {
+  width: 8px;
+  height: 8px; }
+
+.dot-error {
+  padding: 0 5px;
+  height: 18px;
+  line-height: 18px;
+  -webkit-border-radius: 9px;
+          border-radius: 9px; }
+
 @media screen and (min-width: 640px) {
   .dot {
-    display: inline-block;
-    vertical-align: middle;
     width: 16px;
-    height: 16px;
-    -webkit-border-radius: 50%;
-            border-radius: 50%; }
-
-  .dot-important {
-    background: #ff5b54; }
+    height: 16px; }
 
   .dot-error {
     padding: 0 10px;
-    width: auto;
     height: 36px;
     line-height: 36px;
     -webkit-border-radius: 18px;
-            border-radius: 18px;
-    text-align: center;
-    background: #ff5b54;
-    color: #fff;
-    text-indent: 0;
-    -webkit-transform: scale(0.8);
-        -ms-transform: scale(0.8);
-            transform: scale(0.8); } }
+            border-radius: 18px; } }
 .tooltip {
   position: fixed;
   background: rgba(0, 0, 0, 0.7);
-  padding: 34px 15px;
   color: #fff;
+  z-index: 99999; }
+
+.tooltip {
+  padding: 34px 15px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
-  line-height: 18px;
-  z-index: 99999; }
+  line-height: 18px; }
 
 @media screen and (min-width: 640px) {
   .tooltip {
-    position: fixed;
-    background: rgba(0, 0, 0, 0.7);
     padding: 68px 30px;
-    color: #fff;
     -webkit-border-radius: 10px;
             border-radius: 10px;
-    line-height: 36px;
-    z-index: 99999; } }
+    line-height: 36px; } }
 /*
 @styleguide
 
@@ -3381,10 +3094,6 @@ a[title="站长统计"] {
 
 */
 .switch {
-  width: 46px;
-  height: 24px;
-  -webkit-border-radius: 24px;
-          border-radius: 24px;
   background: #ccc;
   display: inline-block;
   position: relative;
@@ -3392,12 +3101,8 @@ a[title="站长统计"] {
           transition: all 0.3s; }
 
 .switch:before {
-  width: 22px;
-  height: 22px;
   content: '';
   position: absolute;
-  left: 1px;
-  top: 1px;
   background: #fff;
   -webkit-border-radius: 50%;
           border-radius: 50%;
@@ -3407,6 +3112,18 @@ a[title="站长统计"] {
 .switch.active {
   background: #df3c3a; }
 
+.switch {
+  width: 46px;
+  height: 24px;
+  -webkit-border-radius: 24px;
+          border-radius: 24px; }
+
+.switch:before {
+  width: 22px;
+  height: 22px;
+  left: 1px;
+  top: 1px; }
+
 .switch.active:before {
   left: 23px; }
 
@@ -3415,28 +3132,13 @@ a[title="站长统计"] {
     width: 92px;
     height: 48px;
     -webkit-border-radius: 48px;
-            border-radius: 48px;
-    background: #ccc;
-    display: inline-block;
-    position: relative;
-    -webkit-transition: all 0.3s;
-            transition: all 0.3s; }
+            border-radius: 48px; }
 
   .switch:before {
     width: 44px;
     height: 44px;
-    content: '';
-    position: absolute;
     left: 2px;
-    top: 2px;
-    background: #fff;
-    -webkit-border-radius: 50%;
-            border-radius: 50%;
-    -webkit-transition: all 0.3s ease-in;
-            transition: all 0.3s ease-in; }
-
-  .switch.active {
-    background: #df3c3a; }
+    top: 2px; }
 
   .switch.active:before {
     left: 46px; } }
@@ -3649,11 +3351,9 @@ a[title="站长统计"] {
   display: block; }
 
 .downloadapp {
-  position: relative;
-  height: 50px; }
+  position: relative; }
 
 .downloadapp-r1 {
-  height: 50px;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -3670,8 +3370,30 @@ a[title="站长统计"] {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 999; }
+
+.downloadapp-close {
+  background: url(http://img.sfht.com/sfhth5/1.1.393/img/downloadapp-close.png) no-repeat;
+  text-indent: -999em;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+.downloadapp .btn {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: #46cfdf;
+  border-color: #46cfdf;
+  padding: 0; }
+
+.downloadapp {
+  height: 50px; }
+
+.downloadapp-r1 {
+  height: 50px;
   padding: 0 11px;
-  z-index: 999;
   background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 9px bottom;
   background-size: 201px 44px; }
 
@@ -3682,51 +3404,21 @@ a[title="站长统计"] {
 .downloadapp-close {
   width: 22px;
   height: 22px;
-  background: url(http://img.sfht.com/sfhth5/1.1.393/img/downloadapp-close.png) no-repeat;
-  background-size: 22px;
-  text-indent: -999em;
-  position: absolute;
-  right: 0;
-  top: 0; }
+  background-size: 22px; }
 
 .downloadapp .btn {
   height: 35px;
   line-height: 35px;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   margin-left: 6px;
-  margin-right: 16px;
-  background: #46cfdf;
-  border-color: #46cfdf;
-  padding: 0; }
+  margin-right: 16px; }
 
 @media screen and (min-width: 640px) {
   .downloadapp {
-    position: relative;
     height: 100px; }
 
   .downloadapp-r1 {
     height: 100px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
     padding: 0 22px;
-    z-index: 999;
     background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 18px bottom;
     background-size: 402px 88px; }
 
@@ -3737,22 +3429,10 @@ a[title="站长统计"] {
   .downloadapp-close {
     width: 44px;
     height: 44px;
-    background: url(http://img.sfht.com/sfhth5/1.1.393/img/downloadapp-close.png) no-repeat;
-    background-size: 44px;
-    text-indent: -999em;
-    position: absolute;
-    right: 0;
-    top: 0; }
+    background-size: 44px; }
 
   .downloadapp .btn {
     height: 70px;
     line-height: 70px;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
     margin-left: 12px;
-    margin-right: 32px;
-    background: #46cfdf;
-    border-color: #46cfdf;
-    padding: 0; } }
+    margin-right: 32px; } }

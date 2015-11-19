@@ -2,80 +2,36 @@
   .list{
     padding: 14px * $i;
   }
-  .list .mask{
-    position: absolute;
-    background-color: rgba(255,255,255,0.5);
-    z-index: 1;
-  }
   .list li{
-    width: 48.8%;
     margin-bottom: 7px * $i;
-    background: #fff;
-    position: relative;
-  }
-  .list li:nth-child(even){
-    float: right;
-  }
-  .list li:nth-child(odd){
-    float: left;
   }
   .list li a:after{
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
     border:1px * $i solid #ccc;
-    transform: scale(0.5);
-    transform-origin: 0 0;
-    left: 0;
-    top: 0;
     padding:1px * $i;
-    box-sizing: border-box;
-  }
-  .list li a{
-    display: block;
   }
   .list h2{
     font-size: 14px * $i;
     line-height: 20px * $i;
     height: 40px * $i;
     margin-bottom: 10px * $i;
-    font-weight: normal;
   }
   .list del{
-    color: #666;
     font-size: 10px * $i;
   }
   .list-r1{
-    position: relative;
     margin-bottom: 6px * $i;
   }
   .list-price{
     font-size: 15px * $i;
-    color: #dc3334;
   }
   .list-b{
     padding: 10px * $i 8px * $i 12px * $i;
   }
   .list-r2{
-    position: relative;
     height: 24px * $i;
-  }
-  .list .label-danger{
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    border-radius:0;
-  }
-  .list-r1 img{
-    width: 100%;
   }
   .list-r3c2 img{
     width: 19px * $i;
-    vertical-align: middle;
-  }
-  .list a:visited{
-    color:#333;
   }
   .list .product-new,
   .list .product-hot{
@@ -83,16 +39,85 @@
     height:30px * $i;
     left:6px * $i;
     top:1px * $i;
-    position: absolute;
   }
   .list .product-new{
-    background:url(http://img0.sfht.com/img/32dc9ea87d4c33e9e56b4ee272015afe.jpg) no-repeat;
     background-size: 26px * $i;
   }
   .list .product-hot{
-    background:url(http://img0.sfht.com/img/582b13aa9c0e3c943ae3ac8260410ebf.jpg) no-repeat;
     background-size: 26px * $i;
   }
+}
+
+
+.list .mask{
+  position: absolute;
+  background-color: rgba(255,255,255,0.5);
+  z-index: 1;
+}
+.list li{
+  width: 48.8%;
+  background: #fff;
+  position: relative;
+}
+.list li:nth-child(even){
+  float: right;
+}
+.list li:nth-child(odd){
+  float: left;
+}
+.list li a:after{
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+}
+.list li a{
+  display: block;
+}
+.list h2{
+  font-weight: normal;
+}
+.list del{
+  color: #666;
+}
+.list-r1{
+  position: relative;
+}
+.list-price{
+  color: #dc3334;
+}
+.list-r2{
+  position: relative;
+}
+.list .label-danger{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius:0;
+}
+.list-r1 img{
+  width: 100%;
+}
+.list-r3c2 img{
+  vertical-align: middle;
+}
+.list a:visited{
+  color:#333;
+}
+.list .product-new,
+.list .product-hot{
+  position: absolute;
+}
+.list .product-new{
+  background:url(http://img0.sfht.com/img/32dc9ea87d4c33e9e56b4ee272015afe.jpg) no-repeat;
+}
+.list .product-hot{
+  background:url(http://img0.sfht.com/img/582b13aa9c0e3c943ae3ac8260410ebf.jpg) no-repeat;
 }
 
 @include list(1);

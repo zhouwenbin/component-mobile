@@ -1,52 +1,30 @@
 @mixin nataral-product($i){
   .nataral-product{
-    background: #fff;
     margin-bottom: 10px * $i;
-    border-top: 1px solid #e4e4e4;
-    border-bottom: 1px solid #e4e4e4;
     margin-top: -1px * $i;
   }
 
   .nataral-product li{
-    display: flex;
-    align-items:center;
     margin: 0 10px * $i;
     padding: 10px * $i 0;
-    border-bottom: 1px solid #e4e4e4;
-  }
-  .nataral-product li:last-child{
-    border: none;
   }
   .nataral-product img{
     width: 75px * $i;
     height: 75px * $i;
     border: 1px * $i solid #f7f7f7;
-    position: absolute;
-    left: 0;
-    top: 0;
-      transition: 0.5s transform ease-in-out,0.5s left linear,0.5s top ease-in,0.1s visibility 0.5s linear;
   }
   .nataral-product-c1{
-    position: relative;
     width: 75px * $i;
     height: 75px * $i;
   }
-  .nataral-product-c1 .mask{
-    position: absolute;
-    background: rgba(0,0,0,0.2);
-    z-index: map-get($z-index,nataral-product-c1-mask);
-  }
   .nataral-product-c2{
-    flex:1;
     padding-left: 15px * $i;
     padding-right: 12px * $i;
   }
   .nataral-product-c2 h3{
     font-size: 14px * $i;
     line-height: 18px * $i;
-    font-weight: normal;
     margin-bottom: 5px * $i;
-    word-break:break-all;
   }
   .nataral-product-c2 .text-important{
     margin-right: 8px * $i;
@@ -59,37 +37,80 @@
     line-height: 39px * $i;
   }
   .nataral-product-loading{
-    text-align: center;
     padding: 10px * $i 0;
-    border-top: 1px solid #e4e4e4;
-    border-bottom: 1px solid #e4e4e4;
   }
   .nataral-product-soldout{
     width: 35px * $i;
     height: 35px * $i;
     line-height: 35px * $i;
-    text-align: center;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.6);
-    position: absolute;
-    color: #fff;
   }
   .nataral-product-star{
-    display: inline-block;
-    background: #ffc600;
     border-radius: 2px * $i;
-    color: #fff;
     padding: 0 5px * $i;
     margin-right: 3px * $i;
   }
-  .nataral-product-r1{
-    display: flex;
-    justify-content:space-between;
-    align-items:center;
-  }
-  .nataral-product-r1 .icon66{
-    display: block;
-  }
+}
+
+
+.nataral-product{
+  background: #fff;
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.nataral-product li{
+  display: flex;
+  align-items:center;
+  border-bottom: 1px solid #e4e4e4;
+}
+.nataral-product li:last-child{
+  border: none;
+}
+.nataral-product img{
+  position: absolute;
+  left: 0;
+  top: 0;
+    transition: 0.5s transform ease-in-out,0.5s left linear,0.5s top ease-in,0.1s visibility 0.5s linear;
+}
+.nataral-product-c1{
+  position: relative;
+}
+.nataral-product-c1 .mask{
+  position: absolute;
+  background: rgba(0,0,0,0.2);
+  z-index: map-get($z-index,nataral-product-c1-mask);
+}
+.nataral-product-c2{
+  flex:1;
+}
+.nataral-product-c2 h3{
+  font-weight: normal;
+  word-break:break-all;
+}
+.nataral-product-loading{
+  text-align: center;
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+}
+.nataral-product-soldout{
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  position: absolute;
+  color: #fff;
+}
+.nataral-product-star{
+  display: inline-block;
+  background: #ffc600;
+  color: #fff;
+}
+.nataral-product-r1{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.nataral-product-r1 .icon66{
+  display: block;
 }
 @include nataral-product(1);
 @media screen and (min-width:640px){

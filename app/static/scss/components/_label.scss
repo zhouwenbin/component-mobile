@@ -19,24 +19,29 @@
 	.label {
 	height: 21px * $i;
 	line-height: 21px * $i;
-	color: #fff;
-	text-align: center;
 	border-radius: 2px * $i;
 	padding: 0 15px * $i;
-	display: inline-block;
-	vertical-align: middle;
 	font-size: 12px * $i;
-	position: relative;
 	}
 	
 	.label i{
 	  border-width: 3px * $i 3px * $i;
-	  border-style: solid;
-	  border-color: transparent transparent transparent #f78e55;
-	  position: absolute;
 	  right: -6px * $i;
 	  top: 7px * $i;
 	}
+}
+.label {
+color: #fff;
+text-align: center;
+display: inline-block;
+vertical-align: middle;
+position: relative;
+}
+
+.label i{
+  border-style: solid;
+  border-color: transparent transparent transparent #f78e55;
+  position: absolute;
 }
 .label-error,
 .label-danger{

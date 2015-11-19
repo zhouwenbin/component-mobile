@@ -12,27 +12,31 @@
 */
 @mixin dot($i){
 	.dot{
-		display:inline-block;
-		vertical-align:middle;
 		width:8px * $i;
 		height:8px * $i;
-		border-radius:50%;
-	}
-	.dot-important{
-		background:#ff5b54;
 	}
 	.dot-error{
 		padding: 0 5px * $i;
-		width: auto;
 		height: 18px * $i;
 		line-height: 18px * $i;
 		border-radius: 9px * $i;
-		text-align: center;
-		background: #ff5b54;
-		color: #fff;
-		text-indent: 0;
-		transform:scale(0.8);
 	}
+}
+.dot{
+	display:inline-block;
+	vertical-align:middle;
+	border-radius:50%;
+}
+.dot-important{
+	background:#ff5b54;
+}
+.dot-error{
+	width: auto;
+	text-align: center;
+	background: #ff5b54;
+	color: #fff;
+	text-indent: 0;
+	transform:scale(0.8);
 }
 @include dot(1);
 

@@ -17,16 +17,20 @@
   .loading{
     width: 25px * $i;
     height: 25px * $i;
-    background: url(#{$bg-url}loading.png) no-repeat;
     background-size: 25px * $i;
-    position: fixed;
-    animation:loading 1s linear infinite;
-    transform:rotateZ(0deg);
   }
-  @keyframes loading{
-    100%{
-      transform:rotateZ(360deg);
-    }
+}
+
+
+.loading{
+  background: url(#{$bg-url}loading.png) no-repeat;
+  position: fixed;
+  animation:loading 1s linear infinite;
+  transform:rotateZ(0deg);
+}
+@keyframes loading{
+  100%{
+    transform:rotateZ(360deg);
   }
 }
 @include loading(1);
