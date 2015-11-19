@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4 (15575) - http://www.bohemiancoding.com/sketch -->
+    <title>scrape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path id="path-1" d="M28,56 C43.463973,56 56,43.463973 56,28 C56,12.536027 43.463973,0 28,0 C12.536027,0 0,12.536027 0,28 C0,43.463973 12.536027,56 28,56 Z"></path>
+        <path id="path-3" d="M14.3419343,42.4547368 C14.3419343,42.4547368 0.255135369,9.06357856 7.89557793,3.33515398 C12.2396261,-0.126960021 13.7539646,24.9778046 26.728607,37.3471896"></path>
+    </defs>
+    <g id="福利社" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="福利社1111" sketch:type="MSArtboardGroup" transform="translate(-16.000000, -115.000000)">
+            <g id="scrape" sketch:type="MSLayerGroup" transform="translate(16.000000, 115.000000)">
+                <mask id="mask-2" sketch:name="Mask" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Mask" fill="#FFFFFF" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                <rect id="Rectangle-87" fill="#465A63" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="8.48484848" y="15.2727273" width="40.7272727" height="50.9090909" rx="1"></rect>
+                <rect id="Rectangle-89" fill="#9B9B9B" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="22.0606061" y="18.6666667" width="13.5757576" height="1.6969697" rx="1"></rect>
+                <rect id="Rectangle-87-Copy" fill="#BCDEFA" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="11.8787879" y="22.0606061" width="33.9393939" height="42.4242424"></rect>
+                <path d="M11.8547585,36.5097063 L35.8675419,30.4717093 L39.3269412,45.9159565 L11.8547585,53.1239347 L11.8547585,36.5097063 Z" id="Rectangle-90" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                <g id="Path-89-+-Path-89-Copy" mask="url(#mask-2)">
+                    <g transform="translate(25.454545, 25.454545)">
+                        <mask id="mask-4" sketch:name="Mask" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <use id="Mask" stroke="none" fill="#FFD19B" fill-rule="evenodd" sketch:type="MSShapeGroup" xlink:href="#path-3"></use>
+                        <path d="M14.142721,44.6903199 C14.142721,44.6903199 1.68116251,10.7395465 3.2878266,7.08871847 C4.15697026,4.82311006 10.1465869,28.3869129 17.6507114,42.6399482" id="Path-89-Copy" stroke="none" fill="#F6C48B" fill-rule="evenodd" sketch:type="MSShapeGroup" mask="url(#mask-4)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

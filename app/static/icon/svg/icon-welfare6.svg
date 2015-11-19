@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="28px" height="31px" viewBox="0 0 28 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4 (15575) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-welfare6</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="福利社" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="福利社1111" sketch:type="MSArtboardGroup" transform="translate(-259.000000, -443.000000)" fill="#4AC373">
+            <g id="icon-welfare6" sketch:type="MSLayerGroup" transform="translate(259.000000, 443.000000)">
+                <path d="M0.240625,7.62535491 L2.33100086,30.625 L23.5788693,28.6935148 L21.4881873,5.69386966 L0.240625,7.62535491 L0.240625,7.62535491 Z M21.6179939,23.6714694 L3.35445231,25.3314017 L1.85371674,8.81963672 L20.1172584,7.1597044 L21.6179939,23.6714694 L21.6179939,23.6714694 Z M5.0694912,5.85918937 L6.17039799,0.01575 L27.137223,3.96627872 L24.0481936,20.3617076 L23.5519284,14.9027897 L25.4175919,5.00136377 L7.39560071,1.60557452 L6.62074112,5.71805532 L5.0694912,5.85918937 L5.0694912,5.85918937 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>
