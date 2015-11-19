@@ -108,6 +108,10 @@
     font-size: 14px * $i;
     flex:1;
   }
+  .nataral-tab li svg{
+    margin-right: 5px * $i;
+    fill:#4A4A4A;
+  }
   .nataral-tab li a{
     display: inline-block;
     vertical-align: middle;
@@ -132,6 +136,9 @@
     vertical-align: 0;
     border-color: #ff5b54;
     transform:rotate(-225deg);
+  }
+  .nataral-tab li.active svg{
+    fill:#FF5B54;
   }
   .nataral-tab li.active a{
     color: #ff5b54;
