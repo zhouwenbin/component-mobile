@@ -14,7 +14,7 @@ svg {
   color: #4A4A4A !important; }
 
 .btn-middle {
-  width: 160px !important; }
+  width: 320px !important; }
 
 .btn-yellow {
   background: #FFAD4F;
@@ -29,16 +29,16 @@ svg {
   color: #fff !important; }
 
 .label-black {
-  width: 55px;
-  height: 20px;
-  line-height: 20px;
+  width: 110px;
+  height: 40px;
+  line-height: 40px;
   display: inline-block;
   border: 1px solid #4A4A4A;
-  -webkit-border-radius: 10px;
-          border-radius: 10px;
+  -webkit-border-radius: 20px;
+          border-radius: 20px;
   text-align: center;
-  margin-right: 27px;
-  font-size: 10px; }
+  margin-right: 54px;
+  font-size: 20px; }
 
 .tuantab {
   display: -webkit-box;
@@ -51,12 +51,12 @@ svg {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  height: 49px;
-  line-height: 49px;
+  height: 98px;
+  line-height: 98px;
   background: #4A4A4A;
   color: #fff;
   text-align: center;
-  font-size: 16px; }
+  font-size: 32px; }
 
 .tuantab li.active {
   background: #F24E47;
@@ -64,7 +64,7 @@ svg {
 
 .tuantab li.active:before {
   content: '';
-  border-width: 8px 8px;
+  border-width: 16px 16px;
   border-style: solid;
   border-color: transparent transparent #fff transparent;
   position: absolute;
@@ -89,12 +89,12 @@ svg {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 14px;
-  height: 30px;
-  line-height: 30px;
-  border-bottom: 1px solid #F2F2F2;
-  border-left: 2px solid #F13C34;
-  padding: 0 7px;
+  font-size: 28px;
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 2px solid #F2F2F2;
+  border-left: 4px solid #F13C34;
+  padding: 0 14px;
   background: #fff; }
 
 .tuanheader h2 {
@@ -103,15 +103,15 @@ svg {
 .tuanheader-time span {
   display: inline-block;
   vertical-align: middle;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   background: #4A4A4A;
-  -webkit-border-radius: 2px;
-          border-radius: 2px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
   color: #fff;
-  margin: 0 4px; }
+  margin: 0 8px; }
 
 .tuanlist {
   background: #fff;
@@ -126,8 +126,8 @@ svg {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 12px 15px;
-  border-bottom: 1px solid #F5F5F5; }
+  padding: 24px 30px;
+  border-bottom: 2px solid #F5F5F5; }
 
 .tuanlist li a {
   display: -webkit-box;
@@ -140,8 +140,8 @@ svg {
           align-items: center; }
 
 .tuanlist-c1 {
-  width: 115px;
-  margin-right: 8px;
+  width: 230px;
+  margin-right: 16px;
   position: relative; }
 
 .tuanlist-c2 {
@@ -151,12 +151,12 @@ svg {
           flex: 1; }
 
 .tuanlist h3 {
-  font-size: 14px;
-  line-height: 16px;
-  margin-bottom: 5px; }
+  font-size: 28px;
+  line-height: 32px;
+  margin-bottom: 10px; }
 
 .tuanlist-num {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -167,51 +167,51 @@ svg {
           justify-content: space-between; }
 
 .tuanlist-num .icon-people {
-  margin-right: 4px; }
+  margin-right: 8px; }
 
 .tuanlist-num .icon-clock {
-  margin-right: 5px; }
+  margin-right: 10px; }
 
 .tuanlist-price {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 120px;
-  height: 44px;
+  width: 240px;
+  height: 88px;
   border: 1px solid #F24E47; }
 
 .tuanlist-price-c1 {
-  width: 26px;
+  width: 52px;
   background: #F24E47;
   color: #fff;
   text-align: center;
-  line-height: 13px;
-  padding-top: 2px; }
+  line-height: 26px;
+  padding-top: 4px; }
 
 .tuanlist-price-c2 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  line-height: 44px;
-  padding-left: 5px; }
+  line-height: 88px;
+  padding-left: 10px; }
 
 .tuanlist strong {
   color: #F13C34;
-  font-size: 14px;
-  margin-right: 6px; }
+  font-size: 28px;
+  margin-right: 12px; }
 
 .tuanlist del {
   color: #9B9B9B; }
 
 .tuanlist .btn {
-  margin-top: 10px; }
+  margin-top: 20px; }
 
 .tuanlist-time {
-  margin-top: 15px;
+  margin-top: 30px;
   color: #9B9B9B;
-  margin-bottom: 2px; }
+  margin-bottom: 4px; }
 
 .tuanlist-price.disabled {
   border-color: #9B9B9B; }
@@ -224,53 +224,53 @@ svg {
 
 .tuanlist-success {
   position: absolute;
-  bottom: 15px;
+  bottom: 30px;
   right: 0; }
 
 .tuanlist-none {
   text-align: center;
-  padding-top: 40px; }
+  padding-top: 80px; }
 
 .tuanlist-none-icon {
-  padding: 20px 24px;
+  padding: 40px 48px;
   background: #DCDCDC;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   -webkit-border-radius: 50%;
           border-radius: 50%; }
 
 .tuanlist-none p {
   color: #9B9B9B;
-  font-size: 14px;
-  margin-bottom: 15px; }
+  font-size: 28px;
+  margin-bottom: 30px; }
 
 .tuanlist-none .btn {
   color: #F24E47;
-  font-size: 14px;
-  width: 200px;
-  height: 44px;
-  line-height: 44px; }
+  font-size: 28px;
+  width: 400px;
+  height: 88px;
+  line-height: 88px; }
 
 .tuanhow {
   background: #fff;
-  margin: 10px 0; }
+  margin: 20px 0; }
 
 .tuanhow h2 {
-  height: 30px;
-  line-height: 30px;
-  border-bottom: 1px solid #F2F2F2;
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 2px solid #F2F2F2;
   text-align: center; }
 
 .tuanhow h2 span {
   display: inline-block;
-  border-bottom: 2px solid #F13C34; }
+  border-bottom: 4px solid #F13C34; }
 
 .tuanhow ul {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 44px; }
+  padding-top: 88px; }
 
 .tuanhow li {
   -webkit-box-flex: 1;
@@ -278,16 +278,16 @@ svg {
       -ms-flex: 1;
           flex: 1;
   color: #9B9B9B;
-  line-height: 17px;
+  line-height: 34px;
   position: relative;
   text-align: center; }
 
 .tuanhow li:before {
   content: '';
-  border-top: 1px solid #DCDCDC;
+  border-top: 2px solid #DCDCDC;
   width: 100%;
   position: absolute;
-  top: -25px;
+  top: -50px;
   left: 50%; }
 
 .tuanhow li:last-child:before {
@@ -295,61 +295,61 @@ svg {
 
 .tuanhow-num {
   position: absolute;
-  top: -33px;
+  top: -66px;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
       -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   background: #F13C34;
-  width: 18px;
-  height: 18px;
-  line-height: 18px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
   text-align: center;
   color: #fff;
   -webkit-border-radius: 50%;
           border-radius: 50%; }
 
 .tuanintroduce {
-  line-height: 17px;
-  padding: 12px 15px;
+  line-height: 34px;
+  padding: 24px 30px;
   background: #fff; }
 
 .tuanrule {
-  padding: 15px;
+  padding: 30px;
   background: #fff; }
 
 .tuanrule h2 {
   color: #F13C34;
-  margin-bottom: 9px;
+  margin-bottom: 18px;
   text-align: center; }
 
 .tuanrule p {
-  line-height: 17px; }
+  line-height: 34px; }
 
 .tuanimg {
-  height: 79px; }
+  height: 158px; }
 
 .tuanimg-fixed {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 47px;
-  padding: 19px 0;
+  bottom: 94px;
+  padding: 38px 0;
   background: #fff;
-  border-top: 1px solid #F2F2F2;
+  border-top: 2px solid #F2F2F2;
   text-align: center; }
 
 .tuanimg li {
   display: inline-block;
   vertical-align: middle;
-  margin: 0 10px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  margin: 0 20px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
   text-align: center;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  font-size: 14px; }
+  font-size: 28px; }
 
 .tuanimg img {
   -webkit-border-radius: 50%;
@@ -361,7 +361,7 @@ svg {
   border: 1px dashed #DCDCDC; }
 
 .tuanbtn {
-  height: 47px; }
+  height: 94px; }
 
 .tuanbtn-fixed {
   position: fixed;
@@ -369,63 +369,63 @@ svg {
   right: 0;
   bottom: 0;
   background: #fff;
-  border-top: 1px solid #DCDCDC;
-  padding: 8px 0;
+  border-top: 2px solid #DCDCDC;
+  padding: 16px 0;
   text-align: center; }
 
 .tuanbtn .btn {
-  height: 40px;
-  line-height: 40px;
-  font-size: 14px;
-  width: 140px;
-  margin: 0 6px; }
+  height: 80px;
+  line-height: 80px;
+  font-size: 28px;
+  width: 280px;
+  margin: 0 12px; }
 
 .tuandialog-inner {
-  width: 238px;
+  width: 476px;
   background: #fff;
   position: fixed;
   text-align: center;
   z-index: 999;
-  padding: 36px 19px 24px; }
+  padding: 72px 38px 48px; }
 
 .tuandialog h2 {
   color: #F13C34;
-  font-size: 18px;
-  margin-bottom: 13px; }
+  font-size: 36px;
+  margin-bottom: 26px; }
 
 .tuandialog p {
   color: #9B9B9B;
-  font-size: 16px;
-  line-height: 22px;
-  margin-bottom: 24px; }
+  font-size: 32px;
+  line-height: 44px;
+  margin-bottom: 48px; }
 
 .tuandialog .text-important {
-  margin-bottom: 15px; }
+  margin-bottom: 30px; }
 
 .tuandialog .btn {
-  font-size: 16px;
-  height: 40px;
-  line-height: 40px; }
+  font-size: 32px;
+  height: 80px;
+  line-height: 80px; }
 
 .tuandialog .btn-danger {
-  margin-bottom: 7px;
-  margin-top: 33px; }
+  margin-bottom: 14px;
+  margin-top: 66px; }
 
 .tuandialog-img {
   position: absolute;
-  top: 69px;
-  right: 32px; }
+  top: 138px;
+  right: 64px; }
 
 .tuanshare-inner {
   top: auto;
   bottom: 0;
-  height: 120px;
+  height: 240px;
   background: #F3F3F3;
   z-index: 999; }
 
 .tuanshare ul {
-  height: 120px;
-  padding-left: 5px; }
+  height: 240px;
+  padding-left: 10px; }
 
 .tuanshare ul:before {
   content: '';
@@ -437,22 +437,22 @@ svg {
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  margin: 0 10px; }
+  margin: 0 20px; }
 
 .tuanshare figcaption {
-  margin-top: 10px; }
+  margin-top: 20px; }
 
 .tuantitle {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  height: 40px;
-  line-height: 40px;
+  height: 80px;
+  line-height: 80px;
   background: #fff;
-  padding: 0 14px;
-  -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.32);
-          box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.32); }
+  padding: 0 28px;
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.32);
+          box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.32); }
 
 .tuantitle h1 {
   -webkit-box-flex: 1;
@@ -460,8 +460,8 @@ svg {
       -ms-flex: 1;
           flex: 1;
   text-align: center;
-  font-size: 18px; }
+  font-size: 36px; }
 
 .tuantitle a {
   color: #FF5B54;
-  font-size: 16px; }
+  font-size: 32px; }
