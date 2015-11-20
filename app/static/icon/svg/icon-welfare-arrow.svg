@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.4 (15575) - http://www.bohemiancoding.com/sketch -->
-    <title>icon-welfare-arrow</title>
+<svg width="7px" height="12px" viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.2 (15855) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_back_white </title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="福利社" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="福利社1111" sketch:type="MSArtboardGroup" transform="translate(-292.000000, -137.000000)" fill="#4A4A4A">
-            <g id="icon-welfare-arrow" sketch:type="MSLayerGroup" transform="translate(292.000000, 137.000000)">
-                <g id="Group" sketch:type="MSShapeGroup">
-                    <path d="M10.9942857,8.04571429 L7.29142857,11.1771429 C7.08571429,11.36 6.76571429,11.3371429 6.58285714,11.1314286 C6.4,10.9257143 6.42285714,10.6057143 6.62857143,10.4228571 L9.44,8.04571429 L6.62857143,5.66857143 C6.42285714,5.48571429 6.4,5.16571429 6.58285714,4.96 C6.76571429,4.75428571 7.08571429,4.73142857 7.29142857,4.91428571 L10.9942857,8.04571429 L10.9942857,8.04571429 Z" id="Shape"></path>
-                    <path d="M16,8 C16,12.4114286 12.3885714,16 8,16 C3.61142857,16 0,12.3885714 0,8 C0,3.61142857 3.61142857,0 8,0 C12.3885714,0 16,3.58857143 16,8 L16,8 Z M0.982857143,8 C0.982857143,11.8628571 4.13714286,14.9942857 7.97714286,14.9942857 C11.8171429,14.9942857 14.9942857,11.8628571 14.9942857,8 C14.9942857,4.13714286 11.84,1.00571429 7.97714286,1.00571429 C4.11428571,1.00571429 0.982857143,4.16 0.982857143,8 L0.982857143,8 Z" id="Shape"></path>
-                </g>
-            </g>
+        <g id="福利社1111" sketch:type="MSArtboardGroup" transform="translate(-299.000000, -316.000000)" fill="#B3B3B3">
+            <path d="M295.824222,325.489487 C295.720814,325.386078 295.656854,325.243221 295.656854,325.085426 L295.656854,318.228283 C295.656854,317.912692 295.912692,317.656854 296.228283,317.656854 C296.543874,317.656854 296.799711,317.912692 296.799711,318.228283 L296.799711,324.513997 L303.085426,324.513997 C303.401017,324.513997 303.656854,324.769834 303.656854,325.085426 C303.656854,325.401017 303.401017,325.656854 303.085426,325.656854 L296.228283,325.656854 C296.070487,325.656854 295.92763,325.592895 295.824222,325.489487 Z" id="btn_back_white-" sketch:type="MSShapeGroup" transform="translate(299.656854, 321.656854) scale(-1, -1) rotate(-315.000000) translate(-299.656854, -321.656854) "></path>
         </g>
     </g>
 </svg>
