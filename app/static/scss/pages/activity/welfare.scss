@@ -191,6 +191,61 @@
 	vertical-align:baseline;
 }
 
+.welfarelist{
+	background:#fff;
+}
+.welfarelist-img{
+	text-align:center;
+}
+.welfarelist ul{
+	overflow:hidden;
+}
+.welfarelist li{
+	float:left;
+	width:50%;
+	background:#fff;
+	padding:0 10px 12px;
+	border-bottom:1px solid #e5e5e5;
+	border-right:1px solid #e5e5e5;
+}
+.welfarelist h3{
+	margin-top:8px;
+	margin-bottom:8px;
+	line-height:15px;
+}
+.welfarelist del{
+	color:#9B9B9B;
+	
+}
+.welfarelist .text-important{
+	font-size:14px;
+	margin-top:10px;
+}
+
+.welfare-footer{
+	height:44px;
+	margin-top:17px;
+	
+}
+.welfare-footer-fixed{
+	position: fixed;
+	left:0;
+	bottom:0;
+	right:0;
+	display:flex;
+}
+.welfare-footer input{
+	flex:1;
+	display:block;
+	height:44px;
+	line-height:44px;
+}
+.welfare-footer .btn{
+	height:44px;
+	line-height:44px;
+	display:block;
+}
+
 .welfare-rule{
 	ul{
 		padding: 30px 10px 10px;
