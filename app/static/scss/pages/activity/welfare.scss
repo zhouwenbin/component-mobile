@@ -125,6 +125,12 @@
 }
 .welfare-recomend-c2{
 	flex:1;
+	position: relative;
+}
+.welfare-recomend-c2 img{
+	position: absolute;
+	left:39px;
+	top:-9px;
 }
 .welfare-recomend h3{
 	font-size:16px;
@@ -156,11 +162,17 @@
 	text-align:center;
 	padding-bottom:14px;
 	padding-top:17px;
+	position: relative;
 }
 .welfare-daily h3{
 	font-size:14px;
 	margin-bottom:5px;
 	margin-top:8px;
+}
+.welfare-daily img{
+	position: absolute;
+	right:10px;
+	top:47px;
 }
 .welfare-daily p{
 	opacity:0.5;
