@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "gulp-svg-sprites": "^3.0.0",
     "highlight.js": "^8.9.1",
     "postcss-style-guide": "^0.9.3"
   }
