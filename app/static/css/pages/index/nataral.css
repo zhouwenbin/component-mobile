@@ -410,6 +410,14 @@
 .nataral-tab li.active a {
   color: #ff5b54; }
 
+.nataral-tab-none {
+  text-align: center;
+  padding: 30px 0; }
+
+.nataral-tab-none p {
+  margin-top: 10px;
+  color: #999; }
+
 .nataral-tab {
   height: 46px; }
 

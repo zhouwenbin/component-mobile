@@ -103,8 +103,8 @@
 	height:31px;
 }
 .icon-welfare-arrow{
-	width:16px;
-	height:16px;
+	width:7px;
+	height:12px;
 }
 .welfare-recomend{
 	background:#fff;
@@ -125,6 +125,12 @@
 }
 .welfare-recomend-c2{
 	flex:1;
+	position: relative;
+}
+.welfare-recomend-c2 img{
+	position: absolute;
+	left:39px;
+	top:-9px;
 }
 .welfare-recomend h3{
 	font-size:16px;
@@ -134,7 +140,7 @@
 .welfare-recomend p{
 	color:#4A4A4A;
 	opacity:0.5;
-	font-size:14px;
+	font-size:12px;
 }
 .welfare-header{
 	border-top:1px solid #F2F2F2;
@@ -156,11 +162,17 @@
 	text-align:center;
 	padding-bottom:14px;
 	padding-top:17px;
+	position: relative;
 }
 .welfare-daily h3{
 	font-size:14px;
 	margin-bottom:5px;
 	margin-top:8px;
+}
+.welfare-daily img{
+	position: absolute;
+	right:10px;
+	top:47px;
 }
 .welfare-daily p{
 	opacity:0.5;
@@ -177,6 +189,61 @@
 .welfare-daily svg{
 	display:inline-block;
 	vertical-align:baseline;
+}
+
+.welfarelist{
+	background:#fff;
+}
+.welfarelist-img{
+	text-align:center;
+}
+.welfarelist ul{
+	overflow:hidden;
+}
+.welfarelist li{
+	float:left;
+	width:50%;
+	background:#fff;
+	padding:0 10px 12px;
+	border-bottom:1px solid #e5e5e5;
+	border-right:1px solid #e5e5e5;
+}
+.welfarelist h3{
+	margin-top:8px;
+	margin-bottom:8px;
+	line-height:15px;
+}
+.welfarelist del{
+	color:#9B9B9B;
+	
+}
+.welfarelist .text-important{
+	font-size:14px;
+	margin-top:10px;
+}
+
+.welfare-footer{
+	height:44px;
+	margin-top:17px;
+	
+}
+.welfare-footer-fixed{
+	position: fixed;
+	left:0;
+	bottom:0;
+	right:0;
+	display:flex;
+}
+.welfare-footer input{
+	flex:1;
+	display:block;
+	height:44px;
+	line-height:44px;
+}
+.welfare-footer .btn{
+	height:44px;
+	line-height:44px;
+	display:block;
 }
 
 .welfare-rule{
