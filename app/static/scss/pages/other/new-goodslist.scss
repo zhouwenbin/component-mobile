@@ -1,0 +1,77 @@
+.new-goodslist{
+	background-color: #fff;
+}
+.new-goodslist li{
+	margin-bottom: 20px;
+}
+.new-goodslist-pic{
+	width: 100%;
+}
+.new-goodslist-title{
+	display: flex;
+	padding: 0 20px;
+}
+.new-goodslist-title h2{
+	flex: 1;
+	margin-top: 20px;
+	margin-right: 20px;
+	font-size: 28px;
+	color: #4A4A4A;
+	line-height: 1.3;
+}
+.new-goodslist .ellipsis3{
+	padding: 0 20px;
+	margin-top: 10px;
+	font-size: 24px;
+	color: #4A4A4A;
+	line-height: 1.3;
+}
+.new-goodslist-country{
+	padding: 0 20px;
+	display: inline-block;
+	margin-top: 20px;
+}
+.new-goodslist-country img,
+.new-goodslist-country span{
+	vertical-align: middle;
+}
+.new-goodslist-country img{
+	margin-right: 10px;
+}
+.new-goodslist-country span{
+	margin-left: 10px;
+	color: #9B9B9B;
+}
+.new-goodslist-btnbox .sales-price{
+	color: #F44740;
+	font-size: 36px;
+}
+.new-goodslist-btnbox .original-price{
+	color: #9B9B9B;
+	margin-left: 20px;
+}
+.new-goodslist-btnbox{
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.new-goodslist-btnbox .btn{
+	margin-left: 10px;
+	height: 72px;
+	line-height: 72px;
+	font-size: 28px;
+}
+.new-goodslist-btnbox .btn-normal{
+	border-color: #f2f2f2;
+}
+.new-goodslist-star{
+	margin: 20px 0;
+	padding-left: 20px;
+	border-left: 1px solid #F2F2F2;
+
+}
+.icon-star02{
+	width: 40px;
+	height: 40px;
+}
