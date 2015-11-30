@@ -48,12 +48,12 @@
 		== Slim::Template.new('../../module/mo-recommendgoods.slim').render
 	</div>
 	<!-- 宝宝阶段 -->
-	<div class="baby-times com-box">
+	<!-- <div class="baby-times com-box">
 		<div class="com-title">
 			<h2>宝宝阶段</h2>
 		</div>
 		== Slim::Template.new('../../module/mo-babytimes.slim').render
-	</div>
+	</div> -->
 	<!-- 热卖商品 -->
 	<div class="hot-goods com-box">
 		<div class="com-title">
@@ -78,6 +78,14 @@
 			<label for="popup-close" class="popup-close"></label>
 		</div>
 	</div>
+	<!-- 热卖商品 -->
+	<div class="new-goods com-box">
+		<div class="com-title">
+			<h2>热卖商品</h2>
+		</div>
+		== Slim::Template.new('../../module/mo-tabnav.slim').render
+	</div>
+
 	== Slim::Template.new('../../module/footer.slim').render
 	<script type="text/javascript" src="../../../js/zepto.min.js"></script>
 	<script type="text/javascript" src="../../../js/iscroll.js"></script>
