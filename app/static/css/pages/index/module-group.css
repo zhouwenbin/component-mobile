@@ -137,6 +137,13 @@ img {
     margin-top: 18px;
     font-size: 24px; }
 
+.icon-nav01,
+.icon-nav02,
+.icon-nav03,
+.icon-nav04 {
+  width: 66px;
+  height: 66px; }
+
 .fast-buy-goods {
   display: -webkit-box;
   display: -webkit-flex;
@@ -437,6 +444,32 @@ img {
 .com-box-bottom {
   background: #fff;
   margin-bottom: 20px; }
+
+.tabnav-box {
+  overflow: hidden; }
+
+.tabnav-box ul {
+  margin-left: -20px; }
+
+.tabnav-box li {
+  float: left;
+  height: 92px;
+  line-height: 92px;
+  margin-left: 44px; }
+
+.tabnav-box li a {
+  display: inline-block;
+  vertical-align: middle;
+  color: #4A4A4A;
+  height: 40px;
+  line-height: 40px; }
+
+.tabnav-box .active a {
+  color: #fff;
+  background-color: #FF5B54;
+  -webkit-border-radius: 46px;
+          border-radius: 46px;
+  padding: 0 20px; }
 
 .popup-select {
   position: fixed;

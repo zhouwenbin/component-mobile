@@ -1,0 +1,25 @@
+.tabnav-box{
+    overflow: hidden;
+}
+.tabnav-box ul{
+    margin-left: -20px;
+}
+.tabnav-box li{
+    float: left;
+    height: 92px;
+    line-height: 92px;
+    margin-left: 44px;
+}
+.tabnav-box li a{
+    display: inline-block;
+    vertical-align: middle;  
+    color: #4A4A4A;
+    height: 40px;
+    line-height: 40px;
+}
+.tabnav-box .active a{
+    color: #fff;
+    background-color: #FF5B54;
+    border-radius: 46px;
+    padding: 0 20px;
+}
