@@ -439,17 +439,10 @@ img {
   margin-bottom: 20px; }
 
 .popup-select {
-  width: 104px;
-  height: 104px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
   position: fixed;
   z-index: 999;
   right: 34px;
-  bottom: 62px;
-  color: #fff;
-  text-align: center; }
+  bottom: 62px; }
 
 .popup-select:before {
   content: '';

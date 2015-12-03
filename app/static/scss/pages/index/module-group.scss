@@ -7,16 +7,10 @@
 @import '../../module/mo-seckillgoods';
 @import '../../module/mo-title';
 .popup-select{
-	width:52px * 2;
-	height:52px * 2;
-	border-radius:50%;
-	background:rgba(0,0,0,0.6);
 	position: fixed;
 	z-index:999;
 	right:17px * 2;
 	bottom:31px * 2;
-	color:#fff;
-	text-align:center;
 }
 .popup-select:before{
 	content:'';
