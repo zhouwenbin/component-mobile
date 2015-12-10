@@ -35,6 +35,9 @@
 .fast-buy-fix{
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-end;
+	align-items: center;
 	margin-top: 10px * 2;
+}
+.fast-buy-text .fast-buy-important{
+	color: #FF5B54;
 }
