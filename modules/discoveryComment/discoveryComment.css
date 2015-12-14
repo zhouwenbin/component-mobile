@@ -1,0 +1,100 @@
+/*
+@styleguide
+
+# 文章评论
+
+*/
+
+.discoveryComment{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.discoveryComment h2{
+  height: 44px;
+  line-height: 44px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-bottom: 1px solid #F5F5F5;
+}
+.discoveryComment li{
+  display: flex;
+  padding: 15px 15px 15px 0;
+  margin-left: 15px;
+  border-bottom: 1px solid #F5F5F5;
+}
+.discoveryComment li:last-child{
+  border-bottom: none;
+}
+.discoveryComment-c2{
+  flex:1;
+}
+.discoveryComment img{
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.discoveryComment h3{
+  font-weight: normal;
+}
+.discoveryComment time{
+  color: #9B9B9B;
+  display: block;
+  margin: 5px 0;
+}
+.discoveryComment p{
+  font-size: 14px;
+  line-height: 20px;
+}
+.discoveryComment-c2r1{
+  display: flex;
+  align-items: center;
+}
+.discoveryComment-c2c1{
+  flex: 1;
+}
+.discoveryComment .icon-like-gray,
+.discoveryComment .icon-like-red{
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+.discoveryComment-num{
+  color: #9B9B9B;
+  margin-left: 6px;
+}
+.discoveryComment-point{
+  height: 18px;
+  line-height: 18px;
+  background: #6BDACA;
+  border-radius: 4px;
+  display: inline-block;
+  color: #fff;
+  padding: 0 5px;
+}
+.discoveryComment-line{
+  display: inline-block;
+  vertical-align: middle;
+  width: 1px;
+  background: #D8D8D8;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.discoveryComment-add{
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  padding: 8px 15px;
+  display: flex;
+}
+.discoveryComment-add button{
+  background: none;
+  color: #F33737;
+  font-size: 16px;
+  display: block;
+  margin-left: 15px;
+  padding: 0;
+}
+.discoveryComment-add input{
+  background: #F5F5F5;
+  display: block;
+  border: none;
+  flex:1;
+}

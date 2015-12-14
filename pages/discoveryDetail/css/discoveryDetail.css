@@ -1,0 +1,323 @@
+/*
+@styleguide
+
+# 发现详情
+
+*/
+.discoveryDetail {
+    background: #fff;
+    margin-bottom: 10px
+}
+.discoveryDetail .svg {
+    vertical-align: middle
+}
+.discoveryDetail .icon-star-gray, .discoveryDetail .icon-star-red {
+    width: 20px;
+    height: 19px
+}
+.discoveryDetail .icon-tag {
+    width: 14px;
+    height: 14px
+}
+.discoveryDetail .icon-view {
+    width: 18px;
+    height: 12px
+}
+.discoveryDetail-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 16px 15px 24px
+}
+.discoveryDetail-header img {
+    margin-right: 5px;
+    vertical-align: middle;
+    border-radius: 50%
+}
+.discoveryDetail-header span {
+    font-size: 14px;
+    margin-right: 5px
+}
+.discoveryDetail-header time {
+    color: #9B9B9B
+}
+.discoveryDetail-content img {
+    width: 100%
+}
+.discoveryDetail-content h1 {
+    font-size: 18px;
+    line-height: 25px;
+    margin: 0 15px 15px
+}
+.discoveryDetail-content p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #4A4A4A;
+    margin: 0 15px 15px
+}
+.discoveryDetail-content h2 {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0 15px 5px
+}
+.discoveryDetail-footer {
+    padding: 20px 15px 6px
+}
+.discoveryDetail-footer svg {
+    margin-right: 5px
+}
+.discoveryDetail-fr {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 6px
+}
+.discoveryDetail-fc2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1
+}
+.discoveryDetail-fc2 a {
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 15px
+}
+.discoveryDetail-fc2 strong {
+    color: #F13C34
+}
+/*
+@styleguide
+
+# 新发现
+
+*/
+.discoveryNew {
+    background: #fff;
+    margin-bottom: 10px
+}
+.discoveryNew h2 {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 15px;
+    font-size: 16px;
+    border-bottom: 1px solid #F5F5F5
+}
+.discoveryNew .icon-love-gray, .discoveryNew .icon-love-red {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 5px
+}
+.discoveryNew h3 {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 5px;
+    font-weight: normal
+}
+.discoveryNew ul {
+    padding: 10px 0 5px 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch
+}
+.discoveryNew li {
+    width: 110px;
+    margin-right: 25px
+}
+.discoveryNew img {
+    margin-bottom: 5px
+}
+/*
+@styleguide
+
+# 文章评论
+
+*/
+.discoveryComment {
+    background: #fff;
+    margin-bottom: 10px
+}
+.discoveryComment h2 {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 15px;
+    font-size: 16px;
+    border-bottom: 1px solid #F5F5F5
+}
+.discoveryComment li {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 15px 15px 15px 0;
+    margin-left: 15px;
+    border-bottom: 1px solid #F5F5F5
+}
+.discoveryComment li:last-child {
+    border-bottom: none
+}
+.discoveryComment-c2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1
+}
+.discoveryComment img {
+    border-radius: 50%;
+    margin-right: 10px
+}
+.discoveryComment h3 {
+    font-weight: normal
+}
+.discoveryComment time {
+    color: #9B9B9B;
+    display: block;
+    margin: 5px 0
+}
+.discoveryComment p {
+    font-size: 14px;
+    line-height: 20px
+}
+.discoveryComment-c2r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center
+}
+.discoveryComment-c2c1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1
+}
+.discoveryComment .icon-like-gray, .discoveryComment .icon-like-red {
+    width: 22px;
+    height: 22px;
+    vertical-align: middle
+}
+.discoveryComment-num {
+    color: #9B9B9B;
+    margin-left: 6px
+}
+.discoveryComment-point {
+    height: 18px;
+    line-height: 18px;
+    background: #6BDACA;
+    border-radius: 4px;
+    display: inline-block;
+    color: #fff;
+    padding: 0 5px
+}
+.discoveryComment-line {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1px;
+    background: #D8D8D8;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 5px
+}
+.discoveryComment-add {
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    padding: 8px 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+.discoveryComment-add button {
+    background: none;
+    color: #F33737;
+    font-size: 16px;
+    display: block;
+    margin-left: 15px;
+    padding: 0
+}
+.discoveryComment-add input {
+    background: #F5F5F5;
+    display: block;
+    border: none;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1
+}
+/*
+@styleguide
+
+# 相关商品
+
+*/
+.relatedProducts {
+    background: #fff;
+    margin-bottom: 10px
+}
+.relatedProducts h2 {
+    height: 44px;
+    line-height: 44px;
+    padding: 0 15px;
+    font-size: 16px;
+    border-bottom: 1px solid #F5F5F5
+}
+.relatedProducts-r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 10px 15px
+}
+.relatedProducts-c2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin-left: 10px
+}
+.relatedProducts h3 {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 20px;
+    font-weight: normal
+}
+.relatedProducts-c2r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center
+}
+.relatedProducts-c2r1 a {
+    display: block
+}
+.relatedProducts-price {
+    font-size: 16px
+}
