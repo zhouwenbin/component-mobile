@@ -1,0 +1,85 @@
+/*
+@styleguide
+
+# 发现详情
+
+*/
+.discoveryDetail{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.discoveryDetail .svg{
+  vertical-align: middle;
+}
+.discoveryDetail .icon-star-gray,
+.discoveryDetail .icon-star-red
+{
+  width: 20px;
+  height: 19px;
+}
+.discoveryDetail .icon-tag{
+  width: 14px;
+  height: 14px;
+}
+.discoveryDetail .icon-view{
+  width: 18px;
+  height: 12px;
+}
+.discoveryDetail-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 15px 24px;
+}
+.discoveryDetail-header img{
+  margin-right: 5px;
+  vertical-align: middle;
+  border-radius: 50%;
+}
+.discoveryDetail-header span{
+  font-size: 14px;
+  margin-right: 5px;
+}
+.discoveryDetail-header time{
+  color:#9B9B9B;
+}
+.discoveryDetail-content img{
+  width: 100%;
+}
+.discoveryDetail-content h1{
+  font-size: 18px;
+  line-height: 25px;
+  margin: 0 15px 15px;
+}
+.discoveryDetail-content p{
+  font-size: 14px;
+  line-height: 20px;
+  color: #4A4A4A;
+  margin: 0 15px 15px;
+}
+.discoveryDetail-content h2{
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0 15px 5px;
+}
+.discoveryDetail-footer{
+  padding: 20px 15px 6px;
+}
+.discoveryDetail-footer svg{
+  margin-right: 5px;
+}
+.discoveryDetail-fr{
+  display: flex;
+  margin-bottom: 6px;
+}
+.discoveryDetail-fc2{
+  flex:1;
+}
+.discoveryDetail-fc2 a{
+  margin-bottom: 10px;
+  float: left;
+  margin-right: 15px;
+}
+.discoveryDetail-fc2 strong{
+  color: #F13C34;
+}

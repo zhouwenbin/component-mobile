@@ -1,0 +1,43 @@
+/*
+@styleguide
+
+# 相关商品
+
+*/
+.relatedProducts{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.relatedProducts h2{
+  height: 44px;
+  line-height: 44px;
+  padding: 0 15px;
+  font-size: 16px;
+  border-bottom: 1px solid #F5F5F5;
+}
+.relatedProducts-r1{
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+}
+.relatedProducts-c2{
+  flex:1;
+  margin-left: 10px
+}
+.relatedProducts h3{
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+.relatedProducts-c2r1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.relatedProducts-c2r1 a{
+  display: block;
+}
+.relatedProducts-price{
+  font-size: 16px;
+}
