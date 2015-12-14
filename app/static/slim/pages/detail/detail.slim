@@ -9,6 +9,14 @@
 	<link rel="stylesheet" href="../../../css/pages/detail/detail.css">
 </head>
 <body class="body1">
+	<svg width="0" height="0" xmlns="http://www.w3.org/2000/svg" display="none">
+		<symbol id="icon-cart2" viewBox="0 0 21 21">
+        	<title>Group Copy 7</title><g transform="translate(0 1)" fill="none" fill-rule="evenodd"><path d="M.002.042c2.223.486 2.72 2.427 2.72 2.427l2.013 9.657s.305 1.73 1.59 1.73h11.537" stroke-linecap="round"/><path d="M2.635 2.8H20.26"/><path d="M4.652 11.506l12.68-1.616c.543-.07 1.08-.562 1.203-1.102l1.518-6.738" stroke-linecap="round"/><ellipse cx="6.563" cy="17.466" rx="1.313" ry="1.375"/><ellipse cx="16.188" cy="17.466" rx="1.313" ry="1.375"/></g>
+    	</symbol>
+    	<symbol id="icon-star02" viewBox="0 0 20 19">
+	        <title>Star 1</title><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.57-.955L10 0l2.94 5.955 6.57.955-4.755 4.635 1.123 6.545z" fill="#FFF" fill-rule="evenodd"/>
+		</symbol>
+	</svg>
 	== Slim::Template.new('../../module/header.slim').render	
 	<!--商品-->
 	== Slim::Template.new('../../module/goods.slim').render	
@@ -46,11 +54,22 @@
 	<!--推荐商品-->
 	<section class="nav-cart">
 		<div class="nav-cart-r1">
-			<span class="icon icon47"><span class="dot dot-error">10</span></span>
+			<!-- <span class="icon icon47"><span class="dot dot-error">10</span></span> -->
 			<!-- <button class="btn btn-soon">+ 加入购物车</button>
 			<button class="btn btn-danger">立即购买</button> -->
-			<button class="btn btn-soon">提醒我</button>
-			<button class="btn btn-danger">原价购</button>
+			<a href="" class="detail-icon-star">
+				<svg class="icon-star02"><use xlink:href="#icon-star02"></use></svg>收藏
+			</a>
+			<a href="" class="detail-icon-cart">
+				<span class="icon-cart-box">
+					<svg class="icon-cart"><use xlink:href="#icon-cart2"></use></svg>
+					<span class="dot-error">10</span>
+				</span>购物车
+			</a>
+			<a href="" class="detail-cart-btn detail-cart-btn02">加入购物车</a>
+			<a href="" class="detail-cart-btn">立即购买</a>
+			<!-- <button class="btn btn-soon">提醒我</button>
+			<button class="btn btn-danger">原价购</button> -->
 		</div>
 			
 	</section>
