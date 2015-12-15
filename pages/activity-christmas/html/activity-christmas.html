@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="target-densitydpi=device-dpi,width=640" name="viewport">
+<title>登陆顺丰海淘</title>
+<script src="../js/mobile-util.js"></script>
+<link href="../../../app/static/css/pages/common/common.css" rel="stylesheet" type="text/css" />
+<link href="../css/activity-christmas.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <section class="christmas">
+    <div id="wipe"></div>
+    <p>今日剩余拆礼物次数：10</p>
+  </section>
+  <script src="../js/canvas.js"></script>
+  <script src="../js/wipe.js"></script>
+  <script type="text/javascript">
+    var wipe = new Wipe({
+    el: '#wipe',
+    fg: 'http://img0.sfht.com/cmsres/20151215/47d29e86-d993-4a28-884c-2ac0985e5919.png',
+    size: 50,
+    debug: true,
+    autoWipe: false,
+    data: null,
+    onswiping: function (percent) {
+      if (percent <= 0) return;
+      if (percent < 50) {
+        alert('加油，帅哥，我就快出来了！come on！')
+      } else if (percent > 50) {
+        alert('啊，帅哥，谢谢你解救我，今晚我是你的了哦！')
+      } else if (percent > 80) {
+        alert('哇哇哇！！！啊啊啊！！！再来一次！！！');
+      }
+    }
+  });
+  </script>
+</body>
+</html>
