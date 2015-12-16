@@ -127,7 +127,10 @@
   width: 21px;
   height: 21px;
 }
-.icon-star02.active{
+.detail-icon-star.active{
+  color: #F13C34;
+}
+.detail-icon-star.active .icon-star02{
   stroke:#F13C34;
 }
 .dot-error{
