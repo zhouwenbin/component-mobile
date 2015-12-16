@@ -1,59 +1,171 @@
-/*
-Error: File to import not found or unreadable: ../../module/signin-rule.
-       Load paths:
-         /Users/user/git/haitao-b2c-h5/app/static/scss/pages/other
-         /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bourbon-4.0.2/app/assets/stylesheets
-         /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/neat-1.7.0/app/assets/stylesheets
-         /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bitters-0.10.1/app/assets/stylesheets
-         /Users/user/git/haitao-b2c-h5/app/static/scss/pages/other/sass
-         /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/compass-core-1.0.1/stylesheets
-         Compass::SpriteImporter
-        on line 8 of other.scss
+@charset "UTF-8";
+/*@import '../../utils/variables';
 
-3: @import '../../module/404';
-4: @import '../../module/agreement';
-5: @import '../../module/login';
-6: @import '../../module/refundtax';
-7: @import '../../module/service';
-8: @import '../../module/signin-rule';
+@import '../../module/404';
+@import '../../module/agreement';
+@import '../../module/login';*/
+/*申请*/
+.refundtax-box {
+  height: 100%;
+  background-color: #f2f2f2;
+  font-size: 14px; }
 
-Backtrace:
-other.scss:8
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:66:in `rescue in import'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:45:in `import'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:28:in `imported_file'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/import_node.rb:37:in `css_import?'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:301:in `visit_import'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
-/Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
-/Applications/Prepros.app/Contents/Resources/app/ruby/loader.rb:15:in `load'
-/Applications/Prepros.app/Contents/Resources/app/ruby/loader.rb:15:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: ../../module/signin-rule.\A        Load paths:\A          /Users/user/git/haitao-b2c-h5/app/static/scss/pages/other\A          /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bourbon-4.0.2/app/assets/stylesheets\A          /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/neat-1.7.0/app/assets/stylesheets\A          /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/bitters-0.10.1/app/assets/stylesheets\A          /Users/user/git/haitao-b2c-h5/app/static/scss/pages/other/sass\A          /Applications/Prepros.app/Contents/Resources/app/ruby/ruby_gems/gems/compass-core-1.0.1/stylesheets\A          Compass::SpriteImporter\A         on line 8 of other.scss\A \A 3: @import '../../module/404';\A 4: @import '../../module/agreement';\A 5: @import '../../module/login';\A 6: @import '../../module/refundtax';\A 7: @import '../../module/service';\A 8: @import '../../module/signin-rule';"; }
+.refundtax-list li {
+  width: 100%;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee; }
+  .refundtax-list li:last-child .refundtax-inner {
+    padding: 0 0 0 113px;
+    height: 115px;
+    display: table; }
+  .refundtax-list li .text-important {
+    font-size: 14px;
+    padding-left: 15px;
+    height: 22px;
+    line-height: 16px; }
+.refundtax-list .upload-box {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle; }
+  .refundtax-list .upload-box .comment-add-img-add {
+    display: block;
+    line-height: 115px; }
+  .refundtax-list .upload-box svg {
+    vertical-align: -1px;
+    margin-right: 2px; }
+.refundtax-list .icon-paper {
+  position: relative;
+  height: 100%; }
+  .refundtax-list .icon-paper .img-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+.refundtax-list .text {
+  padding: 10px;
+  border: 0 none;
+  width: 98%;
+  font-size: 14px; }
+
+.refundtax-inner {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 6px 0 6px 113px; }
+  .refundtax-inner span {
+    display: inline-block;
+    text-align: left;
+    padding-left: 15px;
+    margin-left: -113px;
+    width: 113px;
+    color: #9b9b9b;
+    border-right: 1px solid #dcdcdc;
+    height: 35px;
+    line-height: 35px; }
+
+.refundtax-btn-box {
+  padding: 10px 15px; }
+  .refundtax-btn-box .btn {
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px; }
+  .refundtax-btn-box p {
+    line-height: 16px;
+    color: #999;
+    margin-bottom: 15px; }
+
+.dialog-big-img {
+  z-index: 999;
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+#errorNoPicTips {
+  font-size: 14px;
+  margin-top: 10px; }
+
+.dialog-refundtax {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 999;
+  color: #fff;
+  background: #333;
+  background: rgba(51, 51, 51, 0.9);
+  font-size: 14px;
+  padding: 20px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  text-align: center; }
+
+a.refundtax-qmark {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  text-align: center;
+  /*padding: 11px;*/ }
+
+a.refundtax-qmark::after {
+  content: "?";
+  top: 11px;
+  right: 10px;
+  position: absolute;
+  background-color: #5F97D9;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
+
+.refundtax-pic-box {
+  padding: 0 15px;
+  background-color: #fff;
+  line-height: 1.3; }
+
+.refundtax-pic-box h2 {
+  position: relative;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  padding: 0 15px;
+  font-weight: 400;
+  padding: 15px 0; }
+
+.refundtax-pic-box img {
+  width: 100%;
+  margin-top: 10px; }
+
+.refundtax-pic-box h2::before,
+.refundtax-pic-box h2::after {
+  content: "";
+  position: absolute;
+  border-top: 1px solid #4A4A4A;
+  width: 32%;
+  top: 25px; }
+
+.refundtax-pic-box h2::before {
+  left: 0px; }
+
+.refundtax-pic-box h2::after {
+  right: 0px; }
+
+.refundtax-pic-box li {
+  margin-top: 15px; }
+
+/*@import '../../module/service';*/
+/*@import '../../module/signin-rule';*/

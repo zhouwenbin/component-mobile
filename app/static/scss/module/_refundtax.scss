@@ -109,3 +109,61 @@
 	border-radius: 4px;
 	text-align: center;
 }
+a.refundtax-qmark{
+	position: absolute;
+	right: 5px;
+	top: 2px;
+	color: #fff;
+	width: 44px;
+	height: 44px;
+	line-height: 44px;
+	border-radius: 50%;
+	text-align: center;
+	/*padding: 11px;*/
+}
+a.refundtax-qmark::after{
+	content: "?";
+	top: 11px;
+	right: 10px;
+	position: absolute;
+	background-color: #5F97D9;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	border-radius: 50%;
+}
+.refundtax-pic-box{
+	padding: 0 15px;
+	background-color: #fff;
+	line-height: 1.3;
+}
+.refundtax-pic-box h2{
+	position: relative;
+	font-size: 16px;
+	color: #333;
+	text-align: center;
+	padding: 0 15px;
+	font-weight: 400;
+	padding: 15px 0;
+}
+.refundtax-pic-box img{
+	width: 100%;
+	margin-top: 10px;
+}
+.refundtax-pic-box h2::before,
+.refundtax-pic-box h2::after{
+	content: "";
+	position: absolute;
+	border-top: 1px solid #4A4A4A;
+	width: 32%;
+	top: 25px;
+}
+.refundtax-pic-box h2::before{
+	left: 0px;
+}
+.refundtax-pic-box h2::after{
+	right: 0px;
+}
+.refundtax-pic-box li{
+	margin-top: 15px;
+}
