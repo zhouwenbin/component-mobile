@@ -8,7 +8,9 @@ var cssnext = require("gulp-cssnext");
 var precss = require("precss");
 var path = require("path");
 var browserSync = require('browser-sync').create();
-var reload      = browserSync.reload;
+var reload = browserSync.reload;
+var sass = require('gulp-sass');
+var slim = require("gulp-slim");
 var modules = fs.readdirSync("modules");
 var pages = fs.readdirSync("pages");
 
@@ -85,6 +87,24 @@ gulp.task('serve', function () {
       gulp.watch("pages/"+ pages[i] +"/html/*.html").on("change", browserSync.reload);
       gulp.watch("pages/"+ pages[i] +"/css/*.css").on("change", browserSync.reload);
     }
+});
+
+gulp.task('sass', function () {
+  gulp.src('./app/static/scss/pages/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(cssnext())
+    .pipe(gulp.dest('./app/static/css/pages'));
+});
+gulp.task('sass:watch', function () {
+  gulp.watch('./app/static/scss/pages/**/*.scss', ['sass']);
+});
+gulp.task('slim', function(){
+  gulp.src("./app/static/slim/pages/**/*.slim")
+    .pipe(slim({
+      pretty: true,
+      chdir: true
+    }))
+    .pipe(gulp.dest("./app/static/html/pages/"));
 });
 
 gulp.task('default', ['watch', 'css', 'html', 'serve']);
