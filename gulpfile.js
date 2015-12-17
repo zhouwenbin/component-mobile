@@ -97,6 +97,7 @@ gulp.task('sass', function () {
 });
 gulp.task('sass:watch', function () {
   gulp.watch('./app/static/scss/pages/**/*.scss', ['sass']);
+  gulp.watch('./app/static/scss/**/*.scss', ['sass']);
 });
 gulp.task('slim', function(){
   gulp.src("./app/static/slim/pages/**/*.slim")

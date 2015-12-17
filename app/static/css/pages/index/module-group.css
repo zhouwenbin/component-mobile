@@ -470,9 +470,11 @@ img {
   border-radius: 46px;
   padding: 0 20px; }
 
-.line-goods-list li {
-  position: relative;
+.line-goods-list {
   overflow: hidden; }
+
+.line-goods-list li {
+  position: relative; }
 
 .line-goods-list .btn-danger {
   position: absolute;
@@ -480,7 +482,7 @@ img {
   line-height: 100%;
   font-size: 34px;
   position: absolute;
-  right: -100%;
+  right: -118px;
   top: 0; }
 
 .popup-select {

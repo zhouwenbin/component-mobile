@@ -1,6 +1,8 @@
+.line-goods-list{
+	overflow: hidden;
+}
 .line-goods-list li{
 	position: relative;
-	overflow: hidden;
 }
 .line-goods-list .btn-danger{
 	position: absolute;
@@ -8,6 +10,6 @@
     line-height: 100%;
     font-size: 34px;
     position: absolute;
-    right: -100%;
+    right: -118px;
     top: 0;
 }
