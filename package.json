@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.10.0",
+    "browser-sync": "^2.10.1",
     "gulp-cssnext": "^1.0.1",
     "gulp-filter": "^3.0.1",
     "gulp-html-tag-include": "^1.0.1",

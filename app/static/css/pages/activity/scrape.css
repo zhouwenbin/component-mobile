@@ -1,1 +1,210 @@
-body{width:640px}.scrape-pm{background:#FCAA19;min-height:100%;padding-bottom:54px}.scrape{background:url(http://img.sfht.com/sfhth5/1.1.393/img/scrape/scrape-bg.png) center 0 no-repeat;padding-top:370px;padding:370px 20px 0;position:relative;min-height:666px}.scrape-box{background:url(http://img.sfht.com/sfhth5/1.1.393/img/scrape/scrape-box.png) center bottom no-repeat;padding:20px 22px 26px;height:332px}.scrape-box .text{position:relative;display:inline-block;background-color:#DCDCDC;width:100%;height:100%;text-align:center}.scrape-box .text-bg{display:inline-block;background:url(http://img.sfht.com/sfhth5/1.1.393/img/scrape/sracpe-text.png) center center no-repeat;-webkit-background-size:100% auto;background-size:100% auto;width:254px;height:66px;font-size:0}.scrap-items{padding:0 30px}.scrape-times{padding:0 64px;position:relative;margin-top:56px}.scrap-arrow-left,.scrap-arrow-right{position:absolute;display:inline-block;width:60px;height:60px;background:#DE5336;top:26px}.scrap-arrow-left{left:0}.scrap-arrow-right{right:0}.scrap-arrow-left::before,.scrap-arrow-right::after{position:absolute;content:"";border:30px dashed transparent}.scrap-arrow-left::before{border-left:16px solid #FCAA19;left:-1px}.scrap-arrow-right::after{border-right:16px solid #FCAA19;right:-1px}.scrape-times-inner{display:inline-block;color:#FFB09F;font-size:28px;background:#DE5336;width:100%;height:78px;line-height:78px;text-align:center}.scrape-num{font-size:36px;color:#fff;padding:0 10px}.scrape-winner{position:relative;background:#BD6803;width:100%;overflow:hidden;padding:0 16px;color:#FFF0B4;font-size:24px;margin-top:48px}.scrape-winner::after{content:"";position:absolute;top:0;right:0;width:16px;height:100%;background:#BD6803}.scrape-winner-list{white-space:nowrap;width:1000%;height:52px;line-height:52px}.scrape-winner-list li{float:left;margin-left:40px}.scrape-winner-list li:first-child{margin-left:0}.scrape-tips{margin-top:20px;font-size:24px;text-align:center;color:#FFF0B4}.scrape-ticket-box{color:#333}.scrape-ticket-box .btn-box{padding:0 60px}.scrape-goods{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin-top:-10px}.scrape-goods-c1{padding-top:10px;margin-right:12px}.scrape-goods-c1 img{width:172px;height:172px}.scrape-goods-c2{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1}.scrape-ticket-goods{padding-top:10px;font-size:28px;line-height:1.2}.scrape-ticket{font-size:40px;color:#FF6646;margin-top:16px}.scrape-ticket-times{font-size:24px;margin-top:20px}.scrape-btn-box{margin:16px 30px 0}.scrape-btn-box .btn{display:inline-block;width:100%;text-align:center;background-color:#FF6646;font-size:32px;-webkit-border-radius:8px;border-radius:8px;-webkit-box-shadow:0 4px #DE5336;box-shadow:0 4px #DE5336;height:88px;line-height:88px}.scrape-btn-box .btn{color:#fff}.scrape-ticket-none .scrape-ticket-none-bg{height:144px;position:relative;margin-top:14px}.scrape-ticket-none .btn-box{margin-top:34px}.scrape-ticket-none-bg .icon{background:#fff url(http://img.sfht.com/sfhth5/1.1.393/img/scrape/cry.png) center 0 no-repeat;width:118px;height:144px}.scrape-ticket-none .scrape-btn-box{margin-top:34px}.scrape-ticket-gift{text-align:center}.scrape-ticket-tips{margin-top:20px;font-size:24px;color:#999}.scrape-ticket-gift .scrape-btn-box{margin-top:22px}.scrape-ticket-gift .scrape-ticket-times{margin-top:32px}
+body {
+  width: 640px; }
+
+.scrape-pm {
+  background: #FCAA19;
+  min-height: 100%;
+  padding-bottom: 54px; }
+
+.scrape {
+  background: url(http://img.sfht.com/sfhth5/1.1.393/img/scrape/scrape-bg.png) center 0 no-repeat;
+  padding-top: 370px;
+  padding: 370px 20px 0;
+  position: relative;
+  min-height: 666px; }
+
+.scrape-box {
+  background: url(http://img.sfht.com/sfhth5/1.1.393/img/scrape/scrape-box.png) center bottom no-repeat;
+  padding: 20px 22px 26px;
+  height: 332px; }
+
+.scrape-box .text {
+  position: relative;
+  display: inline-block;
+  background-color: #DCDCDC;
+  width: 100%;
+  height: 100%;
+  text-align: center; }
+
+.scrape-box .text-bg {
+  display: inline-block;
+  background: url(http://img.sfht.com/sfhth5/1.1.393/img/scrape/sracpe-text.png) center center no-repeat;
+  background-size: 100% auto;
+  width: 254px;
+  height: 66px;
+  font-size: 0; }
+
+.scrap-items {
+  padding: 0 30px; }
+
+.scrape-times {
+  padding: 0 64px;
+  position: relative;
+  margin-top: 56px; }
+
+.scrap-arrow-left,
+.scrap-arrow-right {
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background: #DE5336;
+  top: 26px; }
+
+.scrap-arrow-left {
+  left: 0; }
+
+.scrap-arrow-right {
+  right: 0; }
+
+.scrap-arrow-left:before,
+.scrap-arrow-right:after {
+  position: absolute;
+  content: "";
+  border: 30px dashed transparent; }
+
+.scrap-arrow-left:before {
+  border-left: 16px solid #FCAA19;
+  left: -1px; }
+
+.scrap-arrow-right:after {
+  border-right: 16px solid #FCAA19;
+  right: -1px; }
+
+.scrape-times-inner {
+  display: inline-block;
+  color: #FFB09F;
+  font-size: 28px;
+  background: #DE5336;
+  width: 100%;
+  height: 78px;
+  line-height: 78px;
+  text-align: center; }
+
+.scrape-num {
+  font-size: 36px;
+  color: #fff;
+  padding: 0 10px; }
+
+.scrape-winner {
+  position: relative;
+  background: #BD6803;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 16px;
+  color: #FFF0B4;
+  font-size: 24px;
+  margin-top: 48px; }
+
+.scrape-winner:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 100%;
+  background: #BD6803; }
+
+.scrape-winner-list {
+  white-space: nowrap;
+  width: 1000%;
+  height: 52px;
+  line-height: 52px; }
+
+.scrape-winner-list li {
+  float: left;
+  margin-left: 40px; }
+  .scrape-winner-list li:first-child {
+    margin-left: 0; }
+
+.scrape-tips {
+  margin-top: 20px;
+  font-size: 24px;
+  text-align: center;
+  color: #FFF0B4; }
+
+.scrape-ticket-box {
+  color: #333; }
+  .scrape-ticket-box .btn-box {
+    padding: 0 60px; }
+
+.scrape-goods {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: -10px; }
+
+.scrape-goods-c1 {
+  padding-top: 10px;
+  margin-right: 12px; }
+  .scrape-goods-c1 img {
+    width: 172px;
+    height: 172px; }
+
+.scrape-goods-c2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+.scrape-ticket-goods {
+  padding-top: 10px;
+  font-size: 28px;
+  line-height: 1.2; }
+
+.scrape-ticket {
+  font-size: 40px;
+  color: #FF6646;
+  margin-top: 16px; }
+
+.scrape-ticket-times {
+  font-size: 24px;
+  margin-top: 20px; }
+
+.scrape-btn-box {
+  margin: 16px 30px 0; }
+
+.scrape-btn-box .btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background-color: #FF6646;
+  font-size: 32px;
+  border-radius: 8px;
+  box-shadow: 0 4px #DE5336;
+  height: 88px;
+  line-height: 88px; }
+
+.scrape-btn-box .btn {
+  color: #fff; }
+
+.scrape-ticket-none .scrape-ticket-none-bg {
+  height: 144px;
+  position: relative;
+  margin-top: 14px; }
+
+.scrape-ticket-none .btn-box {
+  margin-top: 34px; }
+
+.scrape-ticket-none-bg .icon {
+  background: #fff url(http://img.sfht.com/sfhth5/1.1.393/img/scrape/cry.png) center 0 no-repeat;
+  width: 118px;
+  height: 144px; }
+
+.scrape-ticket-none .scrape-btn-box {
+  margin-top: 34px; }
+
+.scrape-ticket-gift {
+  text-align: center; }
+
+.scrape-ticket-tips {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #999; }
+
+.scrape-ticket-gift .scrape-btn-box {
+  margin-top: 22px; }
+
+.scrape-ticket-gift .scrape-ticket-times {
+  margin-top: 32px; }

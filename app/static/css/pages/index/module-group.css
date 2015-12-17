@@ -477,6 +477,18 @@ img {
           border-radius: 46px;
   padding: 0 20px; }
 
+.line-goods-list li {
+  position: relative; }
+
+.line-goods-list .btn-danger {
+  position: absolute;
+  height: 100%;
+  line-height: 100%;
+  font-size: 17px;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
 .popup-select {
   position: fixed;
   z-index: 999;
