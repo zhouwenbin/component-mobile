@@ -96,21 +96,20 @@ body {
           animation: shake 2s infinite; }
 
 @-webkit-keyframes shake {
-  0%, 25%, 50% {
+  0%,25%,50% {
     -webkit-transform: rotate(30deg);
             transform: rotate(30deg); }
-  12.5%, 37.5% {
+  12.5%,37.5% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg); } }
 
 @keyframes shake {
-  0%, 25%, 50% {
+  0%,25%,50% {
     -webkit-transform: rotate(30deg);
             transform: rotate(30deg); }
-  12.5%, 37.5% {
+  12.5%,37.5% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg); } }
-
 .shaking {
   padding-top: 50px; }
 

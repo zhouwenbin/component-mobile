@@ -219,6 +219,7 @@
     font-size: 48px; } }
 .list .mask {
   position: absolute;
+  background-color: #FFFFFF;
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 1; }
 
@@ -239,15 +240,12 @@
   width: 200%;
   height: 200%;
   -webkit-transform: scale(0.5);
-      -ms-transform: scale(0.5);
           transform: scale(0.5);
   -webkit-transform-origin: 0 0;
-      -ms-transform-origin: 0 0;
           transform-origin: 0 0;
   left: 0;
   top: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  box-sizing: border-box; }
 
 .list li a {
   display: block; }
@@ -271,8 +269,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  -webkit-border-radius: 0;
-          border-radius: 0; }
+  border-radius: 0; }
 
 .list-r1 img {
   width: 100%; }

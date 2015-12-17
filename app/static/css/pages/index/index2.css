@@ -40,8 +40,7 @@
 
 .nav2 ul {
   padding: 0 10px;
-  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.32);
-          box-shadow: 0 0 2px rgba(0, 0, 0, 0.32); }
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.32); }
 
 .nav2 li {
   height: 40px;
@@ -56,8 +55,7 @@
 
   .nav2 ul {
     padding: 0 20px;
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.32);
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.32); }
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.32); }
 
   .nav2 li {
     height: 80px;
@@ -271,6 +269,7 @@
   font-weight: normal; }
 
 .flashsale2 .mask {
+  background: #FFFFFF;
   background: rgba(255, 255, 255, 0.5);
   position: absolute; }
 
@@ -290,8 +289,7 @@
 .flashsale2 time span {
   width: 20px;
   height: 20px;
-  -webkit-border-radius: 2px;
-          border-radius: 2px;
+  border-radius: 2px;
   line-height: 20px;
   margin: 0 4px; }
 
@@ -332,8 +330,7 @@
   .flashsale2 time span {
     width: 40px;
     height: 40px;
-    -webkit-border-radius: 4px;
-            border-radius: 4px;
+    border-radius: 4px;
     line-height: 40px;
     margin: 0 8px; }
 
@@ -512,6 +509,7 @@
   color: #b3b3b3; }
 
 .daily .mask {
+  background: #FFFFFF;
   background: rgba(255, 255, 255, 0.5);
   position: absolute;
   z-index: 1; }

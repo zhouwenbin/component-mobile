@@ -32,8 +32,7 @@ body {
   text-indent: 22px;
   border: none;
   background-color: #f2f2f2;
-  -webkit-border-radius: 4px;
-          border-radius: 4px; }
+  border-radius: 4px; }
 
 .searchInputWrap .zoomIcon {
   position: absolute;

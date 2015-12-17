@@ -14,3 +14,4 @@ cordova.js
 .iml
 app/static/prepros.cfg
 rules
+.sass-cache

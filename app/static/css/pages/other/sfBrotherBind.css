@@ -89,10 +89,8 @@
     width: 80%;
     height: 43px;
     line-height: 43px;
-    -webkit-box-shadow: 0 3px 0px #ba1d1c;
-            box-shadow: 0 3px 0px #ba1d1c;
-    -webkit-border-radius: 4px;
-            border-radius: 4px;
+    box-shadow: 0 3px 0px #ba1d1c;
+    border-radius: 4px;
     font-size: 16px; }
 
 .sfBrotherDTab {
@@ -124,8 +122,7 @@
     position: relative; }
   .sfBrotherDTCn01 .imageShow {
     background: url(http://img.sfht.com/sfhth5/1.1.393/img/sfBrotherBind/coupon.png) no-repeat;
-    -webkit-background-size: 105px auto;
-            background-size: 105px auto;
+    background-size: 105px auto;
     width: 105px;
     height: 53px;
     padding-top: 8px;

@@ -77,8 +77,7 @@
   display: inline-block;
   vertical-align: middle;
   color: #fff;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   text-align: center;
   float: left;
   margin-left: -21px; }
@@ -91,8 +90,7 @@
 .goodinfo-stowage-c2 {
   display: inline-block;
   margin-left: 15px;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
+  border-radius: 4px;
   background: #dcdcdc;
   color: #fff;
   padding: 5px; }
@@ -189,6 +187,7 @@
   border-color: #dadada;
   border-style: solid;
   -webkit-border-image: none;
+       -o-border-image: none;
           border-image: none; }
 
 .order-success .icon43,
@@ -262,7 +261,6 @@
 
 .orderinfo .active .icon52 {
   -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
           transform: rotate(180deg); }
 
 /*info*/
@@ -442,8 +440,7 @@
   line-height: 16px;
   color: #fff;
   background: #ff5b54;
-  -webkit-border-radius: 16px;
-          border-radius: 16px;
+  border-radius: 16px;
   font-size: 12px; }
 
 .coupon-use {
@@ -486,8 +483,7 @@
   height: 42px;
   line-height: 42px;
   background: #fff;
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  border-radius: 0;
   border-left: 0;
   border-right: 0;
   -webkit-appearance: button; }
@@ -618,8 +614,7 @@
   content: '';
   width: 8px;
   height: 8px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   background: #ccc;
   border: 2px solid #ccc;
   position: absolute;
@@ -753,8 +748,7 @@
   border: none;
   font-size: 16px; }
 .address-detail input:active {
-  -webkit-box-shadow: none;
-          box-shadow: none; }
+  box-shadow: none; }
 .address-detail .last {
   display: -webkit-box;
   display: -webkit-flex;
@@ -814,8 +808,7 @@
   height: 42px;
   line-height: 42px;
   background: #fff;
-  -webkit-border-radius: 0;
-          border-radius: 0;
+  border-radius: 0;
   border-left: 0;
   border-right: 0;
   -webkit-appearance: button; }
@@ -847,6 +840,7 @@
   font-size: 18px; }
 
 .integral-r1c1 {
+  color: #000000;
   color: rgba(0, 0, 0, 0.45); }
 
 .integral-r1c2 {
@@ -929,10 +923,8 @@
 .signin-rule table {
   width: 100%;
   background: #FF5B54;
-  -webkit-border-radius: 9px;
-          border-radius: 9px;
-  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
-          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 9px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 19px;
   table-layout: fixed; }
 
@@ -951,6 +943,7 @@
   font-size: 18px; }
 
 .signin-rule th {
+  color: #4A4A4A;
   color: rgba(74, 74, 74, 0.46);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   position: relative; }
@@ -981,8 +974,7 @@
   display: inline-block;
   width: 6px;
   height: 6px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   background: #FF5B54;
   margin-right: 7px; }
 
@@ -1136,8 +1128,7 @@
   content: '';
   width: 6px;
   height: 6px;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   border: 2px solid #dc3334;
   position: absolute;
   margin-left: -25px;
@@ -1275,7 +1266,6 @@
     left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
 .refundtax-list .text {
   padding: 10px;
@@ -1317,7 +1307,6 @@
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
 
 #errorNoPicTips {
@@ -1329,7 +1318,6 @@
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: 999;
   color: #fff;
@@ -1337,6 +1325,63 @@
   background: rgba(51, 51, 51, 0.9);
   font-size: 14px;
   padding: 20px;
-  -webkit-border-radius: 4px;
-          border-radius: 4px;
+  border-radius: 4px;
   text-align: center; }
+
+a.refundtax-qmark {
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 50%;
+  text-align: center;
+  /*padding: 11px;*/ }
+
+a.refundtax-qmark:after {
+  content: "?";
+  top: 11px;
+  right: 10px;
+  position: absolute;
+  background-color: #5F97D9;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 50%; }
+
+.refundtax-pic-box {
+  padding: 0 15px;
+  background-color: #fff;
+  line-height: 1.3; }
+
+.refundtax-pic-box h2 {
+  position: relative;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  padding: 0 15px;
+  font-weight: 400;
+  padding: 15px 0; }
+
+.refundtax-pic-box img {
+  width: 100%;
+  margin-top: 10px; }
+
+.refundtax-pic-box h2:before,
+.refundtax-pic-box h2:after {
+  content: "";
+  position: absolute;
+  border-top: 1px solid #4A4A4A;
+  width: 32%;
+  top: 25px; }
+
+.refundtax-pic-box h2:before {
+  left: 0px; }
+
+.refundtax-pic-box h2:after {
+  right: 0px; }
+
+.refundtax-pic-box li {
+  margin-top: 15px; }

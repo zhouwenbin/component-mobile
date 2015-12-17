@@ -9,7 +9,7 @@ var precss = require("precss");
 var path = require("path");
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
-var sass = require('gulp-sass');
+var sass = require('gulp-ruby-sass');
 var slim = require("gulp-slim");
 var modules = fs.readdirSync("modules");
 var pages = fs.readdirSync("pages");
@@ -90,8 +90,8 @@ gulp.task('serve', function () {
 });
 
 gulp.task('sass', function () {
-  gulp.src('./app/static/scss/pages/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+  return sass('./app/static/scss/pages/**/*.scss')
+    .on('error', sass.logError)
     .pipe(cssnext())
     .pipe(gulp.dest('./app/static/css/pages'));
 });
