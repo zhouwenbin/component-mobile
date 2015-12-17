@@ -478,7 +478,8 @@ img {
   padding: 0 20px; }
 
 .line-goods-list li {
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .line-goods-list .btn-danger {
   position: absolute;
