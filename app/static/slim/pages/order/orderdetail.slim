@@ -4,12 +4,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>顺丰海淘详情页</title>
-	<link rel="stylesheet" href="../css/common.css">
-	<link rel="stylesheet" href="../css/order.css">
+	<link rel="stylesheet" href="../../../css/pages/common/common.css">
+	<link rel="stylesheet" href="../../../css/pages/order/order.css">
 
 </head>
 <body class="body1">
-	== Slim::Template.new('../../module/header.slim').render	
+	== Slim::Template.new('../../module/header.slim').render
 	<!--订单详情-->
 	== Slim::Template.new('../../module/orderdetail.slim').render
 	<!--立即购买-->
@@ -18,8 +18,8 @@
 			<div class="nav-c2">
 				<button class="btn btn-danger btn-big">去支付</button>
 			</div>
-			
-		</div>		
+
+		</div>
 	</section>
 	<!--立即购买-->
 	<script src="../js/zepto.min.js"></script>

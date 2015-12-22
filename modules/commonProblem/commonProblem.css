@@ -1,0 +1,47 @@
+/*
+@styleguide
+
+# 常见问题
+
+*/
+.commonProblem{
+  background: #fff;
+  margin-bottom: 10px;
+}
+.commonProblem h2{
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  padding-left: 12px;
+  font-weight: normal;
+}
+.commonProblem h2 span{
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: #60c2d7;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  position: relative;
+}
+.commonProblem h2 svg{
+  position: absolute;
+  left:50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.commonProblem li{
+  height: 44px;
+  line-height: 44px;
+  padding-left: 10px;
+  border-top: 1px solid #f7f7f9;
+}
+.commonProblem li a{
+  color: #666;
+}
+.commonProblem .icon-message{
+  width: 15px;
+  height: 12px;
+  fill:#fff;
+}

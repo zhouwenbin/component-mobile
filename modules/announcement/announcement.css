@@ -1,0 +1,16 @@
+/*
+@styleguide
+
+# 公告
+
+*/
+.announcement{
+  color: #f18629;
+  height: 44px;
+  line-height: 44px;
+  background: #fbe7c6;
+  padding-left: 13px;
+}
+.announcement svg{
+  margin-right: 10px;
+}

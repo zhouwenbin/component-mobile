@@ -1,0 +1,161 @@
+/*
+@styleguide
+
+# 公告
+
+*/
+.announcement {
+    color: #f18629;
+    height: 44px;
+    line-height: 44px;
+    background: #fbe7c6;
+    padding-left: 13px
+}
+.announcement svg {
+    margin-right: 10px
+}
+/*
+@styleguide
+
+# 自助服务
+
+*/
+.selfService {
+    background: #fff;
+    margin-bottom: 10px
+}
+.selfService h2 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    padding-left: 12px;
+    font-weight: normal
+}
+.selfService h2 svg {
+    margin-right: 10px
+}
+.selfService ul {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+.selfService li {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-align: center;
+    border-top: 1px solid #f7f7f9;
+    border-right: 1px solid #f7f7f9;
+    padding-top: 4px;
+    padding-bottom: 18px;
+    color: #666
+}
+.selfService li svg {
+    fill: #666;
+    display: inline-block;
+    vertical-align: middle
+}
+.selfService .icon-delivery {
+    width: 22px;
+    height: 22px
+}
+.selfService .icon-airplane {
+    width: 21px;
+    height: 23px
+}
+.selfService .icon-bookmark {
+    width: 25px;
+    height: 22px
+}
+.selfService .icon-edit {
+    width: 19px;
+    height: 29px
+}
+.selfService div {
+    height: 49px
+}
+.selfService div:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle
+}
+/*
+@styleguide
+
+# 常见问题
+
+*/
+.commonProblem {
+    background: #fff;
+    margin-bottom: 10px
+}
+.commonProblem h2 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    padding-left: 12px;
+    font-weight: normal
+}
+.commonProblem h2 span {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: #60c2d7;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    position: relative
+}
+.commonProblem h2 svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%)
+}
+.commonProblem li {
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+    border-top: 1px solid #f7f7f9
+}
+.commonProblem li a {
+    color: #666
+}
+.commonProblem .icon-message {
+    width: 15px;
+    height: 12px;
+    fill: #fff
+}
+/*
+@styleguide
+
+# 常见问题
+
+*/
+.commonProblem {
+    background: #fff;
+    margin-bottom: 10px
+}
+.commonProblem h2 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    padding-left: 12px;
+    font-weight: normal
+}
+.commonProblem h2 svg {
+    margin-right: 10px
+}
+.commonProblem li {
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+    border-top: 1px solid #f7f7f9
+}
+.commonProblem li a {
+    color: #666
+}

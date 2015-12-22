@@ -1,0 +1,50 @@
+/*
+@styleguide
+
+# 客服头部
+
+*/
+.service-header {
+    height: 44px;
+    line-height: 44px;
+    background: #fff;
+    border-bottom: 1px solid #d9d8dd
+}
+.service-header h1 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+    color: #666
+}
+.service-header a {
+    position: absolute;
+    left: 25px;
+    font-size: 16px;
+    color: #666
+}
+/*
+@styleguide
+
+# 问题详情
+
+*/
+.problemDetail {
+    background: #fff;
+    font-size: 14px
+}
+.problemDetail svg {
+    float: left;
+    margin-left: -28px
+}
+.problemDetail dt {
+    border-bottom: 1px solid #efeff4;
+    line-height: 21px;
+    padding: 11px 0 11px 40px
+}
+.problemDetail dd {
+    color: #666;
+    line-height: 21px;
+    padding-left: 40px;
+    padding-top: 6px;
+    padding-bottom: 6px
+}
