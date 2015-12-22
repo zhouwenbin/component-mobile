@@ -104,6 +104,8 @@
 }
 .detail-icon-cart,
 .detail-icon-star{
+  display: inline-block;
+  vertical-align: middle;
   text-align: center;
   color: #979DA9;
   width: 54px;
@@ -139,6 +141,7 @@
   left: 30px;
 }
 .detail-cart-btn{
+  display: block;
   flex: 1;
   text-align: center;
   background: #F13C34;

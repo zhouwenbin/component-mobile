@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="18px" height="19px" viewBox="0 0 18 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_search copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-9" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="App-empty-Copy" sketch:type="MSArtboardGroup" transform="translate(-210.000000, -33.000000)">
+            <g id="btn_search-copy" sketch:type="MSLayerGroup" transform="translate(220.523570, 43.019649) rotate(-45.000000) translate(-220.523570, -43.019649) translate(213.023570, 31.990237)">
+                <circle id="Oval-54" stroke="#FFFFFF" sketch:type="MSShapeGroup" cx="7.41421356" cy="7.41421356" r="7"></circle>
+                <path d="M6,20.8776042 C6,21.4298889 6.22385763,21.8776042 6.5,21.8776042 C6.77614237,21.8776042 7,21.4298889 7,20.8776042 L7,14.8776042 C7,14.3253194 6.77614237,14.4584961 6.5,14.4584961 C6.22385763,14.4584961 6,14.3253194 6,14.8776042 L6,20.8776042 Z" id="Shape" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

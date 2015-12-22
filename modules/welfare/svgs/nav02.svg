@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="66px" height="66px" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>svg2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path id="path-1" d="M16.5,33 C25.6126984,33 33,25.6126984 33,16.5 C33,7.38730163 25.6126984,0 16.5,0 C7.38730163,0 0,7.38730163 0,16.5 C0,25.6126984 7.38730163,33 16.5,33 Z"></path>
+        <path id="path-3" d="M4.4824548,24.3928401 C4.4824548,24.3928401 3.03974646,3.08534498 8.39586625,1.35941725 C11.4805014,0.263811744 7.50784545,14.5422292 12.3639649,23.9234301"></path>
+    </defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="首页-copy" sketch:type="MSArtboardGroup" transform="translate(-104.000000, -251.000000)">
+            <g id="Group-Copy-7" sketch:type="MSLayerGroup" transform="translate(0.000000, 238.000000)">
+                <g id="Rectangle-61-Copy-5-+-Bitmap-+-摇优惠-Copy-Copy-Copy-Copy" transform="translate(103.000000, 13.000000)">
+                    <g id="svg2" transform="translate(1.000000, 0.000000)">
+                        <mask id="mask-2" sketch:name="Mask" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#F2F2F2" sketch:type="MSShapeGroup" xlink:href="#path-1"></use>
+                        <rect id="Rectangle-87" fill="#4A4A4A" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="5" y="9" width="24" height="30" rx="1"></rect>
+                        <rect id="Rectangle-89" fill="#9B9B9B" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="13" y="11" width="8" height="1" rx="1"></rect>
+                        <rect id="Rectangle-87-Copy" fill="#B5D7FF" sketch:type="MSShapeGroup" mask="url(#mask-2)" x="7" y="13" width="20" height="25"></rect>
+                        <path d="M6.9858398,21.5146483 L21.1362301,17.956543 L23.1748046,27.0576172 L6.9858398,31.3051758 L6.9858398,21.5146483 Z" id="Rectangle-90" fill="#FFFFFF" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                        <g id="Path-89-+-Path-89-Copy" mask="url(#mask-2)">
+                            <g transform="translate(15.000000, 15.000000)">
+                                <mask id="mask-4" sketch:name="Mask" fill="white">
+                                    <use xlink:href="#path-3"></use>
+                                </mask>
+                                <use id="Mask" stroke="none" fill="#FFD19B" fill-rule="evenodd" sketch:type="MSShapeGroup" transform="translate(8.334790, 12.846374) rotate(-19.000000) translate(-8.334790, -12.846374) " xlink:href="#path-3"></use>
+                                <path d="M4.51241712,26.5908013 C4.51241712,26.5908013 4.08262487,5.28330618 5.678248,3.55737844 C6.59718098,2.46177294 5.41370079,16.7401904 6.86037055,26.1213913" id="Path-89-Copy" stroke="none" fill="#F6C48B" fill-rule="evenodd" sketch:type="MSShapeGroup" mask="url(#mask-4)">
+                                    <g transform="translate(5.660053, 15.044336) rotate(-19.000000) translate(-5.660053, -15.044336) "></g>
+                                </path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
+
+<symbol id="icon-share" viewBox="0 0 14 19">
+        <title>分享 copy</title><defs><path id="aaa" d="M0 0h13.712v19H0"/><path id="aac" d="M0 0h13.712v19H0"/></defs><g fill="none" fill-rule="evenodd"><mask id="aab" fill="#fff"><use xlink:href="#aaa"/></mask><path d="M4.45 3.336l2.017-2.012v10.173c0 .215.174.388.39.388.214 0 .388-.173.388-.388V1.324l2.018 2.012c.076.075.175.113.275.113.1 0 .2-.04.275-.114.152-.152.152-.397 0-.55L7.133.115C7.094.078 7.052.05 7.002.03c-.093-.04-.2-.04-.295 0-.048.02-.09.048-.127.084L3.9 2.787c-.153.152-.153.397 0 .55.152.15.397.15.55 0" fill="#E73736" mask="url(#aab)"/><g><mask id="aad" fill="#fff"><use xlink:href="#aac"/></mask><path d="M13.323 5.328H9.15c-.216 0-.39.174-.39.388 0 .214.174.388.39.388h3.784v12.12H.778V6.105h3.785c.215 0 .39-.174.39-.388 0-.214-.175-.388-.39-.388H.39c-.216 0-.39.174-.39.388v12.896c0 .215.174.388.39.388h12.933c.215 0 .39-.173.39-.388V5.716c0-.214-.175-.388-.39-.388" fill="#E73736" mask="url(#aad)"/></g></g>
+</symbol>
+
+<symbol id="icon-star02" viewBox="0 0 20 19">
+        <title>Star 1</title><path d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.57-.955L10 0l2.94 5.955 6.57.955-4.755 4.635 1.123 6.545z" stroke="#F13B34" fill="#FFF" fill-rule="evenodd"/>
+</symbol>
+</svg>
