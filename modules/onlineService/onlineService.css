@@ -4,26 +4,22 @@
 # 常见问题
 
 */
-.commonProblem{
+.onlineService{
   background: #fff;
   margin-bottom: 10px;
 }
-.commonProblem h2{
+.onlineService h2{
   height: 40px;
   line-height: 40px;
   font-size: 16px;
   padding-left: 12px;
   font-weight: normal;
 }
-.commonProblem h2 svg{
+.onlineService h2 svg{
   margin-right: 10px;
 }
-.commonProblem li{
-  height: 44px;
-  line-height: 44px;
-  padding-left: 10px;
-  border-top: 1px solid #f7f7f9;
-}
-.commonProblem li a{
-  color: #666;
+.onlineService .icon-online{
+  width: 23px;
+  height: 23px;
+  vertical-align: middle;
 }

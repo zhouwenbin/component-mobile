@@ -15,22 +15,7 @@
   padding-left: 12px;
   font-weight: normal;
 }
-.commonProblem h2 span{
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  background: #60c2d7;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 10px;
-  position: relative;
-}
-.commonProblem h2 svg{
-  position: absolute;
-  left:50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-}
+
 .commonProblem li{
   height: 44px;
   line-height: 44px;
@@ -41,7 +26,8 @@
   color: #666;
 }
 .commonProblem .icon-message{
-  width: 15px;
-  height: 12px;
-  fill:#fff;
+  width: 23px;
+  height: 23px;
+  vertical-align: middle;
+  margin-right: 10px;
 }

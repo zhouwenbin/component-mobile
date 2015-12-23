@@ -11,6 +11,8 @@
 .problemDetail svg{
   float: left;
   margin-left: -28px;
+  width: 16px;
+  height: 16px;
 }
 .problemDetail dt{
   border-bottom: 1px solid #efeff4;

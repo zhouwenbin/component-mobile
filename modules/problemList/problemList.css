@@ -26,4 +26,13 @@
   padding: 0 11px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.problemList-list li a{
+  display: block;
+}
+.problemList-list li svg{
+  width: 6px;
+  height: 12px;
+  display: block;
 }

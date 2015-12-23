@@ -52,6 +52,7 @@
     height: 41px;
     line-height: 41px;
     padding-left: 22px;
+    padding-right: 15px;
     border-bottom: 1px solid #efeff4;
     display: -webkit-box;
     display: -webkit-flex;
@@ -60,14 +61,20 @@
     -webkit-box-pack: justify;
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
-            justify-content: space-between
+            justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center
 }
 .service-return li a {
     color: #999;
     display: block
 }
 .service-return li svg {
-    display: none
+    display: none;
+    width: 13px;
+    height: 8px
 }
 .service-return li.active a {
     color: #f13c34
@@ -98,6 +105,10 @@
     -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-top: 20px;
     padding: 0 10px;
     color: #999
@@ -109,4 +120,9 @@
     border-radius: 0;
     height: 40px;
     line-height: 40px
+}
+.service-return .icon-camera {
+    width: 15px;
+    height: 12px;
+    display: block
 }

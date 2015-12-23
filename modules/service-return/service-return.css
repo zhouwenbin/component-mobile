@@ -28,9 +28,11 @@
   height: 41px;
   line-height: 41px;
   padding-left: 22px;
+  padding-right: 15px;
   border-bottom: 1px solid #efeff4;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .service-return li a{
   color: #999;
@@ -38,6 +40,8 @@
 }
 .service-return li svg{
   display: none;
+  width: 13px;
+  height: 8px;
 }
 .service-return li.active a{
   color: #f13c34;
@@ -63,6 +67,7 @@
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 20px;
   padding: 0 10px;
   color: #999;
@@ -74,4 +79,9 @@
   border-radius: 0;
   height: 40px;
   line-height: 40px;
+}
+.service-return .icon-camera{
+  width: 15px;
+  height: 12px;
+  display: block;
 }

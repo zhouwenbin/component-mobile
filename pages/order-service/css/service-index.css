@@ -12,7 +12,10 @@
     padding-left: 13px
 }
 .announcement svg {
-    margin-right: 10px
+    margin-right: 10px;
+    width: 20px;
+    height: 18px;
+    vertical-align: middle
 }
 /*
 @styleguide
@@ -73,6 +76,11 @@
     width: 19px;
     height: 29px
 }
+.selfService .icon-coffee {
+    width: 23px;
+    height: 23px;
+    vertical-align: middle
+}
 .selfService div {
     height: 49px
 }
@@ -99,23 +107,6 @@
     padding-left: 12px;
     font-weight: normal
 }
-.commonProblem h2 span {
-    width: 23px;
-    height: 23px;
-    border-radius: 50%;
-    background: #60c2d7;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 10px;
-    position: relative
-}
-.commonProblem h2 svg {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%)
-}
 .commonProblem li {
     height: 44px;
     line-height: 44px;
@@ -126,9 +117,10 @@
     color: #666
 }
 .commonProblem .icon-message {
-    width: 15px;
-    height: 12px;
-    fill: #fff
+    width: 23px;
+    height: 23px;
+    vertical-align: middle;
+    margin-right: 10px
 }
 /*
 @styleguide
@@ -136,26 +128,22 @@
 # 常见问题
 
 */
-.commonProblem {
+.onlineService {
     background: #fff;
     margin-bottom: 10px
 }
-.commonProblem h2 {
+.onlineService h2 {
     height: 40px;
     line-height: 40px;
     font-size: 16px;
     padding-left: 12px;
     font-weight: normal
 }
-.commonProblem h2 svg {
+.onlineService h2 svg {
     margin-right: 10px
 }
-.commonProblem li {
-    height: 44px;
-    line-height: 44px;
-    padding-left: 10px;
-    border-top: 1px solid #f7f7f9
-}
-.commonProblem li a {
-    color: #666
+.onlineService .icon-online {
+    width: 23px;
+    height: 23px;
+    vertical-align: middle
 }

@@ -52,6 +52,11 @@
   width: 19px;
   height: 29px;
 }
+.selfService .icon-coffee{
+  width: 23px;
+  height: 23px;
+  vertical-align: middle;
+}
 .selfService div{
   height: 49px;
 }
