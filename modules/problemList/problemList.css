@@ -1,0 +1,41 @@
+/*
+@styleguide
+
+# 问题列表
+
+*/
+.problemList{
+  background: #fff;
+}
+.problemList-tab{
+  display: flex;
+}
+.problemList-tab li{
+  flex:1;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+}
+.problemList-tab li.active{
+  border-bottom: 3px solid #e53a3c;
+}
+.problemList-list li{
+  border-top: 1px solid #efeff4;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+.problemList-list li a{
+  display: block;
+  color: #666;
+}
+.problemList-list li svg{
+  width: 6px;
+  height: 12px;
+  display: block;
+}

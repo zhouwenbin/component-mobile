@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
 
 <symbol id="icon-love-gray" viewBox="0 0 18 18">
-        <title>love grey</title><g transform="translate(-3 -3)" fill="none" fill-rule="evenodd"><path fill="none" d="M0 0h24v24H0z"/><path d="M15.558 4.79c2.308 0 4.186 1.96 4.186 4.37 0 5.204-6.197 9.24-7.745 10.166-1.55-.926-7.744-4.952-7.744-10.166 0-2.41 1.878-4.37 4.186-4.37 1.143 0 2.21.47 3.007 1.33l.533.575.014-.015.017.018.537-.578c.798-.86 1.865-1.33 3.008-1.33zm0-.79c-1.393 0-2.65.603-3.55 1.57L12 5.563l-.01.008C11.094 4.603 9.836 4 8.443 4 5.712 4 3.5 6.31 3.5 9.16c0 6.478 8.5 11.067 8.5 11.067s8.5-4.59 8.5-11.067C20.5 6.31 18.287 4 15.558 4z" stroke="#979DA9" stroke-width=".2" fill="#979DA9"/></g>
+        <title>love grey</title><g transform="translate(-3 -3)" fill="none" fill-rule="evenodd"><path fill-opacity="0" fill="#FFF" d="M0 0h24v24H0z"/><path d="M15.558 4.79c2.308 0 4.186 1.96 4.186 4.37 0 5.204-6.197 9.24-7.745 10.166-1.55-.926-7.744-4.952-7.744-10.166 0-2.41 1.878-4.37 4.186-4.37 1.143 0 2.21.47 3.007 1.33l.533.575.014-.015.017.018.537-.578c.798-.86 1.865-1.33 3.008-1.33zm0-.79c-1.393 0-2.65.603-3.55 1.57L12 5.563l-.01.008C11.094 4.603 9.836 4 8.443 4 5.712 4 3.5 6.31 3.5 9.16c0 6.478 8.5 11.067 8.5 11.067s8.5-4.59 8.5-11.067C20.5 6.31 18.287 4 15.558 4z" stroke="#979DA9" stroke-width=".2" fill="#979DA9"/></g>
 </symbol>
 
 <symbol id="icon-love-red" viewBox="0 0 18 17">
-        <title>love red</title><g transform="translate(-3 -4)" fill="none" fill-rule="evenodd"><path fill="none" d="M0 0h24v24H0z"/><path d="M15.558 4c-1.393 0-2.65.603-3.55 1.57L12 5.563l-.01.008C11.094 4.603 9.836 4 8.443 4 5.712 4 3.5 6.31 3.5 9.16c0 6.478 8.5 11.067 8.5 11.067s8.5-4.59 8.5-11.067C20.5 6.31 18.287 4 15.558 4z" fill="#F13C34"/></g>
+        <title>love red</title><g transform="translate(-3 -4)" fill="none" fill-rule="evenodd"><path fill-opacity="0" fill="#FFF" d="M0 0h24v24H0z"/><path d="M15.558 4c-1.393 0-2.65.603-3.55 1.57L12 5.563l-.01.008C11.094 4.603 9.836 4 8.443 4 5.712 4 3.5 6.31 3.5 9.16c0 6.478 8.5 11.067 8.5 11.067s8.5-4.59 8.5-11.067C20.5 6.31 18.287 4 15.558 4z" fill="#F13C34"/></g>
 </symbol>
 </svg>
