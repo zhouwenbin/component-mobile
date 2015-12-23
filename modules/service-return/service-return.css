@@ -59,6 +59,9 @@
   line-height: 41px;
   background: #fff;
   color: #999;
+  border: none;
+  appearance:none;
+  border-radius: 5px;
 }
 .service-return-upload{
   height: 40px;
@@ -80,8 +83,23 @@
   height: 40px;
   line-height: 40px;
 }
+.service-return input{
+  appearance:none;
+  border: none;
+}
 .service-return .icon-camera{
   width: 15px;
   height: 12px;
   display: block;
+}
+.service-select{
+  position: relative;
+}
+.service-return .icon-arrow-down{
+  width: 12px;
+  height: 6px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translate(0,-50%);
 }

@@ -44,7 +44,8 @@
             flex: 1;
     height: 40px;
     line-height: 40px;
-    text-align: center
+    text-align: center;
+    font-size: 14px
 }
 .problemList-tab li.active {
     border-bottom: 3px solid #e53a3c
@@ -65,10 +66,12 @@
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
-            align-items: center
+            align-items: center;
+    font-size: 14px
 }
 .problemList-list li a {
-    display: block
+    display: block;
+    color: #666
 }
 .problemList-list li svg {
     width: 6px;

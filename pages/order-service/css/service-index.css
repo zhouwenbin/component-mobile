@@ -60,6 +60,9 @@
     display: inline-block;
     vertical-align: middle
 }
+.selfService li a {
+    color: #666
+}
 .selfService .icon-delivery {
     width: 22px;
     height: 22px
@@ -111,7 +114,8 @@
     height: 44px;
     line-height: 44px;
     padding-left: 10px;
-    border-top: 1px solid #f7f7f9
+    border-top: 1px solid #f7f7f9;
+    font-size: 14px
 }
 .commonProblem li a {
     color: #666

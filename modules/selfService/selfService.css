@@ -36,6 +36,9 @@
   display: inline-block;
   vertical-align: middle;
 }
+.selfService li a{
+  color: #666;
+}
 .selfService .icon-delivery{
   width: 22px;
   height: 22px;
