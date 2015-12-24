@@ -70,7 +70,7 @@ gulp.task("css", function () {
               require("precss")({ /* options */ })
           ])
       )
-      .pipe(cssnext())
+      .pipe(cssnext({ browsers: ['last 10 versions'] }))
       .pipe(gulp.dest("pages/"+ pages[i] +"/css/"))
     }
 });
@@ -92,7 +92,7 @@ gulp.task('serve', function () {
 gulp.task('sass', function () {
   return sass('./app/static/scss/pages/**/*.scss')
     .on('error', sass.logError)
-    .pipe(cssnext())
+    .pipe(cssnext({ browsers: ['last 10 versions'] }))
     .pipe(gulp.dest('./app/static/css/pages'));
 });
 gulp.task('sass:watch', function () {
