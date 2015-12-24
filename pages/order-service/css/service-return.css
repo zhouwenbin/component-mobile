@@ -118,6 +118,9 @@
     padding: 0 10px;
     color: #999
 }
+.service-return-btn {
+    height: 40px
+}
 .service-return .btn {
     position: fixed;
     bottom: 0;
