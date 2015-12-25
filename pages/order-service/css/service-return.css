@@ -46,7 +46,8 @@
 }
 .service-radio {
     background: #fff;
-    border-radius: 5px
+    -webkit-border-radius: 5px;
+            border-radius: 5px
 }
 .service-radio li {
     height: 41px;
@@ -98,7 +99,8 @@
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
-    border-radius: 5px
+    -webkit-border-radius: 5px;
+            border-radius: 5px
 }
 .service-select .icon-arrow-down {
     width: 12px;
@@ -107,13 +109,15 @@
     right: 16px;
     top: 50%;
     -webkit-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
             transform: translate(0,-50%)
 }
 .service-return-upload {
     height: 40px;
     line-height: 40px;
     border: 1px dashed #d9d9db;
-    border-radius: 5px;
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -138,7 +142,8 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    border-radius: 0;
+    -webkit-border-radius: 0;
+            border-radius: 0;
     height: 40px;
     line-height: 40px
 }
@@ -174,7 +179,8 @@
 .service-return-close {
     width: 18px;
     height: 18px;
-    border-radius: 50%;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
     background: #ccc;
     position: absolute;
     right: 1px;
