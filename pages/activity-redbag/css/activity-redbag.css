@@ -13,6 +13,7 @@ body{
   position: absolute;
   left:50%;
   -webkit-transform: translate(-50%,0);
+      -ms-transform: translate(-50%,0);
           transform: translate(-50%,0);
 }
 .redbag-main-h1{
@@ -41,7 +42,8 @@ a.redbag-main-btn{
   height: 80px;
   line-height: 80px;
   background: #FEEF86;
-  border-radius: 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
   font-size: 28px;
   color: #F93136;
   bottom: 94px;
@@ -56,12 +58,14 @@ a.redbag-main-btn{
 }
 .redbag-main-input{
   width: 270px;
-  border-radius: 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
   bottom: 184px;
 }
 .redbag-main-photo{
   top: 58px;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
 }
 .redbag-main-share{
   top: 162px;
@@ -126,7 +130,8 @@ a.redbag-main-btn{
   height: 36px;
   line-height: 36px;
   background: #F13C34;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   color: #fff;
   margin-bottom: 20px;
   position: relative;
@@ -172,7 +177,8 @@ a.redbag-main-btn{
   font-size: 28px;
 }
 .redbag-record img{
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
 }
 .redbag-record-c2{
   -webkit-box-flex: 1;

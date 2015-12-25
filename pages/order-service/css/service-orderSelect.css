@@ -110,7 +110,8 @@
     padding-left: 5px;
     padding-right: 12px;
     background: #fdf2a5;
-    border-bottom-right-radius: 18px;
+    -webkit-border-bottom-right-radius: 18px;
+            border-bottom-right-radius: 18px;
     margin-left: -14px
 }
 .orderSelect .btn {
