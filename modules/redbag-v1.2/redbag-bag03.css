@@ -1,0 +1,14 @@
+.redbag-bag03{
+	background: #fee593 url(../../../modules/redbag-v1.2/img/bag03.jpg) center 0 no-repeat;
+	height: 535px;
+	text-align: center;
+}
+.redbag-btn-box03{
+	padding-top: 3228px;
+}
+.redbag-btn-box03 .redbag-btn{
+	display: inline-block;
+	width: 270px;
+	height: 86px;
+	font-size: 0;
+}

@@ -1,0 +1,27 @@
+body{
+	max-width: 640px;
+	background-color: #fee593;
+}
+.redbag-header01{
+	background: #8765FF url(../../../modules/redbag-v1.2/img/header01.jpg) center 0 no-repeat;
+	height: 315px;
+	text-align: center;
+}
+.redbag-header01 .redbag-pic{
+	margin-top: 26px;
+	display: inline-block;
+	width: 86px;
+	height: 86px;
+	border-radius: 50%;
+	border: 6px solid #685455;
+	background-color: #fff;
+}
+.redbag-header01 h2{
+	color: #ffd751;
+	font-size: 30px;
+	margin-top: 5px;
+	text-shadow: 2px 2px 10px #89202f,2px 2px 10px #89202f,2px 2px 10px #89202f,2px 2px 10px #89202f;
+}
+.redbag-admin{
+	margin-right: 2px;
+}

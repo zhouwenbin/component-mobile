@@ -1,0 +1,12 @@
+.redbag-bag04{
+	background: #fee593 url(../../../modules/redbag-v1.2/img/bag04.jpg) center 0 no-repeat;
+	height: 540px;
+	padding-top: 126px;
+	text-align: center;
+}
+.redbag-bag04 .redbag-btn-box{
+	margin-top: 60px;
+}
+.redbag-bag04 .redbag-btn-box a{
+	font-size: 0;
+}

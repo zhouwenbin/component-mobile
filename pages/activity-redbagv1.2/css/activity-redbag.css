@@ -1,0 +1,367 @@
+body {
+    max-width: 640px;
+    background-color: #fee593
+}
+.redbag-header01 {
+    background: #8765FF url(../../../modules/redbag-v1.2/img/header01.jpg) center 0 no-repeat;
+    height: 315px;
+    text-align: center
+}
+.redbag-header01 .redbag-pic {
+    margin-top: 26px;
+    display: inline-block;
+    width: 86px;
+    height: 86px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    border: 6px solid #685455;
+    background-color: #fff
+}
+.redbag-header01 h2 {
+    color: #ffd751;
+    font-size: 30px;
+    margin-top: 5px;
+    text-shadow: 2px 2px 10px #89202f,2px 2px 10px #89202f,2px 2px 10px #89202f,2px 2px 10px #89202f
+}
+.redbag-admin {
+    margin-right: 2px
+}
+.redbag-header02 {
+    background: #8765FF url(../../../modules/redbag-v1.2/img/header02.jpg) center 0 no-repeat;
+    height: 334px
+}
+/*膨胀红包发起者01*/
+.redbag-header04 {
+    background: #8765FF url(../../../modules/redbag-v1.2/img/header04.jpg) center 0 no-repeat;
+    height: 310px;
+    text-align: center
+}
+.redbag-header05 {
+    background: #8765FF url(../../../modules/redbag-v1.2/img/header05.jpg) center 0 no-repeat;
+    height: 334px
+}
+.redbag-bag01 {
+    background: #fee593 url(../../../modules/redbag-v1.2/img/bag01.jpg) center 0 no-repeat;
+    height: 535px;
+    padding-top: 126px;
+    text-align: center
+}
+.redbag-bag01 input {
+    width: 324px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    border: 0 none;
+    -webkit-border-radius: 10px;
+            border-radius: 10px
+}
+.redbag-bag01 input::-webkit-input-placeholder {
+    color: #909090
+}
+.redbag-bag01 input::-moz-placeholder {
+    color: #909090
+}
+.redbag-btn-box {
+    margin-top: 44px;
+    height: 82px;
+    line-height: 82px
+}
+.redbag-btn-box a {
+    display: inline-block;
+    width: 270px;
+    font-size: 34px;
+    color: #f3393a;
+    font-weight: 700
+}
+.redbag-bag02 {
+    background: #fee593 url(../../../modules/redbag-v1.2/img/bag02.jpg) center 0 no-repeat;
+    height: 516px;
+    text-align: center
+}
+.redbag-btn-box02 {
+    text-align: center;
+    padding-top: 50px
+}
+.redbag-bag02-money {
+    margin-top: -10px
+}
+.redbag-bag02-money .money {
+    position: relative;
+    margin-bottom: -18px;
+    top: -10px
+}
+.redbag-bag02-money p {
+    font-size: 15px;
+    color: #967171
+}
+.redbag-bag02-money strong {
+    font-size: 164px;
+    vertical-align: middle;
+    color: #653232;
+    margin-right: 20px;
+    text-shadow: 1px 1px 3px #740328
+}
+.redbag-bag02-money span {
+    vertical-align: -56px;
+    color: #653232;
+    text-shadow: 1px 1px 3px #740328
+}
+.redbag-bag02-money .yen {
+    font-size: 60px;
+    vertical-align: 70px;
+    margin-right: 10px
+}
+.redbag-btn-box02 .redbag-btn {
+    display: inline-block;
+    width: 270px;
+    height: 86px;
+    font-size: 0
+}
+.redbag-bag02-money .text {
+    font-size: 55px;
+    color: #653232;
+    padding: 18px 0
+}
+.redbag-bag03 {
+    background: #fee593 url(../../../modules/redbag-v1.2/img/bag03.jpg) center 0 no-repeat;
+    height: 535px;
+    text-align: center
+}
+.redbag-btn-box03 {
+    padding-top: 3228px
+}
+.redbag-btn-box03 .redbag-btn {
+    display: inline-block;
+    width: 270px;
+    height: 86px;
+    font-size: 0
+}
+.redbag-bag04 {
+    background: #fee593 url(../../../modules/redbag-v1.2/img/bag04.jpg) center 0 no-repeat;
+    height: 540px;
+    padding-top: 126px;
+    text-align: center
+}
+.redbag-bag04 .redbag-btn-box {
+    margin-top: 60px
+}
+.redbag-bag04 .redbag-btn-box a {
+    font-size: 0
+}
+.redbag-bag05 {
+    background: #fee593 url(../../../modules/redbag-v1.2/img/bag05.jpg) center 0 no-repeat;
+    height: 516px;
+    text-align: center
+}
+.redbag-btn-box02 {
+    text-align: center;
+    padding-top: 50px
+}
+.redbag-bag02-money {
+    margin-top: -10px
+}
+.redbag-bag02-money .money {
+    position: relative;
+    margin-bottom: -18px;
+    top: -10px
+}
+.redbag-bag02-money p {
+    font-size: 15px;
+    color: #967171
+}
+.redbag-bag02-money strong {
+    font-size: 164px;
+    vertical-align: middle;
+    color: #653232;
+    margin-right: 20px;
+    text-shadow: 1px 1px 3px #740328
+}
+.redbag-bag02-money span {
+    vertical-align: -56px;
+    color: #653232;
+    text-shadow: 1px 1px 3px #740328
+}
+.redbag-bag02-money .yen {
+    font-size: 60px;
+    vertical-align: 70px;
+    margin-right: 10px
+}
+.redbag-btn-box02 .redbag-btn {
+    display: inline-block;
+    width: 270px;
+    height: 86px;
+    font-size: 0
+}
+.redbag-bag02-money .text {
+    font-size: 55px;
+    color: #653232;
+    padding: 18px 0
+}
+.redbag-bag05 .full {
+    display: inline-block;
+    margin-left: -28px;
+    width: 31px;
+    background-color: #653332;
+    color: #fff1c0;
+    padding: 10px 0;
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    vertical-align: 5px
+}
+.redbag-bag06 {
+    background: #fee593 url(../../../modules/redbag-v1.2/img/bag06.jpg) center 0 no-repeat;
+    height: 516px;
+    text-align: center
+}
+.redbag-btn-box02 {
+    text-align: center;
+    padding-top: 50px
+}
+.redbag-bag02-money {
+    margin-top: -10px
+}
+.redbag-bag02-money .money {
+    position: relative;
+    margin-bottom: -18px;
+    top: -10px
+}
+.redbag-bag02-money p {
+    font-size: 15px;
+    color: #967171
+}
+.redbag-bag02-money strong {
+    font-size: 164px;
+    vertical-align: middle;
+    color: #653232;
+    margin-right: 20px;
+    text-shadow: 1px 1px 3px #740328
+}
+.redbag-bag02-money span {
+    vertical-align: -56px;
+    color: #653232;
+    text-shadow: 1px 1px 3px #740328
+}
+.redbag-bag02-money .yen {
+    font-size: 60px;
+    vertical-align: 70px;
+    margin-right: 10px
+}
+.redbag-btn-box02 .redbag-btn {
+    display: inline-block;
+    width: 270px;
+    height: 86px;
+    font-size: 0
+}
+.redbag-bag02-money .text {
+    font-size: 55px;
+    color: #653232;
+    padding: 18px 0
+}
+.redbag-bag06 .full {
+    display: inline-block;
+    margin-left: -28px;
+    width: 31px;
+    background-color: #653332;
+    color: #fff1c0;
+    padding: 10px 0;
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    vertical-align: 5px
+}
+.redbags-times {
+    text-align: center;
+    color: #782323;
+    font-size: 18px;
+    margin-top: -56px;
+    position: relative;
+    margin-bottom: -3px
+}
+.redbags-times dd {
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+    background-color: #fff1c0;
+    -webkit-border-radius: 12px;
+            border-radius: 12px;
+    padding: 0 30px;
+    margin-top: 6px;
+    -webkit-box-shadow: 3px 3px 3px #eaba3d;
+            box-shadow: 3px 3px 3px #eaba3d
+}
+.redbags-rules {
+    font-size: 18px;
+    padding: 30px 0
+}
+.redbags-rules h2 {
+    color: #782323;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 14px
+}
+.redbags-rules h2 span {
+    text-decoration: underline
+}
+.redbags-rules ol {
+    background-color: #fff1c2;
+    width: 530px;
+    margin: 0 auto;
+    color: #782323;
+    line-height: 1.5;
+    padding: 23px 25px 15px
+}
+.redbags-rules li {
+    margin-bottom: 28px;
+    padding-left: 30px;
+    position: relative
+}
+.redbags-rules .num {
+    position: absolute;
+    left: 0;
+    width: 30px
+}
+.redbag-steps {
+    padding-top: 3px
+}
+.redbag-list {
+    background-color: #fff0bd;
+    width: 530px;
+    margin: 0 auto;
+    padding: 10px 5px 20px
+}
+.redbag-list h2 {
+    text-align: center;
+    border: 1px solid #a86025;
+    height: 45px;
+    line-height: 45px;
+    color: #782323;
+    font-size: 24px
+}
+.redbag-list li {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    height: 61px;
+    line-height: 61px;
+    border-bottom: 1px solid #b9b093;
+    padding: 0 15px;
+    color: #666;
+    font-size: 22px
+}
+.redbag-list img {
+    width: 49px;
+    height: 49px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 20px
+}
+.redbag-list .money {
+    color: #e73533
+}
