@@ -30,13 +30,15 @@ gulp.task("common", function () {
 
 gulp.task("svg", function () {
   for(var i in modules){
-    gulp.src("modules/"+modules[i]+"/svgs/*.svg")
-        .pipe(svgSprite({
-          mode: "symbols",
-          common: "svg",
-          selector: "icon-%f"
-        }))
-        .pipe(gulp.dest("modules/"+modules[i]+"/symbols"))
+    if(modules[i] !== '.DS_Store'){
+      gulp.src("modules/"+modules[i]+"/svgs/*.svg")
+          .pipe(svgSprite({
+            mode: "symbols",
+            common: "svg",
+            selector: "icon-%f"
+          }))
+          .pipe(gulp.dest("modules/"+modules[i]+"/symbols"))
+    }
   }
 
 });
