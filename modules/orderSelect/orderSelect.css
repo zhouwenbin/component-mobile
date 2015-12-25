@@ -56,7 +56,14 @@
   font-size: 14px;
 }
 .orderSelect-r3{
-  text-align: right;
+  display: flex;
+  align-items: center;
+}
+.orderSelect-r3 div{
+  flex:1;
+}
+.orderSelect-r3 .btn{
+  display: block;
 }
 .orderSelect-bag{
   color: #e29830;

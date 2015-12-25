@@ -44,12 +44,12 @@
     border: none;
     margin-top: 2px
 }
-.service-return ul {
+.service-radio {
     background: #fff;
     -webkit-border-radius: 5px;
             border-radius: 5px
 }
-.service-return li {
+.service-radio li {
     height: 41px;
     line-height: 41px;
     padding-left: 22px;
@@ -68,25 +68,28 @@
         -ms-flex-align: center;
             align-items: center
 }
-.service-return li a {
+.service-radio li a {
     color: #999;
     display: block
 }
-.service-return li svg {
+.service-radio li svg {
     display: none;
     width: 13px;
     height: 8px
 }
-.service-return li.active a {
+.service-radio li.active a {
     color: #f13c34
 }
-.service-return li.active svg {
+.service-radio li.active svg {
     display: block
 }
-.service-return li:last-child {
+.service-radio li:last-child {
     border-bottom: none
 }
-.service-return .select {
+.service-select {
+    position: relative
+}
+.service-select .select {
     width: 100%;
     height: 41px;
     line-height: 41px;
@@ -98,6 +101,16 @@
             appearance: none;
     -webkit-border-radius: 5px;
             border-radius: 5px
+}
+.service-select .icon-arrow-down {
+    width: 12px;
+    height: 6px;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+        -ms-transform: translate(0,-50%);
+            transform: translate(0,-50%)
 }
 .service-return-upload {
     height: 40px;
@@ -119,7 +132,8 @@
             align-items: center;
     margin-top: 20px;
     padding: 0 10px;
-    color: #999
+    color: #999;
+    margin-bottom: 15px
 }
 .service-return-btn {
     height: 40px
@@ -144,16 +158,35 @@
     height: 12px;
     display: block
 }
-.service-select {
-    position: relative
+.service-return-img li {
+    float: left;
+    width: 33%;
+    height: 125px;
+    padding: 5px;
+    position: relative;
+    text-align: center
 }
-.service-return .icon-arrow-down {
-    width: 12px;
-    height: 6px;
+.service-return-img li:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%
+}
+.service-return-img img {
+    max-width: 100%;
+    max-height: 100%
+}
+.service-return-close {
+    width: 18px;
+    height: 18px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    background: #ccc;
     position: absolute;
-    right: 16px;
-    top: 50%;
-    -webkit-transform: translate(0,-50%);
-        -ms-transform: translate(0,-50%);
-            transform: translate(0,-50%)
+    right: 1px;
+    top: 1px;
+    color: #fff;
+    line-height: 16px;
+    text-align: center;
+    font-size: 16px
 }
