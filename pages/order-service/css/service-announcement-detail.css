@@ -31,6 +31,11 @@
         -ms-transform: rotate(90deg);
             transform: rotate(90deg)
 }
+.announcement-detail .active .icon-arrow {
+    -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg)
+}
 .announcement-detail svg {
     display: block
 }
@@ -38,5 +43,9 @@
     font-size: 14px;
     line-height: 21px;
     background: #fdf9ed;
-    padding: 10px
+    padding: 10px;
+    display: none
+}
+.announcement-detail .active dd {
+    display: block
 }
