@@ -6,6 +6,7 @@ body{
 	background: #8765FF url(../../../modules/redbag-v1.2/img/header01.jpg) center 0 no-repeat;
 	height: 315px;
 	text-align: center;
+	margin-bottom: -1px;
 }
 .redbag-header01 .redbag-pic{
 	margin-top: 26px;

@@ -5,7 +5,8 @@ body {
 .redbag-header01 {
     background: #8765FF url(../../../modules/redbag-v1.2/img/header01.jpg) center 0 no-repeat;
     height: 315px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-header01 .redbag-pic {
     margin-top: 26px;
@@ -28,23 +29,27 @@ body {
 }
 .redbag-header02 {
     background: #8765FF url(../../../modules/redbag-v1.2/img/header02.jpg) center 0 no-repeat;
-    height: 334px
+    height: 334px;
+    margin-bottom: -1px
 }
 /*膨胀红包发起者01*/
 .redbag-header04 {
     background: #8765FF url(../../../modules/redbag-v1.2/img/header04.jpg) center 0 no-repeat;
     height: 310px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-header05 {
     background: #8765FF url(../../../modules/redbag-v1.2/img/header05.jpg) center 0 no-repeat;
-    height: 334px
+    height: 334px;
+    margin-bottom: -1px
 }
 .redbag-bag01 {
     background: #fee593 url(../../../modules/redbag-v1.2/img/bag01.jpg) center 0 no-repeat;
     height: 535px;
     padding-top: 126px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-bag01 input {
     width: 324px;
@@ -78,7 +83,8 @@ body {
 .redbag-bag02 {
     background: #fee593 url(../../../modules/redbag-v1.2/img/bag02.jpg) center 0 no-repeat;
     height: 516px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-btn-box02 {
     text-align: center;
@@ -127,7 +133,8 @@ body {
 .redbag-bag03 {
     background: #fee593 url(../../../modules/redbag-v1.2/img/bag03.jpg) center 0 no-repeat;
     height: 535px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-btn-box03 {
     padding-top: 228px
@@ -142,7 +149,8 @@ body {
     background: #fee593 url(../../../modules/redbag-v1.2/img/bag04.jpg) center 0 no-repeat;
     height: 540px;
     padding-top: 126px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-bag04 .redbag-btn-box {
     margin-top: 60px
@@ -153,7 +161,8 @@ body {
 .redbag-bag05 {
     background: #fee593 url(../../../modules/redbag-v1.2/img/bag05.jpg) center 0 no-repeat;
     height: 516px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-btn-box02 {
     text-align: center;
@@ -213,7 +222,8 @@ body {
 .redbag-bag06 {
     background: #fee593 url(../../../modules/redbag-v1.2/img/bag06.jpg) center 0 no-repeat;
     height: 516px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-btn-box02 {
     text-align: center;
@@ -273,7 +283,8 @@ body {
 .redbag-bag07 {
     background: #fee593 url(../../../modules/redbag-v1.2/img/bag07.jpg) center 0 no-repeat;
     height: 540px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-btn-box03 {
     padding-top: 228px
@@ -287,7 +298,8 @@ body {
 .redbag-bag08 {
     background: #fee593 url(../../../modules/redbag-v1.2/img/bag08.jpg) center 0 no-repeat;
     height: 516px;
-    text-align: center
+    text-align: center;
+    margin-bottom: -1px
 }
 .redbag-btn-box02 {
     text-align: center;
