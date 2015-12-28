@@ -23,6 +23,9 @@
   height: 12px;
   transform: rotate(90deg);
 }
+.announcement-detail .active .icon-arrow{
+  transform: rotate(-90deg);
+}
 .announcement-detail svg{
   display: block;
 }
@@ -31,4 +34,8 @@
   line-height: 21px;
   background: #fdf9ed;
   padding: 10px;
+  display: none;
+}
+.announcement-detail .active dd{
+  display: block;
 }
