@@ -1,9 +1,8 @@
 .redbag-bag01{
-	background: #fee593 url(../../../modules/redbag-v1.2/img/bag01.jpg) center 0 no-repeat;
+	background: url(../../../modules/redbag-v1.2/img/bag01.jpg) center 0 no-repeat;
 	height: 535px;
 	padding-top: 126px;
 	text-align: center;
-	margin-bottom: -1px;
 }
 .redbag-bag01 input{
 	width: 324px;

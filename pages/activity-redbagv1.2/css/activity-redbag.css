@@ -5,8 +5,7 @@ body {
 .redbag-header01 {
     background: #8765FF url(../../../modules/redbag-v1.2/img/header01.jpg) center 0 no-repeat;
     height: 315px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-header01 .redbag-pic {
     margin-top: 26px;
@@ -45,11 +44,10 @@ body {
     margin-bottom: -1px
 }
 .redbag-bag01 {
-    background: #fee593 url(../../../modules/redbag-v1.2/img/bag01.jpg) center 0 no-repeat;
+    background: url(../../../modules/redbag-v1.2/img/bag01.jpg) center 0 no-repeat;
     height: 535px;
     padding-top: 126px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-bag01 input {
     width: 324px;
@@ -81,10 +79,9 @@ body {
     font-weight: 700
 }
 .redbag-bag02 {
-    background: #fee593 url(../../../modules/redbag-v1.2/img/bag02.jpg) center 0 no-repeat;
+    background: url(../../../modules/redbag-v1.2/img/bag02.jpg) center 0 no-repeat;
     height: 516px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-btn-box02 {
     text-align: center;
@@ -131,10 +128,9 @@ body {
     padding: 18px 0
 }
 .redbag-bag03 {
-    background: #fee593 url(../../../modules/redbag-v1.2/img/bag03.jpg) center 0 no-repeat;
+    background: url(../../../modules/redbag-v1.2/img/bag03.jpg) center 0 no-repeat;
     height: 535px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-btn-box03 {
     padding-top: 228px
@@ -146,11 +142,10 @@ body {
     font-size: 0
 }
 .redbag-bag04 {
-    background: #fee593 url(../../../modules/redbag-v1.2/img/bag04.jpg) center 0 no-repeat;
+    background: url(../../../modules/redbag-v1.2/img/bag04.jpg) center 0 no-repeat;
     height: 540px;
     padding-top: 126px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-bag04 .redbag-btn-box {
     margin-top: 60px
@@ -159,10 +154,9 @@ body {
     font-size: 0
 }
 .redbag-bag05 {
-    background: #fee593 url(../../../modules/redbag-v1.2/img/bag05.jpg) center 0 no-repeat;
+    background: url(../../../modules/redbag-v1.2/img/bag05.jpg) center 0 no-repeat;
     height: 516px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-btn-box02 {
     text-align: center;
@@ -220,10 +214,9 @@ body {
     vertical-align: 5px
 }
 .redbag-bag06 {
-    background: #fee593 url(../../../modules/redbag-v1.2/img/bag06.jpg) center 0 no-repeat;
+    background: url(../../../modules/redbag-v1.2/img/bag06.jpg) center 0 no-repeat;
     height: 516px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-btn-box02 {
     text-align: center;
@@ -281,10 +274,9 @@ body {
     vertical-align: 5px
 }
 .redbag-bag07 {
-    background: #fee593 url(../../../modules/redbag-v1.2/img/bag07.jpg) center 0 no-repeat;
+    background: url(../../../modules/redbag-v1.2/img/bag07.jpg) center 0 no-repeat;
     height: 540px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-btn-box03 {
     padding-top: 228px
@@ -296,10 +288,9 @@ body {
     font-size: 0
 }
 .redbag-bag08 {
-    background: #fee593 url(../../../modules/redbag-v1.2/img/bag08.jpg) center 0 no-repeat;
+    background: url(../../../modules/redbag-v1.2/img/bag08.jpg) center 0 no-repeat;
     height: 516px;
-    text-align: center;
-    margin-bottom: -1px
+    text-align: center
 }
 .redbag-btn-box02 {
     text-align: center;
