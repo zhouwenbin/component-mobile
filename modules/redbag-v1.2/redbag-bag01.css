@@ -6,8 +6,10 @@
 }
 .redbag-bag01 input{
 	width: 324px;
-	height: 60px;
-	line-height: 60px;
+	height: 40px;
+	line-height: 40px;
+	box-sizing: content-box;
+	padding: 10px 0;
 	text-align: center;
 	color: #333;
 	font-size: 24px;
