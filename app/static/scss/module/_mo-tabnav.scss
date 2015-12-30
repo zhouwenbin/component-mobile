@@ -1,5 +1,15 @@
 .tabnav-box{
     overflow: hidden;
+    position: relative;
+}
+.tabnav-box:after{
+    content: "";
+    position: absolute;
+    width: 100px;
+    right: 0;
+    height: 92px;
+    background: linear-gradient(left,rgba(256,256,256,0.1) 30%,#fff 100%);
+    top: 0;
 }
 .tabnav-box ul{
     margin-left: -20px;
