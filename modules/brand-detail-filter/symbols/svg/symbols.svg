@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
 
+<symbol id="icon-close" viewBox="0 0 12 12">
+        <title>cancle</title><g fill="none" fill-rule="evenodd"><ellipse cx="6" cy="6" rx="6" ry="6" fill="#DCDCDC"/><g transform="rotate(-45 7.8 1.655)" fill="#FFF"><rect x="3" width=".857" height="6.857" rx="28"/><path d="M.43 3.857c-.238 0-.43-.2-.43-.428C0 3.19.198 3 .43 3h5.998c.237 0 .43.2.43.43 0 .235-.2.427-.43.427h-6z"/></g></g>
+</symbol>
+
 <symbol id="icon-down" viewBox="0 0 9 5">
         <title>Triangle 14 Copy 3</title><path d="M4.204.5L0 5.088h8.408" fill-opacity=".5" fill="#4A4A4A" fill-rule="evenodd"/>
 </symbol>

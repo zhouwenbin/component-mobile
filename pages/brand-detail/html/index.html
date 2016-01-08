@@ -71,6 +71,10 @@
 
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
 
+<symbol id="icon-close" viewBox="0 0 12 12">
+        <title>cancle</title><g fill="none" fill-rule="evenodd"><ellipse cx="6" cy="6" rx="6" ry="6" fill="#DCDCDC"/><g transform="rotate(-45 7.8 1.655)" fill="#FFF"><rect x="3" width=".857" height="6.857" rx="28"/><path d="M.43 3.857c-.238 0-.43-.2-.43-.428C0 3.19.198 3 .43 3h5.998c.237 0 .43.2.43.43 0 .235-.2.427-.43.427h-6z"/></g></g>
+</symbol>
+
 <symbol id="icon-down" viewBox="0 0 9 5">
         <title>Triangle 14 Copy 3</title><path d="M4.204.5L0 5.088h8.408" fill-opacity=".5" fill="#4A4A4A" fill-rule="evenodd"/>
 </symbol>
@@ -79,41 +83,79 @@
         <title>Triangle 14 Copy 2</title><path d="M4.204.5l4.204 4.588H0L4.204.5zm0 13l4.204-4.588H0L4.204 13.5z" fill-opacity=".5" fill="#4A4A4A" fill-rule="evenodd"/>
 </symbol>
 </svg>
-	<section class="brand-detail-filter">
-		<ul class="brand-detail-filter-head">
-			<li>综合<svg class="svg icon-down"><use xlink:href="#icon-down"></use></svg></li>
-			<li>销量<svg class="svg icon-up"><use xlink:href="#icon-down"></use></svg></li>
-			<li>价格<svg class="svg icon-up-down"><use xlink:href="#icon-up-down"></use></svg></li>
-			<li class="text-important">筛选</li>
-		</ul>
-		<ul class="brand-detail-filter-list">
+	<section class="filter" id="filter">
+		<div class="filter-select active"><!-- 选中加active -->
+			<div class="mask"></div>
+			<div class="filter-head">
+				<ul>
+					<li class="active"><a href="#filter">综合</a><svg class="svg icon-down"><use xlink:href="#icon-down"></use></svg></li>
+					<li><a href="#filter">销量</a></li>
+					<li><a href="#filter">价格</a><svg class="svg icon-up-down"><use xlink:href="#icon-up-down"></use></svg></li>
+					<li><a href="#filter">筛选</a></li>
+				</ul>
+			</div>
+			<div class="filter-dropdown">
+				<div class="filter-dropdown-r1">
+					<div>已选择</div>
+					<div class="filter-dropdown-label">澳洲</div>
+					<div class="filter-dropdown-label">购物<svg class="svg icon-close"><use xlink:href="#icon-close"></use></svg></div>
+					<div class="filter-dropdown-label">MIUMIU</div>
+				</div>
+				<div class="filter-dropdown-r2">
+					<ul class="filter-dropdown-r2c1">
+						<li>仅看</li>
+						<li>商品分类</li>
+						<li>选购热点</li>
+						<li>名品货源</li>
+						<li>价格区间</li>
+					</ul>
+					<ul class="filter-dropdown-r2c2">
+						<li>促销</li>
+						<li>有货</li>
+					</ul>
+				</div>
+				<div class="filter-dropdown-r3">
+					<a href="" class="btn btn-normal">清除选项</a>
+					<a href="" class="btn btn-danger">确定</a>
+				</div>
+				<ul class="hide">
+					<li>综合</li>
+					<li>上新时间</li>
+					<li>评价数</li>
+				</ul>
+			</div>
+
+		</div>
+
+
+		<ul class="filter-list">
 			<li>
-				<div class="brand-detail-filter-img">
-					<img src="http://lorempixel.com/280/280" alt="">
+				<div class="filter-img">
+					<img src="http://lorempixel.com/266/266" alt="">
 				</div>
 				<h3 class="ellipsis2">德国Weleda维蕾德 金盏花滋润保湿面霜 1l </h3>
-				<div class="text-important">直邮价<span class="brand-detail-filter-price">¥ 587</span></div>
+				<div class="text-important">直邮价<span class="filter-price">¥ 587</span></div>
 			</li>
 			<li>
-				<div class="brand-detail-filter-img">
-					<img src="http://lorempixel.com/280/280" alt="">
+				<div class="filter-img">
+					<img src="http://lorempixel.com/266/266" alt="">
 				</div>
 				<h3 class="ellipsis2">德国Weleda维蕾德 金盏花滋润保湿面霜 1l </h3>
-				<div class="text-important">直邮价<span class="brand-detail-filter-price">¥ 587</span></div>
+				<div class="text-important">直邮价<span class="filter-price">¥ 587</span></div>
 			</li>
 			<li>
-				<div class="brand-detail-filter-img">
-					<img src="http://lorempixel.com/280/280" alt="">
+				<div class="filter-img">
+					<img src="http://lorempixel.com/266/266" alt="">
 				</div>
 				<h3 class="ellipsis2">德国Weleda维蕾德 金盏花滋润保湿面霜 1l </h3>
-				<div class="text-important">直邮价<span class="brand-detail-filter-price">¥ 587</span></div>
+				<div class="text-important">直邮价<span class="filter-price">¥ 587</span></div>
 			</li>
 			<li>
-				<div class="brand-detail-filter-img">
-					<img src="http://lorempixel.com/280/280" alt="">
+				<div class="filter-img">
+					<img src="http://lorempixel.com/266/266" alt="">
 				</div>
 				<h3 class="ellipsis2">德国Weleda维蕾德 金盏花滋润保湿面霜 1l </h3>
-				<div class="text-important">直邮价<span class="brand-detail-filter-price">¥ 587</span></div>
+				<div class="text-important">直邮价<span class="filter-price">¥ 587</span></div>
 			</li>
 		</ul>
 	</section>

@@ -156,6 +156,10 @@
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
 
+<symbol id="icon-close" viewBox="0 0 12 12">
+        <title>cancle</title><g fill="none" fill-rule="evenodd"><ellipse cx="6" cy="6" rx="6" ry="6" fill="#DCDCDC"/><g transform="rotate(-45 7.8 1.655)" fill="#FFF"><rect x="3" width=".857" height="6.857" rx="28"/><path d="M.43 3.857c-.238 0-.43-.2-.43-.428C0 3.19.198 3 .43 3h5.998c.237 0 .43.2.43.43 0 .235-.2.427-.43.427h-6z"/></g></g>
+</symbol>
+
 <symbol id="icon-down" viewBox="0 0 9 5">
         <title>Triangle 14 Copy 3</title><path d="M4.204.5L0 5.088h8.408" fill-opacity=".5" fill="#4A4A4A" fill-rule="evenodd"/>
 </symbol>
@@ -165,7 +169,7 @@
 </symbol>
 </svg>
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(2 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(3 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -183,6 +187,22 @@
 </header>
 <section>
     <ul class="icon-boxes">
+        
+<li title="icon-close">
+            <div class="icon-box" id="icon-box-icon-close">
+                <svg class="svg icon-close">
+                    <use xlink:href="#icon-close" />
+                </svg>
+            </div>
+            <h2>icon-close</h2>
+            <button onclick="showPopover('snippet-icon-close')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-icon-close')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-icon-close">
+                <pre><code>&lt;svg class=&quot;svg icon-close&quot;&gt;&lt;use xlink:href=&quot;#icon-close&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
         
 <li title="icon-down">
             <div class="icon-box" id="icon-box-icon-down">

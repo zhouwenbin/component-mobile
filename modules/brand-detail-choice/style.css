@@ -1,59 +1,50 @@
-.brand-detail-filter-head{
+
+.brand-detail-choice{
+	margin-bottom: 20px;
+}
+.brand-detail-choice h2{
+	background: #fff;
+	text-align: center;
+	margin-bottom: 1px;
+}
+.brand-detail-choice h2 span{
+	display: inline-block;
+	border-bottom: 4px solid #FF5B54;
+	height: 60px;
+	line-height: 60px;
+}
+.brand-detail-choice-inner{
+	padding: 20px 30px;
+}
+.brand-detail-choice-r1{
 	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.brand-detail-choice li{
 	background: #fff;
 	margin-bottom: 1px;
-	height: 88px;
-	align-items: center;
 }
-.brand-detail-filter-head li{
-	flex:1;
-	text-align: center;
-	height: 48px;
-	line-height: 48px;
-}
-.brand-detail-filter-head li:last-child{
-	border-left: 1px solid #DCDCDC;
-}
-.brand-detail-filter-list{
-	overflow: hidden;
-}
-.brand-detail-filter-list li{
-	float: left;
-	border-left: 1px solid #f0eff5;
-	border-bottom: 1px solid #f0eff5;
-	background: #fff;
-	width: 50%;
-	text-align: center;
-	padding: 48px 48px 20px 48px;
-}
-.brand-detail-filter-list li:nth-child(odd){
-	border-left: none;
-}
-.brand-detail-filter-img{
-	margin-bottom: 56px;
-}
-
-.brand-detail-filter h3{
+.brand-detail-choice h3{
 	font-weight: normal;
+	margin-bottom: 12px;
+	line-height: 40px;
+}
+.brand-detail-choice p{
 	line-height: 34px;
-	margin-bottom: 30px;
+	color: #4A4A4A;
+	margin-bottom: 20px;
 }
-.brand-detail-filter-price{
-	font-size: 28px;
+.brand-detail-choice-from{
+	margin-bottom: 10px;
 }
-.brand-detail-filter .icon-down,
-.brand-detail-filter .icon-up{
-	width: 16px;
-	height: 9px;
-	vertical-align: middle;
+.brand-detail-choice-price{
+	font-size: 36px;
 	margin-left: 10px;
 }
-.brand-detail-filter .icon-down{
-	transform: rotate(180deg);
-}
-.brand-detail-filter .icon-up-down{
+.brand-detail-choice .icon-location{
 	width: 16px;
-	height: 26px;
+	height: 24px;
+	margin-right: 19px;
 	vertical-align: middle;
-	margin-left: 10px;
 }
