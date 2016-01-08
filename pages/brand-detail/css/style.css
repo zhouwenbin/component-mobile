@@ -1,0 +1,192 @@
+.brand-focus {
+    background: #fff
+}
+.brand-focus-r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-bottom: 2px solid #F5F5F5;
+    margin-left: 30px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px
+}
+.brand-focus-c2 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin: 0 20px
+}
+.brand-focus-c2 h2 {
+    margin-bottom: 20px;
+    font-weight: normal
+}
+.brand-focus-btn {
+    display: inline-block;
+    text-align: center;
+    height: 48px;
+    width: 104px;
+    line-height: 48px;
+    border: 2px solid #4A4A4A;
+    color: #4A4A4A;
+    -webkit-border-radius: 8px;
+            border-radius: 8px
+}
+.brand-focus-btn.active {
+    border-color: #9B9B9B;
+    color: #9B9B9B
+}
+.brand-focus p {
+    color: #9B9B9B
+}
+.brand-focus-flag {
+    margin-left: 18px;
+    vertical-align: middle
+}
+.brand-detail-focus {
+    background: #fff;
+    padding-bottom: 20px;
+    margin-bottom: 20px
+}
+.brand-detail-focus h2 {
+    margin-bottom: 0
+}
+.brand-detail-focus p {
+    line-height: 1.5;
+    color: #9B9B9B;
+    margin: 0 30px
+}
+.brand-focus-r1 {
+    border-bottom: none
+}
+.brand-detail-filter-head {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background: #fff;
+    margin-bottom: 1px;
+    height: 88px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center
+}
+.brand-detail-filter-head li {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-align: center;
+    height: 48px;
+    line-height: 48px
+}
+.brand-detail-filter-head li:last-child {
+    border-left: 1px solid #DCDCDC
+}
+.brand-detail-filter-list {
+    overflow: hidden
+}
+.brand-detail-filter-list li {
+    float: left;
+    border-left: 1px solid #f0eff5;
+    border-bottom: 1px solid #f0eff5;
+    background: #fff;
+    width: 50%;
+    text-align: center;
+    padding: 48px 48px 20px 48px
+}
+.brand-detail-filter-list li:nth-child(odd) {
+    border-left: none
+}
+.brand-detail-filter-img {
+    margin-bottom: 56px
+}
+.brand-detail-filter h3 {
+    font-weight: normal;
+    line-height: 34px;
+    margin-bottom: 30px
+}
+.brand-detail-filter-price {
+    font-size: 28px
+}
+.brand-detail-filter .icon-down, .brand-detail-filter .icon-up {
+    width: 16px;
+    height: 9px;
+    vertical-align: middle;
+    margin-left: 10px
+}
+.brand-detail-filter .icon-down {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg)
+}
+.brand-detail-filter .icon-up-down {
+    width: 16px;
+    height: 26px;
+    vertical-align: middle;
+    margin-left: 10px
+}
+.brand-detail-choice {
+    margin-bottom: 20px
+}
+.brand-detail-choice h2 {
+    background: #fff;
+    text-align: center;
+    margin-bottom: 1px
+}
+.brand-detail-choice h2 span {
+    display: inline-block;
+    border-bottom: 4px solid #FF5B54;
+    height: 60px;
+    line-height: 60px
+}
+.brand-detail-choice-inner {
+    padding: 20px 30px
+}
+.brand-detail-choice-r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between
+}
+.brand-detail-choice li {
+    background: #fff;
+    margin-bottom: 1px
+}
+.brand-detail-choice h3 {
+    font-weight: normal;
+    margin-bottom: 12px
+}
+.brand-detail-choice p {
+    line-height: 34px;
+    color: #4A4A4A;
+    margin-bottom: 10px
+}
+.brand-detail-choice-from {
+    margin-bottom: 10px
+}
+.brand-detail-choice-price {
+    font-size: 36px;
+    margin-left: 10px
+}
+.brand-detail-choice .icon-location {
+    width: 16px;
+    height: 24px;
+    margin-right: 19px;
+    vertical-align: middle
+}

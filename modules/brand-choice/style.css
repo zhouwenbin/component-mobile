@@ -1,0 +1,31 @@
+@import "../brand-focus/style.css";
+.brand-focus-r1{
+	border-bottom: none;
+}
+.brand-focus>ul>li{
+	border-bottom: 2px solid #F5F5F5;
+}
+.brand-choice ul{
+	white-space: nowrap;
+	font-size: 0;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+	padding-bottom: 30px;
+}
+.brand-choice li{
+	display: inline-block;
+	font-size: 24px;
+	white-space: normal;
+	width: 240px;
+	text-align: center;
+	margin: 0 12px;
+}
+.brand-choice h3{
+	font-weight: normal;
+	line-height: 34px;
+	margin: 10px 0;
+}
+.brand-choice-price{
+	font-size: 28px;
+	margin-left: 10px;
+}

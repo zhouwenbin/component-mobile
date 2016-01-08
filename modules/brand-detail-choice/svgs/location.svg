@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="9px" height="13px" viewBox="0 0 9 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_location</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="品牌详情页" sketch:type="MSArtboardGroup" transform="translate(-15.000000, -796.000000)" fill="#9B9B9B">
+            <path d="M19.2400624,796 C16.8983953,796 15,797.898395 15,800.239937 C15,800.290135 15.0015022,800.34121 15.0037555,800.392785 C15.0196537,800.838185 15.1036513,801.265934 15.2464847,801.666143 C16.1510547,804.639482 19.2400624,808.518267 19.2400624,808.518267 C19.2400624,808.518267 22.3286945,804.639858 23.2333897,801.666519 C23.3764735,801.26631 23.4603459,800.838185 23.4761189,800.392785 C23.4786225,800.34121 23.4799995,800.290261 23.4799995,800.239937 C23.4801247,797.898395 21.5817295,796 19.2400624,796 L19.2400624,796 Z M19.2400624,802.316593 C18.0932639,802.316593 17.163407,801.386736 17.163407,800.239937 C17.163407,799.093264 18.0932639,798.163407 19.2400624,798.163407 C20.386986,798.163407 21.3167177,799.093264 21.3167177,800.239937 C21.3167177,801.386736 20.386986,802.316593 19.2400624,802.316593 L19.2400624,802.316593 Z" id="icon_location" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

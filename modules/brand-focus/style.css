@@ -1,0 +1,41 @@
+.brand-focus{
+	background: #fff;
+}
+.brand-focus-r1{
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid #F5F5F5;
+	margin-left: 30px;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+}
+.brand-focus-c2{
+	flex:1;
+	margin: 0 20px;
+}
+.brand-focus-c2 h2{
+	margin-bottom: 20px;
+	font-weight: normal;
+}
+.brand-focus-btn{
+	display: inline-block;
+	text-align: center;
+	height: 48px;
+	width: 104px;
+	line-height: 48px;
+	border:2px solid #4A4A4A;
+	color: #4A4A4A;
+	border-radius: 8px;
+}
+.brand-focus-btn.active{
+	border-color: #9B9B9B;
+	color: #9B9B9B;
+}
+.brand-focus p{
+	color: #9B9B9B;
+}
+.brand-focus-flag{
+	margin-left: 18px;
+	vertical-align: middle;
+}

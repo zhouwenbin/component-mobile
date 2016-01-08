@@ -1,0 +1,48 @@
+.brand-detail-choice{
+	margin-bottom: 20px;
+}
+.brand-detail-choice h2{
+	background: #fff;
+	text-align: center;
+	margin-bottom: 1px;
+}
+.brand-detail-choice h2 span{
+	display: inline-block;
+	border-bottom: 4px solid #FF5B54;
+	height: 60px;
+	line-height: 60px;
+}
+.brand-detail-choice-inner{
+	padding: 20px 30px;
+}
+.brand-detail-choice-r1{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.brand-detail-choice li{
+	background: #fff;
+	margin-bottom: 1px;
+}
+.brand-detail-choice h3{
+	font-weight: normal;
+	margin-bottom: 12px;
+}
+.brand-detail-choice p{
+	line-height: 34px;
+	color: #4A4A4A;
+	margin-bottom: 10px;
+}
+.brand-detail-choice-from{
+	margin-bottom: 10px;
+}
+.brand-detail-choice-price{
+	font-size: 36px;
+	margin-left: 10px;
+}
+.brand-detail-choice .icon-location{
+	width: 16px;
+	height: 24px;
+	margin-right: 19px;
+	vertical-align: middle;
+}

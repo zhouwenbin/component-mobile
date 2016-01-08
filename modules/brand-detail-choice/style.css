@@ -1,0 +1,59 @@
+.brand-detail-filter-head{
+	display: flex;
+	background: #fff;
+	margin-bottom: 1px;
+	height: 88px;
+	align-items: center;
+}
+.brand-detail-filter-head li{
+	flex:1;
+	text-align: center;
+	height: 48px;
+	line-height: 48px;
+}
+.brand-detail-filter-head li:last-child{
+	border-left: 1px solid #DCDCDC;
+}
+.brand-detail-filter-list{
+	overflow: hidden;
+}
+.brand-detail-filter-list li{
+	float: left;
+	border-left: 1px solid #f0eff5;
+	border-bottom: 1px solid #f0eff5;
+	background: #fff;
+	width: 50%;
+	text-align: center;
+	padding: 48px 48px 20px 48px;
+}
+.brand-detail-filter-list li:nth-child(odd){
+	border-left: none;
+}
+.brand-detail-filter-img{
+	margin-bottom: 56px;
+}
+
+.brand-detail-filter h3{
+	font-weight: normal;
+	line-height: 34px;
+	margin-bottom: 30px;
+}
+.brand-detail-filter-price{
+	font-size: 28px;
+}
+.brand-detail-filter .icon-down,
+.brand-detail-filter .icon-up{
+	width: 16px;
+	height: 9px;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+.brand-detail-filter .icon-down{
+	transform: rotate(180deg);
+}
+.brand-detail-filter .icon-up-down{
+	width: 16px;
+	height: 26px;
+	vertical-align: middle;
+	margin-left: 10px;
+}
