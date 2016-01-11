@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>cancle </title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="品牌详情页-综合筛选2" sketch:type="MSArtboardGroup" transform="translate(-193.000000, -121.000000)">
+            <g id="cancle-" sketch:type="MSLayerGroup" transform="translate(193.000000, 121.000000)">
+                <g id="cancle" fill="#DCDCDC" sketch:type="MSShapeGroup">
+                    <ellipse id="Oval-139" cx="6" cy="6" rx="6" ry="6"></ellipse>
+                </g>
+                <g id="Rectangle-415-+-Rectangle-415-Copy" transform="translate(5.963007, 6.000000) rotate(-45.000000) translate(-5.963007, -6.000000) translate(2.534436, 2.571429)" fill="#FFFFFF" sketch:type="MSShapeGroup">
+                    <rect id="Rectangle-415" x="3" y="0" width="0.857142857" height="6.85714286" rx="28"></rect>
+                    <path d="M0.428944996,3.85714286 C0.192045216,3.85714286 -1.40694286e-17,3.65834263 0,3.42857143 L0,3.42857143 C1.44932947e-17,3.19187796 0.197825841,3 0.428944996,3 L6.42819786,3 C6.66509764,3 6.85714286,3.19880022 6.85714286,3.42857143 L6.85714286,3.42857143 C6.85714286,3.66526489 6.65931702,3.85714286 6.42819786,3.85714286 L0.428944996,3.85714286 L0.428944996,3.85714286 Z" id="Rectangle-415-Copy"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
