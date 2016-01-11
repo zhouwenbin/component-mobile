@@ -36,36 +36,45 @@
 .filter-list li{
 	float: left;
 	border-left: 1px solid #f0eff5;
-	border-bottom: 1px solid #f0eff5;
+	border-top: 1px solid #f0eff5;
 	background: #fff;
 	width: 50%;
 	text-align: center;
-	padding: 48px 48px 20px 48px;
+	padding-bottom:20px;
 }
 .filter-list li:nth-child(odd){
 	border-left: none;
 }
 .filter-img{
-	margin-bottom: 56px;
+	height: 320px;
+	display: flex;
+}
+.filter-img img{
+	max-width: 100%;
+	max-height: 100%;
+	margin: auto;
 }
 
 .filter h3{
 	font-weight: normal;
 	line-height: 34px;
-	margin-bottom: 30px;
+	height: 68px;
+	margin: 0 20px 12px;
 }
 .filter-price{
 	font-size: 28px;
 }
-.filter .icon-down,
-.filter .icon-up{
+.filter .icon-down{
 	width: 16px;
 	height: 9px;
 	vertical-align: middle;
 	margin-left: 10px;
-}
-.filter .icon-down{
+	fill:#4A4A4A;
 	transform: rotate(180deg);
+}
+.filter-head .active .icon-down{
+	transform: rotate(0deg);
+	fill:#F13C34;
 }
 .filter .icon-up-down{
 	width: 16px;
