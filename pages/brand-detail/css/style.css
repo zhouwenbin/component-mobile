@@ -201,26 +201,33 @@
   font-size: 28px;
 }
 .filter .icon-down{
-  width: 16px;
-  height: 9px;
+  width: 18px;
+  height: 10px;
   vertical-align: middle;
   margin-left: 10px;
   fill: #4A4A4A;
+}
+.filter-head .active .icon-down{
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
-}
-.filter-head .active .icon-down{
-  -webkit-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-          transform: rotate(0deg);
   fill: #F13C34;
 }
 .filter .icon-up-down{
-  width: 16px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   vertical-align: middle;
   margin-left: 10px;
+  fill: #4A4A4A;
+  color: #4A4A4A;
+}
+.filter-head .active .icon-up-down{
+  color: #F13C34;
+}
+.filter-head .toggle .icon-up-down{
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 .filter-dropdown{
   position: absolute;

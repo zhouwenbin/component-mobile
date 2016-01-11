@@ -76,12 +76,14 @@
 </symbol>
 
 <symbol id="icon-down" viewBox="0 0 9 5">
-        <title>Triangle 14 Copy 3</title><path d="M4.204.5L0 5.088h8.408" fill-opacity=".5" fill-rule="evenodd"/>
+        <title>down</title><path d="M4.704 5.088L8.908.5H.5l4.204 4.588z" fill-rule="evenodd"/>
 </symbol>
 
-<symbol id="icon-up-down" viewBox="0 0 9 14">
-        <title>Triangle 14 Copy 2</title><path d="M4.204.5l4.204 4.588H0L4.204.5zm0 13l4.204-4.588H0L4.204 13.5z" fill-opacity=".5" fill="#4A4A4A" fill-rule="evenodd"/>
-</symbol>
+<symbol id="icon-up-down" viewBox="0 0 15 15">
+  <g transform="translate(3.000000, 1.000000)">
+      <polygon id="Triangle-15" points="4.20499992 0 8.40999985 4.59000015 0 4.59000015 "></polygon>
+      <polygon id="Triangle-15-Copy" fill="currentColor" transform="translate(4.205000, 10.295000) scale(-1, -1) translate(-4.205000, -10.295000) " points="4.20499992 8 8.40999985 12.5900002 0 12.5900002 "></polygon>
+  </g>
 </svg>
 
 	<section class="filter" id="filter">
@@ -89,9 +91,9 @@
 			<div class="mask"></div>
 			<div class="filter-head">
 				<ul>
-					<li class="active"><a href="#filter">综合</a><svg class="svg icon-down"><use xlink:href="#icon-down"></use></svg></li>
+					<li class="active"><a href="#filter">综合<svg class="svg icon-down"><use xlink:href="#icon-down"></use></svg></a></li><!-- 选中加active -->
 					<li><a href="#filter">销量</a></li>
-					<li class="active"><a href="#filter">价格</a><svg class="svg icon-up-down"><use xlink:href="#icon-up-down"></use></svg></li>
+					<li class="active toggle"><a href="#filter">价格<svg class="svg icon-up-down"><use xlink:href="#icon-up-down"></use></svg></a></li><!-- 选中加active，交换加toggle -->
 					<li><a href="#filter">筛选</a></li>
 				</ul>
 			</div>
