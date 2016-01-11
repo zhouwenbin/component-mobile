@@ -1,3 +1,4 @@
+@import "../brand-detail-filter-list/style.css";
 .filter-head{
 	height: 88px;
 }
@@ -30,40 +31,7 @@
 .filter-head li.active a{
 	color: #F13C34;
 }
-.filter-list{
-	overflow: hidden;
-}
-.filter-list li{
-	float: left;
-	border-left: 1px solid #f0eff5;
-	border-top: 1px solid #f0eff5;
-	background: #fff;
-	width: 50%;
-	text-align: center;
-	padding-bottom:20px;
-}
-.filter-list li:nth-child(odd){
-	border-left: none;
-}
-.filter-img{
-	height: 320px;
-	display: flex;
-}
-.filter-img img{
-	max-width: 100%;
-	max-height: 100%;
-	margin: auto;
-}
 
-.filter h3{
-	font-weight: normal;
-	line-height: 34px;
-	height: 68px;
-	margin: 0 20px 12px;
-}
-.filter-price{
-	font-size: 28px;
-}
 .filter .icon-down{
 	width: 18px;
 	height: 10px;
@@ -113,15 +81,19 @@
 	display: block;
 }
 .filter-dropdown-r1{
-	display: flex;
-	font-size: 28px;
+	font-size: 0;
 	align-items: center;
 	background: #F5F5F5;
 	padding: 18px 0;
+	white-space: nowrap;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 .filter-dropdown-r1 div{
 	margin-left: 30px;
 	color: #4A4A4A;
+	display: inline-block;
+	font-size: 28px;
 }
 .filter-dropdown-r1 div:first-child{
 	opacity: 0.5;
