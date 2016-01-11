@@ -150,6 +150,9 @@
 	background: #F5F5F5;
 	border-color:#fff;
 }
+.filter-dropdown-r2c1 li.active{
+	background: #fff;
+}
 .filter-dropdown-r2c2{
 	flex:1;
 }
