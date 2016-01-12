@@ -40,7 +40,6 @@
 	fill:#4A4A4A;
 }
 .filter-head .active .icon-down{
-	transform: rotate(180deg);
 	fill:#F13C34;
 }
 .filter .icon-up-down{
