@@ -168,6 +168,8 @@
 }
 .filter-list-none svg{
   margin-bottom: 20px;
+  width: 120px;
+  height: 150px;
 }
 .filter-head{
   height: 88px;
