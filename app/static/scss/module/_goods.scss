@@ -23,6 +23,7 @@
 
 .goods-b{
   margin: 0 17px;
+  padding-bottom: 1px;
 }
 .goods h1{
   font-size: 16px;
@@ -31,7 +32,8 @@
 }
 .goods-price{
   font-size: 18px;
-  color: #dc3334;
+  color: #ff5b54;
+  margin-right: 20px;
 }
 .goods-price small{
   font-size: 15px;
@@ -44,13 +46,6 @@
   z-index: map-get($z-index,goods-price2);
   padding:0 10px;
   line-height: 20px;
-}
-.goods-r2{
-  padding-bottom: 11px;
-  margin-bottom: 15px;
-  border-width: 0 0 1px 0;
-  font-size:14px;
-  border-image: url(#{$border}) 2 0 round;
 }
 .goods-r2c2{
   font-size: 14px;
@@ -76,7 +71,6 @@
 }
 .goods-r4{
   color: #999;
-  margin-bottom: 15px;
 }
 .goods-r4 del{
   color:rgba(0,0,0,0.5);
@@ -119,3 +113,31 @@
     padding: 0 2px;
   }
 }
+
+/*预售*/
+.goods-l2,
+.goods-l3,
+.goods-l4,
+.goods-l5{
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.goods-l5{
+  padding-bottom: 11px;
+  margin-bottom: 15px;
+  border-width: 0 0 1px 0;
+  border-image: url(#{$border}) 2 0 round;
+}
+.goods-l3 .text-important{
+  margin-right: 15px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+
+
+
+
