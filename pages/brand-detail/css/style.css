@@ -101,7 +101,6 @@
   margin-bottom: 1px;
 }
 .brand-detail-choice h3{
-  font-weight: normal;
   margin-bottom: 12px;
   line-height: 40px;
 }
@@ -122,6 +121,9 @@
   height: 24px;
   margin-right: 19px;
   vertical-align: middle;
+}
+.brand-detail-choice-c1 .text-important{
+  font-size: 28px;
 }
 .filter-list{
   overflow: hidden;
