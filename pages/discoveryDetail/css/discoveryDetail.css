@@ -117,7 +117,7 @@
     border-bottom: 1px solid #fff;
     padding: 13px 12px 2px 12px
 }
-.discoveryDetail-photo ul:before, .discoveryDetail-photo ul:after {
+.discoveryDetail-photo ul:before, .discoveryDetail-photo-dot {
     content: '';
     position: absolute;
     top: 50%;
@@ -135,7 +135,7 @@
     border: 3px solid #979797;
     border: 3px solid rgba(151,151,151,0.8)
 }
-.discoveryDetail-photo ul:after {
+.discoveryDetail-photo-dot {
     width: 0;
     height: 0;
     background: #FFFFFF;
@@ -181,8 +181,8 @@
     border-bottom: 1px solid #F5F5F5
 }
 .discoveryNew .icon-love-gray, .discoveryNew .icon-love-red {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     vertical-align: middle;
     margin-right: 5px
 }
