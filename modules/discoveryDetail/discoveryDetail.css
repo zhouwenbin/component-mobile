@@ -83,3 +83,57 @@
 .discoveryDetail-fc2 strong{
   color: #F13C34;
 }
+.discoveryDetail-photo{
+  position: relative;
+}
+.discoveryDetail-photo ul{
+  position: absolute;
+  
+}
+.discoveryDetail-photo li{
+  font-size: 14px;
+  color: #fff;
+  text-shadow:0 1px 2px rgba(0,0,0,0.8);
+  border-left: 1px solid #fff;
+}
+.discoveryDetail-photo li:first-child{
+  border-left: none;
+}
+.discoveryDetail-photo div{
+  display: inline-block;
+  border-bottom: 1px solid #fff;
+
+  padding: 13px 12px 2px 12px;
+}
+.discoveryDetail-photo ul:before,
+.discoveryDetail-photo ul:after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform:translate(-50%,-50%);
+  margin-top: 15px;
+  border-radius: 50%;
+}
+.discoveryDetail-photo ul:before{
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border: 3px solid rgba(151,151,151,0.8);
+}
+.discoveryDetail-photo ul:after{
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.5);
+  animation: discoveryDetail-photo 3s linear infinite;
+}
+
+@keyframes discoveryDetail-photo{
+  10%,30%,50%{
+    width: 0;
+    height: 0;
+  }
+  20%,40%{
+    width: 30px;
+    height: 30px;
+  }
+}
