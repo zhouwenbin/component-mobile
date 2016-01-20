@@ -1,0 +1,35 @@
+.redbag-bag01{
+	height: 575px;
+	padding-top: 136px;
+	text-align: center;
+}
+.redbag-bag01 input{
+	width: 324px;
+	height: 40px;
+	line-height: 40px;
+	box-sizing: content-box;
+	padding: 10px 0;
+	text-align: center;
+	color: #333;
+	font-size: 24px;
+	border: 0 none;
+	border-radius: 10px;
+}
+.redbag-bag01 input::-webkit-input-placeholder {
+    color: #909090;
+}
+.redbag-bag01 input::-moz-placeholder {
+   color: #909090;
+}
+.redbag-btn-box{
+	margin-top: 33px;
+	height: 82px;
+	line-height: 82px;
+}
+.redbag-btn-box a{
+	display: inline-block;
+	width: 270px;
+	font-size: 34px;
+	color: #f3393a;
+	font-weight: 700;
+}

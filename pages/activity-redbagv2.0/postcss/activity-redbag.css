@@ -1,0 +1,23 @@
+@import '../../../modules/redbag-v2.0/redbag-header01.css';
+@import '../../../modules/redbag-v2.0/redbag-header02.css';
+@import '../../../modules/redbag-v2.0/redbag-header04.css';
+@import '../../../modules/redbag-v2.0/redbag-header05.css';
+@import '../../../modules/redbag-v2.0/redbag-bag01.css';
+@import '../../../modules/redbag-v2.0/redbag-bag02.css';
+@import '../../../modules/redbag-v2.0/redbag-bag03.css';
+@import '../../../modules/redbag-v2.0/redbag-bag04.css';
+@import '../../../modules/redbag-v2.0/redbag-bag05.css';
+@import '../../../modules/redbag-v2.0/redbag-bag06.css';
+@import '../../../modules/redbag-v2.0/redbag-bag07.css';
+@import '../../../modules/redbag-v2.0/redbag-bag08.css';
+@import '../../../modules/redbag-v2.0/redbag-times.css';
+@import '../../../modules/redbag-v2.0/redbag-rules.css';
+@import '../../../modules/redbag-v2.0/redbag-steps.css';
+@import '../../../modules/redbag-v2.0/redbag-list.css';
+
+.redbag1{
+	background: url(../../../modules/redbag-v2.0/img/bg.jpg) no-repeat center top; 
+}
+.redbag2{
+	background: url(../../../modules/redbag-v2.0/img/bg2.jpg) no-repeat center top; 
+}
