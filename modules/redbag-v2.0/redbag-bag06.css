@@ -1,11 +1,10 @@
 .redbag-bag06{
-	background: url(../../../modules/redbag-v1.2/img/bag06.jpg) center 0 no-repeat;
-	height: 516px;
+	height: 590px;
 	text-align: center;
 }
-.redbag-btn-box02{
+.redbag-bag06 .redbag-btn-box02{
 	text-align: center;	
-	padding-top: 50px;
+	padding-top: 115px;
 }
 .redbag-bag02-money{
 	margin-top: -10px;
