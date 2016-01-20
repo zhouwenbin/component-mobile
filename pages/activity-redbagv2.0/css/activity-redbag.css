@@ -131,12 +131,11 @@ body{
 	padding: 18px 0; 
 }
 .redbag-bag03{
-	background: url(../../../modules/redbag-v1.2/img/bag03.jpg) center 0 no-repeat;
-	height: 535px;
+	height: 576px;
 	text-align: center; 
 }
 .redbag-btn-box03{
-	padding-top: 228px; 
+	padding-top: 218px; 
 }
 .redbag-btn-box03 .redbag-btn{
 	display: inline-block;
@@ -449,4 +448,7 @@ body{
 }
 .redbag2{
 	background: url(../../../modules/redbag-v2.0/img/bg2.jpg) no-repeat center top; 
+}
+.redbag3{
+	background: url(../../../modules/redbag-v2.0/img/bg3.jpg) no-repeat center top; 
 }
