@@ -372,7 +372,9 @@ body{
 	margin: 0 auto;
 	color: #782323;
 	line-height: 1.5;
-	padding: 23px 25px 15px; 
+	padding: 23px 25px 15px;
+	height: 353px;
+	overflow-y: auto; 
 }
 .redbags-rules li{
 	margin-bottom: 18px;
@@ -402,6 +404,10 @@ body{
 	line-height: 45px;
 	color: #782323;
 	font-size: 24px; 
+}
+.redbag-list ul{
+	height: 244px;
+	overflow-y: auto; 
 }
 .redbag-list li{
 	display: -webkit-box;
@@ -454,4 +460,11 @@ body{
 }
 .redbag8{
 	background: url(../../../modules/redbag-v2.0/img/bg8.jpg) no-repeat center top; 
+}
+.redbag9{
+	background: url(../../../modules/redbag-v2.0/img/bg9.jpg) no-repeat center top; 
+}
+
+.redbag9 .redbag-list{
+	padding-top: 42px;
 }

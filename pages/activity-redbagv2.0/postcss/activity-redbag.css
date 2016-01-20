@@ -39,3 +39,10 @@
 .redbag8{
 	background: url(../../../modules/redbag-v2.0/img/bg8.jpg) no-repeat center top; 
 }
+.redbag9{
+	background: url(../../../modules/redbag-v2.0/img/bg9.jpg) no-repeat center top; 
+}
+
+.redbag9 .redbag-list{
+	padding-top: 42px;
+}
