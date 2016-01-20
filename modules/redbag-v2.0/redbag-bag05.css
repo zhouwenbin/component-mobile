@@ -1,11 +1,10 @@
 .redbag-bag05{
-	background: url(../../../modules/redbag-v1.2/img/bag05.jpg) center 0 no-repeat;
-	height: 516px;
+	height: 592px;
 	text-align: center;
 }
-.redbag-btn-box02{
+.redbag-bag05 .redbag-btn-box02{
 	text-align: center;	
-	padding-top: 50px;
+	padding-top: 115px;
 }
 .redbag-bag02-money{
 	margin-top: -10px;
@@ -48,12 +47,5 @@
 	padding: 18px 0;
 }
 .redbag-bag05 .full{
-	display: inline-block;
-	margin-left: -28px;
-	width: 31px;
-	background-color: #653332;
-	color: #fff1c0;
-	padding: 10px 0;
-	border-radius: 4px;
-	vertical-align: 5px;
+	display: none;
 }

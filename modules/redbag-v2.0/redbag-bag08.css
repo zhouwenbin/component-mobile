@@ -1,6 +1,5 @@
 .redbag-bag08{
-	background: url(../../../modules/redbag-v1.2/img/bag08.jpg) center 0 no-repeat;
-	height: 516px;
+	height: 595px;
 	text-align: center;
 }
 .redbag-btn-box02{
@@ -56,4 +55,8 @@
 	padding: 10px 0;
 	border-radius: 4px;
 	vertical-align: 5px;
+}
+.redbag-bag02 .redbag-btn,
+.redbag-bag08 .redbag-btn{
+	margin-top: 65px;
 }
