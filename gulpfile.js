@@ -9,7 +9,7 @@ var precss = require("precss");
 var path = require("path");
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
-var sass = require('gulp-ruby-sass');
+var sass = require('gulp-sass');
 var slim = require("gulp-slim");
 var modules = fs.readdirSync("src/modules");
 var pages = fs.readdirSync("src/pages");
@@ -45,8 +45,8 @@ gulp.task("svg", function () {
 
 gulp.task('watch', function() {
   for(var i in pages){
-    gulp.watch("src/pages/"+ pages[i] +"/posthtml/**.html",["html"]);
-    gulp.watch("src/pages/"+ pages[i] +"/postcss/**.css",["css"]);
+    gulp.watch("src/pages/"+ pages[i] +"/**.html",["html"]);
+    gulp.watch("src/pages/"+ pages[i] +"/**.css",["css"]);
   }
   for(var i in modules){
     gulp.watch("src/modules/"+ modules[i] +"/**.html",["html"]);
@@ -73,7 +73,12 @@ gulp.task("css", function () {
           ])
       )
       .pipe(cssnext({ browsers: ['last 10 versions'] }))
-      .pipe(gulp.dest("dist/pages/"+ pages[i]))
+      .pipe(gulp.dest("dist/pages/"+ pages[i]));
+      //sass
+      // gulp.src("src/pages/"+ pages[i] +"/**.scss")
+      // .pipe(sass().on('error', sass.logError))
+      // .pipe(cssnext({ browsers: ['last 10 versions'] }))
+      // .pipe(gulp.dest("dist/pages/"+ pages[i]));
     }
 });
 
@@ -127,12 +132,12 @@ gulp.task("demo", function () {
             ])
         )
         .pipe(cssnext({ browsers: ['last 10 versions'] }))
-        .pipe(gulp.dest("dist/modules/"+ modules[i]))
+        .pipe(gulp.dest("dist/modules/"+ modules[i]));
       //sass
-        // gulp.src("src/modules/"+ modules[i] +"/**.scss")
-        // .pipe(sass().on('error', sass.logError))
-        // .pipe(cssnext({ browsers: ['last 10 versions'] }))
-        // .pipe(gulp.dest("dist/modules/"+ modules[i]));
+        gulp.src("src/modules/"+ modules[i] +"/**.scss")
+        .pipe(sass().on('error', sass.logError))
+        .pipe(cssnext({ browsers: ['last 10 versions'] }))
+        .pipe(gulp.dest("dist/modules/"+ modules[i]));
     }
       
   }
