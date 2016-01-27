@@ -1,5 +1,5 @@
 /*
-今日上新
+banner+goods
 */
 .new-goods-list{
 	overflow: hidden;	
@@ -42,6 +42,22 @@
 	top: 17px * 2;
 	right: 0;
 	position: absolute;
+}
+.banner-goods{
+	margin-top: 8px * 2;
+	width: 100%;
+	overflow: hidden;
+}
+.banner-goods .new-goods-list li{
+	float: left;
+	border: 0 none;
+	width: 125px * 2;
+	margin-left: 8px * 2;
+	padding-left:0;
+	padding-right:0;
+}
+.banner-goods-banner{
+	width: 100%;
 }
 /*title*/
 .com-title {
