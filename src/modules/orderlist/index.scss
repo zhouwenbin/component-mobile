@@ -1,0 +1,111 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+/*orderlist*/
+.orderlist>li{
+  background: #fff;
+  margin-bottom: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.orderlist .box1{
+  margin-top: 0;
+  font-size: 14px;
+  
+}
+.orderlist .box1 a{
+  color: #666;
+}
+.orderlist-bag{
+  padding:0 10px;
+}
+.orderlist-bag-r1{
+  display: flex;
+  justify-content:space-between;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.orderlist-bag-r1{
+  font-size: 14px;
+}
+.orderlist-bag-r1 .text-important{
+  margin-left: 15px;
+  font-size: 14px;
+}
+
+.orderlist-num{
+  font-size: 15px;
+  color: #999;
+  margin-bottom: 8px;
+}
+.orderlist-total{
+  margin: 0 10px;
+  padding: 13px 0;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+.orderlist-total .presell-tips{
+  margin-top: 10px;
+  text-align: left;
+  line-height: 1.3;
+}
+.orderlist-total .presell-tips .text-important{
+  font-size: 12px;
+}
+.orderlist-total .text-important{
+  font-size: 18px;
+}
+.orderlist-total .text-disable{
+  margin-left: 8px;
+  color: #999;
+}
+.orderlist-btns{
+  margin: 0 10px;
+  padding: 14px 0;
+  border-top: 1px solid #e5e5e5;
+}
+.orderlist-btns .btn{
+  margin-left: 15px;
+  font-size: 14px;
+}
+.orderlist-cancal .orderlist-num{
+  color: #ccc;
+}
+.orderlist-cancal .text-important{
+  color: #ccc;
+}
+.orderlist-cancal .text-disable{
+  color: #ccc;
+}
+.orderlist-btns{
+  display: flex;
+  justify-content:flex-end;
+  align-items:center;
+}
+.orderlist-btns-c1{
+  flex:1;
+}
+.orderlist-none{
+  height: 100%;
+  text-align: center;
+  background: #fff;
+}
+.orderlist-none .icon55{
+  margin-top: 77px;
+  margin-bottom: 20px;
+}
+.orderlist-none p{
+  margin-bottom: 35px;
+  font-size: 15px;
+}
+.seckill-title-countdown{
+  margin-left: 13px;
+}
+.seckill-title-countdown .text-important{
+  margin-left: 0;
+}

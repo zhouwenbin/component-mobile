@@ -1,0 +1,48 @@
+/*
+@styleguide
+
+# 表格
+
+*/
+@import "../../utils/variables";
+.table-r1{
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: normal;
+  padding-bottom: 12px;
+  border-width: 0 0 1px 0;
+  border-image: url(#{$border}) 2 0 round;
+  margin-bottom: 15px;
+}
+.table-r1c2{
+  overflow: hidden;
+}
+.table-r1c1{
+  margin-right: 11px;
+  width: 66px;
+  height: 66px;
+}
+.table-r1c1 img{
+  max-width: 66px;
+  max-height: 66px;
+}
+.table-r1c2 h3{
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+.table-r1c2 .text-important{
+  font-size: 18px;
+}
+.table-r1c3{
+  text-align: right;
+}
+.table-r2 li{
+  float: left;
+  width: 50%;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+.table-r3{
+  font-size: 14px;
+}

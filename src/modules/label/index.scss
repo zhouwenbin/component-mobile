@@ -1,0 +1,61 @@
+/*
+@styleguide
+
+# 标签
+
+*/
+@mixin label($i){
+  .label {
+  height: 21px * $i;
+  line-height: 21px * $i;
+  border-radius: 2px * $i;
+  padding: 0 15px * $i;
+  font-size: 12px * $i;
+  }
+  
+  .label i{
+    border-width: 3px * $i 3px * $i;
+    right: -6px * $i;
+    top: 7px * $i;
+  }
+}
+.label {
+color: #fff;
+text-align: center;
+display: inline-block;
+vertical-align: middle;
+position: relative;
+}
+
+.label i{
+  border-style: solid;
+  border-color: transparent transparent transparent #f78e55;
+  position: absolute;
+}
+.label-error,
+.label-danger{
+background: #ff5b54;
+@extend .label;
+}
+.label-success{
+background: #67b222;
+@extend .label;
+}
+.label-warning{
+background: #1376ce;
+@extend .label;
+}
+.label-disabled{
+background: #ccc;
+@extend .label;
+}
+.label-soon{
+background: #f78e55;
+@extend .label;
+}
+
+@include label(1);
+
+@media screen and (min-width:640px){
+  @include label(2);
+}

@@ -1,0 +1,17 @@
+/*
+@styleguide
+
+# 盒子
+
+*/
+@import "../../utils/variables";
+@import "../coupon/index";
+.coupon-gift .coupon-b{
+  background-image: url("#{$bg-url}gift.png");
+  background-size:165px 85px;
+  width: 165px;
+  height: 85px;
+}
+.coupon-gift .coupon-r1{
+  padding-top:23px;
+}
