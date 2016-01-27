@@ -1,0 +1,6 @@
+@import '../../modules/brand-detail-focus/index.css';
+@import '../../modules/brand-detail-choice/index.css';
+@import '../../modules/brand-detail-filter/index.css';
+body{
+  max-width: 640px;
+}

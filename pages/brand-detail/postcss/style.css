@@ -1,6 +1,0 @@
-@import '../../../modules/brand-detail-focus/style.css';
-@import '../../../modules/brand-detail-choice/style.css';
-@import '../../../modules/brand-detail-filter/style.css';
-body{
-  max-width: 640px;
-}

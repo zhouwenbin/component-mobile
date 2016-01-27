@@ -1,0 +1,17 @@
+.christmas{
+  width: 640px;
+  margin: 0 auto;
+  height: 1397px;
+  background: url(img/bg.png) no-repeat;
+  padding-top: 382px;
+}
+.christmas p{
+  text-align: center;
+  font-size: 20px;
+}
+#wipe{
+  width: 492px;
+  height: 291px;
+  background: #fff;
+  margin: 0 auto 265px;
+}
