@@ -1,0 +1,27 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.info{
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 17px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e5e5;
+  margin-top: 19px;
+}
+.info-r1c1{
+  color: #7f7f7f;
+  width: 4em;
+  text-align: justify;
+  height: 24px;
+}
+.info-r1c2{
+  overflow: hidden;
+}
+.info-r1c2 span{
+  margin-right: 5px;
+}

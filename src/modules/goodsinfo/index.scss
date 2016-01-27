@@ -1,0 +1,40 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.goodsinfo{
+  padding: 16px 14px 0;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.goodsinfo h2{
+  font-size: 14px;
+  padding-left: 5px;
+  border-left: 2px solid #dc3334;
+}
+.goodsinfo-title{
+  margin-left: 75px;
+  margin-right: 71px;
+  line-height: 18px;
+}
+.goodsinfo-num{
+  font-size: 15px;
+  color: #999;
+  margin-bottom: 9px;
+}
+.goodsinfo-r2 select{
+  width: 100%;
+}
+.goodinfo-stowage{
+  color: #666;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-top: 20px;
+}
+.goodsinfo .label-orange{
+  margin-right:5px;
+}

@@ -1,0 +1,37 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.coupon{
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+.coupon p{
+  margin-bottom: 15px;
+  color: #666;
+  line-height: 18px;
+}
+.coupon-b{
+  background: url(#{$bg-url}coupon.png) no-repeat;
+  background-size:100%;
+  width: 169px;
+  padding-left:36px;
+  height: 69px;
+  color:#fff;
+  display: inline-block;
+}
+.coupon-r1{
+  font-size: 24px;
+  padding-top:6px;
+}
+.coupon-r1 strong{
+  font-size: 38px;
+}
+.coupon-r2{
+  padding-left:10px;
+  line-height: 1.2;
+}

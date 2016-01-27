@@ -1,0 +1,79 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.coupons{
+  padding-top: 10px;
+}
+.coupons li{
+  margin:0 10px 10px;
+}
+.coupons-c1{
+  background: url(#{$bg-url}coupons-c1.png) no-repeat;
+  background-size:320px;
+  height: 70px;
+  padding-left: 15px;
+  padding-right:15px;
+  overflow: hidden;
+}
+.coupons-c2{
+  background: url(#{$bg-url}coupons.png) no-repeat;
+  background-size:90px 70px;
+  height: 70px;
+  width: 90px;
+  text-align: center;
+  color: #fff;
+  position:relative;
+}
+.coupons-disabled .coupons-c2{
+  background-image: url(#{$bg-url}coupons2.png);
+}
+.coupons-c2r1 span{
+  font-size: 24px;
+}
+.coupons-c2r1{
+  padding-top:14px;
+  margin-bottom:9px;
+}
+.coupons-c2r3{
+  color: #f8c44d;
+  transform: rotate(30deg);
+  position: absolute;
+  right: 0;
+  top: 6px;
+}
+
+.coupons h2{
+  font-size: 15px;
+  color: #666;
+  padding-top: 5px;
+  padding-bottom:5px;
+  margin-bottom: 3px;
+  border-bottom: 1px solid #e7e7e7;
+  padding-right: 50px;
+
+}
+.coupons-title{
+  position: relative;
+}
+.coupons-title a{
+  position: absolute;
+  right: 0;
+  top: 7px;
+  color: #3b86c4;
+}
+.coupons p{
+  color: #999;
+  line-height: 1.5;
+}
+.coupons-btn{
+  margin: 10px 10px 0;
+  width: auto;
+  color: #ff5b54;
+}
+.coupons-btn:visited{
+  color: #ff5b54;
+}

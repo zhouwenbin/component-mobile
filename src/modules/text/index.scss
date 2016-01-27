@@ -1,0 +1,47 @@
+/*
+@styleguide
+
+# 文字颜色
+
+
+*/
+@mixin text($i){
+  .text-error,
+  .text-important{
+    font-size: 12px * $i;
+  }
+
+  .text-h2{
+    padding:21px * $i 0 7px * $i 12px * $i;
+    font-size:14px * $i;
+  }
+}
+
+.text-error,
+.text-important{
+  color:#ff5b54;
+  vertical-align: middle;
+}
+.text-success{
+  color: #67b222;
+}
+.text-warnning,
+.text-link{
+  color: #3b86c4;
+}
+.text-disable{
+  color: #999;
+}
+.text-orange{
+  color:#ff9000;
+}
+
+.text-h2{
+  color:#666;
+  font-weight:normal;
+}
+  
+@include text(1);
+@media screen and (min-width:640px){
+  @include text(2);
+}

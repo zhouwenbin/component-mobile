@@ -1,0 +1,58 @@
+/*
+@styleguide
+
+# 提示
+
+*/
+@mixin alert($i){
+  .alert,
+  .alert-warning,
+  .alert-error,
+  .alert-success,
+  .alert-disabled,
+  .alert-info{
+    padding: 14px * $i 0 14px * $i 17px * $i;
+    font-size:14px * $i;
+  }
+  .alert .icon{
+    right:13px * $i;
+  }
+  .alert-warning {
+    margin-bottom:5px * $i;
+  }
+}
+.alert,
+.alert-warning,
+.alert-error,
+.alert-success,
+.alert-disabled,
+.alert-info{
+  color: #fff;
+  position: relative;
+}
+.alert a{
+  display:block;
+}
+.alert .icon{
+  position:absolute;
+}
+.alert-warning {
+  background: #1376ce;
+}
+.alert-error{
+  background: #ff5b54;
+}
+.alert-success{
+  background: #67b222;
+}
+.alert-disabled{
+  background:#ccc;
+}
+.alert-info{
+  background: #fffddd;
+  color:#666;
+}
+@include alert(1);
+@media screen and (min-width:640px){
+  @include alert(2);
+}

@@ -1,0 +1,113 @@
+/*
+@styleguide
+
+# 盒子
+
+*/
+@import "../../utils/variables";
+@mixin box($i){
+  .box{
+    padding: 16px * $i 14px * $i;
+    border-width: 1px * $i 0 1px * $i 0;
+    margin-top: -1px * $i;
+  }
+  .box .icon8,
+  .box .icon49{
+    left: 12px * $i;
+  }
+
+  .box.active .icon8{
+    background-position: -253px * $i -167px * $i;
+  }
+  .box.active .icon49{
+    background-position: -255px * $i -249px * $i;
+  }
+  .box-arrow{
+    right: 14px * $i;
+  }
+  .box1 .box-link{
+    padding: 16px * $i 14px * $i;
+  }
+  /*box-address*/
+  .box-address{
+    font-size: 14px * $i;
+    padding-left:47px * $i;
+  }
+  .box-address h3{
+    font-size: 14px * $i;
+    margin-bottom: 8px * $i;
+  }
+  .box-address span{
+    margin-right: 5px * $i;
+  }
+  .box-address-r1 span{
+    margin-right: 33px * $i;
+  }
+  .box-address-c1{
+    width: 46px * $i;
+    border: 1px * $i solid #ececec;
+    margin-top: -16px * $i;
+  }
+  .box-address-c2{
+    margin-right: 31px * $i;
+  }
+  .box-check{
+    padding-left: 50px * $i;
+  }
+}
+
+.box{
+  border-image: url(#{$border}) 2 0 round;
+  background: #fff;
+  position: relative;
+}
+.box .icon8,
+.box .icon49{
+  position: absolute;
+  top:50%;
+  transform: translate(0,-50%);
+}
+
+.box-link{
+  display: block;
+  position: relative;
+}
+
+.box1{
+  padding: 0;
+}
+
+/*box-address*/
+.box-address{
+  line-height: 1.5;
+  color: #666;
+}
+
+
+.box-address p{
+  color: #666;
+}
+
+.box-address-c1{
+  height: 100%;
+  position: absolute;
+  right: 0;
+}
+.box-address-c1:active{
+  background:#b1b1b1;
+}
+.box-address-c2{
+  overflow: hidden;
+}
+.box-address-r2{
+  text-align: right;
+}
+.box-address-r3{
+  display: flex;
+  justify-content:space-between;
+}
+
+@include box(1);
+@media screen and (min-width:640px){
+  @include box(2);
+}

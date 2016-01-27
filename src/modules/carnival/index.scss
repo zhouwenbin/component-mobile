@@ -1,0 +1,59 @@
+@mixin carnival($i){
+  .carnival h3{
+    font-size: 14px * $i;
+    line-height: 18px * $i;
+    margin-bottom: 4px * $i;
+  }
+  .carnival p{
+    line-height: 18px * $i;
+    margin-bottom: 8px * $i;
+  }
+  .carnival li{
+    border-top: 1px * $i solid #d9d9d9;
+    border-bottom: 1px * $i solid #d9d9d9;
+    margin-bottom: 10px * $i;
+  }
+  .carnival-b{
+    padding: 20px * $i 14px * $i;
+  }
+  .carnival-r1{
+    margin-bottom: 18px * $i;
+  }
+  .carnival-r1 .icon{
+    margin-right: 3px * $i;
+  }
+  .carnival-r2c1{
+    font-size: 14px * $i;
+  }
+  .carnival-r2c1 strong{
+    font-size: 24px * $i;
+  }
+}
+
+.carnival img{
+  width: 100%;
+}
+.carnival h3{
+  font-weight: normal;
+}
+.carnival p{
+  color: #666;
+}
+.carnival li{
+  background: #fff;
+}
+.carnival li:last-child{
+  margin-bottom: 0;
+}
+
+.carnival-r1{
+  color: #999;
+}
+.carnival-r2c1{
+  color: #d8363b;
+}
+  
+@include carnival(1);
+@media screen and (min-width:640px){
+  @include carnival(2);
+}

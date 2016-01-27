@@ -1,0 +1,56 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin nav1($i){
+  .nav1{
+    padding: 10px * $i 0;
+  } 
+  .nav1-icon1,
+  .nav1-icon2,
+  .nav1-icon3,
+  .nav1-icon4{
+    background-size:274px * $i;
+    margin:0 auto 7px * $i;
+    width:40px * $i;
+    height: 39px * $i;
+  }
+  .nav1-icon2{
+    background-position: -78px * $i 0;
+  }
+  .nav1-icon3{
+    background-position: -157px * $i 0;
+  }
+}
+
+
+.nav1{
+  border-bottom:1px solid #dfdfdf;
+  background: #fff;
+} 
+.nav1 ul{
+  display:flex;
+}
+.nav1 li{
+  flex:1;
+  text-align: center;
+}
+.nav1-icon1,
+.nav1-icon2,
+.nav1-icon3,
+.nav1-icon4{
+  background:url(#{$bg-url}nav1.png) no-repeat;
+  display: block;
+}
+.nav1-icon4{
+  background-position: right 0;
+}
+
+@include nav1(1);
+
+@media screen and (min-width:640px){
+  @include nav1(2);
+}
