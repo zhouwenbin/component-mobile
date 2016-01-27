@@ -1,0 +1,38 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.sharepocket{
+  padding-top:14px;
+  text-align:center;
+  background:#fff url(#{$bg-url}sharepocket.jpg) no-repeat center top;
+  background-size:320px;
+  height:354px;
+}
+.sharepocket p{
+  font-size:14px;
+  color:#666;
+  margin-bottom:124px;
+}
+.sharepocket-r1{
+  font-size:21px;
+  color:#fff18d;
+  margin-bottom:66px;
+}
+
+.sharepocket-r1 span{
+  font-size:40px;
+}
+.sharepocket-btn{
+  font-size:15px;
+  color:#dc3334;
+  background:#feef86;
+  border-radius:5px;
+  height:40px;
+  line-height:40px;
+  padding:0 20px;
+  display: inline-block;
+}
