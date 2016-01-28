@@ -1,0 +1,37 @@
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+
+@import "../../utils/variables";
+.order-submit{
+  height: 62px;
+}
+.order-submit-fixed{
+  display: flex;
+  justify-content:space-between;
+  background: #f3f3f3;
+  border-top: 1px solid #dadada;
+  padding: 10px 12px;
+  line-height: 40px;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom:0;
+}
+.order-submit-c1{
+  font-size: 15px;
+  line-height: 40px;
+}
+.order-submit-c1 .text-important{
+  font-size: 20px;
+}
+.order-submit .btn{
+  flex:1;
+  display: block;
+  margin-left: 20px;
+  height: 40px;
+  line-height: 40px;
+}
