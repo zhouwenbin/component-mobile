@@ -15,17 +15,16 @@ var modules = fs.readdirSync("src/modules");
 var pages = fs.readdirSync("src/pages");
 
 gulp.task("common", function () {
-
-    var processedCSS = fs.readFileSync("./app/static/css/pages/common/common.css", "utf-8");
-    return gulp.src("./app/static/css/pages/common/common.css")
-        .pipe(postcss([
-            require("postcss-style-guide")({
-                name: "组件样式指南",
-                processedCSS: processedCSS,
-                dir: "./docs/common"
-            })
-        ]))
-        .pipe(gulp.dest("./docs/common"));
+  var processedCSS = fs.readFileSync("./app/static/css/pages/common/common.css", "utf-8");
+  return gulp.src("./app/static/css/pages/common/common.css")
+      .pipe(postcss([
+          require("postcss-style-guide")({
+              name: "组件样式指南",
+              processedCSS: processedCSS,
+              dir: "./docs/common"
+          })
+      ]))
+      .pipe(gulp.dest("./docs/common"));
 });
 
 gulp.task("svg", function () {
@@ -47,43 +46,84 @@ gulp.task('watch', function() {
   for(var i in pages){
     gulp.watch("src/pages/"+ pages[i] +"/**.html",["html"]);
     gulp.watch("src/pages/"+ pages[i] +"/**.css",["css"]);
+    gulp.watch("src/pages/"+ pages[i] +"/**.scss",["scss"]);
   }
   for(var i in modules){
     gulp.watch("src/modules/"+ modules[i] +"/**.html",["html"]);
     gulp.watch("src/modules/"+ modules[i] +"/**.css",["css"]);
+    gulp.watch("src/modules/"+ modules[i] +"/**.scss",["scss"]);
   }
 });
 
 gulp.task("html", function () {
-    for(var i in pages){
+  for(var i in pages){
+    //html
+    gulp.src("src/pages/"+ pages[i] +"/**.html")
+        .pipe(include())
+        .pipe(gulp.dest("dist/pages/"+ pages[i]));
+  }
+  for(var i in modules) {
+    if(modules[i] !== '.DS_Store') {
       //html
-      gulp.src("src/pages/"+ pages[i] +"/**.html")
+      gulp.src("src/modules/"+ modules[i] +"/**.html")
           .pipe(include())
-          .pipe(gulp.dest("dist/pages/"+ pages[i]));
+          .pipe(gulp.dest("dist/modules/"+ modules[i]));
+      
     }
+      
+  }
 });
 
 gulp.task("css", function () {
-    for(var i in pages){
-      //css
-      gulp.src("src/pages/"+ pages[i] +"/**.css")
-      .pipe(
-          postcss([
-              require("precss")({ /* options */ })
-          ])
-      )
-      .pipe(cssnext({ browsers: ['last 10 versions'] }))
-      .pipe(gulp.dest("dist/pages/"+ pages[i]));
-      //sass
-      // gulp.src("src/pages/"+ pages[i] +"/**.scss")
-      // .pipe(sass().on('error', sass.logError))
-      // .pipe(cssnext({ browsers: ['last 10 versions'] }))
-      // .pipe(gulp.dest("dist/pages/"+ pages[i]));
+  for(var i in pages){
+    //css
+    gulp.src("src/pages/"+ pages[i] +"/**.css")
+    .pipe(
+        postcss([
+            require("precss")({ /* options */ })
+        ])
+    )
+    .pipe(cssnext({ browsers: ['last 10 versions'] }))
+    .pipe(gulp.dest("dist/pages/"+ pages[i]));
+  }
+  for(var i in modules) {
+    if(modules[i] !== '.DS_Store') {
+      
+      //postcss
+      gulp.src("src/modules/"+ modules[i] +"/**.css")
+        .pipe(
+            postcss([
+                require("precss")({ /* options */ })
+            ])
+        )
+        .pipe(cssnext({ browsers: ['last 10 versions'] }))
+        .pipe(gulp.dest("dist/modules/"+ modules[i]));
     }
+      
+  }
+});
+
+gulp.task("scss", function () {
+  for(var i in pages){
+    //sass
+    sass('src/pages/"+ pages[i] +"/**.scss')
+    .on('error', sass.logError)
+    .pipe(cssnext({ browsers: ['last 10 versions'] }))
+    .pipe(gulp.dest('dist/pages/"+ pages[i]'));
+  }
+  for(var i in modules) {
+    if(modules[i] !== '.DS_Store') {
+      //sass
+      sass("src/modules/"+ modules[i] +"/index.scss")
+      .on('error', sass.logError)
+      .pipe(cssnext({ browsers: ['last 10 versions'] }))
+      .pipe(gulp.dest("dist/modules/"+ modules[i]));
+    }
+      
+  }
 });
 
 gulp.task('serve', function () {
-
     // Serve files from the root of this project
     browserSync.init({
         server: {
@@ -115,32 +155,5 @@ gulp.task('slim', function(){
     .pipe(gulp.dest("./app/static/html/pages/"));
 });
 
-gulp.task("demo", function () {
-  for(var i in modules) {
-    if(modules[i] !== '.DS_Store') {
-      //html
-      gulp.src("src/modules/"+ modules[i] +"/**.html")
-          .pipe(include())
-          .pipe(gulp.dest("dist/modules/"+ modules[i]));
 
-      
-      //postcss
-      gulp.src("src/modules/"+ modules[i] +"/**.css")
-        .pipe(
-            postcss([
-                require("precss")({ /* options */ })
-            ])
-        )
-        .pipe(cssnext({ browsers: ['last 10 versions'] }))
-        .pipe(gulp.dest("dist/modules/"+ modules[i]));
-      //sass
-      sass("src/modules/"+ modules[i] +"/index.scss")
-      .on('error', sass.logError)
-      .pipe(cssnext({ browsers: ['last 10 versions'] }))
-      .pipe(gulp.dest("dist/modules/"+ modules[i]));
-    }
-      
-  }
-});
-
-gulp.task('default', ['watch', 'css', 'html', 'serve', 'demo']);
+gulp.task('default', ['watch', 'css', 'scss', 'html', 'serve']);

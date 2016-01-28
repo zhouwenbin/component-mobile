@@ -1,0 +1,41 @@
+@import "../../utils/variables";
+/*
+@styleguide
+
+# 点
+
+*/
+
+@mixin dot($i){
+  .dot{
+    width:8px * $i;
+    height:8px * $i;
+  }
+  .dot-error{
+    padding: 0 5px * $i;
+    height: 18px * $i;
+    line-height: 18px * $i;
+    border-radius: 9px * $i;
+  }
+}
+.dot{
+  display:inline-block;
+  vertical-align:middle;
+  border-radius:50%;
+}
+.dot-important{
+  background:#ff5b54;
+}
+.dot-error{
+  width: auto;
+  text-align: center;
+  background: #ff5b54;
+  color: #fff;
+  text-indent: 0;
+  transform:scale(0.8);
+}
+@include dot(1);
+
+@media screen and (min-width:640px){
+  @include dot(2);
+}

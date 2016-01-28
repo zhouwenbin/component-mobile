@@ -1,0 +1,48 @@
+@import "../../utils/variables";
+/*
+@styleguide
+
+# 切换按钮
+
+
+*/
+
+@mixin switch($i){
+  .switch{
+    width: 46px * $i;
+    height: 24px * $i;
+    border-radius: 24px * $i;
+  }
+  .switch:before{
+    width: 22px * $i;
+    height: 22px * $i;
+    left: 1px * $i;
+    top: 1px * $i;
+  }
+  .switch.active:before{
+    left: 23px * $i;
+  }
+}
+
+.switch{
+  background: #ccc;
+  display: inline-block;
+  position: relative;
+  transition:all 0.3s;
+}
+.switch:before{
+  content: '';
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  transition:all 0.3s ease-in;
+}
+.switch.active{
+  background: #df3c3a;
+}
+
+@include switch(1);
+
+@media screen and (min-width:640px){
+  @include switch(2);
+}
