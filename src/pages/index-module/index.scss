@@ -1,2 +1,20 @@
+/*个人福利*/
 @import '../../modules/welfare/index';
-@import '../../modules/fast-buy/index';
+/* 今日闪购 */
+@import '../../modules/fast-buy/index';	
+/* 今日上新 */
+@import '../../modules/new-goods/index';
+/* banner+goods */
+@import '../../modules/banner-goods/index';	
+/* 上周TOP4 */
+@import '../../modules/weekly-top/index';	
+/* 为你推荐 */
+@import '../../modules/recommend-goods/index';	
+/* 热卖商品 */
+@import '../../modules/hot-goods/index';	
+/* 秒杀商品 */
+@import '../../modules/seckill-goods/index';	
+/* 热卖商品Tab */
+@import '../../modules/tabnav/index';	
+/* 单行商品 */
+@import '../../modules/linegoods/index';

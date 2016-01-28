@@ -75,10 +75,10 @@ gulp.task("css", function () {
       .pipe(cssnext({ browsers: ['last 10 versions'] }))
       .pipe(gulp.dest("dist/pages/"+ pages[i]));
       //sass
-      // gulp.src("src/pages/"+ pages[i] +"/**.scss")
-      // .pipe(sass().on('error', sass.logError))
-      // .pipe(cssnext({ browsers: ['last 10 versions'] }))
-      // .pipe(gulp.dest("dist/pages/"+ pages[i]));
+      sass("src/pages/"+ pages[i] +"/**.scss")
+      .on('error', sass.logError)
+      .pipe(cssnext({ browsers: ['last 10 versions'] }))
+      .pipe(gulp.dest("dist/pages/"+ pages[i]));
     }
 });
 
