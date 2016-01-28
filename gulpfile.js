@@ -134,7 +134,7 @@ gulp.task("demo", function () {
         .pipe(cssnext({ browsers: ['last 10 versions'] }))
         .pipe(gulp.dest("dist/modules/"+ modules[i]));
       //sass
-      sass("src/modules/"+ modules[i] +"/**.scss")
+      sass("src/modules/"+ modules[i] +"/index.scss")
       .on('error', sass.logError)
       .pipe(cssnext({ browsers: ['last 10 versions'] }))
       .pipe(gulp.dest("dist/modules/"+ modules[i]));
