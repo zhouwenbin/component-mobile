@@ -1,0 +1,39 @@
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+@import "../../utils/variables";
+.invite-share{
+    background: #fff;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 22px;
+    text-align: center;
+}
+.invite-share-icon{
+    width: 138px;
+    height: 83px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url(#{$bg-url}invite-share-icon.png) no-repeat;
+    background-size: 138px 83px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.invite-share h3{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.invite-share p{
+    color: #999;
+    line-height: 18px;
+    margin-bottom: 5px;
+}
+.invite-share .btn{
+    width: 125px;
+    height: 40px;
+    line-height: 40px;
+}

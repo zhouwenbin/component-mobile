@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
+
+<symbol id="icon-income" viewBox="0 0 15 20">
+        <title>Group</title><g transform="translate(1 1)" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" fill-rule="evenodd"><path d="M8.37 6.75H4.03C2.31 7.95 0 11.09 0 13.056c0 2.72 1.9 4.505 6.2 4.505 4.298 0 6.2-1.786 6.2-4.505 0-1.966-2.312-5.107-4.03-6.308zM4.03 5.4h4.34M9.61 1.042l-2.48.9-.93-1.8-.93 1.8-2.48-.9s1.55 1.802 1.55 3.304h3.72c0-1.502 1.55-3.304 1.55-3.304zM6.19 14.86v.6M6.19 9.452v.6"/><path d="M4.96 13.658c0 .663.555 1.2 1.24 1.2.684 0 1.24-.537 1.24-1.2 0-.664-.556-1.202-1.24-1.202-.685 0-1.24-.538-1.24-1.2 0-.665.555-1.203 1.24-1.203.684 0 1.24.538 1.24 1.202"/></g>
+</symbol>
+</svg>
