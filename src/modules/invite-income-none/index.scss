@@ -1,0 +1,40 @@
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+@import "../../utils/variables";
+.integral-tab{
+  height: 44px;
+}
+.integral-tab ul{
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  justify-content:space-between;
+  background: #f9f9f9;
+}
+.integral-tab-fixed{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: map-get($z-index,integral-tab-fixed);
+}
+.integral-tab li{  
+  text-align: center;
+  height: 43px;
+  line-height: 43px;
+  font-size: 14px;
+  width: 80px;
+}
+.integral-tab li a{
+  color: #9B9B9B;
+}
+.integral-tab li.active{
+  border-bottom: 4px solid #ff5b54;
+}
+
+.integral-tab li.active a{
+  color: #ff5b54;
+}

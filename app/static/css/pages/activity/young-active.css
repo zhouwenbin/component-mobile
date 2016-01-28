@@ -69,6 +69,7 @@ em {
 
 /* 默认 */
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent; }
 
@@ -242,6 +243,7 @@ body {
   padding-left: 10px; }
 
 .spike-tab-h li {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   background: #f63c3f;
   text-align: center;
@@ -250,6 +252,7 @@ body {
 .spike-tab-h li:before {
   content: '';
   background: #f63c3f;
+  -webkit-border-radius: 50%;
   border-radius: 50%;
   position: absolute;
   top: 50%; }
@@ -324,6 +327,7 @@ body {
 .spike-r1 .mask {
   position: absolute;
   display: block;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   z-index: 0;
   width: 100%;
@@ -352,6 +356,7 @@ body {
 .spike-tab-h li {
   width: 18px;
   padding: 4px 0;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
   font-size: 12px;
   margin-bottom: 20px;
@@ -423,6 +428,7 @@ body {
   .spike-tab-h li {
     width: 36px;
     padding: 8px 0;
+    -webkit-border-radius: 4px;
     border-radius: 4px;
     font-size: 24px;
     margin-bottom: 40px;
@@ -557,7 +563,8 @@ body {
   line-height: 29.5px;
   background-size: 130.5px 26.5px;
   border: 1.5px solid #fff;
-  border-radius: 1.5px;
+  -webkit-border-radius: 1.5px;
+          border-radius: 1.5px;
   font-size: 15px;
   color: #fff;
   letter-spacing: 16px;
@@ -599,7 +606,8 @@ body {
   height: 77px;
   line-height: 77px;
   text-align: center;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   background: #070707;
   color: #fff;
   font-size: 19px;

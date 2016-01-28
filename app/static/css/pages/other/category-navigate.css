@@ -26,6 +26,7 @@
   bottom: 0;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   width: 0;
   height: 2px;
@@ -104,6 +105,7 @@
 .category-content li .category-content-p2.active {
   opacity: 0;
   -webkit-transform-origin: center top;
+      -ms-transform-origin: center top;
           transform-origin: center top;
   -webkit-transform: rotateX(90deg);
           transform: rotateX(90deg);
@@ -166,6 +168,7 @@
 
 .category-iconarrow-close.active {
   -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
           transform: rotate(180deg); }
 
 .category-content li {

@@ -15,7 +15,8 @@ body {
   padding-top: 28.5rem;
   height: 3096px;
   height: 77.4rem;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   position: relative; }
 
 .children-day .a1 {
@@ -70,7 +71,8 @@ body {
   border: 2px solid #ccc;
   padding: 10px 26px;
   padding: 0.25rem 0.65rem;
-  border-radius: 0.1rem;
+  -webkit-border-radius: 0.1rem;
+          border-radius: 0.1rem;
   font-size: 24px;
   font-size: 0.6rem; }
 
@@ -172,7 +174,8 @@ body {
 .mask {
   position: absolute;
   display: block;
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 .tab2-b li span {
   font-size: 36px;

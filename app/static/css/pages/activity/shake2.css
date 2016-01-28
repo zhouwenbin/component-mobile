@@ -25,13 +25,15 @@ body {
   width: 140px;
   height: 140px;
   border: 10px solid #fff;
-  border-radius: 50%; }
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
 
 .shaking-icon {
   width: 380px;
   height: 380px;
   background: #F4DEC3;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   position: relative;
   margin: 0 auto; }
 
@@ -49,6 +51,7 @@ body {
   margin-top: -138px;
   fill: #fff;
   -webkit-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
           transform: rotate(15deg);
   -webkit-animation: shake 2s infinite;
           animation: shake 2s infinite; }
@@ -129,23 +132,27 @@ a.btn-red {
   width: 250px;
   height: 80px;
   line-height: 80px;
-  border-radius: 80px;
+  -webkit-border-radius: 80px;
+          border-radius: 80px;
   font-size: 36px;
   text-align: center; }
 
 a.btn-yellow {
   background: #FFC70F;
-  box-shadow: 0 4px #EB9D27;
+  -webkit-box-shadow: 0 4px #EB9D27;
+          box-shadow: 0 4px #EB9D27;
   color: #BC6917; }
 
 a.btn-red {
   color: #fff;
   background: #FF5B54;
-  box-shadow: 0 4px #BC2B25; }
+  -webkit-box-shadow: 0 4px #BC2B25;
+          box-shadow: 0 4px #BC2B25; }
 
 a.btn-red.grey {
   background: #979DA9;
-  box-shadow: 0 2px #979DA9; }
+  -webkit-box-shadow: 0 2px #979DA9;
+          box-shadow: 0 2px #979DA9; }
 
 .login-yao a.btn-yellow {
   text-align: center;
@@ -159,7 +166,8 @@ a.btn-big {
   font-size: 32px;
   color: #fff;
   padding: 22px 46px;
-  border-radius: 16px;
+  -webkit-border-radius: 16px;
+          border-radius: 16px;
   white-space: nowrap; }
 
 .shaked-text {
