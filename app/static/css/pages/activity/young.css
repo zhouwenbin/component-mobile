@@ -69,6 +69,7 @@ em {
 
 /* 默认 */
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent; }
 
@@ -275,6 +276,7 @@ img {
   text-indent: -999em;
   opacity: 0;
   -webkit-transform: rotate(8deg) translate(0, -400px);
+      -ms-transform: rotate(8deg) translate(0, -400px);
           transform: rotate(8deg) translate(0, -400px); }
 
 .cur.page1 .s1 {
@@ -337,6 +339,7 @@ img {
   text-align: center;
   opacity: 0;
   -webkit-transform: rotate(10deg) scale(2);
+      -ms-transform: rotate(10deg) scale(2);
           transform: rotate(10deg) scale(2);
   white-space: nowrap; }
 
@@ -394,12 +397,14 @@ img {
           transition: all 0.5s 1.7s;
   white-space: nowrap;
   -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
           transform: scaleX(0);
   overflow: hidden; }
 
 .page1.active h5 {
   opacity: 1;
   -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
           transform: scaleX(1); }
 
 .page1 h5 span {
@@ -432,7 +437,8 @@ img {
 
 .page1 .photo {
   margin: 0 auto;
-  border-radius: 8px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
   overflow: hidden;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
@@ -449,7 +455,8 @@ img {
   height: 73px;
   line-height: 73px;
   text-align: center;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   background: #333;
   position: absolute;
   z-index: 2;
@@ -457,7 +464,8 @@ img {
   right: 20px; }
 
 .page1 .photo li {
-  border-radius: 8px;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   position: absolute;
@@ -517,25 +525,30 @@ img {
   text-align: center;
   color: #ea4392;
   font-size: 30px;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   background: #FFFFFF;
   background: rgba(255, 255, 255, 0.8);
   z-index: 1;
-  box-shadow: 0 0 12px rgba(115, 115, 115, 0.45); }
+  -webkit-box-shadow: 0 0 12px rgba(115, 115, 115, 0.45);
+          box-shadow: 0 0 12px rgba(115, 115, 115, 0.45); }
 
 .icon1 i {
   content: '';
   width: 110px;
   height: 110px;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border: 6px solid #FFFFFF;
   border: 6px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 16px rgba(174, 174, 174, 0.45), inset 0 0 16px rgba(174, 174, 174, 0.45);
+  -webkit-box-shadow: 0 0 16px rgba(174, 174, 174, 0.45), inset 0 0 16px rgba(174, 174, 174, 0.45);
+          box-shadow: 0 0 16px rgba(174, 174, 174, 0.45), inset 0 0 16px rgba(174, 174, 174, 0.45);
   -webkit-animation: icon1-i 1s infinite linear;
           animation: icon1-i 1s infinite linear; }
 
@@ -578,6 +591,7 @@ img {
   margin-right: 13px;
   margin-bottom: 13px;
   -webkit-transform: scale(0);
+      -ms-transform: scale(0);
           transform: scale(0);
   -webkit-transition: all 0.3s;
           transition: all 0.3s;
@@ -586,6 +600,7 @@ img {
 
 .page2.cur li {
   -webkit-transform: scale(1);
+      -ms-transform: scale(1);
           transform: scale(1);
   opacity: 1; }
 
@@ -667,7 +682,8 @@ img {
   background: #fff;
   border: 1px solid #353535;
   border: 1px solid rgba(53, 53, 53, 0.61);
-  border-radius: 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
   position: absolute; }
 
 .people:before {
@@ -686,7 +702,8 @@ img {
           transform: rotateZ(30deg) scale(3) translate(80%, 80%);
   -webkit-transition: all 0.5s;
           transition: all 0.5s;
-  border-radius: 8px; }
+  -webkit-border-radius: 8px;
+          border-radius: 8px; }
 
 .people-lock {
   text-align: center;
@@ -694,7 +711,8 @@ img {
   background: #000000;
   background: rgba(0, 0, 0, 0.8);
   display: none;
-  border-radius: 10px; }
+  -webkit-border-radius: 10px;
+          border-radius: 10px; }
 
 .people-lock p {
   color: #fff;
@@ -713,6 +731,7 @@ img {
 
 .page3 section .people > li.active {
   -webkit-transform: translate(-640px, 0);
+      -ms-transform: translate(-640px, 0);
           transform: translate(-640px, 0);
   -webkit-transition-delay: 0s;
           transition-delay: 0s; }
@@ -723,8 +742,10 @@ img {
 .page3 .people img {
   width: 597px;
   height: 706px;
-  border-radius: 8px;
-  box-shadow: 0 0 1px rgba(53, 53, 53, 0.61); }
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 0 1px rgba(53, 53, 53, 0.61);
+          box-shadow: 0 0 1px rgba(53, 53, 53, 0.61); }
 
 .cur .people > li:nth-child(6) {
   -webkit-transform: rotateZ(0deg) scale(1) translate(0, 0);
@@ -787,7 +808,8 @@ img {
   height: 121px;
   line-height: 121px;
   text-align: center;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   background: #f0e6ea;
   position: absolute;
   font-size: 36px;
@@ -867,15 +889,18 @@ img {
 
 .bar {
   height: 25px;
-  border-radius: 8px;
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.4), 1px 1px 0 rgba(255, 255, 255, 0.08);
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.4), 1px 1px 0 rgba(255, 255, 255, 0.08);
+          box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.4), 1px 1px 0 rgba(255, 255, 255, 0.08);
   padding: 5px;
   margin: 0 24px; }
 
 .bar-current {
   height: 100%;
   background: #fff;
-  border-radius: 5px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
   background: url(http://img.sfht.com/sfhth5/1.1.393/img/young/bar.png) repeat-x; }
 
 .page3-r1 {
@@ -902,7 +927,8 @@ img {
 .page3-r2 a {
   display: block;
   height: 90px;
-  border-radius: 5px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
   text-align: center;
   padding-top: 22px; }
 
@@ -1005,7 +1031,6 @@ img {
   background: #fff;
   border-width: 11px;
   -webkit-border-image: url(http://img.sfht.com/sfhth5/1.1.393/img/young/page4-bg.jpg) 11 11 round;
-       -o-border-image: url(http://img.sfht.com/sfhth5/1.1.393/img/young/page4-bg.jpg) 11 11 round;
           border-image: url(http://img.sfht.com/sfhth5/1.1.393/img/young/page4-bg.jpg) 11 11 round; }
 
 .page4:before,
@@ -1013,7 +1038,8 @@ img {
   content: '';
   width: 11px;
   height: 11px;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   background: #e84792;
   position: absolute;
   opacity: 0;
@@ -1045,24 +1071,30 @@ img {
   left: 138px;
   top: 670px;
   -webkit-transform: rotate(34deg) translate(0, 500px);
+      -ms-transform: rotate(34deg) translate(0, 500px);
           transform: rotate(34deg) translate(0, 500px);
   -webkit-transform-origin: center top;
+      -ms-transform-origin: center top;
           transform-origin: center top; }
 
 .page4.cur .line1 {
   -webkit-transform: rotate(34deg) translate(0, 0);
+      -ms-transform: rotate(34deg) translate(0, 0);
           transform: rotate(34deg) translate(0, 0); }
 
 .page4 .line2 {
   right: 154px;
   top: -140px;
   -webkit-transform: rotate(34deg) translate(0, -500px);
+      -ms-transform: rotate(34deg) translate(0, -500px);
           transform: rotate(34deg) translate(0, -500px);
   -webkit-transform-origin: center bottom;
+      -ms-transform-origin: center bottom;
           transform-origin: center bottom; }
 
 .page4.cur .line2 {
   -webkit-transform: rotate(34deg) translate(0, 0);
+      -ms-transform: rotate(34deg) translate(0, 0);
           transform: rotate(34deg) translate(0, 0); }
 
 .page4 h2 {
@@ -1095,11 +1127,13 @@ img {
   -webkit-transition: all 0.3s 0.5s;
           transition: all 0.3s 0.5s;
   -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
           transform: scaleX(0); }
 
 .page4.cur h4 {
   opacity: 1;
   -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
           transform: scaleX(1); }
 
 .page4 h4:before {
@@ -1126,11 +1160,13 @@ img {
   -webkit-transition: all 0.3s 0.5s;
           transition: all 0.3s 0.5s;
   -webkit-transform: scaleX(0);
+      -ms-transform: scaleX(0);
           transform: scaleX(0); }
 
 .page4.cur section p {
   opacity: 1;
   -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
           transform: scaleX(1); }
 
 .page4 .share {
@@ -1147,7 +1183,8 @@ img {
 .dialog-b {
   width: 590px;
   background: #fff;
-  border-radius: 10px;
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
   padding: 38px 40px; }
 
 .dialog-phone h2 {
@@ -1163,8 +1200,10 @@ img {
   font-size: 28px;
   font-family: arial;
   border: none;
-  box-shadow: inset 0 2px 3px rgba(170, 170, 170, 0.2);
-  border-radius: 10px;
+  -webkit-box-shadow: inset 0 2px 3px rgba(170, 170, 170, 0.2);
+          box-shadow: inset 0 2px 3px rgba(170, 170, 170, 0.2);
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
   margin-bottom: 30px; }
 
 .btn {
@@ -1174,7 +1213,8 @@ img {
   background: #e54588;
   font-size: 28px;
   color: #fff;
-  border-radius: 10px; }
+  -webkit-border-radius: 10px;
+          border-radius: 10px; }
 
 .btn2 {
   background: #f6b645; }

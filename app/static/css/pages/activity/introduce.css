@@ -98,7 +98,8 @@
 .swipe-dot span {
   width: 7px;
   height: 7px;
-  border-radius: 7px;
+  -webkit-border-radius: 7px;
+          border-radius: 7px;
   margin: 0 7px; }
 
 .swiper-time {
@@ -116,7 +117,8 @@
   .swipe-dot span {
     width: 14px;
     height: 14px;
-    border-radius: 14px;
+    -webkit-border-radius: 14px;
+            border-radius: 14px;
     margin: 0 14px; }
 
   .swiper-time {
@@ -167,7 +169,8 @@ body {
   background: url(http://img0.sfht.com/img/ac06115b995a99e9f5f66305a3b5e59a.jpg) no-repeat center top;
   height: 865px;
   padding-top: 604px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-size: 22px;
   line-height: 32px;
   color: #777;
@@ -231,7 +234,8 @@ body {
   height: 25px;
   line-height: 25px;
   text-align: center;
-  border-radius: 5px;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
   color: #fff;
   display: inline-block;
   vertical-align: middle;

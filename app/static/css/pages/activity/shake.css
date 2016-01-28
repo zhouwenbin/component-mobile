@@ -14,18 +14,21 @@ body {
   background: #e3caad;
   padding: 20px;
   margin-bottom: 24px;
-  border-radius: 10px; }
+  -webkit-border-radius: 10px;
+          border-radius: 10px; }
 
 .shakelist-c1 {
   background: #fff;
   width: 160px;
   height: 160px;
-  border-radius: 10px; }
+  -webkit-border-radius: 10px;
+          border-radius: 10px; }
 
 .shakelist-c1 img {
   max-width: 160px;
   max-height: 160px;
-  border-radius: 10px; }
+  -webkit-border-radius: 10px;
+          border-radius: 10px; }
 
 .shakelist-c2 {
   -webkit-box-flex: 1;
@@ -61,7 +64,8 @@ body {
   color: #9e231b;
   text-align: center;
   margin-top: 6px;
-  border-radius: 36px;
+  -webkit-border-radius: 36px;
+          border-radius: 36px;
   padding: 0 10px; }
 
 .shakelist-price2 {
@@ -76,8 +80,10 @@ body {
   text-align: center;
   color: #fff;
   background: #ff5b54;
-  border-radius: 60px;
-  box-shadow: 0 4px #bc2b25;
+  -webkit-border-radius: 60px;
+          border-radius: 60px;
+  -webkit-box-shadow: 0 4px #bc2b25;
+          box-shadow: 0 4px #bc2b25;
   font-size: 28px;
   white-space: nowrap; }
 
@@ -91,6 +97,7 @@ body {
   vertical-align: -14px;
   fill: #fff;
   -webkit-transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
           transform: rotate(30deg);
   -webkit-animation: shake 2s infinite;
           animation: shake 2s infinite; }
@@ -138,9 +145,11 @@ body {
   height: 68px;
   line-height: 68px;
   background: #FFC70F;
-  border-radius: 68px;
+  -webkit-border-radius: 68px;
+          border-radius: 68px;
   color: #fff;
-  box-shadow: 0 4px #EA9C37;
+  -webkit-box-shadow: 0 4px #EA9C37;
+          box-shadow: 0 4px #EA9C37;
   margin: 0 32px;
   padding: 0 36px;
   font-size: 48px;
@@ -152,6 +161,7 @@ body {
   position: absolute;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   margin-top: -112px; }
 
@@ -159,7 +169,8 @@ body {
   width: 380px;
   height: 380px;
   background: #F4DEC3;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   position: relative;
   margin: 144px auto 68px; }
 
@@ -173,6 +184,7 @@ body {
   margin-top: -138px;
   fill: #fff;
   -webkit-transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
           transform: rotate(15deg);
   -webkit-animation: shake 2s infinite;
           animation: shake 2s infinite; }
@@ -280,23 +292,27 @@ a.btn-red {
   width: 250px;
   height: 80px;
   line-height: 80px;
-  border-radius: 80px;
+  -webkit-border-radius: 80px;
+          border-radius: 80px;
   font-size: 36px;
   margin: 0 20px; }
 
 a.btn-yellow {
   background: #FFC70F;
-  box-shadow: 0 4px #EB9D27;
+  -webkit-box-shadow: 0 4px #EB9D27;
+          box-shadow: 0 4px #EB9D27;
   color: #BC6917; }
 
 a.btn-red {
   color: #fff;
   background: #FF5B54;
-  box-shadow: 0 4px #BC2B25; }
+  -webkit-box-shadow: 0 4px #BC2B25;
+          box-shadow: 0 4px #BC2B25; }
 
 a.btn-red.grey {
   background: #979DA9;
-  box-shadow: 0 2px #979DA9; }
+  -webkit-box-shadow: 0 2px #979DA9;
+          box-shadow: 0 2px #979DA9; }
 
 .login-yao a.btn-yellow {
   text-align: center;
@@ -310,7 +326,8 @@ a.btn-big {
   font-size: 32px;
   color: #fff;
   padding: 22px 46px;
-  border-radius: 16px;
+  -webkit-border-radius: 16px;
+          border-radius: 16px;
   white-space: nowrap; }
 
 .shaked-text {
@@ -329,7 +346,8 @@ a.btn-big {
 .shake-share img {
   width: 180px;
   height: 180px;
-  border-radius: 50%; }
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
 
 .shake-share .btn-yellow {
   font-size: 32px;

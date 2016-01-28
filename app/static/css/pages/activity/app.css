@@ -98,6 +98,7 @@
 
 .app-logistics-car {
   -webkit-transform: translate(0, -1px);
+      -ms-transform: translate(0, -1px);
           transform: translate(0, -1px);
   -webkit-animation: app-logistics-car 0.8s linear forwards infinite;
           animation: app-logistics-car 0.8s linear forwards infinite; }
@@ -130,7 +131,8 @@
   width: 15px;
   height: 15px;
   background: #f0cbbc;
-  border-radius: 50%;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
   position: relative; }
 
 .app-logistics li {

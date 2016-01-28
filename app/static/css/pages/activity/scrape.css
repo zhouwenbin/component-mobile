@@ -171,8 +171,10 @@ body {
   text-align: center;
   background-color: #FF6646;
   font-size: 32px;
-  border-radius: 8px;
-  box-shadow: 0 4px #DE5336;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+  -webkit-box-shadow: 0 4px #DE5336;
+          box-shadow: 0 4px #DE5336;
   height: 88px;
   line-height: 88px; }
 

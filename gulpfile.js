@@ -9,7 +9,7 @@ var precss = require("precss");
 var path = require("path");
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
-var sass = require('gulp-sass');
+var sass = require('gulp-ruby-sass');
 var slim = require("gulp-slim");
 var modules = fs.readdirSync("src/modules");
 var pages = fs.readdirSync("src/pages");
@@ -134,10 +134,10 @@ gulp.task("demo", function () {
         .pipe(cssnext({ browsers: ['last 10 versions'] }))
         .pipe(gulp.dest("dist/modules/"+ modules[i]));
       //sass
-        gulp.src("src/modules/"+ modules[i] +"/**.scss")
-        .pipe(sass().on('error', sass.logError))
-        .pipe(cssnext({ browsers: ['last 10 versions'] }))
-        .pipe(gulp.dest("dist/modules/"+ modules[i]));
+      sass("src/modules/"+ modules[i] +"/**.scss")
+      .on('error', sass.logError)
+      .pipe(cssnext({ browsers: ['last 10 versions'] }))
+      .pipe(gulp.dest("dist/modules/"+ modules[i]));
     }
       
   }

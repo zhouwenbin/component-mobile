@@ -128,7 +128,8 @@
   border-bottom: 1px dashed #ccc; }
 
 .invite-rule .btn {
-  border-radius: 15px;
+  -webkit-border-radius: 15px;
+          border-radius: 15px;
   margin-bottom: 12px; }
 
 .invite-account {
@@ -185,6 +186,7 @@
 .invite-account time {
   color: #bbb;
   -webkit-transform: scale(0.75);
+      -ms-transform: scale(0.75);
           transform: scale(0.75); }
 
 .invite-account-br1 {
@@ -195,6 +197,7 @@
   height: 100px;
   width: 110%;
   -webkit-transform: translate(-10%, 0);
+      -ms-transform: translate(-10%, 0);
           transform: translate(-10%, 0); }
 
 .canvasjs-chart-canvas {

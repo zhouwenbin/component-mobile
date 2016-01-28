@@ -101,6 +101,7 @@ header h3 {
     left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     font-size: 16px;
     color: #fff; }
@@ -142,6 +143,7 @@ header h3 {
     position: absolute;
     top: 50%;
     -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
             transform: translate(0, -50%);
     content: "";
     border: 8px dashed transparent; }
@@ -174,7 +176,8 @@ header h3 {
     margin-left: 4px; }
     .mjapan-video-pic-list li:after {
       content: "";
-      box-sizing: border-box; }
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box; }
   .mjapan-video-pic-list li:first-child {
     margin-left: 0; }
   .mjapan-video-pic-list .active:after {
@@ -207,10 +210,12 @@ header h3 {
       width: 30px;
       height: 30px;
       background-color: #a61e20;
-      border-radius: 50%;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
       left: 50%;
       top: 50%;
       -webkit-transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%); }
 
 .mjapan-intro-text-title h2 {
