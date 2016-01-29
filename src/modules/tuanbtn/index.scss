@@ -1,0 +1,27 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.tuanbtn{
+	height:47px * 2;
+}
+.tuanbtn-fixed{
+	position: fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	background:#fff;
+	border-top:1px * 2 solid #DCDCDC;
+	padding:8px * 2 0;
+	text-align:center;
+}
+.tuanbtn .btn{
+	height:40px * 2;
+	line-height:40px * 2;
+	font-size:14px * 2;
+	width:140px * 2;
+	margin: 0 6px * 2;
+}

@@ -1,0 +1,57 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.tuanhow{
+  background:#fff;
+  margin:10px * 2 0;
+}
+.tuanhow h2{
+  height:30px * 2;
+  line-height:30px * 2;
+  border-bottom:1px * 2 solid #F2F2F2;
+  text-align:center;
+}
+.tuanhow h2 span{
+  display:inline-block;
+  border-bottom:2px * 2 solid #F13C34;
+}
+.tuanhow ul{
+  display:flex;
+  padding-top:44px * 2;
+}
+.tuanhow li{
+  flex:1;
+  color:#9B9B9B;
+  line-height:17px * 2;
+  position:relative;
+  text-align:center
+}
+.tuanhow li:before{
+  content:'';
+  border-top:1px * 2 solid #DCDCDC;
+  width:100%;
+  position:absolute;
+  top:-25px * 2;
+  left:50%;
+}
+.tuanhow li:last-child:before{
+  display:none;
+}
+
+.tuanhow-num{
+  position:absolute;
+  top:-33px * 2;
+  left:50%;
+  transform:translate(-50%,0);
+  background:#F13C34;
+  width:18px * 2;
+  height:18px * 2;
+  line-height:18px * 2;
+  text-align:center;
+  color:#fff;
+  border-radius:50%;
+}

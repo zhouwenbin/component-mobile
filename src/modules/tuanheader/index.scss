@@ -1,0 +1,33 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.tuanheader{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px * 2;
+  height:30px * 2;
+  line-height:30px * 2;
+  border-bottom:1px * 2 solid #F2F2F2;
+  border-left:2px * 2 solid #F13C34;
+  padding:0 7px * 2;
+  background:#fff;
+}
+.tuanheader h2{
+  font-weight:normal;
+}
+.tuanheader-time span{
+  display:inline-block;
+  vertical-align:middle;
+  width:20px * 2;
+  height:20px * 2;
+  line-height:20px * 2;
+  text-align:center;
+  background:#4A4A4A;
+  border-radius:2px * 2;
+  color:#fff;
+  margin:0 4px * 2;
+}
