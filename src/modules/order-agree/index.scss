@@ -1,0 +1,27 @@
+/*
+@styleguide
+
+# 同意协议
+
+*/
+.order-agree{
+  height: 40px;
+}
+.order-agree-inner{
+  height: 40px;
+  line-height:40px;
+  background:#fff;
+  padding:0 12px;
+  font-size: 14px;
+  position: fixed;
+  bottom: 58px;
+  width: 100%;
+  border-top:1px solid #dadada;
+}
+.order-agree .icon{
+  margin-right: 10px;
+}
+.order-agree a{
+  color: #5aa3e8;
+  margin-left: 8px;
+}

@@ -106,10 +106,10 @@ gulp.task("css", function () {
 gulp.task("scss", function () {
   for(var i in pages){
     //sass
-    sass('src/pages/"+ pages[i] +"/**.scss')
+    sass("src/pages/"+ pages[i] +"/**.scss")
     .on('error', sass.logError)
     .pipe(cssnext({ browsers: ['last 10 versions'] }))
-    .pipe(gulp.dest('dist/pages/"+ pages[i]'));
+    .pipe(gulp.dest("dist/pages/"+ pages[i]));
   }
   for(var i in modules) {
     if(modules[i] !== '.DS_Store') {
