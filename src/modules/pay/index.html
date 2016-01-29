@@ -6,7 +6,7 @@
 		<a href="order.html" class="btn btn-normal btn-radius">分享红包</a>
 	</div>
 	<!--优惠券-->
-	== Slim::Template.new('../../module/coupon.slim').render
+	<include src="../coupon/index.html"></include>
 	<!--优惠券-->		
 	<!--礼包--
 	== Slim::Template.new('../../module/coupon-gift.slim').render

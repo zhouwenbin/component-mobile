@@ -1,0 +1,39 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.tuantab{
+  display:flex;
+}
+.tuantab li{
+  flex:1;
+  height:49px * 2;
+  line-height:49px * 2;
+  background:#4A4A4A;
+  color:#fff;
+  text-align:center;
+  font-size:16px * 2;
+}
+.tuantab li.active{
+  background:#F24E47;
+  position: relative;
+}
+.tuantab li.active:before{
+  content:'';
+  border-width:8px * 2 8px * 2;
+  border-style:solid;
+  border-color:transparent transparent #fff transparent;
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translate(-50%,0);
+}
+.tuantab-content{
+  display:none;
+}
+.tuantab-content.active{
+  display:block;
+}
