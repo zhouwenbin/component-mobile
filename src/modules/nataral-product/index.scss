@@ -6,6 +6,21 @@
 */
 @import "../../utils/variables";
 @mixin nataral-product($i){
+  .nataral-h2{
+    font-size: 15px * $i;
+    padding-bottom: 10px * $i;
+    padding-top: 20px * $i;
+    padding-left: 10px * $i;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .nataral-h2:before{
+    content: '';
+    display: inline-block;
+    margin-right: 5px * $i;
+    width: 3px * $i;
+    height: 12px * $i;
+    background: #ff5b54;
+  }
   .nataral-product{
     margin-bottom: 10px * $i;
     margin-top: -1px * $i;

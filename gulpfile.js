@@ -130,10 +130,6 @@ gulp.task('serve', function () {
             baseDir: "./"
         }
     });
-    for(var i in pages){
-      gulp.watch("dist/pages/"+ pages[i] +"/*.html").on("change", browserSync.reload);
-      gulp.watch("dist/pages/"+ pages[i] +"/*.css").on("change", browserSync.reload);
-    }
 });
 
 gulp.task('sass', function () {
