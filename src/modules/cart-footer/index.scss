@@ -1,0 +1,48 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.cart-footer{
+  height: 69px;
+}
+.cart-footer-r1{
+  border-top:1px solid #e5e5e5;
+  background: #f3f3f3;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom:0;
+  justify-content:space-between;
+  align-items:center;
+  padding: 9px 13px;
+}
+.cart-footer .btn{
+  height: 51px;
+  line-height: 51px;
+  padding: 0 36px;
+  background: #ccc;
+  color: #fff !important;
+  font-size: 15px;
+}
+.cart-footer-c2{
+  flex:1;
+  margin-right: 12px;
+  color: #999;
+}
+.cart-footer-save{
+  margin-top: 6px;
+}
+.cart-footer-c1{
+  font-size: 15px;
+}
+.cart-footer-c2 .text-important{
+  font-size: 18px;
+  vertical-align: baseline;
+}
+.cart-footer .icon49{
+  margin-right: 5px;
+}

@@ -1,0 +1,51 @@
+/*
+@styleguide
+
+# 盒子
+
+*/
+@import "../../utils/variables";
+.coupon-discount{
+  margin-bottom:10px;
+}
+.coupon-discount-list{
+  position:relative;
+  border-bottom: 1px solid #f7f7f7;
+  margin: 0 14px;
+}
+.coupon-discount-list:last-child{
+  border-bottom: none;
+}
+.coupon-discount-list ul{
+  display: none;
+}
+.coupon-discount-list li{
+  height: 44px;
+  line-height: 44px;
+  color: #999;
+  padding-left: 40px;
+  border-bottom: 1px solid #f7f7f7;
+}
+.coupon-discount .box-link{
+  padding: 16px 0;
+  border-bottom: 1px solid #f7f7f7;
+  position: relative;
+}
+.coupon-discount .box-arrow{
+  right: 0;
+}
+.coupon-discount li:last-child{
+  border-bottom: none;
+}
+.coupon-discount .label{
+  margin-right: 10px;
+  padding:0 7px;
+}
+.coupon-discount-more{
+  text-align: center;
+  margin-top: -2px;
+}
+.coupon-discount-more a{
+  color: #3b86c4;
+  display: block;
+}

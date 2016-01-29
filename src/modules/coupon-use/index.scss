@@ -1,0 +1,47 @@
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+
+@import "../../utils/variables";
+.coupon-use{
+  margin-top: 20px;
+}
+.coupon-use h2{
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.coupon-use li{
+  font-size: 13px;
+  line-height: 21px;
+  color: #999;
+  list-style: inside;
+}
+.coupon-use{
+  margin-bottom: 10px;
+}
+.coupon-use-h{
+  display: flex;
+  justify-content:space-between;
+  font-size: 14px;
+  margin: 0 10px;
+}
+.coupon-use-h h2{
+  font-weight: normal;
+}
+.coupon-use-h a{
+  color: #3b86c4;
+}
+.coupon-use select{
+  width: 100%;
+  color: #dc3334;
+  height:42px;
+  line-height: 42px;
+  background:#fff;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  -webkit-appearance: button;
+}

@@ -1,0 +1,47 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.nav-cart{
+  height: 55px;
+}
+.nav-cart-r1{
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index:999;
+  background: #f3f3f3;
+  padding: 6px 12px;
+  height: 58px;
+  justify-content:space-between;
+  align-items:center;
+  border-top: 1px solid #dadada;
+}
+.nav-cart .btn{
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+}
+.nav-cart .btn-danger{
+ flex:1;
+ display: block;
+}
+.nav-cart .btn-soon{
+  display: block;
+  width: 40%;
+  margin: 0 10px;
+}
+.nav-cart .icon47{
+  position: relative;
+  margin-right: 5px;
+}
+.nav-cart .dot{
+  position: absolute;
+  text-indent: 0;
+  right: 0;
+}
