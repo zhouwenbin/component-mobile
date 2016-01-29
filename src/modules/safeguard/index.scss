@@ -1,0 +1,41 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin safeguard($i){ 
+  .safeguard{
+    margin-bottom:9px * $i;
+  }
+  .safeguard li{
+    height: 42px * $i;
+    line-height: 42px * $i;
+  }
+  .safeguard svg{
+    margin-right: 5px * $i;
+    width:16px * $i;
+    height: 18px * $i;
+  }
+}
+
+.safeguard{
+  background: #fff;
+}
+.safeguard ul{
+  display: flex;
+}
+.safeguard li{
+  flex:1;
+  color: #999;
+  text-align: center;
+}
+.safeguard svg{
+  vertical-align: middle;
+}
+
+@include safeguard(1);
+@media screen and (min-width:640px){
+  @include safeguard(2);
+}

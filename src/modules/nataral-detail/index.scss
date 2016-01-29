@@ -1,0 +1,55 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@import "../swipe/index";
+.nataral-detail{
+  padding:10px;
+  background: #fff;
+}
+.nataral-detail .swipe{
+  margin-bottom: 10px;
+}
+.nataral-detail h1{
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+.nataral-detail-r1{
+  margin-bottom: 20px;
+}
+.nataral-detail-r1 .text-important{
+  font-size: 18px;
+  margin-right: 5px;
+}
+.nataral-detail-r2{
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px;
+}
+.nataral-detail h2{
+  font-size: 15px;
+  background: #f9f9f9;
+  height: 35px;
+  line-height: 35px;
+  padding-left: 30px;
+}
+.nataral-detail ul{
+  padding: 10px 30px;
+  border-bottom: 1px solid #eee;
+}
+.nataral-detail ul:last-child{
+  border:none;
+}
+.nataral-detail li{
+  font-size: 14px;
+  line-height: 24px;
+}
+.nataral-detail .justify{
+  vertical-align: top;
+  width: 4em;
+  height: 14px;
+}

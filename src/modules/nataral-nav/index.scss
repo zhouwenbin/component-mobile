@@ -1,0 +1,73 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin nataral-nav($i){
+  .nataral-nav ul{
+    padding: 12px * $i 40px * $i;
+  }
+
+  .nataral-nav li{
+    width: 51px * $i;
+    height: 51px * $i;
+    font-size: 16px * $i;
+  }
+  .nataral-nav li.active:after{
+    width: 10px * $i;
+    height: 10px * $i;
+    bottom:-18px * $i;
+    margin-left: -6px * $i;
+  }
+  .nataral-nav li span{
+    margin-bottom: 3px * $i;
+  }
+}
+
+
+.nataral-nav ul{
+  display: flex;
+  justify-content:space-between;
+  border-bottom: 1px solid #dcdcdc;
+  background: #fff;
+}
+
+.nataral-nav li{
+  text-align: center;
+  background: #eb87bb;
+  border-radius: 50%;
+  position: relative;
+}
+.nataral-nav li:before{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.nataral-nav li.active:after{
+  content: '';
+  position: absolute;
+  transform:rotate(45deg);
+  border-left: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
+  background: #fff;
+  left:50%;
+}
+
+.nataral-nav li a{
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+}
+.nataral-nav li:nth-child(2){
+  background: #ff5b54;
+}
+.nataral-nav li:nth-child(3){
+  background: #72bbdb;
+}
+@include nataral-nav(1);
+@media screen and (min-width:640px){
+  @include nataral-nav(2);
+}

@@ -1,0 +1,137 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin nataral-classify($i){
+  .nataral-classify{
+    margin-bottom: -1px * $i;
+  }
+  .nataral-classify-h{
+    height: 30px * $i;
+    line-height: 30px * $i;
+    padding: 0 10px * $i;
+  }
+  .nataral-classify-h a{
+    width: 12px * $i;
+    height: 1px * $i;
+  }
+  .nataral-classify-btn:before,
+  .nataral-classify-btn:after{
+    width: 12px * $i;
+    height: 1px * $i;
+  }
+  .nataral-classify-b ul{
+    padding-top: 19px * $i;
+  }
+  .nataral-classify-b li{
+    margin-bottom: 20px * $i;
+  }
+  .nataral-classify-b li.active .nataral-classify-icon{
+    box-shadow: 0 0 0 1px * $i #ff5b54;
+    
+  }
+  .nataral-classify-b li.active h3{
+    border-radius: 16px * $i;
+    padding: 0 5px * $i;
+  }
+
+  .nataral-classify-icon{
+    width: 50px * $i;
+    height: 50px * $i;
+    background-size: 50px * $i;
+    box-shadow: 0 0 0 1px * $i #efefef;
+  }
+  .nataral-classify-b img{
+    max-width: 34px * $i;
+    max-height: 34px * $i;
+  }
+  .nataral-classify-b h3{
+    margin-top: 8px * $i;
+    font-size: 12px * $i;
+    height: 16px * $i;
+    line-height: 16px * $i;
+  }
+}
+
+
+.nataral-classify-h{
+  background: #f0f0f0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.nataral-classify-h a{
+  text-indent: -999em;
+  display: block;
+  position: relative;
+}
+.nataral-classify-btn:before,
+.nataral-classify-btn:after{
+  content: '';
+  background: #999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition:all 0.5s;
+}
+.nataral-classify-btn:before{
+  transform:rotate(90deg);
+}
+.nataral-classify.active .nataral-classify-btn:before{
+  transform:rotate(360deg);
+}
+.nataral-classify.active .nataral-classify-btn:after{
+  transform:rotate(360deg);
+}
+.nataral-classify.active .nataral-classify-b{
+  display: block;
+}
+.nataral-classify-b{
+  background: #fff;
+  display: none;
+}
+.nataral-classify-b:first-child{
+  display: block;
+}
+
+.nataral-classify-b li{
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  font-size: 0;
+}
+
+.nataral-classify-b li.active h3{
+  display: inline-block;
+  background: #ff5b54;
+  color: #fff;
+}
+
+.nataral-classify-icon{
+  border-radius: 50%;
+  margin:0 auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.nataral-classify-icon:before{
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.nataral-classify-b img{
+  vertical-align: middle;
+}
+.nataral-classify-b h3{
+  font-weight: normal;
+}
+
+@include nataral-classify(1);
+@media screen and (min-width:640px){
+  @include nataral-classify(2);
+}

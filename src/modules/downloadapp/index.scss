@@ -1,0 +1,68 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin downloadapp($i){
+  .downloadapp{
+    height: 50px * $i;
+    
+  }
+  .downloadapp-r1{
+    height: 50px * $i;
+    padding: 0 11px * $i;
+    background:#dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 9px * $i bottom;
+    background-size: 201px * $i 44px * $i;
+  }
+  .downloadapp-logo{
+    width: 201px * $i;
+    height: 44px * $i;
+    
+  }
+  .downloadapp-close{
+    width: 22px * $i;
+    height: 22px * $i;
+    background-size: 22px * $i;
+  }
+  .downloadapp .btn{
+    height: 35px * $i;
+    line-height: 35px * $i;
+    margin-left: 6px* $i;
+    margin-right: 16px * $i;
+  }
+}
+
+.downloadapp{
+  position: relative;
+  
+}
+.downloadapp-r1{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index: 999;
+}
+.downloadapp-close{
+  background: url(#{$bg-url}downloadapp-close.png) no-repeat;
+  text-indent: -999em;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.downloadapp .btn{
+  flex:1;
+  background: #46cfdf;
+  border-color: #46cfdf;
+  padding: 0;
+}
+
+@include downloadapp(1);
+@media screen and (min-width:640px){
+  @include downloadapp(2);
+}

@@ -1,0 +1,35 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin groupon($i){ 
+  .groupon{
+    padding: 8px * $i;
+    margin-bottom: 8px * $i;
+  }
+  .groupon li{
+    margin-bottom: 10px * $i;
+  }
+}
+
+
+.groupon{
+  background: #fff;
+}
+.groupon img{
+  width: 100%;
+}
+.groupon li{
+  font-size:0;
+}
+.groupon li:last-child{
+  margin-bottom: 0;
+}
+
+@include groupon(1);
+@media screen and (min-width:640px){
+  @include groupon(2);
+}

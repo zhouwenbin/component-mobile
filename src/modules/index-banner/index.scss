@@ -1,0 +1,37 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin index-banner($i){ 
+  .index-banner{
+    padding: 4px * $i;
+    margin-bottom: 9px * $i;
+  }
+  .index-banner img{
+    padding: 4px * $i;
+  }
+}
+
+.index-banner{
+  background: #fff;
+  border-top: 1px solid #f0eff5;
+  border-bottom: 1px solid #f0eff5;
+  display: flex;
+  justify-content:space-between;
+  font-size:0;
+}
+.index-banner>div{
+  flex:1;
+  width:50%;
+}
+.index-banner img{
+  width: 100%;
+}
+
+@include index-banner(1);
+@media screen and (min-width:640px){
+  @include index-banner(2);
+}

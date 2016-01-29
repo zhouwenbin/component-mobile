@@ -1,0 +1,23 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin nataral-code($i){ 
+  .nataral-code{
+    background: url(#{$bg-url}nataral-code.png) no-repeat center;
+    background-size: 320px * $i;
+    height: 75px * $i;
+    padding-left: 170px * $i;
+    padding-top: 30px * $i;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 24px * $i;
+  }
+}
+@include nataral-code(1);
+@media screen and (min-width:640px){
+  @include nataral-code(2);
+}

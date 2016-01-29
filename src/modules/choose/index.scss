@@ -1,0 +1,56 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@mixin choose($i){ 
+  .choose{
+    margin-bottom: 9px * $i;
+  }
+  .choose h2{
+    height: 34px * $i;
+    line-height: 34px * $i;
+    border-left: 3px * $i solid #5dc9c9;
+    padding-left: 5px * $i;
+    font-size: 14px * $i;
+  }
+  .choose li{
+    padding: 7px * $i;
+  }
+  .choose li img{
+    margin-bottom: 7px * $i;
+  }
+}
+
+.choose{
+  background: #fff;
+}
+.choose h2{
+  border-top: 1px solid #f0eff5;
+  border-bottom: 1px solid #f0eff5;
+  color: #4a4a4a;
+}
+.choose ul{
+  overflow: hidden;
+}
+.choose li{
+  float: left;
+  width: 25%;
+  text-align: center;
+  border-right: 1px solid #f0eff5;
+  border-bottom: 1px solid #f0eff5;
+}
+.choose li img{
+  width: 100%;
+  vertical-align: middle;
+}
+.choose figcaption{
+  font-weight: bold;
+}
+
+@include choose(1);
+@media screen and (min-width:640px){
+  @include choose(2);
+}
