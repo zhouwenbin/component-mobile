@@ -1,0 +1,173 @@
+/*
+@styleguide
+
+# 客服头部
+
+*/
+@import '../../utils/variables';
+.sfBrotherBindBn{
+  font-size: 14px;
+  background-color: #ffffff;
+  min-height: 100%;
+  max-width: 640px;
+  .text-center{
+    text-align: center;
+  }
+  .font14{
+    font-size: 14px;
+  }
+  .darkColor{
+    color:#333333;
+  }
+  .greyColor{
+    color: #999999;
+  }
+  p{
+    padding: 12px 4%;
+    line-height: 16px;
+  }
+  .border{
+      border-bottom: 1px solid #dcdcdc;
+  }
+  .padding-top-30{
+    padding-top: 30px;
+  }
+  padding-bottom: 16px;
+}
+.sfBrotherBind-image{
+  padding: 5% 0;
+  img{
+    width: 51%;
+  }
+}
+.centerBox{
+  margin-right: auto;
+  margin-left: auto;
+}
+.sfBrotherBind-ul{
+  li{
+    padding: 12px 4%;
+    label,input{
+      width: 100%;
+    }
+  }
+  input,input:focus{
+    border:0;
+    outline: none;
+  }
+  input::-webkit-input-placeholder{
+    color:#999999;
+    text-indent: 0
+  }
+}
+.sfBrotherBind-select{
+  width: 48%;
+  padding: 0 4%;
+  line-height: 40px;
+  height: 40px;
+  border:0;
+  outline: none;
+}
+.sfBrotherBind-btn{
+  margin: 28px 4% 0;
+  width: 92%;
+  height: 43px;
+    line-height: 43px;
+}
+.sfBrotherDownCn{
+  padding: 0;
+  min-height: 100%;
+  max-width: 640px;
+  img{
+    vertical-align: middle;
+  }
+}
+.sfBrotherDban{
+  img{
+    width: 100%;
+    max-width: 640px;
+  }
+}
+.sfBrotherDcp{
+  width: 100%;
+  img{
+    width: 72%;
+    max-width: 466px;
+  }
+  background-color: #ffcb5b;
+  padding: 6% 0 4%;
+  position: relative;
+  .lineYellowColor{
+    width: 80%;
+    height: 0;
+    position: absolute;
+    top: 52%;
+    left: 10%;
+    margin-top: -37px;
+    border-bottom: 1px dashed #ffae00;
+  }
+  .btn-big{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #e73736;
+    border: 1px solid #e73736;
+    width: 80%;
+    height: 43px;
+    line-height: 43px;
+    box-shadow: 0 3px 0px #ba1d1c;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+}
+.sfBrotherDTab{
+  background-color: #332e4e;
+  color: #ffffff;
+}
+.sfBrotherDTTb{
+  height: 34px;
+  line-height: 34px;
+  .fl{
+    width: 33%;
+    &:nth-child(2){
+      width: 34%;
+    }
+  }
+  .noFocus{
+    color: #332e4e;
+    background-color: #9d97ba;
+  }
+  .inner{
+    display: inline-block;
+    width: 100%;
+      border-left: 2px solid #332e4e;
+      border-right: 2px solid #332e4e;
+  }
+}
+.sfBrotherDTCn01{
+  padding-bottom: 38px;
+  li{
+    padding: 14px 0;
+    margin: 0 4%;
+    border-bottom: 1px dashed #211d34;
+    position: relative;
+  }
+  .imageShow{
+    background: url(#{$bg-url}sfBrotherBind/coupon.png) no-repeat;
+    background-size: 105px auto;
+    width: 105px;
+    height: 53px;
+    padding-top:8px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .fontAlt{
+    padding: 0;
+    left: 120px;
+    line-height: 22px;
+    font-size: 12px;
+  }
+}
+.sfBrotherDTCn02,.sfBrotherDTCn03{
+  padding: 14px 10px 20px;
+  line-height: 23px;
+}
