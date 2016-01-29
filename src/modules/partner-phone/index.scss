@@ -1,0 +1,60 @@
+.partner-form{
+  width: 100%;
+}
+.partner-form .btn-danger{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.partner-form .partner-phone{
+  text-align: center;
+  margin: 0 45px;
+  font-size: 16px;
+}
+.partner-form h2{
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 30px;
+}
+.partner-form .btn-box{
+  margin-top: 14px;
+}
+.partner-form .btn-box p{
+  color: #999;
+  margin-top: 12px;
+}
+.partner-form-list li{
+  margin-bottom: 14px;
+  position: relative;
+  color: #999;
+}
+.partner-form-list li P{
+  text-align: left;
+  margin-top: 9px;
+}
+.partner-form-list li .text-error{
+  font-size: 14px;
+}
+.partner-form-list li:last-child{
+  margin-bottom: 0;
+}
+.partner-form-list .input{
+  border-radius: 4px;
+}
+.partner-form-list .input-code{
+  padding-right: 100px;
+}
+.partner-form-list .code-btn{
+  position: absolute;
+  right: 0;
+  padding: 13px 10px;
+  color: #999; 
+}
+.partner-form-list .code-btn span{ 
+  border-left: 1px solid #E1E1E1;
+  padding-left: 10px;
+  font-size: 14px;
+  line-height: 15px;
+}

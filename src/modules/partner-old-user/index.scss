@@ -1,0 +1,80 @@
+@import '../../utils/variables';
+.partner-dialog{
+	background: #fff;
+	color: #666;
+	font-size: 16px;
+}
+.partner-dialog .center{
+	/*display: flex;
+	flex-direction: column;
+	text-align: left;
+	align-items: center;
+	justify-content: center;*/
+	width: 280px;
+	height: 310px;
+	border-radius: 8px;
+	padding: 60px 35px 0;
+}
+.partner-dialog .partner-text{
+	line-height: 1.5;
+	margin-bottom: 3px;
+}
+.partner-dialog .btn-box{
+	margin-top: 14px;
+}
+.partner-dialog .btn-box,
+.partner-dialog .btn{
+	width: 100%;
+}
+.partner-dialog .btn{
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	border-radius: 4px;
+}
+.partner-dialog .close{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	padding: 10px 10px 20px 20px;
+}
+.partner-dialog svg.icon-close{
+	width: 14px;
+	height: 13px;
+}
+.partner-dialog .input{
+	padding: 13px 15px;
+	border-radius: 4px;
+	margin-top: 10px;
+}
+.partner-dialog h2{
+	color: #FF5B54;
+}
+.partner-settings .partner-text{
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 10px;
+}
+.partner-settings .box-link{
+	width: 100%;
+	color: #999;
+	margin-top: 10px;
+	padding: 10px 0;
+	text-align: center;
+}
+.partner-dialog .partner-bags-small,
+.partner-bags-big .money-number{
+	color: #FF5B54;
+}
+.partner-dialog .partner-bags-small{
+	margin: 25px auto 20px;
+	padding-top: 28px;
+	background: url(#{$bg-url}icon-bags-small.png) 0 0 no-repeat;
+	background-size: 125px 103px;
+	width: 125px;
+	height: 103px;
+	font-size: 18px;	
+}
+.partner-dialog .partner-olduser{
+	padding-top: 80px;
+}
