@@ -54,10 +54,3 @@ a.partner-bags-rules svg{
 .partner-bags .btn-box p{
   margin-top: 10px;
 }
-.partner-bags-bg{
-  background: url(#{$bg-url}partner-bg.jpg) 0 0 repeat;
-  min-height: 100%;
-  ::-webkit-input-placeholder { color:#999; font-size: 14px;}
-  ::-moz-placeholder {  color:#999; font-size: 14px;}
-  input:-moz-placeholder {  color:#999; font-size: 14px;}
-}
