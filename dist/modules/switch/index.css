@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 切换按钮
+
+
+*/
+.switch {
+  background: #ccc;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
+
+.switch:before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in; }
+
+.switch.active {
+  background: #df3c3a; }
+
+.switch {
+  width: 46px;
+  height: 24px;
+  -webkit-border-radius: 24px;
+          border-radius: 24px; }
+
+.switch:before {
+  width: 22px;
+  height: 22px;
+  left: 1px;
+  top: 1px; }
+
+.switch.active:before {
+  left: 23px; }
+
+@media screen and (min-width: 640px) {
+  .switch {
+    width: 92px;
+    height: 48px;
+    -webkit-border-radius: 48px;
+            border-radius: 48px; }
+
+  .switch:before {
+    width: 44px;
+    height: 44px;
+    left: 2px;
+    top: 2px; }
+
+  .switch.active:before {
+    left: 46px; } }

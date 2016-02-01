@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-code {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
+  background-size: 320px;
+  height: 75px;
+  padding-left: 170px;
+  padding-top: 30px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 24px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-code {
+    background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
+    background-size: 640px;
+    height: 150px;
+    padding-left: 340px;
+    padding-top: 60px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 48px; } }

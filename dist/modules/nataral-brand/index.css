@@ -1,0 +1,178 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-brand li {
+  background: #fff;
+  border-bottom: 1px solid #E5E5E5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.nataral-brand li .icon {
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
+
+.nataral-brand li a {
+  display: block; }
+
+.nataral-brand li.active .icon {
+  display: block;
+  margin-right: 0; }
+
+.nataral-brand li.active a {
+  color: #FF5B54; }
+
+.nataral-brand-h {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fafafa;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5; }
+
+.nataral-brand-h-icon {
+  content: '';
+  display: inline-block;
+  border-left: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in; }
+
+.nataral-brand-select h2 {
+  border-bottom: none; }
+
+.nataral-brand-select ul {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  overflow: hidden;
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+  -webkit-transform-origin: center top;
+      -ms-transform-origin: center top;
+          transform-origin: center top;
+  -webkit-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in; }
+
+.nataral-brand-select.active ul {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg); }
+
+.nataral-brand-select.active .nataral-brand-h-icon {
+  -webkit-transform: rotate(-225deg);
+      -ms-transform: rotate(-225deg);
+          transform: rotate(-225deg); }
+
+.nataral-h2 {
+  font-size: 15px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 10px;
+  border-bottom: 1px solid #e4e4e4; }
+
+.nataral-h2:before {
+  content: '';
+  display: inline-block;
+  margin-right: 5px;
+  width: 3px;
+  height: 12px;
+  background: #ff5b54; }
+
+.nataral-brand li {
+  height: 43px;
+  line-height: 43px;
+  padding: 0 20px;
+  font-size: 14px; }
+
+.nataral-brand li .icon {
+  width: 0px;
+  margin-right: 18px; }
+
+.nataral-brand li.active .icon {
+  width: 18px; }
+
+.nataral-brand-h {
+  padding-right: 10px; }
+
+.nataral-brand-h-icon {
+  vertical-align: 3px;
+  width: 8px;
+  height: 8px;
+  margin-left: 6px; }
+
+.nataral-brand-select h2 {
+  padding-top: 10px; }
+
+.nataral-brand-select ul {
+  -webkit-box-shadow: 0 3px 3px rgba(125, 125, 125, 0.18);
+          box-shadow: 0 3px 3px rgba(125, 125, 125, 0.18); }
+
+@media screen and (min-width: 640px) {
+  .nataral-h2 {
+    font-size: 30px;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid #e4e4e4; }
+
+  .nataral-h2:before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 6px;
+    height: 24px;
+    background: #ff5b54; }
+
+  .nataral-brand li {
+    height: 86px;
+    line-height: 86px;
+    padding: 0 40px;
+    font-size: 28px; }
+
+  .nataral-brand li .icon {
+    width: 0px;
+    margin-right: 36px; }
+
+  .nataral-brand li.active .icon {
+    width: 36px; }
+
+  .nataral-brand-h {
+    padding-right: 20px; }
+
+  .nataral-brand-h-icon {
+    vertical-align: 6px;
+    width: 16px;
+    height: 16px;
+    margin-left: 12px; }
+
+  .nataral-brand-select h2 {
+    padding-top: 20px; }
+
+  .nataral-brand-select ul {
+    -webkit-box-shadow: 0 6px 6px rgba(125, 125, 125, 0.18);
+            box-shadow: 0 6px 6px rgba(125, 125, 125, 0.18); } }

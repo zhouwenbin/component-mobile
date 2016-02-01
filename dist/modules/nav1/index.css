@@ -1,0 +1,70 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nav1 {
+  border-bottom: 1px solid #dfdfdf;
+  background: #fff; }
+
+.nav1 ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.nav1 li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center; }
+
+.nav1-icon1,
+.nav1-icon2,
+.nav1-icon3,
+.nav1-icon4 {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nav1.png) no-repeat;
+  display: block; }
+
+.nav1-icon4 {
+  background-position: right 0; }
+
+.nav1 {
+  padding: 10px 0; }
+
+.nav1-icon1,
+.nav1-icon2,
+.nav1-icon3,
+.nav1-icon4 {
+  background-size: 274px;
+  margin: 0 auto 7px;
+  width: 40px;
+  height: 39px; }
+
+.nav1-icon2 {
+  background-position: -78px 0; }
+
+.nav1-icon3 {
+  background-position: -157px 0; }
+
+@media screen and (min-width: 640px) {
+  .nav1 {
+    padding: 20px 0; }
+
+  .nav1-icon1,
+  .nav1-icon2,
+  .nav1-icon3,
+  .nav1-icon4 {
+    background-size: 548px;
+    margin: 0 auto 14px;
+    width: 80px;
+    height: 78px; }
+
+  .nav1-icon2 {
+    background-position: -156px 0; }
+
+  .nav1-icon3 {
+    background-position: -314px 0; } }

@@ -1,0 +1,133 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-h2 {
+  font-size: 15px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 10px;
+  border-bottom: 1px solid #e4e4e4; }
+
+.nataral-h2:before {
+  content: '';
+  display: inline-block;
+  margin-right: 5px;
+  width: 3px;
+  height: 12px;
+  background: #ff5b54; }
+
+.carnival {
+  background: #fff;
+  border-top: 1px solid #e4e4e4;
+  margin-bottom: 10px; }
+
+.nataral-hanguo {
+  margin: 10px; }
+
+.icon65 {
+  position: fixed;
+  left: 8px;
+  bottom: 8px; }
+
+.icon65 .dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #333; }
+
+.carnival li {
+  margin-bottom: 0;
+  border-bottom: none;
+  border-top: none; }
+
+.nataral-code {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
+  background-size: 320px;
+  height: 75px;
+  padding-left: 170px;
+  padding-top: 30px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 24px; }
+
+.nataral-none {
+  text-align: center;
+  background-color: #f2f2f2;
+  border-top: 1px solid #cfcfcf; }
+
+.nataral-none-svg {
+  margin: 44px 0 32px 0; }
+
+.nataral-none p {
+  display: inline-block;
+  color: #9999a4;
+  font-size: 14px;
+  margin-bottom: 44px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-h2 {
+    font-size: 30px;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid #e4e4e4; }
+
+  .nataral-h2:before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 6px;
+    height: 24px;
+    background: #ff5b54; }
+
+  .carnival {
+    background: #fff;
+    border-top: 2px solid #e4e4e4;
+    margin-bottom: 20px; }
+
+  .nataral-hanguo {
+    margin: 20px; }
+
+  .icon65 {
+    position: fixed;
+    left: 16px;
+    bottom: 16px; }
+
+  .icon65 .dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #333; }
+
+  .carnival li {
+    margin-bottom: 0;
+    border-bottom: none;
+    border-top: none; }
+
+  .nataral-code {
+    background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
+    background-size: 640px;
+    height: 150px;
+    padding-left: 340px;
+    padding-top: 60px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 48px; }
+
+  .nataral-none {
+    text-align: center;
+    background-color: #f2f2f2;
+    border-top: 1px solid #cfcfcf; }
+
+  .nataral-none-svg {
+    margin: 44px 0 32px 0; }
+
+  .nataral-none p {
+    display: inline-block;
+    color: #9999a4;
+    font-size: 14px;
+    margin-bottom: 44px; } }

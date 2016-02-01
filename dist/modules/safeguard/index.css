@@ -1,0 +1,51 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.safeguard {
+  background: #fff; }
+
+.safeguard ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.safeguard li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #999;
+  text-align: center; }
+
+.safeguard svg {
+  vertical-align: middle; }
+
+.safeguard {
+  margin-bottom: 9px; }
+
+.safeguard li {
+  height: 42px;
+  line-height: 42px; }
+
+.safeguard svg {
+  margin-right: 5px;
+  width: 16px;
+  height: 18px; }
+
+@media screen and (min-width: 640px) {
+  .safeguard {
+    margin-bottom: 18px; }
+
+  .safeguard li {
+    height: 84px;
+    line-height: 84px; }
+
+  .safeguard svg {
+    margin-right: 10px;
+    width: 32px;
+    height: 36px; } }

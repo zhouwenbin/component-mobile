@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 标签
+
+*/
+.label, .label-error,
+.label-danger, .label-success, .label-warning, .label-disabled, .label-soon {
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative; }
+
+.label i, .label-error i,
+.label-danger i, .label-success i, .label-warning i, .label-disabled i, .label-soon i {
+  border-style: solid;
+  border-color: transparent transparent transparent #f78e55;
+  position: absolute; }
+
+.label-error,
+.label-danger {
+  background: #ff5b54; }
+
+.label-success {
+  background: #67b222; }
+
+.label-warning {
+  background: #1376ce; }
+
+.label-disabled {
+  background: #ccc; }
+
+.label-soon {
+  background: #f78e55; }
+
+.label, .label-error,
+.label-danger, .label-success, .label-warning, .label-disabled, .label-soon {
+  height: 21px;
+  line-height: 21px;
+  -webkit-border-radius: 2px;
+          border-radius: 2px;
+  padding: 0 15px;
+  font-size: 12px; }
+
+.label i, .label-error i,
+.label-danger i, .label-success i, .label-warning i, .label-disabled i, .label-soon i {
+  border-width: 3px 3px;
+  right: -6px;
+  top: 7px; }
+
+@media screen and (min-width: 640px) {
+  .label, .label-error,
+  .label-danger, .label-success, .label-warning, .label-disabled, .label-soon {
+    height: 42px;
+    line-height: 42px;
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    padding: 0 30px;
+    font-size: 24px; }
+
+  .label i, .label-error i,
+  .label-danger i, .label-success i, .label-warning i, .label-disabled i, .label-soon i {
+    border-width: 6px 6px;
+    right: -12px;
+    top: 14px; } }

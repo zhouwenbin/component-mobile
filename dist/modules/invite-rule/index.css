@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+.invite-rule {
+  background: #fff;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding-bottom: 28px;
+  text-align: center; }
+
+.invite-rule-bg {
+  width: 273px;
+  height: 352px;
+  display: block;
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/invite-rule.png) no-repeat;
+  background-size: 273px 330px;
+  margin: 8px auto 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px dashed #ccc; }
+
+.invite-rule .btn {
+  -webkit-border-radius: 15px;
+          border-radius: 15px;
+  margin-bottom: 12px; }

@@ -1,0 +1,172 @@
+/*
+@styleguide
+
+# 申请退款
+
+*/
+.service-return{
+  padding: 0 8px;
+}
+.service-return h2{
+  padding-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: normal;
+}
+.service-return h2 abbr{
+  float: left;
+  margin-left: -8px;
+  border: none;
+  margin-top: 2px;
+}
+.service-radio{
+  background: #fff;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+.service-radio li{
+  height: 41px;
+  line-height: 41px;
+  padding-left: 22px;
+  padding-right: 15px;
+  border-bottom: 1px solid #efeff4;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.service-radio li a{
+  color: #999;
+  display: block;
+}
+.service-radio li svg{
+  display: none;
+  width: 13px;
+  height: 8px;
+}
+.service-radio li.active a{
+  color: #f13c34;
+}
+.service-radio li.active svg{
+  display: block;
+}
+
+.service-radio li:last-child{
+  border-bottom:none;
+}
+
+.service-select{
+  position: relative;
+}
+.service-select .select{
+  width: 100%;
+  height: 41px;
+  line-height: 41px;
+  background: #fff;
+  color: #999;
+  border: none;
+  -webkit-appearance:none;
+     -moz-appearance:none;
+          appearance:none;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+.service-select .icon-arrow-down{
+  width: 12px;
+  height: 6px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  -webkit-transform: translate(0,-50%);
+      -ms-transform: translate(0,-50%);
+          transform: translate(0,-50%);
+}
+
+.service-return-upload{
+  height: 40px;
+  line-height: 40px;
+  border: 1px dashed #d9d9db;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+  padding: 0 10px;
+  color: #999;
+  margin-bottom: 15px;
+}
+.service-return-btn{
+  height: 40px;
+}
+.service-return .btn{
+  position: fixed;
+  bottom: 0;
+  left:0;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  height: 40px;
+  line-height: 40px;
+}
+.service-return input{
+  -webkit-appearance:none;
+     -moz-appearance:none;
+          appearance:none;
+  border: none;
+}
+.service-return .icon-camera{
+  width: 15px;
+  height: 12px;
+  display: block;
+}
+
+.service-return-img li{
+  float: left;
+  width: 33%;
+  height: 125px;
+  padding: 5px;
+  position: relative;
+  text-align: center;
+}
+.service-return-img li:before{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.service-return-img img{
+  max-width: 100%;
+  max-height: 100%;
+}
+.service-return-close{
+  width: 18px;
+  height: 18px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background: #ccc;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+  font-size: 16px;
+}

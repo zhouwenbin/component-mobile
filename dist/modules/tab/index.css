@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 选项卡
+
+*/
+.tab-h {
+  background: #fff; }
+
+.tab-h ul {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #ccc; }
+
+.tab-h li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-bottom: 1px solid #f2f2f3;
+  text-align: center; }
+
+.tab-h li a {
+  display: inline-block;
+  font-weight: bold; }
+
+.tab-h li.active a {
+  color: #ff5b54; }
+
+.tab-b {
+  display: none; }
+
+.tab-b.active {
+  display: block; }
+
+.tab-h {
+  height: 44px;
+  margin-bottom: 10px; }
+
+.tab-h ul {
+  height: 44px; }
+
+.tab-h li {
+  font-size: 15px; }
+
+.tab-h li a {
+  height: 43px;
+  line-height: 43px; }
+
+.tab-h li.active a {
+  border-bottom: 2px solid #ff5b54; }
+
+@media screen and (min-width: 640px) {
+  .tab-h {
+    height: 88px;
+    margin-bottom: 20px; }
+
+  .tab-h ul {
+    height: 88px; }
+
+  .tab-h li {
+    font-size: 30px; }
+
+  .tab-h li a {
+    height: 86px;
+    line-height: 86px; }
+
+  .tab-h li.active a {
+    border-bottom: 4px solid #ff5b54; } }

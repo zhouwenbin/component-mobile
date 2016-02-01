@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.tuantitle {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80px;
+  line-height: 80px;
+  background: #fff;
+  padding: 0 28px;
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.32);
+          box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.32); }
+
+.tuantitle-c1 {
+  width: 96px; }
+
+.tuantitle h1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  font-size: 36px; }
+
+.tuantitle a {
+  color: #FF5B54;
+  font-size: 32px; }

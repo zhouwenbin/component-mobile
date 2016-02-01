@@ -1,0 +1,350 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+  text-align: center; }
+
+.swipe-wrap {
+  overflow: hidden;
+  position: relative; }
+
+.swipe-wrap > div {
+  float: left;
+  width: 100%;
+  position: relative; }
+
+.swipe-dot {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  font-size: 0; }
+
+.swipe-dot span {
+  display: inline-block;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.3); }
+
+.swipe-dot span.active {
+  background: #dc3334; }
+
+.swipe img {
+  width: 100%; }
+
+.swipe video {
+  width: 100%;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100; }
+
+.swipe .cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 200; }
+
+.swipe .playBtn {
+  display: inline-block;
+  font: 0/0 a;
+  background: url(http://img0.sfht.com/img/fb9b286dfebad73d7cb864d820cbda63.jpg) 0 0 no-repeat;
+  width: 92px;
+  height: 92px;
+  z-index: 10; }
+
+.swiper-container {
+  width: 100%; }
+
+.swiper-container img {
+  width: 100%; }
+
+.swiper-pagination-bullet-active {
+  background: #df3c3a; }
+
+.swiper-time {
+  position: absolute;
+  font-family: Impact; }
+
+.swipe-dot {
+  bottom: 10px; }
+
+.swipe-dot span {
+  width: 7px;
+  height: 7px;
+  -webkit-border-radius: 7px;
+          border-radius: 7px;
+  margin: 0 7px; }
+
+.swiper-time {
+  top: 64px;
+  left: 161px;
+  font-size: 13px; }
+
+.swiper-time span {
+  margin-right: 10px; }
+
+@media screen and (min-width: 640px) {
+  .swipe-dot {
+    bottom: 20px; }
+
+  .swipe-dot span {
+    width: 14px;
+    height: 14px;
+    -webkit-border-radius: 14px;
+            border-radius: 14px;
+    margin: 0 14px; }
+
+  .swiper-time {
+    top: 128px;
+    left: 322px;
+    font-size: 26px; }
+
+  .swiper-time span {
+    margin-right: 20px; } }
+.nataral-detail {
+  padding: 10px;
+  background: #fff; }
+
+.nataral-detail .swipe {
+  margin-bottom: 10px; }
+
+.nataral-detail h1 {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 10px; }
+
+.nataral-detail-r1 {
+  margin-bottom: 20px; }
+
+.nataral-detail-r1 .text-important {
+  font-size: 18px;
+  margin-right: 5px; }
+
+.nataral-detail-r2 {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 30px; }
+
+.nataral-detail h2 {
+  font-size: 15px;
+  background: #f9f9f9;
+  height: 35px;
+  line-height: 35px;
+  padding-left: 30px; }
+
+.nataral-detail ul {
+  padding: 10px 30px;
+  border-bottom: 1px solid #eee; }
+
+.nataral-detail ul:last-child {
+  border: none; }
+
+.nataral-detail li {
+  font-size: 14px;
+  line-height: 24px; }
+
+.nataral-detail .justify {
+  vertical-align: top;
+  width: 4em;
+  height: 14px; }
+
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nav {
+  height: 55px; }
+
+.nav-r1 {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #f3f3f3;
+  z-index: 1;
+  border-top: 1px solid #ccc; }
+
+.nav-c1 {
+  position: absolute;
+  bottom: 50px;
+  right: 7px;
+  -webkit-transform: translate(0, -100%);
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  border: 1px solid #ccc;
+  text-align: center;
+  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.9);
+  width: 40px;
+  height: 40px;
+  margin-top: -45px; }
+
+.nav-c1:nth-child(1) {
+  -webkit-transform: translate(0, -210%); }
+
+.nav-c1 a {
+  color: #999;
+  display: block;
+  padding-top: 5px; }
+
+.nav-c1 .icon {
+  margin-bottom: 4px; }
+
+.nav-c2 {
+  padding: 5px; }
+
+.nav .btn {
+  height: 44px;
+  line-height: 44px;
+  font-size: 18px;
+  font-weight: bold; }
+
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-h2 {
+  font-size: 15px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 10px;
+  border-bottom: 1px solid #e4e4e4; }
+
+.nataral-h2:before {
+  content: '';
+  display: inline-block;
+  margin-right: 5px;
+  width: 3px;
+  height: 12px;
+  background: #ff5b54; }
+
+.carnival {
+  background: #fff;
+  border-top: 1px solid #e4e4e4;
+  margin-bottom: 10px; }
+
+.nataral-hanguo {
+  margin: 10px; }
+
+.icon65 {
+  position: fixed;
+  left: 8px;
+  bottom: 8px; }
+
+.icon65 .dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #333; }
+
+.carnival li {
+  margin-bottom: 0;
+  border-bottom: none;
+  border-top: none; }
+
+.nataral-code {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
+  background-size: 320px;
+  height: 75px;
+  padding-left: 170px;
+  padding-top: 30px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 24px; }
+
+.nataral-none {
+  text-align: center;
+  background-color: #f2f2f2;
+  border-top: 1px solid #cfcfcf; }
+
+.nataral-none-svg {
+  margin: 44px 0 32px 0; }
+
+.nataral-none p {
+  display: inline-block;
+  color: #9999a4;
+  font-size: 14px;
+  margin-bottom: 44px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-h2 {
+    font-size: 30px;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid #e4e4e4; }
+
+  .nataral-h2:before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 6px;
+    height: 24px;
+    background: #ff5b54; }
+
+  .carnival {
+    background: #fff;
+    border-top: 2px solid #e4e4e4;
+    margin-bottom: 20px; }
+
+  .nataral-hanguo {
+    margin: 20px; }
+
+  .icon65 {
+    position: fixed;
+    left: 16px;
+    bottom: 16px; }
+
+  .icon65 .dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #333; }
+
+  .carnival li {
+    margin-bottom: 0;
+    border-bottom: none;
+    border-top: none; }
+
+  .nataral-code {
+    background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
+    background-size: 640px;
+    height: 150px;
+    padding-left: 340px;
+    padding-top: 60px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 48px; }
+
+  .nataral-none {
+    text-align: center;
+    background-color: #f2f2f2;
+    border-top: 1px solid #cfcfcf; }
+
+  .nataral-none-svg {
+    margin: 44px 0 32px 0; }
+
+  .nataral-none p {
+    display: inline-block;
+    color: #9999a4;
+    font-size: 14px;
+    margin-bottom: 44px; } }

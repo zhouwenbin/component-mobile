@@ -1,0 +1,24 @@
+.agreement {
+  padding: 20px;
+  background: #fff; }
+
+.agreement h1 {
+  margin-bottom: 40px;
+  font-size: 24px;
+  text-align: center; }
+
+.agreement p,
+.agreement h2 {
+  margin-bottom: 15px;
+  color: #585858;
+  font-weight: normal;
+  line-height: 18px; }
+
+.agreement .p1 {
+  padding-left: 25px; }
+
+.agreement .p1 svg {
+  float: left;
+  margin-left: -25px;
+  width: 21px;
+  height: 23px; }

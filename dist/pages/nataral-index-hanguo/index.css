@@ -1,0 +1,752 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-nav ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #dcdcdc;
+  background: #fff; }
+
+.nataral-nav li {
+  text-align: center;
+  background: #eb87bb;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  position: relative; }
+
+.nataral-nav li:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%; }
+
+.nataral-nav li.active:after {
+  content: '';
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-left: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
+  background: #fff;
+  left: 50%; }
+
+.nataral-nav li a {
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle; }
+
+.nataral-nav li:nth-child(2) {
+  background: #ff5b54; }
+
+.nataral-nav li:nth-child(3) {
+  background: #72bbdb; }
+
+.nataral-nav ul {
+  padding: 12px 40px; }
+
+.nataral-nav li {
+  width: 51px;
+  height: 51px;
+  font-size: 16px; }
+
+.nataral-nav li.active:after {
+  width: 10px;
+  height: 10px;
+  bottom: -18px;
+  margin-left: -6px; }
+
+.nataral-nav li span {
+  margin-bottom: 3px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-nav ul {
+    padding: 24px 80px; }
+
+  .nataral-nav li {
+    width: 102px;
+    height: 102px;
+    font-size: 32px; }
+
+  .nataral-nav li.active:after {
+    width: 20px;
+    height: 20px;
+    bottom: -36px;
+    margin-left: -12px; }
+
+  .nataral-nav li span {
+    margin-bottom: 6px; } }
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-tab {
+  position: relative;
+  background: #f9f9f9; }
+
+.nataral-tab-inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f9f9f9;
+  position: relative; }
+
+.nataral-tab-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden; }
+
+.nataral-tab ul {
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f9f9f9; }
+
+.nataral-tab-open {
+  height: 0; }
+
+.nataral-tab-open .mask {
+  display: none; }
+
+.nataral-tab-open .nataral-tab-inner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  -webkit-transform: translate(0, -100%);
+      -ms-transform: translate(0, -100%);
+          transform: translate(0, -100%);
+  -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+  z-index: 1000; }
+
+.nataral-tab-open.active .nataral-tab-inner {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0); }
+
+.nataral-tab-open.active .mask {
+  display: block; }
+
+.nataral-tab-open ul {
+  display: block;
+  width: 100% !important;
+  font-size: 0;
+  -webkit-transform: translate(0px, 0px) translateZ(0px) !important;
+          transform: translate(0px, 0px) translateZ(0px) !important; }
+
+.nataral-tab-open li {
+  width: 25%;
+  display: inline-block; }
+
+.nataral-tab-open:before {
+  display: none; }
+
+.nataral-tab:before {
+  content: '';
+  position: absolute;
+  background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, #fff 70%, #fff 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 70%, #fff 100%);
+  right: 0;
+  top: 0;
+  z-index: 3;
+  display: none; }
+
+.nataral-tab.active .nataral-tab-icon {
+  -webkit-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+          transform: rotate(135deg); }
+
+.nataral-tab-icon {
+  content: '';
+  border-color: #e1494a;
+  border-style: solid;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+  z-index: 999;
+  display: none; }
+
+.nataral-tab-icon:before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  top: -10px;
+  bottom: -10px; }
+
+.nataral-tab-fixed .nataral-tab-inner {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1000; }
+
+.nataral-tab li {
+  text-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+.nataral-tab li svg {
+  fill: #4A4A4A; }
+
+.nataral-tab li a {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 4em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.nataral-tab li i {
+  content: '';
+  display: inline-block;
+  border-left: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
+
+.nataral-tab li.active i {
+  vertical-align: 0;
+  border-color: #ff5b54;
+  -webkit-transform: rotate(-225deg);
+      -ms-transform: rotate(-225deg);
+          transform: rotate(-225deg); }
+
+.nataral-tab li.active svg {
+  fill: #FF5B54; }
+
+.nataral-tab li.active a {
+  color: #ff5b54; }
+
+.nataral-tab {
+  height: 46px; }
+
+.nataral-tab-open li {
+  font-size: 14px; }
+
+.nataral-tab:before {
+  width: 38px;
+  height: 45px; }
+
+.nataral-tab-icon {
+  width: 8px;
+  height: 8px;
+  border-width: 1px 1px 0 0;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px; }
+
+.nataral-tab li {
+  height: 46px;
+  line-height: 46px;
+  font-size: 14px; }
+
+.nataral-tab li svg {
+  margin-right: 5px; }
+
+.nataral-tab li i {
+  vertical-align: 3px;
+  width: 6px;
+  height: 6px;
+  margin-left: 6px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-tab {
+    height: 92px; }
+
+  .nataral-tab-open li {
+    font-size: 28px; }
+
+  .nataral-tab:before {
+    width: 76px;
+    height: 90px; }
+
+  .nataral-tab-icon {
+    width: 16px;
+    height: 16px;
+    border-width: 2px 2px 0 0;
+    margin-top: 40px;
+    margin-right: 20px;
+    margin-left: 20px; }
+
+  .nataral-tab li {
+    height: 92px;
+    line-height: 92px;
+    font-size: 28px; }
+
+  .nataral-tab li svg {
+    margin-right: 10px; }
+
+  .nataral-tab li i {
+    vertical-align: 6px;
+    width: 12px;
+    height: 12px;
+    margin-left: 12px; } }
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-tab-none {
+  text-align: center;
+  padding: 30px 0; }
+
+.nataral-tab-none p {
+  margin-top: 10px;
+  color: #999; }
+
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-area img {
+  width: 100%; }
+
+.nataral-area-b {
+  background: #fff; }
+
+.nataral-area p {
+  color: #666; }
+
+.nataral-area-b {
+  padding: 15px 10px 24px; }
+
+.nataral-area h2 {
+  font-size: 17px;
+  margin-bottom: 10px; }
+
+.nataral-area h2 .icon {
+  margin-right: 7px;
+  vertical-align: -2px; }
+
+.nataral-area p {
+  font-size: 14px;
+  line-height: 20px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-area-b {
+    padding: 30px 20px 48px; }
+
+  .nataral-area h2 {
+    font-size: 34px;
+    margin-bottom: 20px; }
+
+  .nataral-area h2 .icon {
+    margin-right: 14px;
+    vertical-align: -4px; }
+
+  .nataral-area p {
+    font-size: 28px;
+    line-height: 40px; } }
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-shop img {
+  width: 100%; }
+
+.nataral-shop figcaption {
+  background: #000000;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  position: relative;
+  z-index: 1; }
+
+.nataral-shop figcaption {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  margin-top: -30px; }
+
+.nataral-shop figcaption .icon {
+  margin-right: 6px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-shop figcaption {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    margin-top: -60px; }
+
+  .nataral-shop figcaption .icon {
+    margin-right: 12px; } }
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-product {
+  background: #fff;
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4; }
+
+.nataral-product li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #e4e4e4; }
+
+.nataral-product li:last-child {
+  border: none; }
+
+.nataral-product img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: 0.5s -webkit-transform ease-in-out,0.5s left linear,0.5s top ease-in,0.1s visibility 0.5s linear;
+          transition: 0.5s transform ease-in-out,0.5s left linear,0.5s top ease-in,0.1s visibility 0.5s linear; }
+
+.nataral-product-c1 {
+  position: relative; }
+
+.nataral-product-c1 .mask {
+  position: absolute;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1; }
+
+.nataral-product-c2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+.nataral-product-c2 h3 {
+  font-weight: normal;
+  word-break: break-all; }
+
+.nataral-product-loading {
+  text-align: center;
+  border-top: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4; }
+
+.nataral-product-soldout {
+  text-align: center;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background: #000000;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  color: #fff; }
+
+.nataral-product-star {
+  display: inline-block;
+  background: #ffc600;
+  color: #fff; }
+
+.nataral-product-r1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.nataral-product-r1 .icon66 {
+  display: block; }
+
+.nataral-h2 {
+  font-size: 15px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 10px;
+  border-bottom: 1px solid #e4e4e4; }
+
+.nataral-h2:before {
+  content: '';
+  display: inline-block;
+  margin-right: 5px;
+  width: 3px;
+  height: 12px;
+  background: #ff5b54; }
+
+.nataral-product {
+  margin-bottom: 10px;
+  margin-top: -1px; }
+
+.nataral-product li {
+  margin: 0 10px;
+  padding: 10px 0; }
+
+.nataral-product img {
+  width: 75px;
+  height: 75px;
+  border: 1px solid #f7f7f7; }
+
+.nataral-product-c1 {
+  width: 75px;
+  height: 75px; }
+
+.nataral-product-c2 {
+  padding-left: 15px;
+  padding-right: 12px; }
+
+.nataral-product-c2 h3 {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 5px; }
+
+.nataral-product-c2 .text-important {
+  margin-right: 8px; }
+
+.nataral-product-more {
+  padding: 0 10px 20px; }
+
+.nataral-product-more .btn {
+  height: 39px;
+  line-height: 39px; }
+
+.nataral-product-loading {
+  padding: 10px 0; }
+
+.nataral-product-soldout {
+  width: 35px;
+  height: 35px;
+  line-height: 35px; }
+
+.nataral-product-star {
+  -webkit-border-radius: 2px;
+          border-radius: 2px;
+  padding: 0 5px;
+  margin-right: 3px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-h2 {
+    font-size: 30px;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid #e4e4e4; }
+
+  .nataral-h2:before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 6px;
+    height: 24px;
+    background: #ff5b54; }
+
+  .nataral-product {
+    margin-bottom: 20px;
+    margin-top: -2px; }
+
+  .nataral-product li {
+    margin: 0 20px;
+    padding: 20px 0; }
+
+  .nataral-product img {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #f7f7f7; }
+
+  .nataral-product-c1 {
+    width: 150px;
+    height: 150px; }
+
+  .nataral-product-c2 {
+    padding-left: 30px;
+    padding-right: 24px; }
+
+  .nataral-product-c2 h3 {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 10px; }
+
+  .nataral-product-c2 .text-important {
+    margin-right: 16px; }
+
+  .nataral-product-more {
+    padding: 0 20px 40px; }
+
+  .nataral-product-more .btn {
+    height: 78px;
+    line-height: 78px; }
+
+  .nataral-product-loading {
+    padding: 20px 0; }
+
+  .nataral-product-soldout {
+    width: 70px;
+    height: 70px;
+    line-height: 70px; }
+
+  .nataral-product-star {
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    padding: 0 10px;
+    margin-right: 6px; } }
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-h2 {
+  font-size: 15px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+  padding-left: 10px;
+  border-bottom: 1px solid #e4e4e4; }
+
+.nataral-h2:before {
+  content: '';
+  display: inline-block;
+  margin-right: 5px;
+  width: 3px;
+  height: 12px;
+  background: #ff5b54; }
+
+.carnival {
+  background: #fff;
+  border-top: 1px solid #e4e4e4;
+  margin-bottom: 10px; }
+
+.nataral-hanguo {
+  margin: 10px; }
+
+.icon65 {
+  position: fixed;
+  left: 8px;
+  bottom: 8px; }
+
+.icon65 .dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #333; }
+
+.carnival li {
+  margin-bottom: 0;
+  border-bottom: none;
+  border-top: none; }
+
+.nataral-code {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
+  background-size: 320px;
+  height: 75px;
+  padding-left: 170px;
+  padding-top: 30px;
+  font-family: arial;
+  font-weight: bold;
+  font-size: 24px; }
+
+.nataral-none {
+  text-align: center;
+  background-color: #f2f2f2;
+  border-top: 1px solid #cfcfcf; }
+
+.nataral-none-svg {
+  margin: 44px 0 32px 0; }
+
+.nataral-none p {
+  display: inline-block;
+  color: #9999a4;
+  font-size: 14px;
+  margin-bottom: 44px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-h2 {
+    font-size: 30px;
+    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-left: 20px;
+    border-bottom: 1px solid #e4e4e4; }
+
+  .nataral-h2:before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+    width: 6px;
+    height: 24px;
+    background: #ff5b54; }
+
+  .carnival {
+    background: #fff;
+    border-top: 2px solid #e4e4e4;
+    margin-bottom: 20px; }
+
+  .nataral-hanguo {
+    margin: 20px; }
+
+  .icon65 {
+    position: fixed;
+    left: 16px;
+    bottom: 16px; }
+
+  .icon65 .dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #333; }
+
+  .carnival li {
+    margin-bottom: 0;
+    border-bottom: none;
+    border-top: none; }
+
+  .nataral-code {
+    background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
+    background-size: 640px;
+    height: 150px;
+    padding-left: 340px;
+    padding-top: 60px;
+    font-family: arial;
+    font-weight: bold;
+    font-size: 48px; }
+
+  .nataral-none {
+    text-align: center;
+    background-color: #f2f2f2;
+    border-top: 1px solid #cfcfcf; }
+
+  .nataral-none-svg {
+    margin: 44px 0 32px 0; }
+
+  .nataral-none p {
+    display: inline-block;
+    color: #9999a4;
+    font-size: 14px;
+    margin-bottom: 44px; } }

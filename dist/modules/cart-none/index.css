@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.cart-none {
+  height: 100%;
+  padding-top: 190px;
+  text-align: center;
+  background: #fff url(//img0.fengqucdn.com/sfhth5/1.1.393/img/cart-none.png) no-repeat center 87px;
+  background-size: 92px; }
+
+.cart-none p {
+  margin-bottom: 36px; }
+
+.cart-none .btn {
+  margin: 0 17px; }

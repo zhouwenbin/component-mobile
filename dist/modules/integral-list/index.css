@@ -1,0 +1,108 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+.integral-list li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid #DCDCDC;
+  padding: 11px 15px 10px;
+  font-size: 14px; }
+
+.integral-list-date,
+.integral-list-time {
+  color: #9B9B9B;
+  margin-top: 10px; }
+
+.integral-list-orderid {
+  color: #9B9B9B; }
+
+.integral-list .text-success,
+.integral-list .text-important {
+  font-size: 18px; }
+
+.signin-rule {
+  margin: 20px 15px;
+  font-size: 14px; }
+
+.signin-rule table {
+  width: 100%;
+  background: #FF5B54;
+  -webkit-border-radius: 9px;
+          border-radius: 9px;
+  -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 19px;
+  table-layout: fixed; }
+
+.signin-rule th,
+.signin-rule td {
+  height: 53px;
+  line-height: 53px;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.1); }
+
+.signin-rule th:last-child,
+.signin-rule td:last-child {
+  border-right: 0; }
+
+.signin-rule td span {
+  font-size: 18px; }
+
+.signin-rule th {
+  color: #4A4A4A;
+  color: rgba(74, 74, 74, 0.46);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative; }
+
+.signin-rule th svg {
+  vertical-align: 8px;
+  margin-left: -10px; }
+
+.signin-rule td {
+  color: #fff; }
+
+.signin-rule li {
+  color: #979DA9;
+  line-height: 18px; }
+
+.integral-explain {
+  height: 100%;
+  background: #fff;
+  color: #979DA9;
+  padding: 18px 14px; }
+
+.integral-explain h2 {
+  font-size: 14px;
+  margin-bottom: 12px; }
+
+.integral-explain h2:before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background: #FF5B54;
+  margin-right: 7px; }
+
+.integral-explain p {
+  line-height: 16px; }
+
+.integral-explain li {
+  border-bottom: 1px solid #DCDCDC;
+  padding-bottom: 10px;
+  margin-bottom: 10px; }
+
+.integral-explain li:last-child {
+  border-bottom: none; }

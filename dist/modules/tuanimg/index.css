@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.tuanimg {
+  height: 158px; }
+
+.tuanimg-fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 94px;
+  padding: 38px 0;
+  background: #fff;
+  border-top: 2px solid #F2F2F2;
+  text-align: center; }
+
+.tuanimg li {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 20px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  font-size: 28px; }
+
+.tuanimg img {
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
+
+.tuanimg-none {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  border: 1px dashed #DCDCDC; }

@@ -1,0 +1,319 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nav1 {
+  border-bottom: 1px solid #dfdfdf;
+  background: #fff; }
+
+.nav1 ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.nav1 li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center; }
+
+.nav1-icon1,
+.nav1-icon2,
+.nav1-icon3,
+.nav1-icon4 {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nav1.png) no-repeat;
+  display: block; }
+
+.nav1-icon4 {
+  background-position: right 0; }
+
+.nav1 {
+  padding: 10px 0; }
+
+.nav1-icon1,
+.nav1-icon2,
+.nav1-icon3,
+.nav1-icon4 {
+  background-size: 274px;
+  margin: 0 auto 7px;
+  width: 40px;
+  height: 39px; }
+
+.nav1-icon2 {
+  background-position: -78px 0; }
+
+.nav1-icon3 {
+  background-position: -157px 0; }
+
+@media screen and (min-width: 640px) {
+  .nav1 {
+    padding: 20px 0; }
+
+  .nav1-icon1,
+  .nav1-icon2,
+  .nav1-icon3,
+  .nav1-icon4 {
+    background-size: 548px;
+    margin: 0 auto 14px;
+    width: 80px;
+    height: 78px; }
+
+  .nav1-icon2 {
+    background-position: -156px 0; }
+
+  .nav1-icon3 {
+    background-position: -314px 0; } }
+.flashsale ul {
+  border-top: 1px solid #d9d9d9; }
+
+.flashsale li {
+  background: #fff;
+  border-bottom: 1px solid #d9d9d9; }
+
+.flashsale h3 {
+  font-weight: normal; }
+
+.flashsale-c1 {
+  text-align: center; }
+
+.flashsale-c2 {
+  overflow: hidden; }
+
+.flashsale-c2r1 {
+  color: #999; }
+
+.flashsale-c2r2 del {
+  color: #666; }
+
+.flashsale img {
+  border: 1px solid #ebebeb; }
+
+.flashsale li {
+  padding-top: 17px;
+  padding-bottom: 30px; }
+
+.flashsale h3 {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 10px; }
+
+.flashsale-c1 {
+  width: 123px; }
+
+.flashsale-c2r1 {
+  margin-bottom: 13px; }
+
+.flashsale-c2r1 .icon {
+  margin-right: 2px; }
+
+.flashsale-c2r2 .text-error {
+  font-size: 15px;
+  margin-right: 5px; }
+
+.flashsale img {
+  width: 75px;
+  height: 75px; }
+
+@media screen and (min-width: 640px) {
+  .flashsale li {
+    padding-top: 34px;
+    padding-bottom: 60px; }
+
+  .flashsale h3 {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 20px; }
+
+  .flashsale-c1 {
+    width: 246px; }
+
+  .flashsale-c2r1 {
+    margin-bottom: 26px; }
+
+  .flashsale-c2r1 .icon {
+    margin-right: 4px; }
+
+  .flashsale-c2r2 .text-error {
+    font-size: 30px;
+    margin-right: 10px; }
+
+  .flashsale img {
+    width: 150px;
+    height: 150px; } }
+.carnival img {
+  width: 100%; }
+
+.carnival h3 {
+  font-weight: normal; }
+
+.carnival p {
+  color: #666; }
+
+.carnival li {
+  background: #fff; }
+
+.carnival li:last-child {
+  margin-bottom: 0; }
+
+.carnival-r1 {
+  color: #999; }
+
+.carnival-r2c1 {
+  color: #d8363b; }
+
+.carnival h3 {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 4px; }
+
+.carnival p {
+  line-height: 18px;
+  margin-bottom: 8px; }
+
+.carnival li {
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  margin-bottom: 10px; }
+
+.carnival-b {
+  padding: 20px 14px; }
+
+.carnival-r1 {
+  margin-bottom: 18px; }
+
+.carnival-r1 .icon {
+  margin-right: 3px; }
+
+.carnival-r2c1 {
+  font-size: 14px; }
+
+.carnival-r2c1 strong {
+  font-size: 24px; }
+
+@media screen and (min-width: 640px) {
+  .carnival h3 {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 8px; }
+
+  .carnival p {
+    line-height: 36px;
+    margin-bottom: 16px; }
+
+  .carnival li {
+    border-top: 2px solid #d9d9d9;
+    border-bottom: 2px solid #d9d9d9;
+    margin-bottom: 20px; }
+
+  .carnival-b {
+    padding: 40px 28px; }
+
+  .carnival-r1 {
+    margin-bottom: 36px; }
+
+  .carnival-r1 .icon {
+    margin-right: 6px; }
+
+  .carnival-r2c1 {
+    font-size: 28px; }
+
+  .carnival-r2c1 strong {
+    font-size: 48px; } }
+/*@import '../../modules/list/index';*/
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.downloadapp {
+  position: relative; }
+
+.downloadapp-r1 {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 999; }
+
+.downloadapp-close {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/downloadapp-close.png) no-repeat;
+  text-indent: -999em;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+.downloadapp .btn {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: #46cfdf;
+  border-color: #46cfdf;
+  padding: 0; }
+
+.downloadapp {
+  height: 50px; }
+
+.downloadapp-r1 {
+  height: 50px;
+  padding: 0 11px;
+  background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 9px bottom;
+  background-size: 201px 44px; }
+
+.downloadapp-logo {
+  width: 201px;
+  height: 44px; }
+
+.downloadapp-close {
+  width: 22px;
+  height: 22px;
+  background-size: 22px; }
+
+.downloadapp .btn {
+  height: 35px;
+  line-height: 35px;
+  margin-left: 6px;
+  margin-right: 16px; }
+
+@media screen and (min-width: 640px) {
+  .downloadapp {
+    height: 100px; }
+
+  .downloadapp-r1 {
+    height: 100px;
+    padding: 0 22px;
+    background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 18px bottom;
+    background-size: 402px 88px; }
+
+  .downloadapp-logo {
+    width: 402px;
+    height: 88px; }
+
+  .downloadapp-close {
+    width: 44px;
+    height: 44px;
+    background-size: 44px; }
+
+  .downloadapp .btn {
+    height: 70px;
+    line-height: 70px;
+    margin-left: 12px;
+    margin-right: 32px; } }

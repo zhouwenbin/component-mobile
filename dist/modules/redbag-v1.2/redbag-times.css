@@ -1,0 +1,20 @@
+.redbags-times{
+	text-align: center;
+	color: #782323;
+	font-size: 18px;
+	margin-top: -56px;
+	position: relative;
+	margin-bottom: -3px;
+}
+.redbags-times dd{
+	display: inline-block;
+	height: 35px;
+	line-height: 35px;
+	background-color: #fff1c0;
+	-webkit-border-radius: 12px;
+	        border-radius: 12px;
+	padding: 0 30px;
+	margin-top: 6px;
+	-webkit-box-shadow: 3px 3px 3px #eaba3d;
+	        box-shadow: 3px 3px 3px #eaba3d;
+}

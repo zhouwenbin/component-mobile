@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.tuanshare-inner {
+  top: auto;
+  bottom: 0;
+  height: 240px;
+  background: #F3F3F3;
+  z-index: 999; }
+
+.tuanshare ul {
+  height: 240px;
+  padding-left: 10px; }
+
+.tuanshare ul:before {
+  content: '';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle; }
+
+.tuanshare li {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 20px; }
+
+.tuanshare figcaption {
+  margin-top: 20px; }

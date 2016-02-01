@@ -1,0 +1,35 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-shop img {
+  width: 100%; }
+
+.nataral-shop figcaption {
+  background: #000000;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  position: relative;
+  z-index: 1; }
+
+.nataral-shop figcaption {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  margin-top: -30px; }
+
+.nataral-shop figcaption .icon {
+  margin-right: 6px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-shop figcaption {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    margin-top: -60px; }
+
+  .nataral-shop figcaption .icon {
+    margin-right: 12px; } }

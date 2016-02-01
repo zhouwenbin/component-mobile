@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 文字颜色
+
+
+*/
+.text-error,
+.text-important {
+  color: #ff5b54;
+  vertical-align: middle; }
+
+.text-success {
+  color: #67b222; }
+
+.text-warnning,
+.text-link {
+  color: #3b86c4; }
+
+.text-disable {
+  color: #999; }
+
+.text-orange {
+  color: #ff9000; }
+
+.text-h2 {
+  color: #666;
+  font-weight: normal; }
+
+.text-error,
+.text-important {
+  font-size: 12px; }
+
+.text-h2 {
+  padding: 21px 0 7px 12px;
+  font-size: 14px; }
+
+@media screen and (min-width: 640px) {
+  .text-error,
+  .text-important {
+    font-size: 24px; }
+
+  .text-h2 {
+    padding: 42px 0 14px 24px;
+    font-size: 28px; } }

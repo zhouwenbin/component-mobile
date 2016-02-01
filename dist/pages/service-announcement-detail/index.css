@@ -1,0 +1,51 @@
+/*
+@styleguide
+
+# 公告详情
+
+*/
+.announcement-detail dt {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 44px;
+    background: #fff;
+    padding-left: 9px;
+    padding-right: 12px;
+    color: #666
+}
+.announcement-detail .icon-voise {
+    margin-right: 3px;
+    width: 20px;
+    height: 18px
+}
+.announcement-detail .icon-arrow {
+    width: 6px;
+    height: 12px;
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg)
+}
+.announcement-detail .active .icon-arrow {
+    -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg)
+}
+.announcement-detail svg {
+    display: block
+}
+.announcement-detail dd {
+    font-size: 14px;
+    line-height: 21px;
+    background: #fdf9ed;
+    padding: 10px;
+    display: none
+}
+.announcement-detail .active dd {
+    display: block
+}

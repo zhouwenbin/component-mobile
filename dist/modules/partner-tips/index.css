@@ -1,0 +1,17 @@
+.partner-tips-box {
+  position: relative;
+  height: 80px;
+  background-color: #FFF8C5;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #E1E1E1; }
+
+.partner-tips-box .center {
+  width: 100%; }
+
+.partner-tips-box p {
+  color: #E18D2B;
+  margin-bottom: 10px; }
+
+.partner-tips-box span {
+  color: #999; }

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.person {
+  background: #fafafa;
+  margin-bottom: 10px; }
+
+.person-r1 {
+  font-size: 17px;
+  color: #fff;
+  text-align: center;
+  height: 230px;
+  background-color: #da494f;
+  background-image: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/person.png);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 250px;
+  padding-top: 24px;
+  margin-bottom: 10px; }
+
+.person-r2 {
+  padding-top: 48px;
+  text-align: center;
+  margin-bottom: 8px; }
+
+.person-r3 {
+  text-align: center;
+  margin-bottom: 58px;
+  font-size: 14px; }
+
+.person-r4 {
+  margin-bottom: 8px; }
+
+.person .box-link {
+  color: #888888;
+  font-size: 14px; }

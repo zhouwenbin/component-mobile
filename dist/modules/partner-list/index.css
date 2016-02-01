@@ -1,0 +1,50 @@
+.partner-list {
+  margin-top: 13px;
+  background: #fff;
+  border-top: 1px solid #E1E1E1;
+  background: #f0eff5; }
+
+.partner-list .partner-rules-li {
+  border-top: 1px solid #E1E1E1;
+  margin-top: 14px; }
+
+.partner-list .box-link {
+  padding: 15px;
+  font-size: 16px;
+  color: #666; }
+
+.partner-list .box-link svg {
+  margin-left: 10px;
+  height: 16px;
+  line-height: 16;
+  vertical-align: -3px;
+  width: 16px; }
+
+.partner-list li {
+  position: relative;
+  border-bottom: 1px solid #E1E1E1;
+  background: #fff; }
+
+.partner-list .box-arrow {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid #DCDCDC;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg); }
+
+.partner-list .box-arrow:after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid #DCDCDC; }
+
+.partner-list .num {
+  color: #999;
+  font-size: 14px; }

@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.tuanrule {
+  padding: 30px;
+  background: #fff; }
+
+.tuanrule h2 {
+  color: #F13C34;
+  margin-bottom: 18px;
+  text-align: center; }
+
+.tuanrule p {
+  line-height: 34px; }

@@ -1,0 +1,79 @@
+.carnival img {
+  width: 100%; }
+
+.carnival h3 {
+  font-weight: normal; }
+
+.carnival p {
+  color: #666; }
+
+.carnival li {
+  background: #fff; }
+
+.carnival li:last-child {
+  margin-bottom: 0; }
+
+.carnival-r1 {
+  color: #999; }
+
+.carnival-r2c1 {
+  color: #d8363b; }
+
+.carnival h3 {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 4px; }
+
+.carnival p {
+  line-height: 18px;
+  margin-bottom: 8px; }
+
+.carnival li {
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  margin-bottom: 10px; }
+
+.carnival-b {
+  padding: 20px 14px; }
+
+.carnival-r1 {
+  margin-bottom: 18px; }
+
+.carnival-r1 .icon {
+  margin-right: 3px; }
+
+.carnival-r2c1 {
+  font-size: 14px; }
+
+.carnival-r2c1 strong {
+  font-size: 24px; }
+
+@media screen and (min-width: 640px) {
+  .carnival h3 {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 8px; }
+
+  .carnival p {
+    line-height: 36px;
+    margin-bottom: 16px; }
+
+  .carnival li {
+    border-top: 2px solid #d9d9d9;
+    border-bottom: 2px solid #d9d9d9;
+    margin-bottom: 20px; }
+
+  .carnival-b {
+    padding: 40px 28px; }
+
+  .carnival-r1 {
+    margin-bottom: 36px; }
+
+  .carnival-r1 .icon {
+    margin-right: 6px; }
+
+  .carnival-r2c1 {
+    font-size: 28px; }
+
+  .carnival-r2c1 strong {
+    font-size: 48px; } }

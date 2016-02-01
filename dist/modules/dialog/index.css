@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+.dialog .center {
+  background: #fff;
+  text-align: center; }
+
+.dialog h2 {
+  font-weight: normal; }
+
+.dialog p {
+  color: #999; }
+
+.dialog .icon15 {
+  position: absolute; }
+
+.dialog .icon15:after {
+  content: '';
+  position: absolute; }
+
+.dialog-spring .center {
+  width: 90%;
+  text-align: left; }
+
+.dialog-spring h2 {
+  color: #dc3334; }
+
+.dialog-spring p {
+  margin-bottom: 0; }
+
+.dialog-nataral .center {
+  text-align: left;
+  padding-bottom: 0; }
+
+.dialog-nataral ul {
+  overflow-y: auto; }
+
+.dialog-nataral li {
+  border-bottom: 1px solid #eaeaea; }
+
+.dialog-nataral li:last-child {
+  border: none;
+  margin-bottom: 0; }
+
+.dialog-nataral p {
+  color: #666; }
+
+.dialog-nataral .icon39 {
+  float: left; }
+
+.dialog-active .center {
+  padding: 0; }
+
+.dialog-active h2 {
+  color: #f78e55;
+  background: #f9f9f9;
+  text-align: left;
+  margin-bottom: 0;
+  border-bottom: 1px solid #e5e5e5; }
+
+.dialog-active .input {
+  text-align: center; }
+
+.dialog-active li {
+  text-align: left; }
+
+.dialog .center {
+  width: 292px;
+  padding-top: 39px;
+  padding-bottom: 21px;
+  -webkit-border-radius: 2px;
+          border-radius: 2px; }
+
+.dialog h2 {
+  font-size: 16px;
+  margin-bottom: 12px; }
+
+.dialog p {
+  margin-bottom: 13px; }
+
+.dialog-r1 {
+  margin-top: 4px; }
+
+.dialog .icon15 {
+  right: 15px;
+  top: 15px; }
+
+.dialog .icon15:after {
+  left: -15px;
+  right: -15px;
+  top: -15px;
+  bottom: -15px; }
+
+.dialog1 .center {
+  padding-top: 22px;
+  padding-bottom: 29px; }
+
+.dialog1 h2 {
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: 5px;
+  margin-bottom: 7px; }
+
+.dialog1 p {
+  margin-bottom: 6px; }
+
+.dialog1 .btn {
+  margin-top: 11px;
+  padding: 0 45px; }
+
+.dialog1-r1 {
+  margin-top: 22px; }
+
+.dialog1-r1 .btn {
+  padding: 0 27px;
+  margin: 0 8px; }
+
+.dialog-spring .center {
+  font-size: 14px;
+  padding-left: 30px;
+  padding-right: 30px; }
+
+.dialog-spring h2 {
+  margin-bottom: 15px;
+  font-size: 14px; }
+
+.dialog-spring p {
+  line-height: 24px;
+  font-size: 14px; }
+
+.dialog-nataral ul {
+  padding: 10px;
+  max-height: 400px; }
+
+.dialog-nataral li {
+  margin-bottom: 13px; }
+
+.dialog-nataral h2 {
+  font-size: 14px;
+  padding-left: 17px; }
+
+.dialog-nataral p {
+  line-height: 18px;
+  padding-left: 17px; }
+
+.dialog-nataral .icon39 {
+  margin-left: -17px; }
+
+.dialog-active h2 {
+  font-size: 14px;
+  height: 43px;
+  line-height: 43px;
+  padding-left: 15px; }
+
+.dialog-active-b {
+  padding: 10px 15px; }
+
+.dialog-active .input {
+  margin-bottom: 10px; }
+
+.dialog-active .btn {
+  height: 44px;
+  line-height: 44px; }
+
+.dialog-active li {
+  line-height: 21px;
+  font-size: 14px;
+  margin-bottom: 10px; }
+
+.dialog-active .text-error {
+  margin-top: 10px; }
+
+@media screen and (min-width: 640px) {
+  .dialog .center {
+    width: 584px;
+    padding-top: 78px;
+    padding-bottom: 42px;
+    -webkit-border-radius: 4px;
+            border-radius: 4px; }
+
+  .dialog h2 {
+    font-size: 32px;
+    margin-bottom: 24px; }
+
+  .dialog p {
+    margin-bottom: 26px; }
+
+  .dialog-r1 {
+    margin-top: 8px; }
+
+  .dialog .icon15 {
+    right: 30px;
+    top: 30px; }
+
+  .dialog .icon15:after {
+    left: -30px;
+    right: -30px;
+    top: -30px;
+    bottom: -30px; }
+
+  .dialog1 .center {
+    padding-top: 44px;
+    padding-bottom: 58px; }
+
+  .dialog1 h2 {
+    font-size: 28px;
+    line-height: 48px;
+    margin-top: 10px;
+    margin-bottom: 14px; }
+
+  .dialog1 p {
+    margin-bottom: 12px; }
+
+  .dialog1 .btn {
+    margin-top: 22px;
+    padding: 0 90px; }
+
+  .dialog1-r1 {
+    margin-top: 44px; }
+
+  .dialog1-r1 .btn {
+    padding: 0 54px;
+    margin: 0 16px; }
+
+  .dialog-spring .center {
+    font-size: 28px;
+    padding-left: 60px;
+    padding-right: 60px; }
+
+  .dialog-spring h2 {
+    margin-bottom: 30px;
+    font-size: 28px; }
+
+  .dialog-spring p {
+    line-height: 48px;
+    font-size: 28px; }
+
+  .dialog-nataral ul {
+    padding: 20px;
+    max-height: 800px; }
+
+  .dialog-nataral li {
+    margin-bottom: 26px; }
+
+  .dialog-nataral h2 {
+    font-size: 28px;
+    padding-left: 34px; }
+
+  .dialog-nataral p {
+    line-height: 36px;
+    padding-left: 34px; }
+
+  .dialog-nataral .icon39 {
+    margin-left: -34px; }
+
+  .dialog-active h2 {
+    font-size: 28px;
+    height: 86px;
+    line-height: 86px;
+    padding-left: 30px; }
+
+  .dialog-active-b {
+    padding: 20px 30px; }
+
+  .dialog-active .input {
+    margin-bottom: 20px; }
+
+  .dialog-active .btn {
+    height: 88px;
+    line-height: 88px; }
+
+  .dialog-active li {
+    line-height: 42px;
+    font-size: 28px;
+    margin-bottom: 20px; }
+
+  .dialog-active .text-error {
+    margin-top: 20px; } }

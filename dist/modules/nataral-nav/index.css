@@ -1,0 +1,88 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-nav ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #dcdcdc;
+  background: #fff; }
+
+.nataral-nav li {
+  text-align: center;
+  background: #eb87bb;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  position: relative; }
+
+.nataral-nav li:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%; }
+
+.nataral-nav li.active:after {
+  content: '';
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border-left: 1px solid #dcdcdc;
+  border-top: 1px solid #dcdcdc;
+  background: #fff;
+  left: 50%; }
+
+.nataral-nav li a {
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle; }
+
+.nataral-nav li:nth-child(2) {
+  background: #ff5b54; }
+
+.nataral-nav li:nth-child(3) {
+  background: #72bbdb; }
+
+.nataral-nav ul {
+  padding: 12px 40px; }
+
+.nataral-nav li {
+  width: 51px;
+  height: 51px;
+  font-size: 16px; }
+
+.nataral-nav li.active:after {
+  width: 10px;
+  height: 10px;
+  bottom: -18px;
+  margin-left: -6px; }
+
+.nataral-nav li span {
+  margin-bottom: 3px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-nav ul {
+    padding: 24px 80px; }
+
+  .nataral-nav li {
+    width: 102px;
+    height: 102px;
+    font-size: 32px; }
+
+  .nataral-nav li.active:after {
+    width: 20px;
+    height: 20px;
+    bottom: -36px;
+    margin-left: -12px; }
+
+  .nataral-nav li span {
+    margin-bottom: 6px; } }

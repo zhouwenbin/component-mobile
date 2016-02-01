@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+.order-success-r1 {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 24px;
+  background: #fff;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc; }
+
+.order-success h1 {
+  font-size: 18px;
+  margin-bottom: 23px; }
+
+.order-success p {
+  font-size: 14px;
+  line-height: 23px;
+  margin-bottom: 5px;
+  text-align: left;
+  margin: 0 16px;
+  color: #666; }
+
+.order-success-r2 {
+  background: #fff;
+  text-align: center;
+  padding-bottom: 16px; }
+
+.order-success-r2 .btn {
+  margin-top: 7px;
+  margin-bottom: 9px; }
+
+.order-success .box {
+  padding-left: 50px;
+  border-color: #dadada;
+  border-style: solid;
+  -webkit-border-image: none;
+          border-image: none; }
+
+.order-success .icon43,
+.order-success .icon46 {
+  margin-right: 5px; }
+
+.order-success h2 {
+  border-top: 1px solid #ccc;
+  padding: 17px 10px; }
+
+.first-pay-tips {
+  color: #ff5b54;
+  margin-left: 10px; }

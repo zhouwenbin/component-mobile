@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 切换按钮
+
+
+*/
+.loading {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/loading.png) no-repeat;
+  position: fixed;
+  -webkit-animation: loading 1s linear infinite;
+          animation: loading 1s linear infinite;
+  -webkit-transform: rotateZ(0deg);
+          transform: rotateZ(0deg); }
+
+@-webkit-keyframes loading {
+  100% {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg); } }
+
+@keyframes loading {
+  100% {
+    -webkit-transform: rotateZ(360deg);
+            transform: rotateZ(360deg); } }
+.logout.center {
+  -webkit-border-radius: 10px;
+          border-radius: 10px;
+  padding: 33px 35px; }
+
+.loading {
+  width: 25px;
+  height: 25px;
+  background-size: 25px; }
+
+@media screen and (min-width: 640px) {
+  .logout.center {
+    -webkit-border-radius: 20px;
+            border-radius: 20px;
+    padding: 66px 70px; }
+
+  .loading {
+    width: 50px;
+    height: 50px;
+    background-size: 50px; } }

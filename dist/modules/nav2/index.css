@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nav2 {
+  background: #fff; }
+
+.nav2 ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #fff; }
+
+.nav2-fixed ul {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999; }
+
+.nav2 li {
+  text-align: center;
+  position: relative; }
+
+.nav2 li.active:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #ff5b53; }
+
+.nav2 li.active a {
+  color: #ff5b53;
+  font-weight: bold; }
+
+.nav2 {
+  height: 40px; }
+
+.nav2 ul {
+  padding: 0 10px;
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.32);
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.32); }
+
+.nav2 li {
+  height: 40px;
+  line-height: 40px; }
+
+.nav2 li.active:after {
+  height: 2px; }
+
+@media screen and (min-width: 640px) {
+  .nav2 {
+    height: 80px; }
+
+  .nav2 ul {
+    padding: 0 20px;
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.32);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.32); }
+
+  .nav2 li {
+    height: 80px;
+    line-height: 80px; }
+
+  .nav2 li.active:after {
+    height: 4px; } }

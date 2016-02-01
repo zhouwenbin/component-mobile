@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+.invite-income {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc; }
+
+.invite-income-h {
+  background: #FF5B54;
+  color: #fff;
+  padding: 22px 0; }
+
+.invite-income-hr1 {
+  font-size: 14px;
+  padding-left: 15px;
+  margin-bottom: 20px; }
+
+.invite-income-hr1 svg {
+  margin-right: 5px;
+  vertical-align: -3px;
+  width: 15px;
+  height: 20px; }
+
+.invite-income-hr2 {
+  font-size: 72px;
+  padding-left: 8px;
+  font-family: arial; }
+
+.invite-income-b {
+  padding: 25px 15px;
+  background: #fff; }
+
+.invite-income li {
+  font-size: 14px;
+  margin-bottom: 18px; }
+
+.invite-income li .text-important {
+  font-size: 18px; }
+
+.invite-income-br1 {
+  color: #999; }
+
+.invite-income-br1 .btn {
+  margin-right: 9px;
+  padding: 0 24px; }

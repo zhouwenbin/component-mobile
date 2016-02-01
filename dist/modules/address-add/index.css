@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.address-title {
+  font-size: 15px;
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 10px;
+  background: #fff;
+  text-align: center;
+  border-bottom: 1px solid #dcdcdc; }
+
+.address-detail li {
+  height: 44px;
+  line-height: 44px;
+  background: #fff;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 0 15px;
+  font-size: 16px; }
+.address-detail label {
+  color: #b2b2b2;
+  width: 87px;
+  display: inline-block; }
+.address-detail .btn {
+  margin-top: 15px;
+  color: #ff615a;
+  text-align: left;
+  padding-left: 15px;
+  height: 44px;
+  border-left: 0;
+  border-right: 0;
+  font-size: 16px; }
+.address-detail input {
+  width: 100%;
+  border: none;
+  font-size: 16px; }
+.address-detail input:active {
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+.address-detail .last {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .address-detail .last label {
+    width: auto;
+    display: block; }
+  .address-detail .last .switch {
+    display: block; }

@@ -1,0 +1,55 @@
+.partner-bags-big {
+  margin: 0 auto;
+  width: 210px;
+  height: 224px;
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/icon-bags-big.png) 0 0 no-repeat;
+  background-size: 210px 224px;
+  color: #966300;
+  font-size: 24px;
+  padding-top: 38px; }
+
+.partner-bags-big h2 {
+  font-size: 14px;
+  opacity: 0.5;
+  color: #fff;
+  margin-top: 62px; }
+
+.partner-bags-big .money-number {
+  font-size: 36px; }
+
+.partner-bags {
+  text-align: center;
+  font-size: 16px;
+  color: #999;
+  line-height: 1.5; }
+
+.partner-bags {
+  width: 100%; }
+
+.partner-bags .btn-box {
+  margin: 0 55px; }
+
+.partner-bags .btn-danger {
+  margin-top: 30px; }
+
+.partner-bags .btn-danger {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px; }
+
+a.partner-bags-rules {
+  padding: 10px 0;
+  margin-top: 20px;
+  color: #C29952; }
+
+a.partner-bags-rules svg {
+  width: 16px;
+  margin-right: 5px;
+  vertical-align: middle;
+  height: 16px; }
+
+.partner-bags .btn-box p {
+  margin-top: 10px; }

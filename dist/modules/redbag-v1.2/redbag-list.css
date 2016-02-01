@@ -1,0 +1,41 @@
+.redbag-list{
+	background-color: #fff0bd;
+	width: 530px;
+	margin: 0 auto;
+	padding: 10px 5px 20px;
+}
+.redbag-list h2{
+	text-align: center;
+	border: 1px solid #a86025;
+	height: 45px;
+	line-height: 45px;
+	color: #782323;
+	font-size: 24px;
+}
+.redbag-list li{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	height: 61px;
+	line-height: 61px;
+	border-bottom: 1px solid #b9b093;
+	padding: 0 15px;
+	color: #666;
+	font-size: 22px;
+}
+.redbag-list img{
+	width: 49px;
+	height: 49px;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 20px;
+}
+.redbag-list .money{
+	color: #e73533;
+}

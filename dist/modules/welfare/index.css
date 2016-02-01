@@ -1,0 +1,26 @@
+.mo-welfare {
+  background-color: #fff; }
+
+.mo-welfare li {
+  padding: 26px 0;
+  float: left;
+  width: 25%;
+  text-align: center; }
+
+.mo-welfare img {
+  width: 66px;
+  height: 66px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background-color: #eee; }
+
+.mo-welfare div {
+  margin-top: 18px;
+  font-size: 24px; }
+
+.icon-nav01,
+.icon-nav02,
+.icon-nav03,
+.icon-nav04 {
+  width: 66px;
+  height: 66px; }

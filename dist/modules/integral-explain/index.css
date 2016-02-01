@@ -1,0 +1,37 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+.integral-explain {
+  height: 100%;
+  background: #fff;
+  color: #979DA9;
+  padding: 18px 14px; }
+
+.integral-explain h2 {
+  font-size: 14px;
+  margin-bottom: 12px; }
+
+.integral-explain h2:before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background: #FF5B54;
+  margin-right: 7px; }
+
+.integral-explain p {
+  line-height: 16px; }
+
+.integral-explain li {
+  border-bottom: 1px solid #DCDCDC;
+  padding-bottom: 10px;
+  margin-bottom: 10px; }
+
+.integral-explain li:last-child {
+  border-bottom: none; }

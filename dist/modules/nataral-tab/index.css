@@ -1,0 +1,223 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-tab {
+  position: relative;
+  background: #f9f9f9; }
+
+.nataral-tab-inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f9f9f9;
+  position: relative; }
+
+.nataral-tab-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden; }
+
+.nataral-tab ul {
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  background: #f9f9f9; }
+
+.nataral-tab-open {
+  height: 0; }
+
+.nataral-tab-open .mask {
+  display: none; }
+
+.nataral-tab-open .nataral-tab-inner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  -webkit-transform: translate(0, -100%);
+      -ms-transform: translate(0, -100%);
+          transform: translate(0, -100%);
+  -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+  z-index: 1000; }
+
+.nataral-tab-open.active .nataral-tab-inner {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0); }
+
+.nataral-tab-open.active .mask {
+  display: block; }
+
+.nataral-tab-open ul {
+  display: block;
+  width: 100% !important;
+  font-size: 0;
+  -webkit-transform: translate(0px, 0px) translateZ(0px) !important;
+          transform: translate(0px, 0px) translateZ(0px) !important; }
+
+.nataral-tab-open li {
+  width: 25%;
+  display: inline-block; }
+
+.nataral-tab-open:before {
+  display: none; }
+
+.nataral-tab:before {
+  content: '';
+  position: absolute;
+  background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, #fff 70%, #fff 100%);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 70%, #fff 100%);
+  right: 0;
+  top: 0;
+  z-index: 3;
+  display: none; }
+
+.nataral-tab.active .nataral-tab-icon {
+  -webkit-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+          transform: rotate(135deg); }
+
+.nataral-tab-icon {
+  content: '';
+  border-color: #e1494a;
+  border-style: solid;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+  z-index: 999;
+  display: none; }
+
+.nataral-tab-icon:before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  top: -10px;
+  bottom: -10px; }
+
+.nataral-tab-fixed .nataral-tab-inner {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1000; }
+
+.nataral-tab li {
+  text-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+.nataral-tab li svg {
+  fill: #4A4A4A; }
+
+.nataral-tab li a {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 4em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+
+.nataral-tab li i {
+  content: '';
+  display: inline-block;
+  border-left: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
+
+.nataral-tab li.active i {
+  vertical-align: 0;
+  border-color: #ff5b54;
+  -webkit-transform: rotate(-225deg);
+      -ms-transform: rotate(-225deg);
+          transform: rotate(-225deg); }
+
+.nataral-tab li.active svg {
+  fill: #FF5B54; }
+
+.nataral-tab li.active a {
+  color: #ff5b54; }
+
+.nataral-tab {
+  height: 46px; }
+
+.nataral-tab-open li {
+  font-size: 14px; }
+
+.nataral-tab:before {
+  width: 38px;
+  height: 45px; }
+
+.nataral-tab-icon {
+  width: 8px;
+  height: 8px;
+  border-width: 1px 1px 0 0;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px; }
+
+.nataral-tab li {
+  height: 46px;
+  line-height: 46px;
+  font-size: 14px; }
+
+.nataral-tab li svg {
+  margin-right: 5px; }
+
+.nataral-tab li i {
+  vertical-align: 3px;
+  width: 6px;
+  height: 6px;
+  margin-left: 6px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-tab {
+    height: 92px; }
+
+  .nataral-tab-open li {
+    font-size: 28px; }
+
+  .nataral-tab:before {
+    width: 76px;
+    height: 90px; }
+
+  .nataral-tab-icon {
+    width: 16px;
+    height: 16px;
+    border-width: 2px 2px 0 0;
+    margin-top: 40px;
+    margin-right: 20px;
+    margin-left: 20px; }
+
+  .nataral-tab li {
+    height: 92px;
+    line-height: 92px;
+    font-size: 28px; }
+
+  .nataral-tab li svg {
+    margin-right: 10px; }
+
+  .nataral-tab li i {
+    vertical-align: 6px;
+    width: 12px;
+    height: 12px;
+    margin-left: 12px; } }

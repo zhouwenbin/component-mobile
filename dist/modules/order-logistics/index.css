@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.order-logistics-info {
+  padding: 15px 20px 10px;
+  background: #fff;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc; }
+  .order-logistics-info span {
+    margin-bottom: 5px;
+    color: #999;
+    display: block; }
+    .order-logistics-info span i {
+      font-style: normal;
+      color: #333; }
+
+.logistics {
+  background: #fff; }
+
+.logistics h2 {
+  margin: 0 12px 7px;
+  padding-top: 19px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 14px; }
+
+.logistics h2 .icon {
+  margin-right: 8px;
+  vertical-align: -1px; }
+
+.logistics ul {
+  background: #fff; }
+
+.logistics time {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px; }
+
+.logistics li {
+  line-height: 18px;
+  position: relative;
+  padding: 13px 0 10px;
+  margin-right: 14px;
+  margin-left: 40px;
+  font-size: 14px; }
+
+.logistics li:before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background: #ccc;
+  border: 2px solid #ccc;
+  position: absolute;
+  margin-left: -25px;
+  margin-top: 3px; }
+
+.logistics li:first-child {
+  color: #dc3334; }
+
+.logistics li:first-child:before {
+  background: #fff;
+  border-color: #dc3334; }
+
+.logistics li:after {
+  content: '';
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background: #eee;
+  left: -19px;
+  top: 28px; }
+
+.logistics li:last-child {
+  border-bottom: none; }
+
+.logistics li:last-child:after {
+  display: none; }

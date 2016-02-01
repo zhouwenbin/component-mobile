@@ -1,0 +1,144 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.tuanlist {
+  background: #fff;
+  position: relative; }
+
+.tuanlist li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 24px 30px;
+  border-bottom: 2px solid #F5F5F5; }
+
+.tuanlist li a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.tuanlist-c1 {
+  width: 230px;
+  margin-right: 16px;
+  position: relative; }
+
+.tuanlist-c2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+.tuanlist h3 {
+  font-size: 28px;
+  line-height: 32px;
+  margin-bottom: 10px; }
+
+.tuanlist-num {
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.tuanlist-num .icon-people {
+  margin-right: 8px; }
+
+.tuanlist-num .icon-clock {
+  margin-right: 10px; }
+
+.tuanlist-price {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 240px;
+  height: 88px;
+  border: 1px solid #F24E47; }
+
+.tuanlist-price-c1 {
+  width: 52px;
+  background: #F24E47;
+  color: #fff;
+  text-align: center;
+  line-height: 26px;
+  padding-top: 4px; }
+
+.tuanlist-price-c2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  line-height: 88px;
+  padding-left: 10px; }
+
+.tuanlist strong {
+  color: #F13C34;
+  font-size: 28px;
+  margin-right: 12px; }
+
+.tuanlist del {
+  color: #9B9B9B; }
+
+.tuanlist .btn {
+  margin-top: 20px; }
+
+.tuanlist-time {
+  margin-top: 30px;
+  color: #9B9B9B;
+  margin-bottom: 4px; }
+
+.tuanlist-price.disabled {
+  border-color: #9B9B9B; }
+
+.tuanlist-price.disabled .tuanlist-price-c1 {
+  background: #9B9B9B; }
+
+.tuanlist-price.disabled strong {
+  color: #9B9B9B; }
+
+.tuanlist-success {
+  position: absolute;
+  bottom: 30px;
+  right: 0; }
+
+.tuanlist-none {
+  text-align: center;
+  padding-top: 80px; }
+
+.tuanlist-none-icon {
+  padding: 40px 48px;
+  background: #DCDCDC;
+  display: inline-block;
+  margin-bottom: 20px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
+
+.tuanlist-none p {
+  color: #9B9B9B;
+  font-size: 28px;
+  margin-bottom: 30px; }
+
+.tuanlist-none .btn {
+  color: #F24E47;
+  font-size: 28px;
+  width: 400px;
+  height: 88px;
+  line-height: 88px; }

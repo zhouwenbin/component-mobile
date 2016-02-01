@@ -1,0 +1,33 @@
+.redbags-rules{
+	font-size: 18px;
+	padding: 30px 0;
+
+}
+.redbags-rules h2{
+	color: #782323;
+	font-weight: 400;
+	text-align: center;
+	margin-bottom: 14px;
+}
+.redbags-rules h2 span{
+	text-decoration: underline;
+}
+.redbags-rules ol{
+	width: 530px;
+	margin: 0 auto;
+	color: #782323;
+	line-height: 1.5;
+	padding: 23px 25px 15px;
+	height:353px;
+	overflow-y: auto;
+}
+.redbags-rules li{
+	margin-bottom: 18px;
+	padding-left: 30px;
+	position: relative;
+}
+.redbags-rules .num{
+	position: absolute;
+	left: 0;
+	width: 30px;
+}

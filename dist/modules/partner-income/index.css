@@ -1,0 +1,66 @@
+.partner-income-box {
+  font-size: 14px; }
+
+.partner-income-box ul {
+  padding: 0 10px;
+  background: #fff; }
+
+.partner-income-box li {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 14px 5px;
+  border-top: 1px solid #E1E1E1; }
+
+.partner-income-box p {
+  margin-bottom: 11px;
+  color: #666; }
+
+.partner-income-box span {
+  color: #BBBBBB;
+  font-size: 12px; }
+
+.partner-income-box em {
+  vertical-align: 1px; }
+
+.partner-income-box .add,
+.partner-income-box .reduce {
+  font-weight: 700;
+  font-size: 16px; }
+
+.partner-income-box .add {
+  color: #FF5B54; }
+
+.partner-income-box .reduce {
+  color: #999; }
+
+.partner-income-tab {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 15px;
+  background: #fff;
+  font-size: 16px; }
+
+.partner-income-tab a {
+  margin-left: 8px;
+  font-size: 14px;
+  color: #3EB2E6; }
+
+.icon-switch {
+  width: 20px;
+  height: 10px; }

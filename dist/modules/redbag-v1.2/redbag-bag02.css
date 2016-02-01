@@ -1,0 +1,49 @@
+.redbag-bag02{
+	background: url(../../../modules/redbag-v1.2/img/bag02.jpg) center 0 no-repeat;
+	height: 516px;
+	text-align: center;
+}
+.redbag-btn-box02{
+	text-align: center;	
+	padding-top: 50px;
+}
+.redbag-bag02-money{
+	margin-top: -10px;
+}
+.redbag-bag02-money .money{
+	position: relative;
+	margin-bottom: -18px;
+	top: -10px;
+}
+.redbag-bag02-money p{
+	font-size: 15px;
+	color: #967171;
+}
+.redbag-bag02-money strong{
+	font-size: 164px;
+	vertical-align: middle;
+	color: #653232;
+	margin-right: 20px;
+	text-shadow: 1px 1px 3px #740328;
+}
+.redbag-bag02-money span{
+	vertical-align: -56px;
+	color: #653232;
+	text-shadow: 1px 1px 3px #740328;
+}
+.redbag-bag02-money .yen{
+	font-size: 60px;
+	vertical-align: 70px;
+	margin-right: 10px;
+}
+.redbag-btn-box02 .redbag-btn{
+	display: inline-block;
+	width: 270px;
+	height: 86px;
+	font-size: 0;
+}
+.redbag-bag02-money .text{ 
+	font-size: 55px;
+	color: #653232;
+	padding: 18px 0;
+}

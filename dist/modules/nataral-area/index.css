@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.nataral-area img {
+  width: 100%; }
+
+.nataral-area-b {
+  background: #fff; }
+
+.nataral-area p {
+  color: #666; }
+
+.nataral-area-b {
+  padding: 15px 10px 24px; }
+
+.nataral-area h2 {
+  font-size: 17px;
+  margin-bottom: 10px; }
+
+.nataral-area h2 .icon {
+  margin-right: 7px;
+  vertical-align: -2px; }
+
+.nataral-area p {
+  font-size: 14px;
+  line-height: 20px; }
+
+@media screen and (min-width: 640px) {
+  .nataral-area-b {
+    padding: 30px 20px 48px; }
+
+  .nataral-area h2 {
+    font-size: 34px;
+    margin-bottom: 20px; }
+
+  .nataral-area h2 .icon {
+    margin-right: 14px;
+    vertical-align: -4px; }
+
+  .nataral-area p {
+    font-size: 28px;
+    line-height: 40px; } }

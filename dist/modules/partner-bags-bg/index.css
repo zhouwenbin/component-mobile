@@ -1,0 +1,12 @@
+.partner-bags-bg {
+  background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/partner-bg.jpg) 0 0 repeat;
+  min-height: 100%; }
+  .partner-bags-bg ::-webkit-input-placeholder {
+    color: #999;
+    font-size: 14px; }
+  .partner-bags-bg ::-moz-placeholder {
+    color: #999;
+    font-size: 14px; }
+  .partner-bags-bg input:-moz-placeholder {
+    color: #999;
+    font-size: 14px; }
