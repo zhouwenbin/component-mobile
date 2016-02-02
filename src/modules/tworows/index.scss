@@ -24,13 +24,14 @@
 .tworows-list .ellipsis2{
 	line-height: 1.2;
 	height: 55px;
+	color: #555;
 }
 .tworows-list .sales-price{
 	vertical-align: middle;
 }
 .tworows-list .sales-price em{
 	font-size: 24px;
-	vertical-align: middle;
+	vertical-align: 0;
 }
 .tworows-list .icon-country{
 	vertical-align: middle;
@@ -87,7 +88,7 @@
 }
 .sales-price,
 .sales-price-out{
-	color: #F44740;
+	color: #F13C34;
 }
 .original-price{
 	color: #9B9B9B; 
@@ -128,10 +129,6 @@ img{
 }
 .icon-addtocart{
 	display: inline-block;
-/*	width: 44px * 2;
-	height: 44px * 2;
-	padding-top: 22px * 2;
-	text-align: center;*/
 	width: auto;
 	height: auto;
 	padding-top: 0;
@@ -183,9 +180,9 @@ img{
 }
 .tworows-list .text-error{
 	display: inline-block;
-	width: 60px;
-	height: 30px;
-	line-height: 30px;
+	width: 56px;
+	height: 24px;
+	line-height: 24px;
 	text-align: center;
 	border:1px solid; 
 	vertical-align: middle;

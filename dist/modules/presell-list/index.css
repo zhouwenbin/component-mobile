@@ -12,7 +12,7 @@
   border-top: 2px solid #F5F5F5;
   border-bottom: 2px solid #F5F5F5;
   margin-bottom: -2px;
-  padding-bottom: 19px; }
+  padding-bottom: 30px; }
 
 .presell-list-list li:nth-child(odd) {
   border-right: 2px solid #F5F5F5; }
@@ -22,15 +22,15 @@
   padding: 0 30px; }
 
 .presell-list-list .ellipsis2 {
-  line-height: 1.2;
-  height: 55px; }
+  height: 55px;
+  color: #555;
+  line-height: 1.2; }
 
 .presell-list-list .sales-price {
   vertical-align: middle; }
 
 .presell-list-list .sales-price em {
-  font-size: 24px;
-  vertical-align: middle; }
+  vertical-align: -2px; }
 
 .presell-list-list .icon-country {
   vertical-align: middle; }
@@ -78,12 +78,10 @@
   margin-bottom: 20px; }
 
 /*综合区域*/
-.sales-price {
-  font-size: 32px; }
-
 .sales-price,
-.sales-price-out {
-  color: #F44740; }
+.sales-price-out,
+.presell-list-list .btn-border {
+  color: #F13C34; }
 
 .original-price {
   margin-top: 8px;
@@ -181,9 +179,9 @@ img {
 
 .presell-list-list .text-error {
   display: inline-block;
-  width: 60px;
-  height: 30px;
-  line-height: 30px;
+  width: 56px;
+  height: 24px;
+  line-height: 24px;
   text-align: center;
   border: 1px solid;
   vertical-align: middle;
@@ -205,8 +203,7 @@ img {
 
 .presell-list-list .btn-border {
   border: 1px solid #F13C34;
-  border: 1px solid rgba(241, 60, 52, 0.5);
-  color: #F13C34; }
+  border: 1px solid rgba(241, 60, 52, 0.5); }
 
 .presell-list-list .btn-buy {
   background-color: #F13C34;
