@@ -26,15 +26,8 @@
 	height: 55px;
 	color: #555;
 }
-.tworows-list .sales-price{
-	vertical-align: middle;
-}
 .tworows-list .sales-price em{
 	font-size: 24px;
-	vertical-align: 0;
-}
-.tworows-list .icon-country{
-	vertical-align: middle;
 }
 .tworows-pic{
 	position: relative;
@@ -87,11 +80,17 @@
 	font-size: 32px;
 }
 .sales-price,
-.sales-price-out{
+.sales-price-out,
+.text-important{
 	color: #F13C34;
 }
 .original-price{
-	color: #9B9B9B; 
+	color: #9B9B9B;
+}
+.text-important{
+	vertical-align: 0;
+}
+.tworows-list .icon-country{
 	vertical-align: middle;
 }
 img{
@@ -185,7 +184,7 @@ img{
 	line-height: 24px;
 	text-align: center;
 	border:1px solid; 
-	vertical-align: middle;
+	vertical-align: 0;
 	margin-left: 3px;
 	font-size: 20px;
 }
