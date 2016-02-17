@@ -1,5 +1,5 @@
 /*
-上周TOP4
+一排两列
 */
 .tworows-list{
 	overflow: hidden;	
@@ -13,6 +13,7 @@
 	border-bottom: 1px * 2 solid #F5F5F5;
 	margin-bottom: -1px * 2;
 	padding-bottom: 19px;
+	height: 499px;
 }
 .tworows-list li:nth-child(odd){
 	border-right: 2px solid #F5F5F5;
@@ -25,6 +26,9 @@
 	line-height: 1.2;
 	height: 55px;
 	color: #555;
+}
+.tworows-list .sales-price{
+	margin-right: 0;
 }
 .tworows-list .sales-price em{
 	font-size: 24px;
@@ -84,14 +88,17 @@
 .text-important{
 	color: #F13C34;
 }
-.original-price{
+.tworows-list .original-price{
 	color: #9B9B9B;
+	vertical-align: 2px;
 }
 .text-important{
 	vertical-align: 0;
 }
 .tworows-list .icon-country{
 	vertical-align: middle;
+	width: auto;
+	margin-right: 5px;
 }
 img{
 	vertical-align: top;
@@ -184,13 +191,15 @@ img{
 	line-height: 24px;
 	text-align: center;
 	border:1px solid; 
-	vertical-align: 0;
+	vertical-align: 3px;
 	margin-left: 3px;
 	font-size: 20px;
+}
+.tworows-country{
+	color: #9B9B9B;
 }
 .tworows-country span{
 	vertical-align: middle;
 	font-size: 20px;
 	-webkit-transform:scale(0.8);
-	color: #9B9B9B;
 }
