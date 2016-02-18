@@ -11,7 +11,7 @@
   width: 100%;
   left: 0;
   bottom: 58px;
-  z-index: map-get($z-index,detail-cart);
+  z-index: 999;
   transform:translate(0,150%);
   animation:detail-cart 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
   .detail-cart-error{
@@ -80,7 +80,7 @@
   width: 110px;
   height: 110px;
   position: absolute;
-  z-index: map-get($z-index,detail-cart-img);
+  z-index: -1;
   left: 0;
   top: 0;
   transition: 0.5s transform ease-in-out,0.5s left linear,0.5s top ease-out,0.1s visibility 0.5s linear;

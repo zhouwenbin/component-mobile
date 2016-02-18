@@ -40,9 +40,11 @@
   padding: 12px 4%; }
   .sfBrotherBind-ul li label, .sfBrotherBind-ul li input {
     width: 100%; }
+
 .sfBrotherBind-ul input, .sfBrotherBind-ul input:focus {
   border: 0;
   outline: none; }
+
 .sfBrotherBind-ul input::-webkit-input-placeholder {
   color: #999999;
   text-indent: 0; }

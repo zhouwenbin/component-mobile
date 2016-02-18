@@ -63,16 +63,12 @@
   .tab-h {
     height: 88px;
     margin-bottom: 20px; }
-
   .tab-h ul {
     height: 88px; }
-
   .tab-h li {
     font-size: 30px; }
-
   .tab-h li a {
     height: 86px;
     line-height: 86px; }
-
   .tab-h li.active a {
     border-bottom: 4px solid #ff5b54; } }

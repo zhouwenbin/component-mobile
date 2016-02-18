@@ -82,30 +82,23 @@
     margin-left: -34px;
     padding: 24px 0 24px 28px;
     border-bottom: 2px solid #d9d9d9; }
-
   .footer-r1 li {
     padding: 0 20px;
     font-size: 24px; }
-
   .footer-r1 li .icon {
     margin: 0 auto 8px; }
-
   .footer-r1 li:last-child {
     border-left: 2px solid #e5e5e5;
     padding-left: 24px;
     margin-left: 4px; }
-
   .footer-r2 {
     height: 62px;
     line-height: 62px; }
-
   .footer-r2 a {
     margin: 0 24px; }
-
   .footer-r3 {
     font-size: 18px;
     padding-top: 8px;
     padding-bottom: 34px; }
-
   .footer1 {
     bottom: 20px; } }

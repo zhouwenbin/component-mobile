@@ -95,18 +95,15 @@
 @media screen and (min-width: 640px) {
   .swipe-dot {
     bottom: 20px; }
-
   .swipe-dot span {
     width: 14px;
     height: 14px;
     -webkit-border-radius: 14px;
             border-radius: 14px;
     margin: 0 14px; }
-
   .swiper-time {
     top: 128px;
     left: 322px;
     font-size: 26px; }
-
   .swiper-time span {
     margin-right: 20px; } }

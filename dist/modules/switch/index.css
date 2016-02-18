@@ -46,12 +46,10 @@
     height: 48px;
     -webkit-border-radius: 48px;
             border-radius: 48px; }
-
   .switch:before {
     width: 44px;
     height: 44px;
     left: 2px;
     top: 2px; }
-
   .switch.active:before {
     left: 46px; } }

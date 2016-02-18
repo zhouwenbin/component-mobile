@@ -21,10 +21,12 @@
 @-webkit-keyframes body {
   100% {
     stroke-dashoffset: 0; } }
+
 @-webkit-keyframes body-fill {
   100% {
     fill: #D2525E;
     stroke-width: 0; } }
+
 .pagenone .eye-left {
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
@@ -38,16 +40,18 @@
 @-webkit-keyframes line1 {
   100% {
     stroke-dashoffset: 0; } }
+
 @-webkit-keyframes shake {
-  10%,30%,50% {
+  10%, 30%, 50% {
     -webkit-transform: translatey(-6px);
             transform: translatey(-6px); }
-  20%,40%,60% {
+  20%, 40%, 60% {
     -webkit-transform: translatey(-3px);
             transform: translatey(-3px); }
   100% {
     -webkit-transform: translatey(0);
             transform: translatey(0); } }
+
 .pagenone .mouse {
   stroke-width: 1.5;
   stroke: #000;
@@ -59,6 +63,7 @@
 @-webkit-keyframes mouse {
   100% {
     stroke-dashoffset: 0; } }
+
 @-webkit-keyframes mouse-fill {
   100% {
     fill: #fff;

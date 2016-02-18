@@ -192,14 +192,11 @@
 @media screen and (min-width: 640px) {
   .nataral-tab {
     height: 92px; }
-
   .nataral-tab-open li {
     font-size: 28px; }
-
   .nataral-tab:before {
     width: 76px;
     height: 90px; }
-
   .nataral-tab-icon {
     width: 16px;
     height: 16px;
@@ -207,15 +204,12 @@
     margin-top: 40px;
     margin-right: 20px;
     margin-left: 20px; }
-
   .nataral-tab li {
     height: 92px;
     line-height: 92px;
     font-size: 28px; }
-
   .nataral-tab li svg {
     margin-right: 10px; }
-
   .nataral-tab li i {
     vertical-align: 6px;
     width: 12px;

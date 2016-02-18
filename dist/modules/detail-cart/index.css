@@ -29,6 +29,7 @@
   100% {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0); } }
+
 .detail-cart-r {
   display: -webkit-box;
   display: -webkit-flex;

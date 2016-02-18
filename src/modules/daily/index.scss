@@ -123,7 +123,7 @@
 .daily .mask{
   background: rgba(255,255,255,0.5);
   position: absolute;
-  z-index: map-get($z-index,daily-mask);
+  z-index: 1;
 }
 
 @include daily(1);

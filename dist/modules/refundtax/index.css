@@ -23,6 +23,7 @@
     padding-left: 15px;
     height: 22px;
     line-height: 16px; }
+
 .refundtax-list .upload-box {
   text-align: center;
   display: table-cell;
@@ -33,6 +34,7 @@
   .refundtax-list .upload-box svg {
     vertical-align: -1px;
     margin-right: 2px; }
+
 .refundtax-list .icon-paper {
   position: relative;
   height: 100%; }
@@ -43,6 +45,7 @@
     -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%); }
+
 .refundtax-list .text {
   padding: 10px;
   border: 0 none;

@@ -9,7 +9,7 @@ var precss = require("precss");
 var path = require("path");
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
-var sass = require('gulp-ruby-sass');
+var sass = require('gulp-sass');
 var slim = require("gulp-slim");
 var modules = fs.readdirSync("src/modules");
 var pages = fs.readdirSync("src/pages");
@@ -106,18 +106,23 @@ gulp.task("css", function () {
 gulp.task("scss", function () {
   for(var i in pages){
     //sass
-    sass("src/pages/"+ pages[i] +"/**.scss")
-    .on('error', sass.logError)
-    .pipe(cssnext({ browsers: ['last 10 versions'] }))
+    gulp.src("src/pages/"+ pages[i] +"/**.scss")
+    .pipe(sass({
+        includePaths: [
+          './node_modules/sass-list-maps'
+        ]
+    }).on("error", sass.logError))
+    .pipe(cssnext({ browsers: ["last 10 versions"] }))
     .pipe(gulp.dest("dist/pages/"+ pages[i]));
+
   }
   for(var i in modules) {
-    if(modules[i] !== '.DS_Store') {
+    if(modules[i] !== ".DS_Store") {
       //sass
-      sass("src/modules/"+ modules[i] +"/index.scss")
-      .on('error', sass.logError)
-      .pipe(cssnext({ browsers: ['last 10 versions'] }))
-      .pipe(gulp.dest("dist/modules/"+ modules[i]));
+      gulp.src("src/modules/"+ modules[i] +"/**.scss")
+    .pipe(sass.sync().on("error", sass.logError))
+    .pipe(cssnext({ browsers: ["last 10 versions"] }))
+    .pipe(gulp.dest("dist/modules/"+ modules[i]));
     }
       
   }
