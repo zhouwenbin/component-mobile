@@ -2,8 +2,130 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=320, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta content="target-densitydpi=device-dpi,width=640" name="viewport">
 <title>登陆顺丰海淘</title>
+<script type="text/javascript">
+	/**
+ * MobileWeb 通用功能助手，包含常用的 UA 判断、页面适配、search 参数转 键值对。
+ * 该 JS 应在 head 中尽可能早的引入，减少重绘。
+ *
+ * fixScreen 方法根据两种情况适配，该方法自动执行。
+ *      1. 定宽： 对应 meta 标签写法 -- <meta name="viewport" content="target-densitydpi=device-dpi,width=750">
+ *          该方法会提取 width 值，主动添加 scale 相关属性值。
+ *          注意： 如果 meta 标签中指定了 initial-scale， 该方法将不做处理（即不执行）。
+ *      2. REM: 不用写 meta 标签，该方法根据 dpr 自动生成，并在 html 标签中加上 data-dpr 和 font-size 两个属性值。
+ *          该方法约束：IOS 系统最大 dpr = 3，其它系统 dpr = 1，页面每 dpr 最大宽度（即页面宽度/dpr） = 750，REM 换算比值为 16。
+ *          对应 css 开发，任何弹性尺寸均使用 rem 单位，rem 默认宽度为 视觉稿宽度 / 16;
+ *              scss 中 $ppr(pixel per rem) 变量写法 -- $ppr: 750px/16/1rem;
+ *                      元素尺寸写法 -- html { font-size: $ppr*1rem; } body { width: 750px/$ppr; }。
+
+ */
+window.mobileUtil = (function(win, doc) {
+	var UA = navigator.userAgent,
+		isAndroid = /android|adr/gi.test(UA),
+		isIos = /iphone|ipod|ipad/gi.test(UA) && !isAndroid, // 据说某些国产机的UA会同时包含 android iphone 字符
+		isMobile = isAndroid || isIos;  // 粗略的判断
+
+	return {
+		isAndroid: isAndroid,
+		isIos: isIos,
+		isMobile: isMobile,
+
+        isNewsApp: /NewsApp\/[\d\.]+/gi.test(UA),
+		isWeixin: /MicroMessenger/gi.test(UA),
+		isQQ: /QQ\/\d/gi.test(UA),
+		isYixin: /YiXin/gi.test(UA),
+		isWeibo: /Weibo/gi.test(UA),
+		isTXWeibo: /T(?:X|encent)MicroBlog/gi.test(UA),
+
+		tapEvent: isMobile ? 'tap' : 'click',
+
+		/**
+		 * 缩放页面
+		 */
+		fixScreen: function() {
+            var metaEl = doc.querySelector('meta[name="viewport"]'),
+                metaCtt = metaEl ? metaEl.content : '',
+                matchScale = metaCtt.match(/initial\-scale=([\d\.]+)/),
+			    matchWidth = metaCtt.match(/width=([^,\s]+)/);
+
+            if ( !metaEl ) { // REM
+                var docEl = doc.documentElement,
+                    maxwidth = docEl.dataset.mw || 750, // 每 dpr 最大页面宽度
+                    dpr = isIos ? Math.min(win.devicePixelRatio, 3) : 1,
+                    scale = 1 / dpr,
+                    tid;
+
+                docEl.removeAttribute('data-mw');
+                docEl.dataset.dpr = dpr;
+                metaEl = doc.createElement('meta');
+                metaEl.name = 'viewport';
+                metaEl.content = fillScale(scale);
+                docEl.firstElementChild.appendChild(metaEl);
+
+                var refreshRem = function() {
+                    var width = docEl.getBoundingClientRect().width;
+                    if (width / dpr > maxwidth) {
+                        width = maxwidth * dpr;
+                    }
+                    var rem = width / 16;
+                    docEl.style.fontSize = rem + 'px';
+                };
+
+                win.addEventListener('resize', function() {
+                    clearTimeout(tid);
+                    tid = setTimeout(refreshRem, 300);
+                }, false);
+                win.addEventListener('pageshow', function(e) {
+                    if (e.persisted) {
+                        clearTimeout(tid);
+                        tid = setTimeout(refreshRem, 300);
+                    }
+                }, false);
+
+                refreshRem();
+            } else if ( isMobile && !matchScale && ( matchWidth && matchWidth[1] != 'device-width' ) ) { // 定宽
+                var	width = parseInt(matchWidth[1]),
+                    iw = win.innerWidth || width,
+                    ow = win.outerWidth || iw,
+                    sw = win.screen.width || iw,
+                    saw = win.screen.availWidth || iw,
+                    ih = win.innerHeight || width,
+                    oh = win.outerHeight || ih,
+                    ish = win.screen.height || ih,
+                    sah = win.screen.availHeight || ih,
+                    w = Math.min(iw,ow,sw,saw,ih,oh,ish,sah),
+                    scale = w / width;
+
+                if ( scale < 1 ) {
+                    metaEl.content = metaCtt + ',' + fillScale(scale);
+                }
+            }
+
+            function fillScale(scale) {
+                return 'initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale;
+            }
+		},
+
+		/**
+		 * 转href参数成键值对
+		 * @param href {string} 指定的href，默认为当前页href
+		 * @returns {object} 键值对
+		 */
+		getSearch: function(href) {
+			href = href || win.location.search;
+			var data = {},reg = new RegExp( "([^?=&]+)(=([^&]*))?", "g" );
+			href && href.replace(reg,function( $0, $1, $2, $3 ){
+				data[ $1 ] = $3;
+			});
+			return data;
+		}
+	};
+})(window, document);
+
+// 默认直接适配页面
+mobileUtil.fixScreen();
+</script>
 <link href="../../../app/static/css/pages/common/common.css" rel="stylesheet" type="text/css" />
 <link href="index.css" rel="stylesheet" type="text/css" />
 </head>
@@ -38,91 +160,270 @@
 				<ul class="seckill-goods-list" style="display:block;">
 					<li class="fast-buy-goods clearfix">
 						<div class="fast-buy-pic fl">
-							<img src="http://placehold.it/115x115" alt="">
+							<img src="http://img0.fengqucdn.com/sf/bundefined/a97c08efb175f745002b5cfed34986f1.jpg@144h_144w_50Q_1x.jpg" alt="">
 							<div class="icon-soldout icon-soldout-normal">售罄</div>
 						</div>
 						<div class="fast-buy-text">
-							<h2 class="ellipsis2">Lancôme伍桂面霜1坨</h2>
+							<h2 class="ellipsis2">Michael Kors 迈克·科尔斯/MK Hamilton系列牛皮手提包/斜挎包 黑色</h2>
 							<p>2016年最佳人气推荐</p>
 							<div class="fast-buy-fix">
 								<div class="fast-buy-price">
-									<span class="sales-price">&yen;565</span>
-									<span class="original-price">原价876</span>
+									<div class="sales-price">&yen;565</div>
+									
 								</div>
-								<div class="fast-buy-btn fast-buy-btn01">
-									<span>仅剩<em class="num">16</em>件</span>
-									<a href="" class="btn">马上抢</a>
-								</div>
+								<button class="btn btn-normal active">马上抢</button>
 							</div>
 							
 						</div>
 					</li>
-					<li class="fast-buy-goods clearfix">
-						<div class="fast-buy-pic fl">
-							<img src="http://placehold.it/115x115" alt="">
-							<div class="icon-soldout icon-soldout-normal">售罄</div>
-						</div>
-						<div class="fast-buy-text">
-							<h2 class="ellipsis2">Lancôme伍桂面霜1坨</h2>
-							<p>2016年最佳人气推荐</p>
-							<div class="fast-buy-fix">
-								<div class="fast-buy-price">
-									<span class="sales-price">&yen;565</span>
-									<span class="original-price">原价876</span>
-								</div>
-								<div class="fast-buy-btn fast-buy-btn02">
-									<span>限量<em class="num">500</em>件</span>
-									<a href="" class="btn">开抢提醒</a>
-								</div>
-							</div>
-							
-						</div>
-					</li>
-					<li class="fast-buy-goods clearfix">
-						<div class="fast-buy-pic fl">
-							<img src="http://placehold.it/115x115" alt="">
-							<div class="icon-soldout icon-soldout-normal">售罄</div>
-						</div>
-						<div class="fast-buy-text">
-							<h2 class="ellipsis2">Lancôme伍桂面霜1坨Lancôme伍桂面霜1坨Lancôme伍桂面霜1坨</h2>
-							<p>2016年最佳人气推荐</p>
-							<div class="fast-buy-fix">
-								<div class="fast-buy-price">
-									<span class="sales-price">&yen;565</span>
-									<span class="original-price">原价876</span>
-								</div>
-								<div class="fast-buy-btn fast-buy-btn03">
-									<span>已售完</span>
-									<a href="" class="btn">到货通知</a>
-								</div>
-							</div>
-							
-						</div>
-					</li>
-					<li class="fast-buy-goods clearfix">
-						<div class="fast-buy-pic fl">
-							<img src="http://placehold.it/115x115" alt="">
-							<div class="icon-soldout icon-soldout-normal">售罄</div>
-						</div>
-						<div class="fast-buy-text">
-							<h2 class="ellipsis2">Lancôme伍桂面霜1坨Lancôme伍桂面霜1坨Lancôme伍桂面霜1坨</h2>
-							<p>2016年最佳人气推荐</p>
-							<div class="fast-buy-fix">
-								<div class="fast-buy-price">
-									<span class="sales-price">&yen;565</span>
-									<span class="original-price">原价876</span>
-								</div>
-								<div class="fast-buy-btn fast-buy-btn04">
-									<span>已结束</span>
-									<a href="" class="btn">去看看</a>
-								</div>
-							</div>
-							
-						</div>
-					</li>
+					
 				</ul>
 			</div>
+		</div>
 
+
+		<div class="seckill-goods com-box">
+			<div class="com-title">
+				<h2>秒杀商品</h2>
+			</div>
+			<ul class="seckill-dates-list">
+				<li class="active"><a href="">9月20日</a></li>
+				<li><a href="">9月21日</a></li>
+				<li><a href="">9月22日</a></li>
+				<li><a href="">9月23日</a></li>
+			</ul>
+			<div class="seckill-dates-box" style="display:block;">
+				<!-- 倒计时开始 -->
+				<div class="seckill-count-title">
+					<h2><span class="text-important">10:00</span> 即将开始</h2>
+					<!-- <span class="com-title-tips">每日10点更新</span>-->
+					<span class="com-title-tips com-title-tips-black"><span class="com-count-down">14</span>:<span class="com-count-down">32</span>:<span class="com-count-down">45</span></span>
+				</div>
+				<!-- 倒计时结束 -->
+				<ul class="seckill-goods-list" style="display:block;">
+					<li class="fast-buy-goods clearfix">
+						<div class="fast-buy-pic fl">
+							<img src="http://img0.fengqucdn.com/sf/bundefined/a97c08efb175f745002b5cfed34986f1.jpg@144h_144w_50Q_1x.jpg" alt="">
+							<div class="icon-soldout icon-soldout-normal">售罄</div>
+						</div>
+						<div class="fast-buy-text">
+							<h2 class="ellipsis2">Michael Kors 迈克·科尔斯/MK Hamilton系列牛皮手提包/斜挎包 黑色</h2>
+							<p>2016年最佳人气推荐</p>
+							<div class="fast-buy-fix">
+								<div class="fast-buy-price">
+									<div class="sales-price">&yen;565</div>
+									
+								</div>
+								<button class="btn btn-normal disabled">即将开始</button>
+							</div>
+							
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+		<div class="seckill-goods com-box">
+			<div class="com-title">
+				<h2>秒杀商品</h2>
+			</div>
+			<ul class="seckill-dates-list">
+				<li class="active"><a href="">9月20日</a></li>
+				<li><a href="">9月21日</a></li>
+				<li><a href="">9月22日</a></li>
+				<li><a href="">9月23日</a></li>
+			</ul>
+			<div class="seckill-dates-box" style="display:block;">
+				<!-- 倒计时开始 -->
+				<div class="seckill-count-title">
+					<h2>10:00 <span class="text-important">抢购中</span></h2>
+					<!-- <span class="com-title-tips">每日10点更新</span>-->
+					<span class="com-title-tips"><span class="com-count-down">14</span>:<span class="com-count-down">32</span>:<span class="com-count-down">45</span></span>
+				</div>
+				<!-- 倒计时结束 -->
+				<ul class="seckill-goods-list" style="display:block;">
+					<li class="fast-buy-goods clearfix">
+						<div class="fast-buy-pic fl">
+							<img src="http://img0.fengqucdn.com/sf/bundefined/a97c08efb175f745002b5cfed34986f1.jpg@144h_144w_50Q_1x.jpg" alt="">
+							<div class="icon-soldout icon-soldout-normal">售罄</div>
+						</div>
+						<div class="fast-buy-text">
+							<h2 class="ellipsis2">Michael Kors 迈克·科尔斯/MK Hamilton系列牛皮手提包/斜挎包 黑色</h2>
+							<p>2016年最佳人气推荐</p>
+							<div class="fast-buy-fix">
+								<div class="fast-buy-price">
+									<div class="sales-price">&yen;565</div>
+									
+								</div>
+								<button class="btn btn-normal active">马上抢</button>
+							</div>
+							
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+		<div class="seckill-goods com-box">
+			<div class="com-title">
+				<h2>秒杀商品</h2>
+			</div>
+
+			<div class="seckill-dates-box" style="display:block;">
+				<!-- 倒计时开始 -->
+				<div class="seckill-count-title">
+					<h2>距<span class="text-important">10:00</span> 开始还剩</h2>
+					<!-- <span class="com-title-tips">每日10点更新</span>-->
+					<span class="com-title-tips com-title-tips-black"><span class="com-count-down">14</span>:<span class="com-count-down">32</span>:<span class="com-count-down">45</span></span>
+				</div>
+				<!-- 倒计时结束 -->
+				<ul class="seckill-goods-list" style="display:block;">
+					<li class="fast-buy-goods clearfix">
+						<div class="fast-buy-pic fl">
+							<img src="http://img0.fengqucdn.com/sf/bundefined/a97c08efb175f745002b5cfed34986f1.jpg@144h_144w_50Q_1x.jpg" alt="">
+							<div class="icon-soldout icon-soldout-normal">售罄</div>
+						</div>
+						<div class="fast-buy-text">
+							<h2 class="ellipsis2">Michael Kors 迈克·科尔斯/MK Hamilton系列牛皮手提包/斜挎包 黑色</h2>
+							<p>2016年最佳人气推荐</p>
+							<div class="fast-buy-fix">
+								<div class="fast-buy-price">
+									<div class="sales-price">&yen;565</div>
+									
+								</div>
+								<button class="btn btn-normal disabled">即将开始</button>
+							</div>
+							
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+		<div class="seckill-goods com-box">
+			<div class="com-title">
+				<h2>秒杀商品</h2>
+			</div>
+			<div class="seckill-dates-box" style="display:block;">
+				<!-- 倒计时开始 -->
+				<div class="seckill-count-title">
+					<h2>10:00 <span class="text-important">抢购中</span></h2>
+					<!-- <span class="com-title-tips">每日10点更新</span>-->
+					<span class="com-title-tips"><span class="com-count-down">14</span>:<span class="com-count-down">32</span>:<span class="com-count-down">45</span></span>
+				</div>
+				<!-- 倒计时结束 -->
+				<ul class="seckill-goods-list" style="display:block;">
+					<li class="fast-buy-goods clearfix">
+						<div class="fast-buy-pic fl">
+							<img src="http://img0.fengqucdn.com/sf/bundefined/a97c08efb175f745002b5cfed34986f1.jpg@144h_144w_50Q_1x.jpg" alt="">
+							<div class="icon-soldout icon-soldout-normal">售罄</div>
+						</div>
+						<div class="fast-buy-text">
+							<h2 class="ellipsis2">Michael Kors 迈克·科尔斯/MK Hamilton系列牛皮手提包/斜挎包 黑色</h2>
+							<p>2016年最佳人气推荐</p>
+							<div class="fast-buy-fix">
+								<div class="fast-buy-price">
+									<div class="sales-price">&yen;565</div>
+									
+								</div>
+								<button class="btn btn-normal active">马上抢</button>
+							</div>
+							
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+		<div class="seckill-goods com-box">
+			<div class="com-title">
+				<h2>秒杀商品</h2>
+			</div>
+
+			<div class="seckill-dates-box" style="display:block;">
+				<ul class="seckill-times">
+					<li class="done"><a href=""><span class="seckill-times-item">08:30</span><span>已经结束</span></a></li>
+					<li class="done"><a href=""><span class="seckill-times-item">12:30</span><span>已经结束</span></a></li>
+					<li class="active"><a href=""><span class="seckill-times-item">16:00</span><span>抢购中</span></a></li>
+					<li><a href=""><span class="seckill-times-item">20:00</span><span>即将开始</span></a></li>
+					<li><a href=""><span class="seckill-times-item">00:00</span><span>即将开始</span></a></li>
+				</ul>
+				<!-- 倒计时开始 -->
+				<div class="seckill-count-title">
+					<h2>距结束还剩</h2>
+					<!-- <span class="com-title-tips">每日10点更新</span>-->
+					<span class="com-title-tips"><span class="com-count-down">14</span>:<span class="com-count-down">32</span>:<span class="com-count-down">45</span></span>
+				</div>
+				<!-- 倒计时结束 -->
+				<ul class="seckill-goods-list" style="display:block;">
+					<li class="fast-buy-goods clearfix">
+						<div class="fast-buy-pic fl">
+							<img src="http://img0.fengqucdn.com/sf/bundefined/a97c08efb175f745002b5cfed34986f1.jpg@144h_144w_50Q_1x.jpg" alt="">
+							<div class="icon-soldout icon-soldout-normal">售罄</div>
+						</div>
+						<div class="fast-buy-text">
+							<h2 class="ellipsis2">Michael Kors 迈克·科尔斯/MK Hamilton系列牛皮手提包/斜挎包 黑色</h2>
+							<p>2016年最佳人气推荐</p>
+							<div class="fast-buy-fix">
+								<div class="fast-buy-price">
+									<div class="sales-price">&yen;565</div>
+									
+								</div>
+								<button class="btn btn-normal active">马上抢</button>
+							</div>
+							
+						</div>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+
+		<div class="seckill-goods com-box">
+			<div class="com-title">
+				<h2>秒杀商品</h2>
+			</div>
+			<div class="seckill-dates-box" style="display:block;">
+				<ul class="seckill-times">
+					<li class="done"><a href=""><span class="seckill-times-item">08:30</span><span>已经结束</span></a></li>
+					<li class="done"><a href=""><span class="seckill-times-item">12:30</span><span>已经结束</span></a></li>
+					<li class="active"><a href=""><span class="seckill-times-item">16:00</span><span>抢购中</span></a></li>
+					<li><a href=""><span class="seckill-times-item">20:00</span><span>即将开始</span></a></li>
+					<li><a href=""><span class="seckill-times-item">00:00</span><span>即将开始</span></a></li>
+				</ul>
+				<!-- 倒计时开始 -->
+				<div class="seckill-count-title">
+					<h2>距<span class="text-important">明天8：30</span>开始还剩</h2>
+					<!-- <span class="com-title-tips">每日10点更新</span>-->
+					<span class="com-title-tips com-title-tips-black"><span class="com-count-down">14</span>:<span class="com-count-down">32</span>:<span class="com-count-down">45</span></span>
+				</div>
+				<!-- 倒计时结束 -->
+				<ul class="seckill-goods-list" style="display:block;">
+					<li class="fast-buy-goods clearfix">
+						<div class="fast-buy-pic fl">
+							<img src="http://img0.fengqucdn.com/sf/bundefined/a97c08efb175f745002b5cfed34986f1.jpg@144h_144w_50Q_1x.jpg" alt="">
+							<div class="icon-soldout icon-soldout-normal">售罄</div>
+						</div>
+						<div class="fast-buy-text">
+							<h2 class="ellipsis2">Michael Kors 迈克·科尔斯/MK Hamilton系列牛皮手提包/斜挎包 黑色</h2>
+							<p>2016年最佳人气推荐</p>
+							<div class="fast-buy-fix">
+								<div class="fast-buy-price">
+									<div class="sales-price">&yen;565</div>
+									
+								</div>
+								<button class="btn btn-normal disabled">即将开始</button>
+							</div>
+							
+						</div>
+					</li>
+					
+				</ul>
+			</div>
 		</div>
 	</div>
 </body>
