@@ -19,7 +19,7 @@
   width: 100%;
   left: 0;
   top: 0;
-  z-index: map-get($z-index,integral-tab-fixed);
+  z-index: 1;
 }
 .integral-tab li{  
   text-align: center;

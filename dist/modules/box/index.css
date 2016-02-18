@@ -110,45 +110,33 @@
     padding: 32px 28px;
     border-width: 2px 0 2px 0;
     margin-top: -2px; }
-
   .box .icon8,
   .box .icon49 {
     left: 24px; }
-
   .box.active .icon8 {
     background-position: -506px -334px; }
-
   .box.active .icon49 {
     background-position: -510px -498px; }
-
   .box-arrow {
     right: 28px; }
-
   .box1 .box-link {
     padding: 32px 28px; }
-
   /*box-address*/
   .box-address {
     font-size: 28px;
     padding-left: 94px; }
-
   .box-address h3 {
     font-size: 28px;
     margin-bottom: 16px; }
-
   .box-address span {
     margin-right: 10px; }
-
   .box-address-r1 span {
     margin-right: 66px; }
-
   .box-address-c1 {
     width: 92px;
     border: 2px solid #ececec;
     margin-top: -32px; }
-
   .box-address-c2 {
     margin-right: 62px; }
-
   .box-check {
     padding-left: 100px; } }

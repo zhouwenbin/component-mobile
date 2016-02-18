@@ -60,15 +60,12 @@
 @media screen and (min-width: 640px) {
   .nav2 {
     height: 80px; }
-
   .nav2 ul {
     padding: 0 20px;
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.32);
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.32); }
-
   .nav2 li {
     height: 80px;
     line-height: 80px; }
-
   .nav2 li.active:after {
     height: 4px; } }

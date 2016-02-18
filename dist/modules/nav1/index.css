@@ -53,7 +53,6 @@
 @media screen and (min-width: 640px) {
   .nav1 {
     padding: 20px 0; }
-
   .nav1-icon1,
   .nav1-icon2,
   .nav1-icon3,
@@ -62,9 +61,7 @@
     margin: 0 auto 14px;
     width: 80px;
     height: 78px; }
-
   .nav1-icon2 {
     background-position: -156px 0; }
-
   .nav1-icon3 {
     background-position: -314px 0; } }

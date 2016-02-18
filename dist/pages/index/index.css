@@ -53,7 +53,6 @@
 @media screen and (min-width: 640px) {
   .nav1 {
     padding: 20px 0; }
-
   .nav1-icon1,
   .nav1-icon2,
   .nav1-icon3,
@@ -62,12 +61,11 @@
     margin: 0 auto 14px;
     width: 80px;
     height: 78px; }
-
   .nav1-icon2 {
     background-position: -156px 0; }
-
   .nav1-icon3 {
     background-position: -314px 0; } }
+
 .flashsale ul {
   border-top: 1px solid #d9d9d9; }
 
@@ -123,28 +121,23 @@
   .flashsale li {
     padding-top: 34px;
     padding-bottom: 60px; }
-
   .flashsale h3 {
     font-size: 28px;
     line-height: 36px;
     margin-bottom: 20px; }
-
   .flashsale-c1 {
     width: 246px; }
-
   .flashsale-c2r1 {
     margin-bottom: 26px; }
-
   .flashsale-c2r1 .icon {
     margin-right: 4px; }
-
   .flashsale-c2r2 .text-error {
     font-size: 30px;
     margin-right: 10px; }
-
   .flashsale img {
     width: 150px;
     height: 150px; } }
+
 .carnival img {
   width: 100%; }
 
@@ -200,30 +193,24 @@
     font-size: 28px;
     line-height: 36px;
     margin-bottom: 8px; }
-
   .carnival p {
     line-height: 36px;
     margin-bottom: 16px; }
-
   .carnival li {
     border-top: 2px solid #d9d9d9;
     border-bottom: 2px solid #d9d9d9;
     margin-bottom: 20px; }
-
   .carnival-b {
     padding: 40px 28px; }
-
   .carnival-r1 {
     margin-bottom: 36px; }
-
   .carnival-r1 .icon {
     margin-right: 6px; }
-
   .carnival-r2c1 {
     font-size: 28px; }
-
   .carnival-r2c1 strong {
     font-size: 48px; } }
+
 /*@import '../../modules/list/index';*/
 /*
 @styleguide
@@ -296,22 +283,18 @@
 @media screen and (min-width: 640px) {
   .downloadapp {
     height: 100px; }
-
   .downloadapp-r1 {
     height: 100px;
     padding: 0 22px;
     background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 18px bottom;
     background-size: 402px 88px; }
-
   .downloadapp-logo {
     width: 402px;
     height: 88px; }
-
   .downloadapp-close {
     width: 44px;
     height: 44px;
     background-size: 44px; }
-
   .downloadapp .btn {
     height: 70px;
     line-height: 70px;

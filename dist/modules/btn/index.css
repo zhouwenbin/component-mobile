@@ -95,15 +95,12 @@
     padding: 0px 24px;
     height: 60px;
     line-height: 60px; }
-
   .btn-normal,
   .btn.normal {
     border: 2px solid #c6c6c6; }
-
   .btn-dashed,
   .btn.dashed {
     border: 2px dotted #cfcfcf; }
-
   .btn-radius {
     -webkit-border-radius: 44px;
             border-radius: 44px; } }

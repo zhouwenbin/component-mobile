@@ -40,11 +40,9 @@
 @media screen and (min-width: 640px) {
   .safeguard {
     margin-bottom: 18px; }
-
   .safeguard li {
     height: 84px;
     line-height: 84px; }
-
   .safeguard svg {
     margin-right: 10px;
     width: 32px;

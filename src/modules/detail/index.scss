@@ -14,7 +14,7 @@
   position: sticky;
   background: #fff;
   height: 43px;
-  z-index: map-get($z-index,detail-h);
+  z-index: 1;
   top: 0;
 }
 .detail-h ul{

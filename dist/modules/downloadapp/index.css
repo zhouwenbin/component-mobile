@@ -70,22 +70,18 @@
 @media screen and (min-width: 640px) {
   .downloadapp {
     height: 100px; }
-
   .downloadapp-r1 {
     height: 100px;
     padding: 0 22px;
     background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 18px bottom;
     background-size: 402px 88px; }
-
   .downloadapp-logo {
     width: 402px;
     height: 88px; }
-
   .downloadapp-close {
     width: 44px;
     height: 44px;
     background-size: 44px; }
-
   .downloadapp .btn {
     height: 70px;
     line-height: 70px;

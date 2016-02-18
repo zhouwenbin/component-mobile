@@ -211,21 +211,17 @@
   .header {
     padding: 0 0 22px;
     height: 98px; }
-
   .header-c1 {
     height: 98px;
     left: 30px; }
-
   .header-c2 {
     right: 30px;
     height: 98px;
     width: 112px; }
-
   .header-c4 {
     right: 40px;
     height: 98px;
     width: 120px; }
-
   .header-c3 {
     font-size: 28px;
     padding-left: 18px;
@@ -234,64 +230,48 @@
     height: 40px;
     line-height: 40px;
     margin-top: 30px; }
-
   .header .icon {
     width: 48px;
     height: 48px; }
-
   .header .dot {
     right: -10px;
     top: -12px; }
-
   .header .header-shoppingcart {
     background-position: -48px 0px; }
-
   .header .header-user {
     background-position: -240px 0px; }
-
   .header .header-back {
     background-position: -144px 0px; }
-
   .header .header-search-icon {
     background-position: -528px 0px; }
-
   .header .header-home {
     background-position: -336px 0px; }
-
   .header-white .header-home {
     background-position: -288px 0px; }
-
   .header-white .header-back {
     background-position: -96px 0px; }
-
   .header-title {
     margin-top: 30px;
     font-size: 36px; }
-
   .header-detail {
     padding: 0 0 22px;
     height: 98px; }
-
   .header-detail .icon {
     width: 68px;
     height: 68px; }
-
   .header-center {
     width: 68px;
     height: 68px; }
-
   .header-order {
     width: 68px;
     height: 68px; }
-
   .header-detail .header-back {
     background-position: 0 0px; }
-
   .header-detail .header-search-icon {
     background-position: -136px 0px; }
-
   .header-detail .header-c2 {
     width: 156px; } }
+
 /*
 @styleguide
 

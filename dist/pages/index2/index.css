@@ -60,18 +60,16 @@
 @media screen and (min-width: 640px) {
   .nav2 {
     height: 80px; }
-
   .nav2 ul {
     padding: 0 20px;
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.32);
             box-shadow: 0 0 4px rgba(0, 0, 0, 0.32); }
-
   .nav2 li {
     height: 80px;
     line-height: 80px; }
-
   .nav2 li.active:after {
     height: 4px; } }
+
 /*
 @styleguide
 
@@ -143,27 +141,24 @@
 @media screen and (min-width: 640px) {
   .downloadapp {
     height: 100px; }
-
   .downloadapp-r1 {
     height: 100px;
     padding: 0 22px;
     background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 18px bottom;
     background-size: 402px 88px; }
-
   .downloadapp-logo {
     width: 402px;
     height: 88px; }
-
   .downloadapp-close {
     width: 44px;
     height: 44px;
     background-size: 44px; }
-
   .downloadapp .btn {
     height: 70px;
     line-height: 70px;
     margin-left: 12px;
     margin-right: 32px; } }
+
 /*
 @styleguide
 
@@ -205,15 +200,14 @@
 @media screen and (min-width: 640px) {
   .safeguard {
     margin-bottom: 18px; }
-
   .safeguard li {
     height: 84px;
     line-height: 84px; }
-
   .safeguard svg {
     margin-right: 10px;
     width: 32px;
     height: 36px; } }
+
 /*
 @styleguide
 
@@ -344,17 +338,14 @@
 @media screen and (min-width: 640px) {
   .flashsale2 {
     margin-bottom: 18px; }
-
   .flashsale2-h {
     font-size: 28px;
     padding-right: 20px; }
-
   .flashsale2 h2 {
     height: 68px;
     line-height: 68px;
     border-left: 6px solid #ffa38a;
     padding-left: 8px; }
-
   .flashsale2 time span {
     width: 40px;
     height: 40px;
@@ -362,26 +353,21 @@
             border-radius: 4px;
     line-height: 40px;
     margin: 0 8px; }
-
   .flashsale2 li {
     padding: 16px 18px 30px; }
-
   .flashsale2-r1 {
     margin-bottom: 16px; }
-
   .flashsale2-r1 strong {
     font-size: 32px; }
-
   .flashsale2-r1 del {
     font-size: 28px; }
-
   .flashsale2-c1 {
     width: 160px;
     height: 160px; }
-
   .flashsale2-c1 img {
     width: 160px;
     height: 160px; } }
+
 /*
 @styleguide
 
@@ -411,9 +397,9 @@
   .groupon {
     padding: 16px;
     margin-bottom: 16px; }
-
   .groupon li {
     margin-bottom: 20px; } }
+
 /*
 @styleguide
 
@@ -464,19 +450,17 @@
 @media screen and (min-width: 640px) {
   .choose {
     margin-bottom: 18px; }
-
   .choose h2 {
     height: 68px;
     line-height: 68px;
     border-left: 6px solid #5dc9c9;
     padding-left: 10px;
     font-size: 28px; }
-
   .choose li {
     padding: 14px; }
-
   .choose li img {
     margin-bottom: 14px; } }
+
 /*
 @styleguide
 
@@ -621,60 +605,50 @@
 @media screen and (min-width: 640px) {
   .daily {
     margin-bottom: 18px; }
-
   .daily h2 {
     height: 68px;
     line-height: 68px;
     border-left: 6px solid #ff8991;
     padding-left: 10px;
     font-size: 28px; }
-
   .daily li {
     padding: 16px; }
-
   .daily-c1 {
     margin-right: 16px;
     width: 240px;
     height: 240px; }
-
   .daily-c1 img {
     width: 240px;
     height: 240px; }
-
   .daily h3 {
     margin-bottom: 26px;
     font-size: 28px;
     line-height: 36px;
     margin-top: 8px; }
-
   .daily h3 img {
     width: 38px;
     height: 26px;
     margin-right: 8px; }
-
   .daily .label {
     padding: 0 6px;
     margin-bottom: 10px;
     height: 36px;
     line-height: 36px; }
-
   .daily .label img {
     width: 36px;
     height: 24px;
     vertical-align: -4px;
     margin-right: 6px; }
-
   .daily-icon-cart {
     width: 68px;
     height: 68px; }
-
   .daily-icon-cart svg {
     width: 42px;
     height: 42px; }
-
   .daily strong {
     margin-right: 10px;
     font-size: 32px; } }
+
 /*
 @styleguide
 
@@ -716,6 +690,5 @@
   .index-banner {
     padding: 8px;
     margin-bottom: 18px; }
-
   .index-banner img {
     padding: 8px; } }

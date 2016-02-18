@@ -72,20 +72,18 @@
 @media screen and (min-width: 640px) {
   .nataral-nav ul {
     padding: 24px 80px; }
-
   .nataral-nav li {
     width: 102px;
     height: 102px;
     font-size: 32px; }
-
   .nataral-nav li.active:after {
     width: 20px;
     height: 20px;
     bottom: -36px;
     margin-left: -12px; }
-
   .nataral-nav li span {
     margin-bottom: 6px; } }
+
 /*
 @styleguide
 
@@ -279,14 +277,11 @@
 @media screen and (min-width: 640px) {
   .nataral-tab {
     height: 92px; }
-
   .nataral-tab-open li {
     font-size: 28px; }
-
   .nataral-tab:before {
     width: 76px;
     height: 90px; }
-
   .nataral-tab-icon {
     width: 16px;
     height: 16px;
@@ -294,20 +289,18 @@
     margin-top: 40px;
     margin-right: 20px;
     margin-left: 20px; }
-
   .nataral-tab li {
     height: 92px;
     line-height: 92px;
     font-size: 28px; }
-
   .nataral-tab li svg {
     margin-right: 10px; }
-
   .nataral-tab li i {
     vertical-align: 6px;
     width: 12px;
     height: 12px;
     margin-left: 12px; } }
+
 /*
 @styleguide
 
@@ -355,18 +348,16 @@
 @media screen and (min-width: 640px) {
   .nataral-area-b {
     padding: 30px 20px 48px; }
-
   .nataral-area h2 {
     font-size: 34px;
     margin-bottom: 20px; }
-
   .nataral-area h2 .icon {
     margin-right: 14px;
     vertical-align: -4px; }
-
   .nataral-area p {
     font-size: 28px;
     line-height: 40px; } }
+
 /*
 @styleguide
 
@@ -398,9 +389,9 @@
     line-height: 60px;
     padding: 0 20px;
     margin-top: -60px; }
-
   .nataral-shop figcaption .icon {
     margin-right: 12px; } }
+
 /*
 @styleguide
 
@@ -560,7 +551,6 @@
     padding-top: 40px;
     padding-left: 20px;
     border-bottom: 1px solid #e4e4e4; }
-
   .nataral-h2:before {
     content: '';
     display: inline-block;
@@ -568,56 +558,45 @@
     width: 6px;
     height: 24px;
     background: #ff5b54; }
-
   .nataral-product {
     margin-bottom: 20px;
     margin-top: -2px; }
-
   .nataral-product li {
     margin: 0 20px;
     padding: 20px 0; }
-
   .nataral-product img {
     width: 150px;
     height: 150px;
     border: 2px solid #f7f7f7; }
-
   .nataral-product-c1 {
     width: 150px;
     height: 150px; }
-
   .nataral-product-c2 {
     padding-left: 30px;
     padding-right: 24px; }
-
   .nataral-product-c2 h3 {
     font-size: 28px;
     line-height: 36px;
     margin-bottom: 10px; }
-
   .nataral-product-c2 .text-important {
     margin-right: 16px; }
-
   .nataral-product-more {
     padding: 0 20px 40px; }
-
   .nataral-product-more .btn {
     height: 78px;
     line-height: 78px; }
-
   .nataral-product-loading {
     padding: 20px 0; }
-
   .nataral-product-soldout {
     width: 70px;
     height: 70px;
     line-height: 70px; }
-
   .nataral-product-star {
     -webkit-border-radius: 4px;
             border-radius: 4px;
     padding: 0 10px;
     margin-right: 6px; } }
+
 /*
 @styleguide
 
@@ -694,7 +673,6 @@
     padding-top: 40px;
     padding-left: 20px;
     border-bottom: 1px solid #e4e4e4; }
-
   .nataral-h2:before {
     content: '';
     display: inline-block;
@@ -702,31 +680,25 @@
     width: 6px;
     height: 24px;
     background: #ff5b54; }
-
   .carnival {
     background: #fff;
     border-top: 2px solid #e4e4e4;
     margin-bottom: 20px; }
-
   .nataral-hanguo {
     margin: 20px; }
-
   .icon65 {
     position: fixed;
     left: 16px;
     bottom: 16px; }
-
   .icon65 .dot {
     position: absolute;
     top: 0;
     right: 0;
     background: #333; }
-
   .carnival li {
     margin-bottom: 0;
     border-bottom: none;
     border-top: none; }
-
   .nataral-code {
     background: url(//img0.fengqucdn.com/sfhth5/1.1.393/img/nataral-code.png) no-repeat center;
     background-size: 640px;
@@ -736,15 +708,12 @@
     font-family: arial;
     font-weight: bold;
     font-size: 48px; }
-
   .nataral-none {
     text-align: center;
     background-color: #f2f2f2;
     border-top: 1px solid #cfcfcf; }
-
   .nataral-none-svg {
     margin: 44px 0 32px 0; }
-
   .nataral-none p {
     display: inline-block;
     color: #9999a4;

@@ -53,27 +53,20 @@
     font-size: 28px;
     line-height: 36px;
     margin-bottom: 8px; }
-
   .carnival p {
     line-height: 36px;
     margin-bottom: 16px; }
-
   .carnival li {
     border-top: 2px solid #d9d9d9;
     border-bottom: 2px solid #d9d9d9;
     margin-bottom: 20px; }
-
   .carnival-b {
     padding: 40px 28px; }
-
   .carnival-r1 {
     margin-bottom: 36px; }
-
   .carnival-r1 .icon {
     margin-right: 6px; }
-
   .carnival-r2c1 {
     font-size: 28px; }
-
   .carnival-r2c1 strong {
     font-size: 48px; } }

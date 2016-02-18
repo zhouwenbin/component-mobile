@@ -5,10 +5,10 @@
 
 .partner-dialog .center {
   /*display: flex;
-  flex-direction: column;
-  text-align: left;
-  align-items: center;
-  justify-content: center;*/
+	flex-direction: column;
+	text-align: left;
+	align-items: center;
+	justify-content: center;*/
   width: 280px;
   height: 310px;
   -webkit-border-radius: 8px;
