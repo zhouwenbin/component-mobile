@@ -5,15 +5,28 @@
 	display: flex;
 	align-items: center;
 	border-top: 2px solid #F5F5F5;
-	padding: 10px 0;
+	padding-right:20px;
+}
+
+.fast-buy-goods .disabled{
+	color:#9B9B9B;
+	border-color:rgba(170,170,170,0.51);
+}
+.fast-buy-goods .active{
+	border-color:rgba(241,60,52,0.5);
+}
+.fast-buy-goods .btn{
+	width:180px;
+	padding-left:0;
+	padding-right:0;
+	border-radius:8px;
 }
 .fast-buy-pic{
 	position: relative;
-	margin-left: 5%;
 }
 .fast-buy-pic img{
-	width: calc(115px * 2);
-	height: calc(115px * 2);
+	width: 150px * 2 * 640 / 750;
+	height: 150px * 2 * 640 / 750;
 }
 .fast-buy-text{
 	margin-left: 26px;
@@ -21,9 +34,11 @@
 	padding-right: 20px;
 }
 .fast-buy-text h2{
-	font-size: 28px;
-	font-weight: 400;
+	font-size: 24px;
+	font-weight: normal;
 	line-height: 1.2;
+	margin-bottom:10px;
+	height:57px;
 }
 .fast-buy-text p{
 	color: #9B9B9B;
@@ -64,6 +79,13 @@
     right: 20px;
     top: 4px;
     font-size: 24px;
+    color: #F13C34;
+}
+.com-title-tips-black{
+	color:#4A4A4A;	
+}
+.com-title-tips-black .com-count-down{
+	background:#4A4A4A;
 }
 
 .com-box {
@@ -79,6 +101,7 @@
 .sales-price{
 	font-size: 32px;
 	margin-right: 20px;
+	margin-bottom:4px;
 }
 .sales-price,
 .sales-price-out{
@@ -182,6 +205,7 @@ img{
 }
 .seckill-dates-list{
 	border-top: 1px * 2 solid #F5F5F5;
+	border-bottom: 1px * 2 solid #F5F5F5;
 	height: 34px * 2;
 	line-height: 34px * 2;
 	display: flex;
@@ -247,9 +271,14 @@ img{
 	font-size: 28px;
 	color: #4A4A4A;
 }
-.seckill-goods-list .fast-buy-fix{
-	display: block;
+.seckill-count-title h2{
+	font-weight:normal;
 }
+.seckill-count-title h2 span{
+	font-size:28px;
+	vertical-align:middle;
+}
+
 .seckill-goods-list .fast-buy-btn{
 	display: flex;
 	justify-content: flex-end;
@@ -301,4 +330,25 @@ img{
 	.btn{
 		background-color: #FFAD4F;
 	}
+}
+.seckill-discount{
+	font-size:20px;
+	height:28px;
+	line-height:28px;
+	border:1px solid #EE4F45;
+	display:inline-block;
+}
+.seckill-discount span{
+	background:#EE4F45;
+	display:inline-block;
+	padding: 0 14px;
+	color:#fff;
+}
+.seckill-discount del{
+	color:#EE4F45;
+	display:inline-block;
+	padding: 0 14px;
+}
+.seckill .btn{
+	width:182px;
 }
