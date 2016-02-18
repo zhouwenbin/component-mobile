@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/*
+单行商品
+*/
+.com-box {
+  background: #fff;
+  margin-top: 20px; }
+
+.com-box-bottom {
+  background: #fff;
+  margin-bottom: 20px; }
+
+/*.onerow-list{
+	overflow: hidden;
+}
+.onerow-list li{
+	position: relative;
+	left: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+.onerow-list .btn-danger{
+	position: absolute;
+	height: 100%;
+    line-height: 100%;
+    font-size: 34px;
+    position: absolute;
+    right: -120px;
+    top: 0;
+}*/
