@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/*
+折扣对比
+*/
+.com-box {
+  background: #fff;
+  margin-top: 20px; }
+
+.com-box-bottom {
+  background: #fff;
+  margin-bottom: 20px; }
+
+.sale-list li {
+  float: left;
+  width: 50%;
+  text-align: center;
+  border-top: 2px solid #F5F5F5;
+  border-bottom: 2px solid #F5F5F5;
+  margin-bottom: -2px;
+  padding-bottom: 20px; }
+
+.sale-list li:nth-child(odd) {
+  border-right: 2px solid #F5F5F5; }
+
+.sale-list img {
+  width: 319px;
+  height: 319px; }
+
+.sale-list p {
+  margin-top: 20px;
+  padding: 0 30px; }
+
+.sale-list .ellipsis2 {
+  height: 55px;
+  color: #555;
+  line-height: 1.2;
+  font-size: 24px; }
+
+.sale-list-detail {
+  font-size: 0;
+  letter-spacing: -0.5em; }
+
+.sale-list-discount,
+.sale-list-price {
+  display: inline-block;
+  vertical-align: middle;
+  height: 28px;
+  line-height: 28px;
+  width: 78px;
+  font-size: 20px;
+  letter-spacing: normal; }
+
+.sale-list-discount {
+  background-color: #E73736;
+  color: #fff; }
+
+.sale-list-price {
+  border: 1px solid #E73736; }
