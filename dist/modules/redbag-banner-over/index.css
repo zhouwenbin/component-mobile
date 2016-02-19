@@ -1,0 +1,20 @@
+.banner{
+	text-align: center;
+	padding-top: 785px;
+	padding-bottom: 27px;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/0643314b-1c2c-472c-8fb2-cb65757be6af.jpeg) no-repeat;
+}
+.banner a{
+	display: inline-block;
+	font-size: 34px;
+	color: #fff;
+	font-weight: bold;
+	width: 462px;
+	height: 67px;
+	line-height: 67px;
+	margin-bottom: 15px;
+}
+.banner p{
+	font-size: 17px;
+	color: #782323;
+}

@@ -1,0 +1,31 @@
+.rule{
+	border:5px solid #751325;
+	box-shadow: 0 0 0 5px #b92240;
+	border-radius: 10px;
+	background: #fff6e1;
+	margin: 0 20px;
+	padding: 20px 0;
+}
+.rule h2{
+	color: #fe315c;
+	font-size: 26px;
+	height: 44px;
+	line-height: 44px;
+	margin-bottom: 24px;
+	text-align: center;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/d22cb680-872b-4b9c-880a-8a006947447c.png) center no-repeat;
+}
+.rule li{
+	font-size: 16px;
+	color: #666;
+	line-height: 27px;
+	margin-bottom: 35px;
+}
+.rule ol{
+	padding-left: 59px;
+	padding-right: 10px;
+}
+.rule ol,
+.rule li{
+	list-style-type: decimal;
+}
