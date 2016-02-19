@@ -17,7 +17,8 @@
   border-top: 2px solid #F5F5F5;
   border-bottom: 2px solid #F5F5F5;
   margin-bottom: -2px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  font-size: 24px; }
 
 .sale-list li:nth-child(odd) {
   border-right: 2px solid #F5F5F5; }
@@ -27,14 +28,13 @@
   height: 319px; }
 
 .sale-list p {
-  margin-top: 20px;
+  margin-top: 12px;
   padding: 0 30px; }
 
 .sale-list .ellipsis2 {
   height: 55px;
   color: #555;
-  line-height: 1.2;
-  font-size: 24px; }
+  line-height: 1.2; }
 
 .sale-list-detail {
   font-size: 0;
@@ -44,15 +44,29 @@
 .sale-list-price {
   display: inline-block;
   vertical-align: middle;
-  height: 28px;
-  line-height: 28px;
-  width: 78px;
+  height: 32px;
+  line-height: 32px;
+  min-width: 78px;
   font-size: 20px;
   letter-spacing: normal; }
 
 .sale-list-discount {
   background-color: #E73736;
-  color: #fff; }
+  color: #fff;
+  -webkit-border-top-left-radius: 16px;
+          border-top-left-radius: 16px;
+  -webkit-border-bottom-left-radius: 16px;
+          border-bottom-left-radius: 16px; }
 
 .sale-list-price {
-  border: 1px solid #E73736; }
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  min-width: 58px;
+  padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #E73736;
+  -webkit-border-top-right-radius: 16px;
+          border-top-right-radius: 16px;
+  -webkit-border-bottom-right-radius: 16px;
+          border-bottom-right-radius: 16px; }
