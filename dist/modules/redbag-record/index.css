@@ -1,0 +1,29 @@
+.record{
+	margin: 0 24px 44px;
+	background: #fff4f7;
+	padding: 5px 14px 72px;
+}
+.record caption{
+	font-size: 23px;
+	color: #fa305b;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/c51ca72a-0638-4c60-8b53-f93778dd7207.png) center no-repeat;
+}
+.record table{
+	width: 100%;
+}
+.record td{
+	height: 60px;
+	line-height: 60px;
+	border-bottom: 1px solid #b2ab92;
+}
+.record img{
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	vertical-align: middle;
+}
+.record-add{
+	color: #fc315b;
+}

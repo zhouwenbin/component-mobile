@@ -1,0 +1,23 @@
+@import "../redbag-banner2/index.css";
+.banner2{
+	height: 629px;
+}
+.banner2-agree{
+	width: 519px;
+	height: 190px;
+	border-radius: 10px;
+	padding: 69px 0 51px 232px;
+	position: absolute;
+	top: 407px;
+	left: 65px;
+	right: 65px;
+	background:#fff url(http://img0.fengqucdn.com/cmsres/20160219/ca7fd926-5c23-4c33-9cf4-114237647762.png) no-repeat 0 bottom;
+}
+.banner2-agree-b{
+	font-size: 22px;
+	line-height: 26px;
+}
+.banner2-agree-b strong{
+	color: #70b2eb;
+	font-weight: bold;
+}

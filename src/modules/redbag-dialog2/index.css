@@ -1,0 +1,22 @@
+@import "../redbag-dialog1/index.css";
+.dialog2 input{
+	width: 356px;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	font-size: 24px;
+	display: block;
+	margin: 47px auto 22px;
+	border-radius: 6px;
+	border: none;
+}
+.dialog2-btn{
+	width: 219px;
+	height: 80px;
+	text-indent: -99em;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/a905cbbc-108a-469b-8c84-7537ed1aa45f.png) no-repeat;
+	display: inline-block;
+}
+.dialog2{
+	background-image: url(http://img0.fengqucdn.com/cmsres/20160219/0dce2b7f-8e62-4e4e-aab8-e3d45ade198b.png);
+}

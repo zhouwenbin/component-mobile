@@ -1,0 +1,6 @@
+@import '../../modules/redbag-banner2-share/index.css';
+@import '../../modules/redbag-record/index.css';
+@import '../../modules/redbag-rule/index.css';
+body{
+	background: #fe315c;
+}
