@@ -1,7 +1,7 @@
 .banner2{
 	position: relative;
 	height: 532px;
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
 }
 .banner2 figure{
 	text-align: center;
@@ -59,17 +59,12 @@
 .banner2-btn1:visited{
 	color: #ed2650;
 }
-.banner2-btn2{
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/d09ee6fc-0adf-487d-b404-9c26d5067bea.png) center no-repeat;
-	height: 95px;
-}
-.banner2-full{
-	width: 116px;
-	height: 72px;
-	position: absolute;
-	left: 443px;
-	top: 313px;
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/c3606881-df2d-42dc-afe4-dd4db1151601.png) center no-repeat;
+.btn5{
+	height: 85px;
+	display: block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ac7b5723-5fa7-4607-b66d-4624d4db5522.png) no-repeat;
+	margin-bottom: 38px;
+	text-indent: -99em;
 }
 .banner2-btn3{
 	width: 291px;
@@ -96,13 +91,6 @@
 	left: 0;
 	right: 0;
 	top: 467px;
-}
-.btn5{
-	height: 85px;
-	display: block;
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/ac7b5723-5fa7-4607-b66d-4624d4db5522.png) no-repeat;
-	margin-bottom: 38px;
-	text-indent: -99em;
 }
 .record{
 	margin: 0 24px 44px;

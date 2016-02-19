@@ -1,1 +1,14 @@
 @import "../redbag-banner2/index.css";
+.banner2-btn2{
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/d09ee6fc-0adf-487d-b404-9c26d5067bea.png) center no-repeat;
+	height: 95px;
+	
+}
+.banner2-full{
+	width: 116px;
+	height: 72px;
+	position: absolute;
+	left: 443px;
+	top:313px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/c3606881-df2d-42dc-afe4-dd4db1151601.png) center no-repeat;
+}

@@ -1,7 +1,7 @@
 .banner2{
 	position: relative;
 	height: 532px;
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
 }
 .banner2 figure{
 	text-align: center;
@@ -59,44 +59,6 @@
 .banner2-btn1:visited{
 	color: #ed2650;
 }
-.banner2-btn2{
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/d09ee6fc-0adf-487d-b404-9c26d5067bea.png) center no-repeat;
-	height: 95px;
-}
-.banner2-full{
-	width: 116px;
-	height: 72px;
-	position: absolute;
-	left: 443px;
-	top: 313px;
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/c3606881-df2d-42dc-afe4-dd4db1151601.png) center no-repeat;
-}
-.banner2-btn3{
-	width: 291px;
-	height: 119px;
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/77b1cdbe-c477-4ea7-afd8-2558a816b7bb.png) no-repeat;
-	position: absolute;
-	left: 28px;
-	top: 400px;
-	text-indent: -999em;
-}
-.banner2-btn4{
-	width: 291px;
-	height: 123px;
-	background: url(http://img0.fengqucdn.com/cmsres/20160219/357b318c-9a02-4b02-9a81-e154495e3600.png) no-repeat;
-	position: absolute;
-	left: 332px;
-	top: 395px;
-	text-indent: -999em;
-}
-.banner2-line{
-	height: 4px;
-	background: #fff;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 467px;
-}
 .btn5{
 	height: 85px;
 	display: block;
@@ -104,10 +66,10 @@
 	margin-bottom: 38px;
 	text-indent: -99em;
 }
-.banner2{
+.banner2-1{
 	height: 629px;
 }
-.banner2-agree{
+.banner2-notagree{
 	width: 519px;
 	height: 190px;
 	-webkit-border-radius: 10px;
@@ -119,11 +81,11 @@
 	right: 65px;
 	background:#fff url(http://img0.fengqucdn.com/cmsres/20160219/ca7fd926-5c23-4c33-9cf4-114237647762.png) no-repeat 0 bottom;
 }
-.banner2-agree-b{
+.banner2-notagree-b{
 	font-size: 22px;
 	line-height: 26px;
 }
-.banner2-agree-b strong{
+.banner2-notagree-b strong{
 	color: #70b2eb;
 	font-weight: bold;
 }

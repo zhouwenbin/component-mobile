@@ -1,1 +1,27 @@
 @import "../redbag-banner2/index.css";
+.banner2-btn3{
+	width: 291px;
+	height: 119px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/77b1cdbe-c477-4ea7-afd8-2558a816b7bb.png) no-repeat;
+	position: absolute;
+	left: 28px;
+	top: 400px;
+	text-indent: -999em;
+}
+.banner2-btn4{
+	width: 291px;
+	height: 123px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/357b318c-9a02-4b02-9a81-e154495e3600.png) no-repeat;
+	position: absolute;
+	left: 332px;
+	top: 395px;
+	text-indent: -999em;
+}
+.banner2-line{
+	height: 4px;
+	background: #fff;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 467px;
+}
