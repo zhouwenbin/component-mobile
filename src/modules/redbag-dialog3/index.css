@@ -1,12 +1,12 @@
 @import "../redbag-dialog1/index.css";
 
-.dialog3-btn{
+.redbag-dialog3-btn{
 	width: 219px;
 	height: 146px;
 	text-indent: -99em;
 	background: url(http://img0.fengqucdn.com/cmsres/20160219/0ac11249-8a50-4dec-ace8-4f343976f2f1.png) no-repeat;
 	display: inline-block;
 }
-.dialog3{
+.redbag-dialog3{
 	background-image: url(http://img0.fengqucdn.com/cmsres/20160219/861e8718-78dc-4487-8c6a-f19455e17079.png);
 }

@@ -153,7 +153,7 @@
 .rule ol, .rule li{
 	list-style-type: decimal;
 }
-.dialog1{
+.redbag-dialog1{
 	text-align: center;
 	position: fixed;
 	left: 0;
@@ -163,7 +163,7 @@
 	padding-top: 413px;
 	background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160219/2f9e1cd6-5c0f-4881-99bd-f0f0bd9fb0c3.png) no-repeat center top;
 }
-.dialog1-b{
+.redbag-dialog1-b{
 	background: #fc315b;
 	-webkit-border-radius: 20px;
 	        border-radius: 20px;
@@ -173,32 +173,32 @@
 	padding-top: 35px;
 	padding-bottom: 15px;
 }
-.dialog1 h2{
+.redbag-dialog1 h2{
 	font-size: 38px;
 	color: #faec1f;
 	margin-bottom: 33px;
 }
-.dialog1 p{
+.redbag-dialog1 p{
 	color: #fff;
 	font-size: 24px;
 	line-height: 36px;
 	margin-bottom: 40px;
 }
-.dialog1 p span{
+.redbag-dialog1 p span{
 	font-size: 30px;
 }
-.dialog1 p strong{
+.redbag-dialog1 p strong{
 	font-size: 30px;
 	font-weight: bold;
 }
-.dialog1-btn{
+.redbag-dialog1-btn{
 	width: 421px;
 	height: 80px;
 	text-indent: -99em;
 	background: url(http://img0.fengqucdn.com/cmsres/20160219/8b189ac2-b8d0-4775-b6d2-0be3659797ae.png) no-repeat;
 	display: inline-block;
 }
-.dialog1-close{
+.redbag-dialog1-close{
 	width: 62px;
 	height: 62px;
 	line-height: 62px;
