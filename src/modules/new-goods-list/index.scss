@@ -2,7 +2,11 @@
 	background-color: #fff;
 }
 .new-goodslist li{
-	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-top: 2px solid #E5E5E5;
+}
+.new-goodslist li:first-child{
+	border-top: 0 none;
 }
 .new-goodslist-pic{
 	width: 100%;
@@ -15,8 +19,8 @@
 	/*flex: 1;*/
 	margin-top: 20px;
 	/*margin-right: 20px;*/
-	font-size: 28px;
-	color: #4A4A4A;
+	font-size: 24px;
+	color: #323232;
 	line-height: 1.5;
 }
 .new-goodslist .ellipsis3{
@@ -37,12 +41,11 @@
 }
 .new-goodslist-country img{
 	margin-right: 10px;
-	width: 46px;
-	height: 33px;
+	height: 32px;
 }
 .new-goodslist-country span{
-	margin-left: 10px;
-	color: #9B9B9B;
+	font-size: 24px;
+	color: #666666;
 }
 .new-goodslist-price,
 .new-goodslist-btn{
@@ -52,11 +55,26 @@
 	color: #F44740;
 	font-size: 36px;
 }
+.new-goodslist-price .yen,
+.new-goodslist-price .text-error{
+	font-size: 24px;
+}
+.new-goodslist-price .yen,
+.new-goodslist-price .text-error{
+	vertical-align: 3px;
+}
+.new-goodslist-price .text-error{
+	font-size: 24px;
+}
+
 .new-goodslist-btnbox .original-price{
 	color: rgba(255,91,84,0.6);
+	font-size: 24px;
+	vertical-align: 4px;
+	margin-left: 6px;
 }
 .new-goodslist-btnbox{
-	padding: 30px;
+	padding: 24px 30px 10px 30px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -67,9 +85,10 @@
 	letter-spacing: -0.5em;
 }
 .new-goodslist-star,
-.ngl-btn-share{
+.ngl-btn-share,
+.new-goodslist-btnbox .btn-normal{
 	display: inline-block;
-	border: 1px solid #9B9B9B;
+	border: 1px solid rgba(102,102,102,0.5);
 	border-radius: 8px;
 	width: 100px;
 	height: 80px;
@@ -80,6 +99,14 @@
 	margin-right: 10px;
 	line-height: 80px;
 }
+.ngl-btn-share .icon-share02,
+.new-goodslist-btnbox .icon-cart{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
 .new-goodslist-star:visited{
 	color: #666;
 }
@@ -92,15 +119,11 @@
 .ngl-btn-share .icon-share02{
 	width: 28px;
 	height: 38px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
 }
 
-.ngl-btn-share{
+.ngl-btn-share,
+.new-goodslist-btnbox .btn-normal{
 	position: relative;
-	text-align: center;
 	vertical-align: middle;
 }
 .icon-share{
@@ -110,10 +133,6 @@
 }
 .new-goodslist-btnbox .btn-normal{
 	border-color: rgba(241,60,52,0.5);
-	width: 200px;
-	height: 80px;
-	line-height: 80px;
-	border-radius: 8px;
 }
 .new-goodslist-btn .icon-cart{
 	width: 34px;
