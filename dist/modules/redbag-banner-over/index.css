@@ -2,12 +2,12 @@
 	text-align: center;
 	padding-top: 785px;
 	padding-bottom: 27px;
-	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/0643314b-1c2c-472c-8fb2-cb65757be6af.jpeg) no-repeat;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/efca3c87-f9d1-4de1-8e44-e401b2583c09.jpeg) no-repeat;
 }
 .banner a{
 	display: inline-block;
 	font-size: 34px;
-	color: #fff;
+	color: #ed2650;
 	font-weight: bold;
 	width: 462px;
 	height: 67px;
@@ -17,4 +17,10 @@
 .banner p{
 	font-size: 17px;
 	color: #782323;
+}
+.banner-over{
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/0643314b-1c2c-472c-8fb2-cb65757be6af.jpeg) no-repeat;
+}
+.banner-over a{
+	color: #fff;
 }

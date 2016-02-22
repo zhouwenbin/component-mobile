@@ -1,8 +1,8 @@
 @import "../redbag-banner2/index.css";
-.banner2{
+.banner2.banner2-1{
 	height: 629px;
 }
-.banner2-agree{
+.banner2-notagree{
 	width: 519px;
 	height: 190px;
 	border-radius: 10px;
@@ -11,13 +11,13 @@
 	top: 407px;
 	left: 65px;
 	right: 65px;
-	background:#fff url(http://img0.fengqucdn.com/cmsres/20160219/ca7fd926-5c23-4c33-9cf4-114237647762.png) no-repeat 0 bottom;
+	background:#fff2f7 url(http://img0.fengqucdn.com/cmsres/20160219/ca7fd926-5c23-4c33-9cf4-114237647762.png) no-repeat 0 bottom;
 }
-.banner2-agree-b{
+.banner2-notagree-b{
 	font-size: 22px;
 	line-height: 26px;
 }
-.banner2-agree-b strong{
+.banner2-notagree-b strong{
 	color: #70b2eb;
 	font-weight: bold;
 }

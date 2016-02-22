@@ -1,0 +1,739 @@
+.banner{
+	text-align: center;
+	padding-top: 785px;
+	padding-bottom: 27px;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/efca3c87-f9d1-4de1-8e44-e401b2583c09.jpeg) no-repeat;
+}
+.banner a{
+	display: inline-block;
+	font-size: 34px;
+	color: #ed2650;
+	font-weight: bold;
+	width: 462px;
+	height: 67px;
+	line-height: 67px;
+	margin-bottom: 15px;
+}
+.banner p{
+	font-size: 17px;
+	color: #782323;
+}
+.banner{
+	text-align: center;
+	padding-top: 785px;
+	padding-bottom: 27px;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/efca3c87-f9d1-4de1-8e44-e401b2583c09.jpeg) no-repeat;
+}
+.banner a{
+	display: inline-block;
+	font-size: 34px;
+	color: #ed2650;
+	font-weight: bold;
+	width: 462px;
+	height: 67px;
+	line-height: 67px;
+	margin-bottom: 15px;
+}
+.banner p{
+	font-size: 17px;
+	color: #782323;
+}
+.banner-over{
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/0643314b-1c2c-472c-8fb2-cb65757be6af.jpeg) no-repeat;
+}
+.banner-over a{
+	color: #fff;
+}
+.banner2{
+	position: relative;
+	height: 532px;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
+}
+.banner2 figure{
+	text-align: center;
+	position: absolute;
+	left: 63px;
+	top: 187px;
+}
+.banner2 img{
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+}
+.banner2 figcaption{
+	width: 165px;
+	height: 31px;
+	line-height: 31px;
+	background: #fff;
+	position: relative;
+	top: -20px;
+}
+.banner2-num{
+	color: #fcf417;
+	font-size: 60px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 516px;
+	top: 243px;
+}
+.banner2 p{
+	color: #fff;
+	font-size: 28px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 260px;
+	top: 333px;
+}
+.banner2 p span{
+	color: #fcf417;
+}
+.banner2 p strong{
+	font-size: 36px;
+}
+.banner2-btn1, .banner2-btn2{
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ffaa5aa4-99f0-4760-89ad-78ea0e144bf3.png) center no-repeat;
+	height: 129px;
+	line-height: 278px;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 398px;
+	text-indent: -99em;
+}
+.banner2-btn1:visited{
+	color: #ed2650;
+}
+.btn5{
+	height: 85px;
+	display: block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ac7b5723-5fa7-4607-b66d-4624d4db5522.png) no-repeat;
+	margin-bottom: 38px;
+	text-indent: -99em;
+}
+.banner2{
+	position: relative;
+	height: 532px;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
+}
+.banner2 figure{
+	text-align: center;
+	position: absolute;
+	left: 63px;
+	top: 187px;
+}
+.banner2 img{
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+}
+.banner2 figcaption{
+	width: 165px;
+	height: 31px;
+	line-height: 31px;
+	background: #fff;
+	position: relative;
+	top: -20px;
+}
+.banner2-num{
+	color: #fcf417;
+	font-size: 60px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 516px;
+	top: 243px;
+}
+.banner2 p{
+	color: #fff;
+	font-size: 28px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 260px;
+	top: 333px;
+}
+.banner2 p span{
+	color: #fcf417;
+}
+.banner2 p strong{
+	font-size: 36px;
+}
+.banner2-btn1, .banner2-btn2{
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ffaa5aa4-99f0-4760-89ad-78ea0e144bf3.png) center no-repeat;
+	height: 129px;
+	line-height: 278px;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 398px;
+	text-indent: -99em;
+}
+.banner2-btn1:visited{
+	color: #ed2650;
+}
+.btn5{
+	height: 85px;
+	display: block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ac7b5723-5fa7-4607-b66d-4624d4db5522.png) no-repeat;
+	margin-bottom: 38px;
+	text-indent: -99em;
+}
+.banner2.banner2-1{
+	height: 629px;
+}
+.banner2-agree{
+	width: 519px;
+	-webkit-border-radius: 10px;
+	        border-radius: 10px;
+	padding: 69px 0 51px 251px;
+	position: absolute;
+	top: 407px;
+	left: 65px;
+	right: 65px;
+	background: #fff2f7 url(http://img0.fengqucdn.com/cmsres/20160219/a28f1f83-c850-4f5f-9959-b416d656abbd.png) no-repeat 0 bottom;
+}
+.banner2-agree-b{
+	font-size: 22px;
+	line-height: 26px;
+}
+.banner2-agree-b strong{
+	color: #fe315c;
+	font-weight: bold;
+}
+.banner2{
+	position: relative;
+	height: 532px;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
+}
+.banner2 figure{
+	text-align: center;
+	position: absolute;
+	left: 63px;
+	top: 187px;
+}
+.banner2 img{
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+}
+.banner2 figcaption{
+	width: 165px;
+	height: 31px;
+	line-height: 31px;
+	background: #fff;
+	position: relative;
+	top: -20px;
+}
+.banner2-num{
+	color: #fcf417;
+	font-size: 60px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 516px;
+	top: 243px;
+}
+.banner2 p{
+	color: #fff;
+	font-size: 28px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 260px;
+	top: 333px;
+}
+.banner2 p span{
+	color: #fcf417;
+}
+.banner2 p strong{
+	font-size: 36px;
+}
+.banner2-btn1, .banner2-btn2{
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ffaa5aa4-99f0-4760-89ad-78ea0e144bf3.png) center no-repeat;
+	height: 129px;
+	line-height: 278px;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 398px;
+	text-indent: -99em;
+}
+.banner2-btn1:visited{
+	color: #ed2650;
+}
+.btn5{
+	height: 85px;
+	display: block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ac7b5723-5fa7-4607-b66d-4624d4db5522.png) no-repeat;
+	margin-bottom: 38px;
+	text-indent: -99em;
+}
+.banner2-btn2{
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/d09ee6fc-0adf-487d-b404-9c26d5067bea.png) center no-repeat;
+	height: 95px;
+}
+.banner2-full{
+	width: 116px;
+	height: 72px;
+	position: absolute;
+	left: 443px;
+	top: 313px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/c3606881-df2d-42dc-afe4-dd4db1151601.png) center no-repeat;
+}
+.banner2{
+	position: relative;
+	height: 532px;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
+}
+.banner2 figure{
+	text-align: center;
+	position: absolute;
+	left: 63px;
+	top: 187px;
+}
+.banner2 img{
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+}
+.banner2 figcaption{
+	width: 165px;
+	height: 31px;
+	line-height: 31px;
+	background: #fff;
+	position: relative;
+	top: -20px;
+}
+.banner2-num{
+	color: #fcf417;
+	font-size: 60px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 516px;
+	top: 243px;
+}
+.banner2 p{
+	color: #fff;
+	font-size: 28px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 260px;
+	top: 333px;
+}
+.banner2 p span{
+	color: #fcf417;
+}
+.banner2 p strong{
+	font-size: 36px;
+}
+.banner2-btn1, .banner2-btn2{
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ffaa5aa4-99f0-4760-89ad-78ea0e144bf3.png) center no-repeat;
+	height: 129px;
+	line-height: 278px;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 398px;
+	text-indent: -99em;
+}
+.banner2-btn1:visited{
+	color: #ed2650;
+}
+.btn5{
+	height: 85px;
+	display: block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ac7b5723-5fa7-4607-b66d-4624d4db5522.png) no-repeat;
+	margin-bottom: 38px;
+	text-indent: -99em;
+}
+.banner2.banner2-1{
+	height: 629px;
+}
+.banner2-notagree{
+	width: 519px;
+	height: 190px;
+	-webkit-border-radius: 10px;
+	        border-radius: 10px;
+	padding: 69px 0 51px 232px;
+	position: absolute;
+	top: 407px;
+	left: 65px;
+	right: 65px;
+	background: #fff2f7 url(http://img0.fengqucdn.com/cmsres/20160219/ca7fd926-5c23-4c33-9cf4-114237647762.png) no-repeat 0 bottom;
+}
+.banner2-notagree-b{
+	font-size: 22px;
+	line-height: 26px;
+}
+.banner2-notagree-b strong{
+	color: #70b2eb;
+	font-weight: bold;
+}
+.banner2{
+	position: relative;
+	height: 532px;
+	background: #fe315c url(http://img0.fengqucdn.com/cmsres/20160219/c52232bf-fda8-4079-9dcd-ebbb6fd5ad45.jpeg) no-repeat;
+}
+.banner2 figure{
+	text-align: center;
+	position: absolute;
+	left: 63px;
+	top: 187px;
+}
+.banner2 img{
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+}
+.banner2 figcaption{
+	width: 165px;
+	height: 31px;
+	line-height: 31px;
+	background: #fff;
+	position: relative;
+	top: -20px;
+}
+.banner2-num{
+	color: #fcf417;
+	font-size: 60px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 516px;
+	top: 243px;
+}
+.banner2 p{
+	color: #fff;
+	font-size: 28px;
+	font-weight: bold;
+	text-shadow: 0px 3px 0 #522021,3px 0px 0 #522021,0px -3px 0 #522021,-3px 0px 0 #522021;
+	position: absolute;
+	left: 260px;
+	top: 333px;
+}
+.banner2 p span{
+	color: #fcf417;
+}
+.banner2 p strong{
+	font-size: 36px;
+}
+.banner2-btn1, .banner2-btn2{
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ffaa5aa4-99f0-4760-89ad-78ea0e144bf3.png) center no-repeat;
+	height: 129px;
+	line-height: 278px;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 398px;
+	text-indent: -99em;
+}
+.banner2-btn1:visited{
+	color: #ed2650;
+}
+.btn5{
+	height: 85px;
+	display: block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/ac7b5723-5fa7-4607-b66d-4624d4db5522.png) no-repeat;
+	margin-bottom: 38px;
+	text-indent: -99em;
+}
+.banner2-btn3{
+	width: 291px;
+	height: 119px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/77b1cdbe-c477-4ea7-afd8-2558a816b7bb.png) no-repeat;
+	position: absolute;
+	left: 28px;
+	top: 400px;
+	text-indent: -999em;
+}
+.banner2-btn4{
+	width: 291px;
+	height: 123px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/357b318c-9a02-4b02-9a81-e154495e3600.png) no-repeat;
+	position: absolute;
+	left: 332px;
+	top: 395px;
+	text-indent: -999em;
+}
+.banner2-line{
+	height: 4px;
+	background: #fff;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 467px;
+}
+.dialog1{
+	text-align: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	padding-top: 413px;
+	background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160219/2f9e1cd6-5c0f-4881-99bd-f0f0bd9fb0c3.png) no-repeat center top;
+}
+.dialog1-b{
+	background: #fc315b;
+	-webkit-border-radius: 20px;
+	        border-radius: 20px;
+	position: relative;
+	width: 447px;
+	margin: 0 auto;
+	padding-top: 35px;
+	padding-bottom: 15px;
+}
+.dialog1 h2{
+	font-size: 38px;
+	color: #faec1f;
+	margin-bottom: 33px;
+}
+.dialog1 p{
+	color: #fff;
+	font-size: 24px;
+	line-height: 36px;
+	margin-bottom: 40px;
+}
+.dialog1 p span{
+	font-size: 30px;
+}
+.dialog1 p strong{
+	font-size: 30px;
+	font-weight: bold;
+}
+.dialog1-btn{
+	width: 421px;
+	height: 80px;
+	text-indent: -99em;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/8b189ac2-b8d0-4775-b6d2-0be3659797ae.png) no-repeat;
+	display: inline-block;
+}
+.dialog1-close{
+	width: 62px;
+	height: 62px;
+	line-height: 62px;
+	text-align: center;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	background: #fc315b;
+	position: absolute;
+	color: #fff;
+	right: -15px;
+	top: -15px;
+}
+.dialog1{
+	text-align: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	padding-top: 413px;
+	background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160219/2f9e1cd6-5c0f-4881-99bd-f0f0bd9fb0c3.png) no-repeat center top;
+}
+.dialog1-b{
+	background: #fc315b;
+	-webkit-border-radius: 20px;
+	        border-radius: 20px;
+	position: relative;
+	width: 447px;
+	margin: 0 auto;
+	padding-top: 35px;
+	padding-bottom: 15px;
+}
+.dialog1 h2{
+	font-size: 38px;
+	color: #faec1f;
+	margin-bottom: 33px;
+}
+.dialog1 p{
+	color: #fff;
+	font-size: 24px;
+	line-height: 36px;
+	margin-bottom: 40px;
+}
+.dialog1 p span{
+	font-size: 30px;
+}
+.dialog1 p strong{
+	font-size: 30px;
+	font-weight: bold;
+}
+.dialog1-btn{
+	width: 421px;
+	height: 80px;
+	text-indent: -99em;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/8b189ac2-b8d0-4775-b6d2-0be3659797ae.png) no-repeat;
+	display: inline-block;
+}
+.dialog1-close{
+	width: 62px;
+	height: 62px;
+	line-height: 62px;
+	text-align: center;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	background: #fc315b;
+	position: absolute;
+	color: #fff;
+	right: -15px;
+	top: -15px;
+}
+.dialog2 input{
+	width: 356px;
+	height: 53px;
+	line-height: 53px;
+	text-align: center;
+	font-size: 24px;
+	display: block;
+	margin: 47px auto 22px;
+	-webkit-border-radius: 6px;
+	        border-radius: 6px;
+	border: none;
+}
+.dialog2-btn{
+	width: 219px;
+	height: 80px;
+	text-indent: -99em;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/a905cbbc-108a-469b-8c84-7537ed1aa45f.png) no-repeat;
+	display: inline-block;
+}
+.dialog2{
+	background-image: url(http://img0.fengqucdn.com/cmsres/20160219/0dce2b7f-8e62-4e4e-aab8-e3d45ade198b.png);
+}
+.dialog1{
+	text-align: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	padding-top: 413px;
+	background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160219/2f9e1cd6-5c0f-4881-99bd-f0f0bd9fb0c3.png) no-repeat center top;
+}
+.dialog1-b{
+	background: #fc315b;
+	-webkit-border-radius: 20px;
+	        border-radius: 20px;
+	position: relative;
+	width: 447px;
+	margin: 0 auto;
+	padding-top: 35px;
+	padding-bottom: 15px;
+}
+.dialog1 h2{
+	font-size: 38px;
+	color: #faec1f;
+	margin-bottom: 33px;
+}
+.dialog1 p{
+	color: #fff;
+	font-size: 24px;
+	line-height: 36px;
+	margin-bottom: 40px;
+}
+.dialog1 p span{
+	font-size: 30px;
+}
+.dialog1 p strong{
+	font-size: 30px;
+	font-weight: bold;
+}
+.dialog1-btn{
+	width: 421px;
+	height: 80px;
+	text-indent: -99em;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/8b189ac2-b8d0-4775-b6d2-0be3659797ae.png) no-repeat;
+	display: inline-block;
+}
+.dialog1-close{
+	width: 62px;
+	height: 62px;
+	line-height: 62px;
+	text-align: center;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	background: #fc315b;
+	position: absolute;
+	color: #fff;
+	right: -15px;
+	top: -15px;
+}
+.dialog3-btn{
+	width: 219px;
+	height: 146px;
+	text-indent: -99em;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/0ac11249-8a50-4dec-ace8-4f343976f2f1.png) no-repeat;
+	display: inline-block;
+}
+.dialog3{
+	background-image: url(http://img0.fengqucdn.com/cmsres/20160219/861e8718-78dc-4487-8c6a-f19455e17079.png);
+}
+.record{
+	margin: 0 24px 44px;
+	background: #fff4f7;
+	padding: 5px 14px 72px;
+}
+.record caption{
+	font-size: 23px;
+	color: #fa305b;
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/c51ca72a-0638-4c60-8b53-f93778dd7207.png) center no-repeat;
+}
+.record table{
+	width: 100%;
+}
+.record td{
+	height: 60px;
+	line-height: 60px;
+	border-bottom: 1px solid #b2ab92;
+}
+.record img{
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	vertical-align: middle;
+}
+.record-add{
+	color: #fc315b;
+}
+.rule{
+	border: 5px solid #751325;
+	-webkit-box-shadow: 0 0 0 5px #b92240;
+	        box-shadow: 0 0 0 5px #b92240;
+	-webkit-border-radius: 10px;
+	        border-radius: 10px;
+	background: #fff6e1;
+	margin: 0 20px;
+	padding: 20px 0;
+}
+.rule h2{
+	color: #fe315c;
+	font-size: 26px;
+	height: 44px;
+	line-height: 44px;
+	margin-bottom: 24px;
+	text-align: center;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/d22cb680-872b-4b9c-880a-8a006947447c.png) center no-repeat;
+}
+.rule li{
+	font-size: 16px;
+	color: #666;
+	line-height: 27px;
+	margin-bottom: 35px;
+}
+.rule ol{
+	padding-left: 59px;
+	padding-right: 10px;
+}
+.rule ol, .rule li{
+	list-style-type: decimal;
+}
+body{
+	background: #fe315c;
+}
