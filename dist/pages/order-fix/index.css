@@ -426,3 +426,58 @@
 .order {
   background: #F6F8F9;
   margin-bottom: 10px; }
+
+/*
+@styleguide
+
+# 弹出窗
+
+*/
+.order-submit {
+  height: 62px; }
+
+.order-submit-fixed {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #f3f3f3;
+  border-top: 1px solid #dadada;
+  padding: 10px 12px;
+  line-height: 40px;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0; }
+
+.order-submit-c1 {
+  font-size: 15px;
+  line-height: 40px; }
+
+.order-submit-c1 .text-important {
+  font-size: 20px; }
+
+.order-submit .btn {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: block;
+  margin-left: 20px;
+  height: 40px;
+  line-height: 40px; }
+
+.order-fix-submit {
+  position: fixed;
+  bottom: 15px;
+  left: 10px;
+  right: 10px; }
+
+.order-fix-submit .btn {
+  width: 100%;
+  height: 40px;
+  line-height: 40px; }
