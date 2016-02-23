@@ -1,0 +1,215 @@
+.dialogs {
+    color: #fd6656;
+    text-align: center;
+    padding-top: 454px;
+    background: rgba(0,0,0,0.75) url(http://img0.fengqucdn.com/cmsres/20160222/b379bcc8-4af4-4dea-86e8-3c42214f94ce.png) no-repeat center 171px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+}
+.dialogs-tag {
+    position: absolute;
+    background: #fd6656;
+    color: #fff;
+    width: 26px;
+    height: 54px;
+    left: 193px;
+    top: 455px;
+    font-size: 21px
+}
+.dialogs-tag:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    border-width: 13px;
+    border-style: solid;
+    border-color: transparent transparent #feffef transparent
+}
+.dialogs-price {
+    font-size: 32px;
+    margin-bottom: 10px
+}
+.dialogs-price strong {
+    font-size: 79px
+}
+.dialogs-condition {
+    font-size: 18px;
+    margin-bottom: 6px
+}
+.dialogs p {
+    font-size: 15px;
+    margin-bottom: 101px
+}
+.dialogs-btns {
+    text-align: center
+}
+.dialogs-btns a {
+    margin: 0 14px
+}
+.dialogs-btn1 {
+    display: inline-block;
+    width: 235px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/05310fe5-9f04-42e1-8423-388450b3fe5c.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn2 {
+    display: inline-block;
+    width: 235px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/95ef6f35-f230-4430-aa58-88e7b0267e98.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn3 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/7271e89b-510e-433c-a419-98ab2fd36954.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn4 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/2c7b0288-6c0b-4a6f-bade-afd24ac930c9.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn5 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/0191526d-cc3e-4c02-9f84-2c2a0ff4c8ec.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn6 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/63a2de0c-d31c-4018-95ac-e7e1e4376f0c.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn7 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/11aff576-77fc-479e-9c67-1e56e33f6dff.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn8 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/c8229a47-6457-4ed2-bbd9-5bbadc97cf43.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-close {
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/4d81b671-4e9a-4fa5-8d02-7622008df711.png) no-repeat;
+    width: 55px;
+    height: 59px;
+    text-indent: -99em;
+    position: absolute;
+    top: 275px;
+    right: 50px
+}
+.dialogs-brand {
+    color: #fda556
+}
+.dialogs-brand .dialogs-tag {
+    background: #fda556
+}
+.dialogs-point {
+    color: #fccf78
+}
+.dialogs-point .dialogs-tag {
+    background: #fccf78
+}
+.dialogs-point .dialogs-price strong {
+    font-size: 90px;
+    padding-top: 10px;
+    display: inline-block
+}
+.dialogs-noThreshold-r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center
+}
+.dialogs-noThreshold .dialogs-condition {
+    width: 3em;
+    font-size: 24px;
+    margin-left: 19px
+}
+.dialogs-noThreshold .dialogs-price {
+    font-size: 42px
+}
+.dialogs-noThreshold .dialogs-price strong {
+    font-size: 104px
+}
+.dialogs-goods-r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-top: 10px
+}
+.dialogs-goods img {
+    width: 93px;
+    height: 93px
+}
+.dialogs-goods .dialogs-price {
+    font-size: 24px
+}
+.dialogs-goods .dialogs-price strong {
+    font-size: 61px
+}
+.dialogs-goods .dialogs-condition {
+    font-size: 18px
+}
+.dialogs-none {
+    padding-top: 680px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/7dfb6a19-f1a2-4ca9-92e1-b48a81caa978.png)
+}
+.dialogs-error {
+    padding-top: 680px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/6eac5b4f-c3a1-4678-affb-f0820e436713.png)
+}
+.dialogs-used {
+    padding-top: 680px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/5b36ed56-3c4b-4a5e-b42b-f277f8d058c6.png)
+}
+.dialogs-insufficient {
+    padding-top: 680px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/92250366-3387-4dbe-8417-f49640647dda.png)
+}
+.dialogs-lottery {
+    padding-top: 246px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/d3fc115e-7528-4131-8ac3-6001e9edfec1.png)
+}
+.dialogs-lottery-point {
+    font-size: 28px;
+    color: #ffeb39;
+    margin-bottom: 362px
+}
+.dialogs-lottery-point strong {
+    color: #ff4a4a;
+    font-size: 42px
+}

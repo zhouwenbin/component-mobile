@@ -1,0 +1,464 @@
+.carousel {
+    padding-top: 253px;
+    padding-bottom: 21px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/844ba5fb-cd93-4862-a533-b1ad27cfc2d4.jpeg) no-repeat
+}
+.carousel-point {
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/9b2ebfda-215f-451d-883c-6c36a9c25aff.jpeg)
+}
+.carousel p {
+    font-size: 22px;
+    color: #fdff5c;
+    text-align: center;
+    margin-bottom: 88px
+}
+.carousel ul {
+    overflow: hidden;
+    width: 470px;
+    margin: 0 auto 40px;
+    position: relative;
+    padding-left: 4px
+}
+.carousel li {
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/8151625f-d32b-4967-a6bd-25aedcc9c996.png) no-repeat;
+    width: 149px;
+    height: 148px;
+    float: left;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 2px 3px;
+    position: relative
+}
+.carousel li:nth-child(4) {
+    margin-right: 157px
+}
+.carousel li.go {
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160222/93ea2ace-598b-44b5-ba05-9e800d724d2e.png);
+    width: 150px;
+    height: 156px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%)
+}
+.carousel li.go:active {
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160222/57790cc2-6c36-4c83-9f81-1da84b437040.png)
+}
+.carousel img {
+    margin: auto
+}
+.carousel-times {
+    color: #b20707;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 37px
+}
+.carousel-times strong {
+    color: #fdff5c
+}
+.carousel-mask {
+    position: absolute;
+    -webkit-border-radius: 20px;
+            border-radius: 20px;
+    bottom: 5px;
+    left: 3px;
+    right: 2px;
+    top: 0;
+    background: #000000;
+    background: rgba(0,0,0,0.5)
+}
+.carousel.animation .carousel-mask {
+    -webkit-animation: carousel-mask 0.8s steps(1) infinite;
+            animation: carousel-mask 0.8s steps(1) infinite
+}
+.carousel.animation.paused .carousel-mask {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused
+}
+.carousel.animation li:nth-child(2) .carousel-mask {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s
+}
+.carousel.animation li:nth-child(3) .carousel-mask {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s
+}
+.carousel.animation li:nth-child(5) .carousel-mask {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s
+}
+.carousel.animation li:nth-child(8) .carousel-mask {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s
+}
+.carousel.animation li:nth-child(7) .carousel-mask {
+    -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s
+}
+.carousel.animation li:nth-child(6) .carousel-mask {
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s
+}
+.carousel.animation li:nth-child(4) .carousel-mask {
+    -webkit-animation-delay: 0.7s;
+            animation-delay: 0.7s
+}
+.carousel-btns {
+    text-indent: center
+}
+.carousel-btn1 {
+    display: inline-block;
+    width: 256px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/b9fe0cc4-b5bd-4e2d-ab05-a4e9189e0fd9.png) no-repeat;
+    text-indent: -99em;
+    margin: 0 16px
+}
+.carousel-btn2 {
+    display: inline-block;
+    width: 256px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/a183a249-e62e-4555-aa34-c2eea37e90d6.png) no-repeat;
+    text-indent: -99em;
+    margin: 0 16px
+}
+.carousel-light {
+    width: 528px;
+    height: 530px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/9aa30e46-72eb-40f3-baad-0df420dee7df.png) no-repeat;
+    position: absolute;
+    left: 55px;
+    top: 326px
+}
+.carousel.animation .carousel-light {
+    -webkit-animation: carousel-light 0.4s steps(1) infinite;
+            animation: carousel-light 0.4s steps(1) infinite
+}
+.carousel.animation.paused .carousel-light {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused
+}
+@-webkit-keyframes carousel-light {
+    50% {
+        background-position: left -530px
+    }
+}
+@keyframes carousel-light {
+    50% {
+        background-position: left -530px
+    }
+}
+@-webkit-keyframes carousel-mask {
+    12.5% {
+        opacity: 0
+    }
+    0%, 25% {
+        opacity: 1
+    }
+}
+@keyframes carousel-mask {
+    12.5% {
+        opacity: 0
+    }
+    0%, 25% {
+        opacity: 1
+    }
+}
+.recording {
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/a7cf3ce4-5803-46ff-ae0f-962c2301efe3.jpeg) no-repeat;
+    height: 1013px;
+    text-align: center;
+    padding-top: 170px;
+    position: relative
+}
+.recording-table {
+    height: 780px;
+    overflow-y: auto
+}
+.recording table {
+    width: 564px;
+    margin: 0 auto;
+    max-height: 765px
+}
+.recording th {
+    color: #860000;
+    font-size: 28px;
+    font-weight: bold;
+    height: 60px;
+    line-height: 60px
+}
+.recording td {
+    color: #525252;
+    font-size: 18px;
+    height: 54px;
+    line-height: 54px
+}
+.recording-more a {
+    color: #860000 ;
+    font-size: 19px;
+    margin-right: 10px
+}
+.rule {
+    background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160222/2b3e4867-1d4f-4ec7-97c5-7fb5bb297429.png) no-repeat center 87px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 279px 129px 0
+}
+.rule ol {
+    margin-bottom: 40px
+}
+.rule li {
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+    margin-bottom: 23px;
+    padding-left: 34px
+}
+.rule-num {
+    text-align: center;
+    float: left;
+    margin-left: -34px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    background: #ffd82f;
+    color: #011d4f
+}
+.rule-more {
+    color: #ffd82f !important;
+    font-size: 18px;
+    margin-left: 120px;
+    margin-top: 10px
+}
+.rule-close {
+    width: 61px;
+    height: 61px;
+    text-indent: -99em;
+    position: absolute;
+    top: 187px;
+    right: 50px
+}
+.dialogs {
+    color: #fd6656;
+    text-align: center;
+    padding-top: 454px;
+    background: rgba(0,0,0,0.75) url(http://img0.fengqucdn.com/cmsres/20160222/b379bcc8-4af4-4dea-86e8-3c42214f94ce.png) no-repeat center 171px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+}
+.dialogs-tag {
+    position: absolute;
+    background: #fd6656;
+    color: #fff;
+    width: 26px;
+    height: 54px;
+    left: 193px;
+    top: 455px;
+    font-size: 21px
+}
+.dialogs-tag:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    border-width: 13px;
+    border-style: solid;
+    border-color: transparent transparent #feffef transparent
+}
+.dialogs-price {
+    font-size: 32px;
+    margin-bottom: 10px
+}
+.dialogs-price strong {
+    font-size: 79px
+}
+.dialogs-condition {
+    font-size: 18px;
+    margin-bottom: 6px
+}
+.dialogs p {
+    font-size: 15px;
+    margin-bottom: 101px
+}
+.dialogs-btns {
+    text-align: center
+}
+.dialogs-btns a {
+    margin: 0 14px
+}
+.dialogs-btn1 {
+    display: inline-block;
+    width: 235px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/05310fe5-9f04-42e1-8423-388450b3fe5c.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn2 {
+    display: inline-block;
+    width: 235px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/95ef6f35-f230-4430-aa58-88e7b0267e98.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn3 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/7271e89b-510e-433c-a419-98ab2fd36954.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn4 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/2c7b0288-6c0b-4a6f-bade-afd24ac930c9.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn5 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/0191526d-cc3e-4c02-9f84-2c2a0ff4c8ec.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn6 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/63a2de0c-d31c-4018-95ac-e7e1e4376f0c.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn7 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/11aff576-77fc-479e-9c67-1e56e33f6dff.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-btn8 {
+    display: inline-block;
+    width: 304px;
+    height: 83px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160223/c8229a47-6457-4ed2-bbd9-5bbadc97cf43.png) no-repeat;
+    text-indent: -99em
+}
+.dialogs-close {
+    background: url(http://img0.fengqucdn.com/cmsres/20160222/4d81b671-4e9a-4fa5-8d02-7622008df711.png) no-repeat;
+    width: 55px;
+    height: 59px;
+    text-indent: -99em;
+    position: absolute;
+    top: 275px;
+    right: 50px
+}
+.dialogs-brand {
+    color: #fda556
+}
+.dialogs-brand .dialogs-tag {
+    background: #fda556
+}
+.dialogs-point {
+    color: #fccf78
+}
+.dialogs-point .dialogs-tag {
+    background: #fccf78
+}
+.dialogs-point .dialogs-price strong {
+    font-size: 90px;
+    padding-top: 10px;
+    display: inline-block
+}
+.dialogs-noThreshold-r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center
+}
+.dialogs-noThreshold .dialogs-condition {
+    width: 3em;
+    font-size: 24px;
+    margin-left: 19px
+}
+.dialogs-noThreshold .dialogs-price {
+    font-size: 42px
+}
+.dialogs-noThreshold .dialogs-price strong {
+    font-size: 104px
+}
+.dialogs-goods-r1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-top: 10px
+}
+.dialogs-goods img {
+    width: 93px;
+    height: 93px
+}
+.dialogs-goods .dialogs-price {
+    font-size: 24px
+}
+.dialogs-goods .dialogs-price strong {
+    font-size: 61px
+}
+.dialogs-goods .dialogs-condition {
+    font-size: 18px
+}
+.dialogs-none {
+    padding-top: 680px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/7dfb6a19-f1a2-4ca9-92e1-b48a81caa978.png)
+}
+.dialogs-error {
+    padding-top: 680px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/6eac5b4f-c3a1-4678-affb-f0820e436713.png)
+}
+.dialogs-used {
+    padding-top: 680px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/5b36ed56-3c4b-4a5e-b42b-f277f8d058c6.png)
+}
+.dialogs-insufficient {
+    padding-top: 680px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/92250366-3387-4dbe-8417-f49640647dda.png)
+}
+.dialogs-lottery {
+    padding-top: 246px;
+    background-image: url(http://img0.fengqucdn.com/cmsres/20160223/d3fc115e-7528-4131-8ac3-6001e9edfec1.png)
+}
+.dialogs-lottery-point {
+    font-size: 28px;
+    color: #ffeb39;
+    margin-bottom: 362px
+}
+.dialogs-lottery-point strong {
+    color: #ff4a4a;
+    font-size: 42px
+}

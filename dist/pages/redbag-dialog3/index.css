@@ -156,7 +156,7 @@
 }
 .redbag-dialog1{
 	text-align: center;
-	position: fixed;
+	position: absolute;
 	left: 0;
 	top: 0;
 	right: 0;
