@@ -1,0 +1,45 @@
+.rule{
+	background:rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160222/2b3e4867-1d4f-4ec7-97c5-7fb5bb297429.png) no-repeat center 87px;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	padding: 279px 129px 0;
+}
+.rule ol{
+	margin-bottom: 40px;
+}
+.rule li{
+	font-size: 18px;
+	line-height: 24px;
+	color: #fff;
+	margin-bottom: 23px;
+	padding-left: 34px;
+}
+.rule-num{
+	text-align: center;
+	float: left;
+	margin-left: -34px;
+	width: 26px;
+	height: 26px;
+	line-height: 26px;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	background: #ffd82f;
+	color: #011d4f;
+}
+.rule-more{
+	color: #ffd82f !important;
+	font-size: 18px;
+	margin-left: 120px;
+	margin-top: 10px;
+}
+.rule-close{
+	width: 61px;
+	height: 61px;
+	text-indent: -99em;
+	position: absolute;
+	top: 187px;
+	right: 50px;
+}
