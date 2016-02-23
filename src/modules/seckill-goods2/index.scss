@@ -249,16 +249,17 @@ img{
 			color: #fff;
 		}
 	}
-	.active{
-		background-color: #F13C34;
-		border-left-color: #838383;
-	}
 	.seckill-times-item{
 		display: block;
 		font-size: 20px * 2;
 		margin-top: 8px * 2;
 		margin-bottom: 2px * 2;
 	}
+}
+.seckill-times .active,
+.seckill-times .done.active{
+	background-color: #F13C34;
+	border-left-color: #838383;
 }
 .seckill-times .active::after{
 	content: "";
