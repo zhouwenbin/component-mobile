@@ -5,10 +5,12 @@
 # 优惠券
 
 */
-.order {
-  background: #F6F8F9;
-  margin-bottom: 10px; }
+/*
+@styleguide
 
+# 优惠券
+
+*/
 .order-h {
   background: #fff; }
 
@@ -147,3 +149,7 @@
 .order-agree a {
   color: #5aa3e8;
   margin-left: 8px; }
+
+.order {
+  background: #F6F8F9;
+  margin-bottom: 10px; }

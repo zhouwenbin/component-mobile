@@ -13,12 +13,19 @@
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
 }
+.orderinfo-h{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  margin-bottom: 17px;
+  padding: 23px 0 10px;
+}
+.orderinfo-hc2{
+}
 .orderinfo h2 {
   font-size: 14px;
-  padding: 23px 0 10px;
-  background: #fff;
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 17px;
 }
 .orderinfo h2:before {
   content: '';
