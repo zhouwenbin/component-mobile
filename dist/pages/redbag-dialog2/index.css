@@ -161,8 +161,9 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
+	z-index: 999;
 	padding-top: 413px;
-	background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160219/2f9e1cd6-5c0f-4881-99bd-f0f0bd9fb0c3.png) no-repeat center top;
+	background: url(http://img0.fengqucdn.com/cmsres/20160219/2f9e1cd6-5c0f-4881-99bd-f0f0bd9fb0c3.png) no-repeat center top;
 }
 .redbag-dialog1-b{
 	background: #fc315b;
