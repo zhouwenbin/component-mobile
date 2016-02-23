@@ -66,31 +66,31 @@
 	background: rgba(0,0,0,0.5);
 }
 .carousel.animation .carousel-mask{
-	animation:carousel-mask 1s steps(8) infinite;
+	animation:carousel-mask 0.8s steps(1) infinite;
 }
 .carousel.animation.paused .carousel-mask{
 	animation-play-state:paused;
 }
 .carousel.animation li:nth-child(2) .carousel-mask{
-	animation-delay:calc(0.125s * 1);
+	animation-delay:calc(0.1s * 1);
 }
 .carousel.animation li:nth-child(3) .carousel-mask{
-	animation-delay:calc(0.125s * 2);
+	animation-delay:calc(0.1s * 2);
 }
 .carousel.animation li:nth-child(5) .carousel-mask{
-	animation-delay:calc(0.125s * 3);
+	animation-delay:calc(0.1s * 3);
 }
 .carousel.animation li:nth-child(8) .carousel-mask{
-	animation-delay:calc(0.125s * 4);
+	animation-delay:calc(0.1s * 4);
 }
 .carousel.animation li:nth-child(7) .carousel-mask{
-	animation-delay:calc(0.125s * 5);
+	animation-delay:calc(0.1s * 5);
 }
 .carousel.animation li:nth-child(6) .carousel-mask{
-	animation-delay:calc(0.125s * 6);
+	animation-delay:calc(0.1s * 6);
 }
 .carousel.animation li:nth-child(4) .carousel-mask{
-	animation-delay:calc(0.125s * 7);
+	animation-delay:calc(0.1s * 7);
 }
 .carousel-btns{
 	text-indent: center;
@@ -120,7 +120,7 @@
 	top: 326px;
 }
 .carousel.animation .carousel-light{
-	animation:carousel-light 0.5s steps(1) infinite;
+	animation:carousel-light 0.4s steps(1) infinite;
 }
 .carousel.animation.paused .carousel-light{
 	animation-play-state:paused;

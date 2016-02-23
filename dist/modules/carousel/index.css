@@ -73,40 +73,40 @@
 	background: rgba(0,0,0,0.5);
 }
 .carousel.animation .carousel-mask{
-	-webkit-animation:carousel-mask 1s steps(8) infinite;
-	        animation:carousel-mask 1s steps(8) infinite;
+	-webkit-animation:carousel-mask 0.8s steps(1) infinite;
+	        animation:carousel-mask 0.8s steps(1) infinite;
 }
 .carousel.animation.paused .carousel-mask{
 	-webkit-animation-play-state:paused;
 	        animation-play-state:paused;
 }
 .carousel.animation li:nth-child(2) .carousel-mask{
-	-webkit-animation-delay:0.125s;
-	        animation-delay:0.125s;
+	-webkit-animation-delay:0.1s;
+	        animation-delay:0.1s;
 }
 .carousel.animation li:nth-child(3) .carousel-mask{
-	-webkit-animation-delay:0.25s;
-	        animation-delay:0.25s;
+	-webkit-animation-delay:0.2s;
+	        animation-delay:0.2s;
 }
 .carousel.animation li:nth-child(5) .carousel-mask{
-	-webkit-animation-delay:0.375s;
-	        animation-delay:0.375s;
+	-webkit-animation-delay:0.3s;
+	        animation-delay:0.3s;
 }
 .carousel.animation li:nth-child(8) .carousel-mask{
+	-webkit-animation-delay:0.4s;
+	        animation-delay:0.4s;
+}
+.carousel.animation li:nth-child(7) .carousel-mask{
 	-webkit-animation-delay:0.5s;
 	        animation-delay:0.5s;
 }
-.carousel.animation li:nth-child(7) .carousel-mask{
-	-webkit-animation-delay:0.625s;
-	        animation-delay:0.625s;
-}
 .carousel.animation li:nth-child(6) .carousel-mask{
-	-webkit-animation-delay:0.75s;
-	        animation-delay:0.75s;
+	-webkit-animation-delay:0.6s;
+	        animation-delay:0.6s;
 }
 .carousel.animation li:nth-child(4) .carousel-mask{
-	-webkit-animation-delay:0.875s;
-	        animation-delay:0.875s;
+	-webkit-animation-delay:0.7s;
+	        animation-delay:0.7s;
 }
 .carousel-btns{
 	text-indent: center;
@@ -136,8 +136,8 @@
 	top: 326px;
 }
 .carousel.animation .carousel-light{
-	-webkit-animation:carousel-light 0.5s steps(1) infinite;
-	        animation:carousel-light 0.5s steps(1) infinite;
+	-webkit-animation:carousel-light 0.4s steps(1) infinite;
+	        animation:carousel-light 0.4s steps(1) infinite;
 }
 .carousel.animation.paused .carousel-light{
 	-webkit-animation-play-state:paused;
