@@ -286,7 +286,7 @@ img {
   background-color: #F13C34;
   border-left-color: #838383; }
 
-.seckill-times .active:after {
+.seckill-times .current:after {
   content: "";
   position: absolute;
   left: 50%;
@@ -410,28 +410,28 @@ img {
   margin-top: 10px; }
 
 .seckill-tag {
-  height: 36px;
-  line-height: 36px;
-  background: #FFAA35;
+  height: 32px;
+  line-height: 32px;
   padding: 0 10px;
   display: inline-block;
   color: #fff;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
   margin-left: 10px;
+  background: #FFAA35;
   position: relative; }
 
 .seckill-tag:before {
   content: '';
-  width: 29px;
-  height: 29px;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  width: 23px;
+  height: 23px;
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  position: absolute;
+  left: -10px;
+  top: 4px;
   background: -webkit-linear-gradient(45deg, #FFAA35 50%, transparent 0);
   background: linear-gradient(45deg, #FFAA35 50%, transparent 0);
-  position: absolute;
-  left: -9px;
-  top: 4px;
   -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
           transform: rotate(45deg); }
@@ -445,4 +445,5 @@ img {
   background: #fff;
   position: absolute;
   left: -3px;
-  top: 15px; }
+  top: 50%;
+  margin-top: -3px; }
