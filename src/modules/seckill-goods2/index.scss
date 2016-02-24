@@ -287,7 +287,7 @@ img{
 }
 .seckill-count-title h2 span{
 	font-size:28px;
-	vertical-align:middle;
+	vertical-align:0;
 }
 
 .seckill-goods-list .fast-buy-btn{
@@ -362,7 +362,8 @@ img{
 }
 .seckill-process{
 	height:32px;
-	line-height:32px;
+	line-height: 1;
+	padding-top: 4px;
 	border-radius:16px;
 	border:1px solid rgba(241,60,52,0.51);
 	color:#E73736;
