@@ -134,3 +134,43 @@
 		background-position: left -530px; 
 	}
 }
+.carousel-coupon{
+	background: url(http://img0.fengqucdn.com/cmsres/20160224/58231027-7760-46c6-b06b-5e0af28a1b77.png) no-repeat center;
+	height: 99px;
+	width: 130px;
+	color: #fccf78;
+	text-align: center;
+	padding: 10px 6px 0;
+	margin: auto;
+}
+.carousel-coupon-price{
+	border-top: 1px solid #fccf78;
+	font-size: 20px;
+	margin-bottom: 4px;
+}
+.carousel-coupon-price strong{
+	font-size: 49px;
+}
+.carousel-coupon-name{
+	font-size: 18px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #fccf78;
+}
+.carousel-coupon-red{
+	color: #fd6656;
+}
+.carousel-coupon-red .carousel-coupon-price{
+	border-color: #fd6656
+}
+.carousel-coupon-red .carousel-coupon-name{
+	border-color: #fd6656
+}
+.carousel-coupon-orange{
+	color: #fda556;
+}
+.carousel-coupon-orange .carousel-coupon-price{
+	border-color: #fda556
+}
+.carousel-coupon-orange .carousel-coupon-name{
+	border-color: #fda556
+}
