@@ -392,17 +392,18 @@ img {
   padding: 0 14px; }
 
 .seckill-process {
-  height: 32px;
-  line-height: 1;
-  padding-top: 4px;
+  height: 24px;
+  line-height: 24px;
+  padding: 4px 0 4px 16px;
   -webkit-border-radius: 16px;
           border-radius: 16px;
   border: 1px solid #F13C34;
   border: 1px solid rgba(241, 60, 52, 0.51);
   color: #E73736;
   width: 280px;
-  padding-left: 16px;
-  position: relative; }
+  position: relative;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box; }
 
 .seckill-comment {
   color: #9b9b9b;
