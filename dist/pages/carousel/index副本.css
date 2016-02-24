@@ -97,7 +97,7 @@
     right: 2px;
     top: 0;
     background: #000000;
-    background: rgba(0,0,0,0.75)
+    background: rgba(0,0,0,0.5)
 }
 .carousel-btns {
     text-indent: center
@@ -403,7 +403,4 @@
 .dialogs-lottery-point strong {
     color: #ff4a4a;
     font-size: 42px
-}
-body {
-    background: #ffd82f
 }

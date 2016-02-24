@@ -130,26 +130,101 @@ mobileUtil.fixScreen();
 <link href="index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div class="carousel animation"><!-- animation控制动画，paused控制暂停 -->
+  <div class="carousel animation">
       <div class="carousel-light"></div>
-    	<p>中奖播报：131****1221获得 200元无门槛优惠券</p>
-    	<ul>
-    		<li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
-    		<li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
-    		<li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
-    		<li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
-    		<li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
-    		<li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
-    		<li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
-    		<li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
-    		<li class="go"></li>
-    	</ul>
-    	<div class="carousel-times">今天还有<strong>3</strong>次免费机会</div>
-    	<div class="carousel-btns">
-    		<a href="" class="carousel-btn1">活动规则</a>
-    		<a href="" class="carousel-btn2">我的中奖纪录</a>
-    	</div>
+      <p>中奖播报：131****1221获得 200元无门槛优惠券</p>
+      <ul>
+        <li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
+        <li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
+        <li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
+        <li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
+        <li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
+        <li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
+        <li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
+        <li><img src="http://img0.fengqucdn.com/cmsres/20160222/1109403f-32a5-4e36-9203-612e09da9d09.png"><div class="carousel-mask"></div></li>
+      </ul>
+      <button class="go"></button>
+      <div class="carousel-times">今天还有<strong>3</strong>次免费机会</div>
+      <div class="carousel-btns">
+        <a href="" class="carousel-btn1">活动规则</a>
+        <a href="" class="carousel-btn2">我的中奖纪录</a>
+      </div>
     </div>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+    !function() {
+      
+      var $show = $(".carousel");
+      var $list = $show.find("li");
+      var $btn = $(".go");
+      
+      $btn.on("click", function() {
+        
+        if( $btn.prop("disabled") ) { return; }
+        
+        var i = 0;  //已跑次数.
+        var min = $list.length * 4;  //最少跑多少圈.
+        var now = 0;  //当前格子索引.
+        var animateTime = 20;  //动画持续时间.
+        var step = 10;  //动画时间增量.
+        
+        //生成结果.
+        var revalue = (Math.random() * 8)|0;
+        
+        //禁用按钮.
+        $btn.prop("disabled", true);
+        
+        //抽奖动画.
+        function animate(target) {
+          
+          target == undefined && (target = revalue);
+          
+          $list.removeClass("now").eq(target).addClass("now");
+          
+          //速度越来越慢.
+          animateTime += step;
+          
+          //已跑次数递增 1 次.
+          i += 1;
+          
+        };
+        
+        function play() {
+          
+          animate(now);
+          
+          //如果未到最小次数，位置进一.
+          i <= min && (now += 1);
+          //如果跑到最后一格，则从头再跑.
+          now > 7 && (now = 0);
+          
+          //未达到最小次数，则继续跑；否则导去结果.
+          i <= min
+            ? setTimeout(play, animateTime)
+            : stop();
+        }
+        
+        function stop() {
+          
+          if( now != revalue ) {
+            setTimeout(stop, animateTime);
+            animate(now++);
+          } else {
+            setTimeout(animate, animateTime);
+            setTimeout(function() {
+              $btn.prop("disabled", false);
+            }, animateTime + step);
+          }
+          
+          return;
+        }
+        
+        play();
+        
+      });
+      
+    }($);
+    </script>
   <div class="dialogs">
       <div class="dialogs-tag">满减</div>
       <div class="dialogs-price">¥<strong>200</strong></div>

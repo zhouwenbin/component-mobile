@@ -1,4 +1,5 @@
 .carousel {
+    width: 640px;
     padding-top: 253px;
     padding-bottom: 21px;
     background: url(http://img0.fengqucdn.com/cmsres/20160223/844ba5fb-cd93-4862-a533-b1ad27cfc2d4.jpeg) no-repeat
@@ -15,6 +16,7 @@
 .carousel ul {
     overflow: hidden;
     width: 470px;
+    height: 453px;
     margin: 0 auto 40px;
     position: relative;
     padding-left: 4px
@@ -23,30 +25,56 @@
     background: url(http://img0.fengqucdn.com/cmsres/20160222/8151625f-d32b-4967-a6bd-25aedcc9c996.png) no-repeat;
     width: 149px;
     height: 148px;
-    float: left;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin: 0 2px 3px;
-    position: relative
+    position: absolute
+}
+.carousel li:nth-child(1) {
+    left: 8px
+}
+.carousel li:nth-child(2) {
+    left: 162px
+}
+.carousel li:nth-child(3) {
+    left: 316px
 }
 .carousel li:nth-child(4) {
-    margin-right: 157px
+    left: 316px;
+    top: 154px
 }
-.carousel li.go {
-    background-image: url(http://img0.fengqucdn.com/cmsres/20160222/93ea2ace-598b-44b5-ba05-9e800d724d2e.png);
+.carousel li:nth-child(5) {
+    left: 316px;
+    top: 306px
+}
+.carousel li:nth-child(6) {
+    left: 162px;
+    top: 306px
+}
+.carousel li:nth-child(7) {
+    left: 8px;
+    top: 306px
+}
+.carousel li:nth-child(8) {
+    left: 8px;
+    top: 154px
+}
+.carousel .go {
+    outline: 0;
+    border: none;
+    background: transparent url(http://img0.fengqucdn.com/cmsres/20160222/93ea2ace-598b-44b5-ba05-9e800d724d2e.png) no-repeat;
     width: 150px;
     height: 156px;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%,-50%);
-        -ms-transform: translate(-50%,-50%);
-            transform: translate(-50%,-50%)
+    left: 246px;
+    top: 511px
 }
-.carousel li.go:active {
+.carousel .go:active {
     background-image: url(http://img0.fengqucdn.com/cmsres/20160222/57790cc2-6c36-4c83-9f81-1da84b437040.png)
+}
+.carousel li.now .carousel-mask {
+    display: none
 }
 .carousel img {
     margin: auto
@@ -69,43 +97,7 @@
     right: 2px;
     top: 0;
     background: #000000;
-    background: rgba(0,0,0,0.5)
-}
-.carousel.animation .carousel-mask {
-    -webkit-animation: carousel-mask 0.8s steps(1) infinite;
-            animation: carousel-mask 0.8s steps(1) infinite
-}
-.carousel.animation.paused .carousel-mask {
-    -webkit-animation-play-state: paused;
-            animation-play-state: paused
-}
-.carousel.animation li:nth-child(2) .carousel-mask {
-    -webkit-animation-delay: 0.1s;
-            animation-delay: 0.1s
-}
-.carousel.animation li:nth-child(3) .carousel-mask {
-    -webkit-animation-delay: 0.2s;
-            animation-delay: 0.2s
-}
-.carousel.animation li:nth-child(5) .carousel-mask {
-    -webkit-animation-delay: 0.3s;
-            animation-delay: 0.3s
-}
-.carousel.animation li:nth-child(8) .carousel-mask {
-    -webkit-animation-delay: 0.4s;
-            animation-delay: 0.4s
-}
-.carousel.animation li:nth-child(7) .carousel-mask {
-    -webkit-animation-delay: 0.5s;
-            animation-delay: 0.5s
-}
-.carousel.animation li:nth-child(6) .carousel-mask {
-    -webkit-animation-delay: 0.6s;
-            animation-delay: 0.6s
-}
-.carousel.animation li:nth-child(4) .carousel-mask {
-    -webkit-animation-delay: 0.7s;
-            animation-delay: 0.7s
+    background: rgba(0,0,0,0.75)
 }
 .carousel-btns {
     text-indent: center
@@ -150,21 +142,5 @@
 @keyframes carousel-light {
     50% {
         background-position: left -530px
-    }
-}
-@-webkit-keyframes carousel-mask {
-    12.5% {
-        opacity: 0
-    }
-    0%, 25% {
-        opacity: 1
-    }
-}
-@keyframes carousel-mask {
-    12.5% {
-        opacity: 0
-    }
-    0%, 25% {
-        opacity: 1
     }
 }

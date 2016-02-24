@@ -2,3 +2,6 @@
 @import '../../modules/carousel-recording/index.css';
 @import '../../modules/carousel-rule/index.css';
 @import '../../modules/carousel-dialogs/index.css';
+body{
+	background: #ffd82f;
+}
