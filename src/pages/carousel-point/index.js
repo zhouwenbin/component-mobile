@@ -24,8 +24,4 @@ require(['jquery', 'carousel', 'carouselBroadcast'],function($, carousel, carous
 	 * 都可以通过依赖关系，把这些”全局变量”作为参数传递到模块的实现体里，
 	 * 在实现中就避免了访问或者声明全局的变量或者函数，有效的避免大量而且复杂的命名空间管理。
 	 */
-	$(function(){
-		carousel.init();
-		carouselBroadcast.init();
-	})
 });
