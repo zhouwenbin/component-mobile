@@ -47,11 +47,13 @@ gulp.task('watch', function() {
     gulp.watch("src/pages/"+ pages[i] +"/**.html",["html"]);
     gulp.watch("src/pages/"+ pages[i] +"/**.css",["css"]);
     gulp.watch("src/pages/"+ pages[i] +"/**.scss",["scss"]);
+    gulp.watch("src/pages/"+ pages[i] +"/**.js",["js"]);
   }
   for(var i in modules){
     gulp.watch("src/modules/"+ modules[i] +"/**.html",["html"]);
     gulp.watch("src/modules/"+ modules[i] +"/**.css",["css"]);
     gulp.watch("src/modules/"+ modules[i] +"/**.scss",["scss"]);
+    gulp.watch("src/modules/"+ modules[i] +"/**.js",["js"]);
   }
 });
 

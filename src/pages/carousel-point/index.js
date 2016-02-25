@@ -9,7 +9,8 @@ require.config({
 	//baseUrl: "./js", //所有模块的base URL,注意，以.js结尾的文件加载时不会使用该baseUrl
 	paths:{
 		jquery:"../../vender/jquery-1.7.1.min" ,
-		carousel:"../../modules/carousel/index"
+		carousel:"../../modules/carousel/index" ,
+		carouselBroadcast:"../../modules/carousel-broadcast/index"
 	}
 	//, waitSeconds: 10   //waitSeconds是指定最多花多长等待时间来加载一个JavaScript文件，用户不指定的情况下默认为7秒
 });
@@ -17,7 +18,7 @@ require.config({
  * [description]
  * @return {[type]} [description]
  */
-require(['jquery', 'carousel'],function($, carousel){ //require函数的第一个参数是数组，数组中存放的是模块名（字符串类型），数组中的模块与回调函数的参数一一对应 
+require(['jquery', 'carousel', 'carouselBroadcast'],function($, carousel, carouselBroadcast){ //require函数的第一个参数是数组，数组中存放的是模块名（字符串类型），数组中的模块与回调函数的参数一一对应 
 	/**
 	 * 模块化的设计使得JavaScript代码在需要访问”全局变量”的时候，
 	 * 都可以通过依赖关系，把这些”全局变量”作为参数传递到模块的实现体里，
@@ -25,7 +26,6 @@ require(['jquery', 'carousel'],function($, carousel){ //require函数的第一�
 	 */
 	$(function(){
 		carousel.init();
+		carouselBroadcast.init();
 	})
 });
-
-

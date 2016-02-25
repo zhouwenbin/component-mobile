@@ -1,5 +1,5 @@
 define(['jquery'], function ($){
-	var $show = $(".carousel");
+	var $show = $(".carousel-list");
 	var $list = $show.find("li");
 	var $btn = $(".go");
 

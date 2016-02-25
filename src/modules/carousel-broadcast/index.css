@@ -1,0 +1,13 @@
+.carousel-broadcast{
+	font-size: 22px;
+	color: #fdff5c;
+	text-align: center;
+	margin-bottom: 88px;
+	display: flex;
+	height: 22px;
+	overflow: hidden;
+	padding-left: 83px;
+}
+.carousel-broadcast ul{
+	position: relative;
+}
