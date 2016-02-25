@@ -1,11 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta content="target-densitydpi=device-dpi,width=640" name="viewport">
-<title>幸运大转盘</title>
-<script type="text/javascript">
-	/**
+/**
  * MobileWeb 通用功能助手，包含常用的 UA 判断、页面适配、search 参数转 键值对。
  * 该 JS 应在 head 中尽可能早的引入，减少重绘。
  *
@@ -125,73 +118,3 @@ window.mobileUtil = (function(win, doc) {
 
 // 默认直接适配页面
 mobileUtil.fixScreen();
-</script>
-<link href="../../../app/static/css/pages/common/common.css" rel="stylesheet" type="text/css" />
-<link href="index.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <div class="carousel animation">
-      <div class="carousel-light"></div>
-      <p>中奖播报：131****1221获得 200元无门槛优惠券</p>
-      <ul>
-        <li>
-          <div class="carousel-coupon">
-            <div class="carousel-coupon-price"><strong>1000</strong></div>
-            <div class="carousel-coupon-name">积分奖励</div>
-          </div>
-          <div class="carousel-mask"></div>
-        </li>
-        <li><img src="http://img0.fengqucdn.com/cmsres/20160224/90d15f4d-bd59-4252-823f-f28f2852a714.png"><div class="carousel-mask"></div></li>
-        <li><img src="http://img0.fengqucdn.com/cmsres/20160224/3b97aeb7-1833-4564-9431-7b73765c112e.png"><div class="carousel-mask"></div></li>
-        <li>
-          <div class="carousel-coupon carousel-coupon-red">
-            <div class="carousel-coupon-price">¥<strong>200</strong></div>
-            <div class="carousel-coupon-name">满1999立减</div>
-          </div>
-          <div class="carousel-mask"></div>
-        </li>
-        <li>
-          <div class="carousel-coupon carousel-coupon-orange">
-            <div class="carousel-coupon-price">¥<strong>50</strong></div>
-            <div class="carousel-coupon-name">资生堂品牌券</div>
-          </div>
-          <div class="carousel-mask"></div>
-        </li>
-        <li>
-          <div class="carousel-coupon carousel-coupon-red">
-            <div class="carousel-coupon-price">¥<strong>5</strong></div>
-            <div class="carousel-coupon-name">无门槛优惠券</div>
-          </div>
-          <div class="carousel-mask"></div>
-        </li>
-        <li>
-          <div class="carousel-coupon carousel-coupon-orange">
-            <div class="carousel-coupon-price">¥<strong>50</strong></div>
-            <div class="carousel-coupon-name">BOON单品券</div>
-          </div>
-          <div class="carousel-mask"></div>
-        </li>
-        <li>
-          <div class="carousel-coupon carousel-coupon-red">
-            <div class="carousel-coupon-price">¥<strong>200</strong></div>
-            <div class="carousel-coupon-name">满1999立减</div>
-          </div>
-          <div class="carousel-mask"></div>
-        </li>
-      </ul>
-      <button class="go"></button>
-      <div class="carousel-times">今天还有<strong>3</strong>次免费机会</div>
-      <div class="carousel-btns">
-        <a href="" class="carousel-btn1">活动规则</a>
-        <a href="" class="carousel-btn2">我的中奖纪录</a>
-      </div>
-    </div>
-  <div class="dialogs dialogs-lottery">
-    	<div class="dialogs-lottery-point">本次抽奖消耗<strong>99</strong>积分</div>
-    	<div class="dialogs-btns">
-    		<a class="dialogs-btn8">朕要抽奖</a>
-    	</div>
-    	<div class="dialogs-close">关闭</div>
-    </div>
-</body>
-</html>
