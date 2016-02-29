@@ -13,11 +13,15 @@
 }
 .record table{
 	width: 100%;
+	table-layout: fixed;
 }
 .record td{
 	height: 60px;
 	line-height: 60px;
 	border-bottom: 1px solid #b2ab92;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .record img{
 	border-radius: 50%;
