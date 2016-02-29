@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="20px" height="19px" viewBox="0 0 20 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.4.2 (15857) - http://www.bohemiancoding.com/sketch -->
-    <title>Star 1</title>
+<svg width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>Fill 1</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="新品推荐" sketch:type="MSArtboardGroup" transform="translate(-285.000000, -324.000000)" stroke="#F13B34" fill="#FFFFFF">
-            <g id="Rectangle-194-+-韩国LANEIGE兰芝-夜间修护睡眠面膜-+-丽得姿火到爆的水库系列面膜妹子们肯定都知" sketch:type="MSLayerGroup" transform="translate(0.000000, 311.000000)">
-                <polygon id="Star-1" sketch:type="MSShapeGroup" points="295 28 289.122147 31.0901699 290.244717 24.545085 285.489435 19.9098301 292.061074 18.954915 295 13 297.938926 18.954915 304.510565 19.9098301 299.755283 24.545085 300.877853 31.0901699 "></polygon>
-            </g>
+    <g id="Page-1" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="640-商品列表-copy-7" sketch:type="MSArtboardGroup" transform="translate(-155.000000, -597.000000)">
+            <path d="M169.075585,601.794467 L164.557573,601.703309 L163.075202,597.484094 C162.973319,597.194531 162.69895,597 162.392406,597 C162.085565,597 161.810898,597.194531 161.70961,597.484392 L160.22724,601.703309 L155.708334,601.794467 C155.400003,601.801021 155.129208,602.002702 155.034773,602.296138 C154.940337,602.589275 155.042518,602.911012 155.289481,603.097202 L158.884586,605.794425 L157.578873,610.06339 C157.48831,610.358017 157.594364,610.677966 157.842816,610.859687 C158.087097,611.039025 158.433858,611.043196 158.681118,610.871901 L162.392406,608.31648 L166.104291,610.872199 C166.225836,610.955612 166.367638,611 166.514505,611 C166.668521,611 166.816281,610.95174 166.943188,610.859389 C167.191045,610.677072 167.2968,610.357421 167.206238,610.063688 L165.899631,605.794425 L169.49563,603.096904 C169.742593,602.911012 169.844774,602.58868 169.749742,602.296436 C169.655605,602.003 169.38481,601.801021 169.075585,601.794467 Z" id="Fill-1" sketch:type="MSShapeGroup"></path>
         </g>
     </g>
 </svg>
