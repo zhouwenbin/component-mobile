@@ -12,7 +12,8 @@
 .recording table {
     width: 564px;
     margin: 0 auto;
-    max-height: 765px
+    max-height: 765px;
+    table-layout: fixed
 }
 .recording th {
     color: #860000;
@@ -25,7 +26,11 @@
     color: #525252;
     font-size: 18px;
     height: 54px;
-    line-height: 54px
+    line-height: 54px;
+    width: 50%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
 }
 .recording-more a {
     color: #860000 ;
