@@ -11,6 +11,9 @@
   border-top: 2px solid #F5F5F5;
   padding: 10px 30px 10px 0; }
 
+.seckill-goods-list .fast-buy-goods:nth-child(1) {
+  border-top: 0px; }
+
 .fast-buy-goods .disabled {
   color: #9B9B9B;
   border-color: #AAAAAA;
