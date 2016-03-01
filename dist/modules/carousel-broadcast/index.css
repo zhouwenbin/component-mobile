@@ -14,3 +14,9 @@
 .carousel-broadcast ul{
 	position: relative;
 }
+.carousel-broadcast li{
+	white-space: nowrap;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	width: 375px;
+}
