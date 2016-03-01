@@ -1,0 +1,42 @@
+.search-keyword{
+  height: 100%;
+  background: #fff;
+  padding-top: 15px;
+}
+.search-keyword h2{
+  font-size: 14px;
+  color: #9B9B9B;
+  font-weight: normal;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+.search-keyword li a{
+  font-size: 14px;
+  color: #4A4A4A;
+}
+.search-keyword ul{
+  overflow: hidden;
+}
+.search-keyword li{
+  height: 28px;
+  line-height: 28px;
+  -webkit-border-radius: 14px;
+          border-radius: 14px;
+  border: 1px solid #DEDEDE;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  float: left;
+  padding: 0 10px;
+}
+.search-keyword li.active{
+  border-color: #DEDEDE;
+}
+.search-keyword li.active a{
+  color: #F13C34;
+}
+body{
+  max-width: 640px;
+}
+html, body{
+  height: 100%;
+}

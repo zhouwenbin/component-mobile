@@ -1,0 +1,17 @@
+.search-none{
+	padding: 10px 15px;
+	display: flex;
+	align-items:center;
+}
+.search-none svg{
+	display: block;
+	width: 28px;
+	height: 32px;
+}
+.search-none p{
+	flex:1;
+	font-size: 14px;
+	color: #4A4A4A;
+	margin-left: 16px;
+	line-height: 17px;
+}

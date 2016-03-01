@@ -1,0 +1,108 @@
+.search{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+.search-tab{
+  -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.32);
+          box-shadow: 0 0 2px rgba(0,0,0,0.32);
+  background: #fff;
+}
+.search-tab ul{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.search-tab li{
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+  font-size: 16px;
+}
+.search-tab a{
+  display: inline-block;
+  padding: 0 8px;
+  height: 44px;
+  line-height: 44px;
+  color: #4A4A4A;
+  color: rgba(74,74,74,0.5);
+}
+.search-tab .active a{
+  color: #4A4A4A;
+  border-bottom: 2px solid #F13C34;
+}
+.search-filter{
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.search-filter-c1{
+  width: 86px;
+}
+.search-filter-c1 li{
+  height: 54px;
+  line-height: 54px;
+  text-align: center;
+  background: #F5F5F5;
+  border-top: 1px solid #fff;
+  font-size: 14px;
+}
+.search-filter-c1 li.active{
+  background: #fff;
+  border-left: 2px solid #F13C34;
+}
+.search-filter-c2{
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: #fff;
+}
+.search-filter ul{
+  overflow: hidden;
+}
+.search-filter-c2 li{
+  float: left;
+  width: 33%;
+  text-align: center;
+  color: #4A4A4A;
+  color: rgba(74,74,74,0.5);
+  margin-bottom: 15px;
+}
+.search-filter h2{
+  font-size: 14px;
+  font-weight: normal;
+  padding: 15px;
+  border-top: 1px solid #F5F5F5;
+}
+.search-filter img{
+  width: 60px;
+  height: 60px;
+}
+.search-filter-banner{
+  padding: 10px;
+}
+.search-filter-banner img{
+  width: 100%;
+}
+body{
+  max-width: 640px;
+}
+html, body{
+  height: 100%;
+}
