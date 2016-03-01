@@ -1,5 +1,5 @@
 .recording {
-    background: url(http://img0.fengqucdn.com/cmsres/20160223/a7cf3ce4-5803-46ff-ae0f-962c2301efe3.jpeg) no-repeat;
+    background: url(http://img0.fengqucdn.com/cmsres/20160301/3c2e10f8-9083-4d0d-906e-7f2115825adb.jpeg) no-repeat;
     height: 1013px;
     text-align: center;
     padding-top: 170px;
@@ -35,5 +35,6 @@
 .recording-more a {
     color: #860000 ;
     font-size: 19px;
-    margin-right: 10px
+    background: url(http://img0.fengqucdn.com/cmsres/20160301/1885ebfc-9918-4514-9d67-45076ac40474.png) no-repeat right center;
+    padding: 0 21px
 }
