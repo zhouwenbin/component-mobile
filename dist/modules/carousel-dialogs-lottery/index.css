@@ -119,7 +119,7 @@
     top: 275px;
     right: 50px
 }
-.dialogs-used .dialogs-close {
+.dialogs-used .dialogs-close, .dialogs-none .dialogs-close, .dialogs-error .dialogs-close, .dialogs-unstart .dialogs-close, .dialogs-over .dialogs-close, .dialogs-lottery .dialogs-close, .dialogs-insufficient .dialogs-close {
     top: 249px
 }
 .dialogs-brand {
