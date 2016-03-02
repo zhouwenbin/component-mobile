@@ -211,12 +211,3 @@
 .carousel-coupon-orange .carousel-coupon-name{
 	border-color: #fda556
 }
-
-.carousel-loading{
-	background:rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160302/5fa8b6d5-516d-429c-8d68-08aaa59460fd.gif) no-repeat center;
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-}

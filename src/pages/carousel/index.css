@@ -1,6 +1,7 @@
 @import '../../modules/carousel/index.css';
 @import '../../modules/carousel-rule/index.css';
 @import '../../modules/carousel-dialogs/index.css';
+@import '../../modules/carousel-loading/index.css';
 body{
 	background: #ffd82f;
 }

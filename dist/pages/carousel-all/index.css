@@ -209,14 +209,6 @@
 .carousel-coupon-orange .carousel-coupon-name{
 	border-color: #fda556;
 }
-.carousel-loading{
-	background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160302/5fa8b6d5-516d-429c-8d68-08aaa59460fd.gif) no-repeat center;
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-}
 .recording{
 	background: url(http://img0.fengqucdn.com/cmsres/20160301/3c2e10f8-9083-4d0d-906e-7f2115825adb.jpeg) no-repeat;
 	height: 1013px;
@@ -413,6 +405,20 @@
 	background: url(http://img0.fengqucdn.com/cmsres/20160223/c8229a47-6457-4ed2-bbd9-5bbadc97cf43.png) no-repeat;
 	text-indent: -99em;
 }
+.dialogs-btn9{
+	display: inline-block;
+	width: 235px;
+	height: 83px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160302/a4fb424b-42c0-49d1-a403-90d2e66c83d9.png) no-repeat;
+	text-indent: -99em;
+}
+.dialogs-btn10{
+	display: inline-block;
+	width: 235px;
+	height: 83px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160302/2d644712-6d53-4cbe-9887-83c095dddf16.png) no-repeat;
+	text-indent: -99em;
+}
 .dialogs-close{
 	background: url(http://img0.fengqucdn.com/cmsres/20160222/4d81b671-4e9a-4fa5-8d02-7622008df711.png) no-repeat;
 	width: 55px;
@@ -502,6 +508,14 @@
 .dialogs-lottery-point strong{
 	color: #ff4a4a;
 	font-size: 42px;
+}
+.carousel-loading{
+	background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160302/5fa8b6d5-516d-429c-8d68-08aaa59460fd.gif) no-repeat center;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 }
 body{
 	background: #ffd82f;
