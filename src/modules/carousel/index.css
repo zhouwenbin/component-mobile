@@ -78,7 +78,9 @@
 	color: #b20707;
 	font-size: 22px;
 	text-align: center;
-	margin-bottom: 37px;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 30px;
 }
 .carousel-times strong{
 	color:#fdff5c;
