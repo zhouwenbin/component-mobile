@@ -1,0 +1,31 @@
+.title{
+  height: 80px;
+  line-height: 80px;
+  background: #fff;
+  margin-bottom: 2px;
+  padding-left:18px;
+  padding-right:34px;
+}
+.title,
+.title a{
+  display: flex;
+  width: 100%;
+  align-items:center;
+}
+.title svg{
+  display: block;
+}
+.title .svg{
+  width: 32px;
+  height: 32px;
+}
+.title .icon-arrow{
+  width: 16px;
+  height: 16px;
+}
+.title h2{
+  flex:1;
+  font-size: 28px;
+  margin-left: 14px;
+  font-weight: normal;
+}

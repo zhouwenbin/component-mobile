@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval 58 + Path 101</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="新首页搭建效果-copy" sketch:type="MSArtboardGroup" transform="translate(-9.000000, -396.000000)">
+            <g id="Oval-58-+-Path-101" sketch:type="MSLayerGroup" transform="translate(9.000000, 396.000000)">
+                <circle id="Oval-58" fill="#FFAA35" sketch:type="MSShapeGroup" cx="8" cy="8" r="8"></circle>
+                <path d="M8.80006036,2.79844515 C8.84298594,2.65225639 8.96021783,2.62276564 9.07219628,2.74368893 L11.1609611,4.99930425 C11.268332,5.11525198 11.2884964,5.31623068 11.209916,5.44193746 L8.79536872,9.30454005 C8.71503482,9.4330519 8.54482769,9.46332693 8.42222156,9.3770991 L8.2050658,9.22437535 C8.07931622,9.13593677 7.91084075,9.17344782 7.83266181,9.30176334 L5.43045083,13.2445247 C5.35052737,13.3757035 5.31329179,13.3572447 5.3460325,13.2089588 L6.81300699,6.56488288 C6.8463075,6.41406153 6.95907697,6.37593709 7.07939657,6.49396508 L7.36672267,6.77581873 C7.48054507,6.88747325 7.61046416,6.84977257 7.65054,6.71328898 L8.80006036,2.79844515 Z" id="Path-101" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>
