@@ -22,6 +22,8 @@
 	height: 148px;
 	display: flex;
 	position: absolute;
+	align-items:center;
+	justify-content:center;
 
 }
 .carousel-list li:nth-child(1){
@@ -136,7 +138,6 @@
 	color: #fccf78;
 	text-align: center;
 	padding: 10px 6px 0;
-	margin: auto;
 }
 .carousel-coupon-price{
 	border-top: 1px solid #fccf78;
