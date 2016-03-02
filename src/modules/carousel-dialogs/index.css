@@ -125,6 +125,10 @@
 	right: 50px;
 }
 
+.dialogs-used .dialogs-close{
+	top: 249px;
+}
+
 .dialogs-brand{
 	color: #fda556;
 }
