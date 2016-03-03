@@ -4,5 +4,4 @@ define(['jquery'], function ($){
   var goodsNum = goodsLi.length;
   var goodsWidth = goodsLi.width();
   goodsUl.width((goodsWidth + 20) * goodsNum);
-  new IScroll('.oneline-scroll', { eventPassthrough: true,scrollX: true});
 })
