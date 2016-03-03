@@ -210,7 +210,7 @@
     border-color: #fda556
 }
 .rule {
-    background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160222/2b3e4867-1d4f-4ec7-97c5-7fb5bb297429.png) no-repeat center 87px;
+    background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160303/d4236c32-7763-4b1a-8ea3-143d011fe103.png) no-repeat center 87px;
     position: fixed;
     left: 0;
     right: 0;
@@ -244,7 +244,10 @@
     color: #ffd82f !important;
     font-size: 18px;
     margin-left: 120px;
-    margin-top: 10px
+    top: 842px;
+    position: absolute;
+    padding-right: 32px;
+    background: url(http://img0.fengqucdn.com/cmsres/20160303/5391d72d-50d8-457c-85cc-e4f3b0f84a30.png) no-repeat right center
 }
 .rule-close {
     width: 61px;
@@ -470,12 +473,36 @@
     font-size: 42px
 }
 .carousel-loading {
-    background: rgba(0,0,0,0.5) url(http://img0.fengqucdn.com/cmsres/20160302/5fa8b6d5-516d-429c-8d68-08aaa59460fd.gif) no-repeat center;
+    background: rgba(0,0,0,0.8) url(http://img0.fengqucdn.com/cmsres/20160303/2f5f1855-8ad9-4ca2-9b60-a9b3de90cb59.png) no-repeat center;
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0
+    bottom: 0;
+    -webkit-animation: carousel-loading 1s steps(1) infinite;
+            animation: carousel-loading 1s steps(1) infinite
+}
+@-webkit-keyframes carousel-loading {
+    0% {
+        background-image: url(http://img0.fengqucdn.com/cmsres/20160303/2f5f1855-8ad9-4ca2-9b60-a9b3de90cb59.png)
+    }
+    33% {
+        background-image: url(http://img0.fengqucdn.com/cmsres/20160303/0a468d36-19fa-4246-a37a-b51ba45ed6ba.png)
+    }
+    66% {
+        background-image: url(http://img0.fengqucdn.com/cmsres/20160303/0c3999ec-d345-43aa-aa57-7f3da35806ee.png)
+    }
+}
+@keyframes carousel-loading {
+    0% {
+        background-image: url(http://img0.fengqucdn.com/cmsres/20160303/2f5f1855-8ad9-4ca2-9b60-a9b3de90cb59.png)
+    }
+    33% {
+        background-image: url(http://img0.fengqucdn.com/cmsres/20160303/0a468d36-19fa-4246-a37a-b51ba45ed6ba.png)
+    }
+    66% {
+        background-image: url(http://img0.fengqucdn.com/cmsres/20160303/0c3999ec-d345-43aa-aa57-7f3da35806ee.png)
+    }
 }
 body {
     background: #ffd82f
