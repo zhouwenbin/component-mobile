@@ -33,7 +33,8 @@
 	color: #ffd82f !important;
 	font-size: 18px;
 	margin-left: 120px;
-	margin-top: 10px;
+	top: 842px;
+	position: absolute;
 }
 .rule-close{
 	width: 61px;
