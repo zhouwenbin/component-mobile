@@ -144,7 +144,7 @@
   margin-right: 6px;
   vertical-align: -5px;
   stroke: #666;
-  stroke-width: 0.6px;
+  stroke-width: 1px;
   fill: none; }
 
 .icon-star02.active {
@@ -159,4 +159,12 @@
   width: 34px;
   height: 28px;
   vertical-align: -6px;
-  margin-right: 14px; }
+  margin-right: 14px;
+  stroke: #F13C34; }
+
+.new-goodslist-btn .btn.disable {
+  border-color: #9B9B9B;
+  border-color: rgba(155, 155, 155, 0.5); }
+
+.new-goodslist-btn .btn.disable .icon-cart {
+  stroke: #9B9B9B; }
