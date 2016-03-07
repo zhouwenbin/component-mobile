@@ -17,6 +17,9 @@
 .sale-list li:nth-child(odd) {
   border-right: 2px solid #F5F5F5; }
 
+.sale-list-pic {
+  position: relative; }
+
 .sale-list img {
   width: 319px;
   height: 319px; }
