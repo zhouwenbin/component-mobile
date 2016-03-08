@@ -44,7 +44,7 @@
 
 .new-goodslist-country img {
   margin-right: 10px;
-  height: 32px; }
+  max-height: 32px; }
 
 .new-goodslist-country span {
   font-size: 24px;
