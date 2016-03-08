@@ -1,0 +1,7 @@
+@import '../../modules/search-keyword/index.css';
+body{
+  max-width: 640px;
+}
+html,body{
+  height: 100%;
+}

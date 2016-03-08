@@ -1,0 +1,106 @@
+.elevator{
+	margin-bottom: 2px;
+	background: #fff;
+	position: relative;
+	padding-right: 54px;
+	height: 88px;
+}
+.elevator-fixed ul{
+	position: fixed;
+	left: 0;
+	right: 54px;
+	top: 0;
+}
+.elevator ul{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 88px;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	    -ms-flex-align:center;
+	        align-items:center;
+	overflow-x:auto;
+}
+.elevator li{
+	margin: 0 26px;
+}
+.elevator a{
+	display: inline-block;
+	width: 110px;
+	height: 40px;
+	-webkit-border-radius: 20px;
+	        border-radius: 20px;
+	text-align: center;
+	line-height: 40px;
+}
+.elevator .active a{
+	background: #F13C34;
+	color: #fff;
+}
+.elevator-arrow{
+	width: 54px;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	    -ms-flex-align:center;
+	        align-items:center;
+	-webkit-box-pack:center;
+	-webkit-justify-content:center;
+	    -ms-flex-pack:center;
+	        justify-content:center;
+}
+.elevator-arrow:before{
+	content: '';
+	width: 18px;
+	height: 18px;
+	border-left: 2px solid #FF5B54;
+	border-bottom: 2px solid #FF5B54;
+	-webkit-transform:rotate(-45deg) translate(10px,-10px);
+	    -ms-transform:rotate(-45deg) translate(10px,-10px);
+	        transform:rotate(-45deg) translate(10px,-10px);
+}
+
+.elevator-more{
+	background: #fff;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+}
+.elevator-more .elevator-title{
+	position: relative;
+}
+.elevator-more h2{
+	font-weight: normal;
+	padding-left: 32px;
+	height: 88px;
+	line-height: 88px;
+	border-bottom: 2px solid #F1F1F1;
+}
+.elevator-more ul{
+	overflow: hidden;
+}
+.elevator-more li{
+	float: left;
+	text-align: center;
+	width: 25%;
+	height: 85px;
+	line-height: 85px;
+}
+.elevator-more .active a{
+	color:#FF5B54;
+}
+.elevator-more .elevator-arrow:before{
+	-webkit-transform:rotate(135deg) translate(0px,0px);
+	    -ms-transform:rotate(135deg) translate(0px,0px);
+	        transform:rotate(135deg) translate(0px,0px);
+}

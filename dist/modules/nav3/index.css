@@ -1,0 +1,34 @@
+.nav3{
+	background: #fff;
+	height: 60px;
+}
+.nav3-fixed ul{
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+.nav3 ul{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	margin-bottom: 2px;
+	overflow-x:auto; 
+}
+.nav3 li{
+	padding: 0 20px;
+	font-size: 28px;
+}
+.nav3 a{
+	color: #4A4A4A;
+	color: rgba(74,74,74,0.5);
+	display: block;
+	height: 60px;
+	line-height: 60px;
+	white-space: nowrap;
+}
+.nav3 .active a{
+	color: #333;
+	border-bottom: 4px solid #F13C34;
+}
