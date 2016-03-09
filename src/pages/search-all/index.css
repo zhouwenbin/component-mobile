@@ -1,0 +1,11 @@
+@import '../../modules/search/index.css';
+@import '../../modules/search-keyword/index.css';
+@import '../../modules/search-none/index.css';
+@import '../../../dist/modules/seckill-goods3/index.css';
+@import '../../modules/brand-filter2/index.css';
+body{
+  max-width: 640px;
+}
+html,body{
+  height: 100%;
+}
