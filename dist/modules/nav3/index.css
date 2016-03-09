@@ -1,8 +1,11 @@
 .nav3{
 	background: #fff;
 	height: 60px;
+	overflow-x:auto; 
+	overflow-y: hidden;
+	-webkit-overflow-scrolling:touch;
 }
-.nav3-fixed ul{
+.nav3-fixed{
 	position: fixed;
 	left: 0;
 	right: 0;
@@ -14,11 +17,10 @@
 	display: -ms-flexbox;
 	display: flex;
 	margin-bottom: 2px;
-	overflow-x:auto; 
+	width: 200%;
 }
 .nav3 li{
 	padding: 0 20px;
-	font-size: 28px;
 }
 .nav3 a{
 	color: #4A4A4A;
@@ -26,6 +28,7 @@
 	display: block;
 	height: 60px;
 	line-height: 60px;
+	font-size: 28px;
 	white-space: nowrap;
 }
 .nav3 .active a{

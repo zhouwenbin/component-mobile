@@ -5,10 +5,15 @@
 	padding-right: 54px;
 	height: 88px;
 }
-.elevator-fixed ul{
+.elevator-c1{
+	overflow-x:auto;
+	-webkit-overflow-scrolling:touch; 
+	overflow-y:hidden; 
+}
+.elevator-fixed{
 	position: fixed;
 	left: 0;
-	right: 54px;
+	right: 0;
 	top: 0;
 }
 .elevator ul{
@@ -21,7 +26,8 @@
 	-webkit-align-items:center;
 	    -ms-flex-align:center;
 	        align-items:center;
-	overflow-x:auto;
+
+	width: 200%;
 }
 .elevator li{
 	margin: 0 26px;
@@ -34,8 +40,7 @@
 	        border-radius: 20px;
 	text-align: center;
 	line-height: 40px;
-	white-space: nowrap;
-}
+	}
 .elevator .active a{
 	background: #F13C34;
 	color: #fff;
