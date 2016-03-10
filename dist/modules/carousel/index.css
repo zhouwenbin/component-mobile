@@ -92,7 +92,8 @@
 	width: 150px;
 	height: 156px;
 	position: absolute;
-	left: 246px;
+	left: 50%;
+	margin-left: -75px;
 	top: 511px;
 }
 .carousel .go:active{
