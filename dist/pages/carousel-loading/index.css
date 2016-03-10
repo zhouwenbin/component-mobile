@@ -127,7 +127,7 @@
     background: rgba(0,0,0,0.75)
 }
 .carousel-btns {
-    text-indent: center
+    text-align: center
 }
 .carousel-btn1 {
     display: inline-block;
