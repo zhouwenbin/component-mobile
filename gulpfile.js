@@ -34,12 +34,12 @@ gulp.task("svg", function () {
           .pipe(svgSprite({
             mode: "symbols",
             common: "svg",
+            common: modules[i]+"-icon",
             selector: "icon-%f"
           }))
           .pipe(gulp.dest("src/modules/"+modules[i]+"/symbols"))
     }
   }
-
 });
 
 gulp.task('watch', function() {

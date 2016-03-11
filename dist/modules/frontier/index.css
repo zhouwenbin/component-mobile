@@ -1,0 +1,34 @@
+.frontier{
+	margin-bottom: 20px;
+}
+.frontier ul{
+	overflow: hidden;
+	padding-top: 2px;
+	margin-left: -2px;
+}
+.frontier li{
+	float: left;
+	width: 158px;
+	margin-left:2px;
+	margin-bottom: 2px;
+	padding-bottom: 20px;
+	background: #fff;
+	color: #444;
+	text-align: center;
+}
+.frontier-img{
+	height:124px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	    -ms-flex-align:center;
+	        align-items:center;
+	-webkit-box-pack:center;
+	-webkit-justify-content:center;
+	    -ms-flex-pack:center;
+	        justify-content:center;
+	margin-bottom: 19px;
+}

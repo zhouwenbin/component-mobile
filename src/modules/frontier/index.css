@@ -1,0 +1,25 @@
+.frontier{
+	margin-bottom: 20px;
+}
+.frontier ul{
+	overflow: hidden;
+	padding-top: 2px;
+	margin-left: -2px;
+}
+.frontier li{
+	float: left;
+	width: 158px;
+	margin-left:2px;
+	margin-bottom: 2px;
+	padding-bottom: 20px;
+	background: #fff;
+	color: #444;
+	text-align: center;
+}
+.frontier-img{
+	height:124px;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+	margin-bottom: 19px;
+}

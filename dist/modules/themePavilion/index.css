@@ -1,0 +1,15 @@
+.themePavilion{
+	margin-bottom: 20px;
+}
+.themePavilion ul{
+	overflow: hidden;
+	padding:4px;
+	background: #fff;
+}
+.themePavilion li{
+	float: left;
+	margin:4px;
+}
+.themePavilion img{
+	vertical-align: middle;
+}
