@@ -17,7 +17,7 @@
 	text-align: center;
 }
 .frontier-img{
-	height:124px;
+	height:120px;
 	display: flex;
 	align-items:center;
 	justify-content:center;
@@ -25,5 +25,5 @@
 }
 .frontier-img img{
 	max-width: 100%;
-	max-height: 124px;
+	max-height: 120px;
 }
