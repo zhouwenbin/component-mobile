@@ -115,6 +115,12 @@
     margin-top: 10px * $i;
   }
 }
+
+
+@include dialog(1);
+@media screen and (min-width:640px){
+  @include dialog(2);
+}
 .dialog .center{
   background: #fff;
   text-align: center;
@@ -180,9 +186,4 @@
 }
 .dialog-active li{
   text-align: left;
-}
-
-@include dialog(1);
-@media screen and (min-width:640px){
-  @include dialog(2);
 }
