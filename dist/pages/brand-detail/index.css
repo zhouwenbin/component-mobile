@@ -225,6 +225,7 @@
   fill: #F13C34;
 }
 .filter .icon-up-down{
+  display: inline-block;
   width: 30px;
   height: 30px;
   vertical-align: middle;
