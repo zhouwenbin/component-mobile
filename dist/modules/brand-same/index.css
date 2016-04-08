@@ -4,7 +4,8 @@
 */
 .brand-same {
   padding-bottom: 10px;
-  background-color: #fff; }
+  background-color: #fff;
+  margin-bottom: 10px; }
 
 .brand-same-title {
   font-size: 14px;
@@ -59,7 +60,8 @@
 
 .brand-same-list img {
   width: 97px;
-  height: 97px; }
+  height: 97px;
+  margin-bottom: 10px; }
 
 .brand-same-list p {
   line-height: 1.2;
@@ -97,7 +99,7 @@
   height: 6px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
-  background-color: #9B9B9B;
+  background-color: #ccc;
   margin: 0 5px; }
 
 .brand-same-point .active {

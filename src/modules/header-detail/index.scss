@@ -1,0 +1,42 @@
+/*
+@styleguide
+
+# 详情页头部
+
+*/
+.header-detail{
+	height: 49px;
+	display: flex;
+	justify-content: space-between;
+}
+.header-detail .header-c2{
+	width: 70px;
+}
+.header-detail a{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-color: rgba(103,103,103,0.6);
+	border-radius: 50%;
+	position: relative;
+}
+.icon-header-detail01,
+.icon-header-detail02,
+.icon-header-detail03{
+	position: absolute;
+	transform: translate(-50%,-50%);
+	top: 50%;
+	left: 50%;
+}
+.icon-header-detail01{
+	width: 12px;
+	height: 20px;
+}
+.icon-header-detail02{
+	width: 18px;
+	height: 18px;
+}
+.icon-header-detail03{
+	width: 22px;
+	height: 20px;
+}
