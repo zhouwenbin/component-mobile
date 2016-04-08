@@ -1,0 +1,25 @@
+/*
+@styleguide
+
+# 评价标题
+
+*/
+@import "../../utils/variables";
+.comment-title{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 0 15px;
+  line-height: 45px;
+  background-color: #fff;
+  color: #9B9B9B;
+  border-bottom: 1px solid #f2f2f2;
+}
+.comment-title h2{
+  font-weight: 400;
+}
+.comment-title .text-error{
+  font-size: 14px;
+  padding-left: 10px;
+  vertical-align: 0;
+}
