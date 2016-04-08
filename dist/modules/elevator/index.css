@@ -5,10 +5,15 @@
 	padding-right: 54px;
 	height: 88px;
 }
-.elevator-fixed ul{
+.elevator-c1{
+	overflow-x:auto;
+	-webkit-overflow-scrolling:touch; 
+	overflow-y:hidden; 
+}
+.elevator-fixed{
 	position: fixed;
 	left: 0;
-	right: 54px;
+	right: 0;
 	top: 0;
 }
 .elevator ul{
@@ -21,7 +26,8 @@
 	-webkit-align-items:center;
 	    -ms-flex-align:center;
 	        align-items:center;
-	overflow-x:auto;
+
+	width: 200%;
 }
 .elevator li{
 	margin: 0 26px;
@@ -34,17 +40,17 @@
 	        border-radius: 20px;
 	text-align: center;
 	line-height: 40px;
-}
+	}
 .elevator .active a{
 	background: #F13C34;
 	color: #fff;
 }
 .elevator-arrow{
 	width: 54px;
-	height: 100%;
 	position: absolute;
 	right: 0;
 	top: 0;
+	bottom: 2px;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -57,16 +63,11 @@
 	-webkit-justify-content:center;
 	    -ms-flex-pack:center;
 	        justify-content:center;
+	background: #fff;
 }
-.elevator-arrow:before{
-	content: '';
-	width: 18px;
-	height: 18px;
-	border-left: 2px solid #FF5B54;
-	border-bottom: 2px solid #FF5B54;
-	-webkit-transform:rotate(-45deg) translate(10px,-10px);
-	    -ms-transform:rotate(-45deg) translate(10px,-10px);
-	        transform:rotate(-45deg) translate(10px,-10px);
+.elevator-arrow svg{
+	width: 26px;
+	height: 13px;
 }
 
 .elevator-more{
@@ -88,19 +89,19 @@
 }
 .elevator-more ul{
 	overflow: hidden;
+	padding-top: 40px;
 }
 .elevator-more li{
 	float: left;
 	text-align: center;
 	width: 25%;
-	height: 85px;
-	line-height: 85px;
+	margin-bottom: 40px;
 }
 .elevator-more .active a{
 	color:#FF5B54;
 }
-.elevator-more .elevator-arrow:before{
-	-webkit-transform:rotate(135deg) translate(0px,0px);
-	    -ms-transform:rotate(135deg) translate(0px,0px);
-	        transform:rotate(135deg) translate(0px,0px);
+.elevator-more .elevator-arrow svg{
+	-webkit-transform:rotate(180deg);
+	    -ms-transform:rotate(180deg);
+	        transform:rotate(180deg);
 }

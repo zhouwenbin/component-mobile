@@ -91,7 +91,8 @@
     width: 150px;
     height: 156px;
     position: absolute;
-    left: 246px;
+    left: 50%;
+    margin-left: -75px;
     top: 511px
 }
 .carousel .go:active {
@@ -126,7 +127,7 @@
     background: rgba(0,0,0,0.75)
 }
 .carousel-btns {
-    text-indent: center
+    text-align: center
 }
 .carousel-btn1 {
     display: inline-block;

@@ -33,144 +33,44 @@
   height: 43px;
   line-height: 43px;
   display: inline-block;
-  padding: 0 20px;
-  font-weight: bold; }
+  padding: 0 20px; }
 
 .detail-h li.active a {
-  color: #dc3334;
-  border-bottom: 2px solid #dc3334; }
+  color: #F13C34;
+  border-bottom: 2px solid #F13C34; }
 
-.detail-b {
-  padding: 0 17px;
-  line-height: 1.5; }
-
-.detail-b:last-child {
-  padding: 0; }
-
-.detail-b ul {
-  border-width: 0 0 1px 0;
-  -webkit-border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
-          border-image: url(data:image/gif;base64,R0lGODlhBAAEAIABANra2v///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjAxODAxMTc0MDcyMDY4MTE4MDgzOEM2RDA0Mzc2M0VFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjMwRjkyQUYwNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjMwRjkyQUVGNzE2QzExRTQ5NzcwRDk2QTFCMDE4OTczIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGODdGMTE3NDA3MjA2ODExODA4M0FBQjZBNjA2MjkxNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMTgwMTE3NDA3MjA2ODExODA4MzhDNkQwNDM3NjNFRSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAAEAAQAAAIFhBGpeVAAOw==) 2 0 round;
-  padding: 11px 17px; }
-
-.detail-b ul:last-child {
-  border: none; }
-
-.detail-b li {
+.detail-b h2 {
+  height: 28px;
+  line-height: 28px;
+  background: #3D3D45 url(http://img0.fengqucdn.com/cmsres/20160407/d8d87e3b-d5d0-4f84-8536-32b8c09d4cac.png) no-repeat center;
+  background-size: 320px;
   font-size: 14px;
-  line-height: 24px; }
-
-.detail .justify {
-  width: 4em;
-  height: 24px;
-  overflow: hidden; }
+  color: #fff;
+  text-align: center;
+  font-weight: normal; }
 
 .detail-b img {
   width: 100%; }
 
-.detail-b:last-child .btn {
-  display: block;
-  margin: 10px auto;
-  width: 90%;
-  height: 40px;
-  line-height: 40px;
-  font-size: 16px; }
+.detail-b dl {
+  margin-bottom: 10px; }
 
-.detail-b:last-child h3 {
-  text-align: center; }
+.detail-b dt {
+  color: #9B9B9B;
+  display: inline; }
 
-.seckill-text-bg {
-  display: inline-block;
-  margin-left: 10px;
-  padding: 0 5px;
-  height: 18px;
-  line-height: 18px;
-  text-align: center;
-  font-size: 12px;
-  background: #ff5b54;
-  color: #fff;
-  vertical-align: 0;
-  -webkit-border-radius: 9px;
-          border-radius: 9px; }
+.detail-b dd {
+  display: inline;
+  color: #555; }
 
-.seckill-text-bg-gray {
-  background: #dcdcdc;
-  color: #999; }
+.detail-parameter {
+  padding: 11px 15px 25px; }
 
-.nav-cart-r1 {
-  height: 51px;
-  padding: 0;
-  background: #fff; }
+.detail-parameter p {
+  color: #FF6963;
+  margin-top: 15px; }
 
-.icon-cart-box {
-  position: relative;
-  display: block; }
-
-.detail-icon-cart,
-.detail-icon-star {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  color: #979DA9;
-  width: 54px;
-  border-right: 1px solid #dcdcdc;
-  height: 100%; }
-
-.detail-icon-cart:visited,
-.detail-icon-star:visited {
-  color: #979DA9; }
-
-.icon-cart {
-  stroke: #fff; }
-
-.nav-cart-r1 .icon-cart,
-.icon-star02 {
-  display: block;
-  stroke: #979DA9;
-  margin: 8px auto 4px; }
-
-.icon-star02 {
-  width: 21px;
-  height: 21px; }
-
-.detail-icon-star.active {
-  color: #F13C34; }
-
-.detail-icon-star.active .icon-star02 {
-  stroke: #F13C34; }
-
-.dot-error {
-  position: absolute;
-  top: -8px;
-  left: 30px; }
-
-.detail-cart-btn {
-  display: block;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  text-align: center;
-  background: #F13C34;
-  color: #fff;
-  height: 100%;
-  line-height: 50px;
-  font-size: 14px; }
-
-.detail-cart-btn:visited {
-  color: #fff; }
-
-.detail-cart-btn02 {
-  background-color: #fff;
-  color: #F13C34; }
-
-.detail-cart-btn02:visited {
-  color: #F13C34; }
-
-@media screen and (min-width: 640px) {
-  .icon-star02 {
-    width: 42px;
-    height: 42px; }
-  .dot-error {
-    right: -15px;
-    top: -15px; } }
+.detail-text {
+  padding: 15px;
+  line-height: 16px;
+  color: #555; }

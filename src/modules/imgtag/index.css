@@ -1,0 +1,42 @@
+.imgtag{
+	overflow-x: auto;
+	padding: 10px 5px;
+	background: #fff;
+	-webkit-overflow-scrolling:touch;
+}
+.imgtag ul{
+	font-size: 0;
+	white-space: nowrap;
+}
+.imgtag li{
+	display: inline-block;
+	margin: 0 5px;
+	position: relative;
+}
+.imgtag img{
+	border-radius: 8px;
+	vertical-align: middle;
+}
+.imgtag li:before{
+	content: '';
+	position: absolute;
+	background: rgba(74,74,74,0.25);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	border-radius: 8px;
+}
+.imgtag figcaption{
+	position: absolute;
+	width: 4em;
+	left: 50%;
+	top: 50%;
+	transform:translate(-50%,-50%);
+	font-size: 28px;
+	color: #fff;
+	line-height: 1.2;
+	text-shadow:0 2px 4px rgba(0,0,0,0.5);
+	text-align: center;
+	white-space: normal;
+}

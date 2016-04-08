@@ -1,4 +1,5 @@
-@import '../../modules/search-keyword/index.css';
+@import '../../modules/search-none/index.css';
+@import '../../../dist/modules/seckill-goods3/index.css';
 body{
   max-width: 640px;
 }
