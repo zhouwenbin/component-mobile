@@ -1,0 +1,97 @@
+/*
+相似品牌推荐
+*/
+@import "../../utils/variables";
+.brand-same{
+	padding-bottom: 10px;
+	background-color: #fff;
+}
+.brand-same-title{
+	font-size: 14px;
+	color: #4A4A4A;
+	font-weight: 400;
+	line-height: 44px;
+	padding-left: 18px;
+	border-width: 0 0 1px 0;
+	border-image: url(#{$border}) 2 0 round;
+	margin-bottom: 10px;
+}
+.brand-same-name{
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	color: #4A4A4A;
+	padding-left: 15px;
+	margin-bottom: 8px;
+}
+.brand-same-pic img{
+	width: 40px;
+	height: 40px;
+	margin-right: 10px;
+}
+.brand-same ul{
+	white-space: nowrap;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+.brand-same li{
+	display: inline-block;
+	letter-spacing: -0.5em;
+	font-size: 0;
+	margin-left: 7px;
+}
+.brand-same-list{
+	display: inline-block;
+	letter-spacing: normal;
+	color: #555;
+	font-size: 24px;
+	margin-left: 5px;
+	width: 97px;
+	text-align: center;
+	white-space: normal;
+}
+.brand-same-list img{
+	width: 97px;
+	height: 97px;
+}
+.brand-same-list p{
+	line-height: 1.2;
+	font-size: 2px;
+	color: #333;
+	margin-bottom: 12px;
+}
+.brand-same-price{
+	font-size: 0;
+	letter-spacing: -0.5em;
+}
+.brand-same-price .text-error{
+	font-size: 12px;
+	letter-spacing: normal;
+}
+.brand-same del{
+	display: inline-block;
+	color: #aaa;
+	font-size: 10px;
+	-webkit-transform:scale(0.8);
+	vertical-align: middle;
+	letter-spacing: normal;
+	margin-left: 6px;
+}
+.brand-same-point{
+	font-size: 0;
+	letter-spacing: -0.5em;
+	text-align: center;
+	margin-top: 22px;
+}
+.brand-same-point span{
+	display: inline-block;
+	letter-spacing: normal;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: #9B9B9B;
+	margin: 0 5px;
+}
+.brand-same-point .active{
+	background-color: #4A4A4A;
+}

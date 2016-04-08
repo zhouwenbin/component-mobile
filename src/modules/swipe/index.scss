@@ -26,6 +26,15 @@
   }
 }
 
+.swiper-wrapper::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 88px;
+  background: linear-gradient(transparent 50%, rgba(0,0,0,0.1));
+}
+
 .swipe {
   overflow: hidden;
   visibility: hidden;

@@ -1,0 +1,56 @@
+/*
+@styleguide
+
+# 关注
+
+*/
+.attention{
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+.attention-l1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.attention-logo,.attention-title{
+  display: inline-block;
+  vertical-align: middle;
+}
+.attention-logo img{
+  width: 40px;
+  height: 40px;
+}
+.attention-title{
+  font-size: 14px;
+  margin-left: 10px;
+}
+.attention-title h2{
+  font-weight: 400;
+}
+.attention-title p{
+  color: #9B9B9B;
+  margin-top: 8px;
+}
+.attention-title img{
+  width: 19px;
+  height: 14px;
+  vertical-align: -2px;
+}
+.attention-link{
+  display: inline-block;
+  border: 1px solid #FF5B54;
+  line-height: 22px;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+.attention-link:visited{
+  color: #ff5b54;
+}
+.attention-l2{
+  line-height: 1.3;
+  font-size: 14px;
+  color: #4a4a4a;
+}

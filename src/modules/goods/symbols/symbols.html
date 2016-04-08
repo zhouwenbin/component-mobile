@@ -155,9 +155,13 @@
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
+
+<symbol id="icon-goods-r2" viewBox="0 0 14 14">
+        <title>img-tag</title><g fill="none" fill-rule="evenodd"><circle fill="#F5F5F5" cx="7" cy="7" r="7"/><path d="M5.655 9.633l.467.443.44-.466 4.797-5.082-.59-.544-4.648 4.05-2.824-1.848-.657.59 3.015 2.857z" fill="#FF5B54"/></g>
+</symbol>
 </svg>
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(0 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(1 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -175,6 +179,22 @@
 </header>
 <section>
     <ul class="icon-boxes">
+        
+<li title="icon-goods-r2">
+            <div class="icon-box" id="icon-box-icon-goods-r2">
+                <svg class="svg icon-goods-r2">
+                    <use xlink:href="#icon-goods-r2" />
+                </svg>
+            </div>
+            <h2>icon-goods-r2</h2>
+            <button onclick="showPopover('snippet-icon-goods-r2')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-icon-goods-r2')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-icon-goods-r2">
+                <pre><code>&lt;svg class=&quot;svg icon-goods-r2&quot;&gt;&lt;use xlink:href=&quot;#icon-goods-r2&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
         
 </ul>
 </section>

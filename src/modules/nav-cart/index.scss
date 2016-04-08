@@ -5,9 +5,6 @@
 
 */
 @import "../../utils/variables";
-.nav-cart{
-  height: 55px;
-}
 .nav-cart-r1{
   display: flex;
   position: fixed;
@@ -15,33 +12,119 @@
   bottom: 0;
   width: 100%;
   z-index:999;
-  background: #f3f3f3;
-  padding: 6px 12px;
-  height: 58px;
+  line-height: 50px;
+  height: 50px;
+  background: #fff;
   justify-content:space-between;
   align-items:center;
   border-top: 1px solid #dadada;
+  padding: 0 7px 0 0px;
+}
+.nav-cart-r1l2{
+  /*display: flex;*/
+  font-size: 0;
+  letter-spacing: -0.5em;
+  margin-left: -5px;
+  /*flex:1;*/
 }
 .nav-cart .btn{
+  display: inline-block;
   height: 40px;
   line-height: 40px;
-  font-size: 15px;
+  font-size: 14px;
+  letter-spacing: normal;
+  margin-left: 5px;
 }
-.nav-cart .btn-danger{
- flex:1;
- display: block;
+.nav-cart-r1l2 .btn.active{
+  width: 80px;
+  white-space: nowrap;
 }
-.nav-cart .btn-soon{
-  display: block;
-  width: 40%;
-  margin: 0 10px;
+.nav-cart-r1l2 .btn-danger,
+.nav-cart-r1l2 .btn-disable{
+  width: 135px;
+  white-space: nowrap;
 }
-.nav-cart .icon47{
+.nav-cart-r1l2 .btn-disable{
+  color: #fff !important;
+  background-color: #D6D6D6;
+}
+.nav-cart-tips{
+  text-align: center;
+  line-height: 30px;
+  background-color: #FEF3A1;
+  color: #E3981C;
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+}
+.nav-cart .icon-refresh{
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  vertical-align: -5px;
+}
+.nav-cart-refresh{
+  background-color: #fff;
+  line-height: 44px;
+  text-align: center;
+  color: #999 !important;
+  position: fixed;
+  bottom: 50px;
+  width: 100%;
+}
+/*.nav-cart .icon47{
   position: relative;
   margin-right: 5px;
-}
+}*/
 .nav-cart .dot{
   position: absolute;
   text-indent: 0;
   right: 0;
+}
+
+.icon-cart-box{
+  position: relative;
+  display: block;
+}
+.detail-icon-cart,
+.detail-icon-star{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 44px;
+  color: #979DA9;
+  height: 100%;
+}
+.detail-icon-cart2:visited,
+.detail-icon-star:visited{
+  color: #979DA9;
+}
+.nav-cart-r1 .icon-cart2,
+.icon-star02{
+  stroke: #979DA9;
+}
+.icon-star02,
+.icon-cart2{
+  width: 21px;
+  height: 21px;
+}
+.detail-icon-star.active .icon-star02{
+  stroke:#F13C34;
+}
+.dot-error{
+  position: absolute;
+  top: -8px;
+  left: 20px;
+}
+.icon-join-cart{
+  width: 17px;
+  height: 17px;
+  vertical-align: -4px;
+  margin-right: 5px;
+}
+.icon-notice{
+  width: 21px;
+  height: 23px;
+  margin-right: 5px;
+  vertical-align: -7px;
 }

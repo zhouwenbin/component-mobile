@@ -1,0 +1,65 @@
+/*
+大家都在买
+*/
+@import "../../utils/variables";
+.recommend02{
+	padding-bottom: 30px;
+	background-color: #fff;
+	width: 100%;
+	overflow: hidden;	
+}
+.recommend02-title{
+	font-size: 14px;
+	color: #4A4A4A;
+	font-weight: 400;
+	line-height: 44px;
+	padding-left: 18px;
+	border-width: 0 0 1px 0;
+	border-image: url(#{$border}) 2 0 round;
+	margin-bottom: 10px;
+}
+.recommend02 ul{
+	width: 100%;
+	white-space: nowrap;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+	letter-spacing: -0.5em;
+	font-size: 0;
+}
+.recommend02 li{
+	display: inline-block;
+	letter-spacing: normal;
+	color: #555;
+	font-size: 24px;
+	margin-left: 10px;
+	width: 130px;
+	text-align: center;
+	white-space: normal;
+}
+.recommend02 img{
+	width: 130px;
+	height: 125px;
+}
+.recommend02 p{
+	line-height: 1.2;
+	font-size: 2px;
+	color: #333;
+	margin-bottom: 12px;
+}
+.recommend02-price{
+	font-size: 0;
+	letter-spacing: -0.5em;
+}
+.recommend02-price .text-error{
+	font-size: 12px;
+	letter-spacing: normal;
+}
+.recommend02 del{
+	display: inline-block;
+	color: #aaa;
+	font-size: 10px;
+	-webkit-transform:scale(0.8);
+	vertical-align: middle;
+	letter-spacing: normal;
+	margin-left: 6px;
+}

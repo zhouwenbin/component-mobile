@@ -1,0 +1,44 @@
+/*
+@styleguide
+
+# 盒子
+
+*/
+@import "../../utils/variables";
+.chose{
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+.chose li{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 53px;
+  line-height: 44px;
+  border-width: 1px 0 0 0;
+  border-image: url(#{$border}) 2 0 round;
+  padding-left: 15px;
+  position: relative;
+  font-size: 14px;
+  color: #333;
+}
+.chose li:first-child{
+  border: none;
+}
+.chose-name{
+  margin-right: 10px;
+}
+.chose li .text-error{
+  font-size: 14px;
+}
+.chose-error::after{
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  content: "";
+  font-size: 0;
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
+  transform: rotate(45deg);
+}
