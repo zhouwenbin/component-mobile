@@ -1,0 +1,58 @@
+/*
+@styleguide
+
+# 老拉新奖励奖励
+
+*/
+@import "../../utils/variables";
+@import "../reward/index";
+.reward-list-icon01{
+	display: inline-block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160411/27b2721c-a9b9-4adb-969f-96f5227ec86f.png) 0 0 no-repeat;
+	width: 49px;
+	height: 36px;
+	vertical-align: -5px;
+	margin-left: 3px;
+}
+.reward-list-icon02{
+	display: inline-block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160411/c01029f4-a35f-46f4-aeaa-92f18f00100b.png) 0 0 no-repeat;
+	width: 38px;
+	height: 24px;
+	vertical-align: -2px;
+	margin-left: 2px;
+}
+.reward-list-icon03{
+	display: inline-block;
+	background: url(http://img0.fengqucdn.com/cmsres/20160411/0e390083-6b77-4287-8af7-29d229cc7f8f.png) 0 0 no-repeat;
+	width: 34px;
+	height: 23px;
+	vertical-align: 0px;
+	margin-left: 3px;
+}
+.reward-list-ct{
+	padding: 0 20px;
+	overflow: hidden;
+	margin-bottom: 50px;
+}
+.reward-list-ct li{
+	display: table;
+	width: 100%;
+	line-height: 50px;
+	border-bottom: 1px solid #beb8a4;
+	margin-bottom: -1px;
+}
+.reward-list-ct span[class^="reward-list0"]{
+	display: table-cell;
+	white-space: nowrap;
+}
+.reward-list01{
+	width: 15%;
+}
+.reward-list02{
+	width: 50%;
+}
+.reward-list03{
+	width: 35%;
+	text-align: right;
+}

@@ -1,0 +1,87 @@
+/*
+@styleguide
+
+# 老拉新奖励奖励
+
+*/
+@import "../../utils/variables";
+.reward{
+  margin: 0 80px;
+  color: #666;
+}
+.reward-title{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 0 30px;
+}
+.reward-title a{
+  display: block;
+  font-size: 24px;
+}
+.reward-title h2{
+  font-size: 30px;
+  margin-bottom: 4px;
+}
+.reward-ct{
+  position: relative;
+  border: 1px solid #666;
+  border-radius: 10px;
+  min-height: 230px;
+  background: #fff;
+  background-image: radial-gradient(#f7f7f7 20%, transparent 0),
+                  radial-gradient(#f7f7f7 20%, transparent 0);
+  background-size: 9px 9px;
+  margin-bottom: 35px;
+}
+.reward-ct-inner{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  line-height: 1.3;
+}
+.reward-title a,
+.reward-import{
+  color: #f03255;
+}
+.reward-title a{
+  position: relative;
+}
+.reward-title a::before{
+  position: absolute;
+  content: "";
+  border: 8px dashed transparent;
+  border-left: 8px solid #f03255;
+  left: -13px;
+  top: 5px;
+}
+.reward-title-icon{
+  display: inline-block;
+  background: url(http://img0.fengqucdn.com/cmsres/20160411/6b2be9c4-75f9-4547-bc20-010957dae4d1.png) 0 0 no-repeat;
+  width: 32px;
+  height: 20px;
+  vertical-align: -1px;
+  margin-left: 5px;
+}
+.reward-import-big{
+  font-size: 48px;
+}
+.reward-log{
+  text-align: right;
+  font-size: 20px;
+  padding-right: 20px;
+  padding-top: 195px;
+}
+.reward-log a{
+  color: #666;
+ }
+.reward-ct p{
+  display: none;
+  white-space: nowrap;
+}
+.reward-ct-none .reward-none{
+  display: block;
+}
+.reward-ct-gift .reward-gift{
+  display: block;
+}
