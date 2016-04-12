@@ -222,6 +222,9 @@
 .reward-ct-gift .reward-gift {
   display: block; }
 
+.reward-list {
+  margin-bottom: 220px; }
+
 .reward-list-icon01 {
   display: inline-block;
   background: url(http://img0.fengqucdn.com/cmsres/20160411/27b2721c-a9b9-4adb-969f-96f5227ec86f.png) 0 0 no-repeat;
@@ -279,7 +282,10 @@
 
 */
 .reward-btn-box {
-  margin: 0 31px; }
+  position: fixed;
+  bottom: 60px;
+  left: 31px;
+  right: 31px; }
 
 .reward-btn {
   display: block;
@@ -290,5 +296,5 @@
 
 .reward-wp {
   background-color: #fffbeb;
-  padding: 35px 0 60px;
+  padding: 35px 0 1px;
   width: 640px; }

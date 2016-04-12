@@ -6,7 +6,10 @@
 
 */
 .reward-btn-box {
-  margin: 0 31px; }
+  position: fixed;
+  bottom: 60px;
+  left: 31px;
+  right: 31px; }
 
 .reward-btn {
   display: block;
