@@ -46,6 +46,21 @@
 .comment-list-img li{
   float: left;
   margin-right: 10px;
+  width: 62px;
+  height: 62px;
+  text-align: center;
+}
+.comment-list-img li img{
+  max-width: 62px;
+  max-height: 62px;
+  vertical-align: middle;
+}
+.comment-list-img li:after{
+  content: '';
+  height: 100%;
+  width: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 .comment-list svg{
   fill:#D8D8D8;
