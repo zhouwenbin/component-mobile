@@ -142,12 +142,12 @@
     height: 80px;
     text-align: center
 }
-.comment-list-img li img {
+.comment-expose-img li img {
     max-width: 80px;
     max-height: 80px;
     vertical-align: middle
 }
-.comment-list-img li:after {
+.comment-expose-img li:after {
     content: '';
     height: 100%;
     width: 0;
