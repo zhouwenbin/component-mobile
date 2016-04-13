@@ -252,7 +252,8 @@
 .reward-list-ct {
   padding: 0 20px;
   overflow: hidden;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  min-height: 0; }
 
 .reward-list-ct li {
   display: table;
@@ -283,7 +284,7 @@
 */
 .reward-btn-box {
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
   left: 31px;
   right: 31px; }
 
