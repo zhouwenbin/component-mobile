@@ -223,7 +223,7 @@
   display: block; }
 
 .reward-list {
-  margin-bottom: 220px; }
+  margin-bottom: 140px; }
 
 .reward-list-icon01 {
   display: inline-block;
@@ -283,7 +283,7 @@
 */
 .reward-btn-box {
   position: fixed;
-  bottom: 60px;
+  bottom: 20px;
   left: 31px;
   right: 31px; }
 
