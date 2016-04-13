@@ -3,19 +3,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="target-densitydpi=device-dpi,width=640"/>
-
-<script type="text/javascript" src="../../vender/mobile-util.js"></script>
+<!-- <script type="text/javascript" src="../../vender/mobile-util.js"></script> -->
+ <script>
+    if (window.screen.width < 640) {
+        var ratio = window.screen.width / 640;
+        var metas = document.querySelectorAll("meta[name=viewport]");
+        for (var i in metas) {
+            if (typeof metas[i].setAttribute == 'function') {
+                metas[i].setAttribute('content', 'width=640, initial-scale=' + ratio + ', maximum-scale=' + ratio + '');
+            }
+        }
+    }
+</script>
 <title>登陆顺丰海淘</title>
 <link href="../../../app/static/css/pages/common/common.css" rel="stylesheet" type="text/css" />
 <link href="index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <section class="partner-banner">
-  	<ul>
+  	<img src="http://img0.fengqucdn.com/cmsres/20160413/36a8e6bb-73a0-4749-b22d-8012fc8d4f74.jpeg" alt="">
+  	<!-- <ul>
   		<li>好友领取你的红包</li>
   		<li>并在15天内首单支付满80元</li>
   		<li>即可获得现金奖励哦</li>
-  	</ul>
+  	</ul> -->
   	<a href="" class="text-disable">查看详细规则>></a>
   </section>
   <div class="reward-wp">
@@ -100,7 +111,7 @@
   		</ul>
   	</section>
 	  <section class="reward-btn-box">
-  		<a href="" class="reward-btn"></a>
+  		<a href="" class="reward-btn"><img src="http://img0.fengqucdn.com/cmsres/20160411/2b1c75e0-cec0-4331-b0e5-c1f6852812c3.png" alt=""></a>
   	</section>
   </div>
 </body>

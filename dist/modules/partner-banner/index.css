@@ -6,18 +6,18 @@
 
 */
 .partner-banner {
-  width: 640px;
-  height: 512px;
-  background: url(http://img0.fengqucdn.com/cmsres/20160411/1c9fb9b4-b678-4a69-8ee5-a257648433ab.jpeg) 0 0 no-repeat;
   position: relative; }
 
-.partner-banner ul {
+.partner-banner img {
+  width: 100%; }
+
+/*.partner-banner ul{
   padding-top: 424px;
   padding-left: 214px;
   color: #815904;
   line-height: 1.2;
-  font-size: 20px; }
-
+  font-size: 20px;
+}*/
 .partner-banner a.text-disable {
   text-decoration: underline;
   font-size: 16px;
