@@ -103,8 +103,8 @@
   white-space: nowrap;
   height: 100%;
   position: relative;
-  -webkit-transition: all 0.5 linear;
-          transition: all 0.5 linear;
+  -webkit-transition: all 0.5s linear;
+          transition: all 0.5s linear;
 }
 .comment-list-img-big li{
   width: 100%;
