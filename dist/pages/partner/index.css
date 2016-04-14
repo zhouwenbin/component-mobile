@@ -109,7 +109,8 @@
   padding-top: 195px; }
 
 .reward-log a {
-  color: #666; }
+  color: #666;
+  text-decoration: underline; }
 
 .reward-ct p {
   display: none;
@@ -210,7 +211,8 @@
   padding-top: 195px; }
 
 .reward-log a {
-  color: #666; }
+  color: #666;
+  text-decoration: underline; }
 
 .reward-ct p {
   display: none;
