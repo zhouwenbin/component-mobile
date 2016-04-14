@@ -101,7 +101,7 @@
   display: block; }
 
 .reward-list {
-  margin-bottom: 140px; }
+  margin-bottom: 160px; }
 
 .reward-list-icon01 {
   display: inline-block;
@@ -130,8 +130,10 @@
 .reward-list-ct {
   padding: 0 20px;
   overflow: hidden;
-  margin-bottom: 50px;
-  min-height: 0; }
+  margin-bottom: 50px; }
+
+.reward-list-ct p {
+  display: block; }
 
 .reward-list-ct li {
   display: table;

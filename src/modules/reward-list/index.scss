@@ -7,7 +7,7 @@
 @import "../../utils/variables";
 @import "../reward/index";
 .reward-list{
-	margin-bottom: 140px;
+	margin-bottom: 160px;
 }
 .reward-list-icon01{
 	display: inline-block;
@@ -37,7 +37,9 @@
 	padding: 0 20px;
 	overflow: hidden;
 	margin-bottom: 50px;
-	min-height: 0;
+}
+.reward-list-ct p{
+	display: block;
 }
 .reward-list-ct li{
 	display: table;

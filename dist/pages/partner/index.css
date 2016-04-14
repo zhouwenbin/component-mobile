@@ -223,7 +223,7 @@
   display: block; }
 
 .reward-list {
-  margin-bottom: 140px; }
+  margin-bottom: 160px; }
 
 .reward-list-icon01 {
   display: inline-block;
@@ -252,8 +252,10 @@
 .reward-list-ct {
   padding: 0 20px;
   overflow: hidden;
-  margin-bottom: 50px;
-  min-height: 0; }
+  margin-bottom: 50px; }
+
+.reward-list-ct p {
+  display: block; }
 
 .reward-list-ct li {
   display: table;
@@ -285,14 +287,17 @@
 .reward-btn-box {
   position: fixed;
   bottom: 0px;
-  left: 31px;
-  right: 31px; }
+  left: 0;
+  right: 0;
+  height: 135px;
+  background-color: #fff; }
 
 .reward-btn {
   display: block;
   width: 100%;
   vertical-align: middle;
-  text-align: center; }
+  text-align: center;
+  margin-top: 20px; }
 
 .reward-btn img {
   width: 579px; }

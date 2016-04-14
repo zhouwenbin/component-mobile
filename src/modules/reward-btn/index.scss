@@ -7,14 +7,17 @@
 .reward-btn-box{
 	position: fixed;
 	bottom: 0px;
-	left: 31px;
-	right: 31px; 
+	left: 0;
+	right: 0;
+	height: 135px;
+	background-color: #fff; 
 }
 .reward-btn{
   display: block;
   width: 100%;
   vertical-align: middle;
   text-align: center;
+  margin-top: 20px;
 }
 .reward-btn img{
 	width: 579px;
