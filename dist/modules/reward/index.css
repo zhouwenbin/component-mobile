@@ -34,10 +34,7 @@
   -webkit-border-radius: 10px;
           border-radius: 10px;
   min-height: 230px;
-  background: #fff;
-  background-image: -webkit-radial-gradient(#f7f7f7 20%, transparent 0), -webkit-radial-gradient(#f7f7f7 20%, transparent 0);
-  background-image: radial-gradient(#f7f7f7 20%, transparent 0), radial-gradient(#f7f7f7 20%, transparent 0);
-  background-size: 9px 9px;
+  background: url(http://img0.fengqucdn.com/cmsres/20160415/6b0a6934-0d16-4535-92da-b12fa3e419a8.jpeg) 0 0 repeat;
   margin-bottom: 35px; }
 
 .reward-ct-inner {
