@@ -50,7 +50,10 @@
   font-weight: normal; }
 
 .detail-b img {
-  width: 100%; }
+  width: -webkit-calc(100% + 30px);
+  width: calc(100% + 30px);
+  margin-left: -15px;
+  margin-top: -15px; }
 
 .detail-b dl {
   margin-bottom: 10px; }
@@ -66,12 +69,12 @@
 .detail-parameter {
   padding: 20px 15px; }
 
-.detail-parameter p {
-  color: #FF6963;
-  margin-top: 15px;
-  line-height: 1.3; }
-
-.detail-text {
-  padding: 15px;
+.detail p {
+  margin: 15px;
   line-height: 16px;
   color: #555; }
+
+.detail-parameter p {
+  color: #FF6963;
+  margin: 15px 0 0 0;
+  line-height: 1.3; }
