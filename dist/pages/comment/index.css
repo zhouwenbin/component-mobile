@@ -5,7 +5,6 @@
     display: flex;
     padding: 0 15px;
     height: 44px;
-    line-height: 44px;
     border-bottom: 1px solid #DCDCDC;
     background: #fff;
     -webkit-box-align: center;
@@ -13,8 +12,26 @@
         -ms-flex-align: center;
             align-items: center
 }
-.comment-header svg {
-    display: block
+.comment-header a {
+    display: block;
+    position: relative;
+    height: auto
+}
+.comment-header-icon.icon-back {
+    width: 11px;
+    height: 20px
+}
+.comment-header-icon.icon-cart {
+    width: 24px;
+    height: 20px
+}
+.comment-header a:before {
+    content: '';
+    left: -10px;
+    bottom: -10px;
+    top: -10px;
+    right: -10px;
+    position: absolute
 }
 .comment-header h1 {
     -webkit-box-flex: 1;
@@ -39,8 +56,8 @@
     position: absolute;
     -webkit-border-radius: 50%;
             border-radius: 50%;
-    margin-left: -10px;
-    margin-top: 2px
+    right: -10px;
+    top: -8px
 }
 .comment-tag {
     background: #F2F2F2;
@@ -194,8 +211,7 @@
     margin-bottom: 11px
 }
 .comment-list-other {
-    color: #999;
-    margin-bottom: 12px
+    color: #999
 }
 .comment-list-r1 img {
     vertical-align: middle;
@@ -211,7 +227,8 @@
             border-radius: 50%
 }
 .comment-list-img {
-    overflow: hidden
+    overflow: hidden;
+    margin-bottom: 11px
 }
 .comment-list-img li {
     float: left;
@@ -240,6 +257,11 @@
 .comment-list svg.active {
     fill: #FF5E57
 }
+.comment-list-add {
+    color: #4BB8E4;
+    line-height: 18px;
+    margin: 8px 0
+}
 .comment-slider-img-big {
     position: fixed;
     top: 0;
@@ -248,7 +270,8 @@
     left: 0;
     background: #000;
     text-align: center;
-    font-size: 0
+    font-size: 0;
+    z-index: 999
 }
 .comment-slider-img-big li:after {
     content: '';

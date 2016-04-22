@@ -2,13 +2,30 @@
   display: flex;
   padding: 0 15px;
   height: 44px;
-  line-height: 44px;
   border-bottom: 1px solid #DCDCDC;
   background: #fff;
   align-items:center;
 }
-.comment-header svg{
+.comment-header a{
   display: block;
+  position: relative;
+  height: auto;
+}
+.comment-header-icon.icon-back{
+  width: 11px;
+  height: 20px;
+}
+.comment-header-icon.icon-cart{
+  width: 24px;
+  height: 20px;
+}
+.comment-header a:before{
+  content: '';
+  left: -10px;
+  bottom: -10px;
+  top:-10px;
+  right: -10px;
+  position: absolute;
 }
 .comment-header h1{
   flex:1;
@@ -29,6 +46,6 @@
   background: #FF5B54;
   position: absolute;
   border-radius: 50%;
-  margin-left: -10px;
-  margin-top: 2px;
+  right: -10px;
+  top: -8px;
 }
