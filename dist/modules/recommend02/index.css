@@ -22,6 +22,7 @@
   width: 100%;
   white-space: nowrap;
   overflow-x: scroll;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   letter-spacing: -0.5em;
   font-size: 0; }
@@ -42,7 +43,7 @@
 
 .recommend02 p {
   line-height: 1.2;
-  font-size: 2px;
+  font-size: 12px;
   color: #333;
   margin-bottom: 12px; }
 
