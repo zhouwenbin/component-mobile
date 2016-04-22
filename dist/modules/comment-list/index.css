@@ -77,3 +77,8 @@
 .comment-list svg.active{
   fill:#FF5E57;
 }
+.comment-list-add{
+  color: #4BB8E4;
+  line-height: 18px;
+  margin:8px 0;
+}
