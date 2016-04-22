@@ -1,3 +1,4 @@
+@import '../../modules/comment-expose/index.css';
 .comment-list{
   background: #fff;
 }
