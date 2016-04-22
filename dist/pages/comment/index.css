@@ -211,8 +211,7 @@
     margin-bottom: 11px
 }
 .comment-list-other {
-    color: #999;
-    margin-bottom: 12px
+    color: #999
 }
 .comment-list-r1 img {
     vertical-align: middle;
@@ -228,7 +227,8 @@
             border-radius: 50%
 }
 .comment-list-img {
-    overflow: hidden
+    overflow: hidden;
+    margin-bottom: 11px
 }
 .comment-list-img li {
     float: left;

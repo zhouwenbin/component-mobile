@@ -22,7 +22,6 @@
 }
 .comment-list-other{
   color: #999;
-  margin-bottom: 12px;
 }
 .comment-list-r1 img{
   vertical-align: middle;
@@ -39,6 +38,7 @@
 
 .comment-list-img{
   overflow: hidden;
+  margin-bottom: 11px;
 }
 .comment-list-img li{
   float: left;
