@@ -11,6 +11,7 @@
 @import '../../modules/detail/index';
 @import '../../modules/nav-cart/index';
 @import '../../modules/detail-cart/index';
+@import '../../modules/service/index';
 
 .comment-expose-no{
 	background: #fff;
@@ -18,4 +19,8 @@
 }
 .comment-expose-no .comment-expose{
 	background: transparent;
+}
+.service{
+	background: #fff;
+	display: none;
 }
