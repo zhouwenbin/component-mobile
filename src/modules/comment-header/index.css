@@ -1,6 +1,5 @@
 .comment-header{
   display: flex;
-  padding: 0 15px;
   height: 44px;
   border-bottom: 1px solid #DCDCDC;
   background: #fff;
@@ -39,6 +38,6 @@
   background: #FF5B54;
   position: absolute;
   border-radius: 50%;
-  right: -10px;
-  top: -8px;
+  right: -4px;
+  top: 2px;
 }

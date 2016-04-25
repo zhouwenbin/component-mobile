@@ -38,11 +38,13 @@
 }
 
 .comment-list-img{
-  overflow: hidden;
+  white-space: nowrap;
+  overflow-x: auto;
+  font-size: 0;
   margin-bottom: 11px;
 }
 .comment-list-img li{
-  float: left;
+  display: inline-block;
   margin-right: 10px;
   width: 62px;
   height: 62px;

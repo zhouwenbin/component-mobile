@@ -3,7 +3,6 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    padding: 0 15px;
     height: 44px;
     border-bottom: 1px solid #DCDCDC;
     background: #fff;
@@ -48,8 +47,8 @@
     position: absolute;
     -webkit-border-radius: 50%;
             border-radius: 50%;
-    right: -10px;
-    top: -8px
+    right: -4px;
+    top: 2px
 }
 .comment-tag {
     background: #F2F2F2;
@@ -141,11 +140,13 @@
     font-size: 16px
 }
 .comment-expose-img {
-    overflow: hidden;
+    white-space: nowrap;
+    overflow-x: auto;
+    font-size: 0;
     margin-bottom: 5px
 }
 .comment-expose-img li {
-    float: left;
+    display: inline-block;
     margin-right: 10px;
     width: 80px;
     height: 80px;
@@ -219,11 +220,13 @@
             border-radius: 50%
 }
 .comment-list-img {
-    overflow: hidden;
+    white-space: nowrap;
+    overflow-x: auto;
+    font-size: 0;
     margin-bottom: 11px
 }
 .comment-list-img li {
-    float: left;
+    display: inline-block;
     margin-right: 10px;
     width: 62px;
     height: 62px;
