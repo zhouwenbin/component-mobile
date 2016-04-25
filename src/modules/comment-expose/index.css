@@ -49,13 +49,13 @@
 .comment-expose-img li{
   display: inline-block;
   margin-right: 10px;
-  width: 80px;
-  height: 80px;
+  width: 62px;
+  height: 62px;
   text-align: center;
 }
 .comment-expose-img li img{
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 62px;
+  max-height: 62px;
   vertical-align: middle;
 }
 .comment-expose-img li:after{
