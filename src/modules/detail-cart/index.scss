@@ -10,7 +10,7 @@
   position: fixed;
   width: 100%;
   left: 0;
-  bottom: 58px;
+  bottom: 0px;
   z-index: 999;
   transform:translate(0,150%);
   animation:detail-cart 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
@@ -75,6 +75,9 @@
 
 .detail-cart-c1{
   flex:1;
+}
+.detail-cart-c1 h2{
+  font-weight: 400;
 }
 .detail-cart img{
   width: 110px;
