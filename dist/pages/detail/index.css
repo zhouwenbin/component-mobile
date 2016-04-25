@@ -1124,6 +1124,7 @@
   margin-right: 5px;
   vertical-align: -7px; }
 
+#fromSpecButtonArea,
 .nav-cart-r1l3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1549,6 +1550,48 @@
 
 .dialog-active li {
   text-align: left; }
+
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.tuandialog-inner {
+  width: 476px;
+  background: #fff;
+  position: fixed;
+  text-align: center;
+  z-index: 999;
+  padding: 72px 38px 48px; }
+
+.tuandialog h2 {
+  color: #F13C34;
+  font-size: 36px;
+  margin-bottom: 26px; }
+
+.tuandialog p {
+  color: #9B9B9B;
+  font-size: 32px;
+  line-height: 44px;
+  margin-bottom: 48px; }
+
+.tuandialog .text-important {
+  margin-bottom: 30px; }
+
+.tuandialog .btn {
+  font-size: 32px;
+  height: 80px;
+  line-height: 80px; }
+
+.tuandialog .btn-danger {
+  margin-bottom: 14px;
+  margin-top: 66px; }
+
+.tuandialog-img {
+  position: absolute;
+  top: 138px;
+  right: 64px; }
 
 .comment-expose-no {
   background: #fff;
