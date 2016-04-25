@@ -1,6 +1,5 @@
 .comment-header{
   display: flex;
-  padding: 0 15px;
   height: 44px;
   border-bottom: 1px solid #DCDCDC;
   background: #fff;
@@ -9,7 +8,7 @@
 .comment-header a{
   display: block;
   position: relative;
-  height: auto;
+  padding: 10px;
 }
 .comment-header-icon.icon-back{
   width: 11px;
@@ -19,14 +18,7 @@
   width: 24px;
   height: 20px;
 }
-.comment-header a:before{
-  content: '';
-  left: -10px;
-  bottom: -10px;
-  top:-10px;
-  right: -10px;
-  position: absolute;
-}
+
 .comment-header h1{
   flex:1;
   color: #FF5B54;
@@ -35,7 +27,7 @@
   font-weight: normal;
 }
 .comment-header h1 span{
-  font-size: 14px;
+  font-size: 14px;  
 }
 .comment-header-num{
   width: 17px;
@@ -46,6 +38,6 @@
   background: #FF5B54;
   position: absolute;
   border-radius: 50%;
-  right: -10px;
-  top: -8px;
+  right: -4px;
+  top: 2px;
 }

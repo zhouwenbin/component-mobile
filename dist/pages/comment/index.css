@@ -3,7 +3,6 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    padding: 0 15px;
     height: 44px;
     border-bottom: 1px solid #DCDCDC;
     background: #fff;
@@ -15,7 +14,7 @@
 .comment-header a {
     display: block;
     position: relative;
-    height: auto
+    padding: 10px
 }
 .comment-header-icon.icon-back {
     width: 11px;
@@ -24,14 +23,6 @@
 .comment-header-icon.icon-cart {
     width: 24px;
     height: 20px
-}
-.comment-header a:before {
-    content: '';
-    left: -10px;
-    bottom: -10px;
-    top: -10px;
-    right: -10px;
-    position: absolute
 }
 .comment-header h1 {
     -webkit-box-flex: 1;
@@ -56,8 +47,8 @@
     position: absolute;
     -webkit-border-radius: 50%;
             border-radius: 50%;
-    right: -10px;
-    top: -8px
+    right: -4px;
+    top: 2px
 }
 .comment-tag {
     background: #F2F2F2;
@@ -65,7 +56,8 @@
     border-bottom: 1px solid #e5e5e5
 }
 .comment-tag ul {
-    overflow: hidden
+    overflow: hidden;
+    height: 86px
 }
 .comment-tag li {
     float: left;
@@ -149,11 +141,13 @@
     font-size: 16px
 }
 .comment-expose-img {
-    overflow: hidden;
+    white-space: nowrap;
+    overflow-x: auto;
+    font-size: 0;
     margin-bottom: 5px
 }
 .comment-expose-img li {
-    float: left;
+    display: inline-block;
     margin-right: 10px;
     width: 80px;
     height: 80px;
@@ -227,11 +221,13 @@
             border-radius: 50%
 }
 .comment-list-img {
-    overflow: hidden;
+    white-space: nowrap;
+    overflow-x: auto;
+    font-size: 0;
     margin-bottom: 11px
 }
 .comment-list-img li {
-    float: left;
+    display: inline-block;
     margin-right: 10px;
     width: 62px;
     height: 62px;

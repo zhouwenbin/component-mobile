@@ -5,6 +5,7 @@
 }
 .comment-tag ul{
   overflow: hidden;
+  height: 86px;
   
 }
 .comment-tag li{
