@@ -75,3 +75,31 @@
   line-height: 18px;
   margin:8px 0;
 }
+.comment-list-none{
+  text-align: center;
+  color: #A2A2A2;
+  font-size: 16px;
+  padding: 83px;
+  background: #fff;
+}
+.comment-list-none svg{
+  width: 60px;
+  height: 79px;
+}
+.comment-list-none p{
+  margin-top: 26px;
+}
+.comment-expose-none{
+  text-align: center;
+  color: #A2A2A2;
+  font-size: 16px;
+  padding: 72px;
+  background: #fff;
+}
+.comment-expose-none svg{
+  width: 81px;
+  height: 71px;
+}
+.comment-expose-none p{
+  margin-top: 16px;
+}

@@ -47,7 +47,7 @@
     position: absolute;
     -webkit-border-radius: 50%;
             border-radius: 50%;
-    right: -4px;
+    right: 0;
     top: 2px
 }
 .comment-tag {
@@ -57,11 +57,11 @@
 }
 .comment-tag ul {
     overflow: hidden;
-    height: 86px
+    margin-left: -9px
 }
 .comment-tag li {
     float: left;
-    margin-right: 9px;
+    margin-left: 9px;
     margin-bottom: 8px
 }
 .comment-tag a {
@@ -79,16 +79,6 @@
     border: none;
     background: #FF5E57;
     color: #fff
-}
-.comment-tag-more {
-    width: 12px;
-    height: 12px;
-    -webkit-transform: rotate(-135deg);
-        -ms-transform: rotate(-135deg);
-            transform: rotate(-135deg);
-    border-left: 2px solid #DCDCDC;
-    border-top: 2px solid #DCDCDC;
-    margin: 0 auto
 }
 .comment-expose {
     background: #FFFAFA;
@@ -172,6 +162,12 @@
 }
 .comment-expose svg.active {
     fill: #FF5E57
+}
+.comment-expose-icon.icon-heart {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 5px
 }
 .comment-list {
     background: #fff
@@ -257,6 +253,34 @@
     color: #4BB8E4;
     line-height: 18px;
     margin: 8px 0
+}
+.comment-list-none {
+    text-align: center;
+    color: #A2A2A2;
+    font-size: 16px;
+    padding: 83px;
+    background: #fff
+}
+.comment-list-none svg {
+    width: 60px;
+    height: 79px
+}
+.comment-list-none p {
+    margin-top: 26px
+}
+.comment-expose-none {
+    text-align: center;
+    color: #A2A2A2;
+    font-size: 16px;
+    padding: 72px;
+    background: #fff
+}
+.comment-expose-none svg {
+    width: 81px;
+    height: 71px
+}
+.comment-expose-none p {
+    margin-top: 16px
 }
 .comment-slider-img-big {
     position: fixed;

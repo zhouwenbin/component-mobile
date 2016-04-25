@@ -82,3 +82,9 @@
 .comment-expose svg.active{
   fill:#FF5E57;
 }
+.comment-expose-icon.icon-heart{
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
