@@ -5,12 +5,11 @@
 }
 .comment-tag ul{
   overflow: hidden;
-  height: 86px;
-  
+  margin-left: -9px;
 }
 .comment-tag li{
   float: left;
-  margin-right: 9px;
+  margin-left: 9px;
   margin-bottom: 8px;
 }
 
@@ -28,12 +27,4 @@
   border:none;
   background: #FF5E57;
   color: #fff;
-}
-.comment-tag-more{
-  width: 12px;
-  height: 12px;
-  transform:rotate(-135deg);
-  border-left: 2px solid #DCDCDC;
-  border-top: 2px solid #DCDCDC;
-  margin: 0 auto;
 }
