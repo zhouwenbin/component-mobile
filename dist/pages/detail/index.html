@@ -93,7 +93,7 @@
   </section>
   <section class="coupon-discount">
   	<!-- 首单减开始 -->
-  	<div class="coupon-discount-t"><span class="coupon-discount-ticon">首单减</span><span class="text-error">活动期间全场用户首单减免<em>&yen;</em>15</span></div>
+  	<div class="coupon-discount-t"><span class="coupon-discount-ticon">首单减</span><span>活动期间全场用户首单减免<em>&yen;</em>15</span></div>
   	<!-- 首单减结束 -->
   	<!-- 预售开始 -->
   	<div class="coupon-discount-t">
@@ -116,7 +116,7 @@
   	<ul>
   		<li class="coupon-discount-t">
   			<a href="" class="box-link coupon-discount-flex">
-  				<div><span class="label label-soon">满减</span>满200元立减30</div>
+  				<div><span class="label label-soon">满减</span><span class="coupon-discount-ticon">满减</span>满200元立减30</div>
   				<div class="text-disable">...</div>
   			</a>
   			<ul style="display:block;">
@@ -143,7 +143,7 @@
   </section>
   <ul class="chose">
   	<li>
-  		<div><span class="chose-name">已选</span><span class="text-error">500ml</span></div>
+  		<div><span class="chose-name">已选</span><span>500ml</span></div>
   		<div class="chose-error"></div>
   	</li>
   	<li>
@@ -405,6 +405,31 @@
   			<!-- <a href="" class="btn btn-danger"><svg class="svg icon-notice"><use xlink:href="#icon-notice"></use></svg>到货通知</a> -->
   		</div>
   	</div>
+  	<div class="nav-cart-r1" style="bottom:80px;">
+  		<div class="nav-cart-r1l3">
+  			<!-- <a href="" class="btn btn-normal active">立即购买</a> -->
+  			<!-- <a href="" class="btn btn-normal active">其他规格</a> -->
+  			<a href="" class="btn btn-normal active">原价购买</a>
+  			<!-- <a href="" class="btn btn-disable">立即购买</a> -->
+  			<a href="" class="btn btn-danger"><svg class="svg icon-join-cart"><use xlink:href="#icon-join-cart"></use></svg>加入购物车</a>
+  			<!-- <a href="" class="btn btn-danger"><svg class="svg icon-notice"><use xlink:href="#icon-notice"></use></svg>到货通知</a> -->
+  		</div>
+  	</div>
   </section>
+  <section class="mask dialog dialog-active">
+  	<div class=" center">
+  		<a href="javascript:" class="icon icon15">关闭</a>
+  		<h2>输入兑换码</h2>
+  		<div class="dialog-active-b">
+  			<input class="input" placeholder="输入您的兑换码">
+  			<button class="btn btn-big btn-disable">使用</button>
+  			<!--输入后
+  			<button class="btn btn-big btn-danger">使用</button>
+  			<-->
+  			<div class="text-error">错误提示</div>
+  		</div>	
+  	</div>
+  </section>
+
 </body>
 </html>
