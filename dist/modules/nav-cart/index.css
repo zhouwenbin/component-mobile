@@ -140,7 +140,8 @@
   margin-right: 5px;
   vertical-align: -7px; }
 
-.nav-cart-r1l3 {
+.nav-cart-r1l3,
+#fromSpecButtonArea {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
