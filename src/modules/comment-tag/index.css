@@ -22,6 +22,7 @@
   border:1px solid #DCDCDC;
   border-radius: 4px;
   color: #999;
+  font-size: 14px;
 }
 .comment-tag li.active a{
   border:none;
