@@ -606,7 +606,7 @@
 
 .comment-expose-r1 img {
   vertical-align: middle;
-  margin-right: 0px; }
+  margin-right: 8px; }
 
 .comment-expose-r1c1 {
   font-size: 16px; }
@@ -706,7 +706,8 @@
   line-height: 22px;
   padding: 0 10px;
   -webkit-border-radius: 4px;
-          border-radius: 4px; }
+          border-radius: 4px;
+  background: #fff; }
 
 .attention-link:visited {
   color: #ff5b54; }
@@ -1600,7 +1601,7 @@
 
 */
 .toast {
-  position: absolute;
+  position: fixed;
   display: inline-block;
   padding: 10px 20px;
   left: 50%;
