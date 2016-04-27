@@ -1,0 +1,43 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+.tuandialog-inner{
+	width:238px;
+	background:#fff;
+	position: fixed;
+	text-align:center;
+	z-index:999;
+	padding:36px 19px 24px;
+}
+.tuandialog h2{
+	color:#F13C34;
+	font-size:18px;
+	margin-bottom:13px;
+}
+.tuandialog p{
+	color:#9B9B9B;
+	font-size:16px;
+	line-height:22px;
+	margin-bottom:24px;
+}
+.tuandialog .text-important{
+	margin-bottom:15px;
+}
+.tuandialog .btn{
+	font-size:16px;
+	height:40px;
+	line-height:40px;
+}
+.tuandialog .btn-danger{
+	margin-bottom:7px;
+	margin-top:33px;
+}
+.tuandialog-img{
+	position: absolute;
+	top:69px;
+	right:32px;
+}

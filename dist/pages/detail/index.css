@@ -1559,40 +1559,40 @@
 
 */
 .tuandialog-inner {
-  width: 476px;
+  width: 238px;
   background: #fff;
   position: fixed;
   text-align: center;
   z-index: 999;
-  padding: 72px 38px 48px; }
+  padding: 36px 19px 24px; }
 
 .tuandialog h2 {
   color: #F13C34;
-  font-size: 36px;
-  margin-bottom: 26px; }
+  font-size: 18px;
+  margin-bottom: 13px; }
 
 .tuandialog p {
   color: #9B9B9B;
-  font-size: 32px;
-  line-height: 44px;
-  margin-bottom: 48px; }
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 24px; }
 
 .tuandialog .text-important {
-  margin-bottom: 30px; }
+  margin-bottom: 15px; }
 
 .tuandialog .btn {
-  font-size: 32px;
-  height: 80px;
-  line-height: 80px; }
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px; }
 
 .tuandialog .btn-danger {
-  margin-bottom: 14px;
-  margin-top: 66px; }
+  margin-bottom: 7px;
+  margin-top: 33px; }
 
 .tuandialog-img {
   position: absolute;
-  top: 138px;
-  right: 64px; }
+  top: 69px;
+  right: 32px; }
 
 /*
 @styleguide
