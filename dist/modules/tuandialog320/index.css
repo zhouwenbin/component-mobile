@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/*
+@styleguide
+
+# 优惠券
+
+*/
+.tuandialog-inner {
+  width: 80%;
+  background: #fff;
+  position: fixed;
+  text-align: left;
+  z-index: 999;
+  padding: 30px 19px 24px; }
+
+.tuandialog-inner .icon.icon15 {
+  position: absolute;
+  top: 14px;
+  right: 14px; }
+
+.tuandialog h2 {
+  color: #F13C34;
+  font-size: 16px;
+  margin-bottom: 13px;
+  text-align: center; }
+
+.tuandialog p {
+  color: #9B9B9B;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px; }
+
+.tuandialog .btn-danger {
+  margin-bottom: 7px;
+  margin-top: 33px; }
+
+.tuandialog .btn {
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px; }

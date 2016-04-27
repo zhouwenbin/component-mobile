@@ -623,7 +623,7 @@
   width: 62px;
   height: 62px;
   text-align: center;
-  border: 1px solid #D8D8D8; }
+  border: 1px solid #E5E5E5; }
 
 .comment-expose-img li img {
   max-width: 62px;
@@ -1570,44 +1570,42 @@
 /*
 @styleguide
 
-# 优惠券
+# 预售规则
 
 */
-.tuandialog-inner {
-  width: 238px;
+.presell-rule-inner {
+  width: 80%;
   background: #fff;
   position: fixed;
-  text-align: center;
+  text-align: left;
   z-index: 999;
-  padding: 36px 19px 24px; }
+  padding: 30px 19px 24px; }
 
-.tuandialog h2 {
+.presell-rule-inner .icon.icon15 {
+  position: absolute;
+  top: 17px;
+  right: 14px; }
+
+.presell-rule h2 {
   color: #F13C34;
-  font-size: 18px;
-  margin-bottom: 13px; }
+  font-size: 16px;
+  margin-bottom: 13px;
+  text-align: center; }
 
-.tuandialog p {
+.presell-rule p {
   color: #9B9B9B;
-  font-size: 16px;
-  line-height: 22px;
-  margin-bottom: 24px; }
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px; }
 
-.tuandialog .text-important {
-  margin-bottom: 15px; }
-
-.tuandialog .btn {
-  font-size: 16px;
-  height: 40px;
-  line-height: 40px; }
-
-.tuandialog .btn-danger {
+.presell-rule .btn-danger {
   margin-bottom: 7px;
   margin-top: 33px; }
 
-.tuandialog-img {
-  position: absolute;
-  top: 69px;
-  right: 32px; }
+.presell-rule .btn {
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px; }
 
 /*
 @styleguide
