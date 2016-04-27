@@ -49,6 +49,7 @@
   width: 62px;
   height: 62px;
   text-align: center;
+  border:1px solid #E5E5E5;
 }
 .comment-list-img li img{
   max-width: 62px;
@@ -88,18 +89,4 @@
 }
 .comment-list-none p{
   margin-top: 26px;
-}
-.comment-expose-none{
-  text-align: center;
-  color: #A2A2A2;
-  font-size: 16px;
-  padding: 72px;
-  background: #fff;
-}
-.comment-expose-none svg{
-  width: 81px;
-  height: 71px;
-}
-.comment-expose-none p{
-  margin-top: 16px;
 }

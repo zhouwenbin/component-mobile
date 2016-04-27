@@ -622,7 +622,8 @@
   margin-right: 10px;
   width: 62px;
   height: 62px;
-  text-align: center; }
+  text-align: center;
+  border: 1px solid #D8D8D8; }
 
 .comment-expose-img li img {
   max-width: 62px;
@@ -649,6 +650,20 @@
   height: 12px;
   vertical-align: middle;
   margin-right: 5px; }
+
+.comment-expose-none {
+  text-align: center;
+  color: #A2A2A2;
+  font-size: 16px;
+  padding: 72px;
+  background: #fff; }
+
+.comment-expose-none svg {
+  width: 81px;
+  height: 71px; }
+
+.comment-expose-none p {
+  margin-top: 16px; }
 
 /*
 @styleguide
