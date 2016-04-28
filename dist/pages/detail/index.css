@@ -619,6 +619,9 @@
   margin-bottom: 5px;
   -webkit-overflow-scrolling: touch; }
 
+.comment-expose-img::-webkit-scrollbar {
+  display: none; }
+
 .comment-expose-img li {
   display: inline-block;
   margin-right: 10px;
@@ -761,6 +764,9 @@
   -webkit-overflow-scrolling: touch;
   letter-spacing: -0.5em;
   font-size: 0; }
+
+.recommend02 ul::-webkit-scrollbar {
+  display: none; }
 
 .recommend02 li {
   display: inline-block;
