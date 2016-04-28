@@ -614,8 +614,10 @@
 .comment-expose-img {
   white-space: nowrap;
   overflow-x: auto;
+  overflow-y: hidden;
   font-size: 0;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  -webkit-overflow-scrolling: touch; }
 
 .comment-expose-img li {
   display: inline-block;
