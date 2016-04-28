@@ -57,6 +57,9 @@
   margin-bottom: 5px;
   -webkit-overflow-scrolling: touch;
 }
+.comment-expose-img::-webkit-scrollbar{
+  display: none;
+}
 .comment-expose-img li{
   display: inline-block;
   margin-right: 10px;
