@@ -180,12 +180,12 @@
   display: inline-block;
   vertical-align: middle;
 }
-.comment-list svg{
+.comment-list .icon-star{
   fill:#D8D8D8;
   width: 13px;
   height: 13px;
 }
-.comment-list svg.active{
+.comment-list .icon-star.active{
   fill:#FF5E57;
 }
 .comment-list-add{
