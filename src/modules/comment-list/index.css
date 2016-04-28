@@ -40,8 +40,10 @@
 .comment-list-img{
   white-space: nowrap;
   overflow-x: auto;
+  overflow-y: hidden;
   font-size: 0;
   margin-bottom: 11px;
+  -webkit-overflow-scrolling: touch;
 }
 .comment-list-img li{
   display: inline-block;
@@ -52,8 +54,8 @@
   border:1px solid #E5E5E5;
 }
 .comment-list-img li img{
-  max-width: 62px;
-  max-height: 62px;
+  max-width: 60px;
+  max-height: 60px;
   vertical-align: middle;
 }
 .comment-list-img li:after{
@@ -63,12 +65,12 @@
   display: inline-block;
   vertical-align: middle;
 }
-.comment-list svg{
+.comment-list .icon-star{
   fill:#D8D8D8;
   width: 13px;
   height: 13px;
 }
-.comment-list svg.active{
+.comment-list .icon-star.active{
   fill:#FF5E57;
 }
 .comment-list-add{
