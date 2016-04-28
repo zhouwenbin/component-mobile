@@ -139,6 +139,9 @@
     margin-bottom: 5px;
     -webkit-overflow-scrolling: touch
 }
+.comment-expose-img::-webkit-scrollbar {
+    display: none
+}
 .comment-expose-img li {
     display: inline-block;
     margin-right: 10px;
@@ -241,6 +244,9 @@
     font-size: 0;
     margin-bottom: 11px;
     -webkit-overflow-scrolling: touch
+}
+.comment-list-img::-webkit-scrollbar {
+    display: none
 }
 .comment-list-img li {
     display: inline-block;
