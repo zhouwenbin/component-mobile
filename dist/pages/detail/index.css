@@ -1572,6 +1572,11 @@
 .dialog-active li {
   text-align: left; }
 
+.dialog-active.dialog-goods .center {
+  position: fixed;
+  z-index: 999;
+  padding: 0; }
+
 /*
 @styleguide
 
