@@ -1010,6 +1010,9 @@
 .detail-b .detail-parameter p {
   padding: 0; }
 
+.detail-b .brandlogo {
+  margin-top: 0; }
+
 /*
 @styleguide
 
