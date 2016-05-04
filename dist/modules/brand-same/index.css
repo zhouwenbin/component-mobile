@@ -71,11 +71,6 @@
       -ms-transform: translate(-200%, 0);
           transform: translate(-200%, 0); }
 
-.brand-same-scroll-inner {
-  /*
-	display: inline-block;*/
-  white-space: nowrap; }
-
 .brand-same-scroll-items {
   display: inline-block; }
 
