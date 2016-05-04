@@ -551,7 +551,8 @@
   line-height: 45px;
   background-color: #fff;
   color: #9B9B9B;
-  border-bottom: 1px solid #f2f2f2; }
+  border-bottom: 1px solid #f2f2f2;
+  position: relative; }
 
 .comment-title h2 {
   font-weight: 400; }
@@ -561,8 +562,22 @@
   padding-left: 10px;
   vertical-align: 0; }
 
-.comment-title .icon13 {
-  margin-left: 5px; }
+.comment-tite-r2 {
+  margin-right: 5px; }
+
+.comment-tite-r2:after {
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  content: "";
+  font-size: 0;
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg); }
 
 .comment-expose {
   background: #FFFAFA;
