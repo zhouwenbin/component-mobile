@@ -469,7 +469,7 @@
 
 .coupon-discount-more {
   text-align: center;
-  margin-top: -2px;
+  /*margin-top: -2px;*/
   padding: 16px 14px;
   background-color: #fff;
   border-top: 1px solid #f2f2f2; }
@@ -480,6 +480,16 @@
 
 .coupon-discount-img img {
   width: 100%; }
+
+.coupon-discount-sale {
+  padding: 10px 0; }
+
+.coupon-discount-text {
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  line-height: 1.2;
+  padding-right: 44px; }
 
 /*
 @styleguide
