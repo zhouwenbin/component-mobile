@@ -205,3 +205,21 @@
 .detail-mix02 li img {
   width: 62px;
   height: 62px; }
+
+.detail-mix02-soldout {
+  background: #000000;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 12px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
