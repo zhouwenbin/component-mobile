@@ -3,7 +3,8 @@
   width:640px;
 	padding-top: 253px;
 	padding-bottom: 21px;
-	background: url(http://img0.fengqucdn.com/cmsres/20160223/844ba5fb-cd93-4862-a533-b1ad27cfc2d4.jpeg) no-repeat;
+	/*background: url(http://img0.fengqucdn.com/cmsres/20160223/844ba5fb-cd93-4862-a533-b1ad27cfc2d4.jpeg) no-repeat;*/
+	background: url(http://img0.fengqucdn.com/cmsres/20160506/56033295-6665-4774-a366-779922b148fe.jpeg) no-repeat;
 }
 .carousel-point{
 	background-image: url(http://img0.fengqucdn.com/cmsres/20160223/9b2ebfda-215f-451d-883c-6c36a9c25aff.jpeg);
@@ -77,11 +78,14 @@
 }
 .carousel-times{
 	color: #b20707;
-	font-size: 22px;
+	font-size: 20px;
 	text-align: center;
 	height: 30px;
 	line-height: 30px;
 	margin-bottom: 30px;
+}
+.carousel-times span{
+	padding: 0 16px 0 11px;
 }
 .carousel-times strong{
 	color:#fdff5c;
