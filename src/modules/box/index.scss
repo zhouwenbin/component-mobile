@@ -102,9 +102,30 @@
 .box-address-r2{
   text-align: right;
 }
-.box-address-r3{
+.box-address-r3,
+.box-more{
   display: flex;
   justify-content:space-between;
+}
+
+/*box-more*/
+.box-more{
+  position: relative;
+}
+.box-more-arrow{
+  margin-right: 13px;
+}
+.box-more-arrow::after{
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  content: "";
+  font-size: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
+  transform: translate(0,-50%) rotate(45deg);
 }
 
 @include box(1);
