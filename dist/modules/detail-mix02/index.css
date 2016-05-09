@@ -178,25 +178,53 @@
 
 .detail-mix02 ul {
   padding: 12px 0;
-  margin: 0 15px;
+  /*margin: 0 15px;*/
   overflow: hidden;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  /*display: flex;
+  justify-content: space-between;
+  align-items: center;
+*/
   color: #dcdccd;
-  font-size: 22px; }
+  font-size: 22px;
+  /**/
+  font-size: 0;
+  letter-spacing: -0.5em; }
 
-.detail-mix02 li:last-child {
+/*.detail-mix02 li:last-child{
+  display: none;
+}*/
+.detail-mix02 li:last-child:before,
+.detail-mix02 li:last-child:after {
   display: none; }
+
+.detail-mix02 li {
+  /**/
+  display: inline-block;
+  width: 25%;
+  font-size: 12px;
+  letter-spacing: normal;
+  text-align: center;
+  position: relative; }
+
+.detail-mix02 li:before,
+.detail-mix02 li:after {
+  position: absolute;
+  content: "";
+  background: #dcdccd;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%); }
+
+.detail-mix02 li:before {
+  width: 2px;
+  height: 10px;
+  right: -1px; }
+
+.detail-mix02 li:after {
+  width: 10px;
+  height: 2px;
+  right: -5px; }
 
 .detail-mix02 li a {
   display: inline-block;
