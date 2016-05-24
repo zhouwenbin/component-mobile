@@ -1,0 +1,22 @@
+.rank-header{
+	position: relative;
+	background: #fff;
+}
+.rank-header h1{
+	font-size:18px;
+	color:#4A4A4A;
+	font-weight:normal;
+	height:46px;
+	line-height:46px;
+	text-align:center;
+}
+.rank-header svg{
+	width: 19px;
+	height: 19px;
+	position: absolute;
+	left: 13px;
+	top: 50%;
+	-webkit-transform: translate(0,-50%);
+	    -ms-transform: translate(0,-50%);
+	        transform: translate(0,-50%);
+}

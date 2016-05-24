@@ -1,0 +1,25 @@
+.rank-qa ul{
+	display:-webkit-box;
+	display:-webkit-flex;
+	display:-ms-flexbox;
+	display:flex;
+	border-bottom: 1px solid #DCDCDC;
+	background: #fff;
+}
+.rank-qa li{
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+	    -ms-flex:1;
+	        flex:1;
+	border-right:1px solid #DCDCDC;
+	text-align: center;
+}
+.rank-qa li:last-child{
+	border-left: none; 
+}
+.rank-qa a{
+	color:#4A4A4A;
+	display:block;
+	height:44px;
+	line-height:44px;
+}

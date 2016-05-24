@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
+
+<symbol id="icon-back" viewBox="0 0 21 38">
+        <title>btn_back_white</title><path d="M.03 19c0-.512.195-1.024.585-1.414L17.585.616c.782-.782 2.048-.782 2.83 0 .78.78.78 2.047 0 2.828L4.857 19l15.556 15.556c.78.78.78 2.048 0 2.83-.78.78-2.047.78-2.828 0L.616 20.413c-.39-.39-.587-.902-.587-1.414z" fill="#F13C34" fill-rule="evenodd"/>
+</symbol>
+</svg>
