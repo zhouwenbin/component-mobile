@@ -4,11 +4,9 @@
     <title>X Copy</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="视觉稿-v4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="20" font-family=".SFNSDisplay-Regular, .SF NS Display" font-weight="normal">
+    <g id="视觉稿-v4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="规则页" transform="translate(-308.000000, -793.000000)" fill="#999999">
-            <text id="X-Copy">
-                <tspan x="308" y="808">X</tspan>
-            </text>
+            <polygon id="X-Copy" points="308.439453 808 310.431641 808 314.230469 802.384766 314.298828 802.384766 318.039062 808 320.148438 808 315.392578 801.017578 315.392578 800.958984 320.255859 793.908203 318.253906 793.908203 314.445312 799.572266 314.376953 799.572266 310.617188 793.908203 308.498047 793.908203 313.234375 800.871094 313.234375 800.939453"></polygon>
         </g>
     </g>
 </svg>
