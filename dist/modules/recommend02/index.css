@@ -27,6 +27,9 @@
   letter-spacing: -0.5em;
   font-size: 0; }
 
+.recommend02 ul::-webkit-scrollbar {
+  display: none; }
+
 .recommend02 li {
   display: inline-block;
   letter-spacing: normal;

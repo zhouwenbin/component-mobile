@@ -2,9 +2,10 @@
 @import '../../modules/header-detail/index';
 @import '../../modules/goods/index';
 @import '../../modules/coupon-discount/index';
+@import '../../modules/detail-mix02/index';
 @import '../../modules/chose/index';
-@import '../../modules/comment-title/index';
-@import '../../modules/comment-expose/index';
+/*@import '../../modules/comment-title/index';
+@import '../../modules/comment-expose/index';*/
 @import '../../modules/attention/index';
 @import '../../modules/recommend02/index';
 @import '../../modules/brand-same/index';
@@ -12,19 +13,22 @@
 @import '../../modules/nav-cart/index';
 @import '../../modules/detail-cart/index';
 @import '../../modules/service/index';
-@import '../../modules/dialog-active/index';
+@import '../../modules/dialog-goods/index';
 @import '../../modules/presell-rule/index';
 @import '../../modules/toast/index';
+/*  <include src="../../modules/comment-title/index.html"></include>
+  <div class="comment-expose-no">
+  	<include src="../../modules/comment-expose/index.html"></include>
+  </div>*/
 
 
-
-.comment-expose-no{
+/*.comment-expose-no{
 	background: #fff;
 	margin-bottom: 10px;
 }
 .comment-expose-no .comment-expose{
 	background: transparent;
-}
+}*/
 .service{
 	background: #fff;
 	display: none;

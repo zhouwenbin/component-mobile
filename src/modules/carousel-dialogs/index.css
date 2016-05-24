@@ -128,7 +128,13 @@
 	background: url(http://img0.fengqucdn.com/cmsres/20160302/2d644712-6d53-4cbe-9887-83c095dddf16.png) no-repeat;
 	text-indent: -99em;
 }
-
+.dialogs-btn11{
+	display: inline-block;
+	width: 235px;
+	height: 83px;
+	background: url(http://img0.fengqucdn.com/cmsres/20160506/60725de9-590d-4f2a-a1d2-9fdb6be4e0d2.png) 0 0 no-repeat;
+	text-indent: -99em;
+}
 
 
 .dialogs-close{

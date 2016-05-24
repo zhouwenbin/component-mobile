@@ -57,11 +57,11 @@
 .coupon-discount-error:after {
   position: absolute;
   right: 27px;
-  top: 16px;
+  top: 18px;
   content: "";
   font-size: 0;
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-top: 1px solid #DCDCDC;
   border-right: 1px solid #DCDCDC;
   -webkit-transform: rotate(45deg);
@@ -90,7 +90,7 @@
 
 .coupon-discount-more {
   text-align: center;
-  margin-top: -2px;
+  /*margin-top: -2px;*/
   padding: 16px 14px;
   background-color: #fff;
   border-top: 1px solid #f2f2f2; }
@@ -101,3 +101,19 @@
 
 .coupon-discount-img img {
   width: 100%; }
+
+.coupon-discount-sale {
+  padding: 10px 0; }
+
+.coupon-discount-sale .coupon-discount-ticon {
+  float: left; }
+
+.coupon-discount-text {
+  display: block;
+  white-space: normal;
+  line-height: 1.2;
+  overflow: hidden; }
+
+.coupon-discount-sale-out .coupon-discount-error:after {
+  top: 50%;
+  margin-top: -4px; }

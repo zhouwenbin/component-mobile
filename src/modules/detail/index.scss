@@ -52,7 +52,7 @@
   font-weight: normal;
 }
 .detail-b img{
-  width: calc(100% + 30px);
+  width: calc(100% + 15px);
   margin-left: -15px;
   margin-top: -15px;
 }
@@ -72,7 +72,7 @@
 }
 
 .detail-b p{
-  padding:15px; 
+  margin:15px; 
   line-height: 16px;
   color: #555;
 }
@@ -83,4 +83,7 @@
 }
 .detail-b .detail-parameter p{
     padding: 0;
+}
+.detail-b .brandlogo{
+  margin-top: 0;
 }

@@ -1,0 +1,108 @@
+.wechat{
+	background: #88ceff;
+}
+.wechat img{
+	vertical-align: top;
+}
+.wechat-header{
+	background: url(http://img0.fengqucdn.com/cmsres/20160510/d278f758-a3f0-4e81-9f0e-afd869acc667.jpeg) 0 0 no-repeat;
+	width: 640px;
+	height: 1325px;
+}
+.wechat-slider{
+	position: relative;
+	margin: 44px 28px 0 40px;
+}
+.wechat-slider-btn{
+	position: absolute;
+	height: 216px;
+	width: 65px;
+}
+.wechat-slider-btn:before{
+	position: absolute;
+	content: "";
+	width: 63px;
+	height: 63px;
+	border-top: 3px solid #fff;
+	border-right: 3px solid #fff;
+	top: 63px;
+}
+.wechat-slider-btn01{
+	left: 0;
+}
+.wechat-slider-btn02{
+	right: 0;
+}
+.wechat-slider-btn01:before{
+	left: 14px;
+	-webkit-transform: rotate(-135deg);
+	    -ms-transform: rotate(-135deg);
+	        transform: rotate(-135deg);
+}
+.wechat-slider-btn02:before{
+	left: -17px;
+	-webkit-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
+}
+.wechat-slider-list{
+	width: 431px;
+	height: 216px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.wechat-slider-list ul{
+	display: inline-block;
+	white-space: nowrap;
+	-webkit-transition: -webkit-transform 0.5s ease-in;
+	        transition: transform 0.5s ease-in;
+}
+.wechat-slider-list01{
+	-webkit-transform: translate(0,0);
+	    -ms-transform: translate(0,0);
+	        transform: translate(0,0);
+}
+.wechat-slider-list02{
+	-webkit-transform: translate(-431px,0);
+	    -ms-transform: translate(-431px,0);
+	        transform: translate(-431px,0);
+}
+.wechat-slider-list03{
+	-webkit-transform: translate(-431px*2,0);
+	    -ms-transform: translate(-431px*2,0);
+	        transform: translate(-431px*2,0);
+}
+.wechat-slider-list li{
+	display: inline-block;
+	vertical-align: middle;
+}
+.wechat-slider-pointer{
+	margin-top: 10px;
+	font-size: 0;
+	letter-spacing: -0.5em;
+	text-align: center;
+}
+.wechat-slider-pointer span{
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	background: #FFFFFF;
+	background: rgba(255,255,255,0.4);
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	margin: 0 4px;
+}
+.wechat-slider-pointer .active{
+	background: #000000;
+	background: rgba(0,0,0,0.7);
+}
+.wechat-tips{
+	margin-top: 30px;
+	color: #000;
+	font-size: 18px;
+	padding: 0 60px 0 65px;
+	line-height: 1.1;
+}
+.wechat-footer{
+	margin-top: 92px;
+}

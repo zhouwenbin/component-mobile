@@ -48,7 +48,8 @@
 .box-address-r2 {
   text-align: right; }
 
-.box-address-r3 {
+.box-address-r3,
+.box-more {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -57,6 +58,27 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between; }
+
+/*box-more*/
+.box-more {
+  position: relative; }
+
+.box-more-arrow {
+  margin-right: 13px; }
+
+.box-more-arrow:after {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  content: "";
+  font-size: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 1px solid #DCDCDC;
+  border-right: 1px solid #DCDCDC;
+  -webkit-transform: translate(0, -50%) rotate(45deg);
+      -ms-transform: translate(0, -50%) rotate(45deg);
+          transform: translate(0, -50%) rotate(45deg); }
 
 .box {
   padding: 16px 14px;
