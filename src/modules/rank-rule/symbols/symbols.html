@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="cache-control" content="max-age=0"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <title>Icon kit preview | gulp-svg-sprites</title>
+    <link href="css/sprite.css" rel="stylesheet" type="text/css" media="all"/>
+    <style type="text/css">@CHARSET "UTF-8";
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        color: #666;
+        background: #fafafa;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
+        line-height: 1.4
+    }
+
+    header {
+        display: block;
+        padding: 3em 3em 2em 3em;
+        background-color: #fff
+    }
+
+    header p {
+        margin: 0 0 0 0;
+    }
+
+    nav {
+        font-size: .7em;
+        display: block;
+        width: 100%;
+        margin: 0 0 2em 0
+    }
+
+    nav a {
+        display: inline-block;
+        text-decoration: none;
+        margin-left: 2em;
+        color: #0f7595;
+        white-space: nowrap
+    }
+
+    nav a:hover {
+        text-decoration: underline
+    }
+
+    nav a.current {
+        font-weight: bold;
+        text-decoration: underline;
+        color: #666
+    }
+
+    section {
+        border-top: 1px solid #eee;
+        padding: 2em 3em 0 3em
+    }
+
+    ul {
+        margin: 0;
+        padding: 0
+    }
+
+    .icon-boxes li {
+        display: inline-block;
+        background-color: #fff;
+        position: relative;
+        margin: 0 2em 2em 0;
+        vertical-align: top;
+        border: 1px solid #ccc;
+        padding: 1em 1em 1em 1em;
+        cursor: default
+    }
+
+    .icon-box {
+        margin: 0;
+        width: 144px;
+        height: 144px;
+        position: relative;
+        background: #ccc url(data:image/gif;base64,R0lGODlhDAAMAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozQjk4OTI0MUY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozQjk4OTI0MkY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNCOTg5MjNGRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjNCOTg5MjQwRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAAAwADAAAAhaEH6mHmmzcgzJAUG/NVGrfOZ8YLlABADs=) top left repeat;
+        border: 1px solid #ccc;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center
+    }
+    .icon-box.inverted {
+        background: black;
+    }
+
+    .icon {
+        display: inline;
+        display: inline-block
+    }
+
+    .snippet-popover {
+        position: absolute;
+        display: none;
+        opacity: 0;
+        bottom: 0;
+        left: 0;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 16px;
+        z-index: 1;
+        transition: all .3s;
+    }
+    .snippet-popover.active {
+        display: block;
+        opacity: 1;
+    }
+
+    pre {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        margin: 0;
+        padding: 5px 0;
+        font-size: 1em;
+        font-weight: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    footer {
+        display: block;
+        margin: 0;
+        padding: 0 3em 3em 3em
+    }
+
+    footer p {
+        margin: 0;
+        font-size: .7em
+    }
+
+    footer a {
+        color: #0f7595;
+        margin-left: 0
+    }
+    </style>
+
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute">
+
+<symbol id="icon-diamond" viewBox="0 0 30 28">
+        <title>Combined Shape Copy 4</title><path d="M11.384 7.204h7.233L15 .93l-3.616 6.274zm-2.42 0L5.26.778.704 7.204h8.26zM23.597.042l-7.553-.02 3.782 6.564 3.77-6.544zM15 27.222l4.04-18.66h-8.08L15 27.22zm6.035-20.018h8.262L24.74.778l-3.705 6.426zM20.43 8.56L16.22 27.99 30 8.56h-9.57zM10.173 6.587L13.96.018 6.38 0l3.794 6.586zM9.57 8.56H0l13.778 19.43L9.57 8.56z" fill="#BFDDF5" fill-rule="evenodd"/>
+</symbol>
+
+<symbol id="icon-medal" viewBox="0 0 32 44">
+        <title>Shape Copy 13</title><defs><path d="M182.604 205.528c-3.99 0-7.164 3.257-7.164 7.165s3.256 7.164 7.164 7.164 7.164-3.256 7.164-7.164-3.175-7.165-7.164-7.165zm5.13 6.27l-2.362 1.953.733 2.932c.163.57-.49.977-.977.733l-2.605-1.628-2.606 1.628c-.488.325-1.058-.163-.977-.733l.733-2.93-2.36-1.955c-.408-.407-.245-1.058.325-1.14l3.012-.244 1.14-2.85c.244-.57.977-.57 1.22 0l1.14 2.85 3.013.244c.814.082.977.815.57 1.14zm-.07-13.492L184 191.874l1.966-3.874h7.165l-5.466 10.306zm-8.5-10.306l6.12 10.364c-.897-.163-1.792-.244-2.77-.244-1.465 0-2.85.163-4.233.57L172 188h7.164zm14.675 29.008l.732-.407c.814-.488 1.058-1.546.488-2.36l-.488-.652c-.407-.57-.407-1.302 0-1.872l.488-.65c.57-.816.326-1.874-.57-2.362l-.732-.408c-.57-.325-.977-.976-.815-1.71l.163-.813c.163-.977-.57-1.79-1.547-1.873h-.815c-.65 0-1.302-.488-1.465-1.14l-.244-.814c-.245-.895-1.303-1.384-2.2-1.058l-.73.326c-.653.244-1.385.08-1.792-.408l-.57-.65c-.652-.734-1.79-.734-2.36 0l-.57.65c-.49.49-1.222.652-1.792.408l-.733-.326c-.896-.407-1.873.163-2.118 1.058l-.244.814c-.163.652-.733 1.14-1.465 1.14l-.814.082c-.978.08-1.63.977-1.467 1.872l.163.814c.163.652-.163 1.384-.814 1.71l-.733.407c-.815.488-1.06 1.547-.49 2.36l.49.652c.406.57.406 1.303 0 1.873l-.49.65c-.57.815-.325 1.874.57 2.362l.733.407c.57.325.977.976.814 1.71l-.162.813c-.163.977.57 1.79 1.546 1.872h.815c.652 0 1.303.49 1.466 1.14l.245.814c.244.895 1.303 1.383 2.198 1.058l.733-.326c.65-.244 1.384-.08 1.79.407l.57.65c.652.733 1.792.733 2.362 0l.57-.65c.488-.49 1.22-.652 1.79-.408l.734.326c.895.407 1.872-.163 2.116-1.06l.245-.813c.163-.65.732-1.14 1.465-1.14l.814-.08c.977-.082 1.63-.978 1.466-1.873l-.163-.815c-.163-.732.163-1.384.814-1.71zm-2.525-3.175c-.488 3.907-3.663 7.083-7.57 7.57-5.782.734-10.585-4.15-9.852-9.85.488-3.908 3.663-7.083 7.57-7.57 5.782-.734 10.585 4.15 9.852 9.85z" id="abb"/><filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="aba"><feOffset in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0" in="shadowBlurOuter1"/></filter></defs><g transform="translate(-167 -185)" fill="none" fill-rule="evenodd"><use fill="#000" filter="url(#aba)" xlink:href="#abb"/><use fill="#D5D6E0" xlink:href="#abb"/></g>
+</symbol>
+</svg>
+<header>
+    <h1 id="logo">Gulp SVG Sprites <small>(2 icons in &lt;symbol&gt; mode)</small></h1>
+    <h4>Files Generated:</h4>
+    <ol>
+        <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
+    </ol>
+    <h4>Usage:</h4>
+    <ol>
+        <li>
+            Include the <strong>contents</strong> of the <a href="svg/symbols.svg">SVG file</a> just after the opening <code>&lt;body&gt;</code> tag.
+        </li>
+        <li>
+            Paste one of the snippets anywhere into your website.
+        </li>
+    </ol>
+
+</header>
+<section>
+    <ul class="icon-boxes">
+        
+<li title="icon-diamond">
+            <div class="icon-box" id="icon-box-icon-diamond">
+                <svg class="rank-rule-icon icon-diamond">
+                    <use xlink:href="#icon-diamond" />
+                </svg>
+            </div>
+            <h2>icon-diamond</h2>
+            <button onclick="showPopover('snippet-icon-diamond')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-icon-diamond')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-icon-diamond">
+                <pre><code>&lt;svg class=&quot;rank-rule-icon icon-diamond&quot;&gt;&lt;use xlink:href=&quot;#icon-diamond&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+<li title="icon-medal">
+            <div class="icon-box" id="icon-box-icon-medal">
+                <svg class="rank-rule-icon icon-medal">
+                    <use xlink:href="#icon-medal" />
+                </svg>
+            </div>
+            <h2>icon-medal</h2>
+            <button onclick="showPopover('snippet-icon-medal')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-icon-medal')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-icon-medal">
+                <pre><code>&lt;svg class=&quot;rank-rule-icon icon-medal&quot;&gt;&lt;use xlink:href=&quot;#icon-medal&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+</ul>
+</section>
+<footer>
+    <p>Generated by <a href="https://github.com/shakyshane/gulp-svg-sprites">Gulp Svg Sprites</a> - Preview page courtesy of <a href="http://iconizr.com" target="_blank">iconizr</a>.</p>
+</footer>
+<script type="text/javascript">
+    var openSnippet;
+    function showPopover(id) {
+        openSnippet = document.getElementById(id);
+        openSnippet.classList.add("active");
+    }
+    function hidePopover() {
+
+        openSnippet.classList.remove("active");
+    }
+    function invertBackground(id) {
+        var elem = document.getElementById(id);
+        elem.classList.toggle("inverted");
+    }
+</script>
+</body>
+</html>

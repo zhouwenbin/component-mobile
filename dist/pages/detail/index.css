@@ -688,12 +688,6 @@
   font-size: 0;
   letter-spacing: -0.5em; }
 
-<<<<<<< HEAD
-.comment-expose-img::-webkit-scrollbar {
-  display: none; }
-
-.comment-expose-img li {
-=======
 /*.detail-mix02 li:last-child{
   display: none;
 }*/
@@ -703,7 +697,6 @@
 
 .detail-mix02 li {
   /**/
->>>>>>> origin/static
   display: inline-block;
   width: 25%;
   font-size: 12px;

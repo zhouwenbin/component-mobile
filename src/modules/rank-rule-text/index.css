@@ -1,0 +1,22 @@
+.rank-rule-text h2{
+	font-size: 14px;
+	margin-bottom: 11px;
+	padding-left: 2px;
+}
+.rank-rule-text h2:before{
+	content: '';
+	display: inline-block;
+	width: 3px;
+	height: 8px;
+	vertical-align: bottom;
+	background: #F13C34;
+	margin-right: 5px;
+}
+.rank-rule-text{
+	background: #fff;
+	padding:0 15px 24px;
+}
+.rank-rule-text li{
+	color: #666;
+	line-height: 20px;
+}
