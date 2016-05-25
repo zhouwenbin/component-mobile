@@ -1,11 +1,11 @@
 .rank-qa ul{
 	display:flex;
-	border-bottom: 1px solid #DCDCDC;
+	border-bottom: 1px solid #eee;
 	background: #fff;
 }
 .rank-qa li{
 	flex:1;
-	border-right:1px solid #DCDCDC;
+	border-right:1px solid #eee;
 	text-align: center;
 }
 .rank-qa li:last-child{

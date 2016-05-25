@@ -2,13 +2,13 @@
 .rank-member-icon.icon-medal{
 	width: 13px;
 	height: 19px;
-	vertical-align: middle;
+	vertical-align: -4px;
 	margin-right: 8px;
 }
 .rank-member-icon.icon-diamond{
 	width: 15px;
 	height: 14px;
-	vertical-align: middle;
+	vertical-align: -2px;
 	margin-right: 9px;
 }
 .rank-member-icon.icon-medal.silver{
@@ -31,7 +31,8 @@
 	margin-bottom: 21px;
 }
 .rank-rule p{
-	width: 178px;
+	flex:1;
+	margin-right: 15px;
 	background: rgba(241,60,52,0.1);
 	height: 37px;
 	display: flex;
@@ -40,6 +41,7 @@
 	padding: 0 5px;
 	border-radius: 2px;
 	position: relative;
+	font-size: 10px;
 }
 .rank-rule p:before{
 	content: '';

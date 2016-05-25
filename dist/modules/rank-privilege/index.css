@@ -2,6 +2,8 @@
 	background: #fff;
 	padding: 15px 0;
 	margin-bottom: 10px;
+	border-bottom: 1px solid #eee;
+
 }
 .rank-privilege ul{
 	display:-webkit-box;
@@ -76,5 +78,5 @@
 	width: 7px;
 	height: 12px;
 	margin-right: 5px;
-	vertical-align: middle;
+	vertical-align: -1px;
 }

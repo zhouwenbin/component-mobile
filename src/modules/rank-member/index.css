@@ -9,6 +9,9 @@
 	font-weight: normal;
 	margin-bottom: 8px;
 }
+.rank-member h2 span{
+	vertical-align: middle;
+}
 .rank-member img{
 	width: 60px;
 	height: 60px;
@@ -52,6 +55,7 @@
 }
 .rank-member-num{
 	font-size: 14px;
+	vertical-align: middle;
 }
 .rank-member-icon.icon-medal.silver{
 	fill: #D5D6E0;
