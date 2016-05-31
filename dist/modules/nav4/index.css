@@ -1,0 +1,42 @@
+.nav4 {
+  background: #fff; }
+
+.nav4 ul {
+  overflow: hidden; }
+
+.nav4 li {
+  float: left;
+  width: 33%;
+  text-align: center;
+  height: 68.26667px;
+  font-size: 25.6px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.nav4-hot {
+  font-size: 13.65333px;
+  color: #fff;
+  width: 40.96px;
+  height: 17.06667px;
+  line-height: 17.06667px;
+  -webkit-border-radius: 8.53333px;
+          border-radius: 8.53333px;
+  position: absolute;
+  left: 50%;
+  margin-left: 37.54667px;
+  top: 11.94667px;
+  background: #FF0000; }
+
+.nav4 a {
+  display: block; }

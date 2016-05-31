@@ -1,0 +1,33 @@
+.nav4{
+  background:#fff;
+}
+.nav4 ul{
+  overflow: hidden;
+}
+.nav4 li{
+  float: left;
+  width:33%;
+  text-align:center;
+  height:40px  * 2 / 750 * 640;
+  font-size:15px  * 2 / 750 * 640;
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.nav4-hot{
+  font-size:8px  * 2 / 750 * 640;
+  color:#fff;
+  width:24px  * 2 / 750 * 640;
+  height:10px  * 2 / 750 * 640;
+  line-height:10px  * 2 / 750 * 640;
+  border-radius:5px  * 2 / 750 * 640;
+  position: absolute;
+  left:50%;
+  margin-left:22px  * 2 / 750 * 640;
+  top:7px  * 2 / 750 * 640;
+  background:#FF0000;
+}
+.nav4 a{
+  display:block;
+}

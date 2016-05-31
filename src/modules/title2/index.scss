@@ -1,0 +1,27 @@
+.title2{
+	height:45px  * 2 / 750 * 640;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	padding:0 12px  * 2 / 750 * 640;
+	background:#fff;
+}
+.title2 svg{
+	width: 3.5px  * 2 / 750 * 640;
+	height:6px  * 2 / 750 * 640;
+	margin-left:3px  * 2 / 750 * 640;
+	vertical-align:center;
+}
+.title2 h2{
+	font-size:16px  * 2 / 750 * 640;
+	font-weight:normal;
+}
+.title2-btn{
+	font-size:12px  * 2 / 750 * 640;
+	height:22px  * 2 / 750 * 640;
+	line-height:22px  * 2 / 750 * 640;
+	padding: 0 10px;
+	border:0.5px  * 2 / 750 * 640 solid #ccc;
+	border-radius:11px  * 2 / 750 * 640;
+	display:block
+}

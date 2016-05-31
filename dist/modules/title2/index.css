@@ -1,0 +1,36 @@
+.title2 {
+  height: 76.8px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20.48px;
+  background: #fff; }
+
+.title2 svg {
+  width: 5.97333px;
+  height: 10.24px;
+  margin-left: 5.12px;
+  vertical-align: center; }
+
+.title2 h2 {
+  font-size: 27.30667px;
+  font-weight: normal; }
+
+.title2-btn {
+  font-size: 20.48px;
+  height: 37.54667px;
+  line-height: 37.54667px;
+  padding: 0 10px;
+  border: 0.85333px solid #ccc;
+  -webkit-border-radius: 18.77333px;
+          border-radius: 18.77333px;
+  display: block; }
