@@ -1,0 +1,48 @@
+.special-offer {
+  padding-left: 20.48px;
+  padding-bottom: 25.6px;
+  border-bottom: 0.85333px solid #E6E7E8;
+  margin-bottom: 25.6px;
+  background: #fff; }
+
+.special-offer ul {
+  white-space: nowrap;
+  font-size: 0;
+  overflow-x: auto;
+  padding-right: 20.48px; }
+
+.special-offer li {
+  display: inline-block;
+  border: 0.85333px solid #E6E7E8;
+  margin-left: -0.85333px;
+  width: 179.2px;
+  background: #fff; }
+
+.special-offer li:first-child {
+  margin-left: 0; }
+
+.special-offer img {
+  width: 179.2px;
+  height: 179.2px;
+  margin-bottom: 11.94667px; }
+
+.special-offer h3 {
+  white-space: normal;
+  font-size: 20.48px;
+  line-height: 23.89333px;
+  font-weight: normal;
+  margin: 0 10.24px 11.94667px; }
+
+.special-offer-price {
+  padding: 0 10.24px 18.77333px; }
+
+.special-offer-price strong {
+  font-size: 22.18667px;
+  color: #E73736;
+  margin-right: 8.53333px;
+  vertical-align: bottom; }
+
+.special-offer-price del {
+  font-size: 17.06667px;
+  color: #999;
+  vertical-align: bottom; }

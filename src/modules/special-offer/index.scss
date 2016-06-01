@@ -1,0 +1,49 @@
+.special-offer{
+	padding-left: 12px * 2 / 750 * 640;
+	padding-bottom: 15px * 2 / 750 * 640;
+	border-bottom:0.5px * 2 / 750 * 640 solid #E6E7E8;
+	margin-bottom: 15px * 2 / 750 * 640;
+	background: #fff;
+}
+.special-offer ul{
+	white-space: nowrap;
+	font-size: 0;
+	overflow-x: auto;
+	padding-right: 12px * 2 / 750 * 640;
+}
+.special-offer li{
+	display: inline-block;
+	border:0.5px * 2 / 750 * 640 solid #E6E7E8;
+	margin-left:-0.5px * 2 / 750 * 640;
+	width: 105px * 2 / 750 * 640;
+	background: #fff;
+}
+.special-offer li:first-child{
+	margin-left:0;
+}
+.special-offer img{
+	width: 105px * 2 / 750 * 640;
+	height: 105px * 2 / 750 * 640;
+	margin-bottom:7px  * 2 / 750 * 640;
+}
+.special-offer h3{
+	white-space: normal;
+	font-size:12px * 2 / 750 * 640;
+	line-height: 14px * 2 / 750 * 640;
+	font-weight: normal;
+	margin: 0 6px * 2 / 750 * 640 7px * 2 / 750 * 640;
+}
+.special-offer-price{
+	padding: 0 6px  * 2 / 750 * 640 11px  * 2 / 750 * 640;
+}
+.special-offer-price strong{
+	font-size: 13px  * 2 / 750 * 640;
+	color: #E73736;
+	margin-right: 5px  * 2 / 750 * 640;
+	vertical-align: bottom;
+}
+.special-offer-price del{
+	font-size: 10px  * 2 / 750 * 640;
+	color: #999;
+	vertical-align: bottom;
+}

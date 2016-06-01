@@ -1,0 +1,30 @@
+.tab2 {
+  background: #fff;
+  border-bottom: 0.85333px solid #E6E7E8;
+  padding: 15.36px 0 15.36px 20.48px; }
+
+.tab2 ul {
+  white-space: nowrap;
+  font-size: 0;
+  overflow-x: auto;
+  padding-right: 20.48px; }
+
+.tab2 li {
+  display: inline-block;
+  width: 95.57333px;
+  height: 54.61333px;
+  line-height: 54.61333px;
+  -webkit-border-radius: 50%/100%;
+          border-radius: 50%/100%;
+  font-size: 22.18667px;
+  text-align: center;
+  margin-right: 10.24px; }
+
+.tab2 li:last-child {
+  margin-right: 0; }
+
+.tab2 li.active {
+  border: 1.70667px solid #E73736; }
+
+.tab2 li.active a {
+  color: #E73736; }

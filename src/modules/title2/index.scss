@@ -6,15 +6,20 @@
 	padding:0 12px  * 2 / 750 * 640;
 	background:#fff;
 }
-.title2 svg{
+.title2-icon.icon-arrow{
 	width: 3.5px  * 2 / 750 * 640;
 	height:6px  * 2 / 750 * 640;
 	margin-left:3px  * 2 / 750 * 640;
-	vertical-align:center;
+	vertical-align:middle;
 }
 .title2 h2{
 	font-size:16px  * 2 / 750 * 640;
 	font-weight:normal;
+	margin-right: 4px  * 2 / 750 * 640;
+}
+.title2 p{
+	color: #999;
+	font-size:12px  * 2 / 750 * 640;
 }
 .title2-btn{
 	font-size:12px  * 2 / 750 * 640;
@@ -24,4 +29,59 @@
 	border:0.5px  * 2 / 750 * 640 solid #ccc;
 	border-radius:11px  * 2 / 750 * 640;
 	display:block
+}
+.title2-time{
+	font-size: 14px  * 2 / 750 * 640;
+}
+.title2-time span{
+	display: inline-block;
+	vertical-align: middle;
+	width:13px  * 2 / 750 * 640;
+	height:18px  * 2 / 750 * 640;
+	line-height: 18px  * 2 / 750 * 640;
+	text-align: center;
+	color: #fff;
+	font-size: 13px  * 2 / 750 * 640;
+	margin:0 1px  * 2 / 750 * 640;
+	background: #333;
+	border-radius: 2px  * 2 / 750 * 640;
+}
+.title2-time span:first-child{
+	margin-left: 4px  * 2 / 750 * 640;
+}
+.title2 img{
+	vertical-align: middle;
+}
+.title2-icon.icon-arrow2{
+	width: 14px  * 2 / 750 * 640;
+	height: 14px  * 2 / 750 * 640;
+	margin-left: -3px  * 2 / 750 * 640;
+	vertical-align: middle;
+}
+.title2-icon.icon-flashsale{
+	width: 117px  * 2 / 750 * 640;
+	height: 37px  * 2 / 750 * 640;
+	vertical-align: middle;
+}
+
+.title2-flashsale{
+	height: 60px  * 2 / 750 * 640;;
+}
+.title2-c1{
+	display: flex;
+	align-items: center;
+}
+.title2-c1c1{
+	margin-right: 6px  * 2 / 750 * 640;
+}
+.title2-c1c1 img{
+	width:40px  * 2 / 750 * 640;
+	height: 40px  * 2 / 750 * 640;
+}
+.title2-c1c2 h2{
+	margin-bottom: 4px  * 2 / 750 * 640;
+}
+.title2-icon1{
+	display: block;
+	margin-right: 5px;
 }

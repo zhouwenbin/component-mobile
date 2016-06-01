@@ -1,0 +1,10 @@
+@import url(../../../dist/modules/special-offer/index.css);
+.special-offer-banner{
+	padding-top:135px  * 2 / 750 * 640;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.special-offer-banner li{
+	border-top:none;
+	border-bottom:none;
+}

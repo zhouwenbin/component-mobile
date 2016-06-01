@@ -1,0 +1,32 @@
+.tab1 {
+  background: #fff;
+  border-bottom: 0.85333px solid #E6E7E8; }
+
+.tab1 ul {
+  white-space: nowrap;
+  font-size: 0;
+  overflow-x: auto; }
+
+.tab1 li {
+  display: inline-block;
+  width: 136.53333px;
+  height: 119.46667px;
+  padding-top: 17.06667px;
+  font-size: 22.18667px;
+  text-align: center; }
+
+.tab1 li.active {
+  border-bottom: 3.41333px solid #E73736; }
+
+.tab1 li.active a {
+  color: #E73736; }
+
+.tab1 span {
+  display: block; }
+
+.tab1 img {
+  width: 51.2px;
+  height: 51.2px;
+  -webkit-border-radius: 8.53333px;
+          border-radius: 8.53333px;
+  margin-bottom: 17.06667px; }

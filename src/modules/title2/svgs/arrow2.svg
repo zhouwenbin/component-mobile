@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.2 (29753) - http://www.bohemiancoding.com/sketch -->
+    <title>》 copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M7,14 C10.8659932,14 14,10.8659932 14,7 C14,3.13400675 10.8659932,0 7,0 C3.13400675,0 0,3.13400675 0,7 C0,10.8659932 3.13400675,14 7,14 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="14" height="14" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-127.000000, -447.000000)">
+            <g id="闪购" transform="translate(0.000000, 429.000000)">
+                <g id="titlebar">
+                    <g id="》-copy" transform="translate(127.000000, 18.000000)">
+                        <use id="Oval-15" stroke="#CCCCCC" mask="url(#mask-2)" fill="#FFFFFF" xlink:href="#path-1"></use>
+                        <path d="M6.10984911,9.38534332 C5.96338363,9.52618963 5.96338363,9.75413068 6.10984911,9.89452485 C6.25630566,10.0351584 6.49391592,10.0351584 6.64037247,9.89452485 L9.39031158,7.25436802 C9.53656281,7.11376994 9.53656281,6.88568705 9.39031158,6.74550565 L6.64037247,4.1054552 C6.56690317,4.03515173 6.47090209,4 6.37490101,4 C6.27886422,4 6.18286313,4.03515173 6.10984911,4.10569457 C5.96338363,4.24629265 5.96338363,4.4739234 6.10984911,4.61452148 L8.5947631,6.99983045 L6.10984911,9.38534332 Z" id="Fill-1" fill="#333333"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

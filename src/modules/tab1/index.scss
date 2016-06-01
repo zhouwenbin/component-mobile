@@ -1,0 +1,32 @@
+.tab1{
+	background: #fff;
+	border-bottom: 0.5px * 2 / 750 * 640 solid #E6E7E8;
+}
+.tab1 ul{
+	white-space: nowrap;
+	font-size: 0;
+	overflow-x: auto;
+}
+.tab1 li{
+	display: inline-block;
+	width: 80px * 2 / 750 * 640;
+	height: 70px * 2 / 750 * 640;
+	padding-top: 10px * 2 / 750 * 640;
+	font-size: 13px * 2 / 750 * 640;
+	text-align: center;
+}
+.tab1 li.active{
+	border-bottom: 2px * 2 / 750 * 640 solid #E73736;
+}
+.tab1 li.active a{
+	color: #E73736; 
+}
+.tab1 span{
+	display: block;
+}
+.tab1 img{
+	width: 30px * 2 / 750 * 640;
+	height: 30px * 2 / 750 * 640;
+	border-radius: 5px * 2 / 750 * 640;
+	margin-bottom: 10px * 2 / 750 * 640;
+}

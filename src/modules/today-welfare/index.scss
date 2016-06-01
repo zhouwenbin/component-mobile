@@ -16,6 +16,9 @@
 	display: inline-block;
 	margin-right: 1px * 2 / 750 * 640;
 }
+.today-welfare li:last-child{
+	margin-right:0;
+}
 .today-welfare img{
 	width: 105px * 2 / 750 * 640;
 	height: 165px * 2 / 750 * 640;
