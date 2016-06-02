@@ -14,12 +14,82 @@
 }
 .today-welfare li{
 	display: inline-block;
+	width: 105px * 2 / 750 * 640;
 	margin-right: 1px * 2 / 750 * 640;
+	padding-top: 16px * 2 / 750 * 640;
+	padding-bottom: 10px * 2 / 750 * 640;
+	text-align: center;
 }
 .today-welfare li:last-child{
 	margin-right:0;
 }
 .today-welfare img{
-	width: 105px * 2 / 750 * 640;
-	height: 165px * 2 / 750 * 640;
+	width: 90px * 2 / 750 * 640;
+	height: 90px * 2 / 750 * 640;
+	border-radius:50%;
+}
+.today-welfare h3{
+	font-size: 16px * 2 / 750 * 640;
+	margin-bottom: 5px * 2 / 750 * 640;
+}
+.today-welfare p{
+	font-size: 13px * 2 / 750 * 640;
+	margin-bottom: 12px * 2 / 750 * 640;
+}
+.today-welfare-btn{
+	margin: 0 auto;	
+	width: 69px * 2 / 750 * 640;
+	height: 18px * 2 / 750 * 640;
+	line-height: 18px * 2 / 750 * 640;
+	color: #fff;
+	font-size: 12px * 2 / 750 * 640;
+	margin-top: -13px * 2 / 750 * 640;
+	position: relative;
+	z-index: 1;
+	border-radius: 9px * 2 / 750 * 640;
+}
+.today-welfare-btn strong{
+	vertical-align: middle;
+}
+.today-welfare li:nth-child(4n+1){
+	background: rgba(255,139,37,0.1);
+}
+.today-welfare li:nth-child(4n+1) h3{
+	color: rgba(255,139,37,1);
+}
+.today-welfare li:nth-child(4n+1) .today-welfare-btn{
+	background: rgba(255,139,37,1);
+}
+.today-welfare li:nth-child(4n+2){
+	background: rgba(255,88,55,0.1);
+}
+.today-welfare li:nth-child(4n+2) h3{
+	color: rgba(255,88,55,1);
+}
+.today-welfare li:nth-child(4n+2) .today-welfare-btn{
+	background: rgba(255,88,55,1);
+}
+.today-welfare li:nth-child(4n+3){
+	background: rgba(75,181,62,0.1);
+}
+.today-welfare li:nth-child(4n+3) h3{
+	color: rgba(75,181,62,1);
+}
+.today-welfare li:nth-child(4n+3) .today-welfare-btn{
+	background: rgba(75,181,62,1);
+}
+.today-welfare li:nth-child(4n+4){
+	background: rgba(84,173,216,0.1);
+}
+.today-welfare li:nth-child(4n+4) h3{
+	color: rgba(84,173,216,1);
+}
+.today-welfare li:nth-child(4n+4) .today-welfare-btn{
+	background: rgba(84,173,216,1);
+}
+.today-welfare-icon.icon-arrow{
+	width: 3.5px * 2 / 750 * 640;
+	height: 6px * 2 / 750 * 640;
+	vertical-align: middle;
+	margin-left: 4px * 2 / 750 * 640;
 }

@@ -44,6 +44,8 @@
 .today-flashsale-bar{
 	width: 70px * 2 / 750 * 640;
 	margin-bottom: 5px * 2 / 750 * 640;
+	background: #FFE8E8;
+	border-radius: 4px * 2 / 750 * 640;
 }
 .today-flashsale-bar span{
 	display: inline-block;
@@ -57,10 +59,6 @@
 		width: 100%;
 	}
 }
-.today-flashsale-bar{
-	background: #FFE8E8;
-	border-radius: 4px * 2 / 750 * 640;
-}
 .today-flashsale-price strong{
 	color: #E62117;
 	font-size: 21px * 2 / 750 * 640;
@@ -73,4 +71,16 @@
 .today-flashsale-price del{
 	font-size: 10px * 2 / 750 * 640;
 	color: #999;
+}
+.today-flashsale-tag{
+	margin-top: 20px * 2 / 750 * 640;
+	margin-bottom: 10px * 2 / 750 * 640;
+	font-size: 10px * 2 / 750 * 640;
+	color: #fff;
+	background: #FB6136;
+	border-radius: 2px * 2 / 750 * 640;
+	height: 15px * 2 / 750 * 640;
+	line-height: 15px * 2 / 750 * 640;
+	width: 46px * 2 / 750 * 640;
+	text-align: center;
 }

@@ -1,0 +1,196 @@
+.goods-1col{
+	background: #fff;
+	margin-bottom: 15px * 2 / 750 * 640;
+	padding-bottom: 15px;
+}
+.goods-1col li{
+	padding: 12px * 2 / 750 * 640;
+	padding-bottom: 0;
+	display: flex;
+}
+.goods-1col-c2{
+	border-bottom: 0.5px * 2 / 750 * 640 solid #F0F0F0;
+}
+.goods-1col li:last-child .goods-1col-c2{
+	border-bottom: none;
+}
+.goods-1col-photo{
+	width: 120px * 2 / 750 * 640;
+	height: 120px * 2 / 750 * 640;
+	margin-right: 12px * 2 / 750 * 640 ;
+	display: block;
+}
+.goods-1col-price{
+	display:flex;
+	align-items: flex-end;
+}
+.goods-1col-price strong{
+	font-size: 16px * 2 / 750 * 640;
+	color: #E73736;
+	display: block;
+	margin-right: 3px * 2 / 750 * 640;
+}    
+.goods-1col-price strong.disabled{
+	color: #999;
+}
+.goods-1col-price  del{
+	font-size: 10px * 2 / 750 * 640;
+	color: #999;
+	display: block;
+}
+.goods-1col p{
+	font-size: 10px * 2 / 750 * 640;
+	color: #999;
+	display: flex;
+	align-items: center;
+	margin-bottom: 6px * 2 / 750 * 640;
+}
+.goods-1col h3{
+	font-size: 13px * 2 / 750 * 640;
+	line-height: 18px * 2 / 750 * 640;
+	margin-bottom: 8px * 2 / 750 * 640;
+	font-weight: normal;
+}
+.goods-1col-flag{
+	width: 12px * 2 / 750 * 640;
+	height: 12px * 2 / 750 * 640;
+	margin-right: 3px * 2 / 750 * 640;
+	display: block;
+}
+.goods-1col-tag{
+	font-size:9px  * 2 / 750 * 640;
+	color:#fff;
+	width:38px  * 2 / 750 * 640;
+	padding-left:5px  * 2 / 750 * 640;
+	height:15px  * 2 / 750 * 640;
+	line-height: 15px  * 2 / 750 * 640;
+	background: #FF0000;
+	position: relative;
+	font-weight: bold;
+	margin-bottom: 15px  * 2 / 750 * 640;
+}
+
+.goods-1col-tag:after{
+	content:'\200B';
+	border-width: 7.5px * 2 / 750 * 640 4px  * 2 / 750 * 640;
+	border-style: solid;
+	border-color: transparent #fff transparent transparent;
+	position: absolute;
+	right: -1px;
+	top: 0;
+	width: 0;
+	height: 0;
+}
+
+.goods-1col li:nth-child(n+3) .goods-1col-tag{
+	background: #FFE0E0;
+	color: #E30A0A;
+}
+.goods-1col-tag2 {
+  font-size: 10px  * 2 / 750 * 640;
+  margin-bottom: 15px  * 2 / 750 * 640;
+  color: #fff;
+  background: #FB6136;
+  border-radius: 2px  * 2 / 750 * 640;
+  height: 15px  * 2 / 750 * 640;
+  line-height: 15px  * 2 / 750 * 640;
+  width: 46px  * 2 / 750 * 640;
+  text-align: center; 
+}
+.goods-1col-c2r1{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	min-height: 43px * 2 / 750 * 640;
+}
+.goods-1col-btn{
+	height: 35px * 2 / 750 * 640;
+	border:0.5px * 2 / 750 * 640 solid #E73736;
+	background: #FFEAEA;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px * 2 / 750 * 640;
+	padding: 0 8px * 2 / 750 * 640;
+	color: #E62117;
+	font-size: 13px * 2 / 750 * 640;
+}
+.goods-1col-btn.disabled{
+	background: #F0F0F0;
+	border-color: #999;
+	color: #999;
+}
+.goods-1col-notice{
+	width: 63px * 2 / 750 * 640;
+	height: 30px * 2 / 750 * 640;
+	line-height: 30px * 2 / 750 * 640;
+	border:0.5px * 2 / 750 * 640 solid #333;
+	background: #F8F8F8;
+	border-radius: 5px * 2 / 750 * 640;
+	text-align: center;
+	font-size: 13px * 2 / 750 * 640;
+}
+.goods-1col-icon.icon-cart{
+	display: block;
+	width: 19px * 2 / 750 * 640;
+	height: 19px * 2 / 750 * 640;
+	fill: #E73736;
+}
+.goods-1col-btn.disabled .goods-1col-icon.icon-cart{
+	fill: #999;
+}
+.goods-1col-comment{
+	font-size: 10px * 2 / 750 * 640;
+	color:#999; 
+	margin-bottom: 17px * 2 / 750 * 640;
+	margin-top: 2px * 2 / 750 * 640;
+}
+.goods-1col-bar{
+	display: inline-block;
+	width: 80px * 2 / 750 * 640;
+	margin-bottom: 5px * 2 / 750 * 640;
+	background: #FFE8E8;
+	border-radius: 4px * 2 / 750 * 640;
+	margin-bottom: 19px * 2 / 750 * 640;
+}
+.goods-1col-bar span{
+	display: inline-block;
+	height: 8px * 2 / 750 * 640;
+	border-radius: 4px * 2 / 750 * 640;
+	background: #E62117;
+	animation: goods-1col-bar 1s linear;
+}
+@keyframes goods-1col-bar{
+	0%{
+		width: 100%;
+	}
+}
+.goods-1col-left{
+	font-size: 10px  * 2 / 750 * 640;
+	color: #999;
+	margin-left: 5px  * 2 / 750 * 640;
+}
+.goods-1col-c2r1c1 dl{
+	display: inline-block;
+	margin-top: 13px;
+}
+
+.goods-1col-c2r1c1 dl:first-child{
+	color: #E62117;
+	border-right: 0.5px  * 2 / 750 * 640 solid #ccc;
+	padding-right: 17px  * 2 / 750 * 640;
+}
+.goods-1col-c2r1c1 dl:last-child{
+	padding-left: 17px  * 2 / 750 * 640;
+}
+.goods-1col-c2r1c1 dl.disabled{
+	color: #999;
+}
+
+.goods-1col-c2r1c1 dt{
+	font-size:10px  * 2 / 750 * 640;
+	margin-bottom: 6px  * 2 / 750 * 640;
+}
+.goods-1col-c2r1c1 dd{
+	font-size: 16px  * 2 / 750 * 640;
+}

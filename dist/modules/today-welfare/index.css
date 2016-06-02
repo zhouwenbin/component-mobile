@@ -117,11 +117,87 @@
 
 .today-welfare li {
   display: inline-block;
-  margin-right: 1.70667px; }
+  width: 179.2px;
+  margin-right: 1.70667px;
+  padding-top: 27.30667px;
+  padding-bottom: 17.06667px;
+  text-align: center; }
 
 .today-welfare li:last-child {
   margin-right: 0; }
 
 .today-welfare img {
-  width: 179.2px;
-  height: 281.6px; }
+  width: 153.6px;
+  height: 153.6px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
+
+.today-welfare h3 {
+  font-size: 27.30667px;
+  margin-bottom: 8.53333px; }
+
+.today-welfare p {
+  font-size: 22.18667px;
+  margin-bottom: 20.48px; }
+
+.today-welfare-btn {
+  margin: 0 auto;
+  width: 117.76px;
+  height: 30.72px;
+  line-height: 30.72px;
+  color: #fff;
+  font-size: 20.48px;
+  margin-top: -22.18667px;
+  position: relative;
+  z-index: 1;
+  -webkit-border-radius: 15.36px;
+          border-radius: 15.36px; }
+
+.today-welfare-btn strong {
+  vertical-align: middle; }
+
+.today-welfare li:nth-child(4n+1) {
+  background:#FF8B25;
+  background: rgba(255, 139, 37, 0.1); }
+
+.today-welfare li:nth-child(4n+1) h3 {
+  color: #ff8b25; }
+
+.today-welfare li:nth-child(4n+1) .today-welfare-btn {
+  background: #ff8b25; }
+
+.today-welfare li:nth-child(4n+2) {
+  background:#FF5837;
+  background: rgba(255, 88, 55, 0.1); }
+
+.today-welfare li:nth-child(4n+2) h3 {
+  color: #ff5837; }
+
+.today-welfare li:nth-child(4n+2) .today-welfare-btn {
+  background: #ff5837; }
+
+.today-welfare li:nth-child(4n+3) {
+  background:#4BB53E;
+  background: rgba(75, 181, 62, 0.1); }
+
+.today-welfare li:nth-child(4n+3) h3 {
+  color: #4bb53e; }
+
+.today-welfare li:nth-child(4n+3) .today-welfare-btn {
+  background: #4bb53e; }
+
+.today-welfare li:nth-child(4n+4) {
+  background:#54ADD8;
+  background: rgba(84, 173, 216, 0.1); }
+
+.today-welfare li:nth-child(4n+4) h3 {
+  color: #54add8; }
+
+.today-welfare li:nth-child(4n+4) .today-welfare-btn {
+  background: #54add8; }
+
+.today-welfare-icon.icon-arrow {
+  width: 5.97333px;
+  height: 10.24px;
+  vertical-align: middle;
+  margin-left: 6.82667px; }
