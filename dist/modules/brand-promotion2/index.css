@@ -1,0 +1,136 @@
+.brand-promotion2 {
+  padding: 25.6px 20.48px;
+  background: #fff;
+  margin-bottom: 25.6px; }
+
+.brand-promotion2-r1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 22.18667px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.brand-promotion2-r1c2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
+
+.brand-promotion2-photo {
+  display: block;
+  margin-right: 15.36px;
+  width: 102.4px;
+  height: 102.4px; }
+
+.brand-promotion2 h3 {
+  font-size: 23.89333px;
+  margin-bottom: 11.94667px;
+  padding-top: 13.65333px;
+  font-weight: normal; }
+
+.brand-promotion2-flag {
+  width: 23.89333px;
+  height: 23.89333px;
+  margin-right: 6.82667px; }
+
+.brand-promotion2-loc {
+  font-size: 20.48px;
+  color: #999;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.brand-promotion2-loc span {
+  color: #333; }
+
+.brand-promotion2-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 85.33333px;
+  height: 37.54667px;
+  border: 0.85333px solid #ccc;
+  font-size: 20.48px;
+  -webkit-border-radius: 50%/100%;
+          border-radius: 50%/100%; }
+
+.brand-promotion2-icon.icon-arrow {
+  width: 5.97333px;
+  height: 10.24px;
+  display: block;
+  margin-left: 5.12px; }
+
+.brand-promotion2 p {
+  font-size: 22.18667px;
+  line-height: 29.01333px;
+  margin-bottom: 27.30667px; }
+
+.brand-promotion2 p span {
+  color: #E62117; }
+
+.brand-promotion2 ul {
+  font-size: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+  margin-right: -20.48px;
+  padding-right: 20.48px; }
+
+.brand-promotion2 li {
+  display: inline-block;
+  border: 0.85333px solid #E6E7E8;
+  margin-left: -0.85333px;
+  width: 179.2px;
+  padding-bottom: 17.06667px; }
+
+.brand-promotion2 li:first-child {
+  margin-left: 0; }
+
+.brand-promotion2-goods {
+  width: 179.2px;
+  height: 179.2px;
+  margin-bottom: 11.94667px; }
+
+.brand-promotion2 h4 {
+  white-space: normal;
+  font-size: 20.48px;
+  line-height: 23.89333px;
+  margin: 0 10.24px 6.82667px;
+  font-weight: normal; }
+
+.brand-promotion2-price {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin: 0 10.24px; }
+
+.brand-promotion2-price strong {
+  font-size: 22.18667px;
+  color: #E62117;
+  margin-right: 8.53333px; }
+
+.brand-promotion2-price del {
+  font-size: 17.06667px;
+  color: #999; }

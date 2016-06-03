@@ -1,0 +1,106 @@
+.brand-promotion2{
+	padding: 15px * 2 / 750 * 640 12px * 2 / 750 * 640;
+	background: #fff;
+	margin-bottom: 15px * 2 / 750 * 640;
+}
+.brand-promotion2-r1{
+	display: flex;
+	margin-bottom: 13px * 2 / 750 * 640;
+	align-items: center;
+}
+.brand-promotion2-r1c2{
+	flex:1;
+}
+.brand-promotion2-photo{
+	display: block;
+	margin-right: 9px * 2 / 750 * 640;
+	width: 60px * 2 / 750 * 640;
+	height: 60px * 2 / 750 * 640;
+}
+.brand-promotion2 h3{
+	font-size: 14px * 2 / 750 * 640;
+	margin-bottom: 7px * 2 / 750 * 640;
+	padding-top: 8px * 2 / 750 * 640;
+	font-weight: normal;
+}
+.brand-promotion2-flag{
+	width: 14px * 2 / 750 * 640;
+	height: 14px * 2 / 750 * 640;
+	margin-right: 4px * 2 / 750 * 640;
+}
+.brand-promotion2-loc{
+	font-size: 12px * 2 / 750 * 640;
+	color: #999;
+	display: flex;
+	align-items: center;
+}
+.brand-promotion2-loc span{
+	color: #333;
+}
+.brand-promotion2-btn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px * 2 / 750 * 640;
+	height: 22px * 2 / 750 * 640;
+	border:0.5px * 2 / 750 * 640 solid #ccc;
+	font-size: 12px * 2 / 750 * 640;
+	border-radius: 50%/100%;
+}
+.brand-promotion2-icon.icon-arrow{
+	width: 3.5px * 2 / 750 * 640;
+	height: 6px * 2 / 750 * 640;
+	display: block;
+	margin-left: 3px * 2 / 750 * 640;
+}
+.brand-promotion2 p{
+	font-size: 13px * 2 / 750 * 640;
+	line-height: 17px * 2 / 750 * 640;
+	margin-bottom:16px * 2 / 750 * 640;
+}
+.brand-promotion2 p span{
+	color: #E62117;
+}
+.brand-promotion2 ul{
+	font-size: 0;
+	white-space: nowrap;
+	overflow-x: auto;
+	margin-right: -12px * 2 / 750 * 640;
+	padding-right: 12px * 2 / 750 * 640;
+}
+.brand-promotion2 li{
+	display: inline-block;
+	border:0.5px * 2 / 750 * 640 solid #E6E7E8;
+	margin-left: -0.5px * 2 / 750 * 640;
+	width: 105px * 2 / 750 * 640;
+	padding-bottom: 10px * 2 / 750 * 640;
+}
+.brand-promotion2 li:first-child{
+	margin-left: 0;
+}
+.brand-promotion2-goods{
+	width: 105px * 2 / 750 * 640;
+	height: 105px * 2 / 750 * 640;
+	margin-bottom: 7px * 2 / 750 * 640;
+}
+.brand-promotion2 h4{
+	white-space: normal;
+	font-size: 12px * 2 / 750 * 640;
+	line-height: 14px * 2 / 750 * 640;
+	margin: 0 6px * 2 / 750 * 640 4px * 2 / 750 * 640;
+	font-weight: normal;
+}
+.brand-promotion2-price{
+	display: flex;
+	align-items: flex-end;
+	margin: 0 6px * 2 / 750 * 640;
+}
+.brand-promotion2-price strong{
+	font-size: 13px * 2 / 750 * 640;
+	color: #E62117;
+	margin-right: 5px * 2 / 750 * 640;
+}
+.brand-promotion2-price del{
+	font-size: 10px * 2 / 750 * 640;
+	color: #999;
+}
