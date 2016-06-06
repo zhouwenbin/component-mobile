@@ -1,6 +1,7 @@
 .interesting {
   padding: 0 20.48px 8.53333px;
-  background: #fff; }
+  background: #fff;
+  margin-bottom: 25.6px; }
 
 .interesting ul {
   white-space: nowrap;
@@ -29,7 +30,7 @@
   font-size: 30.72px;
   font-weight: normal;
   margin-bottom: 22.18667px;
-  margin-top: 11.94667px; }
+  padding-top: 11.94667px; }
 
 .interesting-author {
   display: -webkit-box;

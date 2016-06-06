@@ -12,7 +12,7 @@
   display: flex; }
 
 .goods-1col-c2 {
-  border-bottom: 0.85333px solid #F0F0F0; }
+  border-bottom: 1px solid #F0F0F0; }
 
 .goods-1col li:last-child .goods-1col-c2 {
   border-bottom: none; }
@@ -95,7 +95,7 @@
   width: 0;
   height: 0; }
 
-.goods-1col li:nth-child(n+3) .goods-1col-tag {
+.goods-1col li:nth-child(n+4) .goods-1col-tag {
   background: #FFE0E0;
   color: #E30A0A; }
 

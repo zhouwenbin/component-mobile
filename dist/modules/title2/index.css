@@ -35,7 +35,7 @@
   height: 37.54667px;
   line-height: 37.54667px;
   padding: 0 10px;
-  border: 0.85333px solid #ccc;
+  border: 1px solid #ccc;
   -webkit-border-radius: 18.77333px;
           border-radius: 18.77333px;
   display: block; }
@@ -46,7 +46,7 @@
 .title2-time span {
   display: inline-block;
   vertical-align: middle;
-  width: 22.18667px;
+  width: 35.84px;
   height: 30.72px;
   line-height: 30.72px;
   text-align: center;

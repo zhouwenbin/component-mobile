@@ -1,0 +1,33 @@
+.brand-top2{
+	padding-left: 12px * 2 / 750 * 640;
+	padding-bottom: 15px * 2 / 750 * 640;
+	border-bottom:0.5px * 2 / 750 * 640 solid #E6E7E8;
+	margin-bottom: 15px * 2 / 750 * 640;
+	background: #fff; 
+}
+.brand-top2 ul{
+	white-space: nowrap;
+	font-size: 0;
+	overflow-x: auto;
+	padding-right: 12px * 2 / 750 * 640;
+}
+.brand-top2 li{
+	display: inline-block;
+	margin-right:2px * 2 / 750 * 640;
+	background: #fff;
+	position: relative;
+}
+.brand-top2 li:last-child{
+	margin-right:0;
+}
+.brand-top2 img{
+	width:212px  * 2 / 750 * 640;
+	height:140px  * 2 / 750 * 640;
+}
+.brand-top2-icon.icon-hot{
+	width: 26px  * 2 / 750 * 640;
+	height: 26px  * 2 / 750 * 640;
+	position: absolute;
+	top: 0;
+	left: 0;
+}

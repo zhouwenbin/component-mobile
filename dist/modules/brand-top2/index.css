@@ -1,0 +1,32 @@
+.brand-top2 {
+  padding-left: 20.48px;
+  padding-bottom: 25.6px;
+  border-bottom: 0.85333px solid #E6E7E8;
+  margin-bottom: 25.6px;
+  background: #fff; }
+
+.brand-top2 ul {
+  white-space: nowrap;
+  font-size: 0;
+  overflow-x: auto;
+  padding-right: 20.48px; }
+
+.brand-top2 li {
+  display: inline-block;
+  margin-right: 3.41333px;
+  background: #fff;
+  position: relative; }
+
+.brand-top2 li:last-child {
+  margin-right: 0; }
+
+.brand-top2 img {
+  width: 361.81333px;
+  height: 238.93333px; }
+
+.brand-top2-icon.icon-hot {
+  width: 44.37333px;
+  height: 44.37333px;
+  position: absolute;
+  top: 0;
+  left: 0; }

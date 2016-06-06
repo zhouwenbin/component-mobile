@@ -1,0 +1,104 @@
+.special-offer {
+  padding-left: 20.48px;
+  padding-bottom: 25.6px;
+  border-bottom: 1px solid #E6E7E8;
+  margin-bottom: 25.6px;
+  background-color: #fff; }
+
+.special-offer ul {
+  white-space: nowrap;
+  font-size: 0;
+  overflow-x: auto;
+  padding-right: 20.48px; }
+
+.special-offer li {
+  display: inline-block;
+  border-top: 1px solid #E6E7E8;
+  border-bottom: 1px solid #E6E7E8;
+  border-right: 1px solid #E6E7E8;
+  width: 179.2px;
+  background: #fff; }
+
+.special-offer li:first-child {
+  border-left: 1px solid #E6E7E8; }
+
+.special-offer img {
+  width: 100%; }
+
+.special-offer h3 {
+  white-space: normal;
+  font-size: 20.48px;
+  line-height: 23.89333px;
+  font-weight: normal;
+  margin: 0 10.24px 11.94667px; }
+
+.special-offer-price {
+  padding: 0 10.24px 18.77333px; }
+
+.special-offer-price strong {
+  font-size: 22.18667px;
+  color: #E73736;
+  margin-right: 8.53333px;
+  vertical-align: bottom; }
+
+.special-offer-price del {
+  font-size: 17.06667px;
+  color: #999;
+  vertical-align: bottom; }
+.tab1 {
+  background: #fff;
+  border-bottom: 0.85333px solid #E6E7E8;
+  margin-bottom: 25.6px; }
+
+.tab1 ul {
+  white-space: nowrap;
+  font-size: 0;
+  overflow-x: auto; }
+
+.tab1 li {
+  display: inline-block;
+  width: 136.53333px;
+  height: 119.46667px;
+  padding-top: 17.06667px;
+  font-size: 22.18667px;
+  text-align: center; }
+
+.tab1 li.active {
+  border-bottom: 3.41333px solid #E73736; }
+
+.tab1 li.active a {
+  color: #E73736; }
+
+.tab1 span {
+  display: block; }
+
+.tab1 img {
+  width: 51.2px;
+  height: 51.2px;
+  -webkit-border-radius: 8.53333px;
+          border-radius: 8.53333px;
+  margin-bottom: 17.06667px; }
+
+.special-offer-banner {
+  padding-top: 230.4px;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.special-offer.special-offer-banner li {
+  border-top: none;
+  border-bottom: none; }
+
+.special-offer.special-offer-banner li:first-child {
+  border-left: none; }
+
+.special-offer.special-offer-banner li:last-child {
+  border-right: none; }
+
+.special-offer-banner-img {
+  width: 100%;
+  height: 281.6px; }
+
+.special-offer-banner-goods {
+  width: 100%;
+  height: 179.2px;
+  margin-bottom: 11.94667px; }

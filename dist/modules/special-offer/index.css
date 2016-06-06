@@ -1,9 +1,9 @@
 .special-offer {
   padding-left: 20.48px;
   padding-bottom: 25.6px;
-  border-bottom: 0.85333px solid #E6E7E8;
+  border-bottom: 1px solid #E6E7E8;
   margin-bottom: 25.6px;
-  background: #fff; }
+  background-color: #fff; }
 
 .special-offer ul {
   white-space: nowrap;
@@ -13,13 +13,17 @@
 
 .special-offer li {
   display: inline-block;
-  border: 0.85333px solid #E6E7E8;
-  margin-left: -0.85333px;
+  border-top: 1px solid #E6E7E8;
+  border-bottom: 1px solid #E6E7E8;
+  border-right: 1px solid #E6E7E8;
   width: 179.2px;
   background: #fff; }
 
 .special-offer li:first-child {
-  margin-left: 0; }
+  border-left: 1px solid #E6E7E8; }
+
+.special-offer img {
+  width: 100%; }
 
 .special-offer h3 {
   white-space: normal;

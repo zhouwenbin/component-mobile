@@ -10,8 +10,8 @@
   padding: 20.48px;
   float: left;
   width: 298.66667px;
-  border-right: 1.70667px solid #F0F0F0;
-  border-bottom: 1.70667px solid #F0F0F0; }
+  border-right: 1px solid #F0F0F0;
+  border-bottom: 1px solid #F0F0F0; }
 
 .goods-2col li:nth-child(odd) {
   padding-left: 0; }
@@ -21,7 +21,7 @@
   border-right: 0; }
 
 .goods-2col-photo {
-  width: 278.18667px;
+  width: 100%;
   height: 278.18667px;
   margin-bottom: 15.36px; }
 

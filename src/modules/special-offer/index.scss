@@ -1,9 +1,9 @@
 .special-offer{
 	padding-left: 12px * 2 / 750 * 640;
 	padding-bottom: 15px * 2 / 750 * 640;
-	border-bottom:0.5px * 2 / 750 * 640 solid #E6E7E8;
+	border-bottom:1px solid #E6E7E8;
 	margin-bottom: 15px * 2 / 750 * 640;
-	background: #fff; 
+	background-color: #fff; 
 }
 .special-offer ul{
 	white-space: nowrap;
@@ -13,13 +13,18 @@
 }
 .special-offer li{
 	display: inline-block;
-	border:0.5px * 2 / 750 * 640 solid #E6E7E8;
-	margin-left:-0.5px * 2 / 750 * 640;
+	border-top:1px solid #E6E7E8;
+	border-bottom:1px solid #E6E7E8;
+	border-right:1px solid #E6E7E8;
 	width: 105px * 2 / 750 * 640;
 	background: #fff;
 }
 .special-offer li:first-child{
-	margin-left:0;
+	border-left:1px solid #E6E7E8;
+}
+
+.special-offer img{
+	width:100%;
 }
 
 .special-offer h3{
