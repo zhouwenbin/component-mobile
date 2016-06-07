@@ -54,8 +54,11 @@
   border-top: none;
   border-bottom: none; }
 
+.special-offer.special-offer-banner li:first-child {
+  border-left: none; }
+
 .special-offer.special-offer-banner li:last-child {
-  border-right: 0; }
+  border-right: none; }
 
 .special-offer-banner-img {
   width: 100%;

@@ -1,0 +1,37 @@
+.tuanimg2 {
+  border: 2px solid #F2F2F2;
+  background: #fff;
+  padding: 14px 0;
+  margin-bottom: 20px; }
+
+.tuanimg2 ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
+.tuanimg2 li {
+  margin: 0 24px;
+  text-align: center; }
+
+.tuanimg2 img {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
+
+.tuanimg2-none {
+  width: 72px;
+  height: 72px;
+  border: 2px dashed #DCDCDC;
+  -webkit-border-radius: 50%;
+          border-radius: 50%; }
+
+.tuanimg2 figcaption {
+  font-size: 20px;
+  color: #4A4A4A; }

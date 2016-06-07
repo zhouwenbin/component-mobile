@@ -1,0 +1,27 @@
+.tuanplay{
+  display: flex;
+  border:1px * 2 solid #F2F2F2;
+  padding: 14px * 2;
+  justify-content: space-between;
+  align-items:center;
+  background: #fff;
+  margin-bottom:10px;
+}
+
+.tuanplay dl{
+  text-align: center;
+  width: 48px * 2;
+}
+.tuanplay dt{
+  margin-bottom: 5px * 2;
+  color: #4A4A4A;
+}
+.tuanplay dd{
+  color: #9B9B9B;
+  font-size: 10px * 2;
+}
+.icon-tuanplay-arrow{
+  width: 5px * 2;
+  height: 6.5px * 2;
+  display: block;
+}

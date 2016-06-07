@@ -1,0 +1,15 @@
+.tuanbtn2 {
+  height: 110px; }
+
+.tuanbtn2-fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff; }
+
+.tuanbtn2 .btn {
+  height: 110px;
+  line-height: 110px;
+  font-size: 32px;
+  background: #F13C34; }

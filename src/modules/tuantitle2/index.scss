@@ -1,0 +1,22 @@
+.tuantitle2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px * 2;
+  padding: 0 15px;
+  background:#fff;
+}
+.tuantitle2 a{
+  font-size:10px * 2;
+}
+.tuantitle2 h2{
+  font-size: 13px * 2;
+  font-weight: normal;
+}
+
+.icon-tuantitle2-arrow{
+  width: 3px * 2;
+  height: 5px * 2;
+  margin-left: 3px;
+  vertical-align: middle;
+}

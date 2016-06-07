@@ -1,0 +1,52 @@
+h2,h3,strong{
+	font-weight:normal;
+}
+svg{
+	vertical-align:middle;
+}
+.text-yellow{
+	color:#F5A623;
+}
+.text-gray{
+	color:#DCDCDC;
+}
+.text-black{
+	color:#4A4A4A !important;
+}
+.btn-middle{
+	width:160px * 2 !important;
+}
+.btn-yellow{
+	background:#FFAD4F;
+	color:#fff;
+}
+.btn-black{
+	background:#4A4A4A;
+	color:#fff;
+}
+.btn-disable{
+	background:#9B9B9B;
+	color:#fff !important;
+}
+.label-black{
+	width:55px * 2;
+	height:20px * 2;
+	line-height:20px * 2;
+	display:inline-block;
+	border:1px solid #4A4A4A;
+	border-radius:10px * 2;
+	text-align:center;
+	margin-right:27px * 2;
+	font-size:10px * 2;
+}
+@import '../../modules/tuantab/index';
+@import '../../modules/tuanheader/index';
+@import '../../modules/tuanlist/index';
+@import '../../modules/tuanhow/index';
+@import '../../modules/tuanintroduce/index';
+@import '../../modules/tuanrule/index';
+@import '../../modules/tuanimg/index';
+@import '../../modules/tuanbtn/index';
+@import '../../modules/tuandialog/index';
+@import '../../modules/tuanshare/index';
+@import '../../modules/tuantitle/index';

@@ -1,0 +1,31 @@
+
+.tuanimg2{
+  border: 1px * 2 solid #F2F2F2;
+  background: #fff;
+  padding: 7px * 2 0;
+  margin-bottom: 10px * 2;
+}
+.tuanimg2 ul{
+  display: flex;
+  align-items: center;
+}
+.tuanimg2 li{
+  margin: 0 12px * 2;
+  text-align: center;
+}
+.tuanimg2  img{
+  width: 36px * 2;
+  height: 36px * 2;
+  margin-bottom: 5px * 2;
+  border-radius: 50%;
+}
+.tuanimg2-none{
+  width: 36px * 2;
+  height: 36px * 2;
+  border: 1px * 2 dashed #DCDCDC;
+  border-radius: 50%;
+}
+.tuanimg2 figcaption{
+  font-size:10px * 2;
+  color: #4A4A4A;
+}

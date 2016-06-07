@@ -1,0 +1,34 @@
+.tuanplay {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 2px solid #F2F2F2;
+  padding: 28px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff;
+  margin-bottom: 10px; }
+
+.tuanplay dl {
+  text-align: center;
+  width: 96px; }
+
+.tuanplay dt {
+  margin-bottom: 10px;
+  color: #4A4A4A; }
+
+.tuanplay dd {
+  color: #9B9B9B;
+  font-size: 20px; }
+
+.icon-tuanplay-arrow {
+  width: 10px;
+  height: 13px;
+  display: block; }

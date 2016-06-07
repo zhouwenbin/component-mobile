@@ -1,0 +1,27 @@
+.tuanslider {
+  padding: 60px;
+  position: relative;
+  background: #fff; }
+
+.tuanslider img {
+  width: 100%; }
+
+.tuanslider-dot {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1; }
+
+.tuanslider-dot span {
+  width: 12px;
+  height: 12px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  display: inline-block;
+  background: #D8D8D8;
+  margin: 0 10px; }
+
+.tuanslider-dot span.active {
+  background: #4A4A4A; }

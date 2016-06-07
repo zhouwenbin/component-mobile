@@ -1,0 +1,31 @@
+.tuanbtn2{
+	height:55px * 2;
+}
+.tuanbtn2-fixed{
+	position: fixed;
+	left:0;
+	right:0;
+	bottom:0;
+	background:#fff;
+	display: flex;
+}
+.tuanbtn2 .btn{
+	height:55px * 2;
+	font-size:16px * 2;
+	flex:1;
+	line-height: 1;
+	padding-top: 16px * 2;
+}
+.tuanbtn2 .btn span{
+	font-size: 10px * 2;
+	display: block;
+	margin-top: 5px * 2;
+}
+.tuanbtn2 .btn-danger{
+	background:#F13C34;
+
+}
+.tuanbtn2 .btn-normal{
+	background: #fff;
+	color: #F13C34;
+}
