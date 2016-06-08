@@ -3,7 +3,7 @@
   margin-bottom: 25.6px;
   padding-bottom: 15px; }
 
-.goods-1col li {
+.goods-1col li a {
   padding: 20.48px;
   padding-bottom: 0;
   display: -webkit-box;
@@ -12,7 +12,11 @@
   display: flex; }
 
 .goods-1col-c2 {
-  border-bottom: 1px solid #F0F0F0; }
+  border-bottom: 1px solid #F0F0F0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1; }
 
 .goods-1col li:last-child .goods-1col-c2 {
   border-bottom: none; }

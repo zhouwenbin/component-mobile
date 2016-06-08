@@ -3,13 +3,14 @@
 	margin-bottom: 15px * 2 / 750 * 640;
 	padding-bottom: 15px;
 }
-.goods-1col li{
+.goods-1col li a{
 	padding: 12px * 2 / 750 * 640;
 	padding-bottom: 0;
 	display: flex;
 }
 .goods-1col-c2{
 	border-bottom: 1px solid #F0F0F0;
+	flex:1;
 }
 .goods-1col li:last-child .goods-1col-c2{
 	border-bottom: none;
