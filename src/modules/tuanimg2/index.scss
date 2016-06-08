@@ -6,23 +6,21 @@
   margin-bottom: 10px * 2;
 }
 .tuanimg2 ul{
-  display: flex;
-  align-items: center;
+  white-space: nowrap;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 0;
 }
 .tuanimg2 li{
   margin: 0 12px * 2;
   text-align: center;
+  display: inline-block;
 }
 .tuanimg2  img{
   width: 36px * 2;
   height: 36px * 2;
   margin-bottom: 5px * 2;
-  border-radius: 50%;
-}
-.tuanimg2-none{
-  width: 36px * 2;
-  height: 36px * 2;
-  border: 1px * 2 dashed #DCDCDC;
   border-radius: 50%;
 }
 .tuanimg2 figcaption{
