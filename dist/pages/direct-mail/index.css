@@ -7,15 +7,20 @@
 .today-flashsale ul {
   white-space: nowrap;
   overflow-x: auto;
+  overflow-y: hidden;
   font-size: 0; }
 
 .today-flashsale li {
   display: inline-block;
+  vertical-align: top;
   width: 378.88px;
   border-right: 1px solid #E6E7E8; }
 
 .today-flashsale li:last-child {
-  border-right: none; }
+  border-right: none;
+  width: 204.8px;
+  position: relative;
+  height: 205px; }
 
 .today-flashsale-r1 {
   display: -webkit-box;
@@ -106,6 +111,33 @@
   line-height: 25.6px;
   width: 78.50667px;
   text-align: center; }
+.more {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.more dt {
+  font-size: 22.18667px;
+  margin-bottom: 6.82667px; }
+
+.more dd {
+  font-size: 20.48px;
+  margin-bottom: 22.18667px; }
+
+.more svg {
+  width: 23.89333px;
+  height: 23.89333px; }
 .special-offer {
   padding-left: 20.48px;
   padding-bottom: 25.6px;
@@ -121,6 +153,7 @@
 
 .special-offer li {
   display: inline-block;
+  vertical-align: top;
   border-top: 1px solid #E6E7E8;
   border-bottom: 1px solid #E6E7E8;
   border-right: 1px solid #E6E7E8;
@@ -129,6 +162,9 @@
 
 .special-offer li:first-child {
   border-left: 1px solid #E6E7E8; }
+
+.special-offer li:last-child {
+  height: 289px; }
 
 .special-offer img {
   width: 100%; }
@@ -548,6 +584,7 @@
 
 .special-offer li {
   display: inline-block;
+  vertical-align: top;
   border-top: 1px solid #E6E7E8;
   border-bottom: 1px solid #E6E7E8;
   border-right: 1px solid #E6E7E8;
@@ -556,6 +593,9 @@
 
 .special-offer li:first-child {
   border-left: 1px solid #E6E7E8; }
+
+.special-offer li:last-child {
+  height: 289px; }
 
 .special-offer img {
   width: 100%; }

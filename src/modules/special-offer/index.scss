@@ -13,6 +13,7 @@
 }
 .special-offer li{
 	display: inline-block;
+	vertical-align: top;
 	border-top:1px solid #E6E7E8;
 	border-bottom:1px solid #E6E7E8;
 	border-right:1px solid #E6E7E8;
@@ -21,6 +22,9 @@
 }
 .special-offer li:first-child{
 	border-left:1px solid #E6E7E8;
+}
+.special-offer li:last-child{
+	height: 289px;
 }
 
 .special-offer img{

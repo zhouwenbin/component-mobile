@@ -7,16 +7,20 @@
 .today-flashsale ul{
 	white-space: nowrap;
 	overflow-x: auto;
+	overflow-y:hidden;
 	font-size: 0;
-
 }
 .today-flashsale li{
 	display: inline-block;
+	vertical-align: top;
 	width: 222px * 2 / 750 * 640;
 	border-right: 1px solid #E6E7E8;
 }
 .today-flashsale li:last-child{
 	border-right: none;
+	width:120px * 2 / 750 * 640;
+	position: relative;
+	height: 205px;
 }
 .today-flashsale-r1{
 	display: flex;

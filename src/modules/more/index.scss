@@ -1,0 +1,19 @@
+.more{
+	height: 100%;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+.more dt{
+	font-size:13px * 2 / 750 * 640;
+	margin-bottom:4px * 2 / 750 * 640;
+}
+.more dd{
+	font-size:12px * 2 / 750 * 640;
+	margin-bottom:13px * 2 / 750 * 640;
+}
+.more svg{
+	width: 14px * 2 / 750 * 640;
+	height: 14px * 2 / 750 * 640;
+}
