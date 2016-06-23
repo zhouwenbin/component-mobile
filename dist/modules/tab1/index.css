@@ -6,7 +6,8 @@
 .tab1 ul {
   white-space: nowrap;
   font-size: 0;
-  overflow-x: auto; }
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; }
 
 .tab1 li {
   display: inline-block;

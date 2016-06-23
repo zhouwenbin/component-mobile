@@ -8,7 +8,8 @@
   white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
-  font-size: 0; }
+  font-size: 0;
+  -webkit-overflow-scrolling: touch; }
 
 .today-flashsale li {
   display: inline-block;
@@ -149,7 +150,8 @@
   white-space: nowrap;
   font-size: 0;
   overflow-x: auto;
-  padding-right: 20.48px; }
+  padding-right: 20.48px;
+  -webkit-overflow-scrolling: touch; }
 
 .special-offer li {
   display: inline-block;
@@ -411,7 +413,8 @@
   white-space: nowrap;
   overflow-x: auto;
   margin-right: -20.48px;
-  padding-right: 20.48px; }
+  padding-right: 20.48px;
+  -webkit-overflow-scrolling: touch; }
 
 .brand-promotion2 li {
   display: inline-block;
@@ -466,7 +469,8 @@
   white-space: nowrap;
   font-size: 0;
   overflow-x: auto;
-  padding-right: 20.48px; }
+  padding-right: 20.48px;
+  -webkit-overflow-scrolling: touch; }
 
 .search-hot li {
   display: inline-block;
@@ -580,7 +584,8 @@
   white-space: nowrap;
   font-size: 0;
   overflow-x: auto;
-  padding-right: 20.48px; }
+  padding-right: 20.48px;
+  -webkit-overflow-scrolling: touch; }
 
 .special-offer li {
   display: inline-block;
@@ -630,7 +635,8 @@
   white-space: nowrap;
   font-size: 0;
   overflow-x: auto;
-  padding-right: 20.48px; }
+  padding-right: 20.48px;
+  -webkit-overflow-scrolling: touch; }
 
 .tab2 li {
   display: inline-block;

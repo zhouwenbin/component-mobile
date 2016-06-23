@@ -9,6 +9,7 @@
 	overflow-x: auto;
 	overflow-y:hidden;
 	font-size: 0;
+	-webkit-overflow-scrolling: touch;
 }
 .today-flashsale li{
 	display: inline-block;

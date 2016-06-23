@@ -9,7 +9,8 @@
   white-space: nowrap;
   font-size: 0;
   overflow-x: auto;
-  padding-right: 20.48px; }
+  padding-right: 20.48px;
+  -webkit-overflow-scrolling: touch; }
 
 .special-offer li {
   display: inline-block;
@@ -84,7 +85,8 @@
 .tab1 ul {
   white-space: nowrap;
   font-size: 0;
-  overflow-x: auto; }
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; }
 
 .tab1 li {
   display: inline-block;

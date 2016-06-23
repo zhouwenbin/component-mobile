@@ -9,7 +9,8 @@
   white-space: nowrap;
   font-size: 0;
   overflow-x: auto;
-  padding-right: 20.48px; }
+  padding-right: 20.48px;
+  -webkit-overflow-scrolling: touch; }
 
 .search-hot li {
   display: inline-block;

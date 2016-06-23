@@ -57,7 +57,8 @@
   white-space: nowrap;
   overflow-x: auto;
   margin-right: -20.48px;
-  padding-right: 20.48px; }
+  padding-right: 20.48px;
+  -webkit-overflow-scrolling: touch; }
 
 .brand-promotion li {
   display: inline-block;
