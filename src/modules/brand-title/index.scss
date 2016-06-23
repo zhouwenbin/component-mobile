@@ -1,0 +1,90 @@
+.brand-title{
+	background-color: #fff;
+	background-size:contain;
+	background-repeat: no-repeat;
+	padding: 105px * 2 / 750 * 640 12px * 2 / 750 * 640 15px * 2 / 750 * 640;
+	margin-bottom:15px * 2 / 750 * 640;
+}
+.brand-title-r1{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.brand-title-photo{
+	display: block;
+	margin-right: 9px * 2 / 750 * 640;
+	width: 75px * 2 / 750 * 640;
+	height: 75px * 2 / 750 * 640;
+	border:1px solid #E6E7E8;
+}
+.brand-title .btn{
+	display: block;
+	margin-bottom: 3px * 2 / 750 * 640;
+}
+.brand-title h3{
+	font-size: 15px * 2 / 750 * 640;
+	color: #333;
+	display: flex;
+	align-items: center;
+	padding-top: 8px * 2 / 750 * 640;
+	font-weight: normal;
+}
+.brand-title-flag{
+	width: 14px * 2 / 750 * 640;
+	height: 14px * 2 / 750 * 640;
+	margin-right: 6px * 2 / 750 * 640;
+	vertical-align: sub;
+}
+.brand-title-from{
+	margin-bottom: 13px * 2 / 750 * 640;
+}
+.brand-title p{
+	font-size: 13px * 2 / 750 * 640;
+	line-height: 17px * 2 / 750 * 640;
+}
+.brand-title p span{
+	color: #E62117;
+}
+.brand-title ul{
+	font-size: 0;
+	white-space: nowrap;
+	overflow-x: auto;
+	margin-right: -12px * 2 / 750 * 640;
+	padding-right: 12px * 2 / 750 * 640;
+}
+.brand-title li{
+	display: inline-block;
+	border:1px solid #E6E7E8;
+	margin-left: -1px;
+	width: 105px * 2 / 750 * 640;
+	padding-bottom: 10px * 2 / 750 * 640;
+}
+.brand-title li:first-child{
+	margin-left: 0;
+}
+.brand-title-goods{
+	width: 100%;
+	height: 105px * 2 / 750 * 640;
+	margin-bottom: 7px * 2 / 750 * 640;
+}
+.brand-title h4{
+	white-space: normal;
+	font-size: 12px * 2 / 750 * 640;
+	line-height: 14px * 2 / 750 * 640;
+	margin: 0 6px * 2 / 750 * 640 4px * 2 / 750 * 640;
+	font-weight: normal;
+}
+.brand-title-price{
+	display: flex;
+	align-items: flex-end;
+	margin: 0 6px * 2 / 750 * 640;
+}
+.brand-title-price strong{
+	font-size: 13px * 2 / 750 * 640;
+	color: #E62117;
+	margin-right: 5px * 2 / 750 * 640;
+}
+.brand-title-price del{
+	font-size: 10px * 2 / 750 * 640;
+	color: #999;
+}

@@ -23,6 +23,9 @@
 .special-offer li:first-child {
   border-left: 1px solid #E6E7E8; }
 
+.special-offer li:last-child {
+  height: 289px; }
+
 .special-offer img {
   width: 100%; }
 
