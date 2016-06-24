@@ -118,7 +118,7 @@
 .downloadapp {
   height: 84px; }
 
-.close-downloadtips {
+.downloadapp-close {
   margin: 0 8px; }
 
 .downloadapp-c1 {
@@ -137,7 +137,7 @@
 @media screen and (min-width: 640px) {
   .downloadapp {
     height: 168px; }
-  .close-downloadtips {
+  .downloadapp-close {
     margin: 0 16px; }
   .downloadapp-c1 {
     margin-left: 16px;

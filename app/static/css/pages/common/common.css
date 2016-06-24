@@ -3356,88 +3356,75 @@ body {
   display: block; }
 
 .downloadapp {
-  position: relative; }
-
-.downloadapp-r1 {
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 999; }
+  background: #f8f8f8;
+  width: 100%; }
 
-.downloadapp-close {
-  background: url(http://img.sfht.com/sfhth5/1.1.393/img/downloadapp-close.png) no-repeat;
-  text-indent: -999em;
-  position: absolute;
-  right: 0;
-  top: 0; }
-
-.downloadapp .btn {
+.downloadapp-c1 {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
-          flex: 1;
-  background: #46cfdf;
-  border-color: #46cfdf;
-  padding: 0; }
+          flex: 1; }
+
+.downloadapp-c1r1 {
+  color: #000; }
+
+.downloadapp-c1r2 {
+  color: #666; }
+
+.downloadapp-c2 {
+  display: inline-block;
+  border: 2px solid #e62117;
+  color: #e62117;
+  background: #fff;
+  text-align: center;
+  -webkit-border-radius: 5px;
+          border-radius: 5px; }
+
+.downloadapp-c2:visited {
+  color: #e62117; }
 
 .downloadapp {
-  height: 50px; }
-
-.downloadapp-r1 {
-  height: 50px;
-  padding: 0 11px;
-  background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 9px bottom;
-  background-size: 201px 44px; }
-
-.downloadapp-logo {
-  width: 201px;
-  height: 44px; }
+  height: 84px; }
 
 .downloadapp-close {
-  width: 22px;
-  height: 22px;
-  background-size: 22px; }
+  margin: 0 8px; }
 
-.downloadapp .btn {
-  height: 35px;
-  line-height: 35px;
-  margin-left: 6px;
-  margin-right: 16px; }
+.downloadapp-c1 {
+  margin-left: 8px;
+  line-height: 16px; }
+
+.downloadapp-c2 {
+  width: 46px;
+  height: 26px;
+  line-height: 26px;
+  margin-right: 8px; }
+
+.downloadapp-c1r3 {
+  margin-top: 3px; }
 
 @media screen and (min-width: 640px) {
   .downloadapp {
-    height: 100px; }
-
-  .downloadapp-r1 {
-    height: 100px;
-    padding: 0 22px;
-    background: #dd3e42 url(http://img0.sfht.com/cmsres/20151102/86ed0ba2-92ac-4ba3-8bbf-001e02d41ccc.png) no-repeat 18px bottom;
-    background-size: 402px 88px; }
-
-  .downloadapp-logo {
-    width: 402px;
-    height: 88px; }
-
+    height: 168px; }
   .downloadapp-close {
-    width: 44px;
-    height: 44px;
-    background-size: 44px; }
-
-  .downloadapp .btn {
-    height: 70px;
-    line-height: 70px;
-    margin-left: 12px;
-    margin-right: 32px; } }
+    margin: 0 16px; }
+  .downloadapp-c1 {
+    margin-left: 16px;
+    line-height: 32px; }
+  .downloadapp-c2 {
+    width: 92px;
+    height: 52px;
+    line-height: 52px;
+    margin-right: 16px; }
+  .downloadapp-c1r3 {
+    margin-top: 6px; } }
