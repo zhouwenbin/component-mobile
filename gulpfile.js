@@ -1,6 +1,6 @@
 var fs = require("fs");
 var gulp = require("gulp");
-var svgSprite = require("gulp-svg-sprites");
+//var svgSprite = require("gulp-svg-sprites");
 var filter = require("gulp-filter");
 var postcss = require("gulp-postcss");
 var include = require("gulp-html-tag-include");
