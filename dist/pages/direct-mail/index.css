@@ -297,6 +297,10 @@
 .title2-num {
   color: #333; }
 
+.title2 .title2-flag {
+  vertical-align: -7px;
+  margin-right: 2px; }
+
 .special-offer-banner {
   padding-top: 230.4px;
   background-repeat: no-repeat;

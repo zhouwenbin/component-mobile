@@ -516,6 +516,10 @@
 .title2-num {
   color: #333; }
 
+.title2 .title2-flag {
+  vertical-align: -7px;
+  margin-right: 2px; }
+
 .today-welfare {
   padding-left: 20.48px;
   padding-bottom: 25.6px;
