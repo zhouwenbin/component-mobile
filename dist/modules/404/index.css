@@ -16,7 +16,7 @@
   stroke-width: 1.5;
   stroke-dasharray: 530;
   stroke-dashoffset: 530;
-  -webkit-animation: body 1s linear forwards, body-fill 1s linear 2.5s forwards; }
+  -webkit-animation: body 1s linear forwards, body-fill 1s linear 2.5s forwards; }
 
 @-webkit-keyframes body {
   100% {
@@ -30,12 +30,12 @@
 .pagenone .eye-left {
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  -webkit-animation: line1 0.5s linear 1s forwards, shake 0.5s linear 3.5s forwards; }
+  -webkit-animation: line1 0.5s linear 1s forwards, shake 0.5s linear 3.5s forwards; }
 
 .pagenone .eye-right {
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  -webkit-animation: line1 0.5s linear 1.5s forwards, shake 0.5s linear 3.5s forwards; }
+  -webkit-animation: line1 0.5s linear 1.5s forwards, shake 0.5s linear 3.5s forwards; }
 
 @-webkit-keyframes line1 {
   100% {
@@ -58,7 +58,7 @@
   fill: #fff;
   stroke-dasharray: 80;
   stroke-dashoffset: 80;
-  -webkit-animation: mouse 0.5s linear 2s forwards, mouse-fill 1s linear 2.5s forwards; }
+  -webkit-animation: mouse 0.5s linear 2s forwards, mouse-fill 1s linear 2.5s forwards; }
 
 @-webkit-keyframes mouse {
   100% {
