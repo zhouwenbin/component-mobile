@@ -1,0 +1,21 @@
+/*
+@styleguide
+
+# 优惠券
+
+*/
+@import "../../utils/variables";
+@import "../header/index";
+
+.header-white02 {
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.header-title{
+  flex: 1;
+}
+.header-white02-icon{
+  width: 92px;
+  height: 49px;
+}
