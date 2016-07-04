@@ -292,3 +292,17 @@
 .header-white02-icon {
   width: 92px;
   height: 49px; }
+
+.header-white02 .header-title {
+  color: #333 !important;
+  padding: 0 40px; }
+
+.header-c1 .icon-back,
+.header-c2 .icon-home {
+  width: 24px;
+  height: 24px; }
+
+.header-icon-home {
+  display: block;
+  width: 100%;
+  text-align: right; }
