@@ -21,9 +21,19 @@
     height: 26px * $i;
     line-height: 26px * $i;
     margin-right: 8px * $i;
+    font-size: 13px * $i;
+    border-radius: 4px * $i;
+    border: 1px * $i solid #e62117;
   }
   .downloadapp-c1r3{
     margin-top:3px * $i;
+    width: 62px * $i;
+  }
+  .downloadapp-c1r1{
+    font-size: 14px * $i;
+  }
+  .downloadapp-logo{
+    width: 64px * $i;
   }
 }
 
@@ -47,11 +57,9 @@
 }
 .downloadapp-c2{
   display: inline-block;
-  border: 2px solid #e62117;
   color: #e62117;
   background: #fff;
   text-align: center;
-  border-radius: 5px;
 }
 .downloadapp-c2:visited{
   color: #e62117;
