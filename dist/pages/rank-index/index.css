@@ -21,10 +21,21 @@
             transform: translate(0,-50%)
 }
 .rank-member {
-    background: url(http://img0.fengqucdn.com/cmsres/20160524/49c314dd-883e-4955-9da5-48e27cef7889.png) no-repeat;
     padding: 20px 15px;
     background-size: cover;
-    color: #fff
+    color: #4A4A4A
+}
+.rank-menber-silver {
+    background: #F7F7F9
+}
+.rank-menber-gold {
+    background: #FBF4D9
+}
+.rank-menber-copper {
+    background: #F9F0EB
+}
+.rank-menber-diamond {
+    background: #F2F8FD
 }
 .rank-member h2 {
     font-size: 16px;
@@ -74,13 +85,13 @@
     width: 85px;
     -webkit-border-radius: 2px;
             border-radius: 2px;
-    background: #FFFFFF;
-    background: rgba(255,255,255,0.4);
+    background: #F13C34;
+    background: rgba(241,60,52,0.4);
     margin-right: 6px
 }
 .rank-member-bar span {
     display: block;
-    background: #fff;
+    background: #F13C34;
     -webkit-border-radius: 2px;
             border-radius: 2px;
     height: 4px
@@ -88,6 +99,9 @@
 .rank-member-num {
     font-size: 14px;
     vertical-align: middle
+}
+.rank-member-num span {
+    color: #F13C34
 }
 .rank-member-icon.icon-medal.silver {
     fill: #D5D6E0
