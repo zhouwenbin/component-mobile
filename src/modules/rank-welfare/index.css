@@ -1,0 +1,39 @@
+.rank-welfare{
+	background: #fff;
+	padding: 12px 15px 16px;
+	margin-bottom: 1px;
+}
+.rank-welfare p{
+	line-height: 18px;
+	color: #666;
+	font-size: 12px;
+}
+.rank-welfare p span{
+	color: #F13C34;
+}
+.rank-welfare li{
+	margin-top: 10px;
+	color: #666;
+}
+.rank-welfare-silver,
+.rank-welfare-gold,
+.rank-welfare-diamond{
+	display: inline-block;
+	background-size: 112px;
+	height: 25px;
+	line-height: 25px;
+	width: 112px;
+	padding-left: 33px;
+}
+.rank-welfare-silver{
+	color: #B4B6D2;
+	background-image: url(http://img0.fengqucdn.com/cmsres/20160711/4de0e902-f972-47ae-b934-f225c1888cfe.png);
+}
+.rank-welfare-gold{
+	color: #E9B90E;
+	background-image: url(http://img0.fengqucdn.com/cmsres/20160711/68edc7ec-d356-4931-ae68-379564da7c24.png);
+}
+.rank-welfare-diamond{
+	color: #94C6EE;
+	background-image: url(http://img0.fengqucdn.com/cmsres/20160711/f3e10a4d-a1ac-4a0c-8e58-447ed7235ff5.png);
+}

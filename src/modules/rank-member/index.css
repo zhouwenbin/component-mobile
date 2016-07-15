@@ -10,7 +10,7 @@
 	background: #FBF4D9;
 }
 .rank-menber-copper{
-	background: #F9F0EB;
+	background: rgba(233,182,156,0.2);
 }
 .rank-menber-diamond{
 	background: #F2F8FD;
@@ -55,7 +55,7 @@
 	vertical-align: middle;
 	width: 85px;
 	border-radius: 2px;
-	background: rgba(241,60,52,0.4);
+	background: rgba(255,206,204,0.4);
 	margin-right: 6px;
 }
 .rank-member-bar span{
